@@ -12,7 +12,7 @@ export const PostSentenceForm: FC<PostSentenceFormProps> = ({
   id,
   hashtagId,
 }) => {
-  const hashtagSentences = useGetHashtagSentences(hashtagId) ?? []
+  const { data: hashtagSentences } = useGetHashtagSentences(hashtagId)
   const sentences = hashtagSentences?.[id] ?? []
 
   return (

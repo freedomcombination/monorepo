@@ -2504,12 +2504,6 @@ export interface ApiPostPost extends Schema.CollectionType {
           localized: true
         }
       }>
-    content: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     reference: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {

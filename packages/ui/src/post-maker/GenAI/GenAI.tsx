@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import {
-  Box,
   Button,
   FormControl,
   FormLabel,
@@ -15,7 +14,6 @@ import {
   Progress,
   Stack,
   Switch,
-  Text,
   Textarea,
   ThemeTypings,
   Wrap,
@@ -27,11 +25,8 @@ import { FaSave } from 'react-icons/fa'
 import { FaStop, FaTrash } from 'react-icons/fa6'
 import { RiAiGenerate } from 'react-icons/ri'
 
-import { API_URL } from '@fc/config'
-import { useAuthContext } from '@fc/context'
-import { createHashtagSentence } from '@fc/services'
-import { PostCreateInput, RedisPost, StrapiLocale } from '@fc/types'
-import { sleep, toastMessage } from '@fc/utils'
+import { StrapiLocale } from '@fc/types'
+import { toastMessage } from '@fc/utils'
 
 import { EditablePost } from './EditablePost'
 import {
@@ -39,15 +34,17 @@ import {
   GeneratedArchiveContentPost,
   useGenPostContext,
 } from './GenPostProvider'
-import { parseIncompletePosts } from './parseIncompletePosts'
 
-type ArchivePostGenAIProps = {
+export type PostGenAIProps = {
   archiveContentId: number
-  content?: string
-  referenceLink?: string
+  content: string
   onSuccess?: (data: ArchivePost[]) => void
-  initialPosts?: GeneratedArchiveContentPost[]
   colorScheme?: ThemeTypings['colorSchemes']
+  onlySentences?: boolean
+  apiUrl: string
+  parseIncomplete: (incompleteText: string) => GeneratedArchiveContentPost[]
+  parseCompleted: (completeText: string) => GeneratedArchiveContentPost[]
+  onSave: (data: ArchivePost[]) => Promise<void>
 }
 
 const LANGUAGE_NAMES: Record<StrapiLocale, string> = {
@@ -56,36 +53,55 @@ const LANGUAGE_NAMES: Record<StrapiLocale, string> = {
   tr: 'Türkçe',
 }
 
-export const ArchivePostGenAI = ({
+export const PostGenAI = ({
   archiveContentId,
   content,
   onSuccess,
-  referenceLink = '',
+  onlySentences = false,
+  parseIncomplete,
+  parseCompleted,
+  onSave,
+  apiUrl,
   colorScheme = 'blue',
-}: ArchivePostGenAIProps) => {
+}: PostGenAIProps) => {
   const { t } = useTranslation()
   const [numberOfDescriptions, setNumberOfDescriptions] = useState<number>(5)
   const [numberOfSentences, setNumberOfSentences] = useState<number>(5)
   const [charLimitOfDescriptions, setCharLimitOfDescriptions] =
     useState<number>(200)
   const [charLimitOfSentences, setCharLimitOfSentences] = useState<number>(150)
+
   const {
     getPosts,
     addPosts,
     removePosts,
-    modifyPost,
     askBeforeDelete,
-    hashtagId,
     setAskBeforeDelete,
   } = useGenPostContext()
+
   const [isSaving, setIsSaving] = useState(false)
   const [useApiInDev, setUseApiInDev] = useState(false)
   const posts = getPosts(archiveContentId)
-  const { token } = useAuthContext()
 
   const { locale } = useRouter()
 
   const language = LANGUAGE_NAMES[locale]
+
+  const body = onlySentences
+    ? {
+        numberOfPosts: numberOfSentences,
+        charLimit: charLimitOfSentences,
+        language,
+        useApiInDev,
+      }
+    : {
+        numberOfDescriptions,
+        numberOfSentences,
+        charLimitOfDescriptions,
+        charLimitOfSentences,
+        language,
+        useApiInDev,
+      }
 
   const {
     completion,
@@ -95,18 +111,11 @@ export const ArchivePostGenAI = ({
     handleInputChange,
     handleSubmit,
   } = useCompletion({
-    api: '/api/gen-archive-content-posts',
+    api: apiUrl,
     initialInput: content,
-    body: {
-      numberOfDescriptions,
-      numberOfSentences,
-      charLimitOfDescriptions,
-      charLimitOfSentences,
-      language,
-      useApiInDev,
-    },
+    body,
     onFinish(prompt: string, completion: string) {
-      const parsedCompletion = JSON.parse(completion)
+      const parsedCompletion = parseCompleted(completion)
       const archived = addPosts(archiveContentId, parsedCompletion)
       onSuccess?.(archived)
     },
@@ -123,74 +132,12 @@ export const ArchivePostGenAI = ({
     },
   })
 
-  const completed = isLoading ? parseIncompletePosts(completion) : null
+  const completed = isLoading ? parseIncomplete(completion) : null
 
   const handleSave = async () => {
     setIsSaving(true)
-    const finalPosts: PostCreateInput[] = posts.map(post => {
-      return {
-        ...post.postInput,
-        description: post.description,
-        content: post.description,
-        reference: referenceLink,
-        locale,
-        hashtag: hashtagId,
-      } as PostCreateInput
-    })
-
-    const url = API_URL + '/api/posts/createPosts'
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify({ data: finalPosts }),
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      if (!response.ok) throw Error(response.statusText)
-
-      const addedPosts: { id: number; description: string }[] =
-        await response.json()
-
-      try {
-        for (const post of addedPosts) {
-          const localPost = posts.find(p => p.description === post.description)
-          if (!localPost) {
-            toastMessage(
-              'Error',
-              'Post not found : ' + post.description,
-              'error',
-            )
-            continue
-          }
-
-          await createHashtagSentence({
-            hashtagId,
-            value: localPost.sentences.map(
-              sentence => `${sentence}::${post.id}::${0}::${0}` as RedisPost,
-            ),
-          })
-
-          for (let i = 0; i < localPost.sentences.length; i++) {
-            localPost.sentences[i] = ''
-            modifyPost(archiveContentId, localPost)
-            await sleep(20)
-          }
-        }
-      } catch (e) {
-        for (const { id } of addedPosts) {
-          await fetch(API_URL + '/api/posts/' + id, {
-            method: 'DELETE',
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-        }
-        throw e
-      }
-
+      onSave(posts)
       removePosts(archiveContentId, true)
       toastMessage('Success', 'Posts saved', 'success')
     } catch (error) {
@@ -232,24 +179,26 @@ export const ArchivePostGenAI = ({
             spacing={{ base: 4, lg: 8 }}
             flexDirection={{ base: 'column', sm: 'row' }}
           >
-            <FormControl>
-              <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                Number of Caps Content
-              </FormLabel>
-              <NumberInput
-                step={1}
-                min={0}
-                max={40}
-                defaultValue={5}
-                onChange={(a, b) => setNumberOfDescriptions(b)}
-              >
-                <NumberInputField bg={'whiteAlpha.700'} />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </FormControl>
+            {!onlySentences && (
+              <FormControl>
+                <FormLabel mb={0} fontSize="sm" fontWeight={600}>
+                  Number of Caps Content
+                </FormLabel>
+                <NumberInput
+                  step={1}
+                  min={0}
+                  max={40}
+                  defaultValue={5}
+                  onChange={(a, b) => setNumberOfDescriptions(b)}
+                >
+                  <NumberInputField bg={'whiteAlpha.700'} />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
+            )}
             <FormControl>
               <FormLabel mb={0} fontSize="sm" fontWeight={600}>
                 Number of Posts
@@ -268,25 +217,27 @@ export const ArchivePostGenAI = ({
                 </NumberInputStepper>
               </NumberInput>
             </FormControl>
-            <FormControl>
-              <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                Character Limit (Caps)
-              </FormLabel>
-              <NumberInput
-                step={10}
-                min={80}
-                max={200}
-                defaultValue={charLimitOfDescriptions}
-                value={charLimitOfDescriptions}
-                onChange={(a, b) => setCharLimitOfDescriptions(b)}
-              >
-                <NumberInputField bg={'whiteAlpha.700'} />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </FormControl>
+            {!onlySentences && (
+              <FormControl>
+                <FormLabel mb={0} fontSize="sm" fontWeight={600}>
+                  Character Limit (Caps)
+                </FormLabel>
+                <NumberInput
+                  step={10}
+                  min={80}
+                  max={200}
+                  defaultValue={charLimitOfDescriptions}
+                  value={charLimitOfDescriptions}
+                  onChange={(a, b) => setCharLimitOfDescriptions(b)}
+                >
+                  <NumberInputField bg={'whiteAlpha.700'} />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
+            )}
             <FormControl>
               <FormLabel mb={0} fontSize="sm" fontWeight={600}>
                 Character Limit (Posts)
@@ -378,44 +329,39 @@ export const ArchivePostGenAI = ({
           </Wrap>
         </Stack>
       </form>
-      {isLoading && (
-        <Box p={4}>
-          <Progress
-            size="xs"
-            mb={4}
-            isIndeterminate
-            colorScheme={'purple'}
-            bgColor={'whiteAlpha.700'}
-          />
-          <Stack spacing={4} p={4}>
+      <Stack spacing={4} p={4} transition={'0.5s'} transitionProperty={'all'}>
+        {isLoading && completed?.length && posts.length === 0 ? (
+          <>
+            <Progress
+              size="xs"
+              m={4}
+              mb={8}
+              isIndeterminate
+              colorScheme={'purple'}
+              bgColor={'whiteAlpha.700'}
+            />
             {completed?.map((postObject, index) => (
               <EditablePost
                 archiveId={-1}
                 key={index + postObject.description}
                 postObject={{ ...postObject } as ArchivePost}
+                onlySentences={onlySentences}
                 descriptionThreshold={charLimitOfDescriptions}
                 sentenceThreshold={charLimitOfSentences}
               />
             ))}
-          </Stack>
-        </Box>
-      )}
-      <Stack spacing={4} p={4}>
-        {posts.length > 0 && (
-          <Stack>
-            <Text as={'b'} width={'100%'} pb={2}>
-              {posts.length} posts saved with the following caps content:
-            </Text>
-            {posts.map(postObject => (
-              <EditablePost
-                archiveId={isSaving ? -1 : archiveContentId}
-                key={postObject.id}
-                postObject={postObject}
-                descriptionThreshold={charLimitOfDescriptions}
-                sentenceThreshold={charLimitOfSentences}
-              />
-            ))}
-          </Stack>
+          </>
+        ) : (
+          posts.map(postObject => (
+            <EditablePost
+              archiveId={isSaving ? -1 : archiveContentId}
+              key={postObject.id}
+              onlySentences={onlySentences}
+              postObject={postObject}
+              descriptionThreshold={charLimitOfDescriptions}
+              sentenceThreshold={charLimitOfSentences}
+            />
+          ))
         )}
       </Stack>
     </Stack>

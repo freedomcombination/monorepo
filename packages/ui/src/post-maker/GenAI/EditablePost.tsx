@@ -8,6 +8,7 @@ export type EditablePostProps = {
   archiveId: number
   descriptionThreshold?: number
   sentenceThreshold?: number
+  onlySentences?: boolean
 }
 
 export const EditablePost: React.FC<EditablePostProps> = ({
@@ -15,6 +16,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
   archiveId,
   descriptionThreshold = 250,
   sentenceThreshold = 200,
+  onlySentences = false,
 }) => {
   const {
     removePost,
@@ -44,20 +46,22 @@ export const EditablePost: React.FC<EditablePostProps> = ({
       rounded={'md'}
       p={2}
     >
-      <EditableLine
-        isDescription={true}
-        isDisabled={archiveId < 0}
-        defaultValue={postObject?.description}
-        onDelete={() => removePost(archiveId, postObject.id)}
-        onUpdate={handleChangeDescription}
-        value={postObject.description}
-        threshold={descriptionThreshold}
-        thresholdStyles={{
-          color: 'red.400',
-        }}
-        fontWeight={500}
-        rounded={'md'}
-      />
+      {!onlySentences && (
+        <EditableLine
+          isDescription={true}
+          isDisabled={archiveId < 0}
+          defaultValue={postObject?.description}
+          onDelete={() => removePost(archiveId, postObject.id)}
+          onUpdate={handleChangeDescription}
+          value={postObject.description}
+          threshold={descriptionThreshold}
+          thresholdStyles={{
+            color: 'red.400',
+          }}
+          fontWeight={500}
+          rounded={'md'}
+        />
+      )}
       {postObject?.sentences?.map((sentence, index) => {
         return (
           <EditableLine

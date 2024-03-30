@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { Heading, Stack, useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -29,9 +29,8 @@ import {
   ModelEditModal,
   ModelStatusFilters,
   PageHeader,
-  PostSentenceForm,
+  PostEditView,
   RelationFilterArgs,
-  TweetGenAI,
   WTableProps,
   useColumns,
   useRequestArgs,
@@ -245,17 +244,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           onSuccess={endpointQuery.refetch}
         >
           {endpoint === 'posts' && selectedModel && hashtagId && (
-            <Stack rounded="md" bg="white" shadow="md">
-              <TweetGenAI
-                postId={selectedModel.id}
-                hashtagId={hashtagId}
-                content={(selectedModel as Post)?.content || undefined}
-              />
-              <Stack p={{ base: 4, lg: 8 }}>
-                <Heading>{t('sentences')}</Heading>
-                <PostSentenceForm id={selectedModel.id} hashtagId={hashtagId} />
-              </Stack>
-            </Stack>
+            <PostEditView postId={selectedModel.id} hashtagId={hashtagId} />
           )}
         </ModelEditModal>
       )}
