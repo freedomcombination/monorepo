@@ -6,7 +6,7 @@ import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 
 export type PostBase = Omit<StrapiEntityBase, 'title' | 'slug'> & {
-  title: string // TODO: It doesn't exists but part of StrapiTranslatableModel
+  title: string
   capsStatus: ApprovalStatus
   twitterMedia?: string | null
   reference?: string | null
