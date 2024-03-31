@@ -83,6 +83,7 @@ const CoursePage = () => {
     if (selectedApplicationId) {
       onOpen()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedApplicationId])
 
   const handleClose = () => {

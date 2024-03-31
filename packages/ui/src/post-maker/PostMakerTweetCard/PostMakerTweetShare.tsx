@@ -30,6 +30,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
   const { roles, checkAuth } = useAuthContext()
   useEffect(() => {
     checkAuth()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

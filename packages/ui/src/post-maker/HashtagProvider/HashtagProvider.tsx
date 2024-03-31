@@ -191,6 +191,7 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
       setPostMentions(initialTags.mentions)
       setDefaultTrends(initialTags.trends)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
   return (

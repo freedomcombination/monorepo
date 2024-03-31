@@ -47,6 +47,7 @@ export const WTable = <T extends StrapiModel>({
     } else if (!sortMode && selectedColumn) {
       onSort?.(undefined)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortMode, selectedColumn])
 
   return (

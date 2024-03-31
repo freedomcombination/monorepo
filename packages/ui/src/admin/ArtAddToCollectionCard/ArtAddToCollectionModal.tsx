@@ -44,6 +44,7 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
 
   useEffect(() => {
     refetch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, locale])
 
   return (

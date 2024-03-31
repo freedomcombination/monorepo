@@ -25,6 +25,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
     if (isMenuLinkActive && submenu && !open) {
       setOpen.on()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMenuLinkActive, submenu])
 
   if (Array.isArray(submenu) && submenu.length === 0) {

@@ -88,6 +88,7 @@ const AssetPage = () => {
     if (selectedAssetsTrackingId) {
       onOpen()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedAssetsTrackingId])
 
   const handleClose = () => {

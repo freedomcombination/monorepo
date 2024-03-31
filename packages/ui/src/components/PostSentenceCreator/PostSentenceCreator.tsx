@@ -32,6 +32,7 @@ export const PostSentenceCreator = ({
     if (initialContent !== value) {
       setValue(initialContent)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialContent])
 
   const handleAdd = () => {

@@ -62,6 +62,7 @@ export const JoinForm: FC<JoinFormProps> = ({
       })
     }
     updateErrorFields()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
   const onSubmit: SubmitHandler<JoinFormFieldValues> = data => {

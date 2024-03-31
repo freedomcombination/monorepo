@@ -11,6 +11,7 @@ export const ArtCardSkeleton = ({ isMasonry }: { isMasonry: boolean }) => {
           ? `${Math.floor(Math.random() * (400 - 200 + 1)) + 200}px`
           : `300px`,
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   )
 

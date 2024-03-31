@@ -59,12 +59,14 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ topic, topics, seo }) => {
     } else {
       setTopicsState(topics)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchKey])
 
   useEffect(() => {
     if (topic) {
       onOpen()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topic])
 
   const handleClose = () => {

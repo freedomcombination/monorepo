@@ -7,9 +7,9 @@ import { FormFields } from '../../admin'
 export const useCategoriesSchema = () => {
   return yup.object({
     slug: yup.string().required(),
-    name_en: yup.date().required(),
-    name_nl: yup.date().required(),
-    name_tr: yup.date().required(),
+    name_en: yup.string().required(),
+    name_nl: yup.string().required(),
+    name_tr: yup.string().required(),
   })
 }
 

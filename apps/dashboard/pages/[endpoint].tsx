@@ -187,12 +187,14 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
     onClose()
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => setCurrentPage(1), [])
 
   useEffect(() => {
     if (selectedId) {
       onOpen()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId])
 
   return (

@@ -37,6 +37,7 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
     return caretAt
   }
 
+  /**
   function setCaret(el: HTMLDivElement, offset: number) {
     const sel = window.getSelection()
     const range = document.createRange()
@@ -48,6 +49,7 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
       sel.addRange(range)
     }
   }
+  */
 
   const handleInput: FormEventHandler<HTMLDivElement> = e => {
     const target = (e.target || e.currentTarget) as HTMLDivElement

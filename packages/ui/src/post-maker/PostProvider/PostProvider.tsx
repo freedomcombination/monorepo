@@ -65,6 +65,7 @@ export const PostProvider: FC<PostProviderProps> = ({ post, children }) => {
       postContent,
       threshold,
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postMentions, postTrends, defaultTrends, sentence?.value, post])
 
   useEffect(() => {
@@ -103,6 +104,7 @@ export const PostProvider: FC<PostProviderProps> = ({ post, children }) => {
     setSentence(leastSharedSentence)
 
     // hasSaved.current = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sentences])
 
   return (
