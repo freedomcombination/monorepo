@@ -150,15 +150,16 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
                         {archiveContent.link}
                       </Link>
                     </ListItem>
-                    {archiveContent.categories?.length > 0 && (
-                      <ListItem>
-                        <Wrap>
-                          {archiveContent.categories.map(c => (
-                            <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
-                          ))}
-                        </Wrap>
-                      </ListItem>
-                    )}
+                    {archiveContent.categories &&
+                      archiveContent.categories.length > 0 && (
+                        <ListItem>
+                          <Wrap>
+                            {archiveContent.categories.map(c => (
+                              <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
+                            ))}
+                          </Wrap>
+                        </ListItem>
+                      )}
                   </List>
                 </PopoverContent>
               </Popover>
