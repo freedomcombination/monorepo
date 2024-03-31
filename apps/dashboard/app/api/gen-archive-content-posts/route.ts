@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     charLimitOfDescriptions,
     charLimitOfSentences,
     language,
-    useApiInDev = false,
+    useFakeApi = true,
   } = await req.json()
 
   const descriptionCount =
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       : 150
 
   // If dev environment, return mock stream response
-  if (process.env.NODE_ENV === 'development' && !useApiInDev) {
+  if (process.env.NODE_ENV !== 'production' && useFakeApi) {
     const mockResponse = JSON.stringify(
       generateMockArchivePost(
         descriptionCount,

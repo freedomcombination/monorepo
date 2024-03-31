@@ -82,7 +82,7 @@ export const PostGenAI = ({
   } = useGenPostContext()
 
   const [isSaving, setIsSaving] = useState(false)
-  const [useApiInDev, setUseApiInDev] = useState(false)
+  const [useFakeApi, setUseFakeApi] = useState(true)
   const posts = getPosts(archiveContentId)
 
   const { locale } = useRouter()
@@ -94,7 +94,7 @@ export const PostGenAI = ({
         numberOfPosts: numberOfSentences,
         charLimit: charLimitOfSentences,
         language,
-        useApiInDev,
+        useFakeApi,
       }
     : {
         numberOfDescriptions,
@@ -102,7 +102,7 @@ export const PostGenAI = ({
         charLimitOfDescriptions,
         charLimitOfSentences,
         language,
-        useApiInDev,
+        useFakeApi,
       }
 
   const {
@@ -273,17 +273,19 @@ export const PostGenAI = ({
                   mr={5}
                 />
               </FormControl>
-              <FormControl w="auto" display="flex" alignItems="center">
-                <FormLabel htmlFor="useApiInDev" mb="0">
-                  Use API in Dev
-                </FormLabel>
-                <Switch
-                  id="useApiInDev"
-                  isChecked={useApiInDev}
-                  onChange={e => setUseApiInDev(e.target.checked)}
-                  colorScheme={colorScheme}
-                />
-              </FormControl>
+              {process.env.NODE_ENV !== 'production' && (
+                <FormControl w="auto" display="flex" alignItems="center">
+                  <FormLabel htmlFor="useApiInDev" mb="0">
+                    Use fake API
+                  </FormLabel>
+                  <Switch
+                    id="useApiInDev"
+                    isChecked={useFakeApi}
+                    onChange={e => setUseFakeApi(e.target.checked)}
+                    colorScheme={colorScheme}
+                  />
+                </FormControl>
+              )}
             </Wrap>
             <Wrap>
               <Button
@@ -332,7 +334,7 @@ export const PostGenAI = ({
         </Stack>
       </form>
       <>
-        {isLoading && completed?.length && posts.length === 0 ? (
+        {isLoading && completed?.length && posts.length === 0 && (
           <Stack
             spacing={4}
             py={4}
@@ -342,7 +344,7 @@ export const PostGenAI = ({
             <Progress
               size="xs"
               isIndeterminate
-              colorScheme={'purple'}
+              colorScheme={colorScheme}
               bgColor={'whiteAlpha.700'}
             />
             {completed?.map((postObject, index) => (
@@ -353,21 +355,22 @@ export const PostGenAI = ({
                 onlySentences={onlySentences}
                 descriptionThreshold={charLimitOfDescriptions}
                 sentenceThreshold={charLimitOfSentences}
+                colorScheme={colorScheme}
               />
             ))}
           </Stack>
-        ) : (
-          posts.map(postObject => (
-            <EditablePost
-              archiveId={isSaving ? -1 : archiveContentId}
-              key={postObject.id}
-              onlySentences={onlySentences}
-              postObject={postObject}
-              descriptionThreshold={charLimitOfDescriptions}
-              sentenceThreshold={charLimitOfSentences}
-            />
-          ))
         )}
+        {posts.map(postObject => (
+          <EditablePost
+            archiveId={isSaving ? -1 : archiveContentId}
+            key={postObject.id}
+            onlySentences={onlySentences}
+            postObject={postObject}
+            descriptionThreshold={charLimitOfDescriptions}
+            sentenceThreshold={charLimitOfSentences}
+            colorScheme={colorScheme}
+          />
+        ))}
       </>
     </Stack>
   )

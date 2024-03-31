@@ -12,6 +12,7 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
     threshold,
     thresholdStyles = {},
     contentEditable = true,
+    children,
     ...rest
   } = props
 
@@ -76,6 +77,7 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
       )}
       <Box
         pos={'relative'}
+        display={'inline-block'}
         {...(thresholdValue && {
           bg: 'transparent',
           sx: {
@@ -93,6 +95,7 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
       >
         {value}
       </Box>
+      {children}
     </Box>
   )
 }

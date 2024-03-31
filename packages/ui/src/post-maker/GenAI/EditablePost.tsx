@@ -1,4 +1,4 @@
-import { Stack } from '@chakra-ui/react'
+import { Stack, ThemeTypings } from '@chakra-ui/react'
 
 import { EditableLine } from './EditableLine'
 import { ArchivePost, useGenPostContext } from './GenPostProvider'
@@ -9,6 +9,7 @@ export type EditablePostProps = {
   descriptionThreshold?: number
   sentenceThreshold?: number
   onlySentences?: boolean
+  colorScheme?: ThemeTypings['colorSchemes']
 }
 
 export const EditablePost: React.FC<EditablePostProps> = ({
@@ -17,6 +18,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
   descriptionThreshold = 250,
   sentenceThreshold = 200,
   onlySentences = false,
+  colorScheme = 'primary',
 }) => {
   const {
     removePost,
@@ -37,6 +39,10 @@ export const EditablePost: React.FC<EditablePostProps> = ({
       ...postObject,
       description: value,
     })
+
+  if (!postObject?.sentences?.length && !postObject?.description) {
+    return null
+  }
 
   return (
     <Stack
@@ -60,6 +66,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
           }}
           fontWeight={500}
           rounded={'md'}
+          colorScheme={colorScheme}
         />
       )}
       {postObject?.sentences?.map((sentence, index) => {
@@ -78,6 +85,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
             thresholdStyles={{
               color: 'red.400',
             }}
+            colorScheme={colorScheme}
           />
         )
       })}

@@ -19,7 +19,6 @@ import {
   TabPanels,
   TabPanel,
   Button,
-  Center,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AiOutlineFileExclamation } from 'react-icons/ai'
@@ -91,36 +90,36 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
 
   if (archives.length === 0) {
     return (
-      <Center
-        bg={colorScheme + '.200'}
-        border={1}
-        borderColor={colorScheme + '.300'}
-        rounded={noBorder ? 'none' : 'md'}
+      <Alert
+        flexDirection={'column'}
+        gap={4}
+        status="warning"
+        px={4}
+        py={{ base: 8, lg: 32 }}
+        textAlign={'center'}
       >
-        <Alert flexDirection={'column'} gap={4} status="warning" px={4} py={32}>
-          <AlertIcon boxSize={'40px'} as={AiOutlineFileExclamation} />
-          <AlertDescription>
-            No archive found. Would you like to enter the content manually?
-          </AlertDescription>
-          <Button
-            colorScheme="black"
-            variant={'outline'}
-            leftIcon={<RiAddLine />}
-            onClick={() =>
-              setArchives([
-                {
-                  id: 0,
-                  title: 'Empty Content',
-                  source: 'Empty Content',
-                  link: '',
-                } as ArchiveContent,
-              ])
-            }
-          >
-            Create
-          </Button>
-        </Alert>
-      </Center>
+        <AlertIcon boxSize={'40px'} as={AiOutlineFileExclamation} />
+        <AlertDescription>
+          No archive found. Would you like to enter the content manually?
+        </AlertDescription>
+        <Button
+          colorScheme="black"
+          variant={'outline'}
+          leftIcon={<RiAddLine />}
+          onClick={() =>
+            setArchives([
+              {
+                id: 0,
+                title: 'Empty Content',
+                source: 'Empty Content',
+                link: '',
+              } as ArchiveContent,
+            ])
+          }
+        >
+          Create
+        </Button>
+      </Alert>
     )
   }
 
