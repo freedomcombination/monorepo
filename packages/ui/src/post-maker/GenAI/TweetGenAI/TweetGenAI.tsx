@@ -61,6 +61,7 @@ export const TweetGenAI: React.FC<TweetGenAIProps> = ({
       parseIncomplete={parseIncomplete}
       parseCompleted={parseCompleted}
       onSave={handleSave}
+      noBorder
     />
   )
 }

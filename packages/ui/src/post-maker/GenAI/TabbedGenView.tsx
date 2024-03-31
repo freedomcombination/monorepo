@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 
 import {
+  Alert,
+  AlertIcon,
+  AlertDescription,
   Tabs,
   Link,
   TabList,
@@ -17,9 +20,9 @@ import {
   TabPanel,
   Button,
   Center,
-  VStack,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { AiOutlineFileExclamation } from 'react-icons/ai'
 import { RiAddLine } from 'react-icons/ri'
 
 import { useStrapiRequest } from '@fc/services'
@@ -32,15 +35,16 @@ import { TweetGenAI } from './TweetGenAI'
 export type TabbedGenViewProps = {
   postId?: number
   hashtagId: number
+  noBorder?: boolean
 }
 
 export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   postId,
   hashtagId,
+  noBorder,
 }) => {
   const { locale } = useRouter()
   const [archives, setArchives] = useState<ArchiveContent[]>([])
-  const minHeight = 580
   const colorScheme = postId ? 'blue' : 'green'
 
   const hashtagQuery = useStrapiRequest<Hashtag>({
@@ -88,15 +92,16 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   if (archives.length === 0) {
     return (
       <Center
-        p={4}
-        minHeight={minHeight}
         bg={colorScheme + '.200'}
         border={1}
         borderColor={colorScheme + '.300'}
-        rounded={'md'}
+        rounded={noBorder ? 'none' : 'md'}
       >
-        <VStack spacing={8}>
-          <Text>No archive found. Would you like enter content manually?</Text>
+        <Alert flexDirection={'column'} gap={4} status="warning" px={4} py={32}>
+          <AlertIcon boxSize={'40px'} as={AiOutlineFileExclamation} />
+          <AlertDescription>
+            No archive found. Would you like to enter the content manually?
+          </AlertDescription>
           <Button
             colorScheme="black"
             variant={'outline'}
@@ -114,7 +119,7 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
           >
             Create
           </Button>
-        </VStack>
+        </Alert>
       </Center>
     )
   }
@@ -125,7 +130,7 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
       image={hashtag?.image}
       postId={postId}
     >
-      <Tabs colorScheme={colorScheme} minHeight={minHeight}>
+      <Tabs colorScheme={colorScheme}>
         <TabList>
           {archives.map(archiveContent => {
             return (
@@ -145,13 +150,15 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
                         {archiveContent.link}
                       </Link>
                     </ListItem>
-                    <ListItem>
-                      <Wrap>
-                        {archiveContent.categories?.map(c => (
-                          <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
-                        ))}
-                      </Wrap>
-                    </ListItem>
+                    {archiveContent.categories?.length > 0 && (
+                      <ListItem>
+                        <Wrap>
+                          {archiveContent.categories.map(c => (
+                            <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
+                          ))}
+                        </Wrap>
+                      </ListItem>
+                    )}
                   </List>
                 </PopoverContent>
               </Popover>
@@ -161,7 +168,7 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
         <TabPanels>
           {archives.map(archiveContent => {
             return (
-              <TabPanel px={0} key={archiveContent.id}>
+              <TabPanel px={0} py={noBorder ? 0 : 2} key={archiveContent.id}>
                 {postId ? (
                   <TweetGenAI
                     archiveContentId={archiveContent.id}

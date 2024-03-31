@@ -45,6 +45,7 @@ export type PostGenAIProps = {
   parseIncomplete: (incompleteText: string) => GeneratedArchiveContentPost[]
   parseCompleted: (completeText: string) => GeneratedArchiveContentPost[]
   onSave: (data: ArchivePost[]) => Promise<void>
+  noBorder?: boolean
 }
 
 const LANGUAGE_NAMES: Record<StrapiLocale, string> = {
@@ -63,6 +64,7 @@ export const PostGenAI = ({
   onSave,
   apiUrl,
   colorScheme = 'blue',
+  noBorder,
 }: PostGenAIProps) => {
   const { t } = useTranslation()
   const [numberOfDescriptions, setNumberOfDescriptions] = useState<number>(5)
@@ -154,9 +156,9 @@ export const PostGenAI = ({
       spacing={4}
       p={{ base: 4, lg: 8 }}
       bg={`${colorScheme}.100`}
-      borderWidth={2}
+      borderWidth={noBorder ? 0 : 2}
       borderColor={`${colorScheme}.500`}
-      rounded={'md'}
+      rounded={noBorder ? 'none' : 'md'}
     >
       <Heading colorScheme={colorScheme}>Post Generator</Heading>
       <form onSubmit={handleSubmit}>
@@ -329,13 +331,16 @@ export const PostGenAI = ({
           </Wrap>
         </Stack>
       </form>
-      <Stack spacing={4} p={4} transition={'0.5s'} transitionProperty={'all'}>
+      <>
         {isLoading && completed?.length && posts.length === 0 ? (
-          <>
+          <Stack
+            spacing={4}
+            py={4}
+            transition={'0.5s'}
+            transitionProperty={'all'}
+          >
             <Progress
               size="xs"
-              m={4}
-              mb={8}
               isIndeterminate
               colorScheme={'purple'}
               bgColor={'whiteAlpha.700'}
@@ -350,7 +355,7 @@ export const PostGenAI = ({
                 sentenceThreshold={charLimitOfSentences}
               />
             ))}
-          </>
+          </Stack>
         ) : (
           posts.map(postObject => (
             <EditablePost
@@ -363,7 +368,7 @@ export const PostGenAI = ({
             />
           ))
         )}
-      </Stack>
+      </>
     </Stack>
   )
 }
