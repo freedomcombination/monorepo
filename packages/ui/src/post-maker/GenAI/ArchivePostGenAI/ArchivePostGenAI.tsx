@@ -83,7 +83,7 @@ export const ArchivePostGenAI = ({
     const patternDesc = '"description":"'
 
     try {
-      const ret: GeneratedArchiveContentPost[] = []
+      const parsedPosts: GeneratedArchiveContentPost[] = []
       for (const obj of src.substring(2).split('},{')) {
         const parts = obj.split('","sentences":["')
         const temp: GeneratedArchiveContentPost = {
