@@ -30,6 +30,7 @@ export const EditableLine: React.FC<EditableProps> = ({
   imageParams = {},
   value,
   colorScheme = 'primary',
+  threshold,
   ...rest
 }) => {
   const disabled = isDisabled || !contentEditable
@@ -97,6 +98,7 @@ export const EditableLine: React.FC<EditableProps> = ({
         }}
         value={value}
         contentEditable={!disabled}
+        threshold={threshold}
         {...rest}
       >
         <Badge
@@ -108,7 +110,9 @@ export const EditableLine: React.FC<EditableProps> = ({
             opacity: 1,
           }}
           transition={'opacity 0.3s ease-in-out'}
-          colorScheme={colorScheme}
+          colorScheme={
+            threshold && value?.length > threshold ? 'red' : colorScheme
+          }
           variant={'solid'}
           pos="absolute"
           top={-1}

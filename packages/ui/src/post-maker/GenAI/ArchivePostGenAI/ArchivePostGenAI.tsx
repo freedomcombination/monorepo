@@ -34,7 +34,7 @@ export const ArchivePostGenAI = ({
         reference: referenceLink,
         locale,
         hashtag: hashtag.id,
-      } as PostCreateInput
+      }
     })
 
     const url = API_URL + '/api/posts/createPosts'
@@ -54,6 +54,7 @@ export const ArchivePostGenAI = ({
 
     for (const post of addedPosts) {
       const localPost = posts.find(p => p.description === post.description)
+
       if (!localPost) {
         toastMessage('Error', 'Post not found : ' + post.description, 'error')
         continue

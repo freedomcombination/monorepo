@@ -135,21 +135,25 @@ export const GenPostProvider = ({
   const modifyPost = (archiveId: number, updatedPost: ArchivePost) => {
     setPosts(prevPosts => {
       const newPosts = { ...prevPosts }
-      if (newPosts[archiveId] && newPosts[archiveId][regId]) {
-        const updatedPosts = newPosts[archiveId][regId].map(post => {
-          if (post.id === updatedPost.id) {
-            return {
-              ...updatedPost,
-              sentences: updatedPost.sentences.filter(
-                sentence => sentence.trim() !== '',
-              ),
-            } as ArchivePost
-          }
 
-          return post
-        })
-        newPosts[archiveId][regId] = updatedPosts
+      if (!newPosts[archiveId]?.[regId]) {
+        return newPosts
       }
+
+      const updatedPosts = newPosts[archiveId][regId].map(post => {
+        if (post.id !== updatedPost.id) {
+          return post
+        }
+
+        return {
+          ...updatedPost,
+          sentences: updatedPost.sentences.filter(
+            sentence => sentence.trim() !== '',
+          ),
+        }
+      })
+
+      newPosts[archiveId][regId] = updatedPosts
 
       return newPosts
     })

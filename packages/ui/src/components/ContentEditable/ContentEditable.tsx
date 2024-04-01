@@ -1,7 +1,7 @@
-import { FC, FormEventHandler, useRef } from 'react'
+import { FC, FormEventHandler, useRef, useState } from 'react'
 
 import { Box } from '@chakra-ui/react'
-import { debounce } from 'lodash'
+import { useDebounce } from 'react-use'
 
 import { ContentEditableProps } from './types'
 
@@ -16,8 +16,12 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
     ...rest
   } = props
 
+  const [currentValue, setCurrentValue] = useState<string>(value)
+
   const contentRef = useRef<HTMLDivElement>(null)
   const caretPos = useRef<number>(0)
+
+  useDebounce(() => onUpdate(currentValue), 700, [currentValue])
 
   const getCaret = (el: HTMLDivElement) => {
     let caretAt = 0
@@ -55,15 +59,18 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
   const handleInput: FormEventHandler<HTMLDivElement> = e => {
     const target = (e.target || e.currentTarget) as HTMLDivElement
     const content = target?.textContent ?? ''
-    debounce(() => onUpdate(content), 700)
+
+    setCurrentValue(content)
 
     if (contentRef.current) {
       caretPos.current = getCaret(contentRef.current) as number
     }
   }
 
-  const validValue = threshold ? value?.slice(0, threshold) : value
-  const thresholdValue = threshold ? value?.slice(threshold ?? 0) : null
+  const validValue = threshold
+    ? currentValue?.slice(0, threshold)
+    : currentValue
+  const thresholdValue = threshold ? currentValue?.slice(threshold ?? 0) : null
 
   return (
     <Box pos={'relative'} {...rest}>

@@ -41,15 +41,6 @@ const HashtagPage = () => {
 
   return (
     <AdminLayout seo={{ title: hashtag.title }}>
-      <Button
-        flexShrink={0}
-        alignSelf={'end'}
-        onClick={onOpen}
-        leftIcon={<FaPencil />}
-      >
-        {t('edit')}
-      </Button>
-
       <ModelEditModal
         isOpen={isOpen}
         onClose={onClose}
@@ -58,12 +49,19 @@ const HashtagPage = () => {
         title={hashtag.title}
         onSuccess={handleSuccess}
       />
-      {/* TODO: Wrap Tabs with ArchiveContentPostContext */}
-      {!hashtag?.categories?.length ? (
-        <Center h={'60vh'}>{"Please update hashtag's categories"}</Center>
-      ) : (
-        <TabbedGenAIView hashtagId={hashtag.id} />
-      )}
+      <TabbedGenAIView
+        hashtag={hashtag}
+        alertContent={
+          <Button
+            colorScheme={'orange'}
+            variant={'outline'}
+            onClick={onOpen}
+            leftIcon={<FaPencil />}
+          >
+            {t('edit')}
+          </Button>
+        }
+      />
     </AdminLayout>
   )
 }

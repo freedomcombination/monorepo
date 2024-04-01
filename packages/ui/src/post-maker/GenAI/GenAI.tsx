@@ -290,7 +290,7 @@ export const PostGenAI = ({
             <Wrap>
               <Button
                 leftIcon={<RiAiGenerate />}
-                disabled={isLoading}
+                isDisabled={isLoading}
                 type="submit"
                 colorScheme={colorScheme}
               >
@@ -333,45 +333,45 @@ export const PostGenAI = ({
           </Wrap>
         </Stack>
       </form>
-      <>
-        {isLoading && completed?.length && posts.length === 0 && (
-          <Stack
-            spacing={4}
-            py={4}
-            transition={'0.5s'}
-            transitionProperty={'all'}
-          >
-            <Progress
-              size="xs"
-              isIndeterminate
-              colorScheme={colorScheme}
-              bgColor={'whiteAlpha.700'}
-            />
-            {completed?.map((postObject, index) => (
-              <EditablePost
-                archiveId={-1}
-                key={index + postObject.description}
-                postObject={{ ...postObject } as ArchivePost}
-                onlySentences={onlySentences}
-                descriptionThreshold={charLimitOfDescriptions}
-                sentenceThreshold={charLimitOfSentences}
-                colorScheme={colorScheme}
-              />
-            ))}
-          </Stack>
-        )}
-        {posts.map(postObject => (
-          <EditablePost
-            archiveId={isSaving ? -1 : archiveContentId}
-            key={postObject.id}
-            onlySentences={onlySentences}
-            postObject={postObject}
-            descriptionThreshold={charLimitOfDescriptions}
-            sentenceThreshold={charLimitOfSentences}
+
+      {isLoading && completed?.length && posts.length === 0 && (
+        <Stack
+          spacing={4}
+          py={4}
+          transition={'0.5s'}
+          transitionProperty={'all'}
+        >
+          <Progress
+            size="xs"
+            isIndeterminate
             colorScheme={colorScheme}
+            bgColor={'whiteAlpha.700'}
           />
-        ))}
-      </>
+          {completed?.map((postObject, index) => (
+            <EditablePost
+              key={index}
+              archiveId={-1}
+              postObject={{ ...postObject } as ArchivePost}
+              onlySentences={onlySentences}
+              descriptionThreshold={charLimitOfDescriptions}
+              sentenceThreshold={charLimitOfSentences}
+              colorScheme={colorScheme}
+            />
+          ))}
+        </Stack>
+      )}
+
+      {posts.map((postObject, index) => (
+        <EditablePost
+          key={index}
+          archiveId={isSaving ? -1 : archiveContentId}
+          onlySentences={onlySentences}
+          postObject={postObject}
+          descriptionThreshold={charLimitOfDescriptions}
+          sentenceThreshold={charLimitOfSentences}
+          colorScheme={colorScheme}
+        />
+      ))}
     </Stack>
   )
 }

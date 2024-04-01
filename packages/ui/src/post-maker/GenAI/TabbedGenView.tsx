@@ -1,66 +1,48 @@
-import { useEffect, useState } from 'react'
+import { ReactNode } from 'react'
 
 import {
-  Alert,
-  AlertIcon,
-  AlertDescription,
-  Tabs,
+  Badge,
   Link,
-  TabList,
-  Popover,
-  PopoverTrigger,
-  Tab,
-  Text,
-  PopoverContent,
   List,
   ListItem,
-  Wrap,
-  Badge,
-  TabPanels,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Tab,
+  TabList,
   TabPanel,
-  Button,
+  TabPanels,
+  Tabs,
+  Text,
+  Wrap,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { AiOutlineFileExclamation } from 'react-icons/ai'
-import { RiAddLine } from 'react-icons/ri'
 
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent, Hashtag, Post } from '@fc/types'
 
 import { ArchivePostGenAI } from './ArchivePostGenAI'
+import { GenAlert } from './GenAlert'
 import { GenPostProvider } from './GenPostProvider'
 import { TweetGenAI } from './TweetGenAI'
 
 export type TabbedGenViewProps = {
-  postId?: number
-  hashtagId: number
+  post?: Post
+  hashtag: Hashtag
   noBorder?: boolean
+  alertContent?: ReactNode
 }
 
 export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
-  postId,
-  hashtagId,
+  post,
+  hashtag,
   noBorder,
+  alertContent,
 }) => {
   const { locale } = useRouter()
-  const [archives, setArchives] = useState<ArchiveContent[]>([])
-  const colorScheme = postId ? 'blue' : 'green'
 
-  const hashtagQuery = useStrapiRequest<Hashtag>({
-    endpoint: 'hashtags',
-    id: hashtagId ?? 0,
-  })
+  const colorScheme = post ? 'blue' : 'green'
 
-  const postQuery = useStrapiRequest<Post>({
-    endpoint: 'posts',
-    id: postId ?? 0,
-    queryOptions: {
-      enabled: !!postId,
-    },
-  })
-
-  const hashtag = hashtagQuery.data?.data
-  const post = postQuery.data?.data
   const categories = hashtag?.categories ?? []
   const tags = post?.tags ?? []
 
@@ -82,46 +64,21 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
     },
   })
 
-  const archiveContents = archiveContentQuery.data?.data
-
-  useEffect(() => {
-    if (archiveContents?.length) setArchives(archiveContents)
-  }, [archiveContents])
+  const archives = archiveContentQuery.data?.data ?? []
 
   if (!hashtag) return null
 
-  if (archives.length === 0) {
+  if (archives?.length === 0) {
     return (
-      <Alert
-        flexDirection={'column'}
-        gap={4}
-        status="warning"
-        px={4}
-        py={{ base: 8, lg: 32 }}
-        textAlign={'center'}
+      <GenAlert
+        hashtag={hashtag}
+        categories={categories}
+        tags={tags}
+        showTagAlert={!!post}
+        onArchiveCreate={archiveContentQuery.refetch}
       >
-        <AlertIcon boxSize={'40px'} as={AiOutlineFileExclamation} />
-        <AlertDescription>
-          No archive found. Would you like to enter the content manually?
-        </AlertDescription>
-        <Button
-          colorScheme="black"
-          variant={'outline'}
-          leftIcon={<RiAddLine />}
-          onClick={() =>
-            setArchives([
-              {
-                id: 0,
-                title: 'Empty Content',
-                source: 'Empty Content',
-                link: '',
-              } as ArchiveContent,
-            ])
-          }
-        >
-          Create
-        </Button>
-      </Alert>
+        {alertContent}
+      </GenAlert>
     )
   }
 
@@ -167,11 +124,11 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
           {archives.map(archiveContent => {
             return (
               <TabPanel px={0} py={noBorder ? 0 : 2} key={archiveContent.id}>
-                {postId ? (
+                {post ? (
                   <TweetGenAI
                     archiveContentId={archiveContent.id}
                     content={archiveContent.content}
-                    postId={postId}
+                    postId={post.id}
                   />
                 ) : (
                   <ArchivePostGenAI
