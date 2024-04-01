@@ -13,14 +13,14 @@ export const TweetGenAI: React.FC<TweetGenAIProps> = ({
   archiveContentId,
   content,
 }: TweetGenAIProps) => {
-  const { hashtagId } = useGenPostContext()
-  const { refetch } = useGetHashtagSentences(hashtagId)
+  const { hashtag } = useGenPostContext()
+  const { refetch } = useGetHashtagSentences(hashtag.id)
 
   const handleSave = async (posts: ArchivePost[]) => {
     if (posts.length === 0) return
     const post = posts[0]
     await createHashtagSentence({
-      hashtagId,
+      hashtagId: hashtag.id,
       value: post.sentences.map(
         sentence => `${sentence}::${postId}::${0}::${0}` as RedisPost,
       ),
