@@ -43,7 +43,7 @@ export type PostGenAIProps = {
   onlySentences?: boolean
   apiUrl: string
   parseIncomplete: (incompleteText: string) => GeneratedArchiveContentPost[]
-  parseCompleted: (completeText: string) => GeneratedArchiveContentPost[]
+  parseCompleted: (completeText: string) => ArchivePost[]
   onSave: (data: ArchivePost[]) => Promise<void>
   noBorder?: boolean
 }

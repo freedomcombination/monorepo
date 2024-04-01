@@ -4,7 +4,7 @@ import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { createHashtagSentence } from '@fc/services'
 import { PostCreateInput, RedisPost } from '@fc/types'
-import { sleep, toastMessage } from '@fc/utils'
+import { generateOgImageParams, sleep, toastMessage } from '@fc/utils'
 
 import { PostGenAIProps, PostGenAI } from '../GenAI'
 import {
@@ -22,7 +22,7 @@ export const ArchivePostGenAI = ({
   referenceLink = '',
   content,
 }: ArchivePostGenAIProps) => {
-  const { hashtagId, modifyPost } = useGenPostContext()
+  const { hashtag, modifyPost } = useGenPostContext()
   const { token } = useAuthContext()
   const { locale } = useRouter()
 
@@ -33,7 +33,7 @@ export const ArchivePostGenAI = ({
         description: post.description,
         reference: referenceLink,
         locale,
-        hashtag: hashtagId,
+        hashtag: hashtag.id,
       } as PostCreateInput
     })
 
@@ -60,7 +60,7 @@ export const ArchivePostGenAI = ({
       }
 
       await createHashtagSentence({
-        hashtagId,
+        hashtagId: hashtag.id,
         value: localPost.sentences.map(
           sentence => `${sentence}::${post.id}::${0}::${0}` as RedisPost,
         ),
@@ -78,7 +78,7 @@ export const ArchivePostGenAI = ({
 
   const parseIncomplete = (src: string): GeneratedArchiveContentPost[] => {
     if (src.length < 60) {
-      lastBest = []
+      lastParsedPosts = []
     }
     const patternDesc = '"description":"'
 
@@ -94,18 +94,32 @@ export const ArchivePostGenAI = ({
           sentences:
             parts.length > 1 ? parts[1].replace('"]', '').split('","') : [],
         }
-        ret.push(temp)
+        parsedPosts.push(temp)
       }
-      lastBest = ret
+      lastParsedPosts = parsedPosts
 
-      return ret
+      return parsedPosts
     } catch (e) {
-      return lastBest
+      return lastParsedPosts
     }
   }
 
-  const parseCompleted = (completedText: string) => {
-    return JSON.parse(completedText)
+  const parseCompleted = (completedText: string): ArchivePost[] => {
+    const items = JSON.parse(completedText)
+    const uniqId = Date.now()
+
+    return items.map((item: ArchivePost, index: number) => {
+      return {
+        ...item,
+        id: uniqId + index,
+        postInput: {
+          hashtag: hashtag.id,
+          imageParams: generateOgImageParams({
+            image: hashtag.image ?? undefined,
+          }),
+        } as PostCreateInput,
+      } as ArchivePost
+    })
   }
 
   return (

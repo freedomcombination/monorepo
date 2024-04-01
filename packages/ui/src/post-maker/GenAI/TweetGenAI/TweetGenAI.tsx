@@ -46,7 +46,7 @@ export const TweetGenAI: React.FC<TweetGenAIProps> = ({
     return [incompletePost]
   }
 
-  const parseCompleted = (completedText: string) => {
+  const parseCompleted = (completedText: string): ArchivePost[] => {
     incompletePost.sentences = JSON.parse(completedText)
 
     return [incompletePost]

@@ -88,6 +88,8 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
     if (archiveContents?.length) setArchives(archiveContents)
   }, [archiveContents])
 
+  if (!hashtag) return null
+
   if (archives.length === 0) {
     return (
       <Alert
@@ -124,11 +126,7 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   }
 
   return (
-    <GenPostProvider
-      hashtagId={hashtagId}
-      image={hashtag?.image}
-      postId={postId}
-    >
+    <GenPostProvider hashtag={hashtag} post={post}>
       <Tabs colorScheme={colorScheme}>
         <TabList>
           {archives.map(archiveContent => {
