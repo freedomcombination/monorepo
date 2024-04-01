@@ -9,6 +9,7 @@ import {
   StrapiEndpoint,
   StrapiModel,
   StrapiTranslatableModel,
+  UploadFile,
 } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
@@ -38,7 +39,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
   const key = name || 'image'
 
   // Name can be image or avatar
-  const media = (model as any)?.[key]
+  const media = (model as any)?.[key] as UploadFile
 
   if (Array.isArray(media)) {
     return (
