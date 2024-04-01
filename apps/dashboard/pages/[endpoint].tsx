@@ -124,7 +124,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   })) as StrapiModel[]
   const selectedModel = mappedModels?.find(m => m.id === selectedId)
 
-  const hashtagId = (selectedModel as Post)?.hashtag?.id
+  const post = selectedModel as Post
 
   const changeRoute = (
     key: 'id' | 'page' | 'sort' | 'status' | 'published' | 'q' | 'pageSize',
@@ -243,8 +243,8 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           title={`Edit ${endpoint}`}
           onSuccess={endpointQuery.refetch}
         >
-          {endpoint === 'posts' && selectedModel && hashtagId && (
-            <PostEditView postId={selectedModel.id} hashtagId={hashtagId} />
+          {endpoint === 'posts' && post && post?.hashtag && (
+            <PostEditView post={post} hashtag={post.hashtag} />
           )}
         </ModelEditModal>
       )}

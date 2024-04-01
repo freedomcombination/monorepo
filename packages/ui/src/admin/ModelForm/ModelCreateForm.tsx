@@ -33,6 +33,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
   fields,
   schema,
   model,
+  initialValues,
   onSuccess,
   hideLanguageSwitcher,
   shouldPublish,
@@ -60,12 +61,15 @@ export const ModelCreateForm = <T extends StrapiModel>({
     postModel?.video?.mime,
   )
 
-  const defaultValues = useDefaultValues(model as T, fields)
+  const defaultValues = useDefaultValues(
+    { ...initialValues, ...model } as T,
+    fields,
+  )
 
   const formProps = useForm<InferType<typeof schema>>({
     resolver: yupResolver(schema),
     mode: 'all',
-    values: model ? defaultValues : {},
+    values: defaultValues,
   })
   const { handleSubmit, setValue } = formProps
 
