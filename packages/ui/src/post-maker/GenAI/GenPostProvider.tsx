@@ -9,66 +9,44 @@ import {
 import {
   AlertDialog,
   AlertDialogBody,
-  Text,
   AlertDialogCloseButton,
   AlertDialogContent,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  useDisclosure,
   Stack,
+  Text,
+  useDisclosure,
 } from '@chakra-ui/react'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { Hashtag, OgImageParams, PostCreateInput } from '@fc/types'
-import { generateOgImageParams } from '@fc/utils'
+import { Hashtag, Post, PostCreateInput } from '@fc/types'
+
+export type GeneratedSentences = {
+  sentences: string[]
+}
 
 export type GeneratedArchiveContentPost = {
   description: string
-  sentences: string[]
-}
+} & GeneratedSentences
 
 export type ArchivePost = {
   id: number
   postInput: PostCreateInput
 } & GeneratedArchiveContentPost
 
-export const convertToArchivePost = (
-  posts: GeneratedArchiveContentPost[],
-  hashtag: Hashtag,
-) => {
-  let uniqId = Date.now()
-  const ret: ArchivePost[] = []
-  for (const post of posts) {
-    ret.push({
-      ...post,
-      id: uniqId++,
-      postInput: {
-        imageParams: generateOgImageParams({
-          image: hashtag.image,
-        } as OgImageParams),
-        hashtag: hashtag.id,
-      } as PostCreateInput,
-    })
-  }
-
-  return ret
-}
-
 type ArchiveContentPosts = Record<number, Record<number, ArchivePost[]>>
 
 type GenPostValueType = {
-  addPosts: (
-    archiveId: number,
-    posts: GeneratedArchiveContentPost[],
-  ) => ArchivePost[]
+  addPosts: (archiveId: number, posts: ArchivePost[]) => ArchivePost[]
   removePosts: (archiveId: number, dontAsk?: boolean) => void
   removePost: (archiveId: number, postId: number) => void
   modifyPost: (archiveId: number, updatedPost: ArchivePost) => void
   postCount: (archiveId: number) => number
   getPosts: (archiveId: number) => ArchivePost[]
-  hashtagId: number
+  hashtag: Hashtag
+  post?: Post
   askBeforeDelete: boolean
   setAskBeforeDelete: (askBeforeDelete: boolean) => void
   removeSentence: (
@@ -84,7 +62,8 @@ const GenPostContext = createContext<GenPostValueType>({
   removePost: () => null,
   modifyPost: () => null,
   postCount: () => 0,
-  hashtagId: 0,
+  hashtag: {} as Hashtag,
+  post: undefined,
   askBeforeDelete: true,
   setAskBeforeDelete: () => null,
   getPosts: () => [],
@@ -97,6 +76,7 @@ export const useGenPostContext = () => {
 
 type GenPostProviderProps = PropsWithChildren<{
   hashtag: Hashtag
+  post?: Post
 }>
 
 type DialogAction = {
@@ -108,19 +88,23 @@ type DialogAction = {
 export const GenPostProvider = ({
   children,
   hashtag,
+  post,
 }: GenPostProviderProps) => {
-  const hashtagId = hashtag?.id ?? 0
   const [askBeforeDelete, setAskBeforeDelete] = useLocalStorage(
     'ask-before-delete',
     true,
   )
   const [posts, setPosts] = useLocalStorage<ArchiveContentPosts>(
-    'generated-archive-content-posts',
+    post
+      ? `generated-archive-content-posts-sentences`
+      : 'generated-archive-content-posts',
     [],
   )
   const [alertAction, setAlertAction] = useState<DialogAction>()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef<HTMLButtonElement | null>(null)
+
+  const regId = post?.id ?? hashtag.id
 
   const showAlert = (title: string, action: () => void, extra?: string) => {
     setAlertAction({
@@ -131,49 +115,45 @@ export const GenPostProvider = ({
     onOpen()
   }
 
-  const addPosts = (
-    archiveId: number,
-    posts: GeneratedArchiveContentPost[],
-  ) => {
-    const preparedPosts = convertToArchivePost(posts, hashtag)
-
+  const addPosts = (archiveId: number, posts: ArchivePost[]) => {
     setPosts(prevPosts => {
       const newPosts = { ...prevPosts }
       if (!newPosts[archiveId]) {
         newPosts[archiveId] = {}
       }
-      if (!newPosts[archiveId][hashtagId]) {
-        newPosts[archiveId][hashtagId] = []
+      if (!newPosts[archiveId][regId]) {
+        newPosts[archiveId][regId] = []
       }
-      newPosts[archiveId][hashtagId] = [
-        ...preparedPosts,
-        ...newPosts[archiveId][hashtagId],
-      ]
+      newPosts[archiveId][regId] = [...posts, ...newPosts[archiveId][regId]]
 
       return newPosts
     })
 
-    return preparedPosts
+    return posts
   }
 
   const modifyPost = (archiveId: number, updatedPost: ArchivePost) => {
     setPosts(prevPosts => {
       const newPosts = { ...prevPosts }
-      if (newPosts[archiveId] && newPosts[archiveId][hashtagId]) {
-        const updatedPosts = newPosts[archiveId][hashtagId].map(post => {
-          if (post.id === updatedPost.id) {
-            return {
-              ...updatedPost,
-              sentences: updatedPost.sentences.filter(
-                sentence => sentence.trim() !== '',
-              ),
-            } as ArchivePost
-          }
 
-          return post
-        })
-        newPosts[archiveId][hashtagId] = updatedPosts
+      if (!newPosts[archiveId]?.[regId]) {
+        return newPosts
       }
+
+      const updatedPosts = newPosts[archiveId][regId].map(post => {
+        if (post.id !== updatedPost.id) {
+          return post
+        }
+
+        return {
+          ...updatedPost,
+          sentences: updatedPost.sentences.filter(
+            sentence => sentence.trim() !== '',
+          ),
+        }
+      })
+
+      newPosts[archiveId][regId] = updatedPosts
 
       return newPosts
     })
@@ -187,8 +167,8 @@ export const GenPostProvider = ({
     const removeAction = () => {
       setPosts(prevPosts => {
         const newPosts = { ...prevPosts }
-        if (newPosts[archiveId] && newPosts[archiveId][hashtagId]) {
-          const updatedPosts = newPosts[archiveId][hashtagId].map(post => {
+        if (newPosts[archiveId] && newPosts[archiveId][regId]) {
+          const updatedPosts = newPosts[archiveId][regId].map(post => {
             if (post.id === updatedPost.id) {
               return {
                 ...updatedPost,
@@ -200,7 +180,7 @@ export const GenPostProvider = ({
 
             return post
           })
-          newPosts[archiveId][hashtagId] = updatedPosts
+          newPosts[archiveId][regId] = updatedPosts
         }
 
         return newPosts
@@ -224,8 +204,8 @@ export const GenPostProvider = ({
     const removeAction = () => {
       setPosts(prevPosts => {
         const newPosts = { ...prevPosts }
-        if (newPosts[archiveId] && newPosts[archiveId][hashtagId]) {
-          delete newPosts[archiveId][hashtagId]
+        if (newPosts[archiveId] && newPosts[archiveId][regId]) {
+          delete newPosts[archiveId][regId]
         }
 
         return newPosts
@@ -245,10 +225,10 @@ export const GenPostProvider = ({
     const removeAction = () => {
       setPosts(prevPosts => {
         const newPosts = { ...prevPosts }
-        if (newPosts[archiveId] && newPosts[archiveId][hashtagId]) {
-          newPosts[archiveId][hashtagId] = newPosts[archiveId][
-            hashtagId
-          ].filter(post => post.id !== idToDelete)
+        if (newPosts[archiveId] && newPosts[archiveId][regId]) {
+          newPosts[archiveId][regId] = newPosts[archiveId][regId].filter(
+            post => post.id !== idToDelete,
+          )
         }
 
         return newPosts
@@ -259,7 +239,7 @@ export const GenPostProvider = ({
       showAlert(
         'Are you sure you want to delete this post with all sentences?',
         removeAction,
-        posts[archiveId][hashtagId].find(post => post.id === idToDelete)
+        posts[archiveId][regId].find(post => post.id === idToDelete)
           ?.description ?? '',
       )
 
@@ -270,14 +250,15 @@ export const GenPostProvider = ({
   }
 
   const getPosts = (archiveId: number) => {
-    if (!posts || !posts[archiveId] || !posts[archiveId][hashtagId]) {
+    if (!posts || !posts[archiveId] || !posts[archiveId][regId]) {
       return []
     }
 
-    return posts[archiveId][hashtagId]
+    return posts[archiveId][regId]
   }
 
-  const postCount = (archiveId: number) => getPosts(archiveId).length
+  const postCount = (archiveId: number) =>
+    posts?.[archiveId]?.[regId]?.length ?? 0
 
   return (
     <GenPostContext.Provider
@@ -286,7 +267,8 @@ export const GenPostProvider = ({
         removePosts,
         modifyPost,
         removePost,
-        hashtagId,
+        hashtag,
+        post,
         askBeforeDelete,
         setAskBeforeDelete,
         removeSentence: removeSentences,

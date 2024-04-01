@@ -9,6 +9,7 @@ import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
 import { Tweet } from './tweet'
 
 export type HashtagBase = StrapiEntityBase & {
+  content: string | null
   hashtagDefault: string
   hashtagExtra: string | null
   date: string

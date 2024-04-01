@@ -5,6 +5,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  ThemeTypings,
 } from '@chakra-ui/react'
 import { FaInfo, FaX } from 'react-icons/fa6'
 
@@ -18,6 +19,7 @@ export type EditableProps = ContentEditableProps & {
   onDelete?: () => void
   isDescription?: boolean
   imageParams?: OgImageParams
+  colorScheme?: ThemeTypings['colorSchemes']
 }
 
 export const EditableLine: React.FC<EditableProps> = ({
@@ -27,6 +29,8 @@ export const EditableLine: React.FC<EditableProps> = ({
   isDisabled = false,
   imageParams = {},
   value,
+  colorScheme = 'primary',
+  threshold,
   ...rest
 }) => {
   const disabled = isDisabled || !contentEditable
@@ -35,12 +39,13 @@ export const EditableLine: React.FC<EditableProps> = ({
     <HStack
       pos={'relative'}
       px={2}
-      align={'baseline'}
+      align={'start'}
       rounded={'md'}
       pl={isDescription ? 0 : 4}
       role={'group'}
     >
       <IconButton
+        mt={2}
         isDisabled={disabled}
         aria-label="delete"
         variant={'ghost'}
@@ -54,6 +59,7 @@ export const EditableLine: React.FC<EditableProps> = ({
         <Popover trigger="hover" placement="bottom-start" isLazy>
           <PopoverTrigger>
             <IconButton
+              mt={2}
               variant={'outline'}
               size="xs"
               aria-label={'Show caps'}
@@ -92,26 +98,30 @@ export const EditableLine: React.FC<EditableProps> = ({
         }}
         value={value}
         contentEditable={!disabled}
+        threshold={threshold}
         {...rest}
-      />
-      <Badge
-        opacity={0}
-        _groupHover={{
-          opacity: 1,
-        }}
-        _groupFocusWithin={{
-          opacity: 1,
-        }}
-        transition={'opacity 0.3s ease-in-out'}
-        colorScheme="primary"
-        variant={'subtle'}
-        pos="absolute"
-        top={-1}
-        right={-1}
-        fontWeight={600}
       >
-        {value?.length ?? 0}
-      </Badge>
+        <Badge
+          opacity={0}
+          _groupHover={{
+            opacity: 1,
+          }}
+          _groupFocusWithin={{
+            opacity: 1,
+          }}
+          transition={'opacity 0.3s ease-in-out'}
+          colorScheme={
+            threshold && value?.length > threshold ? 'red' : colorScheme
+          }
+          variant={'solid'}
+          pos="absolute"
+          top={-1}
+          right={-2}
+          fontWeight={600}
+        >
+          {value?.length ?? 0}
+        </Badge>
+      </ContentEditable>
     </HStack>
   )
 }

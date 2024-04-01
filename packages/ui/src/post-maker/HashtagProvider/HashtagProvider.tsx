@@ -38,7 +38,7 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
 
   const { locale } = useRouter()
 
-  const hashtagSentences = useGetHashtagSentences(hashtag?.id)
+  const { data: hashtagSentences } = useGetHashtagSentences(hashtag?.id)
 
   const mentionsDisclosure = useDisclosure()
   const trendsDisclosure = useDisclosure()

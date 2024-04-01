@@ -4,6 +4,7 @@ import { UploadFile } from './file'
 import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
 
 export type CollectionBase = StrapiEntityBase & {
+  content: string | null
   date: string
 }
 

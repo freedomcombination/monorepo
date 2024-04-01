@@ -1,23 +1,4 @@
-import {
-  Badge,
-  Button,
-  Center,
-  Link,
-  List,
-  ListItem,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Spinner,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-  Wrap,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Button, Center, Spinner, useDisclosure } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -28,13 +9,12 @@ import { strapiRequest } from '@fc/lib'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Hashtag, StrapiLocale } from '@fc/types'
-import { ArchiveContent } from '@fc/types/src/archive-content'
-import { AdminLayout, ArchivePostGenAI, ModelEditModal } from '@fc/ui'
-import { GenPostProvider } from '@fc/ui'
+import { AdminLayout, ModelEditModal } from '@fc/ui'
+import { TabbedGenAIView } from '@fc/ui/src/post-maker/GenAI/TabbedGenView'
 
 const HashtagPage = () => {
   const { t } = useTranslation()
-  const { locale, query } = useRouter()
+  const { query } = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const id = query.id ? +query.id : 0
@@ -45,27 +25,10 @@ const HashtagPage = () => {
   })
 
   const hashtag = hashtagQuery.data?.data
-  const categories = hashtag?.categories || []
-
-  const archiveContentQuery = useStrapiRequest<ArchiveContent>({
-    endpoint: 'archive-contents',
-    filters: {
-      $or: categories?.map(category => ({
-        categories: { id: { $eq: category.id } },
-      })),
-    },
-    locale,
-    queryOptions: {
-      enabled: categories.length > 0,
-    },
-  })
-
-  const archiveContents = archiveContentQuery.data?.data
 
   const handleSuccess = async () => {
     onClose()
     await hashtagQuery.refetch()
-    archiveContentQuery.refetch()
   }
 
   if (!hashtag) {
@@ -78,15 +41,6 @@ const HashtagPage = () => {
 
   return (
     <AdminLayout seo={{ title: hashtag.title }}>
-      <Button
-        flexShrink={0}
-        alignSelf={'end'}
-        onClick={onOpen}
-        leftIcon={<FaPencil />}
-      >
-        {t('edit')}
-      </Button>
-
       <ModelEditModal
         isOpen={isOpen}
         onClose={onClose}
@@ -95,65 +49,19 @@ const HashtagPage = () => {
         title={hashtag.title}
         onSuccess={handleSuccess}
       />
-      {/* TODO: Wrap Tabs with ArchiveContentPostContext */}
-      {!hashtag?.categories?.length ? (
-        <Center h={'60vh'}>{"Please update hashtag's categories"}</Center>
-      ) : (
-        <GenPostProvider hashtag={hashtag}>
-          <Tabs colorScheme="primary">
-            <TabList>
-              {archiveContents?.map(archiveContent => {
-                return (
-                  <Popover
-                    placement="top"
-                    key={archiveContent.id}
-                    trigger="hover"
-                  >
-                    <PopoverTrigger>
-                      <Tab>
-                        <Text noOfLines={2} maxW={200} fontWeight={700}>
-                          {archiveContent.title}
-                        </Text>
-                      </Tab>
-                    </PopoverTrigger>
-                    <PopoverContent>
-                      <List p={2} spacing={2}>
-                        <ListItem>{archiveContent.source}</ListItem>
-                        <ListItem>
-                          <Link isExternal href={archiveContent.link}>
-                            {archiveContent.link}
-                          </Link>
-                        </ListItem>
-                        <ListItem>
-                          <Wrap>
-                            {archiveContent.categories?.map(c => (
-                              <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
-                            ))}
-                          </Wrap>
-                        </ListItem>
-                      </List>
-                    </PopoverContent>
-                  </Popover>
-                )
-              })}
-            </TabList>
-            <TabPanels>
-              {archiveContents?.map(archiveContent => {
-                return (
-                  <TabPanel px={0} key={archiveContent.id}>
-                    <ArchivePostGenAI
-                      archiveContentId={archiveContent.id}
-                      content={archiveContent.content}
-                      referenceLink={archiveContent.link}
-                      colorScheme="green"
-                    />
-                  </TabPanel>
-                )
-              })}
-            </TabPanels>
-          </Tabs>
-        </GenPostProvider>
-      )}
+      <TabbedGenAIView
+        hashtag={hashtag}
+        alertContent={
+          <Button
+            colorScheme={'orange'}
+            variant={'outline'}
+            onClick={onOpen}
+            leftIcon={<FaPencil />}
+          >
+            {t('edit')}
+          </Button>
+        }
+      />
     </AdminLayout>
   )
 }

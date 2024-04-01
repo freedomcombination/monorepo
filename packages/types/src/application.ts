@@ -6,7 +6,9 @@ import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 import { Vote } from './vote'
 
-export type ApplicationBase = Omit<StrapiEntityBase, 'description'>
+export type ApplicationBase = Omit<StrapiEntityBase, 'description'> & {
+  content: string | null
+}
 
 type ApplicationRelation = {
   image?: UploadFile | null

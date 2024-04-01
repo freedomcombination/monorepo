@@ -7,6 +7,7 @@ import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 
 export type BlogBase = StrapiEntityBase & {
+  content: string | null
   likes: number
   views: number
   // `isLiked` is a virtual field that is not stored in the database
