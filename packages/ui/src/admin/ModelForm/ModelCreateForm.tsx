@@ -11,6 +11,7 @@ import { InferType } from 'yup'
 
 import { useCreateModelMutation } from '@fc/services'
 import {
+  Course,
   Post,
   PostCreateInput,
   StrapiModel,
@@ -116,7 +117,9 @@ export const ModelCreateForm = <T extends StrapiModel>({
       }
     }, {} as StrapiTranslatableCreateInput)
 
-    const slug = body.title && slugify(body.title)
+    const title = body.title || (body as unknown as Course).title_en
+
+    const slug = title && slugify(title)
 
     const bodyData = {
       ...body,
