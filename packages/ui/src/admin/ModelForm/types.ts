@@ -69,6 +69,7 @@ export type ModelCreateFormProps<T extends StrapiModel> = {
   buttonProps?: ButtonProps
   hideLanguageSwitcher?: boolean
   shouldPublish?: boolean
+  initialValues?: Partial<T>
   onSuccess?: () => void
 }
 export type ModelCreateFormBodyProps<T extends StrapiModel> = {

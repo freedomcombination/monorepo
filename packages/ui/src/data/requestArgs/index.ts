@@ -39,6 +39,14 @@ export const useRequestArgs = <
       searchFields: ['title', 'description'],
     },
     posts: {
+      populate: [
+        'hashtag.categories',
+        'hashtag.image',
+        'tags',
+        'image',
+        'video',
+        'caps',
+      ],
       relationFilters: [
         {
           endpoint: 'hashtags',

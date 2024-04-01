@@ -26,19 +26,21 @@ export const EditablePost: React.FC<EditablePostProps> = ({
     removeSentence: removeSentences,
   } = useGenPostContext()
 
-  const handleChangeSentence = (index: number, value: string) =>
+  const handleChangeSentence = (index: number, value: string) => {
     modifyPost(archiveId, {
       ...postObject,
       sentences: postObject.sentences.map((sentence, i) =>
         i === index ? value : sentence,
       ),
     })
+  }
 
-  const handleChangeDescription = (value: string) =>
+  const handleChangeDescription = (value: string) => {
     modifyPost(archiveId, {
       ...postObject,
       description: value,
     })
+  }
 
   if (!postObject?.sentences?.length && !postObject?.description) {
     return null
