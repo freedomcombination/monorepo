@@ -29,6 +29,7 @@ export const ModelCreateModal = <T extends StrapiModel>({
   buttonProps,
   hideLanguageSwitcher,
   shouldPublish,
+  initialValues,
 }: PropsWithChildren<ModelCreateFormProps<T> & { title: string }>) => {
   const formDisclosure = useDisclosure()
 
@@ -74,6 +75,7 @@ export const ModelCreateModal = <T extends StrapiModel>({
               shouldPublish={shouldPublish}
               onSuccess={handleSuccess}
               hideLanguageSwitcher={hideLanguageSwitcher}
+              initialValues={initialValues}
             />
           </ModalBody>
         </ModalContent>

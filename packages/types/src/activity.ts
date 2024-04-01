@@ -6,6 +6,7 @@ import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 
 type ActivityBase = StrapiEntityBase & {
+  content: string | null
   date: string
   place: string | null
 }

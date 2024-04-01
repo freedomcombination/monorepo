@@ -5,6 +5,7 @@ import { UploadFile } from './file'
 import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
 
 type CompetitionBase = StrapiEntityBase & {
+  content: string | null
   date: string
   deadline: string
 }

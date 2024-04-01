@@ -25,14 +25,6 @@
       "type": "text",
       "required": true
     },
-    "content": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
     "reference": {
       "pluginOptions": {
         "i18n": {

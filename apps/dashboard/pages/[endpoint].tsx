@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { Heading, Stack, useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -29,9 +29,8 @@ import {
   ModelEditModal,
   ModelStatusFilters,
   PageHeader,
-  PostSentenceForm,
+  PostEditView,
   RelationFilterArgs,
-  TweetGenAI,
   WTableProps,
   useColumns,
   useRequestArgs,
@@ -125,7 +124,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   })) as StrapiModel[]
   const selectedModel = mappedModels?.find(m => m.id === selectedId)
 
-  const hashtagId = (selectedModel as Post)?.hashtag?.id
+  const post = selectedModel as Post
 
   const changeRoute = (
     key: 'id' | 'page' | 'sort' | 'status' | 'published' | 'q' | 'pageSize',
@@ -244,18 +243,8 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           title={`Edit ${endpoint}`}
           onSuccess={endpointQuery.refetch}
         >
-          {endpoint === 'posts' && selectedModel && hashtagId && (
-            <Stack rounded="md" bg="white" shadow="md">
-              <TweetGenAI
-                postId={selectedModel.id}
-                hashtagId={hashtagId}
-                content={(selectedModel as Post)?.content || undefined}
-              />
-              <Stack p={{ base: 4, lg: 8 }}>
-                <Heading>{t('sentences')}</Heading>
-                <PostSentenceForm id={selectedModel.id} hashtagId={hashtagId} />
-              </Stack>
-            </Stack>
+          {endpoint === 'posts' && post && post?.hashtag && (
+            <PostEditView post={post} hashtag={post.hashtag} />
           )}
         </ModelEditModal>
       )}

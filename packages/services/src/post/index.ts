@@ -60,13 +60,13 @@ export const getHashtagSentences = async (hashtagId: number) => {
 }
 
 export const useGetHashtagSentences = (hashtagId: number) => {
-  const { data } = useQuery<RedisPost[]>({
+  const { data, refetch } = useQuery<RedisPost[]>({
     queryKey: ['kv-hashtag-sentences', hashtagId],
     queryFn: () => getHashtagSentences(hashtagId),
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 3,
   })
 
-  return useMemo(() => {
+  const result = useMemo(() => {
     if (!data?.length) return []
 
     const sortedSentences = (data
@@ -106,4 +106,9 @@ export const useGetHashtagSentences = (hashtagId: number) => {
 
     return sentencesByPostId
   }, [data])
+
+  return {
+    data: result,
+    refetch,
+  }
 }
