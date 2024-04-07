@@ -1,5 +1,4 @@
-import addDays from 'date-fns/addDays'
-import formatIso from 'date-fns/formatISO'
+import { addDays, formatISO } from 'date-fns'
 
 import { getTwitterClient } from './client'
 
@@ -22,8 +21,8 @@ export const getAccountStats = async (
     let retweets = 0
     let replies = 0
 
-    const start_time = formatIso(addDays(date, -totalDays))
-    const end_time = formatIso(date)
+    const start_time = formatISO(addDays(date, -totalDays))
+    const end_time = formatISO(date)
 
     const timeline = await twitterClient.v2.userTimeline(user.data.id, {
       start_time,
