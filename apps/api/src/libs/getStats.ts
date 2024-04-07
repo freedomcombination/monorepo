@@ -1,5 +1,5 @@
-import addDays from 'date-fns/addDays'
-import formatIso from 'date-fns/formatISO'
+import { addDays, formatISO } from 'date-fns'
+
 import { kebabCase } from 'lodash'
 import { KebabCase } from 'type-fest'
 
@@ -51,8 +51,8 @@ export async function getStats(
   date = new Date(),
   totalDays = 7,
 ) {
-  const start = formatIso(addDays(date, -totalDays))
-  const end = formatIso(date)
+  const start = formatISO(addDays(date, -totalDays))
+  const end = formatISO(date)
 
   const statsTypes = ['creator', 'approver'] as StatsType[]
   const modelKeys = Object.keys(models) as ModelKey[]
