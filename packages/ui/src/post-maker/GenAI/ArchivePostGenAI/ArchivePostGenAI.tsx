@@ -63,7 +63,8 @@ export const ArchivePostGenAI = ({
       await createHashtagSentence({
         hashtagId: hashtag.id,
         value: localPost.sentences.map(
-          sentence => `${sentence}::${post.id}::${0}::${0}` as RedisPost,
+          sentence =>
+            `${sentence}::${post.id}::${0}::${0}:::${archiveContentId}` as RedisPost,
         ),
       })
 

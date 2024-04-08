@@ -29,8 +29,8 @@ import {
   ModelEditModal,
   ModelStatusFilters,
   PageHeader,
-  PostEditView,
   RelationFilterArgs,
+  TabbedGenAIView,
   WTableProps,
   useColumns,
   useRequestArgs,
@@ -244,7 +244,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           onSuccess={endpointQuery.refetch}
         >
           {endpoint === 'posts' && post && post?.hashtag && (
-            <PostEditView post={post} hashtag={post.hashtag} />
+            <TabbedGenAIView post={post} hashtag={post.hashtag} noBorder />
           )}
         </ModelEditModal>
       )}
