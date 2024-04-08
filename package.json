@@ -120,7 +120,7 @@
     "@typescript-eslint/parser": "^7.5.0",
     "browserify-fs": "^1.0.0",
     "dotenv-cli": "^7.4.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "eslint-config-next": "^14.1.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-turbo": "^1.13.2",
