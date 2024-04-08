@@ -7479,7 +7479,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/types@npm:7.6.17, @storybook/types@npm:^7.6.17":
+"@storybook/types@npm:7.6.17":
   version: 7.6.17
   resolution: "@storybook/types@npm:7.6.17"
   dependencies:
@@ -7491,7 +7491,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/types@npm:8.0.6":
+"@storybook/types@npm:8.0.6, @storybook/types@npm:^8.0.6":
   version: 8.0.6
   resolution: "@storybook/types@npm:8.0.6"
   dependencies:
@@ -16416,7 +16416,7 @@ __metadata:
     "@storybook/core-server": "npm:^7.6.17"
     "@storybook/nextjs": "npm:^7.6.17"
     "@storybook/react": "npm:^7.6.17"
-    "@storybook/types": "npm:^7.6.17"
+    "@storybook/types": "npm:^8.0.6"
     "@tanstack/react-query": "npm:^5.29.0"
     "@tanstack/react-query-devtools": "npm:^5.29.0"
     "@turbo/gen": "npm:^1.13.2"
