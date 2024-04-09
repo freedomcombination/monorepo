@@ -52,7 +52,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
       {
         hashtagId: hashtag.id,
         index,
-        value: `${value}::${id}::${shareCount}::${isPublished ? 1 : 0}:::${archiveId}`,
+        value: `${value}::${id}::${shareCount}::${isPublished ? 1 : 0}::${archiveId}`,
       },
       { onSuccess },
     )
@@ -63,7 +63,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
       {
         hashtagId: hashtag.id,
         index,
-        value: `${defaultSentence}::${id}::${0}::${isPublished ? 1 : 0}:::${archiveId}`,
+        value: `${defaultSentence}::${id}::${0}::${isPublished ? 1 : 0}::${archiveId}`,
       },
       { onSuccess },
     )
@@ -81,7 +81,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
             hashtagId: hashtag.id,
             value: `${defaultSentence}::${id}::${shareCount}::${
               isPublished ? 1 : 0
-            }:::${archiveId}`,
+            }::${archiveId}`,
           },
           { onSuccess },
         )
@@ -95,7 +95,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
       {
         hashtagId: hashtag.id,
         index,
-        value: `${value}::${id}::${shareCount}::${approve}:::${archiveId}`,
+        value: `${value}::${id}::${shareCount}::${approve}::${archiveId}`,
       },
       { onSuccess },
     )
