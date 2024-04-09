@@ -47,6 +47,7 @@ export const Layout: FC<LayoutProps> = ({
         }}
         isDark={isDark}
         isLoading={isLoading}
+        hasProfile
       >
         {children}
       </AppLayout>
