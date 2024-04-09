@@ -64,18 +64,27 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   const archives = archiveContentQuery.data?.data ?? []
 
   if (!hashtag) return null
-
   if (archives?.length === 0) {
     return (
-      <GenAlert
-        hashtag={hashtag}
-        categories={categories}
-        tags={tags}
-        showTagAlert={!!post}
-        onArchiveCreate={archiveContentQuery.refetch}
-      >
-        {alertContent}
-      </GenAlert>
+      <>
+        <GenAlert
+          hashtag={hashtag}
+          categories={categories}
+          tags={tags}
+          showTagAlert={!!post}
+          onArchiveCreate={archiveContentQuery.refetch}
+        >
+          {alertContent}
+        </GenAlert>
+        {post && (
+          <GenPostProvider hashtag={hashtag} post={post} archives={archives}>
+            <Stack p={{ base: 4, lg: 8 }}>
+              <Heading>{t('sentences')}</Heading>
+              <PostSentenceForm id={post.id} hashtagId={hashtag.id} />
+            </Stack>
+          </GenPostProvider>
+        )}
+      </>
     )
   }
 
