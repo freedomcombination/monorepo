@@ -57,15 +57,13 @@ const FetchArchive: FC<{ id: number }> = ({ id }) => {
 
   const { data, isLoading } = useStrapiRequest<ArchiveContent>({
     endpoint: 'archive-contents',
-    filters: {
-      id: { $eq: id },
-    },
+    id,
     queryOptions: {
       enabled: !!id,
     },
   })
 
-  const archiveContent = data?.data?.[0]
+  const archiveContent = data?.data
 
   if (isLoading || !archiveContent)
     return (
@@ -89,10 +87,14 @@ const DisplayArchive: FC<{ archiveContent: ArchiveContent }> = ({
   const { locale } = useRouter()
 
   return (
-    <List p={2} spacing={2}>
-      <ListItem fontWeight="bold">{archiveContent.title}</ListItem>
-      <ListItem>{archiveContent.source}</ListItem>
-      <ListItem>
+    <List p={2} spacing={2} textAlign={'left'}>
+      <ListItem fontWeight="bold">
+        {archiveContent.title}
+      </ListItem>
+      <ListItem color={'gray.500'}>
+        {archiveContent.source}
+      </ListItem>
+      <ListItem color={'gray.500'}>
         <Link isExternal href={archiveContent.link}>
           {archiveContent.link}
         </Link>

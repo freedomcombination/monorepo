@@ -84,7 +84,7 @@ export const useGetHashtagSentences = (hashtagId: number) => {
           value: sentence,
           shareCount: Number(shareCount),
           isPublished: published === '1',
-          archiveId,
+          archiveId: Number(archiveId),
           index,
         } as PostSentence
       })

@@ -10,8 +10,8 @@ import {
   Tabs,
   Text,
 } from '@chakra-ui/react'
-import { t } from 'i18next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
 
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent, Hashtag, Post } from '@fc/types'
@@ -37,6 +37,7 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   alertContent,
 }) => {
   const { locale } = useRouter()
+  const { t } = useTranslation()
 
   const colorScheme = post ? 'blue' : 'green'
 
@@ -94,16 +95,13 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
         <TabList>
           {archives.map(archiveContent => {
             return (
-              <ArchivePopover
-                key={archiveContent.id}
-                archiveId={archiveContent.id}
-              >
-                <Tab>
+              <Tab key={archiveContent.id}>
+                <ArchivePopover archiveId={archiveContent.id}>
                   <Text noOfLines={2} maxW={200} fontWeight={700}>
                     {archiveContent.title}
                   </Text>
-                </Tab>
-              </ArchivePopover>
+                </ArchivePopover>
+              </Tab>
             )
           })}
         </TabList>
