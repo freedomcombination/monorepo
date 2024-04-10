@@ -18,21 +18,14 @@ import {
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { FaFacebook, FaLinkedin, FaTelegram, FaWhatsapp } from 'react-icons/fa'
 
-import { useAuthContext } from '@fc/context'
-
 import { PostSentencesModal } from './PostSentencesModal'
 import { PostMakerTweetShareProps } from './types'
 
 export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
   url,
   content,
+  allowManagingSentences,
 }) => {
-  const { roles, checkAuth } = useAuthContext()
-  useEffect(() => {
-    checkAuth()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   return (
     <Popover placement="top">
       <PopoverTrigger>
@@ -83,7 +76,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
                 icon={<FaLinkedin />}
               />
             </LinkedinShareButton>
-            {roles.includes('admin') && <PostSentencesModal />}
+            {allowManagingSentences && <PostSentencesModal />}
           </HStack>
         </PopoverBody>
       </PopoverContent>
