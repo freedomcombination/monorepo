@@ -27,7 +27,7 @@ import { Markdown } from '@fc/ui'
 import { HashtagStats } from '@fc/ui/src/post-maker/HashtagStats'
 
 type PlusButtonProps = {
-  source: MDXRemoteSerializeResult
+  source: MDXRemoteSerializeResult<Record<string, unknown>>
 }
 
 export const PlusButton: FC<PlusButtonProps> = ({ source }) => {

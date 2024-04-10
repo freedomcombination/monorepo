@@ -222,7 +222,7 @@ export const getServerSideProps = async (
 
   const slugs = getLocalizedSlugs(hashtag, locale)
 
-  const source = hashtag.content ? await serialize(hashtag.content) : null
+  const source = await serialize(hashtag.content || '')
 
   return {
     props: {
