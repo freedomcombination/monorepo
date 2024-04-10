@@ -21,12 +21,12 @@ import { usePostContext } from '../PostProvider'
 
 type PostMakerTweetButtonsProps = {
   isIosSafari?: boolean
-  allowManagingSentences: boolean
+  canManageSentences: boolean
 }
 
 export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
   isIosSafari,
-  allowManagingSentences,
+  canManageSentences,
 }) => {
   const router = useRouter()
   const { setActivePostId, mentionsDisclosure, trendsDisclosure } =
@@ -198,7 +198,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
       <PostMakerTweetShare
         url={url}
         content={post?.description as string}
-        allowManagingSentences={allowManagingSentences}
+        canManageSentences={canManageSentences}
       />
     </HStack>
   )

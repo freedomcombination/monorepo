@@ -17,7 +17,7 @@ export const PostMakerTweetList: FC<PostMakerTweetListProps> = ({
   const hashtag = useHashtag()
   const { allowEndpointAction } = usePermission()
 
-  const allowManagingSentences = allowEndpointAction('posts', 'update')
+  const canManageSentences = allowEndpointAction('posts', 'update')
 
   const sortedPosts = useMemo(() => {
     if (!hashtag?.posts) return []
@@ -46,7 +46,7 @@ export const PostMakerTweetList: FC<PostMakerTweetListProps> = ({
               {post && (
                 <PostMakerTweetCard
                   isIosSafari={isIosSafari}
-                  allowManagingSentences={allowManagingSentences}
+                  canManageSentences={canManageSentences}
                 />
               )}
             </PostProvider>
