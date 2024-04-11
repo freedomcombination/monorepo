@@ -3,6 +3,7 @@ import { FC, useState } from 'react'
 import { Box, HStack, IconButton, Textarea, Tooltip } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { FaPencilAlt, FaSave, FaTimes } from 'react-icons/fa'
+import { FaInfo } from 'react-icons/fa6'
 import {
   MdOutlinePublishedWithChanges,
   MdOutlineUnpublished,
@@ -15,6 +16,7 @@ import {
 } from '@fc/services'
 
 import { PostSentenceFormItemProps } from './types'
+import { ArchivePopover } from '../../post-maker/GenAI/ArchivePopover'
 import { WConfirm, WConfirmProps } from '../WConfirm'
 
 export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
@@ -23,6 +25,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
   sentence: defaultSentence,
   shareCount,
   isPublished,
+  archiveId,
 }) => {
   const [value, setValue] = useState(defaultSentence)
   const [editMode, setEditMode] = useState(false)
@@ -49,7 +52,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
       {
         hashtagId: hashtag.id,
         index,
-        value: `${value}::${id}::${shareCount}::${isPublished ? 1 : 0}`,
+        value: `${value}::${id}::${shareCount}::${isPublished ? 1 : 0}::${archiveId}`,
       },
       { onSuccess },
     )
@@ -60,7 +63,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
       {
         hashtagId: hashtag.id,
         index,
-        value: `${defaultSentence}::${id}::${0}::${isPublished ? 1 : 0}`,
+        value: `${defaultSentence}::${id}::${0}::${isPublished ? 1 : 0}::${archiveId}`,
       },
       { onSuccess },
     )
@@ -78,7 +81,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
             hashtagId: hashtag.id,
             value: `${defaultSentence}::${id}::${shareCount}::${
               isPublished ? 1 : 0
-            }`,
+            }::${archiveId}`,
           },
           { onSuccess },
         )
@@ -92,7 +95,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
       {
         hashtagId: hashtag.id,
         index,
-        value: `${value}::${id}::${shareCount}::${approve}`,
+        value: `${value}::${id}::${shareCount}::${approve}::${archiveId}`,
       },
       { onSuccess },
     )
@@ -112,6 +115,17 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           flex={1}
           isDisabled={!editMode}
         />
+
+        <ArchivePopover archiveId={archiveId}>
+          <IconButton
+            aria-label="archiveId info"
+            colorScheme="red"
+            size={'sm'}
+            icon={<FaInfo />}
+            rounded={'full'}
+          />
+        </ArchivePopover>
+
         {editMode && (
           <Tooltip label="Save" placement="top">
             <IconButton

@@ -1,30 +1,27 @@
 import { ReactNode } from 'react'
 
 import {
-  Badge,
-  Link,
-  List,
-  ListItem,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
+  Heading,
+  Stack,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
   Text,
-  Wrap,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
 
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent, Hashtag, Post } from '@fc/types'
 
+import { ArchivePopover } from './ArchivePopover'
 import { ArchivePostGenAI } from './ArchivePostGenAI'
 import { GenAlert } from './GenAlert'
 import { GenPostProvider } from './GenPostProvider'
 import { TweetGenAI } from './TweetGenAI'
+import { PostSentenceForm } from '../../components'
 
 export type TabbedGenViewProps = {
   post?: Post
@@ -40,6 +37,7 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   alertContent,
 }) => {
   const { locale } = useRouter()
+  const { t } = useTranslation()
 
   const colorScheme = post ? 'blue' : 'green'
 
@@ -67,56 +65,43 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   const archives = archiveContentQuery.data?.data ?? []
 
   if (!hashtag) return null
-
   if (archives?.length === 0) {
     return (
-      <GenAlert
-        hashtag={hashtag}
-        categories={categories}
-        tags={tags}
-        showTagAlert={!!post}
-        onArchiveCreate={archiveContentQuery.refetch}
-      >
-        {alertContent}
-      </GenAlert>
+      <>
+        <GenAlert
+          hashtag={hashtag}
+          categories={categories}
+          tags={tags}
+          showTagAlert={!!post}
+          onArchiveCreate={archiveContentQuery.refetch}
+        >
+          {alertContent}
+        </GenAlert>
+        {post && (
+          <GenPostProvider hashtag={hashtag} post={post} archives={archives}>
+            <Stack p={{ base: 4, lg: 8 }}>
+              <Heading>{t('sentences')}</Heading>
+              <PostSentenceForm id={post.id} hashtagId={hashtag.id} />
+            </Stack>
+          </GenPostProvider>
+        )}
+      </>
     )
   }
 
   return (
-    <GenPostProvider hashtag={hashtag} post={post}>
+    <GenPostProvider hashtag={hashtag} post={post} archives={archives}>
       <Tabs colorScheme={colorScheme}>
         <TabList>
           {archives.map(archiveContent => {
             return (
-              <Popover placement="top" key={archiveContent.id} trigger="hover">
-                <PopoverTrigger>
-                  <Tab>
-                    <Text noOfLines={2} maxW={200} fontWeight={700}>
-                      {archiveContent.title}
-                    </Text>
-                  </Tab>
-                </PopoverTrigger>
-                <PopoverContent>
-                  <List p={2} spacing={2}>
-                    <ListItem>{archiveContent.source}</ListItem>
-                    <ListItem>
-                      <Link isExternal href={archiveContent.link}>
-                        {archiveContent.link}
-                      </Link>
-                    </ListItem>
-                    {archiveContent.categories &&
-                      archiveContent.categories.length > 0 && (
-                        <ListItem>
-                          <Wrap>
-                            {archiveContent.categories.map(c => (
-                              <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
-                            ))}
-                          </Wrap>
-                        </ListItem>
-                      )}
-                  </List>
-                </PopoverContent>
-              </Popover>
+              <Tab key={archiveContent.id}>
+                <ArchivePopover archiveId={archiveContent.id}>
+                  <Text noOfLines={2} maxW={200} fontWeight={700}>
+                    {archiveContent.title}
+                  </Text>
+                </ArchivePopover>
+              </Tab>
             )
           })}
         </TabList>
@@ -142,6 +127,12 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
           })}
         </TabPanels>
       </Tabs>
+      {post && (
+        <Stack p={{ base: 4, lg: 8 }}>
+          <Heading>{t('sentences')}</Heading>
+          <PostSentenceForm id={post.id} hashtagId={hashtag.id} />
+        </Stack>
+      )}
     </GenPostProvider>
   )
 }

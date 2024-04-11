@@ -14,6 +14,7 @@ export const initialPostState: PostState = {
     index: 0,
     isPublished: false,
     shareCount: 0,
+    archiveId: 0,
   },
   threshold: 0,
 }

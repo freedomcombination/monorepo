@@ -22,7 +22,8 @@ export const TweetGenAI: React.FC<TweetGenAIProps> = ({
     await createHashtagSentence({
       hashtagId: hashtag.id,
       value: post.sentences.map(
-        sentence => `${sentence}::${postId}::${0}::${0}` as RedisPost,
+        sentence =>
+          `${sentence}::${postId}::${0}::${0}:::${archiveContentId}` as RedisPost,
       ),
     })
     refetch()

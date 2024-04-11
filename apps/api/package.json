@@ -23,10 +23,10 @@
     "tsc": "npx tsc --noEmit"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "^4.22.1",
-    "@strapi/plugin-users-permissions": "^4.22.1",
-    "@strapi/provider-email-nodemailer": "^4.22.1",
-    "@strapi/strapi": "^4.22.1",
+    "@strapi/plugin-i18n": "^4.23.0",
+    "@strapi/plugin-users-permissions": "^4.23.0",
+    "@strapi/provider-email-nodemailer": "^4.23.0",
+    "@strapi/strapi": "^4.23.0",
     "apify-client": "^2.9.3",
     "cheerio": "^1.0.0-rc.12",
     "pg": "^8.11.5",

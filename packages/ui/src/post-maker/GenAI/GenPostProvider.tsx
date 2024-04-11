@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { Hashtag, Post, PostCreateInput } from '@fc/types'
+import { ArchiveContent, Hashtag, Post, PostCreateInput } from '@fc/types'
 
 export type GeneratedSentences = {
   sentences: string[]
@@ -45,6 +45,8 @@ type GenPostValueType = {
   modifyPost: (archiveId: number, updatedPost: ArchivePost) => void
   postCount: (archiveId: number) => number
   getPosts: (archiveId: number) => ArchivePost[]
+  getArchive: (archiveId: number) => ArchiveContent | undefined
+  archives: ArchiveContent[]
   hashtag: Hashtag
   post?: Post
   askBeforeDelete: boolean
@@ -62,6 +64,8 @@ const GenPostContext = createContext<GenPostValueType>({
   removePost: () => null,
   modifyPost: () => null,
   postCount: () => 0,
+  getArchive: () => undefined,
+  archives: [],
   hashtag: {} as Hashtag,
   post: undefined,
   askBeforeDelete: true,
@@ -76,6 +80,7 @@ export const useGenPostContext = () => {
 
 type GenPostProviderProps = PropsWithChildren<{
   hashtag: Hashtag
+  archives: ArchiveContent[]
   post?: Post
 }>
 
@@ -88,6 +93,7 @@ type DialogAction = {
 export const GenPostProvider = ({
   children,
   hashtag,
+  archives,
   post,
 }: GenPostProviderProps) => {
   const [askBeforeDelete, setAskBeforeDelete] = useLocalStorage(
@@ -260,6 +266,10 @@ export const GenPostProvider = ({
   const postCount = (archiveId: number) =>
     posts?.[archiveId]?.[regId]?.length ?? 0
 
+  const getArchive = (archiveId: number) => {
+    return archives?.find(archive => archive.id === archiveId)
+  }
+
   return (
     <GenPostContext.Provider
       value={{
@@ -267,6 +277,8 @@ export const GenPostProvider = ({
         removePosts,
         modifyPost,
         removePost,
+        getArchive,
+        archives,
         hashtag,
         post,
         askBeforeDelete,
