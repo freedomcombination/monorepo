@@ -97,6 +97,7 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
           <HashtagStats />
         </Box>
         {/* TODO: Skeleton */}
+        {/* Deneme */}
         {hashtag.posts ? (
           <Box order={{ base: 0, lg: 1 }} h={'inherit'} overflowY={'auto'}>
             <PostMakerTweetList
