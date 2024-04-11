@@ -20,7 +20,7 @@ export const PostSentenceForm: FC<PostSentenceFormProps> = ({
       <PostSentenceCreator hashtagId={hashtagId} postId={id} />
 
       {sentences.map(s => {
-        const { value, shareCount, isPublished, index } = s
+        const { value, shareCount, isPublished, index, archiveId } = s
 
         return (
           <PostSentenceFormItem
@@ -30,6 +30,7 @@ export const PostSentenceForm: FC<PostSentenceFormProps> = ({
             sentence={value}
             shareCount={Number(shareCount)}
             isPublished={isPublished}
+            archiveId={archiveId}
           />
         )
       })}

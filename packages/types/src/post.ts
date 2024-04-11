@@ -57,4 +57,5 @@ export type PostSentence = {
   index: number
   shareCount: number
   isPublished: boolean
+  archiveId: number
 }

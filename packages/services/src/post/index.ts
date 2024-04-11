@@ -71,16 +71,22 @@ export const useGetHashtagSentences = (hashtagId: number) => {
 
     const sortedSentences = (data
       .map((s, index) => {
-        const [sentence = '', postId = 0, shareCount = 0, published = '0'] =
-          s.split('::')
+        const [
+          sentence = '',
+          postId = 0,
+          shareCount = 0,
+          published = '0',
+          archiveId = 0,
+        ] = s.split('::')
 
         return {
           postId: Number(postId),
           value: sentence,
           shareCount: Number(shareCount),
           isPublished: published === '1',
+          archiveId: Number(archiveId),
           index,
-        }
+        } as PostSentence
       })
       .sort((a, b) => {
         return a.shareCount - b.shareCount
