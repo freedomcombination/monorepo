@@ -1,11 +1,5 @@
-import {
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  VStack,
-} from '@chakra-ui/react'
+import { Tabs, TabList, Tab, TabPanels, TabPanel, VStack } from '@chakra-ui/react'
+import { shuffle } from 'lodash'
 import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
 
@@ -14,15 +8,16 @@ import { MentionUserData } from '@fc/types'
 import { MentionListPanel } from './MentionListPanel'
 import { useHashtagContext } from '../HashtagProvider'
 
+
+
+
 const MentionListItem = dynamic(() => import('./MentionListItem'), {
   ssr: false,
 })
 
-export const MentionList = () => {
-  const { activePostId, savedMentions, removeStoredMention, addMentionToPost } =
-    useHashtagContext()
-
+const MentionList: React.FC = () => {
   const { t } = useTranslation()
+  const { activePostId, savedMentions, removeStoredMention, addMentionToPost } = useHashtagContext()
 
   const onAddMention = (value: MentionUserData) => {
     if (value.screen_name && activePostId) {
@@ -36,19 +31,22 @@ export const MentionList = () => {
     }
   }
 
+  const onRandomMention = () => {
+    if (activePostId && savedMentions.length > 0) {
+      const shuffledMentions = shuffle(savedMentions)
+      const randomMention = shuffledMentions[0]
+      addMentionToPost(activePostId, randomMention.screen_name)
+    }
+  }
+
   return (
     <VStack align="stretch" h={400}>
       <VStack minH="0" h="full" align="stretch" bg="white" overflowY="auto">
-        <Tabs
-          size="sm"
-          colorScheme={'primary'}
-          isFitted
-          variant="line"
-          bg="white"
-        >
+        <Tabs size="sm" colorScheme={'primary'} isFitted variant="line" bg="white">
           <TabList pos="sticky" top="0" bg="white">
             <Tab>{t('post.mention-tab-popular')}</Tab>
             <Tab>{t('post.mention-tab-saved')}</Tab>
+            <Tab onClick={onRandomMention}>{t('post.random-mention-button')}</Tab> {/*  What should I add here? */}
           </TabList>
           <TabPanels>
             <TabPanel p={0}>
@@ -70,3 +68,5 @@ export const MentionList = () => {
     </VStack>
   )
 }
+
+export default MentionList
