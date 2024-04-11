@@ -2,36 +2,36 @@ import { FC } from 'react'
 
 import {
   Box,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
+  // Drawer,
+  // DrawerBody,
+  // DrawerContent,
+  // DrawerOverlay,
   Grid,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalOverlay,
+  // Modal,
+  // ModalBody,
+  // ModalContent,
+  // ModalOverlay,
   Skeleton,
-  useBreakpointValue,
+  // useBreakpointValue,
 } from '@chakra-ui/react'
 
 import { useHashtag } from '@fc/services'
 
-import { useHashtagContext } from './HashtagProvider'
+// import { useHashtagContext } from './HashtagProvider' 
 import { HashtagStats } from './HashtagStats'
-import { MentionList } from './Mention'
+// import { MentionList } from './Mention'
 import { PostMakerTweetList } from './PostMakerTweetCard'
 import { TimelineTrendsTabs } from './TimelineTrendsTabs'
-import { TrendListTabs } from './Trends'
+// import { TrendListTabs } from './Trends'
 
 type PostMakerProps = {
   isIosSafari?: boolean
 }
 
 export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
-  const isMobile = useBreakpointValue({ base: true, lg: false }) ?? true
+  // const isMobile = useBreakpointValue({ base: true, lg: false }) ?? true
 
-  const { mentionsDisclosure, trendsDisclosure } = useHashtagContext()
+  // const { mentionsDisclosure, trendsDisclosure } = useHashtagContext()
 
   const hashtag = useHashtag()
 
@@ -39,6 +39,8 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
 
   return (
     <>
+    {/* Modal and draweer parts of the code were commented out and - TrendListTabs, MentionList, useHashtagContext, useBreakpointValue were commented because they were not used after modal-drawer comments */}
+    {/* 
       <Modal
         closeOnOverlayClick={true}
         isOpen={!isMobile && mentionsDisclosure.isOpen}
@@ -87,6 +89,7 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+      */}
       <Grid
         gap={2}
         gridTemplateColumns={{ base: '1fr', lg: '300px 1fr 300px' }}
@@ -97,7 +100,6 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
           <HashtagStats />
         </Box>
         {/* TODO: Skeleton */}
-        {/* Deneme */}
         {hashtag.posts ? (
           <Box order={{ base: 0, lg: 1 }} h={'inherit'} overflowY={'auto'}>
             <PostMakerTweetList
