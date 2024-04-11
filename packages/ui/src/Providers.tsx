@@ -69,7 +69,7 @@ export const Providers: FC<ProvidersProps> = ({
             </ChakraProvider>
           </AuthProvider>
         </HydrationBoundary>
-        <ReactQueryDevtools />
+        <ReactQueryDevtools buttonPosition="bottom-left" />
       </QueryClientProvider>
     </HydrationOverlay>
   )

@@ -16,6 +16,7 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { serialize } from 'next-mdx-remote/serialize'
 
 import { ASSETS_URL, SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
@@ -37,13 +38,14 @@ import {
   getPageSeo,
 } from '@fc/utils'
 
-import { Layout } from '../../../components'
+import { Layout, PlusButton } from '../../../components'
 
 type HashtagProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const HashtagPage: FC<HashtagProps> = ({
   hasStarted,
   seo,
+  source,
   post,
   capsSrc,
   isIosSafari,
@@ -109,6 +111,7 @@ const HashtagPage: FC<HashtagProps> = ({
           )}
         </Container>
       </Layout>
+      <PlusButton source={source} />
     </HashtagProvider>
   )
 }
@@ -219,6 +222,8 @@ export const getServerSideProps = async (
 
   const slugs = getLocalizedSlugs(hashtag, locale)
 
+  const source = await serialize(hashtag.content || '')
+
   return {
     props: {
       seo,
@@ -226,6 +231,7 @@ export const getServerSideProps = async (
       post: post || null,
       isIosSafari,
       slugs,
+      source,
       hasStarted: hashtag.hasStarted,
       dehydratedState: dehydrate(queryClient),
       ...(await ssrTranslations(locale)),
