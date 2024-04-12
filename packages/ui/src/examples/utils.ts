@@ -7,7 +7,7 @@ import { sleep } from '@fc/utils'
 
 // TODO: Add this to `packages/ui/.env` as NEXT_PUBLIC_API_URL
 // and use API_URL instead of STAGING_API_URL
-const STAGING_API_URL = 'https://wsvv-api-staging.onrender.com'
+const STAGING_API_URL = 'https://fc-api-staging.onrender.com'
 const CATEGORY_URL = `${STAGING_API_URL}/api/categories`
 
 // Create with axios

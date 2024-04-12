@@ -15,8 +15,8 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
 
-import { ASSETS_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
+import { getMediaUrl } from '@fc/utils'
 
 import { ProfileMenuProps } from './types'
 import { useScroll } from '../../hooks'
@@ -56,7 +56,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
           <Avatar
             size={'xs'}
             bg={'white'}
-            src={`${ASSETS_URL}${profile?.avatar}`}
+            src={getMediaUrl(profile?.avatar)}
             name={profile?.name || user?.username}
           />
         }

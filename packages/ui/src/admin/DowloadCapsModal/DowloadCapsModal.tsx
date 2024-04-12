@@ -18,10 +18,10 @@ import JSZip from 'jszip'
 import { useRouter } from 'next/router'
 import { FaDownload } from 'react-icons/fa'
 
-import { ASSETS_URL, SITE_URL } from '@fc/config'
+import { SITE_URL } from '@fc/config'
 import { useStrapiRequest } from '@fc/services'
 import { Post } from '@fc/types'
-import { getOgImageSrc } from '@fc/utils'
+import { getMediaUrl, getOgImageSrc } from '@fc/utils'
 
 import { Caps, WImage } from '../../components'
 
@@ -52,10 +52,10 @@ export const DowloadCapsModal: FC<DowloadCapsModalType> = ({ id }) => {
   const postMedias =
     postsQuery?.data?.data
       ?.map(post => {
-        const imageSrc = post.image?.url && ASSETS_URL + post.image?.url
+        const imageSrc = getMediaUrl(post?.image)
         const title = post?.title
         const text = post?.description || undefined
-        const capsSrc = post.caps?.url && ASSETS_URL + post.caps?.url
+        const capsSrc = getMediaUrl(post?.caps)
         const imageParams = post.imageParams && {
           image: imageSrc,
           title,

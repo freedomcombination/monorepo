@@ -12,9 +12,9 @@ import {
 import { useTranslation } from 'next-i18next'
 import { AiFillDelete, AiOutlineShareAlt } from 'react-icons/ai'
 
-import { ASSETS_URL } from '@fc/config'
 import { useDeleteModel } from '@fc/services'
 import { Post, RecommendedTweet } from '@fc/types'
+import { getMediaUrl } from '@fc/utils'
 
 import { ShareButtons, WConfirm, WConfirmProps } from '../../components'
 import { useFields, useSchema } from '../../data'
@@ -70,7 +70,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
   let imageUrl: string | unknown
 
   if (tweet?.image?.url) {
-    imageUrl = ASSETS_URL + tweet?.image?.url
+    imageUrl = getMediaUrl(tweet.image)
   }
 
   if (tweet?.originalTweet?.image) {

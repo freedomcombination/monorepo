@@ -1,20 +1,12 @@
 export const SITE_URL =
   process.env['NEXT_PUBLIC_SITE_URL'] || `https://${process.env['VERCEL_URL']}`
 
-export const VERCEL_ENV = process.env['VERCEL_ENV']
-
-const assetUrls: Record<string, string> = {
-  development: 'https://wsvv-api-staging.onrender.com',
-  production: 'https://api.freedomcombination.com',
-  preview: 'https://wsvv-api-staging.onrender.com',
-}
+export const VERCEL_ENV = process.env['VERCEL_ENV'] as string
 
 export const DONATION_REQUEST_LINK = process.env[
   'NEXT_PUBLIC_DONATION_REQUEST_LINK'
 ] as string
 export const API_URL = process.env['NEXT_PUBLIC_API_URL'] as string
-export const ASSETS_URL = assetUrls.production
-export const ASSETS_FALLBACK_URL = VERCEL_ENV ? assetUrls[VERCEL_ENV] : API_URL
 export const PUBLIC_TOKEN = process.env['NEXT_PUBLIC_TOKEN'] as string
 export const EMAIL_RECEIVER = process.env[
   'NEXT_PUBLIC_EMAIL_RECEIVER'

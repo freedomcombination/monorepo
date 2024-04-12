@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { sample } from 'lodash'
 
-import { ASSETS_URL } from '@fc/config'
 import { ART_MOCKS } from '@fc/mocks'
 import { Art } from '@fc/types'
+import { getMediaUrl } from '@fc/utils'
 
 import { ArtContent } from './ArtContent'
 
@@ -24,7 +24,7 @@ export const Default: Story = {
     title: art.title_en,
     description: art.description_en,
     artistName: art.artist?.name || art.artist?.email || 'Unknown',
-    artistAvatar: `${ASSETS_URL}${art.artist?.avatar?.url}`,
+    artistAvatar: getMediaUrl(art.artist?.avatar),
     artistProfilePath: `/artist/${art.artist?.id}`,
   },
 }

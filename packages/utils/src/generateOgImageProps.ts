@@ -1,8 +1,9 @@
 import { theme } from '@chakra-ui/react'
 import { sample } from 'lodash'
 
-import { ASSETS_URL } from '@fc/config'
 import { OgImageParams } from '@fc/types'
+
+import { getMediaUrl } from './getMediaUrl'
 
 export const generateOgImageParams = (props?: OgImageParams) => {
   const image = props?.image
@@ -28,8 +29,7 @@ export const generateOgImageParams = (props?: OgImageParams) => {
   const flip = props?.flip ?? Math.random() > 0.5
   const hasLine = props?.hasLine ?? Math.random() > 0.5
 
-  const url = typeof image === 'string' ? image : image?.url
-  const src = url?.startsWith('/uploads') ? ASSETS_URL + image : image
+  const src = getMediaUrl(image)
 
   return {
     bg,

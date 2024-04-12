@@ -18,7 +18,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { ASSETS_URL, SITE_URL } from '@fc/config'
+import { SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { getHashtagBySlug, getHashtagSentences, useHashtag } from '@fc/services'
@@ -34,6 +34,7 @@ import {
 import {
   getItemLink,
   getLocalizedSlugs,
+  getMediaUrl,
   getOgImageSrc,
   getPageSeo,
 } from '@fc/utils'
@@ -152,23 +153,22 @@ export const getServerSideProps = async (
   let capsSrc = ''
 
   if (post) {
-    const title = post?.description?.slice(0, 20) || ''
+    const title = post.description?.slice(0, 20) || ''
     const description = post.description || ''
-    const image = post?.image
-    const caps = post?.caps?.url
+    const image = post.image
+    const src = getMediaUrl(image)
 
-    const src = image?.url
     const link = getItemLink(post, 'posts') as string
 
-    if (caps) {
-      capsSrc = `${ASSETS_URL}${caps}`
+    if (post.caps) {
+      capsSrc = getMediaUrl(post.caps)
     } else {
       capsSrc =
         SITE_URL +
         getOgImageSrc({
           title: post.title,
           text: post.description || undefined,
-          image: src ? `${ASSETS_URL}${src}` : undefined,
+          image: getMediaUrl(post.image),
           ...post.imageParams,
         })
     }

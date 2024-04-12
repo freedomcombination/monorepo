@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 
 import axios from 'axios'
 
-import { ASSETS_URL } from '@fc/config'
-
 export const useFileFromUrl = (
   url?: string,
   filename = 'image.png',
@@ -13,8 +11,7 @@ export const useFileFromUrl = (
 
   useEffect(() => {
     const createFileFromUrl = async (url: string) => {
-      const imageUrl = url.startsWith('http') ? url : `${ASSETS_URL}${url}`
-      const response = await axios.get(`/api/images?url=${imageUrl}`, {
+      const response = await axios.get(`/api/images?url=${url}`, {
         responseType: 'blob',
       })
       const file = new File([response.data], filename, {

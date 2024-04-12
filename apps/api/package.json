@@ -8,7 +8,7 @@
     "dashboard": "strapi dev",
     "foundation": "strapi dev",
     "kunsthalte": "strapi dev",
-    "transfer": "strapi transfer --from https://api.freedomcombination.com/admin",
+    "import": "strapi import -f seed.tar.gz",
     "trend-rights": "strapi dev",
     "lint": "eslint .",
     "start": "strapi start",
@@ -16,9 +16,6 @@
     "build:dev": "strapi build",
     "strapi": "strapi",
     "generate-types": "npm run strapi ts:generate-types --debug",
-    "db": "./scripts/prepare.sh",
-    "docker-up": "docker compose up --remove-orphans",
-    "docker-db": "docker exec -i strapiDB bash < ./scripts/docker-db-update.sh",
     "clean": "rm -rf node_modules .cache .turbo dist .strapi",
     "tsc": "npx tsc --noEmit"
   },
@@ -47,7 +44,7 @@
     "uuid": "dc6c040c-fd40-4612-8858-c117ed320ff6"
   },
   "engines": {
-    "node": ">=14.19.1 <=18.x.x",
+    "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

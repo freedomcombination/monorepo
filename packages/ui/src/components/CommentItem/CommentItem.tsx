@@ -3,8 +3,8 @@ import { FC } from 'react'
 import { HStack, Stack, Text } from '@chakra-ui/react'
 import { formatDistanceStrict } from 'date-fns'
 
-import { ASSETS_URL } from '@fc/config'
 import { Comment } from '@fc/types'
+import { getMediaUrl } from '@fc/utils'
 
 import { WAvatar } from '../WAvatar'
 
@@ -19,7 +19,7 @@ export const CommentItem: FC<CommentItemProps> = ({ comment }) => {
     <HStack align="start">
       <WAvatar
         size="sm"
-        src={`${ASSETS_URL}${comment.profile?.avatar?.url}`}
+        src={getMediaUrl(comment.profile?.avatar)}
         name={name}
       />
       <Stack fontSize="sm">

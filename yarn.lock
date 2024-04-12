@@ -19,6 +19,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ai-sdk/provider-utils@npm:0.0.0":
+  version: 0.0.0
+  resolution: "@ai-sdk/provider-utils@npm:0.0.0"
+  dependencies:
+    "@ai-sdk/provider": "npm:0.0.0"
+    eventsource-parser: "npm:1.1.2"
+    nanoid: "npm:3.3.6"
+    secure-json-parse: "npm:2.7.0"
+  peerDependencies:
+    zod: ^3.0.0
+  peerDependenciesMeta:
+    zod:
+      optional: true
+  checksum: 10/ea96c8a75e025ca8ca4bc9ea7002332bb5760f4e0127ed99c69d49fa6e0be3cfd22705d4f6ed2b497813770678590baa53b68b9735d431cd1a47c5c623e88f5f
+  languageName: node
+  linkType: hard
+
 "@ai-sdk/provider@npm:0.0.0":
   version: 0.0.0
   resolution: "@ai-sdk/provider@npm:0.0.0"
@@ -8513,26 +8530,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.29.0":
-  version: 5.29.0
-  resolution: "@tanstack/react-query-devtools@npm:5.29.0"
+"@tanstack/react-query-devtools@npm:^5.29.2":
+  version: 5.29.2
+  resolution: "@tanstack/react-query-devtools@npm:5.29.2"
   dependencies:
     "@tanstack/query-devtools": "npm:5.28.10"
   peerDependencies:
-    "@tanstack/react-query": ^5.29.0
+    "@tanstack/react-query": ^5.29.2
     react: ^18.0.0
-  checksum: 10/064fb2c76ef26d63ce3b35542f52ef0cc924212a86fa06e27b15f557df83f58c2e9a7b46a954b9552b97dfa48553b8e51bf6d3a35f0132952a4b0b67bf1bd6ff
+  checksum: 10/83226e7c5eefa1faddcf1f1ddcf65137f3926468d0e029bbd4bae124606e00ff11641cd9624f3bc2b07159ea6333752c2382359bfab107b98d83ceb1f56bdc30
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.29.0":
-  version: 5.29.0
-  resolution: "@tanstack/react-query@npm:5.29.0"
+"@tanstack/react-query@npm:^5.29.2":
+  version: 5.29.2
+  resolution: "@tanstack/react-query@npm:5.29.2"
   dependencies:
     "@tanstack/query-core": "npm:5.29.0"
   peerDependencies:
     react: ^18.0.0
-  checksum: 10/837628e3e990f5046400005ba5553fe63a2c15fc9d699063298ea800167c641055fc8e5483278924912a629f4eaa691ec253df4b23521e1c0d1b5c5af9af6515
+  checksum: 10/fff25a36d764b0bec7d4ec3f499a74881abf043e81a8f97c71ffffd52fb6b1cfd60f0199ac4150902beccc95e80b7c32ec3a56ae2ee07bdd388e14bb4546123b
   languageName: node
   linkType: hard
 
@@ -9497,13 +9514,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.2.76":
-  version: 18.2.76
-  resolution: "@types/react@npm:18.2.76"
+"@types/react@npm:18.2.77":
+  version: 18.2.77
+  resolution: "@types/react@npm:18.2.77"
   dependencies:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/25e9f548ba72be3e0cc624653e3bf2ec7d3ad1ede522e474884375eb352be977098857fe89611295ae3f5dd2f370305955a396996cde93c10fb9d1fbb93a5a74
+  checksum: 10/80d7ad9cf13e15895a857c66f5b0c1ce758c1e7580a76936d8d1b19c71e4485fa4b35d762a1de98de4eb91506cbc8507582c9a979f357b6f5f75f86009d8ca07
   languageName: node
   linkType: hard
 
@@ -10703,11 +10720,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.0.21":
-  version: 3.0.21
-  resolution: "ai@npm:3.0.21"
+"ai@npm:^3.0.22":
+  version: 3.0.22
+  resolution: "ai@npm:3.0.22"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.0"
+    "@ai-sdk/provider-utils": "npm:0.0.0"
     eventsource-parser: "npm:1.1.2"
     json-schema: "npm:0.4.0"
     jsondiffpatch: "npm:0.6.0"
@@ -10736,7 +10754,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/c97b55d78f5b451a88d170cbb8f8d58da2096f7c4725f03562ccd2ff6e75ea388214d34f6ac98933f8a2edae3e08a2d8772103609b0455c2573fcb6b4f6f17d1
+  checksum: 10/8a292bf604ca85a3b81adbe84ed3a96df88add13a96aaaec3cdaf16f6e19cc0460ba4b5a1226a18b5307efacda18f7156fee4624183ceb89b56f7d87423b8c7e
   languageName: node
   linkType: hard
 
@@ -16479,13 +16497,13 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.17"
     "@storybook/react": "npm:^7.6.17"
     "@storybook/types": "npm:^7.6.17"
-    "@tanstack/react-query": "npm:^5.29.0"
-    "@tanstack/react-query-devtools": "npm:^5.29.0"
+    "@tanstack/react-query": "npm:^5.29.2"
+    "@tanstack/react-query-devtools": "npm:^5.29.2"
     "@turbo/gen": "npm:^1.13.2"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.12.7"
-    "@types/react": "npm:18.2.76"
+    "@types/react": "npm:18.2.77"
     "@types/react-dom": "npm:18.2.25"
     "@types/react-headroom": "npm:^3.2.3"
     "@types/remove-markdown": "npm:^0.3.4"
@@ -16505,7 +16523,7 @@ __metadata:
     "@vercel/analytics": "npm:^1.2.2"
     "@vercel/kv": "npm:^1.0.1"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.0.21"
+    ai: "npm:^3.0.22"
     axios: "npm:^1.6.8"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:^4.7.6"
@@ -16542,7 +16560,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-headroom: "npm:^3.2.1"
-    react-hook-form: "npm:7.51.2"
+    react-hook-form: "npm:7.51.3"
     react-hook-form-persist: "npm:^3.0.0"
     react-i18next: "npm:^14.1.0"
     react-icons: "npm:^5.0.1"
@@ -16555,12 +16573,12 @@ __metadata:
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.12"
     react-use: "npm:^17.5.0"
-    recharts: "npm:^2.12.4"
+    recharts: "npm:^2.12.5"
     remove-markdown: "npm:^0.5.0"
     storybook: "npm:^7.6.17"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
-    stripe: "npm:^15.0.0"
+    stripe: "npm:^15.1.0"
     tesseract.js: "npm:^5.0.5"
     turbo: "npm:^1.13.2"
     twitter-api-v2: "npm:^1.16.1"
@@ -25639,12 +25657,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:7.51.2":
-  version: 7.51.2
-  resolution: "react-hook-form@npm:7.51.2"
+"react-hook-form@npm:7.51.3":
+  version: 7.51.3
+  resolution: "react-hook-form@npm:7.51.3"
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
-  checksum: 10/30a6d7dec2d8bcdfd9ad92508d0a19e0fb6b344034a5dfb74ff419b54ef29f70e381bbf11bf57ddb808d37748f86581f1679fecac33860944b1baf3217a10f7a
+  checksum: 10/37f5d681b0f9d6a64b56e38c6ea98941c78d2634e175e7722e66a6bd72b4b22a73a5b912ada8cc010b5ec9e1019b8e2d4a6b0f38e87280600f8e921dee96aaca
   languageName: node
   linkType: hard
 
@@ -26297,9 +26315,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recharts@npm:^2.12.4":
-  version: 2.12.4
-  resolution: "recharts@npm:2.12.4"
+"recharts@npm:^2.12.5":
+  version: 2.12.5
+  resolution: "recharts@npm:2.12.5"
   dependencies:
     clsx: "npm:^2.0.0"
     eventemitter3: "npm:^4.0.1"
@@ -26312,7 +26330,7 @@ __metadata:
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/5f9009b24a8c48484f2417e1f756ebab456270fbdee5bbae1be2e2976bb1f067954184adb3e46274c255450c9ab636c3673eb68df59720d19da9366fdc76b982
+  checksum: 10/c4da741e16ea0f49e88f060bc27fa38797aca5fb46910bec7d899271648c26cd8c320bc4516d40823cd1ae948551ec19eba1e8108598f2b9cceb353b61e5a7db
   languageName: node
   linkType: hard
 
@@ -28694,13 +28712,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^15.0.0":
-  version: 15.0.0
-  resolution: "stripe@npm:15.0.0"
+"stripe@npm:^15.1.0":
+  version: 15.1.0
+  resolution: "stripe@npm:15.1.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10/d80dc1196335fa4095001bafe3a8ba3e567e32885b4b22cf1221a7b37801c891378cefe435137bdbbe9cc89bb58030fa0da58fd1703d4124fac15083250278b2
+  checksum: 10/8a401c87e2cfd36e77a0b770d02657ae193d7a0382f746b22b3e6cd1340c2eff27742395ac07647c25c6ac4537f26f77a308cb8ad666bce05c4f0260ab72218a
   languageName: node
   linkType: hard
 

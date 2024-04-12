@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 import { Box, Divider, Stack, useBreakpointValue } from '@chakra-ui/react'
 
-import { ASSETS_URL } from '@fc/config'
 import { Profile, RecommendedTweet, Tweet, TweetUserBase } from '@fc/types'
+import { getMediaUrl } from '@fc/utils'
 
 import { RecommendedSocialButtons } from './RecommendedSocialButtons'
 import { RecommendedTweetCardProps } from './types'
@@ -33,7 +33,7 @@ export const RecommendedTweetCard: FC<RecommendedTweetCardProps> = ({
     let image: string | undefined
 
     if (recommendedTweet?.image?.url) {
-      image = ASSETS_URL + recommendedTweet?.image?.url
+      image = getMediaUrl(recommendedTweet?.image)
     }
 
     if (recommendedTweet?.originalTweet?.image) {

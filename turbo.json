@@ -43,7 +43,6 @@
     "clean": {},
     "storybook": { "cache": false, "persistent": true },
     "storybook-build": {},
-    "db": { "cache": false, "persistent": true },
     "tsc": { "cache": false, "persistent": true }
   }
 }

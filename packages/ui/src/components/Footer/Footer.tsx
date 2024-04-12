@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
-import { Box, Link, Stack, Text, Wrap } from '@chakra-ui/react'
+import { Box, Stack, Text, Wrap } from '@chakra-ui/react'
 import NextImage from 'next/image'
+import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { FooterNav } from './FooterNav'

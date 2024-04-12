@@ -15,9 +15,9 @@ import { FaPaintBrush, FaSpinner } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { MdRemoveModerator } from 'react-icons/md'
 
-import { ASSETS_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { useArtsByArtist, useRecaptchaToken } from '@fc/services'
+import { getMediaUrl } from '@fc/utils'
 
 import { ArtCard } from '../ArtCard'
 import { Container } from '../Container'
@@ -54,7 +54,7 @@ export const AuthenticatedUserProfile = () => {
         <Stack>
           <WAvatar
             size="lg"
-            src={`${ASSETS_URL}${profile?.avatar}`}
+            src={getMediaUrl(profile?.avatar)}
             name={user?.username}
           />
           <HStack

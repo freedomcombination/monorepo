@@ -5,8 +5,8 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaChevronRight } from 'react-icons/fa'
 
-import { ASSETS_URL } from '@fc/config'
 import { Platform } from '@fc/types'
+import { getMediaUrl } from '@fc/utils'
 
 import { Navigate } from '../Navigate'
 import { WAvatar } from '../WAvatar'
@@ -32,8 +32,7 @@ export const PlatformList: FC<PlatformListProps> = ({ platforms }) => {
           rounded="lg"
           shadow="base"
         >
-          {/* TODO Create image component to handle internal/external image paths */}
-          <WAvatar size="2xl" src={`${ASSETS_URL}${platform.image?.url}`} />
+          <WAvatar size="2xl" src={getMediaUrl(platform.image)} />
           <Stack align={{ base: 'center', lg: 'start' }}>
             <Heading textAlign="center" size="md" as="h3" fontWeight={900}>
               {platform[`name_${locale}`]}

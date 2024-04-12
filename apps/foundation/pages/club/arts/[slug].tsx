@@ -4,12 +4,13 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetStaticPropsType } from 'next'
 import { NextSeoProps } from 'next-seo'
 
-import { ASSETS_URL, SITE_URL } from '@fc/config'
+import { SITE_URL } from '@fc/config'
 import { getSession } from '@fc/secrets'
 import { getArtBySlug } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Art, StrapiLocale } from '@fc/types'
+import { Art, StrapiLocale, UploadFile } from '@fc/types'
 import { ArtTemplate } from '@fc/ui'
+import { mapStrapiFileToOgImages } from '@fc/utils'
 
 import { Layout } from '../../../components'
 
@@ -55,7 +56,7 @@ export const getServerSideProps = async (
   const description = (art[descriptionKey] || '') as string
   const slug = art.slug
 
-  const image = art.image
+  const image = art.image as UploadFile
 
   const seo: NextSeoProps = {
     title,
@@ -71,18 +72,7 @@ export const getServerSideProps = async (
         authors: [art.artist?.name || art.artist?.email || ''],
         // TODO add tags
       },
-      images: image
-        ? [
-            {
-              url: ASSETS_URL + image.url,
-              secureUrl: ASSETS_URL + image.url,
-              type: image.mime,
-              width: image.width,
-              height: image.height,
-              alt: title,
-            },
-          ]
-        : [],
+      images: mapStrapiFileToOgImages(image, title),
     },
   }
 
