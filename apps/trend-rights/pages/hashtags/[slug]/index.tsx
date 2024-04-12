@@ -168,7 +168,7 @@ export const getServerSideProps = async (
         getOgImageSrc({
           title: post.title,
           text: post.description || undefined,
-          image: getMediaUrl(post.image),
+          image: src,
           ...post.imageParams,
         })
     }
