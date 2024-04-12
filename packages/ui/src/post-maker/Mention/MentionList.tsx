@@ -46,7 +46,7 @@ const MentionList: React.FC = () => {
           <TabList pos="sticky" top="0" bg="white">
             <Tab>{t('post.mention-tab-popular')}</Tab>
             <Tab>{t('post.mention-tab-saved')}</Tab>
-            <Tab onClick={onRandomMention}>{t('post.random-mention-button')}</Tab> {/*  What should I add here? */}
+            <Tab onClick={onRandomMention}>{t('post.mention-tab-random')}</Tab>
           </TabList>
           <TabPanels>
             <TabPanel p={0}>
