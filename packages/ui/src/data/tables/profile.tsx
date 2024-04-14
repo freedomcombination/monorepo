@@ -45,8 +45,10 @@ export const useProfileColumns = (): WTableProps<
           Authenticated: 'gray',
           Author: 'facebook',
           ContentManager: 'orange',
+          'Kunsthalte Coordinator': 'teal',
           Jury: 'yellow',
           Public: 'gray',
+          'Platform Coordinator': 'green',
           Translator: 'whatsapp',
         }
 
