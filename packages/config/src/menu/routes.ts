@@ -24,4 +24,6 @@ export const {
   privacy,
   'trend-rights': trendRights,
   term,
+  tweets,
+  news,
 } = ROUTES
