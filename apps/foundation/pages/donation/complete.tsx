@@ -27,19 +27,19 @@ export const getServerSideProps = async (
   const { query } = context
   const locale = context.locale as StrapiLocale
   try {
-    if (!query.id || !query.status || !query.session_id) {
+    if (query.status === 'cancel') {
       return {
         props: {
-          status: 'error',
+          status: 'cancel',
           ...(await ssrTranslations(locale)),
         },
       }
     }
 
-    if (query.status === 'cancel') {
+    if (!query.id || !query.status || !query.session_id) {
       return {
         props: {
-          status: 'cancel',
+          status: 'error',
           ...(await ssrTranslations(locale)),
         },
       }
