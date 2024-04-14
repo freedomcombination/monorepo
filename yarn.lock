@@ -10216,6 +10216,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/edge-config-fs@npm:0.1.0":
+  version: 0.1.0
+  resolution: "@vercel/edge-config-fs@npm:0.1.0"
+  checksum: 10/4eb27927a1c6a9d77cee4457424e208c3ff7f01e1cd0249b133804d12fd7099bd1aed6a9d9574b122d3bd59289b294a913b4df05bb69aca6091c8a020cbc2121
+  languageName: node
+  linkType: hard
+
+"@vercel/edge-config@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@vercel/edge-config@npm:1.1.0"
+  dependencies:
+    "@vercel/edge-config-fs": "npm:0.1.0"
+    ts-essentials: "npm:9.4.1"
+  peerDependencies:
+    "@opentelemetry/api": ^1.7.0
+  peerDependenciesMeta:
+    "@opentelemetry/api":
+      optional: true
+  checksum: 10/baa3a57b66bc3fb562933cdb16df9b19157d51b685553ff68dbb7c7dd3050182d892f385dbc6bddaf2af05e7f45034132435fd3772d4ac9255082b2d39ecf146
+  languageName: node
+  linkType: hard
+
 "@vercel/kv@npm:^1.0.1":
   version: 1.0.1
   resolution: "@vercel/kv@npm:1.0.1"
@@ -16484,6 +16506,7 @@ __metadata:
     "@uppy/react": "npm:^3.3.0"
     "@uppy/url": "npm:^3.6.0"
     "@vercel/analytics": "npm:^1.2.2"
+    "@vercel/edge-config": "npm:^1.1.0"
     "@vercel/kv": "npm:^1.0.1"
     "@vercel/og": "npm:^0.6.2"
     ai: "npm:^3.0.22"
@@ -29425,6 +29448,18 @@ __metadata:
   version: 0.2.0
   resolution: "ts-easing@npm:0.2.0"
   checksum: 10/e67ee862acca3b2e2718e736f31999adcef862d0df76d76a0e138588728d8a87dfec9978556044640bd0e90203590ad88ac2fe8746d0e9959b8d399132315150
+  languageName: node
+  linkType: hard
+
+"ts-essentials@npm:9.4.1":
+  version: 9.4.1
+  resolution: "ts-essentials@npm:9.4.1"
+  peerDependencies:
+    typescript: ">=4.1.0"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10/e689fb92545ea3ab70d3b6846696866b79813e20bd23ec34fdf1812b6be5aaa70eea374f7363b9f850f2e1bf864d90b6390b9f1fc3ce3c4e6207a9aa068252f0
   languageName: node
   linkType: hard
 
