@@ -35,9 +35,10 @@ const MentionList: React.FC = () => {
     const randomMention = sample(savedMentions)
 
     
-    if (randomMention?.screen_name) {
+    if (randomMention?.screen_name && typeof activePostId === 'number') {
       addMentionToPost(activePostId, randomMention.screen_name)
     }
+    
   }
 
   return (
