@@ -16,6 +16,8 @@ type SiteRouteKey =
   | 'donation'
   | 'dashboard'
   | 'foundation'
+  | 'news'
+  | 'tweets'
 
 type EndpointRouteKey =
   | 'anbi'
@@ -176,5 +178,17 @@ export const ROUTES: Record<RouteKey, MenuType> = {
     en: 'Become a Volunteer',
     nl: 'Word Vrijwilliger',
     tr: 'Gönüllü Ol',
+  },
+  news: {
+    link: '/news',
+    en: 'News',
+    nl: 'Nieuws',
+    tr: 'Haberler',
+  },
+  tweets: {
+    link: '/tweets',
+    en: 'Tweets',
+    nl: 'Tweets',
+    tr: 'Tweets',
   },
 }
