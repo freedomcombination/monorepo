@@ -17,7 +17,7 @@ import {
 
 import { useHashtag } from '@fc/services'
 
-// import { useHashtagContext } from './HashtagProvider' 
+// import { useHashtagContext } from './HashtagProvider'
 import { HashtagStats } from './HashtagStats'
 // import { MentionList } from './Mention'
 import { PostMakerTweetList } from './PostMakerTweetCard'
@@ -39,7 +39,7 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
 
   return (
     <>
-    {/* 
+      {/* 
       <Modal
         closeOnOverlayClick={true}
         isOpen={!isMobile && mentionsDisclosure.isOpen}
