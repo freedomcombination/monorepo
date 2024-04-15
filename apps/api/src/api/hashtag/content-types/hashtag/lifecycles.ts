@@ -17,8 +17,12 @@ const set = async (key: string, value: string) => {
         ],
       }),
     }
-    const updateEdgeConfig = await fetch(requestUrl, requestConfig)
-    return await updateEdgeConfig.json()
+    const response = await fetch(requestUrl, requestConfig)
+    const result = await response.json()
+
+    if (!response.ok) throw new Error(result.message)
+
+    return result
   } catch (error) {
     console.log(error)
   }
@@ -27,14 +31,14 @@ const set = async (key: string, value: string) => {
 export default {
   async afterCreate({ result }) {
     const slug = result.slug
-    const isoTime = result.datetime.toISOString()
+    const isoTime = result.date
     const edgeValue = `${slug}__${isoTime}`
     await set('last-hashtag', edgeValue)
   },
 
   async afterUpdate({ result }) {
     const slug = result.slug
-    const isoTime = result.datetime.toISOString()
+    const isoTime = result.date
     const edgeValue = `${slug}__${isoTime}`
     await set('last-hashtag', edgeValue)
   },
