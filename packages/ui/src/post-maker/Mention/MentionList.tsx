@@ -1,5 +1,5 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel, VStack } from '@chakra-ui/react'
-import { shuffle } from 'lodash'
+import { sample } from 'lodash'
 import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
 
