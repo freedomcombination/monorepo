@@ -88,12 +88,8 @@ const DisplayArchive: FC<{ archiveContent: ArchiveContent }> = ({
 
   return (
     <List p={2} spacing={2} textAlign={'left'}>
-      <ListItem fontWeight="bold">
-        {archiveContent.title}
-      </ListItem>
-      <ListItem color={'gray.500'}>
-        {archiveContent.source}
-      </ListItem>
+      <ListItem fontWeight="bold">{archiveContent.title}</ListItem>
+      <ListItem color={'gray.500'}>{archiveContent.source}</ListItem>
       <ListItem color={'gray.500'}>
         <Link isExternal href={archiveContent.link}>
           {archiveContent.link}
