@@ -32,9 +32,10 @@ const MentionList: React.FC = () => {
   }
 
   const onRandomMention = () => {
-    if (activePostId && savedMentions.length > 0) {
-      const shuffledMentions = shuffle(savedMentions)
-      const randomMention = shuffledMentions[0]
+    const randomMention = sample(savedMentions)
+
+    
+    if (randomMention?.screen_name) {
       addMentionToPost(activePostId, randomMention.screen_name)
     }
   }
