@@ -39,7 +39,6 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
 
   return (
     <>
-    {/* Modal and draweer parts of the code were commented out and - TrendListTabs, MentionList, useHashtagContext, useBreakpointValue were commented because they were not used after modal-drawer comments */}
     {/* 
       <Modal
         closeOnOverlayClick={true}
