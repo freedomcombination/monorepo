@@ -130,7 +130,7 @@
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "prettier": "^3.2.5",
-    "storybook": "^7.6.17",
+    "storybook": "^8.0.8",
     "stream-browserify": "^3.0.0",
     "turbo": "^1.13.2",
     "type-fest": "^4.15.0",
