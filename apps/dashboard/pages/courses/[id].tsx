@@ -130,7 +130,12 @@ const CoursePage = () => {
               <Text>{course?.[`title_${locale}`]}</Text>
               <AccordionIcon ml={'auto'} />
             </AccordionButton>
-            <AccordionPanel mt={4} bg={'white'} rounded={'md'} overflow={'auto'}>
+            <AccordionPanel
+              mt={4}
+              bg={'white'}
+              rounded={'md'}
+              overflow={'auto'}
+            >
               {course && (
                 <ModelEditForm<Course>
                   endpoint="courses"

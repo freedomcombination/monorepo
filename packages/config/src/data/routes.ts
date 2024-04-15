@@ -190,5 +190,5 @@ export const ROUTES: Record<RouteKey, MenuType> = {
     en: 'Tweets',
     nl: 'Tweets',
     tr: 'Tweets',
-  }
+  },
 }

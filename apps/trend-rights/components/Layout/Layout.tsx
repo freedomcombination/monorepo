@@ -3,7 +3,7 @@ import { FC, PropsWithChildren, useEffect } from 'react'
 import { NextSeoProps } from 'next-seo'
 
 import { menus, socialLinks } from '@fc/config'
-import { news, tweets } from '@fc/config/src/menu/routes'
+import { trendRightsWithProfile } from '@fc/config/src/menu/trend-rights'
 import { useAuthContext } from '@fc/context'
 import { Layout as AppLayout, UserFeedback, useScroll } from '@fc/ui'
 
@@ -27,20 +27,14 @@ export const Layout: FC<LayoutProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  let headerMenu = menus['trend-rights'].headerMenu
-  const footerMenu = menus['trend-rights'].footerMenu
-
-  if (isLoggedIn) {
-    headerMenu = [news, tweets, ...headerMenu]
-    footerMenu[0].children = [news, tweets, ...(footerMenu[0].children ?? [])]
-  }
+  const menu = isLoggedIn ? trendRightsWithProfile : menus['trend-rights']
 
   return (
     <>
       <AppLayout
         seo={seo}
         headerProps={{
-          headerMenu,
+          headerMenu: menu.headerMenu,
           isDark,
           logo:
             isDark && !isScrolled
@@ -49,7 +43,7 @@ export const Layout: FC<LayoutProps> = ({
         }}
         footerProps={{
           name: 'trend-rights',
-          menu: footerMenu,
+          menu: menu.footerMenu,
           about: 'trend-rights',
           socialItems: socialLinks['trend-rights'],
           logo: '/images/trend-rights-logo-light.svg',
