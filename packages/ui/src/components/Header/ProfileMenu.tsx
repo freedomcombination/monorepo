@@ -25,7 +25,7 @@ import { Navigate } from '../Navigate'
 export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   const isScrolled = useScroll()
   const { t } = useTranslation()
-  const { user, profile, logout } = useAuthContext()
+  const { user, profile, logout, isLoading } = useAuthContext()
   const { pathname } = useRouter()
   const loginHref = `/login?returnUrl=${pathname}`
 
@@ -37,6 +37,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
         <Link href={loginHref} className="login-link">
           <Button
             size="sm"
+            isLoading={isLoading}
             variant={!isScrolled && isDark ? 'solid' : 'outline'}
             rightIcon={<FiLogIn />}
           >

@@ -12,7 +12,9 @@ export type RoleName =
   | 'Author'
   | 'ContentManager Translator'
   | 'ContentManager'
+  | 'Kunsthalte Coordinator'
   | 'Jury'
+  | 'Platform Coordinator'
   | 'Public'
   | 'Translator'
 
@@ -29,6 +31,8 @@ export type RoleType =
   | 'contentmanager'
   | 'contentmanager_translator'
   | 'jury'
+  | 'kunsthaltecoordinator'
+  | 'platformcoordinator'
   | 'public'
   | 'translator'
 
