@@ -34,17 +34,18 @@ export const getHashtagBySlug = async (
 
   const posts =
     hashtag.posts
-      ?.filter(p => p.image || p.caps)
+      ?.filter(p => p.image || p.caps || p.imageParams)
       .map((p, index) => ({
         ...p,
         index,
-        image: {
+        image: p.image || p.caps ? {
           url:
             p.image?.formats?.small?.url ||
             p.image?.formats?.medium?.url ||
             p.image?.url ||
             p.caps?.url,
-        } as UploadFile,
+        } as UploadFile :
+          p.imageParams as UploadFile,
       })) || []
 
   const localizations = (hashtag.localizations?.map(l => ({
