@@ -21,11 +21,13 @@ import { useGenPostContext } from './GenPostProvider'
 
 type ArchivePopoverProps = PropsWithChildren<{
   archiveId: number
+  includeContent?: boolean
 }>
 
 export const ArchivePopover: FC<ArchivePopoverProps> = ({
   archiveId,
   children,
+  includeContent = false,
 }) => {
   const { getArchive } = useGenPostContext()
 
@@ -39,16 +41,22 @@ export const ArchivePopover: FC<ArchivePopoverProps> = ({
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent>
         {archiveContent ? (
-          <DisplayArchive archiveContent={archiveContent} />
+          <DisplayArchive
+            archiveContent={archiveContent}
+            includeContent={includeContent}
+          />
         ) : (
-          <FetchArchive id={archiveId} />
+          <FetchArchive id={archiveId} includeContent={includeContent} />
         )}
       </PopoverContent>
     </Popover>
   )
 }
 
-const FetchArchive: FC<{ id: number }> = ({ id }) => {
+const FetchArchive: FC<{
+  id: number
+  includeContent: boolean
+}> = ({ id, includeContent }) => {
   /*
         In post-maker
         we use this component and there is no GenPostProvider that encapsulate it
@@ -78,12 +86,18 @@ const FetchArchive: FC<{ id: number }> = ({ id }) => {
       </Center>
     )
 
-  return <DisplayArchive archiveContent={archiveContent} />
+  return (
+    <DisplayArchive
+      archiveContent={archiveContent}
+      includeContent={includeContent}
+    />
+  )
 }
 
-const DisplayArchive: FC<{ archiveContent: ArchiveContent }> = ({
-  archiveContent,
-}) => {
+const DisplayArchive: FC<{
+  archiveContent: ArchiveContent
+  includeContent: boolean
+}> = ({ archiveContent, includeContent }) => {
   const { locale } = useRouter()
 
   return (
@@ -95,6 +109,11 @@ const DisplayArchive: FC<{ archiveContent: ArchiveContent }> = ({
           {archiveContent.link}
         </Link>
       </ListItem>
+      {includeContent && (
+        <ListItem noOfLines={6} overflow={'auto'}>
+          <Text>{archiveContent.content}</Text>
+        </ListItem>
+      )}
       {archiveContent.categories && archiveContent.categories.length > 0 && (
         <ListItem>
           <Wrap>

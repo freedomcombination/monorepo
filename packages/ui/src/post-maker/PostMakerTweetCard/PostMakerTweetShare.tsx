@@ -18,6 +18,7 @@ import {
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { FaFacebook, FaLinkedin, FaTelegram, FaWhatsapp } from 'react-icons/fa'
 
+import { PostSentenceReference } from './PostSentenceReference'
 import { PostSentencesModal } from './PostSentencesModal'
 import { PostMakerTweetShareProps } from './types'
 
@@ -76,6 +77,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
                 icon={<FaLinkedin />}
               />
             </LinkedinShareButton>
+            <PostSentenceReference />
             {canManageSentences && <PostSentencesModal />}
           </HStack>
         </PopoverBody>
