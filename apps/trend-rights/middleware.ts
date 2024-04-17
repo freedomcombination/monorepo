@@ -1,5 +1,5 @@
 import { get } from '@vercel/edge-config'
-import { addHours, isWithinInterval, parseISO } from 'date-fns'
+import { addHours, isWithinInterval } from 'date-fns'
 import { NextRequest, NextResponse } from 'next/server'
 
 const corsHeaders = {
@@ -10,14 +10,15 @@ const corsHeaders = {
 
 const SLUG_COOKIE_KEY = 'hashtag-redirect-slug'
 const EDGE_CONFIG_KEY =
-  process.env.NODE_ENV === 'production' ? 'last-hashtag' : 'last-hashtag-dev'
+  process.env.VERCEL_ENV === 'production' ? 'last-hashtag' : 'last-hashtag-dev'
 
 export async function middleware(request: NextRequest) {
+  const response = NextResponse.next()
+
   if (request.nextUrl.pathname.startsWith('/api/')) {
     if (request.method === 'OPTIONS') {
       return NextResponse.json({}, { headers: corsHeaders })
     }
-    const response = NextResponse.next()
     Object.entries(corsHeaders).forEach(([key, value]) => {
       response.headers.append(key, value)
     })
@@ -27,35 +28,32 @@ export async function middleware(request: NextRequest) {
 
   const lastHashtag = await get(EDGE_CONFIG_KEY)
   const [slug, dateStr] = ((lastHashtag as string) || '').split('__')
+  const hashtagSlug = `/hashtags/${slug}`
 
   if (
     !slug ||
     !dateStr ||
-    request.nextUrl.pathname.startsWith('/hashtags/' + slug) || // already on the page
+    request.nextUrl.pathname.startsWith(hashtagSlug) || // already on the page
     request.cookies.get(SLUG_COOKIE_KEY)?.value === slug // already redirected
   ) {
-    return NextResponse.next()
+    return response
   }
 
-  const hashtagDatetime = parseISO(dateStr)
-  const hashtagDatetimePlus12Hours = addHours(hashtagDatetime, 12)
+  const hashtagDatetimePlus12Hours = addHours(dateStr, 12)
   const currentDate = new Date()
   const isCurrentDateWithinInterval = isWithinInterval(currentDate, {
-    start: hashtagDatetime,
+    start: dateStr,
     end: hashtagDatetimePlus12Hours,
   })
 
   if (isCurrentDateWithinInterval) {
-    return NextResponse.redirect(
-      new URL('/hashtags/' + slug, request.url),
-    ).cookies.set({
-      name: SLUG_COOKIE_KEY,
-      value: slug,
-      maxAge: 12 * 60 * 60,
-    })
+    // FIXME: Redirecting and cookie setting didn't work for me
+    response.cookies.set(SLUG_COOKIE_KEY, slug)
+
+    return NextResponse.redirect(new URL(hashtagSlug, request.url))
   }
 
-  return NextResponse.next()
+  return response
 }
 
 export const config = {
