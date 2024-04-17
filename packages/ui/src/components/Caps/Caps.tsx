@@ -4,11 +4,11 @@ import {
   chakra,
   Flex,
   forwardRef,
+  HStack,
   ImageProps,
   Skeleton,
-  Stack,
   Text,
-  useMergeRefs,
+  useMergeRefs
 } from '@chakra-ui/react'
 import { useMeasure } from 'react-use'
 
@@ -193,7 +193,7 @@ export const Caps = forwardRef<CapsProps, 'div'>(
               </chakra.svg>
 
               {/* Content */}
-              <Stack
+              <HStack
                 pos={'absolute'}
                 top={dimensions.padding}
                 bottom={dimensions.padding}
@@ -242,10 +242,13 @@ export const Caps = forwardRef<CapsProps, 'div'>(
                   fontSize={`${dimensions.font}px`}
                   overflow={'hidden'}
                   whiteSpace={'pre-wrap'}
+                  textAlign={flip ? 'right' : 'left'}
+                  flexGrow={1}
+                  alignItems={'center'}
                 >
                   {text}
                 </Text>
-              </Stack>
+              </HStack>
             </Flex>
           ) : (
             <Skeleton />

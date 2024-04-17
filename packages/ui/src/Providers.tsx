@@ -44,7 +44,7 @@ export const Providers: FC<ProvidersProps> = ({
   )
 
   const { locale } = useRouter()
-  const [cookie, updateCookie] = useCookie('lotus-cookiesAccepted')
+  const [cookie, updateCookie] = useCookie('__CB-ALLOWED')
 
   const onAllow = () => {
     updateCookie('true')

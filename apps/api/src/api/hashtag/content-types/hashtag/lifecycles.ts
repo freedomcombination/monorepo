@@ -1,8 +1,14 @@
-const EDGE_CONFIG_KEY =
-  process.env.NODE_ENV === 'production' ? 'last-hashtag' : 'last-hashtag-dev'
-const set = async (value: string) => {
+import { StrapiLocale } from '@fc/types'
+
+const getEdgeConfigKey = (locale: StrapiLocale) =>
+  process.env.VERCEL_ENV === 'production'
+    ? `${locale}-last-hashtag`
+    : `${locale}-last-hashtag-dev`
+
+const updateEdgeConfig = async (value: string, locale: StrapiLocale) => {
   try {
-    const requestUrl = `https://api.vercel.com/v1/edge-config/${process.env.EDGE_TOKEN}/items`
+    const configKey = getEdgeConfigKey(locale)
+    const requestUrl = process.env.EDGE_ENDPOINT
     const requestConfig = {
       method: 'PATCH',
       headers: {
@@ -13,7 +19,7 @@ const set = async (value: string) => {
         items: [
           {
             operation: 'update',
-            key: EDGE_CONFIG_KEY,
+            key: configKey,
             value,
           },
         ],
@@ -36,12 +42,6 @@ const set = async (value: string) => {
       )
     }
 
-    console.info(
-      "Updated edge config '",
-      EDGE_CONFIG_KEY,
-      "' to '" + value + "'",
-    )
-
     return result
   } catch (error) {
     console.error(error)
@@ -50,12 +50,22 @@ const set = async (value: string) => {
 
 export default {
   async afterCreate({ result }) {
-    const edgeValue = `${result.slug}__${result.date}`
-    await set(edgeValue)
+    if (result.publishedAt) {
+      const edgeValue = `${result.slug}__${result.date}`
+      await updateEdgeConfig(edgeValue, result.locale)
+    } else {
+      const edgeValue = ''
+      await updateEdgeConfig(edgeValue, result.locale)
+    }
   },
 
   async afterUpdate({ result }) {
-    const edgeValue = `${result.slug}__${result.date}`
-    await set(edgeValue)
+    if (result.publishedAt) {
+      const edgeValue = `${result.slug}__${result.date}`
+      await updateEdgeConfig(edgeValue, result.locale)
+    } else {
+      const edgeValue = ''
+      await updateEdgeConfig(edgeValue, result.locale)
+    }
   },
 }
