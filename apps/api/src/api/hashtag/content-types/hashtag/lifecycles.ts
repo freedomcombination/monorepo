@@ -52,12 +52,12 @@ const updateEdgeConfig = async (value: string) => {
 
 export default {
   async afterCreate({ result }) {
-    const edgeValue = `${result.id}__${result.date}`
+    const edgeValue = `${result.slug}__${result.date}`
     await updateEdgeConfig(edgeValue)
   },
 
   async afterUpdate({ result }) {
-    const edgeValue = `${result.id}__${result.date}`
+    const edgeValue = `${result.slug}__${result.date}`
     await updateEdgeConfig(edgeValue)
   },
 }
