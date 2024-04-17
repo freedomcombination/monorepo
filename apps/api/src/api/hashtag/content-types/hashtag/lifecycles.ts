@@ -1,13 +1,13 @@
-const EDGE_CONFIG_KEY =
-  process.env.VERCEL_ENV === 'production' ? 'last-hashtag' : 'last-hashtag-dev'
+import { StrapiLocale } from '@fc/types'
 
-// TODO: Update the edge config based on hashtag's locale
-// We need to first fetch the config items, then update the one we need
-// And what if the updated/created hashtag is newer than one of the upcoming events?
-// We should probably update the edge config only if the hashtag is closer to the current date
-// In this case, how do we handle updating for the latest hashtags which have created/updated in the past?
-const updateEdgeConfig = async (value: string) => {
+const getEdgeConfigKey = (locale: StrapiLocale) =>
+  process.env.VERCEL_ENV === 'production'
+    ? `${locale}-last-hashtag`
+    : `${locale}-last-hashtag-dev`
+
+const updateEdgeConfig = async (value: string, locale: StrapiLocale) => {
   try {
+    const configKey = getEdgeConfigKey(locale)
     const requestUrl = process.env.EDGE_ENDPOINT
     const requestConfig = {
       method: 'PATCH',
@@ -19,7 +19,7 @@ const updateEdgeConfig = async (value: string) => {
         items: [
           {
             operation: 'update',
-            key: EDGE_CONFIG_KEY,
+            key: configKey,
             value,
           },
         ],
@@ -42,8 +42,6 @@ const updateEdgeConfig = async (value: string) => {
       )
     }
 
-    console.info(`Updated edge config '${EDGE_CONFIG_KEY}' to '${value}'`)
-
     return result
   } catch (error) {
     console.error(error)
@@ -52,12 +50,22 @@ const updateEdgeConfig = async (value: string) => {
 
 export default {
   async afterCreate({ result }) {
-    const edgeValue = `${result.slug}__${result.date}`
-    await updateEdgeConfig(edgeValue)
+    if (result.publishedAt) {
+      const edgeValue = `${result.slug}__${result.date}`
+      await updateEdgeConfig(edgeValue, result.locale)
+    } else {
+      const edgeValue = ''
+      await updateEdgeConfig(edgeValue, result.locale)
+    }
   },
 
   async afterUpdate({ result }) {
-    const edgeValue = `${result.slug}__${result.date}`
-    await updateEdgeConfig(edgeValue)
+    if (result.publishedAt) {
+      const edgeValue = `${result.slug}__${result.date}`
+      await updateEdgeConfig(edgeValue, result.locale)
+    } else {
+      const edgeValue = ''
+      await updateEdgeConfig(edgeValue, result.locale)
+    }
   },
 }
