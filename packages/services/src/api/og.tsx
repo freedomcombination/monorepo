@@ -230,6 +230,9 @@ export const ogRouter = async (req: NextRequest) => {
                 fontSize: `${dimensions.font}px`,
                 overflow: 'hidden',
                 whiteSpace: 'pre-wrap',
+                textAlign: 'center',
+                flexGrow: 1,
+                alignItems: 'center',
               }}
             >
               {text}
