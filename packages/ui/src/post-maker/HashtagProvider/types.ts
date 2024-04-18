@@ -23,6 +23,7 @@ export type HashtagActions = {
   removeStoredMention: (mention: string) => void
   removeTrendFromPost: (postId: number, trend: string) => void
   setActivePostId: (postId: number) => void
+  setSentence: (sentence: PostSentence | null) => void
   setMentionSearchKey: (key: string) => void
   updatePostSentenceShares: (args: { postId: number } & PostStats) => void
   updateStoredMentions: (mention: MentionUserData) => void
@@ -40,6 +41,8 @@ export type HashtagState = {
   postTrends: Record<number, string[]>
   savedMentions: MentionUserData[]
   trendsDisclosure: UseDisclosureReturn
+  archiveDisclosure: UseDisclosureReturn
+  sentence: PostSentence | null
 }
 
 export type HashtagContextType = HashtagState & HashtagActions
