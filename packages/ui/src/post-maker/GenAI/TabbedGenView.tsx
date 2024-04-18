@@ -99,10 +99,7 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
                 key={archiveContent.id}
                 _selected={{ fontWeight: 600, color: `${colorScheme}.500` }}
               >
-                <ArchivePopover
-                  archiveId={archiveContent.id}
-                  colorScheme={colorScheme}
-                >
+                <ArchivePopover archiveId={archiveContent.id}>
                   <Text maxW={200} whiteSpace={'nowrap'}>
                     Archive {archiveContent.id}
                   </Text>

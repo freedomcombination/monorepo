@@ -10752,9 +10752,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.0.23":
-  version: 3.0.23
-  resolution: "ai@npm:3.0.23"
+"ai@npm:^3.0.24":
+  version: 3.0.24
+  resolution: "ai@npm:3.0.24"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.0"
     "@ai-sdk/provider-utils": "npm:0.0.1"
@@ -10786,7 +10786,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/9305c189d5bb559bbd78805f427b79da20514dae287eee2786a7c5482754653db6d53f07bb84cb4e75d267cc8925f0ee01adfee51dafdc601a3a4d04c5c8134b
+  checksum: 10/6b4ba4646a1a19029195a0237f0bcc30dda6044cc7fe2440328786e213ebe8d34c44f0b1051edf8f5ebb859cd4683a080af142e020ecc088f151074204088847
   languageName: node
   linkType: hard
 
@@ -16526,7 +16526,7 @@ __metadata:
     "@vercel/edge-config": "npm:^1.1.0"
     "@vercel/kv": "npm:^1.0.1"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.0.23"
+    ai: "npm:^3.0.24"
     axios: "npm:^1.6.8"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:^4.7.6"
@@ -16556,7 +16556,7 @@ __metadata:
     next-recaptcha-v3: "npm:^1.4.1"
     next-seo: "npm:^6.5.0"
     next-share: "npm:^0.27.0"
-    openai: "npm:^4.38.0"
+    openai: "npm:^4.38.1"
     os-browserify: "npm:^0.3.0"
     path-browserify: "npm:^1.0.1"
     prettier: "npm:^3.2.5"
@@ -16582,7 +16582,7 @@ __metadata:
     storybook: "npm:^7.6.17"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
-    stripe: "npm:^15.2.0"
+    stripe: "npm:^15.3.0"
     tesseract.js: "npm:^5.0.5"
     turbo: "npm:^1.13.2"
     twitter-api-v2: "npm:^1.16.1"
@@ -16592,7 +16592,7 @@ __metadata:
     usehooks-ts: "npm:^3.1.0"
     yup: "npm:^1.4.0"
     yup-locales: "npm:^1.2.21"
-    zod: "npm:^3.22.4"
+    zod: "npm:^3.22.5"
   languageName: unknown
   linkType: soft
 
@@ -23781,9 +23781,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openai@npm:^4.38.0":
-  version: 4.38.0
-  resolution: "openai@npm:4.38.0"
+"openai@npm:^4.38.1":
+  version: 4.38.1
+  resolution: "openai@npm:4.38.1"
   dependencies:
     "@types/node": "npm:^18.11.18"
     "@types/node-fetch": "npm:^2.6.4"
@@ -23795,7 +23795,7 @@ __metadata:
     web-streams-polyfill: "npm:^3.2.1"
   bin:
     openai: bin/cli
-  checksum: 10/617d86d6f4f5c317cbe2c946a306bcd9eaa6b2d1dd380f684e2d93581733199defafe08c4a3fe8de84ec8c0006b5ba4b95cdbe5d6c1cf7f277f0d2094561b295
+  checksum: 10/47c4b1501e61c9e3e7fe9c278c7c305f047a1cfbeab0bab63ecedc3b2a00d105626b41ea5f7698925c24adaff3f720d8c91b9f7f04bf34820361bfc7d1cfeb93
   languageName: node
   linkType: hard
 
@@ -28694,13 +28694,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^15.2.0":
-  version: 15.2.0
-  resolution: "stripe@npm:15.2.0"
+"stripe@npm:^15.3.0":
+  version: 15.3.0
+  resolution: "stripe@npm:15.3.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10/55436c006be7a8d67ea377c90bf29f72b3b3852d1ec8759e1edd6bf877ab20add5b8da1e52a19ee06cebd0db91dcfa39d55efcd5a0e4ce78e678840d5f53e73d
+  checksum: 10/e5e896a0aa2e014db44edd5b5caefcee75ac1368a0757c9bdfd231ae7eb5af4818dc4e475e4c2eb2e2f5ede4d9ac2a64a76244368478fcd626633bb204a3d523
   languageName: node
   linkType: hard
 
@@ -31568,10 +31568,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.22.4":
-  version: 3.22.4
-  resolution: "zod@npm:3.22.4"
-  checksum: 10/73622ca36a916f785cf528fe612a884b3e0f183dbe6b33365a7d0fc92abdbedf7804c5e2bd8df0a278e1472106d46674281397a3dd800fa9031dc3429758c6ac
+"zod@npm:^3.22.5":
+  version: 3.22.5
+  resolution: "zod@npm:3.22.5"
+  checksum: 10/a60c1b55c4cc824a5d0432ee29d93b087b5d8a1bd2d0f4cd6e7ffe5b602da9cab2f2c27b1ae6c96d88d9f778cc933cead70e08b7944a98893576c61dca5e0c74
   languageName: node
   linkType: hard
 
