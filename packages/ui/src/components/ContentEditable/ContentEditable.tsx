@@ -21,10 +21,13 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
   const contentRef = useRef<HTMLDivElement>(null)
   const caretPos = useRef<number>(0)
 
-  useDebounce(() => {
-    if (contentEditable)
-      onUpdate(currentValue)
-  }, 700, [currentValue])
+  useDebounce(
+    () => {
+      if (contentEditable) onUpdate(currentValue)
+    },
+    700,
+    [currentValue],
+  )
 
   const getCaret = (el: HTMLDivElement) => {
     let caretAt = 0

@@ -38,14 +38,16 @@ export const getHashtagBySlug = async (
       .map((p, index) => ({
         ...p,
         index,
-        image: p.image || p.caps ? {
-          url:
-            p.image?.formats?.small?.url ||
-            p.image?.formats?.medium?.url ||
-            p.image?.url ||
-            p.caps?.url,
-        } as UploadFile :
-          p.imageParams as UploadFile,
+        image:
+          p.image || p.caps
+            ? ({
+                url:
+                  p.image?.formats?.small?.url ||
+                  p.image?.formats?.medium?.url ||
+                  p.image?.url ||
+                  p.caps?.url,
+              } as UploadFile)
+            : (p.imageParams as UploadFile),
       })) || []
 
   const localizations = (hashtag.localizations?.map(l => ({
