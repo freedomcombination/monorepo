@@ -40,15 +40,14 @@ export const PostSentenceRefDrawer = () => {
   if (sentence == null) return null
 
   return (
-    <Stack>
-      <Stack background={'white'} borderRadius={'lg'} p={2} spacing={2}>
-        <Text>{t('message')} :</Text>
+    <Stack spacing={4}>
+      <Stack background={'white'} borderRadius={'lg'} p={4}>
         <Text>{sentence.value}</Text>
       </Stack>
 
       {allowStats && (
         <Stack background={'white'} borderRadius={'lg'} p={2} spacing={2}>
-          <Text>{t('stats')} :</Text>
+          <Text fontWeight={600}>{t('stats')} :</Text>
           <Text>
             {t('post.total-shares')} : {sentence.shareCount}
           </Text>
@@ -58,7 +57,7 @@ export const PostSentenceRefDrawer = () => {
       {isLoading || !archiveContent ? (
         <LoadingInfo isLoading={isLoading} />
       ) : (
-        <Stack background={'white'} borderRadius={'lg'} p={2} spacing={2}>
+        <Stack background={'white'} borderRadius={'lg'} p={4} spacing={2}>
           <Text>{t('reference')} :</Text>
           <Link href={archiveContent.link} fontSize={'2xl'} fontWeight={'bold'}>
             {archiveContent.title}
@@ -75,7 +74,12 @@ const LoadingInfo: FC<{ isLoading: boolean }> = ({ isLoading }) => {
   const { t } = useTranslation()
 
   return (
-    <Center background={'white'} borderRadius={'lg'} p={6}>
+    <Center
+      background={'white'}
+      borderRadius={'lg'}
+      py={16}
+      overflow={'hidden'}
+    >
       {isLoading ? (
         <Spinner size="xl" />
       ) : (
@@ -86,7 +90,6 @@ const LoadingInfo: FC<{ isLoading: boolean }> = ({ isLoading }) => {
           alignItems="center"
           justifyContent="center"
           textAlign="center"
-          height="200px"
           background={'white'}
         >
           <AlertIcon boxSize="40px" mr={0} />
@@ -94,7 +97,7 @@ const LoadingInfo: FC<{ isLoading: boolean }> = ({ isLoading }) => {
             {t('reference')}
           </AlertTitle>
           <AlertDescription maxWidth="sm">
-            No details found for this post
+            {t('no-reference-found')}
           </AlertDescription>
         </Alert>
       )}

@@ -73,7 +73,7 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerBody background={'gray.50'}>
+          <DrawerBody background={'gray.50'} p={4}>
             <PostSentenceRefDrawer />
           </DrawerBody>
         </DrawerContent>
