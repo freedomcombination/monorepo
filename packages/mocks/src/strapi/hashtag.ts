@@ -292,7 +292,6 @@ export const HASHTAG_MOCKS = {
               'Çıplak Arama - Nagehan Yüksel, (Kuran öğretmeni) Bakırköy Cezaevinden Eskişehir Cezaevine gönderildi. Bu sevk sırasında çıplak aramaya maruz kaldı. Nagehan Hanım, cezaevinden yazdığı mektubunda çıplak arandığını yazdı. Ama bu mektuba cezaevi yönetimi tarafından. Sadece mektuba el konulmakla kalmadı ve Nagihan Hanımı disiplin kuruluna sevk ettiler. ',
             content:
               'Çıplak Arama - Nagehan Yüksel, (Kuran öğretmeni) Bakırköy Cezaevinden Eskişehir Cezaevine gönderildi. Bu sevk sırasında çıplak aramaya maruz kaldı. Nagehan Hanım, cezaevinden yazdığı mektubunda çıplak arandığını yazdı. Ama bu mektuba cezaevi yönetimi tarafından. Sadece mektuba el konulmakla kalmadı ve Nagihan Hanımı disiplin kuruluna sevk ettiler. Çıplak arama bir insanlık suçudur. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -315,7 +314,6 @@ export const HASHTAG_MOCKS = {
               "Tekrar Tutuklama - Kübra Alvar öğretmendi. Hamileliğini cezaevinde geçirdi. Kübra Hanım doğuma bir hafta kala ancak tahliye edildi. Kübra Hanım ve eşi Ferhat Alvar Edirne'de tekrar tutklandılar. Geride ise 4,5 yaşında olan kızları Rahşan kaldı. Bu psikolojik travmalar çocukların sağlıklarını olumsuz etkiliyor. ",
             content:
               "Tekrar Tutuklama - Kübra Alvar öğretmendi. Hamileliğini cezaevinde geçirdi. Kübra Hanım doğuma bir hafta kala ancak tahliye edildi. Kübra Hanım ve eşi Ferhat Alvar Edirne'de tekrar tutklandılar. Geride ise 4,5 yaşında olan kızları Rahşan kaldı. Bu psikolojik travmalar çocukların sağlıklarını olumsuz etkiliyor. ",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -338,7 +336,6 @@ export const HASHTAG_MOCKS = {
               'Milletvekili Ömer Faruk Gergerlioğlu yaptığı açıklamada cezaevindeki bebeklere dikkat çekti. Söyle söyledi; "10 aylık süt kokan bir bebeği cezaevinde tutuyorsunuz ya! Hakkında kesinleşmiş bir kararı olmayan bir annenin kendisi ve bebeği cezaevinde! Kadınlara, annelere, hamile kadınlara çektirdiğiniz yetmiyormuş gibi şimdi de bebeklere çektiriyorsunuz."',
             content:
               'Tutsak Bebekler - Milletvekili Ömer Faruk Gergerlioğlu yaptığı açıklamada cezaevindeki bebeklere dikkat çekti. Söyle söyledi; "10 aylık süt kokan bir bebeği cezaevinde tutuyorsunuz ya! Hakkında kesinleşmiş bir kararı olmayan bir annenin kendisi ve bebeği cezaevinde! Kadınlara, annelere, hamile kadınlara çektirdiğiniz yetmiyormuş gibi şimdi de bebeklere çektiriyorsunuz."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -361,7 +358,6 @@ export const HASHTAG_MOCKS = {
               'Sultanbeyli davasından beraat eden askeri öğrencileri terörle iltisak diyerek yeniden hapse atıyorlar. Dini kitapları okumak, göz ucuyla namaz kılmak ve öğrenmek, dini kitaplarda parmak izlerinin olması artık suça delil sayılıyor.',
             content:
               'Sultanbeyli davasından beraat eden askeri öğrencileri terörle iltisak diyerek yeniden hapse atıyorlar. Dini kitapları okumak, göz ucuyla namaz kılmak ve öğrenmek, dini kitaplarda parmak izlerinin olması artık suça delil sayılıyor.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -382,7 +378,6 @@ export const HASHTAG_MOCKS = {
               'Medreseyi yusufiye şehidimiz Dr. Ahmet Riza Özkan, haksız yere ceza evine atıldı ve daha sonra mide kanseri geçirip vefat etti. Ardında 6 yaşında güzeller güzeli bir kızı ve iffet abidesi hanımı kaldı.',
             content:
               'Medreseyi yusufiye şehidimiz Dr. Ahmet Riza Özkan, haksız yere ceza evine atıldı ve daha sonra mide kanseri geçirip vefat etti. Ardında 6 yaşında güzeller güzeli bir kızı ve iffet abidesi hanımı kaldı.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -399,7 +394,6 @@ export const HASHTAG_MOCKS = {
               "Cemile-Mehmet Dönmez çifti Ağustos 2021'de tutuklanmıştı. Epilepsi nöbetleri geçiren Mesut(9) ve Nil(2,5) annesine kavuştu.Hasta bir bebeğin en fazla ihtiyaç duyduğu iki şey anne ve babasıdır.",
             content:
               "Cemile-Mehmet Dönmez çifti Ağustos 2021'de tutuklanmıştı. Epilepsi nöbetleri geçiren Mesut(9) ve Nil(2,5) annesine kavuştu.Hasta bir bebeğin en fazla ihtiyaç duyduğu iki şey anne ve babasıdır.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -905,7 +899,6 @@ export const HASHTAG_MOCKS = {
               "FC Akademi, senaryo yazarlığı eğitimiyle yeni yetenekleri keşfetmeyi hedefliyor! Bu eşsiz eğitim programı sayesinde, senaryo yazma becerilerinizi geliştirerek kendi hikayelerinizi dünyaya anlatabilirsiniz. Siz de FC Akademi'nin desteğiyle senaryo yazarlığı yolculuğuna adım atın! ",
             content:
               'FC Akademi senaryo yazarlığı eğitimi ile yeni senaristler yetiştirilmektedir.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -928,7 +921,6 @@ export const HASHTAG_MOCKS = {
               "FC Akademi'nin aylık söyleşileri, insan hakları konusunda farkındalık oluşturmayı hedefliyor. Önde gelen insan hakları uzmanlarıyla bir araya gelerek, bu önemli konuda bilgi edinin ve perspektifinizi genişletin. Siz de bu değerli etkinliklere katılarak sesinizi duyurun! ",
             content:
               'FC Akademi aylık söyleşiler ile insan haklaır konusunda farkındalık oluşturmayı hedeflemektedir. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -951,7 +943,6 @@ export const HASHTAG_MOCKS = {
               'FC Akademi proje eğitimi vermektedir. Hollanda içi ve Avrupa Birliği projeleri planlanmaktadır.',
             content:
               'FC Akademi proje eğitimi vermektedir. Hollanda içi ve Avrupa Birliği projeleri planlanmaktadır.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -974,7 +965,6 @@ export const HASHTAG_MOCKS = {
               'FC Akademi olarak Dijital çizim eğitimi verdik. Yeni dönemde tekrarını planlıyoruz.',
             content:
               'FC Akademi olarak Dijital çizim eğitimi verdik. Yeni dönemde tekrarını planlıyoruz.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -995,7 +985,6 @@ export const HASHTAG_MOCKS = {
               "FC Akademi, Hollanda'da planladığı eğitimlerle sizlere yeni fırsatlar sunuyor. Yazılım, söyleşi ve daha fazlasıyla kariyerinizi ileriye taşımak için şimdi harekete geçin. FC Akademi ailesine katılarak geleceğinize yön verin! ",
             content:
               "FC Akademi bünyesinde Hollanda'da yazılım, söyleşi ve eğitimler planlanmaktadır.  ",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1018,7 +1007,6 @@ export const HASHTAG_MOCKS = {
               'Heerenveen’ de Kunst Halte platformunun Türkiye’deki cadı avını resim yolu ile lanse etmek amacıyla organize ettiği sergide Sound of change grubuda şarkılar çalarak destek vermeye çalıştı',
             content:
               'Heerenveen’ de Kunst Halte platformunun Türkiye’deki cadı avını resim yolu ile lanse etmek amacıyla organize ettiği sergide Sound of change grubuda şarkılar çalarak destek vermeye çalıştı',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1041,7 +1029,6 @@ export const HASHTAG_MOCKS = {
               'Sound of Change grubu, Hengelo’ da farklı kültürden insanların biraraya geldiği iftar programına müzik çalarak eşlik etti',
             content:
               'Sound of Change grubu, Hengelo’ da farklı kültürden insanların biraraya geldiği iftar programına müzik çalarak eşlik etti',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1064,7 +1051,6 @@ export const HASHTAG_MOCKS = {
               'Haarlem’ de  Hollanda’ nın kurtuluş gününde Freedom Combination Vakfımız organizasyonuyla Türkiye’ de kadınlara yapılan hukuksuzlukları lanse etmek amacıyla stand programında Sound of Change grubu sokak müziği yaparak katıldı.',
             content:
               'Haarlem’ de  Hollanda’ nın kurtuluş gününde Freedom Combination Vakfımız organizasyonuyla Türkiye’ de kadınlara yapılan hukuksuzlukları lanse etmek amacıyla stand programında Sound of Change grubu sokak müziği yaparak katıldı.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1087,7 +1073,6 @@ export const HASHTAG_MOCKS = {
               'Denhaag’ ta Kunsthalte programının Türkiye’deki cadı avını sanat yoluyla lanse etmek amacıyla organize ettiği sergide Sound of change grubu da birkaç parça çalarak destek verdi.',
             content:
               'Denhaag’ ta Kunsthalte programının Türkiye’deki cadı avını sanat yoluyla lanse etmek amacıyla organize ettiği sergide Sound of change grubu da birkaç parça çalarak destek verdi.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1110,7 +1095,6 @@ export const HASHTAG_MOCKS = {
               'Sound of Change grubu günümüzde popülaritesi yüksek olan şarkıları Türkiye’ de yaşanan hukuksuzluklarla ilgili hikayelerle kombine ederek haftalık olarak yayınlıyor.',
             content:
               'Sound of Change grubu günümüzde popülaritesi yüksek olan şarkıları Türkiye’ de yaşanan hukuksuzluklarla ilgili hikayelerle kombine ederek haftalık olarak yayınlıyor.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1133,7 +1117,6 @@ export const HASHTAG_MOCKS = {
               'YOL tiyatrosu, farklı geçmişlere sahip insanların kalplerine ve zihinlerine dokunarak sınırları aşarak kültürler ve diller arasında köprü kurdu. Empati, anlayış ve birliğe ilham vermek için hikaye anlatımının evrensel gücünün bir hatırlatıcısı olarak hizmet etti.',
             content:
               'YOL tiyatrosu, farklı geçmişlere sahip insanların kalplerine ve zihinlerine dokunarak sınırları aşarak kültürler ve diller arasında köprü kurdu. Empati, anlayış ve birliğe ilham vermek için hikaye anlatımının evrensel gücünün bir hatırlatıcısı olarak hizmet etti.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1156,7 +1139,6 @@ export const HASHTAG_MOCKS = {
               '”Yol” tiyatro oyununu 4 şehir ve 2 ülkede oynadık önümüzdeki günlerde farklı şehirlerde oynamaya devam edeceğiz. “ve sonra ölüm gelir… en son ölüm gelir ama yine de erken deriz.”',
             content:
               '”Yol” tiyatro oyununu 4 şehir ve 2 ülkede oynadık önümüzdeki günlerde farklı şehirlerde oynamaya devam edeceğiz. “ve sonra ölüm gelir… en son ölüm gelir ama yine de erken deriz.”',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1179,7 +1161,6 @@ export const HASHTAG_MOCKS = {
               "2 Temmuz 2022'de, merakla beklenen turnemizin ilk şehri olan Amsterdam'da performansımız YOL tiyatrosunu sergileme fırsatı bulduk.",
             content:
               "2 Temmuz 2022'de, merakla beklenen turnemizin ilk şehri olan Amsterdam'da performansımız YOL tiyatrosunu sergileme fırsatı bulduk.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1202,7 +1183,6 @@ export const HASHTAG_MOCKS = {
               "YOL tiyatro topluluğu, 17 Eylül 2022'de canlı Utrecht şehrinde 350 seyirciye performanslarını sundu. İzleyicileri etkileyen etkileyici hikaye anlatımı ve güçlü sahne performansıyla, unutulmaz bir deneyim yaşattılar.",
             content:
               "YOL tiyatro topluluğu, 17 Eylül 2022'de canlı Utrecht şehrinde 350 seyirciye performanslarını sundu. İzleyicileri etkileyen etkileyici hikaye anlatımı ve güçlü sahne performansıyla, unutulmaz bir deneyim yaşattılar.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1223,7 +1203,6 @@ export const HASHTAG_MOCKS = {
               "10 Aralık 2022 tarihinde Brüksel'de ilk uluslararası turnemizi gerçekleştirdik ve 450 seyirciye performans sergiledik. Bu anlamlı bir olaydı ve sanatsal yolculuğumuzdaki önemli bir kilometre taşını işaretledi.",
             content:
               "10 Aralık 2022 tarihinde Brüksel'de ilk uluslararası turnemizi gerçekleştirdik ve 450 seyirciye performans sergiledik. Bu anlamlı bir olaydı ve sanatsal yolculuğumuzdaki önemli bir kilometre taşını işaretledi.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1244,7 +1223,6 @@ export const HASHTAG_MOCKS = {
               '"2016\'dan bu yana dünyanın dört bir yanında yaşanan insan hakları ihlalleri, sessiz kalmamızı gerektirmez. Birlikte hareket edelim ve adalet için sesimizi yükseltelim! \n\n',
             content:
               "2016'dan beri yaşanan insan hakları ihlallerini daha fazla insana duyurmaya çalışıyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1267,7 +1245,6 @@ export const HASHTAG_MOCKS = {
               'Birlikte Yaşama ve  Ögürlük Platformu ortak çalışma yaptığı platformların sahada ürettikleri içerikleri kullanıcıya ulaştırıyor.',
             content:
               'Ortak çalışma yaptığı platformların sahada ürettikleri içerikleri kullanıcıya ulaştırıyor.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1290,7 +1267,6 @@ export const HASHTAG_MOCKS = {
               "Birlikte Yaşama ve  Ögürlük Platformu websitesindeki ''Twit Yardımcısı'' uygulaması ile sosyal medya  kullanıcılarının desteğini daha hızlı alıyor.",
             content:
               "Websitesindeki ''Twit Yardımcısı'' uygulaması ile sosyal medya  kullanıcılarının desteğini daha hızlı alıyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1313,7 +1289,6 @@ export const HASHTAG_MOCKS = {
               'Yapilan Sosyal Medya kampanyalari ile bir cok ihlal azalmis ya da son bulmustur.Halen devam etmekte olan cezaevi ihlalleri, tutsak bebekler, geri itmeler, iskenceler gibi ihlalleriri ise daha fazla insana duyurmaya devam etmektedir.',
             content:
               'Yapilan Sosyal Medya kampanyalari ile bir cok ihlal azalmis ya da son bulmustur.Halen devam etmekte olan cezaevi ihlalleri, tutsak bebekler, geri itmeler, iskenceler gibi ihlalleriri ise daha fazla insana duyurmaya devam etmektedir.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1336,7 +1311,6 @@ export const HASHTAG_MOCKS = {
               "Türkiye'de ve yurt dışında yaşanan insan hakları ihlalleri son derece önemlidir ve bu ihlallere ilişkin bilgilerin geniş kitlelere ulaşması büyük önem taşımaktadır. Bu nedenle, bu hayati bilgiyi üç dilde paylaşıyoruz: Hollandaca, İngilizce ve Türkçe.",
             content:
               "Türkiye'de ve yurt dışında yaşanan insan hakları ihlalleri son derece önemlidir ve bu ihlallere ilişkin bilgilerin geniş kitlelere ulaşması büyük önem taşımaktadır. Bu nedenle, bu hayati bilgiyi üç dilde paylaşıyoruz: Hollandaca, İngilizce ve Türkçe.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1359,7 +1333,6 @@ export const HASHTAG_MOCKS = {
               'Birlikte Yaşama ve  Ögürlük Platformu websitesi aracılığıyla yaşanan insan hakları ihlalleri kayıt altında tutuluyor. Hukuki açıdan delil niteliğindeki bu arşive komuoyu rahatlıkla ulaşabilir.',
             content:
               'Websitesi aracılığıyla yaşanan insan hakları ihlalleri kayıt altında tutuluyor. Hukuki açıdan delil niteliğindeki bu arşive komuoyu rahatlıkla ulaşabilir.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1382,7 +1355,6 @@ export const HASHTAG_MOCKS = {
               'Freedom Combination Vakfı- Sanatın dilini evrensel kabul ederek, sanatın dili ile insan hakları ihlallerini daha fazla insana ulaştırmak da hedefleri arasındadır.',
             content:
               'Ögürlüğün Sesi Ol Vakfı - Sanatın dilini evrensel kabul ederek, sanatın dili ile insan hakları ihlallerini daha fazla insana ulaştırmak da hedefleri arasındadır.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1405,7 +1377,6 @@ export const HASHTAG_MOCKS = {
               'Özgürlüğün Sesi Ol Vakfı  - Sosyal medyanın gücünü kullanarak insan hakları ihlallerinin son bulmasını hedeflemektedir',
             content:
               'Özgürlüğün Sesi Ol Vakfı  - Sosyal medyanın gücünü kullanarak insan hakları ihlallerinin son bulmasını hedeflemektedir.  ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1428,7 +1399,6 @@ export const HASHTAG_MOCKS = {
               'Özgürlüğün Sesi Ol Vakfı -  Bünyesinde bulundurduğu çeşitli platform ve gruplarla insan hakları bilincinin kamuoyunda sağlıklı bir şekilde oluşması için çalışmalar yapmaktadır.',
             content:
               'Özgürlüğün Sesi Ol Vakfı -  Bünyesinde bulundurduğu çeşitli platform ve gruplarla insan hakları bilincinin kamuoyunda sağlıklı bir şekilde oluşması için çalışmalar yapmaktadır.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1450,7 +1420,6 @@ export const HASHTAG_MOCKS = {
               'Özgürlüğün Sesi Ol Vakfı -  Diğer insan hakları vakıflarından farklı olarak Sosyal Medya özelinde kurulmuş ilk ve tek vakıftır.',
             content:
               'Özgürlüğün Sesi Ol Vakfı -  Diğer insan hakları vakıflarından farklı olarak Sosyal Medya özelinde kurulmuş ilk ve tek vakıftır.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1473,7 +1442,6 @@ export const HASHTAG_MOCKS = {
               'Özgürlüğün Sesi Ol Vakfı - Gönüllülük esasına dayanarak çalışmalarını yürüten vakıf çeşitli meslek ve yaş grupları tarafından maddi ve manevi olarak desteklenmektedir.',
             content:
               'Özgürlüğün Sesi Ol Vakfı - Gönüllülük esasına dayanarak çalışmalarını yürüten vakıf çeşitli meslek ve yaş grupları tarafından maddi ve manevi olarak desteklenmektedir.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1496,7 +1464,6 @@ export const HASHTAG_MOCKS = {
               'Sanat durağı Hollandanın değişik yerlerinde sergiler yaptı. ',
             content:
               'Sanat durağı Hollandanın değişik yerlerinde sergiler yaptı. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1519,7 +1486,6 @@ export const HASHTAG_MOCKS = {
               'Son bır yılda Hengelo, Heerenven ve Utrecht gibi yerlerde sergiler yaptık. ',
             content:
               'Son bır yılda Hengelo, Heerenven ve Utrecht gibi yerlerde sergiler yaptık. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1542,7 +1508,6 @@ export const HASHTAG_MOCKS = {
               "Bir mültecinin gözünden Hollanda konulu sergimiz Heerenven'de sergilendi. ",
             content:
               "Bir mültecinin gözünden Hollanda konulu sergimiz Heerenven'de sergilendi. ",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1563,7 +1528,6 @@ export const HASHTAG_MOCKS = {
               'Hengelo şehrindeki "Bir Mültecinin Gözünden Hollanda" konulu sergimiz ziyaretçilerimizin yoğun ilgisini gördü. ',
             content:
               'Hengelo şehrindeki "Bir Mültecinin Gözünden Hollanda" konulu sergimiz ziyaretçilerimizin yoğun ilgisini gördü. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1586,7 +1550,6 @@ export const HASHTAG_MOCKS = {
               'Sint anna Sanat pazarındaki "Bir Mültecinin Gözünden Hollanda" konulu sergimiz ilk pazar tecrübesini yaşadı. ',
             content:
               'Sint anna Sanat pazarındaki "Bir Mültecinin Gözünden Hollanda" konulu sergimiz ilk pazar tecrübesini yaşadı. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1609,7 +1572,6 @@ export const HASHTAG_MOCKS = {
               'Bir Mültecinin Gözünden Hollanda konulu sergimiz ilk kez Utrecht şehrinde sergilendi. ',
             content:
               'Bir Mültecinin Gözünden Hollanda konulu sergimiz ilk kez Utrecht şehrinde sergilendi. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2455,7 +2417,6 @@ export const HASHTAG_MOCKS = {
             description:
               "KHK'lı Mehmet Parlak \n\nağır hastalığına rağmen uyugun olmayan cezaevi koşullarında yaşam mücadelesi veriyor. Tek böbreği olan Parlak çok fazla kilo kaybetti. \n\n",
             content: null,
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2477,7 +2438,6 @@ export const HASHTAG_MOCKS = {
               "\n\nKHK'lı fizik öğretmeni Şerife Sulukan\n\nFelçli, koltuk değneği kullanırken tutuklandı. 8 aydır Menemen R Tipi Cezaevi'nde tek başına kalıyor. Ağır hastalar için cezaevı şartları ölüm demektir.",
             content:
               "KHK'lı fizik öğretmeni Şerife Sulukan\n\nFelçli, koltuk değneği kullanırken tutuklandı. 8 aydır Menemen R Tipi Cezaevi'nde tek başına kalıyor. Ağır hastalar için cezaevı şartları ölüm demektir.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2500,7 +2460,6 @@ export const HASHTAG_MOCKS = {
               "\n\nKHK'lı Kamil Acar\n\nBöbrek yetmezliği teşhisi konulan Kamil Acar, denetimli serbestlik hakkı gasp ediliyor. Ailesi hastalığın ilerlemeden tedavi edilmesini istiyor.",
             content:
               "KHK'lı Kamil Acar\n\nBöbrek yetmezliği teşhisi konulan Kamil Acar, denetimli serbestlik hakkı gasp ediliyor. Ailesi hastalığın ilerlemeden tedavi edilmesini istiyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2523,7 +2482,6 @@ export const HASHTAG_MOCKS = {
               "\nKHK'larla Anayasanın ilkeleri ihlâl ediliyor.\n\n1-Hukuk devleti\n2-Kanunsuz suç/ceza olmaz\n3-Sanığın masumiyet karinesi\n4-Ceza durumu geçmişe yürümez\n5-Yargılamasız ceza olmaz",
             content:
               "KHK'larla Anayasanın ilkeleri ihlâl ediliyor.\n\n1-Hukuk devleti\n2-Kanunsuz suç/ceza olmaz\n3-Sanığın masumiyet karinesi\n4-Ceza durumu geçmişe yürümez\n5-Yargılamasız ceza olmaz",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2546,7 +2504,6 @@ export const HASHTAG_MOCKS = {
               "\nALS hastası ve geçirdiği kısmi felç nedeni ile %97 engelli olan Ayşe İpek,\n\n kendi ihtiyaçlarını karşılayamıyor, tek başına su dahi içemiyor. Ayşe Hanım'a 2. kez tutuklanan eşi Şükrü İpek bakıyordu. \nŞükrü ipek için acilen af çıkarılmalı",
             content:
               "ALS hastası ve geçirdiği kısmi felç nedeni ile %97 engelli olan Ayşe İpek, kendi ihtiyaçlarını karşılayamıyor, tek başına su dahi içemiyor. Ayşe Hanım'a 2. kez tutuklanan eşi Şükrü İpek bakıyordu. \nŞükrü ipek için acilen af çıkarılmalı",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2569,7 +2526,6 @@ export const HASHTAG_MOCKS = {
               "\nGiresun Espiye Cezaevi'nde tutuklu bulunan KHK'lı İbrahim Özer'e koşullu salıverilme hakkı verilmiyor. \n\nCezaevinde fazladan 1 yıl daha geçiren Özer'in yalnız ve bakıma muhtaç babası Selami Özer, oğlunu bekliyor.",
             content:
               "Giresun Espiye Cezaevi'nde tutuklu bulunan KHK'lı İbrahim Özer'e koşullu salıverilme hakkı verilmiyor. Cezaevinde fazladan 1 yıl daha geçiren Özer'in yalnız ve bakıma muhtaç babası Selami Özer, oğlunu bekliyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2592,7 +2548,6 @@ export const HASHTAG_MOCKS = {
               " Ayşe Neşe Gül \n\n10 yıl hapis cezasına çarptırıldı. Uzun süre eşi ve çocukları ile görüştürülmedi. \n\nEşi Cumhuriyet Savcısı Cevat Gül ise yasal mevzuata aykırı şekilde uzun süre hücre hapsinde tecrit edilerek psikolojik şiddete maruz kaldı 8 yıl 9 ay hapis cezasına çarptırıldı. \n\n2016'dan beri hücre hapsinde tutulmaktadır.\n",
             content:
               'Hakim Ayşe Neşe Gül, 80 aydır tutuklu ve hücrede…\nBu insan bunu hakedecek ne yaptı?',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2615,7 +2570,6 @@ export const HASHTAG_MOCKS = {
               "Edirne Kadın Kapalı Cezaevinde tutuklu ev hanımı Saliha Binay'ın yeni yürümeye başlayan 15 aylık mahpus oğlu Salih'in zor günler geçirdiği, ranzadan düştüğü ve kafasının yarıldığı öğrenildi. \n\nSaliha Binay’ın eşi KHK’lı öğretmen İbrahim Binay da aynı cezaevinde tutuklu. Mirza (7) ve Ahmet Muhsin (8) yaşında iki çocukları anne hasretiyle büyüyor.",
             content:
               "Saliha Binay hala tutuklu\nBu bebek cezaevinde büyüyor!\nKHK'li olmasalar bu durum yaşanmayacaktı.\nBu haksız zulüm sona ermeli!",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2638,7 +2592,6 @@ export const HASHTAG_MOCKS = {
               'SAKARYA\n\nAdem Erdoğdu 66 aydır cezaevinde.\nOrada kalbine pil takıldı.\nMayıs ayında kalp pilinde sorun çıktığı için yoğun bakıma kaldırılmıştı şimdi tekrar cezaevinde.\n\nBir insanın yaşam hakkı elinden alınmaya çalışılıyor',
             content:
               'SAKARYA\n\nAdem Erdoğdu 66 aydır cezaevinde.\nOrada kalbine pil takıldı.\nMayıs ayında kalp pilinde sorun çıktığı için yoğun bakıma kaldırılmıştı şimdi tekrar cezaevinde.\nBir insanın yaşam hakkı elinden alınmaya çalışılıyor',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2661,7 +2614,6 @@ export const HASHTAG_MOCKS = {
               "\nKübra Uzun\n\nYaklaşık 5.5 yıldır cezaevinde bulunan KHK'lı Ertuğrul Kuran'ın kızı Kübra ile son fotoğrafı.\n\nMinik Kübra yakalandığı bir hastalık neticesinde aramızdan ayrıldı ve babasına hasret ötelere göçtü.",
             content:
               "Kübra Uzun\nYaklaşık 5.5 yıldır cezaevinde bulunan KHK'lı Ertuğrul Kuran'ın kızı Kübra ile son fotoğrafı.\nMinik Kübra yakalandığı bir hastalık neticesinde aramızdan ayrıldı ve babasına hasret ötelere göçtü.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2684,7 +2636,6 @@ export const HASHTAG_MOCKS = {
               'Fatma-Selim Çevik çifti yıllardır\ncezaevinde tutuluyor.\n\nEvlatları Halim ve Ekrem anne baba tutukluluk travmasının\nüstüne, bir de birbirlerinden\nayrı teyzelerinde kalıyorlar.\n\nBu gülüşler solmasın.\nÇocuklar aileleriyle büyüsün.',
             content:
               'Fatma-Selim Çevik çifti yıllardır\ncezaevinde tutuluyor.\nEvlatları Halim ve Ekrem anne baba tutukluluk travmasının\nüstüne, bir de birbirlerinden\nayrı teyzelerinde kalıyorlar.\n\nBu gülüşler solmasın. Çocuklar aileleriyle büyüsün.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2705,7 +2656,6 @@ export const HASHTAG_MOCKS = {
               '\n\n5 Mayıs 2017\'den bu yana cezaevinde olan tarih öğretmeni Mahmut Kurt, 1 Mart 2023\'te "koşullu salıverilme hakkı" kazanmasına rağmen serbest bırakılmıyor.',
             content:
               '5 Mayıs 2017\'den bu yana cezaevinde olan tarih öğretmeni Mahmut Kurt, 1 Mart 2023\'te "koşullu salıverilme hakkı" kazanmasına rağmen serbest bırakılmıyor.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2728,7 +2678,6 @@ export const HASHTAG_MOCKS = {
               '\nMahpus KHK’lı öğretmen Kamil Acar, nakil esnasında cezaevi aracında maruz bırakıldığı şiddetli soğuk sebebi ile böbrek hastası oldu.\n\n2022 Eylül ayı itibariyle denetimli serbestliğik hakkına rağmen tahliye edilmiyor.',
             content:
               'Mahpus KHK’lı öğretmen Kamil Acar, nakil esnasında cezaevi aracında maruz bırakıldığı şiddetli soğuk sebebi ile böbrek hastası oldu.\n\n2022 Eylül ayı itibariyle denetimli serbestliğik hakkına rağmen tahliye edilmiyor.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2749,7 +2698,6 @@ export const HASHTAG_MOCKS = {
               'AFYON\n\nİhsan Efe (10) ve kardeşi (6), 6 yıldır babalarını bekliyorlar.\nİ.Efe ağır engelliyken bu süreçle birlikte hastalık derecesi arttı.\nAnneleri bu zorluklarla tek başına mücadele etme zorunda kalıyor.\nEşine ihtiyacı var.',
             content:
               'AFYON\n\nİhsan Efe (10) ve kardeşi (6), 6 yıldır babalarını bekliyorlar.\nİ.Efe ağır engelliyken bu süreçle birlikte hastalık derecesi arttı.\nAnneleri bu zorluklarla tek başına mücadele etme zorunda kalıyor.\nEşine ihtiyacı var.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2772,7 +2720,6 @@ export const HASHTAG_MOCKS = {
               'Esra EKMEKÇİ 3 aydır, eşide 5 yıldır cezaevinde.  \n\n17, 12, 8 yaşlarında 3 çocuğu var. En küçük çocukları otizmli özel çocuk.\nKöyde yaşlı ve hasta babaannelerinin yanında kalmak zorunda olan bu çocukların eğitimi ve geleceği için lütfen annelerini tahliye edin',
             content:
               'Esra EKMEKÇİ 3 aydır, eşide 5 yıldır cezaevinde.  \n\n17, 12, 8 yaşlarında 3 çocuğu var. En küçük çocukları otizmli özel çocuk.\nKöyde yaşlı ve hasta babaannelerinin yanında kalmak zorunda olan bu çocukların eğitimi ve geleceği için lütfen annelerini tahliye edin',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2795,7 +2742,6 @@ export const HASHTAG_MOCKS = {
               "\nAyşe Karaduran daha önce 4 aylık hamile iken iki ay cezaevinde kalmış tahliye edilmişti.\n\n13 Temmuz 2023'te 9 aylık oğlu Murat ile tutuklandı. Murat bebeğin ek gıdayı alerjisi var.\n\nBebekli annelerin yeri cezaevi değildir.",
             content:
               "Ayşe Karaduran daha önce 4 aylık hamile iken iki ay cezaevinde kalmış tahliye edilmişti.\n13 Temmuz 2023'te 9 aylık oğlu Murat ile tutuklandı. Murat bebeğin ek gıdayı alerjisi var.\nBebekli annelerin yeri cezaevi değildir.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2818,7 +2764,6 @@ export const HASHTAG_MOCKS = {
               "KHK'lı polisler Yazgül - Abdi Dural çifti 9 ay önce tutuklandı. Çocukları Fatma ve Naci, dedelerinin yanında kalıyor. Dede İsmail Dural:\n\n\"Hidrosefali hastası gelinim Yazgül Dural'ın çocuklarının başına gelmesini istiyorum",
             content:
               "KHK'lı polisler Yazgül - Abdi Dural çifti 9 ay önce tutuklandı. Çocukları Fatma ve Naci, dedelerinin yanında kalıyor. Dede İsmail Dural:\n\n\"Hidrosefali hastası gelinim Yazgül Dural'ın çocuklarının başına gelmesini istiyorum",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2841,7 +2786,6 @@ export const HASHTAG_MOCKS = {
               '\n9 aylık Murat bebeğin babası: \n\n“Eşim bebeğimizle birlikte Edirne’de hukuksuz bir şekilde tutuklandı. Koğuşta 34 kişi kalıyorlar. Murat bebeğimiz sıcaktan isilik olmuş. Allah aşkına eşimi ve bebeğimizi serbest bırakın.',
             content:
               '9 aylık Murat bebeğin babası: \n\n“Eşim bebeğimizle birlikte Edirne’de hukuksuz bir şekilde tutuklandı. Koğuşta 34 kişi kalıyorlar. Murat bebeğimiz sıcaktan isilik olmuş. Allah aşkına eşimi ve bebeğimizi serbest bırakın.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2864,7 +2808,6 @@ export const HASHTAG_MOCKS = {
               '\nKHK’lı başkomiser Abdi Dural\nve \nhidrosefali hastalığı olan eşi Yazgül Dural\n\nŞakran cezaevinde tutuklular. 7 ve 10 yaşlarında iki cocuğu olan ailenin büyükleri çocukların bakımını üstlenmişler. Anne ve babanın aynı anda tutuklanması kabul edilemez.',
             content:
               'KHK’lı başkomiser Abdi Dural\nve \nhidrosefali hastalığı olan eşi Yazgül Dural\n\nŞakran cezaevinde tutuklular. 7 ve 10 yaşlarında iki cocuğu olan ailenin büyükleri çocukların bakımını üstlenmişler. Anne ve babanın aynı anda tutuklanması kabul edilemez.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2887,7 +2830,6 @@ export const HASHTAG_MOCKS = {
               'Chief Superintendent Abdi Dural \nand \nhis wife Yazgül Dural, who has hydrocephalus, \nare detained in Şakran prison. They have two children, aged 7 and 10, and the elders of the family have taken care of them. It is unacceptable for a mother and father to be arrested at the same time.',
             content:
               'Chief Superintendent Abdi Dural with a state of emergency decree and his wife Yazgül Dural, who has hydrocephalus\n\nThey are detained in Şakran prison. They have two children, aged 7 and 10, and the elders of the family have taken over the care of the children. It is unacceptable that the mother and father are arrested at the same time.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2910,7 +2852,6 @@ export const HASHTAG_MOCKS = {
               'Hoofdcommissaris Abdi Dural \nen \nzijn vrouw Yazgül Dural, \n\ndie hydrocefalie heeft, zitten vast in de gevangenis van Sakran. Ze hebben twee kinderen van 7 en 10 jaar oud en de oudsten van het gezin hebben voor hen gezorgd. Het is onaanvaardbaar dat een vader en moeder tegelijkertijd gearresteerd worden.',
             content:
               'Hoofdcommissaris Abdi Dural met een noodverordening en zijn vrouw Yazgül Dural, die hydrocefalie heeft\n\nZe zitten vast in de gevangenis van Şakran. Het gezin heeft twee kinderen van 7 en 10 jaar oud en de oudsten van het gezin hebben voor de kinderen gezorgd. Het is onaanvaardbaar dat de moeder en de vader tegelijkertijd gearresteerd worden.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3229,7 +3170,6 @@ export const HASHTAG_MOCKS = {
               'Yusuf Bilge TUNÇ, \n\n4 yıl önce 6 Ağustos 2019\'da  Ankara Gimat’ta Siyah Transporter ile kaçırıldı.\nO günden beri TUNÇ\'un akıbeti bilinmiyor.\nBabası Mustafa Tunç:\n"Hapiste olsa gider ziyaret edersin, ne olduğunu bilmemek kadar acı bir şey yok...!"',
             content:
               'Yusuf Bilge TUNÇ, 4 yıl önce 6 Ağustos 2019\'da  Ankara Gimat’ta Siyah Transporter ile kaçırıldı.\nO günden beri TUNÇ\'un akıbeti bilinmiyor.\nBabası Mustafa Tunç:\n"Hapiste olsa gider ziyaret edersin, ne olduğunu bilmemek kadar acı bir şey yok...!"',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3252,7 +3192,6 @@ export const HASHTAG_MOCKS = {
               '\nMehmet BAL 3 yıldır kayıp.\n\nBabasının bulunması için gerekli tüm devlet kurumlarına başvurduklarını vurgulayan oğlu, ilk günden beri hiçbir devlet kurumundan olumlu bir yaklaşım görmediklerinin altını çiziyor.',
             content:
               'Mehmet BAL 3 yıldır kayıp.\n\nBabasının bulunması için gerekli tüm devlet kurumlarına başvurduklarını vurgulayan oğlu, ilk günden beri hiçbir devlet kurumundan olumlu bir yaklaşım görmediklerinin altını çiziyor.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3274,7 +3213,6 @@ export const HASHTAG_MOCKS = {
               '\nŞırnak’ta yaşayan Keldani Çift 3,5 yıl önce kaçırıldı.\n\nŞimuni Diril’in cansız bedeni 3 ay sonra bulundu. Hurmüz Diril ise hâlâ kayıp. Kızları Gülcan Diril, anne ve babasının planlı bir cinayete kurban gittiğini söylüyor.',
             content:
               'Şırnak’ta yaşayan Keldani Çift 3,5 yıl önce kaçırıldı.\n\nŞimuni Diril’in cansız bedeni 3 ay sonra bulundu. Hurmüz Diril ise hâlâ kayıp. Kızları Gülcan Diril, anne ve babasının planlı bir cinayete kurban gittiğini söylüyor.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3297,7 +3235,6 @@ export const HASHTAG_MOCKS = {
               "\n\nKaçırıldıktan sonra illegal sorgusuna Hakan FİDAN'ın da katıldığı eğitimci Sunay Elmas 7 yıldır kayıp. \n\nYetkililer bu konuda tek bir açıklama dahi yapmıyor.",
             content:
               "Kaçırıldıktan sonra illegal sorgusuna Hakan FİDAN'ın da katıldığı eğitimci Sunay Elmas 7 yıldır kayıp. \n\nYetkililer bu konuda tek bir açıklama dahi yapmıyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3320,7 +3257,6 @@ export const HASHTAG_MOCKS = {
               '\nKazakistan\'dan kaçırılıp 108 gün boyunca işkence gören Zabit Kişi: \n\n"Kaçırıldığım yerde soyarak işkence yaptılar, ayak parmaklarımı ezdiler, kaburgam çatladı, kelepçeli ellerime ayaklarıyla çıktılar, his kaybım var.',
             content:
               'Kazakistan\'dan kaçırılıp 108 gün boyunca işkence gören Zabit Kişi: \n\n"Kaçırıldığım yerde soyarak işkence yaptılar, ayak parmaklarımı ezdiler, kaburgam çatladı, kelepçeli ellerime ayaklarıyla çıktılar, his kaybım var. Attıkları cezaevinde suç duyuruları kasti takipsizlikle sonuçlandırılıyor',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3343,7 +3279,6 @@ export const HASHTAG_MOCKS = {
               "\n\nTunceli'de kaçırılan ve bir daha kendisinden haber alınamayan üniversite öğrencisi Gülistan Doku 1345 gündür kayıp.",
             content:
               "Tunceli'de kaçırılan ve bir daha kendisinden haber alınamayan üniversite öğrencisi Gülistan Doku 1345 gündür kayıp.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3366,7 +3301,6 @@ export const HASHTAG_MOCKS = {
               '\nOrhan İnandı    \n                                \n MİT tarafından Kırgızistan’da kaçırıldıktan sonra işkence gören eğitimci hakkında 21 yıl hapis cezası verildi.',
             content:
               'Orhan İnandı      \n                               MİT tarafından Kırgızistan’da kaçırıldıktan sonra işkence gören eğitimci hakkında 21 yıl hapis cezası verildi.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3388,7 +3322,6 @@ export const HASHTAG_MOCKS = {
               'Gökhan Türkmen \n\nAnkara Sincan Cezaevi’nde tutuklu. Kaçırıldıktan 9 ay sonra Antalya ya  bırakılan ve yeni bulunmuş gibi gözaltına alınan Türkmen in ifadeleri şöyle:  \n\n271 gün işkence, taciz ve tehdit altında kaldım. 9 ay boyunca bana işkence yapıldı. ',
             content:
               'Gökhan Türkmen (46)Ankara Sincan Cezaevi’nde tutuklu. Kaçırıldıktan 9 ay sonra Antalya ya  bırakılan ve yeni bulunmuş gibi gözaltına alınan Türkmen in ifadeleri şöyle:  271 gün işkence, taciz ve tehdit altında kaldım. 9 ay boyunca bana işkence yapıldı. Lambaların açık olduğu yerde günlerce ayakta bekletildim. Ayakta kalmaktan bayılarak yere düşüyordum',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3411,7 +3344,6 @@ export const HASHTAG_MOCKS = {
               'Kaçırıldıktan  7 ay sonra Ankara Emniyet Müdürlüğünde ortaya çıkan Yasin Ugan, gördüğü işkenceleri mahkemede anlatmıştı.\n\n"6 ay boyunca kafamda poşetle yaşadım, mosmor bırakıldım, ağır işkence gördüm.',
             content:
               'Kaçırıldıktan  7 ay sonra Ankara Emniyet Müdürlüğünde ortaya çıkan Yasin Ugan, gördüğü işkenceleri mahkemede anlatmıştı.\n\n"6 ay boyunca kafamda poşetle yaşadım, mosmor bırakıldım, ağır işkence gördüm.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3434,7 +3366,6 @@ export const HASHTAG_MOCKS = {
               "Ayhan Oran infaz edilmek için mi ülkeye çağrıldı?\n\nEski bir MİT çalışanı olan Oran, Yunanistan’da görevdeyken 2016 yılı Haziran ayında Türkiye’ye çağrılıyor,\n17 Temmuz'da açığa alınıyor,\n2 Ağustos'ta ihraç ediliyor,\n1 Kasım'da kaçırılıyor ve o gündem beri haber alınamıyor.",
             content:
               "Ayhan Oran infaz edilmek için mi ülkeye çağrıldı?\n\nEski bir MİT çalışanı olan Oran, Yunanistan’da görevdeyken 2016 yılı Haziran ayında Türkiye’ye çağrılıyor,\n17 Temmuz'da açığa alınıyor,\n2 Ağustos'ta ihraç ediliyor,\n1 Kasım'da kaçırılıyor ve o gündem beri haber alınamıyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3457,7 +3388,6 @@ export const HASHTAG_MOCKS = {
               "Cihan Özkan \n\n2018 yılında Kosova'dan kaçırıldı ve 5 yıldır tutuklu. Marmara Cezaevi'nde bir hücrede tutulan Özkan'ın tahliye tarihi çoktan gelmesine karşılık aylardır denetimli serbestlik hakkı verilmeyerek tahliyesi engelleniyor.",
             content:
               "Cihan Özkan \n\n2018 yılında Kosova'dan kaçırıldı ve 5 yıldır tutuklu. Marmara Cezaevi'nde bir hücrede tutulan Özkan'ın tahliye tarihi çoktan gelmesine karşılık aylardır denetimli serbestlik hakkı verilmeyerek tahliyesi engelleniyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3480,7 +3410,6 @@ export const HASHTAG_MOCKS = {
               "\nİsmet Özçelik, 2017 yılında Birleşmiş Miletler koruması altında olmasına rağmen Malezya'dan kaçırılarak Türkiye'ye getirildi.\n\nTutuklanarak cezaevine gönderilen Özçelik,  kalp ve diyabet hastası. Cezaevinde kalp krizi geçiren Özçelik bir çok hak ihlaline uğradi\n",
             content:
               "İsmet Özçelik, 2017 yılında Birleşmiş Miletler koruması altında olmasına rağmen Malezya'dan kaçırılarak Türkiye'ye getirildi\nTutuklanarak cezaevine gönderilen Özçelik,  kalp ve diyabet hastası. Cezaevinde kalp krizi geçiren Özçelik bir çok hak ihlaline uğradi\n29 Kasım 2022 tarihinden itibaren denetimli serbestlik hakkı bulunan Özçelik'in tahliyesi, tahliyesine 6 gün kala keyfi bir disiplin soruşturması ile engellendi",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3503,7 +3432,6 @@ export const HASHTAG_MOCKS = {
               '\n\n29 yıldır Tacikistan da yaşayan iş insanı Koray Vural 7 Eylül cumartesi sabahı Duşanbe deki restoranının önünden kaçırılarak Türkiye ye götürüldü.\nAilesi endişe içinde.\n\nKoray Vural nerede!\n',
             content:
               '29 yıldır Tacikistan da yaşayan iş insanı Koray Vural 7 Eylül cumartesi sabahı Duşanbe deki restoranının önünden kaçırılarak Türkiye ye götürüldü.\nAilesi endişe içinde.\n\nKoray Vural nerede!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3821,7 +3749,6 @@ export const HASHTAG_MOCKS = {
               "Abdulalim Kaya \n\nBöbrek yetmezliği, demans ve şeker hastası olan Abdulalim Kaya'yı (85) hastalıklarına rağmen cezaevinde tutmanız ne kadar doğru?\n\nAbdulalim Kaya ve tüm ağır hasta tutukluların durumları yeniden gözden geçirilmeli.",
             content:
               "Abdulalim Kaya \nBöbrek yetmezliği, demans ve şeker hastası olan Abdulalim Kaya'yı (85) hastalıklarına rağmen cezaevinde tutmanız ne kadar doğru?\n\nAbdulalim Kaya ve tüm ağır hasta tutukluların durumları yeniden gözden geçirilmeli.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3844,7 +3771,6 @@ export const HASHTAG_MOCKS = {
               "\nMehmet Parlak\n\nKHK'lı zabıt katibi Mehmet Parlak 10 yıldır tek böbrekle yaşıyor. Cezaevinde 15 kg kaybetti. Şu an hastanede tedavi görüyor. Adli tıp kurumunun acilen infaz erteleme vermesi gerekirken hala tahliye edilmedi.",
             content:
               "Mehmet Parlak\nKHK'lı zabıt katibi Mehmet Parlak 10 yıldır tek böbrekle yaşıyor. Cezaevinde 15 kg kaybetti. Şu an hastanede tedavi görüyor. Adli tıp kurumunun acilen infaz erteleme vermesi gerekirken hala tahliye edilmedi.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3867,7 +3793,6 @@ export const HASHTAG_MOCKS = {
               'Gülden Aşık \n\n"İMDAT ALLAH\'IM İMDAT"\n \nBu çığlık; 8 haftalık bebeğini hapiste düşüren, yıllardır kanserle mücadele eden, cezaevinde kalamaz raporuna ve AİHM kararına rağmen tahliye edilmeyen, 3 çocuğundan ayrı Gülden Aşık\'ın çığlığı!',
             content:
               'Gülden Aşık \n\n"İMDAT ALLAH\'IM İMDAT"\n \nBu çığlık; 8 haftalık bebeğini hapiste düşüren, yıllardır kanserle mücadele eden, cezaevinde kalamaz raporuna ve AİHM kararına rağmen tahliye edilmeyen, 3 çocuğundan ayrı Gülden Aşık\'ın çığlığı!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3890,7 +3815,6 @@ export const HASHTAG_MOCKS = {
               "\nZüleyha Erkol\n\nBeyin ameliyatı geçiren Züleyha'nın annesi vefat etmiş, babası hapiste. Karar vericiler, sizin evladınız yok mu? \nBaşınıza gelse yeri göğü inletirsiniz. Aynı hassasiyeti niçin Züleyha'ya göstermiyorsunuz?",
             content:
               "Züleyha Erkol\n\nBeyin ameliyatı geçiren Züleyha'nın annesi vefat etmiş, babası hapiste. Karar vericiler, sizin evladınız yok mu? Başınıza gelse yeri göğü inletirsiniz. Aynı hassasiyeti niçin Züleyha'ya göstermiyorsunuz?",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3913,7 +3837,6 @@ export const HASHTAG_MOCKS = {
               "Esra Ekmekçi \nGeçersiz suçlamalarla 6 ay önce tutuklanan Esra Ekmekçi, otizmli oğlu Tarık'a hala kavuşamadı.\n\nHani hasta çocuğu olan anneler tahliye edilecekti? Yeni infaz kanunu, otizmli Tarık'ın annesine neden uygulanmıyor?\n",
             content:
               "Esra Ekmekçi \n\nGeçersiz suçlamalarla 6 ay önce tutuklanan Esra Ekmekçi, otizmli oğlu Tarık'a hala kavuşamadı.\n\nHani hasta çocuğu olan anneler tahliye edilecekti? Yeni infaz kanunu, otizmli Tarık'ın annesine neden uygulanmıyor?\n",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3936,7 +3859,6 @@ export const HASHTAG_MOCKS = {
               '\n%89 engelli KHK\'lı Şerife Sulukan\'ın oğlu Bahadır Sulukan:\n\n"Yatalak olan annem 17 aydır hapis. Koğuşta tek kalıyor, artık depresyon ilaçları kullanıyor. Annemin tahliye edilmesi gerekiyor çünkü suç olmayan gerekçelerle hapiste tutuluyor."',
             content:
               '%89 engelli KHK\'lı Şerife Sulukan\'ın oğlu Bahadır Sulukan:\n\n"Yatalak olan annem 17 aydır hapis. Koğuşta tek kalıyor, artık depresyon ilaçları kullanıyor. Annemin tahliye edilmesi gerekiyor çünkü suç olmayan gerekçelerle hapiste tutuluyor."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3959,7 +3881,6 @@ export const HASHTAG_MOCKS = {
               'Hakan Kanat \n\nTiroid kanseri Hakan Kanat; BankAsya hesabı olduğu ve çocuğunu KHK ile kapatılan okula gönderdiği gerekçesiyle,  boğazındaki kanserli hücrelere rağmen 87 aydır tutuklu.\n\nAİHM, "BankAsya\'ya para yatırmak ve çocuğunu cemaat okuluna göndermek suç değil." dedi.\n\nHukuka aykırı bir şekilde cezaevinde tutulan Kanat \' ın acilen tahliye edilmesi gerekiyor.',
             content:
               'Hakan kanat \nTiroid kanseri Hakan Kanat; BankAsya hesabı olduğu ve çocuğunu KHK ile kapatılan okula gönderdiği gerekçesiyle,  boğazındaki kanserli hücrelere rağmen 87 aydır tutuklu.\n\nAİHM, "BankAsya\'ya para yatırmak ve çocuğunu cemaat okuluna göndermek suç değil." dedi.\n\nHukuka aykırı bir şekilde cezaevinde tutulan Kanat \' ın acilen tahliye edilmesi gerekiyor.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3982,7 +3903,6 @@ export const HASHTAG_MOCKS = {
               "Özge Özbek \n\nHasta tutuklu Özge Özbek'in beyin tümörü, epilepsi, astım, vertigo gibi hastalıkları bulunmakta. 2020'de açık beyin ameliyatı olduktan 3 gün sonra hastaneden alınarak tutuklandı. Cezaevinde yaşam savaşı veren Özbek, acilen tedavi edilmeli",
             content:
               "Özge Özbek \n\nHasta tutuklu Özge Özbek'in beyin tümörü, epilepsi, astım, vertigo gibi hastalıkları bulunmakta. 2020'de açık beyin ameliyatı olduktan 3 gün sonra hastaneden alınarak tutuklandı. Cezaevinde yaşam savaşı veren Özbek, acilen tedavi edilmeli",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4005,7 +3925,6 @@ export const HASHTAG_MOCKS = {
               "Emre Turan\nÜlseratif kolit hastası Emre Turan'ın eşi:\n\n\"90 kilo olan eşim şu an 80 kilo. Eşim, cezaevinde kaldığı her dakika ölüme bir adım daha yaklaşıyor. İki oğlumun babasız kalmasını istemiyorum''",
             content:
               "Emre Turan\nÜlseratif kolit hastası Emre Turan'ın eşi:\n\n\"90 kilo olan eşim şu an 80 kilo. Eşim, cezaevinde kaldığı her dakika ölüme bir adım daha yaklaşıyor. İki oğlumun babasız kalmasını istemiyorum.''",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4028,7 +3947,6 @@ export const HASHTAG_MOCKS = {
               '\nGültekin avci\n\nTutuklu gazeteci Gültekin Avcı\'nın ilaçları verilmediği için denge kaybı yaşıyor, düşüp yaralanıyor. Avcı, ilaçlarının temin edilmesini istemesine rağmen cezaevi yönetimi bu talebi reddediyor!"\n',
             content:
               'Gültekin avci\nTutuklu gazeteci Gültekin Avcı\'nın ilaçları verilmediği için denge kaybı yaşıyor, düşüp yaralanıyor. Avcı, ilaçlarının temin edilmesini istemesine rağmen cezaevi yönetimi bu talebi reddediyor!"\n',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4051,7 +3969,6 @@ export const HASHTAG_MOCKS = {
               "Yaşlı ve hasta tutuklular \n\n80 yaşının üzerinde, ihtiyaçlarını gideremediği halde mahkum edilen ağır hasta tutuklular var. Adalet sistemi bu insanlarla 'kan davası' gütmese intikam yargılamalarıyla mahkum edilmezlerdi",
             content:
               "Yaşlı ve hasta tutuklular \n\n80 yaşının üzerinde, ihtiyaçlarını gideremediği halde mahkum edilen ağır hasta tutuklular var. Adalet sistemi bu insanlarla 'kan davası' gütmese intikam yargılamalarıyla mahkum edilmezlerdi",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4074,7 +3991,6 @@ export const HASHTAG_MOCKS = {
               "Tercanlıoğlu çifti \n\n3 AYLIK BEBEK ANNESİNDEN KOPARILDI\n\nZarif - Sümeyye Tercanlıoğlu çifti, AİHM'in 'suç değil' dediği fiiller nedeniyle tutuklandı. 3 aylık oğlunu cezaevi ortamına sokmak istemeyen anne emzikli bebeği kız kardeşine teslim etti.",
             content:
               "Tercanlıoğlu çifti \n\n3 AYLIK BEBEK ANNESİNDEN KOPARILDI\n\nZarif - Sümeyye Tercanlıoğlu çifti, AİHM'in 'suç değil' dediği fiiller nedeniyle tutuklandı. 3 aylık oğlunu cezaevi ortamına sokmak istemeyen anne emzikli bebeği kız kardeşine teslim etti.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4095,7 +4011,6 @@ export const HASHTAG_MOCKS = {
               "İsmet Özçelik \nMalezya'dan kaçırılan İsmet Özçelik'in kızı:\n\n\"Babam yıllardır suçsuz yere hapis. Kalp hastası babamı 6 yıldır esir tuttuğunuz yetmiyormuş gibi denetimli serbestliği geldiği halde tahliye etmiyorsunuz.''\n",
             content:
               "İsmet Özçelik \nMalezya'dan kaçırılan İsmet Özçelik'in kızı:\n\n\"Babam yıllardır suçsuz yere hapis. Kalp hastası babamı 6 yıldır esir tuttuğunuz yetmiyormuş gibi denetimli serbestliği geldiği halde tahliye etmiyorsunuz.''\n",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4118,7 +4033,6 @@ export const HASHTAG_MOCKS = {
               "Abdullah Aydoğan \n\nGülen Hareketi soruşturmaları kapsamında bir okula arsa bağışladığı için tutuklanan Abdullah Aydoğan (80), Ocak 2019'dan beri tutuklu. Aydoğan, sağ gözünü ihmal sonucu cezaevinde kaybetti.",
             content:
               "Abdullah Aydoğan \nGülen Hareketi soruşturmaları kapsamında bir okula arsa bağışladığı için tutuklanan Abdullah Aydoğan (80), Ocak 2019'dan beri tutuklu. Aydoğan, sağ gözünü ihmal sonucu cezaevinde kaybetti.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4141,7 +4055,6 @@ export const HASHTAG_MOCKS = {
               "Yazgül Dural\n\nGülen Hareketi'ne yönelik soruşturmalar kapsamında Kasım 2022'de eşiyle birlikte tutuklanan ev hanımı Yazgül Dural, hidrosefali hastası. Baş dönmesi, kusma, denge kaybı yaşayan Dural, kişisel bakımını tek başına yapamıyor.",
             content:
               "Yazgül Dural\n\nGülen Hareketi'ne yönelik soruşturmalar kapsamında Kasım 2022'de eşiyle birlikte tutuklanan ev hanımı Yazgül Dural, hidrosefali hastası. Baş dönmesi, kusma, denge kaybı yaşayan Dural, kişisel bakımını tek başına yapamıyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4492,7 +4405,6 @@ export const HASHTAG_MOCKS = {
               '3 çocuk annesi öğretmen Edibe Tatar, 14 Haziran’da tutuklandı.  14 yaşındaki kızı Nihal:\n“Annem cezaevine girdi bu yıl. Babam da 5 yıldır cezaevinde. Anneannem yaşlı, kronik hastalıkları var ve bize bakıyor. Annemizin bizim yanımızda olmasını istiyoruz.”',
             content:
               '3 çocuk annesi öğretmen Edibe Tatar, 14 Haziran’da tutuklandı. 14 yaşındaki kızı Nihal:\n“Annem cezaevine girdi bu yıl. Babam da 5 yıldır cezaevinde. Anneannem yaşlı, kronik hastalıkları var ve bize bakıyor. Annemizin bizim yanımızda olmasını istiyoruz.”',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4514,7 +4426,6 @@ export const HASHTAG_MOCKS = {
               "Altı çocukları olan KHK’lı Abdülkadir Arslan ve Nurcan Arslan 30 Eylül’de tutuklandı. Aile yakınları:\n“Abdülkadir ve Nurcan Edirne'de tutuklu. Geride biri engelli olmak üzere beşiz kardeşler ve ablaları toplam 6 çocuk annesiz ve babasız kaldı. Engelli olan Arif in, hastalığı gereği anne ve babaya çok ihtiyacı var. Her an başındaki şant tıkanabilir ve ameliyat olması gerekebilir. Lütfen ortada kalan çocuklar için tahliye…”",
             content:
               "Altı çocukları olan KHK’lı Abdülkadir Arslan ve Nurcan Arslan 30 Eylül’de tutuklandı. Aile yakınları:\n“Abdülkadir ve Nurcan Edirne'de tutuklu. Geride biri engelli olmak üzere beşiz kardeşler ve ablaları toplam 6 çocuk annesiz ve babasız kaldı. Engelli olan Arif in, hastalığı gereği anne ve babaya çok ihtiyacı var. Her an başındaki şant tıkanabilir ve ameliyat olması gerekebilir. Lütfen ortada kalan çocuklar için tahliye…”",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4537,7 +4448,6 @@ export const HASHTAG_MOCKS = {
               "BALIKESIR\n\nAİHM'in suç saymadığı fiillerden dolayı 3 kardeş yıllardır öksüz ve yetim, kirli bir camın ardında anne babalarını görebildiler.\nZeynep Ö. Ocak ve eşi 2018 de tutuklandı, çocuklar yakın zamanda babalarına kavuşsa da annelerine muhtaçlar!",
             content:
               "BALIKESIR\n\nAİHM'in suç saymadığı fiillerden dolayı 3 kardeş yıllardır öksüz ve yetim, kirli bir camın ardında anne babalarını görebildiler.\nZeynep Ö. Ocak ve eşi 2018 de tutuklandı, çocuklar yakın zamanda babalarına kavuşsada annelerine muhtaçlar!",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4560,7 +4470,6 @@ export const HASHTAG_MOCKS = {
               'GÜMÜŞHANE\n\nBetül Hafza ve Bahadır, 5 yıldır anne-babasız büyüyen iki çocuk!\n\nEbeveynleri Önder-Fatma Bozkurt çifti 2018 şubat ayından beri cezaevindeler.\nAİHM "suç değil" dedi ancak çocuklar hâlâ anne babalarına kavuşamıyor, hâlâ kimsesiz!',
             content:
               'GÜMÜŞHANE\n\nBetül Hafza ve Bahadır, 5 yıldır anne-babasız büyüyen iki çocuk!\n\nEbeveynleri Önder-Fatma Bozkurt çifti 2018 şubat ayından beri cezaevindeler.\nAİHM "suç değil" dedi ancak çocuklar hâlâ anne babalarına kavuşamıyor, hâlâ kimsesiz!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4583,7 +4492,6 @@ export const HASHTAG_MOCKS = {
               'MANİSA\n\nSonradan icat edilen suçlarla çocuklar anne, babasız kalıyor!\n\n2 çocuk annesi Feyza Akbay 5 yıldır cezaevinde.\nMuaz ve Büşra ile annelerinin yokluğunda kalp hastası babaları Muhammet Akbay ilgilenirken, 2019 da o da tutuklandı!',
             content:
               'MANİSA\n\nSonradan icat edilen suçlarla çocuklar anne, babasız kalıyor!\n\n2 çocuk annesi Feyza Akbay 5 yıldır cezaevinde.\nMuaz ve Büşra ile annelerinin yokluğunda kalp hastası babaları Muhammet Akbay ilgilenirken, 2019 da o da tutuklandı!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4606,7 +4514,6 @@ export const HASHTAG_MOCKS = {
               'ADANA\n\nÜç kardeş 2 yılı aşkın süredir anne ve babasız!\nÖnce babaları Ali Özak, iki hafta geçmeden cadı avı neticesinde eşi Nermin Özak tutuklandı.\n\nAİHM “Yalçınkaya” kararı ile  suç değil dedi ancak çocuklar keyfiliklerle halen anne babasız!',
             content:
               'ADANA\n\nÜç kardeş 2 yılı aşkın süredir anne ve babasız!\nÖnce babaları Ali Özak, iki hafta geçmeden cadı avı neticesinde eşi Nermin Özak tutuklandı.\n\nAİHM “Yalçınkaya” kararı ile  suç değil dedi ancak çocuklar keyfiliklerle halen anne babasız!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4629,7 +4536,6 @@ export const HASHTAG_MOCKS = {
               "ANKARA\n\nİki kardeş, tutuklu babalarına kavuşmadan 2019'da da anneleri Kevser Sinan tutuklandı.\n\nPsikolojileri alt-üst çocuklar yıllardır ebeveynlerine kavuşmayı bekliyor!\nAnne-Baba Tutukluluk ile çocuklara bu zulüm neden?!",
             content:
               "ANKARA\n\nİki kardeş, tutuklu babalarına kavuşmadan 2019'da da anneleri Kevser Sinan tutuklandı.\n\nPsikolojileri alt-üst çocuklar yıllardır ebeveynlerine kavuşmayı bekliyor!\nAnne-Baba Tutukluluk ile çocuklara bu zulüm neden?!",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4652,7 +4558,6 @@ export const HASHTAG_MOCKS = {
               "BALIKESİR\n\nBahar ve Seher, yıllarca anne-babasız büyüdüler. 2022 de babalarına kavuşabildiler ama hâla anneleri Hayruşe Şevik'in yokluğuyla büyüyorlar. \n\nHukukta olmayan suçlamalar ile çocuklara travma üstüne travma yaşatılıyor!",
             content:
               "BALIKESİR\n\nBahar ve Seher, yıllarca anne-babasız büyüdüler. 2022 de babalarına kavuşabildiler ama hâla anneleri Hayruşe Şevik'in yokluğuyla büyüyorlar. \n\nHukukta olmayan suçlamalar ile çocuklara travma üstüne travma yaşatılıyor!",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4674,7 +4579,6 @@ export const HASHTAG_MOCKS = {
               'İbrahim Durmuş, 18 yaşındaki otizm ve %98 zihinsel engelli Hamza Tarık’ın babası, 2019’dan beri cezaevinde. İbrahim Bey’in eşi lenf kanseri. Hamza Tarık hayatının idamesi için baba desteğine muhtaç. İbrahim Durmuş tahliye edilmelidir.',
             content:
               'İbrahim Durmuş, 18 yaşındaki otizm ve %98 zihinsel engelli Hamza Tarık’ın babası, 2019’dan beri cezaevinde. İbrahim Bey’in eşi lenf kanseri. Hamza Tarık hayatının idamesi için baba desteğine muhtaç. İbrahim Durmuş tahliye edilmelidir.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4697,7 +4601,6 @@ export const HASHTAG_MOCKS = {
               "BALIKESİR\n\nBahar ve Seher, yıllarca anne-babasız büyüdüler. 2022 de babalarına kavuşabildiler ama hâla anneleri Hayruşe Şevik'in yokluğuyla büyüyorlar. \n\nHukukta olmayan suçlamalar ile çocuklara travma üstüne travma yaşatılıyor!",
             content:
               "BALIKESİR\n\nBahar ve Seher, yıllarca anne-babasız büyüdüler. 2022 de babalarına kavuşabildiler ama hâla anneleri Hayruşe Şevik'in yokluğuyla büyüyorlar. \n\nHukukta olmayan suçlamalar ile çocuklara travma üstüne travma yaşatılıyor!",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4720,7 +4623,6 @@ export const HASHTAG_MOCKS = {
               'Osmaniye Toprakkale Cezaevi’nde tutuklu bulunan KHK’lı polis memuru Halit Gökkaya’nın oğlu Hakan Esat(8) Serebral Palsi hastası. Anne Güldane hanım oğlunun ağır engelli olduğunu, eşi ile nöbetleşe baktıklarını ifade ediyor. Bu zulme son verilmeli, Halit Gökkaya hapisten çıkarılarak Hakan Esat’ın bakımı desteklenmelidir.',
             content:
               'Osmaniye Toprakkale Cezaevi’nde tutuklu bulunan KHK’lı polis memuru Halit Gökkaya’nın oğlu Hakan Esat(8) Serebral Palsi hastası. Anne Güldane hanım oğlunun ağır engelli olduğunu, eşi ile nöbetleşe baktıklarını ifade ediyor. Bu zulme son verilmeli, Halit Gökkaya hapisten çıkarılarak Hakan Esat’ın bakımı desteklenmelidir.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4743,7 +4645,6 @@ export const HASHTAG_MOCKS = {
               'Kanunlarımıza göre işlediği bir suçu olmayan 4 çocuk annesi Yeliz Temur 17 Haziran’da tutuklandı. Eşi de 5 yıldır cezaevinde.\nÇocukları anne ve babaları olmadan büyümeye mahkum edildi.',
             content:
               'Kanunlarımıza göre işlediği bir suçu olmayan 4 çocuk annesi Yeliz Temur 17 Haziran’da tutuklandı. Eşi de 5 yıldır cezaevinde.\nÇocukları anne ve babaları olmadan büyümeye mahkum edildi.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4766,7 +4667,6 @@ export const HASHTAG_MOCKS = {
               "Vedat(13), Mücteba(12), Zeynep (12), Yusuf(8) anne babaları hapse gönderilerek hayatları çalınan 4 çocuk. Babaları yıllardır cezaevinde, 8 Eylül'de anneleri Rukiye Çoygar da tutuklandı. \nRukiye Hanım'ın sağlık problemleri var ve acil ameliyat olması gerekiyor",
             content:
               "Vedat(13), Mücteba(12), Zeynep (12), Yusuf(8) anne babaları hapse gönderilerek hayatları çalınan 4 çocuk. Babaları yıllardır cezaevinde, 8 Eylül'de anneleri Rukiye Çoygar da tutuklandı. \nRukiye Hanım'ın sağlık problemleri var ve acil ameliyat olması gerekiyor",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4789,7 +4689,6 @@ export const HASHTAG_MOCKS = {
               'KARABÜK\nGülseren-Zülküf Arslan çifti 4 yıldır cezaevinde. \nÇiftin 3 çocuğu babaanne ile kalıyor. Yasemin, Selma ve Mahir anne ve babalarına bir an önce kavuşsun. Haksız yargılamalar son bulsun!\n\nAnne baba tutukluluk zulmüne son verin!',
             content:
               'KARABÜK\nGülseren-Zülküf Arslan çifti 4 yıldır cezaevinde. \nÇiftin 3 çocuğu babaanne ile kalıyor. Yasemin, Selma ve Mahir anne ve babalarına bir an önce kavuşsun. Haksız yargılamalar son bulsun!\n\nAnne baba tutukluluk zulmüne son verin!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4812,7 +4711,6 @@ export const HASHTAG_MOCKS = {
               'KONYA\nZübeyde-Hüseyin Kara çifti, Mart 2019’dan beri cezaevinde. \nHüseyin Bey spastik kolon hastası, eşi Zübeyde hanım ise kalp hastası.  \nCezaevindeki hasta baba Hüseyin Kara: "Ben burada ölüyorum, ne olur sesimi duyurun! Çocuklarım yetim büyümesin." diyerek adalet istemişti. Ancak adaletsiz yargılamaların sonu gelmek bilmiyor! \nKara ailesinin 14, 12  ve 5 yaşlarındaki 3 çocuğu 4 yıldır annesiz ve babasız büyüyor.',
             content:
               'KONYA\nZübeyde-Hüseyin Kara çifti, Mart 2019’dan beri cezaevinde. \nHüseyin Bey spastik kolon hastası, eşi Zübeyde hanım ise kalp hastası.  \nCezaevindeki hasta baba Hüseyin Kara: "Ben burada ölüyorum, ne olur sesimi duyurun! Çocuklarım yetim büyümesin." diyerek adalet istemişti. Ancak adaletsiz yargılamaların sonu gelmek bilmiyor! \nKara ailesinin 14, 12  ve 5 yaşlarındaki 3 çocuğu 4 yıldır annesiz ve babasız büyüyor.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4835,7 +4733,6 @@ export const HASHTAG_MOCKS = {
               "DÜZCE \nNazlı-Fuat Çatpınar çifti, 2019'dan beri cezaevinde. \nÇiftin 6 yaşındaki Osman Bahadır, 5 yaşındaki Ömer Mahir ve 3 yaşındaki Ali Asaf adındaki üç çocuğu  ebeveynleri olmadan büyüyorlar.\nSuç olmayan yasal faaliyetler nedeniyle ailelere, çocuklara yıllardır zulüm yapılıyor. Artık bu zulme ortak olmayın, masum insanların sesi olun!",
             content:
               "DÜZCE \nNazlı-Fuat Çatpınar çifti, 2019'dan beri cezaevinde. \nÇiftin 6 yaşındaki Osman Bahadır, 5 yaşındaki Ömer Mahir ve 3 yaşındaki Ali Asaf adındaki üç çocuğu  ebeveynleri olmadan büyüyorlar.\nSuç olmayan yasal faaliyetler nedeniyle ailelere, çocuklara yıllardır zulüm yapılıyor. Artık bu zulme ortak olmayın, masum insanların sesi olun!",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4858,7 +4755,6 @@ export const HASHTAG_MOCKS = {
               'Anne sütünden mahrum bırakılan 4 aylık Enis bugün Edirne Cezaevi’nde, görüş için annesini bekliyor. \nEnis’in annesi Sümeyye Tercanlıoğlu tutuklanalı 1 ay oldu. Bir aydır Enis BEBEK anne sütü içemiyor! Hapisteki anne sütünü cezaevi lavabosuna döküyor!',
             content:
               'Anne sütünden mahrum bırakılan 4 aylık Enis bugün Edirne Cezaevi’nde, görüş için annesini bekliyor. \nEnis’in annesi Sümeyye Tercanlıoğlu tutuklanalı 1 ay oldu. Bir aydır Enis BEBEK anne sütü içemiyor! Hapisteki anne sütünü cezaevi lavabosuna döküyor!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5517,7 +5413,6 @@ export const HASHTAG_MOCKS = {
               '\nÇocuklarımızın umudu, adaletin güvencesi altında olmalı. \n\nHukukun temelleri sarsılırken, çocuklarımızın geleceği tehlike altında. ',
             content:
               'Çocuklarımızın umudu, adaletin güvencesi altında olmalı. Hukukun temelleri sarsılırken, çocuklarımızın geleceği tehlike altında. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5540,7 +5435,6 @@ export const HASHTAG_MOCKS = {
               "\n  Türkiye'de artan hukuksuzluklar, bebekleri bile etkiliyor. Hukukun üstünlüğü ve çocuk hakları savunulmalı.\n\n  Sümeyye Aydın, 11 aylık bebeğiyle birlikte 13 Aralık'ta tutuklandı.\nDışarda ise annesinden koparılan gözü yaşlı bir evladı daha var. ",
             content:
               "Türkiye'de artan hukuksuzluklar, bebekleri bile etkiliyor. Hukukun üstünlüğü ve çocuk hakları savunulmalı.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5563,7 +5457,6 @@ export const HASHTAG_MOCKS = {
               '\n2 çocuk annesi,ev hanımı Esra Baran, 1 Aralık 2022’de tutuklandı. Manisa E Tipi Cezaevi’nde. \n\nAnnesi:\n“Bu çocukların anneannesiyim. 5 yıldır babaları yok, içerde. Şimdi de annelerini aldılar. Bizi çok mağdur ettiler..”',
             content:
               '2 çocuk annesi,ev hanımı Esra Baran, 1 Aralık 2022’de tutuklandı. Manisa E Tipi Cezaevi’nde. Annesi:\n\n“Bu çocukların anneannesiyim. 5 yıldır babaları yok, içerde. Şimdi de annelerini aldılar. Bizi çok mağdur ettiler..”',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5586,7 +5479,6 @@ export const HASHTAG_MOCKS = {
               '\nEşi 2,5 yıldır hapiste olan, cezası Yargıtay’da onanan, iki çocuk annesi, ev hanımı Rümeysa Som, 2 Mayıs’ta tutuklandı. \n\nGeride 8 ve 12 yaşında iki kızı kaldı.\n\nAnne baba tutukluluk zulümdür!',
             content:
               'Eşi 2,5 yıldır hapiste olan, cezası Yargıtay’da onanan, iki çocuk annesi, ev hanımı Rümeysa Som, 2 Mayıs’ta tutuklandı. Geride 8 ve 12 yaşında iki kızı kaldı.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5609,7 +5501,6 @@ export const HASHTAG_MOCKS = {
               'EDİRNE\n\nBirbirine hasret çeken bir aile, geride anne baba yolu gözleyen çocuklar.\n\nBelkız-Mustafa İpek çifti 4 Mayıs’ta tutuklandı.\n\n7 ve 11 yaşındaki iki çocukları dışarıda, 2 yaşındaki Yahya Murtaza ise annesiyle cezaevinde.\n\nBir aile daha paramparça edildi!',
             content:
               'Belkız-Mustafa İpek çifti 4 Mayıs’ta tutuklandı.\n\n7 ve 11 yaşındaki iki çocukları dışarıda, 2 yaşındaki Yahya Murtaza ise annesiyle cezaevinde.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5632,7 +5523,6 @@ export const HASHTAG_MOCKS = {
               '\nKASTAMONU \n\nHukuksuz kararların kurbanı çocuklar!\nÖğretmen Esra Songur iki çocuğu ile birlikte 24 Kasım’dan beri cezaevinde!\n\nFatmanur(2) ve abisi Ahmet Yaşar (3.5) aylardır sıcak bir yuvaya, özgürlüğe hasret!',
             content:
               'Hukuksuz kararların kurbanı çocuklar!\nÖğretmen Esra Songur iki çocuğu ile birlikte 24 Kasım’dan beri cezaevinde!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5655,7 +5545,6 @@ export const HASHTAG_MOCKS = {
               "  \n Dört yıla yakın süredir Sincan Cezaevi'nde olan Betül-Emre Karakoç çiftinin, onların yolunu hasretle gözleyen 2 küçük evladı var. \n\n   Anne ve babalarından ayrıldıklarında Necip 5, Sare 2 yaşındaydı. Masum çocukların yetmedi mi anne-babasızlığı?",
             content:
               "Dört yıla yakın süredir Sincan Cezaevi'nde olan Betül-Emre Karakoç çiftinin, onların yolunu hasretle gözleyen 2 küçük evladı var. Anne ve babalarından ayrıldıklarında Necip 5, Sare 2 yaşındaydı.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5678,7 +5567,6 @@ export const HASHTAG_MOCKS = {
               '\n\nBebeklerin cezaevinde ne işi var, demeyin. \n\nBugün Türkiye’de 0-6 yaş grubu yüzlerce bebek ve çocuk cezaevinde, anneleriyle birlikte mahkûmlar..”',
             content:
               'Bugün Türkiye’de 0-6 yaş grubu yüzlerce bebek ve çocuk cezaevinde, anneleriyle birlikte mahkûmlar..”',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5701,7 +5589,6 @@ export const HASHTAG_MOCKS = {
               '   Arkadaşlarına moral vermek suçundan uzun süre hücre cezası almış biri Seyit Aydın. \n\n6 yıl 9 aydır cezaevinde.\n\n   Yavrusu çırpınıyor, bırakın babam gelsin diyor.\n\n   Bir çocuk düşünün ki 7 yıla yakındır babasından ayrı.',
             content:
               'Arkadaşlarına moral vermek suçundan uzun süre hücre cezası almış biri Seyit Aydın. 6 yıl 9 aydır cezaevinde.\nYavrusu çırpınıyor, bırakın babam gelsin diyor. Bir çocuk düşünün ki 7 yıla yakındır babasından ayrı.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5724,7 +5611,6 @@ export const HASHTAG_MOCKS = {
               'SİNCAN\n\n   Cemal Faik (7) yıllardır babaya hasretti, yeni kavuşmuştu.\n\n   Yakın zamanda da annesi Merve Çiçek devletin resmî bir bankasına para yatırdığı, dershanesinde çalıştığı için TUTUKLANDI!\n\nZulüm değil de nedir bu?',
             content:
               'Cemal Faik (7) yıllardır babaya hasretti, yeni kavuşmuştu. Yakın zamanda da annesi Merve Çiçek devletin resmî bir bankasına para yatırdığı, dershanesinde çalıştığı için TUTUKLANDI!\n',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5747,7 +5633,6 @@ export const HASHTAG_MOCKS = {
               "İSTANBUL\n\n   Sümeyye Aydın, 11 aylık bebeğiyle birlikte 13 Aralık'ta tutuklandı.\n\n   Dışarda ise annesinden koparılan gözü yaşlı bir evladı daha var. \n\n   Keyfi uygulamaların cezasını küçücük çocuklar ödemek zorunda bırakılıyor, bebeklerin yeri cezaevi değildir!",
             content:
               "Sümeyye Aydın, 11 aylık bebeğiyle birlikte 13 Aralık'ta tutuklandı.\nDışarda ise annesinden koparılan gözü yaşlı bir evladı daha var. \n\nKeyfi uygulamaların cezasını küçücük çocuklar ödemek zorunda bırakılıyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5770,7 +5655,6 @@ export const HASHTAG_MOCKS = {
               'Ebubekir (5.5) \n\nanne baba hasreti çeken  yüzlerce çocuktan birisi.\nBabası Sadık Erdem 5 ay önce cezaevinden tahliye olmuştu ama 12 Ekim de annesi Serap Erdem tutuklandı.\n\nBabasına kavuşan Ebubekir mutluluğunu yaşayamadan anne hasreti çekmeye başladı !',
             content:
               'Ebubekir (5.5) anne baba hasreti çeken  yüzlerce çocuktan birisi.\n\nBabası Sadık Erdem 5 ay önce cezaevinden tahliye olmuştu ama 12 Ekim de annesi Serap Erdem tutuklandı.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5793,7 +5677,6 @@ export const HASHTAG_MOCKS = {
               "ÇORUM\n\n   Hatice- Mücahit Bağcacı çifti 2022 Mart ayından beri Sungurlu Cezaevi'nde tutuklu.\n\n   Biricik oğulları Abdullah (3) annesiyle tutsaklığı yaşamış, beslenme vb konulardaki olumsuzluklar nedeniyle 6 Ekim 2022'den beri dışarda anne baba yolu gözlüyor!",
             content:
               "Hatice- Mücahit Bağcacı çifti 2022 Mart ayından beri Sungurlu Cezaevi'nde tutuklu.\nAbdullah (3) annesiyle tutsaklığı yaşamış, beslenme vb konulardaki olumsuzluklar nedeniyle 6 Ekim 2022'den beri dışarda anne baba yolu gözlüyor!",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5816,7 +5699,6 @@ export const HASHTAG_MOCKS = {
               "İZMİR\n\nZümra (2.5) tutsak yüzlerce bebekten biri!\n6 Eylül'den beri annesi Sümeyye Aksoy ile birlikte Şakran Cezaevi'nde.\n\nDışarda ise annesiz 2 kardeş annelerinin eve dönmesini bekliyor.\nGeleceğimiz olan çocuklar cezaevinde büyüyor!",
             content:
               "Zümra (2.5) tutsak yüzlerce bebekten biri!\n6 Eylül'den beri annesi Sümeyye Aksoy ile birlikte Şakran Cezaevi'nde.\n\nGeleceğimiz olan çocuklar cezaevinde büyüyor!",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5837,7 +5719,6 @@ export const HASHTAG_MOCKS = {
               'KASTAMONU \n\nHukuksuz kararların kurbanı çocuklar!\nÖğretmen Esra Songur iki çocuğu ile birlikte 24 Kasım’dan beri cezaevinde!\n\nFatmanur(2) ve abisi Ahmet Yaşar (3.5) aylardır sıcak bir yuvaya, özgürlüğe hasret!',
             content:
               'Hukuksuz kararların kurbanı çocuklar!\nFatmanur(2) ve abisi Ahmet Yaşar (3.5) aylardır sıcak bir yuvaya, özgürlüğe hasret!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5860,7 +5741,6 @@ export const HASHTAG_MOCKS = {
               "Baba Zekeriya Sarıçelik 2017' den, anne Özlem Sarıçelik 2020' den bu yana tutuklu.\n\nDown sendromlu Elif (11) ve Yahya(7) bu süreçte dede ve babaannelerinin yanında kalıyor.\n\nBu çocukların anne babasızlığı daha  ne kadar sürecek?",
             content:
               "Baba Zekeriya Sarıçelik 2017' den, anne Özlem Sarıçelik 2020' den bu yana tutuklu, yollarını gözleyen iki çocukları var.\nDown sendromlu Elif (11) ve Yahya(7) bu süreçte dede ve babaannelerinin yanında kalıyor.\n",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5883,7 +5763,6 @@ export const HASHTAG_MOCKS = {
               "Üç çocuk annesi tutuklandı! Ümran Karakuş8,14,21 yaşında. Ankara'da gözaltına alındı. 3 çocuğu var.   Yasal kriterleri yasa dışı kabul edip tutuklamaya kalkarlarsa 3 çocuk yetim kalacak.    Tutuklama bir cezalandırma aracı olmamalı!",
             content:
               "Üç çocuk annesi tutuklandı! Ümran Karakuş8,14,21 yaşlarında. Ankara'da gözaltına alındı.3 çocuğu var.legal kriterleri illegal kabul edip tutuklamaya kalkarlarsa 3 çocuk yetim kalacak.tutuklama bir cezalandırma aracı olmamalı! Çocukları yine annelerinden ayıracak mısınız?",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -6803,7 +6682,6 @@ export const HASHTAG_MOCKS = {
               "   İstanbul eski Mali Şube Müdürü Yakup Saygılı, 17 Aralık yolsuzluk operasyonunu yürüttüğü için 8 yıldır hapiste. Saygılı'nın babası Rasim Saygılı (83) hayatını kaybetti. Ancak, Yakup Saygılı'nın yaşamını yitiren babasının cenazesine katılmasına izin verilmedi. \n\nAdaletin bu trajik duruma nasıl izin verdiğini sorguluyoruz. ",
             content:
               "   İstanbul eski Mali Şube Müdürü Yakup Saygılı, 17 Aralık yolsuzluk operasyonunu yürüttüğü için 8 yıldır hapiste. Bugün, Saygılı'nın babası Rasim Saygılı (83) hayatını kaybetti. Ancak, Yakup Saygılı'nın yaşamını yitiren babasının cenazesine katılmasına izin verilmedi. \n\nAdaletin bu trajik duruma nasıl izin verdiğini sorguluyoruz. ",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -6826,7 +6704,6 @@ export const HASHTAG_MOCKS = {
               "   Eski Mali Şube Müdür Yardımcısı Yasin Topçu, 2015'te İstanbul Adliyesi'nde bekleyen tutuklu polis yakınlarına destek için geldiği sırada yaka paça gözaltına alındı. Topçu, sadece polislik görevini yerine getirirken yolsuzlukların gün yüzüne çıkmasına destek vermişti. \n\n   Adaletin ve hakların korunması adına daha fazla duyarlılık bekliyoruz. ",
             content:
               "   Eski Mali Şube Müdür Yardımcısı Yasin Topçu, 2015'te İstanbul Adliyesi'nde bekleyen tutuklu polis yakınlarına destek için geldiği sırada yaka paça gözaltına alındı. Topçu, sadece polislik görevini yerine getirirken yolsuzlukların gün yüzüne çıkmasına destek vermişti. \n\n   Adaletin ve hakların korunması adına daha fazla duyarlılık bekliyoruz. ",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -6848,7 +6725,6 @@ export const HASHTAG_MOCKS = {
               "   Organize Suçlarla Şube Müdürlüğü'nde görevliyken tutuklanan Nazmi Ardıç: 'Silivri zindanlarında esir olduğum için zerre kadar üzülmüyorum. Gözaltına alınmak ya da tutuklanmak, suçsuz insanları küçültmez; aksine büyütür.' \n\n- Nazmi Ardıç (1972 yıl 10 ay ceza verilen ve bir hafta sonra eşi tutuklanan Emniyet Müdürü)",
             content:
               "   Organize Suçlarla Şube Müdürlüğü'nde görevliyken tutuklanan Nazmi Ardıç: 'Silivri zindanlarında esir olduğum için zerre kadar üzülmüyorum. Gözaltına alınmak ya da tutuklanmak, suçsuz insanları küçültmez; aksine büyütür.' \n\n- Nazmi Ardıç (1972 yıl 10 ay ceza verilen ve bir hafta sonra eşi tutuklanan Emniyet Müdürü)",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -6871,7 +6747,6 @@ export const HASHTAG_MOCKS = {
               "   22 Temmuz 2014'te Yurt Atayün ve 7 Haziran 2015 seçimlerinden biraz önce de Anadolu Atayün, emniyete giderek kendilerini teslim etmişlerdi. O günden beri, her iki isim de gerçekçi olmayan gerekçelerle tutuklu. Kardeşlerden biri İstanbul Silivri, diğeri Ankara Sincan Cezaevi'nde tutuluyor. \n   İkisi de 17-25 Aralık yolsuzluk soruşturmalarında görevli memurlardı.",
             content:
               "   22 Temmuz 2014'te Yurt Atayün ve 7 Haziran 2015 seçimlerinden biraz önce de Anadolu Atayün, emniyete giderek kendilerini teslim etmişlerdi. O günden beri, her iki isim de gerçekçi olmayan gerekçelerle tutuklu. Kardeşlerden biri İstanbul Silivri, diğeri Ankara Sincan Cezaevi'nde tutuluyor. \n   İkisi de 17-25 Aralık yolsuzluk soruşturmalarında görevli memurlardı.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -6893,7 +6768,6 @@ export const HASHTAG_MOCKS = {
               "   1. Türkiye Mali Suçlar tarafından yürütülen \n17-25 Aralık soruşturmasında, 4 bakana verilen yüz milyonlarca dolarlık rüşvet karşılığında Reza Zarrab'ın yasa dışı altın ticareti ve kara para akladığı tespit edildi.\n\nSuçlular değil polisler hapiste !",
             content:
               "1. Türkiye Mali Suçlar Şubesi tarafından yürütülen 17-25 Aralık 2013 soruşturmasında, 4 bakana verilen yüz milyonlarca dolarlık rüşvet karşılığında İranlı iş adamı Reza Zarrab'ın yasa dışı altın ticareti ve kara para akladığı tespit edildi. Fakat bu sefer suçlular değil polisler hapse girdi !",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -6916,7 +6790,6 @@ export const HASHTAG_MOCKS = {
               '   2. "17-25 Aralık Soruşturması, yaklaşık iki yıl boyunca devam etti.İranlı işadamının, dört bakanı yüz milyonlarca dolarlık rüşvetlerle etkileyerek rüşvet trafiğini bakanların çocukları aracılığıyla yürüttüğü ve karşılığında dokunulmazlık elde ettiği belgelendi.”',
             content:
               '2. "Soruşturma, yaklaşık iki yıl boyunca devam etti. Bu süre zarfında, İranlı işadamının, dört bakanı yüz milyonlarca dolarlık rüşvetlerle etkileyerek rüşvet trafiğini bakanların çocukları aracılığıyla yürüttüğü ve karşılığında dokunulmazlık elde ettiği belgelendi.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -6939,7 +6812,6 @@ export const HASHTAG_MOCKS = {
               '   3. “ 17-25 Aralık yolsuzluk soruşturmasındaki detaylarda, kara para trafiği kamu bankası üzerinden Türk bankacılık sistemini büyük bir riske sokacak şekilde gerçekleştiği ve tonlarca altının Türk hava sahası ve Türk hava limanları kullanılarak transfer edildiği, üstelik hiçbir vergi ödenmediği de kayıtlara geçti."',
             content:
               '3. Bu olaylar yaşanırken, bir kamu bankası üzerinden Türk bankacılık sistemini büyük bir riske sokacak kara para transferlerinin gerçekleştiği ve tonlarca altının Türk hava sahası ve Türk hava limanları kullanılarak transfer edildiği, üstelik hiçbir vergi ödenmediği de kayıtlara geçti."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -6961,7 +6833,6 @@ export const HASHTAG_MOCKS = {
               '4. "17-25 Aralık yolsuzluk soruşturmasını yürüten polisler, insanların hayallerinde ve rüyalarında dahi göremeyecekleri milyarlarca dolarlık rakamları soruşturmuş, şüphelileri adım adım takip etmiş, görüntülemiş, alışverişleri belgelemiş ve dosyaya eklemişlerdi.”',
             content:
               '4. "İnsanların hayallerinde ve rüyalarında dahi göremeyecekleri milyarlarca dolarlık rakamları soruşturan ekipler, şüphelileri adım adım takip etmiş, görüntülemiş, alışverişleri belgelemiş ve dosyaya eklemişlerdi.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -6984,7 +6855,6 @@ export const HASHTAG_MOCKS = {
               '\n   5. "17-25 Aralık yolsuzluk operasyonu dosyasının içeriği çok sağlam görünüyordu; titiz ve ayrıntılı bir çalışma sonucunda, Reza Zerrab\'ın bu kanallar aracılığıyla bakan çocuklarına özellikle bir eğitim vakfına gönderdiği çantalar ve bu çantaların içindeki paralar görüntülü ve fotoğraflı biçimde tespit edilmişti."',
             content:
               '5. "Dosyanın içeriği çok sağlam görünüyordu; titiz ve ayrıntılı bir çalışma sonucunda, Reza Zerrab\'ın bu kanallar aracılığıyla bakan çocuklarına özellikle bir eğitim vakfına gönderdiği çantalar ve bu çantaların içindeki paralar görüntülü ve fotoğraflı biçimde tespit edilmişti."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7007,7 +6877,6 @@ export const HASHTAG_MOCKS = {
               '\n   6. "Türkiyedeki seçim öncesinde bir operasyon yapma niyetimiz yoktu. Operasyon yapılacağı duyumu alınması ve Mali Şube Müdürü ile benim görevden alınma girişiminden kaynaklandı. İçişleri Bakanı\'nın yolsuzluğa bulaşmış olması ve suç ortağı ile ilişkisinin ortaya çıkma riskinin görmesi üzerine operasyonu başlattık."  Nazmi Ardıç Emniyet Müdürü ',
             content:
               '6. "Seçim öncesinde bir operasyon yapma niyetimiz yoktu. Mali Şube Müdürü  ile benim görevden alınma girişiminden kaynaklandı. İçişleri Bakanı\'nın yolsuzluğa bulaşmış olması ve suç ortağı ile ilişkisinin ortaya çıkma riskinin görmesi üzerine operasyonu başlattık."Nazmi Ardıç Emniyet Müdürü ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7030,7 +6899,6 @@ export const HASHTAG_MOCKS = {
               '\n   7 ."17-25 Aralık\'daki kara para aklama ve rüşvet suçlarına ilişkin yürütülen soruşturma çerçevesinde, İstanbul ve Ankara\'da düzenlenen eş zamanlı operasyonlarda dönemin İçişleri, Ekonomi, Çevre ve Şehircilik Bakanlarının çocukları, Reza Zarrab ve dönemin Halkbank Genel Müdürü gözaltına alındı."',
             content:
               '7 ."Kara para aklama ve rüşvet suçlarına ilişkin yürütülen soruşturma çerçevesinde, İstanbul ve Ankara\'da düzenlenen eş zamanlı operasyonlarda dönemin İçişleri, Ekonomik, Çevre ve Şehircilik Bakanlarının çocukları, Reza Zarrab ve dönemin Halkbank Genel Müdürü gözaltına alındı."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7053,7 +6921,6 @@ export const HASHTAG_MOCKS = {
               '\n   8. "25 Aralık soruşturması kapsamında, kamu ihaleleri aracılığıyla devletin önemli alanlarından bazılarına söz verilerek, bir grup yandaş iş adamına büyük bir rüşvet havuzu oluşturuldu. \n\nBu rüşvet havuzunun başına da yandaş isimler getirildi."',
             content:
               '8. "25 Aralık soruşturması kapsamında, kamu ihaleleri aracılığıyla devletin önemli alanlarından bazılarına söz verilerek, bir grup yandaş iş adamına büyük bir rüşvet havuzu oluşturuldu. Bu rüşvet havuzunun başına da yandaş isimler getirildi."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7076,7 +6943,6 @@ export const HASHTAG_MOCKS = {
               '   9. "17/25 Aralık, diğer demokratik hukukun üstünlüğüne inanmış ve sağlıklı demokratik yapılardan farklı bir şekilde işledi. Türkiye\'de siyasal iktidar, devlete karşı bir darbe yaparak yargıyı dinlemedi ve yargının işlemesini zorla engelledi.\n\n Bu durum anayasal bir suç teşkil etmektedir." Mehmet Altan',
             content:
               '9. "17/25 Aralık, diğer demokratik hukukun üstünlüğüne inanmış ve sağlıklı demokratik yapılardan farklı bir şekilde işledi. Türkiye\'de siyasal iktidar, devlete karşı bir darbe yaparak yargıyı dinlemedi ve yargının işlemesini zorla engelledi. Bu durum anayasal bir suç teşkil etmektedir." Mehmet Altan',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7099,7 +6965,6 @@ export const HASHTAG_MOCKS = {
               '14. "17-25 Aralıktan ardından Siyasi İktidar büyük bir hukuku katletti. On binlerce kamu görevlisinin görev yeri değiştirildi, yüzlercesi açığa alındı ve aileleri perişan edildi. Hükümet, meclise gönderilen yolsuzluk fezlekesinin meclis gündemine alınmasını aylarca engelledi."',
             content:
               '14. "On binlerce kamu görevlisinin görev yeri değiştirildi, yüzlercesi açığa alındı ve aileleri perişan edildi. Hükümet, meclise gönderilen yolsuzluk fezlekesinin meclis gündemine alınmasını aylarca engelledi."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7122,7 +6987,6 @@ export const HASHTAG_MOCKS = {
               '\n   15. "17-25 Aralık sonrasındaki süreçte Siyasi iktidar gerçeklerin ortaya çıkarılmaması ve konunun üzerinin örtülebilmesi için yayın yasakları da hızla uygulandı. Artık hemen her konuya yayın yasağı getirilebiliyordu,  basın haber yapabilecek pek çok noktadan uzaklaştırıldı ve yıllarca kullandıkları yayın kanalları kapatıldı."',
             content:
               '15. "Bu süreçte gerçeklerin ortaya çıkarılmaması ve konunun üzerinin örtülebilmesi için yayın yasakları da hızla uygulandı. Artık hemen her konuya yayın yasağı getirilebiliyordu,  basın haber yapabilecek pek çok noktadan uzaklaştırıldı ve yıllarca kullandıkları yayın kanalları kapatıldı."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7145,7 +7009,6 @@ export const HASHTAG_MOCKS = {
               '\n   16. "Türkiyede Siyasi iktidar yaptıkları yolsuzlukların üstünü örtmeye çalışılıyordu. Bu amaçla, bize darbe yapıyorlar suçlamasıyla 17/25 Aralık operasyonunda görevli olan ya da olmayan onlarca üst düzey emniyet görevlisi, delilsiz ve belgesiz bir şekilde gözaltına alındı."',
             content:
               '16. "Yolsuzluk algısı üstü bir şekilde örtülmeye çalışılıyordu. Bu amaçla, darbe yapıyorlar suçlamasıyla 17/25 Aralık operasyonunda görevli olan ya da olmayan onlarca üst düzey emniyet görevlisi, delilsiz ve belgesiz bir şekilde gözaltına alındı."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7168,7 +7031,6 @@ export const HASHTAG_MOCKS = {
               '10. Çevre ve Şehircilik Bakanı Bayraktar:  "Başbakan Erdoğan tarafından bana yöneltilen rüşvet ve yolsuzluk iddialarıyla ilgili operasyon nedeniyle istifa ediniz ve beni rahatlatacak bir deklarasyon yayınlayınız şeklindeki baskıları kabul etmiyorum."',
             content:
               '10. Çevre ve Şehircilik Bakanı Bayraktar:  "Başbakan Erdoğan tarafından bana yöneltilen rüşvet ve yolsuzluk iddialarıyla ilgili operasyon nedeniyle istifa ediniz ve beni rahatlatacak bir deklarasyon yayınlayınız şeklindeki baskıları kabul etmiyorum."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7191,7 +7053,6 @@ export const HASHTAG_MOCKS = {
               '11. "Soruşturma dosyasında bulunan ve yasalara uygun olarak onaylanan imar planlarının büyük bir bölümünün, Sayın Başbakan Recep Tayyip Erdoğan\'ın talimatıyla yapıldığını belirtiyorum. Bu nedenle, milleti rahatlatmak adına Sayın Başbakan Tayyip Erdoğan\'ın istifa etmesine inandığımı ifade ediyorum." Bakan E. Bayraktar',
             content:
               '11. "Soruşturma dosyasında bulunan ve yasalara uygun olarak onaylanan imar planlarının büyük bir bölümünün, Sayın Başbakan Recep Tayyip Erdoğan\'ın talimatıyla yapıldığını belirtiyorum. Bu nedenle, milleti rahatlatmak adına Sayın Başbakan Tayyip Erdoğan\'ın istifa etmesine inandığımı ifade ediyorum."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7214,7 +7075,6 @@ export const HASHTAG_MOCKS = {
               '12. "Operasyonu gerçekleştiren beş şubenin müdürü görevden alındı; daha sonra görevden almalar diğer illere sıçradı ve aynı gün içinde 33 müdürün görev yeri değiştirildi. Bu müdahale sadece emniyetle sınırlı kalmayarak, bu operasyona iki savcı daha eklendi."',
             content:
               '12. "Operasyonu gerçekleştiren beş şubenin müdürü görevden alındı; daha sonra görevden almalar diğer illere sıçradı ve aynı gün içinde 33 müdürün görev yeri değiştirildi. Bu müdahale sadece emniyetle sınırlı kalmayarak, bu operasyona iki savcı daha eklendi."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7237,7 +7097,6 @@ export const HASHTAG_MOCKS = {
               '13. "Uzun bir süredir devam eden soruşturmayı yürüten Savcı Muammer Akkaş görevden alındı. Bu arada, bir çok bilgi ve belge ile tutuklanan bakan çocukları ve İranlı işadamına ne olduğunu merak ediyorsaniz, onlar savcılar ve hakimler değiştirilerek serbest bırakıldı."',
             content:
               '13. "Uzun bir süredir devam eden soruşturmayı yürüten Savcı Muammer Akkaş görevden alındı. Bu arada, bir çok bilgi ve belge ile tutuklanan bakan çocukları ve İranlı işadamına ne olduğunu merak ediyorsaniz, onlar savcılar ve hakimler değiştirilerek serbest bırakıldı."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7260,7 +7119,6 @@ export const HASHTAG_MOCKS = {
               '\n   Mahir Çakallı 25 yıldır Emniyette çalıştı İstanbul Emniyet Müdür Yardımcılığı yaptı. Görev yaptığı süre boyunca hak ve adaletin karşısında olanlara karşı mücadele verdi. 2.5 günlük soruşturma ile hukuksuzca ihraç edildi. 25 Aralık soruşturmasında 2018 Aralık ayında ağırlaştırılmış müebbet cezası verildi.',
             content:
               'Mahir Çakallı 25 yıldır Emniyette çalıştı İstanbul Emniyet Müdür Yardımcılığı yaptı. Görev yaptığı süre boyunca hak ve adaletin karşısında olanlara karşı mücadele verdi. 2.5 günlük soruşturma ile hukuksuzca ihraç edildi. 25 Aralık soruşturmasında 2018 Aralık ayında ağırlaştırılmış müebbet cezası verildi.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7283,7 +7141,6 @@ export const HASHTAG_MOCKS = {
               "Ömer Köse \n   İstanbul Terörle Mücadele Eski Şube Müdürü Ömer Köse 2014 yılından beri tutuklu.\n2018 yılından beri tek kişilik hücrede tecritte bulunan Köse 'nin avukatı ile görüşmesi sınırlandırılıyor, kan hastalığı sebebiyle soğuktan çok etkilenmesine rağmen odası ekstra soğuk tutuluyor ve susuz bırakılıyor.",
             content:
               "Ömer Köse \nİstanbul Terörle Mücadele Eski Şube Müdürü Ömer Köse 2014 yılından beri tutuklu.\n2018 yılından beri tek kişilik hücrede tecritte bulunan Köse 'nin avukatı ile görüşmesi sınırlandırılıyor, kan hastalığı sebebiyle soğuktan çok etkilenmesine rağmen odası ekstra soğuk tutuluyor ve susuz bırakılıyor.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7306,7 +7163,6 @@ export const HASHTAG_MOCKS = {
               "Ömer Köse\n   Köse'ye cezaevinde uygulanan keyfi kısıtlamaların üzerine sistematik işkence yapılmaya devam ediliyor.\nDaha önce kızkardeşi Selda Özdemir ile oğlu Faruk S. Köse tutuklandı. Oğlunun tahliye edilmesinin ardından ise eşi Semra Köse tutuklandı.\nGörevlerini hakkıyla yapan polislerimizi unutturmayacağız!",
             content:
               "Ömer Köse'ye cezaevinde uygulanan keyfi kısıtlamaların üzerine sistematik işkence yapılmaya devam ediliyor.\nDaha önce kızkardeşi Selda Özdemir ile oğlu Faruk S. Köse tutuklandı. Oğlunun tahliye edilmesinin ardından ise eşi Semra Köse tutuklandı.\nGörevlerini hakkıyla yapan polislerimizi unutturmayacağız!",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7329,7 +7185,6 @@ export const HASHTAG_MOCKS = {
               '\nKazım Aksoy\n   17-25 Aralık soruşturmalarında görev alan şube müdür yardımcısı Kazım Aksoy 10 yıldır hücrede. Eşi Sümeyye Aksoy kalça kemiği tamamen parçalanmış şekilde 4 sene hapiste yaşam mücadelesi verdi.',
             content:
               'Kazım Aksoy\n17-25 Aralık soruşturmalarında görev alan şube müdür yardımcısı Kazım Aksoy 10 yıldır hücrede. Eşi Sümeyye Aksoy kalça kemiği tamamen parçalanmış şekilde 4 sene hapiste yaşam mücadelesi verdi.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7352,7 +7207,6 @@ export const HASHTAG_MOCKS = {
               "Ayhan Arıkanoğlu \n17-25 Aralık operasyonları sonrası tutuklanan ve hala tutuklu bulunan Arıkanoğlu'nun eşi Ayşe hanım da 2017 yılında tutuklandı. \n2019 yılında Ayşe hanım hakkında sözde örgüt üyeliği sebebiyle 6 yıl 3 ay ceza verildi.",
             content:
               "Ayhan Arıkanoğlu \n17-25 Aralık operasyonları sonrası tutuklanan ve hala tutuklu bulunan Arıkanoğlu'nun eşi Ayşe hanım da 2017 yılında tutuklandı. \n2019 yılında Ayşe hanım hakkında sözde örgüt üyeliği sebebiyle 6 yıl 3 ay ceza verildi.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7375,7 +7229,6 @@ export const HASHTAG_MOCKS = {
               'Osman Özgür Açıkgöz \nAvukatı ile gelip teslim olan emniyet müdürü Açıkgöz 2014\'ten beri tutuklu. \n"Biz asıl senaryoyu yazan Rabbimize sığındık” diyen eşi Zeliha Ö. Açıkgöz ise 2017 yılında tutuklandı. 2019 yılında 6 yıl 3 ay ceza verildi.\nGörevlerini yapan polislere ve eşlerine yönelik bu haksız tutuklamaları unutmayalım!',
             content:
               'Osman Özgür Açıkgöz \nAvukatı ile gelip teslim olan emniyet müdürü Açıkgöz 2014\'ten beri tutuklu. \n"Biz asıl senaryoyu yazan Rabbimize sığındık” diyen eşi Zeliha Ö. Açıkgöz ise 2017 yılında tutuklandı. 2019 yılında 6 yıl 3 ay ceza verildi.\nGörevlerini yapan polislere ve eşlerine yönelik bu haksız tutuklamaları unutmayalım!',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7558,7 +7411,6 @@ export const HASHTAG_MOCKS = {
               'Naaktfouillering - Nagehan Yüksel (Koranleraar) werd overgeplaatst van de Bakırköy gevangenis naar de Eskişehir gevangenis. Tijdens deze overplaatsing werd ze gefouilleerd. Mevrouw Nagehan schreef in haar brief vanuit de gevangenis dat ze werd gefouilleerd. Maar deze brief werd in beslag genomen door het gevangenisbestuur. Niet alleen werd de brief in beslag genomen, maar ze verwezen mevrouw Nagihan ook naar de tuchtraad. ',
             content:
               'Naaktfouillering - Nagehan Yüksel (Koranleraar) werd overgeplaatst van de Bakırköy gevangenis naar de Eskişehir gevangenis. Tijdens deze overplaatsing werd ze gefouilleerd. Mevrouw Nagehan schreef in haar brief vanuit de gevangenis dat ze werd gefouilleerd. Maar deze brief werd in beslag genomen door het gevangenisbestuur. Niet alleen werd de brief in beslag genomen, maar ze verwezen mevrouw Nagihan ook naar de tuchtraad. Fouilleren is een misdaad tegen de menselijkheid.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7581,7 +7433,6 @@ export const HASHTAG_MOCKS = {
               "Opnieuw gearresteerd - Kübra Alvar was een lerares. Ze bracht haar zwangerschap door in de gevangenis. Mevrouw Kübra werd slechts een week voor de geboorte vrijgelaten. Mevrouw Kübra en haar man Ferhat Alvar werden opnieuw gearresteerd in Edirne. Ze lieten hun 4,5 jaar oude dochter Rahşan achter. Deze psychologische trauma's hebben een negatieve invloed op de gezondheid van kinderen.",
             content:
               "Opnieuw gearresteerd - Kübra Alvar was een lerares. Ze bracht haar zwangerschap door in de gevangenis. Mevrouw Kübra werd slechts een week voor de geboorte vrijgelaten. Mevrouw Kübra en haar man Ferhat Alvar werden opnieuw gearresteerd in Edirne. Ze lieten hun 4,5 jaar oude dochter Rahşan achter. Deze psychologische trauma's hebben een negatieve invloed op de gezondheid van kinderen.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7604,7 +7455,6 @@ export const HASHTAG_MOCKS = {
               'Militaire studenten die werden vrijgesproken in de zaak Sultanbeyli worden opnieuw in de gevangenis gegooid op grond van banden met terrorisme. Het lezen van religieuze boeken, bidden uit de ooghoeken, leren, vingerafdrukken hebben op religieuze boeken worden nu beschouwd als bewijs van een misdaad.',
             content:
               'Militaire studenten die werden vrijgesproken in de zaak Sultanbeyli worden opnieuw in de gevangenis gegooid op grond van banden met terrorisme. Het lezen van religieuze boeken, bidden uit de ooghoeken, leren, vingerafdrukken hebben op religieuze boeken worden nu beschouwd als bewijs van een misdaad.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7625,7 +7475,6 @@ export const HASHTAG_MOCKS = {
               'Dr. Ahmet Riza Özkan, onze martelaar van madrasa yusufiye, werd onterecht gevangen gezet en stierf later aan maagkanker. Hij liet een mooie 6-jarige dochter en een kuise vrouw achter.',
             content:
               'Dr. Ahmet Riza Özkan, onze martelaar van madrasa yusufiye, werd onterecht gevangen gezet en stierf later aan maagkanker. Hij liet een mooie 6-jarige dochter en een kuise vrouw achter.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7642,7 +7491,6 @@ export const HASHTAG_MOCKS = {
               'Parlementslid Ömer Faruk Gergerlioğlu vroeg aandacht voor de baby\'s in de gevangenis. Hij zei: "Jullie houden een baby van 10 maanden die naar melk ruikt in de gevangenis! Een moeder en haar baby zitten in de gevangenis zonder dat er een definitieve uitspraak tegen haar is gedaan! Alsof het nog niet genoeg is dat jullie vrouwen, moeders en zwangere vrouwen laten lijden, laten jullie nu ook baby\'s lijden."',
             content:
               "Baby's in de gevangenis - Parlementslid Ömer Faruk Gergerlioğlu vroeg aandacht voor de baby's in de gevangenis. Hij zei: \"Jullie houden een baby van 10 maanden die naar melk ruikt in de gevangenis! Een moeder die nog geen definitief vonnis tegen haar en haar baby heeft, zitten in de gevangenis! Alsof het nog niet genoeg is dat jullie vrouwen, moeders en zwangere vrouwen laten lijden, laten jullie nu ook baby's lijden.\"",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -7665,7 +7513,6 @@ export const HASHTAG_MOCKS = {
               'Het echtpaar Cemile-Mehmet Dönmez werd in augustus 2021 gearresteerd. Mesut (9) en Nil (2,5), die epileptische aanvallen hebben, werden herenigd met hun moeder. De twee dingen die een zieke baby het meest nodig heeft, zijn papa en mama.',
             content:
               'Het echtpaar Cemile-Mehmet Dönmez werd in augustus 2021 gearresteerd. Mesut (9) en Nil (2,5), die epileptische aanvallen hebben, werden herenigd met hun moeder. De twee dingen die een zieke baby het meest nodig heeft, zijn papa en mama.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8096,7 +7943,6 @@ export const HASHTAG_MOCKS = {
               'Nieuwe scenarioschrijvers worden getraind met de FC Academy scenarioschrijftraining.',
             content:
               'Nieuwe scenarioschrijvers worden getraind met de FC Academy scenarioschrijftraining.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8119,7 +7965,6 @@ export const HASHTAG_MOCKS = {
               'FC Akademi wil het bewustzijn over mensenrechten vergroten met maandelijkse lezingen.',
             content:
               'FC Akademi wil het bewustzijn over mensenrechten vergroten met maandelijkse lezingen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8142,7 +7987,6 @@ export const HASHTAG_MOCKS = {
               'Software, interviews en trainingen zijn gepland in Nederland binnen FC Academy.  ',
             content:
               'Software, interviews en trainingen zijn gepland in Nederland binnen FC Academy.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8165,7 +8009,6 @@ export const HASHTAG_MOCKS = {
               'Als FC Academy hebben we een digitale tekentraining gegeven, die we in de nieuwe periode willen herhalen.',
             content:
               'Als FC Academy hebben we een digitale tekentraining gegeven, die we in de nieuwe periode willen herhalen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8186,7 +8029,6 @@ export const HASHTAG_MOCKS = {
               'FC Academy verzorgt projecttrainingen. Nederlandse en Europese Unie projecten zijn gepland.',
             content:
               'FC Academy verzorgt projecttrainingen. Nederlandse en Europese Unie projecten zijn gepland.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8209,7 +8051,6 @@ export const HASHTAG_MOCKS = {
               'De groep Sound of Change publiceert wekelijks populaire liedjes, gecombineerd met verhalen over de wetteloosheid in Turkije.',
             content:
               'De groep Sound of Change publiceert wekelijks populaire liedjes, gecombineerd met verhalen over de wetteloosheid in Turkije.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8232,7 +8073,6 @@ export const HASHTAG_MOCKS = {
               'In Denhaag organiseerde het programma Kunsthalte een tentoonstelling om de heksenjacht in Turkije door middel van kunst onder de aandacht te brengen en de band Sound of change speelde een paar nummers.',
             content:
               'In Denhaag organiseerde het programma Kunsthalte een tentoonstelling om de heksenjacht in Turkije door middel van kunst onder de aandacht te brengen en de band Sound of change speelde een paar nummers.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8255,7 +8095,6 @@ export const HASHTAG_MOCKS = {
               'Op de bevrijdingsdag van Nederland in Haarlem, met de organisatie van Stichting Freedom Combination, heeft Sound of Change deelgenomen aan het standprogramma door straatmuziek te maken om de onrechtmatigheden tegen vrouwen in Turkije onder de aandacht te brengen.',
             content:
               'Op de bevrijdingsdag van Nederland in Haarlem, met de organisatie van Stichting Freedom Combination, heeft Sound of Change deelgenomen aan het standprogramma door straatmuziek te maken om de onrechtmatigheden tegen vrouwen in Turkije onder de aandacht te brengen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8278,7 +8117,6 @@ export const HASHTAG_MOCKS = {
               'Sound of Change begeleidde het iftarprogramma in Hengelo waar mensen uit verschillende culturen samenkwamen door muziek te maken',
             content:
               'Sound of Change-groep begeleidde het iftar-programma in Hengelo waar mensen uit verschillende culturen samenkwamen door muziek te spelen',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8301,7 +8139,6 @@ export const HASHTAG_MOCKS = {
               'Op de tentoonstelling die het platform Kunst Halte in Heerenveen organiseerde om de heksenjacht in Turkije door middel van schilderkunst onder de aandacht te brengen, probeerde de groep Sound of change de tentoonstelling te ondersteunen door liedjes te spelen.',
             content:
               'Op de tentoonstelling die het platform Kunst Halte in Heerenveen organiseerde om de heksenjacht in Turkije door middel van schilderkunst onder de aandacht te brengen, probeerde de groep Sound of change de tentoonstelling te ondersteunen door liedjes te spelen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8324,7 +8161,6 @@ export const HASHTAG_MOCKS = {
               'We speelden het theaterstuk " YOL " in 4 steden en 2 landen en we zullen de komende dagen in verschillende steden blijven spelen. "en dan komt de dood... de dood komt als laatste maar we zeggen nog steeds dat het vroeg is."',
             content:
               'We speelden het theaterstuk " YOL " in 4 steden en 2 landen en we zullen de komende dagen in verschillende steden blijven spelen. "en dan komt de dood... de dood komt als laatste maar we zeggen nog steeds dat het vroeg is."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8347,7 +8183,6 @@ export const HASHTAG_MOCKS = {
               'Het YOL-theater heeft grenzen overschreden, culturen en talen overbrugd, doordat het de harten en geesten van mensen met verschillende achtergronden raakte. Het diende als een herinnering aan de universele kracht van het vertellen van verhalen om empathie, begrip en eenheid te inspireren.',
             content:
               'Het YOL-theater heeft grenzen overschreden, culturen en talen overbrugd, doordat het de harten en geesten van mensen met verschillende achtergronden raakte. Het diende als een herinnering aan de universele kracht van het vertellen van verhalen om empathie, begrip en eenheid te inspireren.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8370,7 +8205,6 @@ export const HASHTAG_MOCKS = {
               'Op 2 juli 2022 kregen we de ongelooflijke kans om onze voorstelling, The YOL theater, te presenteren in Amsterdam, wat de eerste stad van onze langverwachte tour markeerde.',
             content:
               'Op 2 juli 2022 kregen we de ongelooflijke kans om onze voorstelling, The YOL theater, te presenteren in Amsterdam, wat de eerste stad van onze langverwachte tour markeerde.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8393,7 +8227,6 @@ export const HASHTAG_MOCKS = {
               'Op 17 september 2022 heeft het YOL theatergezelschap hun voorstelling vertoond aan een enthousiast publiek van 350 toeschouwers in de levendige stad Utrecht. De betoverende vertelkunst en krachtige aanwezigheid op het podium hebben een blijvende indruk achtergelaten op iedereen die aanwezig was.',
             content:
               'Op 17 september 2022 heeft het YOL theatergezelschap hun voorstelling vertoond aan een enthousiast publiek van 350 toeschouwers in de levendige stad Utrecht. De betoverende vertelkunst en krachtige aanwezigheid op het podium hebben een blijvende indruk achtergelaten op iedereen die aanwezig was.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8414,7 +8247,6 @@ export const HASHTAG_MOCKS = {
               'Op 10 december 2022 hebben we onze eerste internationale tournee gehouden in Brussel, waar we voor 450 toeschouwers optraden. Het was een gedenkwaardige gebeurtenis en markeerde een belangrijke mijlpaal in onze artistieke reis.',
             content:
               'Op 10 december 2022 hebben we onze eerste internationale tournee gehouden in Brussel, waar we voor 450 toeschouwers optraden. Het was een gedenkwaardige gebeurtenis en markeerde een belangrijke mijlpaal in onze artistieke reis.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8435,7 +8267,6 @@ export const HASHTAG_MOCKS = {
               'Sinds 2016 probeert hij meer mensen bewust te maken van mensenrechtenschendingen.',
             content:
               'Sinds 2016 probeert hij meer mensen bewust te maken van mensenrechtenschendingen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8458,7 +8289,6 @@ export const HASHTAG_MOCKS = {
               ' Platform Samen voor Vrijheid en Verbinding - Met de applicatie "Post Maker" op zijn website krijgt het sneller de steun van gebruikers van sociale media.',
             content:
               'Met de applicatie "Post Maker" op zijn website krijgt het sneller de steun van gebruikers van sociale media.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8481,7 +8311,6 @@ export const HASHTAG_MOCKS = {
               'Platform Samen voor Vrijheid en Verbinding - Via de website worden mensenrechtenschendingen geregistreerd. Het publiek heeft gemakkelijk toegang tot dit archief, dat juridisch bewijskrachtig is.',
             content:
               'Platform Samen voor Vrijheid en Verbinding - Via de website worden mensenrechtenschendingen geregistreerd. Het publiek heeft gemakkelijk toegang tot dit archief, dat juridisch bewijskrachtig is.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8504,7 +8333,6 @@ export const HASHTAG_MOCKS = {
               'Platform Samen voor Vrijheid en Verbinding - Het levert de inhoud die wordt geproduceerd door de platformen waarmee het in het veld samenwerkt aan de gebruiker.',
             content:
               'Het levert de inhoud die wordt geproduceerd door de platformen waarmee het in het veld samenwerkt aan de gebruiker.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8527,7 +8355,6 @@ export const HASHTAG_MOCKS = {
               "Dankzij de campagnes op sociale media zijn veel schendingen teruggedrongen of beëindigd en aan de lopende schendingen, zoals schendingen in gevangenissen, baby's in gevangenschap, pushbacks en martelingen, wordt steeds meer bekendheid gegeven.",
             content:
               "Dankzij de campagnes op sociale media zijn veel schendingen teruggedrongen of beëindigd en aan de lopende schendingen, zoals schendingen in gevangenissen, baby's in gevangenschap, pushbacks en martelingen, wordt steeds meer bekendheid gegeven.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8550,7 +8377,6 @@ export const HASHTAG_MOCKS = {
               'Mensenrechten schendingen in Turkije en in het buitenland zijn van het grootste belang en het is cruciaal om ervoor te zorgen dat informatie over deze schendingen een breed publiek bereikt. Daarom delen we deze essentiële informatie in drie talen: Nederlands, Engels en Turks.\n\n',
             content:
               'Mensenrechten schendingen in Turkije en in het buitenland zijn van het grootste belang en het is cruciaal om ervoor te zorgen dat informatie over deze schendingen een breed publiek bereikt. Daarom delen we deze essentiële informatie in drie talen: Nederlands, Engels en Turks.\n\n',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8573,7 +8399,6 @@ export const HASHTAG_MOCKS = {
               'Freedom Combination - Deze stichting accepteert de taal van de kunst als universeel en wil ook meer mensen bereiken over mensenrechtenschendingen via de taal van de kunst.',
             content:
               'Freedom Combination - Deze stichting accepteert de taal van de kunst als universeel en wil ook meer mensen bereiken over mensenrechtenschendingen via de taal van de kunst.dingen via de taal van de kunst.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8596,7 +8421,6 @@ export const HASHTAG_MOCKS = {
               'Stichting Freedom Combination - Stelt zich ten doel een einde te maken aan mensenrechtenschendingen door gebruik te maken van de kracht van sociale media',
             content:
               'Stichting Freedom Combination - Stelt zich ten doel een einde te maken aan mensenrechtenschendingen door gebruik te maken van de kracht van sociale media',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8619,7 +8443,6 @@ export const HASHTAG_MOCKS = {
               'Stichting Freedom Combination - Werkt met verschillende platforms en groepen om het publiek op een gezonde manier bewust te maken van mensenrechten.',
             content:
               'Stichting Freedom Combination - Werkt met verschillende platforms en groepen om het publiek op een gezonde manier bewust te maken van mensenrechten.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8641,7 +8464,6 @@ export const HASHTAG_MOCKS = {
               'Stichting Freedom Combination - In tegenstelling tot andere stichtingen voor mensenrechten is dit de eerste en enige stichting die speciaal is opgericht voor sociale media.',
             content:
               'Stichting Freedom Combination - In tegenstelling tot andere stichtingen voor mensenrechten is dit de eerste en enige stichting die speciaal is opgericht voor sociale media.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8664,7 +8486,6 @@ export const HASHTAG_MOCKS = {
               'Stichting Freedom Combination - De stichting, die haar activiteiten op vrijwillige basis uitvoert, wordt financieel en moreel gesteund door verschillende beroepsgroepen en leeftijdsgroepen.',
             content:
               'Stichting Freedom Combination - De stichting, die haar activiteiten op vrijwillige basis uitvoert, wordt financieel en moreel gesteund door verschillende beroepsgroepen en leeftijdsgroepen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8687,7 +8508,6 @@ export const HASHTAG_MOCKS = {
               'Onze tentoonstelling over "Nederland door de ogen van een vluchteling" in Hengelo trok veel belangstelling van onze bezoekers.',
             content:
               'Onze tentoonstelling over "Nederland door de ogen van een vluchteling" in Hengelo trok veel belangstelling van onze bezoekers.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8710,7 +8530,6 @@ export const HASHTAG_MOCKS = {
               'Hij heeft in verschillende delen van Nederland geëxposeerd.',
             content:
               'Hij heeft in verschillende delen van Nederland geëxposeerd.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8733,7 +8552,6 @@ export const HASHTAG_MOCKS = {
               'Onze tentoonstelling over Nederland door de ogen van een vluchteling was voor het eerst te zien in Utrecht.',
             content:
               'Onze tentoonstelling over Nederland door de ogen van een vluchteling was voor het eerst te zien in Utrecht.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8756,7 +8574,6 @@ export const HASHTAG_MOCKS = {
               'Onze tentoonstelling "Nederland door de ogen van een vluchteling" op de Sint Anna Kunstmarkt heeft haar eerste marktervaring gehad.',
             content:
               'Onze tentoonstelling "Nederland door de ogen van een vluchteling" op de Sint Anna Kunstmarkt heeft haar eerste marktervaring gehad.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8779,7 +8596,6 @@ export const HASHTAG_MOCKS = {
               'Onze tentoonstelling over Nederland door de ogen van een vluchteling was te zien in Heerenven.',
             content:
               'Onze tentoonstelling over Nederland door de ogen van een vluchteling was te zien in Heerenven.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -8800,7 +8616,6 @@ export const HASHTAG_MOCKS = {
               'In het afgelopen jaar hebben we tentoonstellingen gehad in onder andere Hengelo, Heerenven en Utrecht.',
             content:
               'In het afgelopen jaar hebben we tentoonstellingen gehad in onder andere Hengelo, Heerenven en Utrecht.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9647,7 +9462,6 @@ export const HASHTAG_MOCKS = {
               '\n\nOndanks zijn ernstige ziekte vecht Mehmet Parlak \n\nom te overleven in ongeschikte gevangenisomstandigheden. Parlak, die maar één nier heeft, heeft veel gewicht verloren. ',
             content:
               '\n\nOndanks zijn ernstige ziekte vecht Mehmet Parlak \n\nom te overleven in ongeschikte gevangenisomstandigheden. Parlak, die maar één nier heeft, heeft veel gewicht verloren. ',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9669,7 +9483,6 @@ export const HASHTAG_MOCKS = {
               '\nLeraar natuurkunde Şerife Sulukan\n\nVerlamd werd zij gearresteerd terwijl zij krukken gebruikte. Zij zit al 8 maanden alleen in de Menemen R Type gevangenis. \n\nVoor ernstig zieken betekenen gevangenisomstandigheden de dood.',
             content:
               'LeraLeraar natuurkunde Şerife Sulukan\n\nVerlamd werd zij gearresteerd terwijl zij krukken gebruikte. Zij zit al 8 maanden alleen in de Menemen R Type gevangenis. \n\nVoor ernstig zieken betekenen gevangenisomstandigheden de dood.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9692,7 +9505,6 @@ export const HASHTAG_MOCKS = {
               '\n\nKamil Acar,\n\n bij wie nierfalen is vastgesteld, wordt het recht op proeftijd ontnomen. Zijn familie wil dat hij behandeld wordt voordat de ziekte voortschrijdt.',
             content:
               'Kamil Acar met een decreet decreet\n\nKamil Acar, bij wie nierfalen is vastgesteld, wordt het recht op proeftijd ontnomen. Zijn familie wil dat hij behandeld wordt voordat de ziekte voortschrijdt.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9715,7 +9527,6 @@ export const HASHTAG_MOCKS = {
               'Wetsdecreten zijn in strijd met de beginselen van de grondwet.\n\n1-De rechtsstaat\n2-Geen misdaad/straf zonder wet\n3-Vermoeden van onschuld van de beschuldigde\n4-Geen straf met terugwerkende kracht\n5-Geen straf zonder proces',
             content:
               'Wetsdecreten zijn in strijd met de grondwet.\n\n1-Wetstaat2-Geen onrechtmatig misdrijf/straf3-Vermoeden van onschuld van de beschuldigde4-Geen straf met terugwerkende kracht5-Geen straf zonder proces',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9738,7 +9549,6 @@ export const HASHTAG_MOCKS = {
               "\nİbrahim Özer, die gevangen zit in de Giresun Espiye gevangenis, heeft geen recht op voorwaardelijke invrijheidstelling. \n\nÖzer's vader Selami Özer, die alleen is en zorg nodig heeft, wacht op zijn zoon na een extra jaar in de gevangenis.",
             content:
               "İbrahim Özer, die gevangen zit in de Giresun Espiye gevangenis, heeft geen recht op voorwaardelijke invrijheidstelling. Özer's vader Selami Özer, die alleen is en zorg nodig heeft, wacht op zijn zoon na een extra jaar in de gevangenis.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9761,7 +9571,6 @@ export const HASHTAG_MOCKS = {
               '\nSaliha Binay zit nog steeds in de gevangenisDeze baby groeit op in de gevangenis! Deze situatie zou niet hebben plaatsgevonden als ze niet onder een noodtoestand decreet.\n\nDeze onrechtvaardige vervolging moet stoppen!',
             content:
               'Saliha Binay zit nog steeds in de gevangenisDeze baby groeit op in de gevangenis! Deze situatie zou niet hebben plaatsgevonden als ze niet onder een noodtoestand decreet.Deze onrechtvaardige vervolging moet stoppen!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9784,7 +9593,6 @@ export const HASHTAG_MOCKS = {
               'Ayşe Neşe Gül werd veroordeeld tot 10 jaar gevangenisstraf. Ze mocht haar man en kinderen lange tijd niet zien.\n\nHaar man, Cevat Gül, die een Republikeinse Aanklager is, werd ook onderworpen aan psychologisch geweld door hem in eenzame opsluiting te houden in strijd met wettelijke voorschriften. Hij kreeg een gevangenisstraf van 8 jaar en 9 maanden.\n\nHij zit sinds 2016 in eenzame opsluiting.',
             content:
               'Rechter Ayşe Neşe Gül zit al 80 maanden in de gevangenis en in eenzame opsluiting...Waar heeft deze persoon dit aan verdiend?',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9807,7 +9615,6 @@ export const HASHTAG_MOCKS = {
               'SAKARYA\n\nAdem Erdoğdu zit al 66 maanden in de gevangenis.Hij heeft daar een pacemaker in zijn hart laten implanteren.Hij werd in mei naar de intensive care gebracht vanwege een probleem met zijn pacemaker en nu zit hij weer in de gevangenis.\n\nIemands recht op leven wordt hem ontnomen.',
             content:
               'WORKSHOP\n\nAdem Erdoğdu zit al 66 maanden in de gevangenis.Hij heeft daar een pacemaker in zijn hart laten implanteren.Hij werd in mei naar de intensive care gebracht vanwege een probleem met zijn pacemaker.Nu zit hij weer in de gevangenis.Het recht op leven wordt hem ontnomen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9830,7 +9637,6 @@ export const HASHTAG_MOCKS = {
               '\nAyse İpek, \n\ndie ALS heeft en gehandicapt is als gevolg van een gedeeltelijke verlamming, kan niet in haar eigen behoeften voorzien en kan zelfs niet alleen water drinken. Ayese Hanım werd verzorgd door haar man ÅÃ¼krü İpek, die voor de tweede keer werd gearresteerd. Er moet dringend amnestie worden verleend voor Silk',
             content:
               'AyÅe İpek, die ALS heeft en gehandicapt is als gevolg van een gedeeltelijke verlamming, kan niet in haar eigen behoeften voorzien en kan zelfs niet alleen water drinken. Ayese Hanım werd verzorgd door haar man Åükrü İpek, die voor de tweede keer werd gearresteerd. Er moet dringend amnestie worden verleend aan Åükrü İpek.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9853,7 +9659,6 @@ export const HASHTAG_MOCKS = {
               'Yazgül - Abdi Dural, een echtpaar van de politie met een noodverordening, werd 9 maanden geleden gearresteerd. Hun kinderen Fatma en Naci verblijven bij hun grootvader. \n\nGrootvader İsmail Dural: "Ik wil dat mijn schoondochter Yazgül Dural, die hydrocefalie heeft, terugkomt bij haar kinderen".',
             content:
               'Yazgül - Abdi Dural, een echtpaar van de politie met een noodverordening, werd 9 maanden geleden gearresteerd. Hun kinderen Fatma en Naci verblijven bij hun grootvader. Grootvader İsmail Dural:\n\n"Ik wil dat mijn schoondochter Yazgül Dural, die hydrocefalie heeft, naar haar kinderen komt...',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9876,7 +9681,6 @@ export const HASHTAG_MOCKS = {
               'Esra EKMEKÇİ heeft 3 maanden in de gevangenis gezeten en haar man 5 jaar.  Ze heeft 3 kinderen van 17, 12 en 8 jaar oud. \n\nHun jongste kind is een speciaal kind met autisme. Laat alstublieft hun moeder vrij voor het onderwijs en de toekomst van deze kinderen die bij hun bejaarde en zieke oma in het dorp moeten blijven.',
             content:
               'Esra EKMEKÇİ heeft 3 maanden in de gevangenis gezeten en haar man 5 jaar.\n\nZe heeft 3 kinderen van 17, 12 en 8 jaar oud. Hun jongste kind is een speciaal kind met autisme. Laat alsjeblieft hun moeder vrij voor de opvoeding en toekomst van deze kinderen die bij hun bejaarde en zieke oma in het dorp moeten blijven.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9899,7 +9703,6 @@ export const HASHTAG_MOCKS = {
               'Kamil Acar, een leraar met een noodtoestand, werd ziek door een nierziekte als gevolg van de ernstige kou waaraan hij werd blootgesteld in het gevangenisvoertuig tijdens zijn overplaatsing. \n\nHij wordt niet vrijgelaten uit de gevangenis vanaf september 2022, ondanks zijn recht op voorwaardelijke vrijlating.',
             content:
               'Kamil Acar, een leraar met een noodtoestand, werd ziek door een nierziekte als gevolg van de ernstige kou waaraan hij werd blootgesteld in het gevangenisvoertuig tijdens zijn overplaatsing.\n\nVanaf september 2022 wordt hij niet vrijgelaten, ondanks zijn recht op proeftijd.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9920,7 +9723,6 @@ export const HASHTAG_MOCKS = {
               "\nAyşe Karaduran zat eerder twee maanden in de gevangenis toen ze 4 maanden zwanger was en werd vrijgelaten. \n\nZe werd op 13 juli 2023 gearresteerd met haar 9 maanden oude zoon Murat. Baby Murat is allergisch voor bijvoeding. \n\nMoeders met baby's horen niet in de gevangenis.",
             content:
               "Ayşe Karaduran had eerder twee maanden in de gevangenis doorgebracht toen ze 4 maanden zwanger was en werd vrijgelaten. Ze werd op 13 juli 2023 gearresteerd met haar 9 maanden oude zoon Murat. Baby Murat is allergisch voor bijvoeding. Moeders met baby's horen niet in de gevangenis.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9943,7 +9745,6 @@ export const HASHTAG_MOCKS = {
               '\nVader van 9 maanden oude baby Murat: \n\n"Mijn vrouw is onrechtmatig gearresteerd in Edirne met onze baby. Er zijn 34 mensen op de afdeling. Onze baby Murat heeft uitslag van de hitte. In godsnaam, laat mijn vrouw en onze baby vrij.',
             content:
               'Vader van de 9 maanden oude baby Murat:\n\n"Mijn vrouw werd onrechtmatig gearresteerd in Edirne met onze baby. Er zijn 34 mensen op de afdeling. Onze baby Murat heeft uitslag van de hitte. In godsnaam, laat mijn vrouw en onze baby vrij.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9966,7 +9767,6 @@ export const HASHTAG_MOCKS = {
               '\n\nMahmut Kurt, een geschiedenisleraar die sinds 5 mei 2017 in de gevangenis zit, is nog niet vrijgelaten uit de gevangenis ondanks dat hij in aanmerking komt voor "voorwaardelijke invrijheidstelling" op 1 maart 2023.',
             content:
               'Mahmut Kurt, een geschiedenisleraar die sinds 5 mei 2017 in de gevangenis zit, is nog niet vrijgelaten uit de gevangenis ondanks dat hij in aanmerking komt voor "voorwaardelijke invrijheidstelling" op 1 maart 2023.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -9989,7 +9789,6 @@ export const HASHTAG_MOCKS = {
               'AFYON\n\nIhsan Efe (10) en zijn broer (6) wachten al 6 jaar op hun vader.Terwijl İ.Efe al ernstig gehandicapt was, nam de mate van ziekte toe met dit proces.Hun moeder moet alleen worstelen met deze moeilijkheden.Ze heeft haar man nodig.',
             content:
               'AFYON\n\nIhsan Efe (10) en zijn broer (6) wachten al 6 jaar op hun vader.Terwijl İ.Efe al ernstig gehandicapt was, nam de mate van ziekte toe met dit proces.Hun moeder moet alleen worstelen met deze moeilijkheden.Ze heeft haar man nodig.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10012,7 +9811,6 @@ export const HASHTAG_MOCKS = {
               '\nHet echtpaar Fatma-Selim Çevik zit al jaren in de gevangenis.\n\nHun kinderen Halim en Ekrem verblijven bij hun tante bovenop het trauma van de gevangenisstraf van hun ouders.\n\nLaat deze glimlach niet vervagen.Laat de kinderen opgroeien bij hun familie.',
             content:
               'Het echtpaar Fatma-Selim Çevik zit al jaren in de gevangenis en hun kinderen Halim en Ekrem leven, bovenop het trauma van de gevangenisstraf van hun ouders, gescheiden van elkaar bij hun tantes.\n\nMogen deze glimlachen nooit vervagen. Laat kinderen opgroeien met hun familie.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10033,7 +9831,6 @@ export const HASHTAG_MOCKS = {
               '\nKübra Uzun\n\nDe laatste foto van Ertuğrul Kuran, die ongeveer 5,5 jaar in de gevangenis heeft gezeten, met zijn dochter Kübra.\n\nDe kleine Kübra overleed als gevolg van een ziekte die ze had opgelopen en overleed verlangend naar haar vader.',
             content:
               'Kübra UzunDe laatste foto van Ertuğrul Kuran, die ongeveer 5,5 jaar in de gevangenis heeft gezeten, met zijn dochter Kübra. De kleine Kübra verliet ons als gevolg van een ziekte die ze opliep en overleed terwijl ze naar haar vader verlangde.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10296,7 +10093,6 @@ export const HASHTAG_MOCKS = {
               "\n\nKoray Vural, 29 jaar lang een zakenman die in Tadzjikistan woont, werd op zaterdag 7 september 's ochtends ontvoerd uit zijn restaurant in Dushanbe en naar Turkije gebracht.\nZijn familie maakt zich zorgen.\n\nWaar is Koray Vural!",
             content:
               "Koray Vural\n\nKoray Vural, 29 jaar lang een zakenman die in Tadzjikistan woont, werd op zaterdag 7 september 's ochtends ontvoerd uit zijn restaurant in Dushanbe en naar Turkije gebracht.\nZijn familie maakt zich zorgen.\n\nWaar is Koray Vural!",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10319,7 +10115,6 @@ export const HASHTAG_MOCKS = {
               'İsmet Özçelik \n\nwerd ontvoerd uit Maleisië en in 2017 naar Turkije gebracht, ondanks het feit dat hij onder bescherming stond van de Verenigde Naties. \n\nÖzçelik, die werd gearresteerd en naar de gevangenis gestuurd, heeft hartaandoeningen en diabetes. ',
             content:
               'İsmet Özçelik werd ontvoerd uit Maleisië en in 2017 naar Turkije gebracht, ondanks het feit dat hij onder bescherming stond van de Verenigde Naties. Özçelik, die werd gearresteerd en naar de gevangenis gestuurd, heeft hartaandoeningen en diabetes. Özçelik, die in de gevangenis een hartaanval kreeg, is het slachtoffer geweest van vele schendingen van zijn rechten Özçelik, die vanaf 29 november 2022 recht heeft op vrijlating onder toezicht, werd 6 dagen voor zijn vrijlating verhinderd door een willekeurig disciplinair onderzoek',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10342,7 +10137,6 @@ export const HASHTAG_MOCKS = {
               '\n\nCihan Özkan \n\nwerd in 2018 uit Kosovo ontvoerd en zit al vijf jaar vast. Özkan, die in een isolatiecel in de gevangenis van Marmara wordt vastgehouden, wordt bewust niet vrijgelaten, ook al zou hij moeten worden vrijgelaten',
             content:
               '\nCihan Özkan werd in 2018 uit Kosovo ontvoerd en zit al vijf jaar vast. Özkan, die in een isolatiecel in de gevangenis van Marmara wordt vastgehouden, wordt bewust niet vrijgelaten, ook al zou hij moeten worden vrijgelaten',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10365,7 +10159,6 @@ export const HASHTAG_MOCKS = {
               'Gökhan Türkmen\n\n zit nu in hechtenis in de Ankara Sincan gevangenis. Türkmen werd negen maanden nadat hij door de regeringsfunctionarissen was ontvoerd, vrijgelaten naar Antalya. Türkmen legde de volgende verklaringen af:\n\n "Ik werd 271 dagen lang gemarteld, lastiggevallen en bedreigd."',
             content:
               'Gökhan Türkmen (46) zit nu in hechtenis in de Ankara Sincan gevangenis. Türkmen werd negen maanden nadat hij door de regeringsfunctionarissen was ontvoerd, vrijgelaten naar Antalya. Türkmen legde de volgende verklaringen af:\n "Ik werd 271 dagen lang gemarteld, lastiggevallen en bedreigd. Ik moest dagenlang op een plek staan waar de lampen aan waren." Hij werd op het politiebureau vastgehouden alsof hij zojuist was gevonden nadat hij was gemarteld.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10388,7 +10181,6 @@ export const HASHTAG_MOCKS = {
               '\nDe Turkse inlichtingendienst ontvoerde Orhan İnandı uit Kirgizië en martelde hem. \n\nOnderwijzer Orhan İnandı werd veroordeeld tot 21 jaar gevangenisstraf.',
             content:
               'De Turkse inlichtingendienst ontvoerde Orhan İnandı uit Kirgizië en martelde hem. Onderwijzer Orhan İnandı werd veroordeeld tot 21 jaar gevangenisstraf.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10410,7 +10202,6 @@ export const HASHTAG_MOCKS = {
               '\n\n\nStudent Gülistan Doku, die in Tunceli werd ontvoerd, wordt al 1345 dagen vermist',
             content:
               'Student Gülistan Doku, die in Tunceli werd ontvoerd, wordt al 1345 dagen vermist.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10433,7 +10224,6 @@ export const HASHTAG_MOCKS = {
               '\nOpvoeder Sunay Elmas, wiens illegale ondervraging werd bijgewoond door het toenmalige hoofd van de Nationale Inlichtingendienst van Turkije, Hakan FİDAN, wordt al zeven jaar vermist.\n\nDe autoriteiten hebben geen enkele verklaring over deze kwestie afgelegd.',
             content:
               'Opvoeder Sunay Elmas, wiens illegale ondervraging werd bijgewoond door het toenmalige hoofd van de Nationale Inlichtingendienst van Turkije, Hakan FİDAN, wordt al zeven jaar vermist.\n\nDe autoriteiten hebben geen enkele verklaring over deze kwestie afgelegd.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10456,7 +10246,6 @@ export const HASHTAG_MOCKS = {
               '\nEen Chaldeeuws echtpaar dat in Şırnak woonde, werd 3,5 jaar geleden ontvoerd.\n\nHet dode lichaam van Şimuni Diril werd drie maanden later gevonden. Hurmüz Diril wordt nog steeds vermist. Hun dochter Gülcan Diril zegt dat haar ouders het slachtoffer zijn van een moord met voorbedachten rade.',
             content:
               'Een Chaldeeuws echtpaar dat in Şırnak woonde, werd 3,5 jaar geleden ontvoerd.\n\nHet dode lichaam van Şimuni Diril werd drie maanden later gevonden. Hurmüz Diril wordt nog steeds vermist. Hun dochter Gülcan Diril zegt dat haar ouders het slachtoffer zijn van een moord met voorbedachten rade.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10479,7 +10268,6 @@ export const HASHTAG_MOCKS = {
               '\nMehmet BAL wordt al drie jaar vermist.\n\nDe zoon van Mehmet Bal zegt dat ze zich bij alle overheidsinstellingen hebben gemeld om zijn vader te vinden, maar geen enkele reactie hebben ontvangen.',
             content:
               'Mehmet BAL wordt al drie jaar vermist.\n\nDe zoon van Mehmet Bal zegt dat ze zich bij alle overheidsinstellingen hebben gemeld om zijn vader te vinden, maar geen enkele reactie hebben ontvangen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10501,7 +10289,6 @@ export const HASHTAG_MOCKS = {
               'Yusuf Bilge TUNÇ \nwerd 4 jaar geleden op 6 augustus 2019 in Ankara Gimat ontvoerd in een zwarte Transporter. De manier waarop hij werd ontvoerd lijkt op de manier van de Turkse Nationale Inlichtingendienst.\nSinds die dag is de locatie van TUNÇ onbekend.\nZijn vader Mustafa Tunç:\n"Als hij in de gevangenis zat, zou ik hem gaan bezoeken."',
             content:
               'Yusuf Bilge TUNÇ werd 4 jaar geleden op 6 augustus 2019 in Ankara Gimat ontvoerd in een zwarte Transporter.TUNÇ\'s lot is sindsdien onbekend.Zijn vader Mustafa Tunç: "Als hij in de gevangenis zat, zou je hem gaan bezoeken, er is niets pijnlijker dan niet weten wat er is gebeurd...!".',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10524,7 +10311,6 @@ export const HASHTAG_MOCKS = {
               '\nZabit Kişi, ontvoerd uit Kazachstan en 108 dagen lang gemarteld in Turkije:\n\nOp de plaats waar ik werd ontvoerd, martelden ze me door me uit te kleden, ze verpletterden mijn tenen, mijn ribben waren gebroken en ze stapten met hun voeten op mijn geboeide handen. Ik heb gevoelsverlies.',
             content:
               'Zabit Kişi, ontvoerd uit Kazachstan en 108 dagen lang gemarteld in Turkije:\n\n"Op de plaats waar ik werd ontvoerd, martelden ze me door me uit te kleden, ze verpletterden mijn tenen, mijn ribben waren gebroken en ze stapten met hun voeten op mijn geboeide handen. Ik heb gevoelsverlies. In de gevangenis waar ik gevangen werd gezet, worden klachten automatisch afgesloten met niet-vervolging."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10547,7 +10333,6 @@ export const HASHTAG_MOCKS = {
               'Werd Ayhan Oran naar het land geroepen om te worden geëxecuteerd?\n\nOran, een voormalige inlichtingenofficier, werd in juni 2016 tijdens zijn dienst in Griekenland naar Turkije terug geroepen.\nOp 17 juli werd hij geschorst en op 1 november ontvoerd. Sindsdien is niets meer gehoord van Oran',
             content:
               'Werd Ayhan Oran naar het land geroepen om te worden geëxecuteerd?\n\nOran, een voormalige inlichtingenofficier, werd in juni 2016 tijdens zijn dienst in Griekenland naar Turkije terug geroepen.\nOp 17 juli werd hij geschorst en op 1 november ontvoerd. Sindsdien is niets meer gehoord van Oran',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10570,7 +10355,6 @@ export const HASHTAG_MOCKS = {
               'Yasin Ugan, die  na seven maanden  ontvoering op het centrale politiebureau van  Ankara werd gevonden, beschreef de martelingen waaraan hij  in de rechtbank werd onderworpen:\n\n "Ik heb zes maanden met een zak over mijn hoofd geleefd, ik liep blauwe plekken op en werd zwaar gemarteld."',
             content:
               'Yasin Ugan, die  na seven maanden  ontvoering op het centrale politiebureau van  Ankara werd gevonden, beschreef de martelingen waaraan hij  in de rechtbank werd onderworpen:\n\n "Ik heb zes maanden met een zak over mijn hoofd geleefd, ik liep blauwe plekken op en werd zwaar gemarteld."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10834,7 +10618,6 @@ export const HASHTAG_MOCKS = {
               '\nÖzge Özbek \n\nZieke gevangene Özge Özbek heeft een hersentumor, epilepsie, astma en duizeligheid. Zij werd drie dagen nadat zij in 2020 een open hersenoperatie had ondergaan gearresteerd. Özbek, die in de gevangenis voor haar leven vecht, moet dringend worden behandeld',
             content:
               'Özge Özbek\n\nZieke gevangene Özge Özbek heeft een hersentumor, epilepsie, astma en duizeligheid. Zij werd drie dagen nadat zij in 2020 een open hersenoperatie had ondergaan gearresteerd. Özbek, die in de gevangenis voor haar leven vecht, moet dringend worden behandeld',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10857,7 +10640,6 @@ export const HASHTAG_MOCKS = {
               'Hakan Kanat\n\nHakan Kanat heeft schildklierkanker en ondanks zijn ziekte zit hij al 87 maanden in de gevangenis. Dit omdat hij destijds een rekening had geopend bij Bank Asya en omdat zijn kind bij een  school van de Gülenbeweging heeft gestudeerd.\n\nVolgens het Europese Hof voor de Rechten van de Mens is het storten van geld bij Bank Asya en het sturen van een kind naar scholen van de  Gülenbeweging geen misdaad.',
             content:
               'Hakan Kanat  Kanselarij schildklier\n\n"Het is geen misdaad om geld te storten in Bank Asya en je kind naar een gemeenschapsschool te sturen," zei het EHRM.\n\nKanat, die onwettig gevangen wordt gehouden, moet dringend worden vrijgelaten.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10880,7 +10662,6 @@ export const HASHTAG_MOCKS = {
               'Bahadır Sulukan, zoon van Şerife Sulukan, die voor 89% gehandicapt is:\n\n"Mijn bedlegerige moeder zit al zeventien maanden in de gevangenis. Ze blijft in haar eentje op de afdeling. Mijn moeder moet worden vrijgelaten omdat ze onwettig in de gevangenis wordt vastgehouden."',
             content:
               'Bahadır Sulukan, zoon van Şerife Sulukan, die voor 89% gehandicapt is:\n\n"Mijn bedlegerige moeder zit al zeventien maanden in de gevangenis. Ze blijft in haar eentje op de afdeling. Mijn moeder moet worden vrijgelaten omdat ze onwettig in de gevangenis wordt vastgehouden."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10903,7 +10684,6 @@ export const HASHTAG_MOCKS = {
               'Esra Ekmekçi \n\nEsra Ekmekçi, die zes maanden geleden werd gearresteerd op grond van valse beschuldigingen, is nog steeds niet herenigd met haar autistische zoon Tarık.\n\nMoeders met zieke kinderen zouden vrijgelaten moeten worden de nieuwe executiewet ? Waarom wordt de wet niet toegepast op de moeder van Tarık, die autisme heeft?',
             content:
               'Esra Ekmekçi\n\nEsra Ekmekçi, die zes maanden geleden werd gearresteerd op grond van valse beschuldigingen, is nog steeds niet herenigd met haar autistische zoon Tarık.\n\nMoeders met zieke kinderen zouden vrijgelaten moeten worden de nieuwe executiewet ? Waarom wordt de wet niet toegepast op de moeder van Tarık, die autisme heeft?',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10926,7 +10706,6 @@ export const HASHTAG_MOCKS = {
               "Züleyha Erkol\n\nZüleyha's moeder, die een hersenoperatie onderging, stierf en haar vader zit in de gevangenis. Rechters, hebben jullie zelf geen kinderen? Als jullie dezelfde onderdrukking zouden ervaren, zouden jullie nooit zwijgen. Waarom tonen jullie niet dezelfde gevoeligheid voor Züleyha?",
             content:
               "Züleyha Erkol\n\nZüleyha's moeder, die een hersenoperatie onderging, stierf en haar vader zit in de gevangenis. Rechters, hebben jullie zelf geen kinderen? Als jullie dezelfde onderdrukking zouden ervaren, zouden jullie nooit zwijgen. Waarom tonen jullie niet dezelfde gevoeligheid voor Züleyha?",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10949,7 +10728,6 @@ export const HASHTAG_MOCKS = {
               'Gülden Aşık\n\n"O God help mij!"\n\nDit is een schreeuw! Gülden Aşık kreeg een miskraam in de gevangenis toen ze acht weken zwanger was. Zij heeft jarenlang tegen kanker gestreden. Ondanks het commissierapport dat zij niet in de gevangenis kon blijven, werd zij niet vrijgelaten. Luister naar de schreeuw van Gülden Aşık, die al lange tijd gescheiden is van haar 3 kinderen!',
             content:
               'Gülden Aşık\n\n""O God help mij!"\n\nDit is een schreeuw! Gülden Aşık kreeg een miskraam in de gevangenis toen ze acht weken zwanger was. Zij heeft jarenlang tegen kanker gestreden. Ondanks het commissierapport dat zij niet in de gevangenis kon blijven, werd zij niet vrijgelaten. Luister naar de schreeuw van Gülden Aşık, die al lange tijd gescheiden is van haar 3 kinderen!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10972,7 +10750,6 @@ export const HASHTAG_MOCKS = {
               'Mehmet Parlak\n\nDe ontslagen politieambtenaar Mehmet Parlak leeft al tien jaar met één nier. Parlak verloor 15 kg in de gevangenis en wordt momenteel behandeld in het ziekenhuis. Forensische geneeskunde instelling moet dringend uitstel van executie verlenen, maar hij is nog niet vrijgelaten.',
             content:
               'Mehmet Parlak\nDe ontslagen politieambtenaar Mehmet Parlak leeft al tien jaar met één nier. Parlak verloor 15 kg in de gevangenis en wordt momenteel behandeld in het ziekenhuis. Forensische geneeskunde instelling moet dringend uitstel van executie verlenen, maar hij is nog niet vrijgelaten.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -10995,7 +10772,6 @@ export const HASHTAG_MOCKS = {
               'Abdulalim Kaya\nHet is onaanvaardbaar dat Abdulalim Kaya (85), die lijdt aan nierfalen, dementie en diabetes, ondanks zijn ziektes in de gevangenis wordt vastgehouden.\nU moet de situatie van Abdulalim Kaya en alle ernstig zieke gedetineerden heroverwegen.',
             content:
               'Abdulalim Kaya\nHet is onaanvaardbaar dat Abdulalim Kaya (85), die lijdt aan nierfalen, dementie en diabetes, ondanks zijn ziektes in de gevangenis wordt vastgehouden.\nU moet de situatie van Abdulalim Kaya en alle ernstig zieke gedetineerden heroverwegen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11018,7 +10794,6 @@ export const HASHTAG_MOCKS = {
               'Emre Turan\n\nEmre Turan wiens vrouw een patiënt is met colitis ulcerosa:\n\n"Mijn vrouw woog 90 kilo, weegt nu 80 kilo. Mijn vrouw is elke minuut dat ze in de gevangenis zit een stap dichter bij de dood. Ik wil niet dat mijn twee zonen hun moeder verliezen."',
             content:
               'Emre Turan\n\nEmre Turan wiens vrouw een patiënt is met colitis ulcerosa:\n\n"Mijn vrouw woog 90 kilo, weegt nu 80 kilo. Mijn vrouw is elke minuut dat ze in de gevangenis zit een stap dichter bij de dood. Ik wil niet dat mijn twee zonen hun moeder verliezen."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11041,7 +10816,6 @@ export const HASHTAG_MOCKS = {
               'Yazgül Dural\n\n Huisvrouw Yazgül Dural en haar man werden in november 2022 gearresteerd in verband met het onderzoek tegen de Gülenistische beweging. Yazgül Dural heeft hydrocephalus. Dural, die last heeft van duizeligheid, braken en evenwichtsverlies, kan de persoonlijke verzorging niet alleen doen. Ze moet onmiddellijk worden vrijgelaten.',
             content:
               'Yazgül Dural\n\nHuisvrouw Yazgül Dural en haar man werden in november 2022 gearresteerd in verband met het onderzoek tegen de Gülenistische beweging. Yazgül Dural heeft hydrocephalus. Dural, die last heeft van duizeligheid, braken en evenwichtsverlies, kan de persoonlijke verzorging niet alleen doen. Ze moet onmiddellijk worden vrijgelaten.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11062,7 +10836,6 @@ export const HASHTAG_MOCKS = {
               '\nAbdullah Aydoğan \n\nDe 80-jarige Abdullah Aydoğan verloor zijn rechteroog in de gevangenis door nalatigheid. Aydoğan werd gearresteerd omdat hij een stuk land had geschonken aan een school die aangesloten was bij de Gülenistische Beweging. Aydoğan zit sinds januari 2019 in de gevangenis.',
             content:
               'Abdullah Aydoğan\n\nDe 80-jarige Abdullah Aydoğan verloor zijn rechteroog in de gevangenis door nalatigheid. Aydoğan werd gearresteerd omdat hij een stuk land had geschonken aan een school die aangesloten was bij de Gülenistische Beweging. Aydoğan zit sinds januari 2019 in de gevangenis.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11085,7 +10858,6 @@ export const HASHTAG_MOCKS = {
               'İsmet Özçelik\n\nDochter van İsmet Özçelik, die werd ontvoerd uit Maleisië:\n\n"Mijn vader zit al jaren gevangen ondanks dat hij geen enkele misdaad heeft begaan. Alsof het nog niet genoeg is na zes jaar lijden, laat je hem niet vrij, ook al is hij voorwaardelijk vrijgelaten."',
             content:
               'İsmet Özçelik\n\nDochter van İsmet Özçelik, die werd ontvoerd uit Maleisië:\n\n"Mijn vader zit al jaren gevangen ondanks dat hij geen enkele misdaad heeft begaan. Alsof het nog niet genoeg is na zes jaar lijden, laat je hem niet vrij, ook al is hij voorwaardelijk vrijgelaten."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11108,7 +10880,6 @@ export const HASHTAG_MOCKS = {
               'DE BABY VAN 3 MAANDEN WERD BIJ ZIJN MOEDER WEGGEHAALD\n\nHet echtpaar Zarif – Sümeyye Tercanlıoğlu werd gearresteerd wegens daden waarvan het EHRM bevestigde dat het ‘geen misdaden’ waren. De moeder, die haar zoontje van drie maanden niet in de gevangenis wilde laten, liet haar baby aan haar zus over.',
             content:
               'Echtpaar Tercanlioglu\n\nDE BABY VAN 3 MAANDEN WERD BIJ ZIJN MOEDER WEGGEHAALD\n\nHet echtpaar Zarif – Sümeyye Tercanlıoğlu werd gearresteerd wegens daden waarvan het EHRM bevestigde dat het ‘geen misdaden’ waren. De moeder, die haar zoontje van drie maanden niet in de gevangenis wilde laten, liet haar baby aan haar zus over.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11129,7 +10900,6 @@ export const HASHTAG_MOCKS = {
               '\nGültekin Avcı\n\nDe gevangen journalist Gültekin Avcı kreeg zijn medicijnen niet en hij verloor zijn evenwicht, viel en raakte gewond. Avcı wil dat zijn medicijnen worden verstrekt, maar de gevangenisdirectie wijst het verzoek af!',
             content:
               'Gültekin Avcı\n\nDe gevangen journalist Gültekin Avcı kreeg zijn medicijnen niet en hij verloor zijn evenwicht, viel en raakte gewond. Avcı wil dat zijn medicijnen worden verstrekt, maar de gevangenisdirectie wijst het verzoek af!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11152,7 +10922,6 @@ export const HASHTAG_MOCKS = {
               "\n\nEr zijn ernstig zieke gevangenen ouder dan 80 jaar, ook al kunnen ze niet in hun behoeften voorzien. \n\nAls het rechtssysteem rechtvaardig zou zijn in plaats van 'wraakzuchtig', zouden ze niet lijden onder onmenselijke omstandigheden.",
             content:
               "Er zijn ernstig zieke gevangenen ouder dan 80 jaar, ook al kunnen ze niet in hun behoeften voorzien. Als het rechtssysteem rechtvaardig zou zijn in plaats van 'wraakzuchtig', zouden ze niet lijden onder onmenselijke omstandigheden.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11427,7 +11196,6 @@ export const HASHTAG_MOCKS = {
               'De vier maanden oude Enis, die geen moedermelk kreeg, zit vandaag in de Edirne-gevangenis, wachtend om zijn moeder te bezoeken.\nZijn moeder Sümeyye Tercanlıoğlu, zit al een maand vast en baby Enis krijgt sindsdien geen moedermelk! De gevangene giet haar moedermelk in de gootsteen van de gevangenis!',
             content:
               'De vier maanden oude Enis, die geen moedermelk kreeg, zit vandaag in de Edirne-gevangenis, wachtend om zijn moeder te bezoeken.\nZijn moeder Sümeyye Tercanlıoğlu, zit al een maand vast en baby Enis krijgt sindsdien geen moedermelk! De gevangene giet haar moedermelk in de gootsteen van de gevangenis!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11450,7 +11218,6 @@ export const HASHTAG_MOCKS = {
               'DÜZCE\nHet echtpaar Nazlı-Fuat Çatpınar zit sinds 2019 in de gevangenis.\nDe drie kinderen van het echtpaar, Osman Bahadır (6), Ömer Mahir (5) en Ali Asaf (3), groeien op zonder ouders.\nGezinnen en kinderen worden al jaren onderdrukt vanwege niet-criminele activiteiten. Wees geen partij meer in deze onderdrukking, wees de stem van onschuldige mensen!',
             content:
               'DÜZCE\nHet echtpaar Nazlı-Fuat Çatpınar zit sinds 2019 in de gevangenis.\nDe drie kinderen van het echtpaar, Osman Bahadır (6), Ömer Mahir (5) en Ali Asaf (3), groeien op zonder ouders.\nGezinnen en kinderen worden al jaren onderdrukt vanwege niet-criminele activiteiten. Wees geen partij meer in deze onderdrukking, wees de stem van onschuldige mensen!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11473,7 +11240,6 @@ export const HASHTAG_MOCKS = {
               'KONYA\nHet echtpaar Zübeyde-Hüseyin Kara zit sinds maart 2019 in de gevangenis.\nHüseyin Bey is een spastische darmpatiënt en zijn vrouw Zübeyde Hanım heeft een hartziekte.\nZieke vader Hüseyin Kara in de gevangenis: "Ik sterf hier, laat alsjeblieft mijn stem horen! Laat mijn kinderen niet als wezen opgroeien". Er komt echter geen einde aan oneerlijke processen!\nDe drie kinderen van de familie Kara, 14, 12 en 5 jaar oud, groeien al 4 jaar op zonder vader en moeder.',
             content:
               'KONYA\nHet echtpaar Zübeyde-Hüseyin Kara zit sinds maart 2019 in de gevangenis.\nHüseyin Bey is een spastische darmpatiënt en zijn vrouw Zübeyde Hanım heeft een hartziekte.\nZieke vader Hüseyin Kara in de gevangenis: "Ik sterf hier, laat alsjeblieft mijn stem horen! Laat mijn kinderen niet als wezen opgroeien". Er komt echter geen einde aan oneerlijke processen!\nDe drie kinderen van de familie Kara, 14, 12 en 5 jaar oud, groeien al 4 jaar op zonder vader en moeder.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11496,7 +11262,6 @@ export const HASHTAG_MOCKS = {
               'KARABÜK\nHet echtpaar Gülseren-Zülküf Arslan zit al vier jaar in de gevangenis.\nDe drie kinderen van het echtpaar logeren bij hun grootmoeder. Laat oneerlijke processen eindigen!\nMaak een einde aan de wreedheid van het vasthouden van ouders!',
             content:
               'KARABÜK\nHet echtpaar Gülseren-Zülküf Arslan zit al vier jaar in de gevangenis.\nDe drie kinderen van het echtpaar logeren bij hun grootmoeder. Laat oneerlijke processen eindigen!\nMaak een einde aan de wreedheid van het vasthouden van ouders!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11519,7 +11284,6 @@ export const HASHTAG_MOCKS = {
               'De ouders van Vedat (13), Mücteba (12), Zeynep (12) en Yusuf (8) werden naar de gevangenis gestuurd. Het zijn vier kinderen wier leven is gestolen. Hun vader zit al jaren in de gevangenis en hun moeder, Rukiye Çoygar, werd op 8 september eveneens gearresteerd. Rukiye heeft gezondheidsproblemen en moet dringend geopereerd worden',
             content:
               'De ouders van Vedat (13), Mücteba (12), Zeynep (12) en Yusuf (8) werden naar de gevangenis gestuurd. Het zijn vier kinderen wier leven is gestolen. Hun vader zit al jaren in de gevangenis en hun moeder, Rukiye Çoygar, werd op 8 september eveneens gearresteerd. Rukiye heeft gezondheidsproblemen en moet dringend geopereerd worden',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11542,7 +11306,6 @@ export const HASHTAG_MOCKS = {
               'Yeliz Temur, die op 17 juni onschuldig werd gearresteerd, is moeder van vier kinderen. Haar man is ook al vijf jaar in de gevangenis.Hun kinderen zijn veroordeeld om zonder hun ouders op te groeien.',
             content:
               'Yeliz Temur, die op 17 juni onschuldig werd gearresteerd, is moeder van vier kinderen. Haar man is ook al vijf jaar in de gevangenis.Hun kinderen zijn veroordeeld om zonder hun ouders op te groeien.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11565,7 +11328,6 @@ export const HASHTAG_MOCKS = {
               'Hakan Esat (8) heeft hersenverlamming. Zijn vader, politieagent Halit Gökkaya, wordt vastgehouden in de gevangenis van Osmaniye Toprakkale. Moeder Güldane stelt dat haar zoon ernstig ziek is en de zorg van zijn beide ouders nodig heeft. Dit lijden moet gestopt worden. Halit Gökkaya moet worden vrijgelaten en Hakan Esat moet de zorg van zijn beide ouders krijgen.',
             content:
               'Hakan Esat (8) heeft hersenverlamming. Zijn vader, politieagent Halit Gökkaya, wordt vastgehouden in de gevangenis van Osmaniye Toprakkale. Moeder Güldane stelt dat haar zoon ernstig ziek is en de zorg van zijn beide ouders nodig heeft. Dit lijden moet gestopt worden. Halit Gökkaya moet worden vrijgelaten en Hakan Esat moet de zorg van zijn beide ouders krijgen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11588,7 +11350,6 @@ export const HASHTAG_MOCKS = {
               'BALIKESIR\n\nBahar en Seher groeiden jarenlang op zonder ouders. Uiteindelijk werden ze in 2022 herenigd met hun vader, maar ze groeien nog steeds op zonder de afwezigheid van hun moeder, Hayruşe Şevik.\n\nKinderen worden van hun ouders beroofd als gevolg van massale veroordelingen en daden die volgens de Turkse wet geen misdaad zijn.\n',
             content:
               'BALIKESIR\n\nBahar en Seher groeiden jarenlang op zonder ouders. Uiteindelijk werden ze in 2022 herenigd met hun vader, maar ze groeien nog steeds op zonder de afwezigheid van hun moeder, Hayruşe Şevik.\n\nKinderen worden van hun ouders beroofd als gevolg van massale veroordelingen en daden die volgens de Turkse wet geen misdaad zijn.\n',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11611,7 +11372,6 @@ export const HASHTAG_MOCKS = {
               'İbrahim Durmuş, vader van Hamza Tarık, een 18-jarige jongen met autisme en een verstandelijke beperking van 98%, zit sinds 2019 in de gevangenis. De vrouw van İbrahim heeft lymfekanker. Hamza Tarık heeft de steun van zijn vader nodig om in zijn levensonderhoud te voorzien. İbrahim Durmuş moet worden vrijgelaten.',
             content:
               'İbrahim Durmuş, vader van Hamza Tarık, een 18-jarige jongen met autisme en een verstandelijke beperking van 98%, zit sinds 2019 in de gevangenis. De vrouw van İbrahim heeft lymfekanker. Hamza Tarık heeft de steun van zijn vader nodig om in zijn levensonderhoud te voorzien. İbrahim Durmuş moet worden vrijgelaten.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11634,7 +11394,6 @@ export const HASHTAG_MOCKS = {
               'ANKARA\n\n2 kinderen werden beroofd van hun vader en daarna van hun moeder. Voordat de twee broers en zussen herenigd werden met hun gedetineerde vader, werd hun moeder Kevser Sinan in 2019 gearresteerd.\n\nKinderen wachten al jaren op hereniging met hun ouders. Detentie van beide ouders is onrechtmatig volgens de Turkse wet.\n\n',
             content:
               'ANKARA\n\n2 kinderen werden beroofd van hun vader en daarna van hun moeder. Voordat de twee broers en zussen herenigd werden met hun gedetineerde vader, werd hun moeder Kevser Sinan in 2019 gearresteerd.\n\nKinderen wachten al jaren op hereniging met hun ouders. Detentie van beide ouders is onrechtmatig volgens de Turkse wet.\n\n',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11657,7 +11416,6 @@ export const HASHTAG_MOCKS = {
               'ADANA\n\nDrie broers en zussen zijn meer dan twee jaar lang van hun ouders beroofd vanwege onwettige arrestaties van beide ouders.\nEerst werd hun vader Ali Özak, en nog geen twee weken later, hun moeder Nermin Özak gearresteerd als gevolg van de heksenjacht op de Gulenistische beweging, met ongegronde beschuldigingen.\n\nHet EHRM vermeldt in het Yalçınkaya-besluit dat er geen misdaad kan zijn zonder wet, maar kinderen hebben nog steeds geen ouders vanwege de willekeur van de Turkse rechtbanken.\n',
             content:
               'ADANA\n\nDrie broers en zussen zijn meer dan twee jaar lang van hun ouders beroofd vanwege onwettige arrestaties van beide ouders.\nEerst werd hun vader Ali Özak, en nog geen twee weken later, hun moeder Nermin Özak gearresteerd als gevolg van de heksenjacht op de Gulenistische beweging, met ongegronde beschuldigingen.\n\nHet EHRM vermeldt in het Yalçınkaya-besluit dat er geen misdaad kan zijn zonder wet, maar kinderen hebben nog steeds geen ouders vanwege de willekeur van de Turkse rechtbanken.\n',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11680,7 +11438,6 @@ export const HASHTAG_MOCKS = {
               "MANISA\n\nKinderen worden van hun ouders beroofd vanwege daden die geen misdaad zijn.\n\nFeyza Akbay, moeder van 2 kinderen, zit al 5 jaar in de gevangenis. Feyza Akbay's hartzieke echtgenoot Muhammet zorgde voor de kinderen, Muaz en Büşra. Maar in 2019 werd hij ook gearresteerd. Laat ouders vrij voor kinderen.\n",
             content:
               "MANİSA\n\nKinderen worden van hun ouders beroofd vanwege daden die geen misdaad zijn.\n\nFeyza Akbay, moeder van 2 kinderen, zit al 5 jaar in de gevangenis. Feyza Akbay's hartzieke echtgenoot Muhammet zorgde voor de kinderen, Muaz en Büşra. Maar in 2019 werd hij ook gearresteerd. Laat ouders vrij voor kinderen.\n",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11703,7 +11460,6 @@ export const HASHTAG_MOCKS = {
               'GÜMÜŞHANE\n\nBetül Hafza en Bahadır zijn twee kinderen die al 5 jaar zonder ouders opgroeien!\n\nHun ouders, Önder Bozkurt en Fatma Bozkurt, zitten sinds februari 2018 in de gevangenis. Het EHRM zei dat “het geen misdaad is om een app op je telefoon te laten uploaden”, maar de kinderen kunnen nog steeds niet herenigd worden met hun ouders, aangezien de rechtbanken nog steeds niet voldoen aan de uitspraak van het EHRM.\n',
             content:
               'GÜMÜŞHANE\n\nBetül Hafza en Bahadır zijn twee kinderen die al 5 jaar zonder ouders opgroeien!\n\nHun ouders, Önder Bozkurt en Fatma Bozkurt, zitten sinds februari 2018 in de gevangenis. Het EHRM zei dat “het geen misdaad is om een app op je telefoon te laten uploaden”, maar de kinderen kunnen nog steeds niet herenigd worden met hun ouders, aangezien de rechtbanken nog steeds niet voldoen aan de uitspraak van het EHRM.\n',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11726,7 +11482,6 @@ export const HASHTAG_MOCKS = {
               'BALIKESIR\n\nDrie broers en zussen zijn al jaren verstoken van de zorg van hun ouders. Hun ouders zitten in de gevangenis voor handelingen die het EHRM niet als misdaad beschouwt. Kinderen konden hun ouders alleen achter een vies glas zien.\nZeynep Ö. Ocak en haar man werden in 2018 gearresteerd. De kinderen werden na jaren van improvisatie herenigd met hun vader, maar ze hebben hun moeder nog steeds nodig. Laat Zeynep Ocak vrij.',
             content:
               'BALIKESIR\n\nDrie broers en zussen zijn al jaren verstoken van de zorg van hun ouders. Hun ouders zitten in de gevangenis voor handelingen die het EHRM niet als misdaad beschouwt. Kinderen konden hun ouders alleen achter een vies glas zien.\nZeynep Ö. Ocak en haar man werden in 2018 gearresteerd. De kinderen werden na jaren van improvisatie herenigd met hun vader, maar ze hebben hun moeder nog steeds nodig. Laat Zeynep Ocak vrij.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11749,7 +11504,6 @@ export const HASHTAG_MOCKS = {
               'Abdülkadir Arslan en Nurcan Arslan, die zes kinderen hebben, werden op 30 september gearresteerd. Hun familie:\n“Abdülkadir en Nurcan worden vastgehouden in Edirne. In totaal werden zes kinderen, waaronder een vijfling, van wie er één gehandicapt is, en hun oudere zus, van hun moeder en vader beroofd. Arif, die gehandicapt is, heeft zijn ouders heel hard nodig. Vanwege zijn toestand kan hij elk moment een operatie nodig hebben." Laat de ouders vrij voor kinderen.\n',
             content:
               'Abdülkadir Arslan en Nurcan Arslan, die zes kinderen hebben, werden op 30 september gearresteerd. Hun familie:\n“Abdülkadir en Nurcan worden vastgehouden in Edirne. In totaal werden zes kinderen, waaronder een vijfling, van wie er één gehandicapt is, en hun oudere zus, van hun moeder en vader beroofd. Arif, die gehandicapt is, heeft zijn ouders heel hard nodig. Vanwege zijn toestand kan hij elk moment een operatie nodig hebben." Laat de ouders vrij voor kinderen.\n',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -11772,7 +11526,6 @@ export const HASHTAG_MOCKS = {
               "\nEdibe Tatar, lerares en moeder van 3 kinderen, werd op 14 juni gearresteerd. Haar 14-jarige dochter Nihal: “Mijn moeder is dit jaar gearresteerd. Mijn vader heeft ook al 5 jaar in de gevangenis gezeten. Mijn grootmoeder zorgt voor ons ondanks dat we oud zijn en chronische ziekten hebben. We willen dat onze moeder bij ons is.'\n\n",
             content:
               "Edibe Tatar, lerares en moeder van 3 kinderen, werd op 14 juni gearresteerd. Haar 14-jarige dochter Nihal: “Mijn moeder is dit jaar gearresteerd. Mijn vader heeft ook al 5 jaar in de gevangenis gezeten. Mijn grootmoeder zorgt voor ons ondanks dat we oud zijn en chronische ziekten hebben. We willen dat onze moeder bij ons is.'\n\n",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12352,7 +12105,6 @@ export const HASHTAG_MOCKS = {
               '\nDe hoop van onze kinderen moet worden gewaarborgd door gerechtigheid. \n\nTerwijl de fundamenten van het recht worden aangetast, loopt de toekomst van onze kinderen gevaar.',
             content:
               'De hoop van onze kinderen moet worden gewaarborgd door gerechtigheid. Terwijl de fundamenten van het recht worden aangetast, loopt de toekomst van onze kinderen gevaar.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12375,7 +12127,6 @@ export const HASHTAG_MOCKS = {
               "\n  De toenemende wetteloosheid in Turkije treft zelfs baby's. De rechtsstaat en de rechten van kinderen moeten worden verdedigd.  \n\n  Sümeyye Aydın werd op 13 december met haar 11 maanden oude baby gearresteerd. Buiten staat nog een huilend kind dat van haar moeder werd gescheiden.",
             content:
               "De toenemende wetteloosheid in Turkije treft zelfs baby's. De rechtsstaat en de rechten van kinderen moeten worden verdedigd.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12398,7 +12149,6 @@ export const HASHTAG_MOCKS = {
               '   \n  Esra Baran, een huisvrouw, moeder van 2 kinderen, werd op 1 december 2022 gearresteerd. Ze zit in de E-type gevangenis van Manisa.\n\n   Haar moeder: "Ik ben de grootmoeder van deze kinderen. Ze zijn al 5 jaar zonder hun vader. Nu hebben ze hun moeder meegenomen. Ze hebben ons erg tot slachtoffer gemaakt..."',
             content:
               'Esra Baran, een huisvrouw, moeder van 2 kinderen, werd op 1 december 2022 gearresteerd. Ze zit in de E-type gevangenis van Manisa. Haar moeder\n\n"Ik ben de oma van deze kinderen. Ze zijn al 5 jaar zonder hun vader. Nu hebben ze hun moeder meegenomen. Ze hebben ons veel laten lijden."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12421,7 +12171,6 @@ export const HASHTAG_MOCKS = {
               '   \n   \n   Rümeysa Som, huisvrouw en moeder van twee kinderen, wiens man al 2,5 jaar in de gevangenis zit en wiens vonnis door het Hof van Cassatie is goedgekeurd, is op 2 mei gearresteerd. \n\n   Ze laat twee dochters van 8 en 12 jaar achter.',
             content:
               'Rümeysa Som, huisvrouw en moeder van twee kinderen, wiens man al 2,5 jaar in de gevangenis zit en wiens vonnis door het Hof van Cassatie is goedgekeurd, is op 2 mei gearresteerd.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12444,7 +12193,6 @@ export const HASHTAG_MOCKS = {
               '\nKASTAMONU \n\n   Kinderen slachtoffer van onrechtmatige beslissingen! Lerares Esra Songur zit sinds 24 november met haar twee kinderen in de gevangenis!\n\n   Fatmanur (2) en haar broertje Ahmet Yaşar (3,5) verlangen al maanden naar een warm thuis en vrijheid!',
             content:
               'Lerares Esra Songur zit sinds 24 november met haar twee kinderen in de gevangenis!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12467,7 +12215,6 @@ export const HASHTAG_MOCKS = {
               'KASTAMONU \n\nKinderen slachtoffer van onrechtmatige beslissingen! Lerares Esra Songur zit sinds 24 november met haar twee kinderen in de gevangenis! \n\nFatmanur (2) en haar broertje Ahmet Yaşar (3,5) verlangen al maanden naar een warm thuis en vrijheid!',
             content:
               'Lerares Esra Songur zit sinds 24 november met haar twee kinderen in de gevangenis!\n\nFatmanur (2) en haar broertje Ahmet Yaşar (3,5) verlangen al maanden naar een warm huis en vrijheid!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12490,7 +12237,6 @@ export const HASHTAG_MOCKS = {
               'ÇORUM\n\nHatice- Het echtpaar Mücahit Bağcacı zit sinds maart 2022 gevangen in de Sungurlu gevangenis. \n\nHun enige zoon Abdullah (3) woont samen met zijn moeder in de gevangenis en wacht sinds 6 oktober 2022 buiten op zijn ouders vanwege problemen met voeding etc.!',
             content:
               'Het echtpaar Hatice- Mücahit Bağcacı zit sinds maart 2022 gevangen in de Sungurlu gevangenis.Abdullah (3) woont samen met zijn moeder in de gevangenis.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12513,7 +12259,6 @@ export const HASHTAG_MOCKS = {
               'Ebubekir (5,5) \n\nis een van de honderden kinderen die heimwee hebben naar hun ouders.Zijn vader Sadık Erdem werd 5 maanden geleden vrijgelaten uit de gevangenis.\n\nEbubekir, die werd herenigd met zijn vader, begon heimwee te krijgen naar zijn moeder voordat hij zijn geluk kon ervaren!',
             content:
               'Ebubekir (5,5) is een van de honderden kinderen die naar hun ouders verlangen.\n\nZijn vader Sadık Erdem was 5 maanden geleden vrijgelaten uit de gevangenis, maar zijn moeder Serap Erdem werd op 12 oktober gearresteerd.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12536,7 +12281,6 @@ export const HASHTAG_MOCKS = {
               'Vader Zekeriya Sarıçelik zit sinds 2017 vast, moeder Özlem Sarıçelik sinds 2020.\n\nElif (11) en Yahya (7) met het syndroom van Down verblijven in deze periode bij hun grootouders.\n\nHoe lang zal de ouderloosheid van deze kinderen duren?',
             content:
               'Vader Zekeriya Sarıçelik zit sinds 2017 vast, moeder Özlem Sarıçelik sinds 2020, ze hebben twee kinderen die hun weg zien.Elif (11) en Yahya (7) met het syndroom van Down verblijven in deze periode bij hun grootouders.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12559,7 +12303,6 @@ export const HASHTAG_MOCKS = {
               "İZMİR\n\nZümra (2,5) is een van de honderden baby's in de gevangenis! \n\nZe zit sinds 6 september in de gevangenis van Şakran met haar moeder Sümeyye Aksoy.\n\nBuiten wachten 2 moederloze broertjes en zusjes op de terugkeer van hun moeder naar huis.\n\nKinderen, die onze toekomst zijn, groeien op in de gevangenis!",
             content:
               "Zümra (2,5) is één van de honderden baby's die in de gevangenis zitten! Ze zit sinds 6 september met haar moeder Sümeyye Aksoy in de gevangenis van Şakran.\n\nKinderen, die onze toekomst zijn, groeien op in de gevangenis!",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12580,7 +12323,6 @@ export const HASHTAG_MOCKS = {
               "ISTANBUL\n\n   Sümeyye Aydın werd op 13 december samen met haar 11 maanden oude baby gearresteerd. \n\n   Buiten heeft ze nog een kind, dat van zijn moeder is gescheiden. \n\n   Kleine kinderen moeten boeten voor willekeurige praktijken, baby's horen niet in de gevangenis!",
             content:
               'Sümeyye Aydın werd op 13 december samen met haar 11 maanden oude baby gearresteerd.\n\nKleine kinderen moeten boeten voor willekeurige praktijken.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12603,7 +12345,6 @@ export const HASHTAG_MOCKS = {
               'SİNCAN\n\n   Cemal Faik (7) verlangde al jaren naar zijn vader, hij was pas onlangs met hem herenigd.\n   Onlangs werd zijn moeder Merve Çiçek gearresteerd omdat ze geld stortte in een officiële staatsbank en in een klaslokaal werkte... \n\nWat is dit als het geen vervolging is?',
             content:
               'Cemal Faik (7) verlangde al jaren naar zijn vader, hij was pas onlangs met hem herenigd. Onlangs werd zijn moeder, Merve Çiçek, gearresteerd omdat ze geld had gestort bij een officiële staatsbank en in een klaslokaal had gewerkt.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12626,7 +12367,6 @@ export const HASHTAG_MOCKS = {
               '   Seyit Aydın is voor lange tijd tot eenzame opsluiting veroordeeld omdat hij zijn vrienden morele steun gaf. \n\n   Hij zit al 6 jaar en 9 maanden in de gevangenis. Zijn kind heeft het moeilijk.\n\n   Hij zegt laat mijn vader komen. Stel je een kind voor dat bijna 7 jaar van zijn vader gescheiden is.',
             content:
               'Seyit Aydın is voor lange tijd tot eenzame opsluiting veroordeeld omdat hij zijn vrienden morele steun gaf. Hij zit al 6 jaar en 9 maanden in de gevangenis. Zijn kind heeft het moeilijk. Hij zegt laat mijn vader komen. ',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12649,7 +12389,6 @@ export const HASHTAG_MOCKS = {
               '\n\nZeg niet: \n"Wat doen baby\'s in de gevangenis? \n\nVandaag zitten honderden baby\'s en kinderen van 0-6 jaar in Turkije in de gevangenis, samen met hun moeders."',
             content:
               'Zeg niet: "Wat doen baby\'s in de gevangenis? Vandaag zitten honderden baby\'s en kinderen van 0-6 jaar in Turkije in de gevangenis, samen met hun moeders..."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12672,7 +12411,6 @@ export const HASHTAG_MOCKS = {
               '\n\nHet echtpaar Betül-Emre Karakoç, dat al bijna vier jaar in de Sincan-gevangenis zit, heeft twee jonge kinderen die naar hen verlangen. \n\nNecip was 5 en Sare was 2 jaar toen ze van hun ouders werden gescheiden. \n\nHebben onschuldige kinderen er nog niet genoeg van om zonder ouders te zitten?',
             content:
               'Het echtpaar Betül-Emre Karakoç, dat al bijna vier jaar in de Sincan-gevangenis zit, heeft twee jonge kinderen die naar hen verlangen. Necip was 5 en Sare was 2 jaar toen ze van hun ouders werden gescheiden.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -12695,7 +12433,6 @@ export const HASHTAG_MOCKS = {
               'EDİRNE\n\n   Een gezin dat naar elkaar verlangt, kinderen die achterblijven wachtend op hun ouders.\n\n   Het echtpaar Belkız-Mustafa İpek werd op 4 mei gearresteerd.Hun twee kinderen van 7 en 11 jaar staan buiten, terwijl de 2-jarige Yahya Murtaza met zijn moeder in de gevangenis zit.\n\n   Weer een gezin uit elkaar gerukt!',
             content:
               'Het echtpaar Belkız-Mustafa İpek werd op 4 mei gearresteerd.\n\nHun twee kinderen van 7 en 11 jaar staan buiten en de 2-jarige Yahya Murtaza zit bij zijn moeder in de gevangenis.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13549,7 +13286,6 @@ export const HASHTAG_MOCKS = {
               "   Yakup Saygılı, de voormalige directeur van de financiële afdeling van Istanbul, heeft 8 jaar in de gevangenis gezeten voor het uitvoeren van de corruptie-operatie van 17 december. Saygılı's vader is Rasim Saygılı (83) overleden. Yakup Saygılı mocht de begrafenis van zijn vader echter niet bijwonen. \n   We vragen ons af hoe justitie deze tragische situatie toestaat.",
             content:
               "   Yakup Saygılı, de voormalige directeur van de financiële afdeling van Istanbul, heeft 8 jaar in de gevangenis gezeten voor het uitvoeren van de corruptie-operatie van 17 december. Vandaag is Saygılı's vader Rasim Saygılı (83) overleden. Yakup Saygılı mocht de begrafenis van zijn vader echter niet bijwonen. \n   We vragen ons af hoe justitie deze tragische situatie toestaat.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13572,7 +13308,6 @@ export const HASHTAG_MOCKS = {
               '\n   In 2015 werd Yasin Topçu, voormalig adjunct-directeur van de financiële afdeling, vastgehouden voor het gerechtsgebouw van Istanbul om de familieleden van gearresteerde politieagenten te steunen die op hun vrijlating wachtten. Topçu vervulde slechts zijn plicht als politieagent en had geholpen om corruptie aan het licht te brengen.',
             content:
               '   In 2015 werd Yasin Topçu, voormalig adjunct-directeur van de financiële afdeling, vastgehouden voor het gerechtsgebouw van Istanbul om de familieleden van gearresteerde politieagenten te steunen die op hun vrijlating wachtten. Topçu vervulde slechts zijn plicht als politieagent en had geholpen om corruptie aan het licht te brengen. \n   Dit incident toont eens te meer het belang aan van een eerlijk proces en de bescherming van de rechten van degenen die hun plicht vervullen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13594,7 +13329,6 @@ export const HASHTAG_MOCKS = {
               "   Als hoofd van de Afdeling Georganiseerde Misdaad gearresteerd, zegt Nazmi Ardıç: 'Ik voel geen spijt omdat ik gevangen zit in de Silivri-gevangenis. Gearresteerd worden of in hechtenis genomen, verkleint onschuldige mensen niet; integendeel, het vergroot ze.' \n   (Voormalig politiechef veroordeeld tot 10 jaar en waarvan de vrouw een week later ook werd gearresteerd) ",
             content:
               "   Als hoofd van de Afdeling Georganiseerde Misdaad gearresteerd, zegt Nazmi Ardıç: 'Ik voel geen spijt omdat ik gevangen zit in de Silivri-gevangenis. Gearresteerd worden of in hechtenis genomen, verkleint onschuldige mensen niet; integendeel, het vergroot ze.' \n\n   - Nazmi Ardıç (Voormalig politiechef veroordeeld tot 10 jaar en waarvan de vrouw een week later ook werd gearresteerd) ",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13617,7 +13351,6 @@ export const HASHTAG_MOCKS = {
               '   Op 22 juli 2014 gaven Yurt Atayün en iets voor de verkiezingen van 7 juni 2015 Anadolu Atayün zichzelf aan bij de politie. Sindsdien worden ze allebei vastgehouden op onrealistische gronden. Een van de broers zit vast in de Silivri gevangenis in Istanbul en de andere in de Sincan gevangenis in Ankara.\n    Beiden hadden de leiding over het corruptieonderzoek van 17-25 december.',
             content:
               '   Op 22 juli 2014 gaven Yurt Atayün en iets voor de verkiezingen van 7 juni 2015 Anadolu Atayün zichzelf aan bij de politie. Sindsdien worden ze allebei vastgehouden op onrealistische gronden. Een van de broers zit vast in de Silivri gevangenis in Istanbul en de andere in de Sincan gevangenis in Ankara.\n\n    Beiden hadden de leiding over het corruptieonderzoek van 17-25 december.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13639,7 +13372,6 @@ export const HASHTAG_MOCKS = {
               '   1.”In het onderzoek van de Turkse Financiële Criminaliteitsafdeling in 2013 werd onthuld dat de Iraanse zakenman Reza Zarrab illegale goudhandel en het witwassen van zwart geld uitvoerde, waarbij hij honderden miljoenen dollars aan steekpenningen gaf aan 4 ministers. Opmerkelijk genoeg belandden ditmaal de politieagenten achter de tralies, niet de criminelen.”',
             content:
               '   1.”In het onderzoek van 17-25 december 2013 door de Turkse financiële recherche werd ontdekt dat de Iraanse zakenman Reza Zarrab zich had ingelaten met illegale goudhandel en witwaspraktijken in ruil voor honderden miljoenen dollars aan steekpenningen die hij aan 4 ministers had gegeven. Maar deze keer was het de politie die de gevangenis in moest, niet de criminelen!”',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13662,7 +13394,6 @@ export const HASHTAG_MOCKS = {
               '   2. "Het onderzoek duurde bijna twee jaar. Gedurende deze periode werd gedocumenteerd dat de Iraanse zakenman  vier ministers had beïnvloed met steekpenningen voor een totaalbedrag van honderden miljoenen dollars, waarbij hij de omkoping liet verlopen via de kinderen van de ministers en in ruil daarvoor immuniteit verkreeg.”',
             content:
               '   2."Het onderzoek duurde bijna twee jaar. Gedurende deze periode werd gedocumenteerd dat de Iraanse zakenman in staat was om vier ministers te beïnvloeden met steekpenningen ter waarde van honderden miljoenen dollars, waarbij hij de omkoping afhandelde via de kinderen van de ministers en in ruil daarvoor immuniteit verkreeg.”',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13685,7 +13416,6 @@ export const HASHTAG_MOCKS = {
               '   3. “Terwijl deze gebeurtenissen plaatsvonden, werd ook geregistreerd dat zwart geld werd overgeboekt via een staatsbank, waardoor het Turkse banksysteem grote risico\'s liep, en dat tonnen goud werden overgeboekt via het Turkse luchtruim en Turkse luchthavens, en dat er geen belastingen werden betaald."',
             content:
               '   3.”Terwijl deze gebeurtenissen plaatsvonden, werd ook geregistreerd dat zwart geld werd overgeboekt via een staatsbank, waardoor het Turkse banksysteem grote risico\'s liep, en dat tonnen goud werden overgeboekt via het Turkse luchtruim en Turkse luchthavens, en dat er geen belastingen werden betaald."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13707,7 +13437,6 @@ export const HASHTAG_MOCKS = {
               '\n   4. "Bij het onderzoek naar miljarden dollars aan cijfers die mensen zelfs in hun dromen niet kunnen zien, volgden de teams de verdachten stap voor stap, filmden ze, documenteerden ze de aankopen en voegden ze toe aan het dossier.”',
             content:
               '   4"Bij het onderzoek naar miljarden dollars die mensen zelfs in hun dromen niet kunnen zien, volgden de teams de verdachten stap voor stap, filmden ze, documenteerden ze de aankopen en voegden ze toe aan het dossier.”',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13730,7 +13459,6 @@ export const HASHTAG_MOCKS = {
               '   5. "De inhoud van het dossier leek zeer solide; als resultaat van nauwgezet en gedetailleerd werk werden de tassen die Reza Zerrab via deze kanalen naar de kinderen van ministers stuurde, met name naar een onderwijsstichting, en het geld in deze tassen geïdentificeerd op video en foto."',
             content:
               '   5. "De inhoud van het dossier leek zeer solide; als resultaat van nauwgezet en gedetailleerd werk werden de tassen die Reza Zerrab via deze kanalen naar de kinderen van ministers stuurde, met name naar een onderwijsstichting, en het geld in deze tassen geïdentificeerd op video en foto."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13753,7 +13481,6 @@ export const HASHTAG_MOCKS = {
               '   6. "We waren niet van plan om voor de verkiezingen een operatie uit te voeren. De operatie kwam voort uit de poging om de directeur van de financiële afdeling en mijzelf te ontslaan. We lanceerden de operatie omdat de minister van Binnenlandse Zaken betrokken was bij corruptie en we beseften dat het risico bestond dat zijn relatie met zijn handlanger aan het licht zou komen." N. Ardıç | Politiechef',
             content:
               '6. "We waren niet van plan om voor de verkiezingen een operatie uit te voeren. De operatie kwam voort uit de poging om de directeur van de financiële afdeling en mijzelf te ontslaan. We lanceerden de operatie omdat de minister van Binnenlandse Zaken betrokken was bij corruptie en we beseften dat er een risico bestond dat zijn relatie met zijn handlanger zou worden onthuld. "Nazmi Ardıç | Politiechef',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13776,7 +13503,6 @@ export const HASHTAG_MOCKS = {
               '7 . "In het kader van het onderzoek naar het witwassen van geld en omkopingsmisdrijven werden de kinderen van de toenmalige ministers van Binnenlandse Zaken, Economie, Milieu en Urbanisatie, Reza Zarrab en de toenmalige algemeen directeur van de Halkbank aangehouden bij gelijktijdige operaties in Istanbul en Ankara."',
             content:
               '7 . "In het kader van het onderzoek naar het witwassen van geld en omkopingsmisdrijven werden de kinderen van de toenmalige ministers van Binnenlandse Zaken, Economie, Milieu en Urbanisatie, Reza Zarrab en de toenmalige algemeen directeur van de Halkbank aangehouden bij gelijktijdige operaties in Istanbul en Ankara."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13799,7 +13525,6 @@ export const HASHTAG_MOCKS = {
               '\n   8. "In het kader van het onderzoek van 25 december werd een grote omkooppool gecreëerd voor een groep partijdige zakenlieden door enkele belangrijke gebieden van de staat beloftes te doen via openbare aanbestedingen. Aan het hoofd van deze omkooppool stonden bevoorrechte namen."',
             content:
               '8. "In het kader van het onderzoek van 25 december werd een grote omkooppool gecreëerd voor een groep partijdige zakenlieden door enkele belangrijke gebieden van de staat te beloven via openbare aanbestedingen. En bevoorrechte namen kregen de leiding over deze omkooppool."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13822,7 +13547,6 @@ export const HASHTAG_MOCKS = {
               '   9. "17/25 december opereerde op een andere manier dan andere democratische structuren die in de rechtsstaat geloven en gezonde democratieën zijn. In Turkije luisterde de politieke macht, in een staatsgreep, niet naar de rechterlijke macht en verhinderde met geweld het functioneren van de rechterlijke macht. Dit is een grondwettelijk misdrijf." Mehmet Altan',
             content:
               '9. "17/25 december opereerde anders dan andere democratische structuren die in de rechtsstaat geloven en gezonde democratieën zijn. In Turkije luisterde de politieke macht, in een staatsgreep, niet naar de rechterlijke macht en verhinderde met geweld het functioneren van de rechterlijke macht. Dit is een grondwettelijk misdrijf." Mehmet Altan',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13845,7 +13569,6 @@ export const HASHTAG_MOCKS = {
               '\n   14. "Tienduizenden ambtenaren werden overgeplaatst, honderden werden geschorst en hun gezinnen waren er kapot van. Maandenlang verhinderde de regering dat een parlementair onderzoek naar corruptie op de parlementaire agenda werd gezet."',
             content:
               '14. "Tienduizenden ambtenaren werden overgeplaatst, honderden werden geschorst en hun families bleven ontredderd achter. Maandenlang verhinderde de regering dat een corruptieonderzoek dat naar het parlement was gestuurd op de parlementaire agenda werd gezet."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13868,7 +13591,6 @@ export const HASHTAG_MOCKS = {
               '\n   15. "In dit proces werden ook snel uitzendverboden ingesteld om te voorkomen dat de waarheid aan het licht zou komen en om de zaak in de doofpot te stoppen. De omroepkanalen waar ze al jaren gebruik van maakten, werden gesloten.',
             content:
               '15. "In dit proces werden ook snel uitzendverboden ingevoerd om te voorkomen dat de waarheid aan het licht zou komen en om de zaak in de doofpot te stoppen. De omroepkanalen waar ze al jaren gebruik van maakten, werden gesloten."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13891,7 +13613,6 @@ export const HASHTAG_MOCKS = {
               '\n   16. "De perceptie van corruptie werd op de een of andere manier in de doofpot gestopt. Met dit doel werden tientallen hoge politiefunctionarissen, die al dan niet betrokken waren bij de operatie van 17/25 december, zonder bewijs of documentatie vastgehouden op beschuldiging van het beramen van een staatsgreep."',
             content:
               '16. "De perceptie van corruptie werd op de een of andere manier in de doofpot gestopt. Met dit doel werden tientallen hoge politiefunctionarissen, die al dan niet betrokken waren bij de operatie van 17/25 december, zonder bewijs of documentatie vastgehouden op beschuldiging van het beramen van een staatsgreep."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13914,7 +13635,6 @@ export const HASHTAG_MOCKS = {
               '   11. "Ik verklaar dat een groot deel van de bestemmingsplannen in het onderzoeksdossier, die zijn goedgekeurd in overeenstemming met de wet, zijn gemaakt in opdracht van premier Recep Tayyip Erdoğan. Daarom ben ik van mening dat premier Tayyip Erdoğan moet aftreden om de natie te ontlasten." \nMinister E. Bayraktar',
             content:
               '11. "Ik verklaar dat de meeste bestemmingsplannen in het onderzoeksdossier, die in overeenstemming met de wet zijn goedgekeurd, zijn gemaakt in opdracht van premier Recep Tayyip Erdoğan. Daarom ben ik van mening dat premier Tayyip Erdoğan moet aftreden om de natie te ontlasten." Minister E. Bayraktar',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13937,7 +13657,6 @@ export const HASHTAG_MOCKS = {
               '\n   10. Minister van Milieu en Urbanisatie Bayraktar:  "Ik accepteer de druk niet die premier Erdoğan op me uitoefent om af te treden en een verklaring af te geven die me ontlast vanwege de operatie in verband met beschuldigingen van omkoping en corruptie."',
             content:
               '10. Minister van Milieu en Urbanisatie Bayraktar:  "Ik accepteer de druk niet die premier Erdoğan op mij uitoefent om af te treden en een verklaring af te geven om mij te ontslaan vanwege de operatie over beschuldigingen van omkoping en corruptie."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13960,7 +13679,6 @@ export const HASHTAG_MOCKS = {
               '\n   12. "De directeuren van de vijf filialen die de operatie uitvoerden werden ontslagen; later breidden de ontslagen zich uit naar andere provincies en werden 33 directeuren op dezelfde dag vervangen. Deze interventie was niet beperkt tot de politie en twee officieren van justitie werden aan de operatie toegevoegd."',
             content:
               '12. "De directeuren van de vijf filialen die de operatie uitvoerden werden ontslagen; later breidden de ontslagen zich uit naar andere provincies en werden 33 directeuren op dezelfde dag vervangen. Deze interventie was niet beperkt tot de politie en twee officieren van justitie werden aan de operatie toegevoegd."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -13983,7 +13701,6 @@ export const HASHTAG_MOCKS = {
               '\n   13. "Aanklager Muammer Akkaş, die het onderzoek lange tijd leidde, is ontslagen. Ondertussen, als je je afvraagt wat er gebeurd is met de kinderen van de minister en de Iraanse zakenman die gearresteerd waren met veel informatie en documenten, zij zijn vrijgelaten door wisselende aanklagers en rechters."',
             content:
               '13. "Aanklager Muammer Akkaş, die het onderzoek lange tijd leidde, is ontslagen. Ondertussen, als je je afvraagt wat er gebeurd is met de kinderen van de minister en de Iraanse zakenman die gearresteerd waren met veel informatie en documenten, zij zijn vrijgelaten door wisselende aanklagers en rechters."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -14006,7 +13723,6 @@ export const HASHTAG_MOCKS = {
               '\n   Mahir Çakallı werkte 25 jaar bij de politie en was plaatsvervangend hoofd van de politie van Istanbul. Tijdens zijn diensttijd vocht hij tegen degenen die tegen recht en rechtvaardigheid waren. Hij werd onrechtmatig ontslagen na een onderzoek van 2,5 dag. ',
             content:
               'Mahir Çakallı werkte 25 jaar bij de politie en was plaatsvervangend hoofd van de politie van Istanbul. Tijdens zijn diensttijd vocht hij tegen degenen die tegen recht en rechtvaardigheid waren. Hij werd onrechtmatig ontslagen na een onderzoek van 2,5 dag. In het onderzoek van 25 december werd hij in december 2018 veroordeeld tot levenslange gevangenisstraf met verzwarende omstandigheden.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -14029,7 +13745,6 @@ export const HASHTAG_MOCKS = {
               'Ömer Köse, voormalig directeur van de antiterreurafdeling in Istanbul Ömer Köse is sinds 2014 gearresteerd. Sinds 2018 zit Köse in eenzame opsluiting, zijn toegang tot zijn advocaat is beperkt, zijn kamer wordt extra koud gehouden en hij krijgt geen water, ook al heeft hij veel last van kou vanwege zijn bloedziekte.',
             content:
               'Ömer Köse, voormalig directeur van de Istanbul Anti-Terror Branch Ömer Köse is sinds 2014 gearresteerd. Köse zit sinds 2018 in eenzame opsluiting, zijn toegang tot zijn advocaat is beperkt, zijn kamer wordt extra koud gehouden en hij krijgt geen water, ook al heeft hij veel last van kou vanwege zijn bloedziekte.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -14052,7 +13767,6 @@ export const HASHTAG_MOCKS = {
               'Ömer Köse \n   Köse wordt nog steeds systematisch gemarteld bovenop de willekeurige beperkingen die hem in de gevangenis zijn opgelegd.Eerder werden zijn zus Selda Özdemir en zoon Faruk S. Köse gearresteerd. Na de vrijlating van zijn zoon werd zijn vrouw Semra Köse gearresteerd.',
             content:
               'Ömer Köse wordt nog steeds systematisch gemarteld bovenop de willekeurige beperkingen die hem in de gevangenis zijn opgelegd.Eerder werden zijn zus Selda Özdemir en zoon Faruk S. Köse gearresteerd. Na de vrijlating van zijn zoon werd zijn vrouw Semra Köse gearresteerd.We zullen onze politieagenten die hun plicht goed doen niet vergeten!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -14075,7 +13789,6 @@ export const HASHTAG_MOCKS = {
               '\nKazım Aksoy \n   Kazım Aksoy, een adjunct-afdelingsmanager die deelnam aan de onderzoeken van 17-25 december, zit al 10 jaar in eenzame opsluiting. Zijn vrouw Sümeyye Aksoy worstelde 4 jaar lang levenslang in de gevangenis met een volledig verbrijzeld heupbeen.',
             content:
               'Kazım Aksoy Kazım Aksoy, een adjunct-afdelingsmanager die deelnam aan de onderzoeken van 17-25 december, zit al 10 jaar in eenzame opsluiting. Zijn vrouw Sümeyye Aksoy worstelde 4 jaar lang levenslang in de gevangenis met een volledig verbrijzeld heupbeen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -14098,7 +13811,6 @@ export const HASHTAG_MOCKS = {
               'Ayhan Arıkanoğlu werd gearresteerd na de operaties van 17-25 december en zijn vrouw Ayşe Arıkanoğlu werd in 2017 gearresteerd. In 2019 werd Ayşe veroordeeld tot 6 jaar en 3 maanden voor vermeend lidmaatschap van de organisatie.',
             content:
               "Ayhan ArıkanoğluArıkanoğlu's vrouw Ayşe, die na de operaties van 17-25 december werd gearresteerd en nog steeds onder arrest staat, werd ook in 2017 gearresteerd. In 2019 werd Ayşe veroordeeld tot 6 jaar en 3 maanden voor vermeend lidmaatschap van een illegale organisatie.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -14121,7 +13833,6 @@ export const HASHTAG_MOCKS = {
               'Osman Özgür Açıkgöz, de politiechef die zichzelf aangaf met zijn advocaat, staat sinds 2014 onder arrest. Zijn vrouw Zeliha Ö. Açıkgöz, die zei "We namen onze toevlucht tot onze Allah die het echte scenario schreef", werd in 2017 gearresteerd. In 2019 werd zij veroordeeld tot 6 jaar en 3 maanden. Laten we deze onrechtvaardige arrestaties tegen politieagenten en hun echtgenoten die hun plicht doen, niet vergeten!',
             content:
               'Osman Özgür AçıkgözPolitiechef Açıkgöz, die zich samen met zijn advocaat overgaf, is sinds 2014 gearresteerd. Zijn vrouw Zeliha Ö. Açıkgöz, die zei: "We namen onze toevlucht tot onze Heer die het echte scenario schreef", werd in 2017 gearresteerd. In 2019 werd hij veroordeeld tot 6 jaar en 3 maanden. Laten we deze onrechtvaardige arrestaties tegen politieagenten en hun echtgenoten die hun plicht doen, niet vergeten!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15183,7 +14894,6 @@ export const HASHTAG_MOCKS = {
               'FC Academy screenwriting training trains new screenwriters.',
             content:
               'FC Academy screenwriting training trains new screenwriters.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15206,7 +14916,6 @@ export const HASHTAG_MOCKS = {
               'FC Akademi aims to raise awareness about human rights through monthly talks.',
             content:
               'FC Akademi aims to raise awareness about human rights through monthly talks.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15229,7 +14938,6 @@ export const HASHTAG_MOCKS = {
               'Software, interviews and trainings are planned in the Netherlands within FC Academy.  ',
             content:
               'Software, interviews and trainings are planned in the Netherlands within FC Academy.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15252,7 +14960,6 @@ export const HASHTAG_MOCKS = {
               'As FC Academy, we gave digital drawing training. We are planning to repeat it in the new semester.',
             content:
               'As FC Academy, we gave digital drawing training. We are planning to repeat it in the new semester.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15273,7 +14980,6 @@ export const HASHTAG_MOCKS = {
               'FC Academy provides project training. Intra-Dutch and European Union projects are planned.',
             content:
               'FC Academy provides project training. Intra-Dutch and European Union projects are planned.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15296,7 +15002,6 @@ export const HASHTAG_MOCKS = {
               'The Sound of Change group publishes weekly songs that are popular today, combined with stories about the lawlessness in Turkey.',
             content:
               'The Sound of Change group publishes weekly songs that are popular today, combined with stories about the lawlessness in Turkey.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15319,7 +15024,6 @@ export const HASHTAG_MOCKS = {
               'In Denhaag, the Kunsthalte program organized an exhibition to highlight the witch hunt in Turkey through art and the band Sound of change supported the exhibition by playing a few songs.',
             content:
               'In Denhaag, the Kunsthalte program organized an exhibition to highlight the witch hunt in Turkey through art and the band Sound of change supported the exhibition by playing a few songs.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15342,7 +15046,6 @@ export const HASHTAG_MOCKS = {
               'On the liberation day of the Netherlands in Haarlem, with the organization of our Freedom Combination Foundation, Sound of Change group participated in the stand program by making street music in order to showcase the unlawful acts against women in Turkey.',
             content:
               'On the liberation day of the Netherlands in Haarlem, with the organization of our Freedom Combination Foundation, Sound of Change group participated in the stand program by making street music in order to showcase the unlawful acts against women in Turkey.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15365,7 +15068,6 @@ export const HASHTAG_MOCKS = {
               'Sound of Change group accompanied the iftar program in Hengelo where people from different cultures came together by playing music',
             content:
               'Sound of Change group accompanied the iftar program in Hengelo where people from different cultures came together by playing music',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15388,7 +15090,6 @@ export const HASHTAG_MOCKS = {
               'In the exhibition organized by the Kunst Halte platform in Heerenveen in order to present the witch hunt in Turkey through painting, the Sound of change group tried to support by playing songs.',
             content:
               'In the exhibition organized by the Kunst Halte platform in Heerenveen in order to present the witch hunt in Turkey through painting, the Sound of change group tried to support by playing songs.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15411,7 +15112,6 @@ export const HASHTAG_MOCKS = {
               'Our short film Empathy, released in 2022, reminded our audience that everyone can wake up to a completely different life one day. Understanding our own truths and the experiences of others brings us closer to humanity. Explore this unique experience by watching Empathy. ',
             content:
               'Our short film Empathy, released in 2022, reminded our audience that everyone can wake up to a completely different life one day. Understanding our own truths and the experiences of others brings us closer to humanity. Explore this unique experience by watching Empathy. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15434,7 +15134,6 @@ export const HASHTAG_MOCKS = {
               'We performed the theater play "The YOL" in 4 cities and 2 countries and we will continue to perform in different cities in the coming days. "and then comes death... death comes last, but we still say it\'s early."',
             content:
               'We performed the theater play "The YOL" in 4 cities and 2 countries and we will continue to perform in different cities in the coming days. "and then comes death... death comes last, but we still say it\'s early."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15457,7 +15156,6 @@ export const HASHTAG_MOCKS = {
               'The YOL theater transcended boundaries, bridging cultures and languages, as it touched the hearts and minds of people from diverse backgrounds. It served as a reminder of the universal power of storytelling to inspire empathy, understanding, and unity',
             content:
               'The YOL theater transcended boundaries, bridging cultures and languages, as it touched the hearts and minds of people from diverse backgrounds. It served as a reminder of the universal power of storytelling to inspire empathy, understanding, and unity.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15480,7 +15178,6 @@ export const HASHTAG_MOCKS = {
               'On July 2, 2022, we had the incredible opportunity to showcase our play, The YOL theater, in Amsterdam, which marked the first city of our highly anticipated tour. ',
             content:
               'On July 2, 2022, we had the incredible opportunity to showcase our play, The YOL theater, in Amsterdam, which marked the first city of our highly anticipated tour. ',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15503,7 +15200,6 @@ export const HASHTAG_MOCKS = {
               'On September 17, 2022, the YOL theater troupe showcased their performance to an enthusiastic audience of 350 spectators in the vibrant city of Utrecht. The captivating storytelling and powerful stage presence left a lasting impression on everyone present.',
             content:
               'On September 17, 2022, the YOL theater troupe showcased their performance to an enthusiastic audience of 350 spectators in the vibrant city of Utrecht. The captivating storytelling and powerful stage presence left a lasting impression on everyone present.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15524,7 +15220,6 @@ export const HASHTAG_MOCKS = {
               'We played our first international tour on December 10, 2022 in Brussels to 450 spectators and our next plays are still on the way. It was a momentous occasion that marked a significant milestone in our artistic journey when we embarked on our inaugural international tour. ',
             content:
               'We played our first international tour on December 10, 2022 in Brussels to 450 spectators and our next plays are still on the way. It was a momentous occasion that marked a significant milestone in our artistic journey when we embarked on our inaugural international tour. ',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15545,7 +15240,6 @@ export const HASHTAG_MOCKS = {
               'Platform Samen voor Vrijheid en Verbinding - Since 2016, he has been trying to make more people aware of human rights violations.',
             content:
               'Platform Samen voor Vrijheid en Verbinding - Since 2016, he has been trying to make more people aware of human rights violations.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15568,7 +15262,6 @@ export const HASHTAG_MOCKS = {
               'Platform Samen voor Vrijheid en Verbinding - With the "Twit Helper" application on its website, it gets the support of social media users faster.',
             content:
               'Platform Samen voor Vrijheid en Verbinding - With the "Twit Helper" application on its website, it gets the support of social media users faster.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15591,7 +15284,6 @@ export const HASHTAG_MOCKS = {
               'Platform Samen voor Vrijheid en Verbinding - The website keeps a record of human rights violations. The public can easily access this archive, which is legally evidentiary.',
             content:
               'Platform Samen voor Vrijheid en Verbinding - The website keeps a record of human rights violations. The public can easily access this archive, which is legally evidentiary.evidentiary.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15613,7 +15305,6 @@ export const HASHTAG_MOCKS = {
             description: 'Platform for Coexistence and Freedom',
             content:
               'It delivers the content produced by the platforms it collaborates with in the field to the user.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15636,7 +15327,6 @@ export const HASHTAG_MOCKS = {
               'With the Social Media campaigns, many violations have been reduced or ended, and the ongoing violations such as prison violations, babies in captivity, pushbacks, torture, etc. continue to be publicized to more and more people.',
             content:
               'With the Social Media campaigns, many violations have been reduced or ended, and the ongoing violations such as prison violations, babies in captivity, pushbacks, torture, etc. continue to be publicized to more and more people.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'approved',
             twitterMedia: null,
@@ -15659,7 +15349,6 @@ export const HASHTAG_MOCKS = {
               'Human rights violations in Turkey and abroad are of utmost importance, and it is crucial to ensure that information regarding these violations reaches a wide audience. That is why we are committed to sharing this vital information in three languages: Dutch, English, and Turkish.',
             content:
               'Human rights violations in Turkey and abroad are of utmost importance, and it is crucial to ensure that information regarding these violations reaches a wide audience. That is why we are committed to sharing this vital information in three languages: Dutch, English, and Turkish.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15682,7 +15371,6 @@ export const HASHTAG_MOCKS = {
               ' Foundation Freedom Combination - Accepting the language of art as universal, one of its goals is to bring human rights violations to more people through the language of art.',
             content:
               'Foundation Freedom Combination  - Accepting the language of art as universal, one of its goals is to bring human rights violations to more people through the language of art.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15705,7 +15393,6 @@ export const HASHTAG_MOCKS = {
               'Foundation Freedom Combination - Aims to end human rights violations by using the power of social media',
             content:
               'Foundation Freedom Combination  - Aims to end human rights violations by using the power of social media.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15728,7 +15415,6 @@ export const HASHTAG_MOCKS = {
               'Foundation Freedom Combination - With its various platforms and groups, it works to raise public awareness of human rights in a healthy way.',
             content:
               'Foundation Freedom Combination  - With its various platforms and groups, it works to raise public awareness of human rights in a healthy way.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15750,7 +15436,6 @@ export const HASHTAG_MOCKS = {
               'Foundation Freedom Combination - Unlike other human rights foundations, it is the first and only foundation established specifically for Social Media.',
             content:
               'Foundation Stichting Freedom Combination - In tegenstelling tot andere stichtingen voor mensenrechten is dit de eerste en enige stichting die speciaal is opgericht voor sociale media.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15773,7 +15458,6 @@ export const HASHTAG_MOCKS = {
               'Foundation Stichting Freedom Combination - The foundation works on a voluntary basis and is supported financially and morally by various professions and age groups.',
             content:
               'Foundation Stichting Freedom Combination - The foundation works on a voluntary basis and is supported financially and morally by various professions and age groups.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15796,7 +15480,6 @@ export const HASHTAG_MOCKS = {
               'Our exhibition "The Netherlands through the Eyes of a Refugee" in Hengelo attracted great interest from our visitors.',
             content:
               'Our exhibition "The Netherlands through the Eyes of a Refugee" in Hengelo attracted great interest from our visitors.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15819,7 +15502,6 @@ export const HASHTAG_MOCKS = {
               'Art stop has held exhibitions in different parts of the Netherlands.',
             content:
               'Art stop has held exhibitions in different parts of the Netherlands.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15842,7 +15524,6 @@ export const HASHTAG_MOCKS = {
               'Our exhibition on The Netherlands through the Eyes of a Refugee was exhibited for the first time in Utrecht.',
             content:
               'Our exhibition on The Netherlands through the Eyes of a Refugee was exhibited for the first time in Utrecht.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15865,7 +15546,6 @@ export const HASHTAG_MOCKS = {
               'Our exhibition "The Netherlands through the Eyes of a Refugee" at the Sint anna Art market had its first market experience.',
             content:
               'Our exhibition "The Netherlands through the Eyes of a Refugee" at the Sint anna Art market had its first market experience.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15888,7 +15568,6 @@ export const HASHTAG_MOCKS = {
               'Our exhibition on the Netherlands through the eyes of a refugee was exhibited in Heerenven.',
             content:
               'Our exhibition on the Netherlands through the eyes of a refugee was exhibited in Heerenven.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -15909,7 +15588,6 @@ export const HASHTAG_MOCKS = {
               'In the last one year we have done exhibitions in places like Hengelo, Heerenven and Utrecht.',
             content:
               'In the last one year we have done exhibitions in places like Hengelo, Heerenven and Utrecht.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16217,7 +15895,6 @@ export const HASHTAG_MOCKS = {
               'Naked Search - Nagehan Yüksel (Koran teacher) was transferred from Bakırköy Prison to Eskişehir Prison. During this transfer she was subjected to strip search. Ms. Nagehan wrote in her letter from prison that she was strip searched. But this letter was confiscated by the prison administration. Not only was the letter confiscated, but they also referred Ms. Nagihan to the disciplinary board. ',
             content:
               'Naked Search - Nagehan Yüksel (Koran teacher) was transferred from Bakırköy Prison to Eskişehir Prison. During this transfer she was subjected to strip search. Ms. Nagehan wrote in her letter from prison that she was strip searched. But this letter was confiscated by the prison administration. Not only was the letter confiscated, but they also referred Ms. Nagihan to the disciplinary board. Strip search is a crime against humanity.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16240,7 +15917,6 @@ export const HASHTAG_MOCKS = {
               "Arrested Again - Kübra Alvar was a teacher. She spent her pregnancy in prison. Ms. Kübra was released only a week before giving birth. Ms. Kübra and her husband Ferhat Alvar were arrested again in Edirne. They left behind their 4.5 year old daughter Rahşan. These psychological traumas have a negative impact on children's health.",
             content:
               "Arrested Again - Kübra Alvar was a teacher. She spent her pregnancy in prison. Ms. Kübra was released only a week before giving birth. Ms. Kübra and her husband Ferhat Alvar were arrested again in Edirne. They left behind their 4.5 year old daughter Rahşan. These psychological traumas have a negative impact on children's health.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16263,7 +15939,6 @@ export const HASHTAG_MOCKS = {
               'Military students who were acquitted in the Sultanbeyli case are being thrown back into prison on the grounds of terrorism links. Reading religious books, praying and learning from the corner of your eye, having fingerprints on religious books are now considered evidence of a crime.',
             content:
               'Military students who were acquitted in the Sultanbeyli case are being thrown back into prison on the grounds of terrorism links. Reading religious books, praying and learning from the corner of your eye, having fingerprints on religious books are now considered evidence of a crime.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16284,7 +15959,6 @@ export const HASHTAG_MOCKS = {
               'Dr. Ahmet Riza Özkan, our martyr of Madrasa Yusufiye, was unjustly imprisoned and later died of stomach cancer. He left behind a beautiful 6-year-old daughter and a chaste wife.',
             content:
               'Dr. Ahmet Riza Özkan, our martyr of Madrasa Yusufiye, was unjustly imprisoned and later died of stomach cancer. He left behind a beautiful 6-year-old daughter and a chaste wife.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16301,7 +15975,6 @@ export const HASHTAG_MOCKS = {
               'MP Ömer Faruk Gergerlioğlu drew attention to the babies in prison. He said; "You are keeping a 10-month-old baby who smells of milk in prison! A mother and her baby are in prison without a finalized verdict against her! It is not enough that you are making women, mothers and pregnant women suffer, now you are making babies suffer."',
             content:
               'Prisoner Babies - MP Ömer Faruk Gergerlioğlu drew attention to the babies in prison. He said; "You are keeping a 10-month-old baby who smells of milk in prison! A mother who has no finalized verdict against her and her baby are in prison! It is not enough that you are making women, mothers and pregnant women suffer, now you are making babies suffer."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16324,7 +15997,6 @@ export const HASHTAG_MOCKS = {
               'Cemile-Mehmet Dönmez couple was arrested in August 2021. Mesut (9) and Nil (2.5), who suffer from epileptic seizures, were reunited with their mother. The two things a sick baby needs the most are mom and dad.',
             content:
               'Cemile-Mehmet Dönmez couple was arrested in August 2021. Mesut (9) and Nil (2.5), who suffer from epileptic seizures, were reunited with their mother. The two things a sick baby needs the most are mom and dad.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16466,7 +16138,6 @@ export const HASHTAG_MOCKS = {
               '\n\n\nDespite his severe illness, Mehmet Parlak \nis struggling to survive in unsuitable prison conditions. Parlak, who has only one kidney, has lost a lot of weight. \n\n\nDespite his severe illness, Mehmet Parlak \nis struggling to survive in unsuitable prison conditions. Parlak, who has only one kidney, has lost a lot of weight. ',
             content:
               '\n\n\nDespite his severe illness, Mehmet Parlak \nis struggling to survive in unsuitable prison conditions. Parlak, who has only one kidney, has lost a lot of weight. ',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16488,7 +16159,6 @@ export const HASHTAG_MOCKS = {
               '\n\nPhysics teacher Şerife Sulukan\n\nParalysed, she was arrested while using crutches. For 8 months she has been alone in Menemen R Type Prison. For the seriously ill, prison conditions mean death.',
             content:
               'Physics teacher Şerife Sulukan\n\nParalysed, she was arrested while using crutches. For 8 months she has been alone in Menemen R Type Prison. For the seriously ill, prison conditions mean death.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16511,7 +16181,6 @@ export const HASHTAG_MOCKS = {
               '\n\nKamil Acar, \n\nwho was diagnosed with kidney failure, is being denied his right to probation. His family wants him to be treated before the disease progresses.',
             content:
               'Kamil Acar with a decree decree\n\nKamil Acar, who was diagnosed with kidney failure, is being denied his right to probation. His family wants him to be treated before the disease progresses.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16534,7 +16203,6 @@ export const HASHTAG_MOCKS = {
               'Decree Laws violate the principles of the Constitution.\n\n1-The rule of law\n2-No crime/punishment without law\n3-Presumption of innocence of the accused\n4-Punishment is not retroactive\n5-No punishment without trial',
             content:
               'Decree laws violate the principles of the Constitution.\n\n1-State of law2-No crime/punishment without law3-Presumption of innocence of the accused4-Punishment is not retroactive5-No punishment without trial',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16557,7 +16225,6 @@ export const HASHTAG_MOCKS = {
               "\nİbrahim Özer, a detainee in Giresun Espiye Prison, is not granted the right to conditional release. \n\nÖzer's father Selami Özer, who has spent an extra year in prison, is alone and in need of care, waiting for his son.",
             content:
               "İbrahim Özer, a detainee in Giresun Espiye Prison, is not granted the right to conditional release. Özer's father Selami Özer, who has spent an extra year in prison, is alone and in need of care, waiting for his son.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16580,7 +16247,6 @@ export const HASHTAG_MOCKS = {
               '\nSaliha Binay is still in detention.  This baby is growing up in prison! This situation would not have happened if they were not under a state of emergency decree. \n\nThis unjust persecution must end!',
             content:
               'Saliha Binay is still in detention. This baby is growing up in prison! This situation would not have happened if they were not under a state of emergency decree. This unjust persecution must end!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16603,7 +16269,6 @@ export const HASHTAG_MOCKS = {
               'Ayşe Neşe Gül was sentenced to 10 years in prison. She was not allowed to see her husband and children for a long time.\n\nHer husband, Cevat Gül, who is a Republic Prosecutor, was also subjected to psychological violence by being held in solitary confinement in violation of legal regulations. He was sentenced to 8 years and 9 months in prison.\n\nHe has been in solitary confinement since 2016.',
             content:
               'Judge Ayşe Neşe Gül has been in prison and in solitary confinement for 80 months...What did this person do to deserve this?',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16626,7 +16291,6 @@ export const HASHTAG_MOCKS = {
               "SAKARYA\n\nAdem Erdoğdu has been in prison for 66 months. He had a pacemaker implanted in his heart there. He was taken to intensive care in May because of a problem with his pacemaker and now he is in prison again. \n\nA person's right to life is being taken away from him.",
             content:
               "WORKSHOP\n\nAdem Erdoğdu has been in prison for 66 months. He had a pacemaker implanted in his heart there. He was taken to intensive care in May because of a problem with his pacemaker and now he is in prison again. A person's right to life is being taken away from him.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16649,7 +16313,6 @@ export const HASHTAG_MOCKS = {
               '\nAyşe İpek, \n\nwho has ALS and is disabled due to partial paralysis, is unable to meet her own needs and cannot even drink water alone. Mrs. Ayşe  was cared for by her husband, Şükrü İpek, who was arrested for the second time. Amnesty must be granted urgently for Şükrü İpek',
             content:
               'Ayşe İpek, who has ALS and is disabled due to partial paralysis, is unable to meet her own needs and cannot even drink water alone. Mrs.Ayşe was being cared for by her husband, Şükrü İpek, who was arrested for the second time. An amnesty should be urgently issued for Şükrü İpek.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16672,7 +16335,6 @@ export const HASHTAG_MOCKS = {
               'Yazgül - Abdi Dural, a couple of police officers with state of emergency decrees, were arrested 9 months ago. Their children Fatma and Naci stay with their grandfather. \n\nGrandfather İsmail Dural: "I want my daughter-in-law Yazgül Dural, who has hydrocephalus, to come back to her children',
             content:
               'Yazgül - Abdi Dural, a couple of police officers with state of emergency decrees, were arrested 9 months ago. Their children Fatma and Naci stay with their grandparents. Grandfather İsmail Dural:\n\n"I want my daughter-in-law Yazgül Dural, who has hydrocephalus, to come back to her children',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16695,7 +16357,6 @@ export const HASHTAG_MOCKS = {
               'Esra EKMEKÇİ has been in prison for 3 months and her husband for 5 years.  She has 3 children aged 17, 12 and 8. \n\nTheir youngest child is a special child with autism. Please release their mother for the education and future of these children who have to stay with their elderly and sick grandmother in the village.',
             content:
               'Esra EKMEKÇİ has been in prison for 3 months and her husband for 5 years.\n\nShe has 3 children aged 17, 12 and 8. Their youngest child is a special child with autism. Please release their mother for the education and future of these children who have to stay with their elderly and sick grandmother in the village.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16718,7 +16379,6 @@ export const HASHTAG_MOCKS = {
               '\nKamil Acar, a teacher with a state of emergency decree, became ill with kidney disease due to the severe cold he was exposed to in the prison vehicle during his transfer. \n\nHe is not being released from prison as of September 2022 despite his right to probation.',
             content:
               'Kamil Acar, a teacher imprisoned under a state of emergency decree, became ill with kidney disease due to the severe cold he was exposed to in the prison vehicle during his transfer.\n\nAs of September 2022, he is not being released despite his right to probation.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16739,7 +16399,6 @@ export const HASHTAG_MOCKS = {
               '\nAyşe Karaduran had previously spent two months in prison when she was 4 months pregnant and was released. \n\nShe was arrested on July 13, 2023 with her 9-month-old son Murat. Baby Murat is allergic to supplementary food. \n\nMothers with babies do not belong in prison.',
             content:
               'Ayşe Karaduran had previously spent two months in prison when she was 4 months pregnant and was released. She was arrested on July 13, 2023 with her 9-month-old son Murat. Baby Murat is allergic to supplementary food. Mothers with babies do not belong in prison.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16762,7 +16421,6 @@ export const HASHTAG_MOCKS = {
               '\nFather of 9-month-old baby Murat: "\n\nMy wife was unlawfully arrested in Edirne with our baby. There are 34 people in the ward. Our baby Murat has a rash from the heat. For God\'s sake, release my wife and our baby.',
             content:
               'Father of 9-month-old baby Murat:\n\n"My wife was unlawfully arrested in Edirne with our baby. There are 34 people in the ward. Our baby Murat has a rash from the heat. For God\'s sake, release my wife and our baby.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16785,7 +16443,6 @@ export const HASHTAG_MOCKS = {
               '\n\nImprisoned since May 5, 2017, Mahmut Kurt, a history teacher, has not been released from prison despite being eligible for "conditional release" on March 1, 2023.',
             content:
               'Imprisoned since May 5, 2017, Mahmut Kurt, a history teacher, has not been released from prison despite being eligible for "conditional release" on March 1, 2023.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16808,7 +16465,6 @@ export const HASHTAG_MOCKS = {
               'AFYON\n\nIhsan Efe (10) and his brother (6) have been waiting for their father for 6 years. While İ.Efe was severely disabled, his degree of illness increased with this process.vTheir mother has to struggle with these difficulties alone. She needs her husband.',
             content:
               'AFYON\n\nIhsan Efe (10) and his brother (6) have been waiting for their father for 6 years. İ.Efe was severely disabled, but the degree of his illness increased with this process. Their mother has to struggle with these difficulties alone. She needs her husband.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16831,7 +16487,6 @@ export const HASHTAG_MOCKS = {
               "\nFatma-Selim Çevik couple have been in prison for years.\n\nTheir children Halim and Ekrem, on top of the trauma of their parents' imprisonment, are living with their estranged aunts.\n\nLet these smiles not fade.Let the children grow up with their families.",
             content:
               "The couple Fatma-Selim Çevik have been in prison for years. Their children Halim and Ekrem, on top of the trauma of their parents' imprisonment, are now living with their estranged aunts.\n\nMay these smiles never fade. Let children grow up with their families.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -16852,7 +16507,6 @@ export const HASHTAG_MOCKS = {
               'Kübra Uzun \n\nThe last photo of Ertuğrul Kuran, who has been in prison for about 5.5 years, with his daughter Kübra. \n\nThe little Kübra passed away due to an illness she contracted and passed away longing for her father.',
             content:
               'Kübra Uzun\nThe last photo of Ertuğrul Kuran, who has been in prison for about 5.5 years, with his daughter Kübra. The little Kübra passed away due to an illness she contracted and passed away longing for her father.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17170,7 +16824,6 @@ export const HASHTAG_MOCKS = {
               '\n\nOn Saturday morning, September 7, Koray Vural, a businessman living in Tajikistan for 29 years, was kidnapped in front of his restaurant in Dushanbe and taken to Turkey.His family is worried.\n\nWhere is Koray Vural!',
             content:
               "On Saturday morning, September 7, businessman Koray Vural, who has been living in Tajikistan for 29 years, was kidnapped in front of his restaurant in Dushanbe and taken to Turkey.\n\nWhere's Koray Vural!",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17193,7 +16846,6 @@ export const HASHTAG_MOCKS = {
               '\nİsmet Özçelik was kidnapped from Malaysia and brought to Turkey in 2017 despite being under the protection of the United Nations. \n\nÖzçelik, who was arrested and sent to prison, suffers from heart disease and diabetes. ',
             content:
               'İsmet Özçelik was kidnapped from Malaysia and brought to Turkey in 2017 despite being under the protection of the United Nations. Özçelik, who was arrested and sent to prison, suffers from heart disease and diabetes. Özçelik, who suffered a heart attack in prison, has been subjected to many violations of his rights Özçelik, who is on probation since November 29, 2022, was prevented from being released by an arbitrary disciplinary investigation 6 days before his release',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17216,7 +16868,6 @@ export const HASHTAG_MOCKS = {
               '\nCihan Özkan \n\nwas kidnapped from Kosovo in 2018 and has been detained for 5 years. He has been held in a cell in Marmara Prison, and although his release date has already come and gone, he has been prevented from being released by not being granted probation for months.',
             content:
               'Cihan Özkan\n\nIn 2018, he was kidnapped from Kosovo and has been detained for 5 years. Özkan has been held in a cell in Marmara Prison, and although his release date is long overdue, he has been prevented from being released by not being granted probation for months.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17239,7 +16890,6 @@ export const HASHTAG_MOCKS = {
               'Gökhan Türkmen \nis detained in Ankara Sincan Prison. Türkmen was released in Antalya 9 months after being kidnapped. Then he was  detained as if he had just been found.  His statements are as follows:\n\n I was tortured, harassed and threatened for 271 days. I was tortured for 9 months.',
             content:
               'Gökhan Türkmen (46) is detained in Ankara Sincan Prison. Türkmen was released in Antalya 9 months after being kidnapped. Then he was  detained as if he had just been found.  His statements are as follows: \nI was tortured, harassed and threatened for 271 days. I was tortured for 9 months. I was made to stand for days in a place where the lamps were on. I would faint from standing and fall to the ground.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17262,7 +16912,6 @@ export const HASHTAG_MOCKS = {
               '\n\nOrhan İnandı, an educator who was tortured after being kidnapped by MIT in Kyrgyzstan, was sentenced to 21 years in prison.',
             content:
               'Orhan İnandı, an educator who was tortured after being kidnapped by MIT in Kyrgyzstan, was sentenced to 21 years in prison.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17284,7 +16933,6 @@ export const HASHTAG_MOCKS = {
               '\nGülistan Doku, \n\na university student who was abducted in Tunceli and never heard from again, has been missing for 1345 days.',
             content:
               'Gülistan Doku, a university student who was abducted in Tunceli and never heard from again, has been missing for 1345 days.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17307,7 +16955,6 @@ export const HASHTAG_MOCKS = {
               '\n\nSunay Elmas, an educator whose illegal interrogation was attended by Hakan FİDAN, the head of Turkish National Intelligence Service, has been missing for 7 years. \n\nThe authorities have not made a single statement on this issue.',
             content:
               'Sunay Elmas, an educator whose illegal interrogation was attended by Hakan FİDAN ,the head of Turkish National Intelligence Service,  has been missing for 7 years.\n\nThe authorities do not make a single statement on this issue.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17330,7 +16977,6 @@ export const HASHTAG_MOCKS = {
               "\nA Chaldean couple living in Şırnak were abducted 3.5 years ago. Shimuni Diril's dead body was found 3 months later. Hurmüz Diril is still missing. \n\nTheir daughter Gülcan Diril says her parents were victims of a planned murder.",
             content:
               "A Chaldean couple living in Şırnak were abducted 3.5 years ago.\n\nShimuni Diril's dead body was found 3 months later. Hurmüz Diril is still missing. Their daughter Gülcan Diril says her parents were victims of a planned murder.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17353,7 +16999,6 @@ export const HASHTAG_MOCKS = {
               '\nMehmet BAL \n\nhas been missing for 3 years. His son emphasizes that they have applied to all necessary state institutions to find his father and underlines that they have not seen a positive approach from any state institution since the first day.',
             content:
               'Mehmet BAL has been missing for 3 years.\n\nEmphasizing that they have applied to all necessary state institutions to find his father, his son underlines that they have not received a positive approach from any state institution since the first day.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17375,7 +17020,6 @@ export const HASHTAG_MOCKS = {
               'Yusuf Bilge TUNÇ\nwas abducted 4 years ago on August 6, 2019 in Ankara Gimat in a black Transporter.TUNÇ\'s location  has been unknown since then. His father Mustafa Tunç: \n\n"If he was in prison you would go and visit him, there is nothing more painful than not knowing what happened...!"',
             content:
               'Yusuf Bilge TUNÇ was abducted 4 years ago on August 6, 2019 in Ankara Gimat in a black Transporter.TUNÇ\'s location has been unknown since then. His father Mustafa Tunç: "If he was in prison you would go and visit him, there is nothing more painful than not knowing what happened...!"',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17398,7 +17042,6 @@ export const HASHTAG_MOCKS = {
               '\nZabit Kişi, who was kidnapped from Kazakhstan and tortured for 108 days: \n\nAt the place where I was abducted, they tortured me by stripping me naked, they crushed my toes, my ribs cracked, they stepped on my handcuffed hands with their feet, I have loss of sensation.',
             content:
               'Zabit Kişi, who was kidnapped from Kazakhstan and tortured for 108 days:\n\n"At the place where I was kidnapped, they tortured me by stripping me naked, they crushed my toes, my ribs cracked, they stepped on my handcuffed hands with their feet, I have loss of sensation. Complaints are deliberately dismissed with non-prosecution in the prison where they are imprisoned',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17421,7 +17064,6 @@ export const HASHTAG_MOCKS = {
               '\nWas Ayhan Oran summoned to the country to be executed? \n\nOran, a former MIT employee, was summoned to Turkey in June 2016 while on duty in Greece, suspended on July 17, dismissed on August 2, kidnapped on November 1 and has not been heard from since.',
             content:
               'Was Ayhan Oran summoned to the country to be executed?\n\nOran, a former MİT employee, was summoned to Turkey in June 2016 while on duty in Greece, suspended on July 17, dismissed on August 2, kidnapped on November 1 and has not been heard from since.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17444,7 +17086,6 @@ export const HASHTAG_MOCKS = {
               'Yasin Ugan, \n\nwho appeared at the Ankara Central Police Station 7 months after his abduction, described the torture he was subjected to in court.\n\n "I lived with a bag over my head for 6 months, I was red in the face, I was severely tortured.',
             content:
               'Yasin Ugan, who appeared at the Ankara Central Police Station 7 months after his abduction, described the torture he was subjected to in court.\n\n"I lived with a bag over my head for 6 months, I was red in the face, I was severely tortured.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17763,7 +17404,6 @@ export const HASHTAG_MOCKS = {
               'Özge Özbek \n\nSick prisoner Özge Özbek has diseases such as brain tumour, epilepsy, asthma and vertigo. She was taken from the hospital and arrested 3 days after she underwent open-brain surgery in 2020. Özbek, who is  struggling to survive in prison, should be urgently treated.',
             content:
               'Özge Özbek\n\nSick prisoner Özge Özbek has diseases such as brain tumour, epilepsy, asthma and vertigo. She was taken from the hospital and arrested 3 days after she underwent open-brain surgery in 2020. Özbek, who is  struggling to survive in prison, should be urgently treated.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17786,7 +17426,6 @@ export const HASHTAG_MOCKS = {
               '\n\nHakan Kanat\n\n Hakan Kanat, who has thyroid cancer, has been imprisoned for 87 months despite the cancerous cells in his throat, on the grounds that he has a Bank Asya account and sends his child to a school closed down by the state of emergency decree.\n\n',
             content:
               'Hakan Kanat\n\nHakan Kanat, who has thyroid cancer, has been imprisoned for 87 months despite the cancerous cells in his throat, on the grounds that he has a Bank Asya account and sends his child to a school closed down by the state of emergency decree.\n\n"Depositing money in Bank Asya and sending your child to a community school is not a crime," the ECtHR said.\n\nKanat, who is being held in prison unlawfully, needs to be released urgently.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17809,7 +17448,6 @@ export const HASHTAG_MOCKS = {
               'Bahadır Sulukan, son of Şerife Sulukan with 89 percent disability:\n\n"My mother, who is confined to bed, has been in prison for 17 months. She is alone in the ward and is now on depression medication. My mother needs to be released because she is being held in prison for non-criminal justification"',
             content:
               'Bahadır Sulukan, son of Şerife Sulukan with 89 percent disability:\n\n"My mother, who is confined to bed, has been in prison for 17 months. She is alone in the ward and is now on depression medication. My mother needs to be released because she is being held in prison for non-criminal justification"',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17832,7 +17470,6 @@ export const HASHTAG_MOCKS = {
               'Esra Ekmekçi \n\nEsra Ekmekçi, who was arrested 6 months ago on invalid charges, has still not been reunited with her autistic son Tarık.\n\nWhat happened to the release of mothers with sick children? Why is the new execution law not applied to the mother of Tarık with autism?',
             content:
               'Esra Ekmekçi\n\nEsra Ekmekçi, who was arrested 6 months ago on invalid charges, has still not been reunited with her autistic son Tarık.\n\nWhat happened to the release of mothers with sick children? Why is the new execution law not applied to the mother of Tarık with autism?',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17855,7 +17492,6 @@ export const HASHTAG_MOCKS = {
               "Züleyha Erkol\n\nZüleyha had brain surgery, her mother passed away and her father is in prison. \nDecision makers, don't you have any children? If it happened to you, you'd scream the place down. Why don't you approach with the same sensitivity to Züleyha?",
             content:
               "Züleyha Erkol\n\nZüleyha had brain surgery, her mother passed away and her father is in prison. Decision makers, don't you have any children? If it happened to you, you'd scream the place down. Why don't you approach with the same sensitivity to Züleyha? ",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17878,7 +17514,6 @@ export const HASHTAG_MOCKS = {
               'Gülden Aşık \n\n"HELP ME GOD HELP ME"\n \nThis is the cry of Gülden Aşık, who lost her 8-week-old baby in prison, has been struggling with cancer for years, has not been released despite the report that she cannot stay in prison and the ECHR decision, and is separated from her 3 children!',
             content:
               'Gülden Aşık\n\n"HELP ME GOD HELP ME"\n \nThis is the cry of Gülden Aşık, who lost her 8-week-old baby in prison, has been struggling with cancer for years, has not been released despite the report that she cannot stay in prison and the ECHR decision, and is separated from her 3 children!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17901,7 +17536,6 @@ export const HASHTAG_MOCKS = {
               'Mehmet Parlak\n\nMehmet Parlak, a court clerk under a state of emergency decree, has been living with one kidney for 10 years. He lost 15 kg in prison. He is currently being treated in hospital. He still has not been released, although the institution of forensic medicine should urgently grant a stay of execution.',
             content:
               'Mehmet Parlak\n\nMehmet Parlak, a court clerk under a state of emergency decree, has been living with one kidney for 10 years. He lost 15 kg in prison. He is currently being treated in hospital. He still has not been released, although the institution of forensic medicine should urgently grant a stay of execution.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17924,7 +17558,6 @@ export const HASHTAG_MOCKS = {
               'Abdulalim Kaya \n\nHow right is it to keep Abdulalim Kaya (85), who has kidney failure, dementia and diabetes, in prison despite his illness?\nThe situation of Abdulalim Kaya and all seriously ill prisoners should be reviewed.',
             content:
               'Abdulalim Kaya\n\nHow right is it to keep Abdulalim Kaya (85), who has kidney failure, dementia and diabetes, in prison despite his illness?\nThe situation of Abdulalim Kaya and all seriously ill prisoners should be reviewed.\n',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17947,7 +17580,6 @@ export const HASHTAG_MOCKS = {
               "\nEmre Turan\n\nWife of Emre Turan, who has ulcerative colitis: \"My husband, who weighed 90 kilograms, now weighs 80 kilograms. My husband is one step closer to death every minute he stays in prison. I don't want my two sons to be fatherless''",
             content:
               "Emre TuranWife of Emre Turan who has ulcerative colitis:\n\n\"My wife, who weighed 90 kilograms, now weighs 80 kilograms. Every minute my husband stays in prison, he is one step closer to death. I don't want my two sons to be without a father.''",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17970,7 +17602,6 @@ export const HASHTAG_MOCKS = {
               'Yazgül Dural\n\nYazgül Dural, a housewife who was arrested with her husband in November 2022 as part of investigations against the Gülen Movement, suffers from hydrocephalus. Suffering from dizziness, vomiting and loss of balance, Dural is unable to take care of herself alone.',
             content:
               'Yazgül Dural\n\nYazgül Dural, a housewife who was arrested with her husband in November 2022 as part of investigations into the Gülen Movement, suffers from hydrocephalus. Suffering from dizziness, vomiting and loss of balance, Dural is unable to take care of herself on her own.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -17991,7 +17622,6 @@ export const HASHTAG_MOCKS = {
               '\nAbdullah Aydoğan\n\nAbdullah Aydoğan (80), who was arrested for donating land to a school within the scope of Gülen Movement investigations, has been in prison since January 2019. Aydoğan lost his right eye in prison due to neglect.',
             content:
               'Abdullah Aydoğan\n\nAbdullah Aydoğan (80), who was arrested for donating land to a school within the scope of Gülen Movement investigations, has been in prison since January 2019. Aydoğan lost his right eye in prison due to neglect.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18014,7 +17644,6 @@ export const HASHTAG_MOCKS = {
               "İsmet Özçelik\n\nThe daughter of İsmet Özçelik who was kidnapped from Malaysia:\n\n\"My father has been imprisoned for years without charge. It is not enough that you have been holding my father, who has a heart disease, captive for 6 years, you do not release him even though he is on probation.''",
             content:
               "İsmet Özçelik\n\nThe daughter of İsmet Özçelik who was kidnapped from Malaysia:\n\n\"My father has been imprisoned for years without charge. It is not enough that you have been holding my father, who has a heart disease, captive for 6 years, you do not release him even though he is on probation.''",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18037,7 +17666,6 @@ export const HASHTAG_MOCKS = {
               "Tercanlıoğlu couple \n\n3-MONTH-OLD BABY SEPARATED FROM HIS MOTHER\n\nThe couple Zarif - Sümeyye Tercanlıoğlu were arrested for acts that the ECHR said were 'not a crime'. The mother, who did not want to put her 3-month-old son in prison, handed the breastfeeding baby over to her sister.",
             content:
               "Tercanlıoğlu couple\n\n3-MONTH-OLD BABY SEPARATED FROM HIS MOTHER\n\nThe couple Zarif - Sümeyye Tercanlıoğlu were arrested for acts that the ECHR said were 'not a crime'. The mother, who did not want to put her 3-month-old son in prison, handed the breastfeeding baby over to her sister.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18058,7 +17686,6 @@ export const HASHTAG_MOCKS = {
               '\nGültekin Avcı\n\nArrested journalist Gültekin Avcı is losing his balance, falling and getting injured because he is not given his medication. Although Avcı demands that his medication be provided, the prison administration rejects his request!',
             content:
               'Gültekin Avcı\n\nArrested journalist Gültekin Avcı is losing his balance, falling and getting injured because he is not given his medication. Although Avcı demands that his medication be provided, the prison administration rejects his request!\n',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18081,7 +17708,6 @@ export const HASHTAG_MOCKS = {
               "Elderly and sick detainees\n\nOver 80 years of age, there are seriously ill prisoners who are imprisoned even though they cannot meet their needs. If the justice system did not have a 'blood feud' with these people, they would not be convicted in revenge judgements.",
             content:
               "Elderly and sick detainees\n\nOver 80 years of age, there are seriously ill prisoners who are imprisoned even though they cannot meet their needs. If the justice system did not have a 'blood feud' with these people, they would not be convicted in revenge judgements",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18411,7 +18037,6 @@ export const HASHTAG_MOCKS = {
               "Deprived of breast milk, 4-month-old Enis is in Edirne Prison today, waiting for his mother for a visit. It has been 1 month since Enis' mother Sümeyye Tercanlıoğlu was arrested. For a month, BABY Enis cannot drink breast milk! The imprisoned mother pours her milk into the prison sink!",
             content:
               "Deprived of breast milk, 4-month-old Enis is in Edirne Prison today, waiting for his mother for a visit.It has been 1 month since Enis' mother Sümeyye Tercanlıoğlu was arrested. For a month, BABY Enis cannot drink breast milk! The imprisoned mother pours her milk into the prison sink!",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18434,7 +18059,6 @@ export const HASHTAG_MOCKS = {
               "DÜZCE\n Nazlı-Fuat Çatpınar couple have been in prison since 2019. The couple's three children, Osman Bahadır(6), Ömer Mahir(5), and Ali Asaf (3) are growing up without their parents.\n\n Families and children have been persecuted for years for legal activities that are not crimes. \nDon't be a partner in this persecution anymore, be the voice of innocent people!",
             content:
               "DÜZCE\n Nazlı-Fuat Çatpınar couple have been in prison since 2019. The couple's three children, Osman Bahadır(6), Ömer Mahir(5), and Ali Asaf (3) are growing up without their parents.\n\n Families and children have been persecuted for years for legal activities that are not crimes. \nDon't be a partner in this persecution anymore, be the voice of innocent people!",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18457,7 +18081,6 @@ export const HASHTAG_MOCKS = {
               'KONYA\n\nZübeyde-Hüseyin Kara have been in prison since March 2019. Mr. Hüseyin has spastic colon disease and his wife Zübeyde is a heart patient.  Hüseyin Kara, the sick father in prison: "I am dying here, please make my voice heard! My children should not grow up as orphans." He had asked for justice. But there is no end to the unjust trials! The Kara family\'s 3 children aged 14, 12 and 5 have been growing up without a mother and father for 4 years.',
             content:
               'KONYA\n\nZübeyde-Hüseyin Kara couple has been in prison since March 2019. Mr. Hüseyin is a spastic colon patient and his wife Zübeyde is a heart patient. Hüseyin Kara, the sick father in prison, said: "I am dying here, please make my voice heard! My children should not grow up as orphans." He had asked for justice. The Kara family\'s 3 children aged 14, 12 and 5 have been growing up without a mother and father for 4 years.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18480,7 +18103,6 @@ export const HASHTAG_MOCKS = {
               "KARABÜK\nGülseren-Zülküf Arslan couple has been in prison for 4 years. The couple's 3 children live with their grandmother. Yasemin, Selma and Mahir should be reunited with their parents as soon as possible.\n End unjust trials! \n End the persecution of imprisonment of parents!",
             content:
               "KARABÜK\nGülseren-Zülküf Arslan has been in prison for 4 years. The couple's 3 children live with their grandmother. Yasemin, Selma and Mahir should be reunited with their parents as soon as possible. \nEnd to unjust trials!\nEnd the persecution of mum and dad detention!\n",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18503,7 +18125,6 @@ export const HASHTAG_MOCKS = {
               'Vedat (13), Mücteba (12), Zeynep (12), Yusuf (8) are 4 children whose lives were stolen by sending their parents to prison. Their father has been in prison for years, and on September 8, their mother Rukiye Çoygar was also arrested.  Ms. Rukiye has health problems and needs urgent surgery',
             content:
               'Vedat (13), Mücteba (12), Zeynep (12), Yusuf (8) are 4 children whose lives were stolen by sending their parents to prison. Their father has been in prison for years, and their mother Rukiye Çoygar was arrested on September 8.   Ms. Rukiye has health problems and needs urgent surgery',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18526,7 +18147,6 @@ export const HASHTAG_MOCKS = {
               'Yeliz Temur, a mother of 4 children who has no crime according to our laws, was arrested on June 17th. Her husband has also been in prison for 5 years. Her children are forced to grow up without their mother and father.',
             content:
               'Yeliz Temur, a mother of 4 children who has no crime according to our laws, was arrested on June 17th. Her husband has also been in prison for 5 years. Her children are forced to grow up without their mother and father.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18549,7 +18169,6 @@ export const HASHTAG_MOCKS = {
               "Hakan Esat (8), the son of Halit Gökkaya, , has Cerebral Palsy. Halit Gökkaya is a police officer with a state of emergency decree, who is being held in Osmaniye Toprakkale Prison. Mother Güldane says that her son is severely disabled and that she and her husband take turns taking care of him. This persecution must end, Halit Gökkaya must be released from prison and Hakan Esat's care must be supported.",
             content:
               "Hakan Esat (8), the son of Halit Gökkaya, , has Cerebral Palsy. Halit Gökkaya is a police officer with a state of emergency decree, who is being held in Osmaniye Toprakkale Prison. Mother Güldane says that her son is severely disabled and that she and her husband take turns taking care of him. This persecution must end, Halit Gökkaya must be released from prison and Hakan Esat's care must be supported.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18572,7 +18191,6 @@ export const HASHTAG_MOCKS = {
               'BALIKESİR\nBahar and Seher grew up without their parents for years. In 2022, they were reunited with their father, but they are still growing up with the absence of their mother Hayruşe Şevik. \nChildren are being traumatized with accusations that do not exist in the law!',
             content:
               'BALIKESİR\n\nBahar and Seher grew up without their parents for years. In 2022, they were reunited with their father, but they are still growing up without their mother Hayruşe Şevik.\n\nChildren are being subjected to trauma after trauma with accusations that do not exist in the law!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18595,7 +18213,6 @@ export const HASHTAG_MOCKS = {
               "İbrahim Durmuş, father of 18-year-old Hamza Tarık, who has autism and intellectual disability, has been in prison since 2019. Mr. Ibrahim's wife has lymphoma. Hamza Tarık needs the support of his father to survive. İbrahim Durmuş should be released.",
             content:
               "\nİbrahim Durmuş, father of 18-year-old Hamza Tarık, who has autism and intellectual disability, has been in prison since 2019. Mr. Ibrahim's wife has lymphoma. Hamza Tarık needs the support of his father to survive. İbrahim Durmuş should be released.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18618,7 +18235,6 @@ export const HASHTAG_MOCKS = {
               'ANKARA\nKevser Sinan, mother of two siblings were arrested in 2019 before  the children were reunited with their imprisoned father. The psychologically upset children have been waiting for years to be reunited with their parents!',
             content:
               'ANKARA\n\nBefore the two siblings were reunited with their imprisoned father, their mother Kevser Sinan was arrested in 2019.\n\nPsychologically upset children have been waiting for years to be reunited with their parents! Why this persecution of children with  detention of parents?!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18641,7 +18257,6 @@ export const HASHTAG_MOCKS = {
               'ADANA \nThree siblings have been without a mother and father for over 2 years! First their father Ali Özak was arrested, then his wife Nermin Özak was arrested two weeks later as a result of a witch hunt. The ECHR said there is  not a crime with the "Yalçınkaya" decision, but the children are still without parents due to arbitrariness!',
             content:
               'ADANA\n\nThe three siblings have been without a mother and father for more than 2 years! First their father Ali Özak was arrested, then his wife Nermin Özak was arrested two weeks later as a result of a witch hunt.\n\n The ECHR said there is  not a crime with the "Yalçınkaya" decision, but the children are still without parents due to arbitrariness!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18664,7 +18279,6 @@ export const HASHTAG_MOCKS = {
               'Invented crimes leave children without parents! \nFeyza Akbay, mother of 2 children, has been in prison for 5 years.  Muaz and Büşra were being cared for by their heart-ill father Muhammet Akbay in the absence of their mother, but in 2019 he was arrested too!',
             content:
               'MANİSA\n\nInvented crimes leave children without parents!\n\nFeyza Akbay, mother of 2 children, has been in prison for 5 years. While Muaz and Büşra were being taken care of by their father Muhammet Akbay, who has a heart disease, in the absence of their mother, he was arrested in 2019!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18687,7 +18301,6 @@ export const HASHTAG_MOCKS = {
               'GÜMÜŞHANE\nBetül Hafza and Bahadır, two children who have been growing up without parents for 5 years!\n Their parents Önder-Fatma Bozkurt have been in prison since February 2018. ECHR said "it is not a crime" but the children still cannot meet their parents, they are still orphans!',
             content:
               'GÜMÜŞHANE\n\nBetül Hafza and Bahadır, two children who have been growing up without parents for 5 years!\n\nTheir parents, Önder-Fatma Bozkurt, have been in prison since February 2018. The ECHR said "it is not a crime" but the children still cannot be reunited with their parents, they are still orphans!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18710,7 +18323,6 @@ export const HASHTAG_MOCKS = {
               'BALIKESİR\nThree siblings have been orphaned for years due to acts that the ECtHR does not criminalize, they were able to see their parents behind a dirty glass.  Zeynep Ö. Ocak and her husband were arrested in 2018, the children have recently been reunited with their father, but they are in need of their mother!',
             content:
               'BALIKESİR\n\nDue to acts not criminalized by the ECHR, the 3 siblings have been orphans for years, they have been able to see their parents behind a dirty glass. Zeynep Ö. Ocak and her husband were arrested in 2018, the children will soon be reunited with their father, but they are in need of their mother!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18733,7 +18345,6 @@ export const HASHTAG_MOCKS = {
               'Abdülkadir Arslan and Nurcan Arslan, who have six children, were arrested on September 30. Family relatives: "Abdülkadir and Nurcan are detained in Edirne. A total of 6 children, including quintuplet brothers and sisters, one of whom is disabled, are left without a mother and father. Arif, who is disabled, is in dire need of a mother and father due to his illness. At any moment, the shunt in his head may become blocked and he may need surgery. Please release the children who are left in the middle..."',
             content:
               'Abdülkadir Arslan and Nurcan Arslan, who have six children, were arrested on September 30. Family relatives: "Abdülkadir and Nurcan are detained in Edirne. A total of 6 children, including quintuplet brothers and sisters, one of whom is disabled, are left without a mother and father. Arif, who is disabled, is in dire need of a mother and father due to his illness. At any moment, the shunt in his head may become blocked and he may need surgery. Please release the children who are left in the middle..."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -18756,7 +18367,6 @@ export const HASHTAG_MOCKS = {
               'Edibe Tatar, a teacher and mother of 3 children, was arrested on June 14.  14-year-old daughter Nihal: "My mother went to prison this year. My father has been in prison for 5 years. My grandmother is old, has chronic illnesses and takes care of us. We want our mother to be with us."',
             content:
               'Edibe Tatar, a teacher and mother of 3 children, was arrested on June 14. 14-year-old daughter Nihal: "My mother went to prison this year. My father has been in prison for 5 years. My grandmother is old, has chronic illnesses and takes care of us. We want our mother to be with us."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19391,7 +19001,6 @@ export const HASHTAG_MOCKS = {
               '\nThe hope of our children must be secured by justice. \n\nAs the foundations of law are shaken, the future of our children is at stake.',
             content:
               'The hope of our children must be secured by justice. As the foundations of law are shaken, the future of our children is at stake.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19414,7 +19023,6 @@ export const HASHTAG_MOCKS = {
               "\n  Increasing lawlessness in Turkey is affecting even babies. The rule of law and children's rights must be defended.  \n\n  Sümeyye Aydın was arrested with her 11-month-old baby on December 13th. She has another tearful child outside, who has been separated from her mother.",
             content:
               "Increasing lawlessness in Turkey is affecting even babies. The rule of law and children's rights must be defended.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19437,7 +19045,6 @@ export const HASHTAG_MOCKS = {
               '  \n Esra Baran, a housewife, mother of 2 children, was arrested on December 1, 2022. She is in Manisa E Type Prison. \n\n   Her mother: "I am the grandmother of these children. They have been without their father for 5 years. Now they have taken their mother. They victimized us a lot..."',
             content:
               'Esra Baran, a housewife, mother of 2 children, was arrested on December 1, 2022. She is in Manisa E Type Prison. Her mother:\n\n"I am the grandmother of these children. They have been without their father for 5 years. Now they have taken their mother. They have victimized us a lot."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19460,7 +19067,6 @@ export const HASHTAG_MOCKS = {
               '   \n\n   Rümeysa Som, a housewife and mother of two, whose husband has been in prison for 2.5 years and whose sentence was upheld by the Court of Cassation, was arrested on May 2. \n\n   She left behind two daughters, aged 8 and 12.',
             content:
               'Rümeysa Som, a housewife and mother of two, whose husband has been in prison for 2.5 years and whose sentence was upheld by the Court of Cassation, was arrested on May 2',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19483,7 +19089,6 @@ export const HASHTAG_MOCKS = {
               '\nKASTAMONU \n\n   Children victims of unlawful decisions! Teacher Esra Songur has been in prison with her two children since November 24! \n\n   Fatmanur (2) and her brother Ahmet Yaşar (3.5) have been longing for a warm home and freedom for months!',
             content:
               'Teacher Esra Songur has been in prison with her two children since November 24th!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19506,7 +19111,6 @@ export const HASHTAG_MOCKS = {
               'KASTAMONU \n\nChildren victims of unlawful decisions! Teacher Esra Songur has been in prison with her two children since November 24! \n\nFatmanur (2) and her brother Ahmet Yaşar (3.5) have been longing for a warm home and freedom for months!',
             content:
               'Teacher Esra Songur has been in prison with her two children since November 24th!\n\nFatmanur (2) and her brother Ahmet Yaşar (3.5) have been longing for a warm home and freedom for months!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19529,7 +19133,6 @@ export const HASHTAG_MOCKS = {
               'ÇORUM\n\nHatice- Mücahit Bağcacı couple have been imprisoned in Sungurlu Prison since March 2022. \n\nTheir only son Abdullah (3) has lived in prison with his mother, and has been outside since October 6, 2022, waiting for his parents due to problems with nutrition, etc.!',
             content:
               'Hatice- Mücahit Bağcacı have been imprisoned in Sungurlu Prison since March 2022. Abdullah (3) has lived in prison with his mother.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19552,7 +19155,6 @@ export const HASHTAG_MOCKS = {
               'Ebubekir (5.5) \n\nis one of the hundreds of children who are homesick for their parents.His father Sadık Erdem was released from prison 5 months ago. \n\nEbubekir, who was reunited with his father, started to be homesick for his mother before he could experience his happiness!',
             content:
               'Ebu Bekir (5.5) is one of hundreds of children who long for their parents.\n\nHis father Sadık Erdem had been released from prison five months ago, but on October 12, his mother Serap Erdem was arrested.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19575,7 +19177,6 @@ export const HASHTAG_MOCKS = {
               'Father Zekeriya Sarıçelik has been detained since 2017, mother Özlem Sarıçelik since 2020.\n\nElif (11) and Yahya (7) with Down syndrome are staying with their grandparents during this period.\n\nHow long will these children be without parents?',
             content:
               'Father Zekeriya Sarıçelik has been detained since 2017, mother Özlem Sarıçelik since 2020, they have two children who are watching their way.Elif (11) and Yahya (7) with Down syndrome are staying with their grandparents during this period.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19598,7 +19199,6 @@ export const HASHTAG_MOCKS = {
               'İZMİR\n\nZümra (2.5) is one of hundreds of imprisoned babies!\nShe has been in Şakran Prison with her mother Sümeyye Aksoy since September 6.\n\nOutside, 2 motherless siblings are waiting for their mother to return home.\n\nChildren who are our future are growing up in prison!',
             content:
               'Zümra (2.5) is one of the hundreds of imprisoned babies! She has been in Şakran Prison with her mother Sümeyye Aksoy since September 6.\n\nChildren, who are our future, are growing up in prison!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19619,7 +19219,6 @@ export const HASHTAG_MOCKS = {
               'ISTANBUL\n\n   Sümeyye Aydın was arrested along with her 11-month-old baby on December 13th. \n\n   Tiny children are being forced to pay for arbitrary practices, babies do not belong in prison!',
             content:
               'Sümeyye Aydın was arrested along with her 11-month-old baby on December 13. Outside, she has another tearful child who was torn away from her mother.\n\nTiny children are forced to pay for arbitrary practices.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19642,7 +19241,6 @@ export const HASHTAG_MOCKS = {
               'SİNCAN\n\n   Cemal Faik (7) had been longing for his father for years, he had only recently been reunited with him. \n \n  Recently, his mother, Merve Çiçek, was arrested for depositing money in an official state bank and working in a private tutoring center...\n\nWhat is this if not persecution?',
             content:
               'Cemal Faik (7) had been longing for a father for years, he had only recently been reunited. Recently his mother, Merve Çiçek, was arrested for depositing money in an official state bank and working at a private tutoring center.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19665,7 +19263,6 @@ export const HASHTAG_MOCKS = {
               "   Seyit Aydın was sentenced to a long solitary confinement for giving moral support to his friends. \n\n   He's been in prison for 6 years and 9 months. His child is struggling, asking him to let his father come.\n\n   Imagine a child separated from his father for nearly 7 years.",
             content:
               "Seyit Aydın was sentenced to a long solitary confinement for giving moral support to his friends. He's been in prison for 6 years and 9 months. His child is struggling, asking him to let his father come.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19688,7 +19285,6 @@ export const HASHTAG_MOCKS = {
               '\n\nDon\'t say, \n"What are babies doing in prison? \n\nToday, hundreds of babies and children between the ages of 0-6 are in prison in Turkey, imprisoned with their mothers."',
             content:
               'Don\'t say, "What are babies doing in prison? Today, hundreds of babies and children between the ages of 0-6 are in prison in Turkey, imprisoned with their mothers."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19711,7 +19307,6 @@ export const HASHTAG_MOCKS = {
               "Betül-Emre Karakoç, \n\nwho have been in Sincan Prison for nearly four years, have two young children who long for them. \n\nNecip was 5 and Sare was 2 when they were separated from their parents. \n\nHaven't innocent children had enough of not having parents?",
             content:
               'Betül-Emre Karakoç, who have been in Sincan Prison for nearly four years, have two young children who long for them. Necip was 5 and Sare was 2 when they were separated from their parents.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19734,7 +19329,6 @@ export const HASHTAG_MOCKS = {
               'EDİRNE\n\n   Baring for each other, a family longing for each other, children waiting for their parents.\n\n   The couple Belkız-Mustafa İpek were arrested on May 4.Their two children, aged 7 and 11, are outside, while 2-year-old Yahya Murtaza is in prison with his mother.\n\n   Another family torn apart!',
             content:
               'Belkız-Mustafa İpek couple was arrested on May 4.\n\nTheir two children aged 7 and 11 are outside, and 2-year-old Yahya Murtaza is in prison with his mother.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -19757,7 +19351,6 @@ export const HASHTAG_MOCKS = {
               'Mother of three children arrested! Ümran Karakuş has 3 children 8,14,21 years old. She was detained in Ankara.   If they accept legal criteria as illegal and try to arrest her, 3 children will be orphaned.    Arrest should not be a means of punishment!',
             content:
               'Mother of three children arrested! Ümran Karakuş  has 3 children 8,14,21 years old. She was detained in Ankara.If they accept legal criteria as illegal and try to arrest her, 3 children will be orphaned. Arrest should not be a means of punishment! Are you going to separate children from their mothers again?',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20666,7 +20259,6 @@ export const HASHTAG_MOCKS = {
               "   Yakup Saygılı, the former Istanbul Financial Branch Director, has been in prison for 8 years for his role in the December 17 corruption operation. Saygılı's father Rasim Saygılı (83) passed away. However, Yakup Saygılı was not allowed to attend his father's funeral. \n   \nWe question how justice allows this tragic situation.",
             content:
               "   Yakup Saygılı, the former Istanbul Financial Branch Director, has been in prison for 8 years for his role in the December 17 corruption operation. Today, Saygılı's father Rasim Saygılı (83) passed away. However, Yakup Saygılı was not allowed to attend his father's funeral. \n   \nWe question how justice allows this tragic situation.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20689,7 +20281,6 @@ export const HASHTAG_MOCKS = {
               '  \n  In 2015, Yasin Topçu, a former Deputy Director of the Financial Branch, was detained when he came to the Istanbul Courthouse to support the relatives of arrested police officers waiting for their release. Topçu was only doing his job as a police officer and had helped to bring corruption to light. \n   \n ',
             content:
               '   In 2015, Yasin Topçu, a former Deputy Director of the Financial Branch, was detained when he came to the Istanbul Courthouse to support the relatives of arrested police officers waiting for their release. Topçu was only doing his job as a police officer and had helped to bring corruption to light. \n   \n   This incident once again demonstrates the importance of a fair process and the protection of the rights of those who fulfill their duties.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20711,7 +20302,6 @@ export const HASHTAG_MOCKS = {
               "   Arrested while serving in the Organized Crimes Branch, Nazmi Ardıç says: 'I feel no remorse for being a captive in Silivri prisons. Being detained or arrested does not diminish innocent individuals; on the contrary, it magnifies them.' \n\n   - Nazmi Ardıç (Former Police Chief sentenced to 10 years and whose wife was also arrested a week later)",
             content:
               "   Arrested while serving in the Organized Crimes Branch, Nazmi Ardıç says: 'I feel no remorse for being a captive in Silivri prisons. Being detained or arrested does not diminish innocent individuals; on the contrary, it magnifies them.' \n\n   - Nazmi Ardıç (Former Police Chief sentenced to 10 years and whose wife was also arrested a week later)",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20734,7 +20324,6 @@ export const HASHTAG_MOCKS = {
               '   On July 22, 2014, Yurt Atayün and a little before the June 7, 2015 elections, Anadolu Atayün turned themselves in to the police. Since then, both have been detained on unrealistic grounds. One brother is being held in Istanbul Silivri Prison and the other in Ankara Sincan Prison.\n    Both were officers involved in the December 17-25 corruption investigations.',
             content:
               '   On July 22, 2014, Yurt Atayün and a little before the June 7, 2015 elections, Anadolu Atayün turned themselves in to the police. Since then, both have been detained on unrealistic grounds. One brother is being held in Istanbul Silivri Prison and the other in Ankara Sincan Prison.\n\n    Both were officers involved in the December 17-25 corruption investigations.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20756,7 +20345,6 @@ export const HASHTAG_MOCKS = {
               "   1. “In the December 17-25, 2013 investigation conducted by Turkey's Financial Crimes Branch, Iranian businessman Reza Zarrab was found to have engaged in illegal gold trade and money laundering in exchange for hundreds of millions of dollars in bribes to 4 ministers. But this time it was the police who went to jail, not the criminals!”",
             content:
               "1. “In the December 17-25, 2013 investigation conducted by Turkey's Financial Crimes Branch, it was found that Iranian businessman Reza Zarrab had engaged in illegal gold trade and money laundering in exchange for hundreds of millions of dollars in bribes to 4 ministers. But this time it was the police who went to jail, not the criminals!”",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20779,7 +20367,6 @@ export const HASHTAG_MOCKS = {
               '   2. "The investigation continued for nearly two years. During this time, it was documented that the Iranian businessman was able to influence four ministers with bribes worth hundreds of millions of dollars, running the bribery traffic through the ministers\' children and receiving immunity in return.“',
             content:
               '2. "The investigation continued for nearly two years. During this time, it was documented that the Iranian businessman was able to influence four ministers with bribes worth hundreds of millions of dollars, running the bribery traffic through the ministers\' children and receiving immunity in return.”',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20802,7 +20389,6 @@ export const HASHTAG_MOCKS = {
               '3. “While these events were taking place, it was also recorded that black money transfers were taking place through a state-owned bank, which put the Turkish banking system at great risk, and that tons of gold were transferred using Turkish airspace and Turkish airports, while no taxes were paid."',
             content:
               '3. “While these events were taking place, it was also recorded that black money transfers were taking place through a state-owned bank that would put the Turkish banking system at great risk, and that tons of gold were transferred using Turkish airspace and Turkish airports, and that no taxes were paid."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20824,7 +20410,6 @@ export const HASHTAG_MOCKS = {
               '\n   4. "Investigating billions of dollars of figures that people cannot even imagine in their dreams, the teams followed the suspects step by step, videotaped them, documented the purchases and added them to the file.”',
             content:
               '4. "Investigating billions of dollars worth of figures that people cannot even see in their dreams and dreams, the teams followed the suspects step by step, videotaped them, documented the purchases and added them to the file.”',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20847,7 +20432,6 @@ export const HASHTAG_MOCKS = {
               '\n   5. "The contents of the file seemed very solid; as a result of meticulous and detailed work, the bags Reza Zerrab sent to ministers\' children through these channels, particularly to an educational foundation, and the money in these bags were identified on video and photo."',
             content:
               '5. "The contents of the file seemed very solid; as a result of meticulous and detailed work, the bags Reza Zerrab sent to ministers\' children through these channels, particularly to an educational foundation, and the money in these bags were identified on video and photo."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20870,7 +20454,6 @@ export const HASHTAG_MOCKS = {
               '\n   6. "We had no intention of carrying out an operation before the elections. It stemmed from the attempt to dismiss the Director of the Financial Branch and myself. We launched the operation because the Minister of Interior was involved in corruption and saw the risk of his relationship with his accomplice being exposed." N. Ardıç | Police Chief',
             content:
               '6. "We had no intention to carry out an operation before the elections. It stemmed from the attempt to dismiss the Director of the Financial Branch and myself. We launched the operation because the Minister of Interior was involved in corruption and saw the risk of his relationship with his accomplice being exposed. "Nazmi Ardıç Police Chief',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20893,7 +20476,6 @@ export const HASHTAG_MOCKS = {
               '   \n7 . "Within the framework of the investigation into money laundering and bribery crimes, the children of the then Ministers of Interior, Economy, Environment and Urbanization, Reza Zarrab and the then General Manager of Halkbank were detained in simultaneous operations organized in Istanbul and Ankara."',
             content:
               '7 . "Within the framework of the investigation into money laundering and bribery crimes, the children of the then Ministers of Interior, Economy, Environment and Urbanization, Reza Zarrab and the then General Manager of Halkbank were detained in simultaneous operations organized in Istanbul and Ankara."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20916,7 +20498,6 @@ export const HASHTAG_MOCKS = {
               '\n   8. "Within the scope of the December 25 investigation, a large bribery pool was created for a group of pro-business cronies by promising some important areas of the state through public tenders. Privileged names were at the head of this bribery pool."“',
             content:
               '8. "Within the scope of the December 25 investigation, a large bribery pool was created for a group of crony businessmen by promising some important areas of the state through public tenders. Privileged names were at the head of this bribery pool."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20939,7 +20520,6 @@ export const HASHTAG_MOCKS = {
               '\n   9. "December 17/25 operated differently from other democratic structures that are healthy and believe in the rule of law. In Turkey, the political power, in a coup d\'état against the state, did not listen to the judiciary and forcibly prevented the judiciary from functioning. This constitutes a constitutional crime." Mehmet Altan',
             content:
               '9. "December 17/25 worked in a different way from other democratic structures that believe in the rule of law and are healthy democracies. In Turkey, the political power, in a coup d\'état against the state, did not listen to the judiciary and forcibly prevented the judiciary from functioning. This constitutes a constitutional crime." Mehmet Altan',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20962,7 +20542,6 @@ export const HASHTAG_MOCKS = {
               '\n   14. "Tens of thousands of public officials were reassigned, hundreds were suspended and their families were left devastated. For months, the government prevented a parliamentary investigation into corruption from being put on the parliamentary agenda."',
             content:
               '14. "Tens of thousands of public servants were reassigned, hundreds were suspended and their families were left devastated. For months, the government prevented a corruption investigation sent to parliament from being put on the parliamentary agenda."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -20985,7 +20564,6 @@ export const HASHTAG_MOCKS = {
               '   15. "In this process, broadcast bans were also quickly imposed to prevent the truth from being revealed and to cover up the issue. Broadcast bans could now be imposed on almost any subject, the press was removed from many points where it could report news, and the broadcasting channels they had used for years were closed down."',
             content:
               '15. "In this process, broadcast bans were also quickly imposed to prevent the truth from being revealed and to cover up the issue. Broadcast bans could now be imposed on almost any subject, the press was removed from many points where it could report news, and the broadcast channels they had used for years were closed down."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21008,7 +20586,6 @@ export const HASHTAG_MOCKS = {
               '\n   16. "The perception of corruption was being covered up in some way. To this end, dozens of high-ranking police officers, who may or may not have been involved in the December 17/25 operation, were detained without evidence or documentation, on the accusation that they were plotting a coup."',
             content:
               '16. "The perception of corruption was somehow being covered up. To this end, dozens of high-ranking police officers, who may or may not have been involved in the December 17/25 operation, were detained without evidence or documentation, on the accusation that they were plotting a coup."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21031,7 +20608,6 @@ export const HASHTAG_MOCKS = {
               '11. "I state that a large part of the zoning plans in the investigation file, which were approved in accordance with the law, were made on the instructions of Mr. Prime Minister Recep Tayyip Erdoğan. For this reason, I express my belief that Mr. Prime Minister Tayyip Erdoğan should resign in order to relieve the nation."',
             content:
               '11. "I state that a large part of the zoning plans in the investigation file, which were approved in accordance with the law, were made on the instructions of Prime Minister Recep Tayyip Erdoğan. For this reason, I express my belief that Prime Minister Tayyip Erdoğan should resign in order to relieve the nation."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21054,7 +20630,6 @@ export const HASHTAG_MOCKS = {
               '10. Minister of Environment and Urbanization Bayraktar:  "I do not accept the pressure put on me by Prime Minister Erdogan to resign and issue a declaration to relieve me because of the operation on bribery and corruption allegations."',
             content:
               '10. “Minister of Environment and Urbanization Bayraktar:  "I do not accept the pressure put on me by Prime Minister Erdoğan to resign and issue a declaration to relieve me because of the operation related to bribery and corruption allegations."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21077,7 +20652,6 @@ export const HASHTAG_MOCKS = {
               '12. "The directors of the five branches that carried out the operation were dismissed; later the dismissals spread to other provinces and 33 directors were replaced on the same day. This intervention was not limited to the police and two prosecutors were added to the operation."',
             content:
               '12. "The directors of the five branches that carried out the operation were dismissed; later the dismissals spread to other provinces and 33 directors were replaced on the same day. This intervention was not limited to the police and two prosecutors were added to the operation."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21100,7 +20674,6 @@ export const HASHTAG_MOCKS = {
               '13. "Prosecutor Muammer Akkaş, who has been leading the long-running investigation, has been dismissed. Meanwhile, if you are wondering what happened to the minister\'s children and the Iranian businessman who were arrested with a lot of information and documents, they were released by changing prosecutors and judges."',
             content:
               '13. "Prosecutor Muammer Akkaş, who has been leading the long-running investigation, has been dismissed. Meanwhile, if you are wondering what happened to the minister\'s children and the Iranian businessman who were arrested with a lot of information and documents, they were released by changing prosecutors and judges."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21123,7 +20696,6 @@ export const HASHTAG_MOCKS = {
               '   Mahir Çakallı worked in the police force for 25 years and served as Deputy Chief of Police in Istanbul. During his tenure, he fought against those who were against right and justice. He was unlawfully dismissed with a 2.5-day investigation. In December 2018, he was sentenced to aggravated life imprisonment in the December 25 investigation.',
             content:
               'Mahir Çakallı worked in the police force for 25 years and served as Deputy Chief of Police in Istanbul. During his tenure, he fought against those who were against right and justice. He was unlawfully dismissed with a 2.5-day investigation. In December 2018, he was sentenced to aggravated life imprisonment in the December 25 investigation.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21146,7 +20718,6 @@ export const HASHTAG_MOCKS = {
               'Ömer Köse, \n   former Istanbul Anti-Terror Branch Director Ömer Köse has been under arrest since 2014. Since 2018, Köse has been in solitary confinement in solitary confinement, his access to his lawyer is restricted, his room is kept extra cold and he is left without water even though he is very affected by cold due to his blood disease.',
             content:
               'Ömer KöseOmer Köse, former Director of the Istanbul Anti-Terror Branch, has been detained since 2014. Since 2018, Köse has been in solitary confinement in solitary confinement, his access to his lawyer is restricted, his room is kept extra cold and he is left without water, despite the fact that he is very affected by the cold due to his blood disease.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21169,7 +20740,6 @@ export const HASHTAG_MOCKS = {
               'Ömer Köse \n   Köse continues to be subjected to systematic torture on top of the arbitrary restrictions imposed on him in prison.Previously his sister Selda Özdemir and son Faruk S. Köse were arrested. After the release of his son, his wife Semra Köse was arrested.\n   We will not forget our police officers who do their duty properly!',
             content:
               'Ömer Köse continues to be subjected to systematic torture on top of the arbitrary restrictions imposed on him in prison.Previously, his sister Selda Özdemir and son Faruk S. Köse were arrested. After the release of his son, his wife Semra Köse was arrested.We will not forget our police officers who do their duty properly!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21192,7 +20762,6 @@ export const HASHTAG_MOCKS = {
               '\nKazım Aksoy \n   Kazım Aksoy, a deputy branch manager who took part in the December 17-25 investigations, has been in solitary confinement for 10 years. His wife Sümeyye Aksoy struggled to survive in prison for 4 years with a completely shattered hip bone.',
             content:
               'Kazım Aksoy Kazım Aksoy, a deputy branch manager who took part in the December 17-25 investigations, has been in solitary confinement for 10 years. His wife Sümeyye Aksoy struggled to survive in prison for 4 years with a completely shattered hip bone.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21215,7 +20784,6 @@ export const HASHTAG_MOCKS = {
               '\n   Ayhan Arıkanoğlu was arrested after the December 17-25 operations and his wife Ayşe Arıkanoğlu was arrested in 2017. In 2019, Ayşe was sentenced to 6 years and 3 months for alleged membership in a terrorist organization.',
             content:
               "Ayhan ArıkanoğluArıkanoğlu's wife Ayşe, who was arrested after the December 17-25 operations and is still under arrest, was also arrested in 2017. In 2019, Ayşe was sentenced to 6 years and 3 months for alleged membership in a terrorist organization.",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -21238,7 +20806,6 @@ export const HASHTAG_MOCKS = {
               '\n   Osman Özgür Açıkgöz, the police chief who turned himself in with his lawyer, has been under arrest since 2014. His wife Zeliha Ö. Açıkgöz, who said "We took refuge in our Allah who wrote the real scenario", was arrested in 2017. In 2019, she was sentenced to 6 years and 3 months in prison.',
             content:
               'Osman Özgür AçıkgözPolice chief Açıkgöz, who turned himself in with his lawyer, has been under arrest since 2014. His wife Zeliha Ö. Açıkgöz, who said, "We took refuge in our Lord who wrote the real scenario," was arrested in 2017. In 2019, he was sentenced to 6 years and 3 months in prison. Let\'s not forget these unjust arrests against police officers and their spouses who are doing their duty!',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,

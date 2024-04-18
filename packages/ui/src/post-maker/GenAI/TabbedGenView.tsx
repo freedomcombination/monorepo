@@ -92,13 +92,19 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   return (
     <GenPostProvider hashtag={hashtag} post={post} archives={archives}>
       <Tabs colorScheme={colorScheme}>
-        <TabList>
+        <TabList overflowX={'auto'}>
           {archives.map(archiveContent => {
             return (
-              <Tab key={archiveContent.id}>
-                <ArchivePopover archiveId={archiveContent.id}>
-                  <Text noOfLines={2} maxW={200} fontWeight={700}>
-                    {archiveContent.title}
+              <Tab
+                key={archiveContent.id}
+                _selected={{ fontWeight: 600, color: `${colorScheme}.500` }}
+              >
+                <ArchivePopover
+                  archiveId={archiveContent.id}
+                  colorScheme={colorScheme}
+                >
+                  <Text maxW={200} whiteSpace={'nowrap'}>
+                    Archive {archiveContent.id}
                   </Text>
                 </ArchivePopover>
               </Tab>
@@ -119,7 +125,6 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
                   <ArchivePostGenAI
                     archiveContentId={archiveContent.id}
                     content={archiveContent.content}
-                    referenceLink={archiveContent.link}
                   />
                 )}
               </TabPanel>

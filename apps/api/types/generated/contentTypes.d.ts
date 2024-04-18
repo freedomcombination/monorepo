@@ -2504,12 +2504,6 @@ export interface ApiPostPost extends Schema.CollectionType {
           localized: true
         }
       }>
-    reference: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     approvalStatus: Attribute.Enumeration<['pending', 'approved', 'rejected']> &
       Attribute.SetPluginOptions<{
         i18n: {

@@ -84,7 +84,13 @@ export const FormItem: FormItemComponent = forwardRef(
       <FormControl isInvalid={Boolean(errors?.[name])} isRequired={isRequired}>
         {label && !hideLabel && (
           <Flex align={'center'} mb={1}>
-            <FormLabel mb={0} htmlFor={name} fontSize="sm" fontWeight={600}>
+            <FormLabel
+              mb={0}
+              htmlFor={name}
+              fontSize="sm"
+              fontWeight={600}
+              textTransform={'capitalize'}
+            >
               {label}
             </FormLabel>
             {tooltip && (

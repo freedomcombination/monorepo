@@ -53,7 +53,6 @@ export const PostSentenceRefDrawer = () => {
             {archiveContent.title}
           </Heading>
           <HStack>
-            <Text fontWeight={600}>{t('reference')}: </Text>
             <Link isExternal href={archiveContent.link}>
               <HStack color="blue.500">
                 <Text>{archiveContent.source}</Text>
