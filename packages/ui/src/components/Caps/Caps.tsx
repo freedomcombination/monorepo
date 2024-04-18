@@ -8,7 +8,7 @@ import {
   ImageProps,
   Skeleton,
   Text,
-  useMergeRefs
+  useMergeRefs,
 } from '@chakra-ui/react'
 import { useMeasure } from 'react-use'
 
