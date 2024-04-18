@@ -31,13 +31,15 @@ export const PostSentenceRefDrawer = () => {
 
   const archiveContent = data?.data
 
-  if (sentence == null) return null
+  if (!sentence) return null
 
   return (
     <Stack spacing={4}>
-      <Stack background={'white'} borderRadius={'lg'} p={4}>
-        <Text>{sentence.value}</Text>
-      </Stack>
+      {sentence.value && (
+        <Stack background={'white'} borderRadius={'lg'} p={4}>
+          <Text>{sentence.value}</Text>
+        </Stack>
+      )}
 
       {isLoading || !archiveContent ? (
         <LoadingInfo isLoading={isLoading} />
