@@ -100,7 +100,7 @@ export const mutation = async <
     )
 
     if (hasBodyFile) {
-      requestBody = generateFormData<D>(body, hasBodyDataField)
+      requestBody = generateFormData<D>(body, hasBodyDataField, endpoint)
     }
   }
 

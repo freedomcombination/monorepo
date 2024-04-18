@@ -22,6 +22,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ ratio = 16 / 9, url, light }) => {
         overflow="hidden"
         onClick={setIsPlaying.toggle}
         cursor="pointer"
+        bg={'gray.50'}
       >
         <ReactPlayer
           playing={isPlaying}

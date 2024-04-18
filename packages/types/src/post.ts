@@ -9,7 +9,6 @@ export type PostBase = Omit<StrapiEntityBase, 'title' | 'slug'> & {
   title: string
   capsStatus: ApprovalStatus
   twitterMedia?: string | null
-  reference?: string | null
   imageParams?: OgImageParams | null
   videoUrl?: string | null
 }

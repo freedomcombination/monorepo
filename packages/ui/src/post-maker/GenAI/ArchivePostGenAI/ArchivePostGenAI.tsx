@@ -13,13 +13,13 @@ import {
   GeneratedArchiveContentPost,
 } from '../GenPostProvider'
 
-type ArchivePostGenAIProps = {
-  referenceLink?: string
-} & Pick<PostGenAIProps, 'archiveContentId' | 'content' | 'colorScheme'>
+type ArchivePostGenAIProps = Pick<
+  PostGenAIProps,
+  'archiveContentId' | 'content' | 'colorScheme'
+>
 
 export const ArchivePostGenAI = ({
   archiveContentId,
-  referenceLink = '',
   content,
 }: ArchivePostGenAIProps) => {
   const { hashtag, modifyPost } = useGenPostContext()
@@ -31,7 +31,6 @@ export const ArchivePostGenAI = ({
       return {
         ...post.postInput,
         description: post.description,
-        reference: referenceLink,
         locale,
         hashtag: hashtag.id,
       }

@@ -329,11 +329,14 @@ export const ModelEditForm = <T extends StrapiModel>({
 
               if (
                 field.type === 'file' &&
-                (field.name === 'image' ||
-                  field.name === 'avatar' ||
-                  field.name === 'caps' ||
-                  field.name === 'invoice' ||
-                  field.name === 'images')
+                [
+                  'image',
+                  'avatar',
+                  'video',
+                  'caps',
+                  'invoice',
+                  'images',
+                ].includes(field.name)
               ) {
                 return (
                   <FormControl
