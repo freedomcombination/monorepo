@@ -6,12 +6,16 @@ import {
   AlertIcon,
   AlertTitle,
   Center,
+  HStack,
+  Heading,
   Link,
   Spinner,
   Stack,
   Text,
 } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
+import { HiOutlineExternalLink } from 'react-icons/hi'
+import Markdown from 'react-markdown'
 
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent } from '@fc/types'
@@ -23,9 +27,9 @@ export const PostSentenceRefDrawer = () => {
   const { t } = useTranslation()
   const { data, isLoading } = useStrapiRequest<ArchiveContent>({
     endpoint: 'archive-contents',
-    id: sentence?.archiveId ?? 0,
+    id: 2,
     queryOptions: {
-      enabled: !!sentence?.archiveId,
+      enabled: true,
     },
   })
 
@@ -44,13 +48,21 @@ export const PostSentenceRefDrawer = () => {
       {isLoading || !archiveContent ? (
         <LoadingInfo isLoading={isLoading} />
       ) : (
-        <Stack background={'white'} borderRadius={'lg'} p={4} spacing={2}>
-          <Text>{t('reference')} :</Text>
-          <Link href={archiveContent.link} fontSize={'2xl'} fontWeight={'bold'}>
+        <Stack background={'white'} borderRadius={'lg'} p={4} spacing={4}>
+          <Heading size={'md'} fontWeight={'bold'} color="gray.700">
             {archiveContent.title}
-          </Link>
-          <Text>{archiveContent.content}</Text>
-          <Text>{archiveContent.source}</Text>
+          </Heading>
+          <HStack>
+            <Text fontWeight={600}>{t('reference')}: </Text>
+            <Link isExternal href={archiveContent.link}>
+              <HStack color="blue.500">
+                <Text>{archiveContent.source}</Text>
+                <HiOutlineExternalLink />
+              </HStack>
+            </Link>
+            <time>{archiveContent.date}</time>
+          </HStack>
+          <Markdown>{archiveContent.content}</Markdown>
         </Stack>
       )}
     </Stack>
