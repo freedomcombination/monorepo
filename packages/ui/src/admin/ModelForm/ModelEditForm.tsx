@@ -336,7 +336,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   'caps',
                   'invoice',
                   'images',
-                ].includes(field.name)
+                ].includes(field.name as string)
               ) {
                 return (
                   <FormControl
