@@ -24,7 +24,6 @@ import { useHashtagContext } from '../HashtagProvider'
 
 export const PostSentenceRefDrawer = () => {
   const { sentence } = useHashtagContext()
-  const { t } = useTranslation()
   const { data, isLoading } = useStrapiRequest<ArchiveContent>({
     endpoint: 'archive-contents',
     id: 2,
