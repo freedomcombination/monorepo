@@ -35,7 +35,7 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
     nl: {},
     tr: {},
   })
-  const [sentence, setSentence_] = useState<PostSentence | null>(null)
+  const [sentenceState, setSentenceState] = useState<PostSentence | null>(null)
   const { locale } = useRouter()
 
   const { data: hashtagSentences } = useGetHashtagSentences(hashtag?.id)
