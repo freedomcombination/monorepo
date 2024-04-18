@@ -13,7 +13,6 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
-import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent } from '@fc/types'
 
@@ -29,11 +28,6 @@ export const PostSentenceRefDrawer = () => {
       enabled: !!sentence?.archiveId,
     },
   })
-  const { roles } = useAuthContext()
-  const allowStats =
-    roles.includes('admin') ||
-    roles.includes('contentmanager') ||
-    roles.includes('contentmanager_translator')
 
   const archiveContent = data?.data
 
@@ -44,15 +38,6 @@ export const PostSentenceRefDrawer = () => {
       <Stack background={'white'} borderRadius={'lg'} p={4}>
         <Text>{sentence.value}</Text>
       </Stack>
-
-      {allowStats && (
-        <Stack background={'white'} borderRadius={'lg'} p={2} spacing={2}>
-          <Text fontWeight={600}>{t('stats')} :</Text>
-          <Text>
-            {t('post.total-shares')} : {sentence.shareCount}
-          </Text>
-        </Stack>
-      )}
 
       {isLoading || !archiveContent ? (
         <LoadingInfo isLoading={isLoading} />
