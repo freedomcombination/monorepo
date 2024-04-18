@@ -46,10 +46,10 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
 
   const setSentence = (sentence: PostSentence | null) => {
     if (!sentence) {
-      setSentence_(null)
+      setSentenceState(null)
       archiveDisclosure.onClose()
     } else {
-      setSentence_(sentence)
+      setSentenceState(sentence)
       archiveDisclosure.onOpen()
     }
   }
@@ -221,7 +221,7 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
         savedMentions: [],
         trendsDisclosure,
         archiveDisclosure,
-        sentence,
+        sentence: sentenceState,
 
         // actions
         addMentionToPost,

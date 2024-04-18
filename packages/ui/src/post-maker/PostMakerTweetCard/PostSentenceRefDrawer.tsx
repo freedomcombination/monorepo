@@ -1,4 +1,16 @@
-import { Center, Link, Stack, Text } from '@chakra-ui/react'
+import { FC } from 'react'
+
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Center,
+  Link,
+  Spinner,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
 import { useAuthContext } from '@fc/context'
@@ -27,35 +39,6 @@ export const PostSentenceRefDrawer = () => {
 
   if (sentence == null) return null
 
-  const loadingInfo = () => {
-    return (
-      <Center background={'white'} borderRadius={'lg'} p={6}>
-        {isLoading ? (
-          <Text>Archive is loading...</Text>
-        ) : sentence.archiveId ? (
-          <Text>Archive with id {sentence.archiveId} not found.</Text>
-        ) : (
-          <Text>No archive id provided.</Text>
-        )}
-      </Center>
-    )
-  }
-
-  const archiveInfo = () => {
-    if (!archiveContent) return null
-
-    return (
-      <Stack background={'white'} borderRadius={'lg'} p={2} spacing={2}>
-        <Text>{t('reference')} :</Text>
-        <Link href={archiveContent.link} fontSize={'2xl'} fontWeight={'bold'}>
-          {archiveContent.title}
-        </Link>
-        <Text>{archiveContent.content}</Text>
-        <Text>{archiveContent.source}</Text>
-      </Stack>
-    )
-  }
-
   return (
     <Stack>
       <Stack background={'white'} borderRadius={'lg'} p={2} spacing={2}>
@@ -72,7 +55,49 @@ export const PostSentenceRefDrawer = () => {
         </Stack>
       )}
 
-      {isLoading || !archiveContent ? loadingInfo() : archiveInfo()}
+      {isLoading || !archiveContent ? (
+        <LoadingInfo isLoading={isLoading} />
+      ) : (
+        <Stack background={'white'} borderRadius={'lg'} p={2} spacing={2}>
+          <Text>{t('reference')} :</Text>
+          <Link href={archiveContent.link} fontSize={'2xl'} fontWeight={'bold'}>
+            {archiveContent.title}
+          </Link>
+          <Text>{archiveContent.content}</Text>
+          <Text>{archiveContent.source}</Text>
+        </Stack>
+      )}
     </Stack>
+  )
+}
+
+const LoadingInfo: FC<{ isLoading: boolean }> = ({ isLoading }) => {
+  const { t } = useTranslation()
+
+  return (
+    <Center background={'white'} borderRadius={'lg'} p={6}>
+      {isLoading ? (
+        <Spinner size="xl" />
+      ) : (
+        <Alert
+          status="error"
+          variant="subtle"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          height="200px"
+          background={'white'}
+        >
+          <AlertIcon boxSize="40px" mr={0} />
+          <AlertTitle mt={4} mb={1} fontSize="lg">
+            {t('reference')}
+          </AlertTitle>
+          <AlertDescription maxWidth="sm">
+            No details found for this post
+          </AlertDescription>
+        </Alert>
+      )}
+    </Center>
   )
 }
