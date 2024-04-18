@@ -242,6 +242,8 @@ export const Caps = forwardRef<CapsProps, 'div'>(
                   fontSize={`${dimensions.font}px`}
                   overflow={'hidden'}
                   whiteSpace={'pre-wrap'}
+                  flexGrow={1}
+                  alignItems={'center'}
                 >
                   {text}
                 </Text>
