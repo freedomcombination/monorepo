@@ -16549,6 +16549,7 @@ __metadata:
     kill-port-process: "npm:^3.2.1"
     lodash: "npm:^4.17.21"
     lorem-ipsum: "npm:^2.0.8"
+    nanoid: "npm:^5.0.7"
     next: "npm:^14.2.2"
     next-i18next: "npm:^15.3.0"
     next-mdx-remote: "npm:^4.4.1"
@@ -22808,6 +22809,15 @@ __metadata:
   bin:
     nanoid: bin/nanoid.js
   checksum: 10/8c0c267de44cddcad79c3361d2cbd281694c36bf7ab6a163f36dd8f6e6ee43e9783561302c55fab2986a2fa847e7a6b30fedabd1e117fdb8aecc5ab21555428d
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:^5.0.7":
+  version: 5.0.7
+  resolution: "nanoid@npm:5.0.7"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: 10/25ab0b0cf9082ae6747f0f55cec930e6c1cc5975103aa3a5fda44be5720eff57d9b25a8a9850274bfdde8def964b49bf03def71c6aa7ad1cba32787819b79f60
   languageName: node
   linkType: hard
 

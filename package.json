@@ -61,6 +61,7 @@
     "kill-port-process": "^3.2.1",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.8",
+    "nanoid": "^5.0.7",
     "next": "^14.2.2",
     "next-i18next": "^15.3.0",
     "next-mdx-remote": "^4.4.1",
