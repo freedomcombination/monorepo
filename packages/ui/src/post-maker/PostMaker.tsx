@@ -21,6 +21,7 @@ import { useHashtagContext } from './HashtagProvider'
 import { HashtagStats } from './HashtagStats'
 import { MentionList } from './Mention'
 import { PostMakerTweetList } from './PostMakerTweetCard'
+import { PostSentenceRefDrawer } from './PostMakerTweetCard/PostSentenceRefDrawer'
 import { TimelineTrendsTabs } from './TimelineTrendsTabs'
 import { TrendListTabs } from './Trends'
 
@@ -31,7 +32,8 @@ type PostMakerProps = {
 export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
   const isMobile = useBreakpointValue({ base: true, lg: false }) ?? true
 
-  const { mentionsDisclosure, trendsDisclosure } = useHashtagContext()
+  const { mentionsDisclosure, trendsDisclosure, archiveDisclosure } =
+    useHashtagContext()
 
   const hashtag = useHashtag()
 
@@ -63,6 +65,19 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
           </ModalBody>
         </ModalContent>
       </Modal>
+      <Drawer
+        isOpen={archiveDisclosure.isOpen}
+        onClose={archiveDisclosure.onClose}
+        placement="right"
+        size={'md'}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerBody background={'gray.50'}>
+            <PostSentenceRefDrawer />
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
       <Drawer
         isOpen={isMobile && mentionsDisclosure.isOpen}
         onClose={mentionsDisclosure.onClose}

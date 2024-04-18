@@ -5,7 +5,7 @@ import { sampleSize } from 'lodash'
 import { useRouter } from 'next/router'
 
 import { useGetHashtagSentences, useHashtag } from '@fc/services'
-import { StrapiLocale } from '@fc/types'
+import { PostSentence, StrapiLocale } from '@fc/types'
 
 import { initialHashtagContext } from './state'
 import {
@@ -35,13 +35,24 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
     nl: {},
     tr: {},
   })
-
+  const [sentence, setSentence_] = useState<PostSentence | null>(null)
   const { locale } = useRouter()
 
   const { data: hashtagSentences } = useGetHashtagSentences(hashtag?.id)
 
   const mentionsDisclosure = useDisclosure()
   const trendsDisclosure = useDisclosure()
+  const archiveDisclosure = useDisclosure()
+
+  const setSentence = (sentence: PostSentence | null) => {
+    if (!sentence) {
+      setSentence_(null)
+      archiveDisclosure.onClose()
+    } else {
+      setSentence_(sentence)
+      archiveDisclosure.onOpen()
+    }
+  }
 
   const removeStoredMention = () => {
     return
@@ -209,6 +220,8 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
         postTrends,
         savedMentions: [],
         trendsDisclosure,
+        archiveDisclosure,
+        sentence,
 
         // actions
         addMentionToPost,
@@ -221,6 +234,7 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
         setMentionSearchKey,
         updatePostSentenceShares,
         updateStoredMentions,
+        setSentence,
       }}
     >
       {children}
