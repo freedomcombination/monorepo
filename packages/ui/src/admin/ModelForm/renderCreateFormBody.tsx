@@ -80,7 +80,11 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           zIndex={0}
           {...(!isActive && { display: 'none' })}
         >
-          <FormLabel fontSize={'sm'} fontWeight={600}>
+          <FormLabel
+            fontSize={'sm'}
+            fontWeight={600}
+            textTransform={'capitalize'}
+          >
             {label}
           </FormLabel>
           <ModelMedia
@@ -162,6 +166,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
         </Flex>
       )
     }
+
     if (field.type === 'boolean') {
       return (
         <FormControl
@@ -186,6 +191,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
         </FormControl>
       )
     }
+
     const inputType =
       field.type === 'date'
         ? 'date'

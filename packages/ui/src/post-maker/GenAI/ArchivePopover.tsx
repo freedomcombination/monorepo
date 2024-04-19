@@ -2,17 +2,20 @@ import { FC, PropsWithChildren } from 'react'
 
 import {
   Badge,
+  Box,
+  Center,
+  HStack,
+  Heading,
   Link,
-  Text,
-  List,
-  ListItem,
   Popover,
   PopoverContent,
   PopoverTrigger,
+  Stack,
+  Text,
   Wrap,
-  Center,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import Markdown from 'react-markdown'
 
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent } from '@fc/types'
@@ -101,28 +104,31 @@ const DisplayArchive: FC<{
   const { locale } = useRouter()
 
   return (
-    <List p={2} spacing={2} textAlign={'left'}>
-      <ListItem fontWeight="bold">{archiveContent.title}</ListItem>
-      <ListItem color={'gray.500'}>{archiveContent.source}</ListItem>
-      <ListItem color={'gray.500'}>
-        <Link isExternal href={archiveContent.link}>
-          {archiveContent.link}
-        </Link>
-      </ListItem>
-      {includeContent && (
-        <ListItem noOfLines={6} overflow={'auto'}>
-          <Text>{archiveContent.content}</Text>
-        </ListItem>
-      )}
-      {archiveContent.categories && archiveContent.categories.length > 0 && (
-        <ListItem>
-          <Wrap>
-            {archiveContent.categories.map(c => (
-              <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
-            ))}
+    <Link isExternal href={archiveContent.link}>
+      <Stack p={2} spacing={2} textAlign={'left'} color={'gray.500'}>
+        <Heading size="sm" color={'gray.500'}>
+          {archiveContent.title}
+        </Heading>
+        <Box>
+          <HStack fontSize={'sm'} fontWeight={300}>
+            <Text>{archiveContent.source}</Text>
+            <Text>•</Text>
+            <time>{archiveContent.date}</time>
+          </HStack>
+          <Wrap fontWeight={300} align={'center'}>
+            {archiveContent.categories &&
+              archiveContent.categories.length > 0 &&
+              archiveContent.categories.map(c => (
+                <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
+              ))}
           </Wrap>
-        </ListItem>
-      )}
-    </List>
+        </Box>
+        {includeContent && (
+          <Box noOfLines={6} overflow={'auto'}>
+            <Markdown>{archiveContent.content}</Markdown>
+          </Box>
+        )}
+      </Stack>
+    </Link>
   )
 }

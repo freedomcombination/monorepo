@@ -11,16 +11,16 @@ type BaseEmail = {
   from?: string
 }
 
-interface EmailCreateTextInpit extends BaseEmail {
+type EmailCreateTextInput = BaseEmail & {
   text: string
 }
 
-interface EmailCreateHtmlInput extends BaseEmail {
+type EmailCreateHtmlInput = BaseEmail & {
   html: string
 }
 
 // Allow only one of text or html
 export type EmailCreateInput = MergeExclusive<
-  EmailCreateTextInpit,
+  EmailCreateTextInput,
   EmailCreateHtmlInput
 >

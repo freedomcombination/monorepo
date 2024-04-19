@@ -11,7 +11,6 @@ export const usePostColumns = (): WTableProps<Post>['columns'] => {
       sortKey: 'email',
       sortable: true,
     },
-    content: {},
     hashtag: {
       sortable: true,
       transform: value => (value as Hashtag)?.title,

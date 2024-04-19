@@ -60,7 +60,13 @@ export const WSelect = <T extends FieldValues = FieldValues>({
     >
       {label && !hideLabel && (
         <Flex align={'center'} mb={1}>
-          <FormLabel mb={0} htmlFor={name} fontSize="sm" fontWeight={600}>
+          <FormLabel
+            mb={0}
+            htmlFor={name}
+            fontSize="sm"
+            fontWeight={600}
+            textTransform={'capitalize'}
+          >
             {label}
           </FormLabel>
           {tooltip && (
