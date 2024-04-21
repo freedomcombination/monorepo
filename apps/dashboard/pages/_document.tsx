@@ -26,6 +26,27 @@ export default class Document extends NextDocument {
           />
           <link rel="manifest" href="/site.webmanifest" />
           <meta name="theme-color" content="#ffffff" />
+          <script
+            src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+            defer
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.OneSignalDeferred = window.OneSignalDeferred || [];
+            OneSignalDeferred.push(function(OneSignal) {
+              OneSignal.init({
+                appId: "580942a7-568a-4327-8abd-00d732214c81",
+                safari_web_id: "web.onesignal.auto.253751a8-ac24-4181-97da-883dbdadac49",
+                notifyButton: {
+                  enable: true,
+                },
+                allowLocalhostAsSecureOrigin: true,
+              });
+            });
+            `,
+            }}
+          ></script>
         </Head>
         <body>
           <ColorModeScript initialColorMode="light" />
