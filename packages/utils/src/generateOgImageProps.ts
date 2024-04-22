@@ -31,7 +31,7 @@ export const generateOgImageParams = (props?: OgImageParams) => {
   const url = typeof image === 'string' ? image : image?.url
   const src = url?.startsWith('/uploads') ? ASSETS_URL + image : image
 
-  const platform = props?.platform ?? "trend-rights"
+  const platform = props?.platform ?? 'trend-rights'
 
   return {
     bg,
