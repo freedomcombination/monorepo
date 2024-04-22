@@ -27,6 +27,7 @@ import {
   TbBrush,
   TbChecks,
   TbClock,
+  TbMilitaryRank,
   TbThumbUp,
   TbTimeline,
   TbWriting,
@@ -199,6 +200,18 @@ export const useAdminNav = (): AdminNavItemProps[] => {
       label: t('users'),
       link: '/users',
       icon: <FiUsers />,
+      submenu: [
+        {
+          label: t('users'),
+          link: '/users',
+          icon: <FiUsers />,
+        },
+        {
+          label: t('role'),
+          link: '/roles',
+          icon: <TbMilitaryRank />,
+        },
+      ],
     },
     {
       label: t('blogs'),

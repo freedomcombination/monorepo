@@ -20,6 +20,7 @@ export const adminRoleRoutes = [
   '/tags',
   '/user-feedbacks',
   '/users',
+  '/roles',
   'all',
   // TODO: Move these routes to adminCommonRoutes
   '/news',
