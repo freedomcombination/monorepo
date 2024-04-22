@@ -100,7 +100,7 @@
   },
   "devDependencies": {
     "@chakra-ui/storybook-addon": "^5.1.0",
-    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-essentials": "^8.0.8",
     "@storybook/builder-webpack5": "^7.6.17",
     "@storybook/core-common": "^7.6.17",
     "@storybook/core-server": "^7.6.17",
