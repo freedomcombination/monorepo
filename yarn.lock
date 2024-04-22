@@ -8530,15 +8530,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.29.2":
-  version: 5.29.2
-  resolution: "@tanstack/react-query-devtools@npm:5.29.2"
+"@tanstack/react-query-devtools@npm:^5.31.0":
+  version: 5.31.0
+  resolution: "@tanstack/react-query-devtools@npm:5.31.0"
   dependencies:
     "@tanstack/query-devtools": "npm:5.28.10"
   peerDependencies:
-    "@tanstack/react-query": ^5.29.2
+    "@tanstack/react-query": ^5.31.0
     react: ^18.0.0
-  checksum: 10/83226e7c5eefa1faddcf1f1ddcf65137f3926468d0e029bbd4bae124606e00ff11641cd9624f3bc2b07159ea6333752c2382359bfab107b98d83ceb1f56bdc30
+  checksum: 10/be6bf77f17d24d9fc9dd6ac04a649a17347b6aa5b6a7c3b2cf0787a8edd2a0aac9d8deb45968bc404a5e6f5492c66ea9e15f8f341fc0bed57360fa505ed50fa7
   languageName: node
   linkType: hard
 
@@ -16500,7 +16500,7 @@ __metadata:
     "@storybook/react": "npm:^7.6.17"
     "@storybook/types": "npm:^7.6.17"
     "@tanstack/react-query": "npm:^5.29.2"
-    "@tanstack/react-query-devtools": "npm:^5.29.2"
+    "@tanstack/react-query-devtools": "npm:^5.31.0"
     "@turbo/gen": "npm:^1.13.2"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
