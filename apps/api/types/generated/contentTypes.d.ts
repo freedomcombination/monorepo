@@ -2570,6 +2570,11 @@ export interface ApiPostPost extends Schema.CollectionType {
           localized: true
         }
       }>
+    platform: Attribute.Relation<
+      'api::post.post',
+      'oneToOne',
+      'api::platform.platform'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
