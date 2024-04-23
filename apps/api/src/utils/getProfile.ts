@@ -3,7 +3,11 @@ import { errors } from '@strapi/utils'
 
 const { ApplicationError, UnauthorizedError } = errors
 
-export const getProfile = async (ctx: Context, check?: boolean) => {
+export const getProfile = async (
+  ctx: Context,
+  check?: boolean,
+  includePlatform?: boolean,
+) => {
   if (!ctx.state.user) {
     if (check) {
       throw new UnauthorizedError('User required')
@@ -18,6 +22,7 @@ export const getProfile = async (ctx: Context, check?: boolean) => {
       filters: {
         user: { id: { $eq: ctx.state.user.id } },
       },
+      ...(includePlatform ? { populate: ['platforms'] } : {}),
     },
   )
 
