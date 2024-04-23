@@ -24,10 +24,14 @@ module.exports = {
         return ctx.notFound('Profile not found')
       }
 
+      const roleId = ctx.state.user.role.id
+      const roleResponse =
+        await strapi.plugins['users-permissions'].services.role.findOne(roleId)
+
       const newProfile = { ...profile }
       delete newProfile.user
 
-      return { data: profile }
+      return { data: { ...profile, permissions: roleResponse.permissions } }
     } catch (error) {
       strapi.log.error(error)
       throw error

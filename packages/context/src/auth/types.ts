@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { ReactNode } from 'react'
+import { Dispatch, ReactNode } from 'react'
 
-import { Profile, RoleType, SessionUser } from '@fc/types'
+import { Profile, RoleType, SessionUser, SimpleEndpoint } from '@fc/types'
 
 export type AuthState = {
   user: SessionUser | null
@@ -11,6 +11,7 @@ export type AuthState = {
   token: string | null
   isAuthModalOpen: boolean
   error: string | null
+  permissions: SimpleEndpoint
 }
 
 export type AuthActions = {
@@ -19,12 +20,18 @@ export type AuthActions = {
   openAuthModal: () => void
   closeAuthModal: () => void
   checkAuth: () => Promise<AuthState>
+  setPermissions: Dispatch<SimpleEndpoint>
   register: (
     email: string,
     password: string,
     username: string,
     name: string,
   ) => Promise<AuthState | void>
+  permissionCheck: {
+    anyEndpoint: (endpoint: string) => boolean
+    fullEndpoint: (endpoint: string) => boolean
+    apisEndpoint: (endpoint: string, ...api: string[]) => boolean
+  }
 }
 
 export type AuthContextType = AuthState & AuthActions

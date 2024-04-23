@@ -1,4 +1,3 @@
-'use client'
 import { useEffect, useState } from 'react'
 
 import { HStack, SimpleGrid, Text, VStack } from '@chakra-ui/react'
@@ -7,10 +6,10 @@ import { useLocalStorage } from 'react-use'
 
 import { strapiRequest } from '@fc/lib'
 import { Role } from '@fc/types'
+import { SimpleRole, PermissionTree } from '@fc/types/src/permissions'
+import { convertToSimple, createSkeleton } from '@fc/utils'
 
-import { RoleCard } from './RoleCard'
-import { RoleTree, PermissionTree, EndpointSkeleton } from './types'
-import { convertPermission, createSkeleton } from './utils'
+import { PermissionCard } from '../PermissionCard'
 
 type RoleOption = {
   label: string
@@ -23,8 +22,8 @@ type EndpointOption = {
 }
 
 export const UserRoles = () => {
-  const [roles, setRoles] = useState<RoleTree[] | null>(null)
-  const [skeleton, setSkeleton] = useState<EndpointSkeleton[] | null>(null)
+  const [roles, setRoles] = useState<SimpleRole[] | null>(null)
+  const [endpoints, setEndpoints] = useState<string[] | null>(null)
   const [roleFilter, setRoleFilter] = useLocalStorage<RoleOption[]>(
     'role-filter',
     [],
@@ -33,11 +32,10 @@ export const UserRoles = () => {
     'endpoint-filter',
     [],
   )
-  const [selectedEndpoint, setSelectedEndpoint] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchRoles = async () => {
-      const list: RoleTree[] = []
+      const list: SimpleRole[] = []
       const { data: roleList } = await strapiRequest<Role>({
         endpoint: 'users-permissions/roles',
       })
@@ -53,22 +51,27 @@ export const UserRoles = () => {
           name: role.name,
           description: role.description,
           nb_users: Number(role.nb_users),
-          permissions: convertPermission(
+          permissions: convertToSimple(
             response.data.permissions as unknown as PermissionTree,
           ),
         })
       }
       setRoles(list)
-      setSkeleton(createSkeleton(list[0]))
+      setEndpoints(createSkeleton(list[0]))
     }
 
     fetchRoles()
   }, [])
 
-  const filterRole = (r: RoleTree) => {
+  const filterRole = (r: SimpleRole) => {
     if (!roleFilter || roleFilter.length === 0) return true
 
     return roleFilter.some(role => role.value === r.id)
+  }
+
+  const updateRole = (r: SimpleRole) => {
+    const oldRoles = roles?.filter(role => role.id !== r.id) ?? []
+    setRoles([...oldRoles, r])
   }
 
   return (
@@ -97,7 +100,7 @@ export const UserRoles = () => {
         <VStack alignItems={'flex-end'}>
           <Text fontWeight={'bold'}>Filter by endpoint</Text>
           <HStack>
-            {skeleton && (
+            {endpoints && (
               <Select<EndpointOption, boolean, GroupBase<EndpointOption>>
                 isMulti
                 tagVariant="solid"
@@ -108,9 +111,9 @@ export const UserRoles = () => {
                 onChange={value =>
                   setEndpointFilter(Array.isArray(value) ? value : [value])
                 }
-                options={skeleton.map(sk => ({
-                  label: sk.endpoint,
-                  value: sk.endpoint,
+                options={endpoints.map(ep => ({
+                  label: ep,
+                  value: ep,
                 }))}
               />
             )}
@@ -122,12 +125,11 @@ export const UserRoles = () => {
         {roles
           ?.filter(filterRole)
           .map(role => (
-            <RoleCard
+            <PermissionCard
               key={role.id}
               role={role}
-              selected={selectedEndpoint}
-              setSelected={setSelectedEndpoint}
-              endpoints={endpointFilter?.map(ep => ep.value)}
+              setRole={updateRole}
+              filteredEndpoints={endpointFilter?.map(ep => ep.value)}
             />
           ))}
       </SimpleGrid>
