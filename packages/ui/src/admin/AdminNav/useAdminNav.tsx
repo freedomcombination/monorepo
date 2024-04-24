@@ -44,7 +44,7 @@ import { AdminNavItemProps } from './types'
 
 export const useAdminNav = (): AdminNavItemProps[] => {
   const { t, i18n } = useTranslation()
-  const { isLoading, permissionCheck } = useAuthContext()
+  const { isLoading, permissionCheck, permissions } = useAuthContext()
 
   return useMemo(() => {
     if (isLoading)
@@ -302,5 +302,5 @@ export const useAdminNav = (): AdminNavItemProps[] => {
     return menuItems.filter(filterMenu)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading, i18n.language])
+  }, [isLoading, i18n.language, permissions])
 }
