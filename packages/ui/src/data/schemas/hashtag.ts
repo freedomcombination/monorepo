@@ -2,7 +2,7 @@ import * as yup from 'yup'
 
 import { Hashtag } from '@fc/types'
 
-import { yupMultiSelect } from './common'
+import { yupMultiSelect, yupSelect } from './common'
 import { FormFields } from '../../admin'
 
 export const useHashtagSchema = () => {
@@ -15,6 +15,7 @@ export const useHashtagSchema = () => {
     hashtagExtra: yup.string(),
     categories: yupMultiSelect,
     mentions: yupMultiSelect,
+    platforms: yupSelect,
     image: yup.mixed().required(),
   })
 }
@@ -24,6 +25,7 @@ export const hashtagFields: FormFields<Hashtag> = [
   { name: 'date', type: 'datetime-local', isRequired: true },
   { name: 'description', isRequired: true, type: 'textarea' },
   { name: 'image', type: 'file', isRequired: true },
+  { name: 'platform', type: 'select', endpoint: 'platforms', isMulti: false },
   { name: 'content', type: 'markdown' },
   {
     name: 'hashtagDefault',

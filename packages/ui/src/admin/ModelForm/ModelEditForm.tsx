@@ -64,7 +64,7 @@ import { FormItem, MasonryGrid, MdFormItem } from '../../components'
 import { WConfirm, WConfirmProps } from '../../components/WConfirm'
 import { useFields, useSchema } from '../../data'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
-import { DowloadCapsModal } from '../DowloadCapsModal'
+import { DownloadCapsModal } from '../DownloadCapsModal'
 
 export const ModelEditForm = <T extends StrapiModel>({
   endpoint,
@@ -522,7 +522,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 )}
               </>
             )}
-            {endpoint === 'hashtags' && <DowloadCapsModal id={id} />}
+            {endpoint === 'hashtags' && <DownloadCapsModal id={id} />}
             {!profile &&
               endpoint === 'users' &&
               permissionCheck.apisEndpoint('profiles', 'create')
