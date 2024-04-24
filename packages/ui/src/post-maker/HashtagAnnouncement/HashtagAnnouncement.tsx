@@ -26,6 +26,7 @@ export const HashtagAnnouncement: FC<HashtagAnnouncementProps> = ({
         w={'full'}
         shadow={'md'}
         imageParams={capsParams}
+        hideLogo={true}
       />
       <Stack fontSize={'lg'} justify={'center'} spacing={6}>
         <Heading as={'h3'}>{hashtag.title}</Heading>

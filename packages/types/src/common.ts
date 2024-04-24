@@ -33,5 +33,5 @@ export type OgImageParams = Partial<{
   shape: number
   text: string
   title: string
-  platform: PlatformSlug
+  platform?: PlatformSlug
 }>

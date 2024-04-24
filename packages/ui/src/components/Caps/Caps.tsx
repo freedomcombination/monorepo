@@ -12,6 +12,8 @@ import {
 } from '@chakra-ui/react'
 import { useMeasure } from 'react-use'
 
+import { PlatformSlug } from '@fc/types'
+
 import { platformLogos, platformLogosViewBox } from './logos'
 import { CapsProps } from './types'
 import { WImage } from '../WImage'
@@ -24,7 +26,7 @@ const paths = [
 ]
 
 export const Caps = forwardRef<CapsProps, 'div'>(
-  ({ imageParams, hasRandomImage, ...rest }, ref) => {
+  ({ imageParams, hideLogo = false, hasRandomImage, ...rest }, ref) => {
     const {
       title,
       text,
@@ -34,7 +36,7 @@ export const Caps = forwardRef<CapsProps, 'div'>(
       color,
       flip = false,
       hasLine = false,
-      platform = 'trend-rights',
+      platform = 'trend-rights' as PlatformSlug,
       // scale = 1,
     } = imageParams
 
@@ -49,9 +51,6 @@ export const Caps = forwardRef<CapsProps, 'div'>(
     const mergedRef = useMergeRefs(ref, divRef)
 
     const transform = flip ? 'scale(1)' : ('scaleX(-1)' as string)
-
-    const Logo = platformLogos[platform]
-    const logoViewBox = platformLogosViewBox[platform]
 
     const proportions = {
       width: 1200 / 1200,
@@ -109,25 +108,27 @@ export const Caps = forwardRef<CapsProps, 'div'>(
               </chakra.svg>
 
               {/* Logo */}
-              <chakra.svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={`${dimensions.logo}px`}
-                height={`${dimensions.logo}px`}
-                position={'absolute'}
-                bottom={`${dimensions.padding}px`}
-                left={
-                  flip
-                    ? `${dimensions.image / 2 - dimensions.shape}px`
-                    : `${
-                        dimensions.width -
-                        dimensions.image / 2 -
-                        dimensions.shape
-                      }px`
-                }
-                viewBox={logoViewBox}
-              >
-                {Logo}
-              </chakra.svg>
+              {!hideLogo && platform && (
+                <chakra.svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={`${dimensions.logo}px`}
+                  height={`${dimensions.logo}px`}
+                  position={'absolute'}
+                  bottom={`${dimensions.padding}px`}
+                  left={
+                    flip
+                      ? `${dimensions.image / 2 - dimensions.shape}px`
+                      : `${
+                          dimensions.width -
+                          dimensions.image / 2 -
+                          dimensions.shape
+                        }px`
+                  }
+                  viewBox={platformLogosViewBox[platform]}
+                >
+                  {platformLogos[platform]}
+                </chakra.svg>
+              )}
 
               {/* Content */}
               <Stack

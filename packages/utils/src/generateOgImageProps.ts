@@ -2,7 +2,7 @@ import { theme } from '@chakra-ui/react'
 import { sample } from 'lodash'
 
 import { ASSETS_URL } from '@fc/config'
-import { OgImageParams } from '@fc/types'
+import { OgImageParams, PlatformSlug } from '@fc/types'
 
 export const generateOgImageParams = (props?: OgImageParams) => {
   const image = props?.image
@@ -31,7 +31,7 @@ export const generateOgImageParams = (props?: OgImageParams) => {
   const url = typeof image === 'string' ? image : image?.url
   const src = url?.startsWith('/uploads') ? ASSETS_URL + image : image
 
-  const platform = props?.platform ?? 'trend-rights'
+  const platform = props?.platform ?? ('trend-rights' as PlatformSlug)
 
   return {
     bg,

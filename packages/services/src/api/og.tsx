@@ -4,7 +4,10 @@ import { ImageResponse } from '@vercel/og'
 import { NextRequest } from 'next/server'
 
 import { PlatformSlug } from '@fc/types'
-import { platformLogos, platformLogosViewBox } from '@fc/ui/src/components/Caps/logos'
+import {
+  platformLogos,
+  platformLogosViewBox,
+} from '@fc/ui/src/components/Caps/logos'
 
 const paths = [
   'M50 337.5L0 0H50V337.5Z',
