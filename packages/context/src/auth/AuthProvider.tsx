@@ -1,4 +1,11 @@
-import { FC, createContext, useContext, useEffect, useMemo, useState } from 'react'
+import {
+  FC,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 
 import { useDisclosure } from '@chakra-ui/react'
 import axios from 'axios'
@@ -17,7 +24,12 @@ import {
 import { convertToSimple, makeSingular } from '@fc/utils'
 
 import { initialAuthState } from './state'
-import { AuthContextType, AuthPermissionFuncs, AuthProviderProps, AuthState } from './types'
+import {
+  AuthContextType,
+  AuthPermissionFuncs,
+  AuthProviderProps,
+  AuthState,
+} from './types'
 
 export const AuthContext = createContext<AuthContextType>(initialAuthState)
 
@@ -48,42 +60,47 @@ export const AuthProvider: FC<AuthProviderProps> = ({
 
   const permissionCheck = useMemo(() => {
     const anyEndpoint = (endpoint: StrapiEndpoint): boolean => {
-      return Object.values(permissions[makeSingular(endpoint)] || {}).some(Boolean);
+      return Object.values(permissions[makeSingular(endpoint)] || {}).some(
+        Boolean,
+      )
     }
 
     const fullEndpoint = (endpoint: StrapiEndpoint): boolean => {
-      const name = makeSingular(endpoint);
+      const name = makeSingular(endpoint)
 
-      return !(permissions[name]) ?
-        false :
-        Object.values(permissions[name] || {}).every(Boolean);
+      return !permissions[name]
+        ? false
+        : Object.values(permissions[name] || {}).every(Boolean)
     }
 
-    const apisEndpoint = (endpoint: StrapiEndpoint, ...apis: string[]): boolean => {
-      const ep = permissions[makeSingular(endpoint)];
-      if (!ep) return false;
+    const apisEndpoint = (
+      endpoint: StrapiEndpoint,
+      ...apis: string[]
+    ): boolean => {
+      const ep = permissions[makeSingular(endpoint)]
+      if (!ep) return false
 
-      return apis.every(api => ep[api]);
+      return apis.every(api => ep[api])
     }
 
     const canCreate = (endpoint: StrapiEndpoint): boolean => {
-      return apisEndpoint(endpoint, 'create');
+      return apisEndpoint(endpoint, 'create')
     }
 
     const canRead = (endpoint: StrapiEndpoint): boolean => {
-      return apisEndpoint(endpoint, 'find', 'findOne');
+      return apisEndpoint(endpoint, 'find', 'findOne')
     }
 
     const canUpdate = (endpoint: StrapiEndpoint): boolean => {
-      return apisEndpoint(endpoint, 'update');
+      return apisEndpoint(endpoint, 'update')
     }
 
     const canDelete = (endpoint: StrapiEndpoint): boolean => {
-      return apisEndpoint(endpoint, 'delete');
+      return apisEndpoint(endpoint, 'delete')
     }
 
     const canReadAll = (...endpoints: StrapiEndpoint[]): boolean => {
-      return endpoints.every(endpoint => canRead(endpoint));
+      return endpoints.every(endpoint => canRead(endpoint))
     }
 
     return {
@@ -94,9 +111,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({
       canRead,
       canUpdate,
       canDelete,
-      canReadAll
+      canReadAll,
     } as AuthPermissionFuncs
-  }, [permissions]);
+  }, [permissions])
 
   const checkAuth = async (): Promise<AuthState> => {
     setIsLoading(true)
@@ -109,8 +126,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         setRoles(response.data?.user?.roles)
         setToken(response.data?.token)
       }
-      const { permissions, ...profile } = response
-        .data?.profile as Profile & { permissions: StrapiPermission }
+      const { permissions, ...profile } = response.data?.profile as Profile & {
+        permissions: StrapiPermission
+      }
 
       const convertedPermissions = convertToSimple(permissions)
 

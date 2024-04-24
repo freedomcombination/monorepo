@@ -2,7 +2,6 @@ import { FC } from 'react'
 
 import { Stack } from '@chakra-ui/react'
 
-
 import { AdminNavItem } from './AdminNavItem'
 import { AdminNavProps } from './types'
 import { useAdminNav } from './useAdminNav'

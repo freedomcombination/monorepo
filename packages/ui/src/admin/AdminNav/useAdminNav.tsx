@@ -43,20 +43,26 @@ import { StrapiEndpoint } from '@fc/types'
 import { AdminNavItemProps } from './types'
 
 export const useAdminNav = (): AdminNavItemProps[] => {
-
   const { t, i18n } = useTranslation()
   const { isLoading, permissionCheck } = useAuthContext()
 
   return useMemo(() => {
-    console.info("!!! Recreating admin nav !!!")
-    if (isLoading) return []
+    if (isLoading)
+      return [
+        {
+          label: t('dashboard'),
+          link: '/',
+          icon: <MdOutlineSpaceDashboard />,
+          allowed: true,
+        },
+      ]
 
     const menuItems: AdminNavItemProps[] = [
       {
         label: t('dashboard'),
         link: '/',
         icon: <MdOutlineSpaceDashboard />,
-        allowed: true
+        allowed: true,
       },
       {
         label: t('foundation'), // t('foundation')
@@ -278,8 +284,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
       if (menuItem.submenu && menuItem.submenu.length > 0) {
         menuItem.submenu.forEach(setAllowedProps)
         menuItem.allowed = menuItem.submenu.some(submenu => submenu.allowed)
-      } else
-        menuItem.allowed = allowByLink(menuItem.link)
+      } else menuItem.allowed = allowByLink(menuItem.link)
     }
 
     menuItems.forEach(setAllowedProps)
@@ -294,7 +299,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
       return menuItem.allowed === true
     }
 
-    return menuItems.filter(filterMenu);
+    return menuItems.filter(filterMenu)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, i18n.language])

@@ -16,7 +16,9 @@ export type DevPermissionPopupProps = {
   filtered?: StrapiEndpoint
 }
 
-export const DevPermissionPopup: React.FC<DevPermissionPopupProps> = ({ filtered }) => {
+export const DevPermissionPopup: React.FC<DevPermissionPopupProps> = ({
+  filtered,
+}) => {
   const { permissions, setPermissions } = useAuthContext()
 
   if (process.env.NODE_ENV !== 'development') return null

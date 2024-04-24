@@ -6,8 +6,8 @@ import { useLocalStorage } from 'react-use'
 
 import { strapiRequest } from '@fc/lib'
 import { Role } from '@fc/types'
-import { SimpleRole, PermissionTree } from '@fc/types/src/permissions'
-import { convertToSimple, createSkeleton } from '@fc/utils'
+import { SimpleRole, StrapiPermission } from '@fc/types/src/permissions'
+import { convertToSimple, extractEndpointNames } from '@fc/utils'
 
 import { PermissionCard } from '../PermissionCard'
 
@@ -52,12 +52,12 @@ export const UserRoles = () => {
           description: role.description,
           nb_users: Number(role.nb_users),
           permissions: convertToSimple(
-            response.data.permissions as unknown as PermissionTree,
+            response.data.permissions as unknown as StrapiPermission,
           ),
         })
       }
       setRoles(list)
-      setEndpoints(createSkeleton(list[0]))
+      setEndpoints(extractEndpointNames(list[0]))
     }
 
     fetchRoles()

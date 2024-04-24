@@ -1,6 +1,15 @@
 import { FC, ReactNode, useEffect, useMemo } from 'react'
 
-import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Center, Flex, Spinner, Stack } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  Box,
+  Center,
+  Flex,
+  Spinner,
+  Stack,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeo, NextSeoProps } from 'next-seo'
@@ -37,13 +46,11 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
   const { asPath } = useRouter()
 
   const isPathAllowed = useMemo(() => {
-
     const specialCases = () => {
       if (asPath.startsWith('/translates') || asPath.startsWith('/arts'))
         return asPath
 
-      if (asPath.startsWith('/courses'))
-        return '/courses'
+      if (asPath.startsWith('/courses')) return '/courses'
 
       return asPath.split('?')[0]
     }
@@ -86,12 +93,20 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
           ) : (
             <>
               <AdminHeader hasBackButton={hasBackButton} title={seo.title} />
-                {!isPathAllowed ? <NotAllowedPage show={!isAuthLoading && navItems.length > 0} /> :
-                  <Stack px={4} h={'full'} flex={1} spacing={4} overflowY={'auto'}>
-                    {/* Page Content */}
-                    {children}
-                  </Stack>
-                }
+              {!isPathAllowed ? (
+                <NotAllowedPage show={!isAuthLoading && navItems.length > 0} />
+              ) : (
+                <Stack
+                  px={4}
+                  h={'full'}
+                  flex={1}
+                  spacing={4}
+                  overflowY={'auto'}
+                >
+                  {/* Page Content */}
+                  {children}
+                </Stack>
+              )}
             </>
           )}
         </Stack>
@@ -100,10 +115,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
   )
 }
 
-
-const NotAllowedPage: FC<{ show?: boolean }> = ({
-  show
-}) => {
+const NotAllowedPage: FC<{ show?: boolean }> = ({ show }) => {
   const { t } = useTranslation()
 
   if (!show) return null
@@ -111,22 +123,21 @@ const NotAllowedPage: FC<{ show?: boolean }> = ({
   return (
     <Center h={'full'}>
       <Alert
-        status='error'
-        variant='solid'
-        flexDirection='column'
-        alignItems='center'
-        justifyContent='center'
-        textAlign='center'
-        height='80%'
-        width='80%'
-        borderRadius='lg'
+        status="error"
+        variant="solid"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        height="80%"
+        width="80%"
+        borderRadius="lg"
       >
-        <AlertIcon boxSize='80px' mr={0} />
-        <AlertTitle mt={4} mb={1} fontSize='lg'>
+        <AlertIcon boxSize="80px" mr={0} />
+        <AlertTitle mt={4} mb={1} fontSize="lg">
           {t('not-allowed')}
         </AlertTitle>
       </Alert>
     </Center>
   )
-
 }

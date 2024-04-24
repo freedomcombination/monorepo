@@ -117,7 +117,8 @@ export const ArchivePostGenAI = ({
           hashtag: hashtag.id,
           imageParams: generateOgImageParams({
             image: hashtag.image ?? undefined,
-            platform: hashtag.platform?.slug as PlatformSlug ?? 'trend-rights'
+            platform:
+              (hashtag.platform?.slug as PlatformSlug) ?? 'trend-rights',
           }),
         } as PostCreateInput,
       } as ArchivePost

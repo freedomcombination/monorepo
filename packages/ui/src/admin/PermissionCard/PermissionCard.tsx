@@ -60,7 +60,7 @@ export const PermissionCard: React.FC<PermissionCardProps> = ({
         <Heading size="lg">{role.name}</Heading>
       </CardHeader>
       <CardBody>
-        <Stack overflow={'auto'} maxHeight={'400px'}>
+        <Stack overflow={'auto'} maxHeight={'400px'} spacing={4}>
           {Object.keys(filteredPermission).map(endpoint => (
             <EndpointActions
               key={endpoint}
@@ -106,10 +106,10 @@ export const EndpointActions: React.FC<EndpointActionsProps> = ({
 
   return (
     <Wrap
-      p={2}
+      p={4}
       mt={2}
       position={'relative'}
-      pt={3}
+      pt={6}
       borderColor={'gray.100'}
       borderWidth={1}
       borderRadius={12}
@@ -117,7 +117,7 @@ export const EndpointActions: React.FC<EndpointActionsProps> = ({
       <Checkbox
         position={'absolute'}
         top={-3}
-        left={8}
+        left={6}
         isDisabled={readonly}
         isChecked={!backup}
         onChange={handleChange}
@@ -165,7 +165,7 @@ const ActionApi: FC<ActionApiProps> = ({
       colorScheme={blocked ? 'gray' : value ? 'green' : 'red'}
       cursor={readonly ? 'not-allowed' : 'pointer'}
     >
-      <TagLeftIcon boxSize="12px" as={value ? TbCheck : TbX} />
+      <TagLeftIcon boxSize="18px" as={value ? TbCheck : TbX} />
       <TagLabel>{action}</TagLabel>
     </Tag>
   )

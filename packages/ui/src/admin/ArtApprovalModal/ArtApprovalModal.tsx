@@ -63,19 +63,19 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                 <Stack overflowY={'auto'}>
                   <Stack spacing={4} p={{ base: 4, lg: 8 }} flex={1}>
                     <HStack spacing={4}>
-                    <ButtonGroup isAttached>
-                      {['en', 'nl', 'tr'].map(lang => (
-                        <Button
-                          key={lang}
-                          textTransform={'uppercase'}
-                          variant={language === lang ? 'solid' : 'outline'}
-                          onClick={() => setLanguage(lang as StrapiLocale)}
-                        >
-                          {lang}
-                        </Button>
-                      ))}
+                      <ButtonGroup isAttached>
+                        {['en', 'nl', 'tr'].map(lang => (
+                          <Button
+                            key={lang}
+                            textTransform={'uppercase'}
+                            variant={language === lang ? 'solid' : 'outline'}
+                            onClick={() => setLanguage(lang as StrapiLocale)}
+                          >
+                            {lang}
+                          </Button>
+                        ))}
                       </ButtonGroup>
-                      <DevPermissionPopup />
+                      <DevPermissionPopup filtered="arts" />
                     </HStack>
                     <HStack spacing={4}>
                       <Heading flex={1} color={'primary.500'} fontWeight={700}>

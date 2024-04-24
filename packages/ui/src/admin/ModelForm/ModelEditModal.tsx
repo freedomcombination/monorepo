@@ -11,7 +11,6 @@ import {
   ModalOverlay,
   Spinner,
 } from '@chakra-ui/react'
-import { HiSave } from 'react-icons/hi'
 
 import { useStrapiRequest } from '@fc/services'
 import { StrapiModel } from '@fc/types'

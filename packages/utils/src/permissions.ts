@@ -6,10 +6,16 @@ import {
   StrapiPermission,
 } from '@fc/types/src/permissions'
 
-export const createSkeleton = (role: SimpleRole): string[] => {
+export const extractEndpointNames = (role: SimpleRole): string[] => {
   return Array.from(Object.keys(role.permissions))
 }
 
+/**
+ * Converts a Strapi permission object to a simplified endpoint object.
+ *
+ * @param {StrapiPermission} permission - The permission object to convert.
+ * @return {SimpleEndpoint} The converted simplified endpoint object.
+ */
 export const convertToSimple = (
   permission: StrapiPermission,
 ): SimpleEndpoint => {
@@ -37,10 +43,10 @@ export const convertToSimple = (
 
 /**
  * Function to convert a plural endpoint to its singular form.
- * 
- * Because Strapi uses the plural form of endpoints in its API, 
+ *
+ * Because Strapi uses the plural form of endpoints in its API,
  * we need to convert it to its singular form.
- * 
+ *
  * and there is an exception for the `users-permissions/roles` endpoint.
  *
  * @param {StrapiEndpoint} endpoint - The endpoint to be converted to singular form
@@ -50,17 +56,20 @@ export const makeSingular = (endpoint: StrapiEndpoint): string => {
   if (endpoint === 'users-permissions/roles') return 'users-permissions'
 
   if (endpoint.endsWith('ies')) {
-    return endpoint.slice(0, -3) + 'y';
+    return endpoint.slice(0, -3) + 'y'
   } else if (endpoint.endsWith('es')) {
-    const base = endpoint.slice(0, -2);
-    if (endpoint.length > 2 && ['x', 's', 'z', 'ch', 'sh'].some(suffix => base.endsWith(suffix))) {
-      return base.slice(0, -1);
+    const base = endpoint.slice(0, -2)
+    if (
+      endpoint.length > 2 &&
+      ['x', 's', 'z', 'ch', 'sh'].some(suffix => base.endsWith(suffix))
+    ) {
+      return base.slice(0, -1)
     }
 
-    return base;
+    return base
   } else if (endpoint.endsWith('s')) {
-    return endpoint.slice(0, -1);
+    return endpoint.slice(0, -1)
   }
 
-  return endpoint;
+  return endpoint
 }

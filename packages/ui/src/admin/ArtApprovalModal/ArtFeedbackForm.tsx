@@ -104,19 +104,18 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               placeholder={'Type your comment here'}
             />
 
-            {permissionCheck.apisEndpoint('arts', 'approve')
-              && (
-                <Stack direction={'row'} spacing={2}>
-                  <Button
-                    flex={1}
-                    flexShrink={0}
-                    isDisabled={!feedback || art.approvalStatus === 'rejected'}
-                    onClick={handleReject}
-                    colorScheme="red"
-                    leftIcon={<HiOutlineX />}
-                  >
-                    {t('reject')}
-                  </Button>
+            {permissionCheck.apisEndpoint('arts', 'approve') && (
+              <Stack direction={'row'} spacing={2}>
+                <Button
+                  flex={1}
+                  flexShrink={0}
+                  isDisabled={!feedback || art.approvalStatus === 'rejected'}
+                  onClick={handleReject}
+                  colorScheme="red"
+                  leftIcon={<HiOutlineX />}
+                >
+                  {t('reject')}
+                </Button>
 
                 <Button
                   flex={1}
@@ -129,8 +128,8 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
                   {t('approve')}
                 </Button>
 
-                {permissionCheck.canUpdate('arts')
-                  && (<Button
+                {permissionCheck.canUpdate('arts') && (
+                  <Button
                     aria-label="Edit"
                     flexShrink={0}
                     onClick={onEdit}
@@ -139,17 +138,17 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
                   >
                     {t('edit')}
                   </Button>
-                  )}
-                  <Button
-                    aria-label="Close"
-                    flexShrink={0}
-                    onClick={onClose}
-                    colorScheme="gray"
-                  >
-                    {t('dismiss')}
-                  </Button>
-                </Stack>
-              )}
+                )}
+                <Button
+                  aria-label="Close"
+                  flexShrink={0}
+                  onClick={onClose}
+                  colorScheme="gray"
+                >
+                  {t('dismiss')}
+                </Button>
+              </Stack>
+            )}
           </Stack>
         </HStack>
       </Stack>

@@ -1,7 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { Dispatch, ReactNode } from 'react'
 
-import { Profile, RoleType, SessionUser, SimpleEndpoint, StrapiEndpoint } from '@fc/types'
+import {
+  Profile,
+  RoleType,
+  SessionUser,
+  SimpleEndpoint,
+  StrapiEndpoint,
+} from '@fc/types'
 
 export type AuthState = {
   user: SessionUser | null
