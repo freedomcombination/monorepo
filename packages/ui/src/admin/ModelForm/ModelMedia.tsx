@@ -5,6 +5,7 @@ import { CiImageOff } from 'react-icons/ci'
 import { IoMdCloudUpload } from 'react-icons/io'
 
 import {
+  PlatformSlug,
   Post,
   StrapiEndpoint,
   StrapiModel,
@@ -110,6 +111,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
             title,
             text: description as string,
             image: media,
+            platform: (model as Post)?.hashtag?.platform?.slug as PlatformSlug,
             ...(model as Post)?.imageParams,
           }}
         />

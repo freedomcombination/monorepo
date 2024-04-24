@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { ImageProps } from '@chakra-ui/react'
 
-import { Post, UploadFile } from '@fc/types'
+import { PlatformSlug, Post, UploadFile } from '@fc/types'
 
 import { usePostContext } from '../../post-maker/PostProvider'
 import { Caps } from '../Caps'
@@ -29,6 +29,8 @@ export const PostImage: FC<PostImageProps> = ({
   }
 
   const image = post?.image || ({} as UploadFile)
+  const platform = (post?.hashtag?.platform?.slug ??
+    'trend-rights') as PlatformSlug
 
   const scales = {
     xs: 300 / 1200,
@@ -43,6 +45,7 @@ export const PostImage: FC<PostImageProps> = ({
         text: post.description as string,
         image,
         scale: scales[size],
+        platform,
         ...post.imageParams,
       }}
       {...rest}
