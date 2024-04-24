@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { createHashtagSentence } from '@fc/services'
-import { PostCreateInput, RedisPost } from '@fc/types'
+import { PlatformSlug, PostCreateInput, RedisPost } from '@fc/types'
 import { generateOgImageParams, sleep, toastMessage } from '@fc/utils'
 
 import { PostGenAIProps, PostGenAI } from '../GenAI'
@@ -117,6 +117,7 @@ export const ArchivePostGenAI = ({
           hashtag: hashtag.id,
           imageParams: generateOgImageParams({
             image: hashtag.image ?? undefined,
+            platform: hashtag.platform?.slug as PlatformSlug ?? 'trend-rights'
           }),
         } as PostCreateInput,
       } as ArchivePost

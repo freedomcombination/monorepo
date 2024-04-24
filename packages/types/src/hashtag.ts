@@ -4,6 +4,7 @@ import { Category } from './category'
 import { Expand } from './common'
 import { UploadFile } from './file'
 import { Mention } from './mention'
+import { Platform } from './platform'
 import { Post } from './post'
 import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
 import { Tweet } from './tweet'
@@ -22,6 +23,7 @@ type HashtagRelation = {
   categories?: Array<Category>
   mentions?: Array<Mention>
   localizations?: Array<Hashtag>
+  platform?: Platform
 }
 
 type HashtagRelationInput = {
