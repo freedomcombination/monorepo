@@ -36,6 +36,7 @@ import {
 } from 'react-icons/md'
 import { InferType } from 'yup'
 
+import { useAuthContext } from '@fc/context'
 import {
   useApproveModel,
   useCreateModelMutation,
@@ -62,7 +63,6 @@ import { I18nNamespaces } from '../../../@types/i18next'
 import { FormItem, MasonryGrid, MdFormItem } from '../../components'
 import { WConfirm, WConfirmProps } from '../../components/WConfirm'
 import { useFields, useSchema } from '../../data'
-import { usePermission } from '../../hooks'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
 import { DowloadCapsModal } from '../DowloadCapsModal'
 
@@ -113,7 +113,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
   const defaultValues = useDefaultValues(model, fields)
 
-  const { allowEndpointAction } = usePermission()
+  const { permissionCheck } = useAuthContext()
 
   const {
     register,
@@ -487,7 +487,9 @@ export const ModelEditForm = <T extends StrapiModel>({
         >
           <Wrap>
             {endpoint === 'hashtags' &&
-              allowEndpointAction('posts', 'create') && (
+              // this api is the api which we need permission in endpoint
+              permissionCheck.apisEndpoint('posts', 'createPosts')
+              && (
                 <Button
                   onClick={() => router.push(`/hashtags/${id}`)}
                   leftIcon={<FaXTwitter />}
@@ -505,7 +507,9 @@ export const ModelEditForm = <T extends StrapiModel>({
                   isOpen={artModalDisclosure.isOpen}
                   onClose={artModalDisclosure.onClose}
                 />
-                {allowEndpointAction('collections', 'update') && (
+                {permissionCheck.apisEndpoint('collections', 'update')
+                  // allowEndpointAction('collections', 'update')
+                  && (
                   <Button
                     onClick={artModalDisclosure.onOpen}
                     leftIcon={<HiPlus />}
@@ -521,7 +525,8 @@ export const ModelEditForm = <T extends StrapiModel>({
             {endpoint === 'hashtags' && <DowloadCapsModal id={id} />}
             {!profile &&
               endpoint === 'users' &&
-              allowEndpointAction('profiles', 'create') && (
+              permissionCheck.apisEndpoint('profiles', 'create')
+              && (
                 <Button
                   onClick={onGenerateProfile}
                   leftIcon={<BiUserPlus />}
@@ -532,7 +537,8 @@ export const ModelEditForm = <T extends StrapiModel>({
               )}
             {translatableModel.approvalStatus &&
               translatableModel.approvalStatus !== 'approved' &&
-              allowEndpointAction(endpoint, 'approve') && (
+              permissionCheck.apisEndpoint(endpoint, 'approve')
+              && (
                 <Button
                   onClick={onApprove}
                   leftIcon={<HiOutlineCheck />}
@@ -543,7 +549,8 @@ export const ModelEditForm = <T extends StrapiModel>({
                   {t('approve')}
                 </Button>
               )}
-            {allowEndpointAction(endpoint, 'update') && (
+            {permissionCheck.apisEndpoint(endpoint, 'update')
+              && (
               <HStack>
                 {!isEditing && (
                   <Button
@@ -575,7 +582,8 @@ export const ModelEditForm = <T extends StrapiModel>({
                 )}
               </HStack>
             )}
-            {allowEndpointAction(endpoint, 'publish') && (
+            {permissionCheck.apisEndpoint(endpoint, 'publish')
+              && (
               <Button
                 onClick={isPublished ? onUnPublish : onPublish}
                 colorScheme={isPublished ? 'yellow' : 'green'}
@@ -591,7 +599,8 @@ export const ModelEditForm = <T extends StrapiModel>({
                 {isPublished ? t('unpublish') : t('publish')}
               </Button>
             )}
-            {allowEndpointAction(endpoint, 'delete') && (
+            {permissionCheck.apisEndpoint(endpoint, 'delete')
+              && (
               <Button
                 onClick={onDelete}
                 leftIcon={<BsTrash />}

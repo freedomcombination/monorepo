@@ -30,6 +30,7 @@ export type AdminNavItemProps = {
   submenu?: AdminNavItemProps[]
   icon: JSX.Element
   mobile?: boolean
+  allowed?: boolean
 } & ButtonProps
 
 export type NavLinkProps = ButtonProps & {

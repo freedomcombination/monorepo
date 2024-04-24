@@ -1,3 +1,4 @@
+import { StrapiEndpoint } from '@fc/types'
 import {
   SimpleApi,
   SimpleEndpoint,
@@ -32,4 +33,17 @@ export const convertToSimple = (
       [endpoint]: result,
     }
   }, {})
+}
+
+
+export const makeSingular = (endpoint: StrapiEndpoint): string => {
+  const pluralSuffixes = ['s', 'es', 'ies'];
+  const pluralWord = endpoint;
+  for (const suffix of pluralSuffixes) {
+    if (pluralWord.endsWith(suffix)) {
+      return pluralWord.slice(0, -suffix.length);
+    }
+  }
+
+  return pluralWord;
 }

@@ -1,4 +1,4 @@
-import { FC, createContext, useContext, useEffect, useState } from 'react'
+import { FC, createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/react'
 import axios from 'axios'
@@ -11,12 +11,13 @@ import {
   RoleType,
   SessionUser,
   SimpleEndpoint,
+  StrapiEndpoint,
   StrapiPermission,
 } from '@fc/types'
-import { convertToSimple } from '@fc/utils'
+import { convertToSimple, makeSingular } from '@fc/utils'
 
 import { initialAuthState } from './state'
-import { AuthContextType, AuthProviderProps, AuthState } from './types'
+import { AuthContextType, AuthPermissionFuncs, AuthProviderProps, AuthState } from './types'
 
 export const AuthContext = createContext<AuthContextType>(initialAuthState)
 
@@ -45,20 +46,57 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     }
   }, [initialState])
 
-  const permissionCheck: AuthContextType['permissionCheck'] = {
-    anyEndpoint(endpoint: string): boolean {
-      return Object.values(permissions[endpoint] || {}).some(Boolean)
-    },
-    fullEndpoint(endpoint: string): boolean {
-      return !(permissions[endpoint]) ? false : Object.values(permissions[endpoint] || {}).every(Boolean)
-    },
-    apisEndpoint(endpoint: string, ...apis: string[]): boolean {
-      const ep = permissions[endpoint]
-      if (!ep) return false
-
-      return apis.every(api => ep[api])
+  const permissionCheck = useMemo(() => {
+    const anyEndpoint = (endpoint: StrapiEndpoint): boolean => {
+      return Object.values(permissions[makeSingular(endpoint)] || {}).some(Boolean);
     }
-  }
+
+    const fullEndpoint = (endpoint: StrapiEndpoint): boolean => {
+      const name = makeSingular(endpoint);
+
+      return !(permissions[name]) ?
+        false :
+        Object.values(permissions[name] || {}).every(Boolean);
+    }
+
+    const apisEndpoint = (endpoint: StrapiEndpoint, ...apis: string[]): boolean => {
+      const ep = permissions[makeSingular(endpoint)];
+      if (!ep) return false;
+
+      return apis.every(api => ep[api]);
+    }
+
+    const canCreate = (endpoint: StrapiEndpoint): boolean => {
+      return apisEndpoint(endpoint, 'create');
+    }
+
+    const canRead = (endpoint: StrapiEndpoint): boolean => {
+      return apisEndpoint(endpoint, 'find', 'findOne');
+    }
+
+    const canUpdate = (endpoint: StrapiEndpoint): boolean => {
+      return apisEndpoint(endpoint, 'update');
+    }
+
+    const canDelete = (endpoint: StrapiEndpoint): boolean => {
+      return apisEndpoint(endpoint, 'delete');
+    }
+
+    const canReadAll = (...endpoints: StrapiEndpoint[]): boolean => {
+      return endpoints.every(endpoint => canRead(endpoint));
+    }
+
+    return {
+      anyEndpoint,
+      fullEndpoint,
+      apisEndpoint,
+      canCreate,
+      canRead,
+      canUpdate,
+      canDelete,
+      canReadAll
+    } as AuthPermissionFuncs
+  }, [permissions]);
 
   const checkAuth = async (): Promise<AuthState> => {
     setIsLoading(true)

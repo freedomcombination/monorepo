@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Dispatch, ReactNode } from 'react'
 
-import { Profile, RoleType, SessionUser, SimpleEndpoint } from '@fc/types'
+import { Profile, RoleType, SessionUser, SimpleEndpoint, StrapiEndpoint } from '@fc/types'
 
 export type AuthState = {
   user: SessionUser | null
@@ -12,6 +12,17 @@ export type AuthState = {
   isAuthModalOpen: boolean
   error: string | null
   permissions: SimpleEndpoint
+}
+
+export type AuthPermissionFuncs = {
+  anyEndpoint: (endpoint: StrapiEndpoint) => boolean
+  fullEndpoint: (endpoint: StrapiEndpoint) => boolean
+  apisEndpoint: (endpoint: StrapiEndpoint, ...api: string[]) => boolean
+  canCreate: (endpoint: StrapiEndpoint) => boolean
+  canRead: (endpoint: StrapiEndpoint) => boolean
+  canUpdate: (endpoint: StrapiEndpoint) => boolean
+  canDelete: (endpoint: StrapiEndpoint) => boolean
+  canReadAll: (...endpoint: StrapiEndpoint[]) => boolean
 }
 
 export type AuthActions = {
@@ -27,11 +38,7 @@ export type AuthActions = {
     username: string,
     name: string,
   ) => Promise<AuthState | void>
-  permissionCheck: {
-    anyEndpoint: (endpoint: string) => boolean
-    fullEndpoint: (endpoint: string) => boolean
-    apisEndpoint: (endpoint: string, ...api: string[]) => boolean
-  }
+  permissionCheck: AuthPermissionFuncs
 }
 
 export type AuthContextType = AuthState & AuthActions

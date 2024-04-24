@@ -15,6 +15,7 @@ import { StrapiModel } from '@fc/types'
 
 import { ModelEditForm } from './ModelEditForm'
 import { ModelEditModalProps } from './types'
+import { DevPermissionPopup } from '../PermissionCard/DevPermissionPopup'
 
 export const ModelEditModal = <T extends StrapiModel>({
   endpoint,
@@ -56,7 +57,10 @@ export const ModelEditModal = <T extends StrapiModel>({
         overflow={'hidden'}
         {...(isFullHeight && { h: 'full' })}
       >
-        <ModalHeader color={'primary.500'}>{title}</ModalHeader>
+        <ModalHeader color={'primary.500'}>
+          {title}
+          <DevPermissionPopup />
+        </ModalHeader>
         <ModalCloseButton />
         {isLoading && (
           <Center>
