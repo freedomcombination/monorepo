@@ -35,15 +35,32 @@ export const convertToSimple = (
   }, {})
 }
 
-
+/**
+ * Function to convert a plural endpoint to its singular form.
+ * 
+ * Because Strapi uses the plural form of endpoints in its API, 
+ * we need to convert it to its singular form.
+ * 
+ * and there is an exception for the `users-permissions/roles` endpoint.
+ *
+ * @param {StrapiEndpoint} endpoint - The endpoint to be converted to singular form
+ * @return {string} The singular form of the provided endpoint
+ */
 export const makeSingular = (endpoint: StrapiEndpoint): string => {
-  const pluralSuffixes = ['s', 'es', 'ies'];
-  const pluralWord = endpoint;
-  for (const suffix of pluralSuffixes) {
-    if (pluralWord.endsWith(suffix)) {
-      return pluralWord.slice(0, -suffix.length);
+  if (endpoint === 'users-permissions/roles') return 'users-permissions'
+
+  if (endpoint.endsWith('ies')) {
+    return endpoint.slice(0, -3) + 'y';
+  } else if (endpoint.endsWith('es')) {
+    const base = endpoint.slice(0, -2);
+    if (endpoint.length > 2 && ['x', 's', 'z', 'ch', 'sh'].some(suffix => base.endsWith(suffix))) {
+      return base.slice(0, -1);
     }
+
+    return base;
+  } else if (endpoint.endsWith('s')) {
+    return endpoint.slice(0, -1);
   }
 
-  return pluralWord;
+  return endpoint;
 }

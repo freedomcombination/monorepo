@@ -37,14 +37,22 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
   const { asPath } = useRouter()
 
   const isPathAllowed = useMemo(() => {
-    const path = asPath.startsWith('/translates?') ||
-      asPath.startsWith('/arts?') ?
-      asPath : asPath.split('?')[0]
+
+    const specialCases = () => {
+      if (asPath.startsWith('/translates') || asPath.startsWith('/arts'))
+        return asPath
+
+      if (asPath.startsWith('/courses'))
+        return '/courses'
+
+      return asPath.split('?')[0]
+    }
+
+    const path = specialCases()
 
     const checkSubMenu = (item: AdminNavItemProps) => {
       if (item.submenu && item.submenu.length > 0)
         return item.submenu.some(checkSubMenu)
-      console.log(path, item.link, item.link && path === item.link && item.allowed)
 
       return item.link && path === item.link && item.allowed
     }

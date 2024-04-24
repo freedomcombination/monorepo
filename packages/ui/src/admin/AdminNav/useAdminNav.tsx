@@ -43,10 +43,12 @@ import { StrapiEndpoint } from '@fc/types'
 import { AdminNavItemProps } from './types'
 
 export const useAdminNav = (): AdminNavItemProps[] => {
-  const { t } = useTranslation()
+
+  const { t, i18n } = useTranslation()
   const { isLoading, permissionCheck } = useAuthContext()
 
   return useMemo(() => {
+    console.info("!!! Recreating admin nav !!!")
     if (isLoading) return []
 
     const menuItems: AdminNavItemProps[] = [
@@ -221,11 +223,13 @@ export const useAdminNav = (): AdminNavItemProps[] => {
             label: t('users'),
             link: '/users',
             icon: <FiUsers />,
+            allowed: permissionCheck.anyEndpoint('users-permissions/roles'),
           },
           {
             label: t('role'),
             link: '/roles',
             icon: <TbMilitaryRank />,
+            allowed: permissionCheck.anyEndpoint('users-permissions/roles'),
           },
         ],
       },
@@ -269,7 +273,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
     }
 
     const setAllowedProps = (menuItem: AdminNavItemProps) => {
-      if (menuItem.allowed !== undefined) return;
+      if (menuItem.allowed === true || menuItem.allowed === false) return
 
       if (menuItem.submenu && menuItem.submenu.length > 0) {
         menuItem.submenu.forEach(setAllowedProps)
@@ -291,5 +295,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
     }
 
     return menuItems.filter(filterMenu);
-  }, [isLoading, permissionCheck, t])
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading, i18n.language])
 }

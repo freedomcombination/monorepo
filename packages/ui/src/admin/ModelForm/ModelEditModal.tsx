@@ -1,6 +1,8 @@
 import {
   Center,
   Divider,
+  HStack,
+  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -9,6 +11,7 @@ import {
   ModalOverlay,
   Spinner,
 } from '@chakra-ui/react'
+import { HiSave } from 'react-icons/hi'
 
 import { useStrapiRequest } from '@fc/services'
 import { StrapiModel } from '@fc/types'
@@ -54,12 +57,14 @@ export const ModelEditModal = <T extends StrapiModel>({
       <ModalContent
         maxW={maxW}
         p={0}
-        overflow={'hidden'}
+        //  overflow={'hidden'}
         {...(isFullHeight && { h: 'full' })}
       >
         <ModalHeader color={'primary.500'}>
-          {title}
-          <DevPermissionPopup />
+          <HStack spacing={4}>
+            <Heading as="h3">{title}</Heading>
+            <DevPermissionPopup filtered={endpoint} />
+          </HStack>
         </ModalHeader>
         <ModalCloseButton />
         {isLoading && (

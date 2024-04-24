@@ -4,6 +4,7 @@ import { Button, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { HiOutlineCheck, HiOutlineX, HiPencil } from 'react-icons/hi'
 
+import { useAuthContext } from '@fc/context'
 import { useArtFeedbackMutation } from '@fc/services'
 
 import { ArtFeedbackFormTypes } from './types'
@@ -23,7 +24,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
 
   const feedbackMutation = useArtFeedbackMutation()
 
-  const { allowEndpointAction } = usePermission()
+  const { permissionCheck } = useAuthContext()
 
   const { t } = useTranslation()
 
@@ -103,18 +104,19 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               placeholder={'Type your comment here'}
             />
 
-            {allowEndpointAction('arts', 'approve') && (
-              <Stack direction={'row'} spacing={2}>
-                <Button
-                  flex={1}
-                  flexShrink={0}
-                  isDisabled={!feedback || art.approvalStatus === 'rejected'}
-                  onClick={handleReject}
-                  colorScheme="red"
-                  leftIcon={<HiOutlineX />}
-                >
-                  {t('reject')}
-                </Button>
+            {permissionCheck.apisEndpoint('arts', 'approve')
+              && (
+                <Stack direction={'row'} spacing={2}>
+                  <Button
+                    flex={1}
+                    flexShrink={0}
+                    isDisabled={!feedback || art.approvalStatus === 'rejected'}
+                    onClick={handleReject}
+                    colorScheme="red"
+                    leftIcon={<HiOutlineX />}
+                  >
+                    {t('reject')}
+                  </Button>
 
                 <Button
                   flex={1}
@@ -127,25 +129,27 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
                   {t('approve')}
                 </Button>
 
-                <Button
-                  aria-label="Edit"
-                  flexShrink={0}
-                  onClick={onEdit}
-                  colorScheme="primary"
-                  leftIcon={<HiPencil />}
-                >
-                  {t('edit')}
-                </Button>
-                <Button
-                  aria-label="Close"
-                  flexShrink={0}
-                  onClick={onClose}
-                  colorScheme="gray"
-                >
-                  {t('dismiss')}
-                </Button>
-              </Stack>
-            )}
+                {permissionCheck.canUpdate('arts')
+                  && (<Button
+                    aria-label="Edit"
+                    flexShrink={0}
+                    onClick={onEdit}
+                    colorScheme="primary"
+                    leftIcon={<HiPencil />}
+                  >
+                    {t('edit')}
+                  </Button>
+                  )}
+                  <Button
+                    aria-label="Close"
+                    flexShrink={0}
+                    onClick={onClose}
+                    colorScheme="gray"
+                  >
+                    {t('dismiss')}
+                  </Button>
+                </Stack>
+              )}
           </Stack>
         </HStack>
       </Stack>
