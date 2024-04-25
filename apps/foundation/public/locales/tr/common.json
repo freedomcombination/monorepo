@@ -201,6 +201,8 @@
   "no-reference-found": "Bu post için detay bulunamadı!",
   "not-allowed": "Bu sayfaya erişim izniniz yoktur.",
   "not-found": "Sayfa bulunamadı",
+  "not-found-desc": "Üzgünüz, aradığınız sayfa bulunamadı.",
+  "not-found-button": "Ana Sayfaya Geri Dön",
   "notes": "Notlar",
   "occupation": "Meslek",
   "password": "Parola",
