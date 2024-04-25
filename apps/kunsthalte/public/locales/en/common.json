@@ -207,6 +207,8 @@
   "no-reference-found": "No details found for this post!",
   "not-allowed": "You are not allowed to access this page.",
   "not-found": "Page not found",
+  "not-found-desc": "Sorry, the page you are looking for could not be found.",
+  "not-found-button": "Back to Home",
   "notes": "Notes",
   "occupation": "Occupation",
   "password": "Password",
