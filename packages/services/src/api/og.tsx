@@ -28,7 +28,7 @@ export const ogRouter = async (req: NextRequest) => {
   const flip = params.get('flip') ? params.get('flip') === 'true' : false
   const hasLine =
     title && params.get('hasLine') ? params.get('hasLine') === 'true' : false
-  const platform = params.get('platform') as (PlatformSlug | null)
+  const platform = params.get('platform') as PlatformSlug | null
 
   const absoluteStyle: CSSProperties = {
     position: 'absolute',
@@ -99,23 +99,25 @@ export const ogRouter = async (req: NextRequest) => {
           </svg>
 
           {/* Logo */}
-          {platform && <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width={dimensions.logo}
-            height={dimensions.logo}
-            style={{
-              position: 'absolute',
-              left: flip
-                ? `${dimensions.image / 2 - dimensions.shape}px`
-                : `${
-                    dimensions.width - dimensions.image / 2 - dimensions.shape
-                  }px`,
-              bottom: `${dimensions.padding}px`,
-            }}
-            viewBox={platformLogosViewBox[platform]}
-          >
-            {platformLogos[platform]}
-          </svg>}
+          {platform && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={dimensions.logo}
+              height={dimensions.logo}
+              style={{
+                position: 'absolute',
+                left: flip
+                  ? `${dimensions.image / 2 - dimensions.shape}px`
+                  : `${
+                      dimensions.width - dimensions.image / 2 - dimensions.shape
+                    }px`,
+                bottom: `${dimensions.padding}px`,
+              }}
+              viewBox={platformLogosViewBox[platform]}
+            >
+              {platformLogos[platform]}
+            </svg>
+          )}
 
           {/* Content */}
           <div
