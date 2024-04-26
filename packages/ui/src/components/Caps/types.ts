@@ -10,4 +10,5 @@ export type CapsImageProps = ImageProps & {
 export type CapsProps = AspectRatioProps & {
   imageParams: OgImageParams
   hasRandomImage?: boolean
+  hideLogo?: boolean
 }

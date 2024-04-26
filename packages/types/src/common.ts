@@ -1,5 +1,6 @@
 import { SetRequired } from 'type-fest'
 
+import { PlatformSlug } from './app'
 import { UploadFile } from './file'
 import { StrapiLocale } from './locale'
 
@@ -32,4 +33,5 @@ export type OgImageParams = Partial<{
   shape: number
   text: string
   title: string
+  platform?: PlatformSlug
 }>

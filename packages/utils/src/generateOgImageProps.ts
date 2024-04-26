@@ -1,7 +1,7 @@
 import { theme } from '@chakra-ui/react'
 import { sample } from 'lodash'
 
-import { OgImageParams } from '@fc/types'
+import { OgImageParams, PlatformSlug } from '@fc/types'
 
 import { getMediaUrl } from './getMediaUrl'
 
@@ -31,6 +31,8 @@ export const generateOgImageParams = (props?: OgImageParams) => {
 
   const src = getMediaUrl(image)
 
+  const platform = props?.platform ?? ('trend-rights' as PlatformSlug)
+
   return {
     bg,
     color,
@@ -38,6 +40,7 @@ export const generateOgImageParams = (props?: OgImageParams) => {
     shape,
     flip,
     hasLine,
+    platform,
     ...props,
   }
 }

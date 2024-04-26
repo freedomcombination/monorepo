@@ -20,16 +20,16 @@ import { FaDownload } from 'react-icons/fa'
 
 import { SITE_URL } from '@fc/config'
 import { useStrapiRequest } from '@fc/services'
-import { Post } from '@fc/types'
+import { PlatformSlug, Post } from '@fc/types'
 import { getMediaUrl, getOgImageSrc } from '@fc/utils'
 
 import { Caps, WImage } from '../../components'
 
-type DowloadCapsModalType = {
+type DownloadCapsModalType = {
   id: number
 }
 
-export const DowloadCapsModal: FC<DowloadCapsModalType> = ({ id }) => {
+export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [isLoading, setIsLoading] = useState(false)
   const btnRef = useRef<HTMLButtonElement>(null)
@@ -61,6 +61,8 @@ export const DowloadCapsModal: FC<DowloadCapsModalType> = ({ id }) => {
           title,
           text,
           scale: 1.5,
+          platform: (post?.hashtag?.platform?.slug ??
+            'trend-rights') as PlatformSlug,
           ...post.imageParams,
         }
         const autoCapsPath = imageParams && getOgImageSrc(imageParams)
@@ -188,7 +190,7 @@ export const DowloadCapsModal: FC<DowloadCapsModalType> = ({ id }) => {
               colorScheme={'primary'}
               isLoading={isLoading}
             >
-              Dowload Caps
+              Download Caps
             </Button>
           </DrawerFooter>
         </DrawerContent>

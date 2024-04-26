@@ -23,7 +23,7 @@ import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { getHashtagBySlug, getHashtagSentences, useHashtag } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { HashtagReturnType, Post, StrapiLocale } from '@fc/types'
+import { HashtagReturnType, PlatformSlug, Post, StrapiLocale } from '@fc/types'
 import {
   Container,
   HashtagProvider,
@@ -169,6 +169,7 @@ export const getServerSideProps = async (
           title: post.title,
           text: post.description || undefined,
           image: src,
+          platform: post.hashtag?.platform?.slug as PlatformSlug,
           ...post.imageParams,
         })
     }

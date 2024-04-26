@@ -12,7 +12,7 @@ export const getBlogBySlug = async (
 ): Promise<Blog> => {
   const slugUrl = `${API_URL}/api/blogs/${slug}`
   const blogResponse = await axios.get<Blog>(slugUrl, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
   })
 
   return blogResponse.data
