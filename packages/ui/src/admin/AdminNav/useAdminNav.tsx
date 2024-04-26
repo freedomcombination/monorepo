@@ -44,7 +44,7 @@ import { AdminNavItemProps } from './types'
 
 export const useAdminNav = (): AdminNavItemProps[] => {
   const { t, i18n } = useTranslation()
-  const { isLoading, permissionCheck, permissions } = useAuthContext()
+  const { isLoading, permissions, canUpdate, canRead } = useAuthContext()
 
   return useMemo(() => {
     if (isLoading)
@@ -88,25 +88,25 @@ export const useAdminNav = (): AdminNavItemProps[] => {
             label: t('activities'),
             link: '/translates?slug=activities',
             icon: <TbActivity />,
-            allowed: permissionCheck.canUpdate('activities'),
+            allowed: canUpdate('activities'),
           },
           {
             label: t('collections'),
             link: '/translates?slug=collections',
             icon: <BsCollection />,
-            allowed: permissionCheck.canUpdate('collections'),
+            allowed: canUpdate('collections'),
           },
           {
             label: t('hashtags'),
             link: '/translates?slug=hashtags',
             icon: <CgHashtag />,
-            allowed: permissionCheck.canUpdate('hashtags'),
+            allowed: canUpdate('hashtags'),
           },
           {
             label: t('posts'),
             link: '/translates?slug=posts',
             icon: <TbBrandTwitter />,
-            allowed: permissionCheck.canUpdate('posts'),
+            allowed: canUpdate('posts'),
           },
         ],
       },
@@ -175,7 +175,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
             label: t('news'),
             link: '/news',
             icon: <HiOutlineNewspaper />,
-            allowed: permissionCheck.canReadAll('topic', 'topic/sync'),
+            allowed: canRead('topic') && canRead('topic/sync'),
           },
           {
             label: t('bookmarked-news'),
@@ -186,7 +186,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
             label: t('recommended-news'),
             link: '/news/recommended',
             icon: <TbThumbUp />,
-            allowed: permissionCheck.canReadAll('recommended-topics'),
+            allowed: canRead('recommended-topics'),
           },
         ],
       },
@@ -229,13 +229,13 @@ export const useAdminNav = (): AdminNavItemProps[] => {
             label: t('users'),
             link: '/users',
             icon: <FiUsers />,
-            allowed: permissionCheck.anyEndpoint('users-permissions/roles'),
+            allowed: canRead('users-permissions/roles'),
           },
           {
             label: t('role'),
             link: '/roles',
             icon: <TbMilitaryRank />,
-            allowed: permissionCheck.anyEndpoint('users-permissions/roles'),
+            allowed: canRead('users-permissions/roles'),
           },
         ],
       },
@@ -275,19 +275,38 @@ export const useAdminNav = (): AdminNavItemProps[] => {
       if (!link) return true
       const endpoint = link.match(/\/([^?]+)/)?.[1] as StrapiEndpoint
 
-      return permissionCheck.canRead(endpoint)
+      return canRead(endpoint)
     }
 
-    const setAllowedProps = (menuItem: AdminNavItemProps) => {
-      if (menuItem.allowed === true || menuItem.allowed === false) return
+    const mapAllowedMenu = (menuItem: AdminNavItemProps): AdminNavItemProps => {
+      if (menuItem.allowed === true || menuItem.allowed === false)
+        return menuItem
 
       if (menuItem.submenu && menuItem.submenu.length > 0) {
-        menuItem.submenu.forEach(setAllowedProps)
-        menuItem.allowed = menuItem.submenu.some(submenu => submenu.allowed)
-      } else menuItem.allowed = allowByLink(menuItem.link)
+        const submenu = menuItem.submenu.map(mapAllowedMenu)
+
+        return {
+          ...menuItem,
+          allowed: menuItem.submenu.some(submenu => submenu.allowed),
+          submenu,
+        }
+      } else {
+        const allowed = allowByLink(menuItem.link)
+
+        return {
+          ...menuItem,
+          allowed,
+        }
+      }
     }
 
-    menuItems.forEach(setAllowedProps)
+    const mappedMenuItems = menuItems.map(mapAllowedMenu)
+
+    /*
+TODO 1. step...
+    if (isAdmin())
+      return mappedMenuItems
+      */
 
     const filterMenu = (menuItem: AdminNavItemProps): boolean => {
       if (menuItem.submenu && menuItem.submenu.length > 0) {
@@ -299,7 +318,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
       return menuItem.allowed === true
     }
 
-    return menuItems.filter(filterMenu)
+    return mappedMenuItems.filter(filterMenu)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, i18n.language, permissions])

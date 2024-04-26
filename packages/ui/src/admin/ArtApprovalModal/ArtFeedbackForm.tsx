@@ -9,7 +9,6 @@ import { useArtFeedbackMutation } from '@fc/services'
 
 import { ArtFeedbackFormTypes } from './types'
 import { WAvatar, WConfirm, WConfirmProps } from '../../components'
-import { usePermission } from '../../hooks'
 
 export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
   art,
@@ -24,7 +23,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
 
   const feedbackMutation = useArtFeedbackMutation()
 
-  const { permissionCheck } = useAuthContext()
+  const { checkActionsPermission, canUpdate } = useAuthContext()
 
   const { t } = useTranslation()
 
@@ -104,7 +103,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               placeholder={'Type your comment here'}
             />
 
-            {permissionCheck.apisEndpoint('arts', 'approve') && (
+            {checkActionsPermission('arts', 'approve') && (
               <Stack direction={'row'} spacing={2}>
                 <Button
                   flex={1}
@@ -128,7 +127,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
                   {t('approve')}
                 </Button>
 
-                {permissionCheck.canUpdate('arts') && (
+                {canUpdate('arts') && (
                   <Button
                     aria-label="Edit"
                     flexShrink={0}

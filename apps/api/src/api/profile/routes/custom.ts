@@ -5,5 +5,10 @@ export default {
       path: '/profiles/me',
       handler: 'custom.getProfile',
     },
+    {
+      method: 'GET',
+      path: '/profiles/roles',
+      handler: 'custom.getRoles',
+    },
   ],
 }

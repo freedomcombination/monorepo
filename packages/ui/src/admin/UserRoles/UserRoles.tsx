@@ -4,10 +4,10 @@ import { HStack, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import { GroupBase, Select } from 'chakra-react-select'
 import { useLocalStorage } from 'react-use'
 
-import { strapiRequest } from '@fc/lib'
-import { Role } from '@fc/types'
-import { SimpleRole, StrapiPermission } from '@fc/types/src/permissions'
-import { convertToSimple, extractEndpointNames } from '@fc/utils'
+import { API_URL } from '@fc/config'
+import { useAuthContext } from '@fc/context'
+import { SimpleRole } from '@fc/types/src/permissions'
+import { extractEndpointNames } from '@fc/utils'
 
 import { PermissionCard } from '../PermissionCard'
 
@@ -32,36 +32,26 @@ export const UserRoles = () => {
     'endpoint-filter',
     [],
   )
+  const { token } = useAuthContext()
 
   useEffect(() => {
+    if (!token) return
     const fetchRoles = async () => {
-      const list: SimpleRole[] = []
-      const { data: roleList } = await strapiRequest<Role>({
-        endpoint: 'users-permissions/roles',
+      const response = await fetch(API_URL + '/api/profiles/roles', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
 
-      for (const role of roleList) {
-        const response = await strapiRequest<Role>({
-          endpoint: 'users-permissions/roles',
-          id: role.id,
-        })
+      const jsonData = await response.json()
+      const list = jsonData.data
 
-        list.push({
-          id: role.id,
-          name: role.name,
-          description: role.description,
-          nb_users: Number(role.nb_users),
-          permissions: convertToSimple(
-            response.data.permissions as unknown as StrapiPermission,
-          ),
-        })
-      }
       setRoles(list)
       setEndpoints(extractEndpointNames(list[0]))
     }
 
     fetchRoles()
-  }, [])
+  }, [token])
 
   const filterRole = (r: SimpleRole) => {
     if (!roleFilter || roleFilter.length === 0) return true

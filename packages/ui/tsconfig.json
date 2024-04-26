@@ -1,11 +1,5 @@
 {
   "extends": "@fc/config/tsconfig.nextjs.json",
-  "include": [
-    "next-env.d.ts",
-    "@types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "../types/src/permissions.ts"
-  ],
+  "include": ["next-env.d.ts", "@types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["dist", "build", "node_modules"]
 }

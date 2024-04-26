@@ -20,17 +20,6 @@ export type AuthState = {
   permissions: SimpleEndpoint
 }
 
-export type AuthPermissionFuncs = {
-  anyEndpoint: (endpoint: StrapiEndpoint) => boolean
-  fullEndpoint: (endpoint: StrapiEndpoint) => boolean
-  apisEndpoint: (endpoint: StrapiEndpoint, ...api: string[]) => boolean
-  canCreate: (endpoint: StrapiEndpoint) => boolean
-  canRead: (endpoint: StrapiEndpoint) => boolean
-  canUpdate: (endpoint: StrapiEndpoint) => boolean
-  canDelete: (endpoint: StrapiEndpoint) => boolean
-  canReadAll: (...endpoint: StrapiEndpoint[]) => boolean
-}
-
 export type AuthActions = {
   login: (identifier: string, password: string) => Promise<AuthState | void>
   logout: () => Promise<void>
@@ -44,7 +33,15 @@ export type AuthActions = {
     username: string,
     name: string,
   ) => Promise<AuthState | void>
-  permissionCheck: AuthPermissionFuncs
+  canCreate: (endpoint: StrapiEndpoint) => boolean
+  canRead: (endpoint: StrapiEndpoint) => boolean
+  canUpdate: (endpoint: StrapiEndpoint) => boolean
+  canDelete: (endpoint: StrapiEndpoint) => boolean
+  checkActionsPermission: (
+    endpoint: StrapiEndpoint,
+    ...api: string[]
+  ) => boolean
+  isAdmin: () => boolean
 }
 
 export type AuthContextType = AuthState & AuthActions

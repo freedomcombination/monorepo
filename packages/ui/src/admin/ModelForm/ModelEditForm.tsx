@@ -113,7 +113,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
   const defaultValues = useDefaultValues(model, fields)
 
-  const { permissionCheck } = useAuthContext()
+  const { checkActionsPermission } = useAuthContext()
 
   const {
     register,
@@ -488,7 +488,7 @@ export const ModelEditForm = <T extends StrapiModel>({
           <Wrap>
             {endpoint === 'hashtags' &&
               // this api is the api which we need permission in endpoint
-              permissionCheck.apisEndpoint('posts', 'createPosts') && (
+              checkActionsPermission('posts', 'createPosts') && (
                 <Button
                   onClick={() => router.push(`/hashtags/${id}`)}
                   leftIcon={<FaXTwitter />}
@@ -506,7 +506,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   isOpen={artModalDisclosure.isOpen}
                   onClose={artModalDisclosure.onClose}
                 />
-                {permissionCheck.apisEndpoint('collections', 'update') && (
+                {checkActionsPermission('collections', 'update') && (
                   <Button
                     onClick={artModalDisclosure.onOpen}
                     leftIcon={<HiPlus />}
@@ -522,7 +522,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             {endpoint === 'hashtags' && <DownloadCapsModal id={id} />}
             {!profile &&
               endpoint === 'users' &&
-              permissionCheck.apisEndpoint('profiles', 'create') && (
+              checkActionsPermission('profiles', 'create') && (
                 <Button
                   onClick={onGenerateProfile}
                   leftIcon={<BiUserPlus />}
@@ -533,7 +533,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               )}
             {translatableModel.approvalStatus &&
               translatableModel.approvalStatus !== 'approved' &&
-              permissionCheck.apisEndpoint(endpoint, 'approve') && (
+              checkActionsPermission(endpoint, 'approve') && (
                 <Button
                   onClick={onApprove}
                   leftIcon={<HiOutlineCheck />}
@@ -544,7 +544,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   {t('approve')}
                 </Button>
               )}
-            {permissionCheck.apisEndpoint(endpoint, 'update') && (
+            {checkActionsPermission(endpoint, 'update') && (
               <HStack>
                 {!isEditing && (
                   <Button
@@ -576,7 +576,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 )}
               </HStack>
             )}
-            {permissionCheck.apisEndpoint(endpoint, 'publish') && (
+            {checkActionsPermission(endpoint, 'publish') && (
               <Button
                 onClick={isPublished ? onUnPublish : onPublish}
                 colorScheme={isPublished ? 'yellow' : 'green'}
@@ -592,7 +592,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 {isPublished ? t('unpublish') : t('publish')}
               </Button>
             )}
-            {permissionCheck.apisEndpoint(endpoint, 'delete') && (
+            {checkActionsPermission(endpoint, 'delete') && (
               <Button
                 onClick={onDelete}
                 leftIcon={<BsTrash />}

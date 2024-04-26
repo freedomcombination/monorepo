@@ -1,4 +1,4 @@
-import { AuthContextType, AuthPermissionFuncs } from './types'
+import { AuthContextType } from './types'
 
 export const initialAuthState: AuthContextType = {
   isLoading: false,
@@ -16,5 +16,10 @@ export const initialAuthState: AuthContextType = {
   login: () => Promise.resolve(initialAuthState),
   logout: () => Promise.resolve(),
   register: () => Promise.resolve(initialAuthState),
-  permissionCheck: {} as AuthPermissionFuncs,
+  canCreate: () => false,
+  canRead: () => false,
+  canUpdate: () => false,
+  canDelete: () => false,
+  checkActionsPermission: () => false,
+  isAdmin: () => false,
 }

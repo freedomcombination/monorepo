@@ -1,11 +1,4 @@
-import {
-  FC,
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react'
+import { FC, createContext, useContext, useEffect, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/react'
 import axios from 'axios'
@@ -21,15 +14,10 @@ import {
   StrapiEndpoint,
   StrapiPermission,
 } from '@fc/types'
-import { convertToSimple, makeSingular } from '@fc/utils'
+import { mapPermissions, makeSingular } from '@fc/utils'
 
 import { initialAuthState } from './state'
-import {
-  AuthContextType,
-  AuthPermissionFuncs,
-  AuthProviderProps,
-  AuthState,
-} from './types'
+import { AuthContextType, AuthProviderProps, AuthState } from './types'
 
 export const AuthContext = createContext<AuthContextType>(initialAuthState)
 
@@ -58,62 +46,35 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     }
   }, [initialState])
 
-  const permissionCheck = useMemo(() => {
-    const anyEndpoint = (endpoint: StrapiEndpoint): boolean => {
-      return Object.values(permissions[makeSingular(endpoint)] || {}).some(
-        Boolean,
-      )
-    }
+  function checkActionsPermission(
+    endpoint: StrapiEndpoint,
+    ...api: string[]
+  ): boolean {
+    const ep = permissions[makeSingular(endpoint)]
+    if (!ep) return false
 
-    const fullEndpoint = (endpoint: StrapiEndpoint): boolean => {
-      const name = makeSingular(endpoint)
+    return api.every(api => ep[api])
+  }
 
-      return !permissions[name]
-        ? false
-        : Object.values(permissions[name] || {}).every(Boolean)
-    }
+  function canCreate(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'create')
+  }
 
-    const apisEndpoint = (
-      endpoint: StrapiEndpoint,
-      ...apis: string[]
-    ): boolean => {
-      const ep = permissions[makeSingular(endpoint)]
-      if (!ep) return false
+  function canRead(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'find', 'findOne')
+  }
 
-      return apis.every(api => ep[api])
-    }
+  function canUpdate(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'update')
+  }
 
-    const canCreate = (endpoint: StrapiEndpoint): boolean => {
-      return apisEndpoint(endpoint, 'create')
-    }
+  function canDelete(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'delete')
+  }
 
-    const canRead = (endpoint: StrapiEndpoint): boolean => {
-      return apisEndpoint(endpoint, 'find', 'findOne')
-    }
-
-    const canUpdate = (endpoint: StrapiEndpoint): boolean => {
-      return apisEndpoint(endpoint, 'update')
-    }
-
-    const canDelete = (endpoint: StrapiEndpoint): boolean => {
-      return apisEndpoint(endpoint, 'delete')
-    }
-
-    const canReadAll = (...endpoints: StrapiEndpoint[]): boolean => {
-      return endpoints.every(endpoint => canRead(endpoint))
-    }
-
-    return {
-      anyEndpoint,
-      fullEndpoint,
-      apisEndpoint,
-      canCreate,
-      canRead,
-      canUpdate,
-      canDelete,
-      canReadAll,
-    } as AuthPermissionFuncs
-  }, [permissions])
+  function isAdmin(): boolean {
+    return roles.includes('admin')
+  }
 
   const checkAuth = async (): Promise<AuthState> => {
     setIsLoading(true)
@@ -126,11 +87,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         setRoles(response.data?.user?.roles)
         setToken(response.data?.token)
       }
-      const { permissions, ...profile } = response.data?.profile as Profile & {
-        permissions: StrapiPermission
-      }
+      const profile = response.data?.profile as Profile
 
-      const convertedPermissions = convertToSimple(permissions)
+      const convertedPermissions = mapPermissions(profile.permissions ?? {})
 
       if (profile) {
         setProfile(profile)
@@ -250,7 +209,12 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         isLoading,
         error,
         permissions,
-        permissionCheck,
+        canCreate,
+        canRead,
+        canUpdate,
+        canDelete,
+        checkActionsPermission,
+        isAdmin,
         setPermissions,
         checkAuth,
         logout,

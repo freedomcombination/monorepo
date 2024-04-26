@@ -1,3 +1,5 @@
+import { mapPermissions } from '../../../utils/permissions'
+
 module.exports = {
   async getProfile(ctx) {
     if (!ctx.state.user) {
@@ -36,5 +38,18 @@ module.exports = {
       strapi.log.error(error)
       throw error
     }
+  },
+  async getRoles(ctx) {
+    const roles = await strapi.plugins['users-permissions'].services.role.find()
+
+    for (const role of roles) {
+      const response = await strapi.plugins[
+        'users-permissions'
+      ].services.role.findOne(role.id)
+
+      role.permissions = mapPermissions(response.permissions)
+    }
+
+    return { data: roles }
   },
 }
