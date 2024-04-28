@@ -47,6 +47,7 @@ export const TweetCard: FC<TweetCardProps> = ({
   isChangingMedia,
   toggleChangingMedia,
   originalTweet,
+  isRecommended,
   ...rest
 }) => {
   const [storageTweets, setStorageTweets] = useLocalStorage<Tweet[]>(
@@ -141,9 +142,11 @@ export const TweetCard: FC<TweetCardProps> = ({
                   variant="ghost"
                 />
                 <MenuList>
-                  <MenuItem icon={<TbThumbUp />} onClick={handleEdit}>
-                    Recommend
-                  </MenuItem>
+                  {!isRecommended && (
+                    <MenuItem icon={<TbThumbUp />} onClick={handleEdit}>
+                      Recommend
+                    </MenuItem>
+                  )}
                   <ModelCreateModal<Post>
                     title={t('create-post')}
                     endpoint={'posts'}

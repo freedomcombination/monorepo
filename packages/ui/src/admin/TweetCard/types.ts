@@ -9,5 +9,6 @@ export type TweetCardProps = {
   originalTweet?: Tweet
   bookmarkable?: boolean
   editable?: boolean
+  isRecommended?: boolean
 } & TweetContentProps &
   StackProps
