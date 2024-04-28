@@ -157,7 +157,10 @@ export const getServerSideProps = async (
     locale,
     pageSize: 100,
   })
-  const recommendedTopics = response.data
+  const recommendedTopics = response.data?.map(topic => ({
+    ...topic,
+    isRecommended: true,
+  }))
 
   return {
     props: {

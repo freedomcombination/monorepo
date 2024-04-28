@@ -164,27 +164,27 @@ export const useAdminNav = (): AdminNavItemProps[] => {
         },
       ],
     },
-    {
-      label: t('timelines'),
-      icon: <TbTimeline />,
-      submenu: [
-        {
-          label: t('timelines'),
-          link: '/timelines',
-          icon: <GiHumanPyramid />,
-        },
-        {
-          label: t('bookmarked-tweets'),
-          link: '/timelines/bookmarks',
-          icon: <TbBookmarks />,
-        },
-        {
-          label: t('recommended-tweets'),
-          link: '/timelines/recommended',
-          icon: <TbThumbUp />,
-        },
-      ],
-    },
+    // {
+    //   label: t('timelines'),
+    //   icon: <TbTimeline />,
+    //   submenu: [
+    //     {
+    //       label: t('timelines'),
+    //       link: '/timelines',
+    //       icon: <GiHumanPyramid />,
+    //     },
+    //     {
+    //       label: t('bookmarked-tweets'),
+    //       link: '/timelines/bookmarks',
+    //       icon: <TbBookmarks />,
+    //     },
+    //     {
+    //       label: t('recommended-tweets'),
+    //       link: '/timelines/recommended',
+    //       icon: <TbThumbUp />,
+    //     },
+    //   ],
+    // },
     {
       label: t('courses'),
       link: '/courses',
