@@ -16582,7 +16582,7 @@ __metadata:
     storybook: "npm:^7.6.18"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
-    stripe: "npm:^15.3.0"
+    stripe: "npm:^15.4.0"
     tesseract.js: "npm:^5.0.5"
     turbo: "npm:^1.13.2"
     twitter-api-v2: "npm:^1.16.3"
@@ -28694,13 +28694,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^15.3.0":
-  version: 15.3.0
-  resolution: "stripe@npm:15.3.0"
+"stripe@npm:^15.4.0":
+  version: 15.4.0
+  resolution: "stripe@npm:15.4.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10/e5e896a0aa2e014db44edd5b5caefcee75ac1368a0757c9bdfd231ae7eb5af4818dc4e475e4c2eb2e2f5ede4d9ac2a64a76244368478fcd626633bb204a3d523
+  checksum: 10/4501aa80eb6fb07a50ff0763c65b4620add39d0ed096779ef4c60671ff3552ca2069dee47c2bc20c783324a7c139c4566a813fef6c315cd2ecd69c4b3ac43849
   languageName: node
   linkType: hard
 
