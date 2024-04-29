@@ -17,6 +17,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
+import { NextSeoProps } from 'next-seo'
+import { OpenGraphMedia } from 'next-seo/lib/types'
 
 import { ASSETS_URL, SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
@@ -38,7 +40,7 @@ import {
   getPageSeo,
 } from '@fc/utils'
 
-import { Layout, PlusButton } from '../../../components'
+import { Layout, PlusButton } from '../../components'
 
 type HashtagProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -187,6 +189,24 @@ export const getServerSideProps = async (
         ]
       : undefined
 
+    const videoUrl = post?.video?.url || post?.videoUrl
+    const videoPageUrl = videoUrl
+      ? `${SITE_URL}/video?url=${videoUrl}`
+      : undefined
+
+    const videos = videoPageUrl
+      ? ([
+          {
+            url: videoPageUrl,
+            secureUrl: videoPageUrl,
+            type: post?.video?.mime || 'video/mp4',
+            width: post.video?.width || 1024,
+            height: post.video?.height || 768,
+            alt: title,
+          },
+        ] satisfies OpenGraphMedia[])
+      : undefined
+
     const twitterHandle = {
       en: '@TrendRights_EN',
       nl: '@TrendRights_NL',
@@ -201,13 +221,22 @@ export const getServerSideProps = async (
         site: twitterHandle[locale],
         handle: twitterHandle[locale],
       },
+      ...(videoPageUrl && {
+        additionalMetaTags: [
+          {
+            name: 'twitter:player',
+            content: videoPageUrl,
+          },
+        ],
+      }),
       openGraph: {
         title,
         description,
         url: link,
-        images,
+        ...(images && { images }),
+        ...(videos && { videos }),
       },
-    }
+    } satisfies NextSeoProps
   }
 
   const userAgent = req.headers['user-agent'] as string
