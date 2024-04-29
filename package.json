@@ -89,7 +89,7 @@
     "recharts": "^2.12.6",
     "remove-markdown": "^0.5.0",
     "string-similarity": "^4.0.4",
-    "stripe": "^15.3.0",
+    "stripe": "^15.4.0",
     "tesseract.js": "^5.0.5",
     "twitter-api-v2": "^1.16.3",
     "twitter-text": "^3.1.0",
