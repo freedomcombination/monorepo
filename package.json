@@ -134,7 +134,7 @@
     "prettier": "^3.2.5",
     "storybook": "^7.6.18",
     "stream-browserify": "^3.0.0",
-    "turbo": "^1.13.2",
+    "turbo": "^1.13.3",
     "type-fest": "^4.17.0",
     "typescript": "^5.4.5"
   },
