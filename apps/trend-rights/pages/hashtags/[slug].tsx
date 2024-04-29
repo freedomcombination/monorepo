@@ -13,7 +13,6 @@ import {
 } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
@@ -49,7 +48,6 @@ const HashtagPage: FC<HashtagProps> = ({
   seo,
   source,
   post,
-  capsSrc,
   isIosSafari,
 }) => {
   const hashtag = useHashtag()
@@ -80,11 +78,6 @@ const HashtagPage: FC<HashtagProps> = ({
 
   return (
     <HashtagProvider>
-      {capsSrc && (
-        <Head>
-          <meta property="twitter:image:src" content={capsSrc} />
-        </Head>
-      )}
       {post && (
         <Modal isCentered isOpen={isOpen} onClose={handleClose}>
           <ModalOverlay />
@@ -224,16 +217,25 @@ export const getServerSideProps = async (
       ...(videoPageUrl && {
         additionalMetaTags: [
           {
-            name: 'twitter:player',
+            property: 'twitter:player',
             content: videoPageUrl,
           },
         ],
       }),
+      ...(!videoPageUrl &&
+        images && {
+          additionalMetaTags: [
+            {
+              property: 'twitter:image:src',
+              content: capsSrc,
+            },
+          ],
+        }),
       openGraph: {
         title,
         description,
         url: link,
-        ...(images && { images }),
+        ...(!videos && images && { images }),
         ...(videos && { videos }),
       },
     } satisfies NextSeoProps
@@ -257,7 +259,6 @@ export const getServerSideProps = async (
   return {
     props: {
       seo,
-      capsSrc: capsSrc || null,
       post: post || null,
       isIosSafari,
       slugs,
