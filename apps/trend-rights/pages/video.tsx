@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 
 import { useRouter } from 'next/router'
-import ReactPlayer from 'react-player'
 
 const Video = () => {
   const { query } = useRouter()
@@ -21,7 +20,11 @@ const Video = () => {
 
   if (!url) return null
 
-  return <ReactPlayer url={url} />
+  return (
+    <video controls>
+      <source src={url} type="video/mp4" />
+    </video>
+  )
 }
 
 export default Video

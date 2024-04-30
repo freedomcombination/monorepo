@@ -182,10 +182,9 @@ export const getServerSideProps = async (
         ]
       : undefined
 
-    const videoUrl = post?.video?.url || post?.videoUrl
-    const videoPageUrl = videoUrl
-      ? `${SITE_URL}/video?url=${videoUrl}`
-      : undefined
+    const videoPageUrl = post?.video?.url
+      ? `${SITE_URL}/video?url=${post?.video?.url}`
+      : post?.videoUrl
 
     const videos = videoPageUrl
       ? ([
@@ -210,7 +209,7 @@ export const getServerSideProps = async (
       title,
       description,
       twitter: {
-        cardType: 'summary_large_image',
+        cardType: videoPageUrl ? 'player' : 'summary_large_image',
         site: twitterHandle[locale],
         handle: twitterHandle[locale],
       },
@@ -219,6 +218,10 @@ export const getServerSideProps = async (
           {
             property: 'twitter:image:src',
             content: capsSrc,
+          },
+          {
+            property: 'twitter:url',
+            content: link,
           },
           ...(videoPageUrl
             ? [
