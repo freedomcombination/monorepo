@@ -193,8 +193,8 @@ export const getServerSideProps = async (
             url: videoPageUrl,
             secureUrl: videoPageUrl,
             type: post?.video?.mime || 'video/mp4',
-            width: post.video?.width || 1024,
-            height: post.video?.height || 768,
+            width: 1200,
+            height: 675,
             alt: title,
           },
         ] satisfies OpenGraphMedia[])
@@ -214,28 +214,35 @@ export const getServerSideProps = async (
         site: twitterHandle[locale],
         handle: twitterHandle[locale],
       },
-      ...(videoPageUrl && {
+      ...(images && {
         additionalMetaTags: [
           {
-            property: 'twitter:player',
-            content: videoPageUrl,
+            property: 'twitter:image:src',
+            content: capsSrc,
           },
+          ...(videoPageUrl
+            ? [
+                {
+                  property: 'twitter:player',
+                  content: videoPageUrl,
+                },
+                {
+                  property: 'twitter:player:width',
+                  content: '1200',
+                },
+                {
+                  property: 'twitter:player:height',
+                  content: '675',
+                },
+              ]
+            : []),
         ],
       }),
-      ...(!videoPageUrl &&
-        images && {
-          additionalMetaTags: [
-            {
-              property: 'twitter:image:src',
-              content: capsSrc,
-            },
-          ],
-        }),
       openGraph: {
         title,
         description,
         url: link,
-        ...(!videos && images && { images }),
+        ...(images && { images }),
         ...(videos && { videos }),
       },
     } satisfies NextSeoProps
