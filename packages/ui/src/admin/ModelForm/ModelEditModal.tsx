@@ -1,7 +1,6 @@
 import {
   Center,
   Divider,
-  HStack,
   Heading,
   Modal,
   ModalBody,

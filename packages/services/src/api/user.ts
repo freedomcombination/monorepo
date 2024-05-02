@@ -1,7 +1,6 @@
 import { getIronSession } from 'iron-session'
 import { NextApiHandler } from 'next'
 
-import { API_URL } from '@fc/config'
 import { strapiRequest } from '@fc/lib'
 import { sessionOptions } from '@fc/secrets'
 import { Auth } from '@fc/types'

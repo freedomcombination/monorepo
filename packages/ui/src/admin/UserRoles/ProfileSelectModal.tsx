@@ -19,12 +19,11 @@ import {
   Stack,
   Highlight,
   Tooltip,
-  Icon,
   SimpleGrid,
 } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { FaInfoCircle, FaSave } from 'react-icons/fa'
-import { FaInfo, FaRightLong, FaX } from 'react-icons/fa6'
+import { FaX } from 'react-icons/fa6'
 
 import { useAuthContext } from '@fc/context'
 import { mutation } from '@fc/lib/src/mutation/mutation'
@@ -92,6 +91,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
     }
 
     saveAsync().finally(() => setSaveUsers(false))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [saveUsers])
 
   if (!role) return null
