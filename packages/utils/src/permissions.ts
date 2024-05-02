@@ -10,47 +10,6 @@ import {
   RoleInput,
   StrapiEndpoint,
 } from '@fc/types'
-import {
-  SimpleApi,
-  SimpleEndpoint,
-  SimpleRole,
-  StrapiPermission,
-} from '@fc/types/src/permissions'
-
-export const extractEndpointNames = (role: SimpleRole): string[] => {
-  return Array.from(Object.keys(role.permissions))
-}
-
-/**
- * Converts a Strapi permission object to a simplified endpoint object.
- *
- * @param {StrapiPermission} permission - The permission object to convert.
- * @return {SimpleEndpoint} The converted simplified endpoint object.
- */
-export const mapPermissions = (
-  permission: StrapiPermission,
-): SimpleEndpoint => {
-  return Object.entries(permission).reduce((acc, [key, value]) => {
-    const endpoint = key.split('::')[1]
-    const controllers = Object.entries(value.controllers)
-    const result = controllers.reduce(
-      (acc, [, value]) => ({
-        ...acc,
-        ...Object.entries(value).reduce((result, [key, value]) => {
-          result[key] = value.enabled
-
-          return result
-        }, {} as SimpleApi),
-      }),
-      {},
-    )
-
-    return {
-      ...acc,
-      [endpoint]: result,
-    }
-  }, {})
-}
 
 /**
  * Function to convert a plural endpoint to its singular form.
@@ -85,11 +44,7 @@ export const checkAccessForApis = (
     permissions[`api::${endpointName}`] ??
     permissions[`plugin::${endpointName}`]
 
-  if (!ep) {
-    console.warn('No endpoint found :', endpoint)
-
-    return undefined
-  }
+  if (!ep) return undefined
 
   const controllers = Object.values(ep.controllers)
 

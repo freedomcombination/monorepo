@@ -6,7 +6,7 @@ import {
   Profile,
   RoleType,
   SessionUser,
-  StrapiEndpoint
+  StrapiEndpoint,
 } from '@fc/types'
 
 export type AuthState = {

@@ -1,4 +1,3 @@
-
 module.exports = {
   async getProfile(ctx) {
     if (!ctx.state.user) {
@@ -29,10 +28,10 @@ module.exports = {
 
       const rolePermissions = isDashboard
         ? (
-          await strapi.plugins['users-permissions'].services.role.findOne(
-            ctx.state.user.role.id,
-          )
-        ).permissions
+            await strapi.plugins['users-permissions'].services.role.findOne(
+              ctx.state.user.role.id,
+            )
+          ).permissions
         : {}
 
       const newProfile = { ...profile }

@@ -64,6 +64,18 @@ const RolePage: FC<RolePageProps> = () => {
       if (!role || !role.permissions) return
       const roleInput = createRoleInput(role)
       setEditedRole(roleInput)
+      /*
+        demoPermissions has one goal: 
+          to be able to see the changes in the side-bar
+
+        earlier demonstration has some issues, we may forget some menu options
+        if somehow even admin has no permissions on some apis, they ll disappear
+
+        in this way, we only strike-through the menu options that have no permissions to this role
+        so admin wont miss any items
+
+        of course, admin has to active editing in route 'roles/:id'
+      */
       setDemoPermissions(roleInput?.permissions ?? null)
     } else {
       setEditedRole(null)
@@ -87,6 +99,14 @@ const RolePage: FC<RolePageProps> = () => {
 
   useEffect(() => {
     if (!startSave || !editedRole) return
+    /*
+      i used this strategy to save changes
+      startSave is a state that when it has changed;
+        it causes rerender, so some ui elements become disabled.
+        and this useEffect's side-effect starts to save changes asynchronously
+        then re-fetches the data while elements are disabled, and some spinner spins.
+      and finally sets startSave to false
+    */
 
     updateRole(roleId, editedRole, token ?? '')
       .then(async () => {
@@ -97,6 +117,7 @@ const RolePage: FC<RolePageProps> = () => {
         goEditMode(false)
       })
 
+    return () => setStartSave(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startSave])
 

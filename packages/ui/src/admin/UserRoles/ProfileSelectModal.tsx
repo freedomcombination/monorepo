@@ -91,6 +91,8 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
     }
 
     saveAsync().finally(() => setSaveUsers(false))
+
+    return () => setSaveUsers(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [saveUsers])
 
@@ -193,6 +195,8 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                     key={index}
                     user={user}
                     onClick={() => {
+                      // users has to have role...
+                      // this list is only for display
                       toastMessage(
                         'Info',
                         'A user without role can cause issues, A role can not be removed',
@@ -213,7 +217,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
             leftIcon={<FaSave />}
             onClick={() => setSaveUsers(true)}
             isLoading={saveUsers}
-            loadingText='...'
+            loadingText="..."
             isDisabled={pendingUser.length === 0}
           >
             {t('save')}

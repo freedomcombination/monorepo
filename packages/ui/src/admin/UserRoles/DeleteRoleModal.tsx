@@ -52,6 +52,7 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
     onCloseComplete()
   }
 
+  // this ll hopefully prevent unintended deleting role.
   useEffect(() => {
     let intervalId: NodeJS.Timeout
 
