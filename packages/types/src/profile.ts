@@ -12,7 +12,6 @@ import { UploadFile } from './file'
 import { Hashtag } from './hashtag'
 import { Job } from './job'
 import { LangRole } from './lang-role'
-import { StrapiPermission } from './permissions'
 import { Platform } from './platform'
 import { Post } from './post'
 import { RecommendedTopic } from './recommended-topic'
@@ -21,6 +20,7 @@ import { StrapiBase } from './strapi'
 import { User } from './user'
 import { UserStats } from './user-stats'
 import { Vote } from './vote'
+import { Permissions } from './role'
 
 export type ProfileBase = {
   email: string
@@ -42,7 +42,7 @@ export type ProfileBase = {
   phone: string | null
   twitter: string | null
   isVolunteer: boolean | null
-  permissions?: StrapiPermission
+  permissions?: Permissions
 }
 
 type ProfileRelation = {
