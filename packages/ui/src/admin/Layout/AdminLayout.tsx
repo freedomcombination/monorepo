@@ -35,14 +35,19 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
   hasBackButton,
   seo,
 }) => {
-  const { checkAuth, isLoading: isAuthLoading } = useAuthContext()
+  const {
+    checkAuth,
+    isLoading: isAuthLoading,
+    isAdmin: checkIfAdmin,
+  } = useAuthContext()
+  const isAdmin = checkIfAdmin()
 
   useEffect(() => {
     checkAuth()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const navItems = useAdminNav()
+  const { navItems } = useAdminNav()
   const { asPath } = useRouter()
 
   const isPathAllowed = useMemo(() => {
@@ -51,6 +56,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
         return asPath
 
       if (asPath.startsWith('/courses')) return '/courses'
+      if (asPath.startsWith('/roles')) return '/roles'
 
       return asPath.split('?')[0]
     }
@@ -82,9 +88,9 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
           as="main"
           bg="gray.50"
           h="full"
-          overflowY={'auto'}
+          overflowY={'hidden'}
           flex={1}
-          pb={{ base: 12, lg: 4 }}
+          //    pb={{ base: 12, lg: 4 }}
         >
           {isLoading ? (
             <Center h="full">
@@ -92,8 +98,17 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
             </Center>
           ) : (
             <>
-              <AdminHeader hasBackButton={hasBackButton} title={seo.title} />
-              {!isPathAllowed ? (
+              <AdminHeader
+                hasBackButton={hasBackButton}
+                title={
+                  !isPathAllowed
+                    ? isAdmin
+                      ? 'Not allowed * ' + seo.title
+                      : '***'
+                    : seo.title
+                }
+              />
+              {!isPathAllowed && !isAdmin ? (
                 <NotAllowedPage show={!isAuthLoading && navItems.length > 0} />
               ) : (
                 <Stack

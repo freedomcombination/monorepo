@@ -2,11 +2,11 @@
 import { Dispatch, ReactNode } from 'react'
 
 import {
+  Permissions,
   Profile,
   RoleType,
   SessionUser,
-  SimpleEndpoint,
-  StrapiEndpoint,
+  StrapiEndpoint
 } from '@fc/types'
 
 export type AuthState = {
@@ -17,7 +17,8 @@ export type AuthState = {
   token: string | null
   isAuthModalOpen: boolean
   error: string | null
-  permissions: SimpleEndpoint
+  permissions: Permissions
+  demoPermissions: Permissions | null
 }
 
 export type AuthActions = {
@@ -26,7 +27,8 @@ export type AuthActions = {
   openAuthModal: () => void
   closeAuthModal: () => void
   checkAuth: () => Promise<AuthState>
-  setPermissions: Dispatch<SimpleEndpoint>
+  setPermissions: Dispatch<Permissions>
+  setDemoPermissions: Dispatch<Permissions | null>
   register: (
     email: string,
     password: string,

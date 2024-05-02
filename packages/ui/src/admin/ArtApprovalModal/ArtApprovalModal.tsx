@@ -28,7 +28,6 @@ import { ArtFeedbackForm } from './ArtFeedbackForm'
 import { ArtApprovalTypes } from './types'
 import { WAvatar, WImage } from '../../components'
 import { ModelEditForm } from '../ModelForm'
-import { DevPermissionPopup } from '../PermissionCard/DevPermissionPopup'
 
 export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
   art,
@@ -62,21 +61,18 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
               {!isEditing && (
                 <Stack overflowY={'auto'}>
                   <Stack spacing={4} p={{ base: 4, lg: 8 }} flex={1}>
-                    <HStack spacing={4}>
-                      <ButtonGroup isAttached>
-                        {['en', 'nl', 'tr'].map(lang => (
-                          <Button
-                            key={lang}
-                            textTransform={'uppercase'}
-                            variant={language === lang ? 'solid' : 'outline'}
-                            onClick={() => setLanguage(lang as StrapiLocale)}
-                          >
-                            {lang}
-                          </Button>
-                        ))}
-                      </ButtonGroup>
-                      <DevPermissionPopup filtered="arts" />
-                    </HStack>
+                    <ButtonGroup isAttached>
+                      {['en', 'nl', 'tr'].map(lang => (
+                        <Button
+                          key={lang}
+                          textTransform={'uppercase'}
+                          variant={language === lang ? 'solid' : 'outline'}
+                          onClick={() => setLanguage(lang as StrapiLocale)}
+                        >
+                          {lang}
+                        </Button>
+                      ))}
+                    </ButtonGroup>
                     <HStack spacing={4}>
                       <Heading flex={1} color={'primary.500'} fontWeight={700}>
                         {title}

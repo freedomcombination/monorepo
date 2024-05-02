@@ -9439,6 +9439,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/pluralize@npm:^0.0.33":
+  version: 0.0.33
+  resolution: "@types/pluralize@npm:0.0.33"
+  checksum: 10/282d42dc0187e5e0912f9f36ee0f5615bfd273a08d40afe5bf5881cb28daf1977abe10564543032aa0f42352ebba739ff3d86bf5562ac4691c6d1761fcc7cf39
+  languageName: node
+  linkType: hard
+
 "@types/pretty-hrtime@npm:^1.0.0":
   version: 1.0.1
   resolution: "@types/pretty-hrtime@npm:1.0.1"
@@ -16505,6 +16512,7 @@ __metadata:
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.12.7"
+    "@types/pluralize": "npm:^0.0.33"
     "@types/react": "npm:18.2.79"
     "@types/react-dom": "npm:18.2.25"
     "@types/react-headroom": "npm:^3.2.3"
@@ -16559,6 +16567,7 @@ __metadata:
     openai: "npm:^4.38.3"
     os-browserify: "npm:^0.3.0"
     path-browserify: "npm:^1.0.1"
+    pluralize: "npm:^8.0.0"
     prettier: "npm:^3.2.5"
     qs: "npm:^6.12.1"
     react: "npm:^18.2.0"
@@ -24694,7 +24703,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pluralize@npm:8.0.0":
+"pluralize@npm:8.0.0, pluralize@npm:^8.0.0":
   version: 8.0.0
   resolution: "pluralize@npm:8.0.0"
   checksum: 10/17877fdfdb7ddb3639ce257ad73a7c51a30a966091e40f56ea9f2f545b5727ce548d4928f8cb3ce38e7dc0c5150407d318af6a4ed0ea5265d378473b4c2c61ec

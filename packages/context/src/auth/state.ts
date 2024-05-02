@@ -8,6 +8,8 @@ export const initialAuthState: AuthContextType = {
   profile: null,
   roles: ['public'],
   permissions: {},
+  demoPermissions: null,
+  setDemoPermissions: () => {},
   setPermissions: () => {},
   openAuthModal: () => {},
   closeAuthModal: () => {},

@@ -39,14 +39,16 @@ import {
 import { AdminRoute } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { StrapiEndpoint } from '@fc/types'
+import { makePlural } from '@fc/utils'
 
 import { AdminNavItemProps } from './types'
 
-export const useAdminNav = (): AdminNavItemProps[] => {
-  const { t, i18n } = useTranslation()
-  const { isLoading, permissions, canUpdate, canRead } = useAuthContext()
+export const useAdminNav = () => {
+  const { t } = useTranslation()
+  const { isLoading, demoPermissions, permissions, canRead, isAdmin } =
+    useAuthContext()
 
-  return useMemo(() => {
+  const menuItems = useMemo(() => {
     if (isLoading)
       return [
         {
@@ -55,7 +57,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
           icon: <MdOutlineSpaceDashboard />,
           allowed: true,
         },
-      ]
+      ] as AdminNavItemProps[]
 
     const menuItems: AdminNavItemProps[] = [
       {
@@ -88,25 +90,21 @@ export const useAdminNav = (): AdminNavItemProps[] => {
             label: t('activities'),
             link: '/translates?slug=activities',
             icon: <TbActivity />,
-            allowed: canUpdate('activities'),
           },
           {
             label: t('collections'),
             link: '/translates?slug=collections',
             icon: <BsCollection />,
-            allowed: canUpdate('collections'),
           },
           {
             label: t('hashtags'),
             link: '/translates?slug=hashtags',
             icon: <CgHashtag />,
-            allowed: canUpdate('hashtags'),
           },
           {
             label: t('posts'),
             link: '/translates?slug=posts',
             icon: <TbBrandTwitter />,
-            allowed: canUpdate('posts'),
           },
         ],
       },
@@ -181,6 +179,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
             label: t('bookmarked-news'),
             link: '/news/bookmarks',
             icon: <TbBookmarks />,
+            allowed: canRead('topic'),
           },
           {
             label: t('recommended-news'),
@@ -269,7 +268,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
         link: '/user-feedbacks',
         icon: <MdOutlineFeedback />,
       },
-    ]
+    ] as AdminNavItemProps[]
 
     const allowByLink = (link?: AdminRoute): boolean => {
       if (!link) return true
@@ -287,7 +286,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
 
         return {
           ...menuItem,
-          allowed: menuItem.submenu.some(submenu => submenu.allowed),
+          allowed: submenu.some(submenu => submenu.allowed),
           submenu,
         }
       } else {
@@ -302,11 +301,7 @@ export const useAdminNav = (): AdminNavItemProps[] => {
 
     const mappedMenuItems = menuItems.map(mapAllowedMenu)
 
-    /*
-TODO 1. step...
-    if (isAdmin())
-      return mappedMenuItems
-      */
+    if (isAdmin()) return mappedMenuItems
 
     const filterMenu = (menuItem: AdminNavItemProps): boolean => {
       if (menuItem.submenu && menuItem.submenu.length > 0) {
@@ -321,5 +316,27 @@ TODO 1. step...
     return mappedMenuItems.filter(filterMenu)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading, i18n.language, permissions])
+  }, [isLoading, t, permissions, demoPermissions])
+
+  const collectMenusRelated = (endpoint: string): AdminNavItemProps[] => {
+    const link = '/' + makePlural(endpoint)
+    const result: AdminNavItemProps[] = []
+
+    const addToResult = (item: AdminNavItemProps) => {
+      if (item.submenu && item.submenu.length > 0) {
+        item.submenu.forEach(addToResult)
+      }
+
+      if (item.link?.startsWith(link)) result.push(item)
+    }
+
+    menuItems.forEach(addToResult)
+
+    return result
+  }
+
+  return {
+    navItems: menuItems,
+    collectMenusRelated,
+  }
 }

@@ -23,7 +23,6 @@ import { UserFeedback } from '../../components'
 import { AdminSidebar } from '../AdminSidebar'
 import { CreateModelButton } from '../CreateModelButton'
 import { LanguageSwitcher } from '../LanguageSwitcher'
-import { DevPermissionPopup } from '../PermissionCard/DevPermissionPopup'
 
 type AdminHeaderProps = {
   hasBackButton?: boolean
@@ -66,7 +65,6 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
 
       {/* TODO Create notification component */}
       <HStack flexShrink={0}>
-        <DevPermissionPopup />
         {user && (
           <IconButton
             aria-label="notifications"

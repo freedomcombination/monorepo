@@ -39,12 +39,42 @@ export type RoleType =
 export type Role = Omit<StrapiBase, 'publishedAt'> & {
   description: string
   name: RoleName
-  permissions?: Permission
+  permissions?: Permissions
   type: RoleType
   nb_users?: number
 }
 
+/*
 export type Permission = Omit<StrapiBase, 'publishedAt'> & {
   action: string
   role?: Role
+}
+*/
+
+export type APIStatus = {
+  enabled: boolean
+  policy: string
+}
+
+export type ControllerGroup = {
+  [key: string]: APIStatus
+}
+
+export type EndpointControllers = {
+  [key: string]: ControllerGroup
+} & {
+  backup?: { [key: string]: ControllerGroup }
+}
+
+export type Permissions = {
+  [key: string]: {
+    controllers: EndpointControllers
+  }
+}
+
+export type RoleInput = {
+  name: string
+  description: string
+  permissions: Permissions
+  users: []
 }

@@ -1,128 +1,191 @@
-import { useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 
-import { HStack, SimpleGrid, Text, VStack } from '@chakra-ui/react'
-import { GroupBase, Select } from 'chakra-react-select'
-import { useLocalStorage } from 'react-use'
+import {
+  Button,
+  HStack,
+  IconButton,
+  Tooltip,
+  VStack,
+  useDisclosure,
+} from '@chakra-ui/react'
+import { TFunction } from 'i18next'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
+import { FaEdit } from 'react-icons/fa'
+import { FaCopy, FaTrash, FaUser } from 'react-icons/fa6'
+import { TbPlus } from 'react-icons/tb'
 
-import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
-import { SimpleRole } from '@fc/types/src/permissions'
-import { extractEndpointNames } from '@fc/utils'
+import { useStrapiRequest } from '@fc/services'
+import { Role } from '@fc/types'
 
-import { PermissionCard } from '../PermissionCard'
-
-type RoleOption = {
-  label: string
-  value: number
-}
-
-type EndpointOption = {
-  label: string
-  value: string
-}
+import { CreateRoleModal } from './CreateRoleModal'
+import { DeleteRoleModal } from './DeleteRoleModal'
+import { ProfileSelectModal } from './ProfileSelectModal'
+import { WTable } from '../../components'
 
 export const UserRoles = () => {
-  const [roles, setRoles] = useState<SimpleRole[] | null>(null)
-  const [endpoints, setEndpoints] = useState<string[] | null>(null)
-  const [roleFilter, setRoleFilter] = useLocalStorage<RoleOption[]>(
-    'role-filter',
-    [],
-  )
-  const [endpointFilter, setEndpointFilter] = useLocalStorage<EndpointOption[]>(
-    'endpoint-filter',
-    [],
-  )
+  const {
+    isOpen: isSaveOpen,
+    onOpen: onSaveOpen,
+    onClose: onSaveClose,
+  } = useDisclosure()
+  const {
+    isOpen: isDeleteOpen,
+    onOpen: onDeleteOpen,
+    onClose: onDeleteClose,
+  } = useDisclosure()
+  const {
+    isOpen: isUserAssignOpen,
+    onOpen: onUserAssignOpen,
+    onClose: onUserAssignClose,
+  } = useDisclosure()
   const { token } = useAuthContext()
+  const { push } = useRouter()
+  const { t } = useTranslation()
+  const { data: roles, refetch } = useStrapiRequest<Role>({
+    endpoint: 'users-permissions/roles',
+    token: token ?? '',
+  })
+  const [roleBaseId, setRoleBaseId] = useState<number>(0)
 
-  useEffect(() => {
-    if (!token) return
-    const fetchRoles = async () => {
-      const response = await fetch(API_URL + '/api/profiles/roles', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      const jsonData = await response.json()
-      const list = jsonData.data
-
-      setRoles(list)
-      setEndpoints(extractEndpointNames(list[0]))
-    }
-
-    fetchRoles()
-  }, [token])
-
-  const filterRole = (r: SimpleRole) => {
-    if (!roleFilter || roleFilter.length === 0) return true
-
-    return roleFilter.some(role => role.value === r.id)
-  }
-
-  const updateRole = (r: SimpleRole) => {
-    const oldRoles = roles?.filter(role => role.id !== r.id) ?? []
-    setRoles([...oldRoles, r])
+  const onClickRow = (index: number, id: number) => {
+    push(`/roles/${id}`)
   }
 
   return (
-    <VStack gap={6}>
-      <SimpleGrid width={'100%'} gap={4} columns={{ base: 1, md: 2 }}>
-        <VStack alignItems={'flex-start'} flex={1}>
-          <Text fontWeight={'bold'}>Filter by role</Text>
-          {roles && (
-            <Select<RoleOption, boolean, GroupBase<RoleOption>>
-              isMulti
-              tagVariant="solid"
-              closeMenuOnSelect={false}
-              closeMenuOnScroll={true}
-              defaultValue={roleFilter}
-              placeholder={'Filter by role'}
-              onChange={value =>
-                setRoleFilter(Array.isArray(value) ? value : [value])
-              }
-              options={roles.map(role => ({
-                label: role.name,
-                value: role.id,
-              }))}
-            />
-          )}
-        </VStack>
-        <VStack alignItems={'flex-end'}>
-          <Text fontWeight={'bold'}>Filter by endpoint</Text>
-          <HStack>
-            {endpoints && (
-              <Select<EndpointOption, boolean, GroupBase<EndpointOption>>
-                isMulti
-                tagVariant="solid"
-                closeMenuOnSelect={false}
-                closeMenuOnScroll={true}
-                placeholder={'Filter by endpoint'}
-                defaultValue={endpointFilter}
-                onChange={value =>
-                  setEndpointFilter(Array.isArray(value) ? value : [value])
-                }
-                options={endpoints.map(ep => ({
-                  label: ep,
-                  value: ep,
-                }))}
-              />
-            )}
-          </HStack>
-        </VStack>
-      </SimpleGrid>
+    <VStack alignItems={'flex-start'} gap={4}>
+      <Button leftIcon={<TbPlus />} onClick={onSaveOpen}>
+        {t('create')}
+      </Button>
 
-      <SimpleGrid gap={4} columns={{ base: 1, md: 2, lg: 3 }}>
-        {roles
-          ?.filter(filterRole)
-          .map(role => (
-            <PermissionCard
-              key={role.id}
-              role={role}
-              setRole={updateRole}
-              filteredEndpoints={endpointFilter?.map(ep => ep.value)}
-            />
-          ))}
-      </SimpleGrid>
+      <CreateRoleModal
+        isOpen={isSaveOpen}
+        refetchRoles={refetch}
+        roles={roles?.data}
+        roleId={roleBaseId}
+        onCloseComplete={() => setRoleBaseId(0)}
+        onClose={onSaveClose}
+      />
+
+      <DeleteRoleModal
+        isOpen={isDeleteOpen}
+        id={roleBaseId}
+        role={roles?.data.find(role => role.id === roleBaseId)}
+        refetchRoles={refetch}
+        onClose={onDeleteClose}
+        onCloseComplete={() => setRoleBaseId(0)}
+      />
+
+      <ProfileSelectModal
+        isOpen={isUserAssignOpen}
+        role={roles?.data.find(role => role.id === roleBaseId)}
+        refetchRoles={refetch}
+        onClose={onUserAssignClose}
+        onCloseComplete={() => setRoleBaseId(0)}
+      />
+
+      <WTable
+        data={roles?.data ?? []}
+        columns={{
+          id: {
+            label: 'Actions',
+            transform: value => {
+              return (
+                <RoleAction
+                  t={t}
+                  onDelete={() => {
+                    setRoleBaseId(Number(value))
+                    onDeleteOpen()
+                  }}
+                  onCopy={() => {
+                    setRoleBaseId(Number(value))
+                    onSaveOpen()
+                  }}
+                  onUserAssign={() => {
+                    setRoleBaseId(Number(value))
+                    onUserAssignOpen()
+                  }}
+                />
+              )
+            },
+          },
+          name: {},
+          nb_users: {
+            label: t('profiles'),
+          },
+          description: {},
+        }}
+        onClickRow={onClickRow}
+      />
     </VStack>
+  )
+}
+
+const RoleAction: FC<{
+  t: TFunction
+  onDelete: () => void
+  onCopy: () => void
+  onUserAssign: () => void
+}> = ({ t, onDelete, onCopy, onUserAssign }) => {
+  return (
+    <HStack>
+      <Tooltip label={t('edit')} placement="top">
+        <IconButton
+          aria-label="Edit role"
+          icon={<FaEdit />}
+          rounded={'full'}
+          variant={'outline'}
+          size={'xs'}
+          // let onRowClick does its job
+        />
+      </Tooltip>
+
+      <Tooltip label={t('create')} placement="top">
+        <IconButton
+          aria-label="Duplicate role"
+          icon={<FaCopy />}
+          rounded={'full'}
+          variant={'outline'}
+          size={'xs'}
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            onCopy()
+          }}
+        />
+      </Tooltip>
+
+      <Tooltip label={t('profiles')} placement="top">
+        <IconButton
+          aria-label="Assign users to role"
+          icon={<FaUser />}
+          rounded={'full'}
+          variant={'outline'}
+          size={'xs'}
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            onUserAssign()
+          }}
+        />
+      </Tooltip>
+
+      <Tooltip label={t('delete')} placement="top">
+        <IconButton
+          aria-label="Delete role"
+          icon={<FaTrash />}
+          colorScheme="red"
+          rounded={'full'}
+          variant={'outline'}
+          size={'xs'}
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            onDelete()
+          }}
+        />
+      </Tooltip>
+    </HStack>
   )
 }

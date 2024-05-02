@@ -7,7 +7,7 @@ import { AdminNavProps } from './types'
 import { useAdminNav } from './useAdminNav'
 
 export const AdminNav: FC<AdminNavProps> = ({ mobile }) => {
-  const navItems = useAdminNav()
+  const { navItems } = useAdminNav()
 
   return (
     <Stack spacing={0}>
@@ -20,6 +20,7 @@ export const AdminNav: FC<AdminNavProps> = ({ mobile }) => {
             link={item.link}
             submenu={item.submenu}
             mobile={mobile}
+            allowed={item.allowed}
           />
         )
       })}

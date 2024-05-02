@@ -1,4 +1,3 @@
-import { mapPermissions } from '../../../utils/permissions'
 
 module.exports = {
   async getProfile(ctx) {
@@ -26,30 +25,23 @@ module.exports = {
         return ctx.notFound('Profile not found')
       }
 
-      const roleId = ctx.state.user.role.id
-      const roleResponse =
-        await strapi.plugins['users-permissions'].services.role.findOne(roleId)
+      const isDashboard = ctx.params.platform === 'dashboard'
+
+      const rolePermissions = isDashboard
+        ? (
+          await strapi.plugins['users-permissions'].services.role.findOne(
+            ctx.state.user.role.id,
+          )
+        ).permissions
+        : {}
 
       const newProfile = { ...profile }
       delete newProfile.user
 
-      return { data: { ...profile, permissions: roleResponse.permissions } }
+      return { data: { ...profile, permissions: rolePermissions } }
     } catch (error) {
       strapi.log.error(error)
       throw error
     }
-  },
-  async getRoles(ctx) {
-    const roles = await strapi.plugins['users-permissions'].services.role.find()
-
-    for (const role of roles) {
-      const response = await strapi.plugins[
-        'users-permissions'
-      ].services.role.findOne(role.id)
-
-      role.permissions = mapPermissions(response.permissions)
-    }
-
-    return { data: roles }
   },
 }

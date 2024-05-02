@@ -7,14 +7,13 @@ import { useTranslation } from 'next-i18next'
 
 import {
   Auth,
+  Permissions,
   Profile,
   RoleType,
   SessionUser,
-  SimpleEndpoint,
   StrapiEndpoint,
-  StrapiPermission,
 } from '@fc/types'
-import { mapPermissions, makeSingular } from '@fc/utils'
+import { checkAccessForApis } from '@fc/utils'
 
 import { initialAuthState } from './state'
 import { AuthContextType, AuthProviderProps, AuthState } from './types'
@@ -30,9 +29,12 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   const [profile, setProfile] = useState<Profile | null>(null)
   const [roles, setRoles] = useState<RoleType[]>(initialAuthState.roles)
   const [token, setToken] = useState<string | null>(null)
-  const [permissions, setPermissions] = useState<SimpleEndpoint>({})
+  const [permissions, setPermissions] = useState<Permissions>({})
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
+  const [demoPermissions, setDemoPermissions] = useState<Permissions | null>(
+    null,
+  )
   const authModalDisclosure = useDisclosure()
   const { t } = useTranslation()
   const router = useRouter()
@@ -50,10 +52,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     endpoint: StrapiEndpoint,
     ...api: string[]
   ): boolean {
-    const ep = permissions[makeSingular(endpoint)]
-    if (!ep) return false
+    const source = demoPermissions ?? permissions
 
-    return api.every(api => ep[api])
+    return checkAccessForApis(source, endpoint, ...api) === true
   }
 
   function canCreate(endpoint: StrapiEndpoint): boolean {
@@ -86,14 +87,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         setUser(response.data?.user)
         setRoles(response.data?.user?.roles)
         setToken(response.data?.token)
-      }
-      const profile = response.data?.profile as Profile
-
-      const convertedPermissions = mapPermissions(profile.permissions ?? {})
-
-      if (profile) {
-        setProfile(profile)
-        setPermissions(convertedPermissions)
+        setProfile(response.data?.profile as Profile)
+        setPermissions((response.data?.profile as Profile).permissions ?? {})
       }
 
       return {
@@ -103,7 +98,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         error: null,
         isAuthModalOpen: false,
         isLoading: false,
-        permissions: convertedPermissions,
+        permissions: (response.data?.profile as Profile).permissions ?? {},
+        demoPermissions: null,
       }
     } catch (error: any) {
       setError(error.message)
@@ -209,6 +205,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         isLoading,
         error,
         permissions,
+        demoPermissions,
+        setDemoPermissions,
         canCreate,
         canRead,
         canUpdate,
