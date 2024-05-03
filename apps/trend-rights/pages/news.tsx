@@ -38,19 +38,23 @@ type RecommendsPageProps = InferGetServerSidePropsType<
 
 const RecommendsPage: FC<RecommendsPageProps> = ({ topic, topics, seo }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [topicsState, setTopicsState] = useState(topics)
   const [searchKey, setSearchKey] = useState('')
   const [hiddenUrls, setHiddenUrls] = useLocalStorage<string[]>(
-    'hidden-urls', []
+    'hidden-urls',
+    [],
   )
+  // if any hidden topic (which can be blog or activity) is in the list, filter it
+  const baseTopics = useMemo(
+    () =>
+      topics?.filter((topic: TopicBase) => !hiddenUrls?.includes(topic.url)) ||
+      [],
+    [hiddenUrls, topics],
+  )
+  const [topicsState, setTopicsState] = useState(baseTopics)
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchKey(e.target.value)
   }
-
-  // if any hidden topic (which can be blog or activity) is in the list, filter it
-  const baseTopics = useMemo(() => topics.filter(topic => hiddenUrls?.includes(topic.url) ?? []),
-    [hiddenUrls, topics]);
 
   useEffect(() => {
     // setSearchKey('') , this side-effect can be triggered from TopicCard so if there is a searchKey, we should keep it
@@ -71,7 +75,6 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ topic, topics, seo }) => {
     } else {
       setTopicsState(baseTopics)
     }
-
   }, [searchKey, baseTopics])
 
   useEffect(() => {
@@ -95,7 +98,13 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ topic, topics, seo }) => {
         <ModalContent>
           <ModalCloseButton />
           <ModalBody p={{ base: 8, lg: 16 }}>
-            {topic && <TopicCard key={topic.id} topic={topic} setHiddenUrls={setHiddenUrls} />}
+            {topic && (
+              <TopicCard
+                key={topic.id}
+                topic={topic}
+                setHiddenUrls={setHiddenUrls}
+              />
+            )}
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -116,7 +125,11 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ topic, topics, seo }) => {
           />
 
           {topicsState?.map(topic => (
-            <TopicCard key={topic.id} topic={topic} setHiddenUrls={setHiddenUrls} />
+            <TopicCard
+              key={topic.id}
+              topic={topic}
+              setHiddenUrls={setHiddenUrls}
+            />
           ))}
         </Stack>
       </Container>
@@ -143,8 +156,6 @@ export const getServerSideProps = async (
     title: 'Recommended Topics',
   }
 
-  const testDrive = process.env.NODE_ENV !== 'production'
-
   if (id) {
     await strapiRequest<RecommendedTopic>({
       endpoint: 'recommended-topics',
@@ -166,6 +177,28 @@ export const getServerSideProps = async (
       })
   }
 
+  await queryClient.prefetchQuery({
+    queryKey: ['topics'],
+    queryFn: () => getAllData(locale),
+  })
+
+  const topics = queryClient.getQueryData<TopicBase[]>(['topics']) || []
+
+  return {
+    props: {
+      seo,
+      topic: recommendedTopic as RecommendedTopic | null,
+      topics,
+      slugs,
+      dehydratedState: dehydrate(queryClient),
+      ...(await ssrTranslations(locale)),
+    },
+  }
+}
+
+const getAllData = async (locale: StrapiLocale) => {
+  const testDrive = process.env.NODE_ENV !== 'production'
+
   const response = await strapiRequest<RecommendedTopic>({
     endpoint: 'recommended-topics',
     locale,
@@ -178,32 +211,35 @@ export const getServerSideProps = async (
       title: topic.title,
       description: topic.description,
       category: topic.category ?? '',
-      image: '', // topic.image,
+      image: topic.image,
       time: topic.time,
       locale: topic.locale,
       publisher: topic.publisher,
       isRecommended: true,
-      type: 'Topic'
+      type: 'Topic',
     }
 
     return topicBase
   })
 
-  const today = new Date();
+  const today = new Date()
   today.setHours(23, 59, 0, 0)
-  const monthAgo = (new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000)).toISOString()
+  const monthAgo = new Date(
+    today.getTime() - 30 * 24 * 60 * 60 * 1000,
+  ).toISOString()
 
   const responseBlogs = await strapiRequest<Blog>({
     endpoint: 'blogs',
     locale,
-    ...(testDrive ? { limit: 3 } :
-      {
-        filters: {
-          createdAt: {
-            $gte: monthAgo,
-          }
-        }
-      })
+    ...(testDrive
+      ? { limit: 3 }
+      : {
+          filters: {
+            createdAt: {
+              $gte: monthAgo,
+            },
+          },
+        }),
   })
 
   const mappedBlogs = responseBlogs.data?.map(blog => {
@@ -213,12 +249,14 @@ export const getServerSideProps = async (
       id: blog.id,
       image: blog.image ? ASSETS_URL + blog.image.url : undefined,
       url: `https://www.freedomcombination.com/${blog.locale}/blog/${blog.slug}`,
-      category: blog.categories?.map(cat => cat[`name_${blog.locale}`]).join(', ') ?? '',
+      category:
+        blog.categories?.map(cat => cat[`name_${blog.locale}`]).join(', ') ??
+        '',
       publisher: blog.author?.name || '',
       time: blog.publishedAt || blog.createdAt,
       isRecommended: true,
       type: 'Blog',
-      locale: blog.locale
+      locale: blog.locale,
     }
 
     return topicBase
@@ -227,14 +265,15 @@ export const getServerSideProps = async (
   const responseActivities = await strapiRequest<Activity>({
     endpoint: 'activities',
     locale,
-    ...(testDrive ? { limit: 3 } :
-      {
-        filters: {
-          createdAt: {
-            $gte: monthAgo,
-          }
-        }
-      })
+    ...(testDrive
+      ? { limit: 3 }
+      : {
+          filters: {
+            createdAt: {
+              $gte: monthAgo,
+            },
+          },
+        }),
   })
 
   const mappedActivities = responseActivities.data?.map(activity => {
@@ -242,8 +281,14 @@ export const getServerSideProps = async (
       id: activity.id,
       image: activity.image ? ASSETS_URL + activity.image.url : undefined,
       url: `https://www.freedomcombination.com/${activity.locale}/activities/${activity.slug}`,
-      category: activity.categories?.map(cat => cat[`name_${activity.locale}`]).join(', ') ?? '',
-      publisher: activity.platforms?.map(platform => platform[`name_${activity.locale}`]).join(', ') || '',
+      category:
+        activity.categories
+          ?.map(cat => cat[`name_${activity.locale}`])
+          .join(', ') ?? '',
+      publisher:
+        activity.platforms
+          ?.map(platform => platform[`name_${activity.locale}`])
+          .join(', ') || '',
       time: activity.date,
       isRecommended: true,
       type: 'Activity',
@@ -258,19 +303,16 @@ export const getServerSideProps = async (
   const allData = [
     ...recommendedTopics,
     ...mappedBlogs,
-    ...mappedActivities
-  ].sort((a, b) => (a.time && b.time) ? (a.time < b.time ? 1 : -1) : (a.publisher < b.publisher ? 1 : -1))
+    ...mappedActivities,
+  ].sort((a, b) =>
+    a.time && b.time
+      ? a.time < b.time
+        ? 1
+        : -1
+      : a.publisher < b.publisher
+        ? 1
+        : -1,
+  )
 
-
-
-  return {
-    props: {
-      seo,
-      topic: recommendedTopic as RecommendedTopic | null,
-      topics: allData,
-      slugs,
-      dehydratedState: dehydrate(queryClient),
-      ...(await ssrTranslations(locale)),
-    },
-  }
+  return allData
 }

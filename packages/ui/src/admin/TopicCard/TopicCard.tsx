@@ -39,7 +39,10 @@ import { useFields, useSchema } from '../../data'
 import { usePermission } from '../../hooks'
 import { ModelCreateModal } from '../ModelForm'
 
-export const TopicCard: FC<TopicCardProps> = ({ topic, setHiddenUrls }) => {
+export const TopicCard: FC<TopicCardProps> = ({
+  topic,
+  setHiddenUrls = () => {},
+}) => {
   const { user } = useAuthContext()
 
   const { t } = useTranslation()
@@ -57,7 +60,7 @@ export const TopicCard: FC<TopicCardProps> = ({ topic, setHiddenUrls }) => {
     [],
   )
 
-  const type = topic.type
+  const type = topic.type ?? 'Topic'
 
   const deleteModelMutation = useDeleteModel('recommended-topics')
 
@@ -83,7 +86,9 @@ export const TopicCard: FC<TopicCardProps> = ({ topic, setHiddenUrls }) => {
   const handleRecommend = async () => {
     if (type !== 'Topic') return
     await mutateAsync(topic as RecommendedTopicCreateInput, {
-      onSettled: () => queryClient.invalidateQueries({ queryKey: ['topics'] }),
+      onSettled: () => {
+        queryClient.invalidateQueries({ queryKey: ['topics'] })
+      },
     })
     toast({
       title: 'Recommended',
@@ -98,7 +103,8 @@ export const TopicCard: FC<TopicCardProps> = ({ topic, setHiddenUrls }) => {
     window.open(
       topic.url,
       '_blank, popupWindow',
-      `height=500,width=800,left=${window.innerWidth / 3},top=${window.innerHeight / 2
+      `height=500,width=800,left=${window.innerWidth / 3},top=${
+        window.innerHeight / 2
       },resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=yes,directories=no, status=yes`,
     )
   }
@@ -116,8 +122,10 @@ export const TopicCard: FC<TopicCardProps> = ({ topic, setHiddenUrls }) => {
 
   const onDelete = () => {
     const title = type === 'Topic' ? 'Delete News' : 'Hide'
-    const description = type === 'Topic' ? 'Are you sure you want to delete this news?' :
-      `Are you sure you want to hide this ${type}?`
+    const description =
+      type === 'Topic'
+        ? 'Are you sure you want to delete this news?'
+        : `Are you sure you want to hide this ${type}?`
     const text = type === 'Topic' ? 'Delete' : 'Hide'
     setConfirmState({
       isWarning: true,
@@ -135,11 +143,13 @@ export const TopicCard: FC<TopicCardProps> = ({ topic, setHiddenUrls }) => {
               onError: async errors => {
                 console.error('Delete news error', errors)
               },
+              onSettled: () => {
+                queryClient.refetchQueries({ queryKey: ['topics'] })
+              },
             },
           )
-        }
-        else {
-          setHiddenUrls(prev => prev ? [...prev, topic.url] : [topic.url])
+        } else {
+          setHiddenUrls(prev => (prev ? [...prev, topic.url] : [topic.url]))
         }
         setConfirmState(undefined)
       },
@@ -280,12 +290,22 @@ export const TopicCard: FC<TopicCardProps> = ({ topic, setHiddenUrls }) => {
               />
             )}
             {user && topic?.isRecommended && id && (
-              <Tooltip label={type === 'Topic' ? "Delete news" : `Hide ${type}`} hasArrow bg="primary.400">
+              <Tooltip
+                label={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
+                hasArrow
+                bg="primary.400"
+              >
                 <Box>
                   <ActionButton
                     onClick={onDelete}
-                    icon={type === 'Topic' ? <AiOutlineDelete /> : <AiOutlineEyeInvisible />}
-                    title={type === 'Topic' ? "Delete" : "Hide"}
+                    icon={
+                      type === 'Topic' ? (
+                        <AiOutlineDelete />
+                      ) : (
+                        <AiOutlineEyeInvisible />
+                      )
+                    }
+                    title={type === 'Topic' ? 'Delete' : 'Hide'}
                     variant="ghost"
                     colorScheme="red"
                   />
