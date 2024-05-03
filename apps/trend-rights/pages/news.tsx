@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 
 import {
   Input,
@@ -14,13 +14,18 @@ import {
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { NextSeo, NextSeoProps } from 'next-seo'
+import { useLocalStorage } from 'react-use'
 
+import { ASSETS_URL } from '@fc/config'
 import { strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import {
+  Activity,
+  Blog,
   RecommendedTopic,
   StrapiLocale,
   StrapiTranslatableModel,
+  TopicBase,
 } from '@fc/types'
 import { Container, Navigate, TopicCard } from '@fc/ui'
 import { getLocalizedSlugs, getPageSeo } from '@fc/utils'
@@ -35,19 +40,26 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ topic, topics, seo }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [topicsState, setTopicsState] = useState(topics)
   const [searchKey, setSearchKey] = useState('')
+  const [hiddenUrls, setHiddenUrls] = useLocalStorage<string[]>(
+    'hidden-urls', []
+  )
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchKey(e.target.value)
   }
 
+  // if any hidden topic (which can be blog or activity) is in the list, filter it
+  const baseTopics = useMemo(() => topics.filter(topic => hiddenUrls?.includes(topic.url) ?? []),
+    [hiddenUrls, topics]);
+
   useEffect(() => {
-    setSearchKey('')
-    setTopicsState(topics)
-  }, [topics])
+    // setSearchKey('') , this side-effect can be triggered from TopicCard so if there is a searchKey, we should keep it
+    setTopicsState(baseTopics)
+  }, [baseTopics])
 
   useEffect(() => {
     if (searchKey) {
-      const filteredTopics = topics.filter(topic => {
+      const filteredTopics = baseTopics.filter(topic => {
         const content = `${topic.title}  ${topic.description}`
 
         // Regex to match the search key
@@ -57,17 +69,17 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ topic, topics, seo }) => {
       })
       setTopicsState(filteredTopics)
     } else {
-      setTopicsState(topics)
+      setTopicsState(baseTopics)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchKey])
+
+  }, [searchKey, baseTopics])
 
   useEffect(() => {
     if (topic) {
       onOpen()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [topic])
+  }, [topic, topicsState])
 
   const handleClose = () => {
     onClose()
@@ -83,7 +95,7 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ topic, topics, seo }) => {
         <ModalContent>
           <ModalCloseButton />
           <ModalBody p={{ base: 8, lg: 16 }}>
-            {topic && <TopicCard key={topic.id} topic={topic} />}
+            {topic && <TopicCard key={topic.id} topic={topic} setHiddenUrls={setHiddenUrls} />}
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -104,7 +116,7 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ topic, topics, seo }) => {
           />
 
           {topicsState?.map(topic => (
-            <TopicCard key={topic.id} topic={topic} />
+            <TopicCard key={topic.id} topic={topic} setHiddenUrls={setHiddenUrls} />
           ))}
         </Stack>
       </Container>
@@ -130,6 +142,8 @@ export const getServerSideProps = async (
   let seo: NextSeoProps = {
     title: 'Recommended Topics',
   }
+
+  const testDrive = process.env.NODE_ENV !== 'production'
 
   if (id) {
     await strapiRequest<RecommendedTopic>({
@@ -157,16 +171,103 @@ export const getServerSideProps = async (
     locale,
     pageSize: 100,
   })
-  const recommendedTopics = response.data?.map(topic => ({
-    ...topic,
-    isRecommended: true,
-  }))
+  const recommendedTopics = response.data?.map(topic => {
+    const topicBase: TopicBase = {
+      id: topic.id,
+      url: topic.url,
+      title: topic.title,
+      description: topic.description,
+      category: topic.category ?? '',
+      image: '', // topic.image,
+      time: topic.time,
+      locale: topic.locale,
+      publisher: topic.publisher,
+      isRecommended: true,
+      type: 'Topic'
+    }
+
+    return topicBase
+  })
+
+  const today = new Date();
+  today.setHours(23, 59, 0, 0)
+  const monthAgo = (new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000)).toISOString()
+
+  const responseBlogs = await strapiRequest<Blog>({
+    endpoint: 'blogs',
+    locale,
+    ...(testDrive ? { limit: 3 } :
+      {
+        filters: {
+          createdAt: {
+            $gte: monthAgo,
+          }
+        }
+      })
+  })
+
+  const mappedBlogs = responseBlogs.data?.map(blog => {
+    const topicBase: TopicBase = {
+      title: blog.title,
+      description: blog.description || undefined,
+      id: blog.id,
+      image: blog.image ? ASSETS_URL + blog.image.url : undefined,
+      url: `https://www.freedomcombination.com/${blog.locale}/blog/${blog.slug}`,
+      category: blog.categories?.map(cat => cat[`name_${blog.locale}`]).join(', ') ?? '',
+      publisher: blog.author?.name || '',
+      time: blog.publishedAt || blog.createdAt,
+      isRecommended: true,
+      type: 'Blog',
+      locale: blog.locale
+    }
+
+    return topicBase
+  })
+
+  const responseActivities = await strapiRequest<Activity>({
+    endpoint: 'activities',
+    locale,
+    ...(testDrive ? { limit: 3 } :
+      {
+        filters: {
+          createdAt: {
+            $gte: monthAgo,
+          }
+        }
+      })
+  })
+
+  const mappedActivities = responseActivities.data?.map(activity => {
+    const topicBase: TopicBase = {
+      id: activity.id,
+      image: activity.image ? ASSETS_URL + activity.image.url : undefined,
+      url: `https://www.freedomcombination.com/${activity.locale}/activities/${activity.slug}`,
+      category: activity.categories?.map(cat => cat[`name_${activity.locale}`]).join(', ') ?? '',
+      publisher: activity.platforms?.map(platform => platform[`name_${activity.locale}`]).join(', ') || '',
+      time: activity.date,
+      isRecommended: true,
+      type: 'Activity',
+      locale: activity.locale,
+      title: activity.title,
+      description: activity.description ?? undefined,
+    }
+
+    return topicBase
+  })
+
+  const allData = [
+    ...recommendedTopics,
+    ...mappedBlogs,
+    ...mappedActivities
+  ].sort((a, b) => (a.time && b.time) ? (a.time < b.time ? 1 : -1) : (a.publisher < b.publisher ? 1 : -1))
+
+
 
   return {
     props: {
       seo,
       topic: recommendedTopic as RecommendedTopic | null,
-      topics: recommendedTopics,
+      topics: allData,
       slugs,
       dehydratedState: dehydrate(queryClient),
       ...(await ssrTranslations(locale)),

@@ -18,7 +18,7 @@ import {
 import { useQueryClient } from '@tanstack/react-query'
 import { formatDistanceStrict } from 'date-fns'
 import { useTranslation } from 'next-i18next'
-import { AiOutlineDelete } from 'react-icons/ai'
+import { AiOutlineDelete, AiOutlineEyeInvisible } from 'react-icons/ai'
 import {
   FaBookmark,
   FaRegBookmark,
@@ -39,7 +39,7 @@ import { useFields, useSchema } from '../../data'
 import { usePermission } from '../../hooks'
 import { ModelCreateModal } from '../ModelForm'
 
-export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
+export const TopicCard: FC<TopicCardProps> = ({ topic, setHiddenUrls }) => {
   const { user } = useAuthContext()
 
   const { t } = useTranslation()
@@ -56,6 +56,8 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
     'bookmarks',
     [],
   )
+
+  const type = topic.type
 
   const deleteModelMutation = useDeleteModel('recommended-topics')
 
@@ -79,6 +81,7 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
   }
 
   const handleRecommend = async () => {
+    if (type !== 'Topic') return
     await mutateAsync(topic as RecommendedTopicCreateInput, {
       onSettled: () => queryClient.invalidateQueries({ queryKey: ['topics'] }),
     })
@@ -95,8 +98,7 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
     window.open(
       topic.url,
       '_blank, popupWindow',
-      `height=500,width=800,left=${window.innerWidth / 3},top=${
-        window.innerHeight / 2
+      `height=500,width=800,left=${window.innerWidth / 3},top=${window.innerHeight / 2
       },resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=yes,directories=no, status=yes`,
     )
   }
@@ -113,23 +115,32 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
   const id = topic?.id as number
 
   const onDelete = () => {
+    const title = type === 'Topic' ? 'Delete News' : 'Hide'
+    const description = type === 'Topic' ? 'Are you sure you want to delete this news?' :
+      `Are you sure you want to hide this ${type}?`
+    const text = type === 'Topic' ? 'Delete' : 'Hide'
     setConfirmState({
       isWarning: true,
-      title: 'Delete News',
-      description: 'Are you sure you want to delete this news?',
-      buttonText: 'Delete',
+      title,
+      description,
+      buttonText: text,
       onConfirm: async () => {
-        deleteModelMutation.mutate(
-          { id },
-          {
-            onSuccess: () => {
-              setConfirmState(undefined)
+        if (type === 'Topic') {
+          deleteModelMutation.mutate(
+            { id },
+            {
+              onSuccess: () => {
+                setConfirmState(undefined)
+              },
+              onError: async errors => {
+                console.error('Delete news error', errors)
+              },
             },
-            onError: async errors => {
-              console.error('Delete news error', errors)
-            },
-          },
-        )
+          )
+        }
+        else {
+          setHiddenUrls(prev => prev ? [...prev, topic.url] : [topic.url])
+        }
         setConfirmState(undefined)
       },
     })
@@ -179,6 +190,9 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
           </Badge>
           <Badge colorScheme={'primary'} variant={'solid'} fontWeight={600}>
             {time}
+          </Badge>
+          <Badge colorScheme={'blue'} variant={'solid'} fontWeight={600}>
+            {type}
           </Badge>
         </HStack>
       </Box>
@@ -266,12 +280,12 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
               />
             )}
             {user && topic?.isRecommended && id && (
-              <Tooltip label="Delete news" hasArrow bg="primary.400">
+              <Tooltip label={type === 'Topic' ? "Delete news" : `Hide ${type}`} hasArrow bg="primary.400">
                 <Box>
                   <ActionButton
                     onClick={onDelete}
-                    icon={<AiOutlineDelete />}
-                    title="Delete"
+                    icon={type === 'Topic' ? <AiOutlineDelete /> : <AiOutlineEyeInvisible />}
+                    title={type === 'Topic' ? "Delete" : "Hide"}
                     variant="ghost"
                     colorScheme="red"
                   />
