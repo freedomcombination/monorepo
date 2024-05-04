@@ -28,11 +28,11 @@ import { FaX } from 'react-icons/fa6'
 import { useAuthContext } from '@fc/context'
 import { mutation } from '@fc/lib/src/mutation/mutation'
 import { useStrapiRequest } from '@fc/services'
-import { StrapiRole, UpdateUserInput, User } from '@fc/types'
+import { Role, UpdateUserInput, User } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
 type ProfileSelectModalProps = {
-  role?: StrapiRole
+  role?: Role
   onClose: () => void
   onCloseComplete: () => void
   refetchRoles: () => void
@@ -84,7 +84,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
           continue
         }
         setPendingUser(prev => prev.filter(u => u.id !== user.id))
-        user.role = { id: role.id } as StrapiRole // just move until refetch...
+        user.role = { id: role.id } as Role // just move until refetch...
       }
       usersResponse.refetch()
       refetchRoles()

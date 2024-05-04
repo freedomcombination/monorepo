@@ -14,7 +14,7 @@ import {
   Mention,
   Post,
   Profile,
-  StrapiRole,
+  Role,
   StrapiLocale,
   StrapiModel,
   StrapiTranslatableModel,
@@ -38,7 +38,7 @@ export const mapModelToOption = (
   const mention = model as Mention
   const user = model as User
   const profile = model as Profile
-  const role = model as unknown as StrapiRole
+  const role = model as unknown as Role
   const modelWithLocalizedName = model as Category
   const asset = model as Asset
   const assetsTracking = model as AssetsTracking

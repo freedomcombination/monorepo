@@ -6,8 +6,8 @@ import {
   ControllerGroup,
   EndpointControllers,
   Permissions,
-  StrapiRole,
   Role,
+  RoleInput,
   StrapiEndpoint,
 } from '@fc/types'
 
@@ -86,10 +86,10 @@ export function hasDifferences(oldPerm?: Permissions, newPerm?: Permissions) {
     for (const key of groups) {
       const oldGroup = oldControllers[key]
       const newGroup = newControllers[key]
-      const apis = Object.keys(oldGroup)
+      const actions = Object.keys(oldGroup)
 
-      for (const api of apis) {
-        if (oldGroup[api].enabled !== newGroup[api].enabled) return true
+      for (const action of actions) {
+        if (oldGroup[action].enabled !== newGroup[action].enabled) return true
       }
     }
   }
@@ -137,7 +137,7 @@ export function getDifferences(
   return diff
 }
 
-export function copyPermission(perm: Permissions): Permissions {
+export function clonePermission(perm: Permissions): Permissions {
   const copy: Permissions = {}
 
   for (const key in perm) {
@@ -166,7 +166,7 @@ export function copyPermission(perm: Permissions): Permissions {
 
 export async function updateRole(
   roleId: number,
-  roleData: Role,
+  roleData: RoleInput,
   token: string,
 ) {
   const result = await axios.put(
@@ -178,7 +178,7 @@ export async function updateRole(
   return result.data.ok
 }
 
-export async function createRole(roleData: Role, token: string) {
+export async function createRole(roleData: RoleInput, token: string) {
   const result = await axios.post(
     `${API_URL}/api/users-permissions/roles`,
     roleData,
@@ -197,13 +197,13 @@ export async function deleteRole(roleId: number, token: string) {
   return result
 }
 
-export function mapRole(role: StrapiRole): Role | null {
+export function cloneRole(role: Role): RoleInput | null {
   if (!role.permissions) return null
 
   return {
     name: role.name,
     description: role.description,
-    permissions: copyPermission(role.permissions),
+    permissions: clonePermission(role.permissions),
     users: [],
-  } as Role
+  }
 }

@@ -17,7 +17,7 @@ import { TbPlus } from 'react-icons/tb'
 
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
-import { StrapiRole } from '@fc/types'
+import { Role } from '@fc/types'
 
 import { CreateRoleModal } from './CreateRoleModal'
 import { DeleteRoleModal } from './DeleteRoleModal'
@@ -43,7 +43,7 @@ export const UserRoles = () => {
   const { token } = useAuthContext()
   const { push } = useRouter()
   const { t } = useTranslation()
-  const { data: roles, refetch } = useStrapiRequest<StrapiRole>({
+  const { data: roles, refetch } = useStrapiRequest<Role>({
     endpoint: 'users-permissions/roles',
     token: token ?? '',
   })

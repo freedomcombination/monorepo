@@ -1,19 +1,12 @@
 import { StrapiBase } from './strapi'
 
-export type StrapiRole = Omit<StrapiBase, 'publishedAt'> & {
+export type Role = Omit<StrapiBase, 'publishedAt'> & {
   description: string
   name: string
   permissions?: Permissions
   type: string
   nb_users?: number
 }
-
-/*
-export type Permission = Omit<StrapiBase, 'publishedAt'> & {
-  action: string
-  role?: Role
-}
-*/
 
 export type EndpointAction = {
   enabled: boolean
@@ -36,7 +29,7 @@ export type Permissions = {
   }
 }
 
-export type Role = {
+export type RoleInput = {
   name: string
   description: string
   permissions: Permissions

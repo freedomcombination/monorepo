@@ -15,13 +15,13 @@ import {
 import { useTranslation } from 'react-i18next'
 
 import { useAuthContext } from '@fc/context'
-import { StrapiRole } from '@fc/types'
+import { Role } from '@fc/types'
 import { deleteRole } from '@fc/utils'
 
 type DeleteRoleModalProps = {
   isOpen: boolean
   id: number
-  role?: StrapiRole
+  role?: Role
   onClose: () => void
   onCloseComplete: () => void
   refetchRoles: () => void

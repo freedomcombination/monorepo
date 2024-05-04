@@ -2,17 +2,17 @@ import { useQuery } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
-import { StrapiRole } from '@fc/types'
+import { Role } from '@fc/types'
 
 const getRoles = async (token: string | null) => {
-  return await strapiRequest<StrapiRole>({
+  return await strapiRequest<Role>({
     endpoint: 'users-permissions/roles',
     ...(token ? { token } : {}),
   })
 }
 
 const getRole = async (token: string | null, roleId?: number) => {
-  return await strapiRequest<StrapiRole>({
+  return await strapiRequest<Role>({
     endpoint: `users-permissions/roles`,
     id: roleId || 0,
     ...(token ? { token } : {}),

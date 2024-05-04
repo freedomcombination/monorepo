@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next'
 
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
-import { Role, StrapiRole } from '@fc/types'
+import { RoleInput, Role } from '@fc/types'
 import { createRole } from '@fc/utils'
 
 type CreateRoleModalProps = {
@@ -26,7 +26,7 @@ type CreateRoleModalProps = {
   refetchRoles: () => void
   onClose: () => void
   onCloseComplete: () => void
-  roles?: StrapiRole[]
+  roles?: Role[]
 }
 
 export const CreateRoleModal: FC<CreateRoleModalProps> = ({
@@ -52,7 +52,7 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
     if (!startCreate) return
 
     const createRoleAsync = async () => {
-      const roleCreate: Role = {
+      const roleCreate: RoleInput = {
         name: roleName,
         description: roleDescription,
         permissions: {},
@@ -60,7 +60,7 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
       }
 
       if (roleBaseId) {
-        const result = await strapiRequest<StrapiRole>({
+        const result = await strapiRequest<Role>({
           endpoint: 'users-permissions/roles',
           token: token ?? '',
           id: roleBaseId,

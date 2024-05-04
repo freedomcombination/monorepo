@@ -2,12 +2,12 @@ import { ThemeTypings } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { Profile, StrapiRole, User, Job, Platform } from '@fc/types'
+import { Profile, Role, User, Job, Platform } from '@fc/types'
 
 import { WTableProps } from '../../components'
 
 export const useProfileColumns = (): WTableProps<
-  Profile & { role: StrapiRole }
+  Profile & { role: Role }
 >['columns'] => {
   const { t } = useTranslation()
   const { locale } = useRouter()
