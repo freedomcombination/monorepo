@@ -1,11 +1,10 @@
 import { FC } from 'react'
 
-import { Stack, Button } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import { Container, Navigate, NewsFeed } from '@fc/ui'
+import { Container, NewsFeed } from '@fc/ui'
 
 import { Layout } from '../components'
 
@@ -17,12 +16,7 @@ const RecommendsPage: FC<RecommendsPageProps> = () => {
   return (
     <Layout seo={{ title: 'News' }}>
       <Container my={8}>
-        <Stack spacing={4}>
-          <Navigate href={`/tweets`}>
-            <Button>Tweets</Button>
-          </Navigate>
-          <NewsFeed />
-        </Stack>
+        <NewsFeed />
       </Container>
     </Layout>
   )

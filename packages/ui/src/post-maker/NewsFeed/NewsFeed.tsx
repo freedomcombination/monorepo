@@ -44,29 +44,29 @@ export const NewsFeed = () => {
           bg: 'white',
         }}
       />
-      <Tabs>
+      <Tabs colorScheme="primary">
         <TabList>
-          <Tab>{t('recommended-news')}</Tab>
-          <Tab>{t('blogs')}</Tab>
-          <Tab>{t('activities')}</Tab>
+          <Tab fontWeight={600}>{t('recommended-news')}</Tab>
+          <Tab fontWeight={600}>{t('blogs')}</Tab>
+          <Tab fontWeight={600}>{t('activities')}</Tab>
         </TabList>
 
         <TabPanels>
-          <TabPanel>
+          <TabPanel px={0}>
             <PanelRecommended
               searchKey={searchKey}
               hiddenUrls={hiddenUrls}
               setHiddenUrls={setHiddenUrls}
             />
           </TabPanel>
-          <TabPanel>
+          <TabPanel px={0}>
             <PanelBlog
               searchKey={searchKey}
               hiddenUrls={hiddenUrls}
               setHiddenUrls={setHiddenUrls}
             />
           </TabPanel>
-          <TabPanel>
+          <TabPanel px={0}>
             <PanelActivity
               searchKey={searchKey}
               hiddenUrls={hiddenUrls}
