@@ -3,7 +3,6 @@ import { Dispatch, SetStateAction, useMemo } from 'react'
 import { endOfToday, subDays } from 'date-fns'
 import { useRouter } from 'next/router'
 
-import { ASSETS_URL } from '@fc/config'
 import { useStrapiRequest } from '@fc/services'
 import { Activity, Blog, RecommendedTopic, TopicBase } from '@fc/types'
 
@@ -97,7 +96,7 @@ export const useBlogTopics: (
         title: blog.title,
         description: blog.description || undefined,
         id: blog.id,
-        image: blog.image ? ASSETS_URL + blog.image.url : undefined,
+        image: blog.image?.url,
         url: `https://www.freedomcombination.com/${blog.locale}/blog/${blog.slug}`,
         category:
           blog.categories?.map(cat => cat[`name_${blog.locale}`]).join(', ') ??
@@ -168,7 +167,7 @@ export const useActivityTopics: (
     const mappedData = rawData?.data.map(activity => {
       const topicBase: TopicBase = {
         id: activity.id,
-        image: activity.image ? ASSETS_URL + activity.image.url : undefined,
+        image: activity.image?.url,
         url: `https://www.freedomcombination.com/${activity.locale}/activities/${activity.slug}`,
         category:
           activity.categories
