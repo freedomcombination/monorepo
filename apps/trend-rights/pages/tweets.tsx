@@ -52,12 +52,14 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ tweet, tweets, seo }) => {
     } else {
       setTweetsState(tweets)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchKey])
 
   useEffect(() => {
     if (tweet) {
       onOpen()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tweet])
 
   useEffect(() => {

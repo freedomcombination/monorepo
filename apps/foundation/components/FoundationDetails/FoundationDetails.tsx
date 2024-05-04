@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { SimpleGrid, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { Foundation } from '@fc/types'
@@ -16,11 +16,14 @@ export const FoundationDetails: FC<FoundationDetailsProps> = ({
   const { t } = useTranslation()
 
   return (
-    <SimpleGrid
-      columns={{ base: 1, md: 2, lg: 4 }}
+    <Stack
+      justify={'space-between'}
+      flexWrap={'wrap'}
+      direction={{ base: 'column', lg: 'row' }}
+      w={'full'}
+      gap={8}
       p={8}
       bg="white"
-      gap={8}
       rounded="lg"
       shadow="base"
     >
@@ -52,6 +55,6 @@ export const FoundationDetails: FC<FoundationDetailsProps> = ({
         <FoundationDetailItem label={'KVK'} value={foundation?.KVK} />
         <FoundationDetailItem label={'RSIN'} value={foundation?.RSIN} />
       </Stack>
-    </SimpleGrid>
+    </Stack>
   )
 }

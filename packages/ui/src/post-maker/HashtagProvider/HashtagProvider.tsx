@@ -5,7 +5,7 @@ import { sampleSize } from 'lodash'
 import { useRouter } from 'next/router'
 
 import { useGetHashtagSentences, useHashtag } from '@fc/services'
-import { StrapiLocale } from '@fc/types'
+import { PostSentence, StrapiLocale } from '@fc/types'
 
 import { initialHashtagContext } from './state'
 import {
@@ -35,13 +35,24 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
     nl: {},
     tr: {},
   })
-
+  const [sentenceState, setSentenceState] = useState<PostSentence | null>(null)
   const { locale } = useRouter()
 
-  const hashtagSentences = useGetHashtagSentences(hashtag?.id)
+  const { data: hashtagSentences } = useGetHashtagSentences(hashtag?.id)
 
   const mentionsDisclosure = useDisclosure()
   const trendsDisclosure = useDisclosure()
+  const archiveDisclosure = useDisclosure()
+
+  const setSentence = (sentence: PostSentence | null) => {
+    if (!sentence) {
+      setSentenceState(null)
+      archiveDisclosure.onClose()
+    } else {
+      setSentenceState(sentence)
+      archiveDisclosure.onOpen()
+    }
+  }
 
   const removeStoredMention = () => {
     return
@@ -191,6 +202,7 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
       setPostMentions(initialTags.mentions)
       setDefaultTrends(initialTags.trends)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
   return (
@@ -208,6 +220,8 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
         postTrends,
         savedMentions: [],
         trendsDisclosure,
+        archiveDisclosure,
+        sentence: sentenceState,
 
         // actions
         addMentionToPost,
@@ -220,6 +234,7 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
         setMentionSearchKey,
         updatePostSentenceShares,
         updateStoredMentions,
+        setSentence,
       }}
     >
       {children}

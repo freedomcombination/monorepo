@@ -1,17 +1,16 @@
-import { Box } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import { AdminLayout } from '@fc/ui'
+import { AdminLayout, NotFound } from '@fc/ui'
 
-const NotFound = () => {
+const NotFoundPage = () => {
   const { t } = useTranslation()
 
   return (
     <AdminLayout seo={{ title: t('not-found') }}>
-      <Box>Not found</Box>
+      <NotFound />
     </AdminLayout>
   )
 }
@@ -26,4 +25,4 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   }
 }
 
-export default NotFound
+export default NotFoundPage

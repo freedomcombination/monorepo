@@ -8,6 +8,7 @@ export type Flow = {
 }
 
 export type PresentationBase = StrapiEntityBase & {
+  content: string | null
   date: string
   address: string
   place: string

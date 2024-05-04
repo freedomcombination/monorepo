@@ -18,6 +18,8 @@ export const initialHashtagState: HashtagState = {
     nl: { totalSentences: 0, totalShares: 0, unsharedCount: 0 },
     tr: { totalSentences: 0, totalShares: 0, unsharedCount: 0 },
   },
+  archiveDisclosure: {} as UseDisclosureReturn,
+  sentence: null,
 }
 
 export const initialHashtagActions: HashtagActions = {
@@ -31,6 +33,7 @@ export const initialHashtagActions: HashtagActions = {
   setMentionSearchKey: () => null,
   updatePostSentenceShares: () => null,
   updateStoredMentions: () => null,
+  setSentence: () => null,
 }
 
 export const initialHashtagContext: HashtagContextType = {

@@ -7,6 +7,8 @@ import { TopicBase } from '@fc/types'
 export type TopicCardProps = {
   topic: TopicBase
   onCreatePost?: (topic: TopicBase) => void
+  searchKey?: string
+  onDelete?: (url: string) => void
 }
 export type ActionButtonProps = {
   onClick: () => void

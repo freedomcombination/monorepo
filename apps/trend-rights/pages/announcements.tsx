@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { Box, Button, Text, VStack } from '@chakra-ui/react'
 import { QueryClient } from '@tanstack/react-query'
-import { isPast } from 'date-fns'
+import { addHours, isPast, isWithinInterval } from 'date-fns'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
@@ -11,7 +11,13 @@ import { NextSeoProps } from 'next-seo'
 import { RequestCollectionArgs, strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Hashtag, StrapiCollectionResponse, StrapiLocale } from '@fc/types'
-import { Container, HashtagAnnouncement, Hero, Navigate } from '@fc/ui'
+import {
+  Container,
+  HashtagAnnouncement,
+  HashtagCard,
+  Hero,
+  Navigate,
+} from '@fc/ui'
 import { getItemLink, getPageSeo } from '@fc/utils'
 
 import { Layout } from '../components'
@@ -21,20 +27,23 @@ type HashtagEventsProps = InferGetServerSidePropsType<typeof getServerSideProps>
 const AnnouncementEvent: FC<HashtagEventsProps> = ({
   seo,
   hashtag,
-  hasStarted,
+  hashtagPassed,
+  hashtagActive,
   link,
 }) => {
   const { t } = useTranslation()
-  const title = seo?.title || t('hashtag-announcements')
+  const title = (!hashtagPassed && seo?.title) || t('hashtag-announcements')
 
   return (
     <Layout seo={{ title }} isDark>
       <Hero title={title} isFullHeight={false} />
       <Box py={16}>
         <Container maxW={'4xl'}>
-          {hashtag && link && !hasStarted ? (
-            <HashtagAnnouncement hashtag={hashtag} link={link} />
-          ) : (
+          {hashtagActive && hashtag && <HashtagCard item={hashtag} />}
+          {!hashtagActive && !hashtagPassed && hashtag && link && (
+            <HashtagAnnouncement hashtag={hashtag} />
+          )}
+          {hashtagPassed && (
             <VStack mx={'auto'} maxW={'2xl'} textAlign={'center'} spacing={8}>
               <Text fontSize={'lg'} color={'primary'}>
                 {t('join-previous-hashtag')}
@@ -85,7 +94,8 @@ export const getServerSideProps = async (
       props: {
         ...(await ssrTranslations(locale)),
         seo: {} as NextSeoProps,
-        hasStarted: true,
+        hashtagPassed: true,
+        hashtagActive: false,
         hashtag: null,
         link: null,
       },
@@ -97,8 +107,15 @@ export const getServerSideProps = async (
   const seo = getPageSeo(hashtag, 'hashtags', locale, true)
 
   const source = await serialize(hashtag.content || '')
-  const hasStarted = hashtag.date
+  const hashtagPassed = hashtag.date
     ? isPast(new Date(hashtag.date as string))
+    : false
+
+  const hashtagActive = hashtag.date
+    ? isWithinInterval(hashtag.date, {
+        start: new Date(),
+        end: addHours(new Date(), 6),
+      })
     : false
 
   return {
@@ -107,7 +124,8 @@ export const getServerSideProps = async (
       seo,
       source,
       hashtag,
-      hasStarted,
+      hashtagPassed,
+      hashtagActive,
       link,
     },
   }

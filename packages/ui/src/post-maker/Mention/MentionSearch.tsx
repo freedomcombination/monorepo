@@ -46,6 +46,7 @@ export const MentionSearch = (): JSX.Element => {
     } else {
       setMentionSearchKey('')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredMentions])
 
   return (

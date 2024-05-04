@@ -23,7 +23,10 @@ export const hashtagSentencesRouter = {
     try {
       const { hashtagId, value } = await req.json()
 
-      const response = await kv.rpush(`hashtag:${hashtagId}`, value)
+      const response = await kv.rpush(
+        `hashtag:${hashtagId}`,
+        ...(Array.isArray(value) ? value : [value]),
+      )
 
       return new Response(JSON.stringify(response))
     } catch (error) {

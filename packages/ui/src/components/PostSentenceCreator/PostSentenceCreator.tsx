@@ -32,6 +32,7 @@ export const PostSentenceCreator = ({
     if (initialContent !== value) {
       setValue(initialContent)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialContent])
 
   const handleAdd = () => {
@@ -55,7 +56,7 @@ export const PostSentenceCreator = ({
     }
 
     onAddMutation.mutate(
-      { hashtagId, value: `${value}::${postId}::${0}::${0}` },
+      { hashtagId, value: [`${value}::${postId}::${0}::${0}::${0}`] },
       {
         onSuccess: () => {
           queryClient.invalidateQueries({

@@ -7,12 +7,16 @@ import {
   AlertTitle,
   Box,
   Center,
+  HStack,
+  Link,
   SimpleGrid,
+  Stack,
   VStack,
 } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { FaRegFilePdf } from 'react-icons/fa6'
 
 import { PUBLIC_TOKEN } from '@fc/config'
 import { Mutation } from '@fc/lib'
@@ -105,19 +109,34 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
       ) : (
         <>
           <PageTitle>{title}</PageTitle>
+
           <SimpleGrid
             mb={8}
             gap={8}
             columns={{ base: 1, lg: 2 }}
             alignItems="start"
           >
-            <Box>
+            <Stack spacing={4}>
+              <Alert rounded="md">
+                <Link
+                  lineHeight={1}
+                  href="/fc-vrijwilligersovereenkomst.pdf"
+                  download
+                  fontWeight={500}
+                  _hover={{ textDecoration: 'underline', color: 'primary.500' }}
+                >
+                  <HStack as="span" display={'inline-flex'} align={'center'}>
+                    <AlertIcon color={'inherit'} m={0} as={FaRegFilePdf} />
+                    <span>{t('download-volunteer-form')}</span>
+                  </HStack>
+                </Link>
+              </Alert>
               <JoinForm
                 onSubmitHandler={onSubmit}
                 isLoading={isPending}
                 platforms={platforms}
               />
-            </Box>
+            </Stack>
 
             <Box pos="sticky" top={8}>
               {platforms && <PlatformList platforms={platforms} />}

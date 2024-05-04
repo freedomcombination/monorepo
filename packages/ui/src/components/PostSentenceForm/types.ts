@@ -12,4 +12,5 @@ export type PostSentenceFormItemProps = {
   sentence: string
   shareCount: number
   isPublished: boolean
+  archiveId: number
 }

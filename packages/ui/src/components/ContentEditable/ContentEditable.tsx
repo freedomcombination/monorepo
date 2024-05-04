@@ -1,6 +1,7 @@
-import { FC, FormEventHandler, useEffect, useRef } from 'react'
+import { FC, FormEventHandler, useRef, useState } from 'react'
 
 import { Box } from '@chakra-ui/react'
+import { useDebounce } from 'react-use'
 
 import { ContentEditableProps } from './types'
 
@@ -11,11 +12,22 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
     threshold,
     thresholdStyles = {},
     contentEditable = true,
+    children,
     ...rest
   } = props
 
+  const [currentValue, setCurrentValue] = useState<string>(value)
+
   const contentRef = useRef<HTMLDivElement>(null)
   const caretPos = useRef<number>(0)
+
+  useDebounce(
+    () => {
+      if (contentEditable) onUpdate(currentValue)
+    },
+    700,
+    [currentValue],
+  )
 
   const getCaret = (el: HTMLDivElement) => {
     let caretAt = 0
@@ -36,6 +48,7 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
     return caretAt
   }
 
+  /**
   function setCaret(el: HTMLDivElement, offset: number) {
     const sel = window.getSelection()
     const range = document.createRange()
@@ -47,24 +60,23 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
       sel.addRange(range)
     }
   }
+  */
 
   const handleInput: FormEventHandler<HTMLDivElement> = e => {
-    onUpdate(e.currentTarget.textContent ?? '')
+    const target = (e.target || e.currentTarget) as HTMLDivElement
+    const content = target?.textContent ?? ''
+
+    setCurrentValue(content)
 
     if (contentRef.current) {
       caretPos.current = getCaret(contentRef.current) as number
     }
   }
 
-  useEffect(() => {
-    if (contentRef.current) {
-      setCaret(contentRef.current, caretPos.current)
-      // contentRef.current.focus()
-    }
-  }, [value])
-
-  const validValue = threshold ? value?.slice(0, threshold) : value
-  const thresholdValue = threshold ? value?.slice(threshold ?? 0) : null
+  const validValue = threshold
+    ? currentValue?.slice(0, threshold)
+    : currentValue
+  const thresholdValue = threshold ? currentValue?.slice(threshold ?? 0) : null
 
   return (
     <Box pos={'relative'} {...rest}>
@@ -78,6 +90,7 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
       )}
       <Box
         pos={'relative'}
+        display={'inline-block'}
         {...(thresholdValue && {
           bg: 'transparent',
           sx: {
@@ -95,6 +108,7 @@ export const ContentEditable: FC<ContentEditableProps> = props => {
       >
         {value}
       </Box>
+      {children}
     </Box>
   )
 }

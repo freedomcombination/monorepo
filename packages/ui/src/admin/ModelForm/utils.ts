@@ -250,5 +250,6 @@ export const useDefaultValues = <T extends StrapiModel>(
     })
 
     return defaults
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [model, fields, locale])
 }

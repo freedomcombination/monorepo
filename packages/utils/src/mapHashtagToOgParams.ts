@@ -35,5 +35,6 @@ export const mapHashtagToOgParams = (hashtag: Hashtag): OgImageParams => {
     flip: true,
     hasLine: true,
     scale: 0.5,
+    platform: hashtag.platform?.slug as OgImageParams['platform'],
   }
 }

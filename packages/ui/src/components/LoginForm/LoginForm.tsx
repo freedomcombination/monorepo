@@ -53,6 +53,7 @@ export const LoginForm: FC<LoginFormProps> = ({
 
   const router = useRouter()
   const { login, isLoading, error } = useAuthContext()
+  const { returnUrl } = router.query
 
   useEffect(() => {
     if (error) {
@@ -65,7 +66,7 @@ export const LoginForm: FC<LoginFormProps> = ({
     mutationFn: (body: LoginFormFieldValues) =>
       login(body.identifier, body.password),
     onSuccess: async () => {
-      router.push('/')
+      router.push(returnUrl ? returnUrl.toString() : '/')
     },
   })
 

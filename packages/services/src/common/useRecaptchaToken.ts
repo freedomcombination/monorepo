@@ -13,6 +13,7 @@ export const useRecaptchaToken = (key: string) => {
     }
 
     executeRecaptcha(key).then(setToken)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, loaded])
 
   return token

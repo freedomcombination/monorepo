@@ -74,10 +74,10 @@ const Home: FC<HomeProps> = ({ hashtags }) => {
           </Stack>
         </Container>
       </Box>
-      {!hasStarted && link && (
+      {!hasStarted && link && hashtag && (
         <Box bg={'primary.50'} py={16} borderBottomWidth={1}>
           <Container maxW={'4xl'}>
-            <HashtagAnnouncement hashtag={hashtag} link={link} />
+            <HashtagAnnouncement hashtag={hashtag} />
           </Container>
         </Box>
       )}

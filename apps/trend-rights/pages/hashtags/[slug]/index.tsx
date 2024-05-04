@@ -16,13 +16,14 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { serialize } from 'next-mdx-remote/serialize'
 
 import { ASSETS_URL, SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { getHashtagBySlug, getHashtagSentences, useHashtag } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { HashtagReturnType, Post, StrapiLocale } from '@fc/types'
+import { HashtagReturnType, PlatformSlug, Post, StrapiLocale } from '@fc/types'
 import {
   Container,
   HashtagProvider,
@@ -37,13 +38,14 @@ import {
   getPageSeo,
 } from '@fc/utils'
 
-import { Layout } from '../../../components'
+import { Layout, PlusButton } from '../../../components'
 
 type HashtagProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const HashtagPage: FC<HashtagProps> = ({
   hasStarted,
   seo,
+  source,
   post,
   capsSrc,
   isIosSafari,
@@ -60,6 +62,7 @@ const HashtagPage: FC<HashtagProps> = ({
     if (post) {
       onOpen()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post])
 
   const handleClose = () => {
@@ -108,6 +111,7 @@ const HashtagPage: FC<HashtagProps> = ({
           )}
         </Container>
       </Layout>
+      <PlusButton source={source} />
     </HashtagProvider>
   )
 }
@@ -165,6 +169,7 @@ export const getServerSideProps = async (
           title: post.title,
           text: post.description || undefined,
           image: src ? `${ASSETS_URL}${src}` : undefined,
+          platform: post.hashtag?.platform?.slug as PlatformSlug,
           ...post.imageParams,
         })
     }
@@ -218,6 +223,8 @@ export const getServerSideProps = async (
 
   const slugs = getLocalizedSlugs(hashtag, locale)
 
+  const source = await serialize(hashtag.content || '')
+
   return {
     props: {
       seo,
@@ -225,6 +232,7 @@ export const getServerSideProps = async (
       post: post || null,
       isIosSafari,
       slugs,
+      source,
       hasStarted: hashtag.hasStarted,
       dehydratedState: dehydrate(queryClient),
       ...(await ssrTranslations(locale)),

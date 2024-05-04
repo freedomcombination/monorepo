@@ -5,10 +5,12 @@ import { CiImageOff } from 'react-icons/ci'
 import { IoMdCloudUpload } from 'react-icons/io'
 
 import {
+  PlatformSlug,
   Post,
   StrapiEndpoint,
   StrapiModel,
   StrapiTranslatableModel,
+  UploadFile,
 } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
@@ -38,7 +40,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
   const key = name || 'image'
 
   // Name can be image or avatar
-  const media = (model as any)?.[key]
+  const media = (model as any)?.[key] as UploadFile
 
   if (Array.isArray(media)) {
     return (
@@ -109,6 +111,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
             title,
             text: description as string,
             image: media,
+            platform: (model as Post)?.hashtag?.platform?.slug as PlatformSlug,
             ...(model as Post)?.imageParams,
           }}
         />

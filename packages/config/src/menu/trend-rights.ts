@@ -6,6 +6,8 @@ import {
   hashtags,
   privacy,
   term,
+  news,
+  tweets,
 } from './routes'
 import { Menus } from './types'
 
@@ -30,5 +32,16 @@ export const trendRights: Menus = {
       nl: 'Steun',
       tr: 'Destek',
     },
+  ],
+}
+
+export const trendRightsWithProfile: Menus = {
+  headerMenu: [news, tweets, ...trendRights.headerMenu],
+  footerMenu: [
+    {
+      ...trendRights.footerMenu[0],
+      children: [news, tweets, ...(trendRights.footerMenu[0].children || [])],
+    },
+    ...trendRights.footerMenu.slice(1),
   ],
 }

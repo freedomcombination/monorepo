@@ -6,7 +6,7 @@ import axios from 'axios'
 import { PostSentence, RedisPost } from '@fc/types'
 
 type UpdateArgs = { hashtagId: number; index: number; value: RedisPost }
-type CreateArgs = { hashtagId: number; value: RedisPost }
+type CreateArgs = { hashtagId: number; value: RedisPost[] }
 type DeleteArgs = { hashtagId: number; value: RedisPost }
 
 export const updateHashtagSentences = async (args: UpdateArgs) => {
@@ -60,27 +60,33 @@ export const getHashtagSentences = async (hashtagId: number) => {
 }
 
 export const useGetHashtagSentences = (hashtagId: number) => {
-  const { data } = useQuery<RedisPost[]>({
+  const { data, refetch } = useQuery<RedisPost[]>({
     queryKey: ['kv-hashtag-sentences', hashtagId],
     queryFn: () => getHashtagSentences(hashtagId),
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 3,
   })
 
-  return useMemo(() => {
+  const result = useMemo(() => {
     if (!data?.length) return []
 
     const sortedSentences = (data
       .map((s, index) => {
-        const [sentence = '', postId = 0, shareCount = 0, published = '0'] =
-          s.split('::')
+        const [
+          sentence = '',
+          postId = 0,
+          shareCount = 0,
+          published = '0',
+          archiveId = 0,
+        ] = s.split('::')
 
         return {
           postId: Number(postId),
           value: sentence,
           shareCount: Number(shareCount),
           isPublished: published === '1',
+          archiveId: Number(archiveId),
           index,
-        }
+        } as PostSentence
       })
       .sort((a, b) => {
         return a.shareCount - b.shareCount
@@ -106,4 +112,9 @@ export const useGetHashtagSentences = (hashtagId: number) => {
 
     return sentencesByPostId
   }, [data])
+
+  return {
+    data: result,
+    refetch,
+  }
 }

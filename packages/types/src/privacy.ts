@@ -4,7 +4,9 @@ import { StrapiBase, StrapiEntityBase } from './strapi'
 export type PrivacyBase = Omit<
   StrapiEntityBase,
   'description' | 'approvalStatus'
->
+> & {
+  content: string | null
+}
 
 type PrivacyRelation = {
   image?: UploadFile | null

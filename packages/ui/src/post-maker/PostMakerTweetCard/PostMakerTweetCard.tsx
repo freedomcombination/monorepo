@@ -9,10 +9,12 @@ import { PostImage } from '../../components'
 
 type PostMakerTweetCardProps = {
   isIosSafari?: boolean
+  canManageSentences: boolean
 }
 
 export const PostMakerTweetCard: FC<PostMakerTweetCardProps> = ({
   isIosSafari,
+  canManageSentences,
 }) => {
   return (
     <Stack
@@ -26,7 +28,10 @@ export const PostMakerTweetCard: FC<PostMakerTweetCardProps> = ({
       <PostMakerTweetContent />
       <PostMakerTweetTags />
       <PostImage rounded="lg" borderWidth={1} overflow={'hidden'} />
-      <PostMakerTweetButtons isIosSafari={isIosSafari} />
+      <PostMakerTweetButtons
+        isIosSafari={isIosSafari}
+        canManageSentences={canManageSentences}
+      />
     </Stack>
   )
 }

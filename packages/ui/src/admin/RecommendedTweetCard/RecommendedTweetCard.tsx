@@ -42,9 +42,9 @@ export const RecommendedTweetCard: FC<RecommendedTweetCardProps> = ({
 
     return {
       text: recommendedTweet.text,
-      user: mapRecommenderToTweetUser(
-        recommendedTweet.creator,
-      ) as TweetUserBase,
+      user:
+        recommendedTweet.originalTweet?.user ||
+        (mapRecommenderToTweetUser(recommendedTweet.creator) as TweetUserBase),
       image,
       video: recommendedTweet?.video?.url,
     }
@@ -63,6 +63,7 @@ export const RecommendedTweetCard: FC<RecommendedTweetCardProps> = ({
         tweet={mapRecommendedTweetToTweet(tweet) as Tweet}
         editable
         shadow={'none'}
+        isRecommended
       />
       <Divider />
       <Box p={2}>

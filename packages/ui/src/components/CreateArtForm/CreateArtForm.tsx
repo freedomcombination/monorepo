@@ -80,6 +80,8 @@ export const CreateArtForm = () => {
   const isValid = formState.isValid
 
   const { mutate, isPending } = useCreateModelMutation('arts')
+  const { pathname } = useRouter()
+  const loginHref = `/login?returnUrl=${pathname}`
 
   const createArt = async (
     data: CreateArtFormFieldValues & { image: File },
@@ -181,7 +183,7 @@ export const CreateArtForm = () => {
               <VStack>
                 <Text>
                   <>{t('you-must-logged-in')} </>
-                  <Navigate href="/login" color="primary.500">
+                  <Navigate href={loginHref} color="primary.500">
                     {t('login')}
                   </Navigate>
                 </Text>

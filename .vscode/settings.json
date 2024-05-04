@@ -3,5 +3,13 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.formatOnSave": true,
-  "cSpell.words": ["strapi"]
+  "cSpell.words": [
+    "academyeditor",
+    "arteditor",
+    "contentmanager",
+    "Kunsthalte",
+    "kunsthaltecoordinator",
+    "platformcoordinator",
+    "strapi"
+  ]
 }

@@ -9,7 +9,6 @@ export const POST_MOCKS = {
           '"2016\'dan bu yana dünyanın dört bir yanında yaşanan insan hakları ihlalleri, sessiz kalmamızı gerektirmez. Birlikte hareket edelim ve adalet için sesimizi yükseltelim! \n\n',
         content:
           "2016'dan beri yaşanan insan hakları ihlallerini daha fazla insana duyurmaya çalışıyor.",
-        reference: '',
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -96,7 +95,6 @@ export const POST_MOCKS = {
               'Sinds 2016 probeert hij meer mensen bewust te maken van mensenrechtenschendingen.',
             content:
               'Sinds 2016 probeert hij meer mensen bewust te maken van mensenrechtenschendingen.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -119,7 +117,6 @@ export const POST_MOCKS = {
               'Platform Samen voor Vrijheid en Verbinding - Since 2016, he has been trying to make more people aware of human rights violations.',
             content:
               'Platform Samen voor Vrijheid en Verbinding - Since 2016, he has been trying to make more people aware of human rights violations.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -144,7 +141,6 @@ export const POST_MOCKS = {
           'Freedom Combination Vakfı- Sanatın dilini evrensel kabul ederek, sanatın dili ile insan hakları ihlallerini daha fazla insana ulaştırmak da hedefleri arasındadır.',
         content:
           'Ögürlüğün Sesi Ol Vakfı - Sanatın dilini evrensel kabul ederek, sanatın dili ile insan hakları ihlallerini daha fazla insana ulaştırmak da hedefleri arasındadır.',
-        reference: '',
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -231,7 +227,6 @@ export const POST_MOCKS = {
               'Freedom Combination - Deze stichting accepteert de taal van de kunst als universeel en wil ook meer mensen bereiken over mensenrechtenschendingen via de taal van de kunst.',
             content:
               'Freedom Combination - Deze stichting accepteert de taal van de kunst als universeel en wil ook meer mensen bereiken over mensenrechtenschendingen via de taal van de kunst.dingen via de taal van de kunst.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -254,7 +249,6 @@ export const POST_MOCKS = {
               ' Foundation Freedom Combination - Accepting the language of art as universal, one of its goals is to bring human rights violations to more people through the language of art.',
             content:
               'Foundation Freedom Combination  - Accepting the language of art as universal, one of its goals is to bring human rights violations to more people through the language of art.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -278,7 +272,6 @@ export const POST_MOCKS = {
         description:
           'Sanat durağı Hollandanın değişik yerlerinde sergiler yaptı. ',
         content: 'Sanat durağı Hollandanın değişik yerlerinde sergiler yaptı. ',
-        reference: '',
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -494,7 +487,6 @@ export const POST_MOCKS = {
               'Hij heeft in verschillende delen van Nederland geëxposeerd.',
             content:
               'Hij heeft in verschillende delen van Nederland geëxposeerd.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -517,7 +509,6 @@ export const POST_MOCKS = {
               'Art stop has held exhibitions in different parts of the Netherlands.',
             content:
               'Art stop has held exhibitions in different parts of the Netherlands.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -542,7 +533,6 @@ export const POST_MOCKS = {
           "Birlikte Yaşama ve  Ögürlük Platformu websitesindeki ''Twit Yardımcısı'' uygulaması ile sosyal medya  kullanıcılarının desteğini daha hızlı alıyor.",
         content:
           "Websitesindeki ''Twit Yardımcısı'' uygulaması ile sosyal medya  kullanıcılarının desteğini daha hızlı alıyor.",
-        reference: '',
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -588,7 +578,6 @@ export const POST_MOCKS = {
               'Platform Samen voor Vrijheid en Verbinding - With the "Twit Helper" application on its website, it gets the support of social media users faster.',
             content:
               'Platform Samen voor Vrijheid en Verbinding - With the "Twit Helper" application on its website, it gets the support of social media users faster.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -611,7 +600,6 @@ export const POST_MOCKS = {
               ' Platform Samen voor Vrijheid en Verbinding - Met de applicatie "Post Maker" op zijn website krijgt het sneller de steun van gebruikers van sociale media.',
             content:
               'Met de applicatie "Post Maker" op zijn website krijgt het sneller de steun van gebruikers van sociale media.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -636,7 +624,6 @@ export const POST_MOCKS = {
           'Son bır yılda Hengelo, Heerenven ve Utrecht gibi yerlerde sergiler yaptık. ',
         content:
           'Son bır yılda Hengelo, Heerenven ve Utrecht gibi yerlerde sergiler yaptık. ',
-        reference: '',
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -852,7 +839,6 @@ export const POST_MOCKS = {
               'In het afgelopen jaar hebben we tentoonstellingen gehad in onder andere Hengelo, Heerenven en Utrecht.',
             content:
               'In het afgelopen jaar hebben we tentoonstellingen gehad in onder andere Hengelo, Heerenven en Utrecht.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -875,7 +861,6 @@ export const POST_MOCKS = {
               'In the last one year we have done exhibitions in places like Hengelo, Heerenven and Utrecht.',
             content:
               'In the last one year we have done exhibitions in places like Hengelo, Heerenven and Utrecht.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -912,7 +897,6 @@ export const POST_MOCKS = {
           'Parlementslid Ömer Faruk Gergerlioğlu vroeg aandacht voor de baby\'s in de gevangenis. Hij zei: "Jullie houden een baby van 10 maanden die naar melk ruikt in de gevangenis! Een moeder en haar baby zitten in de gevangenis zonder dat er een definitieve uitspraak tegen haar is gedaan! Alsof het nog niet genoeg is dat jullie vrouwen, moeders en zwangere vrouwen laten lijden, laten jullie nu ook baby\'s lijden."',
         content:
           "Baby's in de gevangenis - Parlementslid Ömer Faruk Gergerlioğlu vroeg aandacht voor de baby's in de gevangenis. Hij zei: \"Jullie houden een baby van 10 maanden die naar melk ruikt in de gevangenis! Een moeder die nog geen definitief vonnis tegen haar en haar baby heeft, zitten in de gevangenis! Alsof het nog niet genoeg is dat jullie vrouwen, moeders en zwangere vrouwen laten lijden, laten jullie nu ook baby's lijden.\"",
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -1011,7 +995,6 @@ export const POST_MOCKS = {
               'MP Ömer Faruk Gergerlioğlu drew attention to the babies in prison. He said; "You are keeping a 10-month-old baby who smells of milk in prison! A mother and her baby are in prison without a finalized verdict against her! It is not enough that you are making women, mothers and pregnant women suffer, now you are making babies suffer."',
             content:
               'Prisoner Babies - MP Ömer Faruk Gergerlioğlu drew attention to the babies in prison. He said; "You are keeping a 10-month-old baby who smells of milk in prison! A mother who has no finalized verdict against her and her baby are in prison! It is not enough that you are making women, mothers and pregnant women suffer, now you are making babies suffer."',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1034,7 +1017,6 @@ export const POST_MOCKS = {
               'Milletvekili Ömer Faruk Gergerlioğlu yaptığı açıklamada cezaevindeki bebeklere dikkat çekti. Söyle söyledi; "10 aylık süt kokan bir bebeği cezaevinde tutuyorsunuz ya! Hakkında kesinleşmiş bir kararı olmayan bir annenin kendisi ve bebeği cezaevinde! Kadınlara, annelere, hamile kadınlara çektirdiğiniz yetmiyormuş gibi şimdi de bebeklere çektiriyorsunuz."',
             content:
               'Tutsak Bebekler - Milletvekili Ömer Faruk Gergerlioğlu yaptığı açıklamada cezaevindeki bebeklere dikkat çekti. Söyle söyledi; "10 aylık süt kokan bir bebeği cezaevinde tutuyorsunuz ya! Hakkında kesinleşmiş bir kararı olmayan bir annenin kendisi ve bebeği cezaevinde! Kadınlara, annelere, hamile kadınlara çektirdiğiniz yetmiyormuş gibi şimdi de bebeklere çektiriyorsunuz."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1059,7 +1041,6 @@ export const POST_MOCKS = {
           'Mensenrechten schendingen in Turkije en in het buitenland zijn van het grootste belang en het is cruciaal om ervoor te zorgen dat informatie over deze schendingen een breed publiek bereikt. Daarom delen we deze essentiële informatie in drie talen: Nederlands, Engels en Turks.\n\n',
         content:
           'Mensenrechten schendingen in Turkije en in het buitenland zijn van het grootste belang en het is cruciaal om ervoor te zorgen dat informatie over deze schendingen een breed publiek bereikt. Daarom delen we deze essentiële informatie in drie talen: Nederlands, Engels en Turks.\n\n',
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -1146,7 +1127,6 @@ export const POST_MOCKS = {
               'Human rights violations in Turkey and abroad are of utmost importance, and it is crucial to ensure that information regarding these violations reaches a wide audience. That is why we are committed to sharing this vital information in three languages: Dutch, English, and Turkish.',
             content:
               'Human rights violations in Turkey and abroad are of utmost importance, and it is crucial to ensure that information regarding these violations reaches a wide audience. That is why we are committed to sharing this vital information in three languages: Dutch, English, and Turkish.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1169,7 +1149,6 @@ export const POST_MOCKS = {
               "Türkiye'de ve yurt dışında yaşanan insan hakları ihlalleri son derece önemlidir ve bu ihlallere ilişkin bilgilerin geniş kitlelere ulaşması büyük önem taşımaktadır. Bu nedenle, bu hayati bilgiyi üç dilde paylaşıyoruz: Hollandaca, İngilizce ve Türkçe.",
             content:
               "Türkiye'de ve yurt dışında yaşanan insan hakları ihlalleri son derece önemlidir ve bu ihlallere ilişkin bilgilerin geniş kitlelere ulaşması büyük önem taşımaktadır. Bu nedenle, bu hayati bilgiyi üç dilde paylaşıyoruz: Hollandaca, İngilizce ve Türkçe.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1194,7 +1173,6 @@ export const POST_MOCKS = {
           'Stichting Freedom Combination - Stelt zich ten doel een einde te maken aan mensenrechtenschendingen door gebruik te maken van de kracht van sociale media',
         content:
           'Stichting Freedom Combination - Stelt zich ten doel een einde te maken aan mensenrechtenschendingen door gebruik te maken van de kracht van sociale media',
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -1322,7 +1300,6 @@ export const POST_MOCKS = {
               'Foundation Freedom Combination - Aims to end human rights violations by using the power of social media',
             content:
               'Foundation Freedom Combination  - Aims to end human rights violations by using the power of social media.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1345,7 +1322,6 @@ export const POST_MOCKS = {
               'Özgürlüğün Sesi Ol Vakfı  - Sosyal medyanın gücünü kullanarak insan hakları ihlallerinin son bulmasını hedeflemektedir',
             content:
               'Özgürlüğün Sesi Ol Vakfı  - Sosyal medyanın gücünü kullanarak insan hakları ihlallerinin son bulmasını hedeflemektedir.  ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1370,7 +1346,6 @@ export const POST_MOCKS = {
           'Onze tentoonstelling over Nederland door de ogen van een vluchteling was voor het eerst te zien in Utrecht.',
         content:
           'Onze tentoonstelling over Nederland door de ogen van een vluchteling was voor het eerst te zien in Utrecht.',
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -1501,7 +1476,6 @@ export const POST_MOCKS = {
               'Our exhibition on The Netherlands through the Eyes of a Refugee was exhibited for the first time in Utrecht.',
             content:
               'Our exhibition on The Netherlands through the Eyes of a Refugee was exhibited for the first time in Utrecht.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1524,7 +1498,6 @@ export const POST_MOCKS = {
               'Bir Mültecinin Gözünden Hollanda konulu sergimiz ilk kez Utrecht şehrinde sergilendi. ',
             content:
               'Bir Mültecinin Gözünden Hollanda konulu sergimiz ilk kez Utrecht şehrinde sergilendi. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1549,7 +1522,6 @@ export const POST_MOCKS = {
           'Als FC Academy hebben we een digitale tekentraining gegeven, die we in de nieuwe periode willen herhalen.',
         content:
           'Als FC Academy hebben we een digitale tekentraining gegeven, die we in de nieuwe periode willen herhalen.',
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -1656,7 +1628,6 @@ export const POST_MOCKS = {
               'As FC Academy, we gave digital drawing training. We are planning to repeat it in the new semester.',
             content:
               'As FC Academy, we gave digital drawing training. We are planning to repeat it in the new semester.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1677,7 +1648,6 @@ export const POST_MOCKS = {
               'FC Akademi olarak Dijital çizim eğitimi verdik. Yeni dönemde tekrarını planlıyoruz.',
             content:
               'FC Akademi olarak Dijital çizim eğitimi verdik. Yeni dönemde tekrarını planlıyoruz.',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -1712,7 +1682,6 @@ export const POST_MOCKS = {
           'MP Ömer Faruk Gergerlioğlu drew attention to the babies in prison. He said; "You are keeping a 10-month-old baby who smells of milk in prison! A mother and her baby are in prison without a finalized verdict against her! It is not enough that you are making women, mothers and pregnant women suffer, now you are making babies suffer."',
         content:
           'Prisoner Babies - MP Ömer Faruk Gergerlioğlu drew attention to the babies in prison. He said; "You are keeping a 10-month-old baby who smells of milk in prison! A mother who has no finalized verdict against her and her baby are in prison! It is not enough that you are making women, mothers and pregnant women suffer, now you are making babies suffer."',
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -1994,7 +1963,6 @@ export const POST_MOCKS = {
               'Parlementslid Ömer Faruk Gergerlioğlu vroeg aandacht voor de baby\'s in de gevangenis. Hij zei: "Jullie houden een baby van 10 maanden die naar melk ruikt in de gevangenis! Een moeder en haar baby zitten in de gevangenis zonder dat er een definitieve uitspraak tegen haar is gedaan! Alsof het nog niet genoeg is dat jullie vrouwen, moeders en zwangere vrouwen laten lijden, laten jullie nu ook baby\'s lijden."',
             content:
               "Baby's in de gevangenis - Parlementslid Ömer Faruk Gergerlioğlu vroeg aandacht voor de baby's in de gevangenis. Hij zei: \"Jullie houden een baby van 10 maanden die naar melk ruikt in de gevangenis! Een moeder die nog geen definitief vonnis tegen haar en haar baby heeft, zitten in de gevangenis! Alsof het nog niet genoeg is dat jullie vrouwen, moeders en zwangere vrouwen laten lijden, laten jullie nu ook baby's lijden.\"",
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2017,7 +1985,6 @@ export const POST_MOCKS = {
               'Milletvekili Ömer Faruk Gergerlioğlu yaptığı açıklamada cezaevindeki bebeklere dikkat çekti. Söyle söyledi; "10 aylık süt kokan bir bebeği cezaevinde tutuyorsunuz ya! Hakkında kesinleşmiş bir kararı olmayan bir annenin kendisi ve bebeği cezaevinde! Kadınlara, annelere, hamile kadınlara çektirdiğiniz yetmiyormuş gibi şimdi de bebeklere çektiriyorsunuz."',
             content:
               'Tutsak Bebekler - Milletvekili Ömer Faruk Gergerlioğlu yaptığı açıklamada cezaevindeki bebeklere dikkat çekti. Söyle söyledi; "10 aylık süt kokan bir bebeği cezaevinde tutuyorsunuz ya! Hakkında kesinleşmiş bir kararı olmayan bir annenin kendisi ve bebeği cezaevinde! Kadınlara, annelere, hamile kadınlara çektirdiğiniz yetmiyormuş gibi şimdi de bebeklere çektiriyorsunuz."',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2042,7 +2009,6 @@ export const POST_MOCKS = {
           'Foundation Freedom Combination - Aims to end human rights violations by using the power of social media',
         content:
           'Foundation Freedom Combination  - Aims to end human rights violations by using the power of social media.',
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -2870,7 +2836,6 @@ export const POST_MOCKS = {
               'Stichting Freedom Combination - Stelt zich ten doel een einde te maken aan mensenrechtenschendingen door gebruik te maken van de kracht van sociale media',
             content:
               'Stichting Freedom Combination - Stelt zich ten doel een einde te maken aan mensenrechtenschendingen door gebruik te maken van de kracht van sociale media',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2893,7 +2858,6 @@ export const POST_MOCKS = {
               'Özgürlüğün Sesi Ol Vakfı  - Sosyal medyanın gücünü kullanarak insan hakları ihlallerinin son bulmasını hedeflemektedir',
             content:
               'Özgürlüğün Sesi Ol Vakfı  - Sosyal medyanın gücünü kullanarak insan hakları ihlallerinin son bulmasını hedeflemektedir.  ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -2918,7 +2882,6 @@ export const POST_MOCKS = {
           'Human rights violations in Turkey and abroad are of utmost importance, and it is crucial to ensure that information regarding these violations reaches a wide audience. That is why we are committed to sharing this vital information in three languages: Dutch, English, and Turkish.',
         content:
           'Human rights violations in Turkey and abroad are of utmost importance, and it is crucial to ensure that information regarding these violations reaches a wide audience. That is why we are committed to sharing this vital information in three languages: Dutch, English, and Turkish.',
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -3705,7 +3668,6 @@ export const POST_MOCKS = {
               'Mensenrechten schendingen in Turkije en in het buitenland zijn van het grootste belang en het is cruciaal om ervoor te zorgen dat informatie over deze schendingen een breed publiek bereikt. Daarom delen we deze essentiële informatie in drie talen: Nederlands, Engels en Turks.\n\n',
             content:
               'Mensenrechten schendingen in Turkije en in het buitenland zijn van het grootste belang en het is cruciaal om ervoor te zorgen dat informatie over deze schendingen een breed publiek bereikt. Daarom delen we deze essentiële informatie in drie talen: Nederlands, Engels en Turks.\n\n',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3728,7 +3690,6 @@ export const POST_MOCKS = {
               "Türkiye'de ve yurt dışında yaşanan insan hakları ihlalleri son derece önemlidir ve bu ihlallere ilişkin bilgilerin geniş kitlelere ulaşması büyük önem taşımaktadır. Bu nedenle, bu hayati bilgiyi üç dilde paylaşıyoruz: Hollandaca, İngilizce ve Türkçe.",
             content:
               "Türkiye'de ve yurt dışında yaşanan insan hakları ihlalleri son derece önemlidir ve bu ihlallere ilişkin bilgilerin geniş kitlelere ulaşması büyük önem taşımaktadır. Bu nedenle, bu hayati bilgiyi üç dilde paylaşıyoruz: Hollandaca, İngilizce ve Türkçe.",
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -3753,7 +3714,6 @@ export const POST_MOCKS = {
           'Art stop has held exhibitions in different parts of the Netherlands.',
         content:
           'Art stop has held exhibitions in different parts of the Netherlands.',
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -4584,7 +4544,6 @@ export const POST_MOCKS = {
               'Hij heeft in verschillende delen van Nederland geëxposeerd.',
             content:
               'Hij heeft in verschillende delen van Nederland geëxposeerd.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4607,7 +4566,6 @@ export const POST_MOCKS = {
               'Sanat durağı Hollandanın değişik yerlerinde sergiler yaptı. ',
             content:
               'Sanat durağı Hollandanın değişik yerlerinde sergiler yaptı. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -4632,7 +4590,6 @@ export const POST_MOCKS = {
           'Our exhibition on The Netherlands through the Eyes of a Refugee was exhibited for the first time in Utrecht.',
         content:
           'Our exhibition on The Netherlands through the Eyes of a Refugee was exhibited for the first time in Utrecht.',
-        reference: null,
         approvalStatus: 'approved',
         capsStatus: 'pending',
         twitterMedia: null,
@@ -5463,7 +5420,6 @@ export const POST_MOCKS = {
               'Onze tentoonstelling over Nederland door de ogen van een vluchteling was voor het eerst te zien in Utrecht.',
             content:
               'Onze tentoonstelling over Nederland door de ogen van een vluchteling was voor het eerst te zien in Utrecht.',
-            reference: null,
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,
@@ -5486,7 +5442,6 @@ export const POST_MOCKS = {
               'Bir Mültecinin Gözünden Hollanda konulu sergimiz ilk kez Utrecht şehrinde sergilendi. ',
             content:
               'Bir Mültecinin Gözünden Hollanda konulu sergimiz ilk kez Utrecht şehrinde sergilendi. ',
-            reference: '',
             approvalStatus: 'approved',
             capsStatus: 'pending',
             twitterMedia: null,

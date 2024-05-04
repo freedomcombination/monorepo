@@ -83,6 +83,7 @@ const CoursePage = () => {
     if (selectedApplicationId) {
       onOpen()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedApplicationId])
 
   const handleClose = () => {
@@ -116,7 +117,7 @@ const CoursePage = () => {
           borderColor="transparent"
           defaultValue={1}
         >
-          <AccordionItem _notLast={{ mb: 2 }}>
+          <AccordionItem _notLast={{ mb: 2 }} overflow={'auto'}>
             <AccordionButton
               justifyContent="space-between"
               cursor="pointer"
@@ -129,7 +130,12 @@ const CoursePage = () => {
               <Text>{course?.[`title_${locale}`]}</Text>
               <AccordionIcon ml={'auto'} />
             </AccordionButton>
-            <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
+            <AccordionPanel
+              mt={4}
+              bg={'white'}
+              rounded={'md'}
+              overflow={'auto'}
+            >
               {course && (
                 <ModelEditForm<Course>
                   endpoint="courses"

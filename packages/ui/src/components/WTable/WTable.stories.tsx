@@ -53,6 +53,7 @@ const StoryWithHooks: StoryFn<WTableProps<StrapiModel>> = args => {
     })
 
     setData(sortedData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortKey])
 
   return (

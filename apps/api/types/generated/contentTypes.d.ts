@@ -2258,6 +2258,11 @@ export interface ApiHashtagHashtag extends Schema.CollectionType {
       'manyToOne',
       'api::profile.profile'
     >
+    platform: Attribute.Relation<
+      'api::hashtag.hashtag',
+      'oneToOne',
+      'api::platform.platform'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -2500,18 +2505,6 @@ export interface ApiPostPost extends Schema.CollectionType {
   attributes: {
     description: Attribute.Text &
       Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    content: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    reference: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true

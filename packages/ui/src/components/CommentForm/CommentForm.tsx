@@ -60,6 +60,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
       setValue('name', profile.name || user?.username || '')
       setValue('email', profile.email)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, isSuccess])
 
   const handleSendForm = async ({

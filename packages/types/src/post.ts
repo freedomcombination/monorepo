@@ -6,10 +6,9 @@ import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 
 export type PostBase = Omit<StrapiEntityBase, 'title' | 'slug'> & {
-  title: string // TODO: It doesn't exists but part of StrapiTranslatableModel
+  title: string
   capsStatus: ApprovalStatus
   twitterMedia?: string | null
-  reference?: string | null
   imageParams?: OgImageParams | null
   videoUrl?: string | null
 }
@@ -47,10 +46,7 @@ export type PostUpdateInput = Expand<
   >
 >
 
-export type PostLocalizeInput = Pick<
-  PostBase,
-  'description' | 'content' | 'approvalStatus'
->
+export type PostLocalizeInput = Pick<PostBase, 'description' | 'approvalStatus'>
 
 export type Post = StrapiBase & PostBase & PostRelation & StrapiCreatorRelation
 
@@ -60,4 +56,5 @@ export type PostSentence = {
   index: number
   shareCount: number
   isPublished: boolean
+  archiveId: number
 }

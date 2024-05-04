@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react'
+import { Heading, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { SITE_URL } from '@fc/config'
@@ -11,26 +11,22 @@ import { HashtagAnnouncementProps } from './types'
 
 export const HashtagAnnouncement: FC<HashtagAnnouncementProps> = ({
   hashtag,
-  link,
 }) => {
   const { t } = useTranslation()
 
-  if (!hashtag) {
-    return null
-  }
-
-  const linkCaps = getItemLink(hashtag, 'hashtags')
+  const link = getItemLink(hashtag, 'hashtags') || ''
 
   const capsParams = mapHashtagToOgParams(hashtag)
 
   return (
-    <SimpleGrid gap={8}>
+    <Stack spacing={8}>
       <Caps
         rounded={'lg'}
         overflow={'hidden'}
         w={'full'}
         shadow={'md'}
         imageParams={capsParams}
+        hideLogo={true}
       />
       <Stack fontSize={'lg'} justify={'center'} spacing={6}>
         <Heading as={'h3'}>{hashtag.title}</Heading>
@@ -41,10 +37,10 @@ export const HashtagAnnouncement: FC<HashtagAnnouncementProps> = ({
         <ShareButtons
           size={'lg'}
           title={capsParams.title}
-          url={`${SITE_URL}${linkCaps}`}
+          url={`${SITE_URL}${link}`}
           quote={`${capsParams.text}\n\n ${t('support.hashtag')}\n\n`}
         />
       </Stack>
-    </SimpleGrid>
+    </Stack>
   )
 }
