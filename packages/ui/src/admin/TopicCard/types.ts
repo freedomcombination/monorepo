@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, SetStateAction } from 'react'
+import { ReactElement } from 'react'
 
 import { ButtonProps } from '@chakra-ui/react'
 
@@ -7,7 +7,8 @@ import { TopicBase } from '@fc/types'
 export type TopicCardProps = {
   topic: TopicBase
   onCreatePost?: (topic: TopicBase) => void
-  setHiddenUrls: Dispatch<SetStateAction<string[] | undefined>>
+  searchKey?: string
+  onDelete?: (url: string) => void
 }
 export type ActionButtonProps = {
   onClick: () => void

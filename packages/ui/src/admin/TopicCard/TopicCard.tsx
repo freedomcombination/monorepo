@@ -8,6 +8,7 @@ import {
   Popover,
   PopoverArrow,
   PopoverBody,
+  Highlight,
   PopoverContent,
   PopoverTrigger,
   Stack,
@@ -41,34 +42,25 @@ import { ModelCreateModal } from '../ModelForm'
 
 export const TopicCard: FC<TopicCardProps> = ({
   topic,
-  setHiddenUrls = () => {},
+  searchKey,
+  ...rest
 }) => {
   const { user } = useAuthContext()
-
   const { t } = useTranslation()
-
   const fields = useFields()
   const schemas = useSchema()
-
   const { allowEndpointAction } = usePermission()
-
   const time =
     topic.time && formatDistanceStrict(new Date(topic.time), new Date())
-
   const [bookmarksStorage, setBookmarksStorage] = useLocalStorage<TopicBase[]>(
     'bookmarks',
     [],
   )
-
   const type = topic.type ?? 'Topic'
-
   const deleteModelMutation = useDeleteModel('recommended-topics')
-
   const queryClient = useQueryClient()
-
   const toast = useToast()
   const { mutateAsync, isPending } = useRecommendTopic()
-
   const isBookmarked = bookmarksStorage?.some(t => t.url === topic.url)
 
   const handleBookmark = () => {
@@ -119,6 +111,11 @@ export const TopicCard: FC<TopicCardProps> = ({
 
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
   const id = topic?.id as number
+  const highlightStyle = {
+    bg: 'yellow.200',
+    rounded: 'md',
+    color: 'black',
+  }
 
   const onDelete = () => {
     const title = type === 'Topic' ? 'Delete News' : 'Hide'
@@ -139,6 +136,7 @@ export const TopicCard: FC<TopicCardProps> = ({
             {
               onSuccess: () => {
                 setConfirmState(undefined)
+                rest.onDelete?.(topic.url)
               },
               onError: async errors => {
                 console.error('Delete news error', errors)
@@ -149,7 +147,7 @@ export const TopicCard: FC<TopicCardProps> = ({
             },
           )
         } else {
-          setHiddenUrls(prev => (prev ? [...prev, topic.url] : [topic.url]))
+          rest.onDelete?.(topic.url)
         }
         setConfirmState(undefined)
       },
@@ -201,19 +199,28 @@ export const TopicCard: FC<TopicCardProps> = ({
           <Badge colorScheme={'primary'} variant={'solid'} fontWeight={600}>
             {time}
           </Badge>
-          <Badge colorScheme={'blue'} variant={'solid'} fontWeight={600}>
-            {type}
-          </Badge>
         </HStack>
       </Box>
 
       <Stack spacing={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
         <Stack textAlign={{ base: 'center', xl: 'left' }} flex={1}>
           <Text fontSize="lg" fontWeight={600} noOfLines={{ xl: 1 }}>
-            {topic.title}
+            {searchKey ? (
+              <Highlight query={searchKey} styles={highlightStyle}>
+                {topic.title || ''}
+              </Highlight>
+            ) : (
+              topic.title
+            )}
           </Text>
           <Text maxW={1000} noOfLines={{ base: 5, xl: 3 }}>
-            {topic.description}
+            {searchKey ? (
+              <Highlight query={searchKey} styles={highlightStyle}>
+                {topic.description || ''}
+              </Highlight>
+            ) : (
+              topic.description
+            )}
           </Text>
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
