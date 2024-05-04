@@ -28,7 +28,6 @@ import {
   TbChecks,
   TbClock,
   TbThumbUp,
-  TbTimeline,
   TbWriting,
   TbX,
 } from 'react-icons/tb'
