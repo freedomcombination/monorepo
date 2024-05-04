@@ -35,12 +35,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
   hasBackButton,
   seo,
 }) => {
-  const {
-    checkAuth,
-    isLoading: isAuthLoading,
-    isAdmin: checkIfAdmin,
-  } = useAuthContext()
-  const isAdmin = checkIfAdmin()
+  const { checkAuth, isLoading: isAuthLoading, isAdmin } = useAuthContext()
 
   useEffect(() => {
     checkAuth()

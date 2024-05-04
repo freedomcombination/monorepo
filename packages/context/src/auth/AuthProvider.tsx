@@ -9,11 +9,10 @@ import {
   Auth,
   Permissions,
   Profile,
-  RoleType,
   SessionUser,
   StrapiEndpoint,
 } from '@fc/types'
-import { checkAccessForApis } from '@fc/utils'
+import { checkAccessForActions } from '@fc/utils'
 
 import { initialAuthState } from './state'
 import { AuthContextType, AuthProviderProps, AuthState } from './types'
@@ -27,7 +26,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   // TODO: Use useReducer instead of useState
   const [user, setUser] = useState<SessionUser | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
-  const [roles, setRoles] = useState<RoleType[]>(initialAuthState.roles)
+  const [roles, setRoles] = useState<string[]>(initialAuthState.roles)
   const [token, setToken] = useState<string | null>(null)
   const [permissions, setPermissions] = useState<Permissions>({})
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -54,7 +53,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   ): boolean {
     const source = demoPermissions ?? permissions
 
-    return checkAccessForApis(source, endpoint, ...api) === true
+    return checkAccessForActions(source, endpoint, ...api) === true
   }
 
   function canCreate(endpoint: StrapiEndpoint): boolean {
@@ -73,9 +72,11 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     return checkActionsPermission(endpoint, 'delete')
   }
 
-  function isAdmin(): boolean {
-    return roles.includes('admin')
+  function canApprove(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'approve')
   }
+
+  const isAdmin = roles.includes('admin')
 
   const checkAuth = async (): Promise<AuthState> => {
     setIsLoading(true)
@@ -100,6 +101,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         isLoading: false,
         permissions: (response.data?.profile as Profile).permissions ?? {},
         demoPermissions: null,
+        isAdmin: response.data?.user?.roles.includes('admin') || false,
       }
     } catch (error: any) {
       setError(error.message)
@@ -198,29 +200,30 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   return (
     <AuthContext.Provider
       value={{
-        user,
+        demoPermissions,
+        error,
+        isAdmin,
+        isAuthModalOpen: authModalDisclosure.isOpen,
+        isLoading,
+        permissions,
         profile,
         roles,
         token,
-        isLoading,
-        error,
-        permissions,
-        demoPermissions,
-        setDemoPermissions,
+        user,
+        canApprove,
         canCreate,
+        canDelete,
         canRead,
         canUpdate,
-        canDelete,
         checkActionsPermission,
-        isAdmin,
-        setPermissions,
         checkAuth,
-        logout,
-        login,
-        register,
-        isAuthModalOpen: authModalDisclosure.isOpen,
-        openAuthModal: authModalDisclosure.onOpen,
         closeAuthModal: authModalDisclosure.onClose,
+        login,
+        logout,
+        openAuthModal: authModalDisclosure.onOpen,
+        register,
+        setDemoPermissions,
+        setPermissions,
       }}
     >
       {children}

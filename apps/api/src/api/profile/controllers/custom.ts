@@ -24,9 +24,11 @@ module.exports = {
         return ctx.notFound('Profile not found')
       }
 
-      const isDashboard = ctx.params.platform === 'dashboard'
+      const includePermissions =
+        ctx.query?.platform === 'dashboard' ||
+        ctx.query?.platform === 'trend-rights'
 
-      const rolePermissions = isDashboard
+      const rolePermissions = includePermissions
         ? (
             await strapi.plugins['users-permissions'].services.role.findOne(
               ctx.state.user.role.id,

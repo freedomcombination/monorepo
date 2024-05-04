@@ -26,9 +26,9 @@ import { FaFilter, FaX } from 'react-icons/fa6'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Permissions, Role, RoleInput, StrapiLocale } from '@fc/types'
+import { Permissions, StrapiRole, Role, StrapiLocale } from '@fc/types'
 import { AdminLayout, ContentEditable, PermissionCard } from '@fc/ui'
-import { createRoleInput, hasDifferences, updateRole } from '@fc/utils'
+import { mapRole, hasDifferences, updateRole } from '@fc/utils'
 
 type RolePageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -37,14 +37,14 @@ const RolePage: FC<RolePageProps> = () => {
   const { token } = useAuthContext()
   const { t } = useTranslation()
   const { setDemoPermissions, demoPermissions } = useAuthContext()
-  const [editedRole, setEditedRole] = useState<RoleInput | null>(null)
+  const [editedRole, setEditedRole] = useState<Role | null>(null)
   const [startSave, setStartSave] = useState(false)
   const [filters, setFilters] = useState<string[]>([])
   const inEditMode = !!demoPermissions
 
   const roleId = query.id ? Number(query.id) : 1
 
-  const { data, isLoading, refetch } = useStrapiRequest<Role>({
+  const { data, isLoading, refetch } = useStrapiRequest<StrapiRole>({
     endpoint: 'users-permissions/roles',
     id: roleId,
     token: token ?? '',
@@ -53,28 +53,29 @@ const RolePage: FC<RolePageProps> = () => {
   const role = data?.data
   const filterKeys = Object.keys(role?.permissions ?? {})
 
-  const { data: allRoles } = useStrapiRequest<Role>({
+  const { data: allRoles } = useStrapiRequest<StrapiRole>({
     endpoint: 'users-permissions/roles',
     token: token ?? '',
     fields: ['id', 'name'],
   })
 
-  const goEditMode = (turnon: boolean) => {
-    if (turnon) {
+  const goEditMode = (enable: boolean) => {
+    if (enable) {
       if (!role || !role.permissions) return
-      const roleInput = createRoleInput(role)
+
+      const roleInput = mapRole(role)
+
       setEditedRole(roleInput)
+
       /*
-        demoPermissions has one goal: 
-          to be able to see the changes in the side-bar
+        The purpose of demoPermissions is to display the changes in the side-bar.
+        In previous demonstrations, there were issues where some menu options were missed.
+        Even if the admin has no permissions on certain APIs, they would disappear.
 
-        earlier demonstration has some issues, we may forget some menu options
-        if somehow even admin has no permissions on some apis, they ll disappear
+        By using demoPermissions, we can strike-through the menu options that have no permissions for this role.
+        This ensures that the admin won't miss any items.
 
-        in this way, we only strike-through the menu options that have no permissions to this role
-        so admin wont miss any items
-
-        of course, admin has to active editing in route 'roles/:id'
+        Note: The admin needs to activate editing in the 'roles/:id' route.
       */
       setDemoPermissions(roleInput?.permissions ?? null)
     } else {
@@ -100,12 +101,10 @@ const RolePage: FC<RolePageProps> = () => {
   useEffect(() => {
     if (!startSave || !editedRole) return
     /*
-      i used this strategy to save changes
-      startSave is a state that when it has changed;
-        it causes rerender, so some ui elements become disabled.
-        and this useEffect's side-effect starts to save changes asynchronously
-        then re-fetches the data while elements are disabled, and some spinner spins.
-      and finally sets startSave to false
+      This useEffect is triggered when the startSave state or editedRole state changes.
+      It is used to save the changes asynchronously and then re-fetch the data.
+      While the changes are being saved, certain UI elements are disabled and a spinner is displayed.
+      Once the saving process is complete, the startSave state is set to false and the editing mode is exited.
     */
 
     updateRole(roleId, editedRole, token ?? '')

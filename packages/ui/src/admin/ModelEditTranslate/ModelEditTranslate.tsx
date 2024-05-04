@@ -19,6 +19,7 @@ import { HiOutlineCheck } from 'react-icons/hi'
 import { MdClose, MdOutlineCheck } from 'react-icons/md'
 import { InferType } from 'yup'
 
+import { useAuthContext } from '@fc/context'
 import {
   useApproveModel,
   useStrapiRequest,
@@ -38,7 +39,7 @@ import {
   WConfirm,
   WConfirmProps,
 } from '../../components'
-import { usePermission, useReferenceModel } from '../../hooks'
+import { useReferenceModel } from '../../hooks'
 import { FormLocaleSwitcher } from '../FormLocaleSwitcher'
 import { Option, useDefaultValues } from '../ModelForm'
 
@@ -84,7 +85,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
     values: defaultValues,
   })
 
-  const { allowEndpointAction } = usePermission()
+  const { canApprove, canUpdate } = useAuthContext()
 
   const handleSuccess = () => {
     onSuccess?.()
@@ -264,7 +265,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             model.approvalStatus !== 'approved' &&
             (isReferenceSelf ||
               referenceModel?.approvalStatus === 'approved') &&
-            allowEndpointAction(endpoint, 'approve') && (
+            canApprove(endpoint) && (
               <Button
                 onClick={onApprove}
                 leftIcon={<HiOutlineCheck />}
@@ -275,7 +276,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
                 {t('approve')}
               </Button>
             )}
-          {allowEndpointAction(endpoint, 'update') && (
+          {canUpdate(endpoint) && (
             <>
               {!isEditing && (
                 <Button

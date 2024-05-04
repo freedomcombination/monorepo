@@ -19,7 +19,6 @@ import {
   MdOutlineCategory,
   MdOutlineFeedback,
   MdOutlineSpaceDashboard,
-  MdOutlineSupervisorAccount,
 } from 'react-icons/md'
 import { SiGeneralelectric, SiMaterialdesignicons } from 'react-icons/si'
 import {
@@ -36,7 +35,7 @@ import {
   TbX,
 } from 'react-icons/tb'
 
-import { AdminRoute } from '@fc/config'
+import { DashboardRoute } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { StrapiEndpoint } from '@fc/types'
 import { makePlural } from '@fc/utils'
@@ -168,18 +167,20 @@ export const useAdminNav = () => {
       {
         label: t('news'),
         icon: <HiOutlineNewspaper />,
+        // TODO: canRead('topic') is not working
+        allowed: true,
         submenu: [
           {
             label: t('news'),
             link: '/news',
             icon: <HiOutlineNewspaper />,
-            allowed: canRead('topic') && canRead('topic/sync'),
+            allowed: true,
           },
           {
             label: t('bookmarked-news'),
             link: '/news/bookmarks',
             icon: <TbBookmarks />,
-            allowed: canRead('topic'),
+            allowed: true,
           },
           {
             label: t('recommended-news'),
@@ -192,21 +193,25 @@ export const useAdminNav = () => {
       {
         label: t('timelines'),
         icon: <TbTimeline />,
+        allowed: true,
         submenu: [
           {
             label: t('timelines'),
             link: '/timelines',
             icon: <GiHumanPyramid />,
+            allowed: true,
           },
           {
             label: t('bookmarked-tweets'),
             link: '/timelines/bookmarks',
             icon: <TbBookmarks />,
+            allowed: true,
           },
           {
             label: t('recommended-tweets'),
             link: '/timelines/recommended',
             icon: <TbThumbUp />,
+            allowed: canRead('recommended-tweets'),
           },
         ],
       },
@@ -244,24 +249,22 @@ export const useAdminNav = () => {
         link: '/blogs',
       },
       {
-        label: t('accounts'),
-        link: '/accounts',
-        icon: <MdOutlineSupervisorAccount />,
-      },
-      {
         label: t('competitions'),
         link: '/competitions',
         icon: <BsCommand />,
       },
       {
         label: 'Donation',
+        // NOTE: Page slug is different from endpoint
         link: '/donation',
         icon: <BsCashCoin />,
+        allowed: true,
       },
       {
         label: t('donations'),
         link: '/donations',
         icon: <BsCashStack />,
+        allowed: isAdmin,
       },
       {
         label: t('user-feedbacks'),
@@ -270,7 +273,7 @@ export const useAdminNav = () => {
       },
     ] as AdminNavItemProps[]
 
-    const allowByLink = (link?: AdminRoute): boolean => {
+    const canReadByLink = (link?: DashboardRoute): boolean => {
       if (!link) return true
       const endpoint = link.match(/\/([^?]+)/)?.[1] as StrapiEndpoint
 
@@ -290,7 +293,7 @@ export const useAdminNav = () => {
           submenu,
         }
       } else {
-        const allowed = allowByLink(menuItem.link)
+        const allowed = canReadByLink(menuItem.link)
 
         return {
           ...menuItem,
@@ -301,7 +304,7 @@ export const useAdminNav = () => {
 
     const mappedMenuItems = menuItems.map(mapAllowedMenu)
 
-    if (isAdmin()) return mappedMenuItems
+    if (isAdmin) return mappedMenuItems
 
     const filterMenu = (menuItem: AdminNavItemProps): boolean => {
       if (menuItem.submenu && menuItem.submenu.length > 0) {

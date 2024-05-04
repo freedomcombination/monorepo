@@ -3,7 +3,7 @@ import { NextApiHandler } from 'next'
 
 import { strapiRequest } from '@fc/lib'
 import { sessionOptions } from '@fc/secrets'
-import { Auth } from '@fc/types'
+import { Auth, Profile, StrapiSingleEndpoint } from '@fc/types'
 
 export const userRouter: NextApiHandler = async (req, res) => {
   const session = await getIronSession<Auth>(req, res, sessionOptions)
@@ -11,8 +11,8 @@ export const userRouter: NextApiHandler = async (req, res) => {
   if (session.token) {
     const platform = req.query.platform
     const profileResponse = session?.profileId
-      ? await strapiRequest({
-          endpoint: 'profiles/me',
+      ? await strapiRequest<Profile>({
+          endpoint: `profiles/me?platform=${platform}` as StrapiSingleEndpoint,
           token: session.token,
           ...(platform ? { id: platform } : {}),
         })

@@ -34,24 +34,24 @@ export const makePlural = (endpoint: string): string => {
   return pluralize(endpoint)
 }
 
-export const checkAccessForApis = (
+export const checkAccessForActions = (
   permissions: Permissions,
   endpoint: StrapiEndpoint,
-  ...apis: string[]
-): boolean | undefined => {
+  ...actions: string[]
+) => {
   const endpointName = makeSingular(endpoint)
   const ep =
     permissions[`api::${endpointName}`] ??
     permissions[`plugin::${endpointName}`]
 
-  if (!ep) return undefined
+  if (!ep) return false
 
   const controllers = Object.values(ep.controllers)
 
-  for (const api of apis) {
+  for (const action of actions) {
     if (
       !controllers.some(controller => {
-        const val = controller[api]
+        const val = controller[action]
         if (!val || !val.enabled) return false
 
         return true
@@ -70,25 +70,26 @@ export const checkAccessForApis = (
  * @param newPerm The second Permission object.
  * @returns True if there are any differences, false otherwise.
  */
-export function hasDifferences(
-  oldPerm?: Permissions,
-  newPerm?: Permissions,
-): boolean | undefined {
-  if (!oldPerm || !newPerm) return undefined
+export function hasDifferences(oldPerm?: Permissions, newPerm?: Permissions) {
+  if (!oldPerm || !newPerm) return false
+
   const endpoints = Object.keys(oldPerm)
+
   for (const endpoint of endpoints) {
     const oldControllers = oldPerm[endpoint].controllers
-    if (endpoint in newPerm === false) return undefined
+
+    if (endpoint in newPerm === false) return false
+
     const newControllers = newPerm[endpoint].controllers
     const groups = Object.keys(oldControllers)
 
     for (const key of groups) {
       const oldGroup = oldControllers[key]
       const newGroup = newControllers[key]
-      const apis = Object.keys(oldGroup)
+      const actions = Object.keys(oldGroup)
 
-      for (const api of apis) {
-        if (oldGroup[api].enabled !== newGroup[api].enabled) return true
+      for (const action of actions) {
+        if (oldGroup[action].enabled !== newGroup[action].enabled) return true
       }
     }
   }
@@ -102,23 +103,24 @@ export function getDifferences(
 ): Permissions {
   const diff: Permissions = {}
   const endpoints = Object.keys(oldPerm)
+
   for (const endpoint of endpoints) {
     const oldControllers = oldPerm[endpoint].controllers
     const newControllers = newPerm[endpoint].controllers
 
     const diffControllers: EndpointControllers = {}
-
     const groups = Object.keys(oldControllers)
+
     for (const groupKey of groups) {
       const oldGroup = oldControllers[groupKey]
       const newGroup = newControllers[groupKey]
 
       const diffGroup: ControllerGroup = {}
+      const actionNames = Object.keys(oldGroup)
 
-      const apis = Object.keys(oldGroup)
-      for (const api of apis) {
-        if (oldGroup[api].enabled !== newGroup[api].enabled) {
-          diffGroup[api] = newGroup[api]
+      for (const actionName of actionNames) {
+        if (oldGroup[actionName].enabled !== newGroup[actionName].enabled) {
+          diffGroup[actionName] = newGroup[actionName]
         }
       }
 
@@ -135,22 +137,27 @@ export function getDifferences(
   return diff
 }
 
-export function copyPermission(perm: Permissions): Permissions {
+export function clonePermission(perm: Permissions): Permissions {
   const copy: Permissions = {}
+
   for (const key in perm) {
     const controllers: EndpointControllers = {}
+
     for (const groupKey in perm[key].controllers) {
       const group: ControllerGroup = {}
-      for (const [api, apiStatus] of Object.entries(
+
+      for (const [api, action] of Object.entries(
         perm[key].controllers[groupKey],
       )) {
         group[api] = {
-          enabled: apiStatus.enabled,
-          policy: apiStatus.policy,
+          enabled: action.enabled,
+          policy: action.policy,
         }
       }
+
       controllers[groupKey] = group
     }
+
     copy[key] = { controllers }
   }
 
@@ -190,13 +197,13 @@ export async function deleteRole(roleId: number, token: string) {
   return result
 }
 
-export function createRoleInput(role: Role): RoleInput | null {
+export function cloneRole(role: Role): RoleInput | null {
   if (!role.permissions) return null
 
   return {
     name: role.name,
     description: role.description,
-    permissions: copyPermission(role.permissions),
+    permissions: clonePermission(role.permissions),
     users: [],
-  } as RoleInput
+  }
 }

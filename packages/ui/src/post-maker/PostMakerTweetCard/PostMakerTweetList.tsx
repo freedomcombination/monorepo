@@ -2,11 +2,11 @@ import { FC, useMemo } from 'react'
 
 import { Divider, Stack } from '@chakra-ui/react'
 
+import { useAuthContext } from '@fc/context'
 import { useHashtag } from '@fc/services'
 
 import { PostMakerTweetCard } from './PostMakerTweetCard'
 import { PostMakerTweetListProps } from './types'
-import { usePermission } from '../../hooks'
 import { useHashtagContext } from '../HashtagProvider'
 import { PostProvider } from '../PostProvider'
 
@@ -15,9 +15,9 @@ export const PostMakerTweetList: FC<PostMakerTweetListProps> = ({
 }) => {
   const { postSentenceShares } = useHashtagContext()
   const hashtag = useHashtag()
-  const { allowEndpointAction } = usePermission()
+  const { canUpdate } = useAuthContext()
 
-  const canManageSentences = allowEndpointAction('posts', 'update')
+  const canManageSentences = canUpdate('posts')
 
   const sortedPosts = useMemo(() => {
     if (!hashtag?.posts) return []

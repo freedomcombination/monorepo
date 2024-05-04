@@ -36,18 +36,15 @@ import { ActionButton } from './ActionButton'
 import { TopicCardProps } from './types'
 import { ShareButtons, WConfirm, WConfirmProps, WImage } from '../../components'
 import { useFields, useSchema } from '../../data'
-import { usePermission } from '../../hooks'
 import { ModelCreateModal } from '../ModelForm'
 
 export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
-  const { user } = useAuthContext()
+  const { user, canCreate } = useAuthContext()
 
   const { t } = useTranslation()
 
   const fields = useFields()
   const schemas = useSchema()
-
-  const { allowEndpointAction } = usePermission()
 
   const time =
     topic.time && formatDistanceStrict(new Date(topic.time), new Date())
@@ -140,12 +137,12 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
       boxShadow="md"
       bg={'white'}
       rounded="md"
-      align={{ base: 'stretch', xl: 'flex-start' }}
       direction={{ base: 'column', xl: 'row' }}
       overflow="hidden"
       backgroundImage={'url(/images/world-map.svg)'}
       backgroundPosition={{ base: 'bottom', xl: 'right' }}
       backgroundRepeat={'no-repeat'}
+      spacing={0}
     >
       {confirmState && (
         <WConfirm
@@ -155,15 +152,19 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
       )}
 
       <Box pos={'relative'}>
-        <WImage
+        <Box
           w={{ base: 'full', xl: '400px' }}
           h={{ base: '200px', xl: '220px' }}
-          src={topic.image}
-          alt={topic.title}
-          objectFit={'cover'}
-          flexShrink={0}
-          unoptimized
-        />
+        >
+          <WImage
+            boxSize={'full'}
+            src={topic.image}
+            alt={topic.title}
+            objectFit={'cover'}
+            flexShrink={0}
+            unoptimized
+          />
+        </Box>
         <HStack spacing={1} pos="absolute" top={0} left={0} w={'full'} p={2}>
           <Badge
             bg={'black'}
@@ -179,13 +180,7 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
         </HStack>
       </Box>
 
-      <Stack
-        spacing={4}
-        p={{ base: 4, xl: 6 }}
-        flex={1}
-        overflow={'hidden'}
-        h="full"
-      >
+      <Stack spacing={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
         <Stack textAlign={{ base: 'center', xl: 'left' }} flex={1}>
           <Text fontSize="lg" fontWeight={600} noOfLines={{ xl: 1 }}>
             {topic.title}
@@ -196,7 +191,7 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
           <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
-            {allowEndpointAction('posts', 'create') && (
+            {canCreate('posts') && (
               <ModelCreateModal<Post>
                 title={t('create-post')}
                 endpoint={'posts'}
@@ -256,15 +251,15 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
               variant={'ghost'}
               colorScheme={isBookmarked ? 'red' : 'gray'}
             />
-            {user && (
+            {user && !topic.isRecommended && (
               <ActionButton
                 onClick={() => handleRecommend()}
                 icon={<FaRegThumbsUp />}
                 title="Recommend"
-                disabled={topic.isRecommended || isPending}
-                isDisabled={topic.isRecommended || isPending}
+                disabled={isPending}
+                isDisabled={isPending}
                 variant={'ghost'}
-                colorScheme={topic.isRecommended ? 'primary' : 'gray'}
+                colorScheme={'gray'}
               />
             )}
             {user && topic?.isRecommended && id && (

@@ -1,18 +1,20 @@
-import { Box } from '@chakra-ui/react'
+import { FC } from 'react'
+
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import { AdminLayout } from '@fc/ui'
+import { NotFound } from '@fc/ui'
 
-const AccountsPage = () => {
+import { Layout } from '../components'
+const NotFoundPage: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <AdminLayout seo={{ title: t('accounts') }}>
-      <Box>Accounts</Box>
-    </AdminLayout>
+    <Layout seo={{ title: t('not-found') }}>
+      <NotFound />
+    </Layout>
   )
 }
 
@@ -26,4 +28,4 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   }
 }
 
-export default AccountsPage
+export default NotFoundPage

@@ -1,17 +1,20 @@
+import { FC } from 'react'
+
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import { AdminLayout, NotFound } from '@fc/ui'
+import { NotFound } from '@fc/ui'
 
-const NotFoundPage = () => {
+import { Layout } from '../components'
+const NotFoundPage: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <AdminLayout seo={{ title: t('not-found') }}>
+    <Layout seo={{ title: t('not-found') }}>
       <NotFound />
-    </AdminLayout>
+    </Layout>
   )
 }
 

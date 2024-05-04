@@ -15,7 +15,7 @@ import {
 import { TbCheck, TbX } from 'react-icons/tb'
 
 import {
-  APIStatus,
+  EndpointAction,
   ControllerGroup,
   EndpointControllers,
   Permissions,
@@ -102,7 +102,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
     if (!backup) {
       const falseValues = Object.entries(values).reduce((acc, [key, value]) => {
         acc[key] = Object.entries(value).reduce((o, [k, v]) => {
-          o[k] = { ...v, enabled: false } as APIStatus
+          o[k] = { ...v, enabled: false } as EndpointAction
 
           return o
         }, {} as ControllerGroup)

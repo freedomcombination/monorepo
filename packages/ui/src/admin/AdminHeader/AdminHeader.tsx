@@ -9,6 +9,7 @@ import {
   HStack,
   Heading,
   IconButton,
+  Skeleton,
   Tooltip,
   useDisclosure,
 } from '@chakra-ui/react'
@@ -56,11 +57,12 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             />
           </Tooltip>
         )}
-        {!hasBackButton && title && (
+        {!isLoading && !hasBackButton && title && (
           <Heading size={{ base: 'lg', lg: 'xl' }} isTruncated>
             {title}
           </Heading>
         )}
+        {isLoading && !title && <Skeleton noOfLines={1} w={40} />}
       </HStack>
 
       {/* TODO Create notification component */}
