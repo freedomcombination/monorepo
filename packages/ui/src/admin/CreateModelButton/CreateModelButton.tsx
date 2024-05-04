@@ -38,7 +38,6 @@ import {
 } from '@fc/types'
 
 import { useFields, useSchema } from '../../data'
-import { usePermission } from '../../hooks'
 import { CreatePostFromCapsModal } from '../CreatePostFromCapsModal'
 import { ModelCreateModal } from '../ModelForm'
 
@@ -53,9 +52,7 @@ export const CreateModelButton = () => {
   const fields = useFields()
   const schemas = useSchema()
 
-  const { user } = useAuthContext()
-
-  const { allowEndpointAction } = usePermission()
+  const { user, canCreate } = useAuthContext()
 
   if (!user) return null
 
@@ -187,7 +184,7 @@ export const CreateModelButton = () => {
                   {t('create-post')}
                 </ModelCreateModal>
 
-                {allowEndpointAction('posts', 'create') && (
+                {canCreate('posts') && (
                   <>
                     <CreatePostFromCapsModal
                       isOpen={isOpenPost}

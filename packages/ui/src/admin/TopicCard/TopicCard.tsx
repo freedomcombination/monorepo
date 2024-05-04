@@ -36,18 +36,15 @@ import { ActionButton } from './ActionButton'
 import { TopicCardProps } from './types'
 import { ShareButtons, WConfirm, WConfirmProps, WImage } from '../../components'
 import { useFields, useSchema } from '../../data'
-import { usePermission } from '../../hooks'
 import { ModelCreateModal } from '../ModelForm'
 
 export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
-  const { user } = useAuthContext()
+  const { user, canCreate } = useAuthContext()
 
   const { t } = useTranslation()
 
   const fields = useFields()
   const schemas = useSchema()
-
-  const { allowEndpointAction } = usePermission()
 
   const time =
     topic.time && formatDistanceStrict(new Date(topic.time), new Date())
@@ -194,7 +191,7 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
           <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
-            {allowEndpointAction('posts', 'create') && (
+            {canCreate('posts') && (
               <ModelCreateModal<Post>
                 title={t('create-post')}
                 endpoint={'posts'}

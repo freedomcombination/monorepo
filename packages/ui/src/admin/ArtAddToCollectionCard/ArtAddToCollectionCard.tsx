@@ -13,11 +13,11 @@ import { AiOutlineEye } from 'react-icons/ai'
 import { HiPlus } from 'react-icons/hi'
 import { IoCloseSharp } from 'react-icons/io5'
 
+import { useAuthContext } from '@fc/context'
 import { UploadFile } from '@fc/types'
 
 import { ArtAddToCollectionCardProps } from './types'
 import { ArtModal, WImage } from '../../components'
-import { usePermission } from '../../hooks'
 
 export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   isAdded,
@@ -31,8 +31,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   const router = useRouter()
 
   const titleKey = `title_${router.locale}` as const
-
-  const { allowEndpointAction } = usePermission()
+  const { canCreate } = useAuthContext()
 
   return (
     <Stack boxShadow="md" rounded="md" direction={'column'} overflow="hidden">
@@ -60,7 +59,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
 
           <Spacer />
 
-          {allowEndpointAction('collections', 'create') && (
+          {canCreate('collections') && (
             <Button
               variant={'outline'}
               colorScheme={isAdded ? 'red' : 'green'}

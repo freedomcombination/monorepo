@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 
-import { Profile, Role } from '@fc/types'
+import { Profile, StrapiRole } from '@fc/types'
 
 import { yupMultiSelect, yupSelect } from './common'
 import { FormFields } from '../../admin'
@@ -24,7 +24,7 @@ export const useProfileSchema = () => {
   })
 }
 
-export const profileFields: FormFields<Profile & { role: Role }> = [
+export const profileFields: FormFields<Profile & { role: StrapiRole }> = [
   { name: 'name', isRequired: true },
   { name: 'email', isRequired: true, blockEdit: true },
   { name: 'phone' },

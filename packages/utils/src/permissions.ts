@@ -6,8 +6,8 @@ import {
   ControllerGroup,
   EndpointControllers,
   Permissions,
+  StrapiRole,
   Role,
-  RoleInput,
   StrapiEndpoint,
 } from '@fc/types'
 
@@ -34,24 +34,24 @@ export const makePlural = (endpoint: string): string => {
   return pluralize(endpoint)
 }
 
-export const checkAccessForApis = (
+export const checkAccessForActions = (
   permissions: Permissions,
   endpoint: StrapiEndpoint,
-  ...apis: string[]
-): boolean | undefined => {
+  ...actions: string[]
+) => {
   const endpointName = makeSingular(endpoint)
   const ep =
     permissions[`api::${endpointName}`] ??
     permissions[`plugin::${endpointName}`]
 
-  if (!ep) return undefined
+  if (!ep) return false
 
   const controllers = Object.values(ep.controllers)
 
-  for (const api of apis) {
+  for (const action of actions) {
     if (
       !controllers.some(controller => {
-        const val = controller[api]
+        const val = controller[action]
         if (!val || !val.enabled) return false
 
         return true
@@ -70,15 +70,16 @@ export const checkAccessForApis = (
  * @param newPerm The second Permission object.
  * @returns True if there are any differences, false otherwise.
  */
-export function hasDifferences(
-  oldPerm?: Permissions,
-  newPerm?: Permissions,
-): boolean | undefined {
-  if (!oldPerm || !newPerm) return undefined
+export function hasDifferences(oldPerm?: Permissions, newPerm?: Permissions) {
+  if (!oldPerm || !newPerm) return false
+
   const endpoints = Object.keys(oldPerm)
+
   for (const endpoint of endpoints) {
     const oldControllers = oldPerm[endpoint].controllers
-    if (endpoint in newPerm === false) return undefined
+
+    if (endpoint in newPerm === false) return false
+
     const newControllers = newPerm[endpoint].controllers
     const groups = Object.keys(oldControllers)
 
@@ -102,23 +103,24 @@ export function getDifferences(
 ): Permissions {
   const diff: Permissions = {}
   const endpoints = Object.keys(oldPerm)
+
   for (const endpoint of endpoints) {
     const oldControllers = oldPerm[endpoint].controllers
     const newControllers = newPerm[endpoint].controllers
 
     const diffControllers: EndpointControllers = {}
-
     const groups = Object.keys(oldControllers)
+
     for (const groupKey of groups) {
       const oldGroup = oldControllers[groupKey]
       const newGroup = newControllers[groupKey]
 
       const diffGroup: ControllerGroup = {}
+      const actionNames = Object.keys(oldGroup)
 
-      const apis = Object.keys(oldGroup)
-      for (const api of apis) {
-        if (oldGroup[api].enabled !== newGroup[api].enabled) {
-          diffGroup[api] = newGroup[api]
+      for (const actionName of actionNames) {
+        if (oldGroup[actionName].enabled !== newGroup[actionName].enabled) {
+          diffGroup[actionName] = newGroup[actionName]
         }
       }
 
@@ -137,20 +139,25 @@ export function getDifferences(
 
 export function copyPermission(perm: Permissions): Permissions {
   const copy: Permissions = {}
+
   for (const key in perm) {
     const controllers: EndpointControllers = {}
+
     for (const groupKey in perm[key].controllers) {
       const group: ControllerGroup = {}
-      for (const [api, apiStatus] of Object.entries(
+
+      for (const [api, action] of Object.entries(
         perm[key].controllers[groupKey],
       )) {
         group[api] = {
-          enabled: apiStatus.enabled,
-          policy: apiStatus.policy,
+          enabled: action.enabled,
+          policy: action.policy,
         }
       }
+
       controllers[groupKey] = group
     }
+
     copy[key] = { controllers }
   }
 
@@ -159,7 +166,7 @@ export function copyPermission(perm: Permissions): Permissions {
 
 export async function updateRole(
   roleId: number,
-  roleData: RoleInput,
+  roleData: Role,
   token: string,
 ) {
   const result = await axios.put(
@@ -171,7 +178,7 @@ export async function updateRole(
   return result.data.ok
 }
 
-export async function createRole(roleData: RoleInput, token: string) {
+export async function createRole(roleData: Role, token: string) {
   const result = await axios.post(
     `${API_URL}/api/users-permissions/roles`,
     roleData,
@@ -190,7 +197,7 @@ export async function deleteRole(roleId: number, token: string) {
   return result
 }
 
-export function createRoleInput(role: Role): RoleInput | null {
+export function mapRole(role: StrapiRole): Role | null {
   if (!role.permissions) return null
 
   return {
@@ -198,5 +205,5 @@ export function createRoleInput(role: Role): RoleInput | null {
     description: role.description,
     permissions: copyPermission(role.permissions),
     users: [],
-  } as RoleInput
+  } as Role
 }

@@ -1,7 +1,7 @@
 import { Icon } from '@chakra-ui/react'
 import { FaCheck, FaTimesCircle } from 'react-icons/fa'
 
-import { Role, User } from '@fc/types'
+import { StrapiRole, User } from '@fc/types'
 
 import { WTableProps } from '../../components'
 
@@ -10,7 +10,7 @@ export const useUserColumns = (): WTableProps<User>['columns'] => {
     username: { sortable: true },
     email: { sortable: true },
     role: {
-      transform: value => (value as Role)?.name,
+      transform: value => (value as StrapiRole)?.name,
       sortable: true,
       sortKey: 'type',
     },

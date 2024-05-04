@@ -1,46 +1,10 @@
 import { StrapiBase } from './strapi'
 
-export type RoleName =
-  | 'AcademyEditor'
-  | 'AccountManager'
-  | 'Admin'
-  | 'All'
-  | 'ArtEditor Translator'
-  | 'ArtEditor'
-  | 'Authenticated'
-  | 'Author Translator'
-  | 'Author'
-  | 'ContentManager Translator'
-  | 'ContentManager'
-  | 'Kunsthalte Coordinator'
-  | 'Jury'
-  | 'Platform Coordinator'
-  | 'Public'
-  | 'Translator'
-
-export type RoleType =
-  | 'academyeditor'
-  | 'accountmanager'
-  | 'admin'
-  | 'all'
-  | 'arteditor'
-  | 'arteditor_translator'
-  | 'authenticated'
-  | 'author'
-  | 'author_translator'
-  | 'contentmanager'
-  | 'contentmanager_translator'
-  | 'jury'
-  | 'kunsthaltecoordinator'
-  | 'platformcoordinator'
-  | 'public'
-  | 'translator'
-
-export type Role = Omit<StrapiBase, 'publishedAt'> & {
+export type StrapiRole = Omit<StrapiBase, 'publishedAt'> & {
   description: string
-  name: RoleName
+  name: string
   permissions?: Permissions
-  type: RoleType
+  type: string
   nb_users?: number
 }
 
@@ -51,13 +15,13 @@ export type Permission = Omit<StrapiBase, 'publishedAt'> & {
 }
 */
 
-export type APIStatus = {
+export type EndpointAction = {
   enabled: boolean
   policy: string
 }
 
 export type ControllerGroup = {
-  [key: string]: APIStatus
+  [key: string]: EndpointAction
 }
 
 export type EndpointControllers = {
@@ -72,7 +36,7 @@ export type Permissions = {
   }
 }
 
-export type RoleInput = {
+export type Role = {
   name: string
   description: string
   permissions: Permissions

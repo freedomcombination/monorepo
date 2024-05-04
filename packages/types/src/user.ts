@@ -1,6 +1,6 @@
 import { Expand } from './common'
 import { LangRole } from './lang-role'
-import { Role } from './role'
+import { StrapiRole } from './role'
 import { StrapiBase } from './strapi'
 
 export type UserBase = {
@@ -13,7 +13,7 @@ export type UserBase = {
 }
 
 type UserRelation = {
-  role?: Role | null
+  role?: StrapiRole | null
 }
 
 type UserRelationInput = {

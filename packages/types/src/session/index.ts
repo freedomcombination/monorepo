@@ -1,12 +1,12 @@
+import { PlatformSlug } from '../app'
 import { Profile } from '../profile'
-import { RoleType } from '../role'
 import { User } from '../user'
 
 export type SessionUser = Pick<
   User,
   'id' | 'username' | 'email' | 'confirmed' | 'blocked'
 > & {
-  roles: RoleType[]
+  roles: string[]
 }
 
 export type Auth = {

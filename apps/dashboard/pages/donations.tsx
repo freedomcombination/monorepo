@@ -16,7 +16,7 @@ const DonationsPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(50)
   const [searchTerm, setSearchTerm] = useState<string>()
-  const [defaultValue, setdefaultValue] = useState<string>('paid')
+  const [defaultValue, setDefaultValue] = useState<string>('paid')
   const [date, setDate] = useState<RangeParams>()
 
   const { t } = useTranslation()
@@ -96,7 +96,7 @@ const DonationsPage = () => {
 
   const setDonationStatus = (status: string) => {
     changeRoute('status', status)
-    setdefaultValue(status)
+    setDefaultValue(status)
   }
 
   return (
