@@ -12,11 +12,11 @@ import {
 } from '@chakra-ui/react'
 import { FaPlus } from 'react-icons/fa6'
 
+import { useAuthContext } from '@fc/context'
 import { StrapiModel } from '@fc/types'
 
 import { ModelCreateForm } from './ModelCreateForm'
 import { ModelCreateFormProps } from './types'
-import { usePermission } from '../../hooks'
 
 export const ModelCreateModal = <T extends StrapiModel>({
   fields,
@@ -33,14 +33,19 @@ export const ModelCreateModal = <T extends StrapiModel>({
 }: PropsWithChildren<ModelCreateFormProps<T> & { title: string }>) => {
   const formDisclosure = useDisclosure()
 
-  const { allowEndpointAction } = usePermission()
+  const { canCreate } = useAuthContext()
 
   const handleSuccess = () => {
     formDisclosure.onClose()
     onSuccess?.()
   }
 
-  const hasPermission = allowEndpointAction(endpoint, 'create')
+  const hasPermission = canCreate(endpoint)
+
+  // when i check code (ie. TopicCard.tsx), i notice we hide this component if canCreate is false.
+  // it is redundant we check permission both place. for better readability, i return null here and remove other checking.
+
+  if (!hasPermission) return null
 
   return (
     <>

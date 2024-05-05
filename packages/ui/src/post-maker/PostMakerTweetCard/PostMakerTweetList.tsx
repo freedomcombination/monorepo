@@ -6,7 +6,6 @@ import { useHashtag } from '@fc/services'
 
 import { PostMakerTweetCard } from './PostMakerTweetCard'
 import { PostMakerTweetListProps } from './types'
-import { usePermission } from '../../hooks'
 import { useHashtagContext } from '../HashtagProvider'
 import { PostProvider } from '../PostProvider'
 
@@ -15,9 +14,14 @@ export const PostMakerTweetList: FC<PostMakerTweetListProps> = ({
 }) => {
   const { postSentenceShares } = useHashtagContext()
   const hashtag = useHashtag()
-  const { allowEndpointAction } = usePermission()
 
-  const canManageSentences = allowEndpointAction('posts', 'update')
+  /*
+  in PostSentenceModal, i use ActionStack with canUpdate prop.
+
+  const { canUpdate } = useAuthContext()
+
+  const canManageSentences = canUpdate('posts')
+  */
 
   const sortedPosts = useMemo(() => {
     if (!hashtag?.posts) return []
@@ -43,12 +47,7 @@ export const PostMakerTweetList: FC<PostMakerTweetListProps> = ({
         {sortedPosts.map(post => {
           return (
             <PostProvider key={post.id} post={post}>
-              {post && (
-                <PostMakerTweetCard
-                  isIosSafari={isIosSafari}
-                  canManageSentences={canManageSentences}
-                />
-              )}
+              {post && <PostMakerTweetCard isIosSafari={isIosSafari} />}
             </PostProvider>
           )
         })}

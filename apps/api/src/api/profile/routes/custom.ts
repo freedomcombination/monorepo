@@ -2,7 +2,7 @@ export default {
   routes: [
     {
       method: 'GET',
-      path: '/profiles/me',
+      path: '/profiles/me/:platform',
       handler: 'custom.getProfile',
     },
   ],

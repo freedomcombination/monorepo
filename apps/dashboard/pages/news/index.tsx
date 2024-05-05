@@ -19,12 +19,14 @@ import { useTranslation } from 'next-i18next'
 import { AiOutlineClear } from 'react-icons/ai'
 import { FaSyncAlt } from 'react-icons/fa'
 
+import { useAuthContext } from '@fc/context'
 import { useTopic, useTopicSync } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
 import { AdminLayout, PageHeader, TopicCard } from '@fc/ui'
 
 const NewsPage = () => {
+  const { checkActionsPermission } = useAuthContext()
   const { data, isLoading } = useTopic()
   const syncTopic = useTopicSync()
   const [filter, setFilter] = useState<string[]>([])
@@ -80,7 +82,9 @@ const NewsPage = () => {
   )
 
   const canSync =
-    data?.updatedAt && isPast(addMinutes(new Date(data.updatedAt), 10))
+    checkActionsPermission('topic', 'sync') &&
+    data?.updatedAt &&
+    isPast(addMinutes(new Date(data.updatedAt), 10))
 
   const syncedStr =
     data?.updatedAt &&

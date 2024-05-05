@@ -2,7 +2,7 @@ import { ThemeTypings } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { Profile, Role, RoleName, User, Job, Platform } from '@fc/types'
+import { Profile, Role, User, Job, Platform } from '@fc/types'
 
 import { WTableProps } from '../../components'
 
@@ -33,7 +33,7 @@ export const useProfileColumns = (): WTableProps<
       sortKey: 'role.name',
       type: 'badge',
       componentProps: value => {
-        const rolesColorMap: Record<RoleName, ThemeTypings['colorSchemes']> = {
+        const rolesColorMap: Record<string, ThemeTypings['colorSchemes']> = {
           'ArtEditor Translator': 'pink',
           'Author Translator': 'facebook',
           'ContentManager Translator': 'orange',
