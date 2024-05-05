@@ -26,9 +26,9 @@ import { FaFilter, FaX } from 'react-icons/fa6'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Permissions, StrapiRole, Role, StrapiLocale } from '@fc/types'
+import { Permissions, Role, RoleInput, StrapiLocale } from '@fc/types'
 import { AdminLayout, ContentEditable, PermissionCard } from '@fc/ui'
-import { mapRole, hasDifferences, updateRole } from '@fc/utils'
+import { cloneRole, hasDifferences, updateRole } from '@fc/utils'
 
 type RolePageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -37,14 +37,14 @@ const RolePage: FC<RolePageProps> = () => {
   const { token } = useAuthContext()
   const { t } = useTranslation()
   const { setDemoPermissions, demoPermissions } = useAuthContext()
-  const [editedRole, setEditedRole] = useState<Role | null>(null)
+  const [editedRole, setEditedRole] = useState<RoleInput | null>(null)
   const [startSave, setStartSave] = useState(false)
   const [filters, setFilters] = useState<string[]>([])
   const inEditMode = !!demoPermissions
 
   const roleId = query.id ? Number(query.id) : 1
 
-  const { data, isLoading, refetch } = useStrapiRequest<StrapiRole>({
+  const { data, isLoading, refetch } = useStrapiRequest<Role>({
     endpoint: 'users-permissions/roles',
     id: roleId,
     token: token ?? '',
@@ -53,7 +53,7 @@ const RolePage: FC<RolePageProps> = () => {
   const role = data?.data
   const filterKeys = Object.keys(role?.permissions ?? {})
 
-  const { data: allRoles } = useStrapiRequest<StrapiRole>({
+  const { data: allRoles } = useStrapiRequest<Role>({
     endpoint: 'users-permissions/roles',
     token: token ?? '',
     fields: ['id', 'name'],
@@ -63,7 +63,7 @@ const RolePage: FC<RolePageProps> = () => {
     if (enable) {
       if (!role || !role.permissions) return
 
-      const roleInput = mapRole(role)
+      const roleInput = cloneRole(role)
 
       setEditedRole(roleInput)
 

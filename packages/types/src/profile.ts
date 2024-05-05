@@ -16,11 +16,11 @@ import { Platform } from './platform'
 import { Post } from './post'
 import { RecommendedTopic } from './recommended-topic'
 import { RecommendedTweet } from './recommended-tweet'
+import { Permissions } from './role'
 import { StrapiBase } from './strapi'
 import { User } from './user'
 import { UserStats } from './user-stats'
 import { Vote } from './vote'
-import { Permissions } from './role'
 
 export type ProfileBase = {
   email: string

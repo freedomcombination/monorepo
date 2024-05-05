@@ -17,7 +17,6 @@ import { NextSeo, NextSeoProps } from 'next-seo'
 import { useAuthContext } from '@fc/context'
 
 import { AdminHeader } from '../AdminHeader'
-import { AdminNavItemProps } from '../AdminNav/types'
 import { useAdminNav } from '../AdminNav/useAdminNav'
 import { AdminSidebar } from '../AdminSidebar'
 import { AuthModal } from '../AuthModal'
@@ -42,30 +41,12 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const { navItems } = useAdminNav()
+  const { navItems, hasPathPermission } = useAdminNav()
   const { asPath } = useRouter()
 
   const isPathAllowed = useMemo(() => {
-    const specialCases = () => {
-      if (asPath.startsWith('/translates') || asPath.startsWith('/arts'))
-        return asPath
-
-      if (asPath.startsWith('/courses')) return '/courses'
-      if (asPath.startsWith('/roles')) return '/roles'
-
-      return asPath.split('?')[0]
-    }
-
-    const path = specialCases()
-
-    const checkSubMenu = (item: AdminNavItemProps) => {
-      if (item.submenu && item.submenu.length > 0)
-        return item.submenu.some(checkSubMenu)
-
-      return item.link && path === item.link && item.allowed
-    }
-
-    return navItems.some(checkSubMenu)
+    return hasPathPermission(asPath)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navItems, asPath])
 
   return (

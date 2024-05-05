@@ -4,11 +4,16 @@ import { Button, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { HiOutlineCheck, HiOutlineX, HiPencil } from 'react-icons/hi'
 
-import { useAuthContext } from '@fc/context'
 import { useArtFeedbackMutation } from '@fc/services'
 
 import { ArtFeedbackFormTypes } from './types'
-import { WAvatar, WConfirm, WConfirmProps } from '../../components'
+import {
+  ActionButton,
+  ActionStack,
+  WAvatar,
+  WConfirm,
+  WConfirmProps,
+} from '../../components'
 
 export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
   art,
@@ -22,8 +27,6 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
 
   const feedbackMutation = useArtFeedbackMutation()
-
-  const { checkActionsPermission, canUpdate } = useAuthContext()
 
   const { t } = useTranslation()
 
@@ -103,51 +106,49 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               placeholder={'Type your comment here'}
             />
 
-            {checkActionsPermission('arts', 'approve') && (
-              <Stack direction={'row'} spacing={2}>
-                <Button
-                  flex={1}
-                  flexShrink={0}
-                  isDisabled={!feedback || art.approvalStatus === 'rejected'}
-                  onClick={handleReject}
-                  colorScheme="red"
-                  leftIcon={<HiOutlineX />}
-                >
-                  {t('reject')}
-                </Button>
+            <ActionStack canApprove="arts" direction={'row'} spacing={2}>
+              <Button
+                flex={1}
+                flexShrink={0}
+                isDisabled={!feedback || art.approvalStatus === 'rejected'}
+                onClick={handleReject}
+                colorScheme="red"
+                leftIcon={<HiOutlineX />}
+              >
+                {t('reject')}
+              </Button>
 
-                <Button
-                  flex={1}
-                  flexShrink={0}
-                  isDisabled={!feedback || art.approvalStatus === 'approved'}
-                  onClick={handleApprove}
-                  colorScheme="primary"
-                  leftIcon={<HiOutlineCheck />}
-                >
-                  {t('approve')}
-                </Button>
+              <Button
+                flex={1}
+                flexShrink={0}
+                isDisabled={!feedback || art.approvalStatus === 'approved'}
+                onClick={handleApprove}
+                colorScheme="primary"
+                leftIcon={<HiOutlineCheck />}
+              >
+                {t('approve')}
+              </Button>
 
-                {canUpdate('arts') && (
-                  <Button
-                    aria-label="Edit"
-                    flexShrink={0}
-                    onClick={onEdit}
-                    colorScheme="primary"
-                    leftIcon={<HiPencil />}
-                  >
-                    {t('edit')}
-                  </Button>
-                )}
-                <Button
-                  aria-label="Close"
-                  flexShrink={0}
-                  onClick={onClose}
-                  colorScheme="gray"
-                >
-                  {t('dismiss')}
-                </Button>
-              </Stack>
-            )}
+              <ActionButton
+                canUpdate="arts"
+                aria-label="Edit"
+                flexShrink={0}
+                onClick={onEdit}
+                colorScheme="primary"
+                leftIcon={<HiPencil />}
+              >
+                {t('edit')}
+              </ActionButton>
+
+              <Button
+                aria-label="Close"
+                flexShrink={0}
+                onClick={onClose}
+                colorScheme="gray"
+              >
+                {t('dismiss')}
+              </Button>
+            </ActionStack>
           </Stack>
         </HStack>
       </Stack>

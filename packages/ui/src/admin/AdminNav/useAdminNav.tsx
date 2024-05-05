@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { useTranslation } from 'next-i18next'
 import {
@@ -9,6 +9,7 @@ import {
   BsTranslate,
 } from 'react-icons/bs'
 import { CgHashtag, CgProfile } from 'react-icons/cg'
+import { FaTimeline } from 'react-icons/fa6'
 import { FiActivity, FiUsers } from 'react-icons/fi'
 import { GiHumanPyramid } from 'react-icons/gi'
 import { HiOutlineNewspaper } from 'react-icons/hi'
@@ -43,20 +44,18 @@ import { AdminNavItemProps } from './types'
 
 export const useAdminNav = () => {
   const { t } = useTranslation()
+  const [menuRender, setMenuRender] = useState(0)
   const { isLoading, demoPermissions, permissions, canRead, isAdmin } =
     useAuthContext()
 
-  const menuItems = useMemo(() => {
-    if (isLoading)
-      return [
-        {
-          label: t('dashboard'),
-          link: '/',
-          icon: <MdOutlineSpaceDashboard />,
-          allowed: true,
-        },
-      ] as AdminNavItemProps[]
+  useEffect(() => {
+    // this isLoading changes every time
+    // if we render menuItems only when isLoading is false
+    // menu wont flicker
+    if (!isLoading) setMenuRender(Date.now())
+  }, [isLoading])
 
+  const menuItems = useMemo(() => {
     const menuItems: AdminNavItemProps[] = [
       {
         label: t('dashboard'),
@@ -65,16 +64,16 @@ export const useAdminNav = () => {
         allowed: true,
       },
       {
-        label: t('foundation'), // t('foundation')
+        label: t('foundation'),
         icon: <MdFoundation />,
         submenu: [
           {
-            label: t('foundation.general'), // t('general')
+            label: t('foundation.general'),
             link: '/foundations',
             icon: <SiGeneralelectric />,
           },
           {
-            label: t('foundation.assets'), // t('assets')
+            label: t('foundation.assets'),
             link: '/assets',
             icon: <SiMaterialdesignicons />,
           },
@@ -166,20 +165,22 @@ export const useAdminNav = () => {
       {
         label: t('news'),
         icon: <HiOutlineNewspaper />,
-        // TODO: canRead('topic') is not working
-        allowed: true,
+
         submenu: [
           {
             label: t('news'),
             link: '/news',
             icon: <HiOutlineNewspaper />,
-            allowed: true,
+            // it seems topic is not ordinary strapi's model.
+            // it has not findOne method, so i change canRead function's requirements.
+            allowed: canRead('topic'),
           },
           {
             label: t('bookmarked-news'),
             link: '/news/bookmarks',
             icon: <TbBookmarks />,
-            allowed: true,
+            // if user cant read /news, he cant add local bookmarks...
+            allowed: canRead('topic'),
           },
           {
             label: t('recommended-news'),
@@ -191,26 +192,22 @@ export const useAdminNav = () => {
       },
       {
         label: t('timelines'),
-        icon: <TbTimeline />,
-        allowed: true,
+        icon: <FaTimeline />,
         submenu: [
           {
             label: t('timelines'),
             link: '/timelines',
             icon: <GiHumanPyramid />,
-            allowed: true,
           },
           {
             label: t('bookmarked-tweets'),
             link: '/timelines/bookmarks',
             icon: <TbBookmarks />,
-            allowed: true,
           },
           {
             label: t('recommended-tweets'),
             link: '/timelines/recommended',
             icon: <TbThumbUp />,
-            allowed: canRead('recommended-tweets'),
           },
         ],
       },
@@ -274,7 +271,7 @@ export const useAdminNav = () => {
 
     const canReadByLink = (link?: DashboardRoute): boolean => {
       if (!link) return true
-      const endpoint = link.match(/\/([^?]+)/)?.[1] as StrapiEndpoint
+      const endpoint = link.match(/^\/([^/?]+)/)?.[1] as StrapiEndpoint
 
       return canRead(endpoint)
     }
@@ -318,7 +315,7 @@ export const useAdminNav = () => {
     return mappedMenuItems.filter(filterMenu)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading, t, permissions, demoPermissions])
+  }, [menuRender, t, permissions, demoPermissions])
 
   const collectMenusRelated = (endpoint: string): AdminNavItemProps[] => {
     const link = '/' + makePlural(endpoint)
@@ -337,8 +334,22 @@ export const useAdminNav = () => {
     return result
   }
 
+  const hasPathPermission = (asPath: string): boolean => {
+    const checkSubMenu = (item: AdminNavItemProps) => {
+      if (item.submenu && item.submenu.length > 0)
+        return item.submenu.some(checkSubMenu)
+
+      if (!item.allowed || !item.link) return false
+
+      return asPath.startsWith(item.link)
+    }
+
+    return menuItems.some(checkSubMenu)
+  }
+
   return {
     navItems: menuItems,
     collectMenusRelated,
+    hasPathPermission,
   }
 }

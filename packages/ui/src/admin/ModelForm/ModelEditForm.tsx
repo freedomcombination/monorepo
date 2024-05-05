@@ -3,7 +3,6 @@ import { useState } from 'react'
 import {
   AspectRatio,
   Box,
-  Button,
   Divider,
   Flex,
   FormControl,
@@ -11,7 +10,6 @@ import {
   FormHelperText,
   FormLabel,
   Heading,
-  HStack,
   Stack,
   Switch,
   Textarea,
@@ -36,7 +34,6 @@ import {
 } from 'react-icons/md'
 import { InferType } from 'yup'
 
-import { useAuthContext } from '@fc/context'
 import {
   useApproveModel,
   useCreateModelMutation,
@@ -60,7 +57,14 @@ import { ModelSelect } from './ModelSelect'
 import { FormCommonFields, ModelEditFormProps, Option } from './types'
 import { useDefaultValues } from './utils'
 import { I18nNamespaces } from '../../../@types/i18next'
-import { FormItem, MasonryGrid, MdFormItem } from '../../components'
+import {
+  ActionButton,
+  ActionHStack,
+  ActionStack,
+  FormItem,
+  MasonryGrid,
+  MdFormItem,
+} from '../../components'
 import { WConfirm, WConfirmProps } from '../../components/WConfirm'
 import { useFields, useSchema } from '../../data'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
@@ -112,8 +116,6 @@ export const ModelEditForm = <T extends StrapiModel>({
   )
 
   const defaultValues = useDefaultValues(model, fields)
-
-  const { checkActionsPermission } = useAuthContext()
 
   const {
     register,
@@ -486,140 +488,138 @@ export const ModelEditForm = <T extends StrapiModel>({
           bg={'white'}
         >
           <Wrap>
-            {endpoint === 'hashtags' &&
-              // this api is the api which we need permission in endpoint
-              checkActionsPermission('posts', 'createPosts') && (
-                <Button
-                  onClick={() => router.push(`/hashtags/${id}`)}
-                  leftIcon={<FaXTwitter />}
-                  fontSize="sm"
-                  colorScheme={'purple'}
-                  isLoading={approveModelMutation.isPending}
-                >
-                  {t('posts')}
-                </Button>
-              )}
-            {endpoint === 'collections' && (
-              <>
-                <ArtAddToCollectionModal
-                  collection={model as any}
-                  isOpen={artModalDisclosure.isOpen}
-                  onClose={artModalDisclosure.onClose}
-                />
-                {checkActionsPermission('collections', 'update') && (
-                  <Button
-                    onClick={artModalDisclosure.onOpen}
-                    leftIcon={<HiPlus />}
-                    fontSize="sm"
-                    colorScheme={'purple'}
-                    isLoading={approveModelMutation.isPending}
-                  >
-                    {t('collection.add-art')}
-                  </Button>
-                )}
-              </>
-            )}
-            {endpoint === 'hashtags' && <DownloadCapsModal id={id} />}
-            {!profile &&
-              endpoint === 'users' &&
-              checkActionsPermission('profiles', 'create') && (
-                <Button
-                  onClick={onGenerateProfile}
-                  leftIcon={<BiUserPlus />}
-                  colorScheme="primary"
-                >
-                  {t('profile.create')}
-                </Button>
-              )}
-            {translatableModel.approvalStatus &&
-              translatableModel.approvalStatus !== 'approved' &&
-              checkActionsPermission(endpoint, 'approve') && (
-                <Button
-                  onClick={onApprove}
-                  leftIcon={<HiOutlineCheck />}
-                  fontSize="sm"
-                  colorScheme={'purple'}
-                  isLoading={approveModelMutation.isPending}
-                >
-                  {t('approve')}
-                </Button>
-              )}
-            {checkActionsPermission(endpoint, 'update') && (
-              <HStack>
-                {!isEditing && (
-                  <Button
-                    onClick={setIsEditing.on}
-                    leftIcon={<AiOutlineEdit />}
-                    fontSize="sm"
-                  >
-                    {t('edit')}
-                  </Button>
-                )}
-                {isEditing && (
-                  <Button
-                    onClick={onCancel}
-                    leftIcon={<MdClose />}
-                    colorScheme={'gray'}
-                    fontSize="sm"
-                  >
-                    {t('cancel')}
-                  </Button>
-                )}
-                {isEditing && (
-                  <Button
-                    type="submit"
-                    leftIcon={<MdOutlineCheck />}
-                    fontSize="sm"
-                  >
-                    {t('save')}
-                  </Button>
-                )}
-              </HStack>
-            )}
-            {checkActionsPermission(endpoint, 'publish') && (
-              <Button
-                onClick={isPublished ? onUnPublish : onPublish}
-                colorScheme={isPublished ? 'yellow' : 'green'}
+            <ActionButton
+              isVisible={endpoint === 'hashtags'}
+              checkActions={{ endpoint: 'posts', actions: ['createPosts'] }}
+              onClick={() => router.push(`/hashtags/${id}`)}
+              leftIcon={<FaXTwitter />}
+              fontSize="sm"
+              colorScheme={'purple'}
+              isLoading={approveModelMutation.isPending}
+            >
+              {t('posts')}
+            </ActionButton>
+
+            <ActionStack isVisible={endpoint === 'collections'} gap={0}>
+              <ArtAddToCollectionModal
+                collection={model as any}
+                isOpen={artModalDisclosure.isOpen}
+                onClose={artModalDisclosure.onClose}
+              />
+              <ActionButton
+                canUpdate="collections"
+                onClick={artModalDisclosure.onOpen}
+                leftIcon={<HiPlus />}
                 fontSize="sm"
-                leftIcon={
-                  isPublished ? (
-                    <MdOutlineUnpublished />
-                  ) : (
-                    <MdOutlinePublishedWithChanges />
-                  )
-                }
+                colorScheme={'purple'}
+                isLoading={approveModelMutation.isPending}
               >
-                {isPublished ? t('unpublish') : t('publish')}
-              </Button>
-            )}
-            {checkActionsPermission(endpoint, 'delete') && (
-              <Button
-                onClick={onDelete}
-                leftIcon={<BsTrash />}
-                colorScheme="red"
+                {t('collection.add-art')}
+              </ActionButton>
+            </ActionStack>
+
+            {endpoint === 'hashtags' && <DownloadCapsModal id={id} />}
+
+            <ActionButton
+              canCreate="profiles"
+              isVisible={!profile && endpoint === 'users'}
+              onClick={onGenerateProfile}
+              leftIcon={<BiUserPlus />}
+              colorScheme="primary"
+            >
+              {t('profile.create')}
+            </ActionButton>
+
+            <ActionButton
+              isVisible={
+                translatableModel.approvalStatus &&
+                translatableModel.approvalStatus !== 'approved'
+              }
+              canApprove={endpoint}
+              onClick={onApprove}
+              leftIcon={<HiOutlineCheck />}
+              fontSize="sm"
+              colorScheme={'purple'}
+              isLoading={approveModelMutation.isPending}
+            >
+              {t('approve')}
+            </ActionButton>
+
+            <ActionHStack canUpdate={endpoint}>
+              <ActionButton
+                isVisible={!isEditing}
+                onClick={setIsEditing.on}
+                leftIcon={<AiOutlineEdit />}
+                fontSize="sm"
               >
-                {t('delete')}
-              </Button>
-            )}
-            {onClose && (
-              <Button onClick={onClose} colorScheme="gray">
-                {t('dismiss')}
-              </Button>
-            )}
+                {t('edit')}
+              </ActionButton>
+
+              <ActionButton
+                isVisible={isEditing}
+                onClick={onCancel}
+                leftIcon={<MdClose />}
+                colorScheme={'gray'}
+                fontSize="sm"
+              >
+                {t('cancel')}
+              </ActionButton>
+
+              <ActionButton
+                isVisible={isEditing}
+                type="submit"
+                leftIcon={<MdOutlineCheck />}
+                fontSize="sm"
+              >
+                {t('save')}
+              </ActionButton>
+            </ActionHStack>
+
+            <ActionButton
+              checkActions={{ endpoint, actions: ['publish'] }}
+              onClick={isPublished ? onUnPublish : onPublish}
+              colorScheme={isPublished ? 'yellow' : 'green'}
+              fontSize="sm"
+              leftIcon={
+                isPublished ? (
+                  <MdOutlineUnpublished />
+                ) : (
+                  <MdOutlinePublishedWithChanges />
+                )
+              }
+            >
+              {isPublished ? t('unpublish') : t('publish')}
+            </ActionButton>
+
+            <ActionButton
+              canDelete={endpoint}
+              onClick={onDelete}
+              leftIcon={<BsTrash />}
+              colorScheme="red"
+            >
+              {t('delete')}
+            </ActionButton>
+
+            <ActionButton
+              isVisible={!!onClose}
+              onClick={onClose}
+              colorScheme="gray"
+            >
+              {t('dismiss')}
+            </ActionButton>
           </Wrap>
         </Flex>
       </Stack>
       <Divider />
-      {profile && (
-        <>
-          <Heading p={{ base: 4, lg: 8 }}>{t('profile')}</Heading>
-          <ModelEditForm
-            endpoint="profiles"
-            model={profile}
-            onSuccess={profileQuery.refetch}
-          />
-        </>
-      )}
+
+      <ActionStack isVisible={!!profile}>
+        <Heading p={{ base: 4, lg: 8 }}>{t('profile')}</Heading>
+        <ModelEditForm
+          endpoint="profiles"
+          model={profile!}
+          onSuccess={profileQuery.refetch}
+        />
+      </ActionStack>
     </>
   )
 }

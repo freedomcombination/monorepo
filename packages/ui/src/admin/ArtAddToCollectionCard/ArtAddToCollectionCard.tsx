@@ -13,11 +13,10 @@ import { AiOutlineEye } from 'react-icons/ai'
 import { HiPlus } from 'react-icons/hi'
 import { IoCloseSharp } from 'react-icons/io5'
 
-import { useAuthContext } from '@fc/context'
 import { UploadFile } from '@fc/types'
 
 import { ArtAddToCollectionCardProps } from './types'
-import { ArtModal, WImage } from '../../components'
+import { ActionButton, ArtModal, WImage } from '../../components'
 
 export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   isAdded,
@@ -31,7 +30,6 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   const router = useRouter()
 
   const titleKey = `title_${router.locale}` as const
-  const { canCreate } = useAuthContext()
 
   return (
     <Stack boxShadow="md" rounded="md" direction={'column'} overflow="hidden">
@@ -59,20 +57,19 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
 
           <Spacer />
 
-          {canCreate('collections') && (
-            <Button
-              variant={'outline'}
-              colorScheme={isAdded ? 'red' : 'green'}
-              leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
-              size="xs"
-              isLoading={isLoading}
-              onClick={() => {
-                isAdded ? onRemove(art) : onAdd(art)
-              }}
-            >
-              {isAdded ? 'Remove' : 'Add to Collection'}
-            </Button>
-          )}
+          <ActionButton
+            canCreate="collections"
+            variant={'outline'}
+            colorScheme={isAdded ? 'red' : 'green'}
+            leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
+            size="xs"
+            isLoading={isLoading}
+            onClick={() => {
+              isAdded ? onRemove(art) : onAdd(art)
+            }}
+          >
+            {isAdded ? 'Remove' : 'Add to Collection'}
+          </ActionButton>
         </HStack>
       </Stack>
       <ArtModal art={art} isOpen={isOpen} onClose={onClose} />

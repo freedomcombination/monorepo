@@ -37,6 +37,7 @@ import {
   Tag,
 } from '@fc/types'
 
+import { ActionStack } from '../../components'
 import { useFields, useSchema } from '../../data'
 import { CreatePostFromCapsModal } from '../CreatePostFromCapsModal'
 import { ModelCreateModal } from '../ModelForm'
@@ -52,7 +53,7 @@ export const CreateModelButton = () => {
   const fields = useFields()
   const schemas = useSchema()
 
-  const { user, canCreate } = useAuthContext()
+  const { user } = useAuthContext()
 
   if (!user) return null
 
@@ -184,21 +185,19 @@ export const CreateModelButton = () => {
                   {t('create-post')}
                 </ModelCreateModal>
 
-                {canCreate('posts') && (
-                  <>
-                    <CreatePostFromCapsModal
-                      isOpen={isOpenPost}
-                      onClose={onClosePost}
-                    />
-                    <Button
-                      colorScheme="green"
-                      variant="outline"
-                      onClick={onOpenPost}
-                    >
-                      {t('create-multiple-post')}
-                    </Button>
-                  </>
-                )}
+                <ActionStack canCreate="posts">
+                  <CreatePostFromCapsModal
+                    isOpen={isOpenPost}
+                    onClose={onClosePost}
+                  />
+                  <Button
+                    colorScheme="green"
+                    variant="outline"
+                    onClick={onOpenPost}
+                  >
+                    {t('create-multiple-post')}
+                  </Button>
+                </ActionStack>
 
                 <ModelCreateModal<Category>
                   title={t('categories')}

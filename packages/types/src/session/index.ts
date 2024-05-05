@@ -1,4 +1,3 @@
-import { PlatformSlug } from '../app'
 import { Profile } from '../profile'
 import { User } from '../user'
 

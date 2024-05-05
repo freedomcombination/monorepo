@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 import {
   Box,
-  Button,
   FormLabel,
   HStack,
   Stack,
@@ -19,7 +18,6 @@ import { HiOutlineCheck } from 'react-icons/hi'
 import { MdClose, MdOutlineCheck } from 'react-icons/md'
 import { InferType } from 'yup'
 
-import { useAuthContext } from '@fc/context'
 import {
   useApproveModel,
   useStrapiRequest,
@@ -33,6 +31,8 @@ import {
 import { ModelEditTranslateProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
 import {
+  ActionButton,
+  ActionHStack,
   Flags,
   FormItem,
   MdFormItem,
@@ -84,8 +84,6 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
     mode: 'all',
     values: defaultValues,
   })
-
-  const { canApprove, canUpdate } = useAuthContext()
 
   const handleSuccess = () => {
     onSuccess?.()
@@ -261,54 +259,55 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
           w={'full'}
           bg={'white'}
         >
-          {!isEditing &&
-            model.approvalStatus !== 'approved' &&
-            (isReferenceSelf ||
-              referenceModel?.approvalStatus === 'approved') &&
-            canApprove(endpoint) && (
-              <Button
-                onClick={onApprove}
-                leftIcon={<HiOutlineCheck />}
-                fontSize="sm"
-                colorScheme={'purple'}
-                isLoading={approveModelMutation.isPending}
-              >
-                {t('approve')}
-              </Button>
-            )}
-          {canUpdate(endpoint) && (
-            <>
-              {!isEditing && (
-                <Button
-                  onClick={setIsEditing.on}
-                  leftIcon={<AiOutlineEdit />}
-                  fontSize="sm"
-                >
-                  {t('edit')}
-                </Button>
-              )}
-              {isEditing && (
-                <Button
-                  type="submit"
-                  leftIcon={<MdOutlineCheck />}
-                  fontSize="sm"
-                >
-                  {t('save')}
-                </Button>
-              )}
-              {isEditing && (
-                <Button
-                  onClick={onCancel}
-                  leftIcon={<MdClose />}
-                  colorScheme={'gray'}
-                  fontSize="sm"
-                >
-                  {t('cancel')}
-                </Button>
-              )}
-              {children}
-            </>
-          )}
+          <ActionButton
+            isVisible={
+              !isEditing &&
+              model.approvalStatus !== 'approved' &&
+              (isReferenceSelf || referenceModel?.approvalStatus === 'approved')
+            }
+            canApprove={endpoint}
+            onClick={onApprove}
+            leftIcon={<HiOutlineCheck />}
+            fontSize="sm"
+            colorScheme={'purple'}
+            isLoading={approveModelMutation.isPending}
+          >
+            {t('approve')}
+          </ActionButton>
+
+          <ActionHStack
+            canUpdate={endpoint}
+          >
+            <ActionButton
+              isVisible={!isEditing}
+              onClick={setIsEditing.on}
+              leftIcon={<AiOutlineEdit />}
+              fontSize="sm"
+            >
+              {t('edit')}
+            </ActionButton>
+
+            <ActionButton
+              isVisible={isEditing}
+              type="submit"
+              leftIcon={<MdOutlineCheck />}
+              fontSize="sm"
+            >
+              {t('save')}
+            </ActionButton>
+
+            <ActionButton
+              isVisible={isEditing}
+              onClick={onCancel}
+              leftIcon={<MdClose />}
+              colorScheme={'gray'}
+              fontSize="sm"
+            >
+              {t('cancel')}
+            </ActionButton>
+
+            {children}
+          </ActionHStack>
         </Wrap>
       </Stack>
     </>

@@ -42,6 +42,11 @@ export const ModelCreateModal = <T extends StrapiModel>({
 
   const hasPermission = canCreate(endpoint)
 
+  // when i check code (ie. TopicCard.tsx), i notice we hide this component if canCreate is false.
+  // it is redundant we check permission both place. for better readability, i return null here and remove other checking.
+
+  if (!hasPermission) return null
+
   return (
     <>
       <Button

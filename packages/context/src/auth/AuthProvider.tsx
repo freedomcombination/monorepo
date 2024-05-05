@@ -61,7 +61,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   }
 
   function canRead(endpoint: StrapiEndpoint): boolean {
-    return checkActionsPermission(endpoint, 'find', 'findOne')
+    return checkActionsPermission(endpoint, 'find')
   }
 
   function canUpdate(endpoint: StrapiEndpoint): boolean {
