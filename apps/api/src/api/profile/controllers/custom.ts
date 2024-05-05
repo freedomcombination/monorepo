@@ -24,9 +24,10 @@ module.exports = {
         return ctx.notFound('Profile not found')
       }
 
+      const platform = ctx.params?.platform
+
       const includePermissions =
-        ctx.query?.platform === 'dashboard' ||
-        ctx.query?.platform === 'trend-rights'
+        platform === 'dashboard' || platform === 'trend-rights'
 
       const rolePermissions = includePermissions
         ? (
