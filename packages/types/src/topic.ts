@@ -12,7 +12,10 @@ export type TopicBase = {
   locale: StrapiLocale
   publisher: string
   isRecommended?: boolean
+  type?: TopicBaseType
 }
+
+export type TopicBaseType = 'Blog' | 'Activity' | 'Topic'
 
 export type Topic = StrapiBase & {
   data: TopicBase[]

@@ -30,7 +30,6 @@ import {
   TbClock,
   TbMilitaryRank,
   TbThumbUp,
-  TbTimeline,
   TbWriting,
   TbX,
 } from 'react-icons/tb'

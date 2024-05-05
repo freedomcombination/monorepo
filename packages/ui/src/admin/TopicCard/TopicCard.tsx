@@ -8,6 +8,7 @@ import {
   Popover,
   PopoverArrow,
   PopoverBody,
+  Highlight,
   PopoverContent,
   PopoverTrigger,
   Stack,
@@ -18,7 +19,7 @@ import {
 import { useQueryClient } from '@tanstack/react-query'
 import { formatDistanceStrict } from 'date-fns'
 import { useTranslation } from 'next-i18next'
-import { AiOutlineDelete } from 'react-icons/ai'
+import { AiOutlineDelete, AiOutlineEyeInvisible } from 'react-icons/ai'
 import {
   FaBookmark,
   FaRegBookmark,
@@ -38,29 +39,27 @@ import { ShareButtons, WConfirm, WConfirmProps, WImage } from '../../components'
 import { useFields, useSchema } from '../../data'
 import { ModelCreateModal } from '../ModelForm'
 
-export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
-  const { user, canCreate } = useAuthContext()
-
+export const TopicCard: FC<TopicCardProps> = ({
+  topic,
+  searchKey,
+  ...rest
+}) => {
+  const { user } = useAuthContext()
   const { t } = useTranslation()
-
   const fields = useFields()
   const schemas = useSchema()
-
+  const { allowEndpointAction } = usePermission()
   const time =
     topic.time && formatDistanceStrict(new Date(topic.time), new Date())
-
   const [bookmarksStorage, setBookmarksStorage] = useLocalStorage<TopicBase[]>(
     'bookmarks',
     [],
   )
-
+  const type = topic.type ?? 'Topic'
   const deleteModelMutation = useDeleteModel('recommended-topics')
-
   const queryClient = useQueryClient()
-
   const toast = useToast()
   const { mutateAsync, isPending } = useRecommendTopic()
-
   const isBookmarked = bookmarksStorage?.some(t => t.url === topic.url)
 
   const handleBookmark = () => {
@@ -76,8 +75,11 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
   }
 
   const handleRecommend = async () => {
+    if (type !== 'Topic') return
     await mutateAsync(topic as RecommendedTopicCreateInput, {
-      onSettled: () => queryClient.invalidateQueries({ queryKey: ['topics'] }),
+      onSettled: () => {
+        queryClient.invalidateQueries({ queryKey: ['topics'] })
+      },
     })
     toast({
       title: 'Recommended',
@@ -108,25 +110,44 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
 
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
   const id = topic?.id as number
+  const highlightStyle = {
+    bg: 'yellow.200',
+    rounded: 'md',
+    color: 'black',
+  }
 
   const onDelete = () => {
+    const title = type === 'Topic' ? 'Delete News' : 'Hide'
+    const description =
+      type === 'Topic'
+        ? 'Are you sure you want to delete this news?'
+        : `Are you sure you want to hide this ${type}?`
+    const text = type === 'Topic' ? 'Delete' : 'Hide'
     setConfirmState({
       isWarning: true,
-      title: 'Delete News',
-      description: 'Are you sure you want to delete this news?',
-      buttonText: 'Delete',
+      title,
+      description,
+      buttonText: text,
       onConfirm: async () => {
-        deleteModelMutation.mutate(
-          { id },
-          {
-            onSuccess: () => {
-              setConfirmState(undefined)
+        if (type === 'Topic') {
+          deleteModelMutation.mutate(
+            { id },
+            {
+              onSuccess: () => {
+                setConfirmState(undefined)
+                rest.onDelete?.(topic.url)
+              },
+              onError: async errors => {
+                console.error('Delete news error', errors)
+              },
+              onSettled: () => {
+                queryClient.refetchQueries({ queryKey: ['topics'] })
+              },
             },
-            onError: async errors => {
-              console.error('Delete news error', errors)
-            },
-          },
-        )
+          )
+        } else {
+          rest.onDelete?.(topic.url)
+        }
         setConfirmState(undefined)
       },
     })
@@ -183,10 +204,22 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
       <Stack spacing={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
         <Stack textAlign={{ base: 'center', xl: 'left' }} flex={1}>
           <Text fontSize="lg" fontWeight={600} noOfLines={{ xl: 1 }}>
-            {topic.title}
+            {searchKey ? (
+              <Highlight query={searchKey} styles={highlightStyle}>
+                {topic.title || ''}
+              </Highlight>
+            ) : (
+              topic.title
+            )}
           </Text>
           <Text maxW={1000} noOfLines={{ base: 5, xl: 3 }}>
-            {topic.description}
+            {searchKey ? (
+              <Highlight query={searchKey} styles={highlightStyle}>
+                {topic.description || ''}
+              </Highlight>
+            ) : (
+              topic.description
+            )}
           </Text>
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
@@ -263,12 +296,22 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
               />
             )}
             {user && topic?.isRecommended && id && (
-              <Tooltip label="Delete news" hasArrow bg="primary.400">
+              <Tooltip
+                label={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
+                hasArrow
+                bg="primary.400"
+              >
                 <Box>
                   <ActionButton
                     onClick={onDelete}
-                    icon={<AiOutlineDelete />}
-                    title="Delete"
+                    icon={
+                      type === 'Topic' ? (
+                        <AiOutlineDelete />
+                      ) : (
+                        <AiOutlineEyeInvisible />
+                      )
+                    }
+                    title={type === 'Topic' ? 'Delete' : 'Hide'}
                     variant="ghost"
                     colorScheme="red"
                   />
