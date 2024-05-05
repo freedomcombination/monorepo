@@ -24,10 +24,10 @@ module.exports = {
         return ctx.notFound('Profile not found')
       }
 
-      const platform = ctx.params?.platform
+      //const platform = ctx.params?.platform 
 
-      const includePermissions =
-        platform === 'dashboard' || platform === 'trend-rights'
+      const includePermissions = true
+      //  platform === 'dashboard' || platform === 'trend-rights' 
 
       const rolePermissions = includePermissions
         ? (
