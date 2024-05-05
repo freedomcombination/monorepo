@@ -10,6 +10,7 @@ import { Control, FieldValues, useController } from 'react-hook-form'
 import { MarkdownEditor } from '.'
 import { I18nNamespaces } from '../../../@types/i18next'
 import { FormItemProps } from '../FormItem'
+import { FormUploader } from '../FormUploader/FormUploader'
 
 type MdFormItemProps<T extends FieldValues> = {
   control: Control<T>
@@ -51,7 +52,10 @@ export const MdFormItem = <T extends FieldValues>({
       flex={1}
       display={'flex'}
       flexDir={'column'}
+      gap={1}
     >
+      <FormUploader />
+
       {label && !hideLabel && (
         <FormLabel mb={1} htmlFor={name} fontSize="sm" fontWeight={600}>
           {label}
