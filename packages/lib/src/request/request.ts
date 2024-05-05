@@ -100,6 +100,11 @@ async function strapiRequest<T extends StrapiModel>(
             data: result as unknown as T,
             meta: { pagination: null },
           } as StrapiSingleResponse<T>
+        } else if (endpoint === 'users-permissions/roles') {
+          return {
+            data: (result as any).role as unknown as T,
+            meta: { pagination: null },
+          } as StrapiSingleResponse<T>
         }
 
         return {

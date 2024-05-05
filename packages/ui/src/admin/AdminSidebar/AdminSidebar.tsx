@@ -13,7 +13,7 @@ type AdminSidebarProps = {
 }
 
 export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
-  const { user, profile, logout } = useAuthContext()
+  const { user, profile, logout, demoPermissions } = useAuthContext()
 
   return (
     <Stack
@@ -57,7 +57,15 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
       <Box mt={2} flex={1} overflow="auto">
         <Stack>
           <Box pos="sticky" top={0} px={4} bg="white" zIndex={1}>
-            <Text fontWeight={600}>MENU</Text>
+            <Text
+              fontWeight={600}
+              display={'flex'}
+              flexDirection={'row'}
+              justifyContent={'space-between'}
+            >
+              MENU{' '}
+              {demoPermissions && <Text color={'red.500'}>* Editing...</Text>}
+            </Text>
           </Box>
 
           {/* AdminNav */}

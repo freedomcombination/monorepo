@@ -9,6 +9,7 @@ import {
   HStack,
   Heading,
   IconButton,
+  Skeleton,
   Tooltip,
   useDisclosure,
 } from '@chakra-ui/react'
@@ -30,7 +31,7 @@ type AdminHeaderProps = {
 }
 
 export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
-  const { user, openAuthModal } = useAuthContext()
+  const { user, openAuthModal, isLoading } = useAuthContext()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const router = useRouter()
@@ -56,11 +57,12 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             />
           </Tooltip>
         )}
-        {!hasBackButton && title && (
+        {!isLoading && !hasBackButton && title && (
           <Heading size={{ base: 'lg', lg: 'xl' }} isTruncated>
             {title}
           </Heading>
         )}
+        {isLoading && !title && <Skeleton noOfLines={1} w={40} />}
       </HStack>
 
       {/* TODO Create notification component */}
@@ -82,6 +84,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             colorScheme={'blue'}
             leftIcon={<FaUser />}
             rounded={'full'}
+            isLoading={isLoading}
           >
             Login
           </Button>

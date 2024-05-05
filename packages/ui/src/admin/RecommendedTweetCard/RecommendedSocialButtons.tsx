@@ -19,7 +19,7 @@ import { getMediaUrl } from '@fc/utils'
 import { ShareButtons, WConfirm, WConfirmProps } from '../../components'
 import { useFields, useSchema } from '../../data'
 import { ModelCreateModal } from '../ModelForm'
-import { ActionButton } from '../TopicCard'
+import { TopicCardButton as ActionButton } from '../TopicCard'
 
 export interface RecommendedSocialButtonsProps {
   tweet: RecommendedTweet

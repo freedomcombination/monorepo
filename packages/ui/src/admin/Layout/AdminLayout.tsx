@@ -1,11 +1,23 @@
-import { FC, ReactNode, useEffect } from 'react'
+import { FC, ReactNode, useEffect, useMemo } from 'react'
 
-import { Box, Center, Flex, Spinner, Stack } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  Box,
+  Center,
+  Flex,
+  Spinner,
+  Stack,
+} from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { NextSeo, NextSeoProps } from 'next-seo'
 
 import { useAuthContext } from '@fc/context'
 
 import { AdminHeader } from '../AdminHeader'
+import { useAdminNav } from '../AdminNav/useAdminNav'
 import { AdminSidebar } from '../AdminSidebar'
 import { AuthModal } from '../AuthModal'
 
@@ -22,12 +34,20 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
   hasBackButton,
   seo,
 }) => {
-  const { checkAuth } = useAuthContext()
+  const { checkAuth, isLoading: isAuthLoading, isAdmin } = useAuthContext()
 
   useEffect(() => {
     checkAuth()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const { navItems, hasPathPermission } = useAdminNav()
+  const { asPath } = useRouter()
+
+  const isPathAllowed = useMemo(() => {
+    return hasPathPermission(asPath)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navItems, asPath])
 
   return (
     <>
@@ -44,9 +64,9 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
           as="main"
           bg="gray.50"
           h="full"
-          overflowY={'auto'}
+          overflowY={'hidden'}
           flex={1}
-          pb={{ base: 12, lg: 4 }}
+          //    pb={{ base: 12, lg: 4 }}
         >
           {isLoading ? (
             <Center h="full">
@@ -54,15 +74,61 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
             </Center>
           ) : (
             <>
-              <AdminHeader hasBackButton={hasBackButton} title={seo.title} />
-              {/* Page Content */}
-              <Stack px={4} h={'full'} flex={1} spacing={4} overflowY={'auto'}>
-                {children}
-              </Stack>
+              <AdminHeader
+                hasBackButton={hasBackButton}
+                title={
+                  !isPathAllowed
+                    ? isAdmin
+                      ? 'Not allowed * ' + seo.title
+                      : '***'
+                    : seo.title
+                }
+              />
+              {!isPathAllowed && !isAdmin ? (
+                <NotAllowedPage show={!isAuthLoading && navItems.length > 0} />
+              ) : (
+                <Stack
+                  px={4}
+                  h={'full'}
+                  flex={1}
+                  spacing={4}
+                  overflowY={'auto'}
+                >
+                  {/* Page Content */}
+                  {children}
+                </Stack>
+              )}
             </>
           )}
         </Stack>
       </Flex>
     </>
+  )
+}
+
+const NotAllowedPage: FC<{ show?: boolean }> = ({ show }) => {
+  const { t } = useTranslation()
+
+  if (!show) return null
+
+  return (
+    <Center h={'full'}>
+      <Alert
+        status="error"
+        variant="solid"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        height="80%"
+        width="80%"
+        borderRadius="lg"
+      >
+        <AlertIcon boxSize="80px" mr={0} />
+        <AlertTitle mt={4} mb={1} fontSize="lg">
+          {t('not-allowed')}
+        </AlertTitle>
+      </Alert>
+    </Center>
   )
 }
