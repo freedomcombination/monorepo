@@ -14,7 +14,7 @@ export const userRouter: NextApiHandler = async (req, res) => {
       ? await strapiRequest<Profile>({
           endpoint: `profiles/me`,
           token: session.token,
-        //  ...(platform ? { id: platform } : {}),
+          //  ...(platform ? { id: platform } : {}),
         })
       : null
 

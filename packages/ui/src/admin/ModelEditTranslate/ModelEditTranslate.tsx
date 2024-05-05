@@ -275,9 +275,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             {t('approve')}
           </ActionButton>
 
-          <ActionHStack
-            canUpdate={endpoint}
-          >
+          <ActionHStack canUpdate={endpoint}>
             <ActionButton
               isVisible={!isEditing}
               onClick={setIsEditing.on}
