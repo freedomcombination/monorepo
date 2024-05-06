@@ -105,7 +105,7 @@
     "@storybook/builder-webpack5": "^7.6.19",
     "@storybook/core-common": "^7.6.19",
     "@storybook/core-server": "^7.6.19",
-    "@storybook/nextjs": "^7.6.19",
+    "@storybook/nextjs": "^8.0.10",
     "@storybook/react": "^7.6.19",
     "@storybook/types": "^7.6.19",
     "@turbo/gen": "^1.13.3",
