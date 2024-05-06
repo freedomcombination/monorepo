@@ -8516,10 +8516,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.34.2":
-  version: 5.34.2
-  resolution: "@tanstack/query-core@npm:5.34.2"
-  checksum: 10/801c861ac9d6c2ced7911801efe4c600a7bdf5de5927e30a274a92d3198971ba7df57db2f4ad8d3656af479a0944a267c07532cfd06c37069aeaf51e47a5b3c1
+"@tanstack/query-core@npm:5.35.1":
+  version: 5.35.1
+  resolution: "@tanstack/query-core@npm:5.35.1"
+  checksum: 10/00a41b99e686914198649ae06c451632e3335dd1f26d037e5e9c0db3b49eadb01783289fba2cf7dc5b36cc309db17809d02a4b13dc6e2c1df8a767ea10bc4d58
   languageName: node
   linkType: hard
 
@@ -8530,26 +8530,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.32.0":
-  version: 5.34.2
-  resolution: "@tanstack/react-query-devtools@npm:5.34.2"
+"@tanstack/react-query-devtools@npm:^5.35.1":
+  version: 5.35.1
+  resolution: "@tanstack/react-query-devtools@npm:5.35.1"
   dependencies:
     "@tanstack/query-devtools": "npm:5.32.1"
   peerDependencies:
-    "@tanstack/react-query": ^5.34.2
+    "@tanstack/react-query": ^5.35.1
     react: ^18.0.0
-  checksum: 10/ed7d9dd8a57a1c49cf37daa26b45620073f9f01e27b8d8a3b985fa19257bc443fb1ed1e5e8737dea5b57e07ac5308bc5441d6a07ddc56382c52fcc695f59a9b8
+  checksum: 10/c68d7b63ba92ab4a3721d224e64a23cd077be4f96c5cd595023794347a818213755df6135131e6dc99e5b04962369fc5a94f8e809614805b580d483e7f2fcd77
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.32.0":
-  version: 5.34.2
-  resolution: "@tanstack/react-query@npm:5.34.2"
+"@tanstack/react-query@npm:^5.35.1":
+  version: 5.35.1
+  resolution: "@tanstack/react-query@npm:5.35.1"
   dependencies:
-    "@tanstack/query-core": "npm:5.34.2"
+    "@tanstack/query-core": "npm:5.35.1"
   peerDependencies:
     react: ^18.0.0
-  checksum: 10/1c2da7e311891310556319c905bd0aa3b25300f7ad5ce30ba5c56896580bcec4dc6bc69038f39650cbc85a54d6654705f60313b54420ee4f95cdb6ac6c8823bd
+  checksum: 10/d64fbbddadd220e60b87d828112ea47d93ee2139f75b1d21a57919577f6cbbc1cf55e93c474d43e188bd81a34c9bcdb598959aff066ca6e1674e9d0e6a153367
   languageName: node
   linkType: hard
 
@@ -9416,12 +9416,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.12.8":
-  version: 20.12.8
-  resolution: "@types/node@npm:20.12.8"
+"@types/node@npm:^20.12.10":
+  version: 20.12.10
+  resolution: "@types/node@npm:20.12.10"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/1feab4c8cb08588eea10811ed4d02485a5cde47fdf92e7b3193fc9f8ee39ea556f6e3124dc6d5378354466ed5f7e5fbe5e20f625908de40ea37560368a50f72c
+  checksum: 10/b3ab044969880084e4da22a0173fc234239de81c22fb9418bd992de98369a3065c0c6119216476711af69ff520331cf06711acdeb1959554de6bbf0912a0494e
   languageName: node
   linkType: hard
 
@@ -9985,7 +9985,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/compressor@npm:^1.1.2":
+"@uppy/compressor@npm:^1.1.3":
   version: 1.1.3
   resolution: "@uppy/compressor@npm:1.1.3"
   dependencies:
@@ -10000,7 +10000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/core@npm:^3.10.1":
+"@uppy/core@npm:^3.11.1":
   version: 3.11.1
   resolution: "@uppy/core@npm:3.11.1"
   dependencies:
@@ -10016,7 +10016,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/dashboard@npm:^3.8.1":
+"@uppy/dashboard@npm:^3.8.2":
   version: 3.8.2
   resolution: "@uppy/dashboard@npm:3.8.2"
   dependencies:
@@ -16506,12 +16506,12 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.19"
     "@storybook/react": "npm:^7.6.19"
     "@storybook/types": "npm:^7.6.19"
-    "@tanstack/react-query": "npm:^5.32.0"
-    "@tanstack/react-query-devtools": "npm:^5.32.0"
+    "@tanstack/react-query": "npm:^5.35.1"
+    "@tanstack/react-query-devtools": "npm:^5.35.1"
     "@turbo/gen": "npm:^1.13.3"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
-    "@types/node": "npm:^20.12.8"
+    "@types/node": "npm:^20.12.10"
     "@types/pluralize": "npm:^0.0.33"
     "@types/react": "npm:18.2.79"
     "@types/react-dom": "npm:18.2.25"
@@ -16522,9 +16522,9 @@ __metadata:
     "@types/uuid": "npm:^9.0.8"
     "@typescript-eslint/eslint-plugin": "npm:^7.8.0"
     "@typescript-eslint/parser": "npm:^7.8.0"
-    "@uppy/compressor": "npm:^1.1.2"
-    "@uppy/core": "npm:^3.10.1"
-    "@uppy/dashboard": "npm:^3.8.1"
+    "@uppy/compressor": "npm:^1.1.3"
+    "@uppy/core": "npm:^3.11.1"
+    "@uppy/dashboard": "npm:^3.8.2"
     "@uppy/drag-drop": "npm:^3.1.0"
     "@uppy/file-input": "npm:^3.1.2"
     "@uppy/progress-bar": "npm:^3.1.1"
@@ -16564,7 +16564,7 @@ __metadata:
     next-recaptcha-v3: "npm:^1.4.1"
     next-seo: "npm:^6.5.0"
     next-share: "npm:^0.27.0"
-    openai: "npm:^4.38.4"
+    openai: "npm:^4.42.0"
     os-browserify: "npm:^0.3.0"
     path-browserify: "npm:^1.0.1"
     pluralize: "npm:^8.0.0"
@@ -16596,7 +16596,7 @@ __metadata:
     turbo: "npm:^1.13.3"
     twitter-api-v2: "npm:^1.16.3"
     twitter-text: "npm:^3.1.0"
-    type-fest: "npm:^4.18.1"
+    type-fest: "npm:^4.18.2"
     typescript: "npm:^5.4.5"
     usehooks-ts: "npm:^3.1.0"
     yup: "npm:^1.4.0"
@@ -23790,9 +23790,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openai@npm:^4.38.4":
-  version: 4.40.2
-  resolution: "openai@npm:4.40.2"
+"openai@npm:^4.42.0":
+  version: 4.42.0
+  resolution: "openai@npm:4.42.0"
   dependencies:
     "@types/node": "npm:^18.11.18"
     "@types/node-fetch": "npm:^2.6.4"
@@ -23804,7 +23804,7 @@ __metadata:
     web-streams-polyfill: "npm:^3.2.1"
   bin:
     openai: bin/cli
-  checksum: 10/da695199ad0f32f9e09bb3059d557137f9de105753fb8095ad99dfb5f2ac7179436142654cb008a575ec271db9ad9611e9318f8dd051b4218c9d94ee38c0dfe1
+  checksum: 10/e550ebdd6e805c4743d840bc1e223d1f3d98526c6edec697517d0ed3732b4fcc898b22ac28929bf448e0b2f91542bf6de4dafa1c7f0a466616e016ea865d5a43
   languageName: node
   linkType: hard
 
@@ -29796,10 +29796,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^4.18.1":
-  version: 4.18.1
-  resolution: "type-fest@npm:4.18.1"
-  checksum: 10/ff76e19cb969854161fea2de854073f346e159f5efff05906ece93cbde8a7161b9374121aca53782b44f754152cbacc70264c90ca1acc81ca917723acce5054f
+"type-fest@npm:^4.18.2":
+  version: 4.18.2
+  resolution: "type-fest@npm:4.18.2"
+  checksum: 10/2c176de28384a247fac1503165774e874c15ac39434a775f32ecda3aef5a0cefcfa2f5fb670c3da1f81cf773c355999154078c8d9657db19b65de78334b27933
   languageName: node
   linkType: hard
 
