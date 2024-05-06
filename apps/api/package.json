@@ -33,7 +33,7 @@
     "pg-connection-string": "^2.6.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^5.3.4",
+    "react-router-dom": "^6.23.0",
     "sharp": "^0.33.3",
     "strapi-plugin-import-export-entries": "^1.23.1",
     "strapi-plugin-transformer": "^3.1.2",
