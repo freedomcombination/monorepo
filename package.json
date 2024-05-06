@@ -104,7 +104,7 @@
     "@storybook/addon-essentials": "^7.6.19",
     "@storybook/builder-webpack5": "^7.6.19",
     "@storybook/core-common": "^7.6.19",
-    "@storybook/core-server": "^7.6.19",
+    "@storybook/core-server": "^8.0.10",
     "@storybook/nextjs": "^7.6.19",
     "@storybook/react": "^7.6.19",
     "@storybook/types": "^7.6.19",
