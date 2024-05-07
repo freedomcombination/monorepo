@@ -9,12 +9,12 @@ export const userRouter: NextApiHandler = async (req, res) => {
   const session = await getIronSession<Auth>(req, res, sessionOptions)
 
   if (session.token) {
-    const platform = req.query.platform ?? 'common'
+    //  const platform = req.query.platform ?? 'common'
     const profileResponse = session?.profileId
       ? await strapiRequest<Profile>({
           endpoint: `profiles/me`,
           token: session.token,
-          ...(platform ? { id: platform } : {}),
+          //  ...(platform ? { id: platform } : {}),
         })
       : null
 
