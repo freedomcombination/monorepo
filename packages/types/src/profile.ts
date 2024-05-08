@@ -21,6 +21,13 @@ import { StrapiBase } from './strapi'
 import { User } from './user'
 import { UserStats } from './user-stats'
 import { Vote } from './vote'
+export type ProfileStatus =
+  | 'left'
+  | 'pending'
+  | 'rejected'
+  | 'in-progress'
+  | 'accepted'
+  | 'awaiting'
 
 export type ProfileBase = {
   email: string
@@ -43,6 +50,7 @@ export type ProfileBase = {
   twitter: string | null
   isVolunteer: boolean | null
   permissions?: Permissions
+  status?: ProfileStatus
 }
 
 type ProfileRelation = {

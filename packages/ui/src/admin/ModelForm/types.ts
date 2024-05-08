@@ -46,6 +46,7 @@ type FormSelectFields = {
   isMulti?: boolean
   endpoint: StrapiCollectionEndpoint
   populate?: string | string[]
+  options?: Option[]
 }
 
 export type FormCommonFields<T extends StrapiModel> = {
@@ -63,6 +64,7 @@ export type FormFields<T extends StrapiModel> = Array<
 
 export type ModelCreateFormProps<T extends StrapiModel> = {
   endpoint: StrapiEndpoint
+  options: Option[]
   fields: FormFields<T>
   model?: Partial<T>
   schema: AnyObjectSchema

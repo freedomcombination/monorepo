@@ -332,7 +332,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "isVolunteer": {
       "type": "boolean"
@@ -502,6 +504,19 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::job.job"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "accepted",
+        "rejected",
+        "in-progress",
+        "left",
+        "awaiting"
+      ],
+      "default": "pending",
+      "required": false
     }
   }
 }

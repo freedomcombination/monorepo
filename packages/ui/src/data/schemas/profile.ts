@@ -3,7 +3,7 @@ import * as yup from 'yup'
 import { Profile, Role } from '@fc/types'
 
 import { yupMultiSelect, yupSelect } from './common'
-import { FormFields } from '../../admin'
+import { FormFields, FormSelectFields } from '../../admin' // Add FormSelectFields import
 
 export const useProfileSchema = () => {
   return yup.object({
@@ -17,13 +17,21 @@ export const useProfileSchema = () => {
     avatar: yup.mixed(),
     jobs: yupMultiSelect,
     role: yupMultiSelect,
+    status: yupSelect,
     isVolunteer: yup.boolean(),
     user: yupSelect.required(),
     comment: yup.string(),
     platforms: yupMultiSelect,
   })
 }
-
+enum ProfileStatus {
+  Left = 'left',
+  Pending = 'pending',
+  Accepted = 'accepted',
+  Awaiting = 'awaiting',
+  Rejected = 'rejected',
+  InProgress = 'in-progress',
+}
 export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'name', isRequired: true },
   { name: 'email', isRequired: true, blockEdit: true },
@@ -32,6 +40,9 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'availableHours' },
   { name: 'country' },
   { name: 'city' },
+  {
+    name: 'status',
+  },
   { name: 'jobs', type: 'select', isMulti: true, endpoint: 'jobs' },
   { name: 'isVolunteer', type: 'boolean' },
   { name: 'user', type: 'select', endpoint: 'users' },
