@@ -28,6 +28,7 @@ export type ProfileStatus =
   | 'in-progress'
   | 'accepted'
   | 'awaiting'
+  | 'approved'
 
 export type ProfileBase = {
   email: string

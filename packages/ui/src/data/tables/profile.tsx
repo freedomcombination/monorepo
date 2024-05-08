@@ -1,4 +1,5 @@
 import { ThemeTypings } from '@chakra-ui/react'
+import App from 'next/app'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -31,11 +32,12 @@ export const useProfileColumns = (): WTableProps<
       componentProps: value => {
         const colorScheme = {
           pending: 'orange', // 'orange
-          accepted: 'green',
+          accepted: 'blue',
           rejected: 'red',
-          'in-progress': 'blue',
+          'in-progress': 'purple',
           left: 'gray',
           awaiting: 'yellow',
+          approved: 'green',
         }
 
         return {

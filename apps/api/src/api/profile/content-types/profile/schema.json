@@ -513,7 +513,8 @@
         "rejected",
         "in-progress",
         "left",
-        "awaiting"
+        "awaiting",
+        "approved"
       ],
       "default": "pending",
       "required": false

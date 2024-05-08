@@ -31,6 +31,7 @@ enum ProfileStatus {
   Awaiting = 'awaiting',
   Rejected = 'rejected',
   InProgress = 'in-progress',
+  Approved = 'approved',
 }
 export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'name', isRequired: true },
