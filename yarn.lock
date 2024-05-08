@@ -3709,15 +3709,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/is-prop-valid@npm:^0.8.2":
-  version: 0.8.8
-  resolution: "@emotion/is-prop-valid@npm:0.8.8"
-  dependencies:
-    "@emotion/memoize": "npm:0.7.4"
-  checksum: 10/e85bdeb9d9d23de422f271e0f5311a0142b15055bb7e610440dbf250f0cdfd049df88af72a49e2c6081954481f1cbeca9172e2116ff536b38229397dfbed8082
-  languageName: node
-  linkType: hard
-
 "@emotion/is-prop-valid@npm:^1.1.0":
   version: 1.2.1
   resolution: "@emotion/is-prop-valid@npm:1.2.1"
@@ -5418,14 +5409,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.43.1":
-  version: 1.43.1
-  resolution: "@playwright/test@npm:1.43.1"
+"@playwright/test@npm:^1.44.0":
+  version: 1.44.0
+  resolution: "@playwright/test@npm:1.44.0"
   dependencies:
-    playwright: "npm:1.43.1"
+    playwright: "npm:1.44.0"
   bin:
     playwright: cli.js
-  checksum: 10/c49fc94af11472fc7fb781d084191c875aab8afb6cfcd4708168489c55ea4dbde702850e28b7ed05c0f775be8f8b5cac4bf2688a376b9a930d1f5cefdfc45382
+  checksum: 10/bd34b3c3f90f3cb5ceb2e47715c36bf7f6f57f0eb2bb4e47f17be4ecfecf58833a3722b200f3fcd0f97320a9ea08aee3ed58a61fe245591fedae3c6db171743c
   languageName: node
   linkType: hard
 
@@ -14689,9 +14680,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv-cli@npm:^7.4.1":
-  version: 7.4.1
-  resolution: "dotenv-cli@npm:7.4.1"
+"dotenv-cli@npm:^7.4.2":
+  version: 7.4.2
+  resolution: "dotenv-cli@npm:7.4.2"
   dependencies:
     cross-spawn: "npm:^7.0.3"
     dotenv: "npm:^16.3.0"
@@ -14699,7 +14690,7 @@ __metadata:
     minimist: "npm:^1.2.6"
   bin:
     dotenv: cli.js
-  checksum: 10/213ed2a446db0aed329fb8792107dd3bacab409eb4904137f57f6e428e0de7abfce2e1cbf34b311ce8b36090931a316e943cf193975a2eb8e855ad7db3df8cf5
+  checksum: 10/48d887ea9be08f7453dc87d6c938311989e951d0b43028eadcbaff3be1ca56180f8c38b8f932fc2e59f0210e59f4b5c59cf8a34da3e6c92f63fe6d7ce4f09f65
   languageName: node
   linkType: hard
 
@@ -16496,7 +16487,7 @@ __metadata:
     "@fc/types": "npm:*"
     "@fc/ui": "npm:*"
     "@hookform/resolvers": "npm:^3.3.4"
-    "@playwright/test": "npm:^1.43.1"
+    "@playwright/test": "npm:^1.44.0"
     "@sindresorhus/slugify": "npm:^2.2.1"
     "@splidejs/react-splide": "npm:^0.7.12"
     "@storybook/addon-essentials": "npm:^7.6.19"
@@ -16541,14 +16532,14 @@ __metadata:
     cookies-next: "npm:^4.1.1"
     date-fns: "npm:^3.6.0"
     date-fns-tz: "npm:^3.1.3"
-    dotenv-cli: "npm:^7.4.1"
+    dotenv-cli: "npm:^7.4.2"
     eslint: "npm:^8.57.0"
     eslint-config-next: "npm:^14.2.3"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-config-turbo: "npm:^1.13.3"
     eslint-plugin-react: "npm:7.34.1"
     file-saver: "npm:^2.0.5"
-    framer-motion: "npm:10.12.16"
+    framer-motion: "npm:11.1.9"
     i18next: "npm:^23.11.3"
     i18next-browser-languagedetector: "npm:^7.2.1"
     i18next-http-backend: "npm:^2.5.1"
@@ -16576,7 +16567,7 @@ __metadata:
     react-hook-form: "npm:7.51.4"
     react-hook-form-persist: "npm:^3.0.0"
     react-i18next: "npm:^14.1.1"
-    react-icons: "npm:^5.2.0"
+    react-icons: "npm:^5.2.1"
     react-intersection-observer: "npm:^9.10.2"
     react-markdown: "npm:^9.0.1"
     react-markdown-editor-lite: "npm:^1.3.4"
@@ -16586,22 +16577,22 @@ __metadata:
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.12"
     react-use: "npm:^17.5.0"
-    recharts: "npm:^2.12.6"
+    recharts: "npm:^2.12.7"
     remove-markdown: "npm:^0.5.0"
     storybook: "npm:^7.6.19"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
     stripe: "npm:^15.5.0"
-    tesseract.js: "npm:^5.0.5"
+    tesseract.js: "npm:^5.1.0"
     turbo: "npm:^1.13.3"
-    twitter-api-v2: "npm:^1.16.3"
+    twitter-api-v2: "npm:^1.16.4"
     twitter-text: "npm:^3.1.0"
     type-fest: "npm:^4.18.2"
     typescript: "npm:^5.4.5"
     usehooks-ts: "npm:^3.1.0"
     yup: "npm:^1.4.0"
     yup-locales: "npm:^1.2.21"
-    zod: "npm:^3.23.6"
+    zod: "npm:^3.23.7"
   languageName: unknown
   linkType: soft
 
@@ -17074,24 +17065,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:10.12.16":
-  version: 10.12.16
-  resolution: "framer-motion@npm:10.12.16"
+"framer-motion@npm:11.1.9":
+  version: 11.1.9
+  resolution: "framer-motion@npm:11.1.9"
   dependencies:
-    "@emotion/is-prop-valid": "npm:^0.8.2"
     tslib: "npm:^2.4.0"
   peerDependencies:
+    "@emotion/is-prop-valid": "*"
     react: ^18.0.0
     react-dom: ^18.0.0
-  dependenciesMeta:
+  peerDependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  peerDependenciesMeta:
     react:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/ba17675426e91fceb760e977ba347346dc06a7b7bf30b1c7c29551ebba66303f35ef57df0b8f6ee0065f71115e083b727b45d0a60f236f3ae7a1f91f0ce46340
+  checksum: 10/fadd08af0879c7dd9abe07d6a27409bb6b657a41f0addbcc23357a09a243052e592da6a5b0b8c0e4a842b813b0bb29f3f29f54abcfa9949a81c9a00c509b1c91
   languageName: node
   linkType: hard
 
@@ -24661,27 +24651,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.43.1":
-  version: 1.43.1
-  resolution: "playwright-core@npm:1.43.1"
+"playwright-core@npm:1.44.0":
+  version: 1.44.0
+  resolution: "playwright-core@npm:1.44.0"
   bin:
     playwright-core: cli.js
-  checksum: 10/a4a3d9692a87c5a25d5efc99a4fad2b18e8ae4ac5182da932b3d12f932caf6f245e057f4575c769f219b2826abf017ec2ded7a2fa43afed7f62d294af7b359af
+  checksum: 10/50b1741b8e4e5f053f9756846e1064d796e8e54ee0c13d4d026926338d76969fa528bddf1e563a2f30e17b92f301b06895044d1080179f2d3b5b5f68fe01387f
   languageName: node
   linkType: hard
 
-"playwright@npm:1.43.1":
-  version: 1.43.1
-  resolution: "playwright@npm:1.43.1"
+"playwright@npm:1.44.0":
+  version: 1.44.0
+  resolution: "playwright@npm:1.44.0"
   dependencies:
     fsevents: "npm:2.3.2"
-    playwright-core: "npm:1.43.1"
+    playwright-core: "npm:1.44.0"
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: 10/0c8cf26df58e6fac2cbad77cc060451ca1bb96d4631ca07d83d382a0462a307f33fa47c1ec53fc2b1b78058cdd6e62c9b881a0bd91ddd956cc1e900d866d8af6
+  checksum: 10/a7d8d6c0dee6262f97ab7fe52ec80ddeff7ad21178a9b90eefae56779fb573e8a3987f27619de6e98d8b9b78e9bb66b94f3caf9fbd51c0f1964dcd744dcb3cae
   languageName: node
   linkType: hard
 
@@ -25685,12 +25675,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "react-icons@npm:5.2.0"
+"react-icons@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "react-icons@npm:5.2.1"
   peerDependencies:
     react: "*"
-  checksum: 10/708c827dba6b10a27340792b4a1b51a6c9cd2aca2cf201207922fd64182bc93ccbf4cfebeb1e5e490da27a1d365772dcc4d51b1beab53db5a5385ce5ed1a278f
+  checksum: 10/8cdf49a9583488f9bb58cbab21f10a5e1993dd9d4f5a62f30fbbce249e4868e8e2c34eb1888adb22014a4319633d1035079bcf5d33b1a8596d745809632699c8
   languageName: node
   linkType: hard
 
@@ -26332,9 +26322,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recharts@npm:^2.12.6":
-  version: 2.12.6
-  resolution: "recharts@npm:2.12.6"
+"recharts@npm:^2.12.7":
+  version: 2.12.7
+  resolution: "recharts@npm:2.12.7"
   dependencies:
     clsx: "npm:^2.0.0"
     eventemitter3: "npm:^4.0.1"
@@ -26347,7 +26337,7 @@ __metadata:
   peerDependencies:
     react: ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/afb92147c7b1f7e1ed2f4ee3fb5ae868aab6cc32409f3b29a02b4c08e1933b161b4d226b78c87dbf3c956f07f9936f35dfeca6c3f3bc888e3a591ccd04124d29
+  checksum: 10/dd2806978d025abf37ba6eda36fad9361968257c5224286f2881a9f79b18b6045bab520c9c44fd1dc5bb7e35e7ab51d5cde1669e44cb32610e7cb9c49fdd490f
   languageName: node
   linkType: hard
 
@@ -29126,16 +29116,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tesseract.js-core@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "tesseract.js-core@npm:5.0.0"
-  checksum: 10/0e3bcdfa3ce04561013c6a649d2383d763cd6ca64a09c1ddc9de58af1daa69062322b5a5fbafa4f238f9afe89d6bc02a6ded93844b55d70c456d58efc7e4d239
+"tesseract.js-core@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "tesseract.js-core@npm:5.1.0"
+  checksum: 10/13405a292b74284b1f817ee5c059f1e06cd0b71910f96f054339b85f679b703891a0c1cdc80d0aafb26c18d1d080493fba972c9b846c2b276fa3b54a45766a28
   languageName: node
   linkType: hard
 
-"tesseract.js@npm:^5.0.5":
-  version: 5.0.5
-  resolution: "tesseract.js@npm:5.0.5"
+"tesseract.js@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "tesseract.js@npm:5.1.0"
   dependencies:
     bmp-js: "npm:^0.1.0"
     idb-keyval: "npm:^6.2.0"
@@ -29144,10 +29134,10 @@ __metadata:
     node-fetch: "npm:^2.6.9"
     opencollective-postinstall: "npm:^2.0.3"
     regenerator-runtime: "npm:^0.13.3"
-    tesseract.js-core: "npm:^5.0.0"
+    tesseract.js-core: "npm:^5.1.0"
     wasm-feature-detect: "npm:^1.2.11"
     zlibjs: "npm:^0.3.1"
-  checksum: 10/ee8d608884bd7ca8ac8a39bdd2aa358b3162067e642fb614d81ccf42599f81f1834608c6607e88afbc7275f76ff2adb89c0c12604e8c3dac6ff7548a865643cd
+  checksum: 10/177fbb330843d1028bfbd7c7d4939227617d6fcdf7b821162d1469eaad8c02bdd3080998c71c534461eae3a07b9285cc0fdac30eb6ca2cfd88e42e8fcc65525f
   languageName: node
   linkType: hard
 
@@ -29712,10 +29702,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"twitter-api-v2@npm:^1.16.3":
-  version: 1.16.3
-  resolution: "twitter-api-v2@npm:1.16.3"
-  checksum: 10/26cbcd50068600952116218bd519b90ff59ed05cfec2d94146aabb217638a3f6b807a92c276f63a117312885e0e40f28c2af9b1c0fabe697306db7a7969c2f62
+"twitter-api-v2@npm:^1.16.4":
+  version: 1.16.4
+  resolution: "twitter-api-v2@npm:1.16.4"
+  checksum: 10/c512d6e2c06687b5da6b4410e20864409e7b18ac3697e13352af2329cf97b56e11582588c994ba30127f5d603ce4c2ae35d0c07e11dc11301c8f220993828c16
   languageName: node
   linkType: hard
 
@@ -31577,10 +31567,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.23.6":
-  version: 3.23.6
-  resolution: "zod@npm:3.23.6"
-  checksum: 10/a3b0ea904f0615c67ef01ab3abc4e917d3bb87d46fc39515bcb68e59450b54f175dc9d29ddc7e13217dd456099729afa0b76609db135ca158e3ccebcac6153d9
+"zod@npm:^3.23.7":
+  version: 3.23.7
+  resolution: "zod@npm:3.23.7"
+  checksum: 10/e98987daa99507eaa6017cad4cf9f7e1c28fd66e891725ad0332de45541cfa98875e01fa31656cd5131773d6ba2f62d34c6dbc0c23bebc9972b99a2aee3cd2f2
   languageName: node
   linkType: hard
 
