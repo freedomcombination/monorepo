@@ -47,8 +47,8 @@ export const ModelDynamicSelect = <T extends StrapiModel>({
   return (
     <WSelect
       onMenuOpen={() => setIsMenuOpened(true)}
-      options={options}
       {...rest}
+      options={options}
     />
   )
 }
