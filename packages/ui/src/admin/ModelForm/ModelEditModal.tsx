@@ -1,6 +1,7 @@
 import {
   Center,
   Divider,
+  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -53,10 +54,12 @@ export const ModelEditModal = <T extends StrapiModel>({
       <ModalContent
         maxW={maxW}
         p={0}
-        overflow={'hidden'}
+        //  overflow={'hidden'}
         {...(isFullHeight && { h: 'full' })}
       >
-        <ModalHeader color={'primary.500'}>{title}</ModalHeader>
+        <ModalHeader color={'primary.500'}>
+          <Heading as="h3">{title}</Heading>
+        </ModalHeader>
         <ModalCloseButton />
         {isLoading && (
           <Center>
