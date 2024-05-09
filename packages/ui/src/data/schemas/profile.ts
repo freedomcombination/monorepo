@@ -3,7 +3,7 @@ import * as yup from 'yup'
 import { Profile, Role } from '@fc/types'
 
 import { yupMultiSelect, yupSelect } from './common'
-import { FormFields, FormSelectFields } from '../../admin' // Add FormSelectFields import
+import { FormFields } from '../../admin' // Add FormSelectFields import
 
 export const useProfileSchema = () => {
   return yup.object({
@@ -24,15 +24,17 @@ export const useProfileSchema = () => {
     platforms: yupMultiSelect,
   })
 }
-enum ProfileStatus {
-  Left = 'left',
-  Pending = 'pending',
-  Accepted = 'accepted',
-  Awaiting = 'awaiting',
-  Rejected = 'rejected',
-  InProgress = 'in-progress',
-  Approved = 'approved',
-}
+
+// enum ProfileStatus {
+//   Left = 'left',
+//   Pending = 'pending',
+//   Accepted = 'accepted',
+//   Awaiting = 'awaiting',
+//   Rejected = 'rejected',
+//   InProgress = 'in-progress',
+//   Approved = 'approved',
+// }
+
 export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'name', isRequired: true },
   { name: 'email', isRequired: true, blockEdit: true },
@@ -41,9 +43,7 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'availableHours' },
   { name: 'country' },
   { name: 'city' },
-  {
-    name: 'status',
-  },
+  { name: 'status' },
   { name: 'jobs', type: 'select', isMulti: true, endpoint: 'jobs' },
   { name: 'isVolunteer', type: 'boolean' },
   { name: 'user', type: 'select', endpoint: 'users' },
