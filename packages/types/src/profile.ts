@@ -22,6 +22,15 @@ import { User } from './user'
 import { UserStats } from './user-stats'
 import { Vote } from './vote'
 
+export type ProfileStatus =
+  | 'left'
+  | 'pending'
+  | 'rejected'
+  | 'in-progress'
+  | 'accepted'
+  | 'awaiting'
+  | 'approved'
+
 export type ProfileBase = {
   email: string
   city: string | null
@@ -43,6 +52,7 @@ export type ProfileBase = {
   twitter: string | null
   isVolunteer: boolean | null
   permissions?: Permissions
+  profileStatus?: ProfileStatus
 }
 
 type ProfileRelation = {

@@ -13,7 +13,7 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 
-import { Post, StrapiModel } from '@fc/types'
+import { Post, StrapiCollectionEndpoint, StrapiModel } from '@fc/types'
 
 import { ModelMedia } from './ModelMedia'
 import { ModelSelect } from './ModelSelect'
@@ -106,10 +106,11 @@ export const renderCreateFormBody = <T extends StrapiModel>({
       return (
         <ModelSelect
           key={index}
-          endpoint={field.endpoint}
+          endpoint={field.endpoint as StrapiCollectionEndpoint}
+          populate={field.populate}
+          options={field.options}
           isMulti={field.isMulti}
           isRequired={field.isRequired}
-          populate={field.populate}
           name={field.name as string}
           label={label}
           errors={errors}

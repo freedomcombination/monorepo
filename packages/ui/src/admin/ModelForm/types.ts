@@ -44,10 +44,10 @@ type FormTextFields = {
 type FormSelectFields = {
   type: 'select'
   isMulti?: boolean
-  endpoint: StrapiCollectionEndpoint
+  endpoint?: StrapiCollectionEndpoint
   populate?: string | string[]
+  options?: string[]
 }
-
 export type FormCommonFields<T extends StrapiModel> = {
   name: keyof T
   label?: string
@@ -108,9 +108,7 @@ export type ModelEditModalProps<T extends StrapiModel> = Omit<
     children?: ReactNode
   }
 
-export type ModelSelectProps = WSelectProps<FieldValues> & {
-  endpoint: StrapiCollectionEndpoint
-  populate?: string | string[]
+type ModelSelectBaseProps = Omit<WSelectProps<FieldValues>, 'options'> & {
   control: Control
   tooltip?: string
   errors: Partial<
@@ -119,5 +117,16 @@ export type ModelSelectProps = WSelectProps<FieldValues> & {
     }>
   >
 }
+
+export type ModelDynamicSelectProps = ModelSelectBaseProps & {
+  endpoint: StrapiCollectionEndpoint
+  populate?: string | string[]
+}
+
+export type ModelStaticSelectProps = ModelSelectBaseProps & {
+  options: string[]
+}
+
+export type ModelSelectProps = ModelDynamicSelectProps | ModelStaticSelectProps
 
 export type Option = { value: string | number; label: string }

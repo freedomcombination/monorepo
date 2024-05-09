@@ -1,52 +1,20 @@
-import { useState } from 'react'
-
-import { useRouter } from 'next/router'
-
-import { endpointsWithApprovalStatus } from '@fc/config'
-import { useStrapiRequest } from '@fc/services'
 import { StrapiModel } from '@fc/types'
 
-import { ModelSelectProps } from './types'
-import { mapModelsToOptions } from './utils'
-import { WSelect } from '../../components'
+import { ModelDynamicSelect } from './ModelDynamicSelect'
+import { ModelStaticSelect } from './ModelStaticSelect'
+import {
+  ModelDynamicSelectProps,
+  ModelSelectProps,
+  ModelStaticSelectProps,
+} from './types'
 
-export const ModelSelect = <T extends StrapiModel>({
-  endpoint,
-  populate = [],
-  ...rest
-}: ModelSelectProps) => {
-  const { locale } = useRouter()
-  const [isMenuOpened, setIsMenuOpened] = useState(false)
+export const ModelSelect = <T extends StrapiModel>(props: ModelSelectProps) => {
+  const dynamicProps = props as ModelDynamicSelectProps
+  const staticProps = props as ModelStaticSelectProps
 
-  const modelsQuery = useStrapiRequest<T>({
-    endpoint,
-    locale,
-    ...(endpointsWithApprovalStatus.includes(endpoint) && {
-      filters: {
-        approvalStatus: { $eq: 'approved' },
-      } as any,
-    }),
-    pageSize: 100,
-    populate,
-    queryOptions: {
-      enabled: isMenuOpened,
-    },
-  })
+  if (dynamicProps.endpoint) {
+    return <ModelDynamicSelect<T> {...dynamicProps} />
+  }
 
-  const models = modelsQuery.data?.data?.map((model: any) => ({
-    name_en: model.title_en || model.name_en,
-    name_tr: model.title_tr || model.name_tr,
-    name_nl: model.title_nl || model.name_nl,
-    ...model,
-  }))
-
-  const options = models && mapModelsToOptions(models, locale)
-
-  return (
-    <WSelect
-      onMenuOpen={() => setIsMenuOpened(true)}
-      options={options}
-      {...rest}
-    />
-  )
+  return <ModelStaticSelect {...staticProps} />
 }
