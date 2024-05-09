@@ -41,7 +41,6 @@ import { I18nNamespaces } from '../@types/i18next'
 type ModelPageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
-  console.log('endpoint', endpoint)
   const { t } = useTranslation()
   const { roles, profile } = useAuthContext()
 
@@ -196,7 +195,6 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId])
-  console.log('mapped models', mappedModels)
 
   return (
     <AdminLayout seo={{ title }}>

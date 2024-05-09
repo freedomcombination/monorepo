@@ -21,6 +21,7 @@ import { StrapiBase } from './strapi'
 import { User } from './user'
 import { UserStats } from './user-stats'
 import { Vote } from './vote'
+
 export type ProfileStatus =
   | 'left'
   | 'pending'
@@ -51,7 +52,7 @@ export type ProfileBase = {
   twitter: string | null
   isVolunteer: boolean | null
   permissions?: Permissions
-  status?: ProfileStatus
+  profileStatus?: ProfileStatus
 }
 
 type ProfileRelation = {
