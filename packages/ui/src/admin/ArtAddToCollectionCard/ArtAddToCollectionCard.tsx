@@ -16,8 +16,7 @@ import { IoCloseSharp } from 'react-icons/io5'
 import { UploadFile } from '@fc/types'
 
 import { ArtAddToCollectionCardProps } from './types'
-import { ArtModal, WImage } from '../../components'
-import { usePermission } from '../../hooks'
+import { ActionButton, ArtModal, WImage } from '../../components'
 
 export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   isAdded,
@@ -31,8 +30,6 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   const router = useRouter()
 
   const titleKey = `title_${router.locale}` as const
-
-  const { allowEndpointAction } = usePermission()
 
   return (
     <Stack boxShadow="md" rounded="md" direction={'column'} overflow="hidden">
@@ -60,20 +57,19 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
 
           <Spacer />
 
-          {allowEndpointAction('collections', 'create') && (
-            <Button
-              variant={'outline'}
-              colorScheme={isAdded ? 'red' : 'green'}
-              leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
-              size="xs"
-              isLoading={isLoading}
-              onClick={() => {
-                isAdded ? onRemove(art) : onAdd(art)
-              }}
-            >
-              {isAdded ? 'Remove' : 'Add to Collection'}
-            </Button>
-          )}
+          <ActionButton
+            canCreate="collections"
+            variant={'outline'}
+            colorScheme={isAdded ? 'red' : 'green'}
+            leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
+            size="xs"
+            isLoading={isLoading}
+            onClick={() => {
+              isAdded ? onRemove(art) : onAdd(art)
+            }}
+          >
+            {isAdded ? 'Remove' : 'Add to Collection'}
+          </ActionButton>
         </HStack>
       </Stack>
       <ArtModal art={art} isOpen={isOpen} onClose={onClose} />

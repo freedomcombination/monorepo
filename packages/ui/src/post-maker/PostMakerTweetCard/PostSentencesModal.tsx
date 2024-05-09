@@ -11,7 +11,7 @@ import { FaCogs } from 'react-icons/fa'
 
 import { useHashtag } from '@fc/services'
 
-import { PostSentenceForm } from '../../components'
+import { ActionStack, PostSentenceForm } from '../../components'
 import { usePostContext } from '../PostProvider'
 
 export const PostSentencesModal = () => {
@@ -20,7 +20,12 @@ export const PostSentencesModal = () => {
   const hashtag = useHashtag()
 
   return (
-    <div>
+    <ActionStack
+      /*
+        from PostMakerTweetList
+      */
+      canUpdate="posts"
+    >
       <Modal isOpen={isOpen} onClose={onClose} size={'6xl'}>
         <ModalOverlay />
         <ModalContent>
@@ -37,6 +42,6 @@ export const PostSentencesModal = () => {
         variant={'outline'}
         isRound
       />
-    </div>
+    </ActionStack>
   )
 }

@@ -16,10 +16,20 @@ import { Platform } from './platform'
 import { Post } from './post'
 import { RecommendedTopic } from './recommended-topic'
 import { RecommendedTweet } from './recommended-tweet'
+import { Permissions } from './role'
 import { StrapiBase } from './strapi'
 import { User } from './user'
 import { UserStats } from './user-stats'
 import { Vote } from './vote'
+
+export type ProfileStatus =
+  | 'left'
+  | 'pending'
+  | 'rejected'
+  | 'in-progress'
+  | 'accepted'
+  | 'awaiting'
+  | 'approved'
 
 export type ProfileBase = {
   email: string
@@ -41,6 +51,8 @@ export type ProfileBase = {
   phone: string | null
   twitter: string | null
   isVolunteer: boolean | null
+  permissions?: Permissions
+  profileStatus?: ProfileStatus
 }
 
 type ProfileRelation = {

@@ -5,15 +5,14 @@ import {
   Box,
   ButtonGroup,
   HStack,
+  Highlight,
   Popover,
   PopoverArrow,
   PopoverBody,
-  Highlight,
   PopoverContent,
   PopoverTrigger,
   Stack,
   Text,
-  Tooltip,
   useToast,
 } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
@@ -33,11 +32,16 @@ import { useAuthContext } from '@fc/context'
 import { useDeleteModel, useRecommendTopic } from '@fc/services'
 import { Post, RecommendedTopicCreateInput, TopicBase } from '@fc/types'
 
-import { ActionButton } from './ActionButton'
+import { TopicCardButton } from './TopicCardButton'
 import { TopicCardProps } from './types'
-import { ShareButtons, WConfirm, WConfirmProps, WImage } from '../../components'
+import {
+  ActionTooltip,
+  ShareButtons,
+  WConfirm,
+  WConfirmProps,
+  WImage,
+} from '../../components'
 import { useFields, useSchema } from '../../data'
-import { usePermission } from '../../hooks'
 import { ModelCreateModal } from '../ModelForm'
 
 export const TopicCard: FC<TopicCardProps> = ({
@@ -49,7 +53,6 @@ export const TopicCard: FC<TopicCardProps> = ({
   const { t } = useTranslation()
   const fields = useFields()
   const schemas = useSchema()
-  const { allowEndpointAction } = usePermission()
   const time =
     topic.time && formatDistanceStrict(new Date(topic.time), new Date())
   const [bookmarksStorage, setBookmarksStorage] = useLocalStorage<TopicBase[]>(
@@ -225,25 +228,24 @@ export const TopicCard: FC<TopicCardProps> = ({
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
           <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
-            {allowEndpointAction('posts', 'create') && (
-              <ModelCreateModal<Post>
-                title={t('create-post')}
-                endpoint={'posts'}
-                schema={schemas.posts!}
-                fields={fields.posts!}
-                model={postContent}
-                buttonProps={{
-                  variant: 'ghost',
-                  colorScheme: 'gray',
-                  iconSpacing: { base: 0, lg: 2 },
-                }}
-              >
-                <Box as="span" display={{ base: 'none', xl: 'inline' }}>
-                  {t('create-post')}
-                </Box>
-              </ModelCreateModal>
-            )}
-            <ActionButton
+            <ModelCreateModal<Post>
+              title={t('create-post')}
+              endpoint={'posts'}
+              schema={schemas.posts!}
+              fields={fields.posts!}
+              model={postContent}
+              buttonProps={{
+                variant: 'ghost',
+                colorScheme: 'gray',
+                iconSpacing: { base: 0, lg: 2 },
+              }}
+            >
+              <Box as="span" display={{ base: 'none', xl: 'inline' }}>
+                {t('create-post')}
+              </Box>
+            </ModelCreateModal>
+
+            <TopicCardButton
               onClick={() => handleView()}
               icon={<FaRegEye />}
               title="View"
@@ -254,7 +256,7 @@ export const TopicCard: FC<TopicCardProps> = ({
             <Popover placement="top">
               <PopoverTrigger>
                 <Box>
-                  <ActionButton
+                  <TopicCardButton
                     onClick={() => null}
                     icon={<FaRegShareFromSquare />}
                     title="Share"
@@ -275,7 +277,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               </PopoverContent>
             </Popover>
 
-            <ActionButton
+            <TopicCardButton
               onClick={() => handleBookmark()}
               icon={<FaRegBookmark />}
               {...(isBookmarked && {
@@ -285,40 +287,40 @@ export const TopicCard: FC<TopicCardProps> = ({
               variant={'ghost'}
               colorScheme={isBookmarked ? 'red' : 'gray'}
             />
-            {user && !topic.isRecommended && (
-              <ActionButton
-                onClick={() => handleRecommend()}
-                icon={<FaRegThumbsUp />}
-                title="Recommend"
-                disabled={isPending}
-                isDisabled={isPending}
-                variant={'ghost'}
-                colorScheme={'gray'}
-              />
-            )}
-            {user && topic?.isRecommended && id && (
-              <Tooltip
-                label={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
-                hasArrow
-                bg="primary.400"
-              >
-                <Box>
-                  <ActionButton
-                    onClick={onDelete}
-                    icon={
-                      type === 'Topic' ? (
-                        <AiOutlineDelete />
-                      ) : (
-                        <AiOutlineEyeInvisible />
-                      )
-                    }
-                    title={type === 'Topic' ? 'Delete' : 'Hide'}
-                    variant="ghost"
-                    colorScheme="red"
-                  />
-                </Box>
-              </Tooltip>
-            )}
+
+            <TopicCardButton
+              isVisible={!!user && !topic.isRecommended}
+              onClick={() => handleRecommend()}
+              icon={<FaRegThumbsUp />}
+              title="Recommend"
+              disabled={isPending}
+              isDisabled={isPending}
+              variant={'ghost'}
+              colorScheme={'gray'}
+            />
+
+            <ActionTooltip
+              isVisible={!!user && topic?.isRecommended && !!id}
+              label={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
+              hasArrow
+              bg="primary.400"
+            >
+              <Box>
+                <TopicCardButton
+                  onClick={onDelete}
+                  icon={
+                    type === 'Topic' ? (
+                      <AiOutlineDelete />
+                    ) : (
+                      <AiOutlineEyeInvisible />
+                    )
+                  }
+                  title={type === 'Topic' ? 'Delete' : 'Hide'}
+                  variant="ghost"
+                  colorScheme="red"
+                />
+              </Box>
+            </ActionTooltip>
           </ButtonGroup>
         </Stack>
       </Stack>

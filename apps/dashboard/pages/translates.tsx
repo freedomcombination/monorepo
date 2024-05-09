@@ -143,7 +143,7 @@ const ActivitiesTranslatePage = () => {
         isCentered
         isOpen={isOpen}
         onClose={handleClose}
-        size={'full'}
+        size={'4xl'}
         scrollBehavior={'inside'}
       >
         <ModalOverlay />
