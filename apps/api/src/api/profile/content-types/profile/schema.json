@@ -332,7 +332,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "isVolunteer": {
       "type": "boolean"
@@ -506,13 +508,13 @@
     "profileStatus": {
       "type": "enumeration",
       "enum": [
+        "pending",
         "accepted",
-        "approved",
-        "awaiting",
+        "rejected",
         "in-progress",
         "left",
-        "pending",
-        "rejected"
+        "awaiting",
+        "approved"
       ],
       "default": "pending"
     }

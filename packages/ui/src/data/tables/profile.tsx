@@ -26,7 +26,7 @@ export const useProfileColumns = (): WTableProps<
         variant: 'outline',
       },
     },
-    status: {
+    profileStatus: {
       type: 'badge',
       componentProps: value => {
         const colorScheme: Record<ProfileStatus, ThemeTypings['colorSchemes']> =

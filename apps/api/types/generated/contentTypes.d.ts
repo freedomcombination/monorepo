@@ -3198,13 +3198,13 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     >
     profileStatus: Attribute.Enumeration<
       [
+        'pending',
         'accepted',
-        'approved',
-        'awaiting',
+        'rejected',
         'in-progress',
         'left',
-        'pending',
-        'rejected',
+        'awaiting',
+        'approved',
       ]
     > &
       Attribute.DefaultTo<'pending'>
