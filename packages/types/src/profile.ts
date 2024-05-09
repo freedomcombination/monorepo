@@ -52,7 +52,7 @@ export type ProfileBase = {
   twitter: string | null
   isVolunteer: boolean | null
   permissions?: Permissions
-  status?: ProfileStatus
+  profileStatus?: ProfileStatus
 }
 
 type ProfileRelation = {

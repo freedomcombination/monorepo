@@ -18,7 +18,7 @@ export const useProfileSchema = () => {
     jobs: yupMultiSelect,
     role: yupMultiSelect,
     // https://yidaotus.medium.com/using-yup-and-typescript-for-typesafe-select-validation-e9ee9d4bceec
-    status: yupSelect,
+    profileStatus: yupSelect,
     isVolunteer: yup.boolean(),
     user: yupSelect.required(),
     comment: yup.string(),
@@ -35,7 +35,7 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'country' },
   { name: 'city' },
   {
-    name: 'status',
+    name: 'profileStatus',
     type: 'select',
     options: [
       'accepted',

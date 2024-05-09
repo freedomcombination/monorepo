@@ -3196,15 +3196,15 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToMany',
       'api::job.job'
     >
-    status: Attribute.Enumeration<
+    profileStatus: Attribute.Enumeration<
       [
-        'pending',
         'accepted',
-        'rejected',
+        'approved',
+        'awaiting',
         'in-progress',
         'left',
-        'awaiting',
-        'approved',
+        'pending',
+        'rejected',
       ]
     > &
       Attribute.DefaultTo<'pending'>

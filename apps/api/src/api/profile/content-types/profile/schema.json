@@ -503,19 +503,18 @@
       "relation": "oneToMany",
       "target": "api::job.job"
     },
-    "status": {
+    "profileStatus": {
       "type": "enumeration",
       "enum": [
-        "pending",
         "accepted",
-        "rejected",
+        "approved",
+        "awaiting",
         "in-progress",
         "left",
-        "awaiting",
-        "approved"
+        "pending",
+        "rejected"
       ],
-      "default": "pending",
-      "required": false
+      "default": "pending"
     }
   }
 }

@@ -144,10 +144,12 @@ export const useDefaultValues = <T extends StrapiModel>(
             })) || []
           break
 
-        case 'status':
-          defaults.status = {
-            label: t(profileModel.status as keyof I18nNamespaces['common']),
-            value: profileModel.status,
+        case 'profileStatus':
+          defaults.profileStatus = {
+            label: t(
+              profileModel.profileStatus as keyof I18nNamespaces['common'],
+            ),
+            value: profileModel.profileStatus,
           }
           break
 
