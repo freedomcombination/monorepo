@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 
 import { format } from 'date-fns'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 
 import {
   Activity,
@@ -23,6 +24,7 @@ import {
 import { AssetsTracking } from '@fc/types/src/assets-tracking'
 
 import { FormFields } from './types'
+import { I18nNamespaces } from '../../../@types/i18next'
 
 export const mapModelsToOptions = (
   models?: StrapiModel[],
@@ -99,6 +101,8 @@ export const useDefaultValues = <T extends StrapiModel>(
 
   const { locale } = useRouter()
 
+  const { t } = useTranslation()
+
   return useMemo(() => {
     if (!model || !fields) return {} as T
 
@@ -138,6 +142,13 @@ export const useDefaultValues = <T extends StrapiModel>(
               label: m.username,
               value: m.id.toString(),
             })) || []
+          break
+
+        case 'status':
+          defaults.status = {
+            label: t(profileModel.status as keyof I18nNamespaces['common']),
+            value: profileModel.status,
+          }
           break
 
         case 'jobs':

@@ -21,6 +21,7 @@ import { StrapiBase } from './strapi'
 import { User } from './user'
 import { UserStats } from './user-stats'
 import { Vote } from './vote'
+
 export type ProfileStatus =
   | 'left'
   | 'pending'

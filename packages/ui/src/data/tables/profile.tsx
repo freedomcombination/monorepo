@@ -29,15 +29,16 @@ export const useProfileColumns = (): WTableProps<
     status: {
       type: 'badge',
       componentProps: value => {
-        const colorScheme = {
-          pending: 'orange', // 'orange
-          accepted: 'blue',
-          rejected: 'red',
-          'in-progress': 'purple',
-          left: 'gray',
-          awaiting: 'yellow',
-          approved: 'green',
-        }
+        const colorScheme: Record<ProfileStatus, ThemeTypings['colorSchemes']> =
+          {
+            pending: 'orange', // 'orange
+            accepted: 'blue',
+            rejected: 'red',
+            'in-progress': 'purple',
+            left: 'gray',
+            awaiting: 'yellow',
+            approved: 'green',
+          }
 
         return {
           variant: 'outline',

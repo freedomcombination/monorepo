@@ -17,6 +17,7 @@ export const useProfileSchema = () => {
     avatar: yup.mixed(),
     jobs: yupMultiSelect,
     role: yupMultiSelect,
+    // https://yidaotus.medium.com/using-yup-and-typescript-for-typesafe-select-validation-e9ee9d4bceec
     status: yupSelect,
     isVolunteer: yup.boolean(),
     user: yupSelect.required(),
@@ -24,16 +25,6 @@ export const useProfileSchema = () => {
     platforms: yupMultiSelect,
   })
 }
-
-// enum ProfileStatus {
-//   Left = 'left',
-//   Pending = 'pending',
-//   Accepted = 'accepted',
-//   Awaiting = 'awaiting',
-//   Rejected = 'rejected',
-//   InProgress = 'in-progress',
-//   Approved = 'approved',
-// }
 
 export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'name', isRequired: true },
@@ -43,7 +34,19 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'availableHours' },
   { name: 'country' },
   { name: 'city' },
-  { name: 'status' },
+  {
+    name: 'status',
+    type: 'select',
+    options: [
+      'accepted',
+      'approved',
+      'awaiting',
+      'in-progress',
+      'left',
+      'pending',
+      'rejected',
+    ],
+  },
   { name: 'jobs', type: 'select', isMulti: true, endpoint: 'jobs' },
   { name: 'isVolunteer', type: 'boolean' },
   { name: 'user', type: 'select', endpoint: 'users' },
