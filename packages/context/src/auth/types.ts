@@ -1,30 +1,44 @@
 /* eslint-disable no-unused-vars */
-import { ReactNode } from 'react'
+import { Dispatch, ReactNode } from 'react'
 
-import { Profile, RoleType, SessionUser } from '@fc/types'
+import { Permissions, Profile, SessionUser, StrapiEndpoint } from '@fc/types'
 
 export type AuthState = {
-  user: SessionUser | null
-  profile: Profile | null
-  roles: RoleType[]
-  isLoading: boolean
-  token: string | null
-  isAuthModalOpen: boolean
+  demoPermissions: Permissions | null
   error: string | null
+  isAdmin: boolean
+  isAuthModalOpen: boolean
+  isLoading: boolean
+  permissions: Permissions
+  profile: Profile | null
+  roles: string[]
+  token: string | null
+  user: SessionUser | null
 }
 
 export type AuthActions = {
+  canApprove: (endpoint: StrapiEndpoint) => boolean
+  canCreate: (endpoint: StrapiEndpoint) => boolean
+  canDelete: (endpoint: StrapiEndpoint) => boolean
+  canRead: (endpoint: StrapiEndpoint) => boolean
+  canUpdate: (endpoint: StrapiEndpoint) => boolean
+  checkActionsPermission: (
+    endpoint: StrapiEndpoint,
+    ...api: string[]
+  ) => boolean
+  checkAuth: () => Promise<AuthState>
+  closeAuthModal: () => void
   login: (identifier: string, password: string) => Promise<AuthState | void>
   logout: () => Promise<void>
   openAuthModal: () => void
-  closeAuthModal: () => void
-  checkAuth: () => Promise<AuthState>
   register: (
     email: string,
     password: string,
     username: string,
     name: string,
   ) => Promise<AuthState | void>
+  setDemoPermissions: Dispatch<Permissions | null>
+  setPermissions: Dispatch<Permissions>
 }
 
 export type AuthContextType = AuthState & AuthActions

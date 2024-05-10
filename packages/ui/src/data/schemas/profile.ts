@@ -3,7 +3,7 @@ import * as yup from 'yup'
 import { Profile, Role } from '@fc/types'
 
 import { yupMultiSelect, yupSelect } from './common'
-import { FormFields } from '../../admin'
+import { FormFields } from '../../admin' // Add FormSelectFields import
 
 export const useProfileSchema = () => {
   return yup.object({
@@ -17,6 +17,8 @@ export const useProfileSchema = () => {
     avatar: yup.mixed(),
     jobs: yupMultiSelect,
     role: yupMultiSelect,
+    // https://yidaotus.medium.com/using-yup-and-typescript-for-typesafe-select-validation-e9ee9d4bceec
+    profileStatus: yupSelect,
     isVolunteer: yup.boolean(),
     user: yupSelect.required(),
     comment: yup.string(),
@@ -32,6 +34,19 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'availableHours' },
   { name: 'country' },
   { name: 'city' },
+  {
+    name: 'profileStatus',
+    type: 'select',
+    options: [
+      'accepted',
+      'approved',
+      'awaiting',
+      'in-progress',
+      'left',
+      'pending',
+      'rejected',
+    ],
+  },
   { name: 'jobs', type: 'select', isMulti: true, endpoint: 'jobs' },
   { name: 'isVolunteer', type: 'boolean' },
   { name: 'user', type: 'select', endpoint: 'users' },

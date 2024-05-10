@@ -1,17 +1,18 @@
 import { FC } from 'react'
 
-import { Box, Button } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
-import { ActionButtonProps } from './index'
+import { TopicCardButtonProps } from './types'
+import { ActionButton } from '../../components'
 
-export const ActionButton: FC<ActionButtonProps> = ({
+export const TopicCardButton: FC<TopicCardButtonProps> = ({
   icon,
   onClick,
   title,
   ...rest
 }) => {
   return (
-    <Button
+    <ActionButton
       aria-label={title}
       onClick={onClick}
       leftIcon={icon}
@@ -21,6 +22,6 @@ export const ActionButton: FC<ActionButtonProps> = ({
       <Box as="span" display={{ base: 'none', xl: 'inline' }}>
         {title}
       </Box>
-    </Button>
+    </ActionButton>
   )
 }

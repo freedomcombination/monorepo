@@ -13,6 +13,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
   link,
   submenu,
   icon,
+  allowed,
 }) => {
   const [open, setOpen] = useBoolean(false)
 
@@ -64,6 +65,10 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
             />
           ),
         })}
+        {...(!allowed && {
+          color: 'red.700',
+          textDecoration: 'line-through',
+        })}
       >
         <chakra.span flex={1} textAlign="left">
           {label}
@@ -76,6 +81,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
           {submenu?.map((item, index) => {
             const isSubmenuLinkActive = router.asPath === item.link
             const isExternal = item.link?.startsWith('http')
+            const isAllowed = item.allowed === true
 
             return (
               <Box key={index}>
@@ -102,6 +108,11 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
                       },
                       color: 'primary.500',
                       _hover: { color: 'primary.400' },
+                    })}
+                    {...(!isAllowed && {
+                      isDisabled: true,
+                      color: 'red.700',
+                      textDecoration: 'line-through',
                     })}
                   >
                     {item.label}

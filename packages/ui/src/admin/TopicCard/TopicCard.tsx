@@ -5,6 +5,7 @@ import {
   Box,
   ButtonGroup,
   HStack,
+  Highlight,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -12,13 +13,12 @@ import {
   PopoverTrigger,
   Stack,
   Text,
-  Tooltip,
   useToast,
 } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { formatDistanceStrict } from 'date-fns'
 import { useTranslation } from 'next-i18next'
-import { AiOutlineDelete } from 'react-icons/ai'
+import { AiOutlineDelete, AiOutlineEyeInvisible } from 'react-icons/ai'
 import {
   FaBookmark,
   FaRegBookmark,
@@ -32,38 +32,38 @@ import { useAuthContext } from '@fc/context'
 import { useDeleteModel, useRecommendTopic } from '@fc/services'
 import { Post, RecommendedTopicCreateInput, TopicBase } from '@fc/types'
 
-import { ActionButton } from './ActionButton'
+import { TopicCardButton } from './TopicCardButton'
 import { TopicCardProps } from './types'
-import { ShareButtons, WConfirm, WConfirmProps, WImage } from '../../components'
+import {
+  ActionTooltip,
+  ShareButtons,
+  WConfirm,
+  WConfirmProps,
+  WImage,
+} from '../../components'
 import { useFields, useSchema } from '../../data'
-import { usePermission } from '../../hooks'
 import { ModelCreateModal } from '../ModelForm'
 
-export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
+export const TopicCard: FC<TopicCardProps> = ({
+  topic,
+  searchKey,
+  ...rest
+}) => {
   const { user } = useAuthContext()
-
   const { t } = useTranslation()
-
   const fields = useFields()
   const schemas = useSchema()
-
-  const { allowEndpointAction } = usePermission()
-
   const time =
     topic.time && formatDistanceStrict(new Date(topic.time), new Date())
-
   const [bookmarksStorage, setBookmarksStorage] = useLocalStorage<TopicBase[]>(
     'bookmarks',
     [],
   )
-
+  const type = topic.type ?? 'Topic'
   const deleteModelMutation = useDeleteModel('recommended-topics')
-
   const queryClient = useQueryClient()
-
   const toast = useToast()
   const { mutateAsync, isPending } = useRecommendTopic()
-
   const isBookmarked = bookmarksStorage?.some(t => t.url === topic.url)
 
   const handleBookmark = () => {
@@ -79,8 +79,11 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
   }
 
   const handleRecommend = async () => {
+    if (type !== 'Topic') return
     await mutateAsync(topic as RecommendedTopicCreateInput, {
-      onSettled: () => queryClient.invalidateQueries({ queryKey: ['topics'] }),
+      onSettled: () => {
+        queryClient.invalidateQueries({ queryKey: ['topics'] })
+      },
     })
     toast({
       title: 'Recommended',
@@ -111,25 +114,44 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
 
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
   const id = topic?.id as number
+  const highlightStyle = {
+    bg: 'yellow.200',
+    rounded: 'md',
+    color: 'black',
+  }
 
   const onDelete = () => {
+    const title = type === 'Topic' ? 'Delete News' : 'Hide'
+    const description =
+      type === 'Topic'
+        ? 'Are you sure you want to delete this news?'
+        : `Are you sure you want to hide this ${type}?`
+    const text = type === 'Topic' ? 'Delete' : 'Hide'
     setConfirmState({
       isWarning: true,
-      title: 'Delete News',
-      description: 'Are you sure you want to delete this news?',
-      buttonText: 'Delete',
+      title,
+      description,
+      buttonText: text,
       onConfirm: async () => {
-        deleteModelMutation.mutate(
-          { id },
-          {
-            onSuccess: () => {
-              setConfirmState(undefined)
+        if (type === 'Topic') {
+          deleteModelMutation.mutate(
+            { id },
+            {
+              onSuccess: () => {
+                setConfirmState(undefined)
+                rest.onDelete?.(topic.url)
+              },
+              onError: async errors => {
+                console.error('Delete news error', errors)
+              },
+              onSettled: () => {
+                queryClient.refetchQueries({ queryKey: ['topics'] })
+              },
             },
-            onError: async errors => {
-              console.error('Delete news error', errors)
-            },
-          },
-        )
+          )
+        } else {
+          rest.onDelete?.(topic.url)
+        }
         setConfirmState(undefined)
       },
     })
@@ -186,33 +208,44 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
       <Stack spacing={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
         <Stack textAlign={{ base: 'center', xl: 'left' }} flex={1}>
           <Text fontSize="lg" fontWeight={600} noOfLines={{ xl: 1 }}>
-            {topic.title}
+            {searchKey ? (
+              <Highlight query={searchKey} styles={highlightStyle}>
+                {topic.title || ''}
+              </Highlight>
+            ) : (
+              topic.title
+            )}
           </Text>
           <Text maxW={1000} noOfLines={{ base: 5, xl: 3 }}>
-            {topic.description}
+            {searchKey ? (
+              <Highlight query={searchKey} styles={highlightStyle}>
+                {topic.description || ''}
+              </Highlight>
+            ) : (
+              topic.description
+            )}
           </Text>
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
           <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
-            {allowEndpointAction('posts', 'create') && (
-              <ModelCreateModal<Post>
-                title={t('create-post')}
-                endpoint={'posts'}
-                schema={schemas.posts!}
-                fields={fields.posts!}
-                model={postContent}
-                buttonProps={{
-                  variant: 'ghost',
-                  colorScheme: 'gray',
-                  iconSpacing: { base: 0, lg: 2 },
-                }}
-              >
-                <Box as="span" display={{ base: 'none', xl: 'inline' }}>
-                  {t('create-post')}
-                </Box>
-              </ModelCreateModal>
-            )}
-            <ActionButton
+            <ModelCreateModal<Post>
+              title={t('create-post')}
+              endpoint={'posts'}
+              schema={schemas.posts!}
+              fields={fields.posts!}
+              model={postContent}
+              buttonProps={{
+                variant: 'ghost',
+                colorScheme: 'gray',
+                iconSpacing: { base: 0, lg: 2 },
+              }}
+            >
+              <Box as="span" display={{ base: 'none', xl: 'inline' }}>
+                {t('create-post')}
+              </Box>
+            </ModelCreateModal>
+
+            <TopicCardButton
               onClick={() => handleView()}
               icon={<FaRegEye />}
               title="View"
@@ -223,7 +256,7 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
             <Popover placement="top">
               <PopoverTrigger>
                 <Box>
-                  <ActionButton
+                  <TopicCardButton
                     onClick={() => null}
                     icon={<FaRegShareFromSquare />}
                     title="Share"
@@ -244,7 +277,7 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
               </PopoverContent>
             </Popover>
 
-            <ActionButton
+            <TopicCardButton
               onClick={() => handleBookmark()}
               icon={<FaRegBookmark />}
               {...(isBookmarked && {
@@ -254,30 +287,40 @@ export const TopicCard: FC<TopicCardProps> = ({ topic }) => {
               variant={'ghost'}
               colorScheme={isBookmarked ? 'red' : 'gray'}
             />
-            {user && !topic.isRecommended && (
-              <ActionButton
-                onClick={() => handleRecommend()}
-                icon={<FaRegThumbsUp />}
-                title="Recommend"
-                disabled={isPending}
-                isDisabled={isPending}
-                variant={'ghost'}
-                colorScheme={'gray'}
-              />
-            )}
-            {user && topic?.isRecommended && id && (
-              <Tooltip label="Delete news" hasArrow bg="primary.400">
-                <Box>
-                  <ActionButton
-                    onClick={onDelete}
-                    icon={<AiOutlineDelete />}
-                    title="Delete"
-                    variant="ghost"
-                    colorScheme="red"
-                  />
-                </Box>
-              </Tooltip>
-            )}
+
+            <TopicCardButton
+              isVisible={!!user && !topic.isRecommended}
+              onClick={() => handleRecommend()}
+              icon={<FaRegThumbsUp />}
+              title="Recommend"
+              disabled={isPending}
+              isDisabled={isPending}
+              variant={'ghost'}
+              colorScheme={'gray'}
+            />
+
+            <ActionTooltip
+              isVisible={!!user && topic?.isRecommended && !!id}
+              label={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
+              hasArrow
+              bg="primary.400"
+            >
+              <Box>
+                <TopicCardButton
+                  onClick={onDelete}
+                  icon={
+                    type === 'Topic' ? (
+                      <AiOutlineDelete />
+                    ) : (
+                      <AiOutlineEyeInvisible />
+                    )
+                  }
+                  title={type === 'Topic' ? 'Delete' : 'Hide'}
+                  variant="ghost"
+                  colorScheme="red"
+                />
+              </Box>
+            </ActionTooltip>
           </ButtonGroup>
         </Stack>
       </Stack>

@@ -105,6 +105,7 @@ export const AdminLoginForm = () => {
                 name="identifier"
                 register={register}
                 errors={errors}
+                autoComplete="username"
               />
               <FormItem
                 w="full"

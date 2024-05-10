@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "translates",
+  "info": {
+    "singularName": "translate",
+    "pluralName": "translates",
+    "displayName": "Translate"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mock": {
+      "type": "boolean"
+    }
+  }
+}

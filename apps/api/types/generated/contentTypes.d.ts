@@ -3196,6 +3196,18 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToMany',
       'api::job.job'
     >
+    profileStatus: Attribute.Enumeration<
+      [
+        'pending',
+        'accepted',
+        'rejected',
+        'in-progress',
+        'left',
+        'awaiting',
+        'approved',
+      ]
+    > &
+      Attribute.DefaultTo<'pending'>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -3607,6 +3619,35 @@ export interface ApiTopicTopic extends Schema.SingleType {
   }
 }
 
+export interface ApiTranslateTranslate extends Schema.CollectionType {
+  collectionName: 'translates'
+  info: {
+    singularName: 'translate'
+    pluralName: 'translates'
+    displayName: 'Translate'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    mock: Attribute.Boolean
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::translate.translate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::translate.translate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
 export interface ApiTrendTrend extends Schema.SingleType {
   collectionName: 'trends'
   info: {
@@ -3827,6 +3868,7 @@ declare module '@strapi/types' {
       'api::term.term': ApiTermTerm
       'api::timeline.timeline': ApiTimelineTimeline
       'api::topic.topic': ApiTopicTopic
+      'api::translate.translate': ApiTranslateTranslate
       'api::trend.trend': ApiTrendTrend
       'api::user-feedback.user-feedback': ApiUserFeedbackUserFeedback
       'api::user-statistic.user-statistic': ApiUserStatisticUserStatistic

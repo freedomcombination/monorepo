@@ -5,7 +5,14 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { Auth, Profile, RoleType, SessionUser } from '@fc/types'
+import {
+  Auth,
+  Permissions,
+  Profile,
+  SessionUser,
+  StrapiEndpoint,
+} from '@fc/types'
+import { checkAccessForActions } from '@fc/utils'
 
 import { initialAuthState } from './state'
 import { AuthContextType, AuthProviderProps, AuthState } from './types'
@@ -19,10 +26,14 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   // TODO: Use useReducer instead of useState
   const [user, setUser] = useState<SessionUser | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
-  const [roles, setRoles] = useState<RoleType[]>(initialAuthState.roles)
+  const [roles, setRoles] = useState<string[]>(initialAuthState.roles)
   const [token, setToken] = useState<string | null>(null)
+  const [permissions, setPermissions] = useState<Permissions>({})
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
+  const [demoPermissions, setDemoPermissions] = useState<Permissions | null>(
+    null,
+  )
   const authModalDisclosure = useDisclosure()
   const { t } = useTranslation()
   const router = useRouter()
@@ -36,6 +47,37 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     }
   }, [initialState])
 
+  function checkActionsPermission(
+    endpoint: StrapiEndpoint,
+    ...api: string[]
+  ): boolean {
+    const source = demoPermissions ?? permissions
+
+    return checkAccessForActions(source, endpoint, ...api) === true
+  }
+
+  function canCreate(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'create')
+  }
+
+  function canRead(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'find')
+  }
+
+  function canUpdate(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'update')
+  }
+
+  function canDelete(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'delete')
+  }
+
+  function canApprove(endpoint: StrapiEndpoint): boolean {
+    return checkActionsPermission(endpoint, 'approve')
+  }
+
+  const isAdmin = roles.includes('admin')
+
   const checkAuth = async (): Promise<AuthState> => {
     setIsLoading(true)
 
@@ -46,7 +88,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         setUser(response.data?.user)
         setRoles(response.data?.user?.roles)
         setToken(response.data?.token)
-        setProfile(response.data?.profile)
+        setProfile(response.data?.profile as Profile)
+        setPermissions((response.data?.profile as Profile).permissions ?? {})
       }
 
       return {
@@ -56,6 +99,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         error: null,
         isAuthModalOpen: false,
         isLoading: false,
+        permissions: (response.data?.profile as Profile).permissions ?? {},
+        demoPermissions: null,
+        isAdmin: response.data?.user?.roles.includes('admin') || false,
       }
     } catch (error: any) {
       setError(error.message)
@@ -79,6 +125,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
       setToken(null)
       setRoles(initialAuthState.roles)
       setIsLoading(false)
+      setPermissions({})
 
       router.push('/')
     }
@@ -153,19 +200,30 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   return (
     <AuthContext.Provider
       value={{
-        user,
+        demoPermissions,
+        error,
+        isAdmin,
+        isAuthModalOpen: authModalDisclosure.isOpen,
+        isLoading,
+        permissions,
         profile,
         roles,
         token,
-        isLoading,
-        error,
+        user,
+        canApprove,
+        canCreate,
+        canDelete,
+        canRead,
+        canUpdate,
+        checkActionsPermission,
         checkAuth,
-        logout,
-        login,
-        register,
-        isAuthModalOpen: authModalDisclosure.isOpen,
-        openAuthModal: authModalDisclosure.onOpen,
         closeAuthModal: authModalDisclosure.onClose,
+        login,
+        logout,
+        openAuthModal: authModalDisclosure.onOpen,
+        register,
+        setDemoPermissions,
+        setPermissions,
       }}
     >
       {children}

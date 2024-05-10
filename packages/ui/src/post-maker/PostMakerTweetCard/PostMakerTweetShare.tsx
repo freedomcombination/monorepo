@@ -25,7 +25,6 @@ import { PostMakerTweetShareProps } from './types'
 export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
   url,
   content,
-  canManageSentences,
 }) => {
   return (
     <Popover placement="top">
@@ -78,7 +77,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
               />
             </LinkedinShareButton>
             <PostSentenceReference />
-            {canManageSentences && <PostSentencesModal />}
+            <PostSentencesModal />
           </HStack>
         </PopoverBody>
       </PopoverContent>
