@@ -24,6 +24,7 @@
     "@builder.io/react-hydration-overlay": "^0.0.8",
     "@chakra-ui/react": "^2.8.2",
     "@ctrl/tinycolor": "^4.1.0",
+    "@ducanh2912/next-pwa": "^10.2.7",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fc/config": "*",
@@ -94,6 +95,7 @@
     "twitter-api-v2": "^1.16.3",
     "twitter-text": "^3.1.0",
     "usehooks-ts": "^3.1.0",
+    "web-push": "^3.6.7",
     "yup": "^1.4.0",
     "yup-locales": "^1.2.21",
     "zod": "^3.23.4"
@@ -118,6 +120,7 @@
     "@types/string-similarity": "^4.0.2",
     "@types/twitter-text": "^3.1.10",
     "@types/uuid": "^9.0.8",
+    "@types/web-push": "^3.6.3",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
     "browserify-fs": "^1.0.0",
@@ -136,7 +139,8 @@
     "stream-browserify": "^3.0.0",
     "turbo": "^1.13.3",
     "type-fest": "^4.17.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0"
   },
   "packageManager": "yarn@4.1.1",
   "workspaces": [

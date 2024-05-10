@@ -248,7 +248,6 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           )}
         </ModelEditModal>
       )}
-
       <DataTable
         columns={columns[endpoint] as WTableProps<StrapiModel>['columns']}
         data={mappedModels}

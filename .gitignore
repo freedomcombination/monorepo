@@ -44,6 +44,7 @@ yarn-error.log*
 # service worker
 # sw.js
 # workbox-*.js
+*.js.map
 
 storybook-static
 
@@ -51,3 +52,8 @@ storybook-static
 
 test-results
 tsconfig.tsbuildinfo
+
+# web-push
+**/public/workbox-*.js
+**/public/sw.js
+**/public/worker-*.js

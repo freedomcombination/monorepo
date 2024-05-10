@@ -22,6 +22,9 @@
     "SECRET_COOKIE_PASSWORD",
     "STRIPE_KEY",
     "OPENAI_API_KEY",
+    "NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY",
+    "WEB_PUSH_EMAIL",
+    "WEB_PUSH_PRIVATE_KEY",
     "EDGE_CONFIG"
   ],
   "pipeline": {
