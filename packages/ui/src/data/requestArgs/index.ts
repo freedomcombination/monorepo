@@ -94,6 +94,10 @@ export const useRequestArgs = <
           endpoint: 'users-permissions/roles',
           field: 'role',
         },
+        {
+          endpoint: 'platforms',
+          field: 'platforms',
+        },
       ],
       filters: [
         {
