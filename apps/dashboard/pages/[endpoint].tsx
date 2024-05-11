@@ -15,6 +15,7 @@ import { ssrTranslations } from '@fc/services/ssrTranslations'
 import {
   ApprovalStatus,
   Post,
+  ProfileStatus,
   Sort,
   StrapiCollectionEndpoint,
   StrapiLocale,
@@ -69,8 +70,10 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const selectedId = query.id ? parseInt(query.id as string) : undefined
   const sort = query.sort as Sort
   const status = query.status as ApprovalStatus | 'all'
+  const profileStatus = query.profileStatus as ProfileStatus | 'pending'
 
   const hasApprovalStatus = endpointsWithApprovalStatus.includes(endpoint)
+  const hasProfileStatus = endpoint === 'profiles'
   const hasPublicationState = endpointsWithPublicationState.includes(endpoint)
   const hasRelationFilters =
     args?.relationFilters && selectedRelationFilters.length > 0
@@ -103,6 +106,19 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         status && status !== 'all'
           ? { $eq: status }
           : { $in: ['approved', 'pending', 'rejected'] },
+      profileStatus: profileStatus
+        ? { $eq: profileStatus }
+        : {
+            $in: [
+              'approved',
+              'pending',
+              'rejected',
+              'left',
+              'awaiting',
+              'in-progress',
+              'accepted',
+            ],
+          },
     },
     ...(args?.populate && { populate: args.populate }),
     pageSize,
@@ -113,6 +129,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
       enabled: !!endpoint,
     },
   })
+
   const models = endpointQuery?.data?.data
   const pageCount = endpointQuery?.data?.meta?.pagination?.pageCount
   const totalCount = endpointQuery?.data?.meta?.pagination?.total
@@ -127,13 +144,22 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const post = selectedModel as Post
 
   const changeRoute = (
-    key: 'id' | 'page' | 'sort' | 'status' | 'published' | 'q' | 'pageSize',
-    value?: string | number | Sort | ApprovalStatus,
+    key:
+      | 'id'
+      | 'page'
+      | 'sort'
+      | 'status'
+      | 'published'
+      | 'q'
+      | 'pageSize'
+      | 'profileStatus',
+    value?: string | number | Sort | ApprovalStatus | ProfileStatus,
   ) => {
     if (
       !value ||
       (key === 'page' && value === 1) ||
       (key === 'status' && value === 'all') ||
+      (key === 'profileStatus' && value === 'all') ||
       (key === 'published' && value === 'all') ||
       (key === 'pageSize' && value === 20)
     ) {
@@ -152,6 +178,8 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const setPageSize = (size?: number) => changeRoute('pageSize', size)
   const setSort = (sort?: Sort) => changeRoute('sort', sort)
   const setStatus = (status: string) => changeRoute('status', status)
+  const setProfileStatus = (profileStatus: string) =>
+    changeRoute('profileStatus', profileStatus)
   const setPublished = (state: string) => changeRoute('published', state)
   const setQ = (q?: string) => changeRoute('q', q)
 
@@ -214,6 +242,25 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
                     hidden: !hasApprovalStatus,
                     title: 'approvalStatus',
                   },
+                  {
+                    profileStatus: [
+                      'all',
+                      'left',
+                      'accepted',
+                      'pending',
+                      'rejected',
+                      'approved',
+                      'in-progress',
+                      'awaiting',
+                    ],
+
+                    defaultValue: 'all',
+                    currentValue: profileStatus,
+                    setCurrentValue: setProfileStatus,
+                    hidden: !hasProfileStatus,
+                    title: 'Profile Status',
+                  },
+
                   {
                     statuses: ['all', 'true', 'false'],
                     defaultValue: 'true',
