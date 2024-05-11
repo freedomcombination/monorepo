@@ -49,11 +49,11 @@ export const AuthProvider: FC<AuthProviderProps> = ({
 
   function checkActionsPermission(
     endpoint: StrapiEndpoint,
-    ...api: string[]
+    ...actions: string[]
   ): boolean {
     const source = demoPermissions ?? permissions
 
-    return checkAccessForActions(source, endpoint, ...api) === true
+    return checkAccessForActions(source, endpoint, ...actions) === true
   }
 
   function canCreate(endpoint: StrapiEndpoint): boolean {
