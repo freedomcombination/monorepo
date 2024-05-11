@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/react'
+import { MenuDivider, Stack, useDisclosure } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -70,7 +70,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const selectedId = query.id ? parseInt(query.id as string) : undefined
   const sort = query.sort as Sort
   const status = query.status as ApprovalStatus | 'all'
-  const profileStatus = query.profileStatus as ProfileStatus | 'pending'
+  const profileStatus = query.profileStatus as ProfileStatus | 'all'
 
   const hasApprovalStatus = endpointsWithApprovalStatus.includes(endpoint)
   const hasProfileStatus = endpoint === 'profiles'
@@ -102,23 +102,8 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           $or: args?.searchFields?.map(f => ({ [f]: { $containsi: q } })),
         }),
       ...(published === 'false' && { publishedAt: { $null: true } }),
-      approvalStatus:
-        status && status !== 'all'
-          ? { $eq: status }
-          : { $in: ['approved', 'pending', 'rejected'] },
-      profileStatus: profileStatus
-        ? { $eq: profileStatus }
-        : {
-            $in: [
-              'approved',
-              'pending',
-              'rejected',
-              'left',
-              'awaiting',
-              'in-progress',
-              'accepted',
-            ],
-          },
+      ...(status !== 'all' && { approvalStatus: { $eq: status } }),
+      ...(profileStatus !== 'all' && { profileStatus: { $eq: profileStatus } }),
     },
     ...(args?.populate && { populate: args.populate }),
     pageSize,
@@ -231,7 +216,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           ...(args.searchFields && { onSearch: setQ }),
           filterMenuCloseOnSelect: false,
           filterMenu: (
-            <>
+            <Stack divider={<MenuDivider />}>
               <ModelStatusFilters
                 args={[
                   {
@@ -243,7 +228,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
                     title: 'approvalStatus',
                   },
                   {
-                    profileStatus: [
+                    statuses: [
                       'all',
                       'left',
                       'accepted',
@@ -253,14 +238,12 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
                       'in-progress',
                       'awaiting',
                     ],
-
                     defaultValue: 'all',
                     currentValue: profileStatus,
                     setCurrentValue: setProfileStatus,
                     hidden: !hasProfileStatus,
-                    title: 'Profile Status',
+                    title: 'profileStatus',
                   },
-
                   {
                     statuses: ['all', 'true', 'false'],
                     defaultValue: 'true',
@@ -277,7 +260,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
                 filterOptions={args.filters}
                 setFilters={setSelectedFilters}
               />
-            </>
+            </Stack>
           ),
         })}
       />

@@ -48,7 +48,7 @@ export const RelationFilterMenuGroup = <T extends StrapiModel>({
     >
       {mapModelsToOptions(parentData, locale)?.map(model => {
         return (
-          <MenuItemOption key={model.value} value={model.value}>
+          <MenuItemOption key={model.value} value={model.value} maxW={300}>
             <chakra.span noOfLines={1}>{model.label}</chakra.span>
           </MenuItemOption>
         )
