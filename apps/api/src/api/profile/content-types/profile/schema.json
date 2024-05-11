@@ -332,7 +332,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "isVolunteer": {
       "type": "boolean"
@@ -515,6 +517,12 @@
         "approved"
       ],
       "default": "pending"
+    },
+    "profile_comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::profile-comment.profile-comment",
+      "mappedBy": "creator"
     }
   }
 }

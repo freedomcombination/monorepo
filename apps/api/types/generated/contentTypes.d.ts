@@ -3208,6 +3208,11 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       ]
     > &
       Attribute.DefaultTo<'pending'>
+    profile_comments: Attribute.Relation<
+      'api::profile.profile',
+      'oneToMany',
+      'api::profile-comment.profile-comment'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -3218,6 +3223,43 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       Attribute.Private
     updatedBy: Attribute.Relation<
       'api::profile.profile',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
+export interface ApiProfileCommentProfileComment extends Schema.CollectionType {
+  collectionName: 'profile_comments'
+  info: {
+    singularName: 'profile-comment'
+    pluralName: 'profile-comments'
+    displayName: 'Profile Comment'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    message: Attribute.Text
+    creator: Attribute.Relation<
+      'api::profile-comment.profile-comment',
+      'manyToOne',
+      'api::profile.profile'
+    >
+    createdDate: Attribute.DateTime
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::profile-comment.profile-comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::profile-comment.profile-comment',
       'oneToOne',
       'admin::user'
     > &
@@ -3862,6 +3904,7 @@ declare module '@strapi/types' {
       'api::presentation.presentation': ApiPresentationPresentation
       'api::privacy.privacy': ApiPrivacyPrivacy
       'api::profile.profile': ApiProfileProfile
+      'api::profile-comment.profile-comment': ApiProfileCommentProfileComment
       'api::recommended-topic.recommended-topic': ApiRecommendedTopicRecommendedTopic
       'api::recommended-tweet.recommended-tweet': ApiRecommendedTweetRecommendedTweet
       'api::tag.tag': ApiTagTag
