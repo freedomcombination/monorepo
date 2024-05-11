@@ -3249,6 +3249,11 @@ export interface ApiProfileCommentProfileComment extends Schema.CollectionType {
       'api::profile.profile'
     >
     createdDate: Attribute.DateTime
+    profile: Attribute.Relation<
+      'api::profile-comment.profile-comment',
+      'oneToOne',
+      'api::profile.profile'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime

@@ -23,6 +23,11 @@
     },
     "createdDate": {
       "type": "datetime"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::profile.profile"
     }
   }
 }
