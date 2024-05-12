@@ -36,11 +36,9 @@ export const MdFormItem = <T extends FieldValues>({
   })
 
   const { t } = useTranslation()
-
   const translatedName = t(name as keyof I18nNamespaces['common'])
   const label = initialLabel || translatedName
   const placeholder = initialPlaceholder || translatedName
-
   const errorMessage = errors?.[name]?.['message'] as unknown as string
 
   return (
@@ -54,13 +52,13 @@ export const MdFormItem = <T extends FieldValues>({
       flexDir={'column'}
       gap={1}
     >
-      <FormUploader />
-
       {label && !hideLabel && (
         <FormLabel mb={1} htmlFor={name} fontSize="sm" fontWeight={600}>
           {label}
         </FormLabel>
       )}
+
+      {!isDisabled && <FormUploader />}
 
       <MarkdownEditor
         placeholder={placeholder}

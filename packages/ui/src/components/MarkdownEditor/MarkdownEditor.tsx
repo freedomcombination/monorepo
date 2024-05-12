@@ -39,7 +39,7 @@ const MarkdownEditor = forwardRef<MarkdownEditorProps, any>((props, ref) => {
         _hover: { borderColor: 'transparent' },
         color: 'gray.500',
         userSelect: 'none',
-        maxH: 500,
+      maxH: 350,
         overflowY: 'auto',
       }
     : {}
