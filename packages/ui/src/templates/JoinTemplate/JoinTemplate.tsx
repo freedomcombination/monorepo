@@ -21,7 +21,7 @@ import { FaRegFilePdf } from 'react-icons/fa6'
 import { PUBLIC_TOKEN } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { useStrapiRequest } from '@fc/services'
-import { Platform, Profile, ProfileCreateInput } from '@fc/types'
+import { Platform, Profile, ProfileCreateInput, Job } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
 import { JoinTemplateProps } from './types'
@@ -43,6 +43,14 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
   })
 
   const platforms = platformsResult.data?.data || []
+
+  // Fetch foundation jobs
+  const foundationJobsResult = useStrapiRequest<Job>({
+    endpoint: 'jobs',
+    locale,
+  })
+
+  const foundationJobs = foundationJobsResult.data?.data || []
 
   const { mutate, isPending, isSuccess } = useMutation({
     mutationKey: ['create-volunteer'],
@@ -135,6 +143,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
                 onSubmitHandler={onSubmit}
                 isLoading={isPending}
                 platforms={platforms}
+                foundationJobs={foundationJobs}
               />
             </Stack>
 
