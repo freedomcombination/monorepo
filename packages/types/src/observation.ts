@@ -1,25 +1,23 @@
-import { Expand, PickRequired } from './common'
+import { Expand } from './common'
 import { Profile } from './profile'
 import { StrapiBase } from './strapi'
 
 export type ObservationBase = {
   content: string
-  createdDate: string
 }
 
 type ObservationRelation = {
-  profile?: Profile | null
-  creator?: Profile | null
+  profile: Profile
+  creator: Profile
 }
 
 type ObservationRelationInput = {
-  profile?: number
-  creator?: number
+  profile: number
+  creator: number
 }
 
 export type ObservationCreateInput = Expand<
-  Pick<ObservationBase, 'content'> &
-    PickRequired<ObservationRelationInput, 'profile'>
+  Pick<ObservationBase, 'content'> & ObservationRelationInput
 >
 
 export type Observation = StrapiBase & ObservationBase & ObservationRelation

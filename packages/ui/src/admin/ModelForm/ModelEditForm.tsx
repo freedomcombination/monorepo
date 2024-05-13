@@ -451,7 +451,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 return (
                   <Box key={index} maxH={600} overflowY={'auto'}>
                     <Observations
-                      endpoint={field.endpoint}
+                      endpoint={'observations'}
                       name={field.name}
                       id={model.id}
                     />

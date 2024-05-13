@@ -2,24 +2,19 @@ import { HStack, Text } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import { TbPointFilled } from 'react-icons/tb'
 
-import { Profile } from '@fc/types'
+import { Observation } from '@fc/types/src/observation'
 
-export type ObservationItemProps = {
-  content: string
-  createdDate: string
-  creator: Profile
-}
+export type ObservationItemProps = Pick<
+  Observation,
+  'content' | 'createdAt' | 'creator'
+>
 
 export const ObservationItem = ({
   content,
-  createdDate,
+  createdAt,
   creator,
 }: ObservationItemProps) => {
-  const getDate = (date: string) => {
-    const newdate = format(new Date(date), 'dd-MM-yyyy HH:mm')
-
-    return newdate
-  }
+  const createdDate = format(createdAt, 'dd-MM-yyyy HH:mm')
 
   return (
     <HStack>
@@ -28,7 +23,7 @@ export const ObservationItem = ({
       <Text fontWeight={600} fontSize={'sm'}>
         {creator?.name}
       </Text>
-      <Text fontSize={'sm'}>{getDate(createdDate)}</Text>
+      <Text fontSize={'sm'}>{createdDate}</Text>
     </HStack>
   )
 }
