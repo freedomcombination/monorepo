@@ -13,14 +13,15 @@ export type ObservationsProps = {
 export const Observations = ({ endpoint, name, id }: ObservationsProps) => {
   // const { t } = useTranslation()
 
-  const observations = useStrapiRequest<StrapiModel>({
-    endpoint,
-    pageSize: 100,
-    filters: { profile: { id: { $eq: id } } },
-    sort: 'createdDate:desc',
-  }) as unknown as Observation[]
+  const observations =
+    (useStrapiRequest<StrapiModel>({
+      endpoint,
+      pageSize: 100,
+      filters: { profile: { id: { $eq: id } } },
+      sort: 'createdDate:desc',
+    }) as Observation) || []
 
-  const comments = observations ?? []
+  const comments = observations?.data?.data ?? []
 
   return (
     <Stack>
@@ -31,7 +32,7 @@ export const Observations = ({ endpoint, name, id }: ObservationsProps) => {
             <ObservationItem
               content={comment?.content}
               createdDate={comment?.createdDate}
-              creator={comment?.creator | []}
+              creator={comment?.creator || []}
               key={comment?.id}
             />
           )
