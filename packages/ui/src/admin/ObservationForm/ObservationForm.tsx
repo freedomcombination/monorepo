@@ -61,11 +61,8 @@ export const ObservationForm: FC<ObservationFormProps> = ({
   useEffect(() => {
     if (isSuccess) reset()
   }, [isSuccess, reset])
-  console.log('form ', useForm)
-  console.log('eror in form', errors)
 
   const handleSendForm = async ({ content }: ObservationCreateInput) => {
-    console.log('content', content)
     try {
       const body = {
         content,
