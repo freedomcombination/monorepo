@@ -39,9 +39,8 @@ export const ObservationForm: FC<ObservationFormProps> = ({
     register,
     handleSubmit,
     reset,
+    formState: { errors, isValid },
     setValue,
-    formState: { errors },
-    watch,
   } = useForm<ObservationFormFieldValues>({
     resolver: yupResolver(observationFormSchema),
     mode: 'all',
@@ -53,17 +52,20 @@ export const ObservationForm: FC<ObservationFormProps> = ({
   >('observations')
 
   useEffect(() => {
-    if (isSuccess) reset()
-  }, [isSuccess, reset])
-
-  useEffect(() => {
     if (profile) {
-      setValue('creator', profile?.id)
+      setValue('creator', profile.id)
+      setValue('profile', profileId)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, isSuccess])
 
+  useEffect(() => {
+    if (isSuccess) reset()
+  }, [isSuccess, reset])
+  console.log('form ', useForm)
+  console.log('eror in form', errors)
+
   const handleSendForm = async ({ content }: ObservationCreateInput) => {
+    console.log('content', content)
     try {
       const body = {
         content,
@@ -116,13 +118,12 @@ export const ObservationForm: FC<ObservationFormProps> = ({
             />
           </HStack>
         </Stack>
-
         <Button
           display={{ base: 'none', sm: 'flex' }}
           alignSelf="flex-end"
           rightIcon={<FiArrowRight />}
           isLoading={isPending}
-          isDisabled={watch('content') === ''}
+          isDisabled={!isValid}
           type="submit"
         >
           Send
