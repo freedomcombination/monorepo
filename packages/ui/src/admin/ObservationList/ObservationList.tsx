@@ -3,12 +3,13 @@ import { Heading, Stack } from '@chakra-ui/react'
 import { useStrapiRequest } from '@fc/services'
 import { Observation } from '@fc/types/src/observation'
 
-import { ObservationItem } from './ObservationItem'
+import { ObservationListItem } from './ObservationListItem'
+import { ObservationForm } from '../ObservationForm'
 
-export type ObservationsProps = {
+export type ObservationListProps = {
   id: number
 }
-export const Observations = ({ id }: ObservationsProps) => {
+export const ObservationList = ({ id }: ObservationListProps) => {
   const observationRequest = useStrapiRequest<Observation>({
     endpoint: 'observations',
     filters: { profile: { id: { $eq: id } } },
@@ -23,12 +24,12 @@ export const Observations = ({ id }: ObservationsProps) => {
 
   return (
     <Stack p={{ base: 4, lg: 8 }}>
+      <ObservationForm profileId={id} onSuccess={observationRequest.refetch} />
       <Heading as="h2">Observations</Heading>
-      {/* TODO: Add ObservationForm */}
       <Stack>
         {observations?.map(observation => {
           return (
-            <ObservationItem
+            <ObservationListItem
               content={observation?.content}
               createdAt={observation?.createdAt}
               creator={observation?.creator || []}

@@ -3,16 +3,16 @@ import { format } from 'date-fns'
 
 import { Observation } from '@fc/types/src/observation'
 
-export type ObservationItemProps = Pick<
+export type ObservationListItemProps = Pick<
   Observation,
   'content' | 'createdAt' | 'creator'
 >
 
-export const ObservationItem = ({
+export const ObservationListItem = ({
   content,
   createdAt,
   creator,
-}: ObservationItemProps) => {
+}: ObservationListItemProps) => {
   const createdDate = format(createdAt, 'dd-MM-yyyy HH:mm')
 
   return (
