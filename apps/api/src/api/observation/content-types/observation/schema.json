@@ -1,33 +1,32 @@
 {
   "kind": "collectionType",
-  "collectionName": "profile_comments",
+  "collectionName": "observations",
   "info": {
-    "singularName": "profile-comment",
-    "pluralName": "profile-comments",
-    "displayName": "Profile Comment",
-    "description": ""
+    "singularName": "observation",
+    "pluralName": "observations",
+    "displayName": "Observation"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "message": {
+    "content": {
       "type": "text"
-    },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "profile_comments"
-    },
-    "createdDate": {
-      "type": "datetime"
     },
     "profile": {
       "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::profile.profile",
+      "inversedBy": "observations"
+    },
+    "creator": {
+      "type": "relation",
       "relation": "oneToOne",
       "target": "api::profile.profile"
+    },
+    "createdDate": {
+      "type": "datetime"
     }
   }
 }

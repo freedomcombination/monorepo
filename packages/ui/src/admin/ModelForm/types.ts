@@ -40,6 +40,13 @@ type FormTextFields = {
     | 'textarea'
     | 'mediaUrl'
 }
+type FormRelationArrayFields = {
+  name: string
+  type?: 'relation-array'
+  endpoint: StrapiCollectionEndpoint
+  isRequired?: boolean
+  blockEdit?: boolean
+}
 
 type FormSelectFields = {
   type: 'select'
@@ -59,6 +66,7 @@ export type FormCommonFields<T extends StrapiModel> = {
 export type FormFields<T extends StrapiModel> = Array<
   | (FormTextFields & FormCommonFields<T>)
   | (FormSelectFields & FormCommonFields<T>)
+  | FormRelationArrayFields
 >
 
 export type ModelCreateFormProps<T extends StrapiModel> = {

@@ -1,9 +1,10 @@
 import * as yup from 'yup'
 
-import { Profile, Role } from '@fc/types'
+import { Profile, Role } from '@fc/types' // Import the StrapiCollectionEndpoint type
+import { Observation } from '@fc/types/src/observation'
 
 import { yupMultiSelect, yupSelect } from './common'
-import { FormFields } from '../../admin' // Add FormSelectFields import
+import { FormFields } from '../../admin' // Add FormTextFields and FormCommonFields imports
 
 export const useProfileSchema = () => {
   return yup.object({
@@ -22,11 +23,19 @@ export const useProfileSchema = () => {
     isVolunteer: yup.boolean(),
     user: yupSelect.required(),
     comment: yup.string(),
+    observation: yup.array().of(
+      yup.object({
+        content: yup.string().required(),
+      }),
+    ),
+
     platforms: yupMultiSelect,
   })
 }
 
-export const profileFields: FormFields<Profile & { role: Role }> = [
+export const profileFields: FormFields<
+  Profile & { role: Role } & { observations: Observation[] }
+> = [
   { name: 'name', isRequired: true },
   { name: 'email', isRequired: true, blockEdit: true },
   { name: 'phone' },
@@ -52,5 +61,9 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'user', type: 'select', endpoint: 'users' },
   { name: 'platforms', type: 'select', isMulti: true, endpoint: 'platforms' },
   { name: 'avatar', type: 'file' },
-  { name: 'comment', type: 'textarea', blockEdit: true },
+  {
+    name: 'observation',
+    type: 'relation-array',
+    endpoint: 'observations',
+  }, // Use the StrapiCollectionEndpoint type annotation
 ]

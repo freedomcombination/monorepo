@@ -2416,6 +2416,47 @@ export interface ApiMentionMention extends Schema.CollectionType {
   }
 }
 
+export interface ApiObservationObservation extends Schema.CollectionType {
+  collectionName: 'observations'
+  info: {
+    singularName: 'observation'
+    pluralName: 'observations'
+    displayName: 'Observation'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    content: Attribute.Text
+    profile: Attribute.Relation<
+      'api::observation.observation',
+      'manyToOne',
+      'api::profile.profile'
+    >
+    creator: Attribute.Relation<
+      'api::observation.observation',
+      'oneToOne',
+      'api::profile.profile'
+    >
+    createdDate: Attribute.DateTime
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::observation.observation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::observation.observation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
 export interface ApiPlatformPlatform extends Schema.CollectionType {
   collectionName: 'platforms'
   info: {
@@ -3208,10 +3249,10 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       ]
     > &
       Attribute.DefaultTo<'pending'>
-    profile_comments: Attribute.Relation<
+    observations: Attribute.Relation<
       'api::profile.profile',
       'oneToMany',
-      'api::profile-comment.profile-comment'
+      'api::observation.observation'
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
@@ -3223,48 +3264,6 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       Attribute.Private
     updatedBy: Attribute.Relation<
       'api::profile.profile',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-  }
-}
-
-export interface ApiProfileCommentProfileComment extends Schema.CollectionType {
-  collectionName: 'profile_comments'
-  info: {
-    singularName: 'profile-comment'
-    pluralName: 'profile-comments'
-    displayName: 'Profile Comment'
-    description: ''
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    message: Attribute.Text
-    creator: Attribute.Relation<
-      'api::profile-comment.profile-comment',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    createdDate: Attribute.DateTime
-    profile: Attribute.Relation<
-      'api::profile-comment.profile-comment',
-      'oneToOne',
-      'api::profile.profile'
-    >
-    createdAt: Attribute.DateTime
-    updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
-    createdBy: Attribute.Relation<
-      'api::profile-comment.profile-comment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    updatedBy: Attribute.Relation<
-      'api::profile-comment.profile-comment',
       'oneToOne',
       'admin::user'
     > &
@@ -3904,12 +3903,12 @@ declare module '@strapi/types' {
       'api::job.job': ApiJobJob
       'api::lang-role.lang-role': ApiLangRoleLangRole
       'api::mention.mention': ApiMentionMention
+      'api::observation.observation': ApiObservationObservation
       'api::platform.platform': ApiPlatformPlatform
       'api::post.post': ApiPostPost
       'api::presentation.presentation': ApiPresentationPresentation
       'api::privacy.privacy': ApiPrivacyPrivacy
       'api::profile.profile': ApiProfileProfile
-      'api::profile-comment.profile-comment': ApiProfileCommentProfileComment
       'api::recommended-topic.recommended-topic': ApiRecommendedTopicRecommendedTopic
       'api::recommended-tweet.recommended-tweet': ApiRecommendedTweetRecommendedTweet
       'api::tag.tag': ApiTagTag
