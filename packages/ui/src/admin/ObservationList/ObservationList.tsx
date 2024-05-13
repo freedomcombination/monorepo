@@ -18,14 +18,10 @@ export const ObservationList = ({ id }: ObservationListProps) => {
 
   const observations = observationRequest.data?.data ?? []
 
-  if (!observations.length) {
-    return null
-  }
-
   return (
     <Stack p={{ base: 4, lg: 8 }}>
       <ObservationForm profileId={id} onSuccess={observationRequest.refetch} />
-      <Heading as="h2">Observations</Heading>
+      {observations.length > 0 && <Heading as="h2">Observations</Heading>}
       <Stack>
         {observations?.map(observation => {
           return (
