@@ -29,6 +29,7 @@ import {
   FilterOption,
   ModelEditModal,
   ModelStatusFilters,
+  Observations,
   PageHeader,
   RelationFilterArgs,
   TabbedGenAIView,
@@ -275,6 +276,9 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         >
           {endpoint === 'posts' && post && post?.hashtag && (
             <TabbedGenAIView post={post} hashtag={post.hashtag} noBorder />
+          )}
+          {endpoint === 'profiles' && selectedModel && selectedId && (
+            <Observations id={selectedId} />
           )}
         </ModelEditModal>
       )}

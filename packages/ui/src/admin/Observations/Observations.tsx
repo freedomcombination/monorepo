@@ -1,16 +1,14 @@
-import { Stack, Text, Box } from '@chakra-ui/react'
+import { Heading, Stack } from '@chakra-ui/react'
 
 import { useStrapiRequest } from '@fc/services'
 import { Observation } from '@fc/types/src/observation'
 
 import { ObservationItem } from './ObservationItem'
+
 export type ObservationsProps = {
-  name: string
   id: number
 }
-export const Observations = ({ name, id }: ObservationsProps) => {
-  // const { t } = useTranslation()
-
+export const Observations = ({ id }: ObservationsProps) => {
   const observationRequest = useStrapiRequest<Observation>({
     endpoint: 'observations',
     filters: { profile: { id: { $eq: id } } },
@@ -19,10 +17,15 @@ export const Observations = ({ name, id }: ObservationsProps) => {
 
   const observations = observationRequest.data?.data ?? []
 
+  if (!observations.length) {
+    return null
+  }
+
   return (
-    <Stack>
-      <Text fontWeight={600}>{name[0].toUpperCase() + name.slice(1)}</Text>
-      <Box>
+    <Stack p={{ base: 4, lg: 8 }}>
+      <Heading as="h2">Observations</Heading>
+      {/* TODO: Add ObservationForm */}
+      <Stack>
         {observations?.map(observation => {
           return (
             <ObservationItem
@@ -33,7 +36,7 @@ export const Observations = ({ name, id }: ObservationsProps) => {
             />
           )
         })}
-      </Box>
+      </Stack>
     </Stack>
   )
 }
