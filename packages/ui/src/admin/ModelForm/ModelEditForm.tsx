@@ -579,7 +579,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             </ActionHStack>
 
             <ActionButton
-              checkActions={{ endpoint, actions: ['publish'] }}
+              checkActions={{ endpoint, actions: ['update'] }}
               onClick={isPublished ? onUnPublish : onPublish}
               colorScheme={isPublished ? 'yellow' : 'green'}
               fontSize="sm"

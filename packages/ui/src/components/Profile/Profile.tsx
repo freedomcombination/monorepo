@@ -9,6 +9,7 @@ import {
   TabPanels,
   Tabs,
   Text,
+  VStack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaSpinner } from 'react-icons/fa'
@@ -51,7 +52,7 @@ export const AuthenticatedUserProfile = () => {
   return (
     <>
       <Hero>
-        <Stack>
+        <VStack>
           <WAvatar
             size="lg"
             src={`${ASSETS_URL}${profile?.avatar}`}
@@ -65,7 +66,7 @@ export const AuthenticatedUserProfile = () => {
           >
             <Text color={'white'}>{profile?.name || user?.username}</Text>
           </HStack>
-        </Stack>
+        </VStack>
       </Hero>
       <Container>
         <Tabs isLazy my={4}>

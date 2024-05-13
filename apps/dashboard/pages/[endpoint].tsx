@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/react'
+import { MenuDivider, Stack, useDisclosure } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -15,6 +15,7 @@ import { ssrTranslations } from '@fc/services/ssrTranslations'
 import {
   ApprovalStatus,
   Post,
+  ProfileStatus,
   Sort,
   StrapiCollectionEndpoint,
   StrapiLocale,
@@ -69,8 +70,10 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const selectedId = query.id ? parseInt(query.id as string) : undefined
   const sort = query.sort as Sort
   const status = query.status as ApprovalStatus | 'all'
+  const profileStatus = query.profileStatus as ProfileStatus | 'all'
 
   const hasApprovalStatus = endpointsWithApprovalStatus.includes(endpoint)
+  const hasProfileStatus = endpoint === 'profiles'
   const hasPublicationState = endpointsWithPublicationState.includes(endpoint)
   const hasRelationFilters =
     args?.relationFilters && selectedRelationFilters.length > 0
@@ -99,10 +102,8 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           $or: args?.searchFields?.map(f => ({ [f]: { $containsi: q } })),
         }),
       ...(published === 'false' && { publishedAt: { $null: true } }),
-      approvalStatus:
-        status && status !== 'all'
-          ? { $eq: status }
-          : { $in: ['approved', 'pending', 'rejected'] },
+      ...(status !== 'all' && { approvalStatus: { $eq: status } }),
+      ...(profileStatus !== 'all' && { profileStatus: { $eq: profileStatus } }),
     },
     ...(args?.populate && { populate: args.populate }),
     pageSize,
@@ -113,6 +114,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
       enabled: !!endpoint,
     },
   })
+
   const models = endpointQuery?.data?.data
   const pageCount = endpointQuery?.data?.meta?.pagination?.pageCount
   const totalCount = endpointQuery?.data?.meta?.pagination?.total
@@ -127,13 +129,22 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const post = selectedModel as Post
 
   const changeRoute = (
-    key: 'id' | 'page' | 'sort' | 'status' | 'published' | 'q' | 'pageSize',
-    value?: string | number | Sort | ApprovalStatus,
+    key:
+      | 'id'
+      | 'page'
+      | 'sort'
+      | 'status'
+      | 'published'
+      | 'q'
+      | 'pageSize'
+      | 'profileStatus',
+    value?: string | number | Sort | ApprovalStatus | ProfileStatus,
   ) => {
     if (
       !value ||
       (key === 'page' && value === 1) ||
       (key === 'status' && value === 'all') ||
+      (key === 'profileStatus' && value === 'all') ||
       (key === 'published' && value === 'all') ||
       (key === 'pageSize' && value === 20)
     ) {
@@ -152,6 +163,8 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const setPageSize = (size?: number) => changeRoute('pageSize', size)
   const setSort = (sort?: Sort) => changeRoute('sort', sort)
   const setStatus = (status: string) => changeRoute('status', status)
+  const setProfileStatus = (profileStatus: string) =>
+    changeRoute('profileStatus', profileStatus)
   const setPublished = (state: string) => changeRoute('published', state)
   const setQ = (q?: string) => changeRoute('q', q)
 
@@ -203,7 +216,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           ...(args.searchFields && { onSearch: setQ }),
           filterMenuCloseOnSelect: false,
           filterMenu: (
-            <>
+            <Stack divider={<MenuDivider />}>
               <ModelStatusFilters
                 args={[
                   {
@@ -213,6 +226,23 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
                     setCurrentValue: setStatus,
                     hidden: !hasApprovalStatus,
                     title: 'approvalStatus',
+                  },
+                  {
+                    statuses: [
+                      'all',
+                      'left',
+                      'accepted',
+                      'pending',
+                      'rejected',
+                      'approved',
+                      'in-progress',
+                      'awaiting',
+                    ],
+                    defaultValue: 'all',
+                    currentValue: profileStatus,
+                    setCurrentValue: setProfileStatus,
+                    hidden: !hasProfileStatus,
+                    title: 'profileStatus',
                   },
                   {
                     statuses: ['all', 'true', 'false'],
@@ -230,7 +260,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
                 filterOptions={args.filters}
                 setFilters={setSelectedFilters}
               />
-            </>
+            </Stack>
           ),
         })}
       />
