@@ -48,6 +48,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
   const foundationJobsResult = useStrapiRequest<Job>({
     endpoint: 'jobs',
     locale,
+    filters: { platform: { $null: true } },
   })
 
   const foundationJobs = foundationJobsResult.data?.data || []
