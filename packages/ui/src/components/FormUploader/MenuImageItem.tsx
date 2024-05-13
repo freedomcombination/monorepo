@@ -1,79 +1,121 @@
-import { FC } from 'react'
+import { FC, ReactNode, useEffect } from 'react'
 
 import {
-  HStack,
+  Box,
+  Button,
+  Center,
   IconButton,
-  MenuGroup,
-  MenuItem,
   Stack,
   Text,
+  VStack,
+  Wrap,
+  useClipboard,
 } from '@chakra-ui/react'
-import { FaTrash } from 'react-icons/fa6'
+import { FaCheck, FaTrash } from 'react-icons/fa6'
 
-import { FileFormat, UploadFile } from '@fc/types'
+import { API_URL } from '@fc/config'
+import { UploadFile } from '@fc/types'
 
 import { WImage } from '../WImage'
 
 type MenuImageItemProps = {
   image: UploadFile
-  onSelect: (image: UploadFile, format: FileFormat) => void
   onDelete: (image: UploadFile) => void
 }
 
-export const MenuImageItem: FC<MenuImageItemProps> = ({
-  image,
-  onSelect,
-  onDelete,
-}) => {
+type MenuImageButtonProps = {
+  url: string
+  children: ReactNode
+}
+
+const MenuImageButton: FC<MenuImageButtonProps> = ({ url, children }) => {
+  const { onCopy, setValue, hasCopied } = useClipboard('')
+
+  useEffect(() => {
+    // TODO: Change it to link if it's not an image
+    setValue(`![image](${API_URL}${url})`)
+  }, [url])
+
+  return (
+    <Button
+      aria-label="Select Image Format"
+      variant={'outline'}
+      onClick={onCopy}
+      overflow={'hidden'}
+    >
+      {children}
+      {hasCopied && (
+        <Center
+          pos={'absolute'}
+          left={0}
+          right={0}
+          boxSize={'full'}
+          bg={'white'}
+        >
+          <VStack spacing={0} textAlign={'center'}>
+            <FaCheck />
+            <Text fontSize={'xs'}>Copied</Text>
+          </VStack>
+        </Center>
+      )}
+    </Button>
+  )
+}
+
+export const MenuImageItem: FC<MenuImageItemProps> = ({ image, onDelete }) => {
   const entries = Object.entries(image.formats ?? {})
 
   return (
-    <MenuGroup
-      w={'full'}
-      h={60}
-      p={2}
-      borderRadius={'md'}
-      borderWidth={1}
-      border={'solid'}
-      borderColor={'gray.200'}
-    >
-      <HStack>
-        <WImage
-          src={image}
-          borderRadius={'xl'}
-          overflow={'hidden'}
-          m={1}
-          maxW={200}
-          boxShadow={'lg'}
-        />
-        <Stack flex={1}>
+    <Box pos={'relative'}>
+      {/* TODO: Display pdf icon for pdfs, File icon for other file types */}
+      <WImage src={image} w={'full'} h={100} objectFit="cover" />
+      <IconButton
+        pos={'absolute'}
+        top={2}
+        right={2}
+        onClick={() => onDelete(image)}
+        icon={<FaTrash />}
+        isRound
+        variant={'outline'}
+        bg={'white'}
+        colorScheme={'red'}
+        aria-label={'Delete'}
+      />
+      <Stack p={2} textAlign={'center'} fontSize={'sm'}>
+        <Box>
           <Text>{image.name}</Text>
           <Text>
             {image.width} x {image.height}
           </Text>
-          <HStack>
-            <IconButton
-              onClick={() => onDelete(image)}
-              icon={<FaTrash />}
-              variant={'outline'}
-              rounded={'full'}
-              size={'xs'}
-              colorScheme={'red'}
-              aria-label={'Delete'}
-            />
-          </HStack>
-        </Stack>
-      </HStack>
-      {entries.map(([key, value]) => (
-        <MenuItem
-          key={value.url}
-          onClick={() => onSelect(image, value)}
-          ml={4}
-          borderLeft={'1px solid'}
-        >
-          {key} - {value.width} x {value.height}
-        </MenuItem>
-      ))}
-    </MenuGroup>
+        </Box>
+        <Wrap justify={'center'}>
+          <MenuImageButton url={image.url} key={image.url}>
+            <VStack fontSize={'xs'} spacing={0}>
+              <Box>Original</Box>
+              <Box>
+                {image.width} x {image.height}
+              </Box>
+            </VStack>
+          </MenuImageButton>
+          {entries
+            .sort((a, b) => {
+              const aWidth = a[1].width
+              const bWidth = b[1].width
+
+              return aWidth > bWidth ? -1 : 1
+            })
+            .map(([key, value]) => (
+              <MenuImageButton key={value.url} url={value.url}>
+                <VStack fontSize={'xs'} spacing={0}>
+                  <Box>{key}</Box>
+                  <Box>
+                    {value.width} x {value.height}
+                  </Box>
+                </VStack>
+              </MenuImageButton>
+            ))}
+        </Wrap>
+      </Stack>
+    </Box>
   )
 }
