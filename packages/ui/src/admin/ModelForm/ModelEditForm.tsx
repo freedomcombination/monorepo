@@ -70,7 +70,6 @@ import { WConfirm, WConfirmProps } from '../../components/WConfirm'
 import { useFields, useSchema } from '../../data'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
 import { DownloadCapsModal } from '../DownloadCapsModal'
-import { Observations } from '../Observations'
 
 export const ModelEditForm = <T extends StrapiModel>({
   endpoint,
@@ -444,13 +443,6 @@ export const ModelEditForm = <T extends StrapiModel>({
                         undefined
                       }
                     />
-                  </Box>
-                )
-              }
-              if (field.type === 'relation-array') {
-                return (
-                  <Box key={index} maxH={600} overflowY={'auto'}>
-                    <Observations name={field.name} id={model.id} />
                   </Box>
                 )
               }

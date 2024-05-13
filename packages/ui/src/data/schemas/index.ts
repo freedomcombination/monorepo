@@ -24,7 +24,6 @@ import {
 } from './courseApplication'
 import { foundationFields, useFoundationsSchema } from './foundation'
 import { hashtagFields, useHashtagSchema } from './hashtag'
-import { useObservationSchema } from './observation'
 import { postFields, usePostSchema } from './post'
 import { profileFields, useProfileSchema } from './profile'
 import {
@@ -69,7 +68,6 @@ export const useSchema = (): PartialStrapiEndpointMap<ObjectSchema<any>> => {
     courses: useCourseSchema(),
     foundations: useFoundationsSchema(),
     hashtags: useHashtagSchema(),
-    observations: useObservationSchema(),
     posts: usePostSchema(),
     profiles: useProfileSchema(),
     topic: useTopicSchema(),

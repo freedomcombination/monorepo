@@ -38,7 +38,6 @@ export const ModelEditModal = <T extends StrapiModel>({
     onSuccess?.()
     refetch()
   }
-  console.log('model', model)
 
   return (
     <Modal
