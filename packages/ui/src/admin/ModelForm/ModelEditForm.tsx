@@ -450,11 +450,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               if (field.type === 'relation-array') {
                 return (
                   <Box key={index} maxH={600} overflowY={'auto'}>
-                    <Observations
-                      endpoint={'observations'}
-                      name={field.name}
-                      id={model.id}
-                    />
+                    <Observations name={field.name} id={model.id} />
                   </Box>
                 )
               }

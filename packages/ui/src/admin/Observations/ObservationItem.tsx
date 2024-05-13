@@ -1,4 +1,4 @@
-import { HStack, Text } from '@chakra-ui/react'
+import { HStack, Text, Stack } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import { TbPointFilled } from 'react-icons/tb'
 
@@ -17,13 +17,15 @@ export const ObservationItem = ({
   const createdDate = format(createdAt, 'dd-MM-yyyy HH:mm')
 
   return (
-    <HStack>
-      <TbPointFilled />
+    <Stack borderWidth="1px">
+      <HStack>
+        <TbPointFilled />
+        <Text fontWeight={600} fontSize={'sm'}>
+          {creator?.name}
+        </Text>
+        <Text fontSize={'sm'}>{createdDate}</Text>
+      </HStack>
       <Text>{content}</Text>
-      <Text fontWeight={600} fontSize={'sm'}>
-        {creator?.name}
-      </Text>
-      <Text fontSize={'sm'}>{createdDate}</Text>
-    </HStack>
+    </Stack>
   )
 }
