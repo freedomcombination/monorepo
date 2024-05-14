@@ -2416,6 +2416,46 @@ export interface ApiMentionMention extends Schema.CollectionType {
   }
 }
 
+export interface ApiObservationObservation extends Schema.CollectionType {
+  collectionName: 'observations'
+  info: {
+    singularName: 'observation'
+    pluralName: 'observations'
+    displayName: 'Observation'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    content: Attribute.Text
+    profile: Attribute.Relation<
+      'api::observation.observation',
+      'manyToOne',
+      'api::profile.profile'
+    >
+    creator: Attribute.Relation<
+      'api::observation.observation',
+      'oneToOne',
+      'api::profile.profile'
+    >
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::observation.observation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::observation.observation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
 export interface ApiPlatformPlatform extends Schema.CollectionType {
   collectionName: 'platforms'
   info: {
@@ -3208,6 +3248,11 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       ]
     > &
       Attribute.DefaultTo<'pending'>
+    observations: Attribute.Relation<
+      'api::profile.profile',
+      'oneToMany',
+      'api::observation.observation'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -3857,6 +3902,7 @@ declare module '@strapi/types' {
       'api::job.job': ApiJobJob
       'api::lang-role.lang-role': ApiLangRoleLangRole
       'api::mention.mention': ApiMentionMention
+      'api::observation.observation': ApiObservationObservation
       'api::platform.platform': ApiPlatformPlatform
       'api::post.post': ApiPostPost
       'api::presentation.presentation': ApiPresentationPresentation

@@ -12,6 +12,7 @@ import { UploadFile } from './file'
 import { Hashtag } from './hashtag'
 import { Job } from './job'
 import { LangRole } from './lang-role'
+import { Observation } from './observation'
 import { Platform } from './platform'
 import { Post } from './post'
 import { RecommendedTopic } from './recommended-topic'
@@ -80,6 +81,7 @@ type ProfileRelation = {
   langRoles?: Array<LangRole>
   likedArts?: Array<Art>
   likedBlogs?: Array<Blog>
+  observations?: Array<Observation>
   ownedArts?: Array<Art>
   ownedBlogs?: Array<Blog>
   platforms?: Array<Platform>
