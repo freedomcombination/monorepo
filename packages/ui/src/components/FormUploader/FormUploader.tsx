@@ -23,12 +23,12 @@ import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { UploadFile } from '@fc/types'
 
-import { MenuImageItem } from './MenuImageItem'
+import { MenuFileItem } from './MenuFileItem'
 
 export const FormUploader = () => {
   const [isUploading, setIsUploading] = useState(false)
-  const [uploadedImages, setUploadedImages] = useState<UploadFile[]>([])
-  const [imageIds, setImageIds] = useLocalStorage<number[]>('imageIds', [])
+  const [uploadedFiles, setUploadedFiles] = useState<UploadFile[]>([])
+  const [fileIds, setFileIds] = useLocalStorage<number[]>('imageIds', [])
   const { token } = useAuthContext()
 
   const onFilesSelected = async (files: File[]) => {
@@ -49,16 +49,16 @@ export const FormUploader = () => {
         },
       })
 
-      const images = (await result.json()) as UploadFile[]
-      setUploadedImages(prev => [...prev, ...images])
+      const fileData = (await result.json()) as UploadFile[]
+      setUploadedFiles(prev => [...prev, ...fileData])
 
       // add local storage those ids...
-      const ids = images.map(image => image.id)
-      if (!imageIds) {
-        setImageIds(ids)
+      const ids = fileData.map(image => image.id)
+      if (!fileIds) {
+        setFileIds(ids)
       } else {
-        const uniqueIds = new Set([...imageIds, ...ids])
-        setImageIds(Array.from(uniqueIds))
+        const uniqueIds = new Set([...fileIds, ...ids])
+        setFileIds(Array.from(uniqueIds))
       }
     }
 
@@ -67,11 +67,11 @@ export const FormUploader = () => {
       .finally(() => setIsUploading(false))
   }
 
-  const fetchImages = () => {
-    if (!imageIds || imageIds.length === 0) return
+  const fetchFiles = () => {
+    if (!fileIds || fileIds.length === 0) return
 
     setIsUploading(true)
-    const fetchImagesAsync = async () => {
+    const fetchFilesAsync = async () => {
       const result = await fetch(API_URL + '/api/upload/files', {
         method: 'GET',
         headers: {
@@ -79,32 +79,32 @@ export const FormUploader = () => {
         },
       })
 
-      const images = (await result.json()) as UploadFile[]
-      const filteredImages = images.filter(image => imageIds.includes(image.id))
-      setUploadedImages(filteredImages)
+      const fileData = (await result.json()) as UploadFile[]
+      const filteredImages = fileData.filter(file => fileIds.includes(file.id))
+      setUploadedFiles(filteredImages)
     }
 
-    fetchImagesAsync()
+    fetchFilesAsync()
       .catch(err => console.log(err))
       .finally(() => setIsUploading(false))
   }
 
-  const onDelete = (image: UploadFile) => {
+  const onDelete = (file: UploadFile) => {
     setIsUploading(true)
 
-    const deleteImagesAsync = async () => {
-      await fetch(API_URL + '/api/upload/files/' + image.id, {
+    const deleteFilesAsync = async () => {
+      await fetch(API_URL + '/api/upload/files/' + file.id, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
 
-      setUploadedImages(prev => prev.filter(i => i.id !== image.id))
-      setImageIds(prev => prev?.filter(i => i !== image.id))
+      setUploadedFiles(prev => prev.filter(i => i.id !== file.id))
+      setFileIds(prev => prev?.filter(i => i !== file.id))
     }
 
-    deleteImagesAsync()
+    deleteFilesAsync()
       .catch(err => console.log(err))
       .finally(() => setIsUploading(false))
   }
@@ -114,9 +114,9 @@ export const FormUploader = () => {
       <DragZone isUploading={isUploading} onFilesSelected={onFilesSelected} />
       <Divider orientation="vertical" />
       <ImageViewer
-        images={uploadedImages}
-        oldImages={!!imageIds && imageIds.length > 0}
-        fetchImages={fetchImages}
+        files={uploadedFiles}
+        oldFiles={!!fileIds && fileIds.length > 0}
+        fetchFiles={fetchFiles}
         onDelete={onDelete}
       />
     </HStack>
@@ -124,17 +124,17 @@ export const FormUploader = () => {
 }
 
 type ImageViewerProps = {
-  images: UploadFile[]
-  fetchImages: () => void
-  onDelete: (image: UploadFile) => void
-  oldImages: boolean
+  files: UploadFile[]
+  fetchFiles: () => void
+  onDelete: (file: UploadFile) => void
+  oldFiles: boolean
 }
 
 const ImageViewer: FC<ImageViewerProps> = ({
-  images,
-  fetchImages,
+  files,
+  fetchFiles,
   onDelete,
-  oldImages,
+  oldFiles,
 }) => {
   const { t } = useTranslation()
 
@@ -153,17 +153,18 @@ const ImageViewer: FC<ImageViewerProps> = ({
       />
       <Portal>
         <MenuList zIndex={9999} maxH={400} overflowY={'auto'} w={500} p={0}>
-          {images.length > 0 ? (
-            images.map(image => (
-              <MenuImageItem
-                key={image.url}
-                image={image}
+          {files.length > 0 ? (
+            files.map((file, index) => (
+              <MenuFileItem
+                renderDivider={index > 0}
+                key={file.url}
+                file={file}
                 onDelete={onDelete}
               />
             ))
           ) : (
-            <MenuItem onClick={fetchImages}>
-              {oldImages ? t('form.uploader.old') : t('form.uploader.new')}
+              <MenuItem onClick={fetchFiles}>
+                {oldFiles ? t('form.uploader.old') : t('form.uploader.new')}
             </MenuItem>
           )}
         </MenuList>

@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Center,
+  Divider,
   IconButton,
   Stack,
   Text,
@@ -11,30 +12,38 @@ import {
   Wrap,
   useClipboard,
 } from '@chakra-ui/react'
-import { FaCheck, FaTrash } from 'react-icons/fa6'
+import { FaCheck, FaFile, FaFilePdf, FaTrash } from 'react-icons/fa6'
 
 import { API_URL } from '@fc/config'
 import { UploadFile } from '@fc/types'
 
 import { WImage } from '../WImage'
 
-type MenuImageItemProps = {
-  image: UploadFile
-  onDelete: (image: UploadFile) => void
+type MenuFileItemProps = {
+  file: UploadFile
+  onDelete: (file: UploadFile) => void
+  renderDivider?: boolean
 }
 
-type MenuImageButtonProps = {
+type MenuFileButtonProps = {
   url: string
+  isImage: boolean
+  name: string
   children: ReactNode
 }
 
-const MenuImageButton: FC<MenuImageButtonProps> = ({ url, children }) => {
+const MenuFileButton: FC<MenuFileButtonProps> = ({
+  url,
+  name,
+  isImage,
+  children,
+}) => {
   const { onCopy, setValue, hasCopied } = useClipboard('')
 
   useEffect(() => {
-    // TODO: Change it to link if it's not an image
-    setValue(`![image](${API_URL}${url})`)
-  }, [url])
+    setValue(`${isImage ? '!' : ''}[${name}](${API_URL}${url})`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url, isImage, name])
 
   return (
     <Button
@@ -62,18 +71,32 @@ const MenuImageButton: FC<MenuImageButtonProps> = ({ url, children }) => {
   )
 }
 
-export const MenuImageItem: FC<MenuImageItemProps> = ({ image, onDelete }) => {
-  const entries = Object.entries(image.formats ?? {})
+export const MenuFileItem: FC<MenuFileItemProps> = ({
+  renderDivider = false,
+  file,
+  onDelete,
+}) => {
+  const entries = Object.entries(file.formats ?? {})
+  const isImage = file.mime.startsWith('image')
 
   return (
     <Box pos={'relative'}>
-      {/* TODO: Display pdf icon for pdfs, File icon for other file types */}
-      <WImage src={image} w={'full'} h={100} objectFit="cover" />
+      {renderDivider && <Divider my={2} />}
+      {isImage ? (
+        <WImage src={file} w={'full'} h={100} objectFit="cover" />
+      ) : (
+        <Box
+          w={'full'}
+          h={100}
+          p={2}
+          as={file.mime.endsWith('pdf') ? FaFilePdf : FaFile}
+        />
+      )}
       <IconButton
         pos={'absolute'}
-        top={2}
+        top={renderDivider ? 4 : 2}
         right={2}
-        onClick={() => onDelete(image)}
+        onClick={() => onDelete(file)}
         icon={<FaTrash />}
         isRound
         variant={'outline'}
@@ -83,20 +106,31 @@ export const MenuImageItem: FC<MenuImageItemProps> = ({ image, onDelete }) => {
       />
       <Stack p={2} textAlign={'center'} fontSize={'sm'}>
         <Box>
-          <Text>{image.name}</Text>
           <Text>
-            {image.width} x {image.height}
+            {file.name} - {file.mime}
+          </Text>
+          <Text>
+            {file.width} x {file.height}
           </Text>
         </Box>
         <Wrap justify={'center'}>
-          <MenuImageButton url={image.url} key={image.url}>
+          <MenuFileButton
+            url={file.url}
+            key={file.url}
+            isImage={isImage}
+            name={file.name}
+          >
             <VStack fontSize={'xs'} spacing={0}>
-              <Box>Original</Box>
-              <Box>
-                {image.width} x {image.height}
-              </Box>
+              <Box>original</Box>
+              {isImage ? (
+                <Box>
+                  {file.width} x {file.height}
+                </Box>
+              ) : (
+                <Box>{(file.size / 1024).toFixed(2)} kb</Box>
+              )}
             </VStack>
-          </MenuImageButton>
+          </MenuFileButton>
           {entries
             .sort((a, b) => {
               const aWidth = a[1].width
@@ -105,14 +139,19 @@ export const MenuImageItem: FC<MenuImageItemProps> = ({ image, onDelete }) => {
               return aWidth > bWidth ? -1 : 1
             })
             .map(([key, value]) => (
-              <MenuImageButton key={value.url} url={value.url}>
+              <MenuFileButton
+                key={value.url}
+                url={value.url}
+                isImage={isImage}
+                name={file.name}
+              >
                 <VStack fontSize={'xs'} spacing={0}>
                   <Box>{key}</Box>
                   <Box>
                     {value.width} x {value.height}
                   </Box>
                 </VStack>
-              </MenuImageButton>
+              </MenuFileButton>
             ))}
         </Wrap>
       </Stack>
