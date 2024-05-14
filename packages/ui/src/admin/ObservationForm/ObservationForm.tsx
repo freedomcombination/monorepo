@@ -40,23 +40,19 @@ export const ObservationForm: FC<ObservationFormProps> = ({
     handleSubmit,
     reset,
     formState: { errors, isValid },
-    setValue,
   } = useForm<ObservationFormFieldValues>({
     resolver: yupResolver(observationFormSchema),
     mode: 'all',
+    defaultValues: {
+      profile: profileId,
+      creator: profile?.id,
+    },
   })
 
   const { mutate, isSuccess, isPending } = useCreateModelMutation<
     Observation,
     ObservationCreateInput
   >('observations')
-
-  useEffect(() => {
-    if (profile) {
-      setValue('creator', profile.id)
-      setValue('profile', profileId)
-    }
-  }, [profile, isSuccess])
 
   useEffect(() => {
     if (isSuccess) reset()
@@ -81,40 +77,16 @@ export const ObservationForm: FC<ObservationFormProps> = ({
   }
 
   return (
-    <Stack
-      display={isSuccess ? 'none' : 'flex'}
-      spacing={4}
-      p={4}
-      boxShadow="base"
-      borderRadius="sm"
-      bg="white"
-    >
-      <Text
-        textAlign="left"
-        fontSize="16px"
-        fontWeight={600}
-        textTransform="capitalize"
-      >
-        Add Observation
-      </Text>
-      <VStack
-        as="form"
-        onSubmit={handleSubmit(handleSendForm)}
-        alignItems="flex-start"
-        justify="flex-start"
-      >
-        <Stack w="100%" alignItems="flex-start">
-          <HStack w="full" align="start">
-            <FormItem
-              as={Textarea}
-              name="content"
-              hideLabel
-              register={register}
-              errors={errors}
-              {...useBreakpointValue({ base: { rows: 1 }, sm: { rows: 3 } })}
-            />
-          </HStack>
-        </Stack>
+    <form onSubmit={handleSubmit(handleSendForm)}>
+      <Stack spacing={4}>
+        <FormItem
+          as={Textarea}
+          name="content"
+          hideLabel
+          register={register}
+          errors={errors}
+        />
+
         <Button
           display={{ base: 'none', sm: 'flex' }}
           alignSelf="flex-end"
@@ -125,7 +97,7 @@ export const ObservationForm: FC<ObservationFormProps> = ({
         >
           Send
         </Button>
-      </VStack>
-    </Stack>
+      </Stack>
+    </form>
   )
 }
