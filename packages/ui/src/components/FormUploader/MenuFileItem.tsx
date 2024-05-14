@@ -107,7 +107,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
       <Stack p={2} textAlign={'center'} fontSize={'sm'}>
         <Box>
           <Text>
-            {file.name} - {file.mime}
+            {file.name}
           </Text>
           <Text>
             {file.width} x {file.height}
