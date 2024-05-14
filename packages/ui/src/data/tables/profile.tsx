@@ -2,7 +2,7 @@ import { ThemeTypings } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { Profile, Role, User, Job, Platform } from '@fc/types'
+import { Profile, Role, User, Job, Platform, ProfileStatus } from '@fc/types'
 
 import { WTableProps } from '../../components'
 
@@ -24,6 +24,26 @@ export const useProfileColumns = (): WTableProps<
       componentProps: {
         colorScheme: 'primary',
         variant: 'outline',
+      },
+    },
+    profileStatus: {
+      type: 'badge',
+      componentProps: value => {
+        const colorScheme: Record<ProfileStatus, ThemeTypings['colorSchemes']> =
+          {
+            pending: 'orange', // 'orange
+            accepted: 'blue',
+            rejected: 'red',
+            'in-progress': 'purple',
+            left: 'gray',
+            awaiting: 'yellow',
+            approved: 'green',
+          }
+
+        return {
+          variant: 'outline',
+          colorScheme: colorScheme[value as ProfileStatus],
+        }
       },
     },
     user: {

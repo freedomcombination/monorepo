@@ -46,6 +46,7 @@ import {
 import {
   Profile,
   ProfileCreateInput,
+  StrapiCollectionEndpoint,
   StrapiModel,
   StrapiTranslatableModel,
   StrapiTranslatableUpdateInput,
@@ -405,7 +406,9 @@ export const ModelEditForm = <T extends StrapiModel>({
                 return (
                   <ModelSelect<T>
                     key={index}
-                    endpoint={field.endpoint}
+                    endpoint={field.endpoint as StrapiCollectionEndpoint}
+                    populate={field.populate}
+                    options={field.options}
                     isMulti={field.isMulti}
                     isRequired={field.isRequired}
                     name={field.name as string}
@@ -576,7 +579,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             </ActionHStack>
 
             <ActionButton
-              checkActions={{ endpoint, actions: ['publish'] }}
+              checkActions={{ endpoint, actions: ['update'] }}
               onClick={isPublished ? onUnPublish : onPublish}
               colorScheme={isPublished ? 'yellow' : 'green'}
               fontSize="sm"

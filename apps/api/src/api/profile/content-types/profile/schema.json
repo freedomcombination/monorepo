@@ -502,6 +502,19 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::job.job"
+    },
+    "profileStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "accepted",
+        "rejected",
+        "in-progress",
+        "left",
+        "awaiting",
+        "approved"
+      ],
+      "default": "pending"
     }
   }
 }

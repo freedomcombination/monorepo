@@ -1,30 +1,27 @@
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useState } from 'react'
 
 import {
-  Center,
-  Text,
+  Divider,
   HStack,
   Icon,
   IconButton,
-  Spinner,
-  VStack,
-  Flex,
   Menu,
   MenuButton,
+  MenuItem,
   MenuList,
   Portal,
-  MenuItem,
+  Spinner,
+  Text,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { useDropzone } from 'react-dropzone'
 import { BiUpload } from 'react-icons/bi'
-import { FaArrowDownWideShort, FaCopy } from 'react-icons/fa6'
+import { FaArrowDownWideShort } from 'react-icons/fa6'
 import { useLocalStorage } from 'react-use'
 
-import { API_URL, ASSETS_URL } from '@fc/config'
+import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
-import { FileFormat, UploadFile } from '@fc/types'
-import { toastMessage } from '@fc/utils'
+import { UploadFile } from '@fc/types'
 
 import { MenuImageItem } from './MenuImageItem'
 
@@ -112,30 +109,17 @@ export const FormUploader = () => {
       .finally(() => setIsUploading(false))
   }
 
-  const boxStyles = {
-    p: 4,
-    borderWidth: 1,
-    borderStyle: 'dashed',
-    borderColor: 'gray.200',
-    rounded: 'md',
-    h: '44px',
-  }
-
   return (
-    <VStack spacing={1} align={'stretch'}>
-      <Center {...boxStyles}>
-        <DragZone isUploading={isUploading} onFilesSelected={onFilesSelected} />
-      </Center>
-
-      <Center {...boxStyles}>
-        <ImageViewer
-          images={uploadedImages}
-          oldImages={!!imageIds && imageIds.length > 0}
-          fetchImages={fetchImages}
-          onDelete={onDelete}
-        />
-      </Center>
-    </VStack>
+    <HStack spacing={0} borderWidth={1} borderBottomWidth={0} h={12}>
+      <DragZone isUploading={isUploading} onFilesSelected={onFilesSelected} />
+      <Divider orientation="vertical" />
+      <ImageViewer
+        images={uploadedImages}
+        oldImages={!!imageIds && imageIds.length > 0}
+        fetchImages={fetchImages}
+        onDelete={onDelete}
+      />
+    </HStack>
   )
 }
 
@@ -152,103 +136,39 @@ const ImageViewer: FC<ImageViewerProps> = ({
   onDelete,
   oldImages,
 }) => {
-  const [selected, setSelected] = useState<{
-    image: UploadFile
-    format: FileFormat
-  } | null>(null)
-
-  const getImageUrl = () => {
-    if (!selected) return null
-    if (process.env.NODE_ENV === 'development')
-      return API_URL + selected?.format.url
-
-    return ASSETS_URL + selected?.format.url
-  }
-
-  const selectedImageURL = getImageUrl()
-  const textRef = useRef<HTMLParagraphElement>(null)
   const { t } = useTranslation()
 
-  const buttonStyles = {
-    variant: 'outline',
-    size: 'sm',
-    fontSize: '0.8em',
-    color: 'gray.600',
-    rounded: 'full',
-    flexGrow: 0,
-    flexShrink: 0,
-    isDisabled: !selectedImageURL,
-  }
-
-  const onCopy = () => {
-    if (!selectedImageURL) return
-    navigator.clipboard.writeText(`![image](${selectedImageURL})`)
-    toastMessage(
-      t('form.uploader.success'),
-      t('form.uploader.copied'),
-      'success',
-    )
-  }
-
-  useEffect(() => {
-    if (!selected) return
-    const url = getImageUrl()
-    navigator.clipboard.writeText(`![image](${url})`)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selected])
-
   return (
-    <Flex flexDir={'row'} gap={2} w={'full'}>
-      <Menu placement="bottom" autoSelect={false}>
-        <MenuButton
-          as={IconButton}
-          icon={<FaArrowDownWideShort />}
-          aria-label="Show Menu"
-          {...buttonStyles}
-          isDisabled={false}
-        />
-        <Portal>
-          <MenuList zIndex={9999} maxH={400} overflowY={'auto'} w={500}>
-            {images.length > 0 ? (
-              images.map(image => (
-                <MenuImageItem
-                  key={image.url}
-                  image={image}
-                  onSelect={(image, format) => setSelected({ image, format })}
-                  onDelete={onDelete}
-                />
-              ))
-            ) : (
-              <MenuItem onClick={fetchImages}>
-                {oldImages ? t('form.uploader.old') : t('form.uploader.new')}
-              </MenuItem>
-            )}
-          </MenuList>
-        </Portal>
-      </Menu>
-
-      <Text
-        ref={textRef}
-        flexGrow={1}
-        noOfLines={1}
-        overflow={'hidden'}
-        p={1}
-        fontSize={'small'}
-        borderWidth={1}
-        borderColor={'gray.200'}
-        borderRadius={'lg'}
-        flexShrink={1}
-      >
-        {selectedImageURL ?? '...'}
-      </Text>
-
-      <IconButton
-        aria-label="Copy"
-        icon={<FaCopy />}
-        {...buttonStyles}
-        onClick={onCopy}
+    <Menu placement="bottom" autoSelect={false}>
+      <MenuButton
+        as={IconButton}
+        icon={<FaArrowDownWideShort />}
+        aria-label="Show Menu"
+        variant={'outline'}
+        rounded={0}
+        size={'sm'}
+        boxSize={12}
+        border={0}
+        colorScheme="gray"
       />
-    </Flex>
+      <Portal>
+        <MenuList zIndex={9999} maxH={400} overflowY={'auto'} w={500} p={0}>
+          {images.length > 0 ? (
+            images.map(image => (
+              <MenuImageItem
+                key={image.url}
+                image={image}
+                onDelete={onDelete}
+              />
+            ))
+          ) : (
+            <MenuItem onClick={fetchImages}>
+              {oldImages ? t('form.uploader.old') : t('form.uploader.new')}
+            </MenuItem>
+          )}
+        </MenuList>
+      </Portal>
+    </Menu>
   )
 }
 
@@ -264,7 +184,16 @@ const DragZone: FC<DragZoneProps> = ({ onFilesSelected, isUploading }) => {
   const { t } = useTranslation()
 
   return (
-    <HStack {...getRootProps()}>
+    <HStack
+      {...getRootProps()}
+      cursor={'pointer'}
+      _hover={{ bg: 'gray.50' }}
+      p={4}
+      w={'full'}
+      h={'full'}
+      justify={'center'}
+      textAlign={'center'}
+    >
       {isUploading ? (
         <Spinner w={6} h={6} />
       ) : (
