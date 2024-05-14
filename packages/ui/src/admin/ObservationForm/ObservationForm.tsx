@@ -1,14 +1,6 @@
 import { FC, useEffect } from 'react'
 
-import {
-  Button,
-  HStack,
-  Stack,
-  Text,
-  Textarea,
-  useBreakpointValue,
-  VStack,
-} from '@chakra-ui/react'
+import { Button, Stack, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 // import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
