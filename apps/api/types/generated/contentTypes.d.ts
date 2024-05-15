@@ -2086,6 +2086,9 @@ export interface ApiFoundationFoundation extends Schema.CollectionType {
     bank2: Attribute.String
     IBAN1: Attribute.UID
     IBAN2: Attribute.UID
+    chairman: Attribute.String
+    accountant: Attribute.String
+    secretary: Attribute.String
     volunteers: Attribute.Relation<
       'api::foundation.foundation',
       'oneToMany',
@@ -2101,30 +2104,10 @@ export interface ApiFoundationFoundation extends Schema.CollectionType {
       'oneToMany',
       'api::asset.asset'
     >
-    boardOfDirectors: Attribute.Relation<
-      'api::foundation.foundation',
-      'oneToMany',
-      'api::profile.profile'
-    >
     contact: Attribute.Component<'contact.contact'>
     KVK: Attribute.String
     BIC: Attribute.String
     RSIN: Attribute.String
-    chairman: Attribute.Relation<
-      'api::foundation.foundation',
-      'oneToOne',
-      'api::profile.profile'
-    >
-    secretary: Attribute.Relation<
-      'api::foundation.foundation',
-      'oneToOne',
-      'api::profile.profile'
-    >
-    accountant: Attribute.Relation<
-      'api::foundation.foundation',
-      'oneToOne',
-      'api::profile.profile'
-    >
     policy_plan: Attribute.Media
     substantive_financial_annual_report: Attribute.Media
     remuneration_policy: Attribute.Media
