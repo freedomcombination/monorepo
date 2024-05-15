@@ -19,5 +19,8 @@ type ObservationRelationInput = {
 export type ObservationCreateInput = Expand<
   Pick<ObservationBase, 'content'> & ObservationRelationInput
 >
+export type ObservationUpdateInput = Expand<
+  Partial<ObservationBase> & ObservationRelationInput
+>
 
 export type Observation = StrapiBase & ObservationBase & ObservationRelation

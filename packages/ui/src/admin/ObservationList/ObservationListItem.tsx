@@ -1,17 +1,21 @@
 import { HStack, Stack, Text } from '@chakra-ui/react'
 import { format } from 'date-fns'
 
-import { Observation } from '@fc/types/src/observation'
+import { Observation } from '@fc/types'
+
+import { ObservationEditForm } from '../ObservationEditForm'
 
 export type ObservationListItemProps = Pick<
   Observation,
   'content' | 'createdAt' | 'creator'
->
+> & { onSuccess?: () => void; id: number; onCancel?: () => void }
 
 export const ObservationListItem = ({
+  id,
   content,
   createdAt,
   creator,
+  onSuccess,
 }: ObservationListItemProps) => {
   const createdDate = format(createdAt, 'dd-MM-yyyy HH:mm')
 
@@ -23,7 +27,7 @@ export const ObservationListItem = ({
         </Text>
         <Text fontSize={'sm'}>{createdDate}</Text>
       </HStack>
-      <Text>{content}</Text>
+      <ObservationEditForm onSuccess={onSuccess} content={content} id={id} />
     </Stack>
   )
 }
