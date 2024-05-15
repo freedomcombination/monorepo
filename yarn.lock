@@ -8402,10 +8402,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.36.0":
-  version: 5.36.0
-  resolution: "@tanstack/query-core@npm:5.36.0"
-  checksum: 10/b0a5c6c01dfcb38fd5a0503b958a062ee4f5bc966676a1bac412427842f4186dc18a56ec1b009df8fc820ee3fa7c451e069816dd6af962461be1c4ac75e89c10
+"@tanstack/query-core@npm:5.36.1":
+  version: 5.36.1
+  resolution: "@tanstack/query-core@npm:5.36.1"
+  checksum: 10/32f5e34d044016517f3afba3a31efa686bca70275be773ec8df0ee320ecf573867ff4f996bedc107012568d586f19ac51cbbebb45808d6475f25486c47363ed9
   languageName: node
   linkType: hard
 
@@ -8416,26 +8416,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@tanstack/react-query-devtools@npm:5.36.0"
+"@tanstack/react-query-devtools@npm:^5.36.1":
+  version: 5.36.1
+  resolution: "@tanstack/react-query-devtools@npm:5.36.1"
   dependencies:
     "@tanstack/query-devtools": "npm:5.32.1"
   peerDependencies:
-    "@tanstack/react-query": ^5.36.0
+    "@tanstack/react-query": ^5.36.1
     react: ^18.0.0
-  checksum: 10/5842185fa8d3489bf79c48fbd379e6184e3ac24e6662d326ad472bed7d7427b408f872780bc3631b9dd3aaab8911bfacf20d9e523d1c821e060e3b8d66daad17
+  checksum: 10/c59b1ee60d3bd925feef5217711a098d3f3717f9ee5a4480a95faa6ad2affa62642f7d42814804422f017b2efc23194d49ef169d4a70f677e82488d3193912f6
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.36.0":
-  version: 5.36.0
-  resolution: "@tanstack/react-query@npm:5.36.0"
+"@tanstack/react-query@npm:^5.36.1":
+  version: 5.36.1
+  resolution: "@tanstack/react-query@npm:5.36.1"
   dependencies:
-    "@tanstack/query-core": "npm:5.36.0"
+    "@tanstack/query-core": "npm:5.36.1"
   peerDependencies:
     react: ^18.0.0
-  checksum: 10/981d01b5b3273cd03b785aa2be5b640cc7d59eb9ddd817a598f07695dbc707fd2a6b4fc224357fe87e2f2be62fd21dbe2511b32938155a4a8ed0a21a643cbca3
+  checksum: 10/3e5a44fe062de8b4c310df8457096d9826305cf4461371a8bb5b7baccbe23f6cda9c4a57c2e520ea14eb20a224b3058e7b39c1938ca28f353c99700f33d2179f
   languageName: node
   linkType: hard
 
@@ -10515,9 +10515,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.1.8":
-  version: 3.1.8
-  resolution: "ai@npm:3.1.8"
+"ai@npm:^3.1.9":
+  version: 3.1.9
+  resolution: "ai@npm:3.1.9"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.5"
     "@ai-sdk/provider-utils": "npm:0.0.8"
@@ -10552,7 +10552,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/9a3c24e04ed1ec0d36d4742efb3001ee14df7226d740cfe4807d5f02565a59c9720c129de51e5b943312c630129d98a2f9525764b6b6dab1bdfe69fda0eca737
+  checksum: 10/5c361eacc23c8f259f3df34900dc81a06cb81666eb0a72a8c0af808ba2791e8f8d1107f59c5cf8b77bfde6616460092d236424794b2748a8ed288c46a21c1e6d
   languageName: node
   linkType: hard
 
@@ -16202,8 +16202,8 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.19"
     "@storybook/react": "npm:^7.6.19"
     "@storybook/types": "npm:^7.6.19"
-    "@tanstack/react-query": "npm:^5.36.0"
-    "@tanstack/react-query-devtools": "npm:^5.36.0"
+    "@tanstack/react-query": "npm:^5.36.1"
+    "@tanstack/react-query-devtools": "npm:^5.36.1"
     "@turbo/gen": "npm:^1.13.3"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
@@ -16230,7 +16230,7 @@ __metadata:
     "@vercel/edge-config": "npm:^1.1.0"
     "@vercel/kv": "npm:^1.0.1"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.1.8"
+    ai: "npm:^3.1.9"
     axios: "npm:^1.6.8"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:^4.7.6"
@@ -16244,7 +16244,7 @@ __metadata:
     eslint-config-turbo: "npm:^1.13.3"
     eslint-plugin-react: "npm:7.34.1"
     file-saver: "npm:^2.0.5"
-    framer-motion: "npm:11.2.0"
+    framer-motion: "npm:11.2.2"
     i18next: "npm:^23.11.4"
     i18next-browser-languagedetector: "npm:^7.2.1"
     i18next-http-backend: "npm:^2.5.1"
@@ -16770,9 +16770,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:11.2.0":
-  version: 11.2.0
-  resolution: "framer-motion@npm:11.2.0"
+"framer-motion@npm:11.2.2":
+  version: 11.2.2
+  resolution: "framer-motion@npm:11.2.2"
   dependencies:
     tslib: "npm:^2.4.0"
   peerDependencies:
@@ -16786,7 +16786,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/8dfda743e394067f3ccec8b397992a4f2c91966ee349aa5928852fab6ffe4bceafef85820d133a1bec74fc63b893ed069147c94ea91c006aff6d727ecd49e52c
+  checksum: 10/71df205d74f425ef5423d45603d8670e59abe35d05cf5defe13e486d80bfb474713b6d05441d51a1330510641ed3e1fe92ec89d712b30dfaf1e8a6915060f803
   languageName: node
   linkType: hard
 
