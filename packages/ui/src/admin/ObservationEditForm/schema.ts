@@ -4,7 +4,7 @@ import { Observation } from '@fc/types/src/observation'
 
 import { FormFields } from '../../admin'
 
-export const useObservationSchema = () => {
+export const observationSchema = () => {
   return yup.object({
     content: yup.string().required(),
   })

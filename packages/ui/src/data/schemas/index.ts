@@ -24,7 +24,6 @@ import {
 } from './courseApplication'
 import { foundationFields, useFoundationsSchema } from './foundation'
 import { hashtagFields, useHashtagSchema } from './hashtag'
-import { observationFields, useObservationSchema } from './observation'
 import { postFields, usePostSchema } from './post'
 import { profileFields, useProfileSchema } from './profile'
 import {
@@ -69,7 +68,6 @@ export const useSchema = (): PartialStrapiEndpointMap<ObjectSchema<any>> => {
     courses: useCourseSchema(),
     foundations: useFoundationsSchema(),
     hashtags: useHashtagSchema(),
-    observations: useObservationSchema(),
     posts: usePostSchema(),
     profiles: useProfileSchema(),
     topic: useTopicSchema(),
@@ -93,7 +91,6 @@ export const useFields = <T extends StrapiModel>(): PartialStrapiEndpointMap<
     'course-applications': courseApplicationFields as FormFields<T>,
     foundations: foundationFields as FormFields<T>,
     hashtags: hashtagFields as FormFields<T>,
-    observations: observationFields as FormFields<T>,
     posts: postFields as FormFields<T>,
     profiles: profileFields as FormFields<T>,
     'recommended-tweets': recommendedTweetFields as FormFields<T>,

@@ -12,6 +12,7 @@ import { InferType } from 'yup'
 import { useDeleteModel, useUpdateModelMutation } from '@fc/services'
 import { ObservationUpdateInput, Observation } from '@fc/types'
 
+import { observationSchema } from './schema'
 import {
   ActionButton,
   ActionHStack,
@@ -19,7 +20,6 @@ import {
   WConfirm,
   WConfirmProps,
 } from '../../components'
-import { useSchema } from '../../data'
 
 export type ObservationEditFormProps = Pick<Observation, 'content'> & {
   onSuccess?: () => void
@@ -36,16 +36,16 @@ export const ObservationEditForm = ({
 
   const [isEditing, setIsEditing] = useBoolean(false)
   const { t } = useTranslation()
-  const schemasData = useSchema()
-  const schemas = schemasData['observations']!
+
+  const schema = observationSchema()
 
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset: resetForm,
-  } = useForm<InferType<typeof schemas>>({
-    resolver: yupResolver(schemas),
+  } = useForm<InferType<typeof schema>>({
+    resolver: yupResolver(schema),
     mode: 'all',
     defaultValues: {
       content,
@@ -83,7 +83,7 @@ export const ObservationEditForm = ({
   const onSave = async (data: ObservationUpdateInput) => {
     const body = {
       content: data.content,
-    } as ObservationUpdateInput
+    } satisfies ObservationUpdateInput
     updateMutation.mutate({ id, ...body }, { onSuccess: handleSuccess })
   }
   const onCancel = () => {
