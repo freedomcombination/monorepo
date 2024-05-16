@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
 
 import {
+  Center,
   Heading,
   Modal,
+  ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Spinner,
+  Stack,
 } from '@chakra-ui/react'
 
 export type ModelPdfProps = {
@@ -22,10 +26,9 @@ export const ModelPdf = ({
   title,
   isOpen,
   onClose,
-  size = '5xl',
+  size = '6xl',
   maxW,
   mediaUrl,
-
   ...rest
 }: ModelPdfProps) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -63,17 +66,19 @@ export const ModelPdf = ({
       {...rest}
     >
       <ModalOverlay />
-      <ModalContent maxW={maxW} p={0} overflow={'auto'} h={'100%'}>
+      <ModalContent maxW={maxW} overflow={'auto'} h={'full'}>
         <ModalHeader color={'primary.500'}>
           <Heading as="h3">{fileTitle}</Heading>
         </ModalHeader>
         <ModalCloseButton />
         {isLoading && (
-          <div style={{ textAlign: 'center', padding: '20px' }}>
-            {title} is loading ...
-          </div>
+          <Center>
+            <Spinner />
+          </Center>
         )}
-        <div id="modal-body" style={{ width: '100%', height: '100%' }}></div>
+        <ModalBody pos="relative" p={0}>
+          <Stack id="modal-body"></Stack>
+        </ModalBody>
       </ModalContent>
     </Modal>
   )
