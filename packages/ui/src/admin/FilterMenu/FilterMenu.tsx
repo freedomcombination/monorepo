@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { MenuDivider } from '@chakra-ui/react'
+import { MenuDivider, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { StrapiModel } from '@fc/types'
@@ -24,28 +24,27 @@ export const FilterMenu = <T extends StrapiModel>({
     setFilters(filters)
   }
 
-  return (
-    <>
-      {relationFilterOptions?.map((filter, index) => (
-        <RelationFilterMenuGroup
-          key={index}
-          title={
-            filter.label || t(filter.field as keyof I18nNamespaces['common'])
-          }
-          relationFilter={filter}
-          setRelationFilter={setRelationFilter}
-        />
-      ))}
+  if (!filterOptions?.length && !relationFilterOptions?.length) return null
 
-      {relationFilterOptions?.length > 0 && filterOptions?.length > 0 && (
-        <MenuDivider />
-      )}
+  return (
+    <Stack divider={<MenuDivider />}>
+      {relationFilterOptions?.length > 0 &&
+        relationFilterOptions?.map((filter, index) => (
+          <RelationFilterMenuGroup
+            key={index}
+            title={
+              filter.label || t(filter.field as keyof I18nNamespaces['common'])
+            }
+            relationFilter={filter}
+            setRelationFilter={setRelationFilter}
+          />
+        ))}
 
       <FilterMenuGroup
         options={filterOptions}
         filters={selectedFilters}
         setFilters={handleChangeFilters}
       />
-    </>
+    </Stack>
   )
 }

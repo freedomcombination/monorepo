@@ -3,7 +3,7 @@ import * as yup from 'yup'
 import { Profile, Role } from '@fc/types'
 
 import { yupMultiSelect, yupSelect } from './common'
-import { FormFields } from '../../admin' // Add FormSelectFields import
+import { FormFields } from '../../admin'
 
 export const useProfileSchema = () => {
   return yup.object({

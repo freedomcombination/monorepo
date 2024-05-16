@@ -4,7 +4,7 @@ import { NextApiHandler } from 'next'
 
 import { API_URL } from '@fc/config'
 import { Mutation } from '@fc/lib'
-import { getSecret, sessionOptions } from '@fc/secrets'
+import { sessionOptions } from '@fc/secrets'
 import { loginAuth } from '@fc/services'
 import { Auth, AuthResponse, ProfileCreateInput } from '@fc/types'
 
@@ -30,7 +30,7 @@ export const registerRouter: NextApiHandler = async (req, res) => {
       email: trimmedEmail,
     }
 
-    await Mutation.post('profiles', body, getSecret('TOKEN'))
+    await Mutation.post('profiles', body, response.data?.jwt)
 
     const { profile, ...auth } = await loginAuth(email, password)
 

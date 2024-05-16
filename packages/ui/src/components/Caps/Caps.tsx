@@ -14,7 +14,7 @@ import { useMeasure } from 'react-use'
 
 import { PlatformSlug } from '@fc/types'
 
-import { platformLogos, platformLogosViewBox } from './logos'
+import { platformLogos } from './logos'
 import { CapsProps } from './types'
 import { WImage } from '../WImage'
 
@@ -124,7 +124,7 @@ export const Caps = forwardRef<CapsProps, 'div'>(
                           dimensions.shape
                         }px`
                   }
-                  viewBox={platformLogosViewBox[platform]}
+                  viewBox={'0 0 500 500'}
                 >
                   {platformLogos[platform]}
                 </chakra.svg>
