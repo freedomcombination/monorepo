@@ -109,9 +109,13 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
           <Text>
             {file.name}
           </Text>
-          <Text>
-            {file.width} x {file.height}
-          </Text>
+          {isImage ? (
+            <Box>
+              {file.width} x {file.height}
+            </Box>
+          ) : (
+            <Box>{(file.size / 1024).toFixed(2)} kb</Box>
+          )}
         </Box>
         <Wrap justify={'center'}>
           <MenuFileButton
