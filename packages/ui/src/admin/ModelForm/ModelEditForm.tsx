@@ -492,9 +492,14 @@ export const ModelEditForm = <T extends StrapiModel>({
         >
           <Wrap>
             <ActionButton
-              isVisible={endpoint === 'hashtags'}
+              isVisible={
+                endpoint === 'hashtags' || endpoint === 'archive-contents'
+              }
               checkActions={{ endpoint: 'posts', actions: ['createPosts'] }}
-              onClick={() => router.push(`/hashtags/${id}`)}
+              onClick={() => {
+                if (endpoint === 'hashtags') router.push(`/hashtags/${id}`)
+                else router.push(`/archive-contents/${id}`)
+              }}
               leftIcon={<FaXTwitter />}
               fontSize="sm"
               colorScheme={'purple'}
