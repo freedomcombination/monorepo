@@ -18,7 +18,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "kill-ports": "kill-port 3000 3001 3002 3003 3004 1337",
     "test": "yarn kill-ports && playwright test",
-    "tsc": "turbo run tsc --concurrency=20"
+    "tsc": "turbo run tsc --concurrency=20",
+    "copy-locales": "cp -R apps/dashboard/public/locales/* apps/kunsthalte/public/locales && cp -R apps/dashboard/public/locales/* apps/foundation/public/locales && cp -R apps/dashboard/public/locales/* apps/trend-rights/public/locales && cp -R apps/dashboard/public/locales/* apps/lotus/public/locales  && cp -R apps/dashboard/public/locales/* packages/ui/public/locales"
   },
   "dependencies": {
     "@builder.io/react-hydration-overlay": "^0.0.8",
@@ -72,6 +73,7 @@
     "qs": "^6.12.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-headroom": "^3.2.1",
     "react-hook-form": "7.51.4",
     "react-hook-form-persist": "^3.0.0",
