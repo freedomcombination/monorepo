@@ -311,6 +311,7 @@ export const ModelEditForm = <T extends StrapiModel>({
     color: 'gray.500',
     pl: 0,
   }
+  console.log('ModelEditForm')
 
   return (
     <>
@@ -339,6 +340,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   'caps',
                   'invoice',
                   'images',
+                  'volunteerForm',
                 ].includes(field.name as string)
               ) {
                 return (

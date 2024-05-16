@@ -54,6 +54,7 @@ export type ProfileBase = {
   isVolunteer: boolean | null
   permissions?: Permissions
   profileStatus?: ProfileStatus
+  volunteerForm?: UploadFile | null
 }
 
 type ProfileRelation = {

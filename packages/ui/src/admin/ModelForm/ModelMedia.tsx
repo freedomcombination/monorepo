@@ -1,7 +1,17 @@
-import { Box, Button, Center, Stack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Center,
+  IconButton,
+  Stack,
+  Text,
+  Tooltip,
+  useDisclosure,
+} from '@chakra-ui/react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'
+import { FaRegFilePdf } from 'react-icons/fa6'
 import { IoMdCloudUpload } from 'react-icons/io'
 
 import {
@@ -14,6 +24,7 @@ import {
 } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
+import { ModelPdf } from './ModelPdf'
 import { Caps, FilePicker, VideoPlayer, WImage } from '../../components'
 
 export type ModelMediaProps<T extends FieldValues = FieldValues> = {
@@ -36,12 +47,20 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
   name,
 }: ModelMediaProps<T>) => {
   const { title, description } = (model || {}) as StrapiTranslatableModel
-
+  const { isOpen, onClose, onOpen } = useDisclosure()
+  console.log('modelmedia', model)
   const key = name || 'image'
 
   // Name can be image or avatar
   const media = (model as any)?.[key] as UploadFile
+  // const isMediaFile =
+  //   media?.mime.includes('video') || media?.mime.includes('image')
+  // if (!isMediaFile) {
+  //   return <Box />
+  // }
 
+  // console.log('isMediaFile', isMediaFile)
+  console.log('name >>>', name)
   if (Array.isArray(media)) {
     return (
       <Splide>
@@ -102,6 +121,39 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
 
     if (name === 'video') {
       return <VideoPlayer url={mediaUrl} />
+    }
+    if (media?.mime.includes('pdf') || media?.ext === 'pdf') {
+      // Check if media is a PDF
+      // Render PDF viewer here
+
+      return (
+        <>
+          <Text>Show {name}</Text>
+          <Tooltip label={`Open ${name}`}>
+            <IconButton
+              aria-label="back"
+              icon={<FaRegFilePdf />}
+              rounded="full"
+              onClick={onOpen}
+            />
+          </Tooltip>
+          <ModelPdf
+            mideaUrl={mediaUrl}
+            isOpen={isOpen}
+            onClose={onClose}
+            title={name}
+            onOpen={onOpen}
+          />
+        </>
+        // <object
+        //   data={mediaUrl}
+        //   type="application/pdf"
+        //   width="1200px"
+        //   height="1200px"
+        // >
+        //   <embed src={mediaUrl} type="application/pdf" />
+        // </object>
+      )
     }
 
     if (endpoint === 'posts' && mediaUrl && name === 'image') {
