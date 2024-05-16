@@ -15,29 +15,25 @@ export const PostMakerTweetList: FC<PostMakerTweetListProps> = ({
   const { postSentenceShares } = useHashtagContext()
   const hashtag = useHashtag()
 
-  /*
-  in PostSentenceModal, i use ActionStack with canUpdate prop.
-
-  const { canUpdate } = useAuthContext()
-
-  const canManageSentences = canUpdate('posts')
-  */
-
   const sortedPosts = useMemo(() => {
-    if (!hashtag?.posts) return []
-
     return hashtag.posts.sort((a, b) => {
-      const difference =
-        (postSentenceShares[a.id]?.leastShareCount || 0) -
-        (postSentenceShares[b.id]?.leastShareCount || 0)
+      const leastShareCountA = postSentenceShares[a.id]?.leastShareCount || 0
+      const leastShareCountB = postSentenceShares[b.id]?.leastShareCount || 0
 
-      // If posts have the same share count
-      // we want to randomly sort them
-      if (difference === 0) {
-        return Math.random() < 0.5 ? -1 : 1
+      if (leastShareCountA === 0 && leastShareCountB !== 0) {
+        return -1
+      } else if (leastShareCountA !== 0 && leastShareCountB === 0) {
+        return 1
+      } else {
+        const difference = leastShareCountA - leastShareCountB
+        // If posts have the same share count
+        // we want to randomly sort them
+        if (difference === 0) {
+          return Math.random() < 0.5 ? -1 : 1
+        }
+
+        return difference
       }
-
-      return difference
     })
   }, [postSentenceShares, hashtag?.posts])
 
