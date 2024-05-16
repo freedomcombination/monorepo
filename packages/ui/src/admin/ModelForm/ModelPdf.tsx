@@ -19,6 +19,7 @@ export type ModelPdfProps = {
   onClose: () => void
   size?: string
   maxW?: string
+  maxH?: string
   mediaUrl: string
 }
 
@@ -28,6 +29,7 @@ export const ModelPdf = ({
   onClose,
   size = '6xl',
   maxW,
+  maxH,
   mediaUrl,
   ...rest
 }: ModelPdfProps) => {
@@ -36,8 +38,7 @@ export const ModelPdf = ({
     if (isOpen) {
       const iframe = document.createElement('iframe')
       iframe.src = mediaUrl
-      iframe.width = '100%'
-      iframe.height = '100%'
+
       iframe.style.border = 'none'
       iframe.onload = () => {
         setIsLoading(false)
@@ -66,7 +67,7 @@ export const ModelPdf = ({
       {...rest}
     >
       <ModalOverlay />
-      <ModalContent maxW={maxW} overflow={'auto'} h={'full'}>
+      <ModalContent maxW={maxW} maxH={maxH} overflow={'auto'}>
         <ModalHeader color={'primary.500'}>
           <Heading as="h3">{fileTitle}</Heading>
         </ModalHeader>

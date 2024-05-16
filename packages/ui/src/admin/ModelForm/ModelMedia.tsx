@@ -131,14 +131,14 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
               onClick={onOpen}
             />
           </Tooltip>
+
           <ModelPdf
-            mediaUrl={
-              'http://localhost:1337/uploads/fc_vrijwilligersovereenkomst_a8d649efc0.pdf'
-            }
+            mediaUrl={mediaUrl}
             isOpen={isOpen}
             onClose={onClose}
             title={name}
             maxW="90%"
+            maxH="100%"
           />
         </>
       )
