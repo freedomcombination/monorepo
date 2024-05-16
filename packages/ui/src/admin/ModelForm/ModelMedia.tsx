@@ -48,7 +48,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
 }: ModelMediaProps<T>) => {
   const { title, description } = (model || {}) as StrapiTranslatableModel
   const { isOpen, onClose, onOpen } = useDisclosure()
-  console.log('modelmedia', model)
+
   const key = name || 'image'
 
   // Name can be image or avatar
@@ -59,8 +59,6 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
   //   return <Box />
   // }
 
-  // console.log('isMediaFile', isMediaFile)
-  console.log('name >>>', name)
   if (Array.isArray(media)) {
     return (
       <Splide>
@@ -123,12 +121,8 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
       return <VideoPlayer url={mediaUrl} />
     }
     if (media?.mime.includes('pdf') || media?.ext === 'pdf') {
-      // Check if media is a PDF
-      // Render PDF viewer here
-
       return (
         <>
-          <Text>Show {name}</Text>
           <Tooltip label={`Open ${name}`}>
             <IconButton
               aria-label="back"
@@ -138,21 +132,13 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
             />
           </Tooltip>
           <ModelPdf
-            mideaUrl={mediaUrl}
+            mediaUrl={mediaUrl}
             isOpen={isOpen}
             onClose={onClose}
             title={name}
-            onOpen={onOpen}
+            maxW="90%"
           />
         </>
-        // <object
-        //   data={mediaUrl}
-        //   type="application/pdf"
-        //   width="1200px"
-        //   height="1200px"
-        // >
-        //   <embed src={mediaUrl} type="application/pdf" />
-        // </object>
       )
     }
 

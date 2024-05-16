@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import {
   Heading,
@@ -8,17 +8,14 @@ import {
   ModalHeader,
   ModalOverlay,
 } from '@chakra-ui/react'
-import pdfjs from 'pdfjs-dist'
-import { FieldValues, Path } from 'react-hook-form'
 
-export type ModelPdfProps<T extends FieldValues = FieldValues> = {
-  title?: Path<T>
+export type ModelPdfProps = {
+  title?: string
   isOpen: boolean
   onClose: () => void
   size?: string
   maxW?: string
   mediaUrl: string
-  children?: React.ReactNode
 }
 
 export const ModelPdf = ({
@@ -28,45 +25,31 @@ export const ModelPdf = ({
   size = '5xl',
   maxW,
   mediaUrl,
-  children = null,
+
   ...rest
 }: ModelPdfProps) => {
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
-    const loadAndRenderPdf = async () => {
-      const loadingTask = pdfjs.getDocument(mediaUrl)
-
-      try {
-        const pdf = await loadingTask.promise
-        const numPages = pdf.numPages
-
-        for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-          const page = await pdf.getPage(pageNum)
-          const viewport = page.getViewport({ scale: 1.5 })
-
-          const canvas = document.createElement('canvas')
-          const context = canvas.getContext('2d')
-
-          if (context) {
-            canvas.width = viewport.width
-            canvas.height = viewport.height
-
-            await page.render({
-              canvasContext: context,
-              viewport,
-            }).promise
-
-            document.body.appendChild(canvas)
-          }
-        }
-      } catch (error) {
-        console.error('Error:', error)
+    if (isOpen) {
+      const iframe = document.createElement('iframe')
+      iframe.src = mediaUrl
+      iframe.width = '100%'
+      iframe.height = '100%'
+      iframe.style.border = 'none'
+      iframe.onload = () => {
+        setIsLoading(false)
+      }
+      const modalBody = document.getElementById('modal-body')
+      if (modalBody) {
+        modalBody.innerHTML = ''
+        modalBody.appendChild(iframe)
       }
     }
-
-    if (isOpen) {
-      loadAndRenderPdf()
-    }
   }, [isOpen, mediaUrl])
+  let fileTitle = ''
+  if (title) {
+    fileTitle = title?.charAt(0).toUpperCase() + title?.slice(1)
+  }
 
   return (
     <Modal
@@ -80,11 +63,17 @@ export const ModelPdf = ({
       {...rest}
     >
       <ModalOverlay />
-      <ModalContent maxW={maxW} p={0} overflow={'auto'}>
+      <ModalContent maxW={maxW} p={0} overflow={'auto'} h={'100%'}>
         <ModalHeader color={'primary.500'}>
-          <Heading as="h3">{title}</Heading>
+          <Heading as="h3">{fileTitle}</Heading>
         </ModalHeader>
         <ModalCloseButton />
+        {isLoading && (
+          <div style={{ textAlign: 'center', padding: '20px' }}>
+            {title} is loading ...
+          </div>
+        )}
+        <div id="modal-body" style={{ width: '100%', height: '100%' }}></div>
       </ModalContent>
     </Modal>
   )

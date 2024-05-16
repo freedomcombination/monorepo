@@ -311,7 +311,6 @@ export const ModelEditForm = <T extends StrapiModel>({
     color: 'gray.500',
     pl: 0,
   }
-  console.log('ModelEditForm')
 
   return (
     <>
