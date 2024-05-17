@@ -344,6 +344,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   'caps',
                   'invoice',
                   'images',
+                  'volunteerForm',
                 ].includes(field.name as string)
               ) {
                 return (

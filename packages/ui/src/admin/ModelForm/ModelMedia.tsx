@@ -1,7 +1,19 @@
-import { Box, Button, Center, Stack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Center,
+  HStack,
+  IconButton,
+  Stack,
+  Text,
+  VStack,
+  useDisclosure,
+} from '@chakra-ui/react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'
+import { FaExternalLinkAlt } from 'react-icons/fa'
+import { FaFilePdf } from 'react-icons/fa6'
 import { IoMdCloudUpload } from 'react-icons/io'
 
 import {
@@ -14,6 +26,7 @@ import {
 } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
+import { ModelPdf } from './ModelPdf'
 import { Caps, FilePicker, VideoPlayer, WImage } from '../../components'
 
 export type ModelMediaProps<T extends FieldValues = FieldValues> = {
@@ -36,11 +49,12 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
   name,
 }: ModelMediaProps<T>) => {
   const { title, description } = (model || {}) as StrapiTranslatableModel
+  const { isOpen, onClose, onOpen } = useDisclosure()
 
   const key = name || 'image'
 
-  // Name can be image or avatar
   const media = (model as any)?.[key] as UploadFile
+  const { ext, mime } = media || {}
 
   if (Array.isArray(media)) {
     return (
@@ -70,13 +84,14 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
   }
 
   const mediaUrl = getMediaUrl(media)
-
+  const isMediaFile = mime?.includes('video') || mime?.includes('image')
   const renderMedia = () => {
     if (isChangingMedia || (isEditing && !media)) {
       return (
         <Stack>
           {media && <Button onClick={toggleChangingMedia}>Cancel</Button>}
           <FilePicker
+            allowedFileTypes={['*/*']}
             onLoaded={files =>
               setValue(name as Path<T>, files[0] as PathValue<T, Path<T>>)
             }
@@ -102,6 +117,44 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
 
     if (name === 'video') {
       return <VideoPlayer url={mediaUrl} />
+    }
+    if (!isMediaFile) {
+      return (
+        <Center borderWidth={1} rounded={'md'} p={4}>
+          <VStack
+            _groupHover={{ color: 'primary.500' }}
+            _hover={{ cursor: 'pointer' }}
+            onClick={onOpen}
+          >
+            <Box boxSize={50}>
+              {ext === '.pdf' ? (
+                <FaFilePdf />
+              ) : (
+                <IconButton
+                  icon={<FaExternalLinkAlt />}
+                  as="a"
+                  href={mediaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open in new tab" // Add the missing aria-label property
+                />
+              )}
+            </Box>
+            <HStack>
+              <ModelPdf
+                mediaUrl={mediaUrl}
+                isOpen={isOpen}
+                onClose={onClose}
+                title={name}
+              />
+              <Text maxW={300} noOfLines={1}>
+                {media.name}
+                {media.ext}
+              </Text>
+            </HStack>
+          </VStack>
+        </Center>
+      )
     }
 
     if (endpoint === 'posts' && mediaUrl && name === 'image') {
