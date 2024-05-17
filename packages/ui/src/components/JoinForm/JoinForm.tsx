@@ -199,22 +199,26 @@ export const JoinForm: FC<JoinFormProps> = ({
           borderWidth={2}
           borderColor={errors['jobs'] ? 'red.500' : 'gray.100'}
         >
-          <Text fontWeight={600} fontSize="sm">
-            Freedom Combination Foundation
-          </Text>
-          {foundationJobs?.map((job, i) => (
-            <Stack key={i}>
-              <Checkbox
-                key={job.id}
-                id={job.id.toString()}
-                {...register(`jobs`)}
-                value={job.id}
-                textTransform={'capitalize'}
-              >
-                {job[`name_${locale}`]}
-              </Checkbox>
+          {foundationJobs.length > 0 && (
+            <Stack>
+              <Text fontWeight={600} fontSize="sm">
+                Freedom Combination Foundation
+              </Text>
+              {foundationJobs?.map((job, i) => (
+                <Stack key={i}>
+                  <Checkbox
+                    key={job.id}
+                    id={job.id.toString()}
+                    {...register(`jobs`)}
+                    value={job.id}
+                    textTransform={'capitalize'}
+                  >
+                    {job[`name_${locale}`]}
+                  </Checkbox>
+                </Stack>
+              ))}
             </Stack>
-          ))}
+          )}
 
           {platforms?.map((platform, i) => (
             <Stack key={i}>
