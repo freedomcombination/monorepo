@@ -106,9 +106,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
       />
       <Stack p={2} textAlign={'center'} fontSize={'sm'}>
         <Box>
-          <Text>
-            {file.name}
-          </Text>
+          <Text>{file.name}</Text>
           {isImage ? (
             <Box>
               {file.width} x {file.height}
