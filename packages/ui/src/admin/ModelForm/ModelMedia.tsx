@@ -3,6 +3,7 @@ import {
   Button,
   Center,
   HStack,
+  IconButton,
   Stack,
   Text,
   VStack,
@@ -11,7 +12,8 @@ import {
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'
-import { FaFilePdf, FaFile } from 'react-icons/fa6'
+import { FaExternalLinkAlt } from 'react-icons/fa'
+import { FaFilePdf } from 'react-icons/fa6'
 import { IoMdCloudUpload } from 'react-icons/io'
 
 import {
@@ -124,12 +126,23 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
             _hover={{ cursor: 'pointer' }}
             onClick={onOpen}
           >
-            <Box as={ext === '.pdf' ? FaFilePdf : FaFile} boxSize={50} />
+            <Box boxSize={50}>
+              {ext === '.pdf' ? (
+                <FaFilePdf />
+              ) : (
+                <IconButton
+                  icon={<FaExternalLinkAlt />}
+                  as="a"
+                  href={mediaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open in new tab" // Add the missing aria-label property
+                />
+              )}
+            </Box>
             <HStack>
               <ModelPdf
-                mediaUrl={
-                  'http://localhost:1337/uploads/fc_vrijwilligersovereenkomst_a8d649efc0.pdf'
-                }
+                mediaUrl={mediaUrl}
                 isOpen={isOpen}
                 onClose={onClose}
                 title={name}
