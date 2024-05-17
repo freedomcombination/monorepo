@@ -146,8 +146,6 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
                 isOpen={isOpen}
                 onClose={onClose}
                 title={name}
-                maxW="90%"
-                maxH="100%"
               />
               <Text maxW={300} noOfLines={1}>
                 {media.name}
