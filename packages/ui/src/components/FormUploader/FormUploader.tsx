@@ -163,8 +163,8 @@ const ImageViewer: FC<ImageViewerProps> = ({
               />
             ))
           ) : (
-              <MenuItem onClick={fetchFiles}>
-                {oldFiles ? t('form.uploader.old') : t('form.uploader.new')}
+            <MenuItem onClick={fetchFiles}>
+              {oldFiles ? t('form.uploader.old') : t('form.uploader.new')}
             </MenuItem>
           )}
         </MenuList>

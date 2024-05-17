@@ -331,5 +331,6 @@
   "form.uploader.success": "Başarılı",
   "form.uploader.copied": "Link kopyalandı.",
   "form.uploader.old": "Daha önceden yüklediğiniz resimlere erişin",
-  "form.uploader.new": "Yeni resimler yükleyin"
+  "form.uploader.new": "Yeni resimler yükleyin",
+  "about.content": "Sanata ilgi duyan Hollanda’ya göç etmiş kişilerin hem online hem fiziki olarak buluştuğu, modern ve geleneksel sanatlar üzerine bilgi paylaşımı yaptıkları, aynı zamanda sanatsal aktiviteler organize ettikleri bir gruptur."
 }
