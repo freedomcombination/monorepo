@@ -3236,6 +3236,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToMany',
       'api::observation.observation'
     >
+    volunteerForm: Attribute.Media
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
