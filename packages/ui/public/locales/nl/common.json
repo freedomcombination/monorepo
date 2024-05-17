@@ -326,5 +326,9 @@
   "foundation.policy-plan": "Beleidsplan",
   "foundation.financial-report": "Inhoudelijk & financieel Jaarverslag",
   "foundation.remuneration-policy": "Beloningsbeleid",
-  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!"
+  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!",
+  "form.uploader.success": "Succes",
+  "form.uploader.copied": "Gekopieerd naar klembord",
+  "form.uploader.old": "Haal eerder geüploade oude afbeeldingen op",
+  "form.uploader.new": "Nieuwe afbeeldingen uploaden"
 }

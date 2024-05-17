@@ -8,6 +8,7 @@ import { UserFeedback, UserFeedbackCreateInput } from '@fc/types'
 export const createUserFeedback = async (
   userFeedback: UserFeedbackCreateInput,
   token: string,
+  recaptchaToken?: string,
 ) => {
   if (!userFeedback) {
     throw new Error('feedback field is required')
@@ -15,19 +16,22 @@ export const createUserFeedback = async (
 
   await Mutation.post<UserFeedback, UserFeedbackCreateInput>(
     'user-feedbacks',
-    userFeedback,
+    {
+      ...userFeedback,
+      recaptchaToken,
+    } as UserFeedbackCreateInput,
     token,
   )
 }
 
-export const useUserFeedbackMutation = () => {
+export const useUserFeedbackMutation = (recaptchaToken?: string) => {
   const toast = useToast()
   const { token } = useAuthContext()
 
   return useMutation({
     mutationKey: ['user-feedback'],
     mutationFn: (userFeedback: UserFeedbackCreateInput) => {
-      return createUserFeedback(userFeedback, token as string)
+      return createUserFeedback(userFeedback, token as string, recaptchaToken)
     },
     onSuccess: () => {
       toast({

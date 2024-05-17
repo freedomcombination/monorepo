@@ -14,7 +14,7 @@ export interface FileInfoInput {
   caption: string
 }
 
-type FileFormat = {
+export type FileFormat = {
   ext: string
   url: string
   hash: string

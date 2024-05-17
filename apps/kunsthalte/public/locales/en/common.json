@@ -273,7 +273,7 @@
   "retweets": "Retweets",
   "role": "Role",
   "rules": "Rules",
-  "trend-rights": "Trend Rights",
+  "trend-rights": "Together for Freedom and Connection",
   "save": "Save",
   "search": "Search",
   "seminars": "Seminars",
@@ -333,5 +333,9 @@
   "foundation.policy-plan": "Policy Plan",
   "foundation.financial-report": "Substantive & Financial Aannual Report",
   "foundation.remuneration-policy": "Remuneration Policy",
-  "you-must-logged-in": "You must be logged in in order to be able to upload an art!"
+  "you-must-logged-in": "You must be logged in in order to be able to upload an art!",
+  "form.uploader.success": "Success",
+  "form.uploader.copied": "Copied to clipboard",
+  "form.uploader.old": "Get old images you uploaded before",
+  "form.uploader.new": "Upload new images"
 }

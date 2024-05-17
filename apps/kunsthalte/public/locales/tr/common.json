@@ -327,5 +327,9 @@
   "foundation.policy-plan": "Strateji Planı",
   "foundation.financial-report": "İçerik&Finansal Faaliyet Raporu",
   "foundation.remuneration-policy": "Ücretlendirme Politikası",
-  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!"
+  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!",
+  "form.uploader.success": "Başarılı",
+  "form.uploader.copied": "Link kopyalandı.",
+  "form.uploader.old": "Daha önceden yüklediğiniz resimlere erişin",
+  "form.uploader.new": "Yeni resimler yükleyin"
 }
