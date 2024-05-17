@@ -27,9 +27,8 @@ export const ModelPdf = ({
   title,
   isOpen,
   onClose,
-  size = '6xl',
+  size = 'full',
   maxW,
-  maxH,
   mediaUrl,
   ...rest
 }: ModelPdfProps) => {
@@ -67,7 +66,14 @@ export const ModelPdf = ({
       {...rest}
     >
       <ModalOverlay />
-      <ModalContent maxW={maxW} maxH={maxH} overflow={'auto'}>
+      <ModalContent
+        maxW={maxW}
+        overflow={'auto'}
+        h="90%"
+        display="flex"
+        flexDirection="column"
+        p={0}
+      >
         <ModalHeader color={'primary.500'}>
           <Heading as="h3">{fileTitle}</Heading>
         </ModalHeader>
@@ -77,8 +83,15 @@ export const ModelPdf = ({
             <Spinner />
           </Center>
         )}
-        <ModalBody pos="relative" p={0}>
-          <Stack id="modal-body"></Stack>
+        <ModalBody
+          pos="relative"
+          p={0}
+          h="100%"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Stack id="modal-body" w="100%" h="90vh" p={0} overflow="auto" />
         </ModalBody>
       </ModalContent>
     </Modal>

@@ -52,7 +52,7 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'isVolunteer', type: 'boolean' },
   { name: 'user', type: 'select', endpoint: 'users' },
   { name: 'platforms', type: 'select', isMulti: true, endpoint: 'platforms' },
+  { name: 'volunteerForm', type: 'file' },
   { name: 'avatar', type: 'file' },
   { name: 'comment', type: 'textarea', blockEdit: true },
-  { name: 'volunteerForm', type: 'file' },
 ]

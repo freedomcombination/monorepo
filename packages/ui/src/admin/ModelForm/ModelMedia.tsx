@@ -2,16 +2,16 @@ import {
   Box,
   Button,
   Center,
-  IconButton,
+  HStack,
   Stack,
   Text,
-  Tooltip,
+  VStack,
   useDisclosure,
 } from '@chakra-ui/react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'
-import { FaRegFilePdf } from 'react-icons/fa6'
+import { FaFilePdf, FaFile } from 'react-icons/fa6'
 import { IoMdCloudUpload } from 'react-icons/io'
 
 import {
@@ -51,13 +51,8 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
 
   const key = name || 'image'
 
-  // Name can be image or avatar
   const media = (model as any)?.[key] as UploadFile
-  // const isMediaFile =
-  //   media?.mime.includes('video') || media?.mime.includes('image')
-  // if (!isMediaFile) {
-  //   return <Box />
-  // }
+  const { ext, mime } = media || {}
 
   if (Array.isArray(media)) {
     return (
@@ -87,13 +82,14 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
   }
 
   const mediaUrl = getMediaUrl(media)
-
+  const isMediaFile = mime?.includes('video') || mime?.includes('image')
   const renderMedia = () => {
     if (isChangingMedia || (isEditing && !media)) {
       return (
         <Stack>
           {media && <Button onClick={toggleChangingMedia}>Cancel</Button>}
           <FilePicker
+            allowedFileTypes={['*/*']}
             onLoaded={files =>
               setValue(name as Path<T>, files[0] as PathValue<T, Path<T>>)
             }
@@ -120,27 +116,33 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
     if (name === 'video') {
       return <VideoPlayer url={mediaUrl} />
     }
-    if (media?.mime.includes('pdf') || media?.ext === 'pdf') {
+    if (!isMediaFile) {
       return (
-        <>
-          <Tooltip label={`Open ${name}`}>
-            <IconButton
-              aria-label="back"
-              icon={<FaRegFilePdf />}
-              rounded="full"
-              onClick={onOpen}
-            />
-          </Tooltip>
-
-          <ModelPdf
-            mediaUrl={mediaUrl}
-            isOpen={isOpen}
-            onClose={onClose}
-            title={name}
-            maxW="90%"
-            maxH="100%"
-          />
-        </>
+        <Center borderWidth={1} rounded={'md'} p={4}>
+          <VStack
+            _groupHover={{ color: 'primary.500' }}
+            _hover={{ cursor: 'pointer' }}
+            onClick={onOpen}
+          >
+            <Box as={ext === '.pdf' ? FaFilePdf : FaFile} boxSize={50} />
+            <HStack>
+              <ModelPdf
+                mediaUrl={
+                  'http://localhost:1337/uploads/fc_vrijwilligersovereenkomst_a8d649efc0.pdf'
+                }
+                isOpen={isOpen}
+                onClose={onClose}
+                title={name}
+                maxW="90%"
+                maxH="100%"
+              />
+              <Text maxW={300} noOfLines={1}>
+                {media.name}
+                {media.ext}
+              </Text>
+            </HStack>
+          </VStack>
+        </Center>
       )
     }
 

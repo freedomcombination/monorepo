@@ -523,7 +523,7 @@
       "mappedBy": "profile"
     },
     "volunteerForm": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
+      "allowedTypes": ["files"],
       "type": "media",
       "multiple": false
     }

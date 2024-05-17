@@ -52,9 +52,7 @@ export type ProfileBase = {
   phone: string | null
   twitter: string | null
   isVolunteer: boolean | null
-  permissions?: Permissions
   profileStatus?: ProfileStatus
-  volunteerForm?: UploadFile | null
 }
 
 type ProfileRelation = {
@@ -85,19 +83,21 @@ type ProfileRelation = {
   observations?: Array<Observation>
   ownedArts?: Array<Art>
   ownedBlogs?: Array<Blog>
+  permissions?: Permissions
   platforms?: Array<Platform>
   stats?: Array<UserStats>
   user?: User | null
+  volunteerForm?: UploadFile | null
   votes?: Array<Vote>
 }
 
 type ProfileRelationInput = {
-  user?: number
+  applicant?: number
+  avatar?: File
+  comments?: Array<number>
   jobs?: Array<number>
   platforms?: Array<number>
-  avatar?: File
-  applicant?: number
-  comments?: Array<number>
+  user?: number
   votes?: Array<number>
 }
 
