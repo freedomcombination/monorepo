@@ -10515,9 +10515,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.1.11":
-  version: 3.1.11
-  resolution: "ai@npm:3.1.11"
+"ai@npm:^3.1.12":
+  version: 3.1.12
+  resolution: "ai@npm:3.1.12"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.5"
     "@ai-sdk/provider-utils": "npm:0.0.8"
@@ -10552,7 +10552,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/0904aca0dd02aa18db134e7746e4ea83b7d9d60b88fb65f7ad61b4175fc8768b4202d3727da8643944ed001005f103938f0e11fbea493b3c39f3123e40b2b3d9
+  checksum: 10/9ab8a1fc66463af8999a2abe1fe35b5bbd7675a433a97f77c63d4cffba6ff95eaef67cad1b3c55a4624574637292fa8ee43bb4bfb1b0342d56ca7d7d6ec2f357
   languageName: node
   linkType: hard
 
@@ -16267,7 +16267,7 @@ __metadata:
     "@vercel/edge-config": "npm:^1.1.0"
     "@vercel/kv": "npm:^1.0.1"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.1.11"
+    ai: "npm:^3.1.12"
     axios: "npm:^1.6.8"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:^4.7.6"
@@ -16281,10 +16281,10 @@ __metadata:
     eslint-config-turbo: "npm:^1.13.3"
     eslint-plugin-react: "npm:7.34.1"
     file-saver: "npm:^2.0.5"
-    framer-motion: "npm:11.2.3"
+    framer-motion: "npm:11.2.4"
     i18next: "npm:^23.11.4"
     i18next-browser-languagedetector: "npm:^7.2.1"
-    i18next-http-backend: "npm:^2.5.1"
+    i18next-http-backend: "npm:^2.5.2"
     iron-session: "npm:^8.0.1"
     jszip: "npm:^3.10.1"
     kill-port-process: "npm:^3.2.1"
@@ -16325,7 +16325,7 @@ __metadata:
     storybook: "npm:^7.6.19"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
-    stripe: "npm:^15.6.0"
+    stripe: "npm:^15.7.0"
     tesseract.js: "npm:^5.1.0"
     turbo: "npm:^1.13.3"
     twitter-api-v2: "npm:^1.16.4"
@@ -16817,9 +16817,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:11.2.3":
-  version: 11.2.3
-  resolution: "framer-motion@npm:11.2.3"
+"framer-motion@npm:11.2.4":
+  version: 11.2.4
+  resolution: "framer-motion@npm:11.2.4"
   dependencies:
     tslib: "npm:^2.4.0"
   peerDependencies:
@@ -16833,7 +16833,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/4c1c725dba77ca81a005228b9ffe0fb8a595ada85df9caa49c82f3b19e7ee31099030b7aa4616a040a32028726077cebb33710599faf616800ebb62f8c2c0501
+  checksum: 10/1c32038931979c8e69ad178bfb3686c6f3b33618bd6e5c0e32cbd447d39971761b3f0b258f1f890dce4d8594dbe6f832f49599d3877ed73e8382430007ac0555
   languageName: node
   linkType: hard
 
@@ -18267,12 +18267,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-http-backend@npm:^2.5.1":
-  version: 2.5.1
-  resolution: "i18next-http-backend@npm:2.5.1"
+"i18next-http-backend@npm:^2.5.2":
+  version: 2.5.2
+  resolution: "i18next-http-backend@npm:2.5.2"
   dependencies:
     cross-fetch: "npm:4.0.0"
-  checksum: 10/38d2f9577750e99b1ef130a0f7fe30fad98fc8ad63e409bb0f7e008d80b29f2b1fa095ac4d7967c7f89880a47d9f5c8b22b54f8033d27d2a85452f3415d8bec9
+  checksum: 10/3cdaea60df9d199366dd9b4c5c0f4bbd55cd4480b49d13037381a2ba825b514cc6fda7c0bb475e879eb7e94daa62d88d96d3c74bed3e57443d3b527d70abf64b
   languageName: node
   linkType: hard
 
@@ -28454,13 +28454,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^15.6.0":
-  version: 15.6.0
-  resolution: "stripe@npm:15.6.0"
+"stripe@npm:^15.7.0":
+  version: 15.7.0
+  resolution: "stripe@npm:15.7.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10/9bf96c62e7648511a616e9f0034ab8abdb44d96afbea6fcc7f5dbfd89783678e89645f8249e278d8eeb4a2ca6f48441dcb85cf04e6ccd2a7e474c8cbda8b3110
+  checksum: 10/fc1485f3078b2245cb920bf50a04349326a260351dfe1206eed377057b4555d446bffae5cce0141e287b8bd4d540c663413edf2f499d70a813daa6fa0a4a907d
   languageName: node
   linkType: hard
 
