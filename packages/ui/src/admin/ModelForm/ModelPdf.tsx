@@ -46,17 +46,23 @@ export const ModelPdf = ({
           </Heading>
         </ModalHeader>
         <ModalCloseButton />
-        <ModalBody p={0} h="100%">
-          {isLoading ? (
-            <Center boxSize={'full'}>
+        <ModalBody pos={'relative'} p={0} h="100%">
+          <chakra.iframe
+            onLoad={() => setIsLoading(false)}
+            onError={() => setIsLoading(false)}
+            src={mediaUrl}
+            boxSize={'full'}
+          />
+          {isLoading && (
+            <Center
+              bg={'whiteAlpha.900'}
+              pos={'absolute'}
+              top={0}
+              left={0}
+              boxSize={'full'}
+            >
               <Spinner />
             </Center>
-          ) : (
-            <chakra.iframe
-              onLoadedData={() => setIsLoading(false)}
-              src={mediaUrl}
-              boxSize={'full'}
-            />
           )}
         </ModalBody>
       </ModalContent>
