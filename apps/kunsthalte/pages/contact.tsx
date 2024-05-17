@@ -39,9 +39,11 @@ const Contact = () => {
   } = useMutation({
     mutationKey: ['contact'],
     mutationFn: async (data: EmailCreateInput) => {
-      return sendEmail(data,
+      return sendEmail(
+        data,
         PUBLIC_TOKEN as string,
-        recaptchaToken ?? 'some fake token')
+        recaptchaToken ?? 'some fake token',
+      )
       // if we send an undefined token, sendMail ll send mail successfully
       // so we force this function to use custom route with fake token.
     },

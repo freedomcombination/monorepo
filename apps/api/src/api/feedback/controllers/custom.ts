@@ -6,11 +6,6 @@ export default {
     await checkRecaptcha(ctx)
 
     const email = ctx.request.body
-
-    try {
-      await strapi.plugins['email'].services.email.send(email)
-    } catch (error) {
-      console.error(error)
-    }
+    await strapi.plugins['email'].services.email.send(email)
   },
 }

@@ -52,7 +52,9 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
         {
           ...body,
           isVolunteer: true,
-          recaptchaToken,
+          recaptchaToken: recaptchaToken ?? 'fake token',
+          // now we make sure recaptchaToken is not undefined
+          // and backend ll check if recaptchaToken exists then checks it
         },
         PUBLIC_TOKEN as string,
       ),
