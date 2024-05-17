@@ -2,8 +2,7 @@ import {
   Box,
   Button,
   Center,
-  HStack,
-  IconButton,
+  Link,
   Stack,
   Text,
   VStack,
@@ -12,8 +11,7 @@ import {
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'
-import { FaExternalLinkAlt } from 'react-icons/fa'
-import { FaFilePdf } from 'react-icons/fa6'
+import { FaFile, FaFilePdf } from 'react-icons/fa6'
 import { IoMdCloudUpload } from 'react-icons/io'
 
 import {
@@ -118,42 +116,45 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
     if (name === 'video') {
       return <VideoPlayer url={mediaUrl} />
     }
+
     if (!isMediaFile) {
       return (
-        <Center borderWidth={1} rounded={'md'} p={4}>
-          <VStack
-            _groupHover={{ color: 'primary.500' }}
-            _hover={{ cursor: 'pointer' }}
-            onClick={onOpen}
+        <>
+          <ModelPdf
+            mediaUrl={mediaUrl}
+            isOpen={isOpen}
+            onClose={onClose}
+            title={name}
+          />
+          <Center
+            borderWidth={1}
+            rounded={'md'}
+            p={4}
+            _hover={{
+              cursor: 'pointer',
+              color: 'primary.500',
+              bg: 'primary.50',
+            }}
+            {...(ext !== '.pdf'
+              ? {
+                  as: Link,
+                  href: mediaUrl,
+                  download: true,
+                }
+              : {
+                  onClick: onOpen,
+                })}
           >
-            <Box boxSize={50}>
-              {ext === '.pdf' ? (
-                <FaFilePdf />
-              ) : (
-                <IconButton
-                  icon={<FaExternalLinkAlt />}
-                  as="a"
-                  href={mediaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open in new tab" // Add the missing aria-label property
-                />
-              )}
-            </Box>
-            <HStack>
-              <ModelPdf
-                mediaUrl={mediaUrl}
-                isOpen={isOpen}
-                onClose={onClose}
-                title={name}
-              />
+            <VStack>
+              <Box boxSize={50} as={ext === '.pdf' ? FaFilePdf : FaFile}></Box>
+
               <Text maxW={300} noOfLines={1}>
                 {media.name}
                 {media.ext}
               </Text>
-            </HStack>
-          </VStack>
-        </Center>
+            </VStack>
+          </Center>
+        </>
       )
     }
 
