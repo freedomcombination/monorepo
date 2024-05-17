@@ -8416,26 +8416,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.36.1":
-  version: 5.36.1
-  resolution: "@tanstack/react-query-devtools@npm:5.36.1"
+"@tanstack/react-query-devtools@npm:^5.36.2":
+  version: 5.36.2
+  resolution: "@tanstack/react-query-devtools@npm:5.36.2"
   dependencies:
     "@tanstack/query-devtools": "npm:5.32.1"
   peerDependencies:
-    "@tanstack/react-query": ^5.36.1
+    "@tanstack/react-query": ^5.36.2
     react: ^18.0.0
-  checksum: 10/c59b1ee60d3bd925feef5217711a098d3f3717f9ee5a4480a95faa6ad2affa62642f7d42814804422f017b2efc23194d49ef169d4a70f677e82488d3193912f6
+  checksum: 10/fb4de3b5de8d06a36832c267491f5fe7e722f6616c15c8fbd8194711c801c223d75e10ead6018d2bd77c64b10832157a20f69cfccb6878fca9b5be3f16856ec7
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.36.1":
-  version: 5.36.1
-  resolution: "@tanstack/react-query@npm:5.36.1"
+"@tanstack/react-query@npm:^5.36.2":
+  version: 5.36.2
+  resolution: "@tanstack/react-query@npm:5.36.2"
   dependencies:
     "@tanstack/query-core": "npm:5.36.1"
   peerDependencies:
     react: ^18.0.0
-  checksum: 10/3e5a44fe062de8b4c310df8457096d9826305cf4461371a8bb5b7baccbe23f6cda9c4a57c2e520ea14eb20a224b3058e7b39c1938ca28f353c99700f33d2179f
+  checksum: 10/003b960d499034b5c0d0f7dbccb65523ef57306e557ab96bc077f40083c7cf43a4d70ac6c42678542031644be053b65e8c014a140a1001d3b73512d4d42589be
   languageName: node
   linkType: hard
 
@@ -10515,9 +10515,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.1.9":
-  version: 3.1.9
-  resolution: "ai@npm:3.1.9"
+"ai@npm:^3.1.12":
+  version: 3.1.12
+  resolution: "ai@npm:3.1.12"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.5"
     "@ai-sdk/provider-utils": "npm:0.0.8"
@@ -10552,7 +10552,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/5c361eacc23c8f259f3df34900dc81a06cb81666eb0a72a8c0af808ba2791e8f8d1107f59c5cf8b77bfde6616460092d236424794b2748a8ed288c46a21c1e6d
+  checksum: 10/9ab8a1fc66463af8999a2abe1fe35b5bbd7675a433a97f77c63d4cffba6ff95eaef67cad1b3c55a4624574637292fa8ee43bb4bfb1b0342d56ca7d7d6ec2f357
   languageName: node
   linkType: hard
 
@@ -11216,6 +11216,13 @@ __metadata:
   bin:
     atob: bin/atob.js
   checksum: 10/0624406cc0295533b38b60ab2e3b028aa7b8225f37e0cde6be3bc5c13a8015c889b192e874fd7660671179cef055f2e258855f372b0e495bd4096cf0b4785c25
+  languageName: node
+  linkType: hard
+
+"attr-accept@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "attr-accept@npm:2.2.2"
+  checksum: 10/c867ed41ed749988ad2a6fc70eb2498b9c3c2d58aaad2a8d05422a383058f9d29e50c4bca363c5ee7433df738a7920cc95377bbce8678e817fb498299dd82010
   languageName: node
   linkType: hard
 
@@ -12138,17 +12145,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001449, caniuse-lite@npm:^1.0.30001503, caniuse-lite@npm:^1.0.30001541":
-  version: 1.0.30001562
-  resolution: "caniuse-lite@npm:1.0.30001562"
-  checksum: 10/4192d7ec3a38adaa8a63606bfd6bc961349e447593d91dc3c88222b6e29283f5e8d209412935971107a621e57e12a681d7aacfbd5e33f3d2c37c864ddd23fd5d
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001565, caniuse-lite@npm:^1.0.30001579":
-  version: 1.0.30001579
-  resolution: "caniuse-lite@npm:1.0.30001579"
-  checksum: 10/2cd0c02e5d66b09888743ad2b624dbde697ace5c76b55bfd6065ea033f6abea8ac3f5d3c9299c042f91b396e2141b49bc61f5e17086dc9ba3a866cc6790134c0
+"caniuse-lite@npm:^1.0.30001449, caniuse-lite@npm:^1.0.30001503, caniuse-lite@npm:^1.0.30001541, caniuse-lite@npm:^1.0.30001565, caniuse-lite@npm:^1.0.30001579":
+  version: 1.0.30001620
+  resolution: "caniuse-lite@npm:1.0.30001620"
+  checksum: 10/d615ab66eb14d9b621004297a8f61e435dca67e9311f3979e47ee1af1be2a8f14997b947a101073d949b5454dad745cc35134bc3c4295c7f33968f3f665eba19
   languageName: node
   linkType: hard
 
@@ -16202,8 +16202,8 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.19"
     "@storybook/react": "npm:^7.6.19"
     "@storybook/types": "npm:^7.6.19"
-    "@tanstack/react-query": "npm:^5.36.1"
-    "@tanstack/react-query-devtools": "npm:^5.36.1"
+    "@tanstack/react-query": "npm:^5.36.2"
+    "@tanstack/react-query-devtools": "npm:^5.36.2"
     "@turbo/gen": "npm:^1.13.3"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
@@ -16230,7 +16230,7 @@ __metadata:
     "@vercel/edge-config": "npm:^1.1.0"
     "@vercel/kv": "npm:^1.0.1"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.1.9"
+    ai: "npm:^3.1.12"
     axios: "npm:^1.6.8"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:^4.7.6"
@@ -16244,10 +16244,10 @@ __metadata:
     eslint-config-turbo: "npm:^1.13.3"
     eslint-plugin-react: "npm:7.34.1"
     file-saver: "npm:^2.0.5"
-    framer-motion: "npm:11.2.2"
+    framer-motion: "npm:11.2.4"
     i18next: "npm:^23.11.4"
     i18next-browser-languagedetector: "npm:^7.2.1"
-    i18next-http-backend: "npm:^2.5.1"
+    i18next-http-backend: "npm:^2.5.2"
     iron-session: "npm:^8.0.1"
     jszip: "npm:^3.10.1"
     kill-port-process: "npm:^3.2.1"
@@ -16268,6 +16268,7 @@ __metadata:
     qs: "npm:^6.12.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-dropzone: "npm:^14.2.3"
     react-headroom: "npm:^3.2.1"
     react-hook-form: "npm:7.51.4"
     react-hook-form-persist: "npm:^3.0.0"
@@ -16277,7 +16278,7 @@ __metadata:
     react-markdown: "npm:^9.0.1"
     react-markdown-editor-lite: "npm:^1.3.4"
     react-masonry-css: "npm:^1.0.16"
-    react-medium-image-zoom: "npm:^5.2.3"
+    react-medium-image-zoom: "npm:^5.2.4"
     react-pageflip: "npm:^2.0.3"
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.13"
@@ -16287,7 +16288,7 @@ __metadata:
     storybook: "npm:^7.6.19"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
-    stripe: "npm:^15.6.0"
+    stripe: "npm:^15.7.0"
     tesseract.js: "npm:^5.1.0"
     turbo: "npm:^1.13.3"
     twitter-api-v2: "npm:^1.16.4"
@@ -16353,6 +16354,15 @@ __metadata:
   version: 2.0.5
   resolution: "file-saver@npm:2.0.5"
   checksum: 10/fbba443d9b682fec0be6676c048a7ac688b9bd33b105c02e8e1a1cb3e354ed441198dc1f15dcbc137fa044bea73f8a7549f2617e3a952fa7d96390356d54a7c3
+  languageName: node
+  linkType: hard
+
+"file-selector@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "file-selector@npm:0.6.0"
+  dependencies:
+    tslib: "npm:^2.4.0"
+  checksum: 10/6add4098ae07fd1e9050b1e8d3fd9f128680c1d6648c0676af54ace4586e6e5bfcb8fdfa45b69e9131ffd8175bf630d54a445a5facf9be244f85b99ce309183e
   languageName: node
   linkType: hard
 
@@ -16770,9 +16780,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:11.2.2":
-  version: 11.2.2
-  resolution: "framer-motion@npm:11.2.2"
+"framer-motion@npm:11.2.4":
+  version: 11.2.4
+  resolution: "framer-motion@npm:11.2.4"
   dependencies:
     tslib: "npm:^2.4.0"
   peerDependencies:
@@ -16786,7 +16796,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/71df205d74f425ef5423d45603d8670e59abe35d05cf5defe13e486d80bfb474713b6d05441d51a1330510641ed3e1fe92ec89d712b30dfaf1e8a6915060f803
+  checksum: 10/1c32038931979c8e69ad178bfb3686c6f3b33618bd6e5c0e32cbd447d39971761b3f0b258f1f890dce4d8594dbe6f832f49599d3877ed73e8382430007ac0555
   languageName: node
   linkType: hard
 
@@ -18220,12 +18230,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-http-backend@npm:^2.5.1":
-  version: 2.5.1
-  resolution: "i18next-http-backend@npm:2.5.1"
+"i18next-http-backend@npm:^2.5.2":
+  version: 2.5.2
+  resolution: "i18next-http-backend@npm:2.5.2"
   dependencies:
     cross-fetch: "npm:4.0.0"
-  checksum: 10/38d2f9577750e99b1ef130a0f7fe30fad98fc8ad63e409bb0f7e008d80b29f2b1fa095ac4d7967c7f89880a47d9f5c8b22b54f8033d27d2a85452f3415d8bec9
+  checksum: 10/3cdaea60df9d199366dd9b4c5c0f4bbd55cd4480b49d13037381a2ba825b514cc6fda7c0bb475e879eb7e94daa62d88d96d3c74bed3e57443d3b527d70abf64b
   languageName: node
   linkType: hard
 
@@ -25234,6 +25244,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dropzone@npm:^14.2.3":
+  version: 14.2.3
+  resolution: "react-dropzone@npm:14.2.3"
+  dependencies:
+    attr-accept: "npm:^2.2.2"
+    file-selector: "npm:^0.6.0"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    react: ">= 16.8 || 18.0.0"
+  checksum: 10/34cf1758a896795b579adab5f9cdc144330577ab1826a0b66ff9daa8c60a80ed6b31b8f989647664f2548cfe00b336e9c31a2f3dd8de43111c8318fcc89b279c
+  languageName: node
+  linkType: hard
+
 "react-element-to-jsx-string@npm:^15.0.0":
   version: 15.0.0
   resolution: "react-element-to-jsx-string@npm:15.0.0"
@@ -25475,13 +25498,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-medium-image-zoom@npm:^5.2.3":
-  version: 5.2.3
-  resolution: "react-medium-image-zoom@npm:5.2.3"
+"react-medium-image-zoom@npm:^5.2.4":
+  version: 5.2.4
+  resolution: "react-medium-image-zoom@npm:5.2.4"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/a6fd482c8f58da8ab1c32879816d5fed65f5267c65121734f2b40319045941a65c034659ea42fb5a7c2e930033a1570d40cdfdedae3a82dbbe6924401bcd0cd6
+  checksum: 10/fc35231b37c7d27fc7a1d6b250902d3cac8d9c784452e715f22a627bcf760b4b4576af0776a95f89ae821e6c4c3860c0fc7e143201b183894bcbc3cab7bdfd8f
   languageName: node
   linkType: hard
 
@@ -28354,13 +28377,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^15.6.0":
-  version: 15.6.0
-  resolution: "stripe@npm:15.6.0"
+"stripe@npm:^15.7.0":
+  version: 15.7.0
+  resolution: "stripe@npm:15.7.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10/9bf96c62e7648511a616e9f0034ab8abdb44d96afbea6fcc7f5dbfd89783678e89645f8249e278d8eeb4a2ca6f48441dcb85cf04e6ccd2a7e474c8cbda8b3110
+  checksum: 10/fc1485f3078b2245cb920bf50a04349326a260351dfe1206eed377057b4555d446bffae5cce0141e287b8bd4d540c663413edf2f499d70a813daa6fa0a4a907d
   languageName: node
   linkType: hard
 

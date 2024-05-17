@@ -26,10 +26,12 @@ export const ObservationList = ({ id }: ObservationListProps) => {
         {observations?.map(observation => {
           return (
             <ObservationListItem
+              id={observation?.id}
               content={observation?.content}
               createdAt={observation?.createdAt}
               creator={observation?.creator || []}
               key={observation?.id}
+              onSuccess={observationRequest.refetch}
             />
           )
         })}

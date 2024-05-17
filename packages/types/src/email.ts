@@ -23,4 +23,6 @@ type EmailCreateHtmlInput = BaseEmail & {
 export type EmailCreateInput = MergeExclusive<
   EmailCreateTextInput,
   EmailCreateHtmlInput
->
+> & {
+  recaptchaToken?: string
+}

@@ -15,6 +15,7 @@ export const useProfileSchema = () => {
     phone: yup.string(),
     age: yup.number().min(0).max(100),
     avatar: yup.mixed(),
+    volunteerForm: yup.mixed(),
     jobs: yupMultiSelect,
     role: yupMultiSelect,
     // https://yidaotus.medium.com/using-yup-and-typescript-for-typesafe-select-validation-e9ee9d4bceec
@@ -51,6 +52,7 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'isVolunteer', type: 'boolean' },
   { name: 'user', type: 'select', endpoint: 'users' },
   { name: 'platforms', type: 'select', isMulti: true, endpoint: 'platforms' },
+  { name: 'volunteerForm', type: 'file' },
   { name: 'avatar', type: 'file' },
   { name: 'comment', type: 'textarea', blockEdit: true },
 ]
