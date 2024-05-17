@@ -10,13 +10,12 @@ import {
 } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import { GetStaticPropsContext } from 'next'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MdEmail } from 'react-icons/md'
 
 import { EMAIL_SENDER, socialLinks } from '@fc/config'
 import { PUBLIC_TOKEN } from '@fc/config'
-import { sendEmail } from '@fc/services'
+import { sendEmail, useRecaptchaToken } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { EmailCreateInput, StrapiLocale } from '@fc/types'
 import {
@@ -28,16 +27,9 @@ import {
 
 import { Layout } from '../components'
 
-// TODO: Move to translations
-const about = {
-  tr: `Sanata ilgi duyan Hollanda’ya göç etmiş kişilerin hem online hem fiziki olarak buluştuğu, modern ve geleneksel sanatlar üzerine bilgi paylaşımı yaptıkları, aynı zamanda sanatsal aktiviteler organize ettikleri bir gruptur.`,
-  en: `Art Station is a group where people who took emigrated in the Netherlands, who are interested in art, meet both online and physically, share their experiences with each other, share information on modern and traditional arts, and organize artistic activities at the same time.`,
-  nl: `Kunsthalte is een groep waar mensen die naar Nederland zijn geëmigreerd, geïnteresseerd zijn in kunst, elkaar online en fysiek ontmoeten, hun ervaringen met elkaar delen, informatie delen over moderne en traditionele kunst en tegelijkertijd artistieke activiteiten organiseren.`,
-}
-
 const Contact = () => {
-  const { locale } = useRouter()
   const { t } = useTranslation()
+  const recaptchaToken = useRecaptchaToken('contact_form')
 
   const {
     isError,
@@ -47,7 +39,11 @@ const Contact = () => {
   } = useMutation({
     mutationKey: ['contact'],
     mutationFn: async (data: EmailCreateInput) => {
-      return sendEmail(data, PUBLIC_TOKEN as string)
+      return sendEmail(data,
+        PUBLIC_TOKEN as string,
+        recaptchaToken ?? 'some fake token')
+      // if we send an undefined token, sendMail ll send mail successfully
+      // so we force this function to use custom route with fake token.
     },
   })
 
@@ -84,7 +80,7 @@ const Contact = () => {
               <Heading fontWeight={900} as="h2" size="lg" color="primary.50">
                 {t('art-stop')}
               </Heading>
-              <Text>{about[locale]}</Text>
+              <Text>{t('about.content')}</Text>
 
               <Divider borderColor="whiteAlpha.400" />
 

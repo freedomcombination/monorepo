@@ -1,5 +1,5 @@
 import { factories } from '@strapi/strapi'
-import { getProfile } from '../../../utils'
+import { checkRecaptcha, getProfile } from '../../../utils'
 
 export default factories.createCoreController('api::profile.profile', () => {
   return {
@@ -33,6 +33,11 @@ export default factories.createCoreController('api::profile.profile', () => {
       const sanitizedResults = await this.sanitizeOutput(results, ctx)
 
       return this.transformResponse(sanitizedResults, { pagination })
+    },
+    async create(ctx) {
+      await checkRecaptcha(ctx)
+
+      return super.create(ctx)
     },
   }
 })

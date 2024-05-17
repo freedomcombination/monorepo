@@ -98,6 +98,7 @@ type ProfileRelationInput = {
   applicant?: number
   comments?: Array<number>
   votes?: Array<number>
+  recaptchaToken?: string
 }
 
 export type ProfileCreateInput = Expand<

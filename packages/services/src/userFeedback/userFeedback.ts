@@ -19,7 +19,7 @@ export const createUserFeedback = async (
     {
       ...userFeedback,
       recaptchaToken,
-    } as UserFeedbackCreateInput,
+    },
     token,
   )
 }

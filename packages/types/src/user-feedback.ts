@@ -13,7 +13,9 @@ export type UserFeedbackBase = {
 
 export type UserFeedbackCreateInput = Expand<
   { publishedAt?: Date | string | null } & UserFeedbackBase
->
+> & {
+  recaptchaToken?: string
+}
 
 export type UserFeedbackUpdateInput = Pick<
   UserFeedbackBase,
