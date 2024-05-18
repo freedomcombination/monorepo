@@ -315,7 +315,7 @@ export const useAdminNav = () => {
     return mappedMenuItems.filter(filterMenu)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [menuRender, t, permissions, demoPermissions])
+  }, [isLoading, menuRender, t, permissions, demoPermissions])
 
   const collectMenusRelated = (endpoint: string): AdminNavItemProps[] => {
     const link = '/' + makePlural(endpoint)

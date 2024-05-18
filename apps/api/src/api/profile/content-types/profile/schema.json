@@ -515,6 +515,17 @@
         "approved"
       ],
       "default": "pending"
+    },
+    "observations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::observation.observation",
+      "mappedBy": "profile"
+    },
+    "volunteerForm": {
+      "allowedTypes": ["files"],
+      "type": "media",
+      "multiple": false
     }
   }
 }

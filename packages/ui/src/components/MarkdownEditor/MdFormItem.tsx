@@ -10,6 +10,7 @@ import { Control, FieldValues, useController } from 'react-hook-form'
 import { MarkdownEditor } from '.'
 import { I18nNamespaces } from '../../../@types/i18next'
 import { FormItemProps } from '../FormItem'
+import { FormUploader } from '../FormUploader/FormUploader'
 
 type MdFormItemProps<T extends FieldValues> = {
   control: Control<T>
@@ -57,6 +58,8 @@ export const MdFormItem = <T extends FieldValues>({
           {label}
         </FormLabel>
       )}
+
+      {!isDisabled && <FormUploader />}
 
       <MarkdownEditor
         placeholder={placeholder}

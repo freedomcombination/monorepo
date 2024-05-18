@@ -29,6 +29,7 @@ import {
   FilterOption,
   ModelEditModal,
   ModelStatusFilters,
+  ObservationList,
   PageHeader,
   RelationFilterArgs,
   TabbedGenAIView,
@@ -169,12 +170,6 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const setQ = (q?: string) => changeRoute('q', q)
 
   const handleClick = (index: number, id: number) => {
-    if (endpoint === 'archive-contents') {
-      push(`/archive-content/${id}`)
-
-      return
-    }
-
     setSelectedId(id)
   }
 
@@ -275,6 +270,9 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         >
           {endpoint === 'posts' && post && post?.hashtag && (
             <TabbedGenAIView post={post} hashtag={post.hashtag} noBorder />
+          )}
+          {endpoint === 'profiles' && selectedModel && selectedId && (
+            <ObservationList id={selectedId} />
           )}
         </ModelEditModal>
       )}
