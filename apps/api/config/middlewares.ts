@@ -10,6 +10,8 @@ export default ({ env }) => [
           // from cdn.jsdelivr.net.
           'script-src': ["'self'", 'cdn.jsdelivr.net', 'blob:'],
           'connect-src': ["'self'", 'https:'],
+          'frame-src': ["'self'", 'dashboard.freedomcombination.com'],
+          'frame-ancestors': ["'self'", 'dashboard.freedomcombination.com'],
           'img-src': [
             "'self'",
             'data:',
