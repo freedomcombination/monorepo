@@ -30,6 +30,15 @@
     "IBAN2": {
       "type": "uid"
     },
+    "chairman": {
+      "type": "string"
+    },
+    "accountant": {
+      "type": "string"
+    },
+    "secretary": {
+      "type": "string"
+    },
     "volunteers": {
       "type": "relation",
       "relation": "oneToMany",
@@ -47,11 +56,6 @@
       "target": "api::asset.asset",
       "mappedBy": "foundation"
     },
-    "boardOfDirectors": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::profile.profile"
-    },
     "contact": {
       "type": "component",
       "repeatable": false,
@@ -66,35 +70,23 @@
     "RSIN": {
       "type": "string"
     },
-    "chairman": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::profile.profile"
-    },
-    "secretary": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::profile.profile"
-    },
-    "accountant": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::profile.profile"
-    },
     "policy_plan": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "substantive_financial_annual_report": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "remuneration_policy": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
     }
   }
 }
