@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { MouseEventHandler, useEffect, useState } from 'react'
 
 import { Button, Center } from '@chakra-ui/react'
 
 import { base64ToUint8Array } from '@fc/utils'
 
-export const SubToNotification = () => {
+const SubToNotification = () => {
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [subscription, setSubscription] = useState<PushSubscription | null>(
     null,
@@ -13,43 +13,54 @@ export const SubToNotification = () => {
     useState<ServiceWorkerRegistration | null>(null)
 
   useEffect(() => {
-    if (
-      typeof window !== 'undefined' &&
-      'serviceWorker' in navigator &&
-      (window as any).workbox !== undefined
-    ) {
+    const registerServiceWorker = async () => {
+      if (!('serviceWorker' in navigator) || !('workbox' in window)) {
+        console.error('Service worker or Push is not supported')
+
+        return
+      }
+
       // runs only in browser
-      navigator.serviceWorker.ready.then(reg => {
-        // getSubscription() only works in HTTPS, retrieves an existing push subscription
-        reg.pushManager.getSubscription().then(sub => {
-          if (
-            sub &&
-            !(
-              sub.expirationTime &&
-              Date.now() > sub.expirationTime - 5 * 60 * 1000
-            )
-          ) {
-            setSubscription(sub)
-            setIsSubscribed(true)
-          }
-        })
-        setRegistration(reg)
-      })
+      const swRegistration = await navigator.serviceWorker.ready
+
+      // Check if service worker is registered
+      if (!swRegistration) {
+        console.error('Service worker not registered')
+
+        return
+      }
+
+      const swSubscription = await swRegistration.pushManager.getSubscription()
+      const isSubscriptionExpired =
+        swSubscription?.expirationTime &&
+        Date.now() > swSubscription.expirationTime - 5 * 60 * 1000
+
+      if (swSubscription && !isSubscriptionExpired) {
+        setSubscription(swSubscription)
+        setIsSubscribed(true)
+      }
+
+      setRegistration(swRegistration)
     }
+
+    registerServiceWorker()
   }, [])
 
-  const subscribeButtonOnClick: React.MouseEventHandler<
+  const subscribeButtonOnClick: MouseEventHandler<
     HTMLButtonElement
   > = async event => {
     if (!process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY) {
       throw new Error('Environment variables supplied not sufficient.')
     }
+
     if (!registration) {
       console.error('No SW registration available.')
 
       return
     }
+
     event.preventDefault()
+
     // Subscribe to a push server
     const sub = await registration.pushManager.subscribe({
       userVisibleOnly: true,
@@ -58,6 +69,7 @@ export const SubToNotification = () => {
         process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY,
       ),
     })
+
     // TODO: you should call your API to save subscription data on the server in order to send web push notification from the server
     setSubscription(sub)
     setIsSubscribed(true)
@@ -73,8 +85,10 @@ export const SubToNotification = () => {
 
       return
     }
+
     event.preventDefault()
     await subscription.unsubscribe()
+
     // TODO: you should call your API to delete or invalidate subscription data on the server
     setSubscription(null)
     setIsSubscribed(false)
@@ -85,6 +99,7 @@ export const SubToNotification = () => {
     HTMLButtonElement
   > = async event => {
     event.preventDefault()
+
     if (!subscription) {
       console.error('Web push not subscribed')
 
@@ -130,3 +145,5 @@ export const SubToNotification = () => {
     </Center>
   )
 }
+
+export default SubToNotification
