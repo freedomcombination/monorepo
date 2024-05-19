@@ -3,8 +3,7 @@
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
     "strictNullChecks": true,
-    "lib": ["dom", "webworker"],
-    "types": ["@ducanh2912/next-pwa/workbox"]
+    "lib": ["dom", "webworker"]
   },
   "include": [
     "next-env.d.ts",

@@ -16,7 +16,7 @@ export const SubToNotification = () => {
     if (
       typeof window !== 'undefined' &&
       'serviceWorker' in navigator &&
-      window.workbox !== undefined
+      (window as any).workbox !== undefined
     ) {
       // runs only in browser
       navigator.serviceWorker.ready.then(reg => {
