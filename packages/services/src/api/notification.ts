@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import webPush from 'web-push'
 
-export const notification = async (
+export const notificationRouter = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
