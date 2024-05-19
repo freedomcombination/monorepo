@@ -49,11 +49,11 @@ export const AuthProvider: FC<AuthProviderProps> = ({
 
   function checkActionsPermission(
     endpoint: StrapiEndpoint,
-    ...api: string[]
+    ...actions: string[]
   ): boolean {
     const source = demoPermissions ?? permissions
 
-    return checkAccessForActions(source, endpoint, ...api) === true
+    return checkAccessForActions(source, endpoint, ...actions) === true
   }
 
   function canCreate(endpoint: StrapiEndpoint): boolean {
@@ -89,7 +89,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         setRoles(response.data?.user?.roles)
         setToken(response.data?.token)
         setProfile(response.data?.profile as Profile)
-        setPermissions((response.data?.profile as Profile).permissions ?? {})
+        setPermissions((response.data?.profile as Profile)?.permissions ?? {})
       }
 
       return {
@@ -99,7 +99,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         error: null,
         isAuthModalOpen: false,
         isLoading: false,
-        permissions: (response.data?.profile as Profile).permissions ?? {},
+        permissions: (response.data?.profile as Profile)?.permissions ?? {},
         demoPermissions: null,
         isAdmin: response.data?.user?.roles.includes('admin') || false,
       }

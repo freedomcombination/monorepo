@@ -12,6 +12,7 @@ import { UploadFile } from './file'
 import { Hashtag } from './hashtag'
 import { Job } from './job'
 import { LangRole } from './lang-role'
+import { Observation } from './observation'
 import { Platform } from './platform'
 import { Post } from './post'
 import { RecommendedTopic } from './recommended-topic'
@@ -51,7 +52,6 @@ export type ProfileBase = {
   phone: string | null
   twitter: string | null
   isVolunteer: boolean | null
-  permissions?: Permissions
   profileStatus?: ProfileStatus
 }
 
@@ -80,22 +80,26 @@ type ProfileRelation = {
   langRoles?: Array<LangRole>
   likedArts?: Array<Art>
   likedBlogs?: Array<Blog>
+  observations?: Array<Observation>
   ownedArts?: Array<Art>
   ownedBlogs?: Array<Blog>
+  permissions?: Permissions
   platforms?: Array<Platform>
   stats?: Array<UserStats>
   user?: User | null
+  volunteerForm?: UploadFile | null
   votes?: Array<Vote>
 }
 
 type ProfileRelationInput = {
-  user?: number
+  applicant?: number
+  avatar?: File
+  comments?: Array<number>
   jobs?: Array<number>
   platforms?: Array<number>
-  avatar?: File
-  applicant?: number
-  comments?: Array<number>
+  user?: number
   votes?: Array<number>
+  recaptchaToken?: string
 }
 
 export type ProfileCreateInput = Expand<
