@@ -33,7 +33,10 @@ export default class Document extends NextDocument {
           {/* Optional tags to be tested in case */}
           {/* <link rel="shortcut icon" href="/favicon.ico" /> */}
           <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="default"
+          />
           <meta name="mobile-web-app-capable" content="yes" />
         </Head>
         <body>
