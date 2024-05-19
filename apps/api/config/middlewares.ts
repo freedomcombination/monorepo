@@ -9,6 +9,8 @@ export default [
           // Enable the download of the Monaco editor
           // from cdn.jsdelivr.net.
           'script-src': ["'self'", 'cdn.jsdelivr.net', 'blob:'],
+          'frame-src': ["'self'", 'dashboard.freedomcombination.com'],
+          'frame-ancestors': ["'self'", 'dashboard.freedomcombination.com'],
           upgradeInsecureRequests: null,
         },
       },

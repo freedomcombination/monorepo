@@ -20,7 +20,7 @@ import { FaRegFilePdf } from 'react-icons/fa6'
 
 import { PUBLIC_TOKEN } from '@fc/config'
 import { Mutation } from '@fc/lib'
-import { useStrapiRequest } from '@fc/services'
+import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
 import { Platform, Profile, ProfileCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
@@ -43,13 +43,19 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
   })
 
   const platforms = platformsResult.data?.data || []
-
+  const recaptchaToken = useRecaptchaToken('join_form')
   const { mutate, isPending, isSuccess } = useMutation({
     mutationKey: ['create-volunteer'],
     mutationFn: (body: ProfileCreateInput) =>
       Mutation.post<Profile, ProfileCreateInput>(
         'profiles',
-        { ...body, isVolunteer: true },
+        {
+          ...body,
+          isVolunteer: true,
+          recaptchaToken: recaptchaToken ?? 'fake token',
+          // now we make sure recaptchaToken is not undefined
+          // and backend ll check if recaptchaToken exists then checks it
+        },
         PUBLIC_TOKEN as string,
       ),
   })
