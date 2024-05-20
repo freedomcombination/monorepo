@@ -1,11 +1,11 @@
 import React, { FC, PropsWithChildren } from 'react'
 
 import { theme } from '@chakra-ui/react'
-import { Font, Html, Tailwind } from '@react-email/components'
+import { Body, Container, Font, Html, Tailwind } from '@react-email/components'
 
 const colors = theme.colors
 
-export const TailwindThemeProvider: FC<PropsWithChildren> = ({ children }) => {
+export const EmailProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <Tailwind config={{ theme: { extend: { colors } } }}>
       <Html>
@@ -29,7 +29,9 @@ export const TailwindThemeProvider: FC<PropsWithChildren> = ({ children }) => {
             format: 'woff2',
           }}
         />
-        {children}
+        <Body>
+          <Container>{children}</Container>
+        </Body>
       </Html>
     </Tailwind>
   )
