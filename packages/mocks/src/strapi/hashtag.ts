@@ -4073,7 +4073,7 @@ export const HASHTAG_MOCKS = {
         approver: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -4097,7 +4097,7 @@ export const HASHTAG_MOCKS = {
         creator: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -4775,7 +4775,7 @@ export const HASHTAG_MOCKS = {
         approver: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -4799,7 +4799,7 @@ export const HASHTAG_MOCKS = {
         creator: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -7247,7 +7247,7 @@ export const HASHTAG_MOCKS = {
         approver: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -7271,7 +7271,7 @@ export const HASHTAG_MOCKS = {
         creator: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -10942,7 +10942,7 @@ export const HASHTAG_MOCKS = {
         approver: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -11545,7 +11545,7 @@ export const HASHTAG_MOCKS = {
         approver: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -13851,7 +13851,7 @@ export const HASHTAG_MOCKS = {
         approver: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -17728,7 +17728,7 @@ export const HASHTAG_MOCKS = {
         approver: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -18386,7 +18386,7 @@ export const HASHTAG_MOCKS = {
         approver: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -20824,7 +20824,7 @@ export const HASHTAG_MOCKS = {
         approver: {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
