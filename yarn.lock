@@ -11271,14 +11271,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.6.8":
-  version: 1.6.8
-  resolution: "axios@npm:1.6.8"
+"axios@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "axios@npm:1.7.0"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10/3f9a79eaf1d159544fca9576261ff867cbbff64ed30017848e4210e49f3b01e97cf416390150e6fdf6633f336cd43dc1151f890bbd09c3c01ad60bb0891eee63
+  checksum: 10/fc97719eb1024626cf3ae716eed136964faea712cd750642c2693c8bf3843d342a9e373704d08319a851931b39ca318d2004f0ab4ca67f434f095754dc4aecee
   languageName: node
   linkType: hard
 
@@ -16231,7 +16231,7 @@ __metadata:
     "@vercel/kv": "npm:^1.0.1"
     "@vercel/og": "npm:^0.6.2"
     ai: "npm:^3.1.12"
-    axios: "npm:^1.6.8"
+    axios: "npm:^1.7.0"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:^4.7.6"
     cookies-next: "npm:^4.1.1"
