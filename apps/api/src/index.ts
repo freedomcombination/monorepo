@@ -21,7 +21,7 @@ export default {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   async bootstrap() {
     try {
-      subscribeDb()
+      // subscribeDb()
       syncAdmin()
     } catch (error) {
       console.error('Bootstrap error', JSON.stringify(error, null, 2))

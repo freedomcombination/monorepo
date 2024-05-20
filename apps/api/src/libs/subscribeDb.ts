@@ -71,5 +71,12 @@ export const subscribeDb = async () => {
         },
       })
     }
+
+    if (event.action === 'beforeUpdate') {
+      const status = event.result.approvalStatus
+
+      if (status === 'pending') {
+      }
+    }
   })
 }

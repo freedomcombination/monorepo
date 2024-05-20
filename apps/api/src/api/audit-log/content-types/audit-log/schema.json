@@ -25,6 +25,16 @@
     },
     "modelId": {
       "type": "integer"
+    },
+    "action": {
+      "type": "enumeration",
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "publish",
+        "approve"
+      ]
     }
   }
 }

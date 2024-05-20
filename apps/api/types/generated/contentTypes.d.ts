@@ -1436,6 +1436,9 @@ export interface ApiAuditLogAuditLog extends Schema.CollectionType {
       'api::profile.profile'
     >
     modelId: Attribute.Integer
+    action: Attribute.Enumeration<
+      ['create', 'update', 'delete', 'publish', 'approve']
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
