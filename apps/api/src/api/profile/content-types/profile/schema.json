@@ -445,12 +445,6 @@
       "target": "api::hashtag.hashtag",
       "mappedBy": "creator"
     },
-    "langRoles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::lang-role.lang-role",
-      "mappedBy": "translator"
-    },
     "approvedPosts": {
       "type": "relation",
       "relation": "oneToMany",
