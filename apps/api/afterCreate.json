@@ -1,0 +1,419 @@
+{
+  "action": "afterCreate",
+  "model": {
+    "kind": "collectionType",
+    "collectionName": "collections",
+    "info": {
+      "singularName": "collection",
+      "pluralName": "collections",
+      "displayName": "Collection",
+      "description": ""
+    },
+    "options": {
+      "draftAndPublish": true
+    },
+    "pluginOptions": {
+      "i18n": {
+        "localized": true
+      }
+    },
+    "attributes": {
+      "id": {
+        "type": "increments",
+        "columnName": "id"
+      },
+      "title": {
+        "type": "string",
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "required": true,
+        "columnName": "title"
+      },
+      "slug": {
+        "type": "uid",
+        "targetField": "title",
+        "required": true,
+        "columnName": "slug"
+      },
+      "description": {
+        "type": "text",
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "required": true,
+        "default": "Description",
+        "columnName": "description"
+      },
+      "content": {
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "type": "richtext",
+        "columnName": "content"
+      },
+      "date": {
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "type": "datetime",
+        "columnName": "date"
+      },
+      "approvalStatus": {
+        "pluginOptions": {
+          "i18n": {
+            "localized": true
+          }
+        },
+        "type": "enumeration",
+        "enum": ["pending", "approved", "rejected"],
+        "default": "pending",
+        "required": false,
+        "columnName": "approval_status"
+      },
+      "image": {
+        "type": "relation",
+        "relation": "morphOne",
+        "target": "plugin::upload.file",
+        "morphBy": "related"
+      },
+      "arts": {
+        "type": "relation",
+        "relation": "oneToMany",
+        "target": "api::art.art",
+        "mappedBy": "collection",
+        "joinTable": {
+          "name": "arts_collection_links",
+          "joinColumn": {
+            "name": "collection_id",
+            "referencedColumn": "id"
+          },
+          "inverseJoinColumn": {
+            "name": "art_id",
+            "referencedColumn": "id"
+          },
+          "pivotColumns": ["art_id", "collection_id"],
+          "orderColumnName": "art_order",
+          "orderBy": {
+            "art_order": "asc"
+          }
+        }
+      },
+      "approver": {
+        "type": "relation",
+        "relation": "manyToOne",
+        "target": "api::profile.profile",
+        "inversedBy": "approvedCollections",
+        "joinTable": {
+          "name": "collections_approver_links",
+          "joinColumn": {
+            "name": "collection_id",
+            "referencedColumn": "id"
+          },
+          "inverseJoinColumn": {
+            "name": "profile_id",
+            "referencedColumn": "id"
+          },
+          "pivotColumns": ["collection_id", "profile_id"],
+          "inverseOrderColumnName": "collection_order"
+        }
+      },
+      "creator": {
+        "type": "relation",
+        "relation": "manyToOne",
+        "target": "api::profile.profile",
+        "inversedBy": "createdCollections",
+        "joinTable": {
+          "name": "collections_creator_links",
+          "joinColumn": {
+            "name": "collection_id",
+            "referencedColumn": "id"
+          },
+          "inverseJoinColumn": {
+            "name": "profile_id",
+            "referencedColumn": "id"
+          },
+          "pivotColumns": ["collection_id", "profile_id"],
+          "inverseOrderColumnName": "collection_order"
+        }
+      },
+      "createdAt": {
+        "type": "datetime",
+        "columnName": "created_at"
+      },
+      "updatedAt": {
+        "type": "datetime",
+        "columnName": "updated_at"
+      },
+      "publishedAt": {
+        "type": "datetime",
+        "configurable": false,
+        "writable": true,
+        "visible": false,
+        "columnName": "published_at"
+      },
+      "createdBy": {
+        "type": "relation",
+        "relation": "oneToOne",
+        "target": "admin::user",
+        "configurable": false,
+        "writable": false,
+        "visible": false,
+        "useJoinTable": false,
+        "private": true,
+        "owner": true,
+        "joinColumn": {
+          "name": "created_by_id",
+          "referencedColumn": "id",
+          "referencedTable": "admin_users"
+        }
+      },
+      "updatedBy": {
+        "type": "relation",
+        "relation": "oneToOne",
+        "target": "admin::user",
+        "configurable": false,
+        "writable": false,
+        "visible": false,
+        "useJoinTable": false,
+        "private": true,
+        "owner": true,
+        "joinColumn": {
+          "name": "updated_by_id",
+          "referencedColumn": "id",
+          "referencedTable": "admin_users"
+        }
+      },
+      "localizations": {
+        "writable": true,
+        "private": false,
+        "configurable": false,
+        "visible": false,
+        "type": "relation",
+        "relation": "oneToMany",
+        "target": "api::collection.collection",
+        "joinTable": {
+          "name": "collections_localizations_links",
+          "joinColumn": {
+            "name": "collection_id",
+            "referencedColumn": "id"
+          },
+          "inverseJoinColumn": {
+            "name": "inv_collection_id",
+            "referencedColumn": "id"
+          },
+          "pivotColumns": ["collection_id", "inv_collection_id"],
+          "orderColumnName": "collection_order",
+          "orderBy": {
+            "collection_order": "asc"
+          }
+        }
+      },
+      "locale": {
+        "writable": true,
+        "private": false,
+        "configurable": false,
+        "visible": false,
+        "type": "string",
+        "columnName": "locale"
+      }
+    },
+    "__schema__": {
+      "collectionName": "collections",
+      "info": {
+        "singularName": "collection",
+        "pluralName": "collections",
+        "displayName": "Collection",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": true
+      },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "attributes": {
+        "title": {
+          "type": "string",
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "required": true
+        },
+        "slug": {
+          "type": "uid",
+          "targetField": "title",
+          "required": true
+        },
+        "description": {
+          "type": "text",
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "required": true,
+          "default": "Description"
+        },
+        "content": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "richtext"
+        },
+        "date": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "datetime"
+        },
+        "approvalStatus": {
+          "pluginOptions": {
+            "i18n": {
+              "localized": true
+            }
+          },
+          "type": "enumeration",
+          "enum": ["pending", "approved", "rejected"],
+          "default": "pending",
+          "required": false
+        },
+        "image": {
+          "type": "media",
+          "multiple": false,
+          "required": true,
+          "allowedTypes": ["images"],
+          "pluginOptions": {
+            "i18n": {
+              "localized": false
+            }
+          }
+        },
+        "arts": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::art.art",
+          "mappedBy": "collection"
+        },
+        "approver": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::profile.profile",
+          "inversedBy": "approvedCollections"
+        },
+        "creator": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::profile.profile",
+          "inversedBy": "createdCollections"
+        }
+      },
+      "kind": "collectionType"
+    },
+    "modelType": "contentType",
+    "modelName": "collection",
+    "connection": "default",
+    "uid": "api::collection.collection",
+    "apiName": "collection",
+    "globalId": "Collection",
+    "actions": {},
+    "lifecycles": {},
+    "singularName": "collection",
+    "tableName": "collections",
+    "indexes": [
+      {
+        "type": "unique",
+        "name": "collections_slug_unique",
+        "columns": ["slug"]
+      },
+      {
+        "name": "collections_created_by_id_fk",
+        "columns": ["created_by_id"]
+      },
+      {
+        "name": "collections_updated_by_id_fk",
+        "columns": ["updated_by_id"]
+      }
+    ],
+    "foreignKeys": [
+      {
+        "name": "collections_created_by_id_fk",
+        "columns": ["created_by_id"],
+        "referencedTable": "admin_users",
+        "referencedColumns": ["id"],
+        "onDelete": "SET NULL"
+      },
+      {
+        "name": "collections_updated_by_id_fk",
+        "columns": ["updated_by_id"],
+        "referencedTable": "admin_users",
+        "referencedColumns": ["id"],
+        "onDelete": "SET NULL"
+      }
+    ],
+    "columnToAttribute": {
+      "id": "id",
+      "title": "title",
+      "slug": "slug",
+      "description": "description",
+      "content": "content",
+      "date": "date",
+      "approval_status": "approvalStatus",
+      "image": "image",
+      "arts": "arts",
+      "approver": "approver",
+      "creator": "creator",
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "published_at": "publishedAt",
+      "createdBy": "createdBy",
+      "updatedBy": "updatedBy",
+      "localizations": "localizations",
+      "locale": "locale"
+    }
+  },
+  "state": {},
+  "params": {
+    "data": {
+      "locale": "en",
+      "publishedAt": "2024-05-20T14:41:51.911Z",
+      "approvalStatus": "pending",
+      "date": "2024-05-20T17:41:00.000Z",
+      "content": "![blog-edit-form.png](http://localhost:1337/uploads/thumbnail_blog_edit_form_e4fda84be7.png)",
+      "description": "asdv",
+      "slug": "asdf",
+      "title": "asdf",
+      "createdAt": "2024-05-20T14:41:51.971Z",
+      "updatedAt": "2024-05-20T14:41:51.971Z"
+    }
+  },
+  "result": {
+    "id": 14,
+    "title": "asdf",
+    "slug": "asdf",
+    "description": "asdv",
+    "approvalStatus": "pending",
+    "createdAt": "2024-05-20T14:41:51.971Z",
+    "updatedAt": "2024-05-20T14:41:51.971Z",
+    "publishedAt": "2024-05-20T14:41:51.911Z",
+    "locale": "en",
+    "content": "![blog-edit-form.png](http://localhost:1337/uploads/thumbnail_blog_edit_form_e4fda84be7.png)",
+    "date": "2024-05-20T17:41:00.000Z"
+  }
+}

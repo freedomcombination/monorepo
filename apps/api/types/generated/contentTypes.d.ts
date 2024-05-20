@@ -1416,6 +1416,44 @@ export interface ApiAssetsTrackingAssetsTracking extends Schema.CollectionType {
   }
 }
 
+export interface ApiAuditLogAuditLog extends Schema.CollectionType {
+  collectionName: 'audit_logs'
+  info: {
+    singularName: 'audit-log'
+    pluralName: 'audit-logs'
+    displayName: 'Audit Log'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    uid: Attribute.String
+    text: Attribute.String
+    profile: Attribute.Relation<
+      'api::audit-log.audit-log',
+      'oneToOne',
+      'api::profile.profile'
+    >
+    modelId: Attribute.Integer
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::audit-log.audit-log',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::audit-log.audit-log',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
 export interface ApiBlogBlog extends Schema.CollectionType {
   collectionName: 'blogs'
   info: {
@@ -2302,45 +2340,6 @@ export interface ApiJobJob extends Schema.CollectionType {
   }
 }
 
-export interface ApiLangRoleLangRole extends Schema.CollectionType {
-  collectionName: 'lang_roles'
-  info: {
-    singularName: 'lang-role'
-    pluralName: 'lang-roles'
-    displayName: 'Lang Role'
-    description: ''
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    role: Attribute.Enumeration<
-      ['en_tr', 'en_nl', 'tr_en', 'tr_nl', 'nl_en', 'nl_tr']
-    > &
-      Attribute.Required
-    translator: Attribute.Relation<
-      'api::lang-role.lang-role',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    createdAt: Attribute.DateTime
-    updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
-    createdBy: Attribute.Relation<
-      'api::lang-role.lang-role',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    updatedBy: Attribute.Relation<
-      'api::lang-role.lang-role',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-  }
-}
-
 export interface ApiMentionMention extends Schema.CollectionType {
   collectionName: 'mentions'
   info: {
@@ -3169,11 +3168,6 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToMany',
       'api::hashtag.hashtag'
     >
-    langRoles: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::lang-role.lang-role'
-    >
     approvedPosts: Attribute.Relation<
       'api::profile.profile',
       'oneToMany',
@@ -3872,6 +3866,7 @@ declare module '@strapi/types' {
       'api::art.art': ApiArtArt
       'api::asset.asset': ApiAssetAsset
       'api::assets-tracking.assets-tracking': ApiAssetsTrackingAssetsTracking
+      'api::audit-log.audit-log': ApiAuditLogAuditLog
       'api::blog.blog': ApiBlogBlog
       'api::category.category': ApiCategoryCategory
       'api::collection.collection': ApiCollectionCollection
@@ -3884,7 +3879,6 @@ declare module '@strapi/types' {
       'api::foundation.foundation': ApiFoundationFoundation
       'api::hashtag.hashtag': ApiHashtagHashtag
       'api::job.job': ApiJobJob
-      'api::lang-role.lang-role': ApiLangRoleLangRole
       'api::mention.mention': ApiMentionMention
       'api::observation.observation': ApiObservationObservation
       'api::platform.platform': ApiPlatformPlatform
