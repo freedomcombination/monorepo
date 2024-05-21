@@ -3,11 +3,7 @@ import { Context } from 'koa'
 import { ETwitterStreamEvent, TweetV2SingleResult } from 'twitter-api-v2'
 
 import { getTwitterClient, hashtagStatsStore } from '../../../libs'
-import {
-  assignApprover,
-  getReferenceModel,
-  mapTweetResponseToTweet,
-} from '../../../utils'
+import { getReferenceModel, mapTweetResponseToTweet } from '../../../utils'
 
 let isStarted = false
 
@@ -32,11 +28,6 @@ export default {
       console.error('Error searching hashtags', error)
       ctx.send([])
     }
-  },
-  async approve(ctx: Context) {
-    const result = await assignApprover(ctx, 'api::hashtag.hashtag', true)
-
-    return { data: result }
   },
   async relation(ctx: Context) {
     const id = ctx.params.id

@@ -1,18 +1,8 @@
-import { factories } from '@strapi/strapi'
-import { assignCreator, getProfile } from '../../../utils'
 import { Blog } from '@fc/types'
+import { factories } from '@strapi/strapi'
 
 export default factories.createCoreController('api::blog.blog', () => {
   return {
-    async create(ctx) {
-      const profile = await getProfile(ctx, true)
-
-      const result = await super.create(ctx)
-
-      await assignCreator(profile, result?.data?.id, 'api::blog.blog')
-
-      return result
-    },
     async findOne(ctx) {
       const { id } = ctx.params
       const slug = id ? id : ctx.params.slug

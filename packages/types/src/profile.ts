@@ -11,7 +11,6 @@ import { Feedback } from './feedback'
 import { UploadFile } from './file'
 import { Hashtag } from './hashtag'
 import { Job } from './job'
-import { LangRole } from './lang-role'
 import { Observation } from './observation'
 import { Platform } from './platform'
 import { Post } from './post'
@@ -20,7 +19,6 @@ import { RecommendedTweet } from './recommended-tweet'
 import { Permissions } from './role'
 import { StrapiBase } from './strapi'
 import { User } from './user'
-import { UserStats } from './user-stats'
 import { Vote } from './vote'
 
 export type ProfileStatus =
@@ -77,7 +75,6 @@ type ProfileRelation = {
   feedbacks?: Array<Feedback>
   jobs?: Array<Job>
   juryVotes?: Array<Vote>
-  langRoles?: Array<LangRole>
   likedArts?: Array<Art>
   likedBlogs?: Array<Blog>
   observations?: Array<Observation>
@@ -85,7 +82,6 @@ type ProfileRelation = {
   ownedBlogs?: Array<Blog>
   permissions?: Permissions
   platforms?: Array<Platform>
-  stats?: Array<UserStats>
   user?: User | null
   volunteerForm?: UploadFile | null
   votes?: Array<Vote>

@@ -1,9 +1,7 @@
-import { Center, Heading } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
-import { useAuthContext } from '@fc/context'
 import { RequestCollectionArgs, strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import {
@@ -11,7 +9,7 @@ import {
   AccountStats as AccountStatsType,
   StrapiLocale,
 } from '@fc/types'
-import { AdminLayout } from '@fc/ui'
+import { AdminLayout, AuditLogTable } from '@fc/ui'
 
 const args: RequestCollectionArgs<AccountStats> = {
   endpoint: 'account-statistics',
@@ -21,19 +19,11 @@ const args: RequestCollectionArgs<AccountStats> = {
 
 const Index = () => {
   const { t } = useTranslation()
-  const { user, profile } = useAuthContext()
 
   return (
-    <>
-      <AdminLayout seo={{ title: t('home') }}>
-        <Center minH={'50vh'}>
-          <Heading as={'h1'}>
-            {t('welcome')}
-            {(user || profile) && ` ${profile?.name || user?.username}`}
-          </Heading>
-        </Center>
-      </AdminLayout>
-    </>
+    <AdminLayout seo={{ title: t('home') }}>
+      <AuditLogTable />
+    </AdminLayout>
   )
 }
 
