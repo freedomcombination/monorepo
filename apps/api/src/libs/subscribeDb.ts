@@ -40,23 +40,14 @@ export const subscribeDb = async () => {
     'api::vote.vote',
   ]
 
+  const allowedActions = ['afterCreate', 'beforeUpdate', 'afterDelete']
+
   strapi.db.lifecycles.subscribe(async e => {
     const event = e as any
 
-    if (
-      event.action !== 'afterDelete' &&
-      /*
-         event.action !== 'afterUpdate' &&
-
-         - beforeUpdate has params.data which includes the keys that ll be updated
-          so we can understand if it's for approval or publishing
-      */
-      event.action !== 'afterCreate' &&
-      event.action !== 'beforeUpdate'
-    )
-      // and we shouldn't check those thousands of events' uid(s)
+    if (!allowedActions.includes(event.action)) {
       return
-
+    }
     const uid = event.model?.uid
 
     if (!uid || !allowedApis.includes(uid)) {

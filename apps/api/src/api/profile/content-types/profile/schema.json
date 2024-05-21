@@ -332,9 +332,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "isVolunteer": {
       "type": "boolean"
@@ -423,9 +421,7 @@
       "mappedBy": "profile"
     },
     "volunteerForm": {
-      "allowedTypes": [
-        "files"
-      ],
+      "allowedTypes": ["files"],
       "type": "media",
       "multiple": false
     }
