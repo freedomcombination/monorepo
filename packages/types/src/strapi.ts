@@ -93,6 +93,11 @@ import {
   RecommendedTweet,
   RecommendedTweetCreateInput,
 } from './recommended-tweet'
+import {
+  Subscriber,
+  SubscriberCreateInput,
+  SubscriberUpdateInput,
+} from './subscriber'
 import { Tag, TagCreateInput } from './tag'
 import { Term } from './term'
 import { Timeline, TimelineCreateInput } from './timeline'
@@ -166,6 +171,7 @@ export type StrapiModel =
   | Profile
   | RecommendedTopic
   | RecommendedTweet
+  | Subscriber
   | Tag
   | Term
   | Timeline
@@ -287,6 +293,7 @@ export type StrapiCollectionEndpoint =
   | 'recommended-topics'
   | 'recommended-tweets'
   | 'saved-tweets'
+  | 'subscribers'
   | 'tags'
   | 'timelines'
   | 'tweet-users'
@@ -356,6 +363,7 @@ export type StrapiCreateInput =
   | ObservationCreateInput
   | RecommendedTopicCreateInput
   | RecommendedTweetCreateInput
+  | SubscriberCreateInput
   | TagCreateInput
   | TimelineCreateInput
   | UserFeedbackCreateInput
@@ -381,6 +389,7 @@ export type StrapiUpdateInput =
   | HashtagUpdateInput
   | PostUpdateInput
   | ProfileUpdateInput
+  | SubscriberUpdateInput
   | UserFeedbackUpdateInput
 
 type StrapiFilterOperator =

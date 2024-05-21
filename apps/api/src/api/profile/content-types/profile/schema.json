@@ -424,6 +424,12 @@
       "allowedTypes": ["files"],
       "type": "media",
       "multiple": false
+    },
+    "subscriber": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subscriber.subscriber",
+      "mappedBy": "profile"
     }
   }
 }
