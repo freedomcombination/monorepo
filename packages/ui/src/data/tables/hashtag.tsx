@@ -6,7 +6,6 @@ import {
   Mention,
   Platform,
   Post,
-  Profile,
   StrapiLocale,
 } from '@fc/types'
 
@@ -18,11 +17,6 @@ export const useHashtagColumns = (): WTableProps<Hashtag>['columns'] => {
 
   return {
     image: { type: 'image' },
-    creator: {
-      transform: value => (value as Profile)?.email,
-      sortKey: 'email',
-      sortable: true,
-    },
     title: { sortable: true },
     platform: {
       sortable: true,

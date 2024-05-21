@@ -1209,7 +1209,7 @@ export const COURSE_MOCKS: StrapiCollectionResponse<Course[]> = {
         {
           id: 59,
           name: 'Samet Özkürkcü ',
-          email: 'samet@wsvvrijheid.nl',
+          email: 'samet@freedomcombination.com',
           city: 'Voorburg ',
           country: 'Hollanda ',
           phone: '0686283771',

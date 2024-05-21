@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
+    "email": "npx email dev",
     "dev": "strapi dev",
     "dashboard": "strapi dev",
     "foundation": "strapi dev",
@@ -20,6 +21,10 @@
     "tsc": "npx tsc --noEmit"
   },
   "dependencies": {
+    "@react-email/components": "0.0.18",
+    "@react-email/font": "0.0.6",
+    "@react-email/render": "0.0.14",
+    "@react-email/tailwind": "0.0.17",
     "@strapi/plugin-i18n": "^4.24.2",
     "@strapi/plugin-users-permissions": "^4.24.2",
     "@strapi/provider-email-nodemailer": "^4.24.2",

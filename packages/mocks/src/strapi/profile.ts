@@ -45,7 +45,6 @@ export const PROFILE_MOCKS: StrapiCollectionResponse<Profile[]> = {
       feedbacks: [],
       approvedHashtags: [],
       createdHashtags: [],
-      langRoles: [],
       approvedPosts: [],
       createdPosts: [],
       createdTopics: [],

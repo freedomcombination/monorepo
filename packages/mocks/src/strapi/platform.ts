@@ -271,7 +271,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -1027,7 +1027,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           slug: 'proje-ekibine-goenuellue-ariyoruz',
           description: 'Proje Ekibine Gönüllü Arıyoruz',
           content:
-            '**Proje Ekibine Gönüllü Arıyoruz**\n\nFreedom Combination Vakfı sosyal medya özelinde mağduriyetleri duyurmayı amaçlayan insan hakları vakfıdır.  Bu alanda çalışmalar yapmak üzere proje yazma ekibi kurulacaktır. Aşağıdaki şekillerde gönüllülerimizi bekliyoruz. \n\n**Ne Teklif Ediyoruz?**\n\n☑️ Proje ekibimize katılarak Hollanda kurumları ve Avrupa Birliği projeleri yazmayı öğreneceksiniz. \n\n☑️ Size verilecek konularda hazırladığınız projenin ilgili kurum tarafından kabul edilmesi durumunda çalışan olarak görüneceğinizden proje yürürlükte olduğu sürece ücret alabileceksiniz. \n\n☑️ Proje yazmayı öğreneceğiniz için kendi fikirlerinizi projelendirebileceksiniz. \n\n**Ne Bekliyoruz?**\n\n☑️ Fikirlerinizi kurumlara anlatmanız gerekeceğinden B2 seviyesinde Hollandaca veya İngilizce.\n\n☑️ Projelerinizi hayata geçirmeye tam motivasyonunuz olmalı.\n\n☑️ Verilen konuyu projelendirebilecek kadar zaman ayırabilmelisiniz.\n\n**Ekibe katılmak için**\n\nMail          : weesacademie@wsvvrijheid.nl\nWhatsapp : +31 6852 21308\nFreedom Combination Vakfı : freedomcombination.com ',
+            '**Proje Ekibine Gönüllü Arıyoruz**\n\nFreedom Combination Vakfı sosyal medya özelinde mağduriyetleri duyurmayı amaçlayan insan hakları vakfıdır.  Bu alanda çalışmalar yapmak üzere proje yazma ekibi kurulacaktır. Aşağıdaki şekillerde gönüllülerimizi bekliyoruz. \n\n**Ne Teklif Ediyoruz?**\n\n☑️ Proje ekibimize katılarak Hollanda kurumları ve Avrupa Birliği projeleri yazmayı öğreneceksiniz. \n\n☑️ Size verilecek konularda hazırladığınız projenin ilgili kurum tarafından kabul edilmesi durumunda çalışan olarak görüneceğinizden proje yürürlükte olduğu sürece ücret alabileceksiniz. \n\n☑️ Proje yazmayı öğreneceğiniz için kendi fikirlerinizi projelendirebileceksiniz. \n\n**Ne Bekliyoruz?**\n\n☑️ Fikirlerinizi kurumlara anlatmanız gerekeceğinden B2 seviyesinde Hollandaca veya İngilizce.\n\n☑️ Projelerinizi hayata geçirmeye tam motivasyonunuz olmalı.\n\n☑️ Verilen konuyu projelendirebilecek kadar zaman ayırabilmelisiniz.\n\n**Ekibe katılmak için**\n\nMail          : weesacademie@freedomcombination.com\nWhatsapp : +31 6852 21308\nFreedom Combination Vakfı : freedomcombination.com ',
           approvalStatus: 'approved',
           date: '2023-09-21T14:15:00.000Z',
           createdAt: '2023-09-22T00:20:43.915Z',
@@ -1106,7 +1106,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         {
           id: 40,
           name: 'Talip Altas',
-          email: 'talip@wsvvrijheid.nl',
+          email: 'talip@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',

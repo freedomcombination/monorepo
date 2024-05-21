@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "audit_logs",
+  "info": {
+    "singularName": "audit-log",
+    "pluralName": "audit-logs",
+    "displayName": "Audit Log",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "uid": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::profile.profile"
+    },
+    "modelId": {
+      "type": "integer"
+    },
+    "action": {
+      "type": "enumeration",
+      "enum": ["create", "update", "delete", "publish", "approve"]
+    }
+  }
+}

@@ -2,7 +2,7 @@ import { Applicant } from './applicant'
 import { Expand } from './common'
 import { Competition } from './competition'
 import { UploadFile } from './file'
-import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
+import { StrapiBase, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 import { Vote } from './vote'
 
@@ -42,7 +42,4 @@ export type ApplicationUpdateInput = Expand<
   >
 >
 
-export type Application = StrapiBase &
-  ApplicationBase &
-  ApplicationRelation &
-  StrapiCreatorRelation
+export type Application = StrapiBase & ApplicationBase & ApplicationRelation
