@@ -1,23 +1,17 @@
 import { SetRequired } from 'type-fest'
 
-import { Activity } from './activity'
 import { Applicant } from './applicant'
 import { Art } from './art'
 import { Blog } from './blog'
-import { Collection } from './collection'
 import { Expand } from './common'
-import { Competition } from './competition'
 import { Feedback } from './feedback'
 import { UploadFile } from './file'
-import { Hashtag } from './hashtag'
 import { Job } from './job'
 import { Observation } from './observation'
 import { Platform } from './platform'
-import { Post } from './post'
-import { RecommendedTopic } from './recommended-topic'
-import { RecommendedTweet } from './recommended-tweet'
 import { Permissions } from './role'
 import { StrapiBase } from './strapi'
+import { Subscriber } from './subscriber'
 import { User } from './user'
 import { Vote } from './vote'
 
@@ -55,23 +49,8 @@ export type ProfileBase = {
 
 type ProfileRelation = {
   applicant?: Applicant | null
-  approvedActivities?: Array<Activity>
-  approvedApplications?: Array<Applicant>
-  approvedCollections?: Array<Collection>
-  approvedCompetitions?: Array<Competition>
-  approvedHashtags?: Array<Hashtag>
-  approvedPosts?: Array<Post>
   avatar?: UploadFile | null
   comments?: Array<Comment>
-  createdActivities?: Array<Activity>
-  createdApplications?: Array<Applicant>
-  createdBlogs?: Array<Blog>
-  createdCollections?: Array<Collection>
-  createdCompetitions?: Array<Competition>
-  createdHashtags?: Array<Hashtag>
-  createdPosts?: Array<Post>
-  createdTopics?: Array<RecommendedTopic>
-  createdTweets?: Array<RecommendedTweet>
   feedbacks?: Array<Feedback>
   jobs?: Array<Job>
   juryVotes?: Array<Vote>
@@ -82,6 +61,7 @@ type ProfileRelation = {
   ownedBlogs?: Array<Blog>
   permissions?: Permissions
   platforms?: Array<Platform>
+  subscriber?: Subscriber | null
   user?: User | null
   volunteerForm?: UploadFile | null
   votes?: Array<Vote>
