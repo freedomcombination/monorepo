@@ -85,18 +85,6 @@
       "target": "api::tag.tag",
       "inversedBy": "posts"
     },
-    "approver": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "approvedPosts"
-    },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdPosts"
-    },
     "video": {
       "type": "media",
       "multiple": false,

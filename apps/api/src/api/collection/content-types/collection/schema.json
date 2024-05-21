@@ -83,18 +83,6 @@
       "relation": "oneToMany",
       "target": "api::art.art",
       "mappedBy": "collection"
-    },
-    "approver": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "approvedCollections"
-    },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdCollections"
     }
   }
 }

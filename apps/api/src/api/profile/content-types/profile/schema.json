@@ -332,40 +332,18 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "isVolunteer": {
       "type": "boolean"
-    },
-    "approvedActivities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::activity.activity",
-      "mappedBy": "approver"
-    },
-    "createdActivities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::activity.activity",
-      "mappedBy": "creator"
     },
     "applicant": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::applicant.applicant",
       "mappedBy": "profile"
-    },
-    "approvedApplications": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::application.application",
-      "mappedBy": "approver"
-    },
-    "createdApplications": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::application.application",
-      "mappedBy": "creator"
     },
     "likedArts": {
       "type": "relation",
@@ -391,89 +369,17 @@
       "target": "api::blog.blog",
       "mappedBy": "author"
     },
-    "createdBlogs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::blog.blog",
-      "mappedBy": "creator"
-    },
-    "approvedCollections": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::collection.collection",
-      "mappedBy": "approver"
-    },
-    "createdCollections": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::collection.collection",
-      "mappedBy": "creator"
-    },
     "comments": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::comment.comment",
       "mappedBy": "profile"
     },
-    "approvedCompetitions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::competition.competition",
-      "mappedBy": "approver"
-    },
-    "createdCompetitions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::competition.competition",
-      "mappedBy": "creator"
-    },
     "feedbacks": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::feedback.feedback",
       "mappedBy": "editor"
-    },
-    "approvedHashtags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::hashtag.hashtag",
-      "mappedBy": "approver"
-    },
-    "createdHashtags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::hashtag.hashtag",
-      "mappedBy": "creator"
-    },
-    "approvedPosts": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::post.post",
-      "mappedBy": "approver"
-    },
-    "createdPosts": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::post.post",
-      "mappedBy": "creator"
-    },
-    "createdTopics": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::recommended-topic.recommended-topic",
-      "mappedBy": "creator"
-    },
-    "createdTweets": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::recommended-tweet.recommended-tweet",
-      "mappedBy": "creator"
-    },
-    "stats": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::user-statistic.user-statistic",
-      "mappedBy": "profile"
     },
     "votes": {
       "type": "relation",
@@ -517,7 +423,9 @@
       "mappedBy": "profile"
     },
     "volunteerForm": {
-      "allowedTypes": ["files"],
+      "allowedTypes": [
+        "files"
+      ],
       "type": "media",
       "multiple": false
     }

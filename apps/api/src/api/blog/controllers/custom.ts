@@ -1,20 +1,10 @@
 import { Context } from 'koa'
-import {
-  checkRecaptcha,
-  getProfile,
-  assignApprover,
-  getReferenceModel,
-} from '../../../utils'
+import { checkRecaptcha, getProfile, getReferenceModel } from '../../../utils'
 import { errors } from '@strapi/utils'
 
 const { ApplicationError, ForbiddenError } = errors
 
 export default {
-  async approve(ctx: Context) {
-    const result = await assignApprover(ctx, 'api::blog.blog', true)
-
-    return { data: result }
-  },
   async relation(ctx: Context) {
     const id = ctx.params.id
 

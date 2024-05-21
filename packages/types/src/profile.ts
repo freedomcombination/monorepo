@@ -19,7 +19,6 @@ import { RecommendedTweet } from './recommended-tweet'
 import { Permissions } from './role'
 import { StrapiBase } from './strapi'
 import { User } from './user'
-import { UserStats } from './user-stats'
 import { Vote } from './vote'
 
 export type ProfileStatus =
@@ -83,7 +82,6 @@ type ProfileRelation = {
   ownedBlogs?: Array<Blog>
   permissions?: Permissions
   platforms?: Array<Platform>
-  stats?: Array<UserStats>
   user?: User | null
   volunteerForm?: UploadFile | null
   votes?: Array<Vote>

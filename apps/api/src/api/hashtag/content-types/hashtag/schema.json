@@ -129,18 +129,6 @@
       "target": "api::post.post",
       "mappedBy": "hashtag"
     },
-    "approver": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "approvedHashtags"
-    },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdHashtags"
-    },
     "platform": {
       "type": "relation",
       "relation": "oneToOne",

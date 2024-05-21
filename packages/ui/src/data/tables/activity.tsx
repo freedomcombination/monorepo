@@ -1,4 +1,4 @@
-import { Activity, ApprovalStatus, Profile, StrapiLocale } from '@fc/types'
+import { Activity, ApprovalStatus, StrapiLocale } from '@fc/types'
 
 import { LocaleBadges, PublicationBadges } from '../../admin'
 import { WTableProps } from '../../components'
@@ -6,11 +6,6 @@ import { WTableProps } from '../../components'
 export const useActivityColumns = (): WTableProps<Activity>['columns'] => {
   return {
     image: { type: 'image' },
-    creator: {
-      transform: value => (value as Profile)?.email,
-      sortKey: 'email',
-      sortable: true,
-    },
     title: { sortable: true },
     description: {},
     approvalStatus: {

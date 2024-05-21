@@ -5,7 +5,7 @@ import { Expand } from './common'
 import { Feedback } from './feedback'
 import { UploadFile } from './file'
 import { Profile } from './profile'
-import { StrapiBase, StrapiCreatorRelation } from './strapi'
+import { StrapiBase } from './strapi'
 import { Tag } from './tag'
 import { Vote } from './vote'
 
@@ -68,4 +68,4 @@ export type ArtLocalizeInput = Omit<
   'approvalStatus' | 'likes' | 'views'
 >
 
-export type Art = StrapiBase & ArtBase & ArtRelation & StrapiCreatorRelation
+export type Art = StrapiBase & ArtBase & ArtRelation

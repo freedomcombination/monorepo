@@ -2,11 +2,9 @@ import { FC, useEffect } from 'react'
 
 import { Button, Stack, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
-// import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
-import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation } from '@fc/services'
 import { Observation, ObservationCreateInput } from '@fc/types/src/observation'
 import { toastMessage } from '@fc/utils'
@@ -24,9 +22,6 @@ export const ObservationForm: FC<ObservationFormProps> = ({
   profileId,
   onSuccess,
 }) => {
-  // const { t } = useTranslation()
-  const { profile } = useAuthContext()
-
   const {
     register,
     handleSubmit,
@@ -37,7 +32,6 @@ export const ObservationForm: FC<ObservationFormProps> = ({
     mode: 'all',
     defaultValues: {
       profile: profileId,
-      creator: profile?.id,
     },
   })
 
@@ -54,7 +48,6 @@ export const ObservationForm: FC<ObservationFormProps> = ({
     try {
       const body = {
         content,
-        creator: profile?.id,
         profile: profileId,
       } as ObservationCreateInput
 

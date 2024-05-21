@@ -6,7 +6,7 @@ import { UploadFile } from './file'
 import { Mention } from './mention'
 import { Platform } from './platform'
 import { Post } from './post'
-import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
+import { StrapiBase, StrapiEntityBase } from './strapi'
 import { Tweet } from './tweet'
 
 export type HashtagBase = StrapiEntityBase & {
@@ -53,10 +53,7 @@ export type HashtagLocalizeInput = Pick<
   'title' | 'description' | 'content' | 'approvalStatus'
 >
 
-export type Hashtag = StrapiBase &
-  HashtagBase &
-  HashtagRelation &
-  StrapiCreatorRelation
+export type Hashtag = StrapiBase & HashtagBase & HashtagRelation
 
 export type HashtagReturnType = Hashtag & {
   hasPassed: boolean
