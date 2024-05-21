@@ -18,11 +18,12 @@ export default {
 
         strapi.plugins['email'].services.email.send({
           to: artist.email,
-          from: 'info@wsvvrijheid.nl',
+          from: 'info@freedomcombination.com',
           subject: `Dear ${artist.name} your art "${art.title_en}" has been ${result.status}`,
+          // TODO: Create a template for this email
           html: `<div>
                   <p>Editor note: ${result.message}</p>
-                  <p>View your art in your <a href="${process.env.KUNSTHALTE_SITE_URL}/profile">profile</a></p>
+                  <p>View your art in your <a href="https://kunsthalte.com/profile">profile</a></p>
               </div>`,
         })
       } else {
