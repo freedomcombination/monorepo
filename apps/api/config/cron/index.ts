@@ -3,7 +3,6 @@ import accountStats from './accountStats'
 import hashtags from './hashtags'
 import timeline from './timeline'
 import trends from './trends'
-import userStats from './userStats'
 
 const tz = 'Europe/Amsterdam'
 
@@ -12,7 +11,6 @@ export default {
   hashtags: { task: hashtags, options: { rule: '*/15 * * * *', tz } },
   timelines: { task: timeline, options: { rule: '0 0 * * *', tz } },
   accountStats: { task: accountStats, options: { rule: '0 0 * * SUN', tz } },
-  userStats: { task: userStats, options: { rule: '0 0 * * SUN', tz } },
   syncTopics: { task: syncNews, options: { rule: '0 * * * *', tz } },
 }
 

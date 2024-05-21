@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
+    "email": "npx email dev",
     "dev": "strapi dev",
     "dashboard": "strapi dev",
     "foundation": "strapi dev",
@@ -23,6 +24,10 @@
     "tsc": "npx tsc --noEmit"
   },
   "dependencies": {
+    "@react-email/components": "0.0.18",
+    "@react-email/font": "0.0.6",
+    "@react-email/render": "0.0.14",
+    "@react-email/tailwind": "0.0.17",
     "@strapi/plugin-i18n": "^4.24.2",
     "@strapi/plugin-users-permissions": "^4.24.2",
     "@strapi/provider-email-nodemailer": "^4.24.2",
@@ -34,7 +39,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^5.3.4",
-    "sharp": "^0.33.3",
+    "sharp": "^0.33.4",
     "strapi-plugin-import-export-entries": "^1.23.1",
     "strapi-plugin-transformer": "^3.1.2",
     "styled-components": "^5.2.1"

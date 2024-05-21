@@ -2,7 +2,7 @@ import { ApprovalStatus, Expand, OgImageParams } from './common'
 import { UploadFile } from './file'
 import { Hashtag } from './hashtag'
 import { Profile } from './profile'
-import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
+import { StrapiBase, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 
 export type PostBase = Omit<StrapiEntityBase, 'title' | 'slug'> & {
@@ -48,7 +48,7 @@ export type PostUpdateInput = Expand<
 
 export type PostLocalizeInput = Pick<PostBase, 'description' | 'approvalStatus'>
 
-export type Post = StrapiBase & PostBase & PostRelation & StrapiCreatorRelation
+export type Post = StrapiBase & PostBase & PostRelation
 
 export type PostSentence = {
   postId: number

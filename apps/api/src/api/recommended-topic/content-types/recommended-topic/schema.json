@@ -97,12 +97,6 @@
       },
       "type": "boolean",
       "default": false
-    },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdTopics"
     }
   }
 }

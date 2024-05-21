@@ -21,6 +21,7 @@ export const WAvatar: FC<WAvatarProps> = ({ src, size, ...props }) => {
         const fallback = getMediaUrl(src, true, mediaSize)
         setFallbackUrl(fallback)
       }}
+      size={size}
       {...props}
     />
   )

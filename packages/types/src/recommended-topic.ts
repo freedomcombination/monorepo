@@ -1,5 +1,5 @@
 import { Expand } from './common'
-import { StrapiBase, StrapiCreatorRelation } from './strapi'
+import { StrapiBase } from './strapi'
 import { TopicBase } from './topic'
 
 export type RecommendedTopicBase = {
@@ -14,6 +14,4 @@ export type RecommendedTopicCreateInput = Expand<
   >
 >
 
-export type RecommendedTopic = StrapiBase &
-  RecommendedTopicBase &
-  StrapiCreatorRelation
+export type RecommendedTopic = StrapiBase & RecommendedTopicBase
