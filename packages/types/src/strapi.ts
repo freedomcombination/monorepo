@@ -267,6 +267,7 @@ export type StrapiCollectionEndpoint =
   | 'arts'
   | 'assets'
   | 'assets-trackings'
+  | 'audit-logs'
   | 'authors'
   | 'blogs'
   | 'categories'

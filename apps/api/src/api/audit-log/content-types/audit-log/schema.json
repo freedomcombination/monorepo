@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -28,13 +28,7 @@
     },
     "action": {
       "type": "enumeration",
-      "enum": [
-        "create",
-        "update",
-        "delete",
-        "publish",
-        "approve"
-      ]
+      "enum": ["create", "update", "delete", "publish", "approve"]
     }
   }
 }

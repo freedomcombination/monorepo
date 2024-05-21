@@ -42,41 +42,67 @@ export const subscribeDb = async () => {
 
   strapi.db.lifecycles.subscribe(async e => {
     const event = e as any
-    const result = event.result
-    const uid = event.model?.uid
-    const id = event.result?.id
-    const ctx = await strapi.requestContext.get()
-    const profile = ctx && (await getProfile(ctx, false))
 
-    if (!allowedApis.includes(uid)) {
+    if (
+      event.action !== 'afterDelete' &&
+      /*
+         event.action !== 'afterUpdate' &&
+
+         - beforeUpdate has params.data which includes the keys that ll be updated
+          so we can understand if it's for approval or publishing
+      */
+      event.action !== 'afterCreate' &&
+      event.action !== 'beforeUpdate'
+    )
+      // and we shouldn't check those thousands of events' uid(s)
+      return
+
+    const uid = event.model?.uid
+
+    if (!uid || !allowedApis.includes(uid)) {
       return
     }
 
-    if (event.action === 'afterCreate') {
-      strapi.entityService.create('api::audit-log.audit-log', {
-        data: {
-          uid,
-          text:
-            result?.title ||
-            result?.name ||
-            result?.title_en ||
-            result?.title_tr ||
-            result?.title_nl ||
-            result?.name_en ||
-            result?.name_tr ||
-            result?.name_nl ||
-            result?.username,
-          profile: profile?.id,
-          modelId: id,
-        },
-      })
-    }
+    const result = event.result // this is exist only afterEvents
+    const data = event.params?.data // these data are the ones that ll be updated
+    const id = event.result?.id ?? event.params?.where?.id
+    const ctx = await strapi.requestContext.get()
+    const profile = ctx && (await getProfile(ctx, false))
 
-    if (event.action === 'beforeUpdate') {
-      const status = event.result.approvalStatus
+    const action =
+      event.action === 'afterCreate'
+        ? 'create'
+        : event.action === 'beforeUpdate'
+          ? data.approvalStatus // approvalStatus is set only if it requested to change
+            ? 'approve'
+            : data.publishedAt // same here
+              ? 'publish'
+              : 'update'
+          : 'delete'
 
-      if (status === 'pending') {
-      }
-    }
+    strapi.entityService.create('api::audit-log.audit-log', {
+      data: {
+        uid,
+        text:
+          result?.title ||
+          result?.name ||
+          result?.title_en ||
+          result?.title_tr ||
+          result?.title_nl ||
+          result?.name_en ||
+          result?.name_tr ||
+          result?.name_nl ||
+          result?.username ||
+          data?.approvalStatus ||
+          (data.publishedAt !== undefined
+            ? data.publishedAt
+              ? 'published'
+              : 'unpublished'
+            : 'model content updated'),
+        profile: profile?.id,
+        action,
+        modelId: id,
+      },
+    })
   })
 }

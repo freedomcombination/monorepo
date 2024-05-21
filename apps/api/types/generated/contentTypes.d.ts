@@ -1425,7 +1425,7 @@ export interface ApiAuditLogAuditLog extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     uid: Attribute.String
@@ -1441,7 +1441,6 @@ export interface ApiAuditLogAuditLog extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::audit-log.audit-log',
       'oneToOne',

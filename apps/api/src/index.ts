@@ -1,5 +1,5 @@
 import { subscribeDb } from './libs/subscribeDb'
-import { syncAdmin } from './libs/syncAdmin'
+// import { syncAdmin } from './libs/syncAdmin'
 
 export default {
   /**
@@ -21,8 +21,8 @@ export default {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   async bootstrap() {
     try {
-      // subscribeDb()
-      syncAdmin()
+      subscribeDb()
+      //syncAdmin()
     } catch (error) {
       console.error('Bootstrap error', JSON.stringify(error, null, 2))
     }
