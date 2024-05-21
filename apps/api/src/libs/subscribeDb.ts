@@ -60,16 +60,22 @@ export const subscribeDb = async () => {
     const ctx = await strapi.requestContext.get()
     const profile = ctx && (await getProfile(ctx, false))
 
-    const action =
-      event.action === 'afterCreate'
-        ? 'create'
-        : event.action === 'beforeUpdate'
-          ? data.approvalStatus // approvalStatus is set only if it requested to change
-            ? 'approve'
-            : data.publishedAt // same here
-              ? 'publish'
-              : 'update'
-          : 'delete'
+    let action: any = 'deleted'
+
+    if (event.action === 'afterCreate') {
+      action = 'created'
+    } else if (event.action === 'beforeUpdate') {
+      action =
+        data.approvalStatus === 'approved'
+          ? 'approved'
+          : data.approvalStatus === 'rejected'
+            ? 'rejected'
+            : data.publishedAt
+              ? 'published'
+              : 'updated'
+    } else if (event.action === 'afterDelete') {
+      action = 'deleted'
+    }
 
     strapi.entityService.create('api::audit-log.audit-log', {
       data: {

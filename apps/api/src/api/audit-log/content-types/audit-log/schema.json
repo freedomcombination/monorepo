@@ -28,7 +28,15 @@
     },
     "action": {
       "type": "enumeration",
-      "enum": ["create", "update", "delete", "publish", "approve"]
+      "enum": [
+        "created",
+        "updated",
+        "deleted",
+        "published",
+        "unpublished",
+        "approved",
+        "rejected"
+      ]
     }
   }
 }

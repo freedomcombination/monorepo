@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { FC } from 'react'
 
 import { Avatar, AvatarProps } from '@chakra-ui/react'
 
@@ -12,5 +12,5 @@ type WAvatarProps = Omit<AvatarProps, 'src'> & {
 export const WAvatar: FC<WAvatarProps> = ({ src, size, ...props }) => {
   const mediaSize = size ? ('thumbnail' as keyof FileFormats) : undefined
 
-  return <Avatar src={getMediaUrl(src, mediaSize)} {...props} />
+  return <Avatar src={getMediaUrl(src, mediaSize)} size={size} {...props} />
 }
