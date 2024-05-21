@@ -1,17 +1,8 @@
 import { Context } from 'koa'
 
-import { assignApprover, getReferenceModel } from '../../../utils'
+import { getReferenceModel } from '../../../utils'
 
 export default {
-  async approve(ctx: Context) {
-    const result = await assignApprover(
-      ctx,
-      'api::competition.competition',
-      true,
-    )
-
-    return { data: result }
-  },
   async relation(ctx: Context) {
     const id = ctx.params.id
 

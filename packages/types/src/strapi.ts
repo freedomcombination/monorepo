@@ -71,7 +71,6 @@ import {
   HashtagUpdateInput,
 } from './hashtag'
 import { Job, JobCreateInput } from './job'
-import { LangRole } from './lang-role'
 import { StrapiLocale } from './locale'
 import { Me } from './me'
 import { Mention, MentionCreateInput } from './mention'
@@ -135,11 +134,6 @@ export type StrapiEntityBase = {
   locale: StrapiLocale
 }
 
-export type StrapiCreatorRelation = {
-  approver?: Profile | null
-  creator?: Profile | null
-}
-
 export type StrapiModel =
   | AccountStats
   | Activity
@@ -162,7 +156,6 @@ export type StrapiModel =
   | Foundation
   | Hashtag
   | Job
-  | LangRole
   | Me
   | Mention
   | Platform
@@ -269,6 +262,7 @@ export type StrapiCollectionEndpoint =
   | 'arts'
   | 'assets'
   | 'assets-trackings'
+  | 'audit-logs'
   | 'authors'
   | 'blogs'
   | 'categories'
@@ -283,7 +277,6 @@ export type StrapiCollectionEndpoint =
   | 'foundations'
   | 'hashtags'
   | 'jobs'
-  | 'lang-roles'
   | 'me'
   | 'mentions'
   | 'observations'

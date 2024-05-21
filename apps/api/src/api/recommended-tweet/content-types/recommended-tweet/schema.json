@@ -70,12 +70,6 @@
         }
       }
     },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdTweets"
-    },
     "videoUrl": {
       "pluginOptions": {
         "i18n": {

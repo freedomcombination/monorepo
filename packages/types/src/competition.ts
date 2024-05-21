@@ -2,7 +2,7 @@ import { Application } from './application'
 import { Category } from './category'
 import { Expand } from './common'
 import { UploadFile } from './file'
-import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
+import { StrapiBase, StrapiEntityBase } from './strapi'
 
 type CompetitionBase = StrapiEntityBase & {
   content: string | null
@@ -42,7 +42,4 @@ export type CompetitionLocalizeInput = Omit<
   'approvalStatus' | 'likes' | 'views'
 >
 
-export type Competition = StrapiBase &
-  CompetitionBase &
-  CompetitionRelation &
-  StrapiCreatorRelation
+export type Competition = StrapiBase & CompetitionBase & CompetitionRelation

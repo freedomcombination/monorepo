@@ -106,18 +106,6 @@
       "target": "api::category.category",
       "mappedBy": "activities"
     },
-    "approver": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "approvedActivities"
-    },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdActivities"
-    },
     "platforms": {
       "type": "relation",
       "relation": "manyToMany",

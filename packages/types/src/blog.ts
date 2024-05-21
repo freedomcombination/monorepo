@@ -3,7 +3,7 @@ import { Comment } from './comment'
 import { Expand } from './common'
 import { UploadFile } from './file'
 import { Profile } from './profile'
-import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
+import { StrapiBase, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 
 export type BlogBase = StrapiEntityBase & {
@@ -51,4 +51,4 @@ export type BlogLocalizeInput = Omit<
   'approvalStatus' | 'likes' | 'views'
 >
 
-export type Blog = StrapiBase & BlogBase & BlogRelation & StrapiCreatorRelation
+export type Blog = StrapiBase & BlogBase & BlogRelation
