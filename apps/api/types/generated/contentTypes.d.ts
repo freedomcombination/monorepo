@@ -1417,7 +1417,15 @@ export interface ApiAuditLogAuditLog extends Schema.CollectionType {
     >
     modelId: Attribute.Integer
     action: Attribute.Enumeration<
-      ['create', 'update', 'delete', 'publish', 'approve']
+      [
+        'created',
+        'updated',
+        'deleted',
+        'published',
+        'unpublished',
+        'approved',
+        'rejected',
+      ]
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
