@@ -89,7 +89,13 @@ export const subscribeDb = async () => {
           result?.name_en ||
           result?.name_tr ||
           result?.name_nl ||
-          result?.username,
+          result?.username ||
+          data?.approvalStatus ||
+          (data.publishedAt !== undefined
+            ? data.publishedAt
+              ? 'published'
+              : 'unpublished'
+            : 'model content updated'),
         profile: profile?.id,
         action,
         modelId: id,
