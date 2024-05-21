@@ -20,11 +20,6 @@
       "target": "api::profile.profile",
       "inversedBy": "observations"
     },
-    "creator": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::profile.profile"
-    },
     "createdAt": {
       "type": "datetime"
     }

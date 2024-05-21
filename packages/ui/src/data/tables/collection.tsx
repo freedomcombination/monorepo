@@ -1,10 +1,4 @@
-import {
-  ApprovalStatus,
-  Art,
-  Collection,
-  Profile,
-  StrapiLocale,
-} from '@fc/types'
+import { ApprovalStatus, Art, Collection, StrapiLocale } from '@fc/types'
 
 import { LocaleBadges, PublicationBadges } from '../../admin'
 import { WTableProps } from '../../components'
@@ -12,11 +6,6 @@ import { WTableProps } from '../../components'
 export const useCollectionColumns = (): WTableProps<Collection>['columns'] => {
   return {
     image: { type: 'image' },
-    creator: {
-      transform: value => (value as Profile)?.email,
-      sortKey: 'email',
-      sortable: true,
-    },
     title: { sortable: true },
     slug: { label: 'Slug' },
     description: {},

@@ -13,9 +13,9 @@ export const approveModel = async <T extends StrapiModel>(
   token?: string,
 ) => {
   return Mutation.put<T, any>(
-    `${endpoint}/approve` as StrapiEndpoint,
+    `${endpoint}` as StrapiEndpoint,
     id,
-    {},
+    { approvalStatus: 'approved' },
     token as string,
   )
 }

@@ -1,13 +1,8 @@
 import { Context } from 'koa'
 
-import { assignApprover, getProfile, getReferenceModel } from '../../../utils'
+import { getReferenceModel } from '../../../utils'
 
 export default {
-  async approve(ctx: Context) {
-    const result = await assignApprover(ctx, 'api::post.post', true)
-
-    return { data: result }
-  },
   async relation(ctx: Context) {
     const id = ctx.params.id
 
@@ -41,7 +36,6 @@ export default {
     return { data: result }
   },
   async createPosts(ctx: Context) {
-    const profile = await getProfile(ctx, true)
     const { data } = ctx.request.body
 
     if (!Array.isArray(data)) {
@@ -50,7 +44,6 @@ export default {
 
     const resultData = []
     for (const item of data) {
-      item.creator = profile.id
       const result = await strapi.entityService.create('api::post.post', {
         data: item,
       })

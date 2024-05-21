@@ -134,11 +134,6 @@ export type StrapiEntityBase = {
   locale: StrapiLocale
 }
 
-export type StrapiCreatorRelation = {
-  approver?: Profile | null
-  creator?: Profile | null
-}
-
 export type StrapiModel =
   | AccountStats
   | Activity

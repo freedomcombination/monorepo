@@ -908,16 +908,6 @@ export interface ApiActivityActivity extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >
-    approver: Attribute.Relation<
-      'api::activity.activity',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    creator: Attribute.Relation<
-      'api::activity.activity',
-      'manyToOne',
-      'api::profile.profile'
-    >
     platforms: Attribute.Relation<
       'api::activity.activity',
       'manyToMany',
@@ -1064,16 +1054,6 @@ export interface ApiApplicationApplication extends Schema.CollectionType {
       'api::application.application',
       'oneToMany',
       'api::feedback.feedback'
-    >
-    approver: Attribute.Relation<
-      'api::application.application',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    creator: Attribute.Relation<
-      'api::application.application',
-      'manyToOne',
-      'api::profile.profile'
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
@@ -1558,16 +1538,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'manyToOne',
       'api::profile.profile'
     >
-    approver: Attribute.Relation<
-      'api::blog.blog',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    creator: Attribute.Relation<
-      'api::blog.blog',
-      'manyToOne',
-      'api::profile.profile'
-    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -1708,16 +1678,6 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
       'api::collection.collection',
       'oneToMany',
       'api::art.art'
-    >
-    approver: Attribute.Relation<
-      'api::collection.collection',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    creator: Attribute.Relation<
-      'api::collection.collection',
-      'manyToOne',
-      'api::profile.profile'
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
@@ -1872,16 +1832,6 @@ export interface ApiCompetitionCompetition extends Schema.CollectionType {
       'api::competition.competition',
       'manyToMany',
       'api::category.category'
-    >
-    approver: Attribute.Relation<
-      'api::competition.competition',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    creator: Attribute.Relation<
-      'api::competition.competition',
-      'manyToOne',
-      'api::profile.profile'
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
@@ -2270,16 +2220,6 @@ export interface ApiHashtagHashtag extends Schema.CollectionType {
       'oneToMany',
       'api::post.post'
     >
-    approver: Attribute.Relation<
-      'api::hashtag.hashtag',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    creator: Attribute.Relation<
-      'api::hashtag.hashtag',
-      'manyToOne',
-      'api::profile.profile'
-    >
     platform: Attribute.Relation<
       'api::hashtag.hashtag',
       'oneToOne',
@@ -2415,11 +2355,6 @@ export interface ApiObservationObservation extends Schema.CollectionType {
     profile: Attribute.Relation<
       'api::observation.observation',
       'manyToOne',
-      'api::profile.profile'
-    >
-    creator: Attribute.Relation<
-      'api::observation.observation',
-      'oneToOne',
       'api::profile.profile'
     >
     createdAt: Attribute.DateTime
@@ -2571,16 +2506,6 @@ export interface ApiPostPost extends Schema.CollectionType {
       'api::hashtag.hashtag'
     >
     tags: Attribute.Relation<'api::post.post', 'manyToMany', 'api::tag.tag'>
-    approver: Attribute.Relation<
-      'api::post.post',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    creator: Attribute.Relation<
-      'api::post.post',
-      'manyToOne',
-      'api::profile.profile'
-    >
     video: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -3080,30 +3005,10 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     >
     avatar: Attribute.Media
     isVolunteer: Attribute.Boolean
-    approvedActivities: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::activity.activity'
-    >
-    createdActivities: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::activity.activity'
-    >
     applicant: Attribute.Relation<
       'api::profile.profile',
       'oneToOne',
       'api::applicant.applicant'
-    >
-    approvedApplications: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::application.application'
-    >
-    createdApplications: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::application.application'
     >
     likedArts: Attribute.Relation<
       'api::profile.profile',
@@ -3125,75 +3030,15 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToMany',
       'api::blog.blog'
     >
-    createdBlogs: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::blog.blog'
-    >
-    approvedCollections: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::collection.collection'
-    >
-    createdCollections: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::collection.collection'
-    >
     comments: Attribute.Relation<
       'api::profile.profile',
       'oneToMany',
       'api::comment.comment'
     >
-    approvedCompetitions: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::competition.competition'
-    >
-    createdCompetitions: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::competition.competition'
-    >
     feedbacks: Attribute.Relation<
       'api::profile.profile',
       'oneToMany',
       'api::feedback.feedback'
-    >
-    approvedHashtags: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::hashtag.hashtag'
-    >
-    createdHashtags: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::hashtag.hashtag'
-    >
-    approvedPosts: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::post.post'
-    >
-    createdPosts: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::post.post'
-    >
-    createdTopics: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::recommended-topic.recommended-topic'
-    >
-    createdTweets: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::recommended-tweet.recommended-tweet'
-    >
-    stats: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::user-statistic.user-statistic'
     >
     votes: Attribute.Relation<
       'api::profile.profile',
@@ -3328,11 +3173,6 @@ export interface ApiRecommendedTopicRecommendedTopic
         }
       }> &
       Attribute.DefaultTo<false>
-    creator: Attribute.Relation<
-      'api::recommended-topic.recommended-topic',
-      'manyToOne',
-      'api::profile.profile'
-    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -3412,11 +3252,6 @@ export interface ApiRecommendedTweetRecommendedTweet
           localized: true
         }
       }>
-    creator: Attribute.Relation<
-      'api::recommended-tweet.recommended-tweet',
-      'manyToOne',
-      'api::profile.profile'
-    >
     videoUrl: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -3740,60 +3575,6 @@ export interface ApiUserFeedbackUserFeedback extends Schema.CollectionType {
   }
 }
 
-export interface ApiUserStatisticUserStatistic extends Schema.CollectionType {
-  collectionName: 'user_statistics'
-  info: {
-    singularName: 'user-statistic'
-    pluralName: 'user-statistics'
-    displayName: 'User Statistic'
-    description: ''
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    date: Attribute.Date
-    profile: Attribute.Relation<
-      'api::user-statistic.user-statistic',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    approvedActivity: Attribute.Integer
-    approvedTotal: Attribute.Integer
-    approvedApplication: Attribute.Integer
-    approvedBlog: Attribute.Integer
-    approvedCollection: Attribute.Integer
-    approvedCompetition: Attribute.Integer
-    approvedHashtag: Attribute.Integer
-    approvedPost: Attribute.Integer
-    createdActivity: Attribute.Integer
-    createdTotal: Attribute.Integer
-    createdApplication: Attribute.Integer
-    createdBlog: Attribute.Integer
-    createdCollection: Attribute.Integer
-    createdCompetition: Attribute.Integer
-    createdHashtag: Attribute.Integer
-    createdPost: Attribute.Integer
-    createdRecommendedTopic: Attribute.Integer
-    createdRecommendedTweet: Attribute.Integer
-    createdAt: Attribute.DateTime
-    updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
-    createdBy: Attribute.Relation<
-      'api::user-statistic.user-statistic',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    updatedBy: Attribute.Relation<
-      'api::user-statistic.user-statistic',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-  }
-}
-
 export interface ApiVoteVote extends Schema.CollectionType {
   collectionName: 'votes'
   info: {
@@ -3897,7 +3678,6 @@ declare module '@strapi/types' {
       'api::translate.translate': ApiTranslateTranslate
       'api::trend.trend': ApiTrendTrend
       'api::user-feedback.user-feedback': ApiUserFeedbackUserFeedback
-      'api::user-statistic.user-statistic': ApiUserStatisticUserStatistic
       'api::vote.vote': ApiVoteVote
     }
   }
