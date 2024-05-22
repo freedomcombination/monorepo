@@ -46,14 +46,15 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
 
   const colorScheme = colorMap[log.action] || 'gray'
   const profile = log.profile
-  const profileName = isOwnProfile ? 'You' : profile?.name || 'Unknown'
+  const profileName = isOwnProfile ? 'You' : profile?.name || 'Strapi'
+  const profileEmail = profile?.email || 'Strapi'
 
   const modelName = log.uid.split('.')[1]
 
   const message = (
     <>
       <Tooltip
-        label={profile.email}
+        label={profileEmail}
         placement="top"
         bg={'white'}
         color={'gray.700'}
