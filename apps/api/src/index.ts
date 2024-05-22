@@ -1,5 +1,5 @@
 import { subscribeDb } from './libs/subscribeDb'
-// import { syncAdmin } from './libs/syncAdmin'
+import { syncAdmin } from './libs/syncAdmin'
 
 export default {
   /**
@@ -22,7 +22,7 @@ export default {
   async bootstrap() {
     try {
       subscribeDb()
-      //syncAdmin()
+      syncAdmin()
     } catch (error) {
       console.error('Bootstrap error', JSON.stringify(error, null, 2))
     }

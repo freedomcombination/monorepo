@@ -3086,6 +3086,11 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'api::observation.observation'
     >
     volunteerForm: Attribute.Media
+    subscriber: Attribute.Relation<
+      'api::profile.profile',
+      'oneToOne',
+      'api::subscriber.subscriber'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -3293,6 +3298,41 @@ export interface ApiRecommendedTweetRecommendedTweet
       'api::recommended-tweet.recommended-tweet'
     >
     locale: Attribute.String
+  }
+}
+
+export interface ApiSubscriberSubscriber extends Schema.CollectionType {
+  collectionName: 'subscribers'
+  info: {
+    singularName: 'subscriber'
+    pluralName: 'subscribers'
+    displayName: 'Subscriber'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    subscription: Attribute.JSON
+    profile: Attribute.Relation<
+      'api::subscriber.subscriber',
+      'oneToOne',
+      'api::profile.profile'
+    >
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::subscriber.subscriber',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::subscriber.subscriber',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
   }
 }
 
@@ -3679,6 +3719,7 @@ declare module '@strapi/types' {
       'api::profile.profile': ApiProfileProfile
       'api::recommended-topic.recommended-topic': ApiRecommendedTopicRecommendedTopic
       'api::recommended-tweet.recommended-tweet': ApiRecommendedTweetRecommendedTweet
+      'api::subscriber.subscriber': ApiSubscriberSubscriber
       'api::tag.tag': ApiTagTag
       'api::term.term': ApiTermTerm
       'api::timeline.timeline': ApiTimelineTimeline

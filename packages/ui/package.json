@@ -10,9 +10,5 @@
     "storybook": "storybook dev -p 6006",
     "storybook-build": "storybook build",
     "tsc": "npx tsc --noEmit"
-  },
-  "devDependencies": {
-    "@testing-library/react": "^14.2.2",
-    "@types/jest": "^29.5.12"
   }
 }
