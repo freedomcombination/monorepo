@@ -13,12 +13,12 @@ import { SearchForm } from '../../components'
 
 export const AuditLogList: FC = () => {
   const { profile, token } = useAuthContext()
-  const [profileName, setProfileName] = useState('')
+  const [q, setQ] = useState('')
 
-  const handleSearch = (name?: string) => {
-    if (!name) return setProfileName('')
+  const handleSearch = (query?: string) => {
+    if (!query) return setQ('')
 
-    setProfileName(name)
+    setQ(query)
   }
 
   const { data } = useInfiniteQuery({
@@ -29,11 +29,12 @@ export const AuditLogList: FC = () => {
         page: pageParam,
         token: token || '',
         filters: {
-          profile: {
-            name: {
-              $containsi: profileName,
-            },
-          },
+          $or: [
+            { profile: { name: { $containsi: q } } },
+            { text: { $containsi: q } },
+            { action: { $containsi: q } },
+            { uid: { $containsi: q } },
+          ],
         },
         pageSize: 100,
       }),
@@ -87,7 +88,7 @@ export const AuditLogList: FC = () => {
       <SearchForm
         bg={'white'}
         onSearch={handleSearch}
-        placeholder={"Search by profile's name"}
+        placeholder={'Search by profile, action, text, or endpoint'}
       />
 
       {logs?.length === 0 && (
