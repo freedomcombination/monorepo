@@ -1,15 +1,22 @@
 import { FC } from 'react'
 
-import { Badge, Box, HStack, Text, ThemeTypings } from '@chakra-ui/react'
+import {
+  Badge,
+  Center,
+  HStack,
+  Text,
+  ThemeTypings,
+  Tooltip,
+  Wrap,
+  chakra,
+} from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { IconType } from 'react-icons'
 import { FaRegTrashAlt, FaTimes } from 'react-icons/fa'
-import { FaCheck, FaPencil, FaPlus, FaQuestion, FaStar } from 'react-icons/fa6'
-import { MdPublish, MdUnpublished } from 'react-icons/md'
+import { FaCheck, FaPlus, FaQuestion, FaRegStar } from 'react-icons/fa6'
+import { MdModeEditOutline, MdPublish, MdUnpublished } from 'react-icons/md'
 
 import { AuditLog, AuditLogAction } from '@fc/types'
-
-import { WAvatar } from '../../components'
 
 type AuditLogItemProps = {
   log: AuditLog
@@ -32,7 +39,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
     created: FaPlus,
     deleted: FaRegTrashAlt,
     published: MdPublish,
-    updated: FaPencil,
+    updated: MdModeEditOutline,
     unpublished: MdUnpublished,
     rejected: FaTimes,
   }
@@ -45,36 +52,70 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
 
   const message = (
     <>
-      <strong>{profileName}</strong> {log.action}{' '}
-      {formatDistanceToNow(log.createdAt, { addSuffix: true })}
+      <Tooltip
+        label={profile.email}
+        placement="top"
+        bg={'white'}
+        color={'gray.700'}
+        borderWidth={1}
+      >
+        <chakra.span
+          _hover={{ color: 'primary.500' }}
+          textTransform={'capitalize'}
+          fontWeight={600}
+          cursor={'pointer'}
+        >
+          {profileName}
+        </chakra.span>
+      </Tooltip>{' '}
+      {log.action} {formatDistanceToNow(log.createdAt, { addSuffix: true })}
     </>
   )
 
   const Icon = iconMap[log.action] || FaQuestion
 
   return (
-    <HStack pos={'relative'}>
-      <WAvatar size={'sm'} name={profile?.name || ''} src={profile?.avatar} />
+    <Wrap p={{ base: 1, md: 0 }} spacing={0}>
+      <HStack spacing={1}>
+        {/* <WAvatar size={'sm'} name={profile?.name || ''} src={profile?.avatar} /> */}
 
-      <Box
-        p={1.5}
-        bg={`${colorScheme}.500`}
-        rounded={'full'}
-        color={'whiteAlpha.800'}
-      >
-        <Icon />
-      </Box>
+        <Center
+          boxSize={6}
+          borderWidth={1}
+          borderColor={`${colorScheme}.500`}
+          rounded={'full'}
+          color={`${colorScheme}.500`}
+        >
+          <Icon />
+        </Center>
 
-      {isOwnProfile && (
-        <Box p={1.5} bg={'yellow.400'} rounded={'full'} color={'yellow.700'}>
-          <FaStar />
-        </Box>
-      )}
+        {isOwnProfile && (
+          <Center
+            boxSize={6}
+            borderWidth={1}
+            borderColor={'yellow.500'}
+            rounded={'full'}
+            color={'yellow.500'}
+          >
+            <FaRegStar />
+          </Center>
+        )}
+        <Badge colorScheme={colorScheme} variant="outline" fontWeight={600}>
+          {modelName}
+        </Badge>
+      </HStack>
 
-      <Text>{message}</Text>
-      <Badge colorScheme={colorScheme} variant="outline" fontWeight={600}>
-        {modelName}
-      </Badge>
-    </HStack>
+      <Wrap align={'center'} ml={1}>
+        <Text display={'inline'}>{message}</Text>
+        <Text
+          display={'inline'}
+          color={'gray.400'}
+          fontSize={'sm'}
+          fontStyle={'italic'}
+        >
+          {log.text}
+        </Text>
+      </Wrap>
+    </Wrap>
   )
 }
