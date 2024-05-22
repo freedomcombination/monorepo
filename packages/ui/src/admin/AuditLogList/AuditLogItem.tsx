@@ -4,7 +4,7 @@ import { Badge, Box, HStack, Text, ThemeTypings } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { IconType } from 'react-icons'
 import { FaRegTrashAlt, FaTimes } from 'react-icons/fa'
-import { FaCheck, FaPencil, FaPlus, FaStar } from 'react-icons/fa6'
+import { FaCheck, FaPencil, FaPlus, FaQuestion, FaStar } from 'react-icons/fa6'
 import { MdPublish, MdUnpublished } from 'react-icons/md'
 
 import { AuditLog, AuditLogAction } from '@fc/types'
@@ -50,17 +50,12 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
     </>
   )
 
-  const Icon = iconMap[log.action] || FaStar
+  const Icon = iconMap[log.action] || FaQuestion
 
   return (
     <HStack pos={'relative'}>
       <WAvatar size={'sm'} name={profile?.name || ''} src={profile?.avatar} />
 
-      {isOwnProfile && (
-        <Box p={1.5} bg={'yellow.400'} rounded={'full'} color={'yellow.700'}>
-          <FaStar />
-        </Box>
-      )}
       <Box
         p={1.5}
         bg={`${colorScheme}.500`}
@@ -69,6 +64,12 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
       >
         <Icon />
       </Box>
+
+      {isOwnProfile && (
+        <Box p={1.5} bg={'yellow.400'} rounded={'full'} color={'yellow.700'}>
+          <FaStar />
+        </Box>
+      )}
 
       <Text>{message}</Text>
       <Badge colorScheme={colorScheme} variant="outline" fontWeight={600}>
