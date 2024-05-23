@@ -16,7 +16,7 @@ import { FaPaintBrush, FaSpinner } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { MdRemoveModerator } from 'react-icons/md'
 
-import { ASSETS_URL } from '@fc/config'
+import { ASSETS_URL, RecaptchaKeys } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { useArtsByArtist, useRecaptchaToken } from '@fc/services'
 
@@ -41,7 +41,7 @@ export const AuthenticatedUserProfile = () => {
   const { t } = useTranslation('common')
 
   const { user, profile } = useAuthContext()
-  const recaptchaToken = useRecaptchaToken('like_art')
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   // TODO: Remove like action from profile, user shouldn't like their own arts
   const { data, refetch } = useArtsByArtist(profile?.id, true)

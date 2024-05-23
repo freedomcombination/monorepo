@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { API_URL } from '@fc/config'
+import { API_URL, RecaptchaKeys } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { LikeMutationArgs } from '@fc/types'
 
@@ -13,7 +13,7 @@ import { useRecaptchaToken } from '../common'
 
 const useLikeBlogMutation = () => {
   const { token } = useAuthContext()
-  const recaptchaToken = useRecaptchaToken('blog_art')
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_BLOG)
 
   return useMutation({
     mutationKey: ['like-blog'],
