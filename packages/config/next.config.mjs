@@ -25,6 +25,9 @@ const nextConfig = {
       },
     ]
   },
+  experimental: {
+    bundlePagesExternals: true,
+  },
   reactStrictMode: true,
   transpilePackages: [
     '@fc/config',
