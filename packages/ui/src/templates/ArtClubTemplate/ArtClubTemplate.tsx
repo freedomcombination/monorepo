@@ -19,6 +19,7 @@ import { useTranslation } from 'next-i18next'
 import { parse } from 'querystring'
 import { MdMenuOpen } from 'react-icons/md'
 
+import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
 import { Art, Category } from '@fc/types'
 
@@ -42,7 +43,7 @@ export const ArtClubTemplate: FC = () => {
     locale,
   } = useRouter()
 
-  const recaptchaToken = useRecaptchaToken('like_art')
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   const changeParam = useChangeParams()
   const [isLoading, setIsLoading] = useState(false)
