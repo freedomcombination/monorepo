@@ -1,3 +1,3 @@
-import { notification } from '@fc/services/src/api/notification'
+import { notificationRouter } from '@fc/services/src/api/notification'
 
-export default notification
+export default notificationRouter
