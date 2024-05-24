@@ -24,7 +24,6 @@ const SubToNotification = () => {
         'serviceWorker' in navigator &&
         (window as any).workbox !== undefined
       ) {
-
         const swRegisteration = await navigator.serviceWorker.ready
 
         if (!swRegisteration) {
@@ -33,7 +32,8 @@ const SubToNotification = () => {
           return
         }
 
-        const swSubscription = await swRegisteration.pushManager.getSubscription()
+        const swSubscription =
+          await swRegisteration.pushManager.getSubscription()
         const isSubscriptionExpired =
           swSubscription?.expirationTime &&
           Date.now() > swSubscription.expirationTime - 5 * 60 * 1000
@@ -45,11 +45,9 @@ const SubToNotification = () => {
 
         setRegistration(swRegisteration)
       }
-
     }
 
     registerServiceWorker()
-
   }, [])
 
   // useEffect(() => {

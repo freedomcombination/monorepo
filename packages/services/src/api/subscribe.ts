@@ -12,8 +12,6 @@ const subscribers: any[] = []
 //   }
 // };
 
-
-
 export const subscribeHandler = (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
     return res.status(405).send('Invalid request method.')
