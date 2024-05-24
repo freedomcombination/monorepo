@@ -1,5 +1,4 @@
 import { Expand } from './common'
-import { LangRole } from './lang-role'
 import { Role } from './role'
 import { StrapiBase } from './strapi'
 
@@ -9,7 +8,6 @@ export type UserBase = {
   blocked: boolean
   confirmed: boolean
   provider: string
-  langRoles?: Array<LangRole>
 }
 
 type UserRelation = {

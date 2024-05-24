@@ -16,6 +16,7 @@ import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
+import { RecaptchaKeys } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useRecaptchaToken } from '@fc/services'
 import { Comment, CommentCreateInput } from '@fc/types'
@@ -29,7 +30,7 @@ import { WAvatar } from '../WAvatar'
 export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
   const { t } = useTranslation()
   const { user, profile } = useAuthContext()
-  const recaptchaToken = useRecaptchaToken('comment')
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.COMMENT)
 
   const {
     register,

@@ -95,18 +95,6 @@
       "relation": "oneToMany",
       "target": "api::feedback.feedback",
       "mappedBy": "application"
-    },
-    "approver": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "approvedApplications"
-    },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdApplications"
     }
   }
 }

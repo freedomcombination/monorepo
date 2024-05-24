@@ -271,7 +271,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         {
           id: 26,
           name: 'Dur',
-          email: 'davut@wsvvrijheid.nl',
+          email: 'davut@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -319,7 +319,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       ],
       foundation: {
         id: 1,
-        email: 'info@wsvvrijheid.nl',
+        email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
         bank1: 'ING BANK',
         bank2: 'TRIODOS BANK',
@@ -507,7 +507,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           description:
             'Platformumuz Kunsthalte tarafından düzenlenen, "Bir mültecilerin gözünden Hollanda" konulu karma sanat sergisine hepiniz davetlisiniz. ',
           content:
-            'Platformumuz Kunsthalte tarafından düzenlenen, "Bir mültecinin gözünden Hollanda" konulu karma sanat sergisine hepiniz davetlisiniz. \nSergimizin açılışı 25 Haziran 2022 günü saat 13:00\'de yapılacak olup sergiyi 09 Temmuz 2022 günü saat 21:00\'e kadar ziyaret edebilirsiniz.\n\n### Ziyaret saatleri\n\nPazar ve pazartesi dışındaki tüm günlerde 09:00-21:00 saatleri, Pazar günleri ise 11:00-14:00 saatleri arasında  ziyaret edebilirsiniz. **Sergi yerimiz Pazartesi günleri kapalıdır.** \n\nSergiye ilişkin yorum, eleştiri ve beğenilerinizi kunsthalte@wsvvrijheid.nl adresine gönderebilirsiniz. \nSonraki aktivitelerimizden haberdar olmak ve sergimizin eserlerini online olarak da görebilmek için aşağıdaki adreslerden bizi takip edebilirsiniz. \n\n### Afişimiz\n![afis.jpeg](https://api.freedomcombination.com/uploads/afis_52695916a0.jpeg)\n\n### Takip\n\n[Web sitemiz](https://www.kunsthalte.com)\n[Instagram](https://www.instagram.com/sanatduragi.nl/?hl=en) [Twitter](https://twitter.com/sanatduragi_nl) \n\n### Bağış\n\nSanata ve sanatçıya desteklerinizi bağışta bulunarak gösterebilirsiniz. Bağış için [bu linki](https://www.eventbrite.com/e/tickets-nederland-door-de-ogen-van-een-vluchteling-373524410567) kullanabilirsiniz. \n\n[Vakfımız](https://freedomcombination.com/about-us)',
+            'Platformumuz Kunsthalte tarafından düzenlenen, "Bir mültecinin gözünden Hollanda" konulu karma sanat sergisine hepiniz davetlisiniz. \nSergimizin açılışı 25 Haziran 2022 günü saat 13:00\'de yapılacak olup sergiyi 09 Temmuz 2022 günü saat 21:00\'e kadar ziyaret edebilirsiniz.\n\n### Ziyaret saatleri\n\nPazar ve pazartesi dışındaki tüm günlerde 09:00-21:00 saatleri, Pazar günleri ise 11:00-14:00 saatleri arasında  ziyaret edebilirsiniz. **Sergi yerimiz Pazartesi günleri kapalıdır.** \n\nSergiye ilişkin yorum, eleştiri ve beğenilerinizi kunsthalte@freedomcombination.com adresine gönderebilirsiniz. \nSonraki aktivitelerimizden haberdar olmak ve sergimizin eserlerini online olarak da görebilmek için aşağıdaki adreslerden bizi takip edebilirsiniz. \n\n### Afişimiz\n![afis.jpeg](https://api.freedomcombination.com/uploads/afis_52695916a0.jpeg)\n\n### Takip\n\n[Web sitemiz](https://www.kunsthalte.com)\n[Instagram](https://www.instagram.com/sanatduragi.nl/?hl=en) [Twitter](https://twitter.com/sanatduragi_nl) \n\n### Bağış\n\nSanata ve sanatçıya desteklerinizi bağışta bulunarak gösterebilirsiniz. Bağış için [bu linki](https://www.eventbrite.com/e/tickets-nederland-door-de-ogen-van-een-vluchteling-373524410567) kullanabilirsiniz. \n\n[Vakfımız](https://freedomcombination.com/about-us)',
           approvalStatus: 'approved',
           date: '2022-06-25T05:00:00.000Z',
           createdAt: '2022-12-08T06:58:57.832Z',
@@ -523,7 +523,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           description:
             'DİJİTAL ÇİZİM ATÖLYESİ BAŞLIYOR\n\nSanat Durağı’nda 12-15 yaş arası çocuklara özel ‘Dijital Çizim Atölyesi’ başlıyor. ',
           content:
-            "Sanat Durağı’nda 12-15 yaş arası çocuklara özel ‘Dijital Çizim Atölyesi’ başlıyor. \n\nSanat Durağı, Dijital Çizim Atölyesi 12-15 yaş arasındaki çocuklara kapılarını açıyor. Fatma Zehra Boyalı ile online yapılacak eğitimde profesyonel çizerler arasında oldukça yaygın kullanılan, kapsamlı ve pratik Procreate uygulaması öğretilecek.\n\n15 kişi ile sınırlandırılacak eğitimde; procreate uygulaması uyumlu ipad, Procreate uygulaması ve apple pencil atölye gereksinimleri bulunmaktadır.\n\nAtölye 4 hafta sürecek\n\n13 Şubat 2023'te başlayacak kurs, pazartesi ve perşembe günleri saat 19.30-21.00 saatleri arasında olup 9 Mart’ta son bulacak.\n\nKatılım bedeli 20 €\n\nAtölyeye katılım bedeli ise 12-15 yaş grubuna özel 20 Euro’dur. Bilgi ve kayit icin [kunsthalte@wsvvrijheid.nl](mailto:kunsthalte@wsvvrijheid.nl) adresinden bize ulasabilirsiniz.",
+            "Sanat Durağı’nda 12-15 yaş arası çocuklara özel ‘Dijital Çizim Atölyesi’ başlıyor. \n\nSanat Durağı, Dijital Çizim Atölyesi 12-15 yaş arasındaki çocuklara kapılarını açıyor. Fatma Zehra Boyalı ile online yapılacak eğitimde profesyonel çizerler arasında oldukça yaygın kullanılan, kapsamlı ve pratik Procreate uygulaması öğretilecek.\n\n15 kişi ile sınırlandırılacak eğitimde; procreate uygulaması uyumlu ipad, Procreate uygulaması ve apple pencil atölye gereksinimleri bulunmaktadır.\n\nAtölye 4 hafta sürecek\n\n13 Şubat 2023'te başlayacak kurs, pazartesi ve perşembe günleri saat 19.30-21.00 saatleri arasında olup 9 Mart’ta son bulacak.\n\nKatılım bedeli 20 €\n\nAtölyeye katılım bedeli ise 12-15 yaş grubuna özel 20 Euro’dur. Bilgi ve kayit icin [kunsthalte@freedomcombination.com](mailto:kunsthalte@freedomcombination.com) adresinden bize ulasabilirsiniz.",
           approvalStatus: 'approved',
           date: '2023-03-13T07:30:00.000Z',
           createdAt: '2023-01-31T15:57:39.506Z',
@@ -539,7 +539,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           description:
             'Sanat Durağı’nda yetişkinlere yönelik ‘Dijital Çizim Atölyesi’ başlıyor. ',
           content:
-            "Sanat Durağı’nda yetişkinlere yönelik ‘Dijital Çizim Atölyesi’ başlıyor. \n\nSanat Durağı, Dijital Çizim Atölyesi yetişkinlere yönelik dijital çizim atölyesi başlatacak. Canan Sarlar ile online yapılacak kursta profesyonel çizerler arasında oldukça yaygın kullanılan, kapsamlı ve pratik Procreate uygulaması öğretilecek.\n\n15 kişi ile sınırlandırılacak eğitimde; procreate uygulaması uyumlu ipad, Procreate uygulaması ve apple pencil atölye gereksinimleri bulunmaktadır.\n\nAtölye 4 hafta sürecek\n\n03 Eylül 2022'de başlayacak kurs, pazartesi ve perşembe günleri saat 19.30-21.00 saatleri arasında olup 22 Ekim 2022'de son bulacak.\n\nKatılım bedeli 20 €\n\nAtölyeye katılım bedeli ise  20 Euro’dur. Bilgi ve kayit icin [kunsthalte@wsvvrijheid.nl](mailto:kunsthalte@wsvvrijheid.nl) adresinden bize ulasabilirsiniz.",
+            "Sanat Durağı’nda yetişkinlere yönelik ‘Dijital Çizim Atölyesi’ başlıyor. \n\nSanat Durağı, Dijital Çizim Atölyesi yetişkinlere yönelik dijital çizim atölyesi başlatacak. Canan Sarlar ile online yapılacak kursta profesyonel çizerler arasında oldukça yaygın kullanılan, kapsamlı ve pratik Procreate uygulaması öğretilecek.\n\n15 kişi ile sınırlandırılacak eğitimde; procreate uygulaması uyumlu ipad, Procreate uygulaması ve apple pencil atölye gereksinimleri bulunmaktadır.\n\nAtölye 4 hafta sürecek\n\n03 Eylül 2022'de başlayacak kurs, pazartesi ve perşembe günleri saat 19.30-21.00 saatleri arasında olup 22 Ekim 2022'de son bulacak.\n\nKatılım bedeli 20 €\n\nAtölyeye katılım bedeli ise  20 Euro’dur. Bilgi ve kayit icin [kunsthalte@freedomcombination.com](mailto:kunsthalte@freedomcombination.com) adresinden bize ulasabilirsiniz.",
           approvalStatus: 'approved',
           date: '2022-08-03T18:00:00.000Z',
           createdAt: '2023-09-09T19:02:52.226Z',
@@ -754,7 +754,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         {
           id: 28,
           name: 'Kunsthalte',
-          email: 'kunsthalte@wsvvrijheid.nl',
+          email: 'kunsthalte@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -826,7 +826,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       ],
       foundation: {
         id: 1,
-        email: 'info@wsvvrijheid.nl',
+        email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
         bank1: 'ING BANK',
         bank2: 'TRIODOS BANK',
@@ -996,7 +996,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           description:
             'DİJİTAL ÇİZİM ATÖLYESİ BAŞLIYOR\n\nSanat Durağı’nda 12-15 yaş arası çocuklara özel ‘Dijital Çizim Atölyesi’ başlıyor. ',
           content:
-            "Sanat Durağı’nda 12-15 yaş arası çocuklara özel ‘Dijital Çizim Atölyesi’ başlıyor. \n\nSanat Durağı, Dijital Çizim Atölyesi 12-15 yaş arasındaki çocuklara kapılarını açıyor. Fatma Zehra Boyalı ile online yapılacak eğitimde profesyonel çizerler arasında oldukça yaygın kullanılan, kapsamlı ve pratik Procreate uygulaması öğretilecek.\n\n15 kişi ile sınırlandırılacak eğitimde; procreate uygulaması uyumlu ipad, Procreate uygulaması ve apple pencil atölye gereksinimleri bulunmaktadır.\n\nAtölye 4 hafta sürecek\n\n13 Şubat 2023'te başlayacak kurs, pazartesi ve perşembe günleri saat 19.30-21.00 saatleri arasında olup 9 Mart’ta son bulacak.\n\nKatılım bedeli 20 €\n\nAtölyeye katılım bedeli ise 12-15 yaş grubuna özel 20 Euro’dur. Bilgi ve kayit icin [kunsthalte@wsvvrijheid.nl](mailto:kunsthalte@wsvvrijheid.nl) adresinden bize ulasabilirsiniz.",
+            "Sanat Durağı’nda 12-15 yaş arası çocuklara özel ‘Dijital Çizim Atölyesi’ başlıyor. \n\nSanat Durağı, Dijital Çizim Atölyesi 12-15 yaş arasındaki çocuklara kapılarını açıyor. Fatma Zehra Boyalı ile online yapılacak eğitimde profesyonel çizerler arasında oldukça yaygın kullanılan, kapsamlı ve pratik Procreate uygulaması öğretilecek.\n\n15 kişi ile sınırlandırılacak eğitimde; procreate uygulaması uyumlu ipad, Procreate uygulaması ve apple pencil atölye gereksinimleri bulunmaktadır.\n\nAtölye 4 hafta sürecek\n\n13 Şubat 2023'te başlayacak kurs, pazartesi ve perşembe günleri saat 19.30-21.00 saatleri arasında olup 9 Mart’ta son bulacak.\n\nKatılım bedeli 20 €\n\nAtölyeye katılım bedeli ise 12-15 yaş grubuna özel 20 Euro’dur. Bilgi ve kayit icin [kunsthalte@freedomcombination.com](mailto:kunsthalte@freedomcombination.com) adresinden bize ulasabilirsiniz.",
           approvalStatus: 'approved',
           date: '2023-03-13T07:30:00.000Z',
           createdAt: '2023-01-31T15:57:39.506Z',
@@ -1027,7 +1027,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           slug: 'proje-ekibine-goenuellue-ariyoruz',
           description: 'Proje Ekibine Gönüllü Arıyoruz',
           content:
-            '**Proje Ekibine Gönüllü Arıyoruz**\n\nFreedom Combination Vakfı sosyal medya özelinde mağduriyetleri duyurmayı amaçlayan insan hakları vakfıdır.  Bu alanda çalışmalar yapmak üzere proje yazma ekibi kurulacaktır. Aşağıdaki şekillerde gönüllülerimizi bekliyoruz. \n\n**Ne Teklif Ediyoruz?**\n\n☑️ Proje ekibimize katılarak Hollanda kurumları ve Avrupa Birliği projeleri yazmayı öğreneceksiniz. \n\n☑️ Size verilecek konularda hazırladığınız projenin ilgili kurum tarafından kabul edilmesi durumunda çalışan olarak görüneceğinizden proje yürürlükte olduğu sürece ücret alabileceksiniz. \n\n☑️ Proje yazmayı öğreneceğiniz için kendi fikirlerinizi projelendirebileceksiniz. \n\n**Ne Bekliyoruz?**\n\n☑️ Fikirlerinizi kurumlara anlatmanız gerekeceğinden B2 seviyesinde Hollandaca veya İngilizce.\n\n☑️ Projelerinizi hayata geçirmeye tam motivasyonunuz olmalı.\n\n☑️ Verilen konuyu projelendirebilecek kadar zaman ayırabilmelisiniz.\n\n**Ekibe katılmak için**\n\nMail          : weesacademie@wsvvrijheid.nl\nWhatsapp : +31 6852 21308\nFreedom Combination Vakfı : freedomcombination.com ',
+            '**Proje Ekibine Gönüllü Arıyoruz**\n\nFreedom Combination Vakfı sosyal medya özelinde mağduriyetleri duyurmayı amaçlayan insan hakları vakfıdır.  Bu alanda çalışmalar yapmak üzere proje yazma ekibi kurulacaktır. Aşağıdaki şekillerde gönüllülerimizi bekliyoruz. \n\n**Ne Teklif Ediyoruz?**\n\n☑️ Proje ekibimize katılarak Hollanda kurumları ve Avrupa Birliği projeleri yazmayı öğreneceksiniz. \n\n☑️ Size verilecek konularda hazırladığınız projenin ilgili kurum tarafından kabul edilmesi durumunda çalışan olarak görüneceğinizden proje yürürlükte olduğu sürece ücret alabileceksiniz. \n\n☑️ Proje yazmayı öğreneceğiniz için kendi fikirlerinizi projelendirebileceksiniz. \n\n**Ne Bekliyoruz?**\n\n☑️ Fikirlerinizi kurumlara anlatmanız gerekeceğinden B2 seviyesinde Hollandaca veya İngilizce.\n\n☑️ Projelerinizi hayata geçirmeye tam motivasyonunuz olmalı.\n\n☑️ Verilen konuyu projelendirebilecek kadar zaman ayırabilmelisiniz.\n\n**Ekibe katılmak için**\n\nMail          : weesacademie@freedomcombination.com\nWhatsapp : +31 6852 21308\nFreedom Combination Vakfı : freedomcombination.com ',
           approvalStatus: 'approved',
           date: '2023-09-21T14:15:00.000Z',
           createdAt: '2023-09-22T00:20:43.915Z',
@@ -1106,7 +1106,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         {
           id: 40,
           name: 'Talip Altas',
-          email: 'talip@wsvvrijheid.nl',
+          email: 'talip@freedomcombination.com',
           bio: null,
           occupation: null,
           phone: '',
@@ -1178,7 +1178,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       ],
       foundation: {
         id: 1,
-        email: 'info@wsvvrijheid.nl',
+        email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
         bank1: 'ING BANK',
         bank2: 'TRIODOS BANK',
@@ -1760,7 +1760,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       ],
       foundation: {
         id: 1,
-        email: 'info@wsvvrijheid.nl',
+        email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
         bank1: 'ING BANK',
         bank2: 'TRIODOS BANK',
@@ -2006,7 +2006,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       volunteers: [],
       foundation: {
         id: 1,
-        email: 'info@wsvvrijheid.nl',
+        email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
         bank1: 'ING BANK',
         bank2: 'TRIODOS BANK',

@@ -106,18 +106,6 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "mappedBy": "competitions"
-    },
-    "approver": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "approvedCompetitions"
-    },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdCompetitions"
     }
   }
 }

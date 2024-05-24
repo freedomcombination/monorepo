@@ -8,7 +8,7 @@ export const getProfile = async (
   check?: boolean,
   includePlatform?: boolean,
 ) => {
-  if (!ctx.state.user) {
+  if (!ctx?.state?.user) {
     if (check) {
       throw new UnauthorizedError('User required')
     }

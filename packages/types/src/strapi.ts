@@ -71,7 +71,6 @@ import {
   HashtagUpdateInput,
 } from './hashtag'
 import { Job, JobCreateInput } from './job'
-import { LangRole } from './lang-role'
 import { StrapiLocale } from './locale'
 import { Me } from './me'
 import { Mention, MentionCreateInput } from './mention'
@@ -94,6 +93,11 @@ import {
   RecommendedTweet,
   RecommendedTweetCreateInput,
 } from './recommended-tweet'
+import {
+  Subscriber,
+  SubscriberCreateInput,
+  SubscriberUpdateInput,
+} from './subscriber'
 import { Tag, TagCreateInput } from './tag'
 import { Term } from './term'
 import { Timeline, TimelineCreateInput } from './timeline'
@@ -135,11 +139,6 @@ export type StrapiEntityBase = {
   locale: StrapiLocale
 }
 
-export type StrapiCreatorRelation = {
-  approver?: Profile | null
-  creator?: Profile | null
-}
-
 export type StrapiModel =
   | AccountStats
   | Activity
@@ -162,7 +161,6 @@ export type StrapiModel =
   | Foundation
   | Hashtag
   | Job
-  | LangRole
   | Me
   | Mention
   | Platform
@@ -173,6 +171,7 @@ export type StrapiModel =
   | Profile
   | RecommendedTopic
   | RecommendedTweet
+  | Subscriber
   | Tag
   | Term
   | Timeline
@@ -269,6 +268,7 @@ export type StrapiCollectionEndpoint =
   | 'arts'
   | 'assets'
   | 'assets-trackings'
+  | 'audit-logs'
   | 'authors'
   | 'blogs'
   | 'categories'
@@ -283,7 +283,6 @@ export type StrapiCollectionEndpoint =
   | 'foundations'
   | 'hashtags'
   | 'jobs'
-  | 'lang-roles'
   | 'me'
   | 'mentions'
   | 'observations'
@@ -294,6 +293,7 @@ export type StrapiCollectionEndpoint =
   | 'recommended-topics'
   | 'recommended-tweets'
   | 'saved-tweets'
+  | 'subscribers'
   | 'tags'
   | 'timelines'
   | 'tweet-users'
@@ -363,6 +363,7 @@ export type StrapiCreateInput =
   | ObservationCreateInput
   | RecommendedTopicCreateInput
   | RecommendedTweetCreateInput
+  | SubscriberCreateInput
   | TagCreateInput
   | TimelineCreateInput
   | UserFeedbackCreateInput
@@ -388,6 +389,7 @@ export type StrapiUpdateInput =
   | HashtagUpdateInput
   | PostUpdateInput
   | ProfileUpdateInput
+  | SubscriberUpdateInput
   | UserFeedbackUpdateInput
 
 type StrapiFilterOperator =

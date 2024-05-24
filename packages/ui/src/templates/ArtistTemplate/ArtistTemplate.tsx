@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import { SimpleGrid, Stack, Text } from '@chakra-ui/react'
 
+import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken } from '@fc/services'
 import { Art, Profile } from '@fc/types'
 
@@ -19,7 +20,7 @@ export const ArtistTemplate: FC<ArtistTemplateProps> = ({
   onToggleLike,
 }) => {
   const name = artist?.name || artist?.email
-  const recaptchaToken = useRecaptchaToken('like_art')
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   return (
     <>

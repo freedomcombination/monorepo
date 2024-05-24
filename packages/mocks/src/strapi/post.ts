@@ -43,8 +43,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: {
           id: 28,
@@ -175,8 +173,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: {
           id: 35,
@@ -391,8 +387,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: {
           id: 429,
@@ -567,8 +561,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: null,
         localizations: [
@@ -743,8 +735,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: {
           id: 432,
@@ -984,8 +974,6 @@ export const POST_MOCKS = {
           hashtagDefault: 'HemenAdalet',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: null,
         localizations: [
@@ -1075,8 +1063,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: {
           id: 35,
@@ -1248,8 +1234,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: {
           id: 35,
@@ -1465,8 +1449,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: null,
         localizations: [
@@ -1617,8 +1599,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: null,
         localizations: [
@@ -1952,8 +1932,6 @@ export const POST_MOCKS = {
           hashtagDefault: 'HemenAdalet',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: null,
         localizations: [
@@ -2784,8 +2762,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: {
           id: 35,
@@ -3616,8 +3592,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: {
           id: 35,
@@ -4533,8 +4507,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: null,
         localizations: [
@@ -5409,8 +5381,6 @@ export const POST_MOCKS = {
           hashtagDefault: '#StgWeesPresentatie',
         },
         tags: [],
-        approver: null,
-        creator: null,
         video: null,
         caps: null,
         localizations: [

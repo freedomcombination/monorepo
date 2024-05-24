@@ -121,18 +121,6 @@
       "relation": "manyToOne",
       "target": "api::profile.profile",
       "inversedBy": "ownedBlogs"
-    },
-    "approver": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdBlogs"
-    },
-    "creator": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "createdBlogs"
     }
   }
 }

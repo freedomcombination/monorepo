@@ -11,8 +11,8 @@ import {
   AccountStats as AccountStatsType,
   StrapiLocale,
 } from '@fc/types'
-import { AdminLayout } from '@fc/ui'
 import { SubToNotification } from '@fc/ui'
+import { AdminLayout, AuditLogList } from '@fc/ui'
 
 const args: RequestCollectionArgs<AccountStats> = {
   endpoint: 'account-statistics',
@@ -22,20 +22,22 @@ const args: RequestCollectionArgs<AccountStats> = {
 
 const Index = () => {
   const { t } = useTranslation()
-  const { user, profile } = useAuthContext()
+  const { user, profile, canRead } = useAuthContext()
 
   return (
-    <>
-      <AdminLayout seo={{ title: t('home') }}>
-        <SubToNotification />
+    <AdminLayout seo={{ title: t('home') }}>
+      <SubToNotification />
+      {canRead('audit-logs') ? (
+        <AuditLogList />
+      ) : (
         <Center minH={'50vh'}>
           <Heading as={'h1'}>
             {t('welcome')}
             {(user || profile) && ` ${profile?.name || user?.username}`}
           </Heading>
         </Center>
-      </AdminLayout>
-    </>
+      )}
+    </AdminLayout>
   )
 }
 

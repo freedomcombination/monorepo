@@ -2,7 +2,7 @@ import { Category } from './category'
 import { Expand } from './common'
 import { UploadFile } from './file'
 import { Platform } from './platform'
-import { StrapiBase, StrapiCreatorRelation, StrapiEntityBase } from './strapi'
+import { StrapiBase, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 
 type ActivityBase = StrapiEntityBase & {
@@ -44,7 +44,4 @@ export type ActivityLocalizeInput = Pick<
   'title' | 'description' | 'content'
 >
 
-export type Activity = StrapiBase &
-  ActivityBase &
-  ActivityRelation &
-  StrapiCreatorRelation
+export type Activity = StrapiBase & ActivityBase & ActivityRelation

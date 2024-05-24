@@ -18,10 +18,10 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaRegFilePdf } from 'react-icons/fa6'
 
-import { PUBLIC_TOKEN } from '@fc/config'
+import { PUBLIC_TOKEN, RecaptchaKeys } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
-import { Platform, Profile, ProfileCreateInput } from '@fc/types'
+import { Job, Platform, Profile, ProfileCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
 import { JoinTemplateProps } from './types'
@@ -43,7 +43,18 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
   })
 
   const platforms = platformsResult.data?.data || []
-  const recaptchaToken = useRecaptchaToken('join_form')
+
+  // Fetch foundation jobs
+  const foundationJobsResult = useStrapiRequest<Job>({
+    endpoint: 'jobs',
+    locale,
+    filters: { platform: { $null: true } },
+  })
+
+  const foundationJobs = foundationJobsResult.data?.data || []
+
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.JOIN_FORM)
+
   const { mutate, isPending, isSuccess } = useMutation({
     mutationKey: ['create-volunteer'],
     mutationFn: (body: ProfileCreateInput) =>
@@ -141,6 +152,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
                 onSubmitHandler={onSubmit}
                 isLoading={isPending}
                 platforms={platforms}
+                foundationJobs={foundationJobs}
               />
             </Stack>
 
