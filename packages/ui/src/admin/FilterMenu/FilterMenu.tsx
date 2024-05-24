@@ -13,21 +13,29 @@ import { I18nNamespaces } from '../../../@types/i18next'
 export const FilterMenu = <T extends StrapiModel>({
   relationFilterOptions = [],
   setRelationFilter,
-  filterOptions = [],
-  setFilters,
+  booleanFilterOptions = [],
+  setBooleanFilters,
 }: FilterMenuProps<T>) => {
-  const [selectedFilters, setSelectedFilters] = useState<FilterOption[]>([])
+  const [selectedBooleanFilters, setSelectedBooleanFilters] = useState<
+    FilterOption[]
+  >([])
   const { t } = useTranslation()
 
   const handleChangeFilters = (filters: FilterOption[]) => {
-    setSelectedFilters(filters)
-    setFilters(filters)
+    setSelectedBooleanFilters(filters)
+    setBooleanFilters(filters)
   }
 
-  if (!filterOptions?.length && !relationFilterOptions?.length) return null
+  if (!booleanFilterOptions?.length && !relationFilterOptions?.length)
+    return null
 
   return (
     <Stack divider={<MenuDivider />}>
+      <FilterMenuGroup
+        options={booleanFilterOptions}
+        filters={selectedBooleanFilters}
+        setFilters={handleChangeFilters}
+      />
       {relationFilterOptions?.length > 0 &&
         relationFilterOptions?.map((filter, index) => (
           <RelationFilterMenuGroup
@@ -39,12 +47,6 @@ export const FilterMenu = <T extends StrapiModel>({
             setRelationFilter={setRelationFilter}
           />
         ))}
-
-      <FilterMenuGroup
-        options={filterOptions}
-        filters={selectedFilters}
-        setFilters={handleChangeFilters}
-      />
     </Stack>
   )
 }
