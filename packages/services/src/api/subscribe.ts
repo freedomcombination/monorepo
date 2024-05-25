@@ -1,40 +1,32 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import webPush from 'web-push'
 
-// ? temporary
-const subscribers: any[] = []
+import { API_URL } from '@fc/config'
 
-// const pushSubscription = {
-//   endpoint: '<Push Subscription URL>',
-//   keys: {
-//     p256dh: '<User Public Encryption Key>',
-//     auth: '<User Auth Secret>'
-//   }
-// };
-
-export const subscribeHandler = (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method !== 'POST') {
-    return res.status(405).send('Invalid request method.')
-  }
-  if (
-    !process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY ||
-    !process.env.WEB_PUSH_EMAIL ||
-    !process.env.WEB_PUSH_PRIVATE_KEY
-  ) {
-    throw new Error('Environment variables supplied not sufficient.')
-  }
-
-  webPush.setVapidDetails(
-    `mailto:${process.env.WEB_PUSH_EMAIL}`,
-    process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY,
-    process.env.WEB_PUSH_PRIVATE_KEY,
-  )
-
-  // todo: add subscription to subscribers
+// Saves subscription data to the server
+export const subscribeHandler = async (
+  req: NextApiRequest,
+  res: NextApiResponse,
+) => {
+  // todo: add unsubscribe.ts and handle unsub there?
   const { sub } = req.body
-  subscribers.push(sub)
+
+  try {
+    const res = await fetch(`${API_URL}/api/subscribers`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data: { subscription: sub } }),
+    })
+
+    if (!res.ok) {
+      const error = await res.json()
+      console.error('Error from Strapi: ', error)
+      throw new Error('Failed to save subscription to Strapi')
+    }
+  } catch (error) {
+    console.error('ERROR: ', error)
+  }
 
   res.status(201).json({ message: 'Subscription added successfully' })
 }
-
-export const getSubscribers = () => subscribers

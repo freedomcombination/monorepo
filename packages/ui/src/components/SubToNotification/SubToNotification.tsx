@@ -50,32 +50,7 @@ const SubToNotification = () => {
     registerServiceWorker()
   }, [])
 
-  // useEffect(() => {
-  //   if (
-  //     typeof window !== 'undefined' &&
-  //     'serviceWorker' in navigator &&
-  //     (window as any).workbox !== undefined
-  //   ) {
-  //     // runs only in browser
-  //     navigator.serviceWorker.ready.then(reg => {
-  //       // getSubscription() only works in HTTPS, retrieves an existing push subscription
-  //       reg.pushManager.getSubscription().then(sub => {
-  //         if (
-  //           sub &&
-  //           !(
-  //             sub.expirationTime &&
-  //             Date.now() > sub.expirationTime - 5 * 60 * 1000
-  //           )
-  //         ) {
-  //           setSubscription(sub)
-  //           setIsSubscribed(true)
-  //         }
-  //       })
-  //       setRegistration(reg)
-  //     })
-  //   }
-  // }, [])
-
+  // Subscribes user to the push service.
   const subscribeButtonOnClick: MouseEventHandler<
     HTMLButtonElement
   > = async event => {
@@ -91,7 +66,8 @@ const SubToNotification = () => {
 
     event.preventDefault()
 
-    // Subscribe to a push server
+    // todo: error handling
+    // Subscribes user to a push server, returns subscription obj
     const sub = await registration.pushManager.subscribe({
       userVisibleOnly: true,
       // Push server will use this to auth the app server
@@ -100,7 +76,7 @@ const SubToNotification = () => {
       ),
     })
 
-    // TODO: you should call your API to save subscription data on the server in order to send web push notification from the server
+    // todo: error handling
     await fetch('/api/subscribe', {
       method: 'POST',
       headers: {
@@ -139,20 +115,9 @@ const SubToNotification = () => {
     HTMLButtonElement
   > = async event => {
     event.preventDefault()
-    if (!subscription) {
-      console.error('Web push not subscribed')
-
-      return
-    }
 
     await fetch('/api/notification', {
       method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        subscription,
-      }),
     })
   }
 

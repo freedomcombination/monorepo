@@ -1,20 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import webPush from 'web-push'
 
-// import { strapiRequest } from '@fc/lib'
-
-import { getSubscribers } from './subscribe'
+import { strapiRequest } from '@fc/lib'
+import { Subscriber } from '@fc/types'
 
 export const notificationRouter = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
-  const subscribers = getSubscribers()
-
-  // const subscribersStrapi = await strapiRequest<subs>({
-  //   endpoint: "subscribers",
-  // })
-
   if (req.method !== 'POST') {
     return res.status(405).send('Invalid request method.')
   }
@@ -27,6 +20,24 @@ export const notificationRouter = async (
     throw new Error('Environment variables supplied not sufficient.')
   }
 
+  webPush.setVapidDetails(
+    `mailto:${process.env.WEB_PUSH_EMAIL}`,
+    process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY,
+    process.env.WEB_PUSH_PRIVATE_KEY,
+  )
+
+  const subscribers = await strapiRequest<Subscriber>({
+    endpoint: 'subscribers',
+  })
+
+  if (!subscribers.data || subscribers.data.length === 0) {
+    console.error('No subscriptions found')
+
+    return
+  }
+
+  // console.log('# # # # subs: ', subscribers.data)
+
   // todo: customize the notification
   const payload = JSON.stringify({
     title: 'Are you ready?',
@@ -35,9 +46,13 @@ export const notificationRouter = async (
 
   try {
     await Promise.all(
-      subscribers.map(async subscription => {
+      subscribers.data.map(async subscriber => {
         try {
-          await webPush.sendNotification(subscription, payload)
+          if (subscriber.subscription === null) {
+            console.error('Subscription is null')
+          } else {
+            await webPush.sendNotification(subscriber.subscription, payload)
+          }
         } catch (err) {
           console.error(err)
         }
