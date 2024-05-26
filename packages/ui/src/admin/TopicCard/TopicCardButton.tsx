@@ -1,7 +1,5 @@
 import { FC } from 'react'
 
-import { Box } from '@chakra-ui/react'
-
 import { TopicCardButtonProps } from './types'
 import { ActionButton } from '../../components'
 
