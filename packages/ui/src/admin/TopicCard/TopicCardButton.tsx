@@ -16,12 +16,9 @@ export const TopicCardButton: FC<TopicCardButtonProps> = ({
       aria-label={title}
       onClick={onClick}
       leftIcon={icon}
-      iconSpacing={{ base: 0, lg: 2 }}
       {...rest}
     >
-      <Box as="span" display={{ base: 'none', xl: 'inline' }}>
-        {title}
-      </Box>
+      {title}
     </ActionButton>
   )
 }

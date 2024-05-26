@@ -3309,7 +3309,7 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
     displayName: 'Subscriber'
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     subscription: Attribute.JSON
@@ -3320,7 +3320,6 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::subscriber.subscriber',
       'oneToOne',

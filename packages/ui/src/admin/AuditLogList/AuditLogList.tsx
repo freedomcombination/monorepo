@@ -38,7 +38,6 @@ export const AuditLogList: FC = () => {
         },
         pageSize: 100,
       }),
-    refetchInterval: 5000,
     initialPageParam: 0,
     getNextPageParam: r => (r.meta?.pagination?.page || 0) + 1,
     enabled: !!token,

@@ -46,6 +46,7 @@ export const DataTable = <T extends StrapiModel>({
           direction={{ base: 'column', md: 'row' }}
           justify={{ base: 'center', md: 'space-between' }}
           align={'center'}
+          py={4}
         >
           <HStack flex={1} justify={{ base: 'center', md: 'start' }}>
             <Select
