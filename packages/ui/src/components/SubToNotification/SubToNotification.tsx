@@ -24,16 +24,16 @@ const SubToNotification = () => {
         'serviceWorker' in navigator &&
         (window as any).workbox !== undefined
       ) {
-        const swRegisteration = await navigator.serviceWorker.ready
+        const swRegistration = await navigator.serviceWorker.ready
 
-        if (!swRegisteration) {
+        if (!swRegistration) {
           console.error('Service worker is not registered.')
 
           return
         }
 
         const swSubscription =
-          await swRegisteration.pushManager.getSubscription()
+          await swRegistration.pushManager.getSubscription()
         const isSubscriptionExpired =
           swSubscription?.expirationTime &&
           Date.now() > swSubscription.expirationTime - 5 * 60 * 1000
@@ -43,7 +43,7 @@ const SubToNotification = () => {
           setIsSubscribed(true)
         }
 
-        setRegistration(swRegisteration)
+        setRegistration(swRegistration)
       }
     }
 
@@ -54,43 +54,68 @@ const SubToNotification = () => {
   const subscribeButtonOnClick: MouseEventHandler<
     HTMLButtonElement
   > = async event => {
-    if (!process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY) {
-      throw new Error('Environment variables supplied not sufficient.')
+    try {
+
+      if (!process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY) {
+        throw new Error('Environment variables supplied not sufficient.')
+      }
+
+      if (!registration) {
+        console.error('Service worker registration is not available.')
+
+        return
+      }
+
+      event.preventDefault()
+
+      let sub
+      try {
+        // Subscribes user to a push server, returns subscription obj
+        sub = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          // Push server will use this to auth the app server
+          applicationServerKey: base64ToUint8Array(
+            process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY,
+          ),
+        })
+      } catch (error) {
+        if (error instanceof Error) {
+          throw new Error('Failed to subscribe to the push service: ', error)
+        } else {
+          throw new Error('Failed to subscribe to the push service: An unknown error')
+        }
+      }
+
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            sub,
+          }),
+        })
+
+        if (!response.ok) {
+          throw new Error(`Failed to subscribe to the push service: ${response.statusText} `)
+        }
+
+      } catch (error) {
+        if (error instanceof Error) {
+          throw new Error('Error during fetch: ', error)
+        } else {
+          throw new Error('An unknown error occured during fetch')
+        }
+      }
+
+      setSubscription(sub)
+      setIsSubscribed(true)
+      console.log('Web push subscribed!')
+      // console.log('••• PushService ••• ', JSON.stringify(sub))
+    } catch (error) {
+      console.error('Error during subscription: ', error)
     }
-
-    if (!registration) {
-      console.error('No SW registration available.')
-
-      return
-    }
-
-    event.preventDefault()
-
-    // todo: error handling
-    // Subscribes user to a push server, returns subscription obj
-    const sub = await registration.pushManager.subscribe({
-      userVisibleOnly: true,
-      // Push server will use this to auth the app server
-      applicationServerKey: base64ToUint8Array(
-        process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY,
-      ),
-    })
-
-    // todo: error handling
-    await fetch('/api/subscribe', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        sub,
-      }),
-    })
-
-    setSubscription(sub)
-    setIsSubscribed(true)
-    console.log('Web push subscribed!')
-    // console.log('••• PushService ••• ', JSON.stringify(sub))
   }
 
   const unsubscribeButtonOnClick: MouseEventHandler<
@@ -103,9 +128,22 @@ const SubToNotification = () => {
     }
 
     event.preventDefault()
-    await subscription.unsubscribe()
 
-    // TODO: you should call your API to delete or invalidate subscription data on the server
+    try {
+      // Unsub from server
+      await fetch('/api/unsubscribe', {
+        method: 'POST',
+        body: JSON.stringify({ subscription })
+      })
+
+      // Unsub from Push Subscription
+      await subscription.unsubscribe()
+
+    } catch (error) {
+      console.error('Failed to unsubscribe: ', error)
+    }
+
+
     setSubscription(null)
     setIsSubscribed(false)
     console.log('Web push unsubscribed!')
@@ -116,9 +154,14 @@ const SubToNotification = () => {
   > = async event => {
     event.preventDefault()
 
-    await fetch('/api/notification', {
-      method: 'POST',
-    })
+    try {
+      await fetch('/api/notification', {
+        method: 'POST',
+      })
+    } catch (error) {
+      console.error('Could not send notification: ', error)
+
+    }
   }
 
   return (
