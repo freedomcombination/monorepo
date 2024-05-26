@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { AuditLogAction } from '@fc/types'
 import { getProfile } from '../utils'
 
 export const subscribeDb = async () => {
@@ -40,7 +41,31 @@ export const subscribeDb = async () => {
     'api::vote.vote',
   ]
 
-  const allowedActions = ['afterCreate', 'beforeUpdate', 'afterDelete']
+  type StrapiLifecycleAction =
+    | 'beforeCreate'
+    | 'beforeCreateMany'
+    | 'afterCreate'
+    | 'afterCreateMany'
+    | 'beforeUpdate'
+    | 'beforeUpdateMany'
+    | 'afterUpdate'
+    | 'afterUpdateMany'
+    | 'beforeDelete'
+    | 'beforeDeleteMany'
+    | 'afterDelete'
+    | 'afterDeleteMany'
+    | 'beforeCount'
+    | 'afterCount'
+    | 'beforeFindOne'
+    | 'afterFindOne'
+    | 'beforeFindMany'
+    | 'afterFindMany'
+
+  const allowedActions: StrapiLifecycleAction[] = [
+    'afterCreate',
+    'beforeUpdate',
+    'afterDelete',
+  ]
 
   strapi.db.lifecycles.subscribe(async e => {
     const event = e as any
@@ -58,44 +83,107 @@ export const subscribeDb = async () => {
     const data = event.params?.data // these data are the ones that ll be updated
     const id = event.result?.id ?? event.params?.where?.id
     const ctx = await strapi.requestContext.get()
-    const profile = ctx && (await getProfile(ctx, false))
+    // Only consider API users,
+    // otherwise Strapi admin user ids will conflict with the user ids
+    // It can cause irrelevant profile relations
+    const profile =
+      ctx?.state?.user?.confirmed && (await getProfile(ctx, false))
 
-    let action: any = 'deleted'
+    let action: AuditLogAction
+    const eventAction = event.action as StrapiLifecycleAction
 
-    if (event.action === 'afterCreate') {
-      action = 'created'
-    } else if (event.action === 'beforeUpdate') {
-      action =
-        data.approvalStatus === 'approved'
-          ? 'approved'
-          : data.approvalStatus === 'rejected'
-            ? 'rejected'
-            : data.publishedAt
-              ? 'published'
-              : 'updated'
-    } else if (event.action === 'afterDelete') {
-      action = 'deleted'
+    switch (eventAction) {
+      case 'afterCreate':
+        action = 'created'
+        break
+      case 'beforeUpdate':
+        if (data.approvalStatus === 'approved') {
+          action = 'approved'
+        } else if (data.approvalStatus === 'rejected') {
+          action = 'rejected'
+        } else if (data.publishedAt) {
+          action = 'published'
+        } else if (data.publishedAt === null) {
+          action = 'unpublished'
+        } else {
+          action = 'updated'
+        }
+        break
+      case 'afterDelete':
+        action = 'deleted'
+        break
+    }
+
+    let text =
+      result?.title ||
+      result?.title_en ||
+      result?.title_tr ||
+      result?.title_nl ||
+      result?.name ||
+      result?.name_en ||
+      result?.name_tr ||
+      result?.name_nl ||
+      result?.username ||
+      result?.description ||
+      result?.description_en ||
+      result?.description_tr ||
+      result?.description_nl ||
+      result?.content ||
+      result?.content_en ||
+      result?.content_tr ||
+      result?.content_nl ||
+      result?.message ||
+      data?.title ||
+      data?.title_en ||
+      data?.title_tr ||
+      data?.title_nl ||
+      data?.name ||
+      data?.name_en ||
+      data?.name_tr ||
+      data?.name_nl ||
+      data?.username ||
+      data?.description ||
+      data?.description_en ||
+      data?.description_tr ||
+      data?.description_nl ||
+      data?.content ||
+      data?.content_en ||
+      data?.content_tr ||
+      data?.content_nl ||
+      data?.approvalStatus ||
+      (data?.publishedAt !== undefined && data?.publishedAt
+        ? 'published'
+        : 'unpublished')
+
+    /**
+     * After approving, publishing etc it triggers extra update events twice with the following data
+     * {
+     *  "date": "2023-12-16T06:00:00.000Z",
+     * "updatedAt": "2024-05-26T12:03:25.751Z"
+     * }
+     * It's maybe because of Strapi updates the i18n relations.
+     * In this case, we don't want to create an audit log for this event.
+     */
+    if (!text && data?.date) {
+      return
+    }
+
+    const locale = data?.locale || result?.locale
+
+    if (locale) {
+      text = `${text} (${locale})`
+    }
+
+    if (typeof text !== 'string') {
+      text = null
+    } else {
+      text = text.slice(0, 50)
     }
 
     strapi.entityService.create('api::audit-log.audit-log', {
       data: {
         uid,
-        text:
-          result?.title ||
-          result?.name ||
-          result?.title_en ||
-          result?.title_tr ||
-          result?.title_nl ||
-          result?.name_en ||
-          result?.name_tr ||
-          result?.name_nl ||
-          result?.username ||
-          data?.approvalStatus ||
-          (data.publishedAt !== undefined
-            ? data.publishedAt
-              ? 'published'
-              : 'unpublished'
-            : 'model content updated'),
+        text,
         profile: profile?.id,
         action,
         modelId: id,
