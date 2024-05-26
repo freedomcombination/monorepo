@@ -7,7 +7,6 @@ export const subscribeHandler = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
-
   const { sub } = req.body
 
   try {

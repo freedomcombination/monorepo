@@ -55,7 +55,6 @@ const SubToNotification = () => {
     HTMLButtonElement
   > = async event => {
     try {
-
       if (!process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY) {
         throw new Error('Environment variables supplied not sufficient.')
       }
@@ -82,7 +81,9 @@ const SubToNotification = () => {
         if (error instanceof Error) {
           throw new Error('Failed to subscribe to the push service: ', error)
         } else {
-          throw new Error('Failed to subscribe to the push service: An unknown error')
+          throw new Error(
+            'Failed to subscribe to the push service: An unknown error',
+          )
         }
       }
 
@@ -98,9 +99,10 @@ const SubToNotification = () => {
         })
 
         if (!response.ok) {
-          throw new Error(`Failed to subscribe to the push service: ${response.statusText} `)
+          throw new Error(
+            `Failed to subscribe to the push service: ${response.statusText} `,
+          )
         }
-
       } catch (error) {
         if (error instanceof Error) {
           throw new Error('Error during fetch: ', error)
@@ -133,16 +135,14 @@ const SubToNotification = () => {
       // Unsub from server
       await fetch('/api/unsubscribe', {
         method: 'POST',
-        body: JSON.stringify({ subscription })
+        body: JSON.stringify({ subscription }),
       })
 
       // Unsub from Push Subscription
       await subscription.unsubscribe()
-
     } catch (error) {
       console.error('Failed to unsubscribe: ', error)
     }
-
 
     setSubscription(null)
     setIsSubscribed(false)
@@ -160,7 +160,6 @@ const SubToNotification = () => {
       })
     } catch (error) {
       console.error('Could not send notification: ', error)
-
     }
   }
 
