@@ -151,7 +151,7 @@ export const subscribeDb = async () => {
       data?.content_tr ||
       data?.content_nl ||
       data?.approvalStatus ||
-      (data.publishedAt !== undefined && data.publishedAt
+      (data?.publishedAt !== undefined && data?.publishedAt
         ? 'published'
         : 'unpublished')
 
@@ -172,6 +172,12 @@ export const subscribeDb = async () => {
 
     if (locale) {
       text = `${text} (${locale})`
+    }
+
+    if (typeof text !== 'string') {
+      text = null
+    } else {
+      text = text.slice(0, 50)
     }
 
     strapi.entityService.create('api::audit-log.audit-log', {

@@ -10,15 +10,15 @@ import { Observation, ObservationCreateInput } from '@fc/types/src/observation'
 import { toastMessage } from '@fc/utils'
 
 import { observationFormSchema } from './schema'
-import { ObservationFormFieldValues } from './types'
+import { ObservationCreateFormFieldValues } from './types'
 import { FormItem } from '../../components'
 
-export type ObservationFormProps = {
+export type ObservationCreateFormProps = {
   profileId: number
   onSuccess?: () => void
 }
 
-export const ObservationForm: FC<ObservationFormProps> = ({
+export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
   profileId,
   onSuccess,
 }) => {
@@ -27,7 +27,7 @@ export const ObservationForm: FC<ObservationFormProps> = ({
     handleSubmit,
     reset,
     formState: { errors, isValid },
-  } = useForm<ObservationFormFieldValues>({
+  } = useForm<ObservationCreateFormFieldValues>({
     resolver: yupResolver(observationFormSchema),
     mode: 'all',
     defaultValues: {

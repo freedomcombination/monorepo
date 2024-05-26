@@ -4,13 +4,17 @@
   "info": {
     "singularName": "observation",
     "pluralName": "observations",
-    "displayName": "Observation"
+    "displayName": "Observation",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
+    "createdAt": {
+      "type": "datetime"
+    },
     "content": {
       "type": "text"
     },
@@ -20,8 +24,10 @@
       "target": "api::profile.profile",
       "inversedBy": "observations"
     },
-    "createdAt": {
-      "type": "datetime"
+    "creator": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::profile.profile"
     }
   }
 }

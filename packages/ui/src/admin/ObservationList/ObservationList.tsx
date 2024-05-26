@@ -3,8 +3,8 @@ import { Heading, Stack } from '@chakra-ui/react'
 import { useStrapiRequest } from '@fc/services'
 import { Observation } from '@fc/types/src/observation'
 
-import { ObservationListItem } from './ObservationListItem'
-import { ObservationForm } from '../ObservationForm'
+import { ObservationCreateForm } from '../ObservationCreateForm'
+import { ObservationEditForm } from '../ObservationEditForm'
 
 export type ObservationListProps = {
   id: number
@@ -21,11 +21,14 @@ export const ObservationList = ({ id }: ObservationListProps) => {
   return (
     <Stack p={{ base: 4, lg: 8 }} spacing={4}>
       <Heading as="h2">Observations</Heading>
-      <ObservationForm profileId={id} onSuccess={observationRequest.refetch} />
+      <ObservationCreateForm
+        profileId={id}
+        onSuccess={observationRequest.refetch}
+      />
       <Stack>
         {observations?.map(observation => {
           return (
-            <ObservationListItem
+            <ObservationEditForm
               id={observation?.id}
               content={observation?.content}
               createdAt={observation?.createdAt}
