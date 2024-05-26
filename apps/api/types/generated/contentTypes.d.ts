@@ -2019,7 +2019,7 @@ export interface ApiFeedbackFeedback extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     message: Attribute.Text & Attribute.Required
@@ -2050,7 +2050,6 @@ export interface ApiFeedbackFeedback extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::feedback.feedback',
       'oneToOne',
@@ -2354,20 +2353,25 @@ export interface ApiObservationObservation extends Schema.CollectionType {
     singularName: 'observation'
     pluralName: 'observations'
     displayName: 'Observation'
+    description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
+    createdAt: Attribute.DateTime
     content: Attribute.Text
     profile: Attribute.Relation<
       'api::observation.observation',
       'manyToOne',
       'api::profile.profile'
     >
-    createdAt: Attribute.DateTime
+    creator: Attribute.Relation<
+      'api::observation.observation',
+      'oneToOne',
+      'api::profile.profile'
+    >
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::observation.observation',
       'oneToOne',
@@ -3309,7 +3313,7 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
     displayName: 'Subscriber'
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     subscription: Attribute.JSON
@@ -3320,7 +3324,6 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::subscriber.subscriber',
       'oneToOne',

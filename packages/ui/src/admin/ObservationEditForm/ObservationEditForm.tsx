@@ -1,8 +1,16 @@
 import { useState } from 'react'
 
-import { Stack, Textarea, useBoolean } from '@chakra-ui/react'
+import {
+  ButtonGroup,
+  HStack,
+  Stack,
+  Text,
+  Textarea,
+  Wrap,
+  useBoolean,
+} from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useTranslation } from 'next-i18next'
+import { format } from 'date-fns'
 import { useForm } from 'react-hook-form'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { BsTrash } from 'react-icons/bs'
@@ -10,7 +18,7 @@ import { MdClose, MdOutlineCheck } from 'react-icons/md'
 import { InferType } from 'yup'
 
 import { useDeleteModel, useUpdateModelMutation } from '@fc/services'
-import { ObservationUpdateInput, Observation } from '@fc/types'
+import { Observation, ObservationUpdateInput, Profile } from '@fc/types'
 
 import { observationSchema } from './schema'
 import {
@@ -24,18 +32,22 @@ import {
 export type ObservationEditFormProps = Pick<Observation, 'content'> & {
   onSuccess?: () => void
   id: number
+  createdAt: string
+  creator: Profile
   onCancel?: () => void
 }
 
 export const ObservationEditForm = ({
   id,
   content,
+  createdAt,
+  creator,
   onSuccess,
 }: ObservationEditFormProps) => {
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
 
   const [isEditing, setIsEditing] = useBoolean(false)
-  const { t } = useTranslation()
+  const createdDate = format(createdAt, 'dd-MM-yyyy HH:mm')
 
   const schema = observationSchema()
 
@@ -51,6 +63,7 @@ export const ObservationEditForm = ({
       content,
     },
   })
+
   const disabledStyle = {
     borderColor: 'transparent',
     _hover: { borderColor: 'transparent' },
@@ -100,52 +113,72 @@ export const ObservationEditForm = ({
           onCancel={() => setConfirmState(undefined)}
         />
       )}
-      <Stack as="form" onSubmit={handleSubmit(onSave)} h={'full'}>
-        <FormItem
-          as={Textarea}
-          name={'content'}
-          type={'textarea'}
-          isRequired={true}
-          errors={errors}
-          register={register}
-          isDisabled={!isEditing}
-          _disabled={disabledStyle}
-        />
-        <ActionHStack canUpdate={'observations'} justifyContent={'flex-end'}>
-          <ActionButton
-            isVisible={!isEditing}
-            onClick={setIsEditing.on}
-            leftIcon={<AiOutlineEdit />}
-            fontSize="sm"
-          >
-            {t('edit')}
-          </ActionButton>
-          <ActionButton
-            isVisible={isEditing}
-            onClick={onCancel}
-            leftIcon={<MdClose />}
-            colorScheme={'gray'}
-            fontSize="sm"
-          >
-            {t('cancel')}
-          </ActionButton>
-          <ActionButton
-            isVisible={isEditing}
-            type="submit"
-            leftIcon={<MdOutlineCheck />}
-            fontSize="sm"
-          >
-            {t('save')}
-          </ActionButton>
-          <ActionButton
-            canDelete={'observations'}
-            onClick={onDelete}
-            leftIcon={<BsTrash />}
-            colorScheme="red"
-          >
-            {t('delete')}
-          </ActionButton>
-        </ActionHStack>
+      <Stack
+        as="form"
+        onSubmit={handleSubmit(onSave)}
+        pos="relative"
+        p={2}
+        borderWidth={1}
+        rounded={'md'}
+      >
+        <Wrap justify={'space-between'}>
+          <HStack>
+            <Text fontWeight={600} fontSize={'sm'}>
+              {creator?.name}
+            </Text>
+            <Text fontSize={'sm'}>{createdDate}</Text>
+          </HStack>
+          <ActionHStack canUpdate={'observations'} justifyContent={'flex-end'}>
+            <ButtonGroup size={'sm'} variant={'outline'}>
+              <ActionButton
+                isVisible={!isEditing}
+                onClick={setIsEditing.on}
+                leftIcon={<AiOutlineEdit />}
+                iconSpacing={0}
+              />
+              <ActionButton
+                isVisible={isEditing}
+                onClick={onCancel}
+                leftIcon={<MdClose />}
+                colorScheme={'gray'}
+                iconSpacing={0}
+              />
+              <ActionButton
+                isVisible={isEditing}
+                type="submit"
+                leftIcon={<MdOutlineCheck />}
+                iconSpacing={0}
+              />
+              {!isEditing && (
+                <ActionButton
+                  canDelete={'observations'}
+                  onClick={onDelete}
+                  leftIcon={<BsTrash />}
+                  colorScheme="red"
+                  iconSpacing={0}
+                />
+              )}
+            </ButtonGroup>
+          </ActionHStack>
+        </Wrap>
+
+        <Stack h={'full'}>
+          {isEditing ? (
+            <FormItem
+              as={Textarea}
+              name={'content'}
+              type={'textarea'}
+              hideLabel
+              isRequired={true}
+              errors={errors}
+              register={register}
+              isDisabled={!isEditing}
+              _disabled={disabledStyle}
+            />
+          ) : (
+            <Text>{content}</Text>
+          )}
+        </Stack>
       </Stack>
     </>
   )

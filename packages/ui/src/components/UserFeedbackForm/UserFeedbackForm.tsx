@@ -20,6 +20,7 @@ import { FieldErrorsImpl, useForm } from 'react-hook-form'
 import { IoSend } from 'react-icons/io5'
 import { ObjectSchema } from 'yup'
 
+import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useUserFeedbackMutation } from '@fc/services'
 import { UserFeedbackCreateInput } from '@fc/types'
 
@@ -34,7 +35,7 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
   isOpen,
   onClose,
 }) => {
-  const recaptchaToken = useRecaptchaToken('feedback')
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.FEEDBACk)
   const { mutateAsync } = useUserFeedbackMutation(recaptchaToken)
 
   const handleUserFeedback = async (

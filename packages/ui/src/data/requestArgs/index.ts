@@ -10,7 +10,7 @@ type UseRequestArgsReturn<T extends StrapiModel> = Partial<
     StrapiCollectionEndpoint,
     {
       relationFilters?: RelationFilterOption<T>[]
-      filters?: FilterOption[]
+      booleanFilters?: FilterOption[]
       populate?: RequestCollectionArgs<T>['populate']
       searchFields?: string[]
     }
@@ -85,6 +85,18 @@ export const useRequestArgs = <
       ],
     },
     profiles: {
+      booleanFilters: [
+        {
+          field: 'isVolunteer',
+          label: t('volunteer'),
+          operator: '$eq',
+        },
+        {
+          field: '(ext)isVolunteer',
+          label: t('profile'),
+          operator: '$null',
+        },
+      ],
       relationFilters: [
         {
           endpoint: 'jobs',
@@ -92,18 +104,12 @@ export const useRequestArgs = <
         },
         {
           endpoint: 'users-permissions/roles',
-          field: 'role',
+          field: 'user.role',
+          label: t('role'),
         },
         {
           endpoint: 'platforms',
           field: 'platforms',
-        },
-      ],
-      filters: [
-        {
-          field: 'isVolunteer',
-          label: t('volunteer'),
-          operator: '$eq',
         },
       ],
       populate: ['user.role', 'jobs.platform', 'platforms'],

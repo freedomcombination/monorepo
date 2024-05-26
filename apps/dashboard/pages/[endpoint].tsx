@@ -1,6 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 
-import { MenuDivider, Stack, useDisclosure } from '@chakra-ui/react'
+import {
+  Center,
+  MenuDivider,
+  Spinner,
+  Stack,
+  useDisclosure,
+} from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -44,7 +50,7 @@ type ModelPageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const { t } = useTranslation()
-  const { roles, profile } = useAuthContext()
+  const { roles, profile, token, isLoading } = useAuthContext()
 
   const [selectedRelationFilters, setSelectedRelationFilters] = useState<
     RelationFilterArgs[]
@@ -80,15 +86,42 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
     args?.relationFilters && selectedRelationFilters.length > 0
   const hasExtraFilters = selectedFilters.length > 0
 
-  const menuFilters = selectedFilters.reduce(
-    (acc, f) => ({ ...acc, [f.field]: { [f.operator]: true } }),
-    {},
-  )
+  const menuFilters = selectedFilters.reduce((acc, f) => {
+    // There might be same field with different operators
+    // We add a suffix to the field name to differentiate them
+    // ad to avoid MenuOption key duplication
+    const filterField = f.field.replace('(ext)', '')
 
-  const relationMenuFilters = selectedRelationFilters.reduce(
-    (acc, f) => ({ ...acc, [f.field]: { id: { $in: f.ids } } }),
-    {},
-  )
+    if (filterField?.includes('.')) {
+      const [field, subfield] = filterField.split('.')
+
+      return {
+        ...acc,
+        [field]: {
+          [subfield]: { [f.operator]: true },
+        },
+      }
+    }
+
+    return { ...acc, [filterField]: { [f.operator]: true } }
+  }, {})
+
+  const relationMenuFilters = selectedRelationFilters.reduce((acc, f) => {
+    const filterField = f.field.replace('(ext)', '')
+
+    if (filterField?.includes('.')) {
+      const [field, subfield] = filterField.split('.')
+
+      return {
+        ...acc,
+        [field]: {
+          [subfield]: { id: { $in: f.ids } },
+        },
+      }
+    }
+
+    return { ...acc, [filterField]: { id: { $in: f.ids } } }
+  }, {})
 
   const endpointQuery = useStrapiRequest<StrapiModel>({
     endpoint,
@@ -107,12 +140,12 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
       ...(profileStatus !== 'all' && { profileStatus: { $eq: profileStatus } }),
     },
     ...(args?.populate && { populate: args.populate }),
-    pageSize,
+    ...(pageSize && { pageSize }),
+    ...(sort && { sort }),
     includeDrafts: published !== 'true',
-    sort,
     locale,
     queryOptions: {
-      enabled: !!endpoint,
+      enabled: !!endpoint && !!token,
     },
   })
 
@@ -252,8 +285,8 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
               <FilterMenu
                 relationFilterOptions={args.relationFilters}
                 setRelationFilter={handleRelationFilter}
-                filterOptions={args.filters}
-                setFilters={setSelectedFilters}
+                booleanFilterOptions={args.booleanFilters}
+                setBooleanFilters={setSelectedFilters}
               />
             </Stack>
           ),
@@ -277,18 +310,24 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         </ModelEditModal>
       )}
 
-      <DataTable
-        columns={columns[endpoint] as WTableProps<StrapiModel>['columns']}
-        data={mappedModels}
-        pageCount={pageCount as number}
-        totalCount={totalCount as number}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        onSort={setSort}
-        onClickRow={handleClick}
-        pageSize={pageSize}
-        setPageSize={setPageSize}
-      />
+      {isLoading || endpointQuery.isPending || endpointQuery.isLoading ? (
+        <Center h={'full'}>
+          <Spinner size={'xl'} color={'primary.500'} />
+        </Center>
+      ) : (
+        <DataTable
+          columns={columns[endpoint] as WTableProps<StrapiModel>['columns']}
+          data={mappedModels}
+          pageCount={pageCount as number}
+          totalCount={totalCount as number}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          onSort={setSort}
+          onClickRow={handleClick}
+          pageSize={pageSize}
+          setPageSize={setPageSize}
+        />
+      )}
     </AdminLayout>
   )
 }

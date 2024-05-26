@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from 'react'
 
-import { Box, Divider, Heading, Stack } from '@chakra-ui/react'
+import { Box, Heading, Stack } from '@chakra-ui/react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { addDays, format } from 'date-fns'
 
@@ -13,12 +13,12 @@ import { SearchForm } from '../../components'
 
 export const AuditLogList: FC = () => {
   const { profile, token } = useAuthContext()
-  const [profileName, setProfileName] = useState('')
+  const [q, setQ] = useState('')
 
-  const handleSearch = (name?: string) => {
-    if (!name) return setProfileName('')
+  const handleSearch = (query?: string) => {
+    if (!query) return setQ('')
 
-    setProfileName(name)
+    setQ(query)
   }
 
   const { data } = useInfiniteQuery({
@@ -29,15 +29,15 @@ export const AuditLogList: FC = () => {
         page: pageParam,
         token: token || '',
         filters: {
-          profile: {
-            name: {
-              $containsi: profileName,
-            },
-          },
+          $or: [
+            { profile: { name: { $containsi: q } } },
+            { text: { $containsi: q } },
+            { action: { $containsi: q } },
+            { uid: { $containsi: q } },
+          ],
         },
         pageSize: 100,
       }),
-    refetchInterval: 5000,
     initialPageParam: 0,
     getNextPageParam: r => (r.meta?.pagination?.page || 0) + 1,
     enabled: !!token,
@@ -87,7 +87,7 @@ export const AuditLogList: FC = () => {
       <SearchForm
         bg={'white'}
         onSearch={handleSearch}
-        placeholder={"Search by profile's name"}
+        placeholder={'Search by profile, action, text, or endpoint'}
       />
 
       {logs?.length === 0 && (
@@ -110,7 +110,7 @@ export const AuditLogList: FC = () => {
           {groupedLogs.today.length > 0 && (
             <Stack>
               <Heading size={'lg'}>Today</Heading>
-              <Stack p={4} divider={<Divider />}>
+              <Stack p={4}>
                 {groupedLogs.today.map(log => (
                   <AuditLogItem
                     key={log.id}
@@ -124,37 +124,43 @@ export const AuditLogList: FC = () => {
           {groupedLogs.yesterday.length > 0 && (
             <Stack>
               <Heading size={'lg'}>Yesterday</Heading>
-              {groupedLogs.yesterday.map(log => (
-                <AuditLogItem
-                  key={log.id}
-                  log={log}
-                  isOwnProfile={log.profile?.id === profile?.id}
-                />
-              ))}
+              <Stack p={4}>
+                {groupedLogs.yesterday.map(log => (
+                  <AuditLogItem
+                    key={log.id}
+                    log={log}
+                    isOwnProfile={log.profile?.id === profile?.id}
+                  />
+                ))}
+              </Stack>
             </Stack>
           )}
           {groupedLogs.lastWeek.length > 0 && (
             <Stack>
               <Heading size={'lg'}>Last week</Heading>
-              {groupedLogs.lastWeek.map(log => (
-                <AuditLogItem
-                  key={log.id}
-                  log={log}
-                  isOwnProfile={log.profile?.id === profile?.id}
-                />
-              ))}
+              <Stack p={4}>
+                {groupedLogs.lastWeek.map(log => (
+                  <AuditLogItem
+                    key={log.id}
+                    log={log}
+                    isOwnProfile={log.profile?.id === profile?.id}
+                  />
+                ))}
+              </Stack>
             </Stack>
           )}
           {groupedLogs.older.length > 0 && (
             <Stack>
               <Heading size={'lg'}>Older</Heading>
-              {groupedLogs.older.map(log => (
-                <AuditLogItem
-                  key={log.id}
-                  log={log}
-                  isOwnProfile={log.profile?.id === profile?.id}
-                />
-              ))}
+              <Stack p={4}>
+                {groupedLogs.older.map(log => (
+                  <AuditLogItem
+                    key={log.id}
+                    log={log}
+                    isOwnProfile={log.profile?.id === profile?.id}
+                  />
+                ))}
+              </Stack>
             </Stack>
           )}
         </Stack>

@@ -112,7 +112,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
               icon={<AiOutlineShareAlt />}
               title="Share"
               variant="ghost"
-              size="sm"
+              colorScheme="gray"
             />
           </Box>
         </PopoverTrigger>
@@ -123,7 +123,6 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
               // TODO: fix this
               quote={quoteTweet}
               url={tweetImageUrl as string}
-              size="sm"
             />
           </PopoverBody>
         </PopoverContent>
@@ -141,7 +140,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
           colorScheme: 'gray',
         }}
       >
-        {!isVertical && t('create-post')}
+        {t('create-post')}
       </ModelCreateModal>
 
       <ActionButton

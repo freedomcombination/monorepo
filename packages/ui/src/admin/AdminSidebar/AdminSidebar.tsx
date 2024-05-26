@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Divider, HStack, Stack, Text } from '@chakra-ui/react'
+import { Box, Divider, HStack, Stack, Text, VStack } from '@chakra-ui/react'
 
 import { useAuthContext } from '@fc/context'
 
@@ -18,15 +18,15 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
   return (
     <Stack
       display={{ base: mobile ? 'flex' : 'none', md: 'flex' }}
-      bg="white"
+      bg={'white'}
       py={4}
-      spacing={0}
-      h="100%"
+      // spacing={0}
+      h={'full'}
       {...(!mobile && {
-        shadow: 'base',
         w: 300,
       })}
       align={'stretch'}
+      divider={<Divider />}
     >
       {/* Logo */}
       <Navigate href="/">
@@ -44,44 +44,34 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
       </Navigate>
       {/* User */}
       {user && (
-        <Box py={4}>
-          <AdminSidebarProfile
-            user={user}
-            profile={profile}
-            onLogout={logout}
-          />
-        </Box>
+        <AdminSidebarProfile user={user} profile={profile} onLogout={logout} />
       )}
 
       {/* Menu */}
-      <Box mt={2} flex={1} overflow="auto">
-        <Stack>
-          <Box pos="sticky" top={0} px={4} bg="white" zIndex={1}>
-            <Text
-              fontWeight={600}
-              display={'flex'}
-              flexDirection={'row'}
-              justifyContent={'space-between'}
-            >
-              MENU{' '}
-              {demoPermissions && <Text color={'red.500'}>* Editing...</Text>}
-            </Text>
-          </Box>
 
-          {/* AdminNav */}
-          <AdminNav mobile={mobile} />
-        </Stack>
-      </Box>
+      <Stack flex={1} overflow="auto">
+        <Box pos="sticky" top={0} px={4} bg="white" zIndex={1}>
+          <Text
+            fontWeight={600}
+            display={'flex'}
+            flexDirection={'row'}
+            justifyContent={'space-between'}
+          >
+            MENU{' '}
+            {demoPermissions && <Text color={'red.500'}>* Editing...</Text>}
+          </Text>
+        </Box>
+
+        {/* AdminNav */}
+        <AdminNav mobile={mobile} />
+      </Stack>
 
       {/* Footer */}
-      <Box>
-        <Divider mb={4} />
-        <Stack>
-          <Text fontSize={'sm'} textAlign="center">
-            Freedom Combination &copy;All Copyrights Reserved
-          </Text>
-        </Stack>
-      </Box>
+
+      <VStack spacing={0} fontSize={'sm'}>
+        <Text>Freedom Combination</Text>
+        <Text>&copy; All rights reserved</Text>
+      </VStack>
     </Stack>
   )
 }

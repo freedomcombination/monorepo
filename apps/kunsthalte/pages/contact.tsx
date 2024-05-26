@@ -13,7 +13,7 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail } from 'react-icons/md'
 
-import { EMAIL_SENDER, socialLinks } from '@fc/config'
+import { EMAIL_SENDER, RecaptchaKeys, socialLinks } from '@fc/config'
 import { PUBLIC_TOKEN } from '@fc/config'
 import { sendEmail, useRecaptchaToken } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -29,7 +29,7 @@ import { Layout } from '../components'
 
 const Contact = () => {
   const { t } = useTranslation()
-  const recaptchaToken = useRecaptchaToken('contact_form')
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.CONTACT_FORM)
 
   const {
     isError,

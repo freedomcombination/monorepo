@@ -91,8 +91,8 @@ export const subscribeDb = async () => {
           result?.name_nl ||
           result?.username ||
           data?.approvalStatus ||
-          (data.publishedAt !== undefined
-            ? data.publishedAt
+          (data?.publishedAt !== undefined
+            ? data?.publishedAt
               ? 'published'
               : 'unpublished'
             : 'model content updated'),

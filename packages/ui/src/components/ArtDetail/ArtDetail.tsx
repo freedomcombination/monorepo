@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaEye } from 'react-icons/fa'
 
-import { SITE_URL } from '@fc/config'
+import { RecaptchaKeys, SITE_URL } from '@fc/config'
 import { useArtBySlug, useLikeArt, useRecaptchaToken } from '@fc/services'
 import { Art } from '@fc/types'
 
@@ -16,7 +16,7 @@ export const ArtDetail: FC = () => {
   const router = useRouter()
   const locale = router.locale
   const { data: art, refetch } = useArtBySlug()
-  const recaptchaToken = useRecaptchaToken('like_art')
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
   const { toggleLike, isLiked, isLoading, isDisabled } = useLikeArt({
     art: art as Art,
     recaptchaToken,

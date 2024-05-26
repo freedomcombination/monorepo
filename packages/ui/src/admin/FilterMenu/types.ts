@@ -7,8 +7,14 @@ import {
   StrapiModelKeys,
 } from '@fc/types'
 
+export type FilterField =
+  | StrapiModelKeys
+  | `${StrapiModelKeys}.${StrapiModelKeys}`
+  | `(ext)${StrapiModelKeys}.${StrapiModelKeys}`
+  | `(ext)${StrapiModelKeys}`
+
 export type FilterOption = {
-  field: StrapiModelKeys
+  field: FilterField
   label: string
   operator:
     | '$eq'
@@ -39,22 +45,22 @@ export type FilterOption = {
 
 export type RelationFilterArgs = {
   endpoint: StrapiCollectionEndpoint
-  field: StrapiModelKeys
+  field: FilterField
   ids: number[]
 }
 
 export type RelationFilterOption<T extends StrapiModel> = {
   endpoint: StrapiCollectionEndpoint
-  field: StrapiModelKeys
+  field: FilterField
   label?: string
   queryFilters?: RequestCollectionArgs<T>['filters']
 }
 
 export type FilterMenuProps<T extends StrapiModel> = {
-  filterOptions?: FilterOption[]
+  booleanFilterOptions?: FilterOption[]
   relationFilterOptions?: RelationFilterOption<T>[]
   setRelationFilter: (args: RelationFilterArgs) => void
-  setFilters: (filters: FilterOption[]) => void
+  setBooleanFilters: (filters: FilterOption[]) => void
 }
 
 export type RelationFilterMenuGroupProps<T extends StrapiModel> =

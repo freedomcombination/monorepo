@@ -25,6 +25,9 @@ const nextConfig = {
       },
     ]
   },
+  experimental: {
+    bundlePagesExternals: true,
+  },
   reactStrictMode: true,
   transpilePackages: [
     '@fc/config',
@@ -34,6 +37,7 @@ const nextConfig = {
     '@fc/ui',
     '@fc/utils',
     '@builder.io/react-hydration-overlay',
+    'next-mdx-remote',
   ],
   i18n: {
     defaultLocale: 'en',

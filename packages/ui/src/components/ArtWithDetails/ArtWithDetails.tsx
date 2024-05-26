@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Box, Grid, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
+import { RecaptchaKeys } from '@fc/config'
 import {
   useArtBySlug,
   useStrapiRequest,
@@ -19,7 +20,7 @@ import {
 } from '../../components'
 
 export const ArtWithDetails: FC = () => {
-  const recaptchaToken = useRecaptchaToken('view_art')
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.VIEW_ART)
 
   useViewArtMutation(recaptchaToken)
 

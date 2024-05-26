@@ -21,3 +21,14 @@ export const RECAPTCHA_SITE_KEY = process.env[
 export const IS_PROD = process.env['NODE_ENV'] === 'production'
 export const TWITTER_HANDLE =
   (process.env['NEXT_PUBLIC_TWITTER_HANDLE'] as string) || '@fc'
+
+export enum RecaptchaKeys {
+  COMMENT = 'comment',
+  CONTACT_FORM = 'contact_form',
+  FEEDBACk = 'feedback',
+  JOIN_FORM = 'join_form',
+  LIKE_ART = 'like_art',
+  LIKE_BLOG = 'like_blog',
+  VIEW_ART = 'view_art',
+  VIEW_BLOG = 'view_blog',
+}
