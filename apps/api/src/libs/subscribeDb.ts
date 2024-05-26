@@ -95,7 +95,6 @@ export const subscribeDb = async () => {
     switch (eventAction) {
       case 'afterCreate':
         action = 'created'
-        event.state.action = 'created'
         break
       case 'beforeUpdate':
         if (data.approvalStatus === 'approved') {
