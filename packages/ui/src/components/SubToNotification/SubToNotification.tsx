@@ -1,8 +1,10 @@
 import { useEffect, useState, MouseEventHandler } from 'react'
 
-import { Button, Center } from '@chakra-ui/react'
+import { Button, Center, useDisclosure } from '@chakra-ui/react'
 
 import { base64ToUint8Array } from '@fc/utils'
+
+import NotificationModal from '../NotificationModal/NotificationModal'
 
 const SubToNotification = () => {
   const [isSubscribed, setIsSubscribed] = useState(false)
@@ -11,6 +13,9 @@ const SubToNotification = () => {
   )
   const [registration, setRegistration] =
     useState<ServiceWorkerRegistration | null>(null)
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     const registerServiceWorker = async () => {
@@ -50,6 +55,18 @@ const SubToNotification = () => {
     registerServiceWorker()
   }, [])
 
+  useEffect(() => {
+    if (!isSubscribed) {
+      const timer = setTimeout(() => {
+        setShowModal(true)
+        onOpen()
+      }, 5500)
+
+      // Clean-up on depend. change
+      return () => clearTimeout(timer)
+    }
+  }, [isSubscribed, onOpen])
+
   // Subscribes user to the push service.
   const subscribeButtonOnClick: MouseEventHandler<
     HTMLButtonElement
@@ -79,7 +96,9 @@ const SubToNotification = () => {
         })
       } catch (error) {
         if (error instanceof Error) {
-          throw new Error('Failed to subscribe to the push service: ', error)
+          throw new Error(
+            `Failed to subscribe to the push service: ${error.message}`,
+          )
         } else {
           throw new Error(
             'Failed to subscribe to the push service: An unknown error',
@@ -105,7 +124,7 @@ const SubToNotification = () => {
         }
       } catch (error) {
         if (error instanceof Error) {
-          throw new Error('Error during fetch: ', error)
+          throw new Error(`Error during fetch: ${error.message}`)
         } else {
           throw new Error('An unknown error occured during fetch')
         }
@@ -165,6 +184,11 @@ const SubToNotification = () => {
 
   return (
     <Center>
+      <NotificationModal
+        isOpen={isOpen && showModal}
+        onClose={onClose}
+        subOnClick={subscribeButtonOnClick}
+      />
       <Button
         type="button"
         onClick={subscribeButtonOnClick}

@@ -132,9 +132,9 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
       ...(isBlogAuthor && profile && { author: { id: { $eq: profile.id } } }),
       ...(q &&
         args?.searchFields && {
-        // TODO: Support searchFields with relation fields
-        $or: args?.searchFields?.map(f => ({ [f]: { $containsi: q } })),
-      }),
+          // TODO: Support searchFields with relation fields
+          $or: args?.searchFields?.map(f => ({ [f]: { $containsi: q } })),
+        }),
       ...(published === 'false' && { publishedAt: { $null: true } }),
       ...(status !== 'all' && { approvalStatus: { $eq: status } }),
       ...(profileStatus !== 'all' && { profileStatus: { $eq: profileStatus } }),
