@@ -1,6 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 
-import { MenuDivider, Stack, useDisclosure } from '@chakra-ui/react'
+import {
+  Center,
+  MenuDivider,
+  Spinner,
+  Stack,
+  useDisclosure,
+} from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -44,7 +50,7 @@ type ModelPageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const { t } = useTranslation()
-  const { roles, profile, token } = useAuthContext()
+  const { roles, profile, token, isLoading } = useAuthContext()
 
   const [selectedRelationFilters, setSelectedRelationFilters] = useState<
     RelationFilterArgs[]
@@ -304,18 +310,24 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         </ModelEditModal>
       )}
 
-      <DataTable
-        columns={columns[endpoint] as WTableProps<StrapiModel>['columns']}
-        data={mappedModels}
-        pageCount={pageCount as number}
-        totalCount={totalCount as number}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        onSort={setSort}
-        onClickRow={handleClick}
-        pageSize={pageSize}
-        setPageSize={setPageSize}
-      />
+      {isLoading || endpointQuery.isPending || endpointQuery.isLoading ? (
+        <Center h={'full'}>
+          <Spinner size={'xl'} color={'primary.500'} />
+        </Center>
+      ) : (
+        <DataTable
+          columns={columns[endpoint] as WTableProps<StrapiModel>['columns']}
+          data={mappedModels}
+          pageCount={pageCount as number}
+          totalCount={totalCount as number}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          onSort={setSort}
+          onClickRow={handleClick}
+          pageSize={pageSize}
+          setPageSize={setPageSize}
+        />
+      )}
     </AdminLayout>
   )
 }

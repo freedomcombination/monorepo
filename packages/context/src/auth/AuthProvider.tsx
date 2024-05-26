@@ -73,7 +73,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   }
 
   function canApprove(endpoint: StrapiEndpoint): boolean {
-    return checkActionsPermission(endpoint, 'approve')
+    return checkActionsPermission(endpoint, 'update')
   }
 
   const isAdmin = roles.includes('admin')

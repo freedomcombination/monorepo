@@ -90,6 +90,10 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
           <Icon />
         </Center>
 
+        <Badge colorScheme={colorScheme} variant="outline" fontWeight={600}>
+          {modelName}
+        </Badge>
+
         {isOwnProfile && (
           <Center
             boxSize={6}
@@ -101,9 +105,6 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
             <FaRegStar />
           </Center>
         )}
-        <Badge colorScheme={colorScheme} variant="outline" fontWeight={600}>
-          {modelName}
-        </Badge>
       </HStack>
 
       <Wrap align={'center'} ml={1}>
