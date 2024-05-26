@@ -7,7 +7,7 @@ export const subscribeHandler = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
-  // todo: add unsubscribe.ts and handle unsub there?
+
   const { sub } = req.body
 
   try {
@@ -18,6 +18,8 @@ export const subscribeHandler = async (
       },
       body: JSON.stringify({ data: { subscription: sub } }),
     })
+
+    // Todo (improvement): save the ID from response to use it later on when user wants to unsub
 
     if (!res.ok) {
       const error = await res.json()
