@@ -10,6 +10,7 @@ import {
   Text,
   Stack,
 } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
 
 type NotificationModalProps = {
   isOpen: boolean
@@ -22,6 +23,8 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
   onClose,
   subOnClick,
 }) => {
+  const { t } = useTranslation()
+
   return (
     <>
       {/* <Button onClick={onOpen}>Open Modal</Button> */}
@@ -29,24 +32,20 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Never miss out on our events!</ModalHeader>
+          <ModalHeader>{t('never-miss-events')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Stack>
-              <Text>
-                Subscribe to notifications to stay informed about our latest
-                events!
-              </Text>
+              <Text>{t('sub-to-notifications')}</Text>
               <Text fontSize="sm" color="red">
-                *If you are on a mobile device, please add this web page to your
-                home screen in order to receive notifications.
+                {t('sub-notifications-mobile-warning')}
               </Text>
             </Stack>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme="gray" mr={3} onClick={onClose}>
-              Close
+              {t('close')}
             </Button>
             <Button
               colorScheme="green"
@@ -55,7 +54,7 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
                 onClose()
               }}
             >
-              Subscribe
+              {t('subscribe')}
             </Button>
           </ModalFooter>
         </ModalContent>
