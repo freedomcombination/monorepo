@@ -18,6 +18,10 @@ export const unsubscribeHandler = async (
         endpoint: "subscribers",
         filters: { subscription: { endpoint: { $eq: subEndpoint } } } ,
     })
+
+    if (!subscriber.data || subscriber.data.length === 0) {
+        throw new Error('No matching subscriber found')
+    }
     
     // console.log("subscriber from Strapi's response: ", subscriber)
     const filteredSub = subscriber.data.filter(sub => sub.subscription?.endpoint === subEndpoint)
