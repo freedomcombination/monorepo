@@ -23,10 +23,12 @@ const args: RequestCollectionArgs<AccountStats> = {
 const Index = () => {
   const { t } = useTranslation()
   const { user, profile, canRead } = useAuthContext()
+  const enableNotifications =
+    process.env.NEXT_PUBLIC_ENABLE_NOTIFICATIONS === 'true'
 
   return (
     <AdminLayout seo={{ title: t('home') }}>
-      <SubToNotification />
+      {enableNotifications && <SubToNotification />}
       {canRead('audit-logs') ? (
         <AuditLogList />
       ) : (
