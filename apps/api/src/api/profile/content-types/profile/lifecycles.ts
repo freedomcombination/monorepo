@@ -1,5 +1,4 @@
 import { emailTemplates } from '../../../../../emails'
-import { sentry } from '../../../../utils/sentry'
 
 export default {
   async afterCreate({ result }) {
@@ -14,7 +13,7 @@ export default {
         })
       } catch (error) {
         console.error('Error sending volunteer email', error)
-        sentry(error)
+        strapi.plugin('sentry').service('sentry').sendError(error)
       }
     }
   },

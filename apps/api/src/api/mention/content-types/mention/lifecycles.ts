@@ -1,7 +1,6 @@
 import { MentionUserData } from '@fc/types'
 
 import { getUserByUsername } from '../../../../libs'
-import { sentry } from '../../../../utils/sentry'
 
 export default {
   async afterCreate({ result }) {
@@ -40,7 +39,7 @@ export default {
       })
     } catch (error) {
       console.error('Error after mention create', error)
-      sentry(error)
+      strapi.plugin('sentry').service('sentry').sendError(error)
     }
   },
 }

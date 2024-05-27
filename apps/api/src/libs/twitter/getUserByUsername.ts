@@ -1,4 +1,3 @@
-import { sentry } from '../../utils/sentry'
 import { getTwitterClient } from './client'
 
 export const getUserByUsername = async (username: string) => {
@@ -18,7 +17,7 @@ export const getUserByUsername = async (username: string) => {
     return response
   } catch (error) {
     console.error('Error getting user by username', error)
-    sentry(error)
+    strapi.plugin('sentry').service('sentry').sendError(error)
     return null
   }
 }

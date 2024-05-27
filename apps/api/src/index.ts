@@ -1,6 +1,5 @@
 import { subscribeDb } from './libs/subscribeDb'
 import { syncAdmin } from './libs/syncAdmin'
-import { sentry } from './utils/sentry'
 
 export default {
   /**
@@ -22,12 +21,11 @@ export default {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   async bootstrap() {
     try {
-      //  sentry("trying sentry")
       subscribeDb()
       syncAdmin()
     } catch (error) {
       console.error('Bootstrap error', JSON.stringify(error, null, 2))
-      sentry(error)
+      strapi.plugin('sentry').service('sentry').sendError(error)
     }
   },
 }

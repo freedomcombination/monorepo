@@ -1,5 +1,3 @@
-import { sentry } from '../../../utils/sentry'
-
 module.exports = {
   async getProfile(ctx) {
     if (!ctx.state.user) {
@@ -45,7 +43,7 @@ module.exports = {
       return { data: { ...profile, permissions: rolePermissions } }
     } catch (error) {
       strapi.log.error(error)
-      sentry(error)
+      strapi.plugin('sentry').service('sentry').sendError(error)
       throw error
     }
   },

@@ -1,6 +1,5 @@
 import { Attribute } from '@strapi/strapi'
 import { getUserByUsername, getUserTweets } from '../../../../libs'
-import { sentry } from '../../../../utils/sentry'
 
 export default {
   async afterCreate({ result }) {
@@ -26,7 +25,7 @@ export default {
       })
     } catch (error) {
       console.error('Error updating user tweet', error)
-      sentry(error)
+      strapi.plugin('sentry').service('sentry').sendError(error)
     }
   },
 }

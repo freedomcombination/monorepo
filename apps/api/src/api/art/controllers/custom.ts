@@ -2,7 +2,6 @@
 import { Context } from 'koa'
 import { checkRecaptcha, getProfile } from '../../../utils'
 import { errors } from '@strapi/utils'
-import { sentry } from '../../../utils/sentry'
 
 const { ApplicationError, ForbiddenError } = errors
 
@@ -104,7 +103,7 @@ export default {
       return { data: result }
     } catch (error) {
       console.error('Error in view-art controller:', error)
-      sentry(error)
+      strapi.plugin('sentry').service('sentry').sendError(error)
 
       if (error instanceof ForbiddenError)
         throw new ForbiddenError(error.message)
