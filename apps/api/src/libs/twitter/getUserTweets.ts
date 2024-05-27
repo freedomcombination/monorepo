@@ -36,7 +36,7 @@ export const getUserTweets = async (
     return tweets
   } catch (error) {
     console.error('Error getting user tweets', error)
-
+    strapi.plugin('sentry').service('sentry').sendError(error)
     return []
   }
 }

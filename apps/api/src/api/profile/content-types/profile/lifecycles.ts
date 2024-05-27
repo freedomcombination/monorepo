@@ -13,6 +13,7 @@ export default {
         })
       } catch (error) {
         console.error('Error sending volunteer email', error)
+        strapi.plugin('sentry').service('sentry').sendError(error)
       }
     }
   },

@@ -101,7 +101,7 @@ export default {
       return { data: result }
     } catch (error) {
       console.error('Error in view-blog controller:', error)
-
+      strapi.plugin('sentry').service('sentry').sendError(error)
       if (error instanceof ForbiddenError)
         throw new ForbiddenError(error.message)
 

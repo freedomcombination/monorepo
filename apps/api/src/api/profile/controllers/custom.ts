@@ -43,6 +43,7 @@ module.exports = {
       return { data: { ...profile, permissions: rolePermissions } }
     } catch (error) {
       strapi.log.error(error)
+      strapi.plugin('sentry').service('sentry').sendError(error)
       throw error
     }
   },

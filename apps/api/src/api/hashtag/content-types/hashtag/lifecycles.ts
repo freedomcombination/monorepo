@@ -45,6 +45,7 @@ const updateEdgeConfig = async (value: string, locale: StrapiLocale) => {
     return result
   } catch (error) {
     console.error(error)
+    strapi.plugin('sentry').service('sentry').sendError(error)
   }
 }
 

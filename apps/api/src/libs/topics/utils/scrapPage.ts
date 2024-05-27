@@ -58,7 +58,7 @@ export const scrapPage: ScrapPage = async ({
       error.message,
       publisher,
     )
-
+    strapi.plugin('sentry').service('sentry').sendError(error)
     return null
   }
 }
