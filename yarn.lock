@@ -17396,7 +17396,7 @@ __metadata:
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:11.2.6"
     i18next: "npm:^23.11.5"
-    i18next-browser-languagedetector: "npm:^7.2.1"
+    i18next-browser-languagedetector: "npm:^8.0.0"
     i18next-http-backend: "npm:^2.5.2"
     iron-session: "npm:^8.0.1"
     jszip: "npm:^3.10.1"
@@ -19430,12 +19430,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-browser-languagedetector@npm:^7.2.1":
-  version: 7.2.1
-  resolution: "i18next-browser-languagedetector@npm:7.2.1"
+"i18next-browser-languagedetector@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "i18next-browser-languagedetector@npm:8.0.0"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
-  checksum: 10/20c93cbd23d62703e12268ec24679a91743cb6d652a6e83e6a102b2ecb8f79542821046a7f8f567a93fabfdc5cd9353dc7f3050c9c48948fe2ae0640d859a0dd
+  checksum: 10/b2b4911b3c8dab0960cb5609053d12e61479123ab6397b4ea3d41a28630ebfb45d6ccc409baa164e86f35616cfad4d9aa56560041aeb9cd946b8495f1133ff97
   languageName: node
   linkType: hard
 

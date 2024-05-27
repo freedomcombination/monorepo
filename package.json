@@ -133,7 +133,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-turbo": "^1.13.3",
     "eslint-plugin-react": "7.34.1",
-    "i18next-browser-languagedetector": "^7.2.1",
+    "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.5.2",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
