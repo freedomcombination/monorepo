@@ -41,11 +41,9 @@ export default factories.createCoreController('api::profile.profile', () => {
 
       // we dont want to use find here because it has modified...
       const profileResults = await strapi.db
-        .query('api::hashtag.hashtag')
+        .query('api::profile.profile')
         .findMany({
-          where: {
-            { email: { $eq: email } },
-          },
+          where: { email: { $eq: email } },
         })
 
       if (!profileResults || profileResults.length === 0) {
