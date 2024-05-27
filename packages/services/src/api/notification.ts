@@ -45,22 +45,42 @@ export const notificationRouter = async (
   })
 
   try {
-    await Promise.all(
+    const results = await Promise.allSettled(
       subscribers.data.map(async subscriber => {
         try {
           if (subscriber.subscription === null) {
             console.error('Subscription is null')
+
+            return { status: 'rejected', reason: 'Subscription is null' }
           } else {
-            await webPush.sendNotification(subscriber.subscription, payload)
+            try {
+              await webPush.sendNotification(subscriber.subscription, payload)
+
+              return { status: 'fulfilled' }
+            } catch (error) {
+              return { status: 'rejected', reason: error }
+            }
           }
         } catch (err) {
           console.error(err)
         }
       }),
     )
-    res.status(200).json({ message: 'Notifications sent successfully' })
+
+    // Check if all promises are fulfilled
+    const allFulfilled = results.every(result => result.status === 'fulfilled')
+
+    if (allFulfilled) {
+      res.status(200).json({ message: 'Notifications sent successfully' })
+    } else {
+      const errors = results.filter(result => result.status === 'rejected')
+      console.error('Failed to send some notifications: ', errors)
+      res
+        .status(500)
+        .json({ message: 'Failed to send some notifications', errors })
+    }
   } catch (err) {
-    console.error(err)
+    console.error('Failed to send notifications: ', err)
     res.status(500).json({ message: 'Failed to send notifications' })
   }
 }
