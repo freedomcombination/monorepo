@@ -39,6 +39,7 @@ export const scrapTopics: ScrapTopics = async ({
     })
   } catch (error) {
     console.error('Scrap links error', url.href, error.message)
+    strapi.plugin('sentry').service('sentry').sendError(error)
   }
 
   const topics: Topic[] = []
@@ -62,7 +63,7 @@ export const scrapTopics: ScrapTopics = async ({
         error.message,
         link?.href,
       )
-
+      strapi.plugin('sentry').service('sentry').sendError(error)
       return null
     }
   })

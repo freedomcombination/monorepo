@@ -17,7 +17,7 @@ export const getUserByUsername = async (username: string) => {
     return response
   } catch (error) {
     console.error('Error getting user by username', error)
-
+    strapi.plugin('sentry').service('sentry').sendError(error)
     return null
   }
 }

@@ -65,4 +65,11 @@ export default ({ env }) => ({
       },
     },
   },
+  sentry: {
+    enabled: true,
+    config: {
+      dsn: env('NODE_ENV') === 'production' ? env('SENTRY_DSN') : null,
+      sendMetadata: true,
+    },
+  },
 })

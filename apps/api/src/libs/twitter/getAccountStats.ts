@@ -49,7 +49,7 @@ export const getAccountStats = async (
     }
   } catch (error) {
     console.error('Error getting account statistics', error)
-
+    strapi.plugin('sentry').service('sentry').sendError(error)
     return null
   }
 }

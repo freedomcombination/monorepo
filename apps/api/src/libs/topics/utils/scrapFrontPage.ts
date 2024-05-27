@@ -91,7 +91,7 @@ export const scrapFrontPage: ScrapFrontPage = async ({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error(`Error while scraping: ${url} - ${error.message}`)
-
+    strapi.plugin('sentry').service('sentry').sendError(error)
     return []
   }
 }
