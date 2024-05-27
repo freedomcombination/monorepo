@@ -31,6 +31,7 @@ export default {
       }
     } catch (error) {
       console.error('Error after feedback create', error)
+      strapi.plugin('sentry').service('sentry').sendError(error)
     }
   },
 }

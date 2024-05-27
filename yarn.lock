@@ -8562,6 +8562,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/plugin-sentry@npm:^4.24.3":
+  version: 4.24.3
+  resolution: "@strapi/plugin-sentry@npm:4.24.3"
+  dependencies:
+    "@sentry/node": "npm:6.19.7"
+    "@strapi/design-system": "npm:1.18.0"
+    "@strapi/helper-plugin": "npm:4.24.3"
+    "@strapi/icons": "npm:1.18.0"
+  peerDependencies:
+    "@strapi/strapi": ^4.0.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.2.0
+    styled-components: ^5.2.1
+  checksum: 10/c5810481c330ec127807dbe2eed377d739c65e10c6642da7c70a81554f88e774f7050fc6e3bf39215b0fc20bf9c6257391e436f23c60e19c698e2c871ff1d8c3
+  languageName: node
+  linkType: hard
+
 "@strapi/plugin-upload@npm:4.24.3":
   version: 4.24.3
   resolution: "@strapi/plugin-upload@npm:4.24.3"
@@ -11679,6 +11697,7 @@ __metadata:
     "@react-email/render": "npm:0.0.14"
     "@react-email/tailwind": "npm:0.0.17"
     "@strapi/plugin-i18n": "npm:^4.24.3"
+    "@strapi/plugin-sentry": "npm:^4.24.3"
     "@strapi/plugin-users-permissions": "npm:^4.24.3"
     "@strapi/provider-email-nodemailer": "npm:^4.24.3"
     "@strapi/strapi": "npm:^4.24.3"

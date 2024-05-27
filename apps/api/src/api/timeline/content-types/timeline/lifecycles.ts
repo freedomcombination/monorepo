@@ -25,6 +25,7 @@ export default {
       })
     } catch (error) {
       console.error('Error updating user tweet', error)
+      strapi.plugin('sentry').service('sentry').sendError(error)
     }
   },
 }

@@ -82,7 +82,7 @@ export const syncNews = async () => {
     return { data: updatedTopics, meta: {} }
   } catch (error) {
     console.error('Sync news', error)
-
+    strapi.plugin('sentry').service('sentry').sendError(error)
     return error
   }
 }

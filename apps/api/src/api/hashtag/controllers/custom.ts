@@ -26,6 +26,7 @@ export default {
       ctx.send(tweets)
     } catch (error) {
       console.error('Error searching hashtags', error)
+      strapi.plugin('sentry').service('sentry').sendError(error)
       ctx.send([])
     }
   },
@@ -203,6 +204,7 @@ export default {
 
       return { message: 'Stream is open' }
     } catch (error) {
+      strapi.plugin('sentry').service('sentry').sendError(error)
       if (
         error.code === 429 &&
         error.data?.connection_issue === 'TooManyConnections'

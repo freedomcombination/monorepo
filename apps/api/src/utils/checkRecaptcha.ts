@@ -42,7 +42,7 @@ export const checkRecaptcha = async (context: Context) => {
     }
   } catch (error) {
     console.error('Error in check-recaptcha policy:', error)
-
+    strapi.plugin('sentry').service('sentry').sendError(error)
     throw error
   }
 }

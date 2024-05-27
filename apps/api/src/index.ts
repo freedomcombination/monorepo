@@ -25,6 +25,7 @@ export default {
       syncAdmin()
     } catch (error) {
       console.error('Bootstrap error', JSON.stringify(error, null, 2))
+      strapi.plugin('sentry').service('sentry').sendError(error)
     }
   },
 }

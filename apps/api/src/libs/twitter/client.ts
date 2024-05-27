@@ -23,7 +23,7 @@ export const getTwitterClient = async () => {
     return new TwitterApi(response.data.access_token)
   } catch (error) {
     console.error('Error while getting Twitter client', error)
-
+    strapi.plugin('sentry').service('sentry').sendError(error)
     return null
   }
 }
