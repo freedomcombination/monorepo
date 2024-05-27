@@ -44,7 +44,7 @@ export default factories.createCoreController('api::profile.profile', () => {
         .query('api::hashtag.hashtag')
         .findMany({
           where: {
-            $and: [{ email: { $eq: email } }],
+            { email: { $eq: email } },
           },
         })
 
