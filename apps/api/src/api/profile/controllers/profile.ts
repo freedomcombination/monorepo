@@ -37,7 +37,29 @@ export default factories.createCoreController('api::profile.profile', () => {
     async create(ctx) {
       if (ctx.request.body?.data?.recaptchaToken) await checkRecaptcha(ctx)
 
-      return super.create(ctx)
+      const { user: userId, name, email } = ctx.request.body.data
+
+      // we dont want to use find here because it has modified...
+      const profileResults = await strapi.db
+        .query('api::hashtag.hashtag')
+        .findMany({
+          where: {
+            $and: [{ email: { $eq: email } }, { name: { $eq: name } }],
+          },
+        })
+
+      if (!profileResults || profileResults.length === 0) {
+        // no registered profile before
+        return super.create(ctx)
+      }
+
+      const profile = profileResults[0]
+
+      await strapi.entityService.update('api::profile.profile', profile.id, {
+        data: {
+          user: userId,
+        },
+      })
     },
   }
 })
