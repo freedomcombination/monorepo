@@ -2,6 +2,7 @@ import axios from 'axios'
 import { load } from 'cheerio'
 
 import { ScrapFrontPage, Topic } from './types'
+import { sentry } from '../../../utils/sentry'
 
 export const scrapFrontPage: ScrapFrontPage = async ({
   publisher,
@@ -91,7 +92,7 @@ export const scrapFrontPage: ScrapFrontPage = async ({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error(`Error while scraping: ${url} - ${error.message}`)
-
+    sentry(error)
     return []
   }
 }

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { errors } from '@strapi/utils'
 import { Context } from 'koa'
+import { sentry } from './sentry'
 
 const { ForbiddenError } = errors
 
@@ -42,7 +43,7 @@ export const checkRecaptcha = async (context: Context) => {
     }
   } catch (error) {
     console.error('Error in check-recaptcha policy:', error)
-
+    sentry(error)
     throw error
   }
 }

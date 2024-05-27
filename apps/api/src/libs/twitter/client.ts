@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { TwitterApi } from 'twitter-api-v2'
+import { sentry } from '../../utils/sentry'
 
 const twitterClientBearer = new TwitterApi(process.env.BEARER_TOKEN)
 
@@ -23,7 +24,7 @@ export const getTwitterClient = async () => {
     return new TwitterApi(response.data.access_token)
   } catch (error) {
     console.error('Error while getting Twitter client', error)
-
+    sentry(error)
     return null
   }
 }

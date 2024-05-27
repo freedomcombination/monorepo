@@ -41,4 +41,11 @@ export default ({ env }) => ({
       },
     },
   },
+  sentry: {
+    enabled: true,
+    config: {
+      dsn: 'https://2cea8e81063ba535d2e545e660517b4e@o4507329508802560.ingest.de.sentry.io/4507329549238352',
+      sendMetadata: true,
+    },
+  },
 })

@@ -2,6 +2,7 @@ import axios from 'axios'
 import { load } from 'cheerio'
 
 import { ScrapPage } from './types'
+import { sentry } from '../../../utils/sentry'
 
 export const scrapPage: ScrapPage = async ({
   publisher,
@@ -58,7 +59,7 @@ export const scrapPage: ScrapPage = async ({
       error.message,
       publisher,
     )
-
+    sentry(error)
     return null
   }
 }

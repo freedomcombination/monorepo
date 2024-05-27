@@ -1,6 +1,7 @@
 import { Context } from 'koa'
 import { checkRecaptcha, getProfile, getReferenceModel } from '../../../utils'
 import { errors } from '@strapi/utils'
+import { sentry } from '../../../utils/sentry'
 
 const { ApplicationError, ForbiddenError } = errors
 
@@ -101,7 +102,7 @@ export default {
       return { data: result }
     } catch (error) {
       console.error('Error in view-blog controller:', error)
-
+      sentry(error)
       if (error instanceof ForbiddenError)
         throw new ForbiddenError(error.message)
 

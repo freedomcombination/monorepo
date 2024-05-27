@@ -4,6 +4,7 @@ import { Tweet } from '@fc/types'
 
 import { getTwitterClient } from './client'
 import { mapTweetResponseToTweet } from '../../utils'
+import { sentry } from '../../utils/sentry'
 
 export const getUserTweets = async (
   userId: string,
@@ -36,7 +37,7 @@ export const getUserTweets = async (
     return tweets
   } catch (error) {
     console.error('Error getting user tweets', error)
-
+    sentry(error)
     return []
   }
 }

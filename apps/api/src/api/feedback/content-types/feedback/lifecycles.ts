@@ -1,3 +1,5 @@
+import { sentry } from '../../../../utils/sentry'
+
 export default {
   async afterCreate({ result }) {
     if (process.env.IMPORTING === 'true') return
@@ -31,6 +33,7 @@ export default {
       }
     } catch (error) {
       console.error('Error after feedback create', error)
+      sentry(error)
     }
   },
 }

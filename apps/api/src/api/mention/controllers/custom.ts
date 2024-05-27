@@ -1,4 +1,5 @@
 import { twitterApiBearer } from '../../../libs'
+import { sentry } from '../../../utils/sentry'
 
 export default {
   async search(ctx) {
@@ -7,6 +8,7 @@ export default {
       ctx.send(result.data)
     } catch (error) {
       console.error('Error searching user', error)
+      sentry(error)
     }
   },
 }

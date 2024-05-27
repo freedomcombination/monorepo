@@ -1,4 +1,5 @@
 import { StrapiLocale } from '@fc/types'
+import { sentry } from '../../../../utils/sentry'
 
 const getEdgeConfigKey = (locale: StrapiLocale) =>
   process.env.VERCEL_ENV === 'production'
@@ -45,6 +46,7 @@ const updateEdgeConfig = async (value: string, locale: StrapiLocale) => {
     return result
   } catch (error) {
     console.error(error)
+    sentry(error)
   }
 }
 

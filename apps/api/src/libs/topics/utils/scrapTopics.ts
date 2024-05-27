@@ -1,3 +1,4 @@
+import { sentry } from '../../../utils/sentry'
 import { scrapLinks } from './scrapLinks'
 import { scrapPage } from './scrapPage'
 import { ScrapTopics, Topic } from './types'
@@ -39,6 +40,7 @@ export const scrapTopics: ScrapTopics = async ({
     })
   } catch (error) {
     console.error('Scrap links error', url.href, error.message)
+    sentry(error)
   }
 
   const topics: Topic[] = []
@@ -62,7 +64,7 @@ export const scrapTopics: ScrapTopics = async ({
         error.message,
         link?.href,
       )
-
+      sentry(error)
       return null
     }
   })

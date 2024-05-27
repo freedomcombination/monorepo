@@ -4,6 +4,7 @@ import { ETwitterStreamEvent, TweetV2SingleResult } from 'twitter-api-v2'
 
 import { getTwitterClient, hashtagStatsStore } from '../../../libs'
 import { getReferenceModel, mapTweetResponseToTweet } from '../../../utils'
+import { sentry } from '../../../utils/sentry'
 
 let isStarted = false
 
@@ -26,6 +27,7 @@ export default {
       ctx.send(tweets)
     } catch (error) {
       console.error('Error searching hashtags', error)
+      sentry(error)
       ctx.send([])
     }
   },
@@ -203,6 +205,7 @@ export default {
 
       return { message: 'Stream is open' }
     } catch (error) {
+      sentry(error)
       if (
         error.code === 429 &&
         error.data?.connection_issue === 'TooManyConnections'

@@ -1,6 +1,7 @@
 import { addDays, formatISO } from 'date-fns'
 
 import { getTwitterClient } from './client'
+import { sentry } from '../../utils/sentry'
 
 export const getAccountStats = async (
   username: string,
@@ -49,7 +50,7 @@ export const getAccountStats = async (
     }
   } catch (error) {
     console.error('Error getting account statistics', error)
-
+    sentry(error)
     return null
   }
 }

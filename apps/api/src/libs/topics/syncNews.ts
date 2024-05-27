@@ -16,6 +16,7 @@ import {
   getTr724News,
   getTrouwNews,
 } from './sources'
+import { sentry } from '../../utils/sentry'
 
 // import getTurkishMinuteNews from './sources/turkishminute'
 
@@ -82,7 +83,7 @@ export const syncNews = async () => {
     return { data: updatedTopics, meta: {} }
   } catch (error) {
     console.error('Sync news', error)
-
+    sentry(error)
     return error
   }
 }
