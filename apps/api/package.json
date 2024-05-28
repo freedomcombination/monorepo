@@ -24,10 +24,10 @@
     "tsc": "npx tsc --noEmit"
   },
   "dependencies": {
-    "@react-email/components": "0.0.18",
+    "@react-email/components": "0.0.19",
     "@react-email/font": "0.0.6",
-    "@react-email/render": "0.0.14",
-    "@react-email/tailwind": "0.0.17",
+    "@react-email/render": "0.0.15",
+    "@react-email/tailwind": "0.0.18",
     "@strapi/plugin-i18n": "^4.24.3",
     "@strapi/plugin-sentry": "^4.24.3",
     "@strapi/plugin-users-permissions": "^4.24.3",
