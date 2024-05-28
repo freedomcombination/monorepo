@@ -2,7 +2,8 @@
   "extends": "@fc/config/tsconfig.nextjs.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "lib": ["dom", "webworker"]
   },
   "include": [
     "next-env.d.ts",

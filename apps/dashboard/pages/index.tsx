@@ -11,6 +11,7 @@ import {
   AccountStats as AccountStatsType,
   StrapiLocale,
 } from '@fc/types'
+import { SubToNotification } from '@fc/ui'
 import { AdminLayout, AuditLogList } from '@fc/ui'
 
 const args: RequestCollectionArgs<AccountStats> = {
@@ -22,9 +23,12 @@ const args: RequestCollectionArgs<AccountStats> = {
 const Index = () => {
   const { t } = useTranslation()
   const { user, profile, canRead } = useAuthContext()
+  const enableNotifications =
+    process.env.NEXT_PUBLIC_ENABLE_NOTIFICATIONS === 'true'
 
   return (
     <AdminLayout seo={{ title: t('home') }}>
+      {enableNotifications && <SubToNotification />}
       {canRead('audit-logs') ? (
         <AuditLogList />
       ) : (
