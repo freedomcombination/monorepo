@@ -36,11 +36,11 @@ export const ForgotPasswordForm = () => {
     mutationFn: (values: ForgotPasswordFieldValues) =>
       axios.post('/api/auth/forgot-password', values),
     onSuccess: () => {
-      toastMessage(null, t`forgot-pass.text`, 'success')
+      toastMessage(null, t('forgot-pass.text'), 'success')
       reset()
     },
     onError: () => {
-      toastMessage(t`error`, t`apply-form.error.description`, 'error')
+      toastMessage(t('error'), null, 'error')
     },
   })
 
