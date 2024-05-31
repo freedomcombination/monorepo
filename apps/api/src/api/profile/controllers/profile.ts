@@ -35,7 +35,7 @@ export default factories.createCoreController('api::profile.profile', () => {
       return this.transformResponse(sanitizedResults, { pagination })
     },
     async create(ctx) {
-      if (ctx.request.body?.data?.recaptchaToken) await checkRecaptcha(ctx)
+      //  if (ctx.request.body?.data?.recaptchaToken) await checkRecaptcha(ctx)
 
       const { email } = ctx.request.body.data
 
