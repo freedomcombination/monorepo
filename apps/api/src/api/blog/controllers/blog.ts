@@ -5,21 +5,24 @@ export default factories.createCoreController('api::blog.blog', () => {
   return {
     async findOne(ctx) {
       const { id } = ctx.params
-      const slug = id ? id : ctx.params.slug
+      const searchValue = id ? id : ctx.params.slug
+      const searchKey = id ? 'id' : 'slug'
 
       const blog = await strapi.db.query('api::blog.blog').findOne({
-        where: { slug },
+        where: { [searchKey]: searchValue },
         populate: ['author', 'image'],
       })
 
       const user = ctx.state.user
       const sanitizedBlog = (await this.sanitizeOutput(blog, ctx)) as Blog
 
+      if (id) return sanitizedBlog
+
       const isLiked =
         user &&
         (await strapi.db.query('api::blog.blog').count({
           where: {
-            slug,
+            slug: searchValue,
             likers: {
               email: user.email,
             },
@@ -28,7 +31,7 @@ export default factories.createCoreController('api::blog.blog', () => {
         }))
 
       return {
-        ...sanitizedBlog,
+        ...blog,
         isLiked: !!isLiked,
       }
     },
