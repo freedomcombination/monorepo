@@ -16,9 +16,9 @@ export default {
 
       try {
         await strapi.plugins['email'].services.email.send({
-          to: 'talipaltas@gmail.com',
+          to: process.env.SMTP_USERNAME,
           bcc: emails,
-          from: 'info@freedomcombination.com',
+          from: process.env.SMTP_USERNAME,
           subject: `New volunteer ${result.name}`,
           html: emailTemplates.renderVolunteerApplied(result),
         })

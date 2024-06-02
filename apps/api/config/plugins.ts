@@ -15,8 +15,8 @@ export default ({ env }) => ({
         },
       },
       settings: {
-        defaultFrom: 'info@freedomcombination.com',
-        defaultReplyTo: 'info@freedomcombination.com',
+        defaultFrom: process.env.SMTP_USERNAME,
+        defaultReplyTo: process.env.SMTP_USERNAME,
       },
     },
   },
