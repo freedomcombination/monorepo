@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { Button, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { HeaderMobileNavItem } from './HeaderMobileNavItem'
 import { HeaderMobileNavProps } from './types'
-import { Navigate } from '../Navigate'
+import { ButtonLink } from '../ButtonLink'
 
 export const HeaderMobileNav: FC<HeaderMobileNavProps> = ({ headerMenu }) => {
   const { t } = useTranslation()
@@ -15,9 +15,10 @@ export const HeaderMobileNav: FC<HeaderMobileNavProps> = ({ headerMenu }) => {
       {headerMenu.map((item, i) => {
         return <HeaderMobileNavItem key={i} item={item} />
       })}
-      <Navigate href={'/donation'}>
-        <Button w={'full'}>{t('donation.title')}</Button>
-      </Navigate>
+
+      <ButtonLink href={'/donation'} w={'full'}>
+        {t('donation.title')}
+      </ButtonLink>
     </Stack>
   )
 }

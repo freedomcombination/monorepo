@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import {
   Badge,
   Box,
@@ -24,7 +25,6 @@ import { ArtCardAlertDialog } from './ArtCardAlertDialog'
 import { ArtCardImage } from './ArtCardImage'
 import { ArtActionType, ArtCardBaseProps } from './types'
 import { ArtModal } from '../ArtModal'
-import { Navigate } from '../Navigate'
 import { WAvatar } from '../WAvatar'
 
 export const ArtCardBase: FC<ArtCardBaseProps> = ({
@@ -210,24 +210,25 @@ export const ArtCardBase: FC<ArtCardBaseProps> = ({
             >
               {art?.[`title_${router.locale}`]}
             </Text>
-            <Navigate href={`/club/artist/${art.artist?.id}`}>
-              <HStack
-                _hover={{ bg: 'whiteAlpha.300', borderColor: 'whiteAlpha.500' }}
-                borderColor="transparent"
-                borderWidth={1}
-                m={1}
-                p={1}
-                rounded="lg"
-                w="max-content"
-              >
-                <WAvatar
-                  size="xs"
-                  name={artistName || artistEmail}
-                  src={artistAvatar}
-                />
-                <Text noOfLines={1}>{artistName || artistEmail}</Text>
-              </HStack>
-            </Navigate>
+
+            <HStack
+              href={`/club/artist/${art.artist?.id}`}
+              as={Link}
+              _hover={{ bg: 'whiteAlpha.300', borderColor: 'whiteAlpha.500' }}
+              borderColor="transparent"
+              borderWidth={1}
+              m={1}
+              p={1}
+              rounded="lg"
+              w="max-content"
+            >
+              <WAvatar
+                size="xs"
+                name={artistName || artistEmail}
+                src={artistAvatar}
+              />
+              <Text noOfLines={1}>{artistName || artistEmail}</Text>
+            </HStack>
           </Stack>
           <ArtModal
             art={art}

@@ -3862,6 +3862,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@chakra-ui/next-js@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@chakra-ui/next-js@npm:2.2.0"
+  dependencies:
+    "@emotion/cache": "npm:^11.11.0"
+  peerDependencies:
+    "@chakra-ui/react": ">=2.4.0"
+    "@emotion/react": ">=11"
+    next: ">=13"
+    react: ">=18"
+  checksum: 10/e69800e99be5bfbbd10d97a6a5b055208f98e8619cd6b8e1f4715dc861018e606af1e642d8ee0a6baf294a65d49049fd0530293e76a93e631079d9c9c91fc47b
+  languageName: node
+  linkType: hard
+
 "@chakra-ui/number-input@npm:2.1.2":
   version: 2.1.2
   resolution: "@chakra-ui/number-input@npm:2.1.2"
@@ -11130,12 +11144,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.12.13":
-  version: 20.12.13
-  resolution: "@types/node@npm:20.12.13"
+"@types/node@npm:^20.13.0":
+  version: 20.13.0
+  resolution: "@types/node@npm:20.13.0"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/c9f02cfe342bce4aa9221f389115c1f9e3bd9abc87d45e3b2c3a5b92d99523c02b72dd67f50cbbc5edddbaf7dd458cf61dd3289d7a8c14fde80c998df10fee82
+  checksum: 10/82f0e999078fa5e251de002c755d18f63c47ff09c192fdd1381ca91774327563ad778244ab51f52304a9432b5ba678c1328585ef5e92ffdc5eed8e950a6ad1b9
   languageName: node
   linkType: hard
 
@@ -11960,12 +11974,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@upstash/redis@npm:1.25.1":
-  version: 1.25.1
-  resolution: "@upstash/redis@npm:1.25.1"
+"@upstash/redis@npm:^1.31.3":
+  version: 1.31.3
+  resolution: "@upstash/redis@npm:1.31.3"
   dependencies:
     crypto-js: "npm:^4.2.0"
-  checksum: 10/ecd3a972fa46ddffa0353c10e2b7a8f135c228af866c195adc5a753f294e8c207bf20a3a83bb8283ecd223cd67f31a24971393b4cc7cfe85efad348fb03915f1
+  checksum: 10/ac0fd73ff60e5155bbdd6a700ad72e2f9036840d470d31e402ae4c99484fadd9110049004c05b81171e09d4f4e46353a2378f1589fa3c68353805e4017dddc14
   languageName: node
   linkType: hard
 
@@ -12008,12 +12022,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/kv@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@vercel/kv@npm:1.0.1"
+"@vercel/kv@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@vercel/kv@npm:2.0.0"
   dependencies:
-    "@upstash/redis": "npm:1.25.1"
-  checksum: 10/90e159d4231ff48a5b9f6bcf667cf9992b007eb3f5e75fe95996f07845b9c862b7933a8bb01fdf656711cb248ea6d335ad7bb78150f3e2e87096b903e715f4f3
+    "@upstash/redis": "npm:^1.31.3"
+  checksum: 10/e9731d0fb63750f0290ede2a2cef58b6f9c0a6fcafe34915cade02b2a2f15f38a7e9f6290b83f3a4e81e2d0a3c9f976de764620770226994ffe6f89cde94ed28
   languageName: node
   linkType: hard
 
@@ -12553,9 +12567,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.1.18":
-  version: 3.1.18
-  resolution: "ai@npm:3.1.18"
+"ai@npm:^3.1.22":
+  version: 3.1.22
+  resolution: "ai@npm:3.1.22"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.8"
     "@ai-sdk/provider-utils": "npm:0.0.11"
@@ -12590,7 +12604,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/b70e8a4fa9ca36f25856a5470fe018144ec5d1c28db55ccac959fa72ea2e2f39103bccacd59196d164dffe6e604426b089eff405e833024df8d5ebe4ef793bc3
+  checksum: 10/93971ca34e591ec3c9e12433ab21bbefdeba3e74a29573cd8c9d446e9f20a98bd8987f3bfb0beb44fee52d4d6094324b6ba28b58b3198776f0523cb380acb6ed
   languageName: node
   linkType: hard
 
@@ -18646,6 +18660,7 @@ __metadata:
   resolution: "fc-turbo@workspace:."
   dependencies:
     "@builder.io/react-hydration-overlay": "npm:^0.0.8"
+    "@chakra-ui/next-js": "npm:^2.2.0"
     "@chakra-ui/react": "npm:^2.8.2"
     "@chakra-ui/storybook-addon": "npm:^5.1.0"
     "@ctrl/tinycolor": "npm:^4.1.0"
@@ -18672,7 +18687,7 @@ __metadata:
     "@turbo/gen": "npm:^1.13.3"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
-    "@types/node": "npm:^20.12.13"
+    "@types/node": "npm:^20.13.0"
     "@types/pluralize": "npm:^0.0.33"
     "@types/react": "npm:18.3.3"
     "@types/react-dom": "npm:18.3.0"
@@ -18694,9 +18709,9 @@ __metadata:
     "@uppy/url": "npm:^3.6.1"
     "@vercel/analytics": "npm:^1.3.1"
     "@vercel/edge-config": "npm:^1.1.1"
-    "@vercel/kv": "npm:^1.0.1"
+    "@vercel/kv": "npm:^2.0.0"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.1.18"
+    ai: "npm:^3.1.22"
     axios: "npm:^1.7.2"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:^4.7.6"
@@ -18710,7 +18725,7 @@ __metadata:
     eslint-config-turbo: "npm:^1.13.3"
     eslint-plugin-react: "npm:7.34.2"
     file-saver: "npm:^2.0.5"
-    framer-motion: "npm:11.2.9"
+    framer-motion: "npm:11.2.10"
     i18next: "npm:^23.11.5"
     i18next-browser-languagedetector: "npm:^7.2.1"
     i18next-http-backend: "npm:^2.5.2"
@@ -18726,11 +18741,11 @@ __metadata:
     next-recaptcha-v3: "npm:^1.4.1"
     next-seo: "npm:^6.5.0"
     next-share: "npm:^0.27.0"
-    openai: "npm:^4.47.2"
+    openai: "npm:^4.47.3"
     os-browserify: "npm:^0.3.0"
     path-browserify: "npm:^1.0.1"
     pluralize: "npm:^8.0.0"
-    prettier: "npm:^3.2.5"
+    prettier: "npm:^3.3.0"
     qs: "npm:^6.12.1"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
@@ -18748,7 +18763,7 @@ __metadata:
     react-medium-image-zoom: "npm:^5.2.4"
     react-pageflip: "npm:^2.0.3"
     react-player: "npm:^2.16.0"
-    react-qr-code: "npm:^2.0.13"
+    react-qr-code: "npm:^2.0.14"
     react-use: "npm:^17.5.0"
     recharts: "npm:^2.12.7"
     remove-markdown: "npm:^0.5.0"
@@ -19277,9 +19292,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:11.2.9":
-  version: 11.2.9
-  resolution: "framer-motion@npm:11.2.9"
+"framer-motion@npm:11.2.10":
+  version: 11.2.10
+  resolution: "framer-motion@npm:11.2.10"
   dependencies:
     tslib: "npm:^2.4.0"
   peerDependencies:
@@ -19293,7 +19308,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/9667084fd8f66c63e25ff4caf3402e5a30c98b536acf3dcf920af0803ea748f618361a8ae0d899f0dfadf8631858803bfb65672c94d513d737f770a2c1aae4e8
+  checksum: 10/3f09356c08700f5f405b6259617d9eb3f49d49770efe15a81211bc41625001485f242fe2b44f6de657e707cd2ac766ca243bab72192dc948672525d331628a5d
   languageName: node
   linkType: hard
 
@@ -25976,9 +25991,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openai@npm:^4.47.2":
-  version: 4.47.2
-  resolution: "openai@npm:4.47.2"
+"openai@npm:^4.47.3":
+  version: 4.47.3
+  resolution: "openai@npm:4.47.3"
   dependencies:
     "@types/node": "npm:^18.11.18"
     "@types/node-fetch": "npm:^2.6.4"
@@ -25990,7 +26005,7 @@ __metadata:
     web-streams-polyfill: "npm:^3.2.1"
   bin:
     openai: bin/cli
-  checksum: 10/0e10aec12244b902822c3943eb2b3caeccfeb82708a494500fed0d349554e13d0149956b9182c1378e6cf386f143910bda7f375ef2c3e3a39eb6da0a6f4dca06
+  checksum: 10/8fbe3402bbe60d089832f58b88fbfa6ad0f17852a6d30bcc8ec3b5d8ca689439a05c660983f572d333f9f75df9450294f038f69ce4635fd83753b3288bd3f96a
   languageName: node
   linkType: hard
 
@@ -27275,12 +27290,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.2.5":
-  version: 3.2.5
-  resolution: "prettier@npm:3.2.5"
+"prettier@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "prettier@npm:3.3.0"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10/d509f9da0b70e8cacc561a1911c0d99ec75117faed27b95cc8534cb2349667dee6351b0ca83fa9d5703f14127faa52b798de40f5705f02d843da133fc3aa416a
+  checksum: 10/e55233f8e4b5f96f52180dbfa424ae797a98a9b8a9a7a79de5004e522c02b423e71927ed99d855dbfcd00dc3b82e5f6fb304cfe117cc4e7c8477d883df2d8984
   languageName: node
   linkType: hard
 
@@ -28230,19 +28245,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-qr-code@npm:^2.0.13":
-  version: 2.0.13
-  resolution: "react-qr-code@npm:2.0.13"
+"react-qr-code@npm:^2.0.14":
+  version: 2.0.14
+  resolution: "react-qr-code@npm:2.0.14"
   dependencies:
     prop-types: "npm:^15.8.1"
     qr.js: "npm:0.0.0"
   peerDependencies:
-    react: ^16.x || ^17.x || ^18.x || ^19.x
+    react: "*"
     react-native-svg: "*"
   peerDependenciesMeta:
     react-native-svg:
       optional: true
-  checksum: 10/cfadaf22883d90b00d01daa7539c993d1229b698df6aa46c8ce5be306d3e932a03e5426dcec7ddc774af9965e88c84c3568e39ab5960d4987396002405e6968e
+  checksum: 10/ca17f24ef18339a17bea31e98412339fe66c6679d2ea15365c8213ab004bcd33b7b16338ff456f2d8d524fd23d9204fda8a385e16bfc4b35d976a256cd3039a3
   languageName: node
   linkType: hard
 

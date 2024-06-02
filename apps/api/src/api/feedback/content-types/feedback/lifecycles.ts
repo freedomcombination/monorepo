@@ -18,7 +18,7 @@ export default {
 
         strapi.plugins['email'].services.email.send({
           to: artist.email,
-          from: 'info@freedomcombination.com',
+          from: process.env.SMTP_USERNAME,
           subject: `Dear ${artist.name} your art "${art.title_en}" has been ${result.status}`,
           // TODO: Create a template for this email
           html: `<div>

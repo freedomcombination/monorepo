@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { isPast } from 'date-fns'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -10,10 +10,10 @@ import { strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Hashtag, StrapiLocale } from '@fc/types'
 import {
+  ButtonLink,
   Container,
   HashtagAnnouncement,
   HashtagsSummary,
-  Navigate,
 } from '@fc/ui'
 import { getItemLink } from '@fc/utils'
 
@@ -55,8 +55,7 @@ const Home: FC<HomeProps> = ({ hashtags }) => {
               {t('home.post-maker.content')}
             </Text>
 
-            <Button
-              as={Navigate}
+            <ButtonLink
               href={link || '/'}
               size={'lg'}
               fontWeight={600}
@@ -70,7 +69,7 @@ const Home: FC<HomeProps> = ({ hashtags }) => {
               h={'auto'}
             >
               {t('home.post-maker.button')}
-            </Button>
+            </ButtonLink>
           </Stack>
         </Container>
       </Box>

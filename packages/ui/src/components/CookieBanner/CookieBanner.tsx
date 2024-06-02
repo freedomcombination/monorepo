@@ -1,3 +1,4 @@
+import { Link } from '@chakra-ui/next-js'
 import {
   Button,
   Center,
@@ -9,8 +10,6 @@ import {
 } from '@chakra-ui/react'
 import { Trans, useTranslation } from 'next-i18next'
 import { BiCookie } from 'react-icons/bi'
-
-import { Navigate } from '../Navigate'
 
 export type CookieBannerProps = StackProps & {
   onAllow?: () => void
@@ -41,7 +40,7 @@ const CookieBanner = (props: CookieBannerProps) => {
         borderRadius="md"
       >
         <Center w="43px" h="43px">
-          <Icon as={BiCookie} boxSize="6" color={'primary.400'} />
+          <Icon as={BiCookie} boxSize="6" color={'primary.300'} />
         </Center>
       </Square>
 
@@ -49,7 +48,7 @@ const CookieBanner = (props: CookieBannerProps) => {
         <Trans
           i18nKey={'cookie.text'}
           components={{
-            a: <Navigate href="/privacy" />,
+            a: <Link color={'primary.300'} href="/privacy" />,
           }}
         />
       </Text>

@@ -1,8 +1,9 @@
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import Link from 'next/link'
+import { ButtonGroup } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { StrapiTranslatableModel } from '@fc/types'
+
+import { ButtonLink } from '../../components'
 
 export const FormLocaleSwitcher = <T extends StrapiTranslatableModel>({
   model,
@@ -28,8 +29,7 @@ export const FormLocaleSwitcher = <T extends StrapiTranslatableModel>({
               }
 
         return (
-          <Button
-            as={Link}
+          <ButtonLink
             key={m.id}
             textTransform={'uppercase'}
             href={href}
@@ -37,7 +37,7 @@ export const FormLocaleSwitcher = <T extends StrapiTranslatableModel>({
             variant={m.locale === model.locale ? 'solid' : 'outline'}
           >
             {m.locale}
-          </Button>
+          </ButtonLink>
         )
       })}
     </ButtonGroup>

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import {
   Button,
-  Link,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -21,9 +21,9 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useAuthContext } from '@fc/context'
 
 import {
+  ButtonLink,
   FormItem,
   LoginFormFieldValues,
-  Navigate,
   WAvatar,
 } from '../../components'
 import { adminLoginSchema } from '../AdminLoginForm/schema'
@@ -84,14 +84,14 @@ export const AuthModal = () => {
         <ModalCloseButton />
         <ModalBody>
           <Stack textAlign="center" spacing={4} py={4} justify="center">
-            <Navigate href="/">
+            <Link href="/">
               <VStack textAlign="center" w={'full'}>
                 <WAvatar boxSize={100} src={`/images/foundation-logo.svg`} />
                 <Text fontSize="xl" color={'blue.500'} fontWeight={900}>
                   FREEDOM COMBINATION
                 </Text>
               </VStack>
-            </Navigate>
+            </Link>
             <Stack spacing={4} flex={1}>
               <Stack
                 spacing={4}
@@ -143,14 +143,9 @@ export const AuthModal = () => {
                   ))}
               </Stack>
               {/* TODO Set session exp time */}
-              <Button
-                as={Navigate}
-                href="/forgot-password"
-                variant="link"
-                size="sm"
-              >
+              <ButtonLink href="/forgot-password" variant="link" size="sm">
                 {t('forgot-pass.link')}
-              </Button>
+              </ButtonLink>
             </Stack>
             <Text fontSize={'xs'}>
               Freedom Combination &copy; {new Date().getFullYear()} All rights

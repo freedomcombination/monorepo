@@ -1,12 +1,12 @@
 import { FC, useEffect } from 'react'
 
-import { Box, Button, chakra, Collapse, useBoolean } from '@chakra-ui/react'
+import { Box, chakra, Collapse, useBoolean } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { GoChevronDown } from 'react-icons/go'
 
 import { NavLink } from './NavLink'
 import { AdminNavItemProps } from './types'
-import { Navigate } from '../../components'
+import { ButtonLink } from '../../components'
 
 export const AdminNavItem: FC<AdminNavItemProps> = ({
   label,
@@ -85,39 +85,34 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
 
             return (
               <Box key={index}>
-                <Navigate
+                <ButtonLink
                   href={item.link as string}
                   justifyContent="start"
                   key={item.link}
                   ml={8}
                   {...(isExternal && { isExternal, target: '_blank' })}
-                >
-                  <Button
-                    justifyContent={'start'}
-                    leftIcon={item.icon}
-                    size="sm"
-                    variant="ghost"
-                    color={'initial'}
-                    w="full"
-                    px={2}
-                    _hover={{ color: 'primary.500' }}
-                    {...(isSubmenuLinkActive && {
-                      isDisabled: true,
-                      _disabled: {
-                        color: 'primary.500',
-                      },
+                  leftIcon={item.icon}
+                  size="sm"
+                  variant="ghost"
+                  color={'initial'}
+                  w="full"
+                  px={2}
+                  _hover={{ color: 'primary.500' }}
+                  isDisabled={!isAllowed && !isSubmenuLinkActive}
+                  {...(isSubmenuLinkActive && {
+                    _disabled: {
                       color: 'primary.500',
-                      _hover: { color: 'primary.400' },
-                    })}
-                    {...(!isAllowed && {
-                      isDisabled: true,
-                      color: 'red.700',
-                      textDecoration: 'line-through',
-                    })}
-                  >
-                    {item.label}
-                  </Button>
-                </Navigate>
+                    },
+                    color: 'primary.500',
+                    _hover: { color: 'primary.400' },
+                  })}
+                  {...(!isAllowed && {
+                    color: 'red.700',
+                    textDecoration: 'line-through',
+                  })}
+                >
+                  {item.label}
+                </ButtonLink>
               </Box>
             )
           })}
