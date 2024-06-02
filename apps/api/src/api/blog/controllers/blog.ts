@@ -1,67 +1,67 @@
 import { Blog } from '@fc/types'
 import { factories } from '@strapi/strapi'
+import { errors } from '@strapi/utils'
+import { getProfile } from '../../../utils'
 
 export default factories.createCoreController('api::blog.blog', () => {
   return {
     async findOne(ctx) {
-      const { id } = ctx.params
-      const searchValue = id ? id : ctx.params.slug
-      const searchKey = id ? 'id' : 'slug'
+      const id = Number(ctx.params.id) || undefined
+      const slug = !id && ctx.params.id
 
-      const blog = await strapi.db.query('api::blog.blog').findOne({
-        where: { [searchKey]: searchValue },
-        populate: ['author', 'image'],
-      })
+      const where = id ? { id: id } : { slug: slug }
 
-      const user = ctx.state.user
-      const sanitizedBlog = (await this.sanitizeOutput(blog, ctx)) as Blog
+      const params = await this.sanitizeQuery(ctx)
+      const populate = params.populate || { author: true, image: true }
 
-      if (id) return sanitizedBlog
+      const blog = (await strapi.db.query('api::blog.blog').findOne({
+        where,
+        ...params,
+        populate,
+      })) as Blog
+
+      if (!blog) {
+        throw new errors.NotFoundError('Blog not found')
+      }
+
+      const profile = await getProfile(ctx)
 
       const isLiked =
-        user &&
+        profile &&
         (await strapi.db.query('api::blog.blog').count({
           where: {
-            slug: searchValue,
-            likers: {
-              email: user.email,
-            },
+            ...where,
+            likers: { id: profile.id },
           },
-          select: ['id'],
         }))
 
-      return {
-        ...blog,
-        isLiked: !!isLiked,
-      }
+      blog.isLiked = !!isLiked
+
+      const sanitizedBlog = await this.sanitizeOutput(blog, ctx)
+
+      return sanitizedBlog
     },
     async find(ctx) {
       const response = await super.find(ctx)
-      const user = ctx.state.user
+      const profile = await getProfile(ctx)
 
       const data = []
+
       for (const blog of response.data) {
         const { id, attributes } = blog
 
         const isLiked =
-          user &&
+          profile &&
           (await strapi.db.query('api::blog.blog').count({
             where: {
               id,
-              likers: {
-                email: user.email,
-              },
+              likers: { id: profile.id },
             },
-            select: ['id'],
           }))
 
-        data.push({
-          id,
-          attributes: {
-            ...attributes,
-            isLiked: !!isLiked,
-          },
-        })
+        attributes.isLiked = !!isLiked
+
+        data.push({ id, attributes })
       }
 
       response.data = data
