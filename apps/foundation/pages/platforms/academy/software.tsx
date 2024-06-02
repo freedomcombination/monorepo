@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
-import { Box, Button, Heading, Stack } from '@chakra-ui/react'
+import { Box, Heading, Stack } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import { Container, Hero, Markdown, Navigate } from '@fc/ui'
+import { ButtonLink, Container, Hero, Markdown } from '@fc/ui'
 
 import { Layout } from '../../../components'
 
@@ -31,8 +31,7 @@ const SoftwarePage: FC<SoftwareProps> = ({ source }) => {
           <Box>
             <Markdown source={source} />
           </Box>
-          <Button
-            as={Navigate}
+          <ButtonLink
             href={`/join`}
             w="max-content"
             size="lg"
@@ -42,7 +41,7 @@ const SoftwarePage: FC<SoftwareProps> = ({ source }) => {
             fontWeight={700}
           >
             {t('join-the-team')}
-          </Button>
+          </ButtonLink>
         </Stack>
       </Container>
     </Layout>

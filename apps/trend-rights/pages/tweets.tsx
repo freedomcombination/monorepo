@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Button,
   Input,
   Modal,
   ModalBody,
@@ -22,7 +21,12 @@ import {
   StrapiLocale,
   StrapiTranslatableModel,
 } from '@fc/types'
-import { Container, MasonryGrid, Navigate, RecommendedTweetCard } from '@fc/ui'
+import {
+  ButtonLink,
+  Container,
+  MasonryGrid,
+  RecommendedTweetCard,
+} from '@fc/ui'
 import { getLocalizedSlugs, getPageSeo } from '@fc/utils'
 
 import { Layout } from '../components'
@@ -87,9 +91,8 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ tweet, tweets, seo }) => {
       </Modal>
       <Container my={8}>
         <Stack spacing={4}>
-          <Navigate href={`/news`}>
-            <Button>News</Button>
-          </Navigate>
+          <ButtonLink href={`/news`}>News</ButtonLink>
+
           <Input
             size={'lg'}
             onChange={handleSearch}
@@ -148,7 +151,7 @@ export const getServerSideProps = async (
         }
       })
       .catch(error => {
-        console.log(error)
+        console.error(error)
       })
   }
 

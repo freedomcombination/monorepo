@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
-import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { Hashtag } from '@fc/types'
-import { Container, Navigate, WImage } from '@fc/ui'
+import { ButtonLink, Container, WImage } from '@fc/ui'
 import { getItemLink } from '@fc/utils'
 
 import { HashtagMiniCard } from './HashtagMiniCard'
@@ -85,15 +85,14 @@ export const HashtagsSummary: FC<HashtagsSummaryProps> = ({ hashtags }) => {
               <Text size="lg" fontWeight={400}>
                 {latestHashtag.description}
               </Text>
-              <Button
-                as={Navigate}
+              <ButtonLink
                 href={latestLink || '/'}
                 size={'lg'}
                 fontWeight={600}
                 boxShadow="lg"
               >
                 {t('read-more')}
-              </Button>
+              </ButtonLink>
             </Stack>
           </Stack>
         </Stack>

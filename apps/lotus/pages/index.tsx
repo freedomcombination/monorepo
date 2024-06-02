@@ -1,14 +1,13 @@
 import { FC } from 'react'
 
-import { Button, Heading, Image, VStack } from '@chakra-ui/react'
+import { Heading, Image, VStack } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
-import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import { Container } from '@fc/ui'
+import { ButtonLink, Container } from '@fc/ui'
 
 import { Layout } from '../components'
 
@@ -32,9 +31,9 @@ const Home: FC<HomeProps> = ({ seo }) => {
           >
             Lotus vd Media
           </Heading>
-          <Button size={'lg'} as={Link} href={'/donation'} variant={'outline'}>
+          <ButtonLink size={'lg'} href={'/donation'} variant={'outline'}>
             {t('donation.title')}
-          </Button>
+          </ButtonLink>
         </VStack>
       </Container>
     </Layout>

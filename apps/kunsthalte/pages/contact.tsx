@@ -1,9 +1,7 @@
 import {
   Box,
-  Button,
   Divider,
   Heading,
-  Link,
   SimpleGrid,
   Text,
   VStack,
@@ -13,12 +11,17 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail } from 'react-icons/md'
 
-import { EMAIL_SENDER, RecaptchaKeys, socialLinks } from '@fc/config'
-import { PUBLIC_TOKEN } from '@fc/config'
+import {
+  EMAIL_SENDER,
+  PUBLIC_TOKEN,
+  RecaptchaKeys,
+  socialLinks,
+} from '@fc/config'
 import { sendEmail, useRecaptchaToken } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { EmailCreateInput, StrapiLocale } from '@fc/types'
 import {
+  ButtonLink,
   ContactForm,
   ContactFormFieldValues,
   Container,
@@ -86,8 +89,7 @@ const Contact = () => {
 
               <Divider borderColor="whiteAlpha.400" />
 
-              <Button
-                as={Link}
+              <ButtonLink
                 isExternal
                 variant="link"
                 color="primary.50"
@@ -96,7 +98,7 @@ const Contact = () => {
                 href="mailto:kunsthalte@freedomcombination.com"
               >
                 kunsthalte@freedomcombination.com
-              </Button>
+              </ButtonLink>
 
               <SocialButtons items={socialLinks.kunsthalte} />
             </VStack>

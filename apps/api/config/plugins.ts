@@ -7,7 +7,7 @@ export default ({ env }) => ({
     config: {
       provider: 'nodemailer',
       providerOptions: {
-        host: 'mail.privateemail.com',
+        host: 'smtp.gmail.com',
         port: 465,
         auth: {
           user: env('SMTP_USERNAME'),
