@@ -1,5 +1,4 @@
-import { ReactNode } from 'react'
-
+import { LinkProps } from '@chakra-ui/next-js'
 import { ButtonProps } from '@chakra-ui/react'
 
 import { DashboardRoute } from '@fc/config'
@@ -33,7 +32,7 @@ export type AdminNavItemProps = {
   allowed?: boolean
 } & ButtonProps
 
-export type NavLinkProps = ButtonProps & {
-  href?: DashboardRoute
-  children?: ReactNode
-}
+export type NavLinkProps = ButtonProps &
+  Omit<LinkProps, 'href'> & {
+    href?: DashboardRoute
+  }

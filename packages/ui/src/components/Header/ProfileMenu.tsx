@@ -1,5 +1,6 @@
 import { FC, Fragment } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import {
   Avatar,
   Button,
@@ -10,7 +11,6 @@ import {
   MenuItem,
   MenuList,
 } from '@chakra-ui/react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
@@ -20,7 +20,7 @@ import { getMediaUrl } from '@fc/utils'
 
 import { ProfileMenuProps } from './types'
 import { useScroll } from '../../hooks'
-import { Navigate } from '../Navigate'
+import { ButtonLink } from '../ButtonLink'
 
 export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   const isScrolled = useScroll()
@@ -34,16 +34,15 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   if (!isLoggedIn) {
     return (
       <Wrapper>
-        <Link href={loginHref} className="login-link">
-          <Button
-            size="sm"
-            isLoading={isLoading}
-            variant={!isScrolled && isDark ? 'solid' : 'outline'}
-            rightIcon={<FiLogIn />}
-          >
-            {t('login.signin')}
-          </Button>
-        </Link>
+        <ButtonLink
+          href={loginHref}
+          size="sm"
+          isLoading={isLoading}
+          variant={!isScrolled && isDark ? 'solid' : 'outline'}
+          rightIcon={<FiLogIn />}
+        >
+          {t('login.signin')}
+        </ButtonLink>
       </Wrapper>
     )
   }
@@ -65,7 +64,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
         {profile?.name || user?.username}
       </MenuButton>
       <MenuList>
-        <MenuItem as={Navigate} href={'/profile'}>
+        <MenuItem as={Link} href={'/profile'}>
           {t('profile')}
         </MenuItem>
 

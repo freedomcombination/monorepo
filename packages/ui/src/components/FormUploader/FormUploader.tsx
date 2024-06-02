@@ -63,7 +63,7 @@ export const FormUploader = () => {
     }
 
     uploadAsync(files)
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
       .finally(() => setIsUploading(false))
   }
 
@@ -85,7 +85,7 @@ export const FormUploader = () => {
     }
 
     fetchFilesAsync()
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
       .finally(() => setIsUploading(false))
   }
 
@@ -105,7 +105,7 @@ export const FormUploader = () => {
     }
 
     deleteFilesAsync()
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
       .finally(() => setIsUploading(false))
   }
 

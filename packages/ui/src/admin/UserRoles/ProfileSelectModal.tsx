@@ -80,7 +80,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
             },
           })
         } catch (error) {
-          console.log(error)
+          console.error(error)
           continue
         }
         setPendingUser(prev => prev.filter(u => u.id !== user.id))

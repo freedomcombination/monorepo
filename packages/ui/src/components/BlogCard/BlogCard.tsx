@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import {
   Box,
   Flex,
@@ -18,7 +19,6 @@ import { Blog } from '@fc/types'
 import { getReadingTime } from '@fc/utils'
 
 import { FormattedDate } from '../FormattedDate'
-import { Navigate } from '../Navigate'
 import { WImage } from '../WImage'
 
 export type BlogCardProps = {
@@ -34,7 +34,7 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured }) => {
   const readingTime = getReadingTime(post.content || '', locale)
 
   return (
-    <Navigate
+    <Link
       {...(featured && { gridColumn: { lg: 'span 2' } })}
       {...(!featured && { display: 'flex' })}
       href={`/blog/${post.slug}`}
@@ -134,6 +134,6 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured }) => {
           </Stack>
         </Stack>
       </Flex>
-    </Navigate>
+    </Link>
   )
 }

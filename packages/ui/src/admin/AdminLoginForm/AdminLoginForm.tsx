@@ -1,14 +1,7 @@
 import { useState } from 'react'
 
-import {
-  Box,
-  Button,
-  Link,
-  SimpleGrid,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { Link } from '@chakra-ui/next-js'
+import { Box, Button, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
@@ -19,10 +12,10 @@ import { useAuthContext } from '@fc/context'
 
 import { adminLoginSchema } from './schema'
 import {
+  ButtonLink,
   Container,
   FormItem,
   LoginFormFieldValues,
-  Navigate,
   WAvatar,
   WImage,
 } from '../../components'
@@ -84,7 +77,7 @@ export const AdminLoginForm = () => {
           pb={8}
           pt={{ base: 8, lg: '50%' }}
         >
-          <Navigate href="/">
+          <Link href="/">
             <VStack textAlign="center" w={'full'}>
               <WAvatar size="2xl" src={`/images/foundation-logo.svg`} />
 
@@ -92,7 +85,7 @@ export const AdminLoginForm = () => {
                 FREEDOM COMBINATION
               </Text>
             </VStack>
-          </Navigate>
+          </Link>
 
           <Stack spacing={4} flex={1}>
             <Stack
@@ -148,14 +141,9 @@ export const AdminLoginForm = () => {
             </Stack>
             {/* TODO Set session exp time */}
 
-            <Button
-              as={Navigate}
-              href="/forgot-password"
-              variant="link"
-              size="sm"
-            >
+            <ButtonLink href="/forgot-password" variant="link" size="sm">
               {t('forgot-pass.link')}
-            </Button>
+            </ButtonLink>
           </Stack>
 
           <Text fontSize={'xs'}>

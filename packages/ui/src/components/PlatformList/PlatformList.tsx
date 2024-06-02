@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Button, Heading, Spacer, Stack, Text } from '@chakra-ui/react'
+import { Heading, Spacer, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaChevronRight } from 'react-icons/fa'
@@ -8,7 +8,7 @@ import { FaChevronRight } from 'react-icons/fa'
 import { Platform } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
-import { Navigate } from '../Navigate'
+import { ButtonLink } from '../ButtonLink'
 import { WAvatar } from '../WAvatar'
 
 export interface PlatformListProps {
@@ -40,14 +40,13 @@ export const PlatformList: FC<PlatformListProps> = ({ platforms }) => {
             <Text fontSize="sm">{platform[`description_${locale}`]}</Text>
             <Spacer />
 
-            <Button
-              as={Navigate}
+            <ButtonLink
               href={`/${locale}/platforms/${platform.slug}`}
               rightIcon={<FaChevronRight />}
               variant="link"
             >
               {t('read-more')}
-            </Button>
+            </ButtonLink>
           </Stack>
         </Stack>
       ))}

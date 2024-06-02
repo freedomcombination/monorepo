@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import {
   Center,
   Heading,
@@ -12,7 +13,6 @@ import {
 
 import { UploadFile } from '@fc/types'
 
-import { Navigate } from '../Navigate'
 import { WAvatar } from '../WAvatar'
 import { WImage } from '../WImage'
 
@@ -73,7 +73,7 @@ export const Card: FC<CardProps> = ({
             {date && place && <Text>•</Text>}
             {date && <Text>{date}</Text>}
           </Wrap>
-          <LinkOverlay as={Navigate} href={href}>
+          <LinkOverlay as={Link} href={href}>
             <Heading
               as="h3"
               textTransform="uppercase"

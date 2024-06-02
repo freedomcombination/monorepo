@@ -1,16 +1,16 @@
-import { Box, Button, Heading, Link, Stack, VStack } from '@chakra-ui/react'
+import { Box, Heading, Stack, VStack } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { FaWhatsapp } from 'react-icons/fa'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 
-import { EMAIL_SENDER, socialLinks } from '@fc/config'
-import { PUBLIC_TOKEN } from '@fc/config'
+import { EMAIL_SENDER, PUBLIC_TOKEN, socialLinks } from '@fc/config'
 import { sendEmail } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { EmailCreateInput, StrapiLocale } from '@fc/types'
 import {
+  ButtonLink,
   ContactForm,
   ContactFormFieldValues,
   Container,
@@ -66,8 +66,7 @@ const Contact = () => {
             >
               <Heading color={'primary.50'}>{t('trend-rights')}</Heading>
               <VStack alignItems="flex-start" color="primary.50">
-                <Button
-                  as={Link}
+                <ButtonLink
                   isExternal
                   borderWidth={2}
                   borderColor="transparent"
@@ -78,9 +77,8 @@ const Contact = () => {
                   href="tel:+31685221308"
                 >
                   +31-6 85221308
-                </Button>
-                <Button
-                  as={Link}
+                </ButtonLink>
+                <ButtonLink
                   isExternal
                   borderWidth={2}
                   borderColor="transparent"
@@ -93,9 +91,8 @@ const Contact = () => {
                   href="https://api.whatsapp.com/send?phone=31685221308"
                 >
                   {t('contact.form.message')}
-                </Button>
-                <Button
-                  as={Link}
+                </ButtonLink>
+                <ButtonLink
                   isExternal
                   borderWidth={2}
                   borderColor="transparent"
@@ -106,9 +103,8 @@ const Contact = () => {
                   href="mailto:info@trendrights.com"
                 >
                   info@trendrights.com
-                </Button>
-                <Button
-                  as={Link}
+                </ButtonLink>
+                <ButtonLink
                   isExternal
                   borderWidth={2}
                   borderColor="transparent"
@@ -121,7 +117,7 @@ const Contact = () => {
                   href="https://goo.gl/maps/E9HaayQnXmphUWtN8"
                 >
                   Tandersplein 1, 3027 CN <br /> Rotterdam, Netherland
-                </Button>
+                </ButtonLink>
               </VStack>
 
               <SocialButtons items={socialLinks['trend-rights']} />

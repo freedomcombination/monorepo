@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Button, Text, VStack } from '@chakra-ui/react'
+import { Box, Text, VStack } from '@chakra-ui/react'
 import { QueryClient } from '@tanstack/react-query'
 import { addHours, isPast, isWithinInterval } from 'date-fns'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
@@ -12,11 +12,11 @@ import { RequestCollectionArgs, strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Hashtag, StrapiCollectionResponse, StrapiLocale } from '@fc/types'
 import {
+  ButtonLink,
   Container,
   HashtagAnnouncement,
   HashtagCard,
   Hero,
-  Navigate,
 } from '@fc/ui'
 import { getItemLink, getPageSeo } from '@fc/utils'
 
@@ -48,9 +48,10 @@ const AnnouncementEvent: FC<HashtagEventsProps> = ({
               <Text fontSize={'lg'} color={'primary'}>
                 {t('join-previous-hashtag')}
               </Text>
-              <Navigate href={link || `/hashtags`}>
-                <Button>{t('join-link')}</Button>
-              </Navigate>
+
+              <ButtonLink href={link || `/hashtags`}>
+                {t('join-link')}
+              </ButtonLink>
             </VStack>
           )}
         </Container>

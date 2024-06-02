@@ -1,13 +1,12 @@
 import { FC } from 'react'
 
-import { Divider, HStack, Text, Box } from '@chakra-ui/react'
+import { Link } from '@chakra-ui/next-js'
+import { Box, Divider, HStack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MdCollectionsBookmark } from 'react-icons/md'
 
 import { Collection } from '@fc/types'
-
-import { Navigate } from '../Navigate'
 
 export type CollectionListProps = {
   collectionData: Partial<Collection>[]
@@ -27,7 +26,7 @@ export const CollectionList: FC<CollectionListProps> = ({ collectionData }) => {
       </HStack>
       <Divider />
       {collectionData.map((collection, index) => (
-        <Navigate
+        <Link
           key={index}
           href={`/${locale}/club/collections/${collection.slug}`}
           py={2}
@@ -35,7 +34,7 @@ export const CollectionList: FC<CollectionListProps> = ({ collectionData }) => {
           _hover={{ color: 'primary.500' }}
         >
           {collection.title}
-        </Navigate>
+        </Link>
       ))}
     </div>
   )

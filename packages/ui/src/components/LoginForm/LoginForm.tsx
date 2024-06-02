@@ -23,8 +23,8 @@ import { useAuthContext } from '@fc/context'
 
 import { loginSchema } from './schema'
 import { LoginFormFieldValues } from './types'
+import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
-import { Navigate } from '../Navigate'
 import {
   SocialLoginButtons,
   SocialLoginButtonsProps,
@@ -94,9 +94,9 @@ export const LoginForm: FC<LoginFormProps> = ({
               <HStack spacing="1" justify="center">
                 <Text color="muted">{t('login.no-account')}</Text>
 
-                <Button as={Navigate} href="/register" variant="link">
+                <ButtonLink href="/register" variant="link">
                   {t('login.signup')}
-                </Button>
+                </ButtonLink>
               </HStack>
             )}
           </Stack>
@@ -128,15 +128,14 @@ export const LoginForm: FC<LoginFormProps> = ({
             {/* TODO Set session exp time */}
             <Checkbox defaultChecked>{t('login.remember-me')}</Checkbox>
 
-            <Button
+            <ButtonLink
               data-testid="button-forgot-password"
-              as={Navigate}
               href="/forgot-password"
               variant="link"
               size="sm"
             >
               {t('forgot-pass.title')}
-            </Button>
+            </ButtonLink>
           </HStack>
           <Stack spacing="6">
             <Button

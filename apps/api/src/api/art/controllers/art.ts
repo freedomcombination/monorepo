@@ -6,7 +6,7 @@ import { emailTemplates } from '../../../../emails'
 const { UnauthorizedError } = errors
 
 const sendEmail = async art => {
-  // do not forget to define your comma seperated EDITOR_EMAILS in your local env
+  // TODO: Get editor emails from the database
   const editorEmails = process.env.EDITOR_EMAILS?.split(',')
 
   // populating artist to use in email subject
@@ -17,7 +17,7 @@ const sendEmail = async art => {
   if (editorEmails?.length > 0) {
     strapi.plugins['email'].services.email.send({
       to: editorEmails,
-      from: 'info@freedomcombination.com',
+      from: process.env.SMTP_USERNAME,
       subject: `New Art ${title} has been created by ${name}`,
       html: emailTemplates.renderArtCreated(art),
     })

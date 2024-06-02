@@ -1,15 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  Button,
-  Heading,
-  Link,
-  SimpleGrid,
-  Stack,
-  Text,
-  Wrap,
-} from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, Stack, Text, Wrap } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { GrDocumentDownload } from 'react-icons/gr'
@@ -18,7 +9,7 @@ import { API_URL } from '@fc/config'
 import { strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Foundation, StrapiLocale } from '@fc/types'
-import { Container, Hero } from '@fc/ui'
+import { ButtonLink, Container, Hero } from '@fc/ui'
 
 import { DirectorsCard, FoundationDetails, Layout } from '../components'
 
@@ -78,8 +69,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
 
             <Wrap spacing={4} justify={'center'}>
               {foundation?.policy_plan && (
-                <Button
-                  as={Link}
+                <ButtonLink
                   href={API_URL + foundation?.policy_plan?.url}
                   rightIcon={<GrDocumentDownload />}
                   colorScheme={'blackAlpha'}
@@ -87,14 +77,12 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
                   color={'initial'}
                   isExternal
                 >
-                  {' '}
                   {t('foundation.policy-plan')}
-                </Button>
+                </ButtonLink>
               )}
 
               {foundation?.substantive_financial_annual_report && (
-                <Button
-                  as={Link}
+                <ButtonLink
                   href={
                     API_URL +
                     foundation?.substantive_financial_annual_report?.url
@@ -106,11 +94,10 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
                   isExternal
                 >
                   {t('foundation.financial-report')}
-                </Button>
+                </ButtonLink>
               )}
               {foundation?.remuneration_policy && (
-                <Button
-                  as={Link}
+                <ButtonLink
                   href={API_URL + foundation?.remuneration_policy?.url}
                   rightIcon={<GrDocumentDownload />}
                   colorScheme={'blackAlpha'}
@@ -119,7 +106,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
                   isExternal
                 >
                   {t('foundation.remuneration-policy')}
-                </Button>
+                </ButtonLink>
               )}
             </Wrap>
           </Stack>
