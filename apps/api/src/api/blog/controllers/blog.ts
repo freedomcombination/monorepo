@@ -1,23 +1,37 @@
 import { Blog } from '@fc/types'
 import { factories } from '@strapi/strapi'
+import { errors } from '@strapi/utils'
+import { getProfile } from '../../../utils'
 
 export default factories.createCoreController('api::blog.blog', () => {
   return {
     async findOne(ctx) {
-      const { id, slug } = ctx.params
+      const id = Number(ctx.params.id) || undefined
+      const slug = !id && ctx.params.id
+
+      const where = id ? { id: id } : { slug: slug }
+
+      const params = await this.sanitizeQuery(ctx)
+      const populate = params.populate || { author: true, image: true }
 
       const blog = (await strapi.db.query('api::blog.blog').findOne({
-        where: id ? { id: id } : { slug: slug },
-        populate: { author: true, image: true },
+        where,
+        ...params,
+        populate,
       })) as Blog
 
-      const user = ctx.state.user
+      if (!blog) {
+        throw new errors.NotFoundError('Blog not found')
+      }
+
+      const profile = await getProfile(ctx)
+
       const isLiked =
-        user &&
+        profile &&
         (await strapi.db.query('api::blog.blog').count({
           where: {
-            slug,
-            likers: { email: user.email },
+            ...where,
+            likers: { id: profile.id },
           },
         }))
 
@@ -25,37 +39,29 @@ export default factories.createCoreController('api::blog.blog', () => {
 
       const sanitizedBlog = await this.sanitizeOutput(blog, ctx)
 
-      console.log('sanitizedBlog', sanitizedBlog)
-
       return sanitizedBlog
     },
     async find(ctx) {
       const response = await super.find(ctx)
-      const user = ctx.state.user
+      const profile = await getProfile(ctx)
 
       const data = []
+
       for (const blog of response.data) {
         const { id, attributes } = blog
 
         const isLiked =
-          user &&
+          profile &&
           (await strapi.db.query('api::blog.blog').count({
             where: {
               id,
-              likers: {
-                email: user.email,
-              },
+              likers: { id: profile.id },
             },
-            select: ['id'],
           }))
 
-        data.push({
-          id,
-          attributes: {
-            ...attributes,
-            isLiked: !!isLiked,
-          },
-        })
+        attributes.isLiked = !!isLiked
+
+        data.push({ id, attributes })
       }
 
       response.data = data
