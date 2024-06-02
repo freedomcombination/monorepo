@@ -1,14 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  Button,
-  Center,
-  Heading,
-  Link,
-  SimpleGrid,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Center, Heading, SimpleGrid, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
@@ -17,7 +9,13 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import { UploadFile } from '@fc/types'
 
-import { AcademyCard, Container, Markdown, WImage } from '../../components'
+import {
+  AcademyCard,
+  ButtonLink,
+  Container,
+  Markdown,
+  WImage,
+} from '../../components'
 
 export type PlatformTemplateProps = {
   seo: NextSeoProps
@@ -59,15 +57,14 @@ export const PlatformTemplate: FC<PlatformTemplateProps> = ({
         </Box>
         <Center>
           {!!link && (
-            <Button
-              as={Link}
+            <ButtonLink
               isExternal
               href={link}
               size="lg"
               rightIcon={<FaExternalLinkAlt />}
             >
               {t('visit-website')}
-            </Button>
+            </ButtonLink>
           )}
         </Center>
         {slug === 'academy' && (

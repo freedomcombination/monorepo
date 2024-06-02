@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import { useRouter } from 'next/router'
 
 import { MenuTypeItemProps } from './types'
 import { useScroll } from '../../hooks'
-import { Navigate } from '../Navigate'
 
 export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
   const { asPath, locale } = useRouter()
@@ -13,7 +13,7 @@ export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
   const isExternal = item.link?.startsWith('http')
 
   return (
-    <Navigate
+    <Link
       href={item.link as string}
       fontWeight={600}
       p={2}
@@ -32,6 +32,6 @@ export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
       }}
     >
       {item[locale || 'en']}
-    </Navigate>
+    </Link>
   )
 }

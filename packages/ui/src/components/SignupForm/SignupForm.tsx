@@ -23,8 +23,8 @@ import * as yup from 'yup'
 import { useAuthContext } from '@fc/context'
 
 import { SignupFormFieldValues, SignupFormProps } from './types'
+import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
-import { Navigate } from '../Navigate'
 import { SocialLoginButtons } from '../SocialLoginButtons'
 
 const schema = (t: TFunction) =>
@@ -109,9 +109,9 @@ export const SignupForm: FC<SignupFormProps> = ({
             <HStack spacing="1" justify="center">
               <Text color="muted">{t('login.have-account')}</Text>
 
-              <Button as={Navigate} href="/login" variant="link">
+              <ButtonLink href="/login" variant="link">
                 {t('login.signin')}
-              </Button>
+              </ButtonLink>
             </HStack>
           </Stack>
         </Stack>
@@ -149,11 +149,15 @@ export const SignupForm: FC<SignupFormProps> = ({
                 defaultChecked
                 onChange={e => setIsTermsAccepted(e.target.checked)}
               />
-              <Navigate href="/terms">
-                <Button variant="link" colorScheme="gray" size="sm">
-                  {t('login.terms-use')}
-                </Button>
-              </Navigate>
+
+              <ButtonLink
+                href="/terms"
+                variant="link"
+                colorScheme="gray"
+                size="sm"
+              >
+                {t('login.terms-use')}
+              </ButtonLink>
             </HStack>
           </Stack>
           <Stack spacing="6">

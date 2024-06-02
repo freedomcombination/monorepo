@@ -1,19 +1,11 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  Button,
-  Center,
-  Heading,
-  SimpleGrid,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Box, Center, Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { PlatformSlug, Platform } from '@fc/types'
-import { AnimatedBox, Container, Navigate, WImage } from '@fc/ui'
+import { Platform, PlatformSlug } from '@fc/types'
+import { AnimatedBox, ButtonLink, Container, WImage } from '@fc/ui'
 
 type HomePlatformProps = {
   platforms: Platform[]
@@ -90,8 +82,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                     <Text color={color.text}>
                       {platform[`description_${locale}`]}
                     </Text>
-                    <Button
-                      as={Navigate}
+                    <ButtonLink
                       href={`/platforms/${platform.slug}`}
                       w="max-content"
                       size="lg"
@@ -101,7 +92,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                       fontWeight={700}
                     >
                       {t('read-more')}
-                    </Button>
+                    </ButtonLink>
                   </Stack>
                 </AnimatedBox>
               </SimpleGrid>

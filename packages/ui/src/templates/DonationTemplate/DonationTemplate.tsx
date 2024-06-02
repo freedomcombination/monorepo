@@ -8,7 +8,6 @@ import {
   HStack,
   Heading,
   Image,
-  Link,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
@@ -37,7 +36,7 @@ import * as yup from 'yup'
 import { DONATION_REQUEST_LINK } from '@fc/config'
 import { Platform } from '@fc/types'
 
-import { Container, FormItem, PlatformList } from '../../components'
+import { ButtonLink, Container, FormItem, PlatformList } from '../../components'
 
 function generateSchema() {
   return yup.object().shape({
@@ -113,15 +112,14 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               <Center>
                 <QRCode value={DONATION_REQUEST_LINK} />
               </Center>
-              <Button
-                as={Link}
+              <ButtonLink
                 isExternal
                 href={DONATION_REQUEST_LINK}
                 rightIcon={<FaExternalLinkAlt />}
                 w={256}
               >
                 {t('donation.now')}
-              </Button>
+              </ButtonLink>
             </VStack>
           )}
           <Stack

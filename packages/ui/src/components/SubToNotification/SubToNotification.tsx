@@ -132,8 +132,7 @@ const SubToNotification = () => {
 
       setSubscription(sub)
       setIsSubscribed(true)
-      console.log('Web push subscribed!')
-      // console.log('••• PushService ••• ', JSON.stringify(sub))
+      console.info('Web push subscribed!')
     } catch (error) {
       console.error('Error during subscription: ', error)
     }
@@ -165,7 +164,7 @@ const SubToNotification = () => {
 
     setSubscription(null)
     setIsSubscribed(false)
-    console.log('Web push unsubscribed!')
+    console.info('Web push unsubscribed!')
   }
 
   const sendNotificationButtonOnClick: MouseEventHandler<
