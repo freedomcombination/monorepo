@@ -1,9 +1,7 @@
-import { Context } from 'koa'
-
 import { getReferenceModel } from '../../../utils'
 
 export default {
-  async relation(ctx: Context) {
+  async relation(ctx) {
     const id = ctx.params.id
 
     const currentPost = await strapi.entityService.findOne(
@@ -35,7 +33,7 @@ export default {
 
     return { data: result }
   },
-  async createPosts(ctx: Context) {
+  async createPosts(ctx) {
     const { data } = ctx.request.body
 
     if (!Array.isArray(data)) {
