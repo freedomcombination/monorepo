@@ -1,4 +1,4 @@
-import { Button, Center, Heading, Stack, Text, VStack } from '@chakra-ui/react'
+import { Center, Heading, Stack, Text, VStack } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -7,7 +7,7 @@ import { FaPaintBrush } from 'react-icons/fa'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import { AnimatedBox, Container, Navigate } from '@fc/ui'
+import { AnimatedBox, ButtonLink, Container } from '@fc/ui'
 
 import { Layout } from '../components'
 
@@ -47,31 +47,28 @@ const Home = () => {
               direction={{ base: 'column', lg: 'row' }}
               spacing={4}
             >
-              <Button
-                as={Navigate}
+              <ButtonLink
                 href={`/${locale}/club/arts`}
                 size="lg"
                 leftIcon={<FaPaintBrush />}
               >
                 {t('view-arts')}
-              </Button>
+              </ButtonLink>
 
-              <Button
-                as={Navigate}
+              <ButtonLink
                 href={`/${locale}/club/collections`}
                 size="lg"
                 leftIcon={<BsCollectionFill />}
               >
                 {t('view-collections')}
-              </Button>
-              <Button
-                as={Navigate}
+              </ButtonLink>
+              <ButtonLink
                 href={`/${locale}/activities`}
                 size="lg"
                 leftIcon={<BsActivity />}
               >
                 {t('view-activities')}
-              </Button>
+              </ButtonLink>
             </Stack>
           </AnimatedBox>
         </Container>

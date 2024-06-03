@@ -13,7 +13,7 @@ import {
 import { useTranslation } from 'next-i18next'
 
 import { CreateArtSuccessAlertProps } from './types'
-import { Navigate } from '../Navigate'
+import { ButtonLink } from '../ButtonLink'
 
 export const ArtCreateSuccessAlert = forwardRef<
   HTMLButtonElement,
@@ -43,9 +43,9 @@ export const ArtCreateSuccessAlert = forwardRef<
           <AlertDialogBody py={4}>
             <Text>{t('art.create.success.description')}</Text>
 
-            <Button as={Navigate} href="/profile">
+            <ButtonLink href="/profile">
               {t('art.create.success.link')}
-            </Button>
+            </ButtonLink>
           </AlertDialogBody>
 
           <AlertDialogFooter>

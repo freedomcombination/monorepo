@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import { As, Box, Flex, HStack, Image, Stack } from '@chakra-ui/react'
-import Link from 'next/link'
 import Headroom from 'react-headroom'
 
 import { HeaderMobile } from './HeaderMobile'

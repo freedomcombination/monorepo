@@ -1,12 +1,12 @@
 import { FC } from 'react'
 
-import { Button, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { HeaderNavItem } from './HeaderNavItem'
 import { HeaderNavProps } from './types'
 import { useScroll } from '../../hooks'
-import { Navigate } from '../Navigate'
+import { ButtonLink } from '../ButtonLink'
 
 export const HeaderNav: FC<HeaderNavProps> = ({
   direction = 'row',
@@ -21,18 +21,18 @@ export const HeaderNav: FC<HeaderNavProps> = ({
       {menu.map((item, i) => {
         return <HeaderNavItem key={i} item={item} isDark={isDark} />
       })}
-      <Navigate href={'/donation'}>
-        <Button
-          variant={'outline'}
-          size={'sm'}
-          color={isDark && !isScrolled ? 'whiteAlpha.900' : 'gray.700'}
-          borderColor={isDark && !isScrolled ? 'whiteAlpha.900' : 'gray.700'}
-          fontWeight={600}
-          borderWidth={2}
-        >
-          {t('donation.title')}
-        </Button>
-      </Navigate>
+
+      <ButtonLink
+        href={'/donation'}
+        variant={'outline'}
+        size={'sm'}
+        color={isDark && !isScrolled ? 'whiteAlpha.900' : 'gray.700'}
+        borderColor={isDark && !isScrolled ? 'whiteAlpha.900' : 'gray.700'}
+        fontWeight={600}
+        borderWidth={2}
+      >
+        {t('donation.title')}
+      </ButtonLink>
     </Stack>
   )
 }

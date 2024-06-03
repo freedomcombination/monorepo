@@ -1,10 +1,9 @@
 /* eslint-disable react/display-name */
 import { FC, HtmlHTMLAttributes } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import { chakra } from '@chakra-ui/react'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-
-import { Navigate } from '../Navigate'
 
 const MarkdownComponents = {
   h1: (props: HtmlHTMLAttributes<HTMLElement>) => (
@@ -52,14 +51,14 @@ const MarkdownComponents = {
     <chakra.span fontWeight={600} {...props} />
   ),
   a: (props: any) => (
-    <Navigate
+    <Link
       href={props.href as any}
       fontWeight={600}
       color="primary.500"
       _hover={{ color: 'primary.300' }}
     >
       {props.children}
-    </Navigate>
+    </Link>
   ),
   p: (props: HtmlHTMLAttributes<HTMLElement>) => <chakra.p mb={4} {...props} />,
   ul: (props: HtmlHTMLAttributes<HTMLElement>) => (

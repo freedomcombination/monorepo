@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { factories } from '@strapi/strapi'
-import { checkRecaptcha, getProfile } from '../../../utils'
+import { getProfile } from '../../../utils'
+// import { checkRecaptcha, getProfile } from '../../../utils'
 
 export default factories.createCoreController('api::profile.profile', () => {
   return {
@@ -34,7 +36,7 @@ export default factories.createCoreController('api::profile.profile', () => {
 
       return this.transformResponse(sanitizedResults, { pagination })
     },
-    async create(ctx) {
+    async create(ctx: any) {
       //  if (ctx.request.body?.data?.recaptchaToken) await checkRecaptcha(ctx)
 
       const { email } = ctx.request.body.data
@@ -53,11 +55,17 @@ export default factories.createCoreController('api::profile.profile', () => {
 
       const profile = profileResults[0]
 
-      await strapi.entityService.update('api::profile.profile', profile.id, {
-        data: {
-          user: ctx.state?.user?.id,
+      const createdProfile = await strapi.entityService.update(
+        'api::profile.profile',
+        profile.id,
+        {
+          data: {
+            user: ctx.state?.user?.id,
+          },
         },
-      })
+      )
+
+      return this.sanitizeOutput(createdProfile, ctx)
     },
   }
 })
