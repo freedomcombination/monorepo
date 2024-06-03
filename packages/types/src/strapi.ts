@@ -111,6 +111,11 @@ import {
   UserFeedbackUpdateInput,
 } from './user-feedback'
 import {
+  UserNotification,
+  UserNotificationCreateInput,
+  UserNotificationUpdateInput,
+} from './user-notification'
+import {
   Vote,
   VoteCreateApplicationInput,
   VoteCreateApplicationJuryInput,
@@ -165,10 +170,10 @@ export type StrapiModel =
   | Me
   | Mention
   | Notification
+  | Observation
   | Platform
   | Post
   | Presentation
-  | Observation
   | Privacy
   | Profile
   | RecommendedTopic
@@ -182,6 +187,7 @@ export type StrapiModel =
   | UploadFile
   | User
   | UserFeedback
+  | UserNotification
   | Vote
 
 export type StrapiSeoModel =
@@ -291,8 +297,8 @@ export type StrapiCollectionEndpoint =
   | 'observations'
   | 'platforms'
   | 'posts'
-  | 'profiles'
   | 'presentations'
+  | 'profiles'
   | 'recommended-topics'
   | 'recommended-tweets'
   | 'saved-tweets'
@@ -305,6 +311,7 @@ export type StrapiCollectionEndpoint =
   | 'user-statistics/get-stats'
   | 'user-statistics/get-user-stats'
   | 'users'
+  | 'users-notifications'
   | 'users-permissions/roles'
   | 'votes'
 
@@ -362,15 +369,16 @@ export type StrapiCreateInput =
   | JobCreateInput
   | MentionCreateInput
   | NotificationCreateInput
+  | ObservationCreateInput
   | PostCreateInput
   | ProfileCreateInput
-  | ObservationCreateInput
   | RecommendedTopicCreateInput
   | RecommendedTweetCreateInput
   | SubscriberCreateInput
   | TagCreateInput
   | TimelineCreateInput
   | UserFeedbackCreateInput
+  | UserNotificationCreateInput
   | VoteCreateApplicationInput
   | VoteCreateApplicationJuryInput
   | VoteCreateArtInput
@@ -395,6 +403,7 @@ export type StrapiUpdateInput =
   | ProfileUpdateInput
   | SubscriberUpdateInput
   | UserFeedbackUpdateInput
+  | UserNotificationUpdateInput
 
 type StrapiFilterOperator =
   | '$eq'
