@@ -4,6 +4,8 @@
 
 import * as Sentry from '@sentry/nextjs'
 
-import { sentryClientConfig } from '@fc/config/sentry'
-
-Sentry.init(sentryClientConfig)
+Sentry.init({
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  tracesSampleRate: 1,
+  debug: false,
+})
