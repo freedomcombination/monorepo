@@ -74,6 +74,7 @@ import { Job, JobCreateInput } from './job'
 import { StrapiLocale } from './locale'
 import { Me } from './me'
 import { Mention, MentionCreateInput } from './mention'
+import { Notification, NotificationCreateInput } from './notification'
 import { Observation, ObservationCreateInput } from './observation'
 import { Platform } from './platform'
 import {
@@ -109,6 +110,11 @@ import {
   UserFeedbackCreateInput,
   UserFeedbackUpdateInput,
 } from './user-feedback'
+import {
+  UserNotification,
+  UserNotificationCreateInput,
+  UserNotificationUpdateInput,
+} from './user-notification'
 import {
   Vote,
   VoteCreateApplicationInput,
@@ -163,10 +169,11 @@ export type StrapiModel =
   | Job
   | Me
   | Mention
+  | Notification
+  | Observation
   | Platform
   | Post
   | Presentation
-  | Observation
   | Privacy
   | Profile
   | RecommendedTopic
@@ -180,6 +187,7 @@ export type StrapiModel =
   | UploadFile
   | User
   | UserFeedback
+  | UserNotification
   | Vote
 
 export type StrapiSeoModel =
@@ -285,11 +293,12 @@ export type StrapiCollectionEndpoint =
   | 'jobs'
   | 'me'
   | 'mentions'
+  | 'notifications'
   | 'observations'
   | 'platforms'
   | 'posts'
-  | 'profiles'
   | 'presentations'
+  | 'profiles'
   | 'recommended-topics'
   | 'recommended-tweets'
   | 'saved-tweets'
@@ -302,6 +311,7 @@ export type StrapiCollectionEndpoint =
   | 'user-statistics/get-stats'
   | 'user-statistics/get-user-stats'
   | 'users'
+  | 'users-notifications'
   | 'users-permissions/roles'
   | 'votes'
 
@@ -358,15 +368,17 @@ export type StrapiCreateInput =
   | HashtagCreateInput
   | JobCreateInput
   | MentionCreateInput
+  | NotificationCreateInput
+  | ObservationCreateInput
   | PostCreateInput
   | ProfileCreateInput
-  | ObservationCreateInput
   | RecommendedTopicCreateInput
   | RecommendedTweetCreateInput
   | SubscriberCreateInput
   | TagCreateInput
   | TimelineCreateInput
   | UserFeedbackCreateInput
+  | UserNotificationCreateInput
   | VoteCreateApplicationInput
   | VoteCreateApplicationJuryInput
   | VoteCreateArtInput
@@ -391,6 +403,7 @@ export type StrapiUpdateInput =
   | ProfileUpdateInput
   | SubscriberUpdateInput
   | UserFeedbackUpdateInput
+  | UserNotificationUpdateInput
 
 type StrapiFilterOperator =
   | '$eq'
