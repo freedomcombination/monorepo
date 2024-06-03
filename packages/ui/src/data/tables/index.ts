@@ -13,6 +13,7 @@ import { useCourseColumns } from './courses'
 import { useDonationColumns } from './donation'
 import { useFoundationsColumns } from './foundation'
 import { useHashtagColumns } from './hashtag'
+import { useNotificationColumns } from './notification'
 import { usePostColumns } from './post'
 import { useProfileColumns } from './profile'
 import { useTagColumns } from './tag'
@@ -39,6 +40,7 @@ export const useColumns = <T extends StrapiModel>(): {
     donates: useDonationColumns() as WTableProps<T>['columns'],
     foundations: useFoundationsColumns() as WTableProps<T>['columns'],
     hashtags: useHashtagColumns() as WTableProps<T>['columns'],
+    notifications: useNotificationColumns() as WTableProps<T>['columns'],
     posts: usePostColumns() as WTableProps<T>['columns'],
     profiles: useProfileColumns() as WTableProps<T>['columns'],
     tags: useTagColumns() as WTableProps<T>['columns'],
