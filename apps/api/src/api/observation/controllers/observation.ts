@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * observation controller
  */
@@ -8,7 +9,7 @@ import { getProfile } from '../../../utils'
 export default factories.createCoreController(
   'api::observation.observation',
   ({ strapi }) => ({
-    async create(ctx) {
+    async create(ctx: any) {
       const profile = await getProfile(ctx, true)
 
       const result = await strapi.entityService.create(
