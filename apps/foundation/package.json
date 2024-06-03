@@ -11,8 +11,5 @@
     "clean": "rm -rf node_modules .turbo .next",
     "lint": "next lint",
     "tsc": "npx tsc --noEmit"
-  },
-  "dependencies": {
-    "@vercel/analytics": "^1.3.1"
   }
 }
