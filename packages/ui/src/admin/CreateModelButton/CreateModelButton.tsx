@@ -29,6 +29,7 @@ import { TbActivity, TbBrandTwitter, TbWriting } from 'react-icons/tb'
 import { useAuthContext } from '@fc/context'
 import {
   Activity,
+  ArchiveContent,
   Asset,
   Blog,
   Category,
@@ -83,7 +84,7 @@ export const CreateModelButton = () => {
 
             <PopoverBody>
               <Stack>
-                <ModelCreateModal<Activity>
+                <ModelCreateModal<ArchiveContent>
                   title={t('create-archive-content')}
                   endpoint="archive-contents"
                   schema={schemas['archive-contents']!}
