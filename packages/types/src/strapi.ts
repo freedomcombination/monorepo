@@ -74,6 +74,7 @@ import { Job, JobCreateInput } from './job'
 import { StrapiLocale } from './locale'
 import { Me } from './me'
 import { Mention, MentionCreateInput } from './mention'
+import { Notification, NotificationCreateInput } from './notification'
 import { Observation, ObservationCreateInput } from './observation'
 import { Platform } from './platform'
 import {
@@ -163,6 +164,7 @@ export type StrapiModel =
   | Job
   | Me
   | Mention
+  | Notification
   | Platform
   | Post
   | Presentation
@@ -285,6 +287,7 @@ export type StrapiCollectionEndpoint =
   | 'jobs'
   | 'me'
   | 'mentions'
+  | 'notifications'
   | 'observations'
   | 'platforms'
   | 'posts'
@@ -358,6 +361,7 @@ export type StrapiCreateInput =
   | HashtagCreateInput
   | JobCreateInput
   | MentionCreateInput
+  | NotificationCreateInput
   | PostCreateInput
   | ProfileCreateInput
   | ObservationCreateInput

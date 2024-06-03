@@ -18,7 +18,11 @@ import { FaPlus } from 'react-icons/fa'
 import { HiOutlineNewspaper } from 'react-icons/hi'
 import { IoPricetagsOutline } from 'react-icons/io5'
 import { LuFileArchive } from 'react-icons/lu'
-import { MdOutlineCastForEducation, MdOutlineCategory } from 'react-icons/md'
+import {
+  MdOutlineCastForEducation,
+  MdOutlineCategory,
+  MdOutlineNotificationsActive,
+} from 'react-icons/md'
 import { SiMaterialdesignicons } from 'react-icons/si'
 import { TbActivity, TbBrandTwitter, TbWriting } from 'react-icons/tb'
 
@@ -31,6 +35,7 @@ import {
   Collection,
   Course,
   Hashtag,
+  Notification,
   Post,
   RecommendedTopic,
   RecommendedTweet,
@@ -223,6 +228,19 @@ export const CreateModelButton = () => {
                   }}
                 >
                   {t('create-tag')}
+                </ModelCreateModal>
+
+                <ModelCreateModal<Notification>
+                  title={t('notifications')}
+                  endpoint="notifications"
+                  schema={schemas.notifications!}
+                  fields={fields.notifications!}
+                  buttonProps={{
+                    variant: 'outline',
+                    leftIcon: <MdOutlineNotificationsActive />,
+                  }}
+                >
+                  {t('create-notification')}
                 </ModelCreateModal>
 
                 <ModelCreateModal<RecommendedTopic>
