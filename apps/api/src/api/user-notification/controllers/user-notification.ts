@@ -4,4 +4,6 @@
 
 import { factories } from '@strapi/strapi'
 
-export default factories.createCoreController('api::user-notification.user-notification');
+export default factories.createCoreController(
+  'api::user-notification.user-notification',
+)
