@@ -15,6 +15,7 @@ const VolunteerApplied: FC<VolunteerAppliedProps> = ({ volunteer }) => {
       <Preview>New volunteer application from {volunteer.name}</Preview>
       <Section>
         <Text>{volunteer.name} has applied to be a volunteer</Text>
+        {/* TODO improve here, such as which job who wants to help, comments, location*/}
         {volunteer.platforms?.length > 0 && (
           <Section>
             {volunteer.platforms.map(platform => (

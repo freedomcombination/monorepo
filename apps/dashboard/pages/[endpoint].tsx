@@ -42,6 +42,7 @@ import {
   WTableProps,
   useColumns,
   useRequestArgs,
+  ProfileContact,
 } from '@fc/ui'
 
 import { I18nNamespaces } from '../@types/i18next'
@@ -303,6 +304,9 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         >
           {endpoint === 'posts' && post && post?.hashtag && (
             <TabbedGenAIView post={post} hashtag={post.hashtag} noBorder />
+          )}
+          {endpoint === 'profiles' && selectedModel && selectedId && (
+            <ProfileContact id={selectedId} />
           )}
           {endpoint === 'profiles' && selectedModel && selectedId && (
             <ObservationList id={selectedId} />
