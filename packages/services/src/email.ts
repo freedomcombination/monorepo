@@ -16,7 +16,7 @@ export const sendEmail = async (
 
   if (!recaptchaToken)
     // in case sendEmail can be used in future somewhere else without recaptcha
-    Mutation.post('email', body, token)
+    return Mutation.post('email', body, token)
   else {
     // sendMail uses plugin::email so i cant intercept it
     // so i create custom route /contact/email
