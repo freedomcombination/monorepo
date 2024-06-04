@@ -177,7 +177,7 @@ export const subscribeDb = async () => {
     if (typeof text !== 'string') {
       text = null
     } else {
-      text = text.slice(0, 50)
+      text = text.slice(0, 255)
     }
 
     strapi.entityService.create('api::audit-log.audit-log', {

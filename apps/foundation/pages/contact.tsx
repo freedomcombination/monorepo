@@ -6,16 +6,15 @@ import {
   VStack,
   Wrap,
 } from '@chakra-ui/react'
-import { useMutation } from '@tanstack/react-query'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 
-import { EMAIL_SENDER, PUBLIC_TOKEN, socialLinks } from '@fc/config'
+import { EMAIL_SENDER, socialLinks } from '@fc/config'
 import { strapiRequest } from '@fc/lib'
-import { sendEmail } from '@fc/services'
+import { useSendEmail } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { EmailCreateInput, Foundation, StrapiLocale } from '@fc/types'
+import { Foundation, StrapiLocale } from '@fc/types'
 import {
   ButtonLink,
   ContactForm,
@@ -31,17 +30,7 @@ type ContactProps = InferGetStaticPropsType<typeof getStaticProps>
 const Contact = ({ foundation }: ContactProps): JSX.Element => {
   const { t } = useTranslation()
 
-  const {
-    isError,
-    isPending,
-    isSuccess,
-    mutate: sendForm,
-  } = useMutation({
-    mutationKey: ['contact'],
-    mutationFn: async (data: EmailCreateInput) => {
-      return sendEmail(data, PUBLIC_TOKEN as string)
-    },
-  })
+  const { isError, isPending, isSuccess, mutate: sendForm } = useSendEmail()
 
   const handleSubmit = async (data: ContactFormFieldValues) => {
     const emailData = {

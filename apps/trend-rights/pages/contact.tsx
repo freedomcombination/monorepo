@@ -1,14 +1,13 @@
 import { Box, Heading, Stack, VStack } from '@chakra-ui/react'
-import { useMutation } from '@tanstack/react-query'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { FaWhatsapp } from 'react-icons/fa'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 
-import { EMAIL_SENDER, PUBLIC_TOKEN, socialLinks } from '@fc/config'
-import { sendEmail } from '@fc/services'
+import { EMAIL_SENDER, socialLinks } from '@fc/config'
+import { useSendEmail } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { EmailCreateInput, StrapiLocale } from '@fc/types'
+import { StrapiLocale } from '@fc/types'
 import {
   ButtonLink,
   ContactForm,
@@ -22,17 +21,7 @@ import { Layout } from '../components'
 const Contact = () => {
   const { t } = useTranslation()
 
-  const {
-    isError,
-    isPending,
-    isSuccess,
-    mutate: sendForm,
-  } = useMutation({
-    mutationKey: ['contact'],
-    mutationFn: async (data: EmailCreateInput) => {
-      return sendEmail(data, PUBLIC_TOKEN as string)
-    },
-  })
+  const { isError, isPending, isSuccess, mutate: sendForm } = useSendEmail()
 
   const handleSubmit = async (data: ContactFormFieldValues) => {
     const emailData = {

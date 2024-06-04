@@ -21,6 +21,7 @@ import { ssrTranslations } from '@fc/services/ssrTranslations'
 import {
   ApprovalStatus,
   Post,
+  Profile,
   ProfileStatus,
   Sort,
   StrapiCollectionEndpoint,
@@ -42,6 +43,7 @@ import {
   WTableProps,
   useColumns,
   useRequestArgs,
+  ProfileContact,
 } from '@fc/ui'
 
 import { I18nNamespaces } from '../@types/i18next'
@@ -303,6 +305,9 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         >
           {endpoint === 'posts' && post && post?.hashtag && (
             <TabbedGenAIView post={post} hashtag={post.hashtag} noBorder />
+          )}
+          {endpoint === 'profiles' && selectedModel && selectedId && (
+            <ProfileContact profile={selectedModel as Profile} />
           )}
           {endpoint === 'profiles' && selectedModel && selectedId && (
             <ObservationList id={selectedId} />
