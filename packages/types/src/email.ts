@@ -8,6 +8,7 @@ type BaseEmail = {
   bcc?: string
   replyTo?: string
   subject: string
+
   from?: string
 }
 
