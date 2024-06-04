@@ -5,7 +5,7 @@ import { emailTemplates } from '../../../../emails'
 
 const { UnauthorizedError } = errors
 
-const sendEmail = async art => {
+const sendArtCreatedEmail = async art => {
   // TODO: Get editor emails from the database
   const editorEmails = process.env.EDITOR_EMAILS?.split(',')
 
@@ -52,7 +52,7 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
         },
       )
 
-      await sendEmail(updatedArt)
+      await sendArtCreatedEmail(updatedArt)
 
       return result
     },

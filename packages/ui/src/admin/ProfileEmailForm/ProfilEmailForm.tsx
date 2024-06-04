@@ -10,15 +10,12 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useMutation } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 import * as yup from 'yup'
 
-import { EMAIL_SENDER } from '@fc/config'
-import { useAuthContext } from '@fc/context'
-import { sendEmail } from '@fc/services'
+import { useSendEmail } from '@fc/services'
 import { EmailCreateInput } from '@fc/types'
 
 import { FormItem } from '../../components'
@@ -35,7 +32,6 @@ const schema = yup.object().shape({
 type EmailFormValues = yup.InferType<typeof schema>
 
 export const ProfileMailForm: FC<ProfileMailFormProps> = ({ email }) => {
-  const { token } = useAuthContext()
   const { t } = useTranslation()
 
   const {
@@ -47,28 +43,17 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({ email }) => {
     resolver: yupResolver(schema),
   })
 
-  const {
-    error,
-    isPending,
-    isSuccess,
-    mutateAsync: sendForm,
-  } = useMutation({
-    mutationKey: ['email-profile'],
-    mutationFn: async (data: EmailCreateInput) => {
-      return sendEmail(data, token as string)
-    },
-  })
+  const { error, isPending, isSuccess, mutateAsync: sendEmail } = useSendEmail()
 
   const onSubmit = async (data: EmailFormValues) => {
     try {
       const emailData: EmailCreateInput = {
         to: email,
-        from: EMAIL_SENDER,
         subject: data.subject,
         text: data.content,
       }
 
-      await sendForm(emailData)
+      await sendEmail(emailData)
       reset()
     } catch (error: any) {
       console.error(error)

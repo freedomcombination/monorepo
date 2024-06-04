@@ -29,7 +29,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
     created: 'green',
     deleted: 'red',
     published: 'purple',
-    updated: 'orange',
+    updated: 'yellow',
     unpublished: 'gray',
     rejected: 'pink',
   }
