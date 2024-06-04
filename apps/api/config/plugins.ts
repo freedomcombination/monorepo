@@ -7,7 +7,7 @@ export default ({ env }) => ({
     config: {
       provider: 'nodemailer',
       providerOptions: {
-        host: 'mail.privateemail.com',
+        host: 'smtp.gmail.com',
         port: 465,
         auth: {
           user: env('SMTP_USERNAME'),
@@ -15,8 +15,8 @@ export default ({ env }) => ({
         },
       },
       settings: {
-        defaultFrom: 'info@freedomcombination.com',
-        defaultReplyTo: 'info@freedomcombination.com',
+        defaultFrom: process.env.SMTP_USERNAME,
+        defaultReplyTo: process.env.SMTP_USERNAME,
       },
     },
   },

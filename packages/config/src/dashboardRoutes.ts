@@ -17,6 +17,7 @@ export const dashboardRoutes = [
   '/news',
   '/news/bookmarks',
   '/news/recommended',
+  '/notifications',
   '/posts',
   '/profiles',
   '/roles',

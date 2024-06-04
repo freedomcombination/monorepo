@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import {
   Box,
   Button,
@@ -38,7 +39,6 @@ import { createArtSchema } from './schema'
 import { CreateArtFormFieldValues } from './types'
 import { FilePicker } from '../FilePicker'
 import { FormItem } from '../FormItem'
-import { Navigate } from '../Navigate'
 import { WSelect } from '../WSelect'
 
 export const CreateArtForm = () => {
@@ -183,9 +183,9 @@ export const CreateArtForm = () => {
               <VStack>
                 <Text>
                   <>{t('you-must-logged-in')} </>
-                  <Navigate href={loginHref} color="primary.500">
+                  <Link href={loginHref} color="primary.500">
                     {t('login')}
-                  </Navigate>
+                  </Link>
                 </Text>
               </VStack>
             )}

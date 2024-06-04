@@ -1,21 +1,12 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  Button,
-  Grid,
-  HStack,
-  Heading,
-  Icon,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Box, Grid, HStack, Heading, Icon, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaArrowRight } from 'react-icons/fa'
 import { HiOutlineCalendar } from 'react-icons/hi'
 
 import { Hashtag } from '@fc/types'
-import { FormattedDate, Navigate, WImage } from '@fc/ui'
+import { ButtonLink, FormattedDate, WImage } from '@fc/ui'
 import { getItemLink } from '@fc/utils'
 interface SliderHeroProps {
   item: Hashtag
@@ -51,14 +42,13 @@ export const HashtagCard: FC<SliderHeroProps> = ({ item }) => {
           </Text>
         </Box>
 
-        <Button
-          as={Navigate}
+        <ButtonLink
           href={link as string}
           justifySelf="end"
           rightIcon={<FaArrowRight />}
         >
           {t('read-more')}
-        </Button>
+        </ButtonLink>
       </Stack>
 
       <Box flex={1} h="full" w="full">

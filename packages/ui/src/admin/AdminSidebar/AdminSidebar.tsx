@@ -1,11 +1,12 @@
 import { FC } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import { Box, Divider, HStack, Stack, Text, VStack } from '@chakra-ui/react'
 
 import { useAuthContext } from '@fc/context'
 
 import { AdminSidebarProfile } from './AdminSidebarProfile'
-import { Navigate, WAvatar } from '../../components'
+import { WAvatar } from '../../components'
 import { AdminNav } from '../AdminNav'
 
 type AdminSidebarProps = {
@@ -29,7 +30,7 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
       divider={<Divider />}
     >
       {/* Logo */}
-      <Navigate href="/">
+      <Link href="/">
         <HStack align="center" spacing={4} alignItems="center" justify="center">
           <WAvatar
             size={'lg'}
@@ -41,7 +42,7 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
             Dashboard
           </Text>
         </HStack>
-      </Navigate>
+      </Link>
       {/* User */}
       {user && (
         <AdminSidebarProfile user={user} profile={profile} onLogout={logout} />

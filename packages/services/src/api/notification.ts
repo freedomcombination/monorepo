@@ -36,8 +36,6 @@ export const notificationRouter = async (
     return
   }
 
-  // console.log('# # # # subs: ', subscribers.data)
-
   // todo: customize the notification
   const payload = JSON.stringify({
     title: 'Are you ready?',

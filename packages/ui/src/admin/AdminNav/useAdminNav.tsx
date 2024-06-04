@@ -19,6 +19,7 @@ import {
   MdFoundation,
   MdOutlineCategory,
   MdOutlineFeedback,
+  MdOutlineNotificationsActive,
   MdOutlineSpaceDashboard,
 } from 'react-icons/md'
 import { SiGeneralelectric, SiMaterialdesignicons } from 'react-icons/si'
@@ -189,6 +190,11 @@ export const useAdminNav = () => {
             allowed: canRead('recommended-topics'),
           },
         ],
+      },
+      {
+        label: t('notifications'),
+        icon: <MdOutlineNotificationsActive />,
+        link: '/notifications',
       },
       {
         label: t('timelines'),

@@ -884,7 +884,7 @@ export interface ApiActivityActivity extends Schema.CollectionType {
           localized: true
         }
       }>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1023,7 +1023,7 @@ export interface ApiApplicationApplication extends Schema.CollectionType {
         }
       }> &
       Attribute.DefaultTo<'pending'>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1181,7 +1181,7 @@ export interface ApiArchiveImageArchiveImage extends Schema.CollectionType {
       'oneToMany',
       'api::tag.tag'
     >
-    image: Attribute.Media & Attribute.Required
+    image: Attribute.Media<'images'> & Attribute.Required
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -1226,7 +1226,7 @@ export interface ApiArtArt extends Schema.CollectionType {
         }
       }> &
       Attribute.DefaultTo<'pending'>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1316,8 +1316,8 @@ export interface ApiAssetAsset extends Schema.CollectionType {
     name: Attribute.String
     sku: Attribute.UID
     location: Attribute.String
-    images: Attribute.Media
-    invoice: Attribute.Media
+    images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>
+    invoice: Attribute.Media<'files' | 'images'>
     foundation: Attribute.Relation<
       'api::asset.asset',
       'manyToOne',
@@ -1492,7 +1492,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
         }
       }> &
       Attribute.DefaultTo<'pending'>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1675,7 +1675,7 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
         }
       }> &
       Attribute.DefaultTo<'pending'>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1810,7 +1810,7 @@ export interface ApiCompetitionCompetition extends Schema.CollectionType {
         }
       }> &
       Attribute.DefaultTo<'pending'>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1893,7 +1893,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     price: Attribute.Integer
     quota: Attribute.Integer
     isOnline: Attribute.Boolean
-    image: Attribute.Media
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
     approvalStatus: Attribute.Enumeration<['approved', 'pending', 'rejected']>
     startDate: Attribute.Date
     endDate: Attribute.Date
@@ -2105,9 +2105,13 @@ export interface ApiFoundationFoundation extends Schema.CollectionType {
     KVK: Attribute.String
     BIC: Attribute.String
     RSIN: Attribute.String
-    policy_plan: Attribute.Media
-    substantive_financial_annual_report: Attribute.Media
-    remuneration_policy: Attribute.Media
+    policy_plan: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
+    substantive_financial_annual_report: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >
+    remuneration_policy: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2179,7 +2183,7 @@ export interface ApiHashtagHashtag extends Schema.CollectionType {
         }
       }> &
       Attribute.DefaultTo<'pending'>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2347,6 +2351,36 @@ export interface ApiMentionMention extends Schema.CollectionType {
   }
 }
 
+export interface ApiNotificationNotification extends Schema.CollectionType {
+  collectionName: 'notifications'
+  info: {
+    singularName: 'notification'
+    pluralName: 'notifications'
+    displayName: 'Notification'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    title: Attribute.String
+    body: Attribute.Text
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
 export interface ApiObservationObservation extends Schema.CollectionType {
   collectionName: 'observations'
   info: {
@@ -2410,7 +2444,7 @@ export interface ApiPlatformPlatform extends Schema.CollectionType {
     content_en: Attribute.RichText
     content_nl: Attribute.RichText
     content_tr: Attribute.RichText
-    image: Attribute.Media
+    image: Attribute.Media<'images'>
     link: Attribute.String
     jobs: Attribute.Relation<
       'api::platform.platform',
@@ -2500,7 +2534,7 @@ export interface ApiPostPost extends Schema.CollectionType {
           localized: false
         }
       }>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
@@ -2518,13 +2552,13 @@ export interface ApiPostPost extends Schema.CollectionType {
       'api::hashtag.hashtag'
     >
     tags: Attribute.Relation<'api::post.post', 'manyToMany', 'api::tag.tag'>
-    video: Attribute.Media &
+    video: Attribute.Media<'videos'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
         }
       }>
-    caps: Attribute.Media &
+    caps: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -2617,13 +2651,13 @@ export interface ApiPresentationPresentation extends Schema.CollectionType {
           localized: true
         }
       }>
-    images: Attribute.Media &
+    images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
         }
       }>
-    image: Attribute.Media &
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -2687,7 +2721,7 @@ export interface ApiPrivacyPrivacy extends Schema.SingleType {
           localized: true
         }
       }>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
@@ -3015,7 +3049,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'manyToMany',
       'api::platform.platform'
     >
-    avatar: Attribute.Media
+    avatar: Attribute.Media<'images'>
     isVolunteer: Attribute.Boolean
     applicant: Attribute.Relation<
       'api::profile.profile',
@@ -3089,7 +3123,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToMany',
       'api::observation.observation'
     >
-    volunteerForm: Attribute.Media
+    volunteerForm: Attribute.Media<'files'>
     subscriber: Attribute.Relation<
       'api::profile.profile',
       'oneToOne',
@@ -3257,13 +3291,13 @@ export interface ApiRecommendedTweetRecommendedTweet
       'oneToMany',
       'api::mention.mention'
     >
-    video: Attribute.Media &
+    video: Attribute.Media<'videos'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
         }
       }>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -3275,7 +3309,7 @@ export interface ApiRecommendedTweetRecommendedTweet
           localized: true
         }
       }>
-    caps: Attribute.Media &
+    caps: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -3410,7 +3444,7 @@ export interface ApiTermTerm extends Schema.SingleType {
           localized: true
         }
       }>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
@@ -3604,7 +3638,7 @@ export interface ApiUserFeedbackUserFeedback extends Schema.CollectionType {
   attributes: {
     comment: Attribute.Text
     point: Attribute.Integer
-    image: Attribute.Media
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
     site: Attribute.String
     processed: Attribute.Boolean
     issueLink: Attribute.String
@@ -3619,6 +3653,46 @@ export interface ApiUserFeedbackUserFeedback extends Schema.CollectionType {
       Attribute.Private
     updatedBy: Attribute.Relation<
       'api::user-feedback.user-feedback',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
+export interface ApiUserNotificationUserNotification
+  extends Schema.CollectionType {
+  collectionName: 'user_notifications'
+  info: {
+    singularName: 'user-notification'
+    pluralName: 'user-notifications'
+    displayName: 'User Notification'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    notification: Attribute.Relation<
+      'api::user-notification.user-notification',
+      'oneToOne',
+      'api::notification.notification'
+    >
+    profile: Attribute.Relation<
+      'api::user-notification.user-notification',
+      'oneToOne',
+      'api::profile.profile'
+    >
+    read: Attribute.Boolean
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::user-notification.user-notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::user-notification.user-notification',
       'oneToOne',
       'admin::user'
     > &
@@ -3714,6 +3788,7 @@ declare module '@strapi/types' {
       'api::hashtag.hashtag': ApiHashtagHashtag
       'api::job.job': ApiJobJob
       'api::mention.mention': ApiMentionMention
+      'api::notification.notification': ApiNotificationNotification
       'api::observation.observation': ApiObservationObservation
       'api::platform.platform': ApiPlatformPlatform
       'api::post.post': ApiPostPost
@@ -3730,6 +3805,7 @@ declare module '@strapi/types' {
       'api::translate.translate': ApiTranslateTranslate
       'api::trend.trend': ApiTrendTrend
       'api::user-feedback.user-feedback': ApiUserFeedbackUserFeedback
+      'api::user-notification.user-notification': ApiUserNotificationUserNotification
       'api::vote.vote': ApiVoteVote
     }
   }

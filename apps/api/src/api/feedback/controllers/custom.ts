@@ -1,8 +1,7 @@
-import { Context } from 'koa'
 import { checkRecaptcha } from '../../../utils'
 
 export default {
-  async sendEmail(ctx: Context) {
+  async sendEmail(ctx) {
     await checkRecaptcha(ctx)
 
     // TODO: Select email template based on ctx.request.body.type

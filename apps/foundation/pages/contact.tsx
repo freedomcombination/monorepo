@@ -1,9 +1,7 @@
 import {
   Box,
-  Button,
   Divider,
   Heading,
-  Link,
   SimpleGrid,
   VStack,
   Wrap,
@@ -19,6 +17,7 @@ import { sendEmail } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { EmailCreateInput, Foundation, StrapiLocale } from '@fc/types'
 import {
+  ButtonLink,
   ContactForm,
   ContactFormFieldValues,
   Container,
@@ -80,8 +79,7 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
               <Divider borderColor="whiteAlpha.400" />
 
               <Wrap spacing={4} justify="center" key={foundation?.id}>
-                <Button
-                  as={Link}
+                <ButtonLink
                   isExternal
                   variant="link"
                   color="primary.50"
@@ -90,10 +88,9 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                   href={`tel:${foundation?.contact?.phone}`}
                 >
                   {foundation?.contact?.phone}
-                </Button>
+                </ButtonLink>
 
-                <Button
-                  as={Link}
+                <ButtonLink
                   isExternal
                   variant="link"
                   color="primary.50"
@@ -104,9 +101,8 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                   href={`mailto:${foundation?.contact?.email}`}
                 >
                   {foundation?.contact?.email}
-                </Button>
-                <Button
-                  as={Link}
+                </ButtonLink>
+                <ButtonLink
                   isExternal
                   variant="link"
                   color="primary.50"
@@ -118,7 +114,7 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                   textAlign="left"
                 >
                   {foundation?.contact?.address}
-                </Button>
+                </ButtonLink>
               </Wrap>
 
               <SocialButtons items={socialLinks.foundation} />

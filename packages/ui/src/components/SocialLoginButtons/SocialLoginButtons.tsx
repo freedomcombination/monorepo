@@ -1,12 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  ButtonGroupProps,
-  Link,
-} from '@chakra-ui/react'
+import { Box, Button, ButtonGroup, ButtonGroupProps } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaFacebook, FaGoogle, FaInstagram } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
@@ -70,7 +64,6 @@ export const SocialLoginButtons: FC<SocialLoginButtonsProps> = ({
     <ButtonGroup variant="outline" spacing="4" width="full" {...rest}>
       {providers.map(({ name, icon, url, colorSchema }) => (
         <Button
-          as={Link}
           key={name}
           w="full"
           leftIcon={icon}

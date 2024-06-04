@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import { Heading, HStack, Stack, Text } from '@chakra-ui/react'
 
-import { Navigate } from '../Navigate'
 import { WAvatar } from '../WAvatar'
 
 interface ArtContentProps {
@@ -25,14 +25,13 @@ export const ArtContent: FC<ArtContentProps> = ({
       <Heading as="h2" fontSize="3xl">
         {title}
       </Heading>
-      <Navigate href={artistProfilePath}>
-        <HStack>
-          <WAvatar size="sm" src={artistAvatar} name={artistName} />
-          <Text fontWeight={600} lineHeight={6} fontSize="md">
-            {artistName}
-          </Text>
-        </HStack>
-      </Navigate>
+
+      <HStack as={Link} href={artistProfilePath}>
+        <WAvatar size="sm" src={artistAvatar} name={artistName} />
+        <Text fontWeight={600} lineHeight={6} fontSize="md">
+          {artistName}
+        </Text>
+      </HStack>
 
       {/* TODO Does it supposed to be markdown?  */}
       <Text fontSize="md" lineHeight={6}>

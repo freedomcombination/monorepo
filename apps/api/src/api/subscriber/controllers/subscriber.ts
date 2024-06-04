@@ -1,5 +1,4 @@
-import { Context } from 'koa'
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * subscriber controller
  */
@@ -8,7 +7,7 @@ import { factories } from '@strapi/strapi'
 import { getProfile } from '../../../utils'
 
 export default factories.createCoreController('api::subscriber.subscriber', {
-  async create(ctx: Context) {
+  async create(ctx: any) {
     const profile = await getProfile(ctx)
     const { data } = ctx.request.body
 

@@ -40,6 +40,7 @@ const ArtsPage = () => {
       ...(status ? { approvalStatus: { $eq: status } } : {}),
       ...(searchTerm && { [`title_${locale}`]: { $containsi: searchTerm } }),
     },
+    includeDrafts: true,
     sort,
     locale,
   })

@@ -88,7 +88,11 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
 
       mutate(body, {
         onError: () =>
-          toastMessage(t`error`, t`apply-form.error.description`, 'error'),
+          toastMessage(
+            t('apply-form.error.title'),
+            t('apply-form.error.description'),
+            'error',
+          ),
       })
     } catch (error) {
       console.error('Submit volunteer form error', error)
