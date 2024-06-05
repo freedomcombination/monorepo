@@ -54,6 +54,39 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
     resolver: yupResolver(schema),
   })
 
+  // create observation
+  const { mutate } = useCreateModelMutation<
+    Observation,
+    ObservationCreateInput
+  >('observations')
+
+  type createOnservationProps = {
+    subject: string
+    content: string
+  }
+  const createObservation = async ({
+    subject,
+    content,
+  }: createOnservationProps) => {
+    const observationContent = `Email sent to: ${email}\n\n with subject: ${subject}\n\n and content: ${content}`
+
+    try {
+      const body = {
+        content: observationContent,
+        profile: profileId,
+      } as ObservationCreateInput
+
+      mutate(body, { onSuccess })
+    } catch (error) {
+      toastMessage(
+        'Error',
+        "Couldn't send observation. Please try again later.",
+        'error',
+      )
+    }
+  }
+
+  // send email
   const { error, isPending, isSuccess, mutateAsync: sendEmail } = useSendEmail()
 
   const onSubmit = async (data: EmailFormValues) => {
@@ -64,47 +97,21 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
       const emailData: EmailCreateInput = {
         to: email,
         subject,
-        text: content,
+        html: content,
       }
 
-      await sendEmail(emailData)
+      await sendEmail(emailData, {
+        onSuccess: () => {
+          createObservation({ subject, content })
+          onSuccess?.()
+        },
+        onError: error => {
+          toastMessage('Error', error.message, 'error')
+        },
+      })
       reset()
-
-      isSuccess && createObservation({ subject, content })
     } catch (error: any) {
       console.error(error)
-    }
-  }
-
-  const { mutate } = useCreateModelMutation<
-    Observation,
-    ObservationCreateInput
-  >('observations')
-
-  type createOnservationProps = {
-    subject: string
-    content: string
-  }
-
-  const createObservation = async ({
-    subject,
-    content,
-  }: createOnservationProps) => {
-    const observationContent = `email sended to: ${email} \n with subject: ${subject} \n and content: ${content}`
-
-    try {
-      const body = {
-        content: observationContent,
-        profile: profileId,
-      } as ObservationCreateInput
-
-      mutate(body, { onSuccess: () => onSuccess?.() })
-    } catch (error) {
-      toastMessage(
-        'Error',
-        "Couldn't send observation. Please try again later.",
-        'error',
-      )
     }
   }
 
