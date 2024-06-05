@@ -19606,6 +19606,7 @@ __metadata:
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.14"
     react-use: "npm:^17.5.0"
+    react-virtuoso: "npm:^4.7.11"
     recharts: "npm:^2.12.7"
     remove-markdown: "npm:^0.5.0"
     storybook: "npm:^7.6.19"
@@ -29539,6 +29540,16 @@ __metadata:
     react: "*"
     react-dom: "*"
   checksum: 10/5d81fe0902303d3ed7810cdd56c6cae12b08124a3d4fcbfa3924327105b81447b039ea9d6aff20aac3c13999f949000870a7a2fa29fe20ed844ac26606462fa0
+  languageName: node
+  linkType: hard
+
+"react-virtuoso@npm:^4.7.11":
+  version: 4.7.11
+  resolution: "react-virtuoso@npm:4.7.11"
+  peerDependencies:
+    react: ">=16 || >=17 || >= 18"
+    react-dom: ">=16 || >=17 || >= 18"
+  checksum: 10/5f6188063a280f3f60d2586d69ade83ed45ac2afc929964c11574257c4f6a8732a4812657f976e1b5a7298ea3faf37edffd50e10b933f8891e955b2dd168643c
   languageName: node
   linkType: hard
 

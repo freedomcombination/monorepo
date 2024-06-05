@@ -109,7 +109,7 @@ export const useAdminNav = () => {
             ? [
                 {
                   label: 'Locales',
-                  link: '/translates?locales=true',
+                  link: '/locales',
                   icon: <MdTranslate />,
                   allowed: true,
                 },
