@@ -2351,6 +2351,36 @@ export interface ApiMentionMention extends Schema.CollectionType {
   }
 }
 
+export interface ApiNotificationNotification extends Schema.CollectionType {
+  collectionName: 'notifications'
+  info: {
+    singularName: 'notification'
+    pluralName: 'notifications'
+    displayName: 'Notification'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    title: Attribute.String
+    body: Attribute.Text
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
 export interface ApiObservationObservation extends Schema.CollectionType {
   collectionName: 'observations'
   info: {
@@ -3630,6 +3660,46 @@ export interface ApiUserFeedbackUserFeedback extends Schema.CollectionType {
   }
 }
 
+export interface ApiUserNotificationUserNotification
+  extends Schema.CollectionType {
+  collectionName: 'user_notifications'
+  info: {
+    singularName: 'user-notification'
+    pluralName: 'user-notifications'
+    displayName: 'User Notification'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    notification: Attribute.Relation<
+      'api::user-notification.user-notification',
+      'oneToOne',
+      'api::notification.notification'
+    >
+    profile: Attribute.Relation<
+      'api::user-notification.user-notification',
+      'oneToOne',
+      'api::profile.profile'
+    >
+    read: Attribute.Boolean
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::user-notification.user-notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::user-notification.user-notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
 export interface ApiVoteVote extends Schema.CollectionType {
   collectionName: 'votes'
   info: {
@@ -3718,6 +3788,7 @@ declare module '@strapi/types' {
       'api::hashtag.hashtag': ApiHashtagHashtag
       'api::job.job': ApiJobJob
       'api::mention.mention': ApiMentionMention
+      'api::notification.notification': ApiNotificationNotification
       'api::observation.observation': ApiObservationObservation
       'api::platform.platform': ApiPlatformPlatform
       'api::post.post': ApiPostPost
@@ -3734,6 +3805,7 @@ declare module '@strapi/types' {
       'api::translate.translate': ApiTranslateTranslate
       'api::trend.trend': ApiTrendTrend
       'api::user-feedback.user-feedback': ApiUserFeedbackUserFeedback
+      'api::user-notification.user-notification': ApiUserNotificationUserNotification
       'api::vote.vote': ApiVoteVote
     }
   }
