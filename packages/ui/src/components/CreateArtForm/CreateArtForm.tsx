@@ -41,7 +41,7 @@ import { FilePicker } from '../FilePicker'
 import { FormItem } from '../FormItem'
 import { WSelect } from '../WSelect'
 
-export const CreateArtForm = () => {
+export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
   const [image, setImage] = useState<File>()
   const { locale } = useRouter()
   const { t } = useTranslation()
@@ -144,7 +144,7 @@ export const CreateArtForm = () => {
         ref={cancelRef}
       />
 
-      <Button size="lg" onClick={formDisclosure.onOpen}>
+      <Button size={size} onClick={formDisclosure.onOpen}>
         <Box mr={{ base: 0, lg: 4 }}>
           <FaUpload />
         </Box>

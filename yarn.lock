@@ -12598,9 +12598,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/core@npm:^3.11.3":
-  version: 3.11.3
-  resolution: "@uppy/core@npm:3.11.3"
+"@uppy/core@npm:^3.12.0":
+  version: 3.12.0
+  resolution: "@uppy/core@npm:3.12.0"
   dependencies:
     "@transloadit/prettier-bytes": "npm:^0.3.4"
     "@uppy/store-default": "npm:^3.2.2"
@@ -12610,7 +12610,7 @@ __metadata:
     namespace-emitter: "npm:^2.0.1"
     nanoid: "npm:^4.0.0"
     preact: "npm:^10.5.13"
-  checksum: 10/ecc533785ef3459f2cfe3d131d082ffbaf9b99b88619b71d7ca7664cd6073c2771df6314386ce5d88631da544dce101d88770c7ebb91ea72eafcd07929082df3
+  checksum: 10/5b7027d6e97fcba87300a7655b848de9a358b00922d158bf64b272c1bb0a2ba1ecc8a786c9c2ed336c3e9187cad0ec54e3c346b6900693d8ecd976f993b044c3
   languageName: node
   linkType: hard
 
@@ -12657,6 +12657,19 @@ __metadata:
   peerDependencies:
     "@uppy/core": ^3.11.0
   checksum: 10/9220777e81e272abed5f4f3d4d386f882bfc105a552af0a7792940555a4ceba9ae148b0134b87218ccc2abf7189e834dd795054d44d167378d02796fbc7cd39d
+  languageName: node
+  linkType: hard
+
+"@uppy/image-editor@npm:^2.4.6":
+  version: 2.4.6
+  resolution: "@uppy/image-editor@npm:2.4.6"
+  dependencies:
+    "@uppy/utils": "npm:^5.9.0"
+    cropperjs: "npm:1.5.7"
+    preact: "npm:^10.5.13"
+  peerDependencies:
+    "@uppy/core": ^3.11.3
+  checksum: 10/ae585046e1a3bcb9d7bde7d2a4020a85a849f48a82afd3d8f948ee92fd405483493664ed29820c8f3089bea94a6bfc3f4cada4f52283e0cfbc2cf2bd2acb12bd
   languageName: node
   linkType: hard
 
@@ -16352,6 +16365,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cropperjs@npm:1.5.7":
+  version: 1.5.7
+  resolution: "cropperjs@npm:1.5.7"
+  checksum: 10/8270930d1edb0db4f88f1d873f3fbaedbf750cc7a4d4017884494c337ec6464c84784f1b338d76eadc7eaefef9d7493dd93dbacf32659349fec7a8a0f6a2ea14
+  languageName: node
+  linkType: hard
+
 "cropperjs@npm:1.6.0":
   version: 1.6.0
   resolution: "cropperjs@npm:1.6.0"
@@ -19553,10 +19573,11 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^7.11.0"
     "@typescript-eslint/parser": "npm:^7.11.0"
     "@uppy/compressor": "npm:^1.1.4"
-    "@uppy/core": "npm:^3.11.3"
+    "@uppy/core": "npm:^3.12.0"
     "@uppy/dashboard": "npm:^3.8.3"
     "@uppy/drag-drop": "npm:^3.1.0"
     "@uppy/file-input": "npm:^3.1.2"
+    "@uppy/image-editor": "npm:^2.4.6"
     "@uppy/progress-bar": "npm:^3.1.1"
     "@uppy/react": "npm:^3.3.1"
     "@uppy/url": "npm:^3.6.1"
@@ -19589,7 +19610,7 @@ __metadata:
     lorem-ipsum: "npm:^2.0.8"
     nanoid: "npm:^5.0.7"
     next: "npm:^14.2.3"
-    next-i18next: "npm:^15.3.0"
+    next-i18next: "npm:^15.1.0"
     next-mdx-remote: "npm:^5.0.0"
     next-recaptcha-v3: "npm:^1.4.1"
     next-seo: "npm:^6.5.0"
@@ -25930,7 +25951,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-i18next@npm:^15.3.0":
+"next-i18next@npm:^15.1.0":
   version: 15.3.0
   resolution: "next-i18next@npm:15.3.0"
   dependencies:
