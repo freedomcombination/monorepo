@@ -20,6 +20,7 @@ import {
   MdOutlineCategory,
   MdOutlineFeedback,
   MdOutlineSpaceDashboard,
+  MdTranslate,
 } from 'react-icons/md'
 import { SiGeneralelectric, SiMaterialdesignicons } from 'react-icons/si'
 import {
@@ -103,6 +104,16 @@ export const useAdminNav = () => {
             link: '/translates?slug=posts',
             icon: <TbBrandTwitter />,
           },
+          ...(process.env.NODE_ENV === 'development'
+            ? [
+                {
+                  label: 'Locales',
+                  link: '/translates?locales=true',
+                  icon: <MdTranslate />,
+                  allowed: true,
+                },
+              ]
+            : []),
         ],
       },
       {

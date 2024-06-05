@@ -29,6 +29,7 @@ import {
   DataTable,
   ModelEditTranslate,
   PageHeader,
+  TranslateLocales,
   WTableProps,
   useColumns,
   useFields,
@@ -56,6 +57,7 @@ const ActivitiesTranslatePage = () => {
   const [pageSize, setPageSize] = useState<number>(20)
   const [sort, setSort] = useState<Sort>()
 
+  const locales = !!(query.locales as string)
   const status = query.status as ApprovalStatus
   const slug = query.slug as Partial<StrapiCollectionEndpoint>
   const translateKey = slug as any
@@ -125,46 +127,52 @@ const ActivitiesTranslatePage = () => {
     <AdminLayout seo={{ title: t(translateKey || 'translates') }}>
       <PageHeader onSearch={handleSearch} />
 
-      {mappedModels && (
-        <DataTable<StrapiModel>
-          columns={columns as WTableProps<StrapiModel>['columns']}
-          currentPage={currentPage}
-          data={mappedModels}
-          onClickRow={handleClick}
-          onSort={setSort}
-          pageCount={pageCount}
-          pageSize={pageSize}
-          setCurrentPage={setCurrentPage}
-          setPageSize={setPageSize}
-          totalCount={totalCount}
-        />
+      {locales ? (
+        <TranslateLocales searchTerm={searchTerm} />
+      ) : (
+        <>
+          {mappedModels && (
+            <DataTable<StrapiModel>
+              columns={columns as WTableProps<StrapiModel>['columns']}
+              currentPage={currentPage}
+              data={mappedModels}
+              onClickRow={handleClick}
+              onSort={setSort}
+              pageCount={pageCount}
+              pageSize={pageSize}
+              setCurrentPage={setCurrentPage}
+              setPageSize={setPageSize}
+              totalCount={totalCount}
+            />
+          )}
+          <Modal
+            isCentered
+            isOpen={isOpen}
+            onClose={handleClose}
+            size={'4xl'}
+            scrollBehavior={'inside'}
+          >
+            <ModalOverlay />
+            <ModalContent>
+              <ModalCloseButton />
+              <ModalBody p={0} h={'80vh'}>
+                <ModelEditTranslate
+                  id={id}
+                  endpoint={slug}
+                  translatedFields={fields?.map(f => f.name) || []}
+                  schema={schema!}
+                  fields={fields!}
+                  onSuccess={dataQuery.refetch}
+                >
+                  <Button onClick={handleClose} colorScheme={'gray'}>
+                    {t('dismiss')}
+                  </Button>
+                </ModelEditTranslate>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        </>
       )}
-      <Modal
-        isCentered
-        isOpen={isOpen}
-        onClose={handleClose}
-        size={'4xl'}
-        scrollBehavior={'inside'}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalCloseButton />
-          <ModalBody p={0} h={'80vh'}>
-            <ModelEditTranslate
-              id={id}
-              endpoint={slug}
-              translatedFields={fields?.map(f => f.name) || []}
-              schema={schema!}
-              fields={fields!}
-              onSuccess={dataQuery.refetch}
-            >
-              <Button onClick={handleClose} colorScheme={'gray'}>
-                {t('dismiss')}
-              </Button>
-            </ModelEditTranslate>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
     </AdminLayout>
   )
 }
