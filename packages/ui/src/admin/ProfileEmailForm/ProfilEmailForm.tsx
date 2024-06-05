@@ -15,13 +15,20 @@ import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 import * as yup from 'yup'
 
-import { useSendEmail } from '@fc/services'
-import { EmailCreateInput } from '@fc/types'
+import { useCreateModelMutation, useSendEmail } from '@fc/services'
+import {
+  EmailCreateInput,
+  Observation,
+  ObservationCreateInput,
+} from '@fc/types'
+import { toastMessage } from '@fc/utils'
 
 import { FormItem } from '../../components'
 
 interface ProfileMailFormProps {
   email: string
+  profileId: number
+  onSuccess?: () => void
 }
 
 const schema = yup.object().shape({
@@ -31,7 +38,11 @@ const schema = yup.object().shape({
 
 type EmailFormValues = yup.InferType<typeof schema>
 
-export const ProfileMailForm: FC<ProfileMailFormProps> = ({ email }) => {
+export const ProfileMailForm: FC<ProfileMailFormProps> = ({
+  email,
+  profileId,
+  onSuccess,
+}) => {
   const { t } = useTranslation()
 
   const {
@@ -46,17 +57,54 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({ email }) => {
   const { error, isPending, isSuccess, mutateAsync: sendEmail } = useSendEmail()
 
   const onSubmit = async (data: EmailFormValues) => {
+    const content = data.content
+    const subject = data.subject
+
     try {
       const emailData: EmailCreateInput = {
         to: email,
-        subject: data.subject,
-        text: data.content,
+        subject,
+        text: content,
       }
 
       await sendEmail(emailData)
       reset()
+
+      isSuccess && createObservation({ subject, content })
     } catch (error: any) {
       console.error(error)
+    }
+  }
+
+  const { mutate } = useCreateModelMutation<
+    Observation,
+    ObservationCreateInput
+  >('observations')
+
+  type createOnservationProps = {
+    subject: string
+    content: string
+  }
+
+  const createObservation = async ({
+    subject,
+    content,
+  }: createOnservationProps) => {
+    const observationContent = `email sended to${email} with subject ${subject} and content ${content}`
+
+    try {
+      const body = {
+        content: observationContent,
+        profile: profileId,
+      } as ObservationCreateInput
+
+      mutate(body, { onSuccess: () => onSuccess?.() })
+    } catch (error) {
+      toastMessage(
+        'Error',
+        "Couldn't send observation. Please try again later.",
+        'error',
+      )
     }
   }
 
