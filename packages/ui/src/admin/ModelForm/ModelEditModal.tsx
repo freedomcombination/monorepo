@@ -11,6 +11,7 @@ import {
   Spinner,
 } from '@chakra-ui/react'
 
+import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { StrapiModel } from '@fc/types'
 
@@ -31,7 +32,15 @@ export const ModelEditModal = <T extends StrapiModel>({
   children = null,
   ...rest
 }: ModelEditModalProps<T>) => {
-  const { data, isLoading, refetch } = useStrapiRequest<T>({ endpoint, id })
+  const { token } = useAuthContext()
+
+  const { data, isLoading, refetch } = useStrapiRequest<T>({
+    endpoint,
+    id,
+    queryOptions: {
+      enabled: isOpen && !!token,
+    },
+  })
 
   const model = data?.data
   const handleSuccess = () => {

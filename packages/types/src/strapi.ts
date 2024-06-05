@@ -250,7 +250,10 @@ export type StrapiProviders = 'instagram' | 'facebook' | 'google' | 'twitter'
 
 export type StrapiEmailEndpoint = 'email'
 
-export type StrapiCustomEndpoint = 'translate-model' | 'translate-post-model'
+export type StrapiCustomEndpoint =
+  | 'translate-model'
+  | 'translate-post-model'
+  | 'contact/email'
 
 export type StrapiSingleEndpoint =
   | 'profiles/me'

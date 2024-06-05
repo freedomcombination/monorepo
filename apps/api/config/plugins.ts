@@ -15,8 +15,8 @@ export default ({ env }) => ({
         },
       },
       settings: {
-        defaultFrom: process.env.SMTP_USERNAME,
-        defaultReplyTo: process.env.SMTP_USERNAME,
+        defaultFrom: env('SMTP_USERNAME'),
+        defaultReplyTo: env('SMTP_USERNAME'),
       },
     },
   },

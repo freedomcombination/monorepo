@@ -32,7 +32,7 @@
     "WEB_PUSH_EMAIL",
     "WEB_PUSH_PRIVATE_KEY"
   ],
-  "pipeline": {
+  "tasks": {
     "build:dev": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
