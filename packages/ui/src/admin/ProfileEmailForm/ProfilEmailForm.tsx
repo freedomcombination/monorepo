@@ -134,7 +134,6 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
           />
 
           <Button
-            display={{ base: 'none', sm: 'flex' }}
             alignSelf="flex-end"
             rightIcon={<FiArrowRight />}
             type="submit"
