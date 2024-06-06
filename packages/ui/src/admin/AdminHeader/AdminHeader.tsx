@@ -11,17 +11,14 @@ import {
   IconButton,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalFooter,
-  ModalHeader,
   ModalOverlay,
   Skeleton,
   Tooltip,
   useDisclosure,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import { FaArrowLeft, FaUser } from 'react-icons/fa'
 import { FaGear } from 'react-icons/fa6'
 import { HiMenu } from 'react-icons/hi'
@@ -47,7 +44,6 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
     onOpen: onOpenProfile,
     onClose: onCloseProfile,
   } = useDisclosure()
-  const { t } = useTranslation()
   const router = useRouter()
   const slugs = router.asPath.split('/')
   const parentSlug = slugs.slice(0, slugs.length - 1).join('/')
@@ -99,19 +95,11 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
               isCentered
             >
               <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>{t('profile.modal.header')}</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
+              <ModalContent p={0} h={'90vh'}>
+                <ModalBody p={0}>
                   <ProfilePanel />
                 </ModalBody>
-                <ModalFooter>
-                  <HStack
-                    bg={'primary.400'}
-                    height={30}
-                    width={'100%'}
-                  ></HStack>
-                </ModalFooter>
+                <ModalFooter bg={'primary.400'} />
               </ModalContent>
             </Modal>
           </>

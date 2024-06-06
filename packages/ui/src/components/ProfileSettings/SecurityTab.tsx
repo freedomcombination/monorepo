@@ -3,10 +3,13 @@ import { ReactNode, useEffect, useState } from 'react'
 import {
   Button,
   Center,
+  FormControl,
+  FormLabel,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Divider,
   Spinner,
   Stack,
 } from '@chakra-ui/react'
@@ -18,54 +21,12 @@ import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { SessionUser } from '@fc/types'
 
-import { MultiLine, SingleLine } from '../CommonComponents'
-
-export const Security = () => {
-  const { t } = useTranslation()
-  const { user } = useAuthContext()
-
-  if (!user) {
-    return (
-      <Center width={'100%'} height={'100%'}>
-        <Stack>
-          <Spinner />
-        </Stack>
-      </Center>
-    )
-  }
-
-  return (
-    <MultiLine>
-      <SingleLine title={t('profile.security.username')}>
-        <Credential
-          name={'username'}
-          initialValue={user.username}
-          isValid={(user: SessionUser | null, username: string): boolean => {
-            return username.length > 2 && username !== user?.username
-          }}
-          placeholder={t('profile.username.ph')}
-          leftIcon={<FaUser />}
-        />
-      </SingleLine>
-      <SingleLine title={t('profile.security.email')}>
-        <Credential
-          name={'email'}
-          initialValue={user.email}
-          isValid={(user: SessionUser | null, email: string) => {
-            if (!email || email === user?.email) return false
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-            return emailRegex.test(email)
-          }}
-          placeholder={t('profile.email.ph')}
-          leftIcon={<FaEnvelope />}
-        />
-      </SingleLine>
-      <SingleLine title={t('profile.security.password')}>
-        <Password />
-      </SingleLine>
-    </MultiLine>
-  )
+type CredentialProps = {
+  isValid: (user: SessionUser | null, value: string) => boolean
+  initialValue: string
+  name: 'username' | 'email'
+  placeholder: string
+  leftIcon: ReactNode
 }
 
 const asyncUpdate = async (param: Record<string, string>, token: string) => {
@@ -83,13 +44,6 @@ const asyncUpdate = async (param: Record<string, string>, token: string) => {
     throw new Error('Failed to update user profile :' + result.status)
 }
 
-type CredentialProps = {
-  isValid: (user: SessionUser | null, value: string) => boolean
-  initialValue: string
-  name: 'username' | 'email'
-  placeholder: string
-  leftIcon: ReactNode
-}
 const Credential: React.FC<CredentialProps> = ({
   isValid = () => {
     return false
@@ -118,13 +72,13 @@ const Credential: React.FC<CredentialProps> = ({
     if (!saving) return
 
     asyncUpdate({ [name]: value }, token as string)
-      .catch(e => console.log('Update error', name, value, e))
-      .finally(() => {
-        checkAuth().finally(() => {
+      .then(() => {
+        checkAuth().then(() => {
           setSaving(false)
           setEdit(false)
         })
       })
+      .catch(e => console.log('Update error', name, value, e))
 
     return () => setSaving(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -133,14 +87,13 @@ const Credential: React.FC<CredentialProps> = ({
   const { t } = useTranslation()
 
   return (
-    <InputGroup>
+    <InputGroup size="lg">
       <InputLeftElement>
         {!saving ? leftIcon : <Spinner size="sm" />}
       </InputLeftElement>
       <Input
-        pr="7rem"
+        pr="r7em"
         type={name === 'email' ? 'email' : 'text'}
-        isInvalid
         placeholder={placeholder}
         isDisabled={!edit}
         value={value}
@@ -206,21 +159,18 @@ const Password = () => {
     }
 
     asyncPasswordChange()
-      .catch(e => console.log('Update error', e))
       .then(() => setPwData(emptyPwData))
-      .finally(() => {
-        checkAuth().finally(() => {
-          setIsChanging(false)
-        })
-      })
+      .then(() => checkAuth())
+      .then(() => setIsChanging(false))
+      .catch(e => console.log('Update error', e))
 
     return () => setIsChanging(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isChanging])
 
   return (
-    <Stack gap={2}>
-      <InputGroup mb={4}>
+    <Stack spacing={8}>
+      <InputGroup>
         <Input
           pr="5rem"
           type={show ? 'text' : 'password'}
@@ -230,6 +180,7 @@ const Password = () => {
           onChange={e =>
             setPwData({ ...pwData, currentPassword: e.target.value })
           }
+          size="lg"
         />
         <InputRightElement width="5rem">
           <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -238,28 +189,86 @@ const Password = () => {
         </InputRightElement>
       </InputGroup>
 
-      <Input
-        type={show ? 'text' : 'password'}
-        placeholder={t('profile.password.ph')}
-        onChange={e => setPwData({ ...pwData, password: e.target.value })}
-      />
+      <Stack>
+        <Input
+          type={show ? 'text' : 'password'}
+          placeholder={t('profile.password.ph')}
+          onChange={e => setPwData({ ...pwData, password: e.target.value })}
+          size="lg"
+        />
 
-      <Input
-        type={show ? 'text' : 'password'}
-        placeholder={t('profile.password.ph2')}
-        onChange={e =>
-          setPwData({ ...pwData, passwordConfirmation: e.target.value })
-        }
-      />
+        <Input
+          type={show ? 'text' : 'password'}
+          placeholder={t('profile.password.ph2')}
+          onChange={e =>
+            setPwData({ ...pwData, passwordConfirmation: e.target.value })
+          }
+          size="lg"
+        />
+      </Stack>
 
       <Button
         isDisabled={!checkIsValid()}
         leftIcon={<FaEdit />}
         isLoading={isChanging}
         onClick={() => setIsChanging(true)}
+        size={'lg'}
+        alignSelf={'start'}
       >
         {t('profile.change-password')}
       </Button>
+    </Stack>
+  )
+}
+
+export const SecurityTab = () => {
+  const { t } = useTranslation()
+  const { user } = useAuthContext()
+
+  if (!user) {
+    return (
+      <Center width={'100%'} height={'100%'}>
+        <Stack>
+          <Spinner />
+        </Stack>
+      </Center>
+    )
+  }
+
+  return (
+    <Stack spacing={8}>
+      <FormControl>
+        <FormLabel fontWeight={600}>{t('profile.security.username')}</FormLabel>
+        <Credential
+          name={'username'}
+          initialValue={user.username}
+          isValid={(user: SessionUser | null, username: string): boolean => {
+            return username.length > 2 && username !== user?.username
+          }}
+          placeholder={t('profile.username.ph')}
+          leftIcon={<FaUser />}
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel fontWeight={600}>{t('profile.security.email')}</FormLabel>
+        <Credential
+          name={'email'}
+          initialValue={user.email}
+          isValid={(user: SessionUser | null, email: string) => {
+            if (!email || email === user?.email) return false
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+            return emailRegex.test(email)
+          }}
+          placeholder={t('profile.email.ph')}
+          leftIcon={<FaEnvelope />}
+        />
+      </FormControl>
+      <Divider />
+      <FormControl>
+        <FormLabel fontWeight={600}>{t('profile.security.password')}</FormLabel>
+        <Password />
+      </FormControl>
     </Stack>
   )
 }

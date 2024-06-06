@@ -18,10 +18,10 @@ import { RecaptchaKeys } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { useArtsByArtist, useRecaptchaToken } from '@fc/services'
 
-import { ArtCard } from '../../ArtCard'
-import { CreateArtForm } from '../../CreateArtForm'
+import { ArtCard } from '../ArtCard'
+import { CreateArtForm } from '../CreateArtForm'
 
-export const Arts = () => {
+export const ArtsTab = () => {
   const { t } = useTranslation('common')
 
   const { profile } = useAuthContext()

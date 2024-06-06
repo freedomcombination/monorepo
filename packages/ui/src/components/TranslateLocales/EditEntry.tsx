@@ -91,7 +91,10 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
             icon={<BiHide />}
             aria-label="hide"
             variant={isSuppressed ? 'solid' : 'outline'}
-            isDisabled={!isSuppressed && (isPendingDeletion || value !== PriorityFilter.IDENTICAL)}
+            isDisabled={
+              !isSuppressed &&
+              (isPendingDeletion || value !== PriorityFilter.IDENTICAL)
+            }
             onClick={toggleSuppress}
           />
         </ButtonGroup>

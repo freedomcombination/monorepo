@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Button, Center, IconButton, Text } from '@chakra-ui/react'
+import { Button, Center, IconButton, Text, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { FaSave } from 'react-icons/fa'
 import {
@@ -15,7 +15,7 @@ import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { Profile, ProfileUpdateInput } from '@fc/types'
 
-import { MultiLine, SingleDetail } from '../CommonComponents'
+import { FormElement } from './FormElement'
 
 export const Socials = () => {
   const { profile, token, checkAuth } = useAuthContext()
@@ -82,20 +82,8 @@ export const Socials = () => {
   }
 
   return (
-    <MultiLine
-      buttons={
-        <Button
-          isDisabled={!hasChanged}
-          leftIcon={<FaSave />}
-          size={'md'}
-          isLoading={saving}
-          onClick={() => setSaving(true)}
-        >
-          {t('save')}
-        </Button>
-      }
-    >
-      <SingleDetail
+    <Stack spacing={8}>
+      <FormElement
         title={'Linkedin'}
         placeholder={t('profile.social.ph', { name: 'Linkedin' })}
         defaultValue={details.linkedin}
@@ -104,8 +92,8 @@ export const Socials = () => {
         onChange={val => setDetails({ ...details, linkedin: val })}
       />
 
-      <SingleDetail
-        title={'X'}
+      <FormElement
+        title={'Twitter X'}
         placeholder={t('profile.social.ph', { name: 'X' })}
         defaultValue={details.twitter}
         left={<FaXTwitter />}
@@ -113,7 +101,7 @@ export const Socials = () => {
         onChange={val => setDetails({ ...details, twitter: val })}
       />
 
-      <SingleDetail
+      <FormElement
         title={'Instagram'}
         placeholder={t('profile.social.ph', { name: 'Instagram' })}
         defaultValue={details.instagram}
@@ -122,7 +110,7 @@ export const Socials = () => {
         onChange={val => setDetails({ ...details, instagram: val })}
       />
 
-      <SingleDetail
+      <FormElement
         title={'Facebook'}
         placeholder={t('profile.social.ph', { name: 'Facebook' })}
         defaultValue={details.linkedin}
@@ -130,6 +118,17 @@ export const Socials = () => {
         right={goSocial('https://www.facebook.com/', details.facebook)}
         onChange={val => setDetails({ ...details, facebook: val })}
       />
-    </MultiLine>
+
+      <Button
+        isDisabled={!hasChanged}
+        leftIcon={<FaSave />}
+        size={'lg'}
+        isLoading={saving}
+        onClick={() => setSaving(true)}
+        alignSelf={'start'}
+      >
+        {t('save')}
+      </Button>
+    </Stack>
   )
 }
