@@ -76,7 +76,7 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
         profile: profileId,
       } as ObservationCreateInput
 
-      mutate(body, { onSuccess })
+      mutate(body, { onSuccess: () => onSuccess?.() })
     } catch (error) {
       toastMessage(
         'Error',
