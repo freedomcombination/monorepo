@@ -12,7 +12,7 @@ const Profile = () => {
 
   return (
     <Layout seo={{ title: t('profile') }} isDark>
-      <ProfilePanel showArts={true} />
+      <ProfilePanel />
     </Layout>
   )
 }

@@ -11,8 +11,8 @@ const Profile = () => {
   const { t } = useTranslation()
 
   return (
-    <Layout seo={{ title: t('profile') }} isDark>
-      <ProfilePanel showArts={true} />
+    <Layout seo={{ title: t('profile') }}>
+      <ProfilePanel />
     </Layout>
   )
 }
