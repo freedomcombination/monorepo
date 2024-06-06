@@ -69,9 +69,7 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
 
       if (suppressWarning.includes(key)) return priorityKey
 
-      if (!en[key] && !tr[key] && !nl[key]) {
-        priority = PriorityFilter.UNTRANSLATED
-      } else if (!en[key] || !tr[key] || !nl[key]) {
+      if (!en[key] || !tr[key] || !nl[key]) {
         priority = PriorityFilter.MISSING
       } else if (
         en[key] === tr[key] ||
@@ -146,7 +144,6 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
 
   const missingKeys = filterKeys(PriorityFilter.MISSING)
   const identicalKeys = filterKeys(PriorityFilter.IDENTICAL)
-  const untranslatedKeys = filterKeys(PriorityFilter.UNTRANSLATED)
   const translatedKeys = filterKeys(PriorityFilter.TRANSLATED)
   const ignoredKeys = priorityKeys
     .filter(k => suppressWarning.includes(k.key))
@@ -201,12 +198,6 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
                 ({missingKeys.length})
               </chakra.span>
             </Radio>
-            <Radio value={`${PriorityFilter.UNTRANSLATED}`}>
-              Untranslated{' '}
-              <chakra.span color="gray.400" fontSize="sm">
-                ({untranslatedKeys.length})
-              </chakra.span>
-            </Radio>
             <Radio value={`${PriorityFilter.IGNORED}`}>
               Ignored{' '}
               <chakra.span color="gray.400" fontSize="sm">
@@ -232,7 +223,7 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
       >
         <Virtuoso
           style={{
-            height: 'calc(100vh - 200px)',
+            height: 'calc(100vh - 270px)',
           }}
           totalCount={filteredKeysBySearch.length}
           itemContent={index => {

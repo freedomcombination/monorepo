@@ -13,7 +13,6 @@ import { BiHide } from 'react-icons/bi'
 import { FaExclamationTriangle } from 'react-icons/fa'
 import { FaCheck, FaCheckDouble, FaTrash } from 'react-icons/fa6'
 import { IoMdRemoveCircleOutline } from 'react-icons/io'
-import { MdOutlineError } from 'react-icons/md'
 
 import { DictContext } from './DictContext'
 import { EntryInput } from './EntryInput'
@@ -35,7 +34,6 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
     [PriorityFilter.TRANSLATED]: 'green',
     [PriorityFilter.IDENTICAL]: 'orange',
     [PriorityFilter.MISSING]: 'purple',
-    [PriorityFilter.UNTRANSLATED]: 'red',
     [PriorityFilter.IGNORED]: 'gray',
   }
 
@@ -43,7 +41,6 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
     [PriorityFilter.TRANSLATED]: FaCheckDouble,
     [PriorityFilter.IDENTICAL]: FaExclamationTriangle,
     [PriorityFilter.MISSING]: IoMdRemoveCircleOutline,
-    [PriorityFilter.UNTRANSLATED]: MdOutlineError,
     [PriorityFilter.IGNORED]: BiHide,
   }
 
@@ -59,7 +56,7 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
   }
 
   return (
-    <Stack gap={2} mt={2}>
+    <Stack gap={2} mt={2} mr={2}>
       <HStack color={color} gap={1} alignItems={'center'} position={'relative'}>
         <Icon />
         <Text
@@ -94,7 +91,7 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
             icon={<BiHide />}
             aria-label="hide"
             variant={isSuppressed ? 'solid' : 'outline'}
-            isDisabled={isPendingDeletion || value !== PriorityFilter.IDENTICAL}
+            isDisabled={!isSuppressed && (isPendingDeletion || value !== PriorityFilter.IDENTICAL)}
             onClick={toggleSuppress}
           />
         </ButtonGroup>

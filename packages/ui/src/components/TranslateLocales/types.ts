@@ -32,7 +32,6 @@ export enum PriorityFilter {
   TRANSLATED = 0,
   IDENTICAL = 1,
   MISSING = 2,
-  UNTRANSLATED = 3,
   ALL = -1,
   IGNORED = -2,
 }
