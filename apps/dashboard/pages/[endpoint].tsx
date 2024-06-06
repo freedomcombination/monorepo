@@ -151,7 +151,6 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
       enabled: !!endpoint && !!token,
     },
   })
-  // feth observation
 
   const models = endpointQuery?.data?.data
   const pageCount = endpointQuery?.data?.meta?.pagination?.pageCount
