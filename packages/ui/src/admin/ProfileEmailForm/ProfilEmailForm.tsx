@@ -68,7 +68,7 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
     subject,
     content,
   }: createOnservationProps) => {
-    const observationContent = `Email sent to: ${email}\n\n with subject: ${subject}\n\n and content: ${content}`
+    const observationContent = `Email sent to: ${email}<br><br> with subject: ${subject}<br><br> and content: ${content}`
 
     try {
       const body = {
@@ -90,7 +90,7 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
   const { error, isPending, isSuccess, mutateAsync: sendEmail } = useSendEmail()
 
   const onSubmit = async (data: EmailFormValues) => {
-    const content = data.content
+    const content = data.content.replace(/\n/g, '<br>')
     const subject = data.subject
 
     try {
