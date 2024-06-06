@@ -16,9 +16,13 @@ import { ProfileMailForm } from '../ProfileEmailForm'
 
 interface ProfileContactProps {
   profile: Profile
+  onSuccess?: () => void
 }
 
-export const ProfileContact: FC<ProfileContactProps> = ({ profile }) => {
+export const ProfileContact: FC<ProfileContactProps> = ({
+  profile,
+  onSuccess,
+}) => {
   if (!profile?.email) {
     return <Alert status="warning">No email address found for this user</Alert>
   }
@@ -101,7 +105,11 @@ export const ProfileContact: FC<ProfileContactProps> = ({ profile }) => {
         }}
       />
       <Box>
-        <ProfileMailForm email={profile?.email as string} />
+        <ProfileMailForm
+          email={profile?.email as string}
+          profileId={profile?.id}
+          onSuccess={onSuccess}
+        />
       </Box>
     </Stack>
   )

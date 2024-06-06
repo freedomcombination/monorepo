@@ -307,7 +307,10 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
             <TabbedGenAIView post={post} hashtag={post.hashtag} noBorder />
           )}
           {endpoint === 'profiles' && selectedModel && selectedId && (
-            <ProfileContact profile={selectedModel as Profile} />
+            <ProfileContact
+              profile={selectedModel as Profile}
+              onSuccess={endpointQuery.refetch}
+            />
           )}
           {endpoint === 'profiles' && selectedModel && selectedId && (
             <ObservationList id={selectedId} />
