@@ -6,20 +6,14 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
-import { useMutation } from '@tanstack/react-query'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail } from 'react-icons/md'
 
-import {
-  EMAIL_SENDER,
-  PUBLIC_TOKEN,
-  RecaptchaKeys,
-  socialLinks,
-} from '@fc/config'
-import { sendEmail, useRecaptchaToken } from '@fc/services'
+import { EMAIL_SENDER, socialLinks } from '@fc/config'
+import { useSendEmail } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { EmailCreateInput, StrapiLocale } from '@fc/types'
+import { StrapiLocale } from '@fc/types'
 import {
   ButtonLink,
   ContactForm,
@@ -32,25 +26,8 @@ import { Layout } from '../components'
 
 const Contact = () => {
   const { t } = useTranslation()
-  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.CONTACT_FORM)
 
-  const {
-    isError,
-    isPending,
-    isSuccess,
-    mutate: sendForm,
-  } = useMutation({
-    mutationKey: ['contact'],
-    mutationFn: async (data: EmailCreateInput) => {
-      return sendEmail(
-        data,
-        PUBLIC_TOKEN as string,
-        recaptchaToken ?? 'some fake token',
-      )
-      // if we send an undefined token, sendMail ll send mail successfully
-      // so we force this function to use custom route with fake token.
-    },
-  })
+  const { isError, isPending, isSuccess, mutate: sendForm } = useSendEmail()
 
   const handleSubmit = async (data: ContactFormFieldValues) => {
     const emailData = {

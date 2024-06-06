@@ -52,38 +52,23 @@ module.exports = {
     const userId = ctx.state.user.id
     const data = ctx.request.body
     console.log(data)
-    if (!data) {
+
+    const username = data.username
+    const email = data.email
+
+    if (!data || (!username && !email)) {
       throw new Error('No data provided')
     }
 
-    const username = data.username
-
-    if (username) {
-      return await strapi.entityService.update(
-        'plugin::users-permissions.user',
-        userId,
-        {
-          data: {
-            username,
-          },
+    return await strapi.entityService.update(
+      'plugin::users-permissions.user',
+      userId,
+      {
+        data: {
+          ...(username && { username }),
+          ...(email && { email }),
         },
-      )
-    }
-
-    const email = data.email
-
-    if (email) {
-      return await strapi.entityService.update(
-        'plugin::users-permissions.user',
-        userId,
-        {
-          data: {
-            email,
-          },
-        },
-      )
-    }
-
-    throw new Error('No data provided')
+      },
+    )
   },
 }

@@ -19,6 +19,7 @@ import {
   MdFoundation,
   MdOutlineCategory,
   MdOutlineFeedback,
+  MdOutlineNotificationsActive,
   MdOutlineSpaceDashboard,
   MdTranslate,
 } from 'react-icons/md'
@@ -108,7 +109,7 @@ export const useAdminNav = () => {
             ? [
                 {
                   label: 'Locales',
-                  link: '/translates?locales=true',
+                  link: '/locales',
                   icon: <MdTranslate />,
                   allowed: true,
                 },
@@ -200,6 +201,11 @@ export const useAdminNav = () => {
             allowed: canRead('recommended-topics'),
           },
         ],
+      },
+      {
+        label: t('notifications'),
+        icon: <MdOutlineNotificationsActive />,
+        link: '/notifications',
       },
       {
         label: t('timelines'),
