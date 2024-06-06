@@ -20,6 +20,7 @@ import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import {
   ApprovalStatus,
+  Observation,
   Post,
   Profile,
   ProfileStatus,
@@ -150,6 +151,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
       enabled: !!endpoint && !!token,
     },
   })
+  // feth observation
 
   const models = endpointQuery?.data?.data
   const pageCount = endpointQuery?.data?.meta?.pagination?.pageCount
@@ -239,6 +241,14 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId])
 
+  const observationRequest = useStrapiRequest<Observation>({
+    endpoint: 'observations',
+    filters: { profile: { id: { $eq: selectedId } } },
+    sort: ['createdAt:desc'],
+  })
+
+  const observations = observationRequest.data?.data ?? []
+
   return (
     <AdminLayout seo={{ title }}>
       <PageHeader
@@ -309,11 +319,15 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           {endpoint === 'profiles' && selectedModel && selectedId && (
             <ProfileContact
               profile={selectedModel as Profile}
-              onSuccess={endpointQuery.refetch}
+              onSuccess={observationRequest.refetch}
             />
           )}
           {endpoint === 'profiles' && selectedModel && selectedId && (
-            <ObservationList id={selectedId} />
+            <ObservationList
+              observations={observations}
+              onSuccess={observationRequest.refetch}
+              id={selectedId}
+            />
           )}
         </ModelEditModal>
       )}
