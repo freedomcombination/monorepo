@@ -70,8 +70,8 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
   }: createOnservationProps) => {
     const observationContent = `
       <p><strong>Email Sent To:</strong> ${email}</p>
-      <p><strong>Subject:</strong> ${subject}</p>
-      <p><strong>Content:</strong><br>${content}</p>
+      <p><strong>Subject:</strong>${subject}</p>
+      <p><strong>Content:</strong>${content}</p>
     `
 
     try {
