@@ -18685,14 +18685,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-turbo@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "eslint-config-turbo@npm:2.0.2"
+"eslint-config-turbo@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "eslint-config-turbo@npm:2.0.3"
   dependencies:
-    eslint-plugin-turbo: "npm:2.0.2"
+    eslint-plugin-turbo: "npm:2.0.3"
   peerDependencies:
     eslint: ">6.6.0"
-  checksum: 10/c22a21ead89ddbb66c2b9d869d6f7805c742480c4878aa8da0efd979bf07b8715ca72ed2e0205c5ca61d3f68467003c9f733773c0f5128ddb9a91769c8e0ae2f
+  checksum: 10/55f8169dfdc82308c3eb176b5c45fb3cf0cee40e390a837bd4a8db0fe83070c5f50af806d3c47f0ed534a6668519fedcf67bc1bf4033684d5bf4f185238b0a9e
   languageName: node
   linkType: hard
 
@@ -18865,14 +18865,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-turbo@npm:2.0.2":
-  version: 2.0.2
-  resolution: "eslint-plugin-turbo@npm:2.0.2"
+"eslint-plugin-turbo@npm:2.0.3":
+  version: 2.0.3
+  resolution: "eslint-plugin-turbo@npm:2.0.3"
   dependencies:
     dotenv: "npm:16.0.3"
   peerDependencies:
     eslint: ">6.6.0"
-  checksum: 10/7b93985e681a38f47425b8f8dd058c84cfce1a22763d79f07a32b9fc49163d680937071d8c7aa9d52208a2b9df23f1565ce282bbbe24483aa30b6534c558753d
+  checksum: 10/4ae4896be69cacca0c5b93fd4688b8feca74dc86910f275ce64dde9f5c58e55b99f90c938a97e7b7cce7f81e1684878b5d4e9e7904b82ab0707fde38a6c62b9c
   languageName: node
   linkType: hard
 
@@ -19563,7 +19563,7 @@ __metadata:
     eslint: "npm:^8.57.0"
     eslint-config-next: "npm:^14.2.3"
     eslint-config-prettier: "npm:^9.1.0"
-    eslint-config-turbo: "npm:^2.0.2"
+    eslint-config-turbo: "npm:^2.0.3"
     eslint-plugin-react: "npm:7.34.2"
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:11.2.10"
@@ -19614,10 +19614,10 @@ __metadata:
     string-similarity: "npm:^4.0.4"
     stripe: "npm:^15.10.0"
     tesseract.js: "npm:^5.1.0"
-    turbo: "npm:^2.0.2"
+    turbo: "npm:^2.0.3"
     twitter-api-v2: "npm:^1.17.1"
     twitter-text: "npm:^3.1.0"
-    type-fest: "npm:^4.19.0"
+    type-fest: "npm:^4.20.0"
     typescript: "npm:^5.4.5"
     usehooks-ts: "npm:^3.1.0"
     web-push: "npm:^3.6.7"
@@ -33323,58 +33323,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:2.0.2":
-  version: 2.0.2
-  resolution: "turbo-darwin-64@npm:2.0.2"
+"turbo-darwin-64@npm:2.0.3":
+  version: 2.0.3
+  resolution: "turbo-darwin-64@npm:2.0.3"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:2.0.2":
-  version: 2.0.2
-  resolution: "turbo-darwin-arm64@npm:2.0.2"
+"turbo-darwin-arm64@npm:2.0.3":
+  version: 2.0.3
+  resolution: "turbo-darwin-arm64@npm:2.0.3"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:2.0.2":
-  version: 2.0.2
-  resolution: "turbo-linux-64@npm:2.0.2"
+"turbo-linux-64@npm:2.0.3":
+  version: 2.0.3
+  resolution: "turbo-linux-64@npm:2.0.3"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:2.0.2":
-  version: 2.0.2
-  resolution: "turbo-linux-arm64@npm:2.0.2"
+"turbo-linux-arm64@npm:2.0.3":
+  version: 2.0.3
+  resolution: "turbo-linux-arm64@npm:2.0.3"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:2.0.2":
-  version: 2.0.2
-  resolution: "turbo-windows-64@npm:2.0.2"
+"turbo-windows-64@npm:2.0.3":
+  version: 2.0.3
+  resolution: "turbo-windows-64@npm:2.0.3"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:2.0.2":
-  version: 2.0.2
-  resolution: "turbo-windows-arm64@npm:2.0.2"
+"turbo-windows-arm64@npm:2.0.3":
+  version: 2.0.3
+  resolution: "turbo-windows-arm64@npm:2.0.3"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "turbo@npm:2.0.2"
+"turbo@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "turbo@npm:2.0.3"
   dependencies:
-    turbo-darwin-64: "npm:2.0.2"
-    turbo-darwin-arm64: "npm:2.0.2"
-    turbo-linux-64: "npm:2.0.2"
-    turbo-linux-arm64: "npm:2.0.2"
-    turbo-windows-64: "npm:2.0.2"
-    turbo-windows-arm64: "npm:2.0.2"
+    turbo-darwin-64: "npm:2.0.3"
+    turbo-darwin-arm64: "npm:2.0.3"
+    turbo-linux-64: "npm:2.0.3"
+    turbo-linux-arm64: "npm:2.0.3"
+    turbo-windows-64: "npm:2.0.3"
+    turbo-windows-arm64: "npm:2.0.3"
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -33390,7 +33390,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 10/3188381c3fd916d68703bc01ed2d0d9eed9f91e838f1897ff6e8f0447e769bd62e5cc670f3654955b9ec3de7e8468f4e5cb416246f0f18255c25d59556698a9c
+  checksum: 10/b4073faa921865c5ff8efef6c3527cca7c04d60feda12e3bb4a1ce404c3a4a5665407e735c4bee3d530b9b88307f07ad6dc28352b1593ab32fdafe3a96f70449
   languageName: node
   linkType: hard
 
@@ -33485,10 +33485,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^4.19.0":
-  version: 4.19.0
-  resolution: "type-fest@npm:4.19.0"
-  checksum: 10/746294c1f463913425a4b40e9160ed1ea5cd1f877587789cbd42e01c6b67be9c55daf75e0d4787da584b98a09487df69e89b44c934d497e5d035800e115dc1e9
+"type-fest@npm:^4.20.0":
+  version: 4.20.0
+  resolution: "type-fest@npm:4.20.0"
+  checksum: 10/df037c11f6393312f27825ea6eb2c8cd62b1ba21c31144bed41854648ba2a18dcb8c68a930607c7227dd531b42006cc7c7a60f7f034668d1c92c205523ae1ea2
   languageName: node
   linkType: hard
 
