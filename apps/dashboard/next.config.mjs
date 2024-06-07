@@ -1,13 +1,20 @@
-import withPWAInit from '@ducanh2912/next-pwa'
+import {
+  PHASE_DEVELOPMENT_SERVER,
+  PHASE_PRODUCTION_BUILD,
+} from 'next/constants.js'
 
 import nextConfig from '@fc/config/next.config.mjs'
 
-const withPWA = () => {
-  if (process.env.NODE_ENV === 'production') {
-    return withPWAInit(nextConfig)
+const nextConfigFunction = async phase => {
+  if (phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD) {
+    const withPWA = (await import('@ducanh2912/next-pwa')).default({
+      dest: 'public',
+    })
+
+    return withPWA(nextConfig)
   }
 
   return nextConfig
 }
 
-export default withPWA()
+export default nextConfigFunction
