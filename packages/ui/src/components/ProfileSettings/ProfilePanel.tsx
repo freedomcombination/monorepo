@@ -10,6 +10,7 @@ import {
   Tabs,
   Text,
   VStack,
+  useBreakpointValue,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
@@ -35,7 +36,9 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   showArts = false,
 }) => {
   const { user, profile } = useAuthContext()
-
+  const orientation = useBreakpointValue({ base: true, md: false })
+    ? 'horizontal'
+    : 'vertical'
   const { t } = useTranslation()
 
   if (!user) return <Hero></Hero>
@@ -66,24 +69,41 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
       <Box bg="white" p={8}>
         <Container>
           <Tabs
-            orientation="vertical"
+            orientation={orientation}
             border={0}
             colorScheme="primary"
             size="lg"
           >
-            <TabList border={0} minW={300} h="max-content">
+            <TabList
+              border={0}
+              minW={{ base: 0, lg: 300 }}
+              h="max-content"
+              overflowX={'auto'}
+            >
               <Tab fontWeight={600} justifyContent={'start'}>
-                <Box as={FaUserCircle} mr={2} /> {t('profile.tabs.profile')}
+                <Box as={FaUserCircle} mr={{ base: 2, md: 0, lg: 2 }} />
+                <Box display={{ base: 'block', md: 'none', lg: 'block' }}>
+                  {t('profile.tabs.profile')}
+                </Box>
               </Tab>
               <Tab fontWeight={600} justifyContent={'start'}>
-                <Box as={FaKey} mr={2} /> {t('profile.tabs.security')}
+                <Box as={FaKey} mr={{ base: 2, md: 0, lg: 2 }} />
+                <Box display={{ base: 'block', md: 'none', lg: 'block' }}>
+                  {t('profile.tabs.security')}
+                </Box>
               </Tab>
               <Tab fontWeight={600} justifyContent={'start'}>
-                <Box as={TbSocial} mr={2} /> {t('profile.tabs.socials')}
+                <Box as={TbSocial} mr={{ base: 2, md: 0, lg: 2 }} />
+                <Box display={{ base: 'block', md: 'none', lg: 'block' }}>
+                  {t('profile.tabs.socials')}
+                </Box>
               </Tab>
               {showArts && (
                 <Tab fontWeight={600} justifyContent={'start'}>
-                  <Box as={FaPaintBrush} mr={2} /> {t('profile.tabs.arts')}
+                  <Box as={FaPaintBrush} mr={{ base: 2, md: 0, lg: 2 }} />
+                  <Box display={{ base: 'block', md: 'none', lg: 'block' }}>
+                    {t('profile.tabs.arts')}
+                  </Box>
                 </Tab>
               )}
             </TabList>
