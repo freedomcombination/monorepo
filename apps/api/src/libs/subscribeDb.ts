@@ -133,6 +133,10 @@ export const subscribeDb = async () => {
       result?.content_tr ||
       result?.content_nl ||
       result?.message ||
+      result?.fromLocation ||
+      result?.toLocation ||
+      result?.notes ||
+      result?.date ||
       data?.title ||
       data?.title_en ||
       data?.title_tr ||
@@ -151,9 +155,11 @@ export const subscribeDb = async () => {
       data?.content_tr ||
       data?.content_nl ||
       data?.approvalStatus ||
-      (data?.publishedAt !== undefined && data?.publishedAt
-        ? 'published'
-        : 'unpublished')
+      data?.fromLocation ||
+      data?.toLocation ||
+      data?.notes ||
+      data?.date ||
+      (data?.publishedAt !== undefined && data?.publishedAt && 'published')
 
     /**
      * After approving, publishing etc it triggers extra update events twice with the following data
