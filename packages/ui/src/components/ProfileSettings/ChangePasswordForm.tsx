@@ -1,0 +1,122 @@
+import { Box, Button, Heading, Stack } from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
+import { useTranslation } from 'next-i18next'
+import { useForm } from 'react-hook-form'
+import { FaEdit } from 'react-icons/fa'
+import * as Yup from 'yup'
+
+import { API_URL } from '@fc/config'
+import { useAuthContext } from '@fc/context'
+
+import { FormItem } from '../FormItem'
+
+const schema = Yup.object().shape({
+  currentPassword: Yup.string().required(),
+  password: Yup.string().required(),
+  passwordConfirmation: Yup.string().oneOf(
+    [Yup.ref('password'), undefined],
+    'Passwords must match',
+  ),
+})
+
+type PasswordFormValues = Yup.InferType<typeof schema>
+
+const changePassword = async (
+  data: PasswordFormValues,
+  token: string | null,
+) => {
+  const url = API_URL + '/api/auth/change-password'
+
+  try {
+    const result = await axios.post(url, data, {
+      headers: {
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+    })
+
+    return result.data
+  } catch (error: any) {
+    // TODO: Add global Strapi error handling
+    throw new Error(error?.response?.data?.error?.message || error.message)
+  }
+}
+
+export const ChangePasswordForm = () => {
+  const { token, checkAuth } = useAuthContext()
+
+  const {
+    handleSubmit,
+    formState: { errors },
+    register,
+    reset,
+  } = useForm<PasswordFormValues>({
+    resolver: yupResolver(schema),
+  })
+
+  const { t } = useTranslation()
+
+  const { mutate, isError, error, isPending } = useMutation({
+    mutationKey: ['changePassword'],
+    mutationFn: (data: PasswordFormValues) => changePassword(data, token),
+    onSuccess: () => {
+      checkAuth()
+      reset()
+    },
+  })
+
+  const onSubmit = async (data: PasswordFormValues) => {
+    mutate(data)
+  }
+
+  return (
+    <Stack as={'form'} spacing={8} onSubmit={handleSubmit(onSubmit)}>
+      <Box>
+        <Heading size="lg">{t('profile.security.password')}</Heading>
+        {isError && <Box color={'red.500'}>{error?.message}</Box>}
+      </Box>
+      <FormItem
+        errors={errors}
+        label={t('profile.old-password')}
+        name="currentPassword"
+        register={register}
+        type={'password'}
+        autoComplete="current-password"
+        hideLabel
+        size={'lg'}
+      />
+
+      <Stack>
+        <FormItem
+          errors={errors}
+          register={register}
+          name="password"
+          type={'password'}
+          autoComplete="new-password"
+          hideLabel
+          size={'lg'}
+        />
+        <FormItem
+          errors={errors}
+          register={register}
+          name="passwordConfirmation"
+          type={'password'}
+          autoComplete="new-password"
+          hideLabel
+          size={'lg'}
+        />
+      </Stack>
+
+      <Button
+        leftIcon={<FaEdit />}
+        isLoading={isPending}
+        size={'lg'}
+        alignSelf={'start'}
+        type={'submit'}
+      >
+        {t('profile.change-password')}
+      </Button>
+    </Stack>
+  )
+}

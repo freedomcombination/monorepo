@@ -7,9 +7,12 @@ import {
   TabList,
   TabPanel,
   TabPanels,
+  TabProps,
   Tabs,
+  TabsProps,
   Text,
   VStack,
+  useBreakpointValue,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
@@ -30,12 +33,28 @@ type ProfilePanelProps = PropsWithChildren<{
   showArts?: boolean
 }>
 
+const CustomTab = (props: TabProps) => (
+  <Tab
+    borderWidth={1}
+    rounded={'md'}
+    borderColor={'transparent'}
+    _selected={{ borderColor: 'primary.500', color: 'primary.500' }}
+    fontWeight={600}
+    justifyContent={{ base: 'center', lg: 'start' }}
+    w={'full'}
+    {...props}
+  />
+)
+
 export const ProfilePanel: FC<ProfilePanelProps> = ({
   children,
   showArts = false,
 }) => {
   const { user, profile } = useAuthContext()
-
+  const orientation = useBreakpointValue<TabsProps['orientation']>({
+    base: 'horizontal',
+    lg: 'vertical',
+  })
   const { t } = useTranslation()
 
   if (!user) return <Hero></Hero>
@@ -63,42 +82,54 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
         </VStack>
       </Hero>
 
-      <Box bg="white" p={8}>
+      <Box bg="white" py={8} px={{ lg: 8 }}>
         <Container>
           <Tabs
-            orientation="vertical"
+            orientation={orientation}
             border={0}
             colorScheme="primary"
             size="lg"
+            variant={'unstyled'}
+            gap={8}
           >
-            <TabList border={0} minW={300} h="max-content">
-              <Tab fontWeight={600} justifyContent={'start'}>
-                <Box as={FaUserCircle} mr={2} /> {t('profile.tabs.profile')}
-              </Tab>
-              <Tab fontWeight={600} justifyContent={'start'}>
-                <Box as={FaKey} mr={2} /> {t('profile.tabs.security')}
-              </Tab>
-              <Tab fontWeight={600} justifyContent={'start'}>
-                <Box as={TbSocial} mr={2} /> {t('profile.tabs.socials')}
-              </Tab>
+            <TabList
+              border={0}
+              minW={{ base: 'auto', lg: 300 }}
+              mb={{ base: 8, lg: 0 }}
+              h="max-content"
+              overflowX={'auto'}
+            >
+              <CustomTab>
+                <Box as={FaUserCircle} mr={2} />
+                <Box>{t('profile.tabs.profile')}</Box>
+              </CustomTab>
+              <CustomTab>
+                <Box as={FaKey} mr={2} />
+                <Box>{t('profile.tabs.security')}</Box>
+              </CustomTab>
+              <CustomTab>
+                <Box as={TbSocial} mr={2} />
+                <Box>{t('profile.tabs.socials')}</Box>
+              </CustomTab>
               {showArts && (
-                <Tab fontWeight={600} justifyContent={'start'}>
-                  <Box as={FaPaintBrush} mr={2} /> {t('profile.tabs.arts')}
-                </Tab>
+                <CustomTab>
+                  <Box as={FaPaintBrush} mr={2} />
+                  <Box>{t('profile.tabs.arts')}</Box>
+                </CustomTab>
               )}
             </TabList>
             <TabPanels>
-              <TabPanel>
+              <TabPanel p={0}>
                 <DetailsTab />
               </TabPanel>
-              <TabPanel>
+              <TabPanel p={0}>
                 <SecurityTab />
               </TabPanel>
-              <TabPanel>
+              <TabPanel p={0}>
                 <Socials />
               </TabPanel>
               {showArts && (
-                <TabPanel>
+                <TabPanel p={0}>
                   <ArtsTab />
                 </TabPanel>
               )}

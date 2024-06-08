@@ -6,5 +6,5 @@ import { Button, ButtonProps } from '@chakra-ui/react'
 type ButtonLinkProps = ButtonProps & LinkProps
 
 export const ButtonLink: FC<ButtonLinkProps> = props => {
-  return <Button as={Link} {...props} />
+  return <Button {...(props.href ? { as: Link } : {})} {...props} />
 }

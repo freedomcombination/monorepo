@@ -1,21 +1,16 @@
-import { FC, createContext, useContext, useEffect, useState } from 'react'
+import { FC, createContext, useContext, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import {
-  Auth,
-  Permissions,
-  Profile,
-  SessionUser,
-  StrapiEndpoint,
-} from '@fc/types'
+import { Auth, Permissions, StrapiEndpoint } from '@fc/types'
 import { checkAccessForActions } from '@fc/utils'
 
 import { initialAuthState } from './state'
 import { AuthContextType, AuthProviderProps, AuthState } from './types'
+import { useUserQuery } from './useUserQuery'
 
 export const AuthContext = createContext<AuthContextType>(initialAuthState)
 
@@ -23,13 +18,16 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   children,
   initialState = initialAuthState,
 }) => {
-  // TODO: Use useReducer instead of useState
-  const [user, setUser] = useState<SessionUser | null>(null)
-  const [profile, setProfile] = useState<Profile | null>(null)
-  const [roles, setRoles] = useState<string[]>(initialAuthState.roles)
-  const [token, setToken] = useState<string | null>(null)
-  const [permissions, setPermissions] = useState<Permissions>({})
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const {
+    data,
+    isLoading,
+    setIsLoading,
+    refetch: checkAuth,
+  } = useUserQuery(initialState)
+
+  const { user, permissions, roles, profile, token } = data
+  const isAdmin = roles.includes('admin')
+
   const [error, setError] = useState<string | null>(null)
   const [demoPermissions, setDemoPermissions] = useState<Permissions | null>(
     null,
@@ -37,15 +35,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   const authModalDisclosure = useDisclosure()
   const { t } = useTranslation()
   const router = useRouter()
-
-  useEffect(() => {
-    if (initialState) {
-      setUser(initialState.user)
-      setRoles(initialState.roles)
-      setToken(initialState.token)
-      setError(initialState.error)
-    }
-  }, [initialState])
 
   function checkActionsPermission(
     endpoint: StrapiEndpoint,
@@ -76,42 +65,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     return checkActionsPermission(endpoint, 'update')
   }
 
-  const isAdmin = roles.includes('admin')
-
-  const checkAuth = async (): Promise<AuthState> => {
-    setIsLoading(true)
-
-    try {
-      const response = await axios.get<Auth>('/api/auth/user')
-
-      if (response.data?.user) {
-        setUser(response.data?.user)
-        setRoles(response.data?.user?.roles)
-        setToken(response.data?.token)
-        setProfile(response.data?.profile as Profile)
-        setPermissions((response.data?.profile as Profile)?.permissions ?? {})
-      }
-
-      return {
-        ...response.data,
-        roles: response.data?.user?.roles || initialAuthState.roles,
-        profile: response.data?.profile || null,
-        error: null,
-        isAuthModalOpen: false,
-        isLoading: false,
-        permissions: (response.data?.profile as Profile)?.permissions ?? {},
-        demoPermissions: null,
-        isAdmin: response.data?.user?.roles.includes('admin') || false,
-      }
-    } catch (error: any) {
-      setError(error.message)
-
-      return initialAuthState
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   const logout = async (): Promise<void> => {
     setIsLoading(true)
 
@@ -120,12 +73,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     } catch (error: any) {
       setError(error.message)
     } finally {
-      setProfile(null)
-      setUser(null)
-      setToken(null)
-      setRoles(initialAuthState.roles)
       setIsLoading(false)
-      setPermissions({})
 
       router.push('/')
     }
@@ -146,9 +94,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         throw response.data
       }
 
-      setUser(response.data.user)
-      setToken(response.data.token)
-      setProfile(response.data.profile)
+      checkAuth()
     } catch (error: any) {
       if (error.response?.data?.message === 'Invalid identifier or password') {
         setError(t('login.wrong-password-username'))
@@ -185,9 +131,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         throw response.data
       }
 
-      setUser(response.data.user)
-      setToken(response.data.token)
-      setProfile(response.data.profile)
+      checkAuth()
     } catch (error: any) {
       setError(error.message)
 
@@ -223,7 +167,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         openAuthModal: authModalDisclosure.onOpen,
         register,
         setDemoPermissions,
-        setPermissions,
       }}
     >
       {children}
