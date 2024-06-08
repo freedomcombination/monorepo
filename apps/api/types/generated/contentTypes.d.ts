@@ -1330,7 +1330,7 @@ export interface ApiAssetAsset extends Schema.CollectionType {
     >
     rules: Attribute.RichText
     notes: Attribute.RichText
-    price: Attribute.Integer
+    price: Attribute.Decimal
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

@@ -51,7 +51,7 @@
       "type": "richtext"
     },
     "price": {
-      "type": "integer"
+      "type": "decimal"
     }
   }
 }
