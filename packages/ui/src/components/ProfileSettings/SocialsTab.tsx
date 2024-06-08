@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import { Button, Center, IconButton, Text, Stack } from '@chakra-ui/react'
+import { Button, Center, Stack, Text } from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { FaSave } from 'react-icons/fa'
 import {
@@ -10,68 +12,87 @@ import {
   FaLinkedin,
   FaXTwitter,
 } from 'react-icons/fa6'
+import * as yup from 'yup'
 
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { Profile, ProfileUpdateInput } from '@fc/types'
 
-import { FormElement } from './FormElement'
+import { ButtonLink } from '../ButtonLink'
+import { FormItem } from '../FormItem'
+
+const schema = yup.object().shape({
+  linkedin: yup.string().url(),
+  twitter: yup.string().url(),
+  instagram: yup.string().url(),
+  facebook: yup.string().url(),
+})
+
+type SocialFormValues = yup.InferType<typeof schema>
+
+const SocialRightElement = ({ url }: { url?: string }) => {
+  return (
+    <ButtonLink
+      href={url ?? ''}
+      target="_blank"
+      rel="noreferrer noopener"
+      leftIcon={<FaCircleArrowRight />}
+      size={'lg'}
+      colorScheme="black"
+      variant={'ghost'}
+      aria-label={url}
+      rounded={'full'}
+      isDisabled={!url}
+    />
+  )
+}
 
 export const Socials = () => {
   const { profile, token, checkAuth } = useAuthContext()
   const { t } = useTranslation()
-  const [details, setDetails] = useState<Profile>({
-    linkedin: profile?.linkedin ?? null,
-    twitter: profile?.twitter ?? null,
-    instagram: profile?.instagram ?? null,
-    facebook: profile?.facebook ?? null,
-  } as Profile)
+
   const [saving, setSaving] = useState(false)
 
-  const hasChanged = Object.entries(details).some(
-    ([key, value]) => profile?.[key as keyof Profile] !== value,
-  )
+  const {
+    register,
+    formState: { dirtyFields, errors },
+    handleSubmit,
+    watch,
+  } = useForm<SocialFormValues>({
+    values: {
+      instagram: profile?.instagram ?? undefined,
+      linkedin: profile?.linkedin ?? undefined,
+      twitter: profile?.twitter ?? undefined,
+      facebook: profile?.facebook ?? undefined,
+    },
+    resolver: yupResolver(schema),
+  })
 
-  const goSocial = (addr: string, name?: string | null) => {
-    return (
-      <IconButton
-        icon={<FaCircleArrowRight />}
-        size={'lg'}
-        colorScheme="black"
-        variant={'ghost'}
-        aria-label={addr}
-        rounded={'full'}
-        isDisabled={!name}
-        onClick={() => {
-          window.open(addr + name, '_blank')
-        }}
-      />
-    )
-  }
+  const hasChanged = Object.keys(dirtyFields).length > 0
 
-  useEffect(() => {
-    if (!saving || !profile) {
-      setSaving(false)
+  console.log('dirtyFields', dirtyFields)
 
-      return
-    }
+  const [linkedin, twitter, instagram, facebook] = watch([
+    'linkedin',
+    'twitter',
+    'instagram',
+    'facebook',
+  ])
 
-    Mutation.put<Profile, ProfileUpdateInput>(
+  const onSubmit = async (data: SocialFormValues) => {
+    if (!profile || !token) return
+
+    setSaving(true)
+    await Mutation.put<Profile, ProfileUpdateInput>(
       'profiles',
-      profile.id,
-      details as ProfileUpdateInput,
-      token as string,
+      profile?.id,
+      data,
+      token,
     )
-      .catch(e => console.log('Social update error', e))
-      .finally(() => {
-        checkAuth().finally(() => {
-          setSaving(false)
-        })
-      })
 
-    return () => setSaving(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [saving])
+    await checkAuth()
+    setSaving(false)
+  }
 
   if (!profile) {
     return (
@@ -82,41 +103,38 @@ export const Socials = () => {
   }
 
   return (
-    <Stack spacing={8}>
-      <FormElement
-        title={'Linkedin'}
-        placeholder={t('profile.social.ph', { name: 'Linkedin' })}
-        defaultValue={details.linkedin}
-        left={<FaLinkedin />}
-        right={goSocial('https://www.linkedin.com/in/', details.linkedin)}
-        onChange={val => setDetails({ ...details, linkedin: val })}
+    <Stack spacing={8} as={'form'} onSubmit={handleSubmit(onSubmit)}>
+      <FormItem
+        errors={errors}
+        register={register}
+        name="linkedin"
+        leftElement={<FaLinkedin />}
+        rightElement={<SocialRightElement url={linkedin} />}
+        size={'lg'}
       />
-
-      <FormElement
-        title={'Twitter X'}
-        placeholder={t('profile.social.ph', { name: 'X' })}
-        defaultValue={details.twitter}
-        left={<FaXTwitter />}
-        right={goSocial('https://twitter.com/', details.twitter)}
-        onChange={val => setDetails({ ...details, twitter: val })}
+      <FormItem
+        errors={errors}
+        register={register}
+        name="facebook"
+        leftElement={<FaFacebook />}
+        rightElement={<SocialRightElement url={facebook} />}
+        size={'lg'}
       />
-
-      <FormElement
-        title={'Instagram'}
-        placeholder={t('profile.social.ph', { name: 'Instagram' })}
-        defaultValue={details.instagram}
-        left={<FaInstagram />}
-        right={goSocial('https://www.instagram.com/', details.instagram)}
-        onChange={val => setDetails({ ...details, instagram: val })}
+      <FormItem
+        errors={errors}
+        register={register}
+        name="twitter"
+        leftElement={<FaXTwitter />}
+        rightElement={<SocialRightElement url={twitter} />}
+        size={'lg'}
       />
-
-      <FormElement
-        title={'Facebook'}
-        placeholder={t('profile.social.ph', { name: 'Facebook' })}
-        defaultValue={details.linkedin}
-        left={<FaFacebook />}
-        right={goSocial('https://www.facebook.com/', details.facebook)}
-        onChange={val => setDetails({ ...details, facebook: val })}
+      <FormItem
+        errors={errors}
+        register={register}
+        name="instagram"
+        leftElement={<FaInstagram />}
+        rightElement={<SocialRightElement url={instagram} />}
+        size={'lg'}
       />
 
       <Button
@@ -124,8 +142,8 @@ export const Socials = () => {
         leftIcon={<FaSave />}
         size={'lg'}
         isLoading={saving}
-        onClick={() => setSaving(true)}
         alignSelf={'start'}
+        type={'submit'}
       >
         {t('save')}
       </Button>

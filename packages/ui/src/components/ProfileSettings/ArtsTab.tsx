@@ -45,7 +45,7 @@ export const ArtsTab = () => {
         <CreateArtForm size="md" />
       </Box>
       <Tabs isLazy>
-        <TabList>
+        <TabList overscrollX={'auto'}>
           <Tab fontWeight={600}>
             <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
           </Tab>

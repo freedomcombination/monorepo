@@ -36,6 +36,7 @@ export type FormItemProps<T extends FieldValues> = InputProps & {
   placeholder?: string
   helperText?: string
   leftElement?: ReactNode
+  rightElement?: ReactNode
   hideLabel?: boolean
   tooltip?: string
   errors: Partial<FieldErrorsImpl<T>>
@@ -54,6 +55,7 @@ export const FormItem: FormItemComponent = forwardRef(
       type,
       as,
       leftElement,
+      rightElement,
       label: initialLabel,
       helperText,
       errors,
@@ -111,22 +113,6 @@ export const FormItem: FormItemComponent = forwardRef(
           </Flex>
         )}
         <InputGroup>
-          {leftElement && (
-            <InputLeftElement pointerEvents="none">
-              <Box color="gray.300">{leftElement}</Box>
-            </InputLeftElement>
-          )}
-          {type === 'password' && (
-            <InputRightElement>
-              <IconButton
-                variant="link"
-                color={'inherit'}
-                aria-label={isOpen ? 'Mask password' : 'Reveal password'}
-                icon={isOpen ? <HiEyeOff /> : <HiEye />}
-                onClick={setIsOpen.toggle}
-              />
-            </InputRightElement>
-          )}
           <Tag
             ref={ref}
             id={name}
@@ -136,6 +122,27 @@ export const FormItem: FormItemComponent = forwardRef(
             {...registerRest}
             {...rest}
           />
+          {leftElement && (
+            <InputLeftElement pointerEvents="none" h={'full'}>
+              <Box color="gray.300">{leftElement}</Box>
+            </InputLeftElement>
+          )}
+          {type !== 'password' && rightElement && (
+            <InputRightElement h={'full'}>
+              <Box color="gray.300">{rightElement}</Box>
+            </InputRightElement>
+          )}
+          {type === 'password' && (
+            <InputRightElement h={'full'}>
+              <IconButton
+                variant="link"
+                color={'inherit'}
+                aria-label={isOpen ? 'Mask password' : 'Reveal password'}
+                icon={isOpen ? <HiEyeOff /> : <HiEye />}
+                onClick={setIsOpen.toggle}
+              />
+            </InputRightElement>
+          )}
         </InputGroup>
         <FormErrorMessage>{errorMessage}</FormErrorMessage>
         {helperText && (

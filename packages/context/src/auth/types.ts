@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { Dispatch, ReactNode } from 'react'
 
+import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
+
 import { Permissions, Profile, SessionUser, StrapiEndpoint } from '@fc/types'
 
 export type AuthState = {
@@ -26,7 +28,9 @@ export type AuthActions = {
     endpoint: StrapiEndpoint,
     ...api: string[]
   ) => boolean
-  checkAuth: () => Promise<AuthState>
+  checkAuth: (
+    options?: RefetchOptions | undefined,
+  ) => Promise<QueryObserverResult<AuthState, Error>>
   closeAuthModal: () => void
   login: (identifier: string, password: string) => Promise<AuthState | void>
   logout: () => Promise<void>
@@ -38,7 +42,6 @@ export type AuthActions = {
     name: string,
   ) => Promise<AuthState | void>
   setDemoPermissions: Dispatch<Permissions | null>
-  setPermissions: Dispatch<Permissions>
 }
 
 export type AuthContextType = AuthState & AuthActions

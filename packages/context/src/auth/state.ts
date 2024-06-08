@@ -1,28 +1,14 @@
 import { AuthContextType } from './types'
 
-export const initialAuthState: AuthContextType = {
-  demoPermissions: null,
+export const initialAuthState = {
   error: null,
   isAdmin: false,
   isAuthModalOpen: false,
   isLoading: false,
+  demoPermissions: null,
   permissions: {},
   profile: null,
   roles: ['public'],
   token: null,
   user: null,
-  canApprove: () => false,
-  canCreate: () => false,
-  canDelete: () => false,
-  canRead: () => false,
-  canUpdate: () => false,
-  checkActionsPermission: () => false,
-  checkAuth: () => Promise.resolve(initialAuthState),
-  closeAuthModal: () => {},
-  login: () => Promise.resolve(initialAuthState),
-  logout: () => Promise.resolve(),
-  openAuthModal: () => {},
-  register: () => Promise.resolve(initialAuthState),
-  setDemoPermissions: () => {},
-  setPermissions: () => {},
-}
+} as AuthContextType
