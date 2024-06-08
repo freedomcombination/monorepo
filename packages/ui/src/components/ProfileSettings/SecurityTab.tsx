@@ -3,23 +3,24 @@ import { ReactNode, useEffect, useState } from 'react'
 import {
   Button,
   Center,
+  Divider,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Divider,
   Spinner,
   Stack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-import { FaEdit } from 'react-icons/fa'
 import { FaEnvelope, FaUser } from 'react-icons/fa6'
 
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { SessionUser } from '@fc/types'
+
+import { ChangePasswordForm } from './ChangePasswordForm'
 
 type CredentialProps = {
   isValid: (user: SessionUser | null, value: string) => boolean
@@ -92,7 +93,7 @@ const Credential: React.FC<CredentialProps> = ({
         {!saving ? leftIcon : <Spinner size="sm" />}
       </InputLeftElement>
       <Input
-        pr="r7em"
+        pr="7em"
         type={name === 'email' ? 'email' : 'text'}
         placeholder={placeholder}
         isDisabled={!edit}
@@ -105,119 +106,6 @@ const Credential: React.FC<CredentialProps> = ({
         </Button>
       </InputRightElement>
     </InputGroup>
-  )
-}
-
-const Password = () => {
-  const { token, checkAuth } = useAuthContext()
-  const [show, setShow] = useState(false)
-  const handleClick = () => setShow(!show)
-  const [isChanging, setIsChanging] = useState(false)
-  const emptyPwData = {
-    currentPassword: '',
-    password: '',
-    passwordConfirmation: '',
-  }
-  const [pwData, setPwData] = useState(emptyPwData)
-
-  const checkIsValid = () => {
-    if (
-      !pwData.currentPassword ||
-      !pwData.password ||
-      !pwData.passwordConfirmation
-    )
-      return false
-    if (
-      pwData.password !== pwData.passwordConfirmation &&
-      pwData.password.length > 2
-    )
-      return false
-
-    return true
-  }
-
-  const { t } = useTranslation()
-
-  useEffect(() => {
-    if (!isChanging) return
-
-    const asyncPasswordChange = async () => {
-      const url = API_URL + '/api/auth/change-password'
-      const body = JSON.stringify(pwData)
-
-      const result = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body,
-      })
-
-      if (!result.ok)
-        throw new Error('Failed to update user password :' + result.status)
-    }
-
-    asyncPasswordChange()
-      .then(() => setPwData(emptyPwData))
-      .then(() => checkAuth())
-      .then(() => setIsChanging(false))
-      .catch(e => console.log('Update error', e))
-
-    return () => setIsChanging(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isChanging])
-
-  return (
-    <Stack spacing={8}>
-      <InputGroup>
-        <Input
-          pr="5rem"
-          type={show ? 'text' : 'password'}
-          aria-label={t('profile.old-password')}
-          title={t('profile.old-password')}
-          placeholder={t('profile.old-password.ph')}
-          onChange={e =>
-            setPwData({ ...pwData, currentPassword: e.target.value })
-          }
-          size="lg"
-        />
-        <InputRightElement width="5rem">
-          <Button h="1.75rem" size="sm" onClick={handleClick}>
-            {show ? t('profile.hide') : t('profile.show')}
-          </Button>
-        </InputRightElement>
-      </InputGroup>
-
-      <Stack>
-        <Input
-          type={show ? 'text' : 'password'}
-          placeholder={t('profile.password.ph')}
-          onChange={e => setPwData({ ...pwData, password: e.target.value })}
-          size="lg"
-        />
-
-        <Input
-          type={show ? 'text' : 'password'}
-          placeholder={t('profile.password.ph2')}
-          onChange={e =>
-            setPwData({ ...pwData, passwordConfirmation: e.target.value })
-          }
-          size="lg"
-        />
-      </Stack>
-
-      <Button
-        isDisabled={!checkIsValid()}
-        leftIcon={<FaEdit />}
-        isLoading={isChanging}
-        onClick={() => setIsChanging(true)}
-        size={'lg'}
-        alignSelf={'start'}
-      >
-        {t('profile.change-password')}
-      </Button>
-    </Stack>
   )
 }
 
@@ -265,10 +153,7 @@ export const SecurityTab = () => {
         />
       </FormControl>
       <Divider />
-      <FormControl>
-        <FormLabel fontWeight={600}>{t('profile.security.password')}</FormLabel>
-        <Password />
-      </FormControl>
+      <ChangePasswordForm />
     </Stack>
   )
 }
