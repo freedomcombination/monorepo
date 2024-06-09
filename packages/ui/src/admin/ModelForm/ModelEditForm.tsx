@@ -533,7 +533,9 @@ export const ModelEditForm = <T extends StrapiModel>({
 
             <ActionButton
               isVisible={endpoint === 'notifications'}
-              onClick={(e) => { sendNotificationButtonOnClick(e) }}
+              onClick={e => {
+                sendNotificationButtonOnClick(e)
+              }}
               leftIcon={<FiSend />}
               fontSize="sm"
               colorScheme={'blue'}

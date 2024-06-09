@@ -138,7 +138,7 @@ const SubToNotification = () => {
     }
   }
 
-  // todo: this function could be used in profile settings menu (see buttons below) 
+  // todo: this function could be used in profile settings menu (see buttons below)
   const unsubscribeButtonOnClick: MouseEventHandler<
     HTMLButtonElement
   > = async event => {
@@ -167,7 +167,6 @@ const SubToNotification = () => {
     setIsSubscribed(false)
     console.info('Web push unsubscribed!')
   }
-
 
   return (
     <Center>
