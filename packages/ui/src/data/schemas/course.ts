@@ -7,15 +7,9 @@ import { FormFields } from '../../admin'
 
 export const useCourseSchema = () => {
   return yup.object({
-    title_tr: yup.string().required(),
-    title_en: yup.string().required(),
-    title_nl: yup.string().required(),
-    description_tr: yup.string().required(),
-    description_nl: yup.string().required(),
-    description_en: yup.string().required(),
-    content_tr: yup.string().required(),
-    content_nl: yup.string().required(),
-    content_en: yup.string().required(),
+    title: yup.string().required(),
+    description: yup.string().required(),
+    content: yup.string().required(),
     location: yup.string().required(),
     instructor: yup.string().required(),
     quota: yup.number(),
@@ -30,36 +24,14 @@ export const useCourseSchema = () => {
 }
 
 export const courseFields: FormFields<Course> = [
-  { name: 'title_tr', isRequired: true },
-  { name: 'title_nl', isRequired: true },
-  { name: 'title_en', isRequired: true },
+  { name: 'title', isRequired: true },
   {
-    name: 'description_tr',
+    name: 'description',
     isRequired: true,
     type: 'textarea',
   },
   {
-    name: 'description_nl',
-    isRequired: true,
-    type: 'textarea',
-  },
-  {
-    name: 'description_en',
-    isRequired: true,
-    type: 'textarea',
-  },
-  {
-    name: 'content_nl',
-    isRequired: true,
-    type: 'markdown',
-  },
-  {
-    name: 'content_tr',
-    isRequired: true,
-    type: 'markdown',
-  },
-  {
-    name: 'content_en',
+    name: 'content',
     isRequired: true,
     type: 'markdown',
   },

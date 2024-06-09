@@ -1876,27 +1876,91 @@ export interface ApiCourseCourse extends Schema.CollectionType {
   options: {
     draftAndPublish: true
   }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
   attributes: {
-    title_en: Attribute.String
-    title_tr: Attribute.String
-    title_nl: Attribute.String
-    slug: Attribute.UID<'api::course.course', 'title_en'>
-    description_en: Attribute.Text
-    description_tr: Attribute.Text
-    description_nl: Attribute.Text
-    content_en: Attribute.RichText
-    content_tr: Attribute.RichText
-    content_nl: Attribute.RichText
-    location: Attribute.String
-    language: Attribute.Enumeration<['en', 'tr', 'nl']>
-    instructor: Attribute.String
-    price: Attribute.Integer
-    quota: Attribute.Integer
-    isOnline: Attribute.Boolean
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    approvalStatus: Attribute.Enumeration<['approved', 'pending', 'rejected']>
-    startDate: Attribute.Date
-    endDate: Attribute.Date
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    slug: Attribute.UID
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    location: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    language: Attribute.Enumeration<['en', 'tr', 'nl']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    instructor: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    price: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    quota: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    isOnline: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    approvalStatus: Attribute.Enumeration<['approved', 'pending', 'rejected']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    startDate: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    endDate: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     tags: Attribute.Relation<'api::course.course', 'manyToMany', 'api::tag.tag'>
     applications: Attribute.Relation<
       'api::course.course',
@@ -1908,8 +1972,18 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'manyToOne',
       'api::platform.platform'
     >
-    faqs: Attribute.Component<'faq.faq', true>
-    curriculum: Attribute.Component<'course.curriculum', true>
+    faqs: Attribute.Component<'faq.faq', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    curriculum: Attribute.Component<'course.curriculum', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -1925,6 +1999,12 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private
+    localizations: Attribute.Relation<
+      'api::course.course',
+      'oneToMany',
+      'api::course.course'
+    >
+    locale: Attribute.String
   }
 }
 

@@ -9,16 +9,10 @@ import { StrapiBase } from './strapi'
 import { Tag } from './tag'
 
 type CourseBase = StrapiBase & {
-  title_en: string
-  title_tr: string
-  title_nl: string
+  title: string
   slug: string
-  description_en: string
-  description_tr: string
-  description_nl: string
-  content_en: string
-  content_tr: string
-  content_nl: string
+  description: string
+  content: string
   language: StrapiLocale
   location: string
   instructor: string
@@ -34,6 +28,7 @@ type CourseRelation = {
   image?: UploadFile | null
   tags?: Tag[]
   applications?: CourseApplication[]
+  localizations?: Array<Course>
   faqs?: FaqLocale[]
   curriculum?: Curriculum[]
   platform?: Platform | null
@@ -48,12 +43,18 @@ export type CourseCreateInput = Omit<CourseBase, 'approvalStatus'> & {
   platform?: number
 }
 
-export type CourseUpdateInput = CourseBase & {
-  image?: File
-  tags?: number[]
-  faqs?: FaqLocale[] // Component, not a relation
-  curriculum?: Curriculum[] // Component, not a relation
-  platform?: number
-}
+export type CourseUpdateInput = CourseBase &
+  Partial<Omit<CourseBase, 'locale'>> & {
+    image?: File
+    tags?: number[]
+    faqs?: FaqLocale[] // Component, not a relation
+    curriculum?: Curriculum[] // Component, not a relation
+    platform?: number
+  }
+
+export type CourseLocalizeInput = Pick<
+  CourseBase,
+  'title' | 'description' | 'content'
+>
 
 export type Course = CourseBase & CourseRelation
