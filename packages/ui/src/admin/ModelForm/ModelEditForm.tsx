@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
 
 import {
   AspectRatio,
@@ -25,6 +25,7 @@ import { AiOutlineEdit } from 'react-icons/ai'
 import { BiUserPlus } from 'react-icons/bi'
 import { BsTrash } from 'react-icons/bs'
 import { FaXTwitter } from 'react-icons/fa6'
+import { FiSend } from 'react-icons/fi'
 import { HiOutlineCheck, HiPlus } from 'react-icons/hi'
 import {
   MdClose,
@@ -509,6 +510,28 @@ export const ModelEditForm = <T extends StrapiModel>({
               isLoading={approveModelMutation.isPending}
             >
               {t('posts')}
+            </ActionButton>
+
+            <ActionButton
+              isVisible={endpoint === 'notifications'}
+              onClick={() => {
+                if (!defaultValues) return
+
+                fetch('/api/notification', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    title: defaultValues.title,
+                    message: defaultValues.body,
+                  }),
+                }).catch(err =>
+                  console.error('Could not send notification: ', err),
+                )
+              }}
+              leftIcon={<FiSend />}
+              fontSize="sm"
+              colorScheme={'blue'}
+            >
+              {t('notification.send')}
             </ActionButton>
 
             <ActionStack isVisible={endpoint === 'collections'} gap={0}>
