@@ -309,12 +309,14 @@ export const ModelEditForm = <T extends StrapiModel>({
     event.preventDefault()
     if (!defaultValues) return
 
+    const [title, body] = watch(['title', 'body'])
+
     try {
       await fetch('/api/notification', {
         method: 'POST',
         body: JSON.stringify({
-          title: defaultValues.title,
-          message: defaultValues.body,
+          title,
+          message: body,
         }),
       })
     } catch (error) {
@@ -533,9 +535,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
             <ActionButton
               isVisible={endpoint === 'notifications'}
-              onClick={e => {
-                sendNotificationButtonOnClick(e)
-              }}
+              onClick={sendNotificationButtonOnClick}
               leftIcon={<FiSend />}
               fontSize="sm"
               colorScheme={'blue'}
