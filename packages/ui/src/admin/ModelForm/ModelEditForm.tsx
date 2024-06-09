@@ -303,6 +303,25 @@ export const ModelEditForm = <T extends StrapiModel>({
     else router.push(`/archive-contents/${id}`)
   }
 
+  const sendNotificationButtonOnClick: MouseEventHandler<
+    HTMLButtonElement
+  > = async event => {
+    event.preventDefault()
+    if (!defaultValues) return
+
+    try {
+      await fetch('/api/notification', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: defaultValues.title,
+          message: defaultValues.body,
+        }),
+      })
+    } catch (error) {
+      console.error('Could not send notification: ', error)
+    }
+  }
+
   const toggleChangingMedia = (field: FormCommonFields<T>) =>
     setIsChangingImage(prev => ({
       ...prev,
@@ -514,19 +533,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
             <ActionButton
               isVisible={endpoint === 'notifications'}
-              onClick={() => {
-                if (!defaultValues) return
-
-                fetch('/api/notification', {
-                  method: 'POST',
-                  body: JSON.stringify({
-                    title: defaultValues.title,
-                    message: defaultValues.body,
-                  }),
-                }).catch(err =>
-                  console.error('Could not send notification: ', err),
-                )
-              }}
+              onClick={(e) => { sendNotificationButtonOnClick(e) }}
               leftIcon={<FiSend />}
               fontSize="sm"
               colorScheme={'blue'}
