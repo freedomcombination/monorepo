@@ -1,6 +1,6 @@
 import { useEffect, useState, MouseEventHandler } from 'react'
 
-import { Button, Center, useDisclosure } from '@chakra-ui/react'
+import { Center, useDisclosure } from '@chakra-ui/react'
 
 import { base64ToUint8Array } from '@fc/utils'
 
@@ -138,6 +138,7 @@ const SubToNotification = () => {
     }
   }
 
+  // todo: this function could be used in profile settings menu (see buttons below) 
   const unsubscribeButtonOnClick: MouseEventHandler<
     HTMLButtonElement
   > = async event => {
@@ -167,19 +168,6 @@ const SubToNotification = () => {
     console.info('Web push unsubscribed!')
   }
 
-  const sendNotificationButtonOnClick: MouseEventHandler<
-    HTMLButtonElement
-  > = async event => {
-    event.preventDefault()
-
-    try {
-      await fetch('/api/notification', {
-        method: 'POST',
-      })
-    } catch (error) {
-      console.error('Could not send notification: ', error)
-    }
-  }
 
   return (
     <Center>
@@ -188,7 +176,8 @@ const SubToNotification = () => {
         onClose={onClose}
         subOnClick={subscribeButtonOnClick}
       />
-      <Button
+      {/* todo: maybe add this sub & unsub part to our new profile settings menu? */}
+      {/* <Button
         type="button"
         onClick={subscribeButtonOnClick}
         isDisabled={isSubscribed}
@@ -210,7 +199,7 @@ const SubToNotification = () => {
         colorScheme="purple"
       >
         Send Notification
-      </Button>
+      </Button> */}
     </Center>
   )
 }
