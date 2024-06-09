@@ -307,8 +307,6 @@ export const ModelEditForm = <T extends StrapiModel>({
     HTMLButtonElement
   > = async event => {
     event.preventDefault()
-    if (!defaultValues) return
-
     const [title, body] = watch(['title', 'body'])
 
     try {
