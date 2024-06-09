@@ -41,9 +41,9 @@ export const getServerSideProps = async (
       notFound: true,
     }
 
-  const title = course[`title_${locale}`] || ''
-  const description = course[`description_${locale}`] || ''
-  const content = course[`content_${locale}`] || ''
+  const title = course.title || ''
+  const description = course.description || ''
+  const content = course.content || ''
   const slug = course.slug
 
   const source = await serialize(content || '')

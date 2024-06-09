@@ -5,10 +5,10 @@ import { FaqLocale } from './faq-locale'
 import { UploadFile } from './file'
 import { StrapiLocale } from './locale'
 import { Platform } from './platform'
-import { StrapiBase } from './strapi'
+import { StrapiBase, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 
-type CourseBase = StrapiBase & {
+type CourseBase = StrapiEntityBase & {
   title: string
   slug: string
   description: string
@@ -28,10 +28,10 @@ type CourseRelation = {
   image?: UploadFile | null
   tags?: Tag[]
   applications?: CourseApplication[]
-  localizations?: Array<Course>
   faqs?: FaqLocale[]
   curriculum?: Curriculum[]
   platform?: Platform | null
+  localizations?: Array<Course>
 }
 
 // Remove approvalStatus from CourseCreateInput since it will be set when an editor approves the course
@@ -60,4 +60,4 @@ export type CourseLocalizeInput = Pick<
   'title' | 'description' | 'content'
 >
 
-export type Course = CourseBase & CourseRelation
+export type Course = StrapiBase & CourseBase & CourseRelation

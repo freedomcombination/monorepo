@@ -24,8 +24,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
 
   const { t } = useTranslation()
 
-  const title = course[`title_${locale || 'nl'}`]
-  const description = course[`description_${locale || 'nl'}`]
+  const { title, description } = course
 
   const URL = `${SITE_URL}/${locale}${asPath}`
 
