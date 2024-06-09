@@ -70,8 +70,6 @@ export const Socials = () => {
 
   const hasChanged = Object.keys(dirtyFields).length > 0
 
-  console.log('dirtyFields', dirtyFields)
-
   const [linkedin, twitter, instagram, facebook] = watch([
     'linkedin',
     'twitter',
