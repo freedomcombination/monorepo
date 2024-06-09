@@ -53,7 +53,7 @@ const CoursePage = () => {
     endpoint: 'course-applications',
     filters: {
       course: { id: { $eq: id } },
-      ...(searchTerm && { [`title_${locale}`]: { $containsi: searchTerm } }),
+      ...(searchTerm && { [`title`]: { $containsi: searchTerm } }),
     },
     sort,
     page: currentPage || 1,
@@ -127,7 +127,7 @@ const CoursePage = () => {
               fontWeight={600}
               shadow={'sm'}
             >
-              <Text>{course?.[`title_${locale}`]}</Text>
+              <Text>{course?.title}</Text>
               <AccordionIcon ml={'auto'} />
             </AccordionButton>
             <AccordionPanel

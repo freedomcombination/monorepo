@@ -17,7 +17,7 @@ export const LocaleBadges: FC<LocaleBadgesProps> = ({ locales, ...rest }) => {
 
   return (
     <HStack spacing={1}>
-      {locales.map((locale, i) => (
+      {locales?.map((locale, i) => (
         <Badge
           key={i}
           variant="outline"

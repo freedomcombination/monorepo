@@ -214,7 +214,7 @@ export const useDefaultValues = <T extends StrapiModel>(
           break
         case 'course':
           defaults.course = {
-            label: applicationModel.course?.[`title_${locale}`],
+            label: applicationModel.course?.title,
             value: applicationModel.course?.id.toString(),
           }
           break

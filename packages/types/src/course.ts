@@ -1,4 +1,4 @@
-import { ApprovalStatus } from './common'
+import { ApprovalStatus, Expand } from './common'
 import { CourseApplication } from './course-application'
 import { Curriculum } from './curriculum'
 import { FaqLocale } from './faq-locale'
@@ -35,13 +35,15 @@ type CourseRelation = {
 }
 
 // Remove approvalStatus from CourseCreateInput since it will be set when an editor approves the course
-export type CourseCreateInput = Omit<CourseBase, 'approvalStatus'> & {
+export type CourseCreateInput = {
   image: File
   tags?: number[]
   faqs?: FaqLocale[] // Component, not a relation
   curriculum?: Curriculum[] // Component, not a relation
   platform?: number
-}
+} & Expand<
+  { publishedAt?: Date | string | null } & Omit<CourseBase, 'approvalStatus'>
+>
 
 export type CourseUpdateInput = CourseBase &
   Partial<Omit<CourseBase, 'locale'>> & {
@@ -50,6 +52,7 @@ export type CourseUpdateInput = CourseBase &
     faqs?: FaqLocale[] // Component, not a relation
     curriculum?: Curriculum[] // Component, not a relation
     platform?: number
+    publishedAt?: Date | string | null
   }
 
 export type CourseLocalizeInput = Pick<

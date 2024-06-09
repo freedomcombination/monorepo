@@ -43,12 +43,12 @@ export const courseFields: FormFields<Course> = [
     isRequired: true,
     type: 'date',
   },
-  { name: 'location', isRequired: true },
   {
     name: 'endDate',
     isRequired: true,
     type: 'date',
   },
+  { name: 'location', isRequired: true },
   { name: 'instructor', isRequired: true },
   { name: 'quota', isRequired: true, type: 'number-input' },
   { name: 'price', isRequired: true, type: 'number-input' },
