@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
 
 import {
   AspectRatio,
@@ -25,6 +25,7 @@ import { AiOutlineEdit } from 'react-icons/ai'
 import { BiUserPlus } from 'react-icons/bi'
 import { BsTrash } from 'react-icons/bs'
 import { FaXTwitter } from 'react-icons/fa6'
+import { FiSend } from 'react-icons/fi'
 import { HiOutlineCheck, HiPlus } from 'react-icons/hi'
 import {
   MdClose,
@@ -34,6 +35,7 @@ import {
 } from 'react-icons/md'
 import { InferType } from 'yup'
 
+import { endpointsWithPublicationState } from '@fc/config'
 import {
   useApproveModel,
   useCreateModelMutation,
@@ -302,6 +304,25 @@ export const ModelEditForm = <T extends StrapiModel>({
     else router.push(`/archive-contents/${id}`)
   }
 
+  const sendNotificationButtonOnClick: MouseEventHandler<
+    HTMLButtonElement
+  > = async event => {
+    event.preventDefault()
+    const [title, body] = watch(['title', 'body'])
+
+    try {
+      await fetch('/api/notification', {
+        method: 'POST',
+        body: JSON.stringify({
+          title,
+          message: body,
+        }),
+      })
+    } catch (error) {
+      console.error('Could not send notification: ', error)
+    }
+  }
+
   const toggleChangingMedia = (field: FormCommonFields<T>) =>
     setIsChangingImage(prev => ({
       ...prev,
@@ -316,6 +337,10 @@ export const ModelEditForm = <T extends StrapiModel>({
     color: 'gray.500',
     pl: 0,
   }
+
+  const showApproveButton =
+    endpointsWithPublicationState.includes(endpoint) &&
+    translatableModel.approvalStatus !== 'approved'
 
   return (
     <>
@@ -511,6 +536,16 @@ export const ModelEditForm = <T extends StrapiModel>({
               {t('posts')}
             </ActionButton>
 
+            <ActionButton
+              isVisible={endpoint === 'notifications'}
+              onClick={sendNotificationButtonOnClick}
+              leftIcon={<FiSend />}
+              fontSize="sm"
+              colorScheme={'blue'}
+            >
+              {t('notification.send')}
+            </ActionButton>
+
             <ActionStack isVisible={endpoint === 'collections'} gap={0}>
               <ArtAddToCollectionModal
                 collection={model as any}
@@ -542,10 +577,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             </ActionButton>
 
             <ActionButton
-              isVisible={
-                translatableModel.approvalStatus &&
-                translatableModel.approvalStatus !== 'approved'
-              }
+              isVisible={showApproveButton}
               canApprove={endpoint}
               onClick={onApprove}
               leftIcon={<HiOutlineCheck />}
@@ -588,6 +620,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
             <ActionButton
               checkActions={{ endpoint, actions: ['update'] }}
+              isVisible={endpointsWithPublicationState.includes(endpoint)}
               onClick={isPublished ? onUnPublish : onPublish}
               colorScheme={isPublished ? 'yellow' : 'green'}
               fontSize="sm"

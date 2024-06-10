@@ -795,7 +795,7 @@ export interface ApiAccountStatisticAccountStatistic
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     username: Attribute.String
@@ -808,7 +808,6 @@ export interface ApiAccountStatisticAccountStatistic
     date: Attribute.String
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::account-statistic.account-statistic',
       'oneToOne',
@@ -987,7 +986,7 @@ export interface ApiApplicationApplication extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   pluginOptions: {
     i18n: {
@@ -1057,7 +1056,6 @@ export interface ApiApplicationApplication extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::application.application',
       'oneToOne',
@@ -1168,7 +1166,7 @@ export interface ApiArchiveImageArchiveImage extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     categories: Attribute.Relation<
@@ -1184,7 +1182,6 @@ export interface ApiArchiveImageArchiveImage extends Schema.CollectionType {
     image: Attribute.Media<'images'> & Attribute.Required
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::archive-image.archive-image',
       'oneToOne',
@@ -1571,7 +1568,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     slug: Attribute.UID<'api::category.category', 'name_en'> &
@@ -1606,7 +1603,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::category.category',
       'oneToOne',
@@ -1631,7 +1627,7 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   pluginOptions: {
     i18n: {
@@ -1689,7 +1685,6 @@ export interface ApiCollectionCollection extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::collection.collection',
       'oneToOne',
@@ -1938,7 +1933,7 @@ export interface ApiCourseApplicationCourseApplication
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     name: Attribute.String
@@ -1958,7 +1953,6 @@ export interface ApiCourseApplicationCourseApplication
     notes: Attribute.Text
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::course-application.course-application',
       'oneToOne',
@@ -2302,7 +2296,7 @@ export interface ApiMentionMention extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   pluginOptions: {
     i18n: {
@@ -2329,7 +2323,6 @@ export interface ApiMentionMention extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::mention.mention',
       'oneToOne',
@@ -2430,7 +2423,7 @@ export interface ApiPlatformPlatform extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     slug: Attribute.UID<'api::platform.platform', 'name_en'> &
@@ -2474,7 +2467,6 @@ export interface ApiPlatformPlatform extends Schema.CollectionType {
     contact: Attribute.Component<'contact.contact'>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::platform.platform',
       'oneToOne',
@@ -2699,9 +2691,10 @@ export interface ApiPrivacyPrivacy extends Schema.SingleType {
     singularName: 'privacy'
     pluralName: 'privacies'
     displayName: 'Privacy'
+    description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   pluginOptions: {
     i18n: {
@@ -2736,7 +2729,6 @@ export interface ApiPrivacyPrivacy extends Schema.SingleType {
       }>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::privacy.privacy',
       'oneToOne',
@@ -3156,7 +3148,7 @@ export interface ApiRecommendedTopicRecommendedTopic
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   pluginOptions: {
     i18n: {
@@ -3226,7 +3218,6 @@ export interface ApiRecommendedTopicRecommendedTopic
       Attribute.DefaultTo<false>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::recommended-topic.recommended-topic',
       'oneToOne',
@@ -3258,7 +3249,7 @@ export interface ApiRecommendedTweetRecommendedTweet
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   pluginOptions: {
     i18n: {
@@ -3317,7 +3308,6 @@ export interface ApiRecommendedTweetRecommendedTweet
       }>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::recommended-tweet.recommended-tweet',
       'oneToOne',
@@ -3382,7 +3372,7 @@ export interface ApiTagTag extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     slug: Attribute.UID<'api::tag.tag', 'name_en'> & Attribute.Required
@@ -3408,7 +3398,6 @@ export interface ApiTagTag extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
       Attribute.Private
     updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
@@ -3422,9 +3411,10 @@ export interface ApiTermTerm extends Schema.SingleType {
     singularName: 'term'
     pluralName: 'terms'
     displayName: 'Term'
+    description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   pluginOptions: {
     i18n: {
@@ -3459,7 +3449,6 @@ export interface ApiTermTerm extends Schema.SingleType {
       }>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::term.term', 'oneToOne', 'admin::user'> &
       Attribute.Private
     updatedBy: Attribute.Relation<'api::term.term', 'oneToOne', 'admin::user'> &
@@ -3482,7 +3471,7 @@ export interface ApiTimelineTimeline extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   pluginOptions: {
     i18n: {
@@ -3511,7 +3500,6 @@ export interface ApiTimelineTimeline extends Schema.CollectionType {
       }>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::timeline.timeline',
       'oneToOne',
@@ -3633,7 +3621,7 @@ export interface ApiUserFeedbackUserFeedback extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     comment: Attribute.Text
@@ -3644,7 +3632,6 @@ export interface ApiUserFeedbackUserFeedback extends Schema.CollectionType {
     issueLink: Attribute.String
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
       'api::user-feedback.user-feedback',
       'oneToOne',
@@ -3709,7 +3696,7 @@ export interface ApiVoteVote extends Schema.CollectionType {
     description: ''
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     value: Attribute.Integer &
@@ -3739,7 +3726,6 @@ export interface ApiVoteVote extends Schema.CollectionType {
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::vote.vote', 'oneToOne', 'admin::user'> &
       Attribute.Private
     updatedBy: Attribute.Relation<'api::vote.vote', 'oneToOne', 'admin::user'> &
