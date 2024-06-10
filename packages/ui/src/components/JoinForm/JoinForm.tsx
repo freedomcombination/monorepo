@@ -207,7 +207,7 @@ export const JoinForm: FC<JoinFormProps> = ({
               <Text fontWeight={600} fontSize="sm">
                 Freedom Combination Foundation
               </Text>
-              {foundationJobs?.map((job, i) => (
+              {foundationJobs?.map(job => (
                 <HStack key={job.id} align={'center'}>
                   <Checkbox
                     key={job.id}

@@ -4,10 +4,11 @@
   "info": {
     "singularName": "term",
     "pluralName": "terms",
-    "displayName": "Term"
+    "displayName": "Term",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
@@ -33,9 +34,10 @@
       "targetField": "title"
     },
     "image": {
-      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false

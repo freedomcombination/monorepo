@@ -1,6 +1,6 @@
 import { useEffect, useState, MouseEventHandler } from 'react'
 
-import { Button, Center, useDisclosure } from '@chakra-ui/react'
+import { Center, useDisclosure } from '@chakra-ui/react'
 
 import { base64ToUint8Array } from '@fc/utils'
 
@@ -8,6 +8,7 @@ import NotificationModal from '../NotificationModal/NotificationModal'
 
 const SubToNotification = () => {
   const [isSubscribed, setIsSubscribed] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [subscription, setSubscription] = useState<PushSubscription | null>(
     null,
   )
@@ -138,48 +139,35 @@ const SubToNotification = () => {
     }
   }
 
-  const unsubscribeButtonOnClick: MouseEventHandler<
-    HTMLButtonElement
-  > = async event => {
-    if (!subscription) {
-      console.error('Web push not subscribed')
+  // TODO: this function could be used in profile settings menu (see buttons below)
+  // const unsubscribeButtonOnClick: MouseEventHandler<
+  //   HTMLButtonElement
+  // > = async event => {
+  //   if (!subscription) {
+  //     console.error('Web push not subscribed')
 
-      return
-    }
+  //     return
+  //   }
 
-    event.preventDefault()
+  //   event.preventDefault()
 
-    try {
-      // Unsub from server
-      await fetch('/api/unsubscribe', {
-        method: 'POST',
-        body: JSON.stringify({ subscription }),
-      })
+  //   try {
+  //     // Unsub from server
+  //     await fetch('/api/unsubscribe', {
+  //       method: 'POST',
+  //       body: JSON.stringify({ subscription }),
+  //     })
 
-      // Unsub from Push Subscription
-      await subscription.unsubscribe()
-    } catch (error) {
-      console.error('Failed to unsubscribe: ', error)
-    }
+  //     // Unsub from Push Subscription
+  //     await subscription.unsubscribe()
+  //   } catch (error) {
+  //     console.error('Failed to unsubscribe: ', error)
+  //   }
 
-    setSubscription(null)
-    setIsSubscribed(false)
-    console.info('Web push unsubscribed!')
-  }
-
-  const sendNotificationButtonOnClick: MouseEventHandler<
-    HTMLButtonElement
-  > = async event => {
-    event.preventDefault()
-
-    try {
-      await fetch('/api/notification', {
-        method: 'POST',
-      })
-    } catch (error) {
-      console.error('Could not send notification: ', error)
-    }
-  }
+  //   setSubscription(null)
+  //   setIsSubscribed(false)
+  //   console.info('Web push unsubscribed!')
+  // }
 
   return (
     <Center>
@@ -188,7 +176,8 @@ const SubToNotification = () => {
         onClose={onClose}
         subOnClick={subscribeButtonOnClick}
       />
-      <Button
+      {/* TODO: maybe add this sub & unsub part to our new profile settings menu? */}
+      {/* <Button
         type="button"
         onClick={subscribeButtonOnClick}
         isDisabled={isSubscribed}
@@ -210,7 +199,7 @@ const SubToNotification = () => {
         colorScheme="purple"
       >
         Send Notification
-      </Button>
+      </Button> */}
     </Center>
   )
 }
