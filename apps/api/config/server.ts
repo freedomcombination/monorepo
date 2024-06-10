@@ -2,7 +2,7 @@ import tasks from './cron'
 
 export default ({ env }) => {
   const isDev = env('NODE_ENV') === 'development'
-  const isProd = env('NODE_ENV') === 'production'
+  const isProd = env('VERCEL_ENV') === 'production'
 
   return {
     host: env('HOST', '0.0.0.0'),

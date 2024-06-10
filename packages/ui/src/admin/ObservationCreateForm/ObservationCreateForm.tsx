@@ -73,7 +73,6 @@ export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
         />
 
         <Button
-          display={{ base: 'none', sm: 'flex' }}
           alignSelf="flex-end"
           rightIcon={<FiArrowRight />}
           isLoading={isPending}

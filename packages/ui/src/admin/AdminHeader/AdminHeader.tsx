@@ -9,18 +9,24 @@ import {
   HStack,
   Heading,
   IconButton,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
   Skeleton,
   Tooltip,
   useDisclosure,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { FaArrowLeft, FaUser } from 'react-icons/fa'
+import { FaGear } from 'react-icons/fa6'
 import { HiMenu } from 'react-icons/hi'
 import { MdOutlineNotifications } from 'react-icons/md'
 
 import { useAuthContext } from '@fc/context'
 
-import { UserFeedback } from '../../components'
+import { ProfilePanel, UserFeedback } from '../../components'
 import { AdminSidebar } from '../AdminSidebar'
 import { CreateModelButton } from '../CreateModelButton'
 import { LanguageSwitcher } from '../LanguageSwitcher'
@@ -33,7 +39,11 @@ type AdminHeaderProps = {
 export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
   const { user, openAuthModal, isLoading } = useAuthContext()
   const { isOpen, onOpen, onClose } = useDisclosure()
-
+  const {
+    isOpen: isOpenProfile,
+    onOpen: onOpenProfile,
+    onClose: onCloseProfile,
+  } = useDisclosure()
   const router = useRouter()
   const slugs = router.asPath.split('/')
   const parentSlug = slugs.slice(0, slugs.length - 1).join('/')
@@ -67,6 +77,33 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
 
       {/* TODO Create notification component */}
       <HStack flexShrink={0}>
+        {user && (
+          <>
+            <IconButton
+              aria-label="profile"
+              icon={<FaGear />}
+              variant="outline"
+              rounded="full"
+              colorScheme={'gray'}
+              onClick={onOpenProfile}
+            />
+            <Modal
+              isOpen={isOpenProfile}
+              onClose={onCloseProfile}
+              size={'5xl'}
+              scrollBehavior={'inside'}
+              isCentered
+            >
+              <ModalOverlay />
+              <ModalContent p={0} h={'90vh'}>
+                <ModalBody p={0}>
+                  <ProfilePanel />
+                </ModalBody>
+                <ModalFooter bg={'primary.400'} />
+              </ModalContent>
+            </Modal>
+          </>
+        )}
         {user && (
           <IconButton
             aria-label="notifications"

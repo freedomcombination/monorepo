@@ -15,13 +15,20 @@ import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 import * as yup from 'yup'
 
-import { useSendEmail } from '@fc/services'
-import { EmailCreateInput } from '@fc/types'
+import { useCreateModelMutation, useSendEmail } from '@fc/services'
+import {
+  EmailCreateInput,
+  Observation,
+  ObservationCreateInput,
+} from '@fc/types'
+import { toastMessage } from '@fc/utils'
 
 import { FormItem } from '../../components'
 
 interface ProfileMailFormProps {
   email: string
+  profileId: number
+  onSuccess?: () => void
 }
 
 const schema = yup.object().shape({
@@ -31,7 +38,11 @@ const schema = yup.object().shape({
 
 type EmailFormValues = yup.InferType<typeof schema>
 
-export const ProfileMailForm: FC<ProfileMailFormProps> = ({ email }) => {
+export const ProfileMailForm: FC<ProfileMailFormProps> = ({
+  email,
+  profileId,
+  onSuccess,
+}) => {
   const { t } = useTranslation()
 
   const {
@@ -43,17 +54,65 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({ email }) => {
     resolver: yupResolver(schema),
   })
 
+  // create observation
+  const { mutate } = useCreateModelMutation<
+    Observation,
+    ObservationCreateInput
+  >('observations')
+
+  type createOnservationProps = {
+    subject: string
+    content: string
+  }
+  const createObservation = async ({
+    subject,
+    content,
+  }: createOnservationProps) => {
+    const observationContent = `
+      <p><strong>Email Sent To:</strong> ${email}</p>
+      <p><strong>Subject:</strong>${subject}</p>
+      <p><strong>Content:</strong>${content}</p>
+    `
+
+    try {
+      const body = {
+        content: observationContent,
+        profile: profileId,
+      } as ObservationCreateInput
+
+      mutate(body, { onSuccess: () => onSuccess?.() })
+    } catch (error) {
+      toastMessage(
+        'Error',
+        "Couldn't send observation. Please try again later.",
+        'error',
+      )
+    }
+  }
+
+  // send email
   const { error, isPending, isSuccess, mutateAsync: sendEmail } = useSendEmail()
 
   const onSubmit = async (data: EmailFormValues) => {
+    const content = data.content.replace(/\n/g, '<br>')
+    const subject = data.subject
+
     try {
       const emailData: EmailCreateInput = {
         to: email,
-        subject: data.subject,
-        text: data.content,
+        subject,
+        html: content,
       }
 
-      await sendEmail(emailData)
+      await sendEmail(emailData, {
+        onSuccess: () => {
+          createObservation({ subject, content })
+          onSuccess?.()
+        },
+        onError: error => {
+          toastMessage('Error', error.message, 'error')
+        },
+      })
       reset()
     } catch (error: any) {
       console.error(error)
@@ -79,7 +138,6 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({ email }) => {
           />
 
           <Button
-            display={{ base: 'none', sm: 'flex' }}
             alignSelf="flex-end"
             rightIcon={<FiArrowRight />}
             type="submit"

@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import {
   Badge,
+  Box,
   Center,
   HStack,
   Text,
@@ -13,7 +14,13 @@ import {
 import { formatDistanceToNow } from 'date-fns'
 import { IconType } from 'react-icons'
 import { FaRegTrashAlt, FaTimes } from 'react-icons/fa'
-import { FaCheck, FaPlus, FaQuestion, FaRegStar } from 'react-icons/fa6'
+import {
+  FaCheck,
+  FaCircleInfo,
+  FaPlus,
+  FaQuestion,
+  FaRegStar,
+} from 'react-icons/fa6'
 import { MdModeEditOutline, MdPublish, MdUnpublished } from 'react-icons/md'
 
 import { AuditLog, AuditLogAction } from '@fc/types'
@@ -109,14 +116,28 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
 
       <Wrap align={'center'} ml={1}>
         <Text display={'inline'}>{message}</Text>
+        {log.text?.length > 50 && (
+          <Tooltip
+            bg="white"
+            color="initial"
+            borderWidth={1}
+            rounded={'md'}
+            placement="top-start"
+            label={<Box dangerouslySetInnerHTML={{ __html: log.text }} />}
+          >
+            <Box>
+              <FaCircleInfo />
+            </Box>
+          </Tooltip>
+        )}
         <Text
           display={'inline'}
           color={'gray.400'}
           fontSize={'sm'}
           fontStyle={'italic'}
-        >
-          {log.text}
-        </Text>
+          noOfLines={1}
+          dangerouslySetInnerHTML={{ __html: log.text }}
+        />
       </Wrap>
     </Wrap>
   )

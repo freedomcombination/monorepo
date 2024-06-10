@@ -7,16 +7,19 @@ import {
   Checkbox,
   FormLabel,
   Heading,
+  HStack,
   Stack,
   Switch,
   Text,
   Textarea,
+  Tooltip,
   Wrap,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { FaCircleInfo } from 'react-icons/fa6'
 import { setLocale } from 'yup'
 import { tr, nl, en } from 'yup-locales'
 
@@ -67,7 +70,7 @@ export const JoinForm: FC<JoinFormProps> = ({
   }, [locale])
 
   const onSubmit: SubmitHandler<JoinFormFieldValues> = data => {
-    const newData = { ...data, jobs: { connect: data.jobs } }
+    const newData = { ...data, jobs: data.jobs.map(Number) }
     onSubmitHandler(newData as any)
   }
 
@@ -205,7 +208,7 @@ export const JoinForm: FC<JoinFormProps> = ({
                 Freedom Combination Foundation
               </Text>
               {foundationJobs?.map((job, i) => (
-                <Stack key={i}>
+                <HStack key={job.id} align={'center'}>
                   <Checkbox
                     key={job.id}
                     id={job.id.toString()}
@@ -215,7 +218,22 @@ export const JoinForm: FC<JoinFormProps> = ({
                   >
                     {job[`name_${locale}`]}
                   </Checkbox>
-                </Stack>
+                  {job[`description_${locale}`] && (
+                    <Tooltip
+                      placement="top-end"
+                      bg={'white'}
+                      color={'initial'}
+                      borderWidth={1}
+                      rounded={'md'}
+                      label={job[`description_${locale}`] as string}
+                      aria-label={job[`description_${locale}`] as string}
+                    >
+                      <Box>
+                        <FaCircleInfo />
+                      </Box>
+                    </Tooltip>
+                  )}
+                </HStack>
               ))}
             </Stack>
           )}

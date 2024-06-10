@@ -38,6 +38,10 @@ const Settings = () => {
   )
 }
 
+/*
+  TODO remove this one. It's not used.
+*/
+
 export const AuthenticatedUserProfile = () => {
   const { t } = useTranslation('common')
 

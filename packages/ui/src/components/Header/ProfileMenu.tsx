@@ -2,7 +2,6 @@ import { FC, Fragment } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
 import {
-  Avatar,
   Button,
   DarkMode,
   Menu,
@@ -16,11 +15,11 @@ import { useTranslation } from 'next-i18next'
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
 
 import { useAuthContext } from '@fc/context'
-import { getMediaUrl } from '@fc/utils'
 
 import { ProfileMenuProps } from './types'
 import { useScroll } from '../../hooks'
 import { ButtonLink } from '../ButtonLink'
+import { WAvatar } from '../WAvatar'
 
 export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   const isScrolled = useScroll()
@@ -53,10 +52,9 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
         as={Button}
         size={'sm'}
         leftIcon={
-          <Avatar
+          <WAvatar
             size={'xs'}
-            bg={'white'}
-            src={getMediaUrl(profile?.avatar)}
+            src={profile?.avatar}
             name={profile?.name || user?.username}
           />
         }

@@ -176,7 +176,7 @@ export const ObservationEditForm = ({
               _disabled={disabledStyle}
             />
           ) : (
-            <Text>{content}</Text>
+            <Text dangerouslySetInnerHTML={{ __html: content }} />
           )}
         </Stack>
       </Stack>
