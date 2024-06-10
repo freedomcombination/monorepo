@@ -7,7 +7,7 @@ import {
   endpointsSingleType,
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
-  endpointsWithoutLocale,
+  endpointWithLocale,
 } from '@fc/config'
 import {
   StrapiCollectionResponse,
@@ -50,7 +50,7 @@ async function strapiRequest<T extends StrapiModel>(
     pageSize = 25,
   } = collectionArgs
 
-  const hasLocale = !id && !endpointsWithoutLocale.includes(endpoint)
+  const hasLocale = !id && endpointWithLocale.includes(endpoint)
   const isSingleType = endpointsSingleType.includes(
     endpoint as StrapiSingleEndpoint,
   )

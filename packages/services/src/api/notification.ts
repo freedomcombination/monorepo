@@ -36,11 +36,13 @@ export const notificationRouter = async (
     return
   }
 
-  // todo: customize the notification
-  const payload = JSON.stringify({
-    title: 'Are you ready?',
-    message: 'The event is about to start!',
-  })
+  // const payload = JSON.stringify({
+  //   title: 'Are you ready?',
+  //   message: 'The event is about to start!',
+  // })
+
+  const payload = req.body
+  if (!payload) return
 
   try {
     const results = await Promise.allSettled(

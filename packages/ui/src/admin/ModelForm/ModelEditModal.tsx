@@ -21,7 +21,6 @@ import { ModelEditModalProps } from './types'
 export const ModelEditModal = <T extends StrapiModel>({
   endpoint,
   title,
-  hideLanguageSwitcher,
   id,
   isFullHeight,
   isOpen,
@@ -81,7 +80,6 @@ export const ModelEditModal = <T extends StrapiModel>({
               endpoint={endpoint}
               model={model}
               onSuccess={handleSuccess}
-              hideLanguageSwitcher={hideLanguageSwitcher}
               onClose={onClose}
             />
             {children && (
