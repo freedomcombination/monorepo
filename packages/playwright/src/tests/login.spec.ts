@@ -21,7 +21,7 @@ for (const project of projectsWithLogin) {
     await loginPage.login(USERNAME, PASSWORD)
 
     // Timeout 10 seconds
-    await page.waitForLoadState('networkidle', { timeout: 10000 })
+    await page.waitForURL(homePage.url, { timeout: 10000 })
     await expect(page).toHaveURL(homePage.url)
   })
 }
