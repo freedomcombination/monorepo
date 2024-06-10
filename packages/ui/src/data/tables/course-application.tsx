@@ -29,6 +29,6 @@ export const useCourseApplicationColumns =
       hasPaid: {
         transform: value => <PaidBadges hasPaid={value as boolean | null} />,
       },
-      course: { transform: value => (value as Course).title_nl },
+      course: { transform: value => (value as Course).title },
     }
   }
