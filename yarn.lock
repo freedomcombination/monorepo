@@ -13646,7 +13646,7 @@ __metadata:
     sharp: "npm:^0.33.4"
     strapi-plugin-import-export-entries: "npm:^1.23.1"
     strapi-plugin-transformer: "npm:^3.1.2"
-    strapi-provider-cloudflare-r2: "npm:^0.2.5"
+    strapi-provider-cloudflare-r2: "npm:^0.3.0"
     styled-components: "npm:^5.2.1"
   languageName: unknown
   linkType: soft
@@ -31960,15 +31960,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strapi-provider-cloudflare-r2@npm:^0.2.5":
-  version: 0.2.5
-  resolution: "strapi-provider-cloudflare-r2@npm:0.2.5"
+"strapi-provider-cloudflare-r2@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "strapi-provider-cloudflare-r2@npm:0.3.0"
   dependencies:
     aws-sdk: "npm:2.1287.0"
     lodash: "npm:4.17.21"
   peerDependencies:
     "@strapi/strapi": ">=4.0.0"
-  checksum: 10/36d4a57434db5b06648ac0d33f87f8edc24b8627c3623059b8b84f2187b60dae02a22e3d07a3c3200feab268287c3cf3fc21dddd06b25db8aa0e5c333fe3c2fb
+  checksum: 10/0ee27eceec241053d6cf769dccc909854cf1721ab287c7d7ca3ccb491ecdc6f2cd5b7f6bf41a2faed0137f76348a5a596558309f413453e842237bb11f609532
   languageName: node
   linkType: hard
 
