@@ -8,6 +8,7 @@ import NotificationModal from '../NotificationModal/NotificationModal'
 
 const SubToNotification = () => {
   const [isSubscribed, setIsSubscribed] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [subscription, setSubscription] = useState<PushSubscription | null>(
     null,
   )
@@ -138,35 +139,35 @@ const SubToNotification = () => {
     }
   }
 
-  // todo: this function could be used in profile settings menu (see buttons below)
-  const unsubscribeButtonOnClick: MouseEventHandler<
-    HTMLButtonElement
-  > = async event => {
-    if (!subscription) {
-      console.error('Web push not subscribed')
+  // TODO: this function could be used in profile settings menu (see buttons below)
+  // const unsubscribeButtonOnClick: MouseEventHandler<
+  //   HTMLButtonElement
+  // > = async event => {
+  //   if (!subscription) {
+  //     console.error('Web push not subscribed')
 
-      return
-    }
+  //     return
+  //   }
 
-    event.preventDefault()
+  //   event.preventDefault()
 
-    try {
-      // Unsub from server
-      await fetch('/api/unsubscribe', {
-        method: 'POST',
-        body: JSON.stringify({ subscription }),
-      })
+  //   try {
+  //     // Unsub from server
+  //     await fetch('/api/unsubscribe', {
+  //       method: 'POST',
+  //       body: JSON.stringify({ subscription }),
+  //     })
 
-      // Unsub from Push Subscription
-      await subscription.unsubscribe()
-    } catch (error) {
-      console.error('Failed to unsubscribe: ', error)
-    }
+  //     // Unsub from Push Subscription
+  //     await subscription.unsubscribe()
+  //   } catch (error) {
+  //     console.error('Failed to unsubscribe: ', error)
+  //   }
 
-    setSubscription(null)
-    setIsSubscribed(false)
-    console.info('Web push unsubscribed!')
-  }
+  //   setSubscription(null)
+  //   setIsSubscribed(false)
+  //   console.info('Web push unsubscribed!')
+  // }
 
   return (
     <Center>
@@ -175,7 +176,7 @@ const SubToNotification = () => {
         onClose={onClose}
         subOnClick={subscribeButtonOnClick}
       />
-      {/* todo: maybe add this sub & unsub part to our new profile settings menu? */}
+      {/* TODO: maybe add this sub & unsub part to our new profile settings menu? */}
       {/* <Button
         type="button"
         onClick={subscribeButtonOnClick}

@@ -35,6 +35,7 @@ import {
 } from 'react-icons/md'
 import { InferType } from 'yup'
 
+import { endpointsWithPublicationState } from '@fc/config'
 import {
   useApproveModel,
   useCreateModelMutation,
@@ -337,6 +338,10 @@ export const ModelEditForm = <T extends StrapiModel>({
     pl: 0,
   }
 
+  const showApproveButton =
+    endpointsWithPublicationState.includes(endpoint) &&
+    translatableModel.approvalStatus !== 'approved'
+
   return (
     <>
       {confirmState && (
@@ -572,10 +577,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             </ActionButton>
 
             <ActionButton
-              isVisible={
-                translatableModel.approvalStatus &&
-                translatableModel.approvalStatus !== 'approved'
-              }
+              isVisible={showApproveButton}
               canApprove={endpoint}
               onClick={onApprove}
               leftIcon={<HiOutlineCheck />}
@@ -618,6 +620,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
             <ActionButton
               checkActions={{ endpoint, actions: ['update'] }}
+              isVisible={endpointsWithPublicationState.includes(endpoint)}
               onClick={isPublished ? onUnPublish : onPublish}
               colorScheme={isPublished ? 'yellow' : 'green'}
               fontSize="sm"

@@ -67,7 +67,6 @@ export type ModelCreateFormProps<T extends StrapiModel> = {
   model?: Partial<T>
   schema: AnyObjectSchema
   buttonProps?: ButtonProps
-  hideLanguageSwitcher?: boolean
   shouldPublish?: boolean
   initialValues?: Partial<T>
   onSuccess?: () => void
@@ -86,7 +85,6 @@ export type ModelEditFormProps<T extends StrapiModel> = {
   endpoint: StrapiEndpoint
   model: T
   translatedFields?: (keyof T)[]
-  hideLanguageSwitcher?: boolean
   noColumns?: boolean
   defaultIsEditing?: boolean
   onSuccess: () => void

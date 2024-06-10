@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import { TbPlus } from 'react-icons/tb'
 import { InferType } from 'yup'
 
+import { endpointWithLocale } from '@fc/config'
 import { useCreateModelMutation } from '@fc/services'
 import {
   Course,
@@ -35,7 +36,6 @@ export const ModelCreateForm = <T extends StrapiModel>({
   model,
   initialValues,
   onSuccess,
-  hideLanguageSwitcher,
   shouldPublish,
 }: ModelCreateFormProps<T>) => {
   const createModelMutation = useCreateModelMutation<
@@ -158,10 +158,12 @@ export const ModelCreateForm = <T extends StrapiModel>({
   })
   const [activeOption, setActiveOption] = useState(options[0]?.value)
 
+  const showLanguageSwitcher = endpointWithLocale.includes(endpoint)
+
   return (
     <Stack as={'form'} onSubmit={handleSubmit(onCreateModel)}>
       <MasonryGrid cols={[1, 1, 1, 2]} columnGap={8} rowGap={4}>
-        {!hideLanguageSwitcher && (
+        {showLanguageSwitcher && (
           <Box mb={8}>
             <LanguageSwitcher />
           </Box>

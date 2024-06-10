@@ -141,7 +141,6 @@ export const CreateModelButton = () => {
                   endpoint="courses"
                   schema={schemas.courses!}
                   fields={fields.courses!}
-                  hideLanguageSwitcher
                   shouldPublish
                   buttonProps={{
                     variant: 'outline',
