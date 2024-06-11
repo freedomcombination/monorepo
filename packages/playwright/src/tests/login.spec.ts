@@ -8,7 +8,11 @@ import { HomePage, LoginPage } from '../pages'
 
 dotenv.config({ path: '.env.local' })
 
-const projectsWithLogin: AppSlug[] = ['kunsthalte', 'foundation']
+const projectsWithLogin: AppSlug[] = [
+  'foundation',
+  'kunsthalte',
+  'trend-rights',
+]
 
 for (const project of projectsWithLogin) {
   test(`Login for ${project}`, async ({ page }) => {

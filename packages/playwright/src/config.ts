@@ -1,11 +1,21 @@
 import { AppSlug } from '@fc/types'
 
 export const ports: Record<AppSlug, number> = {
+  // api: 1337,
   dashboard: 3000,
   foundation: 3001,
   kunsthalte: 3002,
   lotus: 3003,
   'trend-rights': 3004,
+}
+
+export const stagingUrls: Record<AppSlug, string> = {
+  // api: 'https://fc-api-staging.onrender.com',
+  dashboard: 'https://fc-dashboard.vercel.app',
+  foundation: 'https://freedomcombination.vercel.app',
+  kunsthalte: 'https://kunsthalte.vercel.app',
+  lotus: 'https://lotusvdmedia.vercel.app',
+  'trend-rights': 'https://trend-rights.vercel.app',
 }
 
 export const projects = Object.keys(ports) as AppSlug[]
