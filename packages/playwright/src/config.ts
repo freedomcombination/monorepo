@@ -10,7 +10,7 @@ export const ports: Record<AppSlug, number> = {
 }
 
 export const stagingUrls: Record<AppSlug, string> = {
-  // api: 'https://fc-api-staging.onrender.com',
+  // api: 'https://wsvv-api-staging.onrender.com',
   dashboard: 'https://fc-dashboard.vercel.app',
   foundation: 'https://freedomcombination.vercel.app',
   kunsthalte: 'https://kunsthalte.vercel.app',
