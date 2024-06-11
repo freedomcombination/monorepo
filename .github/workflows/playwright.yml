@@ -13,11 +13,11 @@ jobs:
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
     steps:
-      - name: Wait / Sleep Action
-        if: '!contains(github.event.head_commit.message, "skip-wait")'
-        uses: GuillaumeFalourd/wait-sleep-action@v1
-        with:
-          time: '10m'
+      # - name: Wait / Sleep Action
+      #   if: !contains(github.event.head_commit.message , 'skip-wait')
+      #   uses: GuillaumeFalourd/wait-sleep-action@v1
+      #   with:
+      #     time: '10m'
       - name: Prepare testing env
         uses: actions/checkout@v3
       - uses: actions/setup-node@v3
