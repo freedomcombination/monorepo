@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable --immutable-cache
       - run: npx playwright install --with-deps
       - name: Run tests
         env:
