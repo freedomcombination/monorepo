@@ -13,21 +13,20 @@ jobs:
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
     steps:
-      - name: Wait / Sleep Action
-        uses: GuillaumeFalourd/wait-sleep-action@v1
-        with:
-          time: '10m'
-          if: "!contains(github.event.head_commit.message, 'skip wait')"
+      # - name: Wait / Sleep Action
+      #   if: !contains(github.event.head_commit.message , 'skip-wait')
+      #   uses: GuillaumeFalourd/wait-sleep-action@v1
+      #   with:
+      #     time: '10m'
       - name: Prepare testing env
         uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
-      - run: npm install ci
-      - run: npm ci
+          node-version: '20'
+      - run: yarn install --immutable
       - run: npx playwright install --with-deps
       - name: Run tests
         env:
-          USERNAME: ${{ vars.USERNAME}}
-          PASSWORD: ${{ vars.PASSWORD}}
+          USERNAME: ${{ vars.USERNAME }}
+          PASSWORD: ${{ vars.PASSWORD }}
         run: npx playwright test

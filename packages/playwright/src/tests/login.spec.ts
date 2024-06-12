@@ -8,7 +8,11 @@ import { HomePage, LoginPage } from '../pages'
 
 dotenv.config({ path: '.env.local' })
 
-const projectsWithLogin: AppSlug[] = ['kunsthalte', 'foundation']
+const projectsWithLogin: AppSlug[] = [
+  'foundation',
+  'kunsthalte',
+  'trend-rights',
+]
 
 for (const project of projectsWithLogin) {
   test(`Login for ${project}`, async ({ page }) => {
@@ -21,7 +25,7 @@ for (const project of projectsWithLogin) {
     await loginPage.login(USERNAME, PASSWORD)
 
     // Timeout 10 seconds
-    await page.waitForLoadState('networkidle', { timeout: 10000 })
+    await page.waitForURL(homePage.url, { timeout: 10000 })
     await expect(page).toHaveURL(homePage.url)
   })
 }

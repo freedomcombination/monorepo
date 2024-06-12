@@ -20,7 +20,7 @@ export class HomePage {
   }
 
   async gotoLogin() {
-    await this.loginLink.click()
-    expect(this.page).toHaveURL(`${this.url}/login`)
+    await this.loginLink.click({ timeout: 10000 })
+    expect(this.page).toHaveURL(`${this.url}/login?returnUrl=/`)
   }
 }
