@@ -7,11 +7,19 @@ dotenv.config({ path: '.env.test' })
 export default defineConfig({
   // Test directory
   testDir: './packages/playwright/src',
+  /* Run tests in files in parallel */
+  fullyParallel: true,
+  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  forbidOnly: !!process.env.CI,
+  /* Retry on CI only */
+  retries: process.env.CI ? 2 : 0,
+  /* Opt out of parallel tests on CI. */
+  workers: process.env.CI ? 1 : undefined,
   // If a test fails, retry it additional 2 times
-  retries: 0,
   // Artifacts folder where screenshots, videos, and traces are stored.
   outputDir: 'test-results/',
-
+  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  reporter: 'html',
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
   webServer:
@@ -38,7 +46,6 @@ export default defineConfig({
     //   ignoreHTTPSErrors: true,
     // },
   },
-  workers: process.env.CI ? 1 : undefined,
 
   projects: [
     {
