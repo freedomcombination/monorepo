@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 import dotenv from 'dotenv'
-dotenv.config({ path: '.env.local' })
+
+dotenv.config({ path: '.env.test' })
 
 // Reference: https://playwright.dev/docs/test-configuration
 export default defineConfig({
@@ -13,17 +14,17 @@ export default defineConfig({
 
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
-  webServer: !process.env['CI']
-    ? [
-        {
-          command: 'yarn dev',
-          url: 'http://localhost:3000',
-          timeout: 120 * 1000,
-          reuseExistingServer: true,
-        },
-      ]
-    : undefined,
-
+  webServer:
+    process.env.CI === 'true'
+      ? undefined
+      : [
+          {
+            command: 'yarn dev:test',
+            url: 'http://localhost:3000',
+            timeout: 120 * 1000,
+            reuseExistingServer: true,
+          },
+        ],
   use: {
     // Use baseURL so to make navigations relative.
     // More information: https://playwright.dev/docs/api/class-testoptions#test-options-base-url
@@ -37,7 +38,7 @@ export default defineConfig({
     //   ignoreHTTPSErrors: true,
     // },
   },
-  workers: process.env['CI'] ? 1 : undefined,
+  workers: process.env.CI ? 1 : undefined,
 
   projects: [
     {

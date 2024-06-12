@@ -1,5 +1,7 @@
 import { AppSlug } from '@fc/types'
 
+export const TEST_TIMEOUT = process.env.CI === 'true' ? 10 * 1000 : 120 * 1000
+
 export const ports: Record<AppSlug, number> = {
   // api: 1337,
   dashboard: 3000,
