@@ -3,7 +3,7 @@ import { AppSlug } from '@fc/types'
 import { ports, stagingUrls } from './config'
 
 export const getVercelUrl = (project: AppSlug) => {
-  if (process.env['CI'] === 'true') {
+  if (process.env.CI === 'true') {
     return stagingUrls[project]
   }
 

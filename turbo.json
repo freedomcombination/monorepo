@@ -44,6 +44,7 @@
     },
     "lint": { "cache": false },
     "dev": { "cache": false, "persistent": true },
+    "dev:test": { "cache": false, "persistent": true },
     "dashboard": { "cache": false, "persistent": true },
     "foundation": { "cache": false, "persistent": true },
     "kunsthalte": { "cache": false, "persistent": true },

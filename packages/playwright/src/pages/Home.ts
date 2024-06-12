@@ -2,6 +2,7 @@ import { expect, type Locator, type Page } from '@playwright/test'
 
 import { AppSlug } from '@fc/types'
 
+import { TEST_TIMEOUT } from '../config'
 import { getVercelUrl } from '../utils'
 
 export class HomePage {
@@ -20,7 +21,7 @@ export class HomePage {
   }
 
   async gotoLogin() {
-    await this.loginLink.click({ timeout: 10000 })
+    await this.loginLink.click({ timeout: TEST_TIMEOUT })
     expect(this.page).toHaveURL(`${this.url}/login?returnUrl=/`)
   }
 }
