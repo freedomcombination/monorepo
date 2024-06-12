@@ -1,4 +1,4 @@
-import { MouseEventHandler, useState } from 'react'
+import { useState } from 'react'
 
 import {
   AspectRatio,
@@ -304,10 +304,7 @@ export const ModelEditForm = <T extends StrapiModel>({
     else router.push(`/archive-contents/${id}`)
   }
 
-  const sendNotificationButtonOnClick: MouseEventHandler<
-    HTMLButtonElement
-  > = async event => {
-    event.preventDefault()
+  const sendNotification = async () => {
     const [title, body] = watch(['title', 'body'])
 
     try {
@@ -538,10 +535,11 @@ export const ModelEditForm = <T extends StrapiModel>({
 
             <ActionButton
               isVisible={endpoint === 'notifications'}
-              onClick={sendNotificationButtonOnClick}
+              onClick={sendNotification}
               leftIcon={<FiSend />}
               fontSize="sm"
               colorScheme={'blue'}
+              type="button"
             >
               {t('notification.send')}
             </ActionButton>
