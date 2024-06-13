@@ -35761,6 +35761,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"xml2js@npm:0.4.19":
+  version: 0.4.19
+  resolution: "xml2js@npm:0.4.19"
+  dependencies:
+    sax: "npm:>=0.6.0"
+    xmlbuilder: "npm:~9.0.1"
+  checksum: 10/e6cb4423a6f22e0dfd5806da46359b63de15de89f5cd6a13f799d26e0edd9d17c4c85be8135a4da8ae61c26d8dabd3d39ddf4c5326192269487cbfb894788867
+  languageName: node
+  linkType: hard
+
+"xmlbuilder@npm:~9.0.1":
+  version: 9.0.7
+  resolution: "xmlbuilder@npm:9.0.7"
+  checksum: 10/63d0c596080f85a12f0cd184751d8ab1e9d022f519032d167f85dfdc5af708e6a1e6bcd22609b8718f091e72c75743b6c8d03bc08879a2829de5e07a3c26e157
+  languageName: node
+  linkType: hard
+
 "xmlhttprequest-ssl@npm:~2.0.0":
   version: 2.0.0
   resolution: "xmlhttprequest-ssl@npm:2.0.0"
