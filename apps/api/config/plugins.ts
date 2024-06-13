@@ -57,6 +57,7 @@ export default ({ env }) => ({
           Bucket: env('CF_BUCKET'),
         },
         cloudflarePublicAccessUrl: env('CF_PUBLIC_ACCESS_URL'),
+        pool: true,
       },
       actionOptions: {
         upload: {},

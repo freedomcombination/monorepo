@@ -2,11 +2,10 @@ name: Playwright
 on:
   push:
     branches: [dev]
-
 jobs:
   test_e2e:
     name: Test E2E
-    timeout-minutes: 20
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -19,10 +18,10 @@ jobs:
       #   with:
       #     time: '10m'
       - name: Prepare testing env
-        uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: lts/*
       - run: yarn install --immutable
       - run: npx playwright install --with-deps
       - name: Run tests
@@ -30,3 +29,9 @@ jobs:
           USERNAME: ${{ vars.USERNAME }}
           PASSWORD: ${{ vars.PASSWORD }}
         run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

@@ -1,29 +1,38 @@
 import { defineConfig, devices } from '@playwright/test'
 import dotenv from 'dotenv'
-dotenv.config({ path: '.env.local' })
+
+dotenv.config({ path: '.env.test' })
 
 // Reference: https://playwright.dev/docs/test-configuration
 export default defineConfig({
   // Test directory
   testDir: './packages/playwright/src',
+  /* Run tests in files in parallel */
+  fullyParallel: true,
+  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  forbidOnly: !!process.env.CI,
+  /* Retry on CI only */
+  retries: process.env.CI ? 2 : 0,
+  /* Opt out of parallel tests on CI. */
+  workers: process.env.CI ? 1 : undefined,
   // If a test fails, retry it additional 2 times
-  retries: 0,
   // Artifacts folder where screenshots, videos, and traces are stored.
   outputDir: 'test-results/',
-
+  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  reporter: 'html',
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
-  webServer: !process.env['CI']
-    ? [
-        {
-          command: 'yarn dev',
-          url: 'http://localhost:3000',
-          timeout: 120 * 1000,
-          reuseExistingServer: true,
-        },
-      ]
-    : undefined,
-
+  webServer:
+    process.env.CI === 'true'
+      ? undefined
+      : [
+          {
+            command: 'yarn dev:test',
+            url: 'http://localhost:3000',
+            timeout: 120 * 1000,
+            reuseExistingServer: true,
+          },
+        ],
   use: {
     // Use baseURL so to make navigations relative.
     // More information: https://playwright.dev/docs/api/class-testoptions#test-options-base-url
@@ -37,7 +46,6 @@ export default defineConfig({
     //   ignoreHTTPSErrors: true,
     // },
   },
-  workers: process.env['CI'] ? 1 : undefined,
 
   projects: [
     {

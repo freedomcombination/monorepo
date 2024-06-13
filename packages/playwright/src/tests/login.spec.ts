@@ -1,12 +1,10 @@
 import { expect, test } from '@playwright/test'
-import dotenv from 'dotenv'
 
 import { AppSlug } from '@fc/types'
 
+import { TEST_TIMEOUT } from '../config'
 import { PASSWORD, USERNAME } from '../constants'
 import { HomePage, LoginPage } from '../pages'
-
-dotenv.config({ path: '.env.local' })
 
 const projectsWithLogin: AppSlug[] = [
   'foundation',
@@ -25,7 +23,7 @@ for (const project of projectsWithLogin) {
     await loginPage.login(USERNAME, PASSWORD)
 
     // Timeout 10 seconds
-    await page.waitForURL(homePage.url, { timeout: 10000 })
+    await page.waitForURL(homePage.url, { timeout: TEST_TIMEOUT })
     await expect(page).toHaveURL(homePage.url)
   })
 }

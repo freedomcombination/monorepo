@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "dotenv -e ../../.env.local next dev -- -p 3000",
+    "dev:test": "dotenv -e ../../.env.test next dev -- -p 3000",
     "dashboard": "dotenv -e ../../.env.local next dev -- -p 3000",
     "build": "next build",
     "build:dev": "next build",
