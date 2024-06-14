@@ -1,29 +1,52 @@
+import { useEffect } from 'react'
+
 import {
   Button,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Text,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Stack,
+  Text,
+  useDisclosure,
 } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
-type NotificationModalProps = {
-  isOpen: boolean
-  onClose: () => void
-  subOnClick: React.MouseEventHandler<HTMLButtonElement>
-}
+import { useWebPushContext } from '@fc/context'
+import { useSubscribePushNotificationMutation } from '@fc/services'
 
-const NotificationModal: React.FC<NotificationModalProps> = ({
-  isOpen,
-  onClose,
-  subOnClick,
-}) => {
+export const NotificationModal = () => {
   const { t } = useTranslation()
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isSubscribed } = useWebPushContext()
+
+  const subscribePushNotificationMutation =
+    useSubscribePushNotificationMutation()
+
+  const handleSubscribe = async () => {
+    subscribePushNotificationMutation.mutateAsync(undefined, {
+      onSuccess: () => {
+        onClose()
+      },
+      // TODO: Show toast notification
+      onError: () => {},
+    })
+  }
+
+  useEffect(() => {
+    if (!isSubscribed) {
+      const timer = setTimeout(() => {
+        onOpen()
+      }, 3000)
+
+      // Clean-up on depend. change
+      return () => clearTimeout(timer)
+    }
+  }, [isSubscribed, onOpen])
 
   return (
     <>
@@ -48,11 +71,9 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
               {t('close')}
             </Button>
             <Button
-              colorScheme="green"
-              onClick={e => {
-                subOnClick(e)
-                onClose()
-              }}
+              colorScheme="primary"
+              isLoading={subscribePushNotificationMutation.isPending}
+              onClick={handleSubscribe}
             >
               {t('subscribe')}
             </Button>
@@ -62,5 +83,3 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
     </>
   )
 }
-
-export default NotificationModal

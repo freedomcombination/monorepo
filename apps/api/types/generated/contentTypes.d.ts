@@ -3335,6 +3335,7 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
     singularName: 'subscriber'
     pluralName: 'subscribers'
     displayName: 'Subscriber'
+    description: ''
   }
   options: {
     draftAndPublish: false
@@ -3346,6 +3347,10 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
       'oneToOne',
       'api::profile.profile'
     >
+    site: Attribute.Enumeration<
+      ['dashboard', 'foundation', 'kunsthalte', 'lotus', 'trend-rights']
+    > &
+      Attribute.Required
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

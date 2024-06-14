@@ -92,7 +92,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const menuFilters = selectedFilters.reduce((acc, f) => {
     // There might be same field with different operators
     // We add a suffix to the field name to differentiate them
-    // ad to avoid MenuOption key duplication
+    // and to avoid MenuOption key duplication
     const filterField = f.field.replace('(ext)', '')
 
     if (filterField?.includes('.')) {
@@ -240,10 +240,14 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId])
 
+  // TODO: Move to ObservationList component
   const observationRequest = useStrapiRequest<Observation>({
     endpoint: 'observations',
     filters: { profile: { id: { $eq: selectedId } } },
     sort: ['createdAt:desc'],
+    queryOptions: {
+      enabled: !!selectedId || endpoint === 'profiles',
+    },
   })
 
   const observations = observationRequest.data?.data ?? []

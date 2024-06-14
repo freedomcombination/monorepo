@@ -4,7 +4,8 @@
   "info": {
     "singularName": "subscriber",
     "pluralName": "subscribers",
-    "displayName": "Subscriber"
+    "displayName": "Subscriber",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -19,6 +20,17 @@
       "relation": "oneToOne",
       "target": "api::profile.profile",
       "inversedBy": "subscriber"
+    },
+    "site": {
+      "type": "enumeration",
+      "enum": [
+        "dashboard",
+        "foundation",
+        "kunsthalte",
+        "lotus",
+        "trend-rights"
+      ],
+      "required": true
     }
   }
 }
