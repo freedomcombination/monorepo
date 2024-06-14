@@ -79,7 +79,7 @@ const Credential: React.FC<CredentialProps> = ({
           setEdit(false)
         })
       })
-      .catch(e => console.log('Update error', name, value, e))
+      .catch(e => console.error('Update error', name, value, e))
 
     return () => setSaving(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps

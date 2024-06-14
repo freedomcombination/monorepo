@@ -3,7 +3,7 @@ import { StrapiBase } from './strapi'
 
 export type NotificationBase = {
   title: string
-  body: string
+  message: string
 }
 
 export type NotificationCreateInput = Expand<

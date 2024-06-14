@@ -1,6 +1,5 @@
 import { Notification } from '@fc/types'
 
-import { PublicationBadges } from '../../admin'
 import { WTableProps } from '../../components'
 
 export const useNotificationColumns =
@@ -8,11 +7,6 @@ export const useNotificationColumns =
     return {
       id: { sortable: true },
       title: { sortable: true },
-      body: { sortable: true },
-      publishedAt: {
-        transform: value => (
-          <PublicationBadges publishedAt={value as string | null} />
-        ),
-      },
+      message: { sortable: true },
     }
   }
