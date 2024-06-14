@@ -38,8 +38,8 @@ export default {
     )
 
     webPush.setVapidDetails(
-      `mailto:${process.env.NEXT_PUBLIC_EMAIL_SENDER}`,
-      process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY,
+      `mailto:${process.env.WEB_PUSH_EMAIL}`,
+      process.env.WEB_PUSH_PUBLIC_KEY,
       process.env.WEB_PUSH_PRIVATE_KEY,
     )
 
