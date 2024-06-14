@@ -33,52 +33,41 @@ export const notificationRouter = async (
   if (!subscribers.data || subscribers.data.length === 0) {
     console.error('No subscriptions found')
 
-    return
+    return res.status(404).json({ message: 'No subscriptions found' })
   }
 
-  // const payload = JSON.stringify({
-  //   title: 'Are you ready?',
-  //   message: 'The event is about to start!',
-  // })
-
   const payload = req.body
-  if (!payload) return
+
+  if (!payload) {
+    return res.status(400).json({ message: 'Payload is required' })
+  }
 
   try {
     const results = await Promise.allSettled(
       subscribers.data.map(async subscriber => {
-        try {
-          if (subscriber.subscription === null) {
-            console.error('Subscription is null')
-
-            return { status: 'rejected', reason: 'Subscription is null' }
-          } else {
-            try {
-              await webPush.sendNotification(subscriber.subscription, payload)
-
-              return { status: 'fulfilled' }
-            } catch (error) {
-              return { status: 'rejected', reason: error }
-            }
-          }
-        } catch (err) {
-          console.error(err)
+        if (subscriber.subscription === null) {
+          return { status: 'rejected', reason: 'Subscription is null' }
         }
+
+        await webPush.sendNotification(subscriber.subscription, payload)
+
+        return { status: 'fulfilled' }
       }),
     )
 
     // Check if all promises are fulfilled
-    const allFulfilled = results.every(result => result.status === 'fulfilled')
+    const hasFailed = results.some(result => result.status === 'rejected')
 
-    if (allFulfilled) {
-      res.status(200).json({ message: 'Notifications sent successfully' })
-    } else {
+    if (hasFailed) {
       const errors = results.filter(result => result.status === 'rejected')
       console.error('Failed to send some notifications: ', errors)
-      res
+
+      return res
         .status(500)
         .json({ message: 'Failed to send some notifications', errors })
     }
+
+    res.status(200).json({ message: 'Notifications sent successfully' })
   } catch (err) {
     console.error('Failed to send notifications: ', err)
     res.status(500).json({ message: 'Failed to send notifications' })

@@ -48,8 +48,11 @@ yarn-error.log*
 storybook-static
 
 #playwright
-
 test-results
+playwright-report
+blob-report
+playwright/.cache
+
 tsconfig.tsbuildinfo
 
 # web-push
@@ -59,3 +62,4 @@ tsconfig.tsbuildinfo
 
 # Sentry Config File
 .env.sentry-build-plugin
+
