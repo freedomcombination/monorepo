@@ -1,5 +1,5 @@
 import { UploadFile } from './file'
-import { Foundation } from './foundation'
+import { Platform } from './platform'
 import { Profile } from './profile'
 import { StrapiBase } from './strapi'
 
@@ -15,14 +15,14 @@ type AssetBase = {
 type AssetRelation = {
   images?: UploadFile[]
   invoice?: UploadFile | null
-  foundation?: Foundation | null
+  platform?: Platform | null
   peopleInCharge?: Profile[]
 }
 
 type AssetRelationInput = {
   images?: Array<number>
   invoice?: number
-  foundation?: number
+  platform?: number
   peopleInCharge?: Array<number>
 }
 

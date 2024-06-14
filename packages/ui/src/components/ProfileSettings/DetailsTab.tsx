@@ -78,7 +78,7 @@ const AvatarForm = () => {
           onClose()
         })
       })
-      .catch(e => console.log('Avatar update error', e))
+      .catch(e => console.error('Avatar update error', e))
 
     return () => setSaveProgress(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -197,7 +197,7 @@ export const DetailsTab = () => {
           setSaving(false)
         })
       })
-      .catch(e => console.log('Details update error', e))
+      .catch(e => console.error('Details update error', e))
 
     return () => setSaving(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps

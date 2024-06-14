@@ -1,29 +1,18 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 
-import {
-  Badge,
-  Box,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Td,
-} from '@chakra-ui/react'
+import { Badge, Box, Td } from '@chakra-ui/react'
 
 import { StrapiModel, UploadFile } from '@fc/types'
-import { getMediaUrl } from '@fc/utils'
 
+import { TableCellImages } from './TableCellImages'
 import { WTableCellProps } from './types'
 import { FormattedDate } from '../FormattedDate'
-import { WAvatar } from '../WAvatar'
-import { WImage } from '../WImage'
 
 export const WTableCell = <T extends StrapiModel>({
   value,
   cellConfig,
   field,
 }: WTableCellProps<T>) => {
-  const [cellImage, setCellImage] = useState<string>()
-
   const { type, transform, componentProps, cellProps } = cellConfig
   const data = (
     typeof transform === 'function' ? transform(value as T[keyof T]) : value
@@ -52,25 +41,7 @@ export const WTableCell = <T extends StrapiModel>({
 
   // Image
   else if (type === 'image') {
-    const image = (value as UploadFile[])?.[0] || (value as UploadFile)
-    const thumbnail = image?.formats?.thumbnail?.url || image?.url
-
-    cellContent = (
-      <Popover trigger="hover" isLazy placement="right">
-        <PopoverTrigger>
-          <Box>
-            <WAvatar
-              boxSize={8}
-              src={cellImage || getMediaUrl(thumbnail)}
-              onError={() => setCellImage(getMediaUrl(thumbnail))}
-            />
-          </Box>
-        </PopoverTrigger>
-        <PopoverContent p={0} w={'auto'} overflow={'hidden'}>
-          <WImage w={'50vw'} src={image} sizes={'400px'} />
-        </PopoverContent>
-      </Popover>
-    )
+    cellContent = <TableCellImages value={value as UploadFile | UploadFile[]} />
   } else {
     cellContent = data
   }

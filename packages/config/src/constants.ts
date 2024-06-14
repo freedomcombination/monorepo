@@ -8,10 +8,7 @@ export const DONATION_REQUEST_LINK = process.env[
 ] as string
 export const API_URL = process.env['NEXT_PUBLIC_API_URL'] as string
 export const PUBLIC_TOKEN = process.env['NEXT_PUBLIC_TOKEN'] as string
-export const EMAIL_RECEIVER = process.env[
-  'NEXT_PUBLIC_EMAIL_RECEIVER'
-] as string
-export const EMAIL_SENDER = process.env['NEXT_PUBLIC_EMAIL_SENDER'] as string
+export const EMAIL = process.env['NEXT_PUBLIC_EMAIL'] as string
 export const GA_MEASUREMENT_ID = process.env[
   'NEXT_PUBLIC_GA_MEASUREMENT_ID'
 ] as string

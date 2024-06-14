@@ -6,16 +6,13 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  MenuItem,
   Stack,
   Text,
   useDisclosure,
-  useUpdateEffect,
 } from '@chakra-ui/react'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 import { TbActivity } from 'react-icons/tb'
 
 import { useStrapiRequest } from '@fc/services'
@@ -58,6 +55,11 @@ const AssetPage = () => {
   const assetsTrackingsQuery = useStrapiRequest<AssetsTracking>({
     endpoint: 'assets-trackings',
     filters: {
+      $or: [
+        { toLocation: { $containsi: searchTerm } },
+        { fromLocation: { $containsi: searchTerm } },
+        { assignedTo: { name: { $containsi: searchTerm } } },
+      ],
       asset: { id: { $eq: id } },
     },
     sort,
@@ -65,9 +67,6 @@ const AssetPage = () => {
     pageSize: 100,
     locale,
   })
-  useUpdateEffect(() => {
-    assetsTrackingsQuery.refetch()
-  }, [locale, searchTerm, sort])
 
   const assetsTrackings = assetsTrackingsQuery?.data?.data || []
   const pageCount = assetsTrackingsQuery?.data?.meta?.pagination?.pageCount || 0
@@ -109,7 +108,7 @@ const AssetPage = () => {
           id={selectedAssetsTrackingId}
           isOpen={isOpen}
           onClose={handleClose}
-          onSuccess={refetch}
+          onSuccess={assetsTrackingsQuery.refetch}
           size={'5xl'}
         />
       )}
@@ -160,17 +159,7 @@ const AssetPage = () => {
               <AccordionIcon ml={'auto'} />
             </AccordionButton>
             <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
-              <PageHeader
-                onSearch={handleSearch}
-                sortMenu={[
-                  <MenuItem key="asc" icon={<FaArrowUp />}>
-                    Name Asc
-                  </MenuItem>,
-                  <MenuItem key="desc" icon={<FaArrowDown />}>
-                    Name Desc
-                  </MenuItem>,
-                ]}
-              />
+              <PageHeader onSearch={handleSearch} />
               <DataTable<AssetsTracking>
                 columns={columns['assets-trackings']!}
                 currentPage={currentPage}
@@ -196,6 +185,7 @@ const AssetPage = () => {
             variant: 'outline',
             leftIcon: <TbActivity />,
           }}
+          onSuccess={assetsTrackingsQuery.refetch}
         >
           {t('add-tracking')}
         </ModelCreateModal>
