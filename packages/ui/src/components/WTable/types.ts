@@ -9,7 +9,7 @@ import {
   TextProps,
 } from '@chakra-ui/react'
 
-import { Sort, StrapiModel } from '@fc/types'
+import { Sort, StrapiModel, UploadFile } from '@fc/types'
 
 import { FormattedDateProps } from '../FormattedDate'
 
@@ -54,3 +54,11 @@ export type WTableProps<T extends StrapiModel> = {
   onClickRow?: WTableRowProps<T>['onClick']
   onSort?: (key?: Sort) => void
 } & TableProps
+
+export type TableCellImagesProps = {
+  value: UploadFile | UploadFile[]
+}
+
+export type TableCellImageProps = {
+  image: UploadFile
+}

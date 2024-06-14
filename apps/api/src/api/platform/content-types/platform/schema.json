@@ -99,6 +99,12 @@
       "type": "component",
       "repeatable": false,
       "component": "contact.contact"
+    },
+    "assets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::asset.asset",
+      "mappedBy": "platform"
     }
   }
 }

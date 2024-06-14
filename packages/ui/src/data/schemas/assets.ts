@@ -13,7 +13,7 @@ export const useAssetsSchema = () => {
     rules: yup.string(),
     notes: yup.string(),
     peopleInCharge: yupMultiSelect.required(),
-    foundation: yupSelect.required(),
+    platform: yupSelect.required(),
     invoice: yup.mixed(),
     images: yup.mixed().required(),
   })
@@ -21,11 +21,11 @@ export const useAssetsSchema = () => {
 
 export const assetFields: FormFields<Asset> = [
   { name: 'name', isRequired: true },
+  { name: 'sku', blockEdit: true },
   {
-    name: 'foundation',
-    isRequired: true,
+    name: 'platform',
     type: 'select',
-    endpoint: 'foundations',
+    endpoint: 'platforms',
   },
   { name: 'price', type: 'number-input' },
   { name: 'location', isRequired: true },
@@ -38,7 +38,6 @@ export const assetFields: FormFields<Asset> = [
     isMulti: true,
     endpoint: 'profiles',
   },
-
   { name: 'invoice', type: 'file' },
   {
     name: 'images',
