@@ -4,10 +4,10 @@ import { WTableProps } from '../../components'
 
 export const useAssetsColumns = (): WTableProps<Asset>['columns'] => {
   return {
+    images: { type: 'image' },
+    sku: {},
     name: { sortable: true },
     location: {},
-    sku: {},
-    images: { type: 'image' },
     price: {},
     createdAt: {
       type: 'date',

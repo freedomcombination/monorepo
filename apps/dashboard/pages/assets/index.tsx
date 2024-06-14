@@ -24,7 +24,7 @@ const AssetsPage = () => {
 
   const assetsQuery = useStrapiRequest<Asset>({
     endpoint: 'assets',
-    populate: ['foundation', 'peopleInCharge'],
+    populate: ['foundation', 'peopleInCharge', 'images'],
     page: currentPage || 1,
     pageSize,
     filters: {
