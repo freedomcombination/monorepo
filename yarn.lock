@@ -13026,18 +13026,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/edge-config@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@vercel/edge-config@npm:1.1.1"
+"@vercel/edge-config@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@vercel/edge-config@npm:1.2.0"
   dependencies:
     "@vercel/edge-config-fs": "npm:0.1.0"
-    ts-essentials: "npm:9.4.1"
   peerDependencies:
     "@opentelemetry/api": ^1.7.0
   peerDependenciesMeta:
     "@opentelemetry/api":
       optional: true
-  checksum: 10/df8f89553721e5b88eade10527a2b15615812e9bea1c2e9d6cbb59a3c38fe885e5fcc355040726b53331f78a81e09f2f2747c2887d7d742711be260cd6f6b62a
+  checksum: 10/f4ae4f3cc0cabedf404f04efdfc85a066590e5c2eef0226a568bf3dffc2398db10df544390ef2b4b5b89ca7e692c39b78d299bf583cafb6c766f8278a7456288
   languageName: node
   linkType: hard
 
@@ -13595,9 +13594,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.1.32":
-  version: 3.1.32
-  resolution: "ai@npm:3.1.32"
+"ai@npm:^3.1.35":
+  version: 3.1.35
+  resolution: "ai@npm:3.1.35"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.10"
     "@ai-sdk/provider-utils": "npm:0.0.13"
@@ -13627,7 +13626,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/7761a4bdc0e2a7ceb96baa176081de8263c504f21d9a253a16ac4984b4ed1b9ac6eab575a77fef88645fee4434791904f25bf36c6a8cdb75bca0a8f520a3c4cb
+  checksum: 10/870146c13815fe2deb43e35601ff08bc18830f59e833fcf2896c47d1d315bf352ab19736334a7c2529d491858e4f90f9f8302f02a0a34b752d6493eac3fdcd86
   languageName: node
   linkType: hard
 
@@ -13843,6 +13842,7 @@ __metadata:
     strapi-plugin-import-export-entries: "npm:^1.23.1"
     strapi-plugin-transformer: "npm:^3.1.2"
     styled-components: "npm:^5.2.1"
+    web-push: "npm:^3.6.7"
   languageName: unknown
   linkType: soft
 
@@ -19778,10 +19778,10 @@ __metadata:
     "@uppy/react": "npm:^3.3.1"
     "@uppy/url": "npm:^3.6.1"
     "@vercel/analytics": "npm:^1.3.1"
-    "@vercel/edge-config": "npm:^1.1.1"
+    "@vercel/edge-config": "npm:^1.2.0"
     "@vercel/kv": "npm:^2.0.0"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.1.32"
+    ai: "npm:^3.1.35"
     axios: "npm:^1.7.2"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:^4.8.0"
@@ -19799,7 +19799,7 @@ __metadata:
     i18next: "npm:^23.11.5"
     i18next-browser-languagedetector: "npm:^7.2.1"
     i18next-http-backend: "npm:^2.5.2"
-    iron-session: "npm:^8.0.1"
+    iron-session: "npm:^8.0.2"
     jszip: "npm:^3.10.1"
     kill-port-process: "npm:^3.2.1"
     lodash: "npm:^4.17.21"
@@ -19811,7 +19811,7 @@ __metadata:
     next-recaptcha-v3: "npm:^1.4.1"
     next-seo: "npm:^6.5.0"
     next-share: "npm:^0.27.0"
-    openai: "npm:^4.50.0"
+    openai: "npm:^4.51.0"
     os-browserify: "npm:^0.3.0"
     path-browserify: "npm:^1.0.1"
     pluralize: "npm:^8.0.0"
@@ -19841,7 +19841,7 @@ __metadata:
     storybook: "npm:^7.6.19"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
-    stripe: "npm:^15.10.0"
+    stripe: "npm:^15.11.0"
     tesseract.js: "npm:^5.1.0"
     turbo: "npm:^2.0.3"
     twitter-api-v2: "npm:^1.17.1"
@@ -22356,21 +22356,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iron-session@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "iron-session@npm:8.0.1"
+"iron-session@npm:^8.0.2":
+  version: 8.0.2
+  resolution: "iron-session@npm:8.0.2"
   dependencies:
     cookie: "npm:0.6.0"
-    iron-webcrypto: "npm:1.0.0"
+    iron-webcrypto: "npm:1.2.1"
     uncrypto: "npm:0.1.3"
-  checksum: 10/8d25fe44a00959fe2c2650c9a27c2fdbc14ed2714e1707c43e03005e7da54e2995103918c17cd0fd31b11471fdbe32b1a089442320595984b32930a23fa5c8c2
+  checksum: 10/baa058e019dcb540b9c9e00ba6415a65b185715fbc306f77efc1b5d7d9d060f2a1e38c733e8719800967dd64eec32622e4dde3aea56b333d50a367f35fbd754a
   languageName: node
   linkType: hard
 
-"iron-webcrypto@npm:1.0.0":
-  version: 1.0.0
-  resolution: "iron-webcrypto@npm:1.0.0"
-  checksum: 10/1af9fc319c21d44023e08b7019b4c5d0b58f32c6fccab6e4885522b3efa2f6c17491f9caccba74d816f04b4af3148f5bd91a9b506b6d84c2db6ac0a678fbd88a
+"iron-webcrypto@npm:1.2.1":
+  version: 1.2.1
+  resolution: "iron-webcrypto@npm:1.2.1"
+  checksum: 10/c1f52ccfe2780efa5438c134538ee4b26c96a87d22f351d896781219efbce25b4fe716d1cb7f248e02da96881760541135acbcc7c0622ffedf71cb0e227bebf9
   languageName: node
   linkType: hard
 
@@ -27190,9 +27190,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openai@npm:^4.50.0":
-  version: 4.50.0
-  resolution: "openai@npm:4.50.0"
+"openai@npm:^4.51.0":
+  version: 4.51.0
+  resolution: "openai@npm:4.51.0"
   dependencies:
     "@types/node": "npm:^18.11.18"
     "@types/node-fetch": "npm:^2.6.4"
@@ -27204,7 +27204,7 @@ __metadata:
     web-streams-polyfill: "npm:^3.2.1"
   bin:
     openai: bin/cli
-  checksum: 10/d268f6c8d7956e608ee48e143ffaa19dd5166a1ec59f0037a3fdebd3044274e798bd5d9b9a1bb881a0e4b664a997030a916f1106d79e0ae06e5d506257a2ce4b
+  checksum: 10/789ecbc659d08b45415f422f32ba12e8c473daf75e972644a39acc96b6a5f31212fed39cf47cf4b88753ba9178edefb6811e870d37a6a573117209b8501cb9f3
   languageName: node
   linkType: hard
 
@@ -32606,13 +32606,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^15.10.0":
-  version: 15.10.0
-  resolution: "stripe@npm:15.10.0"
+"stripe@npm:^15.11.0":
+  version: 15.11.0
+  resolution: "stripe@npm:15.11.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10/20c7db091d5f7ddeeb33b03a6c70edaaf849838a26848a6fcce8c4fe2d6e964e4605b98f02e471d89590b8a2489a5992c2a7af31b4df6fc360d9015dd97e168e
+  checksum: 10/70ae9333efd73ff92133d056b1583dfaacdc539078bd62c21504b5c16340e59c8662e380a1c7fdee084b1a0433c4285bca4e42746c33ca0e911ca5f9c8518e85
   languageName: node
   linkType: hard
 
@@ -33482,18 +33482,6 @@ __metadata:
   version: 0.2.0
   resolution: "ts-easing@npm:0.2.0"
   checksum: 10/e67ee862acca3b2e2718e736f31999adcef862d0df76d76a0e138588728d8a87dfec9978556044640bd0e90203590ad88ac2fe8746d0e9959b8d399132315150
-  languageName: node
-  linkType: hard
-
-"ts-essentials@npm:9.4.1":
-  version: 9.4.1
-  resolution: "ts-essentials@npm:9.4.1"
-  peerDependencies:
-    typescript: ">=4.1.0"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 10/e689fb92545ea3ab70d3b6846696866b79813e20bd23ec34fdf1812b6be5aaa70eea374f7363b9f850f2e1bf864d90b6390b9f1fc3ce3c4e6207a9aa068252f0
   languageName: node
   linkType: hard
 
