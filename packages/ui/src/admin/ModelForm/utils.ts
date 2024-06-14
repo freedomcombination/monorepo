@@ -13,6 +13,7 @@ import {
   CourseApplication,
   Hashtag,
   Mention,
+  Platform,
   Post,
   Profile,
   Role,
@@ -95,6 +96,7 @@ export const useDefaultValues = <T extends StrapiModel>(
   const assetTrackingModel = model as AssetsTracking
   const courseModel = model as Course
   const hashtagModel = model as Hashtag
+  const platformModel = model as Platform
   const postModel = model as Post
   const profileModel = model as Profile
   const userModel = model as User
@@ -208,8 +210,8 @@ export const useDefaultValues = <T extends StrapiModel>(
 
         case 'foundation':
           defaults.foundation = {
-            label: assetModel.foundation?.name,
-            value: assetModel.foundation?.id.toString(),
+            label: platformModel.foundation?.name,
+            value: platformModel.foundation?.id.toString(),
           }
           break
         case 'course':

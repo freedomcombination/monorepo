@@ -33,10 +33,10 @@
       "required": false,
       "allowedTypes": ["files", "images"]
     },
-    "foundation": {
+    "platform": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::foundation.foundation",
+      "target": "api::platform.platform",
       "inversedBy": "assets"
     },
     "peopleInCharge": {
