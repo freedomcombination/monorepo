@@ -1,6 +1,5 @@
 import { FC, ReactNode, useState } from 'react'
 
-import { HydrationOverlay } from '@builder.io/react-hydration-overlay'
 import { ChakraProvider, createStandaloneToast } from '@chakra-ui/react'
 import {
   HydrationBoundary,
@@ -53,29 +52,27 @@ export const Providers: FC<ProvidersProps> = ({
   }
 
   return (
-    <HydrationOverlay>
-      <QueryClientProvider client={queryClient}>
-        <HydrationBoundary state={dehydratedState}>
-          <AuthProvider site={site}>
-            <ChakraProvider theme={themes[site]}>
-              <ReCaptchaProvider
-                reCaptchaKey={RECAPTCHA_SITE_KEY}
-                language={locale}
-              >
-                <WebPushProvider enable={!!enablePush}>
-                  {enablePush && <NotificationModal />}
-                  <DefaultSeo {...defaultSeo[site][locale]} />
-                  {children}
-                  <Analytics />
-                  {!cookie && <CookieBanner onAllow={onAllow} />}
-                  <ToastContainer />
-                </WebPushProvider>
-              </ReCaptchaProvider>
-            </ChakraProvider>
-          </AuthProvider>
-        </HydrationBoundary>
-        <ReactQueryDevtools buttonPosition="bottom-left" />
-      </QueryClientProvider>
-    </HydrationOverlay>
+    <QueryClientProvider client={queryClient}>
+      <HydrationBoundary state={dehydratedState}>
+        <AuthProvider site={site}>
+          <ChakraProvider theme={themes[site]}>
+            <ReCaptchaProvider
+              reCaptchaKey={RECAPTCHA_SITE_KEY}
+              language={locale}
+            >
+              <WebPushProvider enable={!!enablePush}>
+                {enablePush && <NotificationModal />}
+                <DefaultSeo {...defaultSeo[site][locale]} />
+                {children}
+                <Analytics />
+                {!cookie && <CookieBanner onAllow={onAllow} />}
+                <ToastContainer />
+              </WebPushProvider>
+            </ReCaptchaProvider>
+          </ChakraProvider>
+        </AuthProvider>
+      </HydrationBoundary>
+      <ReactQueryDevtools buttonPosition="bottom-left" />
+    </QueryClientProvider>
   )
 }
