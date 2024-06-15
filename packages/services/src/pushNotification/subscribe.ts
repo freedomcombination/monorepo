@@ -47,12 +47,12 @@ export const subscribePushNotification = async (
 }
 
 export const useSubscribePushNotificationMutation = () => {
-  const { token } = useAuthContext()
-  const { registration, site } = useWebPushContext()
+  const { token, appSlug } = useAuthContext()
+  const { registration } = useWebPushContext()
 
   return useMutation({
     mutationKey: ['create-subscriber'],
-    mutationFn: () => subscribePushNotification(registration, site, token),
+    mutationFn: () => subscribePushNotification(registration, appSlug, token),
   })
 }
 
@@ -73,12 +73,12 @@ export const unsubscribePushNotification = async (
 }
 
 export const useUnsubscribePushNotificationMutation = () => {
-  const { token } = useAuthContext()
-  const { registration, site } = useWebPushContext()
+  const { token, appSlug } = useAuthContext()
+  const { registration } = useWebPushContext()
 
   return useMutation({
     mutationKey: ['delete-subscriber'],
     mutationFn: () =>
-      unsubscribePushNotification(registration, site, token as string),
+      unsubscribePushNotification(registration, appSlug, token as string),
   })
 }

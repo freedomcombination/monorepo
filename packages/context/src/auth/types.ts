@@ -3,7 +3,13 @@ import { Dispatch, ReactNode } from 'react'
 
 import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
 
-import { Permissions, Profile, SessionUser, StrapiEndpoint } from '@fc/types'
+import {
+  AppSlug,
+  Permissions,
+  Profile,
+  SessionUser,
+  StrapiEndpoint,
+} from '@fc/types'
 
 export type AuthState = {
   demoPermissions: Permissions | null
@@ -16,7 +22,7 @@ export type AuthState = {
   roles: string[]
   token: string | null
   user: SessionUser | null
-  appSlug: string
+  appSlug: AppSlug
 }
 
 export type AuthActions = {
@@ -50,5 +56,5 @@ export type AuthContextType = AuthState & AuthActions
 export type AuthProviderProps = {
   children: ReactNode
   initialState?: AuthState
-  appSlug: string
+  appSlug: AppSlug
 }

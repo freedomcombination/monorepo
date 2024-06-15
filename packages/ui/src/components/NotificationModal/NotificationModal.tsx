@@ -22,8 +22,8 @@ export const NotificationModal = () => {
   const { t } = useTranslation()
 
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { user } = useAuthContext()
-  const { isSubscribed, isSupported, site } = useWebPushContext()
+  const { user, appSlug } = useAuthContext()
+  const { isSubscribed, isSupported } = useWebPushContext()
 
   const subscribePushNotificationMutation =
     useSubscribePushNotificationMutation()
@@ -40,7 +40,7 @@ export const NotificationModal = () => {
 
   useEffect(() => {
     // Show dashboard notification modal only if user is logged in
-    if (site === 'dashboard' && !user) {
+    if (appSlug === 'dashboard' && !user) {
       return
     }
 
@@ -52,7 +52,7 @@ export const NotificationModal = () => {
       // Clean-up on depend. change
       return () => clearTimeout(timer)
     }
-  }, [isSubscribed, isSupported, user, site, onOpen])
+  }, [isSubscribed, isSupported, user, appSlug, onOpen])
 
   const handleClose = () => {
     onClose()

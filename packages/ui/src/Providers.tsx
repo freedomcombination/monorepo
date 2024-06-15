@@ -62,7 +62,7 @@ export const Providers: FC<ProvidersProps> = ({
                 reCaptchaKey={RECAPTCHA_SITE_KEY}
                 language={locale}
               >
-                <WebPushProvider site={appSlug} enable={!!enablePush}>
+                <WebPushProvider enable={!!enablePush}>
                   {enablePush && <NotificationModal />}
                   <DefaultSeo {...defaultSeo[appSlug][locale]} />
                   {children}
