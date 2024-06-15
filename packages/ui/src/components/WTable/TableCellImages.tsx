@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import {
   AvatarGroup,
@@ -16,8 +16,6 @@ import { WAvatar } from '../WAvatar'
 import { WImage } from '../WImage'
 
 const TableCellImage: FC<TableCellImageProps> = ({ image }) => {
-  const [cellImage, setCellImage] = useState<string>()
-
   const thumbnail = (image?.formats?.thumbnail?.url ||
     image?.formats?.xsmall ||
     image?.formats?.small ||
@@ -35,8 +33,7 @@ const TableCellImage: FC<TableCellImageProps> = ({ image }) => {
             ring={2}
             ringColor={'white'}
             boxSize={8}
-            src={cellImage || getMediaUrl(thumbnail)}
-            onError={() => setCellImage(getMediaUrl(thumbnail, true))}
+            src={getMediaUrl(thumbnail)}
           />
         </Box>
       </PopoverTrigger>
