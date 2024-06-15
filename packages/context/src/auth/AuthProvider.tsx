@@ -17,6 +17,8 @@ export const AuthContext = createContext<AuthContextType>(initialAuthState)
 export const AuthProvider: FC<AuthProviderProps> = ({
   children,
   initialState = initialAuthState,
+  // instead of creating new context for just appSlug, i use AuthContext
+  appSlug,
 }) => {
   const {
     data,
@@ -154,6 +156,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         roles,
         token,
         user,
+        appSlug,
         canApprove,
         canCreate,
         canDelete,

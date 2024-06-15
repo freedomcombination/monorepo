@@ -54,7 +54,7 @@ export const Providers: FC<ProvidersProps> = ({
     <HydrationOverlay>
       <QueryClientProvider client={queryClient}>
         <HydrationBoundary state={dehydratedState}>
-          <AuthProvider>
+          <AuthProvider appSlug={appSlug}>
             <ChakraProvider theme={themes[appSlug]}>
               <ReCaptchaProvider
                 reCaptchaKey={RECAPTCHA_SITE_KEY}

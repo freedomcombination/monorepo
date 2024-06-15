@@ -16,6 +16,7 @@ export type AuthState = {
   roles: string[]
   token: string | null
   user: SessionUser | null
+  appSlug: string
 }
 
 export type AuthActions = {
@@ -49,4 +50,5 @@ export type AuthContextType = AuthState & AuthActions
 export type AuthProviderProps = {
   children: ReactNode
   initialState?: AuthState
+  appSlug: string
 }
