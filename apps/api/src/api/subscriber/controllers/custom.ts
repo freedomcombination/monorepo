@@ -1,10 +1,10 @@
 import webPush, { PushSubscription } from 'web-push'
 import { errors } from '@strapi/utils'
+import { checkAdmin } from '../../../utils'
 
 export default {
   async notify(ctx) {
-    const user = ctx.state.user
-    const isAdmin = user?.role?.type === 'admin'
+    const isAdmin = checkAdmin(ctx)
 
     if (!isAdmin) {
       throw new errors.ForbiddenError(
