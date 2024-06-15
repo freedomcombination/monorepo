@@ -151,7 +151,8 @@ export const SignupForm: FC<SignupFormProps> = ({
               />
 
               <ButtonLink
-                href="/terms"
+                href="/auth/terms"
+                target="_blank"
                 variant="link"
                 colorScheme="gray"
                 size="sm"

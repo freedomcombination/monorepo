@@ -6,56 +6,20 @@ import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import {
-  ForgotPasswordForm,
-  LoginForm,
-  ResetPasswordForm,
-  SignupForm,
-} from '@fc/ui'
+import { AuthActionForm, LoginStates, getTitle } from '@fc/ui'
 
 import { Layout } from '../../components'
-
-export type LoginStates =
-  | 'login'
-  | 'register'
-  | 'forgot'
-  | 'reset'
-  | 'forgot-password'
 
 const AuthPage: FC<{ action: LoginStates }> = ({ action }) => {
   const { t } = useTranslation()
 
-  const title = () => {
-    switch (action) {
-      case 'reset':
-        return t('forgot-pass.reset-password')
-      case 'register':
-        return t('login.signup')
-      case 'forgot-password':
-      case 'forgot':
-        return t('login.forgot.title')
-      default:
-        return t('login.signin')
-    }
-  }
-
-  const getForm = () => {
-    switch (action) {
-      case 'forgot-password':
-      case 'forgot':
-        return <ForgotPasswordForm />
-      case 'reset':
-        return <ResetPasswordForm />
-      case 'register':
-        return <SignupForm providersToBeShown={['google']} />
-      default:
-        return <LoginForm providersToBeShown={['google']} />
-    }
-  }
+  const title = t(getTitle(action))
 
   return (
-    <Layout seo={{ title: title() }}>
-      <Box minH="inherit">{getForm()}</Box>
+    <Layout seo={{ title }}>
+      <Box minH="inherit">
+        <AuthActionForm action={action} />
+      </Box>
     </Layout>
   )
 }
