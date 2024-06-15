@@ -9,6 +9,7 @@ const initialWebPushState: WebPushState = {
   registration: null,
   subscription: null,
   isSubscribed: false,
+  isSupported: false,
   site: null,
 }
 

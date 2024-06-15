@@ -5,21 +5,23 @@ import { WebPushSubscription } from '@fc/types'
 export const useWebPush = (enable: boolean) => {
   const [registration, setRegistration] =
     useState<ServiceWorkerRegistration | null>(null)
+  const [isSupported, setIsSupported] = useState<boolean>(true)
 
   const [subscription, setSubscription] = useState<WebPushSubscription | null>(
     null,
   )
 
   useEffect(() => {
-    if (!enable) {
-      return
-    }
+    if (!enable) return
 
     const registerServiceWorker = async () => {
-      if (!('serviceWorker' in navigator)) {
+      if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
         console.error('Service worker or Push is not supported')
+        setIsSupported(false)
 
         return
+      } else {
+        setIsSupported(true)
       }
 
       const swRegistration = await navigator.serviceWorker.ready
@@ -47,5 +49,10 @@ export const useWebPush = (enable: boolean) => {
     registerServiceWorker()
   }, [enable])
 
-  return { registration, subscription, isSubscribed: !!subscription }
+  return {
+    registration,
+    subscription,
+    isSubscribed: !!subscription,
+    isSupported,
+  }
 }

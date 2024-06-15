@@ -15,14 +15,15 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
-import { useWebPushContext } from '@fc/context'
+import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useSubscribePushNotificationMutation } from '@fc/services'
 
 export const NotificationModal = () => {
   const { t } = useTranslation()
 
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { isSubscribed } = useWebPushContext()
+  const { user } = useAuthContext()
+  const { isSubscribed, isSupported, site } = useWebPushContext()
 
   const subscribePushNotificationMutation =
     useSubscribePushNotificationMutation()
@@ -38,7 +39,12 @@ export const NotificationModal = () => {
   }
 
   useEffect(() => {
-    if (!isSubscribed) {
+    // Show dashboard notification modal only if user is logged in
+    if (site === 'dashboard' && !user) {
+      return
+    }
+
+    if (!isSubscribed && isSupported) {
       const timer = setTimeout(() => {
         onOpen()
       }, 3000)
@@ -46,7 +52,14 @@ export const NotificationModal = () => {
       // Clean-up on depend. change
       return () => clearTimeout(timer)
     }
-  }, [isSubscribed, onOpen])
+  }, [isSubscribed, isSupported, user, site, onOpen])
+
+  const handleClose = () => {
+    onClose()
+
+    // TODO: Set a cookie to prevent showing the modal again
+    // Maybe a timeout of 1 week
+  }
 
   return (
     <>
@@ -67,7 +80,7 @@ export const NotificationModal = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="gray" mr={3} onClick={onClose}>
+            <Button colorScheme="gray" mr={3} onClick={handleClose}>
               {t('close')}
             </Button>
             <Button

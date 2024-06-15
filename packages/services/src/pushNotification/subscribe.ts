@@ -29,12 +29,17 @@ export const subscribePushNotification = async (
       ),
     })) as unknown as WebPushSubscription
 
+    if (subscription) {
+      console.info('Successfully subscribed to push service')
+    }
+
     return Mutation.post<Subscriber, SubscriberCreateInput>(
       'subscribers',
       { subscription, site: site as AppSlug },
       token as string,
     )
   } catch (error: any) {
+    console.error('error', error)
     throw new Error(
       `Failed to subscribe to the push service: ${error.message || 'Unknown error'}`,
     )
@@ -52,18 +57,28 @@ export const useSubscribePushNotificationMutation = () => {
 }
 
 export const unsubscribePushNotification = async (
-  id: number,
+  registration: ServiceWorkerRegistration | null,
+  site: AppSlug | null,
   token: string,
 ) => {
-  Mutation.delete<Subscriber>('subscribers', id, token)
+  const subscription = await registration?.pushManager.getSubscription()
+  await subscription?.unsubscribe()
+  await registration?.unregister()
+
+  // TODO: Remove
+  console.info(site, token)
+
+  // TODO: Create a custom delete endpoint to delete the subscriber
+  // TODO: User the token adn site to delete the subscriber
 }
 
 export const useUnsubscribePushNotificationMutation = () => {
   const { token } = useAuthContext()
+  const { registration, site } = useWebPushContext()
 
   return useMutation({
     mutationKey: ['delete-subscriber'],
-    mutationFn: (id: number) =>
-      unsubscribePushNotification(id, token as string),
+    mutationFn: () =>
+      unsubscribePushNotification(registration, site, token as string),
   })
 }
