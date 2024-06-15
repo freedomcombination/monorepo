@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   async getProfile(ctx) {
     if (!ctx.state.user) {
       throw ctx.unauthorized('You are not authenticated')
@@ -51,7 +51,6 @@ module.exports = {
   async updateUser(ctx) {
     const userId = ctx.state.user.id
     const data = ctx.request.body
-    console.log(data)
 
     const username = data.username
     const email = data.email

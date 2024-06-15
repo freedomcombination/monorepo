@@ -1,14 +1,17 @@
-import { Button, Container, Heading, Stack } from '@chakra-ui/react'
+import { Button, Container, HStack, Heading, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
+import { useAuthContext } from '@fc/context'
 import { toastMessage } from '@fc/utils'
 
 import { ForgotPasswordFieldValues } from './types'
+import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
 
 const schema = yup.object({
@@ -17,6 +20,8 @@ const schema = yup.object({
 
 export const ForgotPasswordForm = () => {
   const { t } = useTranslation()
+  const { site } = useAuthContext()
+  const { locale } = useRouter()
 
   const {
     register,
@@ -34,13 +39,18 @@ export const ForgotPasswordForm = () => {
   const { mutate, isPending } = useMutation({
     mutationKey: ['forgot-password'],
     mutationFn: (values: ForgotPasswordFieldValues) =>
-      axios.post('/api/auth/forgot-password', values),
+      axios.post('/api/auth/forgot-password', {
+        ...values,
+        site,
+        locale,
+      }),
     onSuccess: () => {
       toastMessage(null, t('forgot-pass.text'), 'success')
       reset()
     },
-    onError: () => {
-      toastMessage(t('error'), null, 'error')
+    onError: err => {
+      const code = (err as any)?.details?.code
+      toastMessage(t('error'), code ? t(code) : null, 'error')
     },
   })
 
@@ -77,6 +87,11 @@ export const ForgotPasswordForm = () => {
             />
           </Stack>
           <Stack spacing="6">
+            <HStack>
+              <ButtonLink href="/auth/login" variant="link">
+                {t('login.signin')}
+              </ButtonLink>
+            </HStack>
             <Button type="submit" isLoading={isPending}>
               {t('submit')}
             </Button>

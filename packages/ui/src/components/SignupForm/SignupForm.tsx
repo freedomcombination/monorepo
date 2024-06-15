@@ -109,7 +109,7 @@ export const SignupForm: FC<SignupFormProps> = ({
             <HStack spacing="1" justify="center">
               <Text color="muted">{t('login.have-account')}</Text>
 
-              <ButtonLink href="/login" variant="link">
+              <ButtonLink href="/auth/login" variant="link">
                 {t('login.signin')}
               </ButtonLink>
             </HStack>
@@ -151,7 +151,8 @@ export const SignupForm: FC<SignupFormProps> = ({
               />
 
               <ButtonLink
-                href="/terms"
+                href="/auth/terms"
+                target="_blank"
                 variant="link"
                 colorScheme="gray"
                 size="sm"

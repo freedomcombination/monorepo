@@ -11,4 +11,5 @@ export const initialAuthState = {
   roles: ['public'],
   token: null,
   user: null,
+  site: 'foundation',
 } as AuthContextType

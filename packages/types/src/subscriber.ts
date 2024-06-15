@@ -1,26 +1,28 @@
+import { PushSubscription } from 'web-push'
+
+import { Site } from './app'
 import { Profile } from './profile'
 import { StrapiBase } from './strapi'
 
-export type NotificationSubscription = {
-  endpoint: string
-  expirationTime: string | null
-  keys: {
-    auth: string
-    p256dh: string
-  }
+export type WebPushSubscription = PushSubscription & {
+  expirationTime: number
+}
+
+type SubscriberBase = {
+  site: Site
 }
 
 export type SubscriberRelation = {
-  subscription: NotificationSubscription | null
+  subscription: WebPushSubscription | null
   profile?: Profile | null
 }
 
 export type SubscriberRelationInput = {
-  subscription?: NotificationSubscription
+  subscription?: WebPushSubscription
 }
 
-export type SubscriberCreateInput = SubscriberRelationInput
+export type SubscriberCreateInput = SubscriberBase & SubscriberRelationInput
 
-export type SubscriberUpdateInput = SubscriberRelationInput
+export type SubscriberUpdateInput = SubscriberBase & SubscriberRelationInput
 
-export type Subscriber = StrapiBase & SubscriberRelation
+export type Subscriber = StrapiBase & SubscriberBase & SubscriberRelation

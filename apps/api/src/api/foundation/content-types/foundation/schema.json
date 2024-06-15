@@ -50,12 +50,6 @@
       "target": "api::platform.platform",
       "mappedBy": "foundation"
     },
-    "assets": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::asset.asset",
-      "mappedBy": "foundation"
-    },
     "contact": {
       "type": "component",
       "repeatable": false,
