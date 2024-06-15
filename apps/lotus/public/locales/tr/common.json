@@ -379,5 +379,6 @@
   "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!",
   "login.forgot.title": "Şifremi unuttum",
   "forgot-pass.back-to-login": "Giriş yap",
-  "forgot-pass.reset-password": "Şifremi resetle"
+  "forgot-pass.reset-password": "Şifremi resetle",
+  "success": "Success"
 }

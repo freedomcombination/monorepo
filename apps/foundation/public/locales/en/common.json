@@ -384,5 +384,6 @@
   "you-must-logged-in": "You must be logged in in order to be able to upload an art!",
   "login.forgot.title": "Şifremi unuttum",
   "forgot-pass.back-to-login": "Giriş yap",
-  "forgot-pass.reset-password": "Şifremi resetle"
+  "forgot-pass.reset-password": "Şifremi resetle",
+  "success": "Success"
 }

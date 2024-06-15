@@ -379,5 +379,6 @@
   "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!",
   "login.forgot.title": "Şifremi unuttum",
   "forgot-pass.back-to-login": "Giriş yap",
-  "forgot-pass.reset-password": "Şifremi resetle"
+  "forgot-pass.reset-password": "Şifremi resetle",
+  "success": "Success"
 }
