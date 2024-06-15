@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { Box, Divider, HStack, Text } from '@chakra-ui/react'
+import { Box, Divider, HStack, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MdCollectionsBookmark } from 'react-icons/md'
@@ -17,7 +17,7 @@ export const CollectionList: FC<CollectionListProps> = ({ collectionData }) => {
   const { locale } = useRouter()
 
   return (
-    <div>
+    <Stack>
       <HStack py={1.5} w="full" align="center">
         <Box as={MdCollectionsBookmark} />
         <Text display={{ base: 'none', lg: 'block' }} fontWeight={600}>
@@ -36,6 +36,6 @@ export const CollectionList: FC<CollectionListProps> = ({ collectionData }) => {
           {collection.title}
         </Link>
       ))}
-    </div>
+    </Stack>
   )
 }
