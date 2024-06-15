@@ -55,7 +55,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
 
   const handleUnsubscribe = async () => {
     if (confirm('Are you sure you want to unsubscribe?')) {
-      unsubscribeNotification.mutateAsync(1, {
+      unsubscribeNotification.mutateAsync(undefined, {
         onSuccess: () => {
           // TODO: Refresh notification state
           console.log('Unsubscribed')
