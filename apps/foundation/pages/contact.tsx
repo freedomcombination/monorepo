@@ -10,7 +10,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 
-import { EMAIL_SENDER, socialLinks } from '@fc/config'
+import { EMAIL, socialLinks } from '@fc/config'
 import { strapiRequest } from '@fc/lib'
 import { useSendEmail } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -36,7 +36,7 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
     const emailData = {
       subject: `Form from ${data.fullname} (${data.email})`,
       text: data.message,
-      from: EMAIL_SENDER,
+      from: EMAIL,
     }
 
     return sendForm(emailData)

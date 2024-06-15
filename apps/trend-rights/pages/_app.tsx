@@ -10,6 +10,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <Providers
       appSlug="trend-rights"
+      enablePush
       dehydratedState={pageProps.dehydratedState}
     >
       <Component {...pageProps} />

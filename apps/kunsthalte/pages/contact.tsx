@@ -10,7 +10,7 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail } from 'react-icons/md'
 
-import { EMAIL_SENDER, socialLinks } from '@fc/config'
+import { EMAIL, socialLinks } from '@fc/config'
 import { useSendEmail } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
@@ -33,7 +33,7 @@ const Contact = () => {
     const emailData = {
       subject: `Form from ${data.fullname} (${data.email})`,
       text: data.message,
-      from: EMAIL_SENDER,
+      from: EMAIL,
     }
 
     return sendForm(emailData)

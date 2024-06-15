@@ -15,23 +15,25 @@ import { DefaultSeo } from 'next-seo'
 import { useCookie } from 'react-use'
 
 import { RECAPTCHA_SITE_KEY, defaultSeo, themes } from '@fc/config'
-import { AuthProvider } from '@fc/context'
+import { AuthProvider, WebPushProvider } from '@fc/context'
 import { AppSlug } from '@fc/types'
 
-import { CookieBanner } from './components'
+import { CookieBanner, NotificationModal } from './components'
 
 type ProvidersProps = {
-  dehydratedState: unknown
   appSlug: AppSlug
   children: ReactNode
+  dehydratedState: unknown
+  enablePush?: boolean
 }
 
 const { ToastContainer } = createStandaloneToast()
 
 export const Providers: FC<ProvidersProps> = ({
-  dehydratedState,
   appSlug,
   children,
+  dehydratedState,
+  enablePush,
 }) => {
   const [queryClient] = useState(
     () =>
@@ -60,11 +62,14 @@ export const Providers: FC<ProvidersProps> = ({
                 reCaptchaKey={RECAPTCHA_SITE_KEY}
                 language={locale}
               >
-                <DefaultSeo {...defaultSeo[appSlug][locale]} />
-                {children}
-                <Analytics />
-                {!cookie && <CookieBanner onAllow={onAllow} />}
-                <ToastContainer />
+                <WebPushProvider site={appSlug} enable={!!enablePush}>
+                  {enablePush && <NotificationModal />}
+                  <DefaultSeo {...defaultSeo[appSlug][locale]} />
+                  {children}
+                  <Analytics />
+                  {!cookie && <CookieBanner onAllow={onAllow} />}
+                  <ToastContainer />
+                </WebPushProvider>
               </ReCaptchaProvider>
             </ChakraProvider>
           </AuthProvider>

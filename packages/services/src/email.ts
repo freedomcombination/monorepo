@@ -1,7 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 
-import { EMAIL_RECEIVER, EMAIL_SENDER, PUBLIC_TOKEN } from '@fc/config'
-import { RecaptchaKeys } from '@fc/config'
+import { EMAIL, PUBLIC_TOKEN, RecaptchaKeys } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { EmailCreateInput } from '@fc/types'
@@ -15,8 +14,8 @@ export const sendEmail = async (
 ) => {
   const body: EmailCreateInput = {
     ...data,
-    to: data.to || EMAIL_RECEIVER || EMAIL_SENDER,
-    from: EMAIL_SENDER as string,
+    to: data.to || EMAIL,
+    from: EMAIL as string,
     // Only include recaptchaToken if PUBLIC_TOKEN is used
     ...(!token && { recaptchaToken }),
   }

@@ -1315,10 +1315,10 @@ export interface ApiAssetAsset extends Schema.CollectionType {
     location: Attribute.String
     images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>
     invoice: Attribute.Media<'files' | 'images'>
-    foundation: Attribute.Relation<
+    platform: Attribute.Relation<
       'api::asset.asset',
       'manyToOne',
-      'api::foundation.foundation'
+      'api::platform.platform'
     >
     peopleInCharge: Attribute.Relation<
       'api::asset.asset',
@@ -2090,11 +2090,6 @@ export interface ApiFoundationFoundation extends Schema.CollectionType {
       'oneToMany',
       'api::platform.platform'
     >
-    assets: Attribute.Relation<
-      'api::foundation.foundation',
-      'oneToMany',
-      'api::asset.asset'
-    >
     contact: Attribute.Component<'contact.contact'>
     KVK: Attribute.String
     BIC: Attribute.String
@@ -2350,13 +2345,14 @@ export interface ApiNotificationNotification extends Schema.CollectionType {
     singularName: 'notification'
     pluralName: 'notifications'
     displayName: 'Notification'
+    description: ''
   }
   options: {
     draftAndPublish: false
   }
   attributes: {
     title: Attribute.String
-    body: Attribute.Text
+    message: Attribute.Text
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2465,6 +2461,11 @@ export interface ApiPlatformPlatform extends Schema.CollectionType {
       'api::foundation.foundation'
     >
     contact: Attribute.Component<'contact.contact'>
+    assets: Attribute.Relation<
+      'api::platform.platform',
+      'oneToMany',
+      'api::asset.asset'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -3335,6 +3336,7 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
     singularName: 'subscriber'
     pluralName: 'subscribers'
     displayName: 'Subscriber'
+    description: ''
   }
   options: {
     draftAndPublish: false
@@ -3346,6 +3348,10 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
       'oneToOne',
       'api::profile.profile'
     >
+    site: Attribute.Enumeration<
+      ['dashboard', 'foundation', 'kunsthalte', 'lotus', 'trend-rights']
+    > &
+      Attribute.Required
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

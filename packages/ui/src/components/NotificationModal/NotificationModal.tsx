@@ -1,29 +1,65 @@
+import { useEffect } from 'react'
+
 import {
   Button,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Text,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Stack,
+  Text,
+  useDisclosure,
 } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
-type NotificationModalProps = {
-  isOpen: boolean
-  onClose: () => void
-  subOnClick: React.MouseEventHandler<HTMLButtonElement>
-}
+import { useAuthContext, useWebPushContext } from '@fc/context'
+import { useSubscribePushNotificationMutation } from '@fc/services'
 
-const NotificationModal: React.FC<NotificationModalProps> = ({
-  isOpen,
-  onClose,
-  subOnClick,
-}) => {
+export const NotificationModal = () => {
   const { t } = useTranslation()
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { user } = useAuthContext()
+  const { isSubscribed, isSupported, site } = useWebPushContext()
+
+  const subscribePushNotificationMutation =
+    useSubscribePushNotificationMutation()
+
+  const handleSubscribe = async () => {
+    subscribePushNotificationMutation.mutateAsync(undefined, {
+      onSuccess: () => {
+        onClose()
+      },
+      // TODO: Show toast notification
+      onError: () => {},
+    })
+  }
+
+  useEffect(() => {
+    // Show dashboard notification modal only if user is logged in
+    if (site === 'dashboard' && !user) {
+      return
+    }
+
+    if (!isSubscribed && isSupported) {
+      const timer = setTimeout(() => {
+        onOpen()
+      }, 3000)
+
+      // Clean-up on depend. change
+      return () => clearTimeout(timer)
+    }
+  }, [isSubscribed, isSupported, user, site, onOpen])
+
+  const handleClose = () => {
+    onClose()
+
+    // TODO: Set a cookie to prevent showing the modal again
+    // Maybe a timeout of 1 week
+  }
 
   return (
     <>
@@ -44,15 +80,13 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="gray" mr={3} onClick={onClose}>
+            <Button colorScheme="gray" mr={3} onClick={handleClose}>
               {t('close')}
             </Button>
             <Button
-              colorScheme="green"
-              onClick={e => {
-                subOnClick(e)
-                onClose()
-              }}
+              colorScheme="primary"
+              isLoading={subscribePushNotificationMutation.isPending}
+              onClick={handleSubscribe}
             >
               {t('subscribe')}
             </Button>
@@ -62,5 +96,3 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
     </>
   )
 }
-
-export default NotificationModal

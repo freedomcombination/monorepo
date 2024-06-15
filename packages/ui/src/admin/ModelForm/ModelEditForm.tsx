@@ -25,7 +25,6 @@ import { AiOutlineEdit } from 'react-icons/ai'
 import { BiUserPlus } from 'react-icons/bi'
 import { BsTrash } from 'react-icons/bs'
 import { FaXTwitter } from 'react-icons/fa6'
-import { FiSend } from 'react-icons/fi'
 import { HiOutlineCheck, HiPlus } from 'react-icons/hi'
 import {
   MdClose,
@@ -72,6 +71,7 @@ import { WConfirm, WConfirmProps } from '../../components/WConfirm'
 import { useFields, useSchema } from '../../data'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
 import { DownloadCapsModal } from '../DownloadCapsModal'
+import { SendNotificationButton } from '../SendNotificationButton'
 
 export const ModelEditForm = <T extends StrapiModel>({
   endpoint,
@@ -304,22 +304,6 @@ export const ModelEditForm = <T extends StrapiModel>({
     else router.push(`/archive-contents/${id}`)
   }
 
-  const sendNotification = async () => {
-    const [title, body] = watch(['title', 'body'])
-
-    try {
-      await fetch('/api/notification', {
-        method: 'POST',
-        body: JSON.stringify({
-          title,
-          message: body,
-        }),
-      })
-    } catch (error) {
-      console.error('Could not send notification: ', error)
-    }
-  }
-
   const toggleChangingMedia = (field: FormCommonFields<T>) =>
     setIsChangingImage(prev => ({
       ...prev,
@@ -338,6 +322,13 @@ export const ModelEditForm = <T extends StrapiModel>({
   const showApproveButton =
     endpointsWithPublicationState.includes(endpoint) &&
     translatableModel.approvalStatus !== 'approved'
+
+  const [title, message, roles, profiles] = watch([
+    'title',
+    'message',
+    'roles',
+    'profiles',
+  ])
 
   return (
     <>
@@ -533,16 +524,14 @@ export const ModelEditForm = <T extends StrapiModel>({
               {t('posts')}
             </ActionButton>
 
-            <ActionButton
-              isVisible={endpoint === 'notifications'}
-              onClick={sendNotification}
-              leftIcon={<FiSend />}
-              fontSize="sm"
-              colorScheme={'blue'}
-              type="button"
-            >
-              {t('notification.send')}
-            </ActionButton>
+            {endpoint === 'notifications' && (
+              <SendNotificationButton
+                title={title}
+                message={message}
+                roles={roles}
+                profiles={profiles}
+              />
+            )}
 
             <ActionStack isVisible={endpoint === 'collections'} gap={0}>
               <ArtAddToCollectionModal
