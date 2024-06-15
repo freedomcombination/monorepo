@@ -75,6 +75,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
       setError(error.message)
     } finally {
       setIsLoading(false)
+      await checkAuth()
 
       router.push('/')
     }

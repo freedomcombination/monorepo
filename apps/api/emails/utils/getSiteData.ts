@@ -21,25 +21,21 @@ export const getSiteLink = (site: Site, locale?: StrapiLocale): string => {
 
 export const getSiteLogo = (site: Site) => {
   const siteLogos = {
-    kunsthalte: 'https://www.kunsthalte.com/images/kunsthalte-logo.svg',
-    'trend-rights':
-      'https://www.trendrights.com/images/trend-rights-logo-light.svg',
+    kunsthalte: 'https://www.kunsthalte.com/images/logo.png',
+    'trend-rights': 'https://www.trendrights.com/images/logo.png',
   }
 
-  return (
-    siteLogos[site] ||
-    'https://www.freedomcombination.com/images/foundation-logo.svg'
-  )
+  return siteLogos[site] || 'https://www.freedomcombination.com/images/logo.png'
 }
 
 export const getSiteColor = (site: Site) => {
   const siteColors = {
-    kunsthalte: '#22b580',
+    kunsthalte: '#319795',
     'trend-rights': '#FF4F00',
-    dashboard: 'green',
+    dashboard: '#3182CE',
   }
 
-  return siteColors[site] || 'blue'
+  return siteColors[site] || '#3182CE'
 }
 
 export const getSiteName = (site: Site) => {

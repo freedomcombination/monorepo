@@ -1,10 +1,11 @@
 import { Site, StrapiLocale } from '@fc/types'
-import { Button, Heading, Section, Text } from '@react-email/components'
+import { Heading, Section, Text } from '@react-email/components'
 import React, { FC } from 'react'
 import { EmailProvider } from './EmailProvider'
-import PlatformLayout from './components/PlatformLayout'
-import { getSiteLink } from './utils/getSiteData'
+import SiteLayout from './components/SiteLayout'
+import { getSiteColor, getSiteLink } from './utils/getSiteData'
 import { getTranslate } from './utils/getTranslate'
+import { EmailButton } from './components/Button'
 
 type ForgotPasswordProps = {
   email: string
@@ -16,16 +17,19 @@ type ForgotPasswordProps = {
 const ForgotPassword: FC<ForgotPasswordProps> = ({ site, locale, code }) => {
   const resetLink = getSiteLink(site, locale) + 'auth/reset?code=' + code
   const { t } = getTranslate(locale)
+  const color = getSiteColor(site)
 
   return (
     <EmailProvider>
-      <PlatformLayout site={site} preview={t('forgot.preview')}>
+      <SiteLayout site={site} preview={t('forgot.preview')}>
         <Section>
           <Heading>{t('forgot.heading')}</Heading>
           <Text>{t('forgot.message')}</Text>
-          <Button href={resetLink}>{t('forgot.reset')}</Button>
+          <EmailButton style={{ backgroundColor: color }} href={resetLink}>
+            {t('forgot.reset')}
+          </EmailButton>
         </Section>
-      </PlatformLayout>
+      </SiteLayout>
     </EmailProvider>
   )
 }
