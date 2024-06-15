@@ -26,7 +26,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   const { t } = useTranslation()
   const { user, profile, logout, isLoading } = useAuthContext()
   const { asPath } = useRouter()
-  const loginHref = `/login?returnUrl=${asPath}`
+  const loginHref = `/auth/login?returnUrl=${asPath}`
 
   const Wrapper = !isScrolled && isDark ? DarkMode : Fragment
 

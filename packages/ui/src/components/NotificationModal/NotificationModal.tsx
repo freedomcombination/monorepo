@@ -22,8 +22,8 @@ export const NotificationModal = () => {
   const { t } = useTranslation()
 
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { user } = useAuthContext()
-  const { isSubscribed, isSupported, site } = useWebPushContext()
+  const { user, site } = useAuthContext()
+  const { isSubscribed, isSupported } = useWebPushContext()
 
   const subscribePushNotificationMutation =
     useSubscribePushNotificationMutation()

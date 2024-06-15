@@ -9,7 +9,7 @@ import { Providers } from '@fc/ui'
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <Providers
-      appSlug="dashboard"
+      site="dashboard"
       enablePush
       dehydratedState={pageProps.dehydratedState}
     >

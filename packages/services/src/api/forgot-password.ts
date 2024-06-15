@@ -4,11 +4,11 @@ import { NextApiHandler } from 'next'
 import { API_URL } from '@fc/config'
 
 export const forgotPasswordRouter: NextApiHandler = async (req, res) => {
-  const { email } = req.body
+  const { email, platform, locale } = req.body
   try {
     const response = await axios.post(
       'api/auth/forgot-password',
-      { email },
+      { email, platform, locale },
       { baseURL: API_URL },
     )
     res.json(response.data)
