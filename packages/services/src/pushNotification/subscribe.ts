@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import {
-  AppSlug,
+  Site,
   WebPushSubscription,
   Subscriber,
   SubscriberCreateInput,
@@ -12,7 +12,7 @@ import { base64ToUint8Array } from '@fc/utils'
 
 export const subscribePushNotification = async (
   registration: ServiceWorkerRegistration | null,
-  site: AppSlug | null,
+  site: Site | null,
   token: string | null,
 ) => {
   try {
@@ -35,7 +35,7 @@ export const subscribePushNotification = async (
 
     return Mutation.post<Subscriber, SubscriberCreateInput>(
       'subscribers',
-      { subscription, site: site as AppSlug },
+      { subscription, site: site as Site },
       token as string,
     )
   } catch (error: any) {
@@ -47,18 +47,18 @@ export const subscribePushNotification = async (
 }
 
 export const useSubscribePushNotificationMutation = () => {
-  const { token, appSlug } = useAuthContext()
+  const { token, site } = useAuthContext()
   const { registration } = useWebPushContext()
 
   return useMutation({
     mutationKey: ['create-subscriber'],
-    mutationFn: () => subscribePushNotification(registration, appSlug, token),
+    mutationFn: () => subscribePushNotification(registration, site, token),
   })
 }
 
 export const unsubscribePushNotification = async (
   registration: ServiceWorkerRegistration | null,
-  site: AppSlug | null,
+  site: Site | null,
   token: string,
 ) => {
   const subscription = await registration?.pushManager.getSubscription()
@@ -73,12 +73,12 @@ export const unsubscribePushNotification = async (
 }
 
 export const useUnsubscribePushNotificationMutation = () => {
-  const { token, appSlug } = useAuthContext()
+  const { token, site } = useAuthContext()
   const { registration } = useWebPushContext()
 
   return useMutation({
     mutationKey: ['delete-subscriber'],
     mutationFn: () =>
-      unsubscribePushNotification(registration, appSlug, token as string),
+      unsubscribePushNotification(registration, site, token as string),
   })
 }

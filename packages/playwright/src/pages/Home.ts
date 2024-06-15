@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test'
 
-import { AppSlug } from '@fc/types'
+import { Site } from '@fc/types'
 
 import { TEST_TIMEOUT } from '../config'
 import { getVercelUrl } from '../utils'
@@ -8,16 +8,16 @@ import { getVercelUrl } from '../utils'
 export class HomePage {
   readonly page: Page
   readonly loginLink: Locator
-  readonly project: AppSlug
+  readonly site: Site
 
-  constructor(page: Page, project: AppSlug) {
+  constructor(page: Page, site: Site) {
     this.page = page
     this.loginLink = page.getByRole('link', { name: 'Sign in' })
-    this.project = project
+    this.site = site
   }
 
   get url() {
-    return getVercelUrl(this.project)
+    return getVercelUrl(this.site)
   }
 
   async gotoLogin() {

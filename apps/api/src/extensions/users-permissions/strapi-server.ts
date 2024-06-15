@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 import utils from '@strapi/utils'
-import { AppSlug, StrapiLocale } from '@fc/types'
+import { Site, StrapiLocale } from '@fc/types'
 import { emailTemplates } from '../../../emails'
 
 const { sanitize } = utils
@@ -25,10 +25,8 @@ module.exports = plugin => {
   plugin.controllers.auth.forgotPassword = async ctx => {
     let { email } = ctx.request.body
 
-    const {
-      platform = 'foundation' as AppSlug,
-      locale = 'en' as StrapiLocale,
-    } = ctx.request.body
+    const { site = 'foundation' as Site, locale = 'en' as StrapiLocale } =
+      ctx.request.body
 
     const isEmail = emailRegExp.test(email)
 
@@ -77,7 +75,7 @@ module.exports = plugin => {
 
     settings.message = emailTemplates.renderForgotPassword(
       email,
-      platform,
+      site,
       resetPasswordToken,
       locale,
     )

@@ -1,30 +1,25 @@
-import { AppSlug, StrapiLocale } from '@fc/types'
+import { Site, StrapiLocale } from '@fc/types'
 import { Button, Heading, Section, Text } from '@react-email/components'
 import React, { FC } from 'react'
 import { EmailProvider } from './EmailProvider'
 import PlatformLayout from './components/PlatformLayout'
-import { getLinkByAppSlug } from './utils/getByAppSlug'
+import { getSiteLink } from './utils/getSiteData'
 import { getTranslate } from './utils/getTranslate'
 
 type ForgotPasswordProps = {
   email: string
-  platform: AppSlug
+  site: Site
   locale?: StrapiLocale
   code: string
 }
 
-const ForgotPassword: FC<ForgotPasswordProps> = ({
-  platform,
-  locale,
-  code,
-}) => {
-  const resetLink =
-    getLinkByAppSlug(platform as AppSlug, locale) + 'auth/reset?code=' + code
+const ForgotPassword: FC<ForgotPasswordProps> = ({ site, locale, code }) => {
+  const resetLink = getSiteLink(site, locale) + 'auth/reset?code=' + code
   const { t } = getTranslate(locale)
 
   return (
     <EmailProvider>
-      <PlatformLayout appSlug={platform} preview={t('forgot.preview')}>
+      <PlatformLayout site={site} preview={t('forgot.preview')}>
         <Section>
           <Heading>{t('forgot.heading')}</Heading>
           <Text>{t('forgot.message')}</Text>

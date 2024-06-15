@@ -1,20 +1,16 @@
 import { expect, test } from '@playwright/test'
 
-import { AppSlug } from '@fc/types'
+import { Site } from '@fc/types'
 
 import { TEST_TIMEOUT } from '../config'
 import { PASSWORD, USERNAME } from '../constants'
 import { HomePage, LoginPage } from '../pages'
 
-const projectsWithLogin: AppSlug[] = [
-  'foundation',
-  'kunsthalte',
-  'trend-rights',
-]
+const sitesWithLogin: Site[] = ['foundation', 'kunsthalte', 'trend-rights']
 
-for (const project of projectsWithLogin) {
-  test(`Login for ${project}`, async ({ page }) => {
-    const homePage = new HomePage(page, project)
+for (const site of sitesWithLogin) {
+  test(`Login for ${site}`, async ({ page }) => {
+    const homePage = new HomePage(page, site)
     const loginPage = new LoginPage(page)
 
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })

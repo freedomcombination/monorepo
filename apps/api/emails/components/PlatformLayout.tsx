@@ -1,4 +1,4 @@
-import { AppSlug } from '@fc/types'
+import { Site } from '@fc/types'
 import {
   Column,
   Img,
@@ -9,23 +9,19 @@ import {
 } from '@react-email/components'
 import React from 'react'
 import { FC, PropsWithChildren } from 'react'
-import {
-  getColorByAppSlug,
-  getLogoByAppSlug,
-  getNameByAppSlug,
-} from '../utils/getByAppSlug'
+import { getSiteColor, getSiteLogo, getSiteName } from '../utils/getSiteData'
 
 type PlatformLayoutProps = PropsWithChildren<{
-  appSlug: AppSlug
+  site: Site
   preview?: string
 }>
 
 const PlatformLayout: FC<PlatformLayoutProps> = ({
-  appSlug,
+  site,
   children,
   preview,
 }) => {
-  const bgColor = getColorByAppSlug(appSlug)
+  const bgColor = getSiteColor(site)
 
   return (
     <Section>
@@ -44,8 +40,8 @@ const PlatformLayout: FC<PlatformLayoutProps> = ({
               width: '120px',
               height: '120px',
             }}
-            src={getLogoByAppSlug(appSlug)}
-            alt={getNameByAppSlug(appSlug)}
+            src={getSiteLogo(site)}
+            alt={getSiteName(site)}
           />
         </Column>
         <Column
@@ -56,7 +52,7 @@ const PlatformLayout: FC<PlatformLayoutProps> = ({
           {preview ? (
             <Preview>{preview}</Preview>
           ) : (
-            <Text>{getNameByAppSlug(appSlug)}</Text>
+            <Text>{getSiteName(site)}</Text>
           )}
         </Column>
       </Row>

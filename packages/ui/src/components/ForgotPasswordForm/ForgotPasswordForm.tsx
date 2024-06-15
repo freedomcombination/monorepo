@@ -20,7 +20,7 @@ const schema = yup.object({
 
 export const ForgotPasswordForm = () => {
   const { t } = useTranslation()
-  const { appSlug } = useAuthContext()
+  const { site } = useAuthContext()
   const { locale } = useRouter()
 
   const {
@@ -41,7 +41,7 @@ export const ForgotPasswordForm = () => {
     mutationFn: (values: ForgotPasswordFieldValues) =>
       axios.post('/api/auth/forgot-password', {
         ...values,
-        platform: appSlug,
+        site,
         locale,
       }),
     onSuccess: () => {

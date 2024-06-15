@@ -16,12 +16,12 @@ import { useCookie } from 'react-use'
 
 import { RECAPTCHA_SITE_KEY, defaultSeo, themes } from '@fc/config'
 import { AuthProvider, WebPushProvider } from '@fc/context'
-import { AppSlug } from '@fc/types'
+import { Site } from '@fc/types'
 
 import { CookieBanner, NotificationModal } from './components'
 
 type ProvidersProps = {
-  appSlug: AppSlug
+  site: Site
   children: ReactNode
   dehydratedState: unknown
   enablePush?: boolean
@@ -30,7 +30,7 @@ type ProvidersProps = {
 const { ToastContainer } = createStandaloneToast()
 
 export const Providers: FC<ProvidersProps> = ({
-  appSlug,
+  site,
   children,
   dehydratedState,
   enablePush,
@@ -56,15 +56,15 @@ export const Providers: FC<ProvidersProps> = ({
     <HydrationOverlay>
       <QueryClientProvider client={queryClient}>
         <HydrationBoundary state={dehydratedState}>
-          <AuthProvider appSlug={appSlug}>
-            <ChakraProvider theme={themes[appSlug]}>
+          <AuthProvider site={site}>
+            <ChakraProvider theme={themes[site]}>
               <ReCaptchaProvider
                 reCaptchaKey={RECAPTCHA_SITE_KEY}
                 language={locale}
               >
                 <WebPushProvider enable={!!enablePush}>
                   {enablePush && <NotificationModal />}
-                  <DefaultSeo {...defaultSeo[appSlug][locale]} />
+                  <DefaultSeo {...defaultSeo[site][locale]} />
                   {children}
                   <Analytics />
                   {!cookie && <CookieBanner onAllow={onAllow} />}

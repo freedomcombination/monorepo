@@ -4,7 +4,7 @@ import { Dispatch, ReactNode } from 'react'
 import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
 
 import {
-  AppSlug,
+  Site,
   Permissions,
   Profile,
   SessionUser,
@@ -22,7 +22,7 @@ export type AuthState = {
   roles: string[]
   token: string | null
   user: SessionUser | null
-  appSlug: AppSlug
+  site: Site
 }
 
 export type AuthActions = {
@@ -56,5 +56,5 @@ export type AuthContextType = AuthState & AuthActions
 export type AuthProviderProps = {
   children: ReactNode
   initialState?: AuthState
-  appSlug: AppSlug
+  site: Site
 }
