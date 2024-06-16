@@ -11124,14 +11124,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.45.0":
-  version: 5.45.0
-  resolution: "@tanstack/react-query@npm:5.45.0"
+"@tanstack/react-query@npm:^5.45.1":
+  version: 5.45.1
+  resolution: "@tanstack/react-query@npm:5.45.1"
   dependencies:
     "@tanstack/query-core": "npm:5.45.0"
   peerDependencies:
     react: ^18.0.0
-  checksum: 10/0b70e533f9ed04682868972ef409a89c2ef990b568051517ce64bd56a354ff80c5f1a72e2e6ec28ccb7e32a977a71ee8a88366f410a1615a194672e6f2b8322c
+  checksum: 10/570ac283d1a6b17114177464d8d233c02070cb276ca48bb8b3cb5cc87f0b08dec70a225ac73d1f18b563c06cabdfe75b22fa5c2d80c372b55400c6e64455c083
   languageName: node
   linkType: hard
 
@@ -19589,7 +19589,7 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.19"
     "@storybook/react": "npm:^7.6.19"
     "@storybook/types": "npm:^7.6.19"
-    "@tanstack/react-query": "npm:^5.45.0"
+    "@tanstack/react-query": "npm:^5.45.1"
     "@tanstack/react-query-devtools": "npm:^5.45.0"
     "@testing-library/react": "npm:^16.0.0"
     "@turbo/gen": "npm:^2.0.4"
@@ -19661,7 +19661,7 @@ __metadata:
     react-dropzone: "npm:^14.2.3"
     react-email: "npm:2.1.4"
     react-headroom: "npm:^3.2.1"
-    react-hook-form: "npm:7.51.5"
+    react-hook-form: "npm:7.52.0"
     react-hook-form-persist: "npm:^3.0.0"
     react-i18next: "npm:^14.1.2"
     react-icons: "npm:^5.2.1"
@@ -19685,7 +19685,7 @@ __metadata:
     turbo: "npm:^2.0.4"
     twitter-api-v2: "npm:^1.17.1"
     twitter-text: "npm:^3.1.0"
-    type-fest: "npm:^4.20.0"
+    type-fest: "npm:^4.20.1"
     typescript: "npm:^5.4.5"
     usehooks-ts: "npm:^3.1.0"
     web-push: "npm:^3.6.7"
@@ -29122,12 +29122,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:7.51.5":
-  version: 7.51.5
-  resolution: "react-hook-form@npm:7.51.5"
+"react-hook-form@npm:7.52.0":
+  version: 7.52.0
+  resolution: "react-hook-form@npm:7.52.0"
   peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: 10/f4ff77989202b1faf2dede7a7730210635a6225189dcaeaeb191cea12422bcb97d2adfef0712c50d13bf5c5e14b8debc00fbba16491f86a6d24945a52cacfa59
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10/fc4f92008acc22bcdabf7f472529b29dd29f6305f2b66c8e993c72cbc43eb03b761dd55d5dcb339382fe4bfdd81c4521d3ddcc380d43a3c9a8501aec121e4e7d
   languageName: node
   linkType: hard
 
@@ -33575,10 +33575,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^4.20.0":
-  version: 4.20.0
-  resolution: "type-fest@npm:4.20.0"
-  checksum: 10/df037c11f6393312f27825ea6eb2c8cd62b1ba21c31144bed41854648ba2a18dcb8c68a930607c7227dd531b42006cc7c7a60f7f034668d1c92c205523ae1ea2
+"type-fest@npm:^4.20.1":
+  version: 4.20.1
+  resolution: "type-fest@npm:4.20.1"
+  checksum: 10/52dc64fae094949008afb79f21b02eca0289c8dc41ed1cfff88f343230edb476fca4815e1b5d58acf5e07fdc7a1b098504473b5931ef418e6f38a3edb70fc1df
   languageName: node
   linkType: hard
 
