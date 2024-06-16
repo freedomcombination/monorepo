@@ -32,7 +32,7 @@ export const Providers: FC<ProvidersProps> = ({
   site,
   children,
   dehydratedState,
-  enablePush,
+  enablePush = false,
 }) => {
   const [queryClient] = useState(
     () =>
@@ -51,6 +51,9 @@ export const Providers: FC<ProvidersProps> = ({
     updateCookie('true')
   }
 
+  const enable =
+    enablePush && process.env.NEXT_PUBLIC_ENABLE_NOTIFICATIONS === 'true'
+
   return (
     <QueryClientProvider client={queryClient}>
       <HydrationBoundary state={dehydratedState}>
@@ -60,8 +63,8 @@ export const Providers: FC<ProvidersProps> = ({
               reCaptchaKey={RECAPTCHA_SITE_KEY}
               language={locale}
             >
-              <WebPushProvider enable={!!enablePush}>
-                {enablePush && <NotificationModal />}
+              <WebPushProvider enable={enable}>
+                {enable && <NotificationModal />}
                 <DefaultSeo {...defaultSeo[site][locale]} />
                 {children}
                 <Analytics />
