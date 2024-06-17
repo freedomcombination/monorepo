@@ -45,7 +45,6 @@ export const LoginForm: FC<LoginFormProps> = ({
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
   } = useForm<LoginFormFieldValues>({
     resolver: yupResolver(loginSchema),
@@ -74,11 +73,6 @@ export const LoginForm: FC<LoginFormProps> = ({
   const handleSubmitSign: SubmitHandler<LoginFormFieldValues> = async data => {
     // i dont know why but this function is not firing
     loginMutation.mutate(data)
-  }
-
-  const manualSubmit = () => {
-    const values = getValues()
-    loginMutation.mutate(values)
   }
 
   return (
@@ -146,10 +140,9 @@ export const LoginForm: FC<LoginFormProps> = ({
           </HStack>
           <Stack spacing="6">
             <Button
-              // type="submit"
+              type="submit"
               data-testid="button-submit-login"
               isLoading={isLoading}
-              onClick={manualSubmit}
             >
               {t('login.signin')}
             </Button>

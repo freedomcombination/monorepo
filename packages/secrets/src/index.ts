@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from 'http'
-import { getIronSession } from 'iron-session'
+import { SessionOptions, getIronSession } from 'iron-session'
 
 import { Auth } from '@fc/types'
 
@@ -23,9 +23,9 @@ export const getSecret = (key: Secrets) => {
   return secrets[key]
 }
 
-export const sessionOptions = {
+export const sessionOptions: SessionOptions = {
   password: getSecret('COOKIE_PASSWORD') || '12345678901234567890123456789012',
-  cookieName: 'iron-session',
+  cookieName: 'fc-session',
   cookieOptions: {
     secure: process.env['NODE_ENV'] === 'production',
   },

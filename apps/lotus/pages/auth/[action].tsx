@@ -47,9 +47,9 @@ const AuthPage: FC<{ action: LoginStates }> = ({ action }) => {
       case 'reset':
         return <ResetPasswordForm />
       case 'register':
-        return <SignupForm providersToBeShown={['google']} />
+        return <SignupForm providersToBeShown={[]} />
       default:
-        return <LoginForm providersToBeShown={['google']} />
+        return <LoginForm providersToBeShown={[]} />
     }
   }
 
