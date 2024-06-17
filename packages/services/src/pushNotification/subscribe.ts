@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 
+import { WEB_PUSH_PUBLIC_KEY } from '@fc/config'
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import {
@@ -8,7 +9,7 @@ import {
   Subscriber,
   SubscriberCreateInput,
 } from '@fc/types'
-import { base64ToUint8Array } from '@fc/utils'
+// import { base64ToUint8Array } from '@fc/utils'
 
 export const subscribePushNotification = async (
   registration: ServiceWorkerRegistration | null,
@@ -24,9 +25,7 @@ export const subscribePushNotification = async (
     const subscription = (await registration.pushManager.subscribe({
       userVisibleOnly: true,
       // Push server will use this to auth the app server
-      applicationServerKey: base64ToUint8Array(
-        process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY as string,
-      ),
+      applicationServerKey: WEB_PUSH_PUBLIC_KEY,
     })) as unknown as WebPushSubscription
 
     if (subscription) {
