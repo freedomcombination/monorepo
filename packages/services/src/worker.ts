@@ -3,6 +3,9 @@ const self = {} as ServiceWorkerGlobalScope
 if (typeof self.addEventListener === 'function') {
   self.addEventListener('push', event => {
     const data = JSON.parse(event.data?.text() ?? '{ title: "" }')
+
+    console.info('Push event', data)
+
     event.waitUntil(
       self.registration.showNotification(data.title, {
         body: data.message,

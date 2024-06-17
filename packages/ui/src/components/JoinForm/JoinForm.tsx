@@ -92,13 +92,15 @@ export const JoinForm: FC<JoinFormProps> = ({
           register={register}
           id="name"
           name="name"
+          autoComplete="name"
           errors={errors}
           isRequired
         />
         <FormItem
           name="email"
-          register={register}
           id="email"
+          autoComplete="email"
+          register={register}
           errors={errors}
           isRequired
         />
@@ -133,6 +135,7 @@ export const JoinForm: FC<JoinFormProps> = ({
         errors={errors}
         id="city"
         name="city"
+        autoComplete="city"
         isRequired
       />
 

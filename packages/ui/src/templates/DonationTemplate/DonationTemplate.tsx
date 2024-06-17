@@ -229,12 +229,14 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                 isRequired
                 register={register}
                 name="name"
+                autoComplete="name"
                 errors={errors}
               />
               <FormItem
                 isRequired
                 register={register}
                 name="email"
+                autoComplete="email"
                 errors={errors}
               />
             </Stack>
