@@ -14,32 +14,32 @@ declare -a diller=("tr" "en" "nl")
 
 # Eğer default_value boş ise anahtarları ve değerleri görüntüleyelim
 if [ -z "$default_value" ]; then
-  for dil in "${diller[@]}" ; do
-    dosya="packages/ui/public/locales/${dil}/common.json"
-
-    # Dosya var mı kontrol edelim
-    if [[ -f "$dosya" ]]; then
-      echo ""
-      echo -e "${BOLD}> Processing file: ${GREEN}$dosya${RESET}"
-      echo "------------------"
-      # jq kullanarak key'i büyük küçük harfe duyarsız olarak içeren değerleri bulalım ve key=value şeklinde yazdıralım
-      jq -r --arg key "$key" 'to_entries | map(select(.key | test($key; "i"))) | .[] | "\(.key)=\(.value)"' "$dosya" | while IFS= read -r line; do
-        # echo -e ile doğrudan değiştirelim
-        echo -e "${line//$key/${RED}${BOLD}${key}${RESET}}"
-      done
-    fi
-  done
+    for dil in "${diller[@]}" ; do
+        dosya="packages/ui/public/locales/${dil}/common.json"
+        
+        # Dosya var mı kontrol edelim
+        if [[ -f "$dosya" ]]; then
+            echo ""
+            echo -e "${BOLD}> Processing file: ${GREEN}$dosya${RESET}"
+            echo "------------------"
+            # jq kullanarak key'i büyük küçük harfe duyarsız olarak içeren değerleri bulalım ve key=value şeklinde yazdıralım
+            jq -r --arg key "$key" 'to_entries | map(select(.key | test($key; "i"))) | .[] | "\(.key)=\(.value)"' "$dosya" | while IFS= read -r line; do
+                # echo -e ile doğrudan değiştirelim
+                echo -e "${line//$key/${RED}${BOLD}${key}${RESET}}"
+            done
+        fi
+    done
 else
-  # Her bir dil için işlemi tekrarlayalım
-  for dil in "${diller[@]}" ; do
-    dosya="packages/ui/public/locales/${dil}/common.json"
-
-    # Dosya var mı kontrol edelim, yoksa oluşturalım.
-    [[ -f "$dosya" ]] || touch "$dosya"
-
-    echo -e "${BOLD}> Processing file: ${GREEN}$dosya${RESET}"
-    # jq kullanarak anahtarı ve değeri ekleyelim
-    jq --arg key "$key" --arg value "$default_value" \
-      'to_entries | map(select(.key | test($key; "i") or .value | test($value; "i"))) | .[] | "\(.key)=\(.value)"' "$dosya" > "$dosya.tmp" && mv "$dosya.tmp" "$dosya"
-  done
+    # Her bir dil için işlemi tekrarlayalım
+    for dil in "${diller[@]}" ; do
+        dosya="packages/ui/public/locales/${dil}/common.json"
+        
+        # Dosya var mı kontrol edelim, yoksa oluşturalım.
+        [[ -f "$dosya" ]] || touch "$dosya"
+        
+        echo -e "${BOLD}> Processing file: ${GREEN}$dosya${RESET}"
+        
+        jq --arg key "$key" --arg value "$default_value" \
+        '. + { ($key): $value }' "$dosya" > "$dosya.tmp" && mv "$dosya.tmp" "$dosya"
+    done
 fi
