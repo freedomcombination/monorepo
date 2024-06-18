@@ -9,7 +9,6 @@ export default ({ env }) => {
     app: {
       keys: env.array('APP_KEYS'),
     },
-    url: env('URL', 'http://localhost:1337'),
     cron: {
       enabled: isProd || env('ENABLE_LOCAL_CRON'),
       tasks,

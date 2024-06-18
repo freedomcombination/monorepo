@@ -51,7 +51,7 @@ export const ResetPasswordForm = () => {
       toastMessage(null, t('reset-pass.text'), 'success')
       reset()
       setTimeout(() => {
-        router.push('/login')
+        router.push('/auth/login')
       }, 2000)
     },
     onError: () => {
@@ -98,6 +98,7 @@ export const ResetPasswordForm = () => {
               id="passwordConfirmation"
               type="password"
               label={t('login.password.password-confirm') as string}
+              placeholder={t('login.password.password-confirm') as string}
               autoComplete="current-password"
               register={register}
               errors={errors}

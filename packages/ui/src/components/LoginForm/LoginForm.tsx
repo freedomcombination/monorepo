@@ -71,6 +71,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   })
 
   const handleSubmitSign: SubmitHandler<LoginFormFieldValues> = async data => {
+    // i dont know why but this function is not firing
     loginMutation.mutate(data)
   }
 
@@ -94,7 +95,7 @@ export const LoginForm: FC<LoginFormProps> = ({
               <HStack spacing="1" justify="center">
                 <Text color="muted">{t('login.no-account')}</Text>
 
-                <ButtonLink href="/register" variant="link">
+                <ButtonLink href="/auth/register" variant="link">
                   {t('login.signup')}
                 </ButtonLink>
               </HStack>
@@ -112,6 +113,7 @@ export const LoginForm: FC<LoginFormProps> = ({
             <FormItem
               data-testid="input-email"
               name="identifier"
+              autoComplete="email"
               register={register}
               errors={errors}
             />
@@ -130,7 +132,7 @@ export const LoginForm: FC<LoginFormProps> = ({
 
             <ButtonLink
               data-testid="button-forgot-password"
-              href="/forgot-password"
+              href="/auth/forgot-password"
               variant="link"
               size="sm"
             >

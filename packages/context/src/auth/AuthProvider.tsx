@@ -17,6 +17,7 @@ export const AuthContext = createContext<AuthContextType>(initialAuthState)
 export const AuthProvider: FC<AuthProviderProps> = ({
   children,
   initialState = initialAuthState,
+  site,
 }) => {
   const {
     data,
@@ -74,6 +75,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
       setError(error.message)
     } finally {
       setIsLoading(false)
+      await checkAuth()
 
       router.push('/')
     }
@@ -154,6 +156,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         roles,
         token,
         user,
+        site,
         canApprove,
         canCreate,
         canDelete,

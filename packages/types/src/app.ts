@@ -1,4 +1,4 @@
-export type AppSlug =
+export type Site =
   | 'dashboard'
   | 'kunsthalte'
   | 'lotus'

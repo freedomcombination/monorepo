@@ -381,5 +381,9 @@
   "weeksWithCount_one": "1 week",
   "weeksWithCount_other": "{{count}} weeks",
   "welcome": "Welcome",
-  "you-must-logged-in": "You must be logged in in order to be able to upload an art!"
+  "you-must-logged-in": "You must be logged in in order to be able to upload an art!",
+  "login.forgot.title": "Forgotten Password",
+  "forgot-pass.reset-password": "Reset my password",
+  "success": "Success",
+  "strapi.error.create-profile.profile-already-exist": "This email already exist"
 }

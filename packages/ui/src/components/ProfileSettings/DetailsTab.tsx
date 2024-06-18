@@ -1,9 +1,10 @@
 import { useEffect, useId, useMemo, useState } from 'react'
 
 import {
+  Box,
   Button,
   Center,
-  VStack,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,13 +15,11 @@ import {
   Stack,
   Text,
   Tooltip,
-  Box,
-  IconButton,
+  VStack,
   useDisclosure,
 } from '@chakra-ui/react'
 import Compressor from '@uppy/compressor'
 import Uppy from '@uppy/core'
-import Dashboard from '@uppy/dashboard'
 import ImageEditor from '@uppy/image-editor'
 import { Dashboard as DashboardComponent } from '@uppy/react'
 import { useTranslation } from 'next-i18next'
@@ -31,11 +30,12 @@ import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { Profile, ProfileUpdateInput } from '@fc/types'
 
+import { FormElement } from './FormElement'
+import { WAvatar } from '../WAvatar'
+
 import '@uppy/core/dist/style.min.css'
 import '@uppy/dashboard/dist/style.min.css'
 import '@uppy/image-editor/dist/style.min.css'
-import { FormElement } from './FormElement'
-import { WAvatar } from '../WAvatar'
 
 const AvatarForm = () => {
   const { user, profile, token, checkAuth } = useAuthContext()
@@ -106,7 +106,7 @@ const AvatarForm = () => {
               width="100%"
               height={500}
               uppy={uppy}
-              plugins={['ImageEditor']}
+              autoOpen={'imageEditor'}
               hideUploadButton
               showSelectedFiles
             />
@@ -281,33 +281,5 @@ const getUppy = () => {
       quality: 0.9,
       limit: 2,
     })
-    .use(Dashboard, {
-      inline: false,
-      autoOpen: 'imageEditor',
-      animateOpenClose: true,
-    })
-    .use(ImageEditor, {
-      quality: 0.9,
-      cropperOptions: {
-        viewMode: 1,
-        aspectRatio: 1,
-        croppedCanvasOptions: {
-          minWidth: 256,
-          minHeight: 256,
-          maxWidth: 1024,
-          maxHeight: 1024,
-        },
-      },
-      actions: {
-        revert: true,
-        rotate: true,
-        granularRotate: true,
-        flip: true,
-        zoomIn: true,
-        zoomOut: true,
-        cropSquare: true,
-        cropWidescreen: false,
-        cropWidescreenVertical: false,
-      },
-    })
+    .use(ImageEditor)
 }

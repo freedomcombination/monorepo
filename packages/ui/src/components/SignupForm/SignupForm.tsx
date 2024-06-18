@@ -109,7 +109,7 @@ export const SignupForm: FC<SignupFormProps> = ({
             <HStack spacing="1" justify="center">
               <Text color="muted">{t('login.have-account')}</Text>
 
-              <ButtonLink href="/login" variant="link">
+              <ButtonLink href="/auth/login" variant="link">
                 {t('login.signin')}
               </ButtonLink>
             </HStack>
@@ -127,11 +127,22 @@ export const SignupForm: FC<SignupFormProps> = ({
                 <AlertDescription>{errorMessage}</AlertDescription>
               </Alert>
             )}
-            <FormItem name="name" register={register} errors={errors} />
-            <FormItem name="username" register={register} errors={errors} />
+            <FormItem
+              name="name"
+              autoComplete="name"
+              register={register}
+              errors={errors}
+            />
+            <FormItem
+              name="username"
+              autoComplete="username"
+              register={register}
+              errors={errors}
+            />
             <FormItem
               name="email"
               type="email"
+              autoComplete="email"
               register={register}
               errors={errors}
             />
@@ -151,7 +162,8 @@ export const SignupForm: FC<SignupFormProps> = ({
               />
 
               <ButtonLink
-                href="/terms"
+                href="/auth/terms"
+                target="_blank"
                 variant="link"
                 colorScheme="gray"
                 size="sm"

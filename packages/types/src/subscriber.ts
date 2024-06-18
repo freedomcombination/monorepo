@@ -1,6 +1,6 @@
 import { PushSubscription } from 'web-push'
 
-import { AppSlug } from './app'
+import { Site } from './app'
 import { Profile } from './profile'
 import { StrapiBase } from './strapi'
 
@@ -9,7 +9,7 @@ export type WebPushSubscription = PushSubscription & {
 }
 
 type SubscriberBase = {
-  site: AppSlug
+  site: Site
 }
 
 export type SubscriberRelation = {

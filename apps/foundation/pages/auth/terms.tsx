@@ -1,23 +1,17 @@
 import { FC } from 'react'
 
 import { truncate } from 'lodash'
-import { GetStaticPropsContext } from 'next'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
-import { NextSeoProps } from 'next-seo'
 
 import { strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale, Term } from '@fc/types'
 import { Container, Hero, Markdown } from '@fc/ui'
 
-import { Layout } from '../components'
+import { Layout } from '../../components'
 
-type TermsProps = {
-  seo: NextSeoProps
-  terms: Term
-  source: MDXRemoteSerializeResult
-}
+type TermsProps = InferGetStaticPropsType<typeof getStaticProps>
 
 const Terms: FC<TermsProps> = ({ terms, seo, source }) => {
   return (
@@ -62,5 +56,6 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       seo,
       ...(await ssrTranslations(locale)),
     },
+    revalidate: 1,
   }
 }

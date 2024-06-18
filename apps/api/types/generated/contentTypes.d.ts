@@ -2345,13 +2345,14 @@ export interface ApiNotificationNotification extends Schema.CollectionType {
     singularName: 'notification'
     pluralName: 'notifications'
     displayName: 'Notification'
+    description: ''
   }
   options: {
     draftAndPublish: false
   }
   attributes: {
     title: Attribute.String
-    body: Attribute.Text
+    message: Attribute.Text
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

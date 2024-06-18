@@ -376,5 +376,9 @@
   "weeksWithCount_one": "1 hafta",
   "weeksWithCount_other": "{{count}} hafta",
   "welcome": "Hoşgeldin",
-  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!"
+  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!",
+  "login.forgot.title": "Şifremi unuttum",
+  "forgot-pass.reset-password": "Şifremi resetle",
+  "success": "Success",
+  "strapi.error.create-profile.profile-already-exist": "Bu email adresi zaten kayıtlı."
 }

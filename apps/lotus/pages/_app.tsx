@@ -8,7 +8,7 @@ import { Providers } from '@fc/ui'
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <Providers appSlug="lotus" dehydratedState={pageProps.dehydratedState}>
+    <Providers site="lotus" dehydratedState={pageProps.dehydratedState}>
       <Component {...pageProps} />
     </Providers>
   )

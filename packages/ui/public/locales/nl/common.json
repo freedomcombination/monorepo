@@ -376,5 +376,9 @@
   "weeksWithCount_one": "1 week",
   "weeksWithCount_other": "{{count}} weken",
   "welcome": "Welkom",
-  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!"
+  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!",
+  "login.forgot.title": "Wachtwoord Vergeten",
+  "forgot-pass.reset-password": "Wachtwoord Opnieuw Instellen",
+  "success": "Success",
+  "strapi.error.create-profile.profile-already-exist": "Dit email bestaat al"
 }

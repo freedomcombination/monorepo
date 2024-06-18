@@ -56,6 +56,7 @@ export const ContactForm: FC<ContactFormProps> = ({
       <VStack spacing={5} as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormItem
           name="fullname"
+          autoComplete="name"
           leftElement={<BsPerson color="gray.800" />}
           errors={errors}
           register={register}
@@ -64,6 +65,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           name="email"
           type="email"
           label="Email"
+          autoComplete="email"
           leftElement={<MdEmail color="gray.200" />}
           errors={errors}
           register={register}

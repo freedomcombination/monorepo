@@ -73,20 +73,29 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
           <FormItem
             name="email"
             type="email"
+            autoComplete="email"
             register={register}
             errors={errors}
             hideLabel
           />
           <FormItem
             name="country"
+            autoComplete="country"
             register={register}
             errors={errors}
             hideLabel
           />
 
-          <FormItem name="city" register={register} errors={errors} hideLabel />
+          <FormItem
+            name="city"
+            autoComplete="city"
+            register={register}
+            errors={errors}
+            hideLabel
+          />
           <FormItem
             name="phone"
+            autoComplete="phone"
             register={register}
             errors={errors}
             hideLabel

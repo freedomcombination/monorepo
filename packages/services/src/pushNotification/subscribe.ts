@@ -1,18 +1,19 @@
 import { useMutation } from '@tanstack/react-query'
 
+import { WEB_PUSH_PUBLIC_KEY } from '@fc/config'
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import {
-  AppSlug,
+  Site,
   WebPushSubscription,
   Subscriber,
   SubscriberCreateInput,
 } from '@fc/types'
-import { base64ToUint8Array } from '@fc/utils'
+// import { base64ToUint8Array } from '@fc/utils'
 
 export const subscribePushNotification = async (
   registration: ServiceWorkerRegistration | null,
-  site: AppSlug | null,
+  site: Site | null,
   token: string | null,
 ) => {
   try {
@@ -24,17 +25,20 @@ export const subscribePushNotification = async (
     const subscription = (await registration.pushManager.subscribe({
       userVisibleOnly: true,
       // Push server will use this to auth the app server
-      applicationServerKey: base64ToUint8Array(
-        process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY as string,
-      ),
+      applicationServerKey: WEB_PUSH_PUBLIC_KEY,
     })) as unknown as WebPushSubscription
+
+    if (subscription) {
+      console.info('Successfully subscribed to push service')
+    }
 
     return Mutation.post<Subscriber, SubscriberCreateInput>(
       'subscribers',
-      { subscription, site: site as AppSlug },
+      { subscription, site: site as Site },
       token as string,
     )
   } catch (error: any) {
+    console.error('error', error)
     throw new Error(
       `Failed to subscribe to the push service: ${error.message || 'Unknown error'}`,
     )
@@ -42,8 +46,8 @@ export const subscribePushNotification = async (
 }
 
 export const useSubscribePushNotificationMutation = () => {
-  const { token } = useAuthContext()
-  const { registration, site } = useWebPushContext()
+  const { token, site } = useAuthContext()
+  const { registration } = useWebPushContext()
 
   return useMutation({
     mutationKey: ['create-subscriber'],
@@ -52,18 +56,28 @@ export const useSubscribePushNotificationMutation = () => {
 }
 
 export const unsubscribePushNotification = async (
-  id: number,
+  registration: ServiceWorkerRegistration | null,
+  site: Site | null,
   token: string,
 ) => {
-  Mutation.delete<Subscriber>('subscribers', id, token)
+  const subscription = await registration?.pushManager.getSubscription()
+  await subscription?.unsubscribe()
+  await registration?.unregister()
+
+  // TODO: Remove
+  console.info(site, token)
+
+  // TODO: Create a custom delete endpoint to delete the subscriber
+  // TODO: User the token adn site to delete the subscriber
 }
 
 export const useUnsubscribePushNotificationMutation = () => {
-  const { token } = useAuthContext()
+  const { token, site } = useAuthContext()
+  const { registration } = useWebPushContext()
 
   return useMutation({
     mutationKey: ['delete-subscriber'],
-    mutationFn: (id: number) =>
-      unsubscribePushNotification(id, token as string),
+    mutationFn: () =>
+      unsubscribePushNotification(registration, site, token as string),
   })
 }

@@ -101,6 +101,7 @@ export const AuthModal = () => {
                 <FormItem
                   w="full"
                   name="identifier"
+                  autoComplete="email"
                   register={register}
                   errors={errors}
                 />
