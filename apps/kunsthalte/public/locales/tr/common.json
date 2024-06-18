@@ -378,7 +378,7 @@
   "welcome": "Hoşgeldin",
   "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!",
   "login.forgot.title": "Şifremi unuttum",
-  "forgot-pass.back-to-login": "Giriş yap",
   "forgot-pass.reset-password": "Şifremi resetle",
-  "success": "Success"
+  "success": "Success",
+  "strapi.error.create-profile.profile-already-exist": "Bu email adresi zaten kayıtlı."
 }
