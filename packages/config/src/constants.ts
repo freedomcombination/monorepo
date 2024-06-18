@@ -26,6 +26,9 @@ export const RECAPTCHA_SITE_KEY = process.env[
 export const IS_PROD = process.env['NODE_ENV'] === 'production'
 export const TWITTER_HANDLE =
   (process.env['NEXT_PUBLIC_TWITTER_HANDLE'] as string) || '@fc'
+export const WEB_PUSH_PUBLIC_KEY =
+  process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY ||
+  'BClIUiDtfSidBBernuPDq_7ksHFgW54WVY6h5lNBlgomXB1B2mNSosiW8bGDZkugvP-bZMRFg1ULFHnre1WGGSg'
 
 export enum RecaptchaKeys {
   COMMENT = 'comment',

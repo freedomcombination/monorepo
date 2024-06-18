@@ -127,11 +127,22 @@ export const SignupForm: FC<SignupFormProps> = ({
                 <AlertDescription>{errorMessage}</AlertDescription>
               </Alert>
             )}
-            <FormItem name="name" register={register} errors={errors} />
-            <FormItem name="username" register={register} errors={errors} />
+            <FormItem
+              name="name"
+              autoComplete="name"
+              register={register}
+              errors={errors}
+            />
+            <FormItem
+              name="username"
+              autoComplete="username"
+              register={register}
+              errors={errors}
+            />
             <FormItem
               name="email"
               type="email"
+              autoComplete="email"
               register={register}
               errors={errors}
             />

@@ -6,6 +6,16 @@ export default {
   async notify(ctx) {
     const isAdmin = checkAdmin(ctx)
 
+    if (
+      !process.env.WEB_PUSH_EMAIL ||
+      !process.env.WEB_PUSH_PUBLIC_KEY ||
+      !process.env.WEB_PUSH_PRIVATE_KEY
+    ) {
+      throw new errors.ValidationError(
+        'Web push credentials are not set up properly',
+      )
+    }
+
     if (!isAdmin) {
       throw new errors.ForbiddenError(
         'You are not authorized to perform this action',
