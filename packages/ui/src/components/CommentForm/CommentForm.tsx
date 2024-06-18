@@ -121,6 +121,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
           >
             <FormItem
               name="name"
+              autoComplete="name"
               hideLabel
               register={register}
               errors={errors}
@@ -128,6 +129,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
             <FormItem
               name="email"
               type="email"
+              autoComplete="email"
               hideLabel
               register={register}
               errors={errors}

@@ -18,11 +18,8 @@ type WebPushProviderProps = PropsWithChildren<{
 
 export const WebPushProvider: FC<WebPushProviderProps> = ({
   children,
-  enable: initialEnable,
+  enable,
 }) => {
-  const enable =
-    initialEnable && process.env.NEXT_PUBLIC_ENABLE_NOTIFICATIONS === 'true'
-
   const webPushData = useWebPush(enable)
 
   return (

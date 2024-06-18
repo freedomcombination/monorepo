@@ -1,14 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { factories } from '@strapi/strapi'
-import { getProfile } from '../../../utils'
+
+import { getProfile, checkAdmin, checkOwner } from '../../../utils'
 import utils from '@strapi/utils'
 const { ApplicationError } = utils.errors
+
 // import { checkRecaptcha, getProfile } from '../../../utils'
+import { errors } from '@strapi/utils'
 
 export default factories.createCoreController('api::profile.profile', () => {
   return {
     async find(ctx) {
-      if (ctx.state.user?.role?.type === 'admin') return super.find(ctx)
+      const isAdmin = checkAdmin(ctx)
+
+      if (isAdmin) return super.find(ctx)
 
       const profile = await getProfile(ctx, true, true)
       if (profile.platforms.length === 0) {
@@ -86,6 +91,21 @@ export default factories.createCoreController('api::profile.profile', () => {
       )
 
       return this.sanitizeOutput(updatedProfile, ctx)
+    },
+    async update(ctx) {
+      const isAdmin = checkAdmin(ctx)
+
+      if (isAdmin) return super.update(ctx)
+
+      const isOwner = await checkOwner(ctx, ctx.params.id)
+
+      if (!isOwner) {
+        throw new errors.ForbiddenError(
+          'You are not authorized to perform this action',
+        )
+      }
+
+      return super.update(ctx)
     },
   }
 })

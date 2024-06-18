@@ -1,3 +1,8 @@
 import nextConfig from '@fc/config/next.config.mjs'
 
-export default nextConfig
+const withPWA = (await import('@ducanh2912/next-pwa')).default({
+  dest: 'public',
+  customWorkerSrc: 'worker',
+})
+
+export default withPWA(nextConfig)
