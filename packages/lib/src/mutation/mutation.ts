@@ -116,8 +116,8 @@ export const mutation = async <
     console.error('Mutation error', error)
 
     // i dont know why but this way onError has first parameter
-    if (error.response?.data?.error?.details?.code) {
-      throw error.response?.data?.error?.details?.code
+    if (error.response?.data?.error?.details?.i18nKey) {
+      throw error.response?.data?.error?.details?.i18nKey
     }
 
     // but this way, mutate.onError doesn't have first parameter

@@ -71,7 +71,7 @@ export default factories.createCoreController('api::profile.profile', () => {
 
       if (profile && !isRegistering) {
         throw new ApplicationError('Profile already exists', {
-          code: 'strapi.error.create-profile.profile-already-exist',
+          i18nKey: 'strapi.error.create-profile.profile-already-exist',
         })
       }
 
