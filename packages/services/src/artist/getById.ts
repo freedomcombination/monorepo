@@ -4,12 +4,14 @@ import { strapiRequest } from '@fc/lib'
 import { Profile } from '@fc/types'
 
 import { getArtByArtist } from '../art/getByArtist'
+import { getSecret } from '@fc/secrets'
 
 export const getArtistById = async (id: string): Promise<Profile | null> => {
   const artistResponse = await strapiRequest<Profile>({
     endpoint: 'profiles',
     id: Number(id),
     populate: '*',
+    token: getSecret('TOKEN'),
   })
 
   const artist = artistResponse.data

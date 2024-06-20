@@ -18,7 +18,7 @@ import { MdRemoveModerator } from 'react-icons/md'
 
 import { ASSETS_URL, RecaptchaKeys } from '@fc/config'
 import { useAuthContext } from '@fc/context'
-import { useArtsByArtist, useRecaptchaToken } from '@fc/services'
+import { useProfileArts, useRecaptchaToken } from '@fc/services'
 
 import { ArtCard } from '../ArtCard'
 import { Container } from '../Container'
@@ -48,7 +48,7 @@ export const AuthenticatedUserProfile = () => {
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   // TODO: Remove like action from profile, user shouldn't like their own arts
-  const { data, refetch } = useArtsByArtist(profile?.id, true)
+  const { data, refetch } = useProfileArts(true)
   const rejected = data?.filter(art => art?.approvalStatus === 'rejected')
   const approved = data?.filter(art => art?.approvalStatus === 'approved')
   const pending = data?.filter(art => art?.approvalStatus === 'pending')
