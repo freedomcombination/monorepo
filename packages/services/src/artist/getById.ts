@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { strapiRequest } from '@fc/lib'
+import { getSecret } from '@fc/secrets'
 import { Profile } from '@fc/types'
 
 import { getArtByArtist } from '../art/getByArtist'
-import { getSecret } from '@fc/secrets'
 
 export const getArtistById = async (id: string): Promise<Profile | null> => {
   const artistResponse = await strapiRequest<Profile>({
