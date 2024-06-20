@@ -52,18 +52,28 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
         },
       )
 
-      await sendArtCreatedEmail(updatedArt)
+      if (process.env.VERCEL_ENV === 'production') {
+        await sendArtCreatedEmail(updatedArt)
+      }
 
       return result
     },
     async find(ctx) {
-      const result = await super.find(ctx)
+      const sanitizedQueryParams = await this.sanitizeQuery(ctx)
+
+      const filters = ctx.query.filters || {}
+      // Sanitize query removes artist filter since profile endpoint is not allowed for all roles or public
+      sanitizedQueryParams.filters = filters
+
+      const { results, pagination } = await strapi
+        .service('api::art.art')
+        .find(sanitizedQueryParams)
 
       const profile = await getProfile(ctx)
 
       const arts = await Promise.all(
-        result.data.map(async art => {
-          const { id, attributes } = art
+        results.map(async art => {
+          const { id, ...attributes } = art
           const isLiked =
             profile &&
             (await strapi.entityService.count('api::art.art', {
@@ -77,13 +87,20 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
             id,
             attributes: {
               ...attributes,
+              artist: {
+                ...attributes.artist,
+                // Remove sensitive data
+                user: null,
+              },
               isLiked: !!isLiked,
             },
           }
         }),
       )
 
-      return { ...result, data: arts }
+      const sanitizedResults = await this.sanitizeOutput(arts, ctx)
+
+      return this.transformResponse(sanitizedResults, { pagination })
     },
   }
 })

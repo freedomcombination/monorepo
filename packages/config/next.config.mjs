@@ -40,6 +40,11 @@ const nextConfig = {
     locales: ['en', 'nl', 'tr'],
   },
   redirects: async () => [
+    ...['login', 'register', 'forgot-password', 'reset'].map(path => ({
+      source: `/${path}`,
+      destination: `/auth/${path}`,
+      permanent: true,
+    })),
     {
       source: '/donate',
       destination: '/donation',

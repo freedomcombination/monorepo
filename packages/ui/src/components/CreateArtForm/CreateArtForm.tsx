@@ -81,7 +81,7 @@ export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
 
   const { mutate, isPending } = useCreateModelMutation('arts')
   const { pathname } = useRouter()
-  const loginHref = `/login?returnUrl=${pathname}`
+  const loginHref = `/auth/login?returnUrl=${pathname}`
 
   const createArt = async (
     data: CreateArtFormFieldValues & { image: File },

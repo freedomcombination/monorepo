@@ -91,6 +91,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
             size="lg"
             variant={'unstyled'}
             gap={8}
+            isLazy
           >
             <TabList
               border={0}
