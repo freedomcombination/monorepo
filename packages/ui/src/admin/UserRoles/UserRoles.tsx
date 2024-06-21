@@ -111,6 +111,7 @@ export const UserRoles = () => {
             },
           },
           name: {},
+          type: {},
           nb_users: {
             label: t('profiles'),
           },

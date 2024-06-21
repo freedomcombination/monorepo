@@ -7,7 +7,7 @@ export default {
         'api::profile.profile',
         {
           filters: {
-            user: { role: { type: { $in: ['admin'] } } },
+            user: { role: { type: { $in: ['admin', 'humanresource'] } } },
           },
         },
       )
