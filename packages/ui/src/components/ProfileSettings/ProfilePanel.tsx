@@ -16,12 +16,13 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
-import { FaKey } from 'react-icons/fa6'
+import { FaBlog, FaKey } from 'react-icons/fa6'
 import { TbSocial } from 'react-icons/tb'
 
 import { useAuthContext } from '@fc/context'
 
 import { ArtsTab } from './ArtsTab'
+import { BlogsTab } from './BlogsTab'
 import { DetailsTab } from './DetailsTab'
 import { SecurityTab } from './SecurityTab'
 import { Socials } from './SocialsTab'
@@ -50,12 +51,16 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   children,
   showArts = false,
 }) => {
-  const { user, profile } = useAuthContext()
+  const { user, profile, site } = useAuthContext()
   const orientation = useBreakpointValue<TabsProps['orientation']>({
     base: 'horizontal',
     lg: 'vertical',
   })
   const { t } = useTranslation()
+
+  const isBlogsVisible =
+    (site === 'dashboard' || site === 'foundation') &&
+    (user?.roles.includes('admin') || user?.roles.includes('Author'))
 
   if (!user) return <Hero></Hero>
 
@@ -118,6 +123,12 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                   <Box>{t('profile.tabs.arts')}</Box>
                 </CustomTab>
               )}
+              {isBlogsVisible && (
+                <CustomTab>
+                  <Box as={FaBlog} mr={2} />
+                  <Box>{t('profile.tabs.blogs')}</Box>
+                </CustomTab>
+              )}
             </TabList>
             <TabPanels>
               <TabPanel p={0}>
@@ -132,6 +143,11 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
               {showArts && (
                 <TabPanel p={0}>
                   <ArtsTab />
+                </TabPanel>
+              )}
+              {isBlogsVisible && (
+                <TabPanel p={0}>
+                  <BlogsTab />
                 </TabPanel>
               )}
             </TabPanels>

@@ -39,7 +39,6 @@ else
         
         echo -e "${BOLD}> Processing file: ${GREEN}$file${RESET}"  
         
-        jq --arg key "$key" --arg value "$default_value" \  
-        '. + { ($key): $value }' "$file" > "$file.tmp" && mv "$file.tmp" "$file"  
+        jq --arg key "$key" --arg value "$default_value" '. + { ($key): $value }' "$file" > "$file.tmp" && mv "$file.tmp" "$file"  
     done  
 fi  
