@@ -22,14 +22,17 @@ export const CollectionPages = forwardRef<HTMLDivElement, CollectionPagesPops>(
         {collection.arts.map((art, index) => (
           <Fragment key={index}>
             <Page ref={ref} p={8} bgGradient={pageBgGdarient}>
-              <VStack justify="center" w="full" h="full" spacing={2}>
-                <Heading color="red.500" fontFamily="club" textAlign="center">
-                  {art[titleKey]}
-                </Heading>
+              <VStack justify="center" w="full" h="full" spacing={4}>
                 {art.image && (
                   <WImage
                     rounded="sm"
                     maxH="80%"
+                    h={'auto'}
+                    ratio={
+                      art?.image?.width && art.image?.height
+                        ? art.image.width / art.image.height
+                        : undefined
+                    }
                     src={art.image}
                     alt={art[titleKey]}
                   />
@@ -38,7 +41,10 @@ export const CollectionPages = forwardRef<HTMLDivElement, CollectionPagesPops>(
             </Page>
             <Page ref={ref} bgGradient={pageBgGdarient}>
               <Stack w="full" h="full" justify="center" fontFamily="club">
-                <Text fontFamily="club">{art[descriptionKey]}</Text>
+                <Heading>{art[titleKey]}</Heading>
+                <Text fontFamily="club" fontSize={'xl'}>
+                  {art[descriptionKey]}
+                </Text>
                 <Text fontFamily="club" textAlign="right">
                   {art.artist?.name}
                 </Text>

@@ -7,10 +7,7 @@ import { Collection } from '@fc/types'
 
 export interface CollectionBookProps {
   collection: Collection
-  title?: string
-  coverBg?: string
   logo?: string
-  bg?: string
   flipboxProps?: Partial<ComponentProps<typeof HTMLFlipBook>>
 }
 

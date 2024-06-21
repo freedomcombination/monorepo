@@ -15,7 +15,6 @@ type Story = StoryObj<CollectionBookProps>
 export const Default: Story = {
   args: {
     collection: COLLECTION_MOCKS.tr.data[0],
-    title: 'Art Station Collection',
     logo: '/images/kunsthalte.png',
   },
 }
