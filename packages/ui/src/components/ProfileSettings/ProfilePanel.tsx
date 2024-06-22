@@ -60,7 +60,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
 
   const isBlogsVisible =
     (site === 'dashboard' || site === 'foundation') &&
-    (user?.roles.includes('admin') || user?.roles.includes('Author'))
+    (user?.roles.includes('admin') || user?.roles.includes('author'))
 
   if (!user) return <Hero></Hero>
 
