@@ -33,7 +33,7 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
         throw new UnauthorizedError('No user found')
       }
 
-      const profile = await getProfile(ctx, true)
+      const profile = await getProfile({ check: true })
 
       if (!profile) {
         throw new UnauthorizedError('No artist profile found')
@@ -69,7 +69,7 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
         .service('api::art.art')
         .find(sanitizedQueryParams)
 
-      const profile = await getProfile(ctx)
+      const profile = await getProfile()
 
       const arts = await Promise.all(
         results.map(async art => {

@@ -1,8 +1,5 @@
 import { Context } from 'koa'
 import { checkRecaptcha, getProfile, getReferenceModel } from '../../../utils'
-import { errors } from '@strapi/utils'
-
-const { ApplicationError, ForbiddenError } = errors
 
 export default {
   async relation(ctx: Context) {
@@ -41,9 +38,9 @@ export default {
     return { data: user }
   },
   async like(ctx: Context) {
-    await checkRecaptcha(ctx)
+    await checkRecaptcha()
 
-    const profile = await getProfile(ctx)
+    const profile = await getProfile()
 
     if (profile) {
       await strapi.entityService.update('api::blog.blog', ctx.params.id, {
@@ -63,9 +60,9 @@ export default {
     return { data: null }
   },
   async unlike(ctx: Context) {
-    await checkRecaptcha(ctx)
+    await checkRecaptcha()
 
-    const profile = await getProfile(ctx)
+    const profile = await getProfile()
 
     if (profile) {
       await strapi.entityService.update('api::blog.blog', ctx.params.id, {
@@ -85,7 +82,7 @@ export default {
     return { data: null }
   },
   async view(ctx: Context) {
-    await checkRecaptcha(ctx)
+    await checkRecaptcha()
 
     await strapi.db
       .connection('blogs')

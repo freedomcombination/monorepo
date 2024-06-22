@@ -10,7 +10,7 @@ export default factories.createCoreController(
   () => {
     return {
       async create(ctx) {
-        await checkRecaptcha(ctx)
+        await checkRecaptcha()
 
         return super.create(ctx)
       },

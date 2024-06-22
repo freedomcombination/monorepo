@@ -11,11 +11,17 @@ import { errors } from '@strapi/utils'
 export default factories.createCoreController('api::profile.profile', () => {
   return {
     async find(ctx) {
-      const isAdmin = checkAdmin(ctx)
+      const isAdmin = checkAdmin()
 
       if (isAdmin) return super.find(ctx)
 
-      const profile = await getProfile(ctx, true, true)
+      const profile = await getProfile({
+        check: true,
+        populate: {
+          platforms: true,
+        },
+      })
+
       if (profile.platforms.length === 0) {
         throw new Error('No platforms found')
       }
@@ -44,7 +50,7 @@ export default factories.createCoreController('api::profile.profile', () => {
       return this.transformResponse(sanitizedResults, { pagination })
     },
     async create(ctx: any) {
-      //  if (ctx.request.body?.data?.recaptchaToken) await checkRecaptcha(ctx)
+      //  if (ctx.request.body?.data?.recaptchaToken) await checkRecaptcha()
 
       /*
         there are two places where this function is called:
@@ -93,11 +99,11 @@ export default factories.createCoreController('api::profile.profile', () => {
       return this.sanitizeOutput(updatedProfile, ctx)
     },
     async update(ctx) {
-      const isAdmin = checkAdmin(ctx)
+      const isAdmin = checkAdmin()
 
       if (isAdmin) return super.update(ctx)
 
-      const isOwner = await checkOwner(ctx, ctx.params.id)
+      const isOwner = await checkOwner(ctx.params.id)
 
       if (!isOwner) {
         throw new errors.ForbiddenError(

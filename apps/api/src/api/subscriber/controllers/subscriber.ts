@@ -8,7 +8,7 @@ import { getProfile } from '../../../utils'
 
 export default factories.createCoreController('api::subscriber.subscriber', {
   async create(ctx: any) {
-    const profile = await getProfile(ctx)
+    const profile = await getProfile()
     const { data } = ctx.request.body
 
     const result = await strapi.entityService.create(

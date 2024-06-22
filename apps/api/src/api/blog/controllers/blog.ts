@@ -24,7 +24,7 @@ export default factories.createCoreController('api::blog.blog', () => {
         throw new errors.NotFoundError('Blog not found')
       }
 
-      const profile = await getProfile(ctx)
+      const profile = await getProfile()
 
       const isLiked =
         profile &&
@@ -43,7 +43,7 @@ export default factories.createCoreController('api::blog.blog', () => {
     },
     async find(ctx) {
       const response = await super.find(ctx)
-      const profile = await getProfile(ctx)
+      const profile = await getProfile()
 
       const data = []
 
