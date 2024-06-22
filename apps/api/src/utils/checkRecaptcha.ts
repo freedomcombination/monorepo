@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { errors } from '@strapi/utils'
-import { Context } from 'koa'
 
 const { ForbiddenError } = errors
 
-export const checkRecaptcha = async (context: Context) => {
+export const checkRecaptcha = async () => {
+  const ctx = strapi.requestContext.get()
+
   if (process.env.NODE_ENV === 'development') return
 
-  const recaptchaToken = (context.request as any).body?.data?.recaptchaToken
+  const recaptchaToken = (ctx.request as any).body?.data?.recaptchaToken
 
   if (!recaptchaToken) {
     throw new ForbiddenError('Recaptcha token required')

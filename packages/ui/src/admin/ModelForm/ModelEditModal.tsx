@@ -1,6 +1,5 @@
 import {
   Center,
-  Divider,
   Heading,
   Modal,
   ModalBody,
@@ -82,12 +81,7 @@ export const ModelEditModal = <T extends StrapiModel>({
               onSuccess={handleSuccess}
               onClose={onClose}
             />
-            {children && (
-              <>
-                <Divider />
-                {children}
-              </>
-            )}
+            {children}
           </ModalBody>
         )}
       </ModalContent>

@@ -23,6 +23,15 @@ import {
   RequestSingleArgs,
 } from './types'
 
+const DEFAULT_PAGE = 1
+const DEFAULT_PAGE_SIZE = 25
+const DEFAULT_PAGINATION = {
+  page: DEFAULT_PAGE,
+  pageSize: DEFAULT_PAGE_SIZE,
+  pageCount: 0,
+  total: 0,
+}
+
 function strapiRequest<T extends StrapiModel>(
   args: RequestCollectionArgs<T>,
 ): Promise<StrapiCollectionResponse<T[]>>
@@ -46,8 +55,8 @@ async function strapiRequest<T extends StrapiModel>(
     locale,
     filters: initialFilters = {},
     sort,
-    page = 1,
-    pageSize = 25,
+    page = DEFAULT_PAGE,
+    pageSize = DEFAULT_PAGE_SIZE,
   } = collectionArgs
 
   const hasLocale = !id && endpointWithLocale.includes(endpoint)
@@ -67,16 +76,21 @@ async function strapiRequest<T extends StrapiModel>(
     }
   })
 
+  const pagination = !id && {
+    ...(page !== DEFAULT_PAGE && { page }),
+    ...(pageSize !== DEFAULT_PAGE_SIZE && { pageSize }),
+  }
+
   const query = qs.stringify(
     {
-      ...(!id && { pagination: { page, pageSize } }),
+      ...(pagination && { pagination }),
       ...(fields && { fields }),
       ...(filters && { filters }),
       ...(hasLocale && { locale }),
       ...(hasPublicationState &&
         includeDrafts && { publicationState: 'preview' }),
       populate,
-      sort: sort || ['createdAt:desc'],
+      ...(sort && { sort }),
     },
     { encodeValuesOnly: true },
   )
@@ -117,7 +131,7 @@ async function strapiRequest<T extends StrapiModel>(
         return {
           data: result as unknown as T[],
           meta: {
-            pagination: { page: 1, pageSize: 25, pageCount: 1, total: 0 },
+            pagination: DEFAULT_PAGINATION,
           },
         }
       } else if (endpoint === 'users-permissions/roles') {
@@ -129,7 +143,7 @@ async function strapiRequest<T extends StrapiModel>(
 
       return {
         data: [] as T[],
-        meta: { pagination: { page: 1, pageSize: 25, pageCount: 0, total: 0 } },
+        meta: { pagination: DEFAULT_PAGINATION },
       } as StrapiCollectionResponse<T[]>
     }
 
@@ -159,7 +173,7 @@ async function strapiRequest<T extends StrapiModel>(
 
     return {
       data: [] as T[],
-      meta: { pagination: { page: 1, pageSize: 25, pageCount: 0, total: 0 } },
+      meta: { pagination: DEFAULT_PAGINATION },
     } as StrapiCollectionResponse<T[]>
   }
 }

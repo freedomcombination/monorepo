@@ -15,7 +15,7 @@ export default factories.createCoreController(
           )
         }
 
-        const profile = await getProfile(ctx, true)
+        const profile = await getProfile({ check: true })
 
         if (!profile) {
           throw new UnauthorizedError('No editor profile found')

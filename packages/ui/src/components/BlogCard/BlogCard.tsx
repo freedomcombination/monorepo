@@ -24,9 +24,10 @@ import { WImage } from '../WImage'
 export type BlogCardProps = {
   post: Blog
   isFeatured?: boolean
+  onClick?: () => void
 }
 
-export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured }) => {
+export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured, onClick }) => {
   const { locale } = useRouter()
   const isMobile = useBreakpointValue({ base: true, lg: false })
 
@@ -37,8 +38,12 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured }) => {
     <Link
       {...(featured && { gridColumn: { lg: 'span 2' } })}
       {...(!featured && { display: 'flex' })}
-      href={`/blog/${post.slug}`}
+      onClick={onClick}
+      href={!onClick ? `/blog/${post.slug}` : '#'}
       h={'full'}
+      {...(onClick && {
+        boxShadow: 'md',
+      })}
     >
       <Flex
         w={'full'}

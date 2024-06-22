@@ -45,3 +45,27 @@ export const useGetBlogs = () => {
     queryFn: () => getBlogs(locale as StrapiLocale, token),
   })
 }
+
+export const useGetAuthorBlogs = () => {
+  const { locale } = useRouter()
+  const { token, profile } = useAuthContext()
+
+  return useQuery({
+    queryKey: ['author-blogs', locale],
+    queryFn: async () => {
+      if (!profile || !token) return []
+
+      const response = await strapiRequest<Blog>({
+        endpoint: 'blogs',
+        filters: {
+          author: { id: { $eq: profile.id } },
+        },
+        sort: ['publishedAt:desc'],
+        locale: locale as StrapiLocale,
+        token,
+      })
+
+      return response?.data || []
+    },
+  })
+}

@@ -86,8 +86,7 @@ export const subscribeDb = async () => {
     // Only consider API users,
     // otherwise Strapi admin user ids will conflict with the user ids
     // It can cause irrelevant profile relations
-    const profile =
-      ctx?.state?.user?.confirmed && (await getProfile(ctx, false))
+    const profile = ctx?.state?.user?.confirmed && (await getProfile())
 
     let action: AuditLogAction
     const eventAction = event.action as StrapiLifecycleAction
