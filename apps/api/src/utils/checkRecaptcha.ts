@@ -33,12 +33,16 @@ export const checkRecaptcha = async (context: Context) => {
 
     if (!recaptcha.success || recaptcha.score < 0.5) {
       // TODO: How to send the error details to the client?
-      throw new ForbiddenError('Recaptcha failed', {
+      const error = new ForbiddenError('Recaptcha failed', {
         details: {
           errorCode: recaptcha['error-codes'],
           score: recaptcha.score,
         },
       })
+
+      strapi.plugin('sentry').service('sentry').sendError(error)
+
+      throw error
     }
   } catch (error) {
     console.error('Error in check-recaptcha policy:', error)
