@@ -6,20 +6,6 @@ import { errors } from '@strapi/utils'
 const { ApplicationError, ForbiddenError } = errors
 
 export default {
-  async approve(ctx: Context) {
-    const result = await strapi.entityService.update(
-      'api::art.art',
-      ctx.params.id,
-      {
-        data: {
-          approvalStatus: 'approved',
-          publishedAt: new Date(),
-        },
-      },
-    )
-
-    return { data: result }
-  },
   async like(ctx: Context) {
     await checkRecaptcha(ctx)
 
