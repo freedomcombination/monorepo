@@ -2,16 +2,35 @@
 import { useEffect, useState } from 'react'
 
 import { Box } from '@chakra-ui/react'
-
 import { strapiRequest } from '@fc/lib'
+import { Blog } from '@fc/types';
 
 export const FetchWithStrapiRequest = () => {
-  const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState<Blog[]>([])
 
   useEffect(() => {
-    // TODO: fetch blogs with strapiRequest by using the API_URL and PUBLIC_TOKEN
-    // Remember that fetcher is a wrapper around axios that adds the token and api url to the request
-  }, [])
+    const fetchData = async () => {
+      try {
+        const response = await strapiRequest<Blog>({
+          endpoint: 'blogs',
+          locale: 'tr',
+        });
 
-  return <Box>{/* TODO: Show only title of the blogs */}</Box>
+        if (response?.data?.length != 0) {
+          setBlogs(response.data)
+        }
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return <Box>  <ul>
+    {blogs.map((blog) => (
+      <li key={blog.id}>{blog.title}</li>
+    ))}
+  </ul></Box>
 }

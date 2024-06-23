@@ -3,8 +3,11 @@ import { useEffect, useState } from 'react'
 
 import { Box } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { PUBLIC_TOKEN } from '@fc/config' // API_URL
+import axios from 'axios'
+import { Blog } from '@fc/types'
 
-import { API_URL } from '@fc/config'
+let API_URL = 'https://wsvv-api-staging.onrender.com';
 
 // https://wsvv-api-staging.onrender.com/api/blogs?locale=tr
 // You can use local API_URL instead of the above url
@@ -12,14 +15,33 @@ import { API_URL } from '@fc/config'
 const BLOG_URL = `${API_URL}/api/blogs`
 
 export const FetcWithAxios = () => {
-  const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState<Blog[]>([])
   const { locale } = useRouter()
 
+  const headers = {
+    Authorization: 'Bearer ' + PUBLIC_TOKEN,
+  }
+
+  const params = new URLSearchParams();
+  params.set('locale', 'tr');
+  const query = params.toString();
+
   useEffect(() => {
-    // TODO: fetch blogs with axios by using the API_URL and TOKEN (Authorization header with Bearer token)
-    // NOTE: Not every locale may have a blog, so you may need to change the locale to tr
-    // REF: https://docs.strapi.io/dev-docs/plugins/i18n#getting-localized-entries-with-the-locale-parameter
+
+    axios
+      .get(`${BLOG_URL}?${query}`, {})
+      .then(response => {
+        setBlogs(response.data.data)
+      })
+      .catch(error => console.log(error))
+
   }, [])
 
-  return <Box>{/* TODO: Show only title of the blogs */}</Box>
+
+
+  return <Box>
+    {blogs.map(blog => (
+      <h1 key={blog.id}>{blog.title}</h1>
+    ))}
+  </Box>
 }
