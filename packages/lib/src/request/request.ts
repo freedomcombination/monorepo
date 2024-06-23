@@ -54,7 +54,7 @@ async function strapiRequest<T extends StrapiModel>(
   const {
     locale,
     filters: initialFilters = {},
-    sort,
+    sort = ['createdAt:desc'],
     page = DEFAULT_PAGE,
     pageSize = DEFAULT_PAGE_SIZE,
   } = collectionArgs
