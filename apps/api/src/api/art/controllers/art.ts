@@ -1,29 +1,49 @@
 import { factories } from '@strapi/strapi'
+import { EntityService, Attribute } from '@strapi/types'
 import { errors } from '@strapi/utils'
 import { getProfile } from '../../../utils'
 import { emailTemplates } from '../../../../emails'
 
 const { UnauthorizedError } = errors
 
+type Art = EntityService.GetValues<
+  'api::art.art',
+  Attribute.GetPopulatableKeys<'api::art.art'>
+>
+
 const sendArtCreatedEmail = async art => {
   // TODO: Get editor emails from the database
-  const editorEmails = process.env.EDITOR_EMAILS?.split(',')
+  const editors = await strapi.entityService.findMany(
+    'plugin::users-permissions.user',
+    {
+      filters: {
+        role: {
+          type: {
+            $in: ['admin', 'arteditor', 'arteditor_translator'],
+          },
+        },
+      },
+    },
+  )
+  const editorEmails = editors.map(editor => editor.email)
+
+  if (editorEmails.length === 0) {
+    strapi.log.error('No editor email exists')
+
+    return
+  }
 
   // populating artist to use in email subject
   const artist = art.artist
   const name = artist.name || artist?.email || 'an artist'
   const title = art.title_tr || art.title_nl || art.title_en
 
-  if (editorEmails?.length > 0) {
-    strapi.plugins['email'].services.email.send({
-      to: editorEmails,
-      from: process.env.SMTP_USERNAME,
-      subject: `New Art ${title} has been created by ${name}`,
-      html: emailTemplates.renderArtCreated(art),
-    })
-  } else {
-    strapi.log.error('No editor email exists')
-  }
+  await strapi.plugins['email'].services.email.send({
+    to: editorEmails,
+    from: process.env.SMTP_USERNAME,
+    subject: `New Art: ${title} - ${name}`,
+    html: emailTemplates.renderArtCreated(art),
+  })
 }
 
 export default factories.createCoreController('api::art.art', ({ strapi }) => {
@@ -71,8 +91,10 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
 
       const profile = await getProfile()
 
+      const artResults = results as Art[]
+
       const arts = await Promise.all(
-        results.map(async art => {
+        artResults.map(async art => {
           const { id, ...attributes } = art
           const isLiked =
             profile &&

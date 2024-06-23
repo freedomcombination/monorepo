@@ -19,7 +19,11 @@ const ArtCreated: FC<ArtCreatedProps> = ({ art }) => {
           {art.title_en || art.title_nl || art.title_tr} has been created by{' '}
           {art.artist?.name}
         </Text>
-        <Img className="w-[300px]" src={art.image?.url} alt={art.title_en} />
+        <Img
+          className="w-[300px]"
+          src={art.image?.formats?.small?.url || art.image?.url}
+          alt={art.title_en}
+        />
       </Section>
     </EmailProvider>
   )
