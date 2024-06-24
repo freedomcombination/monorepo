@@ -5,10 +5,11 @@ import { camelCase, startCase } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDown, FaArrowUp, FaSort } from 'react-icons/fa'
 
-import { StrapiModel, StrapiModelKeys } from '@fc/types'
+import { StrapiLocale, StrapiModel, StrapiModelKeys } from '@fc/types'
 
-import { WTableRow } from './TableRow'
-import { CellConfig, WTableProps } from './types'
+import { convertTRCharsToEN } from './convertChars'
+import { getRowForPDF, WTableRow } from './TableRow'
+import { CellConfig, WTableProps, WTableRowProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
 
 export const WTable = <T extends StrapiModel>({
@@ -113,4 +114,30 @@ export const WTable = <T extends StrapiModel>({
       </Tbody>
     </Table>
   )
+}
+
+export const getColumnsForPDF = <T extends StrapiModel>(
+  columns: WTableRowProps<T>['columns'],
+  t: (a: string, b?: object) => string,
+): string[] => {
+  return Object.keys(columns).map(key => {
+    const { label } = columns[key as keyof T] as CellConfig<T>
+    const translationLabel = t(
+      (label || key) as keyof I18nNamespaces['common'],
+      {
+        defaultValue: label || startCase(camelCase(key)),
+      },
+    )
+
+    return convertTRCharsToEN(translationLabel)
+  })
+}
+
+export const getRowsForPDF = <T extends StrapiModel>(
+  data: T[],
+  columns: WTableRowProps<T>['columns'],
+  locale: StrapiLocale,
+  t: (a: string, b?: object) => string,
+): string[][] => {
+  return data.map(model => getRowForPDF(model, columns, locale, t))
 }

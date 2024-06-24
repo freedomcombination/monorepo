@@ -1,6 +1,6 @@
 import { ApprovalStatus, Blog, Profile } from '@fc/types'
 
-import { PublicationBadges } from '../../admin'
+import { PublicationBadges, publicationBadgePDF } from '../../admin'
 import { WTableProps } from '../../components'
 
 export const useBlogColumns = (): WTableProps<Blog>['columns'] => {
@@ -32,6 +32,7 @@ export const useBlogColumns = (): WTableProps<Blog>['columns'] => {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
+      transformPDF: value => publicationBadgePDF(value as string | null),
     },
     createdAt: {
       type: 'date',

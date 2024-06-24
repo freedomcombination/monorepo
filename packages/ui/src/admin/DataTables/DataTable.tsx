@@ -1,19 +1,33 @@
+// there are lint errors here and i could't fix them
+
 import {
   Box,
+  Button,
+  HStack,
+  Image,
+  Select,
   Spacer,
   Stack,
   Text,
-  Image,
   VStack,
-  HStack,
-  Select,
+  useTheme,
 } from '@chakra-ui/react'
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import { FaFilePdf } from 'react-icons/fa6'
 
 import { StrapiModel } from '@fc/types'
 
+import { I18nNamespaces } from '../../../@types/i18next'
+import {
+  Pagination,
+  WTable,
+  getColumnsForPDF,
+  getRowsForPDF,
+} from '../../components'
 import { DataTableProps } from './types'
-import { Pagination, WTable } from '../../components'
 
 export const DataTable = <T extends StrapiModel>({
   currentPage,
@@ -23,9 +37,42 @@ export const DataTable = <T extends StrapiModel>({
   children,
   pageSize,
   setPageSize,
+  allowExportPDF = false,
   ...tableProps
 }: DataTableProps<T>) => {
   const { t } = useTranslation()
+  const theme = useTheme()
+  const { locale } = useRouter()
+
+  const exportPDF = () => {
+    const columns = getColumnsForPDF(tableProps.columns, (a, b) =>
+      t(a as keyof I18nNamespaces['common']),
+    )
+    const rows = getRowsForPDF(
+      tableProps.data,
+      tableProps.columns,
+      locale,
+      (a, b) => t(a as keyof I18nNamespaces['common']),
+    )
+
+    const doc = new jsPDF({
+      orientation: 'landscape',
+    })
+    doc.addFont(
+      theme.fonts.body,
+      'PDFFont',
+      'normal',
+      'normal',
+      'WinAnsiEncoding',
+    )
+
+    autoTable(doc, {
+      head: [columns],
+      body: rows,
+    })
+
+    doc.save('table.pdf')
+  }
 
   return (
     <Stack spacing={4} overflow={'hidden'}>
@@ -41,7 +88,7 @@ export const DataTable = <T extends StrapiModel>({
       </Box>
       {children}
       <Spacer />
-      {totalCount > 10 && (
+      {(totalCount > 10 || allowExportPDF) && (
         <Stack
           direction={{ base: 'column', md: 'row' }}
           justify={{ base: 'center', md: 'space-between' }}
@@ -49,6 +96,14 @@ export const DataTable = <T extends StrapiModel>({
           py={4}
         >
           <HStack flex={1} justify={{ base: 'center', md: 'start' }}>
+            <Button
+              leftIcon={<FaFilePdf />}
+              colorScheme="primary"
+              variant="outline"
+              onClick={exportPDF}
+            >
+              Export PDF
+            </Button>
             <Select
               w={20}
               textAlign={'center'}

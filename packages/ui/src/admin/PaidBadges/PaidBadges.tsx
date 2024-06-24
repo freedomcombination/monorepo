@@ -17,3 +17,7 @@ export const PaidBadges: FC<PaidBadgesProps> = ({ hasPaid, ...rest }) => {
     </Badge>
   )
 }
+
+export const paidBadgesPDF = (hasPaid: boolean | null) => {
+  return hasPaid ? 'Paid' : 'Not Yet'
+}

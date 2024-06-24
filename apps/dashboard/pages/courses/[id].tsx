@@ -57,7 +57,7 @@ const CoursePage = () => {
         $or: [
           { name: { $containsi: searchTerm } },
           { email: { $containsi: searchTerm } },
-        ]
+        ],
       }),
     },
     sort,
