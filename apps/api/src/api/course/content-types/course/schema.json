@@ -10,73 +10,123 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
-    "title_en": {
-      "type": "string"
-    },
-    "title_tr": {
-      "type": "string"
-    },
-    "title_nl": {
-      "type": "string"
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
-      "type": "uid",
-      "targetField": "title_en"
+      "type": "uid"
     },
-    "description_en": {
-      "type": "text"
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
-    "description_tr": {
-      "type": "text"
-    },
-    "description_nl": {
-      "type": "text"
-    },
-    "content_en": {
-      "type": "richtext"
-    },
-    "content_tr": {
-      "type": "richtext"
-    },
-    "content_nl": {
-      "type": "richtext"
+    "content": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "location": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "language": {
       "type": "enumeration",
-      "enum": ["en", "tr", "nl"]
+      "enum": ["en", "tr", "nl"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "instructor": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "price": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "quota": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "isOnline": {
-      "type": "boolean"
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "image": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "approvalStatus": {
       "type": "enumeration",
-      "enum": ["approved", "pending", "rejected"]
+      "enum": ["approved", "pending", "rejected"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "startDate": {
-      "type": "date"
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "endDate": {
-      "type": "date"
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "tags": {
       "type": "relation",
@@ -99,12 +149,22 @@
     "faqs": {
       "type": "component",
       "repeatable": true,
-      "component": "faq.faq"
+      "component": "faq.faq",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "curriculum": {
       "type": "component",
       "repeatable": true,
-      "component": "course.curriculum"
+      "component": "course.curriculum",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

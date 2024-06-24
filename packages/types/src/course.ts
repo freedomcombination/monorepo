@@ -1,24 +1,18 @@
-import { ApprovalStatus } from './common'
+import { ApprovalStatus, Expand } from './common'
 import { CourseApplication } from './course-application'
 import { Curriculum } from './curriculum'
 import { FaqLocale } from './faq-locale'
 import { UploadFile } from './file'
 import { StrapiLocale } from './locale'
 import { Platform } from './platform'
-import { StrapiBase } from './strapi'
+import { StrapiBase, StrapiEntityBase } from './strapi'
 import { Tag } from './tag'
 
-type CourseBase = StrapiBase & {
-  title_en: string
-  title_tr: string
-  title_nl: string
+type CourseBase = StrapiEntityBase & {
+  title: string
   slug: string
-  description_en: string
-  description_tr: string
-  description_nl: string
-  content_en: string
-  content_tr: string
-  content_nl: string
+  description: string
+  content: string
   language: StrapiLocale
   location: string
   instructor: string
@@ -37,23 +31,33 @@ type CourseRelation = {
   faqs?: FaqLocale[]
   curriculum?: Curriculum[]
   platform?: Platform | null
+  localizations?: Array<Course>
 }
 
 // Remove approvalStatus from CourseCreateInput since it will be set when an editor approves the course
-export type CourseCreateInput = Omit<CourseBase, 'approvalStatus'> & {
+export type CourseCreateInput = {
   image: File
   tags?: number[]
   faqs?: FaqLocale[] // Component, not a relation
   curriculum?: Curriculum[] // Component, not a relation
   platform?: number
-}
+} & Expand<
+  { publishedAt?: Date | string | null } & Omit<CourseBase, 'approvalStatus'>
+>
 
-export type CourseUpdateInput = CourseBase & {
-  image?: File
-  tags?: number[]
-  faqs?: FaqLocale[] // Component, not a relation
-  curriculum?: Curriculum[] // Component, not a relation
-  platform?: number
-}
+export type CourseUpdateInput = CourseBase &
+  Partial<Omit<CourseBase, 'locale'>> & {
+    image?: File
+    tags?: number[]
+    faqs?: FaqLocale[] // Component, not a relation
+    curriculum?: Curriculum[] // Component, not a relation
+    platform?: number
+    publishedAt?: Date | string | null
+  }
 
-export type Course = CourseBase & CourseRelation
+export type CourseLocalizeInput = Pick<
+  CourseBase,
+  'title' | 'description' | 'content'
+>
+
+export type Course = StrapiBase & CourseBase & CourseRelation

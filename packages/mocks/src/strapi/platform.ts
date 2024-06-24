@@ -406,23 +406,14 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       courses: [
         {
           id: 5,
-          title_en: 'Calligraphy Workshop begins',
-          title_tr: 'Kaligrafi Atölyesi başlıyor ',
-          title_nl: 'Kalligrafieworkshop begint',
+          title: 'Calligraphy Workshop begins',
           slug: 'calligraphy-workshop-begins',
-          description_en:
+          description:
             'The 8-week training to be given by Fatih Gündoğdu starts on October 11.\nThe training will be held both online and face to face in Rotterdam.',
-          description_tr:
-            'Fatih Gündoğdu tarafından 8 hafta boyunca verilecek eğitim 11 ekimde başlıyor. \nEğitim hem online hem de Roterdamda yüz yüze  yapılacak. ',
-          description_nl:
-            'Op 11 oktober start de 8-weekse training van Fatih Gündoğdu.\nDe training wordt zowel online als face-to-face gehouden in Rotterdam.',
-          content_en:
+          content:
             'The training to be given by **Fatih Gündoğdu** for 8 weeks starts on 11 October. \nThe training will be both online and face to face in Rotterdam. \nCourse content is as follows. \n\n1st week acquaintance, getting to know the art of calligraphy and materials \n\n2nd week pencil grip and basic exercises \n\n3rd week letter study \n\n4th week letter study \n\nWeek 5 word study \n\n6th week word study \n\n7th week sentence study \n\n8th week sentence study \n\n\nClass time every Wednesday 19:00-20:00 \n\n Last registration :10 October 2023\n\n**Payment :**\n\nThe course fee is 150 euros in total, 100 euros for the normal fee and 50 euros for materials. \n\nING Bank\n\nAccount name : Stg. Freedom Combination\n\nAccount no: NL79INGB0103801499\n\naccount or from this [link](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) until 10 October. \nAfter payment, the receipt must be sent to whatsaap number +31 6 85221308 and the final registration must take place. ',
-          content_tr:
-            '**Fatih Gündoğdu** tarafından 8 hafta boyunca verilecek eğitim 11 ekimde başlıyor. \nEğitim hem online hem de Roterdamda yüz yüze  yapılacak. \nDers içeriği şöyledir. \n\n1.hafta tanışma,kaligrafi sanatını ve malzemeleri tanıma \n\n2.hafta kalem tutuşu ve temel egzersizler \n\n3.hafta harf çalışması \n\n4.hafta harf çalışması \n\n5.hafta kelime çalışması \n\n6.hafta kelime çalışması \n\n7.hafta cümle çalışması \n\n8.hafta cümle çalışması \n\n\nDers saati her çarşamba 19:00-20:00 \n\n Son kayıt : 10 Ekim 2023\n\n**Ödeme  :**\nKurs ücreti; 100 euro normal ücret ve 50 euro malzeme masrafı olmak üzere toplam 150 eurodur. \n\nING Bank\n\nHesap adı : Stg. Freedom Combination\n\nHesap no : NL79INGB0103801499\n\nhesabına veya bu [linkten](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) 10 Ekim\'e kadar yatırılması gerekmektedir. \nÖdeme yaptıktan sonra ‪+31 6 85221308‬ numaralı whatsaap a dekontun gönderilip kesin kaydın gerçekleşmesi gerekmektedir. \n\n<iframe width="1081" height="608" src="https://www.youtube.com/embed/JfQcowojVaE" title="Kaligrafi Atölyesi başlıyor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
-          content_nl:
-            'De training die gedurende 8 weken wordt gegeven door **Fatih Gündoğdu** start op 11 oktober. \nDe training is zowel online als face to face in Rotterdam. \nDe inhoud van de cursus is als volgt. \n\n1e week kennismaking, kennismaking met kalligrafie en materialen \n\n2e week potloodgreep en basisoefeningen \n\n3e week letterstudie \n\n4e week letterstudie \n\nWeek 5 woordstudie \n\n6e week woordstudie \n\n7e week zinsbouw \n\n8e week zinsbouw \n\n\nLestijd elke woensdag 19:00-20:00 \n\n Laatste inschrijving :10 October 2023\n\n**Betaling :**\n\nHet cursusgeld is 150 euro in totaal, 100 euro voor de normale kosten en 50 euro voor materialen. \n\nING Bank\n\nRekeningnaam : Stg. Freedom Combination\n\nRekeningnr: NL79INGB0103801499\n\nrekening of via deze [link](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) tot 10 oktober. \nNa betaling moet de kwitantie gestuurd worden naar whatsaap nummer +31 6 85221308 en dient de definitieve inschrijving plaats te vinden. ',
           location: 'online-fyzk',
+          locale: 'en',
           language: 'tr',
           instructor: 'Fatih Gündoğdu',
           price: 150,
@@ -961,26 +952,19 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       courses: [
         {
           id: 6,
-          title_en: 'Figma Course',
-          title_tr: 'Figma Kursu',
-          title_nl: 'Figma Cursus',
+          title: 'Figma Course',
           slug: 'figma-course',
-          description_en: 'Take the first step to become an interface designer',
-          description_tr: 'Arayüz tasarımcısı olmak için ilk adımı atın',
-          description_nl: 'Zet de eerste stap om interfaceontwerper te worden',
-          content_en:
+          description: 'Take the first step to become an interface designer',
+          content:
             'Figma training is waiting for you who want to step into the world of Web and Mobile design using figma, the popular interface design program of recent years. After this training, you will not only master the basics of Figma, but you will be able to prepare projects from beginner to intermediate and advanced level. You can easily make your interface (web and mobile design) designs using the figma program, which does not matter the operating system, which can easily run even on the black box. \n\nApplications start: December 11\n\nEnd of applications December 30\n\nYou need to be motivated to start the course. To help us understand this, we will send you a small assignment. We expect you to finish this assignment and send it to us by e-mail within the specified time. Those who do not submit the assignments on time will not be able to enroll. \n\nTask submission January 1st\nTask submission deadline: January 14\n\nReview of Task January 15-21 \n\nNotification by e-mail to those whose registration is accepted: January 22-23\n\nWhen you receive the course acceptance e-mail, your registration is finalized upon payment. Please send us the receipt by e-mail. Please contact us in case of payment difficulties. \n\n\n**Course schedule**\n\nFebruary 26 - March 08\n\nBasic information about UI UX concepts Design Basics - Colors, Color theory\n\nMarch 04-10\n\nDesign basics: Topography, fonts and hierarchy What is Figma and what does it do? What are its advantages?\n\nMarch 11-17\n\nIntroduction to Figma interface Figma Frame tool\n\nMarch 18-24\n\nShape tool (objects), Pen tool (drawing tool) Auto layaout Components and variants\n\nMarch 25-31\n\nResponsive layout, grid and figmada usage Comunity and plugins\n\nApril 1-7 \n\nMost used plugins The icon and image sites most used by designers Prototype\n\nApril 8-14 \n\nIntroduction to Design System Creating a color palette and applying it to design Color palette tool sites Determining the grid structure - desktop - tablet - mobile\n\nApril 15-21\n\nButton features and Button standards Typography Icons Project: Landing Page Page and Mobile design (Desktop-Tablet-Mobile)\n\nNote: We will also have a Frontend course as a continuation of this course. The announcement will be made while the figma course continues and registrations will be taken separately.',
-          content_tr:
-            'Son yılların popülerleşen arayüz tasarım programı figmayı kullanarak Web ve Mobil tasarım dünyasına adım atmak isteyenler figma eğitimi sizleri bekliyor. Bu eğitimden sonra Figmanın temellerine hakim olmakla kalmayacak başlangıçtan orta ve ileri düzeye varan projeler hazırlayacak seviyeye geleceksiniz. İşletin sistemi fark etmeyen, karayıcıda bile kolaylıkla çalışabilen figma programını kullanarak sizler de arayüz (web ve mobil design) tasarımlarınızı kolaylıkla yapabilirsiniz. \n\nBaşvurular başlama: 11 Aralık\n\nBaşvuruların sonu: 30 Aralık\n\nKursa başlayabilmeniz için motivasyonunuzun tam olması gerekiyor. Bunu anlayabilmemiz için size küçük bir ödev göndereceğiz. Sizden beklentimiz belirtilen süre içinde bu ödevi bitirip bize mail olarak göndermeniz. Ödevleri zamanında göndermeyenlerin kaydı mümkün olmayacaktır. \n\nTask gönderimi: 1 Ocak\n\nTask teslimi son tarih: 14 Ocak\n\nTaskların incelenmesi: 15-21 Ocak \n\nKaydı kabul olanlara mail ile bilgi verilmesi: 22-23 Ocak\n \nKurs kabul mailini aldığınızda ödemeyi yapmanızla birlikte kaydınız kesinleşir. Makbuzu lütfen bize mail atınız. Ödemede zorlanmanız durumunda bizimle iletişime geçebilirsiniz. \n  \n \n**Ders programı**\n\n26 Şubat -08 Mart\n\nUI UX kavramları hakkında temel bilgilendirme Tasarım Temelleri - Renkler, Renk teorisi\n\n04-10 Mart\n\nTasarım temelleri: Topografi, fontlar ve hiyerarşi Figma nedir ne işe yarar? Avantajları nelerdir?\n\n11-17 Mart\n\nFigma arayüzüne giriş Figma Frame tool\n\n18-24 Mart\n\nShape tool ( objeler), Pen tool ( çizim aracı) Auto layaout Components ve variantları\n\n25-31 Mart\n\nResponsive layout, grid ve figmada kullanımı Comunity ve pluginler\n\n1-7 Nisan \n\nEn çok kullanılan pluginler Tasarımcıların en çok kullandıkları icon ve resim siteleri Prototype\n\n8-14 Nisan \n\nDesign System’e giriş Renk paleti oluşturma ve tasarıma uygulama Color palet tool siteleri Grid (ızgara) yapısını belirleme- desktop - tablet-mobil\n\n15-21 Nisan\n\nButon özellikleri ve Buton standartları Tipografi İcons Proje: Landing Page Sayfa ve Mobil tasarımı ( Desktop-Tablet-Mobil)\n\nNot: Bu kursumuzun devamı niteliğinde olan Frontend kursumuz da olacaktır. Duyurusu figma kursu devam ederken yapılacak ve kayıtlar ayrı olarak alınacaktır.',
-          content_nl:
-            'Figma training wacht op jou die de stap wil zetten naar de wereld van web- en mobiel ontwerp met behulp van Figma, het populaire interface ontwerpprogramma van de afgelopen jaren. Na deze training zul je niet alleen de basis van Figma onder de knie hebben, maar je zult ook in staat zijn om projecten voor te bereiden van beginner tot gemiddeld en gevorderd niveau. Je kunt gemakkelijk je interface (web en mobiel ontwerp) ontwerpen met behulp van het figma programma, dat niet afhankelijk is van het besturingssysteem en zelfs gemakkelijk op de black box kan draaien. \n\nAanmeldingen starten: 11 december\n\nEinde aanmeldingen 30 december\n\nJe moet gemotiveerd zijn om aan de cursus te beginnen. Om dit te begrijpen, sturen we je een kleine opdracht. We verwachten dat je de opdrachten afmaakt en binnen de gestelde tijd per e-mail naar ons opstuurt. Wie de opdrachten niet op tijd inlevert, kan zich niet inschrijven. \n\nOpdracht inleveren 1 januari\n\n\nUiterste inleverdatum: 14 januari\n\nAnalyseren van de taken 15-21 januari \n\nInformeren van degenen van wie de inschrijving is geaccepteerd per e-mail: 22-23 januari\n\nWanneer je de e-mail met de aanvaarding van de cursus ontvangt, is je inschrijving definitief na betaling. Stuur ons het betalingsbewijs per e-mail. Neem contact met ons op als je problemen hebt met de betaling. \n\n**Cursusprogramma**\n\n26 februari -08 maart\n\nBasisinformatie over UI UX concepten Design Basics - Kleuren, Kleurenleer\n\n04-10 maart\n\nBasisprincipes van ontwerp: Topografie, lettertypen en hiërarchie Wat is Figma en wat doet het? Wat zijn de voordelen?\n\n11-17 maart\n\nIntroductie tot Figma interface Figma Frame gereedschap\n\n18-24 maart\n\nVormgereedschap (objecten), Pengereedschap (tekengereedschap) Auto layaout Componenten en varianten\n\n25-31 maart\n\nResponsive layout, grid en figmada gebruik Comunity en plugins\n\n1-7 april \n\nMeest gebruikte plugins De meest gebruikte pictogram- en afbeeldingssites door ontwerpers Prototype\n\n8-14 april \n\nInleiding tot het ontwerpsysteem Een kleurenpalet maken en toepassen op het ontwerp Kleurpalettoolsites De rasterstructuur bepalen - desktop - tablet - mobiel\n\n15-21 april\n\nKnopkenmerken en Knopstandaarden Typografie Pictogrammen Project: Landingspagina Pagina en Mobiel ontwerp (Desktop-Tablet-Mobiel)\n\nOpmerking: Er komt ook een cursus Frontend als vervolg op deze cursus. De aankondiging zal worden gedaan terwijl de figma cursus doorgaat en inschrijvingen zullen apart worden genomen.',
           location: 'online',
+          locale: 'en',
           language: 'tr',
           instructor: 'Hüseyin Aydın',
           price: 60,
           quota: 16,
           isOnline: true,
-          approvalStatus: null,
+          approvalStatus: 'pending',
           startDate: '2024-02-26',
           endDate: '2024-04-27',
           createdAt: '2023-12-03T19:31:51.292Z',
@@ -1323,23 +1307,14 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       courses: [
         {
           id: 1,
-          title_en: 'Script Writing Course',
-          title_tr: 'Senaryo Yazarlığı Kursu',
-          title_nl: 'Cursus Scriptschrijven',
+          title: 'Script Writing Course',
           slug: 'script-writing-course',
-          description_en:
+          description:
             'You can attend the online script training of director and screenwriter Gökhan Yorgancıgil within Lotus media, and you can take part in the scriptwriter staff of Lotus et al.\nHere is the opportunity;',
-          description_tr:
-            "Lotus medya bünyesinde yönetmen, senarist Gökhan Yorgancıgil'in online senaryo eğitimine katılabilir, Lotus vd Media ekibinin senarist kadrosunda yer alabilirsiniz. \nİşte fırsat;",
-          description_nl:
-            'Je kunt binnen Lotus media de online scripttraining van regisseur en scenarist Gökhan Yorgancıgil volgen en deelnemen aan de scenaristenstaf van Lotus et al.\nHier is de kans;',
-          content_en:
+          content:
             "Do you want to be a screenwriter?\n\nYou can attend the online script training of director and screenwriter [Gökhan Yorgancıgil](https://www.gokhanyorgancigil.com/?page_id=136) within Lotus media, and you can take part in the scriptwriter staff of Lotus et al.\nHere is the opportunity;\n\nThe scenario training that will last 10 weeks will start on 12 May 2023.  Seeing your ideas on a theater stage is not a dream, it's just one step away.\n\nGains to be gained during our training:\n- What is the story\n- Narrative, story, screenplay\n- What are the main elements of a story\n- How to build structure and character in the story\n- Scenario types\n- Script writing process and technique\n- Genres and scenario in cinema\nScript and audience\nYou can join our training by filling out the form below. Please note, your registration is finalized by paying the course fee. Our quotas are limited.\n\nGokhan Yorgancigil\nGokhan Yorgancigil was born in Aydin, near Mediterranean coast of Turkey. He started to write short stories in his high school years while he was discovering his interest on arts he also studied science and technology willingly. Due to his engagement and love of cinema he started to his film career as an assistant director while he was a student of mechanical engineering. He continued to working as a director’s assistant during his college years. He collaborated with veteran film directors Halit Refig and Yucel Cakmakli for their cinema and television projects. His short film debut “Escape from” (1994) was screened at the Ankara Film Festival. He made documentary films in various countries including a documentary in 2004 with the author Chingiz Aitmatov, who is best known as a major figure in Kyrgyz and Russian literature, his books were translated into 150 languages. After making surveys in all email groups related with Turkish people living in Germany, Gokhan Yorgancigil wrote and directed the documentary Evet-Ja; A Look to German-Turkish Marriages in 2005. It was 2007 when he directed his first feature-length film Sifir Dedigimde ( On the Count of Zero ). The film took place in Austin Film Festival, the festival’s lineup of Marquee Screenings in 2008. On the Count of Zero also won two different jury prizes at the Worldfest Houston Film Festival in 2009. The director who also added the documentary film Kenya: Keşfedilmeyi Bekleyen Topraklar ( Kenya, A Land Still Waiting to Be Explored ) (2009) to his film credits, and completed his latest work Afrika ve Osmanlı, ( Africa and Ottomans ) another documentary film, in 2014. The seven episodes documentary aired on domestic and international channels of TRT (Turkish Radio and Television Corporation) in different languages including English, Kurdish and Arabic in 2015. Gokhan Yorgancigil also give seminars and lectures about filmmaking and screenwriting in universities and independent institutions since 2008.\nMore detailed information on the [website](https://www.gokhanyorgancigil.com/?page_id=136)\n\nYou can use the contact form for any questions or comments.\n\nFollow Lotus vd Media on social media [instagram](https://www.instagram.com/lotusvdmedia/) [youtube](https://www.youtube.com/channel/UCUcWJZ69qgrM5YQ9iBq_OHg)  [twitter](https://twitter.com/lotusvdmedia)\n",
-          content_tr:
-            "Senarist Olmak Ister Misin?\n\nLotus medya bünyesinde yönetmen, senarist [Gökhan Yorgancıgil](https://www.gokhanyorgancigil.com/?page_id=136)'in online senaryo eğitimine katılabilir, Lotus vd Media ekibinin senarist kadrosunda yer alabilirsiniz. \nİşte fırsat;\n\n10 hafta sürecek olan  senaryo eğitimi 12 Mayıs 2023 tarihinde başlayacaktır.  Fikirlerinizi bir tiyatro sahnesinde görmek hayal değil, sadece bir adım ötede. \n\nEğitimimiz boyunca  edinilecek kazanımlar:  \n- Öykü nedir\n- Anlatı, öykü, senaryo\n- Bir öykünün ana unsurları nelerdir\n- Öyküde yapı ve karakter nasıl oluşturulur\n- Senaryo türleri\n- Senaryo yazma süreci ve tekniği\n- Sinemada türler ve senaryo\nSenaryo ve seyirci\nAşağıdaki formu doldurarak eğitimimize katılabilirsiniz. Lütfen dikkat, kaydınız kurs ücretini ödemekle kesinleşir. Kontenjanlarımız sınırlıdır.\n\nGökhan Yorgancıgil\n\n1970 yılında Aydın’da doğdu. Kayseri Fen Lisesi’ni ve ardından İTÜ makine mühendisliği bölümünü bitirdi. Lise yıllarında öyküler yazdı, üniversite yıllarında yönetmen yardımcılığı yaparak sinemaya atıldı. Halit Refiğ ve Yücel Çakmaklı gibi ustaların bazı sinema ve TV projelerinde yardımcılığını yaptı. 1997 yılından itibaren kendi yazdığı bazıları Almanya, Kırgızistan, Kazakistan, Kenya, Zengibar, Güney Afrika Cumhuriyeti ve ABD’de olmak üzere belgeseller ve kısa metrajlı dramaları yönetti. 2007 kasımında Türkiye’de gösterime giren, 2009 Worldfest Houston Film Festivalinde iki ayrı jüri özel üdülü kazanan, Oktay Kaynarca, Hazım Körmükçü, Görkem Yeltan ve Damla Tokel’in başrolleri paylaştığı Sıfır Dediğimde filmini yazıp yönetti. 2013 yılında yedi bölümlük Afrika ve Osmanlı isimli bir belgeseli tamamlamıştır. 2008’den itibaren dersler, seminerler vermekte ve senaryo yazımı atölyeleri düzenlemektedir. Gökhan Yorgancıgil, evli ve iki çocuk babasıdır.\nDaha ayrıntılı bilgi [web sitesinde](https://www.gokhanyorgancigil.com/?page_id=136)\n\n\nHerhangi bir soru veya görüşünüz için iletişim formunu kullanabilirsiniz.\n\nLotus vd Media'yı sosyal medyadan takip edin [instagram](https://www.instagram.com/lotusvdmedia/) [youtube](https://www.youtube.com/channel/UCUcWJZ69qgrM5YQ9iBq_OHg) [twitter](https://twitter.com/lotusvdmedia)\n",
-          content_nl:
-            'Wil je scenarioschrijver worden?\n\nJe kunt binnen Lotus media de online scripttraining van regisseur en scenarist [Gökhan Yorgancıgil](https://www.gokhanyorgancigil.com/?page_id=136) volgen en deelnemen aan de scenaristenstaf van Lotus et al.\nHier is de kans;\n\nOp 12 mei 2023 start de scenariotraining die 10 weken zal duren. Je ideeën op een theaterpodium zien is geen droom, het is slechts een stap verwijderd.\n\nWinsten te behalen tijdens onze training:\n- Wat is het verhaal\n- Verhaal, verhaal, scenario\n- Wat zijn de belangrijkste elementen van een verhaal\n- Hoe structuur en karakter in het verhaal te bouwen\n- Scenariotypen\n- Scriptschrijfproces en -techniek\n- Genres en scenario in de bioscoop\nScript en publiek\nU kunt deelnemen aan onze training door onderstaand formulier in te vullen. Let op, uw inschrijving is definitief door betaling van het cursusgeld. Onze quota zijn beperkt.\n\nGokhan Yorgancigil\n\nGokhan Yorgancigil werd geboren in Aydin, nabij de Middellandse Zeekust van Turkije. Hij begon met het schrijven van korte verhalen in zijn middelbare schooltijd, terwijl hij zijn interesse in kunst ontdekte, studeerde hij ook graag wetenschap en technologie. Vanwege zijn betrokkenheid en liefde voor cinema begon hij zijn filmcarrière als assistent-regisseur terwijl hij student werktuigbouwkunde was. Tijdens zijn studententijd bleef hij werken als regieassistent. Hij werkte samen met ervaren filmregisseurs Halit Refig en Yucel Cakmakli voor hun film- en televisieprojecten. Zijn korte filmdebuut “Escape from” (1994) werd vertoond op het filmfestival van Ankara. Hij maakte documentaires in verschillende landen, waaronder een documentaire in 2004 met de auteur Chingiz Aitmatov, die vooral bekend is als een belangrijke figuur in de Kirgizische en Russische literatuur. Zijn boeken werden in 150 talen vertaald. Na enquêtes te hebben gehouden in alle e-mailgroepen met betrekking tot Turken die in Duitsland wonen, schreef en regisseerde Gokhan Yorgancigil de documentaire Evet-Ja; A Look to German-Turkish Marriages in 2005. In 2007 regisseerde hij zijn eerste speelfilm Sifir Dedigimde ( On the Count of Zero ). De film vond plaats op Austin Film Festival, de line-up van Marquee Screenings van het festival in 2008. On the Count of Zero won ook twee verschillende juryprijzen op het Worldfest Houston Film Festival in 2009. De regisseur die ook de documentaire film Kenia toevoegde: Keşfedilmeyi Bekleyen Topraklar ( Kenya, A Land Still Waiting to Be Explored ) (2009) toe aan zijn filmcredits, en voltooide zijn laatste werk Afrika ve Osmanlı, ( Africa and Ottomans ), een andere documentaire film, in 2014. De documentaire met zeven afleveringen werd uitgezonden op binnenlandse en internationale kanalen van TRT (Turkish Radio and Television Corporation) in verschillende talen, waaronder Engels, Koerdisch en Arabisch in 2015. Gokhan Yorgancigil geeft sinds 2008 ook seminars en lezingen over filmmaken en scenarioschrijven aan universiteiten en onafhankelijke instellingen.\nMeer uitgebreide informatie op de [website](https://www.gokhanyorgancigil.com/?page_id=136)\n\nVoor vragen of opmerkingen kunt u gebruik maken van het contactformulier.\n\nVolg Lotus vd Media op social media [instagram](https://www.instagram.com/lotusvdmedia/) [youtube](https://www.youtube.com/channel/UCUcWJZ69qgrM5YQ9iBq_OHg) [twitter](https://twitter.com/lotusvdmedia)\n',
           location: 'online',
+          locale: 'en',
           language: 'tr',
           instructor: 'Gökhan Yorgancıgil',
           price: 150,
@@ -1351,68 +1326,6 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           createdAt: '2023-04-08T09:31:16.213Z',
           updatedAt: '2023-05-09T18:36:13.911Z',
           publishedAt: '2023-04-08T09:32:53.854Z',
-        },
-        {
-          id: 3,
-          title_en: 'Screenplay Writing Workshop',
-          title_tr: 'Senaryo Yazarlığı Atölyesi',
-          title_nl: 'Workshop scenario schrijven',
-          slug: 'screenplay-writing-workshop',
-          description_en:
-            "The Artist's Way online workshop using the book of the same name by Jullia Cameron as the main resource",
-          description_tr:
-            "Jullia Cameron'un aynı isimli kitabı temel kaynak olmak üzere Sanatçının Yolu online workshop",
-          description_nl:
-            "The Artist's Way online workshop met het gelijknamige boek van Jullia Cameron als belangrijkste bron",
-          content_en:
-            "After the script theory training, now the workshop is starting. The Artist's Way online workshop with Beyza Ergezer starts on 1 October. Register before we run out of space. You can fill out the form below for more information and registration. ",
-          content_tr:
-            'Senaryo teori eğitiminin ardından şimdi de atölye çalışması başlıyor. Beyza Ergezer ile Sanatçının Yolu online workshop 1 Ekimde başlıyor. Yerimiz dolmadan kaydınızı yaptırın. Daha fazla bilgi ve kayıt için aşağıdaki formu doldurabilirsiniz. ',
-          content_nl:
-            "Na de scripttheorie training gaat nu de workshop van start. The Artist's Way online workshop met Beyza Ergezer start op 1 oktober. Schrijf je in voordat de ruimte op is. Je kunt onderstaand formulier invullen voor meer informatie en aanmelden. ",
-          location: 'online',
-          language: 'tr',
-          instructor: 'Beyza Ergezer',
-          price: 150,
-          quota: 15,
-          isOnline: true,
-          approvalStatus: null,
-          startDate: '2023-09-28',
-          endDate: '2024-01-04',
-          createdAt: '2023-09-23T16:24:40.424Z',
-          updatedAt: '2023-09-26T08:54:41.717Z',
-          publishedAt: '2023-09-23T16:24:40.009Z',
-        },
-        {
-          id: 7,
-          title_en: "The Artist's Way-Online Workshop",
-          title_tr: 'Sanatçının Yolu-Online Atölye ',
-          title_nl: "The Artist's Way-Online workshop",
-          slug: 'the-artist-s-way-online-workshop',
-          description_en:
-            ' A spiritual work is waiting for you to reveal the artist in us, to activate our artist soul that we have suppressed somewhere, maybe we have never touched.  ',
-          description_tr:
-            'İçimizdeki sanatçıyı ortaya çıkarmak,  bir yerlerde belki bastırdığımız belki hiç dokunmadığımız o sanatçı ruhumuzu aktive edebilecek tinsel bir çalışma sizleri bekliyor.  ',
-          description_nl:
-            ' Er ligt een spiritueel werk op je te wachten om de kunstenaar in ons te onthullen, om onze kunstenaarsgeest te activeren die we ergens hebben onderdrukt of misschien nooit hebben aangeraakt.  ',
-          content_en:
-            ' A spiritual work will be with you to reveal the artist in us, to activate our artist soul that we have suppressed somewhere, maybe we have never touched.  \nA little sprutiel, a little therapy, a little spirituality, a little sociology, a little psychology. That gem that makes a person human and comes from creation is definitely hidden somewhere and waiting to come to light. \n\nWhat do you say, shall we walk this path together? \n\nThose who want to participate can apply from the form below. ',
-          content_tr:
-            ' İçimizdeki sanatçıyı ortaya çıkarmak,  bir yerlerde belki bastırdığımız belki hiç dokunmadığımız o sanatçı ruhumuzu aktive edebilecek tinsel bir çalışma sizlerle olacak. \n \nBiraz spiritüel , biraz terapi , biraz manevi , biraz sosyoloji , biraz psikoloji. İnsanı insan yapan ve yaradilistan gelen o cevher mutlaka bir yerlerde gizli ve gün yüzüne çıkmayı bekliyor. \n\nNe dersiniz ? Bu yolda birlikte yürüyelim mi ? \n\nKatılmak isteyenler aşağıdaki formdan bavurabilir. ',
-          content_nl:
-            ' Een spiritueel werk zal bij je zijn om de kunstenaar in ons te onthullen, om onze kunstenaarsziel te activeren die we ergens hebben onderdrukt, misschien hebben we die nooit aangeraakt.  \nEen beetje sprutiel, een beetje therapie, een beetje spiritualiteit, een beetje sociologie, een beetje psychologie. Die erts die een mens tot mens maakt en uit de schepping komt, zit zeker ergens verborgen en wacht erop om aan het licht te komen. \n\nWat zeg je ervan? Zullen we dit pad samen bewandelen? \n\nWie mee wil doen kan zich aanmelden via onderstaand formulier. ',
-          location: 'online',
-          language: 'tr',
-          instructor: 'Beyza Ergezer',
-          price: 150,
-          quota: 16,
-          isOnline: true,
-          approvalStatus: null,
-          startDate: '2024-02-05',
-          endDate: '2024-04-29',
-          createdAt: '2023-12-07T12:05:19.630Z',
-          updatedAt: '2023-12-07T12:57:56.210Z',
-          publishedAt: '2023-12-07T12:05:19.106Z',
         },
       ],
       activities: [

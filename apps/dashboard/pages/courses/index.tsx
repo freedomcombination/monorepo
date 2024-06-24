@@ -29,7 +29,7 @@ const CoursesPage = () => {
     page: currentPage || 1,
     pageSize,
     filters: {
-      ...(searchTerm && { [`title_${locale}`]: { $containsi: searchTerm } }),
+      ...(searchTerm && { ['title']: { $containsi: searchTerm } }),
     },
     sort,
     locale,
@@ -44,25 +44,11 @@ const CoursesPage = () => {
     coursesQuery.refetch()
   }, [locale, searchTerm, sort])
 
-  const courses = coursesQuery?.data?.data
+  const courses = coursesQuery?.data?.data || []
   const pageCount = coursesQuery?.data?.meta?.pagination?.pageCount || 0
   const totalCount = coursesQuery?.data?.meta?.pagination?.total || 0
 
-  const mappedCourses =
-    courses?.map(course => {
-      const translates = []
-
-      if (course.title_en) translates.push('en')
-      if (course.title_tr) translates.push('tr')
-      if (course.title_nl) translates.push('nl')
-
-      return {
-        ...course,
-        translates,
-      }
-    }) || []
-
-  const handleRowClick = (index: number, id: number) => {
+  const handleRowClick = (id: number) => {
     router.push(`/courses/${id}`)
   }
 
@@ -73,7 +59,7 @@ const CoursesPage = () => {
       <DataTable<Course>
         columns={columns.courses!}
         currentPage={currentPage}
-        data={mappedCourses as Course[]}
+        data={courses as Course[]}
         onClickRow={handleRowClick}
         onSort={setSort}
         pageCount={pageCount}

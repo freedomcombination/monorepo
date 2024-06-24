@@ -13,6 +13,7 @@ import {
   CompetitionCreateInput,
   CompetitionUpdateInput,
 } from './competition'
+import { Course, CourseCreateInput, CourseUpdateInput } from './course'
 import { UploadFile } from './file'
 import { Hashtag, HashtagCreateInput, HashtagUpdateInput } from './hashtag'
 import { StrapiLocale } from './locale'
@@ -31,12 +32,14 @@ export type StrapiTranslatableModel =
   | Hashtag
   | Post
   | Presentation
+  | Course
 
 export type StrapiTranslatableUpdateInput =
   | ActivityUpdateInput
   | BlogUpdateInput
   | CollectionUpdateInput
   | CompetitionUpdateInput
+  | CourseUpdateInput
   | HashtagUpdateInput
   | PostUpdateInput
 
@@ -45,6 +48,7 @@ export type StrapiTranslatableCreateInput =
   | BlogCreateInput
   | CollectionCreateInput
   | CompetitionCreateInput
+  | CourseCreateInput
   | HashtagCreateInput
   | PostCreateInput
   | RecommendedTopicCreateInput

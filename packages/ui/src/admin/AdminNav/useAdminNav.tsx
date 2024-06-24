@@ -96,6 +96,11 @@ export const useAdminNav = () => {
             icon: <BsCollection />,
           },
           {
+            label: t('courses'),
+            link: '/translates?slug=courses',
+            icon: <GiHumanPyramid />,
+          },
+          {
             label: t('hashtags'),
             link: '/translates?slug=hashtags',
             icon: <CgHashtag />,

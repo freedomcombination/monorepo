@@ -49,8 +49,8 @@ const Platforms: FC<CoursesProps> = ({ courses }) => {
             gap={{ base: 6, lg: 8 }}
           >
             {coursesData?.map(course => {
-              const title = course?.[`title_${locale}`]
-              const description = course?.[`description_${locale}`]
+              const title = course?.title
+              const description = course?.description
 
               return (
                 <AcademyCard
