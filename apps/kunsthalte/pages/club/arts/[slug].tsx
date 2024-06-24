@@ -10,7 +10,7 @@ import { getArtBySlug } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Art, StrapiLocale } from '@fc/types'
 import { ArtTemplate } from '@fc/ui'
-import { mapStrapiFileToOgImages } from '@fc/utils'
+import { mapStrapiMediaToOgImages } from '@fc/utils'
 
 import { Layout } from '../../../components'
 
@@ -72,7 +72,7 @@ export const getServerSideProps = async (
         authors: [art.artist?.name || art.artist?.email || ''],
         // TODO add tags
       },
-      images: mapStrapiFileToOgImages(image, title),
+      images: mapStrapiMediaToOgImages(image, title),
     },
   }
 
