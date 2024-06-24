@@ -21,7 +21,7 @@ export const getMediaUrl = (
   const prefix = fallback ? ASSETS_FALLBACK_URL : ASSETS_URL
 
   if (typeof src === 'string') {
-    if ((src as string).startsWith('/uploads')) {
+    if (src.startsWith('/uploads')) {
       return prefix + src
     }
 

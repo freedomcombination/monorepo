@@ -2,8 +2,8 @@ import { Box, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { FieldValues, Path } from 'react-hook-form'
 import twitterText from 'twitter-text'
 
-import { ASSETS_URL } from '@fc/config'
 import { RecommendedTweet, StrapiModel } from '@fc/types'
+import { getMediaUrl } from '@fc/utils'
 
 import { TweetContentProps } from './types'
 import { VideoPlayer, WImage } from '../../components'
@@ -21,14 +21,8 @@ export const TweetContent = <T extends FieldValues>({
   const originalTweetUrl = (tweet as unknown as RecommendedTweet).originalTweet
     ?.image
 
-  const imageUrl =
-    tweet.image && tweet.image.startsWith('http')
-      ? tweet.image
-      : `${ASSETS_URL}${tweet.image}`
-  const videoUrl =
-    tweet.video && tweet.video.startsWith('http')
-      ? tweet.video
-      : `${ASSETS_URL}${tweet.video}`
+  const imageUrl = getMediaUrl(tweet.image)
+  const videoUrl = getMediaUrl(tweet.video)
 
   return (
     <Stack spacing={4}>
