@@ -12374,13 +12374,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/uuid@npm:^9.0.8":
-  version: 9.0.8
-  resolution: "@types/uuid@npm:9.0.8"
-  checksum: 10/b8c60b7ba8250356b5088302583d1704a4e1a13558d143c549c408bf8920535602ffc12394ede77f8a8083511b023704bc66d1345792714002bfa261b17c5275
-  languageName: node
-  linkType: hard
-
 "@types/web-push@npm:^3.6.3":
   version: 3.6.3
   resolution: "@types/web-push@npm:3.6.3"
@@ -19612,7 +19605,6 @@ __metadata:
     "@types/remove-markdown": "npm:^0.3.4"
     "@types/string-similarity": "npm:^4.0.2"
     "@types/twitter-text": "npm:^3.1.10"
-    "@types/uuid": "npm:^9.0.8"
     "@types/web-push": "npm:^3.6.3"
     "@typescript-eslint/eslint-plugin": "npm:^7.13.1"
     "@typescript-eslint/parser": "npm:^7.13.1"
