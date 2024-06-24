@@ -10,7 +10,7 @@ export default factories.createCoreController(
   'api::observation.observation',
   ({ strapi }) => ({
     async create(ctx: any) {
-      const profile = await getProfile(ctx, true)
+      const profile = await getProfile({ check: true })
 
       const result = await strapi.entityService.create(
         'api::observation.observation',

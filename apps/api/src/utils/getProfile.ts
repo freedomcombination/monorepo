@@ -1,13 +1,24 @@
-import { Context } from 'koa'
+import { Attribute, EntityService } from '@strapi/types'
 import { errors } from '@strapi/utils'
 
-const { ApplicationError, UnauthorizedError } = errors
+const { UnauthorizedError, ForbiddenError } = errors
 
-export const getProfile = async (
-  ctx: Context,
-  check?: boolean,
-  includePlatform?: boolean,
-) => {
+type GetProfileOptions = {
+  check?: boolean
+  populate?: EntityService.Params.Populate.Any<'api::profile.profile'>
+}
+
+export async function getProfile({
+  check,
+  populate,
+}: GetProfileOptions = {}): Promise<
+  EntityService.GetValues<
+    'api::profile.profile',
+    Attribute.GetPopulatableKeys<'api::profile.profile'>
+  >
+> {
+  const ctx = strapi.requestContext.get()
+
   if (!ctx?.state?.user) {
     if (check) {
       throw new UnauthorizedError('User required')
@@ -22,14 +33,14 @@ export const getProfile = async (
       filters: {
         user: { id: { $eq: ctx.state.user.id } },
       },
-      ...(includePlatform ? { populate: ['platforms'] } : {}),
+      ...(populate && { populate }),
     },
   )
 
   const profile = profileResponse?.[0] || null
 
   if (check && !profile) {
-    throw new ApplicationError('Profile required')
+    throw new ForbiddenError('Profile required')
   }
 
   return profile

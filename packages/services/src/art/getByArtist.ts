@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
+import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { Art } from '@fc/types'
 
@@ -28,10 +29,11 @@ export const getArtByArtist = async (
   return response?.data
 }
 
-export const useArtsByArtist = (
-  profileId?: number,
-  includeDrafts?: boolean,
-) => {
+export const useProfileArts = (includeDrafts?: boolean) => {
+  const { profile } = useAuthContext()
+
+  const profileId = profile?.id
+
   return useQuery({
     queryKey: ['user-arts', profileId],
     queryFn: () => getArtByArtist(profileId as number, includeDrafts),

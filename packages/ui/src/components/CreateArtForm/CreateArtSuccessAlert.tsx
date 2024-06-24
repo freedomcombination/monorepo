@@ -9,7 +9,9 @@ import {
   AlertDialogOverlay,
   Button,
   Text,
+  Stack,
 } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { CreateArtSuccessAlertProps } from './types'
@@ -20,6 +22,7 @@ export const ArtCreateSuccessAlert = forwardRef<
   CreateArtSuccessAlertProps
 >(({ isOpen, onClose }, ref) => {
   const { t } = useTranslation()
+  const { asPath } = useRouter()
 
   return (
     <AlertDialog
@@ -41,11 +44,15 @@ export const ArtCreateSuccessAlert = forwardRef<
           </AlertDialogHeader>
 
           <AlertDialogBody py={4}>
-            <Text>{t('art.create.success.description')}</Text>
+            <Stack spacing={4}>
+              <Text>{t('art.create.success.description')}</Text>
 
-            <ButtonLink href="/profile">
-              {t('art.create.success.link')}
-            </ButtonLink>
+              {!asPath?.includes('profile') && (
+                <ButtonLink href="/profile">
+                  {t('art.create.success.link')}
+                </ButtonLink>
+              )}
+            </Stack>
           </AlertDialogBody>
 
           <AlertDialogFooter>

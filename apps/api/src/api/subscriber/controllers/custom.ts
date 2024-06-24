@@ -4,7 +4,7 @@ import { checkAdmin } from '../../../utils'
 
 export default {
   async notify(ctx) {
-    const isAdmin = checkAdmin(ctx)
+    const isAdmin = checkAdmin()
 
     if (
       !process.env.WEB_PUSH_EMAIL ||

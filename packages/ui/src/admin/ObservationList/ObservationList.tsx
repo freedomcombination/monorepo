@@ -10,6 +10,7 @@ export type ObservationListProps = {
   observations: Observation[]
   id: number
 }
+
 export const ObservationList = ({
   id,
   observations,
