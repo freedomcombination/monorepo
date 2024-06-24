@@ -2,7 +2,7 @@ import { UploadFile } from '@fc/types'
 
 import { getMediaUrl } from './getMediaUrl'
 
-export const mapStrapiFileToOgImages = (
+export const mapStrapiMediaToOgImages = (
   media?: UploadFile | null,
   alt?: string,
 ) =>

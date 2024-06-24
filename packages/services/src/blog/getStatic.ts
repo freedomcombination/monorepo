@@ -3,7 +3,7 @@ import { GetStaticPropsContext } from 'next/types'
 
 import { SITE_URL } from '@fc/config'
 import { Blog, StrapiLocale } from '@fc/types'
-import { mapStrapiFileToOgImages } from '@fc/utils'
+import { mapStrapiMediaToOgImages } from '@fc/utils'
 
 import { getAuthorBlogs } from './get'
 import { getBlogBySlug } from './getBlogBySlug'
@@ -45,7 +45,7 @@ export const getBlogStaticProps = async (context: GetStaticPropsContext) => {
         modifiedTime: blog.updatedAt,
         authors: [blog?.author?.name || blog?.author?.email || ''],
       },
-      images: mapStrapiFileToOgImages(image, title),
+      images: mapStrapiMediaToOgImages(image, title),
     },
   }
 

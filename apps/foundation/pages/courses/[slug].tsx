@@ -9,7 +9,7 @@ import { getCourseBySlug } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
 import { CourseDetailPage } from '@fc/ui'
-import { mapStrapiFileToOgImages } from '@fc/utils'
+import { mapStrapiMediaToOgImages } from '@fc/utils'
 
 import { Layout } from '../../components'
 
@@ -59,7 +59,7 @@ export const getServerSideProps = async (
       description,
       type: 'article',
       url: `${SITE_URL}/courses/${slug}`,
-      images: mapStrapiFileToOgImages(image, title),
+      images: mapStrapiMediaToOgImages(image, title),
     },
   }
 
