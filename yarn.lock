@@ -19678,7 +19678,7 @@ __metadata:
     react-markdown: "npm:^9.0.1"
     react-markdown-editor-lite: "npm:^1.3.4"
     react-masonry-css: "npm:^1.0.16"
-    react-medium-image-zoom: "npm:^5.2.4"
+    react-medium-image-zoom: "npm:^5.2.5"
     react-pageflip: "npm:^2.0.3"
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.15"
@@ -29312,13 +29312,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-medium-image-zoom@npm:^5.2.4":
-  version: 5.2.4
-  resolution: "react-medium-image-zoom@npm:5.2.4"
+"react-medium-image-zoom@npm:^5.2.5":
+  version: 5.2.5
+  resolution: "react-medium-image-zoom@npm:5.2.5"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/fc35231b37c7d27fc7a1d6b250902d3cac8d9c784452e715f22a627bcf760b4b4576af0776a95f89ae821e6c4c3860c0fc7e143201b183894bcbc3cab7bdfd8f
+  checksum: 10/637531e3a7025c09a6f46c5144e22c2d87fe19d8a7737572e26322e6aeca294356dda9aad24b5a401cd9af71602707b5cec91529b7c0e2ed0481369dd0b2781d
   languageName: node
   linkType: hard
 
