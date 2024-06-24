@@ -8,7 +8,7 @@ import { styles } from './global'
 const config = {
   initialColorMode: 'light',
   useSystemColorMode: false,
-  cssVarPrefix: 'wsvv',
+  cssVarPrefix: 'fc',
 }
 
 export const defaultTheme = extendTheme({

@@ -1,8 +1,9 @@
 import { QueryClient } from '@tanstack/react-query'
 import { GetStaticPropsContext } from 'next/types'
 
-import { ASSETS_URL, SITE_URL } from '@fc/config'
+import { SITE_URL } from '@fc/config'
 import { Blog, StrapiLocale } from '@fc/types'
+import { mapStrapiFileToOgImages } from '@fc/utils'
 
 import { getAuthorBlogs } from './get'
 import { getBlogBySlug } from './getBlogBySlug'
@@ -22,9 +23,8 @@ export const getBlogStaticProps = async (context: GetStaticPropsContext) => {
 
   if (!blog) return { notFound: true }
 
-  const title = blog?.title || null
-  const description = blog?.description || null
-  const adminUrl = ASSETS_URL
+  const title = blog?.title || ''
+  const description = blog?.description || ''
   const siteUrl = SITE_URL
   const image = blog.image
   const url = `${siteUrl}/${locale}/blog/${locale}`
@@ -45,18 +45,7 @@ export const getBlogStaticProps = async (context: GetStaticPropsContext) => {
         modifiedTime: blog.updatedAt,
         authors: [blog?.author?.name || blog?.author?.email || ''],
       },
-      images: image
-        ? [
-            {
-              url: adminUrl + image?.url,
-              secureUrl: adminUrl + image?.url,
-              type: image.mime,
-              width: image.width,
-              height: image.height,
-              alt: title,
-            },
-          ]
-        : [],
+      images: mapStrapiFileToOgImages(image, title),
     },
   }
 

@@ -4,11 +4,12 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { ASSETS_URL, SITE_URL } from '@fc/config'
+import { SITE_URL } from '@fc/config'
 import { getCourseBySlug } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
 import { CourseDetailPage } from '@fc/ui'
+import { mapStrapiFileToOgImages } from '@fc/utils'
 
 import { Layout } from '../../components'
 
@@ -58,18 +59,7 @@ export const getServerSideProps = async (
       description,
       type: 'article',
       url: `${SITE_URL}/courses/${slug}`,
-      images: image
-        ? [
-            {
-              url: ASSETS_URL + image.url,
-              secureUrl: ASSETS_URL + image.url,
-              type: image.mime,
-              width: image.width,
-              height: image.height,
-              alt: title,
-            },
-          ]
-        : [],
+      images: mapStrapiFileToOgImages(image, title),
     },
   }
 
