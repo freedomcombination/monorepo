@@ -31,3 +31,7 @@ export const LocaleBadges: FC<LocaleBadgesProps> = ({ locales, ...rest }) => {
     </HStack>
   )
 }
+
+export const localeBadgesPDF = (locales: StrapiLocale[]) => {
+  return locales.map(locale => `[${locale}]`).join(', ')
+}

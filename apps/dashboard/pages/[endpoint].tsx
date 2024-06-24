@@ -327,6 +327,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           onClickRow={handleClick}
           pageSize={pageSize}
           setPageSize={setPageSize}
+          allowExportPDF
         />
       )}
     </AdminLayout>

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import { ArchiveContent, Category, Tag } from '@fc/types'
 
-import { PublicationBadges } from '../../admin'
+import { publicationBadgePDF, PublicationBadges } from '../../admin'
 import { WTableProps } from '../../components'
 
 export const useArchiveContentColumns =
@@ -33,6 +33,13 @@ export const useArchiveContentColumns =
               ))}
           </Wrap>
         ),
+        transformPDF: value =>
+          (value as Category[])
+            ?.sort((a, b) =>
+              a[`name_${locale}`].localeCompare(b[`name_${locale}`]),
+            )
+            ?.map(c => `[${c[`name_${locale}`]}]`)
+            .join(', '),
       },
       tags: {
         transform: value => (
@@ -44,11 +51,14 @@ export const useArchiveContentColumns =
             ))}
           </Wrap>
         ),
+        transformPDF: value =>
+          (value as Tag[])?.map(t => `[${t[`name_${locale}`]}]`).join(', '),
       },
       publishedAt: {
         transform: value => (
           <PublicationBadges publishedAt={value as string | null} />
         ),
+        transformPDF: value => publicationBadgePDF(value as string | null),
       },
     }
   }

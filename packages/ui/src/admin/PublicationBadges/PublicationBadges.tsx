@@ -20,3 +20,7 @@ export const PublicationBadges: FC<PublicationBadgesProps> = ({
     </Badge>
   )
 }
+
+export const publicationBadgePDF = (publishedAt: string | null) => {
+  return publishedAt ? 'Published' : 'Draft'
+}

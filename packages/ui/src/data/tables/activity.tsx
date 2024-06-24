@@ -1,6 +1,11 @@
 import { Activity, ApprovalStatus, StrapiLocale } from '@fc/types'
 
-import { LocaleBadges, PublicationBadges } from '../../admin'
+import {
+  LocaleBadges,
+  publicationBadgePDF,
+  PublicationBadges,
+  localeBadgesPDF,
+} from '../../admin'
 import { WTableProps } from '../../components'
 
 export const useActivityColumns = (): WTableProps<Activity>['columns'] => {
@@ -25,11 +30,13 @@ export const useActivityColumns = (): WTableProps<Activity>['columns'] => {
     },
     translates: {
       transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
+      transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
     },
     publishedAt: {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
+      transformPDF: value => publicationBadgePDF(value as string | null),
     },
     createdAt: {
       type: 'date',
