@@ -29,7 +29,7 @@ type ArtRelation = {
   collection?: Collection | null
   comments?: Array<Comment>
   feedbacks?: Array<Feedback>
-  image?: UploadFile | null
+  image?: UploadFile[]
   likers?: Array<Profile>
   tags?: Array<Tag>
   votes?: Array<Vote>
@@ -42,7 +42,7 @@ type ArtRelationInput = {
   collection?: number | null
   comments?: Array<number>
   feedbacks?: Array<number>
-  image: File
+  image: File[]
   likers?: Array<number>
   tags?: Array<number>
   votes?: Array<number>

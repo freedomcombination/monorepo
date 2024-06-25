@@ -14,6 +14,7 @@ import {
   StrapiEndpoint,
   StrapiLocale,
   StrapiSeoModel,
+  UploadFile,
 } from '@fc/types'
 
 import { getItemLink } from './getItemLink'
@@ -42,7 +43,7 @@ export const getPageSeo = (
 
   const title = localizedTitle || page.title || post.hashtag?.title || ''
   const description = page.description ?? post.description ?? ''
-  let image = data.image
+  let image = (art.image?.[0] || blog.image) as UploadFile | string | undefined
 
   if (hasCaps) {
     const ogParams = mapHashtagToOgParams(page)

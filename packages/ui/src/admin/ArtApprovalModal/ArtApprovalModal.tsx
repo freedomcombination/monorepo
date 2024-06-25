@@ -25,7 +25,8 @@ import { Art, StrapiLocale } from '@fc/types'
 
 import { ArtFeedbackForm } from './ArtFeedbackForm'
 import { ArtApprovalTypes } from './types'
-import { WAvatar, WImage } from '../../components'
+import { WAvatar } from '../../components'
+import { ArtCardImage } from '../../components/ArtCard/ArtCardImage'
 import { ModelEditForm } from '../ModelForm'
 
 export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
@@ -56,7 +57,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
           <ModalCloseButton />
           <ModalBody p={0}>
             <SimpleGrid columns={{ base: 1, lg: 2 }} h="full">
-              <WImage src={art.image} alt={title} hasZoom={true} />
+              <ArtCardImage art={art} />
               {!isEditing && (
                 <Stack overflowY={'auto'}>
                   <Stack spacing={4} p={{ base: 4, lg: 8 }} flex={1}>
