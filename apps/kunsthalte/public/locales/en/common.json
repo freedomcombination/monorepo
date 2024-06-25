@@ -387,5 +387,6 @@
   "weeksWithCount_one": "1 week",
   "weeksWithCount_other": "{{count}} weeks",
   "welcome": "Welcome",
-  "you-must-logged-in": "You must be logged in in order to be able to upload an art!"
+  "you-must-logged-in": "You must be logged in in order to be able to upload an art!",
+  "export-pdf": "Export PDF"
 }

@@ -1,11 +1,7 @@
 import { ApprovalStatus, Hashtag, Post, StrapiLocale } from '@fc/types'
 
-import {
-  LocaleBadges,
-  PublicationBadges,
-  localeBadgesPDF,
-  publicationBadgePDF,
-} from '../../admin'
+import { localeBadgesPDF, publicationBadgePDF } from './utils'
+import { LocaleBadges, PublicationBadges } from '../../admin'
 import { WTableProps } from '../../components'
 
 export const usePostColumns = (): WTableProps<Post>['columns'] => {

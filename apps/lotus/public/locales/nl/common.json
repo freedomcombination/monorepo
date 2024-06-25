@@ -382,5 +382,6 @@
   "weeksWithCount_one": "1 week",
   "weeksWithCount_other": "{{count}} weken",
   "welcome": "Welkom",
-  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!"
+  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!",
+  "export-pdf": "Export PDF"
 }
