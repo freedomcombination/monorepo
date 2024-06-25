@@ -166,7 +166,7 @@ export const ArtClubTemplate: FC = () => {
                       >
                         <ArtCard
                           art={art}
-                          onToggleLike={artsQuery.refetch}
+                          refetch={artsQuery.refetch}
                           isMasonry
                           recaptchaToken={recaptchaToken}
                         />

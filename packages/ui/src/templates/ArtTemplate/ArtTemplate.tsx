@@ -2,9 +2,14 @@ import { Heading, Stack, useBreakpointValue } from '@chakra-ui/react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { useTranslation } from 'next-i18next'
 
-import { useArtBySlug, useArtsByCategories } from '@fc/services'
+import { RecaptchaKeys } from '@fc/config'
+import {
+  useArtBySlug,
+  useArtsByCategories,
+  useRecaptchaToken,
+} from '@fc/services'
 
-import { ArtCardBase, ArtWithDetails, Container } from '../../components'
+import { ArtCard, ArtWithDetails, Container } from '../../components'
 
 import '@splidejs/react-splide/css'
 import '@splidejs/splide/dist/css/themes/splide-default.min.css'
@@ -13,7 +18,9 @@ export const ArtTemplate = () => {
   const { t } = useTranslation()
   const perPage = useBreakpointValue({ base: 1, sm: 2, md: 3, lg: 4 })
 
-  const { data: art } = useArtBySlug()
+  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
+
+  const { data: art, refetch } = useArtBySlug()
 
   const categories = (art?.categories?.flatMap(
     (c: { slug: string }) => c.slug,
@@ -43,7 +50,11 @@ export const ArtTemplate = () => {
           >
             {arts.map(art => (
               <SplideSlide key={art.id}>
-                <ArtCardBase art={art} isLiked={art.isLiked} isOwner={false} />
+                <ArtCard
+                  art={art}
+                  refetch={refetch}
+                  recaptchaToken={recaptchaToken}
+                />
               </SplideSlide>
             ))}
           </Splide>

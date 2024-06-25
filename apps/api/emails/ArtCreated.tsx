@@ -10,6 +10,8 @@ type ArtCreatedProps = {
 }
 
 const ArtCreated: FC<ArtCreatedProps> = ({ art }) => {
+  const image = art?.image?.[0]
+
   return (
     <EmailProvider>
       <Preview>New Art Created</Preview>
@@ -21,7 +23,7 @@ const ArtCreated: FC<ArtCreatedProps> = ({ art }) => {
         </Text>
         <Img
           className="w-[300px]"
-          src={art.image?.formats?.small?.url || art.image?.url}
+          src={image?.formats?.small?.url || image?.url}
           alt={art.title_en}
         />
       </Section>
