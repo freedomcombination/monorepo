@@ -32,6 +32,7 @@ export const FilePicker: FC<FilePickerProps> = ({
   maxNumberOfFiles,
   onLoaded,
   allowedFileTypes = ['image/*', 'video/*'],
+  autoOpen = 'imageEditor',
   ...props
 }) => {
   const uppy = useMemo(() => getUppy(), [])
@@ -61,7 +62,7 @@ export const FilePicker: FC<FilePickerProps> = ({
         uppy={uppy}
         hideUploadButton
         showSelectedFiles
-        autoOpen={'imageEditor'}
+        autoOpen={autoOpen}
         {...props}
       />
     </Stack>

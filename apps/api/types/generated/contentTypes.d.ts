@@ -1223,7 +1223,7 @@ export interface ApiArtArt extends Schema.CollectionType {
         }
       }> &
       Attribute.DefaultTo<'pending'>
-    image: Attribute.Media<'images'> &
+    image: Attribute.Media<'images', true> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {

@@ -19,7 +19,7 @@ const ArtistPage: FC<ArtistPageProps> = ({ artist, arts }) => {
 
   return (
     <Layout seo={{ title: artist.name || 'Artist' }} isDark>
-      <ArtistTemplate onToggleLike={onToggleLike} artist={artist} arts={arts} />
+      <ArtistTemplate refetch={onToggleLike} artist={artist} arts={arts} />
     </Layout>
   )
 }

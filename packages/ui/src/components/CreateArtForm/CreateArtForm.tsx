@@ -42,7 +42,7 @@ import { FormItem } from '../FormItem'
 import { WSelect } from '../WSelect'
 
 export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
-  const [image, setImage] = useState<File>()
+  const [images, setImages] = useState<File[]>()
   const { locale } = useRouter()
   const { t } = useTranslation()
   const categories = useStrapiRequest<Category>({
@@ -83,9 +83,7 @@ export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
   const { pathname } = useRouter()
   const loginHref = `/auth/login?returnUrl=${pathname}`
 
-  const createArt = async (
-    data: CreateArtFormFieldValues & { image: File },
-  ) => {
+  const createArt = async (data: CreateArtFormFieldValues) => {
     if (!user) return
 
     const slug = slugify(data.title)
@@ -100,7 +98,7 @@ export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
       slug,
       categories: data.categories?.map(c => Number(c.value)) || [],
       publishedAt: null,
-      image: image as File,
+      image: images as File[],
     }
 
     mutate(formBody, {
@@ -122,11 +120,11 @@ export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
   }
 
   const handleCreateArt = async (data: CreateArtFormFieldValues) => {
-    createArt({ ...data, image: image as File })
+    createArt(data)
   }
 
   const resetFileUploader = () => {
-    setImage(undefined)
+    setImages(undefined)
   }
 
   const closeForm = () => {
@@ -193,7 +191,7 @@ export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
             {/* CREATE FORM */}
             {user && (
               <SimpleGrid columns={{ base: 1, lg: 2 }} gap={4}>
-                <FilePicker onLoaded={files => setImage(files[0])} />
+                <FilePicker onLoaded={setImages} />
                 <Stack
                   spacing={4}
                   as="form"
@@ -231,9 +229,7 @@ export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
                       {t('cancel')}
                     </Button>
                     <Button
-                      isDisabled={
-                        !image || (image as any)?.length === 0 || !isValid
-                      }
+                      isDisabled={!images || images?.length === 0 || !isValid}
                       type="submit"
                       rightIcon={<FaPlus />}
                     >

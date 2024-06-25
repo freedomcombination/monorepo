@@ -65,15 +65,26 @@ export const LongDescription: Story = {
   },
 }
 
+const verticalImages = [
+  {
+    ...artMock.image,
+    url: 'https://i.picsum.photos/id/852/540/960.jpg?hmac=AQA_lg0_rXzCOj29d_MPuZx1xUF9WEj2NdaNFdvQ3Ak',
+  },
+] as UploadFile[]
+
+const horizontalImages = [
+  {
+    ...artMock.image,
+    url: 'https://i.picsum.photos/id/399/960/540.jpg?hmac=LO1r_Qur7tph6YG2YHUEF5bNTidhcuf38MBkgNhACOo',
+  },
+] as UploadFile[]
+
 export const VerticalArts: Story = {
   render: StoryWithHooks,
   args: {
     art: {
       ...artMock,
-      image: {
-        ...artMock.image,
-        url: 'https://i.picsum.photos/id/852/540/960.jpg?hmac=AQA_lg0_rXzCOj29d_MPuZx1xUF9WEj2NdaNFdvQ3Ak',
-      } as UploadFile,
+      image: verticalImages,
     },
   },
 }
@@ -82,10 +93,7 @@ export const MultiVerticalArts: Story = {
   args: {
     art: {
       ...artMock,
-      image: {
-        ...artMock.image,
-        url: 'https://i.picsum.photos/id/852/540/960.jpg?hmac=AQA_lg0_rXzCOj29d_MPuZx1xUF9WEj2NdaNFdvQ3Ak',
-      } as UploadFile,
+      image: verticalImages,
     },
   },
 }
@@ -94,10 +102,7 @@ export const HorizontalArts: Story = {
   args: {
     art: {
       ...artMock,
-      image: {
-        ...artMock.image,
-        url: 'https://i.picsum.photos/id/399/960/540.jpg?hmac=LO1r_Qur7tph6YG2YHUEF5bNTidhcuf38MBkgNhACOo',
-      } as UploadFile,
+      image: horizontalImages,
     },
   },
 }
@@ -106,10 +111,7 @@ export const MultiHorizontalArts: Story = {
   args: {
     art: {
       ...artMock,
-      image: {
-        ...artMock.image,
-        url: 'https://i.picsum.photos/id/399/960/540.jpg?hmac=LO1r_Qur7tph6YG2YHUEF5bNTidhcuf38MBkgNhACOo',
-      } as UploadFile,
+      image: horizontalImages,
     },
   },
 }
