@@ -48,9 +48,10 @@ export const ArtWithDetails: FC = () => {
       gridTemplateColumns={{ base: '1fr', lg: '3fr 2fr' }}
       gap={4}
       alignItems="start"
+      h={'full'}
     >
       {/* Single Art Images */}
-      <Box pos={{ lg: 'sticky' }} top={0}>
+      <Box pos={{ lg: 'sticky' }} top={0} h={'full'}>
         <ArtDetail />
       </Box>
 

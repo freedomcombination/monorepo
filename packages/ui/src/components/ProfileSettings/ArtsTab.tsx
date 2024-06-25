@@ -65,6 +65,7 @@ export const ArtsTab = () => {
                   refetch={refetch}
                   recaptchaToken={recaptchaToken}
                   columns={{ lg: 2, xl: 3 }}
+                  isModal
                 />
               ) : (
                 noContent

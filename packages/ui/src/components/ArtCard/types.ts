@@ -22,6 +22,7 @@ export type ArtCardProps = {
   isModal?: boolean
   refetch?: () => void
   recaptchaToken?: string
+  imageHeight?: number
 }
 
 export type ArtCardAlertDialogProps = {

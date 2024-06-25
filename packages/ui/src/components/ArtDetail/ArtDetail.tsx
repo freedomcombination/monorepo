@@ -31,10 +31,10 @@ export const ArtDetail: FC = () => {
   if (!art?.image?.length) return null
 
   return (
-    <Box bg="white" padding={4} boxShadow="base">
+    <Box bg="white" shadow={'md'}>
       <ArtCardImage art={art} />
 
-      <HStack bg="white" justify="center" mt={4}>
+      <HStack bg="white" justify="center" p={4}>
         {art.views && (
           <HStack
             py={0.5}

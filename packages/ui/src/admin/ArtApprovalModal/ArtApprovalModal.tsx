@@ -55,8 +55,8 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
         <ModalOverlay />
         <ModalContent maxW="95vw" h="full" p={0} overflow="hidden">
           <ModalCloseButton />
-          <ModalBody p={0}>
-            <SimpleGrid columns={{ base: 1, lg: 2 }} h="full">
+          <ModalBody h={'inherit'} p={0}>
+            <SimpleGrid columns={{ base: 1, lg: 2 }} h="inherit">
               <ArtCardImage art={art} />
               {!isEditing && (
                 <Stack overflowY={'auto'}>

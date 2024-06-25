@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, ResponsiveObject, SimpleGrid } from '@chakra-ui/react'
+import { ResponsiveObject, SimpleGrid } from '@chakra-ui/react'
 
 import { Art } from '@fc/types'
 
@@ -11,6 +11,7 @@ type ArtGridProps = {
   refetch: () => void
   recaptchaToken?: string
   columns?: ResponsiveObject<number>
+  isModal?: boolean
 }
 
 export const ArtGrid: FC<ArtGridProps> = ({
@@ -18,18 +19,20 @@ export const ArtGrid: FC<ArtGridProps> = ({
   refetch,
   recaptchaToken,
   columns,
+  isModal,
 }) => {
   return (
     <SimpleGrid columns={{ base: 1, sm: 2, lg: 4, ...columns }} gap={4}>
       {arts?.map(art => {
         return (
-          <Box key={art.id} h={300}>
-            <ArtCard
-              refetch={refetch}
-              recaptchaToken={recaptchaToken}
-              art={art}
-            />
-          </Box>
+          <ArtCard
+            key={art.id}
+            refetch={refetch}
+            recaptchaToken={recaptchaToken}
+            art={art}
+            imageHeight={300}
+            isModal={isModal}
+          />
         )
       })}
     </SimpleGrid>
