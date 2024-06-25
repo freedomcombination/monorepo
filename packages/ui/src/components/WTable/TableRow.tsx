@@ -1,10 +1,9 @@
 import { Tr } from '@chakra-ui/react'
 
-import { StrapiLocale, StrapiModel } from '@fc/types'
+import { StrapiModel } from '@fc/types'
 
-import { convertTRCharsToEN } from './convertChars'
 import { CellConfig, WTableRowProps } from './types'
-import { WTableCell, getCellForPDF } from './WTableCell'
+import { WTableCell } from './WTableCell'
 
 export const WTableRow = <T extends StrapiModel>({
   columns,
@@ -33,21 +32,4 @@ export const WTableRow = <T extends StrapiModel>({
       })}
     </Tr>
   )
-}
-
-export const getRowForPDF = <T extends StrapiModel>(
-  model: T,
-  columns: { [key in keyof T]?: CellConfig<T> },
-  locale: StrapiLocale,
-  t: (a: string, b?: object) => string,
-): string[] => {
-  return Object.keys(columns).map(key => {
-    const field = key as keyof T
-    const value = model[field]
-    const cell = columns[field] as CellConfig<T>
-
-    const cellValue = getCellForPDF(value, cell, field, locale, t)
-
-    return convertTRCharsToEN(cellValue)
-  })
 }

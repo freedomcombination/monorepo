@@ -13,11 +13,8 @@ export const PaidBadges: FC<PaidBadgesProps> = ({ hasPaid, ...rest }) => {
       {...rest}
       colorScheme={hasPaid ? 'purple' : 'gray'}
     >
+      {/* TODO add translation */}
       {hasPaid ? 'Paid' : 'Not Yet'}
     </Badge>
   )
-}
-
-export const paidBadgesPDF = (hasPaid: boolean | null) => {
-  return hasPaid ? 'Paid' : 'Not Yet'
 }

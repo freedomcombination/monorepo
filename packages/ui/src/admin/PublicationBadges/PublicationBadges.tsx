@@ -16,11 +16,8 @@ export const PublicationBadges: FC<PublicationBadgesProps> = ({
       {...rest}
       colorScheme={publishedAt ? 'purple' : 'gray'}
     >
+      {/* TODO add translation */}
       {publishedAt ? 'Published' : 'Draft'}
     </Badge>
   )
-}
-
-export const publicationBadgePDF = (publishedAt: string | null) => {
-  return publishedAt ? 'Published' : 'Draft'
 }

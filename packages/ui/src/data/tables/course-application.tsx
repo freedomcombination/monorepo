@@ -1,6 +1,7 @@
 import { ApprovalStatus, Course, CourseApplication } from '@fc/types'
 
-import { PaidBadges, paidBadgesPDF } from '../../admin'
+import { paidBadgesPDF } from './utils'
+import { PaidBadges } from '../../admin'
 import { WTableProps } from '../../components'
 
 export const useCourseApplicationColumns =
