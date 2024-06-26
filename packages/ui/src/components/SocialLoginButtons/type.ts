@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import { ThemeTypings } from '@chakra-ui/react'
+import { ButtonGroupProps, ThemeTypings } from '@chakra-ui/react'
 
 export type SocialProviderName = 'google' | 'facebook' | 'twitter' | 'instagram'
 
@@ -9,4 +9,8 @@ export type SocialProvider = {
   icon: ReactElement
   url: `/api/connect/${SocialProviderName}`
   colorSchema: ThemeTypings['colorSchemes']
+}
+
+export type SocialLoginButtonsProps = ButtonGroupProps & {
+  providersToBeShown?: SocialProviderName[]
 }

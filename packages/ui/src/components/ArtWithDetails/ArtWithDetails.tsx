@@ -1,25 +1,18 @@
-import { FC } from 'react'
-
 import { Box, Grid, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { RecaptchaKeys } from '@fc/config'
 import {
   useArtBySlug,
+  useRecaptchaToken,
   useStrapiRequest,
   useViewArtMutation,
-  useRecaptchaToken,
 } from '@fc/services'
 import { Comment } from '@fc/types'
 
-import {
-  ArtContent,
-  ArtDetail,
-  CommentForm,
-  CommentList,
-} from '../../components'
+import { ArtContent, ArtDetail, CommentForm, CommentList } from '../'
 
-export const ArtWithDetails: FC = () => {
+export const ArtWithDetails = () => {
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.VIEW_ART)
 
   useViewArtMutation(recaptchaToken)

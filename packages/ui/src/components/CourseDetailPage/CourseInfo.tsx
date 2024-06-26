@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, HStack, SimpleGrid, Text } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 import { differenceInWeeks, format } from 'date-fns'
 import { useTranslation } from 'next-i18next'
 import { CgCalendarDates } from 'react-icons/cg'
@@ -9,25 +9,14 @@ import { HiLanguage } from 'react-icons/hi2'
 import { IoPeopleOutline } from 'react-icons/io5'
 import { RiMoneyEuroCircleLine } from 'react-icons/ri'
 
-import { CourseInfoItemProps, CourseInfoProps } from './types'
+import { CourseInfoProps } from './types'
+import { CourseInfoItem } from './CourseInfoItem'
 
 enum Languages {
   en = 'English',
   tr = 'Türkçe',
   nl = 'Nederlands',
 }
-
-const CourseInfoItem: FC<CourseInfoItemProps> = ({ icon, label, value }) => (
-  <HStack>
-    <Box flexShrink={0}>{icon}</Box>
-    <HStack>
-      <Text fontWeight={500} w={100}>
-        {label}:
-      </Text>
-      <Text>{value}</Text>
-    </HStack>
-  </HStack>
-)
 
 export const CourseInfo: FC<CourseInfoProps> = ({ course }) => {
   const { t } = useTranslation()

@@ -5,7 +5,7 @@ import { Heading, HStack, Stack, Text } from '@chakra-ui/react'
 
 import { WAvatar } from '../WAvatar'
 
-interface ArtContentProps {
+type ArtContentProps = {
   title: string
   artistName: string
   artistAvatar?: string

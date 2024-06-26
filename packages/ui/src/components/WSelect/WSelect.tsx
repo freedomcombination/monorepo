@@ -7,23 +7,13 @@ import {
   FormLabel,
   Tooltip,
 } from '@chakra-ui/react'
-import { GroupBase, Select, Props as SelectProps } from 'chakra-react-select'
+import { GroupBase, Select } from 'chakra-react-select'
 import { useTranslation } from 'next-i18next'
-import { Control, FieldValues, useController } from 'react-hook-form'
+import { FieldValues, useController } from 'react-hook-form'
 import { TbInfoCircle } from 'react-icons/tb'
 
 import { I18nNamespaces } from '../../../@types/i18next'
-import { FormItemProps } from '../FormItem'
-
-type SelectOption = {
-  label: string
-  value: string
-}
-
-export type WSelectProps<T extends FieldValues> = {
-  control: Control<T>
-} & Omit<FormItemProps<T>, 'register' | 'leftElement'> &
-  SelectProps<SelectOption, boolean, GroupBase<SelectOption>>
+import { SelectOption, WSelectProps } from './types'
 
 export const WSelect = <T extends FieldValues = FieldValues>({
   control,

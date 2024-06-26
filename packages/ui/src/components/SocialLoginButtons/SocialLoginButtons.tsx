@@ -1,13 +1,17 @@
 import { FC } from 'react'
 
-import { Box, Button, ButtonGroup, ButtonGroupProps } from '@chakra-ui/react'
+import { Box, Button, ButtonGroup } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaFacebook, FaGoogle, FaInstagram } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
 import { API_URL } from '@fc/config'
 
-import { SocialProvider, SocialProviderName } from './type'
+import {
+  SocialLoginButtonsProps,
+  SocialProvider,
+  SocialProviderName,
+} from './type'
 
 const loginProviders: SocialProvider[] = [
   {
@@ -35,10 +39,6 @@ const loginProviders: SocialProvider[] = [
     colorSchema: 'purple',
   },
 ]
-
-export type SocialLoginButtonsProps = ButtonGroupProps & {
-  providersToBeShown?: SocialProviderName[]
-}
 
 export const SocialLoginButtons: FC<SocialLoginButtonsProps> = ({
   providersToBeShown = [],

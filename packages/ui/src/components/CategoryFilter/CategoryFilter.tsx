@@ -12,20 +12,8 @@ import {
 import { RiFilterOffLine } from 'react-icons/ri'
 import { useDebounce } from 'react-use'
 
-import { Category, StrapiLocale } from '@fc/types'
-
 import { CategoryFilterCheckbox } from './CategoryFilterCheckbox'
-
-export interface CategoryFilterProps {
-  categoryData: Partial<Category>[]
-  debounce?: number
-  initialCategories?: string[]
-  isLoading: boolean
-  locale: StrapiLocale
-  title: string
-  selectCategories: (categories: string[]) => void
-  setIsLoading: (isLoading: boolean) => void
-}
+import { CategoryFilterProps } from './types'
 
 export const CategoryFilter: FC<CategoryFilterProps> = ({
   categoryData = [],

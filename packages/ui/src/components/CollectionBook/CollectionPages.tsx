@@ -8,7 +8,10 @@ import { CollectionPagesPops } from './types'
 import { WImage } from '../WImage'
 
 export const CollectionPages = forwardRef<HTMLDivElement, CollectionPagesPops>(
-  function CollectionPages({ collection, pageBgGdarient }, ref) {
+  function CollectionPages(
+    { collection, pageBgGradient: pageBgGdarient },
+    ref,
+  ) {
     const router = useRouter()
     const locale = router.locale
 

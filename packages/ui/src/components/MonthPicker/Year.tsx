@@ -5,7 +5,7 @@ import { SimpleGrid } from '@chakra-ui/react'
 import { Month } from './Month'
 import { YearProps } from './types'
 
-export const monthsNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+const monthsNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 export const Year = ({ columns, ...rest }: YearProps) => {
   return (

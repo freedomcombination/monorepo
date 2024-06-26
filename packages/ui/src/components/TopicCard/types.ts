@@ -1,0 +1,16 @@
+import { ReactElement } from 'react'
+
+import { TopicBase } from '@fc/types'
+import { ActionButtonProps } from '../ActionWrapper'
+
+export type TopicCardProps = {
+  topic: TopicBase
+  onCreatePost?: (topic: TopicBase) => void
+  searchKey?: string
+  onDelete?: (url: string) => void
+}
+export type TopicCardButtonProps = {
+  onClick: () => void
+  title: string
+  icon: ReactElement
+} & ActionButtonProps

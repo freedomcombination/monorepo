@@ -1,37 +1,18 @@
-import React, { FC } from 'react'
+import { FC, ReactElement } from 'react'
 
-import {
-  Button,
-  ButtonProps,
-  ChakraProps,
-  HStack,
-  Stack,
-  StackProps,
-  Tooltip,
-  TooltipProps,
-} from '@chakra-ui/react'
+import { Button, ChakraProps, HStack, Stack, Tooltip } from '@chakra-ui/react'
 
 import { useAuthContext } from '@fc/context'
-import { StrapiEndpoint } from '@fc/types'
-
-type ActionWrapperProps<T extends ChakraProps> = {
-  canApprove?: StrapiEndpoint
-  canCreate?: StrapiEndpoint
-  canDelete?: StrapiEndpoint
-  canUpdate?: StrapiEndpoint
-  canRead?: StrapiEndpoint
-  checkActions?: {
-    endpoint: StrapiEndpoint
-    actions: string[]
-  }
-  isVisible?: boolean
-  onlyAdmin?: boolean
-  ui: React.ElementType
-} & T
+import {
+  ActionButtonProps,
+  ActionStackProps,
+  ActionTooltipProps,
+  ActionWrapperProps,
+} from './types'
 
 const ActionWrapper = <T extends ChakraProps>(
   props: ActionWrapperProps<T>,
-): React.ReactElement<T> | null => {
+): ReactElement<T> | null => {
   const {
     canApprove,
     canCreate,
@@ -62,17 +43,14 @@ const ActionWrapper = <T extends ChakraProps>(
   return <Component {...rest} />
 }
 
-export type ActionButtonProps = Omit<ActionWrapperProps<ButtonProps>, 'ui'>
 export const ActionButton: FC<ActionButtonProps> = props => {
   return <ActionWrapper {...props} ui={Button} />
 }
 
-export type ActionTooltipProps = Omit<ActionWrapperProps<TooltipProps>, 'ui'>
 export const ActionTooltip: FC<ActionTooltipProps> = props => {
   return <ActionWrapper {...props} ui={Tooltip} />
 }
 
-export type ActionStackProps = Omit<ActionWrapperProps<StackProps>, 'ui'>
 export const ActionStack: FC<ActionStackProps> = props => {
   return <ActionWrapper {...props} ui={Stack} />
 }

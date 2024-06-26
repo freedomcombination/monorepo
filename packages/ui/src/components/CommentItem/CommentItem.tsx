@@ -8,7 +8,7 @@ import { getMediaUrl } from '@fc/utils'
 
 import { WAvatar } from '../WAvatar'
 
-interface CommentItemProps {
+type CommentItemProps = {
   comment: Comment
 }
 
