@@ -18,7 +18,7 @@ for (const site of sitesWithLogin) {
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
 
-    // Timeout 10 seconds
+    // Timeout 10 secon
     await page.waitForURL(homePage.url, { timeout: TEST_TIMEOUT })
     await expect(page).toHaveURL(homePage.url)
   })
