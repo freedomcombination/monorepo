@@ -1,6 +1,8 @@
 import { ThemeTypings } from '@chakra-ui/react'
 
-import { Art, StrapiLocale, UploadFile } from '@fc/types'
+import { Art } from '@fc/types'
+
+import { WImageProps } from '../WImage'
 
 export type ArtActionType = 'delete' | 'publish' | 'unpublish'
 
@@ -18,18 +20,9 @@ export type ArtCardProps = {
   art: Art
   isMasonry?: boolean
   isModal?: boolean
-  onToggleLike: () => void
+  refetch?: () => void
   recaptchaToken?: string
-}
-
-export type ArtCardBaseProps = {
-  actions?: ArtActions
-  art: Art
-  isLiked?: boolean
-  isMasonry?: boolean
-  isOwner?: boolean
-  isModal?: boolean
-  toggleLike?: () => void
+  imageHeight?: number
 }
 
 export type ArtCardAlertDialogProps = {
@@ -42,10 +35,7 @@ export type ArtCardActionsProps = {
   onHandleAction: (type: ArtActionType) => void
 }
 
-export type ArtCardImageProps = {
+export type ArtCardImageProps = Pick<WImageProps, 'h' | 'height'> & {
   art: Art
   isMasonry?: boolean
-  locale: StrapiLocale
 }
-
-export type CardImageProps = { image?: UploadFile | null } & ArtCardImageProps

@@ -19,7 +19,7 @@ export const ArtModal: FC<ArtModalProps> = ({ isOpen, onClose }) => {
         <ModalOverlay />
         <ModalContent maxW="95vw" h="full" p={{ base: 2, lg: 4 }}>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody h={'inherit'}>
             <ArtWithDetails />
           </ModalBody>
         </ModalContent>

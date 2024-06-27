@@ -13,10 +13,9 @@ import { AiOutlineEye } from 'react-icons/ai'
 import { HiPlus } from 'react-icons/hi'
 import { IoCloseSharp } from 'react-icons/io5'
 
-import { UploadFile } from '@fc/types'
-
 import { ArtAddToCollectionCardProps } from './types'
-import { ActionButton, ArtModal, WImage } from '../../components'
+import { ActionButton, ArtModal } from '../../components'
+import { ArtCardImage } from '../../components/ArtCard/ArtCardImage'
 
 export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   isAdded,
@@ -33,7 +32,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
 
   return (
     <Stack boxShadow="md" rounded="md" direction={'column'} overflow="hidden">
-      <WImage h={'200px'} src={art.image as UploadFile} />
+      <ArtCardImage art={art} h={300} />
       <Stack w="full" px={4} py={2}>
         <Text fontSize="md" fontWeight={600} noOfLines={1}>
           {art[titleKey]}
