@@ -1,9 +1,8 @@
 import * as yup from 'yup'
 
-import { Hashtag } from '@fc/types'
+import { Hashtag, FormFields } from '@fc/types'
 
 import { yupMultiSelect, yupSelect } from './common'
-import { FormFields } from '../../admin'
 
 export const useHashtagSchema = () => {
   return yup.object({

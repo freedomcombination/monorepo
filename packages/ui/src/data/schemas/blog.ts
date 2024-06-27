@@ -1,9 +1,8 @@
 import * as yup from 'yup'
 
-import { Blog } from '@fc/types'
+import { Blog, FormFields } from '@fc/types'
 
 import { yupMultiSelect, yupSelect } from './common'
-import { FormFields } from '../../admin'
 
 export const useBlogSchema = () => {
   return yup.object({

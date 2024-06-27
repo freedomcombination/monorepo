@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 import { Accordion, AccordionItem } from '@chakra-ui/react'
 
-import { CourseFaqItem } from '../CourseDetailFaqItem'
 import { CourseFaqsProps } from './types'
+import { CourseFaqItem } from '../CourseDetailFaqItem'
 
 export const CourseFaqs: FC<CourseFaqsProps> = ({ faqs }) => {
   return (

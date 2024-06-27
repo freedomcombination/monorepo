@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { Collection } from '@fc/types'
-
-import { FormFields } from '../../admin'
+import { Collection, FormFields } from '@fc/types'
 
 export const useCollectionSchema = () => {
   return yup.object({

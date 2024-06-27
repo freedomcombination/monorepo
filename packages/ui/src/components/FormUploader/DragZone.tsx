@@ -4,6 +4,7 @@ import { HStack, Icon, Spinner, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { useDropzone } from 'react-dropzone'
 import { BiUpload } from 'react-icons/bi'
+
 import { DragZoneProps } from './types'
 
 export const DragZone: FC<DragZoneProps> = ({

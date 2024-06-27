@@ -1,7 +1,6 @@
 import { ApprovalStatus, Hashtag, Post, StrapiLocale } from '@fc/types'
 
-import { LocaleBadges, PublicationBadges } from '../../admin'
-import { WTableProps } from '../../components'
+import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 
 export const usePostColumns = (): WTableProps<Post>['columns'] => {
   return {

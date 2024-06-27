@@ -1,7 +1,3 @@
-import { Post, StrapiModel } from '@fc/types'
-
-import { I18nNamespaces } from '../../../@types/i18next'
-
 import {
   Box,
   Flex,
@@ -17,12 +13,14 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 
+import { Post, StrapiModel } from '@fc/types'
 import { StrapiCollectionEndpoint } from '@fc/types'
 
 import { FormItem, MdFormItem, VideoPlayer } from '..'
+import { I18nNamespaces } from '../../../@types/i18next'
+import { ModelCreateFormBodyProps } from '../ModelForm/types'
 import { ModelMedia } from '../ModelMedia'
 import { ModelSelect } from '../ModelSelect'
-import { ModelCreateFormBodyProps } from './types'
 
 export const renderCreateFormBody = <T extends StrapiModel>({
   fields,

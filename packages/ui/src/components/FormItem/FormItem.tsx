@@ -19,8 +19,8 @@ import { useTranslation } from 'next-i18next'
 import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { TbInfoCircle } from 'react-icons/tb'
 
-import { I18nNamespaces } from '../../../@types/i18next'
 import { FormItemComponent } from './types'
+import { I18nNamespaces } from '../../../@types/i18next'
 
 export const FormItem: FormItemComponent = forwardRef(
   (

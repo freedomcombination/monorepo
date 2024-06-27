@@ -31,9 +31,9 @@ import { Mention, Tweet } from '@fc/types'
 
 import { createTweetSchema } from './schema'
 import { CreateTweetFormFieldValues, CreateTweetFormProps } from './types'
+import { FormItem } from '../FormItem'
 import { ModelSelect } from '../ModelSelect'
 import { TweetContent } from '../TweetContent'
-import { FormItem } from '../FormItem'
 
 export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
   isOpen,

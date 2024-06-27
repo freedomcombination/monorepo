@@ -12,7 +12,7 @@ import {
 import { Collection } from '@fc/types'
 
 import { CollectionEditProps } from './types'
-import { ModelEditForm } from '../ModelForm'
+import { ModelEditForm } from '../ModelEditForm'
 
 export const CollectionEdit: FC<CollectionEditProps> = ({
   collection,

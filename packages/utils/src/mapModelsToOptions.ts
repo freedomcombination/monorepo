@@ -1,3 +1,16 @@
+import type {
+  Asset,
+  AssetsTracking,
+  Category,
+  Mention,
+  Profile,
+  Role,
+  StrapiLocale,
+  StrapiModel,
+  StrapiTranslatableModel,
+  User,
+} from '@fc/types'
+
 const mapModelToOption = (model?: StrapiModel, locale?: StrapiLocale) => {
   if (!model) return { value: '', label: '' }
 

@@ -1,6 +1,6 @@
 import { ApprovalStatus, Art, Collection, StrapiLocale } from '@fc/types'
 
-import { LocaleBadges, PublicationBadges } from '../../admin'
+import { LocaleBadges, PublicationBadges } from '../../components'
 import { WTableProps } from '../../components'
 
 export const useCollectionColumns = (): WTableProps<Collection>['columns'] => {

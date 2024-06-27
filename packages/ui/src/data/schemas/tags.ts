@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { Tag } from '@fc/types'
-
-import { FormFields } from '../../admin'
+import { FormFields, Tag } from '@fc/types'
 
 export const useTagsSchema = () => {
   return yup.object({

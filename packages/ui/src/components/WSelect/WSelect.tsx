@@ -12,8 +12,8 @@ import { useTranslation } from 'next-i18next'
 import { FieldValues, useController } from 'react-hook-form'
 import { TbInfoCircle } from 'react-icons/tb'
 
-import { I18nNamespaces } from '../../../@types/i18next'
 import { SelectOption, WSelectProps } from './types'
+import { I18nNamespaces } from '../../../@types/i18next'
 
 export const WSelect = <T extends FieldValues = FieldValues>({
   control,

@@ -4,7 +4,7 @@ import { MenuItemOption, MenuOptionGroup } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { I18nNamespaces } from '../../../@types/i18next'
-import { Option } from '../ModelForm'
+import { Option } from '../ModelSelect'
 
 type ModelStatusFiltersProps = {
   args: {

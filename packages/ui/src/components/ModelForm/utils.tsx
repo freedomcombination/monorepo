@@ -1,32 +1,3 @@
-import { useMemo } from 'react'
-
-import { format } from 'date-fns'
-import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-
-import {
-  Activity,
-  Art,
-  Asset,
-  Category,
-  Course,
-  CourseApplication,
-  Hashtag,
-  Mention,
-  Platform,
-  Post,
-  Profile,
-  Role,
-  StrapiLocale,
-  StrapiModel,
-  StrapiTranslatableModel,
-  User,
-} from '@fc/types'
-import { AssetsTracking } from '@fc/types/src/assets-tracking'
-
-import { I18nNamespaces } from '../../../@types/i18next'
-import { FormFields } from './types'
-
 import {
   Box,
   Flex,
@@ -42,12 +13,14 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 
+import { Post, StrapiModel } from '@fc/types'
 import { StrapiCollectionEndpoint } from '@fc/types'
 
+import { ModelCreateFormBodyProps } from './types'
 import { FormItem, MdFormItem, VideoPlayer } from '..'
+import { I18nNamespaces } from '../../../@types/i18next'
 import { ModelMedia } from '../ModelMedia'
 import { ModelSelect } from '../ModelSelect'
-import { ModelCreateFormBodyProps } from './types'
 
 export const renderCreateFormBody = <T extends StrapiModel>({
   fields,

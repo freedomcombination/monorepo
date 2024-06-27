@@ -11,7 +11,7 @@ import {
   SocialLoginButtonsProps,
   SocialProvider,
   SocialProviderName,
-} from './type'
+} from './types'
 
 const loginProviders: SocialProvider[] = [
   {

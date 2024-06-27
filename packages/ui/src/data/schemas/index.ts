@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { ObjectSchema, setLocale } from 'yup'
 import { nl, tr } from 'yup-locales'
 
-import { PartialStrapiEndpointMap, StrapiModel } from '@fc/types'
+import { PartialStrapiEndpointMap, StrapiModel, FormFields } from '@fc/types'
 
 import { activityFields, useActivitySchema } from './activity'
 import {
@@ -41,7 +41,6 @@ import {
 } from './translate'
 import { useUserSchema, userFields } from './user'
 import { useUserFeedbackSchema, userFeedbackFields } from './userFeedback'
-import { FormFields } from '../../admin'
 
 export const useSchema = (): PartialStrapiEndpointMap<ObjectSchema<any>> => {
   const { locale } = useRouter()

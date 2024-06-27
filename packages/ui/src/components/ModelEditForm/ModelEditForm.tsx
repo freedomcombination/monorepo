@@ -45,6 +45,7 @@ import {
   useUpdateModelMutation,
 } from '@fc/services'
 import {
+  FormCommonFields,
   Profile,
   ProfileCreateInput,
   StrapiCollectionEndpoint,
@@ -54,24 +55,21 @@ import {
   User,
 } from '@fc/types'
 
-import { ModelMedia } from './ModelMedia'
-import { ModelSelect } from './ModelSelect'
-import { FormCommonFields, ModelEditFormProps, Option } from './types'
-import { useDefaultValues } from './utils'
+import { ModelEditFormProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
-import {
-  ActionButton,
-  ActionHStack,
-  ActionStack,
-  FormItem,
-  MasonryGrid,
-  MdFormItem,
-} from '../ModelForm'
-import { WConfirm, WConfirmProps } from '../WConfirm'
 import { useFields, useSchema } from '../../data'
+import { useDefaultValues } from '../../hooks/useDefaultValues'
+import { ActionButton } from '../ActionButton'
+import { ActionStack } from '../ActionStack'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
 import { DownloadCapsModal } from '../DownloadCapsModal'
+import { FormItem } from '../FormItem'
+import { MdFormItem } from '../MarkdownEditor'
+import { MasonryGrid } from '../MasonryGrid'
+import { ModelMedia } from '../ModelMedia'
+import { ModelSelect, Option } from '../ModelSelect'
 import { SendNotificationButton } from '../SendNotificationButton'
+import { WConfirm, WConfirmProps } from '../WConfirm'
 
 export const ModelEditForm = <T extends StrapiModel>({
   endpoint,
@@ -575,7 +573,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               {t('approve')}
             </ActionButton>
 
-            <ActionHStack canUpdate={endpoint}>
+            <ActionStack direction={'row'} canUpdate={endpoint}>
               <ActionButton
                 isVisible={!isEditing}
                 onClick={setIsEditing.on}
@@ -603,7 +601,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               >
                 {t('save')}
               </ActionButton>
-            </ActionHStack>
+            </ActionStack>
 
             <ActionButton
               checkActions={{ endpoint, actions: ['update'] }}

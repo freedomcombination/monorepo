@@ -1,9 +1,8 @@
 import * as yup from 'yup'
 
-import { Post } from '@fc/types'
+import { FormFields, Post } from '@fc/types'
 
 import { yupMultiSelect } from './common'
-import { FormFields } from '../../admin'
 
 export const usePostSchema = () => {
   return yup.object({

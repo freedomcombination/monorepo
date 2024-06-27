@@ -21,13 +21,10 @@ import { useDeleteModel, useUpdateModelMutation } from '@fc/services'
 import { Observation, ObservationUpdateInput, Profile } from '@fc/types'
 
 import { observationSchema } from './schema'
-import {
-  ActionButton,
-  ActionHStack,
-  FormItem,
-  WConfirm,
-  WConfirmProps,
-} from '..'
+import { ActionButton } from '../ActionButton'
+import { ActionStack } from '../ActionStack'
+import { FormItem } from '../FormItem'
+import { WConfirm, WConfirmProps } from '../WConfirm'
 
 type ObservationEditFormProps = Pick<Observation, 'content'> & {
   onSuccess?: () => void
@@ -128,7 +125,7 @@ export const ObservationEditForm = ({
             </Text>
             <Text fontSize={'sm'}>{createdDate}</Text>
           </HStack>
-          <ActionHStack canUpdate={'observations'} justifyContent={'flex-end'}>
+          <ActionStack canUpdate={'observations'} justifyContent={'flex-end'}>
             <ButtonGroup size={'sm'} variant={'outline'}>
               <ActionButton
                 isVisible={!isEditing}
@@ -159,7 +156,7 @@ export const ObservationEditForm = ({
                 />
               )}
             </ButtonGroup>
-          </ActionHStack>
+          </ActionStack>
         </Wrap>
 
         <Stack h={'full'}>

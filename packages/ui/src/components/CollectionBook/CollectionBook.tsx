@@ -1,8 +1,8 @@
 import { ComponentProps, FC } from 'react'
 
 import { Heading, VStack } from '@chakra-ui/react'
-import { IFlipSetting } from 'react-pageflip/build/html-flip-book/settings'
 import HTMLFlipBook from 'react-pageflip'
+import { IFlipSetting } from 'react-pageflip/build/html-flip-book/settings'
 
 import { CollectionPages } from './CollectionPages'
 import { Page } from './Page'

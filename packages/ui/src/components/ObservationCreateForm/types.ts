@@ -8,5 +8,5 @@ export type ObservationCreateFormFieldValues = InferType<
 
 export type ObservationCreateFormProps = {
   profileId: number
-  onSuccess: () => void
+  onSuccess?: () => void
 }

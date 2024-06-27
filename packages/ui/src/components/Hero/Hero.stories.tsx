@@ -1,6 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { Hero, HeroProps } from './Hero'
+import { Hero } from './Hero'
+import { HeroProps } from './types'
 
 export default {
   component: Hero,

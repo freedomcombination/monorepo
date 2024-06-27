@@ -4,6 +4,7 @@ import { HStack, IconButton } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { Localize } from '@fc/types'
+
 import { SocialButtonsProps } from './types'
 
 export const SocialButtons: FC<SocialButtonsProps> = ({ items, ...rest }) => {

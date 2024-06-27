@@ -1,9 +1,8 @@
 import * as yup from 'yup'
 
-import { Activity } from '@fc/types'
+import { Activity, FormFields } from '@fc/types'
 
 import { yupMultiSelect } from './common'
-import { FormFields } from '../../admin'
 
 export const useActivitySchema = () => {
   return yup.object({

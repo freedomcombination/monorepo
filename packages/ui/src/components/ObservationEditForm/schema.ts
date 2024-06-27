@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { Observation } from '@fc/types/src/observation'
-
-import { FormFields } from '../../admin'
+import { Observation, FormFields } from '@fc/types'
 
 export const observationSchema = () => {
   return yup.object({

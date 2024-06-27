@@ -24,8 +24,8 @@ import {
 
 import { ArtCardActions } from './ArtCardActions'
 import { ArtCardAlertDialog } from './ArtCardAlertDialog'
-import { ArtCardImage } from './ArtCardImage'
 import { ArtActionType, ArtCardProps } from './types'
+import { ArtCardImage } from '../ArtCardImage'
 import { ArtModal } from '../ArtModal'
 import { WAvatar } from '../WAvatar'
 

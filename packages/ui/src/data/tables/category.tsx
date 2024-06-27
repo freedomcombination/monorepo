@@ -1,6 +1,6 @@
 import { Category } from '@fc/types'
 
-import { PublicationBadges } from '../../admin'
+import { PublicationBadges } from '../../components'
 import { WTableProps } from '../../components'
 
 export const useCategoryColumns = (): WTableProps<Category>['columns'] => {

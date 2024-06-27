@@ -11,6 +11,7 @@ import {
 import { FaTimes } from 'react-icons/fa'
 import { HiOutlineSearch } from 'react-icons/hi'
 import { useDebounce } from 'react-use'
+
 import { SearchFormProps } from './types'
 
 export const SearchForm: React.FC<SearchFormProps> = ({

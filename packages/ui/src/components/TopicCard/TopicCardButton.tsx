@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { TopicCardButtonProps } from './types'
-import { ActionButton } from '..'
+import { ActionButton } from '../ActionButton'
 
 export const TopicCardButton: FC<TopicCardButtonProps> = ({
   icon,

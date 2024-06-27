@@ -1,5 +1,6 @@
-import { Dashboard } from '@uppy/react'
 import { ComponentProps } from 'react'
+
+import { Dashboard } from '@uppy/react'
 
 export type FilePickerProps = Omit<ComponentProps<typeof Dashboard>, 'uppy'> & {
   allowedFileTypes?: string[]

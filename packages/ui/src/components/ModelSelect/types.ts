@@ -1,6 +1,8 @@
 import { Control, FieldErrorsImpl, FieldValues } from 'react-hook-form'
-import { WSelectProps } from '../WSelect/types'
+
 import { StrapiCollectionEndpoint } from '@fc/types'
+
+import { WSelectProps } from '../WSelect/types'
 
 type ModelSelectBaseProps = Omit<WSelectProps<FieldValues>, 'options'> & {
   control: Control

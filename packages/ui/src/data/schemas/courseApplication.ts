@@ -1,9 +1,8 @@
 import * as yup from 'yup'
 
-import { CourseApplication } from '@fc/types'
+import { CourseApplication, FormFields } from '@fc/types'
 
 import { yupSelect } from './common'
-import { FormFields } from '../../admin'
 
 export const useCourseApplicationSchema = () => {
   return yup.object({

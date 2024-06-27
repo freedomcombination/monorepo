@@ -1,7 +1,8 @@
 import { ReactElement } from 'react'
 
 import { TopicBase } from '@fc/types'
-import { ActionButtonProps } from '../ActionWrapper'
+
+import { ActionButtonProps } from '../ActionButton'
 
 export type TopicCardProps = {
   topic: TopicBase

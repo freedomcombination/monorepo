@@ -1,7 +1,10 @@
-import { StrapiModel } from '@fc/types'
-import { ModelEditFormProps } from '../ModelEditForm/types'
-import { ModalProps } from '@chakra-ui/react'
 import { ReactNode } from 'react'
+
+import { ModalProps } from '@chakra-ui/react'
+
+import { StrapiModel } from '@fc/types'
+
+import { ModelEditFormProps } from '../ModelEditForm/types'
 
 export type ModelEditModalProps<T extends StrapiModel> = Omit<
   ModalProps,

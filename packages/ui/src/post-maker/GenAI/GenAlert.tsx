@@ -20,7 +20,7 @@ import { LuFileArchive } from 'react-icons/lu'
 
 import { ArchiveContent, Category, Hashtag, Tag } from '@fc/types'
 
-import { ModelCreateModal } from '../../admin'
+import { ModelCreateModal } from '../../components/ModelCreateModal'
 import { useFields, useSchema } from '../../data'
 
 type GenAlertProps = {

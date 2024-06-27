@@ -7,7 +7,10 @@ import { HiOutlineCheck, HiOutlineX, HiPencil } from 'react-icons/hi'
 import { useArtFeedbackMutation } from '@fc/services'
 
 import { ArtFeedbackFormTypes } from './types'
-import { ActionButton, ActionStack, WAvatar, WConfirm, WConfirmProps } from '..'
+import { ActionButton } from '../ActionButton'
+import { ActionStack } from '../ActionStack'
+import { WAvatar } from '../WAvatar'
+import { WConfirm, WConfirmProps } from '../WConfirm'
 
 export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
   art,

@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { HStack, useRadioGroup } from '@chakra-ui/react'
 
 import { RadioCard } from './RadioCard'
-import { Option } from '../ModelForm'
+import { Option } from '../ModelSelect'
 
 type RadioCardsProps = {
   options: Option[]

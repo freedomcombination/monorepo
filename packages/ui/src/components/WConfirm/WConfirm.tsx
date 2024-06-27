@@ -12,6 +12,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+
 import { WConfirmProps } from './types'
 
 export const WConfirm: FC<WConfirmProps> = props => {

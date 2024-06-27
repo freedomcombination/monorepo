@@ -1,9 +1,8 @@
 import * as yup from 'yup'
 
-import { ArchiveContent } from '@fc/types'
+import { ArchiveContent, FormFields } from '@fc/types'
 
 import { yupMultiSelect } from './common'
-import { FormFields } from '../../admin'
 
 export const useArchiveContentsSchema = () => {
   return yup.object({

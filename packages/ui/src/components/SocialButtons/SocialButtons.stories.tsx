@@ -1,6 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { SocialButtons, SocialButtonsProps } from './SocialButtons'
+import { SocialButtons } from './SocialButtons'
+import { SocialButtonsProps } from './types'
 import { SOCIAL_LINKS } from '../../mocks'
 
 export default {

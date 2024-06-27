@@ -1,8 +1,10 @@
-import { useRouter } from 'next/router'
-import { CourseFaqItemProps } from './types'
-import { AccordionButton, AccordionPanel, Box } from '@chakra-ui/react'
-import { FaMinus, FaPlus } from 'react-icons/fa6'
 import { FC } from 'react'
+
+import { AccordionButton, AccordionPanel, Box } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { FaMinus, FaPlus } from 'react-icons/fa6'
+
+import { CourseFaqItemProps } from '../CourseDetailPage/types'
 
 export const CourseFaqItem: FC<CourseFaqItemProps> = ({ item, isExpanded }) => {
   const { locale } = useRouter()

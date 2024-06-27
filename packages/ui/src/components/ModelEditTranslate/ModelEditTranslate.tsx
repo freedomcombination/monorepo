@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import {
-  Box,
   FormLabel,
   HStack,
   Stack,
@@ -30,18 +29,16 @@ import {
 
 import { ModelEditTranslateProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
-import {
-  ActionButton,
-  ActionHStack,
-  Flag,
-  FormItem,
-  MdFormItem,
-  WConfirm,
-  WConfirmProps,
-} from '..'
 import { useReferenceModel } from '../../hooks'
+import { useDefaultValues } from '../../hooks/useDefaultValues'
+import { ActionButton } from '../ActionButton'
+import { ActionStack } from '../ActionStack'
+import { Flag } from '../Flag'
+import { FormItem } from '../FormItem'
 import { FormLocaleSwitcher } from '../FormLocaleSwitcher'
-import { Option, useDefaultValues } from '../ModelForm'
+import { MdFormItem } from '../MarkdownEditor'
+import { Option } from '../ModelSelect'
+import { WConfirm, WConfirmProps } from '../WConfirm'
 
 export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
   id,
@@ -275,7 +272,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             {t('approve')}
           </ActionButton>
 
-          <ActionHStack canUpdate={endpoint}>
+          <ActionStack direction={'row'} canUpdate={endpoint}>
             <ActionButton
               isVisible={!isEditing}
               onClick={setIsEditing.on}
@@ -305,7 +302,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             </ActionButton>
 
             {children}
-          </ActionHStack>
+          </ActionStack>
         </Wrap>
       </Stack>
     </>

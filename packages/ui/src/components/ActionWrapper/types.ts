@@ -1,9 +1,4 @@
-import {
-  ButtonProps,
-  ChakraProps,
-  StackProps,
-  TooltipProps,
-} from '@chakra-ui/react'
+import { ChakraProps } from '@chakra-ui/react'
 
 import { StrapiEndpoint } from '@fc/types'
 
@@ -21,9 +16,3 @@ export type ActionWrapperProps<T extends ChakraProps> = {
   onlyAdmin?: boolean
   ui: React.ElementType
 } & T
-
-export type ActionButtonProps = Omit<ActionWrapperProps<ButtonProps>, 'ui'>
-
-export type ActionTooltipProps = Omit<ActionWrapperProps<TooltipProps>, 'ui'>
-
-export type ActionStackProps = Omit<ActionWrapperProps<StackProps>, 'ui'>

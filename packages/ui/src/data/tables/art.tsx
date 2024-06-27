@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 
 import { ApprovalStatus, Art, Profile } from '@fc/types'
 
-import { PublicationBadges } from '../../admin'
+import { PublicationBadges } from '../../components'
 import { WTableProps } from '../../components'
 
 export const useArtColumns = (): WTableProps<Art>['columns'] => {

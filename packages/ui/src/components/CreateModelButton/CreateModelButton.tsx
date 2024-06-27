@@ -43,10 +43,10 @@ import {
   Tag,
 } from '@fc/types'
 
-import { ActionStack } from '..'
 import { useFields, useSchema } from '../../data'
+import { ActionStack } from '../ActionStack'
 import { CreatePostFromCapsModal } from '../CreatePostFromCapsModal'
-import { ModelCreateModal } from '../ModelForm'
+import { ModelCreateModal } from '../ModelCreateModal'
 
 export const CreateModelButton = () => {
   const { t } = useTranslation()

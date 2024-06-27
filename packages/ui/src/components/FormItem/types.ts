@@ -1,6 +1,6 @@
-import { InputProps } from '@chakra-ui/react'
 import { ReactElement, ReactNode, RefAttributes } from 'react'
 
+import { InputProps } from '@chakra-ui/react'
 import {
   FieldErrorsImpl,
   FieldValues,

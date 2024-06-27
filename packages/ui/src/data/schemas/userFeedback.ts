@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { UserFeedback } from '@fc/types'
-
-import { FormFields } from '../../admin'
+import { FormFields, UserFeedback } from '@fc/types'
 
 export const useUserFeedbackSchema = () => {
   return yup.object({

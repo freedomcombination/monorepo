@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { Post, StrapiTranslatableModel } from '@fc/types'
-
-import { FormFields } from '../../admin'
+import { FormFields, Post, StrapiTranslatableModel } from '@fc/types'
 
 export const translateModelSchema = yup.object({
   title: yup.string(),

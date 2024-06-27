@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 import { endpointsWithApprovalStatus } from '@fc/config'
 import { useStrapiRequest } from '@fc/services'
 import { StrapiCollectionEndpoint, StrapiModel } from '@fc/types'
+import { mapModelsToOptions } from '@fc/utils'
 
 import { ModelDynamicSelectProps } from './types'
-import { mapModelsToOptions } from './utils'
-import { WSelect } from '../ModelForm'
+import { WSelect } from '../WSelect'
 
 export const ModelDynamicSelect = <T extends StrapiModel>({
   endpoint,

@@ -1,7 +1,6 @@
 import { Tag } from '@fc/types'
 
-import { PublicationBadges } from '../../admin'
-import { WTableProps } from '../../components'
+import { PublicationBadges, WTableProps } from '../../components'
 
 export const useTagColumns = (): WTableProps<Tag>['columns'] => {
   return {

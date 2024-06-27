@@ -24,8 +24,11 @@ import {
 } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
-import { ModelPdf } from './ModelPdf'
-import { Caps, FilePicker, VideoPlayer, WImage } from '../ModelForm'
+import { Caps } from '../Caps'
+import { FilePicker } from '../FilePicker'
+import { ModelPdf } from '../ModelPdf'
+import { VideoPlayer } from '../VideoPlayer'
+import { WImage } from '../WImage'
 
 export type ModelMediaProps<T extends FieldValues = FieldValues> = {
   model: StrapiModel

@@ -5,9 +5,9 @@ import { useRouter } from 'next/router'
 
 import { useStrapiRequest } from '@fc/services'
 import { StrapiModel } from '@fc/types'
+import { mapModelsToOptions } from '@fc/utils'
 
 import { RelationFilterMenuGroupProps } from './types'
-import { mapModelsToOptions } from '../ModelForm'
 
 export const RelationFilterMenuGroup = <T extends StrapiModel>({
   type = 'checkbox',

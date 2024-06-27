@@ -14,8 +14,8 @@ import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { StrapiModel } from '@fc/types'
 
-import { ModelEditForm } from '../ModelEditForm'
 import { ModelEditModalProps } from './types'
+import { ModelEditForm } from '../ModelEditForm'
 
 export const ModelEditModal = <T extends StrapiModel>({
   endpoint,

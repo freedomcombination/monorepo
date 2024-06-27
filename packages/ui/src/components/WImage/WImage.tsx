@@ -3,10 +3,10 @@ import { FC, Fragment } from 'react'
 import { AspectRatio } from '@chakra-ui/react'
 import Zoom from 'react-medium-image-zoom'
 
+import { WImageProps } from './types'
 import { StrapiImage } from '../StrapiImage'
 
 import 'react-medium-image-zoom/dist/styles.css'
-import { WImageProps } from './types'
 
 export const WImage: FC<WImageProps> = ({
   src,

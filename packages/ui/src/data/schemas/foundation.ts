@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { Foundation } from '@fc/types'
-
-import { FormFields } from '../../admin'
+import { Foundation, FormFields } from '@fc/types'
 
 export const useFoundationsSchema = () => {
   return yup.object({

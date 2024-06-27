@@ -1,4 +1,4 @@
-import { ComponentProps, FC, useEffect, useId, useMemo } from 'react'
+import { FC, useEffect, useId, useMemo } from 'react'
 
 import { Stack } from '@chakra-ui/react'
 import Compressor from '@uppy/compressor'

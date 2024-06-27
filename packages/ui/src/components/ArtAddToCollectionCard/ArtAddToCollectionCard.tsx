@@ -14,8 +14,9 @@ import { HiPlus } from 'react-icons/hi'
 import { IoCloseSharp } from 'react-icons/io5'
 
 import { ArtAddToCollectionCardProps } from './types'
-import { ActionButton, ArtModal } from '..'
-import { ArtCardImage } from '../ArtCard/ArtCardImage'
+import { ActionButton } from '../ActionButton'
+import { ArtCardImage } from '../ArtCardImage'
+import { ArtModal } from '../ArtModal'
 
 export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   isAdded,

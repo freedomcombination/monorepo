@@ -1,9 +1,8 @@
 import * as yup from 'yup'
 
-import { Art } from '@fc/types'
+import { Art, FormFields } from '@fc/types'
 
 import { yupMultiSelect } from './common'
-import { FormFields } from '../../admin'
 
 export const useArtSchema = () => {
   return yup.object({

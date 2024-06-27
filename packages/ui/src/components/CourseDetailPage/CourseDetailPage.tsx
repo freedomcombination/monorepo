@@ -6,8 +6,8 @@ import { useTranslation } from 'next-i18next'
 
 import { SITE_URL } from '@fc/config'
 
-import { CourseApplicationForm } from '../CourseApplicationForm'
-import { CourseFaqs } from '../CourseFaqs'
+import { CourseApplicationForm } from './CourseApplicationForm'
+import { CourseFaqs } from './CourseFaqs'
 import { CourseInfo } from './CourseInfo'
 import { CourseDetailPageProps } from './types'
 import { Container } from '../Container'

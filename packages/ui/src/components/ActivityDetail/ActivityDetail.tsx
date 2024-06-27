@@ -12,10 +12,10 @@ import { useRouter } from 'next/router'
 
 import { SITE_URL } from '@fc/config'
 
+import { ActivityDetailProps } from './types'
 import { Markdown } from '../Markdown'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'
-import { ActivityDetailProps } from './types'
 
 export const ActivityDetail: FC<ActivityDetailProps> = ({
   source,

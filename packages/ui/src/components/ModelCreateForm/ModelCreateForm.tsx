@@ -20,13 +20,13 @@ import {
 } from '@fc/types'
 import { generateOgImageParams } from '@fc/utils'
 
+import { ModelCreateFormProps } from './types'
 import { renderCreateFormBody } from './utils'
-import { ModelCreateFormProps, Option } from './types'
-import { useDefaultValues } from './utils'
 import { I18nNamespaces } from '../../../@types/i18next'
-import { MasonryGrid } from '../ModelForm'
-import { useFileFromUrl } from '../../hooks'
+import { useDefaultValues, useFileFromUrl } from '../../hooks'
 import { LanguageSwitcher } from '../LanguageSwitcher'
+import { MasonryGrid } from '../MasonryGrid'
+import { Option } from '../ModelSelect'
 import { RadioCards } from '../RadioCards'
 
 export const ModelCreateForm = <T extends StrapiModel>({

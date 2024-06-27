@@ -1,7 +1,5 @@
 import { FC } from 'react'
 
-import { useTranslation } from 'next-i18next'
-import { ImageViewerProps } from './types'
 import {
   IconButton,
   Menu,
@@ -10,8 +8,11 @@ import {
   MenuList,
   Portal,
 } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
 import { FaArrowDownWideShort } from 'react-icons/fa6'
+
 import { MenuFileItem } from './MenuFileItem'
+import { ImageViewerProps } from './types'
 
 export const ImageViewer: FC<ImageViewerProps> = ({
   files,

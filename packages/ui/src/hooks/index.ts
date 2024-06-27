@@ -1,5 +1,6 @@
 export * from './timeLocale'
 export * from './useChangeParam'
+export * from './useDefaultValues'
 export * from './useFileFromUrl'
 export * from './useFindHashtagsInTrend'
 export * from './useLocaleTimeFormat'

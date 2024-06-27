@@ -9,7 +9,7 @@ import { RecaptchaKeys, SITE_URL } from '@fc/config'
 import { useArtBySlug, useLikeArt, useRecaptchaToken } from '@fc/services'
 import { Art } from '@fc/types'
 
-import { ArtCardImage } from '../ArtCard/ArtCardImage'
+import { ArtCardImage } from '../ArtCardImage'
 import { ShareButtons } from '../ShareButtons'
 
 export const ArtDetail: FC = () => {

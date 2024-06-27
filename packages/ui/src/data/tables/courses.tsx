@@ -2,8 +2,7 @@ import { useRouter } from 'next/router'
 
 import { StrapiLocale, Course } from '@fc/types'
 
-import { LocaleBadges, PublicationBadges } from '../../admin'
-import { WTableProps } from '../../components'
+import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 
 export const useCourseColumns = (): WTableProps<Course>['columns'] => {
   const { locale } = useRouter()

@@ -16,7 +16,7 @@ import { useAuthContext } from '@fc/context'
 import { StrapiModel } from '@fc/types'
 
 import { ModelCreateForm } from '../ModelCreateForm'
-import { ModelCreateFormProps } from './types'
+import { ModelCreateFormProps } from '../ModelCreateForm'
 
 export const ModelCreateModal = <T extends StrapiModel>({
   fields,

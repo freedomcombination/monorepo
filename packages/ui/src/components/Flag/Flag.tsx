@@ -77,14 +77,17 @@ const En: FC<IconProps> = props => {
   )
 }
 
-export const Flag: FC<{ locale: StrapiLocale }> = ({ locale }) => {
+export const Flag: FC<{ locale: StrapiLocale } & IconProps> = ({
+  locale,
+  ...props
+}) => {
   if (locale === 'tr') {
-    return <Tr />
+    return <Tr {...props} />
   }
 
   if (locale === 'nl') {
-    return <Nl />
+    return <Nl {...props} />
   }
 
-  return <En />
+  return <En {...props} />
 }

@@ -1,16 +1,12 @@
-import { FC, ReactElement } from 'react'
+import { ReactElement } from 'react'
 
-import { Button, ChakraProps, HStack, Stack, Tooltip } from '@chakra-ui/react'
+import { ChakraProps } from '@chakra-ui/react'
 
 import { useAuthContext } from '@fc/context'
-import {
-  ActionButtonProps,
-  ActionStackProps,
-  ActionTooltipProps,
-  ActionWrapperProps,
-} from './types'
 
-const ActionWrapper = <T extends ChakraProps>(
+import { ActionWrapperProps } from './types'
+
+export const ActionWrapper = <T extends ChakraProps>(
   props: ActionWrapperProps<T>,
 ): ReactElement<T> | null => {
   const {
@@ -41,20 +37,4 @@ const ActionWrapper = <T extends ChakraProps>(
     return null
 
   return <Component {...rest} />
-}
-
-export const ActionButton: FC<ActionButtonProps> = props => {
-  return <ActionWrapper {...props} ui={Button} />
-}
-
-export const ActionTooltip: FC<ActionTooltipProps> = props => {
-  return <ActionWrapper {...props} ui={Tooltip} />
-}
-
-export const ActionStack: FC<ActionStackProps> = props => {
-  return <ActionWrapper {...props} ui={Stack} />
-}
-
-export const ActionHStack: FC<ActionStackProps> = props => {
-  return <ActionWrapper {...props} ui={HStack} />
 }

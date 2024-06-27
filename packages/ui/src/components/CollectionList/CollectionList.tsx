@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MdCollectionsBookmark } from 'react-icons/md'
 
-import { Collection } from '@fc/types'
 import { CollectionListProps } from './types'
 
 export const CollectionList: FC<CollectionListProps> = ({ collectionData }) => {

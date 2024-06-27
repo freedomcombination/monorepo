@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { Category } from '@fc/types'
-
-import { FormFields } from '../../admin'
+import { Category, FormFields } from '@fc/types'
 
 export const useCategoriesSchema = () => {
   return yup.object({

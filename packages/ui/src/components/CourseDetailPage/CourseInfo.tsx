@@ -9,8 +9,8 @@ import { HiLanguage } from 'react-icons/hi2'
 import { IoPeopleOutline } from 'react-icons/io5'
 import { RiMoneyEuroCircleLine } from 'react-icons/ri'
 
-import { CourseInfoProps } from './types'
 import { CourseInfoItem } from './CourseInfoItem'
+import { CourseInfoProps } from './types'
 
 enum Languages {
   en = 'English',

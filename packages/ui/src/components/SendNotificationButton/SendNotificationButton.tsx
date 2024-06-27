@@ -5,8 +5,8 @@ import { FiSend } from 'react-icons/fi'
 
 import { useSendNotificationMutation } from '@fc/services'
 
-import { ActionButton } from '..'
-import { Option } from '../ModelForm'
+import { ActionButton } from '../ActionButton'
+import { Option } from '../ModelSelect'
 
 type SendNotificationButtonProps = {
   title: string

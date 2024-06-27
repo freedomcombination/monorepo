@@ -16,11 +16,11 @@ import { useDeleteModel } from '@fc/services'
 import { Post } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
+import { RecommendedSocialButtonsProps } from './types'
 import { ShareButtons, WConfirm, WConfirmProps } from '..'
 import { useFields, useSchema } from '../../data'
-import { ModelCreateModal } from '../ModelForm'
+import { ModelCreateModal } from '../ModelCreateModal'
 import { TopicCardButton as ActionButton } from '../TopicCard'
-import { RecommendedSocialButtonsProps } from './types'
 
 export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
   tweet,

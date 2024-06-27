@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import { ArchiveContent, Category, Tag } from '@fc/types'
 
-import { PublicationBadges } from '../../admin'
+import { PublicationBadges } from '../../components'
 import { WTableProps } from '../../components'
 
 export const useArchiveContentColumns =

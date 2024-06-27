@@ -1,7 +1,6 @@
 import { ApprovalStatus, Course, CourseApplication } from '@fc/types'
 
-import { PaidBadges } from '../../admin'
-import { WTableProps } from '../../components'
+import { WTableProps, PaidBadges } from '../../components'
 
 export const useCourseApplicationColumns =
   (): WTableProps<CourseApplication>['columns'] => {

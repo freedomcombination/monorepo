@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 
 import { StrapiLocale } from '@fc/types'
 
-import { Flag } from '..'
+import { Flag } from '../Flag'
 
 type LanguageSwitcherProps = {
   responsive?: boolean
@@ -21,8 +21,6 @@ type LanguageSwitcherProps = {
 
 export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
   const router = useRouter()
-
-  const CurrentFlag = Flag[router.locale]
 
   const currentLanguage = {
     en: 'English',
@@ -51,7 +49,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
         as={Button}
         variant="outline"
         rounded="full"
-        leftIcon={<Box boxSize={6} as={CurrentFlag} />}
+        leftIcon={<Flag locale={router.locale} boxSize={6} />}
         {...(responsive && {
           iconSpacing: { base: 0, lg: 2 },
           px: { base: 2, lg: 4 },

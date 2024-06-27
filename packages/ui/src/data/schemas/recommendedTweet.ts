@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { RecommendedTweet } from '@fc/types'
-
-import { FormFields } from '../../admin'
+import { FormFields, RecommendedTweet } from '@fc/types'
 
 export const useRecommendedTweetSchema = () => {
   return yup.object({

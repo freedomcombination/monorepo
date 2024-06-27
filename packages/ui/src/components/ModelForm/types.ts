@@ -1,21 +1,7 @@
-import { ReactNode } from 'react'
-
-import { ButtonProps, ModalProps } from '@chakra-ui/react'
 import { TFunction } from 'i18next'
-import {
-  Control,
-  FieldErrorsImpl,
-  FieldValues,
-  UseFormReturn,
-} from 'react-hook-form'
-import { AnyObjectSchema } from 'yup'
+import { Control, FieldErrorsImpl, UseFormReturn } from 'react-hook-form'
 
-import {
-  StrapiCollectionEndpoint,
-  StrapiEndpoint,
-  StrapiModel,
-} from '@fc/types'
-import { WSelectProps } from '../WSelect/types'
+import { FormFields, StrapiModel } from '@fc/types'
 
 export type MentionSelectProps = {
   isEditing: boolean

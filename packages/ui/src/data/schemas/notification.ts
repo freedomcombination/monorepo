@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { Notification } from '@fc/types'
-
-import { FormFields } from '../../admin'
+import { Notification, FormFields } from '@fc/types'
 
 export const useNotificationsSchema = () => {
   return yup.object({

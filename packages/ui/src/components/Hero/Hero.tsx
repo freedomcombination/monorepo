@@ -2,9 +2,9 @@ import { FC, memo, PropsWithChildren } from 'react'
 
 import { Box, Heading, Text, VStack } from '@chakra-ui/react'
 
+import { HeroProps } from './types'
 import { Container } from '../Container'
 import { WImage } from '../WImage'
-import { HeroProps } from './types'
 
 export const Hero: FC<PropsWithChildren<HeroProps>> = memo(function Hero({
   title,

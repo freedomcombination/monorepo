@@ -1,6 +1,6 @@
 import { ApprovalStatus, Blog, Profile } from '@fc/types'
 
-import { PublicationBadges } from '../../admin'
+import { PublicationBadges } from '../../components'
 import { WTableProps } from '../../components'
 
 export const useBlogColumns = (): WTableProps<Blog>['columns'] => {

@@ -10,8 +10,8 @@ import {
   Text,
 } from '@chakra-ui/react'
 
-import { WImage } from '../../components'
 import { AcademyCardProps } from './types'
+import { WImage } from '../../components'
 
 export const AcademyCard: FC<AcademyCardProps> = ({
   href,

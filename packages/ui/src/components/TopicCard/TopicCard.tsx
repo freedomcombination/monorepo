@@ -34,15 +34,12 @@ import { Post, RecommendedTopicCreateInput, TopicBase } from '@fc/types'
 
 import { TopicCardButton } from './TopicCardButton'
 import { TopicCardProps } from './types'
-import {
-  ActionTooltip,
-  ShareButtons,
-  WConfirm,
-  WConfirmProps,
-  WImage,
-} from '..'
 import { useFields, useSchema } from '../../data'
-import { ModelCreateModal } from '../ModelForm'
+import { ActionTooltip } from '../ActionTooltip'
+import { ModelCreateModal } from '../ModelCreateModal'
+import { ShareButtons } from '../ShareButtons'
+import { WConfirm, WConfirmProps } from '../WConfirm'
+import { WImage } from '../WImage'
 
 export const TopicCard: FC<TopicCardProps> = ({
   topic,

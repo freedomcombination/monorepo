@@ -1,8 +1,6 @@
 import * as yup from 'yup'
 
-import { RecommendedTopic } from '@fc/types'
-
-import { FormFields } from '../../admin'
+import { FormFields, RecommendedTopic } from '@fc/types'
 
 export const useTopicSchema = () => {
   return yup.object({
