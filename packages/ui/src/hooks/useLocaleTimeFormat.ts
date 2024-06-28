@@ -1,11 +1,15 @@
 import * as dateFns from 'date-fns'
 import { useRouter } from 'next/router'
 
+import { StrapiLocale } from '@fc/types'
+
 import { timeLocale } from './timeLocale'
 
-export const useLocaleTimeFormat = (time: string, format: string) => {
-  const { locale } = useRouter()
-
+export const localeTimeFormat = (
+  time: string,
+  format: string,
+  locale: StrapiLocale,
+) => {
   if (!time || typeof window === 'undefined') return {}
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -31,4 +35,10 @@ export const useLocaleTimeFormat = (time: string, format: string) => {
   })
 
   return { formattedDate, formattedDateDistance, date, timeZone }
+}
+
+export const useLocaleTimeFormat = (time: string, format: string) => {
+  const { locale } = useRouter()
+
+  return localeTimeFormat(time, format, locale)
 }
