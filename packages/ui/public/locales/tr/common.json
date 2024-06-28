@@ -121,6 +121,7 @@
   "endDate": "Bitiş Tarihi",
   "error": "Hata",
   "event": "Etkinlik",
+  "export-pdf": "PDF'ye aktar",
   "faq": "Sıkça Sorulan Sorular",
   "feedbacks": "Geri Bildirimler",
   "filters": "Filtreler",
@@ -382,6 +383,5 @@
   "weeksWithCount_one": "1 hafta",
   "weeksWithCount_other": "{{count}} hafta",
   "welcome": "Hoşgeldin",
-  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!",
-  "export-pdf": "Export PDF"
+  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!"
 }
