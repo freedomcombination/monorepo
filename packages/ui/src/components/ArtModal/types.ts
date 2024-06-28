@@ -4,4 +4,5 @@ export type ArtModalProps = {
   art: Art
   isOpen: boolean
   onClose: () => void
+  refetch?: () => void
 }

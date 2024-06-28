@@ -33,7 +33,7 @@ export const ArtTemplate = () => {
   return (
     <Container minH="inherit" my={8}>
       {/* TODO Create skeleton components for ArtDetail ArtContent and Comments */}
-      <ArtWithDetails />
+      <ArtWithDetails art={art} refetch={refetch} />
 
       {/* Other Arts List */}
       {arts && arts?.length > 0 && (
