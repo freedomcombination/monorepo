@@ -57,21 +57,23 @@ export const ArtsTab = () => {
         </TabList>
 
         <TabPanels>
-          {artPanelData.map((artData, index) => (
-            <TabPanel key={index} px={0}>
-              {artData && artData.length > 0 ? (
-                <ArtGrid
-                  arts={artData}
-                  refetch={refetch}
-                  recaptchaToken={recaptchaToken}
-                  columns={{ lg: 2, xl: 3 }}
-                  isModal
-                />
-              ) : (
-                noContent
-              )}
-            </TabPanel>
-          ))}
+          {artPanelData
+            .filter(artData => artData?.length)
+            .map((artData, index) => (
+              <TabPanel key={index} px={0}>
+                {artData && artData.length > 0 ? (
+                  <ArtGrid
+                    arts={artData}
+                    refetch={refetch}
+                    recaptchaToken={recaptchaToken}
+                    columns={{ lg: 2, xl: 3 }}
+                    isModal
+                  />
+                ) : (
+                  noContent
+                )}
+              </TabPanel>
+            ))}
         </TabPanels>
       </Tabs>
     </Stack>
