@@ -12,6 +12,7 @@ import { StrapiModel } from '@fc/types'
 import { getColumnsForPDF, getRowsForPDF } from './utils'
 import { I18nNamespaces } from '../../../@types/i18next'
 import { WTableProps } from '../../components'
+
 type ExportPDFProps<T extends StrapiModel> = Pick<
   WTableProps<T>,
   'data' | 'columns'
@@ -62,8 +63,7 @@ const ExportPFD = <T extends StrapiModel>({
           data.cell.text = []
           const cellWidth = data.cell.width
           const imageSize = Math.min(cellWidth - 4, 12)
-          if (data.row.height < imageSize + 2)
-            data.row.height = imageSize + 2
+          if (data.row.height < imageSize + 2) data.row.height = imageSize + 2
           const imageX = data.cell.x + cellWidth / 2 - imageSize / 2
           addImageToCell(
             doc,

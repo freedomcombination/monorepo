@@ -14,7 +14,7 @@ import { StrapiModel } from '@fc/types'
 
 import { DataTableProps } from './types'
 import { Pagination, WTable } from '../../components'
-import { ExportPDF } from '../ExportPDF'
+// import { ExportPDF } from '../ExportPDF'
 
 export const DataTable = <T extends StrapiModel>({
   currentPage,
@@ -51,9 +51,9 @@ export const DataTable = <T extends StrapiModel>({
           py={4}
         >
           <HStack flex={1} justify={{ base: 'center', md: 'start' }}>
-            {allowExportPDF && (
+            {/* {allowExportPDF && (
               <ExportPDF data={tableProps.data} columns={tableProps.columns} />
-            )}
+            )} */}
             <Select
               w={20}
               textAlign={'center'}
