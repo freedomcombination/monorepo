@@ -24,7 +24,7 @@ export const DataTable = <T extends StrapiModel>({
   children,
   pageSize,
   setPageSize,
-  allowExportPDF = false,
+  // allowExportPDF = false,
   ...tableProps
 }: DataTableProps<T>) => {
   const { t } = useTranslation()
@@ -43,7 +43,7 @@ export const DataTable = <T extends StrapiModel>({
       </Box>
       {children}
       <Spacer />
-      {(totalCount > 10 || allowExportPDF) && (
+      {totalCount > 10 && (
         <Stack
           direction={{ base: 'column', md: 'row' }}
           justify={{ base: 'center', md: 'space-between' }}

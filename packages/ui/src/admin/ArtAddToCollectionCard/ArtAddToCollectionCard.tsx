@@ -72,7 +72,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
         </HStack>
       </Stack>
       <ArtModal
-        refetch={() => {}}
+        // refetch={() => {}}
         art={art}
         isOpen={isOpen}
         onClose={onClose}

@@ -12,5 +12,5 @@ export type DataTableProps<T extends StrapiModel> = {
   setCurrentPage: (page: number) => void
   children?: ReactNode
   setPageSize: (pageSize: number) => void
-  allowExportPDF?: boolean
+  // allowExportPDF?: boolean
 } & Pick<WTableProps<T>, 'data' | 'columns' | 'onClickRow' | 'onSort'>

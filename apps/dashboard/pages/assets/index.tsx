@@ -88,7 +88,7 @@ const AssetsPage = () => {
         setCurrentPage={setCurrentPage}
         setPageSize={setPageSize}
         totalCount={totalCount}
-        allowExportPDF
+        // allowExportPDF
       />
     </AdminLayout>
   )
