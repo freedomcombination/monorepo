@@ -9768,7 +9768,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.48.0":
+"@tanstack/react-query-devtools@npm:^5.49.0":
   version: 5.49.0
   resolution: "@tanstack/react-query-devtools@npm:5.49.0"
   dependencies:
@@ -9780,7 +9780,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.48.0":
+"@tanstack/react-query@npm:^5.49.0":
   version: 5.49.0
   resolution: "@tanstack/react-query@npm:5.49.0"
   dependencies:
@@ -9853,7 +9853,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@turbo/gen@npm:^2.0.5":
+"@turbo/gen@npm:^2.0.6":
   version: 2.0.6
   resolution: "@turbo/gen@npm:2.0.6"
   dependencies:
@@ -11908,7 +11908,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.2.14":
+"ai@npm:^3.2.15":
   version: 3.2.15
   resolution: "ai@npm:3.2.15"
   dependencies:
@@ -12180,7 +12180,7 @@ __metadata:
     "@strapi/plugin-users-permissions": "npm:^4.25.1"
     "@strapi/provider-email-nodemailer": "npm:^4.25.1"
     "@strapi/strapi": "npm:^4.25.1"
-    apify-client: "npm:^2.9.3"
+    apify-client: "npm:^2.9.4"
     cheerio: "npm:^1.0.0-rc.12"
     pg: "npm:^8.12.0"
     pg-connection-string: "npm:^2.6.4"
@@ -12195,9 +12195,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"apify-client@npm:^2.9.3":
-  version: 2.9.3
-  resolution: "apify-client@npm:2.9.3"
+"apify-client@npm:^2.9.4":
+  version: 2.9.4
+  resolution: "apify-client@npm:2.9.4"
   dependencies:
     "@apify/consts": "npm:^2.25.0"
     "@apify/log": "npm:^2.2.6"
@@ -12209,7 +12209,7 @@ __metadata:
     ow: "npm:^0.28.2"
     tslib: "npm:^2.5.0"
     type-fest: "npm:^4.0.0"
-  checksum: 10/50f45db4b31590d08d90df6703dbbcba18ba7569319c0fe35ccf23c45073e91e831604bf2bbdcbe3403d3256a977f9b544176ec46710eccb4829701c95cf0f33
+  checksum: 10/61ed71d7693f7c69f182e261efe7a02e55002eebcb49517c3bce8ad625e34df11759384a0b9917e1df392e1a7eb99b22d69d642d8305ca40d9ef7475810511d9
   languageName: node
   linkType: hard
 
@@ -13498,7 +13498,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chakra-react-select@npm:^4.8.0":
+"chakra-react-select@npm:4.8.0":
   version: 4.8.0
   resolution: "chakra-react-select@npm:4.8.0"
   dependencies:
@@ -16711,7 +16711,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-turbo@npm:^2.0.5":
+"eslint-config-turbo@npm:^2.0.6":
   version: 2.0.6
   resolution: "eslint-config-turbo@npm:2.0.6"
   dependencies:
@@ -17513,10 +17513,10 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.20"
     "@storybook/react": "npm:^7.6.20"
     "@storybook/types": "npm:^7.6.20"
-    "@tanstack/react-query": "npm:^5.48.0"
-    "@tanstack/react-query-devtools": "npm:^5.48.0"
+    "@tanstack/react-query": "npm:^5.49.0"
+    "@tanstack/react-query-devtools": "npm:^5.49.0"
     "@testing-library/react": "npm:^16.0.0"
-    "@turbo/gen": "npm:^2.0.5"
+    "@turbo/gen": "npm:^2.0.6"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.14.9"
@@ -17543,10 +17543,10 @@ __metadata:
     "@vercel/edge-config": "npm:^1.2.0"
     "@vercel/kv": "npm:^2.0.0"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.2.14"
+    ai: "npm:^3.2.15"
     axios: "npm:^1.7.2"
     browserify-fs: "npm:^1.0.0"
-    chakra-react-select: "npm:^4.8.0"
+    chakra-react-select: "npm:4.8.0"
     cookies-next: "npm:^4.2.1"
     date-fns: "npm:^3.6.0"
     date-fns-tz: "npm:^3.1.3"
@@ -17554,7 +17554,7 @@ __metadata:
     eslint: "npm:^8.57.0"
     eslint-config-next: "npm:^14.2.4"
     eslint-config-prettier: "npm:^9.1.0"
-    eslint-config-turbo: "npm:^2.0.5"
+    eslint-config-turbo: "npm:^2.0.6"
     eslint-plugin-react: "npm:7.34.3"
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:11.2.12"
@@ -17575,7 +17575,7 @@ __metadata:
     next-recaptcha-v3: "npm:^1.4.1"
     next-seo: "npm:^6.5.0"
     next-share: "npm:^0.27.0"
-    openai: "npm:^4.52.1"
+    openai: "npm:^4.52.2"
     os-browserify: "npm:^0.3.0"
     path-browserify: "npm:^1.0.1"
     pluralize: "npm:^8.0.0"
@@ -17605,9 +17605,9 @@ __metadata:
     storybook: "npm:^7.6.20"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
-    stripe: "npm:^16.0.0"
+    stripe: "npm:^16.1.0"
     tesseract.js: "npm:^5.1.0"
-    turbo: "npm:^2.0.5"
+    turbo: "npm:^2.0.6"
     twitter-api-v2: "npm:^1.17.1"
     twitter-text: "npm:^3.1.0"
     type-fest: "npm:^4.20.1"
@@ -24532,9 +24532,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openai@npm:^4.52.1":
-  version: 4.52.1
-  resolution: "openai@npm:4.52.1"
+"openai@npm:^4.52.2":
+  version: 4.52.2
+  resolution: "openai@npm:4.52.2"
   dependencies:
     "@types/node": "npm:^18.11.18"
     "@types/node-fetch": "npm:^2.6.4"
@@ -24546,7 +24546,7 @@ __metadata:
     web-streams-polyfill: "npm:^3.2.1"
   bin:
     openai: bin/cli
-  checksum: 10/239c1a9c260a22bcb783d08f92e3d2a1db469f871510dcd229b8467dfa7e880242251db98ee0362026d679b8df7acc28f8e2536996417da09aeaa2298e6d7d42
+  checksum: 10/2c240dbcf8e14ce2121207809edf3844bca28c21095ffc9b58dd8279b2d68b3552da707ee2a529258581d8a4d39a448f1f4152b52eed456065280792cc1904c8
   languageName: node
   linkType: hard
 
@@ -29592,13 +29592,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^16.0.0":
-  version: 16.0.0
-  resolution: "stripe@npm:16.0.0"
+"stripe@npm:^16.1.0":
+  version: 16.1.0
+  resolution: "stripe@npm:16.1.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10/d77cc19d473ac2727bd5fb591d8d60db4ada6a75fa5463fc5c0b62ddf1b6832538697661ba7bb1bc6da538c5c22e8bf18577da9ee45d0b4aba770b56895f4fc3
+  checksum: 10/b92f29dcf819b6d525784826f0757bbe3a5bc6289d583e1dad037ec85a286f4c13af51e1356378ca962f0eec56212a648cf74286f6d73d437c551373e0ec17f9
   languageName: node
   linkType: hard
 
@@ -30595,7 +30595,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo@npm:^2.0.5":
+"turbo@npm:^2.0.6":
   version: 2.0.6
   resolution: "turbo@npm:2.0.6"
   dependencies:
