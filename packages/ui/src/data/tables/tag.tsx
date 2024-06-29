@@ -1,6 +1,7 @@
 import { Tag } from '@fc/types'
 
 import { PublicationBadges, WTableProps } from '../../components'
+import { publicationBadgePDF } from './utils'
 
 export const useTagColumns = (): WTableProps<Tag>['columns'] => {
   return {
@@ -13,6 +14,7 @@ export const useTagColumns = (): WTableProps<Tag>['columns'] => {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
+      transformPDF: value => publicationBadgePDF(value as string | null),
     },
   }
 }

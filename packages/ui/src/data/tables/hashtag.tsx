@@ -10,6 +10,7 @@ import {
 } from '@fc/types'
 
 import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
+import { localeBadgesPDF, publicationBadgePDF } from './utils'
 
 export const useHashtagColumns = (): WTableProps<Hashtag>['columns'] => {
   const { locale } = useRouter()
@@ -48,11 +49,13 @@ export const useHashtagColumns = (): WTableProps<Hashtag>['columns'] => {
     },
     translates: {
       transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
+      transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
     },
     publishedAt: {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
+      transformPDF: value => publicationBadgePDF(value as string | null),
     },
   }
 }

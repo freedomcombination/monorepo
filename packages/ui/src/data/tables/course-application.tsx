@@ -1,6 +1,7 @@
 import { ApprovalStatus, Course, CourseApplication } from '@fc/types'
 
-import { WTableProps, PaidBadges } from '../../components'
+import { PaidBadges, WTableProps } from '../../components'
+import { paidBadgesPDF } from './utils'
 
 export const useCourseApplicationColumns =
   (): WTableProps<CourseApplication>['columns'] => {
@@ -27,6 +28,7 @@ export const useCourseApplicationColumns =
       country: { sortable: true },
       hasPaid: {
         transform: value => <PaidBadges hasPaid={value as boolean | null} />,
+        transformPDF: value => paidBadgesPDF(value as boolean | null),
       },
       course: { transform: value => (value as Course).title_nl },
     }

@@ -2,8 +2,8 @@ import { useRouter } from 'next/router'
 
 import { ApprovalStatus, Art, Profile } from '@fc/types'
 
-import { PublicationBadges } from '../../components'
-import { WTableProps } from '../../components'
+import { PublicationBadges, WTableProps } from '../../components'
+import { publicationBadgePDF } from './utils'
 
 export const useArtColumns = (): WTableProps<Art>['columns'] => {
   const { locale } = useRouter()
@@ -36,6 +36,7 @@ export const useArtColumns = (): WTableProps<Art>['columns'] => {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
+      transformPDF: value => publicationBadgePDF(value as string | null),
     },
     createdAt: {
       type: 'date',

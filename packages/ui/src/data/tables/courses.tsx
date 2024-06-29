@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
 
-import { StrapiLocale, Course } from '@fc/types'
+import { Course, StrapiLocale } from '@fc/types'
 
 import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
+import { localeBadgesPDF, publicationBadgePDF } from './utils'
 
 export const useCourseColumns = (): WTableProps<Course>['columns'] => {
   const { locale } = useRouter()
@@ -13,11 +14,13 @@ export const useCourseColumns = (): WTableProps<Course>['columns'] => {
     [`description_${locale}`]: {},
     translates: {
       transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
+      transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
     },
     publishedAt: {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
+      transformPDF: value => publicationBadgePDF(value as string | null),
     },
     startDate: {
       type: 'date',

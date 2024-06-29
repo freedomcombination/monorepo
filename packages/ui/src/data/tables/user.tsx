@@ -28,12 +28,14 @@ export const useUserColumns = (): WTableProps<User>['columns'] => {
         ) : (
           <Icon as={FaTimesCircle} color="red.500" />
         ),
+      transformPDF: value => (value ? 'Yes' : 'No'),
     },
     blocked: {
       cellProps: {
         textAlign: 'center',
       },
       transform: value => value && <Icon as={FaTimesCircle} color="red.500" />,
+      transformPDF: value => (value ? 'Blocked' : 'Active'),
     },
   }
 }

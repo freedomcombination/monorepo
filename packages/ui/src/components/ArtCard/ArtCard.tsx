@@ -121,6 +121,7 @@ export const ArtCard: FC<ArtCardProps> = ({
         art={art}
         isOpen={artModalDisclosure.isOpen}
         onClose={artModalDisclosure.onClose}
+        refetch={refetch}
       />
       {/* Card Action Alert Dialog */}
       {actionType && (

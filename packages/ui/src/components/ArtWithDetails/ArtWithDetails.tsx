@@ -3,21 +3,24 @@ import { useRouter } from 'next/router'
 
 import { RecaptchaKeys } from '@fc/config'
 import {
-  useArtBySlug,
   useRecaptchaToken,
   useStrapiRequest,
   useViewArtMutation,
 } from '@fc/services'
-import { Comment } from '@fc/types'
+import { Art, Comment } from '@fc/types'
 
 import { ArtContent, ArtDetail, CommentForm, CommentList } from '../'
+import { FC } from 'react'
 
-export const ArtWithDetails = () => {
+type ArtWithDetailsProps = {
+  art: Art
+  refetch?: () => void
+}
+
+export const ArtWithDetails: FC<ArtWithDetailsProps> = ({ art, refetch }) => {
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.VIEW_ART)
 
   useViewArtMutation(recaptchaToken)
-
-  const { data: art } = useArtBySlug()
 
   const { locale } = useRouter()
 
@@ -45,7 +48,7 @@ export const ArtWithDetails = () => {
     >
       {/* Single Art Images */}
       <Box pos={{ lg: 'sticky' }} top={0} h={'full'}>
-        <ArtDetail />
+        <ArtDetail art={art} refetch={refetch} />
       </Box>
 
       <Stack spacing={4}>
