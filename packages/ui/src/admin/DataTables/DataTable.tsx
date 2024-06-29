@@ -1,12 +1,12 @@
 import {
   Box,
+  HStack,
+  Image,
+  Select,
   Spacer,
   Stack,
   Text,
-  Image,
   VStack,
-  HStack,
-  Select,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
@@ -14,6 +14,7 @@ import { StrapiModel } from '@fc/types'
 
 import { DataTableProps } from './types'
 import { Pagination, WTable } from '../../components'
+import { ExportPDF } from '../ExportPDF'
 
 export const DataTable = <T extends StrapiModel>({
   currentPage,
@@ -23,6 +24,7 @@ export const DataTable = <T extends StrapiModel>({
   children,
   pageSize,
   setPageSize,
+  allowExportPDF = false,
   ...tableProps
 }: DataTableProps<T>) => {
   const { t } = useTranslation()
@@ -41,7 +43,7 @@ export const DataTable = <T extends StrapiModel>({
       </Box>
       {children}
       <Spacer />
-      {totalCount > 10 && (
+      {(totalCount > 10 || allowExportPDF) && (
         <Stack
           direction={{ base: 'column', md: 'row' }}
           justify={{ base: 'center', md: 'space-between' }}
@@ -49,6 +51,9 @@ export const DataTable = <T extends StrapiModel>({
           py={4}
         >
           <HStack flex={1} justify={{ base: 'center', md: 'start' }}>
+            {allowExportPDF && (
+              <ExportPDF data={tableProps.data} columns={tableProps.columns} />
+            )}
             <Select
               w={20}
               textAlign={'center'}

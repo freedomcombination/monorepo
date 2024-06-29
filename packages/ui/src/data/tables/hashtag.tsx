@@ -9,6 +9,7 @@ import {
   StrapiLocale,
 } from '@fc/types'
 
+import { localeBadgesPDF, publicationBadgePDF } from './utils'
 import { LocaleBadges, PublicationBadges } from '../../admin'
 import { WTableProps } from '../../components'
 
@@ -49,11 +50,13 @@ export const useHashtagColumns = (): WTableProps<Hashtag>['columns'] => {
     },
     translates: {
       transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
+      transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
     },
     publishedAt: {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
+      transformPDF: value => publicationBadgePDF(value as string | null),
     },
   }
 }
