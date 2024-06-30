@@ -37,7 +37,7 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
 
   return (
     <Box bg="white" shadow={'md'}>
-      <ArtCardImage art={art} />
+      <ArtCardImage art={art} h={'full'} />
 
       <HStack bg="white" justify="center" p={4}>
         {art.views && (

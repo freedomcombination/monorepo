@@ -23,18 +23,20 @@ export const ArtGrid: FC<ArtGridProps> = ({
 }) => {
   return (
     <SimpleGrid columns={{ base: 1, sm: 2, lg: 4, ...columns }} gap={4}>
-      {arts?.map(art => {
-        return (
-          <ArtCard
-            key={art.id}
-            refetch={refetch}
-            recaptchaToken={recaptchaToken}
-            art={art}
-            imageHeight={300}
-            isModal={isModal}
-          />
-        )
-      })}
+      {arts
+        ?.filter(art => art)
+        ?.map(art => {
+          return (
+            <ArtCard
+              key={art.id}
+              refetch={refetch}
+              recaptchaToken={recaptchaToken}
+              art={art}
+              imageHeight={300}
+              isModal={isModal}
+            />
+          )
+        })}
     </SimpleGrid>
   )
 }

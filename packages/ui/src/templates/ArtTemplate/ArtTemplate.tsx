@@ -26,7 +26,10 @@ export const ArtTemplate = () => {
     (c: { slug: string }) => c.slug,
   ) || []) as string[]
 
-  const { data: arts } = useArtsByCategories(categories, art?.id)
+  const { data: arts, refetch: refetchArts } = useArtsByCategories(
+    categories,
+    art?.id,
+  )
 
   if (!art) return null
 
@@ -52,8 +55,9 @@ export const ArtTemplate = () => {
               <SplideSlide key={art.id}>
                 <ArtCard
                   art={art}
-                  refetch={refetch}
+                  refetch={refetchArts}
                   recaptchaToken={recaptchaToken}
+                  imageHeight={300}
                 />
               </SplideSlide>
             ))}

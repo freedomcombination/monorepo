@@ -45,12 +45,10 @@ export const ArtWithDetails: FC<ArtWithDetailsProps> = ({ art, refetch }) => {
       gridTemplateColumns={{ base: '1fr', lg: '3fr 2fr' }}
       gap={4}
       alignItems="start"
-      h={'full'}
     >
       {/* Single Art Images */}
-      <Box pos={{ lg: 'sticky' }} top={0} h={'full'}>
-        <ArtDetail art={art} refetch={refetch} />
-      </Box>
+
+      <ArtDetail art={art} refetch={refetch} />
 
       <Stack spacing={4}>
         {/* Single Art Content */}

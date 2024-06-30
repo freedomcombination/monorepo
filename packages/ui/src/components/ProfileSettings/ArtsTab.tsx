@@ -1,6 +1,7 @@
 import {
   Box,
   Center,
+  HStack,
   Stack,
   Tab,
   TabList,
@@ -38,42 +39,43 @@ export const ArtsTab = () => {
 
   const defaultIndex = approved?.length ? 0 : pending?.length ? 1 : 2
 
+  if (!data?.length) return null
+
   return (
     <Stack>
-      <Box>
-        <CreateArtForm size="md" />
-      </Box>
       <Tabs isLazy colorScheme="primary" defaultIndex={defaultIndex}>
-        <TabList overscrollX={'auto'}>
-          <Tab fontWeight={600} isDisabled={!approved?.length}>
-            <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
-          </Tab>
-          <Tab fontWeight={600} isDisabled={!pending?.length}>
-            <Box as={FaSpinner} mr={1} /> <>{t('pending-arts')}</>
-          </Tab>
-          <Tab fontWeight={600} isDisabled={!rejected?.length}>
-            <Box as={MdRemoveModerator} mr={1} /> <>{t('rejected-arts')}</>
-          </Tab>
-        </TabList>
+        <HStack spacing={4}>
+          <TabList overscrollX={'auto'}>
+            <CreateArtForm size="md" />
+
+            <Tab fontWeight={600} isDisabled={!approved?.length}>
+              <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
+            </Tab>
+            <Tab fontWeight={600} isDisabled={!pending?.length}>
+              <Box as={FaSpinner} mr={1} /> <>{t('pending-arts')}</>
+            </Tab>
+            <Tab fontWeight={600} isDisabled={!rejected?.length}>
+              <Box as={MdRemoveModerator} mr={1} /> <>{t('rejected-arts')}</>
+            </Tab>
+          </TabList>
+        </HStack>
 
         <TabPanels>
-          {artPanelData
-            .filter(artData => artData?.length)
-            .map((artData, index) => (
-              <TabPanel key={index} px={0}>
-                {artData && artData.length > 0 ? (
-                  <ArtGrid
-                    arts={artData}
-                    refetch={refetch}
-                    recaptchaToken={recaptchaToken}
-                    columns={{ lg: 2, xl: 3 }}
-                    isModal
-                  />
-                ) : (
-                  noContent
-                )}
-              </TabPanel>
-            ))}
+          {artPanelData.map((artData, index) => (
+            <TabPanel key={index} px={0}>
+              {artData && artData.length > 0 ? (
+                <ArtGrid
+                  arts={artData}
+                  refetch={refetch}
+                  recaptchaToken={recaptchaToken}
+                  columns={{ lg: 2, xl: 3 }}
+                  isModal
+                />
+              ) : (
+                noContent
+              )}
+            </TabPanel>
+          ))}
         </TabPanels>
       </Tabs>
     </Stack>
