@@ -4,7 +4,7 @@ import { COURSE_MOCKS } from '@fc/mocks'
 
 import { CourseDetailPage } from './CourseDetailPage'
 import { CourseDetailPageProps } from './types'
-// import { SOURCE_MOCKS } from '../../mocks'
+// import { SOURCE_MOCKS } from './mocks'
 export default {
   title: 'Forms/CourseDetailPage',
   component: CourseDetailPage,
