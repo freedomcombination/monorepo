@@ -11,7 +11,7 @@ import {
 import { Trans, useTranslation } from 'next-i18next'
 import { BiCookie } from 'react-icons/bi'
 
-export type CookieBannerProps = StackProps & {
+type CookieBannerProps = StackProps & {
   onAllow?: () => void
 }
 

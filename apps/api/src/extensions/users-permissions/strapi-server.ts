@@ -33,8 +33,9 @@ module.exports = plugin => {
     if (isEmail) {
       email = email.toLowerCase()
     } else {
+      // TODO check those ValidationError errors etc. if takes second argument, ApplicationError takes second argument
       throw new ValidationError('Please provide a valid email address', {
-        code: 'strapi.error.forgot-password.invalid-email',
+        i18nKey: 'strapi.error.forgot-password.invalid-email',
       })
     }
 
@@ -49,13 +50,13 @@ module.exports = plugin => {
 
     if (!user) {
       throw new NotFoundError('This email does not exist', {
-        code: 'strapi.error.forgot-password.email-not-found',
+        i18nKey: 'strapi.error.forgot-password.email-not-found',
       })
     }
 
     if (user.blocked) {
       throw new ForbiddenError('This user is disabled', {
-        code: 'strapi.error.forgot-password.user-blocked',
+        i18nKey: 'strapi.error.forgot-password.user-blocked',
       })
     }
 
@@ -108,7 +109,7 @@ module.exports = plugin => {
         })
     } catch (err) {
       throw new ApplicationError(err.message, {
-        code: 'strapi.error.forgot-password.email-not-sent',
+        i18nKey: 'strapi.error.forgot-password.email-not-sent',
       })
     }
 

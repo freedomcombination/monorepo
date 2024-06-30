@@ -1,4 +1,4 @@
-import { ComponentProps, FC, useEffect, useId, useMemo, useState } from 'react'
+import { FC, useEffect, useId, useMemo, useState } from 'react'
 
 import { Box, Button, Center, Text, VStack } from '@chakra-ui/react'
 import Compressor from '@uppy/compressor'
@@ -7,13 +7,9 @@ import ImageEditor from '@uppy/image-editor'
 import { Dashboard } from '@uppy/react'
 import { FaUpload } from 'react-icons/fa6'
 
-import '@uppy/image-editor/dist/style.min.css'
+import { FilePickerProps } from './types'
 
-export type FilePickerProps = Omit<ComponentProps<typeof Dashboard>, 'uppy'> & {
-  allowedFileTypes?: string[]
-  maxNumberOfFiles?: number
-  onLoaded: (files: File[], previews: string[]) => void
-}
+import '@uppy/image-editor/dist/style.min.css'
 
 const FilePicker: FC<FilePickerProps> = ({
   children,
@@ -174,6 +170,8 @@ const FilePicker: FC<FilePickerProps> = ({
         width={'100%'}
         style={{ height: 250 }}
         uppy={uppy}
+        hideUploadButton
+        showSelectedFiles
         autoOpen={autoOpen}
         {...props}
       />

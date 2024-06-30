@@ -1,7 +1,8 @@
 import { getProfile } from './getProfile'
-import { Context } from 'koa'
 
-export const checkRoles = (ctx: Context, roles: string[]) => {
+export const checkRoles = (roles: string[]) => {
+  const ctx = strapi.requestContext.get()
+
   const userRole = ctx?.state?.user?.role?.type as string
 
   if (!roles || !userRole) return false
@@ -9,10 +10,10 @@ export const checkRoles = (ctx: Context, roles: string[]) => {
   return roles.some(role => userRole.includes(role))
 }
 
-export const checkAdmin = (ctx: Context) => checkRoles(ctx, ['admin'])
+export const checkAdmin = () => checkRoles(['admin'])
 
-export const checkOwner = async (ctx: Context, profileId: string | number) => {
-  const profile = await getProfile(ctx)
+export const checkOwner = async (profileId: string | number) => {
+  const profile = await getProfile()
 
   const id = typeof profileId === 'string' ? parseInt(profileId) : profileId
 

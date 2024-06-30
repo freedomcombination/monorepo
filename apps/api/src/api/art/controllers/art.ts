@@ -1,29 +1,49 @@
 import { factories } from '@strapi/strapi'
+import { EntityService, Attribute } from '@strapi/types'
 import { errors } from '@strapi/utils'
 import { getProfile } from '../../../utils'
 import { emailTemplates } from '../../../../emails'
 
 const { UnauthorizedError } = errors
 
+type Art = EntityService.GetValues<
+  'api::art.art',
+  Attribute.GetPopulatableKeys<'api::art.art'>
+>
+
 const sendArtCreatedEmail = async art => {
   // TODO: Get editor emails from the database
-  const editorEmails = process.env.EDITOR_EMAILS?.split(',')
+  const editors = await strapi.entityService.findMany(
+    'plugin::users-permissions.user',
+    {
+      filters: {
+        role: {
+          type: {
+            $in: ['admin', 'arteditor', 'arteditor_translator'],
+          },
+        },
+      },
+    },
+  )
+  const editorEmails = editors.map(editor => editor.email)
+
+  if (editorEmails.length === 0) {
+    strapi.log.error('No editor email exists')
+
+    return
+  }
 
   // populating artist to use in email subject
   const artist = art.artist
   const name = artist.name || artist?.email || 'an artist'
   const title = art.title_tr || art.title_nl || art.title_en
 
-  if (editorEmails?.length > 0) {
-    strapi.plugins['email'].services.email.send({
-      to: editorEmails,
-      from: process.env.SMTP_USERNAME,
-      subject: `New Art ${title} has been created by ${name}`,
-      html: emailTemplates.renderArtCreated(art),
-    })
-  } else {
-    strapi.log.error('No editor email exists')
-  }
+  await strapi.plugins['email'].services.email.send({
+    to: editorEmails,
+    from: process.env.SMTP_USERNAME,
+    subject: `New Art: ${title} - ${name}`,
+    html: emailTemplates.renderArtCreated(art),
+  })
 }
 
 export default factories.createCoreController('api::art.art', ({ strapi }) => {
@@ -33,7 +53,7 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
         throw new UnauthorizedError('No user found')
       }
 
-      const profile = await getProfile(ctx, true)
+      const profile = await getProfile({ check: true })
 
       if (!profile) {
         throw new UnauthorizedError('No artist profile found')
@@ -52,18 +72,30 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
         },
       )
 
-      await sendArtCreatedEmail(updatedArt)
+      if (process.env.VERCEL_ENV === 'production') {
+        await sendArtCreatedEmail(updatedArt)
+      }
 
       return result
     },
     async find(ctx) {
-      const result = await super.find(ctx)
+      const sanitizedQueryParams = await this.sanitizeQuery(ctx)
 
-      const profile = await getProfile(ctx)
+      const filters = ctx.query.filters || {}
+      // Sanitize query removes artist filter since profile endpoint is not allowed for all roles or public
+      sanitizedQueryParams.filters = filters
+
+      const { results, pagination } = await strapi
+        .service('api::art.art')
+        .find(sanitizedQueryParams)
+
+      const profile = await getProfile()
+
+      const artResults = results as Art[]
 
       const arts = await Promise.all(
-        result.data.map(async art => {
-          const { id, attributes } = art
+        artResults.map(async art => {
+          const { id, ...attributes } = art
           const isLiked =
             profile &&
             (await strapi.entityService.count('api::art.art', {
@@ -77,13 +109,20 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
             id,
             attributes: {
               ...attributes,
+              artist: {
+                ...attributes.artist,
+                // Remove sensitive data
+                user: null,
+              },
               isLiked: !!isLiked,
             },
           }
         }),
       )
 
-      return { ...result, data: arts }
+      const sanitizedResults = await this.sanitizeOutput(arts, ctx)
+
+      return this.transformResponse(sanitizedResults, { pagination })
     },
   }
 })

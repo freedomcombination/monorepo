@@ -3,10 +3,10 @@ import { errors } from '@strapi/utils'
 
 export default {
   async sendEmail(ctx) {
-    const profile = await getProfile(ctx)
+    const profile = await getProfile()
 
     if (!profile) {
-      await checkRecaptcha(ctx)
+      await checkRecaptcha()
     }
 
     // TODO: Select email template based on ctx.request.body.type

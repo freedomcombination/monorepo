@@ -1,11 +1,10 @@
 import { ComponentProps, FC } from 'react'
 
 import { Heading, VStack } from '@chakra-ui/react'
-import { TinyColor } from '@ctrl/tinycolor'
+import HTMLFlipBook from 'react-pageflip'
 import { IFlipSetting } from 'react-pageflip/build/html-flip-book/settings'
 
 import { CollectionPages } from './CollectionPages'
-import FlipBook from './Flipbook'
 import { Page } from './Page'
 import { CollectionBookProps } from './types'
 import { WImage } from '../WImage'
@@ -24,40 +23,45 @@ const defaultFlipboxProps: Partial<IFlipSetting> = {
 
 const CollectionBook: FC<CollectionBookProps> = ({
   collection,
-  title,
-  coverBg = '#F5F3EB',
   logo,
-  bg: pageBg = '#F5F3EB',
   flipboxProps,
 }) => {
-  const shadowColor = new TinyColor(pageBg).darken(5).toHexString()
-  const coverShadow = new TinyColor(coverBg).darken(5).toHexString()
-  const pageBgGdarient = `linear(to-r, ${shadowColor} 0%, ${pageBg} 5%, ${pageBg} 95%, ${shadowColor} 100%)`
-  const coverBgGdarient = `linear(to-r, ${coverShadow} 0%, ${coverBg} 5%, ${coverBg} 95%, ${coverShadow} 100%)`
+  const pageBgGdarient = `linear(to-r, gray.100 0%, gray.50 5%, gray.50 95%, gray.100 100%)`
+  const coverBgGdarient = `linear(to-r, gray.100 0%, gray.50 5%, gray.50 95%, gray.100 100%)`
   const flipboxOverrideProps = {
     ...defaultFlipboxProps,
     ...flipboxProps,
-  } as ComponentProps<typeof FlipBook>
+  } as ComponentProps<typeof HTMLFlipBook>
 
   return (
-    <FlipBook {...flipboxOverrideProps}>
+    <HTMLFlipBook {...flipboxOverrideProps}>
       {/* Cover */}
       <Page bgGradient={coverBgGdarient}>
-        <VStack h="full" justify="center" p={8} textAlign="center">
-          <Heading color="red.500" fontFamily="club">
-            {title}
-          </Heading>
-          <WImage ratio={1} mx="auto" src={logo} alt="logo" />
-          <Heading color="red.500" fontFamily="club">
+        <VStack
+          h="full"
+          justify={'center'}
+          p={8}
+          spacing={8}
+          textAlign="center"
+        >
+          <Heading size="3xl" color="primary.500">
             {collection.title}
           </Heading>
+
+          <WImage
+            rounded={'md'}
+            aspectRatio={1}
+            h="auto"
+            src={logo || collection?.image?.url}
+            alt="logo"
+          />
         </VStack>
       </Page>
 
       {/* Pages */}
       <CollectionPages
         collection={collection}
-        pageBgGdarient={pageBgGdarient}
+        pageBgGradient={pageBgGdarient}
       />
 
       {/* Back */}
@@ -66,7 +70,7 @@ const CollectionBook: FC<CollectionBookProps> = ({
           <WImage ratio={1} maxH={300} mx="auto" src={logo} alt="logo" />
         ) : null}
       </Page>
-    </FlipBook>
+    </HTMLFlipBook>
   )
 }
 

@@ -1,6 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { SearchForm, SearchFormProps } from '.'
+import { SearchForm } from './SearchForm'
+import { SearchFormProps } from './types'
 
 export default {
   title: 'Forms/SearchForm',

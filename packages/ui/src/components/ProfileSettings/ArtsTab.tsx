@@ -1,7 +1,7 @@
 import {
   Box,
   Center,
-  SimpleGrid,
+  HStack,
   Stack,
   Tab,
   TabList,
@@ -15,20 +15,18 @@ import { FaSpinner } from 'react-icons/fa6'
 import { MdRemoveModerator } from 'react-icons/md'
 
 import { RecaptchaKeys } from '@fc/config'
-import { useAuthContext } from '@fc/context'
-import { useArtsByArtist, useRecaptchaToken } from '@fc/services'
+import { useProfileArts, useRecaptchaToken } from '@fc/services'
 
-import { ArtCard } from '../ArtCard'
+import { ArtGrid } from '../ArtGrid'
 import { CreateArtForm } from '../CreateArtForm'
 
 export const ArtsTab = () => {
   const { t } = useTranslation('common')
 
-  const { profile } = useAuthContext()
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   // TODO: Remove like action from profile, user shouldn't like their own arts
-  const { data, refetch } = useArtsByArtist(profile?.id, true)
+  const { data, refetch } = useProfileArts(true)
   const rejected = data?.filter(art => art?.approvalStatus === 'rejected')
   const approved = data?.filter(art => art?.approvalStatus === 'approved')
   const pending = data?.filter(art => art?.approvalStatus === 'pending')
@@ -39,38 +37,40 @@ export const ArtsTab = () => {
   )
   const artPanelData = [approved, pending, rejected]
 
+  const defaultIndex = approved?.length ? 0 : pending?.length ? 1 : 2
+
+  if (!data?.length) return null
+
   return (
     <Stack>
-      <Box>
-        <CreateArtForm size="md" />
-      </Box>
-      <Tabs isLazy>
-        <TabList overscrollX={'auto'}>
-          <Tab fontWeight={600}>
-            <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
-          </Tab>
-          <Tab fontWeight={600}>
-            <Box as={FaSpinner} mr={1} /> <>{t('pending-arts')}</>
-          </Tab>
-          <Tab fontWeight={600}>
-            <Box as={MdRemoveModerator} mr={1} /> <>{t('rejected-arts')}</>
-          </Tab>
-        </TabList>
+      <Tabs isLazy colorScheme="primary" defaultIndex={defaultIndex}>
+        <HStack spacing={4}>
+          <TabList overscrollX={'auto'}>
+            <CreateArtForm size="md" />
+
+            <Tab fontWeight={600} isDisabled={!approved?.length}>
+              <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
+            </Tab>
+            <Tab fontWeight={600} isDisabled={!pending?.length}>
+              <Box as={FaSpinner} mr={1} /> <>{t('pending-arts')}</>
+            </Tab>
+            <Tab fontWeight={600} isDisabled={!rejected?.length}>
+              <Box as={MdRemoveModerator} mr={1} /> <>{t('rejected-arts')}</>
+            </Tab>
+          </TabList>
+        </HStack>
 
         <TabPanels>
           {artPanelData.map((artData, index) => (
             <TabPanel key={index} px={0}>
               {artData && artData.length > 0 ? (
-                <SimpleGrid m={4} gap={8} columns={{ base: 1, md: 2, lg: 4 }}>
-                  {artData.map(art => (
-                    <ArtCard
-                      onToggleLike={refetch}
-                      recaptchaToken={recaptchaToken}
-                      key={art.id}
-                      art={art}
-                    />
-                  ))}
-                </SimpleGrid>
+                <ArtGrid
+                  arts={artData}
+                  refetch={refetch}
+                  recaptchaToken={recaptchaToken}
+                  columns={{ lg: 2, xl: 3 }}
+                  isModal
+                />
               ) : (
                 noContent
               )}

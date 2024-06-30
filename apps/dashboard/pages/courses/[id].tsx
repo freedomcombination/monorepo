@@ -53,7 +53,12 @@ const CoursePage = () => {
     endpoint: 'course-applications',
     filters: {
       course: { id: { $eq: id } },
-      ...(searchTerm && { [`title_${locale}`]: { $containsi: searchTerm } }),
+      ...(searchTerm && {
+        $or: [
+          { name: { $containsi: searchTerm } },
+          { email: { $containsi: searchTerm } },
+        ],
+      }),
     },
     sort,
     page: currentPage || 1,

@@ -10,6 +10,8 @@ type ArtCreatedProps = {
 }
 
 const ArtCreated: FC<ArtCreatedProps> = ({ art }) => {
+  const image = art?.image?.[0]
+
   return (
     <EmailProvider>
       <Preview>New Art Created</Preview>
@@ -19,7 +21,11 @@ const ArtCreated: FC<ArtCreatedProps> = ({ art }) => {
           {art.title_en || art.title_nl || art.title_tr} has been created by{' '}
           {art.artist?.name}
         </Text>
-        <Img className="w-[300px]" src={art.image?.url} alt={art.title_en} />
+        <Img
+          className="w-[300px]"
+          src={image?.formats?.small?.url || image?.url}
+          alt={art.title_en}
+        />
       </Section>
     </EmailProvider>
   )

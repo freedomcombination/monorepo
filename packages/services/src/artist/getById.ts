@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { strapiRequest } from '@fc/lib'
+import { getSecret } from '@fc/secrets'
 import { Profile } from '@fc/types'
 
 import { getArtByArtist } from '../art/getByArtist'
@@ -10,6 +11,7 @@ export const getArtistById = async (id: string): Promise<Profile | null> => {
     endpoint: 'profiles',
     id: Number(id),
     populate: '*',
+    token: getSecret('TOKEN'),
   })
 
   const artist = artistResponse.data
