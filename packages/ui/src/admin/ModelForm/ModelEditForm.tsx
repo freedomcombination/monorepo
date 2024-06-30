@@ -189,17 +189,6 @@ export const ModelEditForm = <T extends StrapiModel>({
   const onSaveModel = async (
     data: Record<string, string | File | Option | Option[]>,
   ) => {
-    // Convert the date to UTC
-    const dateValue = data['date']
-    // Convert the date to UTC if it's a Date object
-    if (dateValue instanceof Date) {
-      const utcDate = new Date(
-        dateValue.getTime() - dateValue.getTimezoneOffset() * 60000,
-      ).toISOString()
-      data['date'] = utcDate
-      console.log('Converted to UTC:', data['date'])
-    }
-
     const body = Object.entries(data).reduce((acc, [key, value]) => {
       if (value === undefined || !fields.some(f => f.name === key)) {
         return acc

@@ -89,6 +89,15 @@ export const mutation = async <
   const endpointsWithoutDataField: StrapiEndpoint[] = ['users', 'users/me']
   const hasBodyDataField = !endpointsWithoutDataField.includes(endpoint)
 
+  Object.entries(body).forEach(([key, value]) => {
+    if (value instanceof Date) {
+      const utcDate = new Date(
+        value.getTime() - value.getTimezoneOffset() * 60000,
+      ).toISOString()
+      ;(body as any)[key] = utcDate
+    }
+  })
+
   let requestBody: MutationBody = hasBodyDataField
     ? ({ data: body } as { data: D })
     : body
