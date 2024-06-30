@@ -1,29 +1,14 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 
-import {
-  Divider,
-  HStack,
-  Icon,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Portal,
-  Spinner,
-  Text,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { useDropzone } from 'react-dropzone'
-import { BiUpload } from 'react-icons/bi'
-import { FaArrowDownWideShort } from 'react-icons/fa6'
+import { Divider, HStack } from '@chakra-ui/react'
 import { useLocalStorage } from 'react-use'
 
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { UploadFile } from '@fc/types'
 
-import { MenuFileItem } from './MenuFileItem'
+import { DragZone } from './DragZone'
+import { ImageViewer } from './ImageViewer'
 
 export const FormUploader = () => {
   const [isUploading, setIsUploading] = useState(false)
@@ -119,89 +104,6 @@ export const FormUploader = () => {
         fetchFiles={fetchFiles}
         onDelete={onDelete}
       />
-    </HStack>
-  )
-}
-
-type ImageViewerProps = {
-  files: UploadFile[]
-  fetchFiles: () => void
-  onDelete: (file: UploadFile) => void
-  oldFiles: boolean
-}
-
-const ImageViewer: FC<ImageViewerProps> = ({
-  files,
-  fetchFiles,
-  onDelete,
-  oldFiles,
-}) => {
-  const { t } = useTranslation()
-
-  return (
-    <Menu placement="bottom" autoSelect={false}>
-      <MenuButton
-        as={IconButton}
-        icon={<FaArrowDownWideShort />}
-        aria-label="Show Menu"
-        variant={'outline'}
-        rounded={0}
-        size={'sm'}
-        boxSize={12}
-        border={0}
-        colorScheme="gray"
-      />
-      <Portal>
-        <MenuList zIndex={9999} maxH={400} overflowY={'auto'} w={500} p={0}>
-          {files.length > 0 ? (
-            files.map((file, index) => (
-              <MenuFileItem
-                renderDivider={index > 0}
-                key={file.url}
-                file={file}
-                onDelete={onDelete}
-              />
-            ))
-          ) : (
-            <MenuItem onClick={fetchFiles}>
-              {oldFiles ? t('form.uploader.old') : t('form.uploader.new')}
-            </MenuItem>
-          )}
-        </MenuList>
-      </Portal>
-    </Menu>
-  )
-}
-
-type DragZoneProps = {
-  onFilesSelected: (files: File[]) => void
-  isUploading: boolean
-}
-
-const DragZone: FC<DragZoneProps> = ({ onFilesSelected, isUploading }) => {
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop: onFilesSelected,
-  })
-  const { t } = useTranslation()
-
-  return (
-    <HStack
-      {...getRootProps()}
-      cursor={'pointer'}
-      _hover={{ bg: 'gray.50' }}
-      p={4}
-      w={'full'}
-      h={'full'}
-      justify={'center'}
-      textAlign={'center'}
-    >
-      {isUploading ? (
-        <Spinner w={6} h={6} />
-      ) : (
-        <Icon as={BiUpload} w={6} h={6} />
-      )}
-      <input {...getInputProps()} />
-      <Text fontSize={'sm'}>{t('upload.description')}</Text>
     </HStack>
   )
 }

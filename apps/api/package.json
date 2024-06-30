@@ -30,7 +30,7 @@
     "@strapi/plugin-users-permissions": "^4.25.1",
     "@strapi/provider-email-nodemailer": "^4.25.1",
     "@strapi/strapi": "^4.25.1",
-    "apify-client": "^2.9.3",
+    "apify-client": "^2.9.4",
     "cheerio": "^1.0.0-rc.12",
     "pg": "^8.12.0",
     "pg-connection-string": "^2.6.4",

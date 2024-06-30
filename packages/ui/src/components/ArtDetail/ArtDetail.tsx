@@ -6,16 +6,21 @@ import { AiFillHeart } from 'react-icons/ai'
 import { FaEye } from 'react-icons/fa'
 
 import { RecaptchaKeys, SITE_URL } from '@fc/config'
-import { useArtBySlug, useLikeArt, useRecaptchaToken } from '@fc/services'
+import { useLikeArt, useRecaptchaToken } from '@fc/services'
 import { Art } from '@fc/types'
 
-import { ArtCardImage } from '../ArtCard/ArtCardImage'
+import { ArtCardImage } from '../ArtCardImage'
 import { ShareButtons } from '../ShareButtons'
 
-export const ArtDetail: FC = () => {
+type ArtDetailProps = {
+  art: Art
+  refetch?: () => void
+}
+
+export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
   const router = useRouter()
   const locale = router.locale
-  const { data: art, refetch } = useArtBySlug()
+
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   const { toggleLike, isLiked, isLoading, isDisabled } = useLikeArt({
@@ -31,10 +36,10 @@ export const ArtDetail: FC = () => {
   if (!art?.image?.length) return null
 
   return (
-    <Box bg="white" padding={4} boxShadow="base">
-      <ArtCardImage art={art} />
+    <Box bg="white" shadow={'md'}>
+      <ArtCardImage art={art} h={'full'} />
 
-      <HStack bg="white" justify="center" mt={4}>
+      <HStack bg="white" justify="center" py={4}>
         {art.views && (
           <HStack
             py={0.5}

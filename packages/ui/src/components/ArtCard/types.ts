@@ -2,8 +2,6 @@ import { ThemeTypings } from '@chakra-ui/react'
 
 import { Art } from '@fc/types'
 
-import { WImageProps } from '../WImage'
-
 export type ArtActionType = 'delete' | 'publish' | 'unpublish'
 
 export type ArtActionContext = {
@@ -22,6 +20,7 @@ export type ArtCardProps = {
   isModal?: boolean
   refetch?: () => void
   recaptchaToken?: string
+  imageHeight?: number
 }
 
 export type ArtCardAlertDialogProps = {
@@ -32,9 +31,4 @@ export type ArtCardAlertDialogProps = {
 export type ArtCardActionsProps = {
   isPublished: boolean
   onHandleAction: (type: ArtActionType) => void
-}
-
-export type ArtCardImageProps = Pick<WImageProps, 'h' | 'height'> & {
-  art: Art
-  isMasonry?: boolean
 }

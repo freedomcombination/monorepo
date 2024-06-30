@@ -11,7 +11,7 @@ import { getMediaUrl } from '@fc/utils'
 import { ButtonLink } from '../ButtonLink'
 import { WAvatar } from '../WAvatar'
 
-export interface PlatformListProps {
+interface PlatformListProps {
   platforms: Platform[]
 }
 

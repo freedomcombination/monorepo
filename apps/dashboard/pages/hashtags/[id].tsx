@@ -9,8 +9,7 @@ import { strapiRequest } from '@fc/lib'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Hashtag, StrapiLocale } from '@fc/types'
-import { AdminLayout, ModelEditModal } from '@fc/ui'
-import { TabbedGenAIView } from '@fc/ui/src/post-maker/GenAI/TabbedGenView'
+import { AdminLayout, ModelEditModal, TabbedGenAIView } from '@fc/ui'
 
 const HashtagPage = () => {
   const { t } = useTranslation()

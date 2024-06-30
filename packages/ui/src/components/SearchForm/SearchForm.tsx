@@ -8,21 +8,11 @@ import {
   InputRightElement,
   useUpdateEffect,
 } from '@chakra-ui/react'
-import { InputProps } from '@chakra-ui/react'
 import { FaTimes } from 'react-icons/fa'
 import { HiOutlineSearch } from 'react-icons/hi'
 import { useDebounce } from 'react-use'
 
-/**
- * @param mode "change | click"
- */
-export type SearchFormProps = {
-  delay?: number
-  onSearch: (value?: string) => void
-  onReset?: () => void
-  mode?: 'change' | 'click'
-  isFetching?: boolean
-} & InputProps
+import { SearchFormProps } from './types'
 
 export const SearchForm: React.FC<SearchFormProps> = ({
   placeholder,

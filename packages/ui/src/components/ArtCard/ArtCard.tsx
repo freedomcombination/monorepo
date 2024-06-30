@@ -24,8 +24,8 @@ import {
 
 import { ArtCardActions } from './ArtCardActions'
 import { ArtCardAlertDialog } from './ArtCardAlertDialog'
-import { ArtCardImage } from './ArtCardImage'
 import { ArtActionType, ArtCardProps } from './types'
+import { ArtCardImage } from '../ArtCardImage'
 import { ArtModal } from '../ArtModal'
 import { WAvatar } from '../WAvatar'
 
@@ -35,12 +35,9 @@ export const ArtCard: FC<ArtCardProps> = ({
   recaptchaToken,
   refetch,
   isModal = false,
+  imageHeight,
 }) => {
-  const {
-    isOpen: artModalIsOpen,
-    onOpen: artModalOnOpen,
-    onClose: artModalOnClose,
-  } = useDisclosure()
+  const artModalDisclosure = useDisclosure()
   const { profile } = useAuthContext()
 
   const isOwner = profile?.id === art.artist?.id
@@ -68,7 +65,7 @@ export const ArtCard: FC<ArtCardProps> = ({
 
   const onClickLink = () => {
     if (isModal) {
-      artModalOnOpen()
+      artModalDisclosure.onOpen()
     } else {
       router.push(`/club/arts/${art.slug}`)
     }
@@ -120,6 +117,12 @@ export const ArtCard: FC<ArtCardProps> = ({
 
   return (
     <>
+      <ArtModal
+        art={art}
+        isOpen={artModalDisclosure.isOpen}
+        onClose={artModalDisclosure.onClose}
+        refetch={refetch}
+      />
       {/* Card Action Alert Dialog */}
       {actionType && (
         <ArtCardAlertDialog
@@ -141,15 +144,9 @@ export const ArtCard: FC<ArtCardProps> = ({
         overflow="hidden"
       >
         {/* Card Image */}
-        <ArtCardImage art={art} isMasonry={isMasonry} />
+        <ArtCardImage art={art} isMasonry={isMasonry} h={imageHeight} />
 
-        {!art.publishedAt && (
-          <Badge left={2} pos="absolute" top={2} userSelect="none">
-            Draft
-          </Badge>
-        )}
-
-        {/* Card Body */}
+        {/* Card Overlay */}
         <Box
           _groupHover={{ left: 0 }}
           bgGradient="linear(to-t, blackAlpha.700, transparent, transparent, blackAlpha.700)"
@@ -162,6 +159,7 @@ export const ArtCard: FC<ArtCardProps> = ({
           w="full"
         />
 
+        {/* Card buttons */}
         <HStack
           _groupHover={{ top: 2, right: 2 }}
           justify="end"
@@ -171,6 +169,7 @@ export const ArtCard: FC<ArtCardProps> = ({
           transition="all 0.2s"
           w="full"
         >
+          {/* Like icon */}
           {!isOwner && (
             <HStack spacing={1}>
               <Text fontWeight={600} color="white">
@@ -191,6 +190,7 @@ export const ArtCard: FC<ArtCardProps> = ({
             </HStack>
           )}
 
+          {/* Link icon */}
           {(isModal || art.publishedAt) && (
             <IconButton
               onClick={onClickLink}
@@ -214,6 +214,7 @@ export const ArtCard: FC<ArtCardProps> = ({
           )}
         </HStack>
 
+        {/* Card info */}
         <HStack
           align="center"
           bgGradient="linear(to-t, blackAlpha.700, transparent)"
@@ -223,6 +224,11 @@ export const ArtCard: FC<ArtCardProps> = ({
           pt={{ base: 12, lg: 0 }}
           w="full"
         >
+          {!art.publishedAt && (
+            <Badge left={2} pos="absolute" top={2} userSelect="none">
+              Draft
+            </Badge>
+          )}
           <Stack
             _groupHover={{ bottom: 2 }}
             bottom={'-150%'}
@@ -239,6 +245,9 @@ export const ArtCard: FC<ArtCardProps> = ({
               noOfLines={{ lg: 2 }}
               p={2}
               pb={0}
+              fontWeight={900}
+              fontSize={'lg'}
+              textShadow={'1px 1px 4px #333'}
             >
               {art?.[`title_${router.locale}`]}
             </Text>
@@ -262,11 +271,6 @@ export const ArtCard: FC<ArtCardProps> = ({
               <Text noOfLines={1}>{artistName || artistEmail}</Text>
             </HStack>
           </Stack>
-          <ArtModal
-            art={art}
-            isOpen={artModalIsOpen}
-            onClose={artModalOnClose}
-          />
         </HStack>
       </Box>
     </>

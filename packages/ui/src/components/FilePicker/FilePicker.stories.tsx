@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { FilePicker, FilePickerProps } from './FilePicker'
+import { FilePicker } from './FilePicker'
+import { FilePickerProps } from './types'
 
 export default {
   component: FilePicker,

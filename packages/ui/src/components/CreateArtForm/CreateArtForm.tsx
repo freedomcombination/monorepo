@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
 import {
   Box,
   Button,
   ButtonGroup,
+  ButtonProps,
   Center,
   Modal,
   ModalBody,
@@ -41,7 +42,7 @@ import { FilePicker } from '../FilePicker'
 import { FormItem } from '../FormItem'
 import { WSelect } from '../WSelect'
 
-export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
+export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
   const [images, setImages] = useState<File[]>()
   const { locale } = useRouter()
   const { t } = useTranslation()
@@ -142,7 +143,7 @@ export const CreateArtForm = ({ size = 'lg' }: { size?: string }) => {
         ref={cancelRef}
       />
 
-      <Button size={size} onClick={formDisclosure.onOpen}>
+      <Button size={size} onClick={formDisclosure.onOpen} {...rest}>
         <Box mr={{ base: 0, lg: 4 }}>
           <FaUpload />
         </Box>

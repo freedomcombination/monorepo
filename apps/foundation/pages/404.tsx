@@ -8,6 +8,7 @@ import { StrapiLocale } from '@fc/types'
 import { NotFound } from '@fc/ui'
 
 import { Layout } from '../components'
+
 const NotFoundPage: FC = () => {
   const { t } = useTranslation()
 

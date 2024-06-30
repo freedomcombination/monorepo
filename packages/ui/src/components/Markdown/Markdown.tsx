@@ -70,7 +70,7 @@ const MarkdownComponents = {
   li: (props: HtmlHTMLAttributes<HTMLElement>) => <chakra.li {...props} />,
 }
 
-export interface MarkdownProps {
+export type MarkdownProps = {
   source?: MDXRemoteSerializeResult
 }
 
