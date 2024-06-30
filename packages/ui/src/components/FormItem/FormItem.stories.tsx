@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form'
 import { FaEnvelope } from 'react-icons/fa'
 import * as yup from 'yup'
 
-import { FormItem, FormItemComponent } from './FormItem'
+import { FormItem } from './FormItem'
+import { FormItemComponent } from './types'
 
 export default {
   title: 'Forms/FormItem',

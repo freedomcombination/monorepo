@@ -38,9 +38,11 @@ export default {
     return { data: user }
   },
   async like(ctx: Context) {
-    await checkRecaptcha()
-
     const profile = await getProfile()
+
+    if (!profile) {
+      await checkRecaptcha()
+    }
 
     if (profile) {
       await strapi.entityService.update('api::blog.blog', ctx.params.id, {
@@ -60,9 +62,11 @@ export default {
     return { data: null }
   },
   async unlike(ctx: Context) {
-    await checkRecaptcha()
-
     const profile = await getProfile()
+
+    if (!profile) {
+      await checkRecaptcha()
+    }
 
     if (profile) {
       await strapi.entityService.update('api::blog.blog', ctx.params.id, {

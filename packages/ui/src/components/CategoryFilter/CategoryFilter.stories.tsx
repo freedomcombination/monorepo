@@ -16,7 +16,8 @@ import { useTranslation } from 'next-i18next'
 
 import { CATEGORY_MOCKS } from '@fc/mocks'
 
-import { CategoryFilter, CategoryFilterProps } from './CategoryFilter'
+import { CategoryFilter } from './CategoryFilter'
+import { CategoryFilterProps } from './types'
 import { useChangeParams } from '../../hooks'
 
 export default {

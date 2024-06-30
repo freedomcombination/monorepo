@@ -1,5 +1,3 @@
-import { ReactElement, ReactNode, RefAttributes } from 'react'
-
 import {
   Box,
   Flex,
@@ -12,41 +10,17 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  InputProps,
   InputRightElement,
   Tooltip,
   useBoolean,
   useMergeRefs,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-import {
-  FieldErrorsImpl,
-  FieldValues,
-  Path,
-  UseFormRegister,
-} from 'react-hook-form'
 import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { TbInfoCircle } from 'react-icons/tb'
 
+import { FormItemComponent } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
-
-export type FormItemProps<T extends FieldValues> = InputProps & {
-  name: Path<T>
-  label?: string
-  placeholder?: string
-  helperText?: string
-  leftElement?: ReactNode
-  rightElement?: ReactNode
-  hideLabel?: boolean
-  tooltip?: string
-  errors: Partial<FieldErrorsImpl<T>>
-  register: UseFormRegister<T>
-}
-
-export type FormItemComponent = <FormValues extends FieldValues>(
-  props: FormItemProps<FormValues> &
-    RefAttributes<HTMLInputElement | HTMLTextAreaElement>,
-) => ReactElement
 
 export const FormItem: FormItemComponent = forwardRef(
   (

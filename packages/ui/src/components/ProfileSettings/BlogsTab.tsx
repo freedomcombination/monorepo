@@ -6,8 +6,8 @@ import { useTranslation } from 'next-i18next'
 import { useGetAuthorBlogs } from '@fc/services'
 import { Blog } from '@fc/types'
 
-import { ModelEditForm } from '../../admin'
 import { BlogCard } from '../BlogCard'
+import { ModelEditForm } from '../ModelEditForm'
 
 export const BlogsTab = () => {
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null)

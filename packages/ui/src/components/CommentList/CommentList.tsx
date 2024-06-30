@@ -7,7 +7,7 @@ import { Comment } from '@fc/types'
 
 import { CommentItem } from '../CommentItem'
 
-interface CommentListProps {
+type CommentListProps = {
   comments: Array<Comment>
 }
 

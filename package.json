@@ -154,7 +154,7 @@
     "typescript": "5.4.5",
     "webpack": "^5.92.1"
   },
-  "packageManager": "yarn@4.3.0",
+  "packageManager": "yarn@4.3.1",
   "workspaces": [
     "apps/*",
     "packages/*"

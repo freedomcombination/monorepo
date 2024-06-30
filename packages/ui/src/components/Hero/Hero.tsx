@@ -2,18 +2,9 @@ import { FC, memo, PropsWithChildren } from 'react'
 
 import { Box, Heading, Text, VStack } from '@chakra-ui/react'
 
-import { UploadFile } from '@fc/types'
-
+import { HeroProps } from './types'
 import { Container } from '../Container'
 import { WImage } from '../WImage'
-
-export interface HeroProps {
-  title?: string
-  description?: string
-  video?: string
-  image?: UploadFile | null | string
-  isFullHeight?: boolean
-}
 
 export const Hero: FC<PropsWithChildren<HeroProps>> = memo(function Hero({
   title,

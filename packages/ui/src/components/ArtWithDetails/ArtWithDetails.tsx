@@ -1,22 +1,12 @@
 import { FC } from 'react'
 
-import { Box, Grid, Stack } from '@chakra-ui/react'
+import { Grid, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import { RecaptchaKeys } from '@fc/config'
-import {
-  useRecaptchaToken,
-  useStrapiRequest,
-  useViewArtMutation,
-} from '@fc/services'
+import { useStrapiRequest } from '@fc/services'
 import { Art, Comment } from '@fc/types'
 
-import {
-  ArtContent,
-  ArtDetail,
-  CommentForm,
-  CommentList,
-} from '../../components'
+import { ArtContent, ArtDetail, CommentForm, CommentList } from '../'
 
 type ArtWithDetailsProps = {
   art: Art
@@ -24,10 +14,6 @@ type ArtWithDetailsProps = {
 }
 
 export const ArtWithDetails: FC<ArtWithDetailsProps> = ({ art, refetch }) => {
-  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.VIEW_ART)
-
-  useViewArtMutation(recaptchaToken)
-
   const { locale } = useRouter()
 
   const commentQuery = useStrapiRequest<Comment>({
@@ -50,12 +36,10 @@ export const ArtWithDetails: FC<ArtWithDetailsProps> = ({ art, refetch }) => {
       gridTemplateColumns={{ base: '1fr', lg: '3fr 2fr' }}
       gap={4}
       alignItems="start"
-      h={'full'}
     >
       {/* Single Art Images */}
-      <Box pos={{ lg: 'sticky' }} top={0} h={'full'}>
-        <ArtDetail art={art} refetch={refetch} />
-      </Box>
+
+      <ArtDetail art={art} refetch={refetch} />
 
       <Stack spacing={4}>
         {/* Single Art Content */}

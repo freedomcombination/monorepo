@@ -9,7 +9,7 @@ import { RecaptchaKeys, SITE_URL } from '@fc/config'
 import { useLikeArt, useRecaptchaToken } from '@fc/services'
 import { Art } from '@fc/types'
 
-import { ArtCardImage } from '../ArtCard/ArtCardImage'
+import { ArtCardImage } from '../ArtCardImage'
 import { ShareButtons } from '../ShareButtons'
 
 type ArtDetailProps = {
@@ -37,9 +37,9 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
 
   return (
     <Box bg="white" shadow={'md'}>
-      <ArtCardImage art={art} />
+      <ArtCardImage art={art} h={'full'} />
 
-      <HStack bg="white" justify="center" p={4}>
+      <HStack bg="white" justify="center" py={4}>
         {art.views && (
           <HStack
             py={0.5}

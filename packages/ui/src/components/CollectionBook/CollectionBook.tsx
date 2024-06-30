@@ -1,10 +1,10 @@
 import { ComponentProps, FC } from 'react'
 
 import { Heading, VStack } from '@chakra-ui/react'
+import HTMLFlipBook from 'react-pageflip'
 import { IFlipSetting } from 'react-pageflip/build/html-flip-book/settings'
 
 import { CollectionPages } from './CollectionPages'
-import FlipBook from './Flipbook'
 import { Page } from './Page'
 import { CollectionBookProps } from './types'
 import { WImage } from '../WImage'
@@ -31,10 +31,10 @@ const CollectionBook: FC<CollectionBookProps> = ({
   const flipboxOverrideProps = {
     ...defaultFlipboxProps,
     ...flipboxProps,
-  } as ComponentProps<typeof FlipBook>
+  } as ComponentProps<typeof HTMLFlipBook>
 
   return (
-    <FlipBook {...flipboxOverrideProps}>
+    <HTMLFlipBook {...flipboxOverrideProps}>
       {/* Cover */}
       <Page bgGradient={coverBgGdarient}>
         <VStack
@@ -61,7 +61,7 @@ const CollectionBook: FC<CollectionBookProps> = ({
       {/* Pages */}
       <CollectionPages
         collection={collection}
-        pageBgGdarient={pageBgGdarient}
+        pageBgGradient={pageBgGdarient}
       />
 
       {/* Back */}
@@ -70,7 +70,7 @@ const CollectionBook: FC<CollectionBookProps> = ({
           <WImage ratio={1} maxH={300} mx="auto" src={logo} alt="logo" />
         ) : null}
       </Page>
-    </FlipBook>
+    </HTMLFlipBook>
   )
 }
 
