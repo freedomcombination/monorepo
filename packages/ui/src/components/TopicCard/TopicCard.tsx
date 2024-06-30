@@ -34,7 +34,7 @@ import { Post, RecommendedTopicCreateInput, TopicBase } from '@fc/types'
 
 import { TopicCardButton } from './TopicCardButton'
 import { TopicCardProps } from './types'
-import { useFields, useSchema } from '../../data'
+import { useFields, useSchema } from '../../hooks'
 import { ActionTooltip } from '../ActionTooltip'
 import { ModelCreateModal } from '../ModelCreateModal'
 import { ShareButtons } from '../ShareButtons'

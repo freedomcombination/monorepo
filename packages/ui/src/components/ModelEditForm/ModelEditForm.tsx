@@ -57,7 +57,7 @@ import {
 
 import { ModelEditFormProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
-import { useFields, useSchema } from '../../data'
+import { useFields, useSchema } from '../../hooks'
 import { useDefaultValues } from '../../hooks/useDefaultValues'
 import { ActionButton } from '../ActionButton'
 import { ActionStack } from '../ActionStack'

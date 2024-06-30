@@ -43,7 +43,7 @@ import {
   Tag,
 } from '@fc/types'
 
-import { useFields, useSchema } from '../../data'
+import { useFields, useSchema } from '../../hooks'
 import { ActionStack } from '../ActionStack'
 import { CreatePostFromCapsModal } from '../CreatePostFromCapsModal'
 import { ModelCreateModal } from '../ModelCreateModal'

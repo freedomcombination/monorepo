@@ -33,7 +33,7 @@ import { useRecommendTweet } from '@fc/services'
 import { Post, RecommendedTweetCreateInput, Tweet } from '@fc/types'
 
 import { TweetCardProps } from './types'
-import { useFields, useSchema } from '../../data'
+import { useFields, useSchema } from '../../hooks'
 import { CreateTweetForm } from '../CreateTweetForm'
 import { CreateTweetFormFieldValues } from '../CreateTweetForm/types'
 import { ModelCreateModal } from '../ModelCreateModal'

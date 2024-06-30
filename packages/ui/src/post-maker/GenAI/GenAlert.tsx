@@ -21,7 +21,7 @@ import { LuFileArchive } from 'react-icons/lu'
 import { ArchiveContent, Category, Hashtag, Tag } from '@fc/types'
 
 import { ModelCreateModal } from '../../components/ModelCreateModal'
-import { useFields, useSchema } from '../../data'
+import { useFields, useSchema } from '../../hooks'
 
 type GenAlertProps = {
   categories: Category[]

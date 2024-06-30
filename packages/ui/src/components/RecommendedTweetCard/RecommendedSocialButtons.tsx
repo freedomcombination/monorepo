@@ -17,7 +17,7 @@ import { Post } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
 import { RecommendedSocialButtonsProps } from './types'
-import { useFields, useSchema } from '../../data'
+import { useFields, useSchema } from '../../hooks'
 import { ModelCreateModal } from '../ModelCreateModal'
 import { ShareButtons } from '../ShareButtons'
 import { TopicCardButton as ActionButton } from '../TopicCard'
