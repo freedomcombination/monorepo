@@ -1,7 +1,7 @@
 import { Category } from '@fc/types'
 
-import { PublicationBadges, WTableProps } from '../../components'
 import { publicationBadgePDF } from './utils'
+import { PublicationBadges, WTableProps } from '../../components'
 
 export const useCategoryColumns = (): WTableProps<Category>['columns'] => {
   return {

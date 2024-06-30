@@ -2,8 +2,8 @@ import { useRouter } from 'next/router'
 
 import { ApprovalStatus, Art, Profile } from '@fc/types'
 
-import { PublicationBadges, WTableProps } from '../../components'
 import { publicationBadgePDF } from './utils'
+import { PublicationBadges, WTableProps } from '../../components'
 
 export const useArtColumns = (): WTableProps<Art>['columns'] => {
   const { locale } = useRouter()

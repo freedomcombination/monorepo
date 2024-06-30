@@ -9,8 +9,8 @@ import {
   StrapiLocale,
 } from '@fc/types'
 
-import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 import { localeBadgesPDF, publicationBadgePDF } from './utils'
+import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 
 export const useHashtagColumns = (): WTableProps<Hashtag>['columns'] => {
   const { locale } = useRouter()

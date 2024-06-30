@@ -63,8 +63,13 @@ const ExportPFD = <T extends StrapiModel>({
           data.cell.text = []
           const cellWidth = data.cell.width
           const imageSize = Math.min(cellWidth - 4, 12)
-          if (data.row.height < imageSize + 2) data.row.height = imageSize + 2
+
+          if (data.row.height < imageSize + 2) {
+            data.row.height = imageSize + 2
+          }
+
           const imageX = data.cell.x + cellWidth / 2 - imageSize / 2
+
           addImageToCell(
             doc,
             (data.cell.raw as { image: string }).image,
