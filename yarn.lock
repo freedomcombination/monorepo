@@ -12767,9 +12767,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-react-compiler@npm:0.0.0-experimental-938cd9a-20240601":
-  version: 0.0.0-experimental-938cd9a-20240601
-  resolution: "babel-plugin-react-compiler@npm:0.0.0-experimental-938cd9a-20240601"
+"babel-plugin-react-compiler@npm:0.0.0-experimental-696af53-20240625":
+  version: 0.0.0-experimental-696af53-20240625
+  resolution: "babel-plugin-react-compiler@npm:0.0.0-experimental-696af53-20240625"
   dependencies:
     "@babel/generator": "npm:7.2.0"
     "@babel/types": "npm:^7.19.0"
@@ -12778,7 +12778,7 @@ __metadata:
     pretty-format: "npm:^24"
     zod: "npm:^3.22.4"
     zod-validation-error: "npm:^2.1.0"
-  checksum: 10/fdad8d2b1b38986197a17c9cb816acd6c1669f37ce9d2f12387d5f331d4bf9f4dd34436ac85842f9ea50e564b82144ad05f67b394b40dd023c1a0b93bfaab49a
+  checksum: 10/72b11237568134ad05c4ca204a01cf1a411482421cddbae332d12de779574bac4f5d4942b4bb5a44f681b654d4c15fb609ee2253d8cdcfd4c11a37a9312f2328
   languageName: node
   linkType: hard
 
@@ -13548,9 +13548,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chakra-react-select@npm:^4.8.0":
-  version: 4.9.0
-  resolution: "chakra-react-select@npm:4.9.0"
+"chakra-react-select@npm:4.8.0":
+  version: 4.8.0
+  resolution: "chakra-react-select@npm:4.8.0"
   dependencies:
     react-select: "npm:5.8.0"
   peerDependencies:
@@ -13564,7 +13564,7 @@ __metadata:
     "@emotion/react": ^11.8.1
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10/e8791c792242a420beb63d43f8b2b79d6139df3053e9f487f3343dee1e398d6564eb8e18d9195e520feb6b7f01fa5627a19a4937b4fb97ef361a5e6a71ab9d07
+  checksum: 10/8c2a29cfe4a307365c3afc99de62ed4efad7d31a7f533a1c5e2658acdc1b91c7ff080a1c1e1c03ed97c3d159c28f4ef81814866e3eb315ff9bc4cfbe6ca64f24
   languageName: node
   linkType: hard
 
@@ -17595,9 +17595,9 @@ __metadata:
     "@vercel/og": "npm:^0.6.2"
     ai: "npm:^3.2.15"
     axios: "npm:^1.7.2"
-    babel-plugin-react-compiler: "npm:0.0.0-experimental-938cd9a-20240601"
+    babel-plugin-react-compiler: "npm:0.0.0-experimental-696af53-20240625"
     browserify-fs: "npm:^1.0.0"
-    chakra-react-select: "npm:^4.8.0"
+    chakra-react-select: "npm:4.8.0"
     cookies-next: "npm:^4.2.1"
     date-fns: "npm:^3.6.0"
     date-fns-tz: "npm:^3.1.3"
@@ -17632,8 +17632,8 @@ __metadata:
     pluralize: "npm:^8.0.0"
     prettier: "npm:^3.3.2"
     qs: "npm:^6.12.1"
-    react: "npm:19.0.0-rc-c21bcd627b-20240624"
-    react-dom: "npm:19.0.0-rc-c21bcd627b-20240624"
+    react: "npm:19.0.0-rc-58af67a8f8-20240628"
+    react-dom: "npm:19.0.0-rc-58af67a8f8-20240628"
     react-dropzone: "npm:^14.2.3"
     react-email: "npm:2.1.4"
     react-headroom: "npm:^3.2.1"
@@ -26493,14 +26493,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:19.0.0-rc-c21bcd627b-20240624":
-  version: 19.0.0-rc-c21bcd627b-20240624
-  resolution: "react-dom@npm:19.0.0-rc-c21bcd627b-20240624"
+"react-dom@npm:19.0.0-rc-58af67a8f8-20240628":
+  version: 19.0.0-rc-58af67a8f8-20240628
+  resolution: "react-dom@npm:19.0.0-rc-58af67a8f8-20240628"
   dependencies:
-    scheduler: "npm:0.25.0-rc-c21bcd627b-20240624"
+    scheduler: "npm:0.25.0-rc-58af67a8f8-20240628"
   peerDependencies:
-    react: 19.0.0-rc-c21bcd627b-20240624
-  checksum: 10/fd7cca6874f242dabd3d78cb041ac3233bc7cb2c683b63422388cbfea9fc2a1f4efa171840d64951686bed9fe759ddd85e1ac94d43bdd644f46554be59965a4a
+    react: 19.0.0-rc-58af67a8f8-20240628
+  checksum: 10/84d47fe8fd178e91cbba9186339adfd80d02fa4d01c535a0d56d9d1b31b7930b7b30a68d8b3164ca62c8b690c1087b3a6e8084407426f93a8240327c99b1e8f2
   languageName: node
   linkType: hard
 
@@ -27206,10 +27206,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:19.0.0-rc-c21bcd627b-20240624":
-  version: 19.0.0-rc-c21bcd627b-20240624
-  resolution: "react@npm:19.0.0-rc-c21bcd627b-20240624"
-  checksum: 10/7e5d92aca69134c157042fdfebf59388ae838860145a29ec632ae14115f5a058b7afcb94b478bcd7c643b5ee9b2bdfcf338dadf9d55e04a940d99c119e471957
+"react@npm:19.0.0-rc-58af67a8f8-20240628":
+  version: 19.0.0-rc-58af67a8f8-20240628
+  resolution: "react@npm:19.0.0-rc-58af67a8f8-20240628"
+  checksum: 10/9c03b715fe07878af92c4532e605da13a2ae2bac9540f895c82f3ac8f8980a5430787504b87ed5466c07aa0c3d942654e2dc057a4cbd7fb41bf4b5ce6e63db4e
   languageName: node
   linkType: hard
 
@@ -28235,10 +28235,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:0.25.0-rc-c21bcd627b-20240624":
-  version: 0.25.0-rc-c21bcd627b-20240624
-  resolution: "scheduler@npm:0.25.0-rc-c21bcd627b-20240624"
-  checksum: 10/ee7932ce86eb023ce78e9cccca282e5f8f7da2f083abfbf54294124c551407989f58cb147e0da27616c6a5e89e1808bb310cab20541a74e463e7f351546b9a92
+"scheduler@npm:0.25.0-rc-58af67a8f8-20240628":
+  version: 0.25.0-rc-58af67a8f8-20240628
+  resolution: "scheduler@npm:0.25.0-rc-58af67a8f8-20240628"
+  checksum: 10/360a485550840e6f7d9f2c993c5e1afc77def3b044aff8a469c09b1e95d1ecf632495649bcc0dc25dc3cd00d8d924812348e5675a2e324e1e6a5b6d9cfa13ba9
   languageName: node
   linkType: hard
 
