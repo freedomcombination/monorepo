@@ -1,8 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react'
 
 import { Header } from './Header'
+import { HEADER_MENU } from './mocks'
 import { HeaderProps } from './types'
-import { HEADER_MENU } from '../../mocks'
 
 export default {
   component: Header,

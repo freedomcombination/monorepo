@@ -1,8 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react'
 
 import { HeaderMobile } from './HeaderMobile'
+import { HEADER_MENU } from './mocks'
 import { HeaderMobileProps } from './types'
-import { HEADER_MENU } from '../../mocks'
 
 export default {
   component: HeaderMobile,

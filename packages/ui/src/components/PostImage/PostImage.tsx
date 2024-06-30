@@ -4,8 +4,8 @@ import { ImageProps } from '@chakra-ui/react'
 
 import { PlatformSlug, Post, UploadFile } from '@fc/types'
 
-import { usePostContext } from '../../post-maker/PostProvider'
 import { Caps } from '../Caps'
+import { usePostContext } from '../PostProvider'
 import { WImage } from '../WImage'
 
 type PostImageProps = Omit<ImageProps, 'id'> & {

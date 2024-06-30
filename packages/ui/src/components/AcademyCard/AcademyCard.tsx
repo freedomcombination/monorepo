@@ -10,16 +10,8 @@ import {
   Text,
 } from '@chakra-ui/react'
 
-import { UploadFile } from '@fc/types'
-
+import { AcademyCardProps } from './types'
 import { WImage } from '../../components'
-
-type AcademyCardProps = {
-  href: string
-  image: UploadFile | string | undefined | null
-  description?: string
-  title: string
-}
 
 export const AcademyCard: FC<AcademyCardProps> = ({
   href,

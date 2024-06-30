@@ -3,7 +3,8 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import { getFiles, IMAGE_MOCK } from '@fc/mocks'
 
-import { WImage, WImageProps } from './WImage'
+import { WImageProps } from './types'
+import { WImage } from './WImage'
 import { Container } from '../Container'
 
 export default {

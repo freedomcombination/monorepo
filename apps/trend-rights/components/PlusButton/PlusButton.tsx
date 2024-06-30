@@ -23,8 +23,7 @@ import { FaInfo, FaPlus } from 'react-icons/fa6'
 import { MdOutlineTrendingUp } from 'react-icons/md'
 
 import { useHashtag } from '@fc/services'
-import { Markdown } from '@fc/ui'
-import { HashtagStats } from '@fc/ui/src/post-maker/HashtagStats'
+import { HashtagStats, Markdown } from '@fc/ui'
 
 type PlusButtonProps = {
   source: MDXRemoteSerializeResult<Record<string, unknown>>

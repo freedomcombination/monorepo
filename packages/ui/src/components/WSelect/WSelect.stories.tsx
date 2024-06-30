@@ -3,7 +3,8 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { FieldValues, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
-import { WSelect, WSelectProps } from './WSelect'
+import { WSelectProps } from './types'
+import { WSelect } from './WSelect'
 
 const options = [
   { label: 'Category 1', value: '1' },

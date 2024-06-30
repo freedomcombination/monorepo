@@ -4,9 +4,11 @@ import { checkRecaptcha, getProfile } from '../../../utils'
 
 export default {
   async like(ctx: Context) {
-    await checkRecaptcha()
-
     const profile = await getProfile()
+
+    if (!profile) {
+      await checkRecaptcha()
+    }
 
     if (profile) {
       const isLikedCount = await strapi.entityService.count('api::art.art', {
@@ -37,9 +39,11 @@ export default {
     return { data: null }
   },
   async unlike(ctx: Context) {
-    await checkRecaptcha()
-
     const profile = await getProfile()
+
+    if (!profile) {
+      await checkRecaptcha()
+    }
 
     if (profile) {
       const isLikedCount = await strapi.entityService.count('api::art.art', {

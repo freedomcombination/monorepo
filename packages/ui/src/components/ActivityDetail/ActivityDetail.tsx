@@ -1,29 +1,21 @@
 import { FC } from 'react'
 
 import {
-  Spinner,
-  Container,
-  Stack,
-  Heading,
   Box,
+  Container,
   HStack,
+  Heading,
+  Spinner,
+  Stack,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 import { SITE_URL } from '@fc/config'
-import { Activity, UploadFile } from '@fc/types'
 
+import { ActivityDetailProps } from './types'
 import { Markdown } from '../Markdown'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'
-
-export type ActivityDetailProps = {
-  source: MDXRemoteSerializeResult
-  image: UploadFile | string
-  title: string
-  activity?: Activity
-}
 
 export const ActivityDetail: FC<ActivityDetailProps> = ({
   source,

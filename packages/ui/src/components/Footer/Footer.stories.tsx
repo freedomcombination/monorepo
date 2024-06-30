@@ -2,8 +2,9 @@ import { Box, Flex } from '@chakra-ui/react'
 import { Meta, StoryObj } from '@storybook/react'
 
 import { Footer } from './Footer'
+import { FOOTER_MENU } from './mocks'
 import { FooterProps } from './types'
-import { FOOTER_MENU, SOCIAL_LINKS } from '../../mocks'
+import { SOCIAL_LINKS } from '../SocialButtons'
 
 export default {
   component: Footer,

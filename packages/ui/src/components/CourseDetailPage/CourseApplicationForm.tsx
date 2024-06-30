@@ -18,7 +18,10 @@ import { Mutation } from '@fc/lib'
 import { CourseApplicationCreateInput } from '@fc/types'
 
 import { applicationSchema } from './schema'
-import { ApplicationFormFields, CourseApplicationFormProps } from './types'
+import {
+  ApplicationFormFields,
+  CourseApplicationFormProps,
+} from '../CourseDetailPage/types'
 import { FormItem } from '../FormItem'
 
 export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({

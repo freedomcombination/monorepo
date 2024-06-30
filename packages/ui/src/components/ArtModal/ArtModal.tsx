@@ -12,16 +12,21 @@ import {
 import { ArtModalProps } from './types'
 import { ArtWithDetails } from '../ArtWithDetails'
 
-export const ArtModal: FC<ArtModalProps> = ({ isOpen, onClose }) => {
+export const ArtModal: FC<ArtModalProps> = ({
+  art,
+  refetch,
+  isOpen,
+  onClose,
+}) => {
   return (
     <Box>
       <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside">
         <ModalOverlay />
-        <ModalContent maxW="95vw" h="full" p={{ base: 2, lg: 4 }}>
-          <ModalCloseButton />
-          <ModalBody>
-            <ArtWithDetails />
+        <ModalContent maxW="95vw" p={{ base: 4, lg: 8 }}>
+          <ModalBody p={0}>
+            <ArtWithDetails art={art} refetch={refetch} />
           </ModalBody>
+          <ModalCloseButton bg={'white'} rounded={'full'} />
         </ModalContent>
       </Modal>
     </Box>

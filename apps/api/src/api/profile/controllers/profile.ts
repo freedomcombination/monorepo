@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { factories } from '@strapi/strapi'
 
-import { getProfile, checkAdmin, checkOwner } from '../../../utils'
+import { getProfile, checkAdmin, checkOwner, checkRoles } from '../../../utils'
 import utils from '@strapi/utils'
 const { ApplicationError } = utils.errors
 
@@ -99,9 +99,9 @@ export default factories.createCoreController('api::profile.profile', () => {
       return this.sanitizeOutput(updatedProfile, ctx)
     },
     async update(ctx) {
-      const isAdmin = checkAdmin()
+      const hasPermission = checkRoles(['admin', 'humanresource'])
 
-      if (isAdmin) return super.update(ctx)
+      if (hasPermission) return super.update(ctx)
 
       const isOwner = await checkOwner(ctx.params.id)
 

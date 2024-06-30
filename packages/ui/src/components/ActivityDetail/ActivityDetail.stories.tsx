@@ -6,7 +6,8 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 import { ACTIVITY_MOCKS } from '@fc/mocks'
 
-import { ActivityDetail, ActivityDetailProps } from './ActivityDetail'
+import { ActivityDetail } from './ActivityDetail'
+import { ActivityDetailProps } from './types'
 import { Container } from '../Container'
 export default {
   component: ActivityDetail,
