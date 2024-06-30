@@ -1,9 +1,10 @@
 import { StoryObj, Meta } from '@storybook/react'
 
+import { TOPICS_MOCK } from '@fc/mocks'
+
 import { TopicCard } from './TopicCard'
 import { TopicCardProps } from './types'
-import { Container } from '..'
-import { TOPICS_MOCK } from '../../mocks'
+import { Container } from '../Container'
 
 export default {
   title: 'Admin/TopicCard',

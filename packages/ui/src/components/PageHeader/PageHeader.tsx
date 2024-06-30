@@ -14,7 +14,7 @@ import { useTranslation } from 'next-i18next'
 import { HiOutlineFilter } from 'react-icons/hi'
 import { VscListFilter } from 'react-icons/vsc'
 
-import { SearchForm } from '..'
+import { SearchForm } from '../SearchForm'
 
 type PageHeaderProps = {
   filterMenu?: ReactNode

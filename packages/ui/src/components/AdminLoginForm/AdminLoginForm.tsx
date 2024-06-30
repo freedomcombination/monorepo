@@ -11,14 +11,12 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useAuthContext } from '@fc/context'
 
 import { adminLoginSchema } from './schema'
-import {
-  ButtonLink,
-  Container,
-  FormItem,
-  LoginFormFieldValues,
-  WAvatar,
-  WImage,
-} from '..'
+import { ButtonLink } from '../ButtonLink'
+import { Container } from '../Container'
+import { FormItem } from '../FormItem'
+import { LoginFormFieldValues } from '../LoginForm'
+import { WAvatar } from '../WAvatar'
+import { WImage } from '../WImage'
 
 export const AdminLoginForm = () => {
   const { t } = useTranslation()

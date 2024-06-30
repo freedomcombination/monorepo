@@ -5,7 +5,7 @@ import { GoSignOut } from 'react-icons/go'
 
 import { Profile, SessionUser } from '@fc/types'
 
-import { WAvatar } from '..'
+import { WAvatar } from '../WAvatar'
 
 export type AdminSidebarProfileProps = {
   user: SessionUser

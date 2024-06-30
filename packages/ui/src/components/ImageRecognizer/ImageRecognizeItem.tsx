@@ -4,7 +4,7 @@ import { IconButton, Image, SimpleGrid } from '@chakra-ui/react'
 import { FaTimes } from 'react-icons/fa'
 
 import { ImageRecognizeItemProps } from './types'
-import { ContentEditable } from '..'
+import { ContentEditable } from '../ContentEditable'
 
 export const ImageRecognizeItem: FC<ImageRecognizeItemProps> = ({
   onUpdate,

@@ -4,7 +4,7 @@ import { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { TWEET_MOCKS } from '@fc/mocks'
 
 import { TweetCard } from './TweetCard'
-import { Container } from '..'
+import { Container } from '../Container'
 
 export default {
   component: TweetCard,

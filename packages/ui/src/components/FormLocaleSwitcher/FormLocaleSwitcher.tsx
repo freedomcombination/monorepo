@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import { StrapiTranslatableModel } from '@fc/types'
 
-import { ButtonLink } from '..'
+import { ButtonLink } from '../ButtonLink'
 
 export const FormLocaleSwitcher = <T extends StrapiTranslatableModel>({
   model,

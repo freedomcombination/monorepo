@@ -6,8 +6,9 @@ import { RecommendedTweet, StrapiModel } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
 import { TweetContentProps } from './types'
-import { VideoPlayer, WImage } from '..'
 import { ModelMedia } from '../ModelMedia'
+import { VideoPlayer } from '../VideoPlayer'
+import { WImage } from '../WImage'
 
 export const TweetContent = <T extends FieldValues>({
   tweet,

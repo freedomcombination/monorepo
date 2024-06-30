@@ -23,7 +23,8 @@ import { useStrapiRequest } from '@fc/services'
 import { PlatformSlug, Post } from '@fc/types'
 import { getMediaUrl, getOgImageSrc } from '@fc/utils'
 
-import { Caps, WImage } from '..'
+import { Caps } from '../Caps'
+import { WImage } from '../WImage'
 
 type DownloadCapsModalType = {
   id: number

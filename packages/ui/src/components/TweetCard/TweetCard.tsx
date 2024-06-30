@@ -33,11 +33,12 @@ import { useRecommendTweet } from '@fc/services'
 import { Post, RecommendedTweetCreateInput, Tweet } from '@fc/types'
 
 import { TweetCardProps } from './types'
-import { CreateTweetForm, WAvatar } from '..'
 import { useFields, useSchema } from '../../data'
+import { CreateTweetForm } from '../CreateTweetForm'
 import { CreateTweetFormFieldValues } from '../CreateTweetForm/types'
 import { ModelCreateModal } from '../ModelCreateModal'
 import { TweetContent } from '../TweetContent'
+import { WAvatar } from '../WAvatar'
 
 export const TweetCard: FC<TweetCardProps> = ({
   tweet,

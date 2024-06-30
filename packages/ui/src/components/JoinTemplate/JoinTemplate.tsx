@@ -25,13 +25,10 @@ import { Job, Platform, Profile, ProfileCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
 import { JoinTemplateProps } from './types'
-import {
-  Container,
-  JoinForm,
-  JoinFormFieldValues,
-  PageTitle,
-  PlatformList,
-} from '../../components'
+import { Container } from '../Container'
+import { JoinForm, JoinFormFieldValues } from '../JoinForm'
+import { PageTitle } from '../PageTitle'
+import { PlatformList } from '../PlatformList'
 
 export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
   const { t } = useTranslation()

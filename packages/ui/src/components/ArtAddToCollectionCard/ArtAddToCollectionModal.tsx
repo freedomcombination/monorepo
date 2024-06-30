@@ -20,8 +20,8 @@ import { Art } from '@fc/types'
 
 import { ArtAddToCollectionGrid } from './ArtAddToCollectionGrid'
 import { ArtAddToCollectionModalProps } from './types'
-import { Pagination } from '..'
 import { PageHeader } from '../PageHeader'
+import { Pagination } from '../Pagination'
 
 export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
   isOpen,

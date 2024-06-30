@@ -7,18 +7,23 @@ import {
   useArtBySlug,
   useArtsByCategories,
   useRecaptchaToken,
+  useViewArtMutation,
 } from '@fc/services'
-
-import { ArtCard, ArtWithDetails, Container } from '../../components'
 
 import '@splidejs/react-splide/css'
 import '@splidejs/splide/dist/css/themes/splide-default.min.css'
+import { ArtCard } from '../ArtCard'
+import { ArtWithDetails } from '../ArtWithDetails'
+import { Container } from '../Container'
 
 export const ArtTemplate = () => {
   const { t } = useTranslation()
   const perPage = useBreakpointValue({ base: 1, sm: 2, md: 3, lg: 4 })
 
-  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
+  const likeRecaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
+  const viewRecaptchaToken = useRecaptchaToken(RecaptchaKeys.VIEW_ART)
+
+  useViewArtMutation(viewRecaptchaToken)
 
   const { data: art, refetch } = useArtBySlug()
 
@@ -56,7 +61,7 @@ export const ArtTemplate = () => {
                 <ArtCard
                   art={art}
                   refetch={refetchArts}
-                  recaptchaToken={recaptchaToken}
+                  recaptchaToken={likeRecaptchaToken}
                   imageHeight={300}
                 />
               </SplideSlide>

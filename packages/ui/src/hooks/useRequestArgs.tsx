@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next'
 import { RequestCollectionArgs } from '@fc/lib'
 import { StrapiCollectionEndpoint, StrapiModel } from '@fc/types'
 
-import { FilterOption, RelationFilterOption } from '../../components'
+import { FilterOption, RelationFilterOption } from '../components'
 
 type UseRequestArgsReturn<T extends StrapiModel> = Partial<
   Record<

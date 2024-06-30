@@ -23,19 +23,16 @@ import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
 import { Art, Category } from '@fc/types'
 
-import {
-  AnimatedBox,
-  ArtCard,
-  ArtCardSkeleton,
-  ArtSideBar,
-  CategoryFilterSkeleton,
-  Container,
-  CreateArtForm,
-  MasonryGrid,
-  Pagination,
-  SearchForm,
-} from '../../components'
 import { useChangeParams } from '../../hooks'
+import { AnimatedBox } from '../AnimatedBox'
+import { ArtCard, ArtCardSkeleton } from '../ArtCard'
+import { ArtSideBar } from '../ArtClubSideBar'
+import { CategoryFilterSkeleton } from '../CategoryFilter'
+import { Container } from '../Container'
+import { CreateArtForm } from '../CreateArtForm'
+import { MasonryGrid } from '../MasonryGrid'
+import { Pagination } from '../Pagination'
+import { SearchForm } from '../SearchForm'
 
 export const ArtClubTemplate: FC = () => {
   const {

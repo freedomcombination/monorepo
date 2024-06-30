@@ -11,9 +11,8 @@ import {
 
 import { Profile } from '@fc/types'
 
-import { SocialButtons } from '..'
 import { ProfileMailForm } from '../ProfileEmailForm'
-import { SocialItem } from '../SocialButtons'
+import { SocialItem, SocialButtons } from '../SocialButtons'
 
 interface ProfileContactProps {
   profile: Profile

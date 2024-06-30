@@ -6,7 +6,7 @@ import { GoChevronDown } from 'react-icons/go'
 
 import { NavLink } from './NavLink'
 import { AdminNavItemProps } from './types'
-import { ButtonLink } from '..'
+import { ButtonLink } from '../ButtonLink'
 
 export const AdminNavItem: FC<AdminNavItemProps> = ({
   label,

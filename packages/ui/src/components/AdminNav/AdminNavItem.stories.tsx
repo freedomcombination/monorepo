@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 
 import { AdminNavItem } from './AdminNavItem'
-import { Container } from '..'
+import { Container } from '../Container'
 
 export default {
   title: 'Admin/AdminNavItem',

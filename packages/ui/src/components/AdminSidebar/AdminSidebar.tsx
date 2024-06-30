@@ -6,8 +6,8 @@ import { Box, Divider, HStack, Stack, Text, VStack } from '@chakra-ui/react'
 import { useAuthContext } from '@fc/context'
 
 import { AdminSidebarProfile } from './AdminSidebarProfile'
-import { WAvatar } from '..'
 import { AdminNav } from '../AdminNav'
+import { WAvatar } from '../WAvatar'
 
 type AdminSidebarProps = {
   mobile?: boolean

@@ -17,7 +17,7 @@ import { BsTranslate } from 'react-icons/bs'
 import { StrapiTranslatableModel } from '@fc/types'
 
 import { TranslateAccordionItemProps } from './types'
-import { Flag } from '..'
+import { Flag } from '../Flag'
 
 const localeColorSchemes = {
   en: 'purple',

@@ -4,7 +4,7 @@ import { StoryObj, Meta } from '@storybook/react'
 import { TIMELINE_MOCKS } from '@fc/mocks'
 
 import { TimelineBoard } from './TimelineBoard'
-import { Container } from '..'
+import { Container } from '../Container'
 
 export default {
   title: 'Admin/TimelineBoard',

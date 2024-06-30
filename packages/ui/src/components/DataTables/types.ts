@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { StrapiModel } from '@fc/types'
 
-import { WTableProps } from '..'
+import { WTableProps } from '../WTable'
 
 export type DataTableProps<T extends StrapiModel> = {
   pageCount: number

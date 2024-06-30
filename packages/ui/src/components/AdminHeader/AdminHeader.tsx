@@ -28,10 +28,11 @@ import { MdOutlineNotifications } from 'react-icons/md'
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useUnsubscribePushNotificationMutation } from '@fc/services'
 
-import { ProfilePanel, UserFeedback } from '..'
 import { AdminSidebar } from '../AdminSidebar'
 import { CreateModelButton } from '../CreateModelButton'
 import { LanguageSwitcher } from '../LanguageSwitcher'
+import { ProfilePanel } from '../ProfileSettings'
+import { UserFeedback } from '../UserFeedback'
 
 type AdminHeaderProps = {
   hasBackButton?: boolean

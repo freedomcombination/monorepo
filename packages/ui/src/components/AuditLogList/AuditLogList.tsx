@@ -9,7 +9,7 @@ import { strapiRequest } from '@fc/lib'
 import { AuditLog } from '@fc/types'
 
 import { AuditLogItem } from './AuditLogItem'
-import { SearchForm } from '..'
+import { SearchForm } from '../SearchForm'
 
 export const AuditLogList: FC = () => {
   const { profile, token } = useAuthContext()

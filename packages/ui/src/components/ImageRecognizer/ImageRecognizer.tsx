@@ -6,7 +6,7 @@ import { PSM, createWorker } from 'tesseract.js'
 
 import { ImageRecognizeItem } from './ImageRecognizeItem'
 import { ImageRecognizerProps, Languages, RecognizedImage } from './types'
-import { FilePicker } from '..'
+import { FilePicker } from '../FilePicker'
 
 export const ImageRecognizer: FC<ImageRecognizerProps> = ({
   state,

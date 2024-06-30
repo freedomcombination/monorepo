@@ -22,7 +22,7 @@ import { Role } from '@fc/types'
 import { CreateRoleModal } from './CreateRoleModal'
 import { DeleteRoleModal } from './DeleteRoleModal'
 import { ProfileSelectModal } from './ProfileSelectModal'
-import { WTable } from '..'
+import { WTable } from '../WTable'
 
 const RoleAction: FC<{
   t: TFunction

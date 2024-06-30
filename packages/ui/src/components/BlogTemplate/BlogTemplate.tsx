@@ -6,7 +6,10 @@ import { NextSeoProps } from 'next-seo'
 
 import { Blog } from '@fc/types'
 
-import { AnimatedBox, BlogCard, Container, Hero } from '../../components'
+import { AnimatedBox } from '../AnimatedBox'
+import { BlogCard } from '../BlogCard'
+import { Container } from '../Container'
+import { Hero } from '../Hero'
 
 export type BlogTemplateProps = {
   seo: NextSeoProps

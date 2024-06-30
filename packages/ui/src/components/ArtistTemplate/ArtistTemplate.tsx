@@ -1,12 +1,14 @@
 import { FC } from 'react'
 
-import { Stack, Text } from '@chakra-ui/react'
+import { Container, Stack, Text } from '@chakra-ui/react'
 
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken } from '@fc/services'
 import { Art, Profile } from '@fc/types'
 
-import { Container, Hero, WAvatar, ArtGrid } from '../../components'
+import { ArtGrid } from '../ArtGrid'
+import { Hero } from '../Hero'
+import { WAvatar } from '../WAvatar'
 
 type ArtistTemplateProps = {
   artist: Profile

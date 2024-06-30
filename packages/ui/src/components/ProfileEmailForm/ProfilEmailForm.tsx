@@ -23,7 +23,7 @@ import {
 } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
-import { FormItem } from '..'
+import { FormItem } from '../FormItem'
 
 interface ProfileMailFormProps {
   email: string

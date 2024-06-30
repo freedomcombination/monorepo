@@ -5,10 +5,9 @@ import { useDisclosure } from '@chakra-ui/react'
 import { useAuthContext } from '@fc/context'
 import { Art } from '@fc/types'
 
-import { useColumns } from '../../../data'
-import { ArtApprovalModal } from '../../ArtApprovalModal'
-import { DataTable } from '../DataTable'
-import { DataTableProps } from '../types'
+import { useColumns } from '../../data'
+import { ArtApprovalModal } from '../ArtApprovalModal'
+import { DataTable, DataTableProps } from '../DataTables'
 
 type ArtsTableProps = Omit<DataTableProps<Art>, 'columns'> & {
   onSuccess?: () => void

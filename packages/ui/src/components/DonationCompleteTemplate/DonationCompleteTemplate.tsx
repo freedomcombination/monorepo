@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { Center, Container } from '@chakra-ui/react'
 
-import { DonationResultAlert } from '../../components'
+import { DonationResultAlert } from '../DonationResultAlert'
 
 type DonationCompleteTemplateProps = {
   status: string

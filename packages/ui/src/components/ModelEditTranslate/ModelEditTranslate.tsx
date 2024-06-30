@@ -36,7 +36,7 @@ import { ActionStack } from '../ActionStack'
 import { Flag } from '../Flag'
 import { FormItem } from '../FormItem'
 import { FormLocaleSwitcher } from '../FormLocaleSwitcher'
-import { MdFormItem } from '../MarkdownEditor'
+import { MdFormItem } from '../MdFormItem'
 import { Option } from '../ModelSelect'
 import { WConfirm, WConfirmProps } from '../WConfirm'
 

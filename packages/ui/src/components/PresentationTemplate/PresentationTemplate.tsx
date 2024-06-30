@@ -23,7 +23,9 @@ import { FaXTwitter } from 'react-icons/fa6'
 import { SITE_URL } from '@fc/config'
 import { Flow } from '@fc/types'
 
-import { Container, Markdown, ShareButtons } from '../../components'
+import { Container } from '../Container'
+import { Markdown } from '../Markdown'
+import { ShareButtons } from '../ShareButtons'
 
 type PresentationTemplateProps = {
   title: string

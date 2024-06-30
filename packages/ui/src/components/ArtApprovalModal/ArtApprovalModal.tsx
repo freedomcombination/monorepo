@@ -25,9 +25,9 @@ import { Art, StrapiLocale } from '@fc/types'
 
 import { ArtFeedbackForm } from './ArtFeedbackForm'
 import { ArtApprovalTypes } from './types'
-import { WAvatar } from '..'
 import { ArtCardImage } from '../ArtCardImage'
 import { ModelEditForm } from '../ModelEditForm'
+import { WAvatar } from '../WAvatar'
 
 export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
   art,

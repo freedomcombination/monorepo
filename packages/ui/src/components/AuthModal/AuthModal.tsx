@@ -20,8 +20,11 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAuthContext } from '@fc/context'
 
-import { ButtonLink, FormItem, LoginFormFieldValues, WAvatar } from '..'
 import { adminLoginSchema } from '../AdminLoginForm/schema'
+import { ButtonLink } from '../ButtonLink'
+import { FormItem } from '../FormItem'
+import { LoginFormFieldValues } from '../LoginForm'
+import { WAvatar } from '../WAvatar'
 
 export const AuthModal = () => {
   const { t } = useTranslation()

@@ -17,10 +17,11 @@ import { Post } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
 import { RecommendedSocialButtonsProps } from './types'
-import { ShareButtons, WConfirm, WConfirmProps } from '..'
 import { useFields, useSchema } from '../../data'
 import { ModelCreateModal } from '../ModelCreateModal'
+import { ShareButtons } from '../ShareButtons'
 import { TopicCardButton as ActionButton } from '../TopicCard'
+import { WConfirm, WConfirmProps } from '../WConfirm'
 
 export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
   tweet,

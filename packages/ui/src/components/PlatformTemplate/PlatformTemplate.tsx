@@ -9,13 +9,11 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import { UploadFile } from '@fc/types'
 
-import {
-  AcademyCard,
-  ButtonLink,
-  Container,
-  Markdown,
-  WImage,
-} from '../../components'
+import { AcademyCard } from '../AcademyCard'
+import { ButtonLink } from '../ButtonLink'
+import { Container } from '../Container'
+import { Markdown } from '../Markdown'
+import { WImage } from '../WImage'
 
 export type PlatformTemplateProps = {
   seo: NextSeoProps

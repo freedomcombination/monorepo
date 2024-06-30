@@ -1,14 +1,9 @@
 import { FC } from 'react'
 
-import { Box, Grid, Stack } from '@chakra-ui/react'
+import { Grid, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import { RecaptchaKeys } from '@fc/config'
-import {
-  useRecaptchaToken,
-  useStrapiRequest,
-  useViewArtMutation,
-} from '@fc/services'
+import { useStrapiRequest } from '@fc/services'
 import { Art, Comment } from '@fc/types'
 
 import { ArtContent, ArtDetail, CommentForm, CommentList } from '../'
@@ -19,10 +14,6 @@ type ArtWithDetailsProps = {
 }
 
 export const ArtWithDetails: FC<ArtWithDetailsProps> = ({ art, refetch }) => {
-  const recaptchaToken = useRecaptchaToken(RecaptchaKeys.VIEW_ART)
-
-  useViewArtMutation(recaptchaToken)
-
   const { locale } = useRouter()
 
   const commentQuery = useStrapiRequest<Comment>({

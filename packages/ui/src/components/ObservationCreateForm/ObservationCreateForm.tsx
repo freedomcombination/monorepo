@@ -14,7 +14,7 @@ import {
   ObservationCreateFormFieldValues,
   ObservationCreateFormProps,
 } from './types'
-import { FormItem } from '..'
+import { FormItem } from '../FormItem'
 
 export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
   profileId,

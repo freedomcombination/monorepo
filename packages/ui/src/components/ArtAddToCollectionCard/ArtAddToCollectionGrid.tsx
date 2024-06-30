@@ -7,7 +7,7 @@ import { Art } from '@fc/types'
 
 import { ArtAddToCollectionCard } from './ArtAddToCollectionCard'
 import { ArtAddToCollectionGridProps } from './types'
-import { WConfirm, WConfirmProps } from '..'
+import { WConfirm, WConfirmProps } from '../WConfirm'
 
 export const ArtAddToCollectionGrid = ({
   arts,

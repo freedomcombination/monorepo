@@ -1,6 +1,6 @@
 import { ROUTES } from '@fc/config'
 
-import { HeaderNavProps } from '../components/Header/types'
+import { HeaderNavProps } from './types'
 
 const {
   activities,
@@ -13,8 +13,6 @@ const {
   club,
   about,
   contact,
-  term,
-  privacy,
 } = ROUTES
 
 export const HEADER_MENU: Pick<HeaderNavProps, 'menu'>['menu'] = [
@@ -34,32 +32,5 @@ export const HEADER_MENU: Pick<HeaderNavProps, 'menu'>['menu'] = [
     nl: 'Freedom Combination',
     tr: 'Freedom Combination',
     children: [about, contact],
-  },
-]
-
-export const FOOTER_MENU = [
-  {
-    children: [lotus, artStop, trendRights, academy],
-    en: platforms.en,
-    nl: platforms.nl,
-    tr: platforms.tr,
-  },
-  {
-    children: [about, contact],
-    en: 'Foundation',
-    nl: 'Stichting',
-    tr: 'Vakıf',
-  },
-  {
-    children: [club, activities],
-    en: 'Menu',
-    nl: 'Menu',
-    tr: 'Menu',
-  },
-  {
-    children: [term, privacy],
-    en: 'Support',
-    nl: 'Steun',
-    tr: 'Destek',
   },
 ]

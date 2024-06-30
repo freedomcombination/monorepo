@@ -4,7 +4,8 @@ import { Center, Spinner } from '@chakra-ui/react'
 
 import { Collection } from '@fc/types'
 
-import { CollectionBook, Container } from '../../components'
+import { CollectionBook } from '../CollectionBook'
+import { Container } from '../Container'
 
 export type CollectionTemplateProps = {
   isLoading: boolean

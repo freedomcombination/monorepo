@@ -1,8 +1,10 @@
 import { StoryObj, StoryFn, Meta } from '@storybook/react'
 
 import { Layout, LayoutProps } from './Layout'
-import { FOOTER_MENU, HEADER_MENU, SOCIAL_LINKS } from '../../mocks'
-import { Hero } from '../Hero/Hero'
+import { FOOTER_MENU } from '../Footer'
+import { HEADER_MENU } from '../Header'
+import { Hero } from '../Hero'
+import { SOCIAL_LINKS } from '../SocialButtons'
 
 export default {
   component: Layout,

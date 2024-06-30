@@ -17,10 +17,12 @@ import { Post, StrapiModel } from '@fc/types'
 import { StrapiCollectionEndpoint } from '@fc/types'
 
 import { ModelCreateFormBodyProps } from './types'
-import { FormItem, MdFormItem, VideoPlayer } from '..'
 import { I18nNamespaces } from '../../../@types/i18next'
+import { FormItem } from '../FormItem'
+import { MdFormItem } from '../MdFormItem'
 import { ModelMedia } from '../ModelMedia'
 import { ModelSelect } from '../ModelSelect'
+import { VideoPlayer } from '../VideoPlayer'
 
 export const renderCreateFormBody = <T extends StrapiModel>({
   fields,

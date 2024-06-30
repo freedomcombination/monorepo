@@ -7,10 +7,10 @@ import {
 import { useTranslation } from 'next-i18next'
 import { Control, FieldValues, useController } from 'react-hook-form'
 
-import { MarkdownEditor } from '.'
 import { I18nNamespaces } from '../../../@types/i18next'
 import { FormItemProps } from '../FormItem'
 import { FormUploader } from '../FormUploader/FormUploader'
+import { MarkdownEditor } from '../MarkdownEditor'
 
 type MdFormItemProps<T extends FieldValues> = {
   control: Control<T>
