@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 import { Box, Grid, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
@@ -10,7 +12,6 @@ import {
 import { Art, Comment } from '@fc/types'
 
 import { ArtContent, ArtDetail, CommentForm, CommentList } from '../'
-import { FC } from 'react'
 
 type ArtWithDetailsProps = {
   art: Art
