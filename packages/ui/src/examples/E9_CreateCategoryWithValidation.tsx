@@ -14,9 +14,11 @@ import { createCategoryWithMutation } from './utils'
 import { FormItem } from '../components'
 
 const schema = yup.object().shape({
-  name_en: yup.string().required(),
-  // TODO: Add all inputs
+  name_en: yup.string().required('Name (english) is required'),
+  name_tr: yup.string().required('Name (turkish) is required'),
+  name_nl: yup.string().required('Name (dutch) is required')
 })
+
 
 export const CreateCategoryWithValidation = () => {
   const {
@@ -26,7 +28,7 @@ export const CreateCategoryWithValidation = () => {
     setValue,
     formState: { errors },
   } = useForm<CategoryCreateInput>({
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(schema)
   })
 
   const { mutate, data, isPending } = useMutation({
@@ -38,7 +40,8 @@ export const CreateCategoryWithValidation = () => {
 
   useEffect(() => {
     // TODO: Update slug with slugify on name_en change
-  }, [])
+    setValue('slug', slugify(name_en ?? ''));
+  }, [name_en])
 
   const onSubmit = async (data: CategoryCreateInput) => {
     mutate(data)
@@ -46,15 +49,15 @@ export const CreateCategoryWithValidation = () => {
 
   return (
     <Stack>
+      <Code as={'pre'}>{JSON.stringify(watch(), null, 2)}</Code>
       <Code as={'pre'}>{JSON.stringify(data, null, 2)}</Code>
       <Stack as={'form'} onSubmit={handleSubmit(onSubmit)}>
-        <FormItem
-          placeholder="Category name (en)"
-          name="name_en"
-          register={register}
-          errors={errors}
-        />
         {/* TODO: Add all inputs */}
+
+        <FormItem placeholder="Category name (en)" name='name_en' register={register} errors={errors} />
+        <FormItem placeholder="Category name (tr)" name='name_tr' register={register} errors={errors} />
+        <FormItem placeholder="Category name (nl)" name='name_nl' register={register} errors={errors} />
+        <Input placeholder="Slug" value={watch('slug')} isReadOnly />
 
         <Button
           type={'submit'}

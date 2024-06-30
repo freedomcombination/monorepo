@@ -18,6 +18,7 @@ import { ASSETS_URL } from '@fc/config'
 import { PUBLIC_TOKEN } from '@fc/config'
 import { Blog, StrapiCollectionResponse } from '@fc/types'
 import { getMediaUrl, sleep } from '@fc/utils'
+import { strapiRequest } from '@fc/lib'
 
 // TODO: Add this to `packages/ui/.env` as NEXT_PUBLIC_API_URL
 const STAGING_API_URL = 'https://wsvv-api-staging.onrender.com'
@@ -46,16 +47,14 @@ export const FetchWithUseQuery = () => {
     // Show loading state
     await sleep(2000)
 
-    // TODO: Replace with strapiRequest
-    return axios<StrapiCollectionResponse<Blog[]>>(BLOG_URL, {
-      params: { locale: 'tr', populate: 'image' },
-      headers: {
-        Authorization: `Bearer ${PUBLIC_TOKEN}`,
-      },
+    return strapiRequest<Blog>({
+      endpoint: 'blogs',
+      locale: 'tr',
+      populate: 'image',
     })
+
   }
 
-  // const blogsQuery = useQuery(['blogs'], fetchBlogs)
   const { data, isLoading, isFetching } = useQuery({
     queryKey: ['blogs'],
     queryFn: fetchBlogs,
@@ -67,7 +66,7 @@ export const FetchWithUseQuery = () => {
     <Stack>
       {isLoaded ? (
         <SimpleGrid gap={4} columns={{ base: 2, lg: 3 }}>
-          {data?.data?.data?.map(blog => (
+          {data?.data?.map(blog => (
             <ExampleBlogCard key={blog.id} blog={blog} />
           ))}
         </SimpleGrid>

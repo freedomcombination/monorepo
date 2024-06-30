@@ -17,8 +17,8 @@ export const CreateCategoryWithUseMutation = () => {
   const [slug, setSlug] = useState<string>('')
 
   useEffect(() => {
-    // TODO: Update slug with slugify on name_en change
-  }, [])
+    setSlug(slugify(name_en ?? ''))
+  }, [name_en])
 
   const { mutate, data, isPending } = useMutation({
     mutationKey: ['create-category'],
@@ -26,9 +26,17 @@ export const CreateCategoryWithUseMutation = () => {
   })
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async e => {
-    e.preventDefault()
+    e.preventDefault();
 
     // TODO: Call mutate with category body
+    const categoryData: CategoryCreateInput = {
+      name_en,
+      name_tr,
+      name_nl,
+      slug,
+    }
+
+    mutate(categoryData);
   }
 
   return (
@@ -41,8 +49,21 @@ export const CreateCategoryWithUseMutation = () => {
             value={name_en}
             onChange={e => setNameEn(e.target.value)}
           />
-          {/* TODO: Add all inputs */}
-
+          <Input
+            placeholder="Category name (tr)"
+            value={name_tr}
+            onChange={e => setNameTr(e.target.value)}
+          />
+          <Input
+            placeholder="Category name (nl)"
+            value={name_nl}
+            onChange={e => setNameNl(e.target.value)}
+          />
+          <Input
+            placeholder="Slug"
+            value={slug}
+            isReadOnly
+          />
           <Button
             isLoading={isPending}
             loadingText={'Creating...'}
