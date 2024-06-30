@@ -22,11 +22,11 @@ export const ArtModal: FC<ArtModalProps> = ({
     <Box>
       <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside">
         <ModalOverlay />
-        <ModalContent maxW="95vw" p={{ base: 2, lg: 4 }}>
-          <ModalCloseButton />
-          <ModalBody>
+        <ModalContent maxW="95vw" p={{ base: 4, lg: 8 }}>
+          <ModalBody p={0}>
             <ArtWithDetails art={art} refetch={refetch} />
           </ModalBody>
+          <ModalCloseButton bg={'white'} rounded={'full'} />
         </ModalContent>
       </Modal>
     </Box>

@@ -3,7 +3,7 @@ import { FaCheck } from 'react-icons/fa'
 
 import { UserFeedback } from '@fc/types'
 
-import { WTableProps } from '../../components'
+import { WTableProps } from '../../components/WTable'
 
 export const useUserFeedbacksColumns =
   (): WTableProps<UserFeedback>['columns'] => {

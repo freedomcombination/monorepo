@@ -16,7 +16,7 @@ import {
 } from '@fc/services'
 
 import { PostSentenceFormItemProps } from './types'
-import { ArchivePopover } from '../../post-maker/GenAI/ArchivePopover'
+import { ArchivePopover } from '../ArchivePopover'
 import { WConfirm, WConfirmProps } from '../WConfirm'
 
 export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({

@@ -17,6 +17,21 @@ export const ArtCardImage: FC<ArtCardImageProps> = memo(
 
     if (!image) return null
 
+    if (art?.image?.length === 1) {
+      return (
+        <WImage
+          maxH={'80vh'}
+          pos="relative"
+          h={isMasonry ? undefined : h || height}
+          src={image as UploadFile}
+          hasZoom
+          alt={art?.[`title_${locale}`]}
+          userSelect="none"
+          ratio={image.width && image.height ? image.width / image.height : 1}
+        />
+      )
+    }
+
     return (
       <Box
         as={Splide}
@@ -27,11 +42,11 @@ export const ArtCardImage: FC<ArtCardImageProps> = memo(
             pointerEvents: 'none',
           },
         }}
-        // maxH={'80vh'}
       >
         {art.image?.map(img => (
           <SplideSlide key={img.id}>
             <WImage
+              objectFit="contain"
               pos="relative"
               h={isMasonry ? undefined : h || height}
               src={img as UploadFile}

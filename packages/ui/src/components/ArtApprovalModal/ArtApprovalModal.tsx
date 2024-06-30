@@ -51,11 +51,16 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
 
   return (
     <Box>
-      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside">
+      <Modal
+        onClose={onClose}
+        isOpen={isOpen}
+        scrollBehavior="inside"
+        isCentered
+      >
         <ModalOverlay />
-        <ModalContent maxW="95vw" h="full" p={0} overflow="hidden">
+        <ModalContent maxW="95vw" p={0} overflow="hidden">
           <ModalCloseButton />
-          <ModalBody h={'inherit'} p={0}>
+          <ModalBody h={'inherit'} maxH={'80vh'} p={0}>
             <SimpleGrid columns={{ base: 1, lg: 2 }} h="inherit">
               <ArtCardImage art={art} />
               {!isEditing && (
