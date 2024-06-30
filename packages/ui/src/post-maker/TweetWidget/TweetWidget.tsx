@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next'
 
 import { Tweet } from '@fc/types'
 
-import { TweetCard } from '../../admin/TweetCard'
+import { TweetCard } from '../../components/TweetCard'
 
 interface TweetWidgetProps {
   title: string

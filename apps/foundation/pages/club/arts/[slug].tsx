@@ -56,7 +56,7 @@ export const getServerSideProps = async (
   const description = (art[descriptionKey] || '') as string
   const slug = art.slug
 
-  const image = art.image
+  const image = art.image?.[0]
 
   const seo: NextSeoProps = {
     title,

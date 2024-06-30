@@ -11,7 +11,7 @@ import { Activity, StrapiLocale } from '@fc/types'
 import { ActivityDetail } from '@fc/ui'
 import { getLocalizedSlugs } from '@fc/utils'
 
-import { Layout } from '../../components/index'
+import { Layout } from '../../components'
 
 type ActivityDetailPageProps = InferGetStaticPropsType<typeof getStaticProps>
 

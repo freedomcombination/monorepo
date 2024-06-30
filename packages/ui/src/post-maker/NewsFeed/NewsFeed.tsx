@@ -21,7 +21,7 @@ import {
   useBlogTopics,
   useRecommendedTopics,
 } from './useTopicFeed'
-import { TopicCard } from '../../admin'
+import { TopicCard } from '../../components'
 
 export const NewsFeed = () => {
   const [searchKey, setSearchKey] = useState('')

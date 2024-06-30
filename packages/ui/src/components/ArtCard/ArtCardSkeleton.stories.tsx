@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react'
 
-import { ArtCardBase } from './ArtCardBase'
+import { ArtCard } from './ArtCard'
 import { ArtCardSkeleton } from './ArtCardSkeleton'
 import { Container } from '../Container'
 
@@ -14,9 +14,9 @@ export default {
       </Container>
     ),
   ],
-} as Meta<typeof ArtCardBase>
+} as Meta<typeof ArtCard>
 
-type Story = StoryObj<typeof ArtCardBase>
+type Story = StoryObj<typeof ArtCard>
 
 export const Default: Story = {}
 

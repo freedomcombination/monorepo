@@ -1,22 +1,12 @@
 import { FC, Fragment } from 'react'
 
-import { AspectRatio, ImageProps as ChakraImageProps } from '@chakra-ui/react'
+import { AspectRatio } from '@chakra-ui/react'
 import Zoom from 'react-medium-image-zoom'
 
-import { UploadFile } from '@fc/types'
-
+import { WImageProps } from './types'
 import { StrapiImage } from '../StrapiImage'
 
 import 'react-medium-image-zoom/dist/styles.css'
-
-export type WImageProps = {
-  ratio?: number | 'twitter'
-  src?: UploadFile | null | string
-  alt?: string
-  hasZoom?: boolean
-  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'
-  unoptimized?: boolean
-} & Omit<ChakraImageProps, 'objectFit' | 'src' | 'fill'>
 
 export const WImage: FC<WImageProps> = ({
   src,

@@ -13,16 +13,9 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-export type WConfirmProps = {
-  buttonText?: string
-  description?: string
-  isWarning?: boolean
-  title?: string
-  onConfirm?: () => void
-  onCancel?: () => void
-}
+import { WConfirmProps } from './types'
 
-export const WConfirm: FC<WConfirmProps> = (props: WConfirmProps) => {
+export const WConfirm: FC<WConfirmProps> = props => {
   const { t } = useTranslation()
 
   const { buttonText, description, isWarning, title, onConfirm, onCancel } =

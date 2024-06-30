@@ -25,13 +25,13 @@ const useLikeArtMutation = (recaptchaToken?: string) => {
 type UseLikeArtArgs = {
   art: Art
   recaptchaToken?: string
-  onToggleLike: () => void
+  onSuccess?: () => void
 }
 
 export const useLikeArt = ({
   art,
   recaptchaToken,
-  onToggleLike,
+  onSuccess,
 }: UseLikeArtArgs) => {
   const { profile } = useAuthContext()
 
@@ -48,7 +48,7 @@ export const useLikeArt = ({
 
   const isLikedStorage = likersStorage?.some(id => id === art.id)
 
-  const handleError = (error: any) => {
+  const onError = (error: any) => {
     console.error('ART_BLOG_ERROR', error)
     if (error.response.status === 403) {
       setIsDisabled(true)
@@ -59,23 +59,24 @@ export const useLikeArt = ({
     if (profile) {
       return likeArtMutation.mutateAsync(
         { id: art.id, type: isLikedByUser ? 'unlike' : 'like' },
-        {
-          onSuccess: onToggleLike,
-          onError: handleError,
-        },
+        { onSuccess, onError },
       )
+    }
+
+    const onSuccessLocal = async () => {
+      const updatedStorage = isLikedStorage
+        ? likersStorage?.filter(id => id !== art.id)
+        : [...(likersStorage || []), art.id]
+      setLikersStorage(updatedStorage as number[])
+
+      onSuccess?.()
     }
 
     return likeArtMutation.mutateAsync(
       { id: art.id, type: isLikedStorage ? 'unlike' : 'like' },
       {
-        onSuccess: async () => {
-          const updatedStorage = isLikedStorage
-            ? likersStorage?.filter(id => id !== art.id)
-            : [...(likersStorage || []), art.id]
-          setLikersStorage(updatedStorage as number[])
-        },
-        onError: handleError,
+        onSuccess: onSuccessLocal,
+        onError,
       },
     )
   }

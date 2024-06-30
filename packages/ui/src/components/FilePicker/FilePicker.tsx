@@ -1,4 +1,4 @@
-import { ComponentProps, FC, useEffect, useId, useMemo } from 'react'
+import { FC, useEffect, useId, useMemo } from 'react'
 
 import { Stack } from '@chakra-ui/react'
 import Compressor from '@uppy/compressor'
@@ -9,12 +9,7 @@ import { Dashboard } from '@uppy/react'
 import '@uppy/core/dist/style.css'
 import '@uppy/dashboard/dist/style.css'
 import '@uppy/image-editor/dist/style.min.css'
-
-export type FilePickerProps = Omit<ComponentProps<typeof Dashboard>, 'uppy'> & {
-  allowedFileTypes?: string[]
-  maxNumberOfFiles?: number
-  onLoaded: (files: File[], previews: string[]) => void
-}
+import { FilePickerProps } from './types'
 
 const getUppy = () =>
   new Uppy({
@@ -32,6 +27,7 @@ export const FilePicker: FC<FilePickerProps> = ({
   maxNumberOfFiles,
   onLoaded,
   allowedFileTypes = ['image/*', 'video/*'],
+  autoOpen = 'imageEditor',
   ...props
 }) => {
   const uppy = useMemo(() => getUppy(), [])
@@ -61,7 +57,7 @@ export const FilePicker: FC<FilePickerProps> = ({
         uppy={uppy}
         hideUploadButton
         showSelectedFiles
-        autoOpen={'imageEditor'}
+        autoOpen={autoOpen}
         {...props}
       />
     </Stack>

@@ -1,20 +1,11 @@
 import { FC } from 'react'
 
-import { HStack, IconButton, IconButtonProps } from '@chakra-ui/react'
+import { HStack, IconButton } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { IconType } from 'react-icons/lib'
 
 import { Localize } from '@fc/types'
 
-export type SocialItem = {
-  label: string
-  icon: IconType
-  link: Localize<string> | string
-}
-
-export type SocialButtonsProps = Omit<IconButtonProps, 'aria-label'> & {
-  items: SocialItem[]
-}
+import { SocialButtonsProps } from './types'
 
 export const SocialButtons: FC<SocialButtonsProps> = ({ items, ...rest }) => {
   const { locale } = useRouter()

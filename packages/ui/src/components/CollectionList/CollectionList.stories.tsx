@@ -6,7 +6,8 @@ import { COLLECTION_MOCKS } from '@fc/mocks'
 import { useStrapiRequest } from '@fc/services'
 import { Collection } from '@fc/types'
 
-import { CollectionList, CollectionListProps } from './CollectionList'
+import { CollectionList } from './CollectionList'
+import { CollectionListProps } from './types'
 
 export default {
   component: CollectionList,

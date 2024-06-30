@@ -19,8 +19,6 @@ import { FaCalendar, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { MonthPickerProps } from './types'
 import { Year } from './Year'
 
-export const monthsNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-
 export const MonthPicker: FC<MonthPickerProps> = ({
   onRangeSelect,
   onSelect,

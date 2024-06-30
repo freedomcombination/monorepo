@@ -6,39 +6,40 @@ import { AiFillHeart } from 'react-icons/ai'
 import { FaEye } from 'react-icons/fa'
 
 import { RecaptchaKeys, SITE_URL } from '@fc/config'
-import { useArtBySlug, useLikeArt, useRecaptchaToken } from '@fc/services'
+import { useLikeArt, useRecaptchaToken } from '@fc/services'
 import { Art } from '@fc/types'
 
+import { ArtCardImage } from '../ArtCardImage'
 import { ShareButtons } from '../ShareButtons'
-import { WImage } from '../WImage'
 
-export const ArtDetail: FC = () => {
+type ArtDetailProps = {
+  art: Art
+  refetch?: () => void
+}
+
+export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
   const router = useRouter()
   const locale = router.locale
-  const { data: art, refetch } = useArtBySlug()
+
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
+
   const { toggleLike, isLiked, isLoading, isDisabled } = useLikeArt({
     art: art as Art,
     recaptchaToken,
-    onToggleLike: refetch,
+    onSuccess: refetch,
   })
 
   if (!art) return null
 
   const url = `${SITE_URL}/${locale}/club/arts/${art.slug}`
 
-  if (!art?.image) return null
+  if (!art?.image?.length) return null
 
   return (
-    <Box bg="white" padding={4} boxShadow="base">
-      <WImage
-        maxH={500}
-        src={art.image}
-        alt={art?.[`title_${locale}`]}
-        hasZoom
-      />
+    <Box bg="white" shadow={'md'}>
+      <ArtCardImage art={art} h={'full'} />
 
-      <HStack bg="white" justify="center" mt={4}>
+      <HStack bg="white" justify="center" p={4}>
         {art.views && (
           <HStack
             py={0.5}
