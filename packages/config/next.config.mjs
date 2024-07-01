@@ -25,6 +25,10 @@ const nextConfig = {
       },
     ]
   },
+  experimental: {
+    reactCompiler: true,
+  },
+  bundlePagesRouterDependencies: true,
   reactStrictMode: true,
   transpilePackages: [
     '@fc/config',
