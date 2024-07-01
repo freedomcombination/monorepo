@@ -1,2 +1,2 @@
-export const USERNAME = process.env['USERNAME'] as string
-export const PASSWORD = process.env['PASSWORD'] as string
+export const USERNAME = process.env['TEST_USERNAME'] as string
+export const PASSWORD = process.env['TEST_PASSWORD'] as string
