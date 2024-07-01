@@ -38,7 +38,7 @@
     "@sindresorhus/slugify": "^2.2.1",
     "@splidejs/react-splide": "^0.7.12",
     "@tanstack/react-query": "^5.49.0",
-    "@tanstack/react-query-devtools": "^5.49.0",
+    "@tanstack/react-query-devtools": "^5.49.2",
     "@uppy/compressor": "^1.1.4",
     "@uppy/core": "^3.13.0",
     "@uppy/dashboard": "^3.9.1",
