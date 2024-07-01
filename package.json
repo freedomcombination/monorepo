@@ -114,7 +114,7 @@
     "@chakra-ui/storybook-addon": "^5.1.0",
     "@playwright/test": "^1.45.0",
     "@storybook/addon-essentials": "^7.6.20",
-    "@storybook/builder-webpack5": "^7.6.20",
+    "@storybook/builder-webpack5": "^8.1.11",
     "@storybook/core-common": "^7.6.20",
     "@storybook/core-server": "^7.6.20",
     "@storybook/nextjs": "^7.6.20",
