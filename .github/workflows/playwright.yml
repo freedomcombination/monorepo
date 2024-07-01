@@ -1,7 +1,9 @@
 name: Playwright
 on:
   push:
-    branches: [dev]
+    branches:
+      - dev
+      - 'test/*'
 jobs:
   test_e2e:
     name: Test E2E
