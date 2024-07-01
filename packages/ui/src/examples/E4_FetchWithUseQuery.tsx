@@ -14,13 +14,12 @@ import {
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
-import { ASSETS_URL } from '@fc/config'
 import { PUBLIC_TOKEN } from '@fc/config'
 import { Blog, StrapiCollectionResponse } from '@fc/types'
 import { getMediaUrl, sleep } from '@fc/utils'
 
 // TODO: Add this to `packages/ui/.env` as NEXT_PUBLIC_API_URL
-const STAGING_API_URL = 'https://wsvv-api-staging.onrender.com'
+const STAGING_API_URL = 'https://fc-api-staging.onrender.com'
 const BLOG_URL = `${STAGING_API_URL}/api/blogs`
 
 type ExampleBlogCardProps = {

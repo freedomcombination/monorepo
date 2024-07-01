@@ -8,7 +8,7 @@ import { SITE_URL } from '@fc/config'
 import { getSession } from '@fc/secrets'
 import { getArtBySlug } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Art, StrapiLocale } from '@fc/types'
+import { Art, StrapiLocale, UploadFile } from '@fc/types'
 import { ArtTemplate } from '@fc/ui'
 import { mapStrapiMediaToOgImages } from '@fc/utils'
 
