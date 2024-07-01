@@ -19,6 +19,8 @@ _List any preconditions that must be met before the test can be executed._
 // Example data
 ```
 
+</details>
+
 ### Acceptance Criteria
 
 - [ ] First criteria
