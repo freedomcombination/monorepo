@@ -54,7 +54,7 @@
     "@vercel/og": "^0.6.2",
     "ai": "^3.2.15",
     "axios": "^1.7.2",
-    "chakra-react-select": "4.8.0",
+    "chakra-react-select": "4.9.0",
     "cookies-next": "^4.2.1",
     "date-fns": "^3.6.0",
     "date-fns-tz": "^3.1.3",

@@ -13498,9 +13498,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chakra-react-select@npm:4.8.0":
-  version: 4.8.0
-  resolution: "chakra-react-select@npm:4.8.0"
+"chakra-react-select@npm:4.9.0":
+  version: 4.9.0
+  resolution: "chakra-react-select@npm:4.9.0"
   dependencies:
     react-select: "npm:5.8.0"
   peerDependencies:
@@ -13514,7 +13514,7 @@ __metadata:
     "@emotion/react": ^11.8.1
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10/8c2a29cfe4a307365c3afc99de62ed4efad7d31a7f533a1c5e2658acdc1b91c7ff080a1c1e1c03ed97c3d159c28f4ef81814866e3eb315ff9bc4cfbe6ca64f24
+  checksum: 10/e8791c792242a420beb63d43f8b2b79d6139df3053e9f487f3343dee1e398d6564eb8e18d9195e520feb6b7f01fa5627a19a4937b4fb97ef361a5e6a71ab9d07
   languageName: node
   linkType: hard
 
@@ -17546,7 +17546,7 @@ __metadata:
     ai: "npm:^3.2.15"
     axios: "npm:^1.7.2"
     browserify-fs: "npm:^1.0.0"
-    chakra-react-select: "npm:4.8.0"
+    chakra-react-select: "npm:4.9.0"
     cookies-next: "npm:^4.2.1"
     date-fns: "npm:^3.6.0"
     date-fns-tz: "npm:^3.1.3"
