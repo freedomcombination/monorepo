@@ -30,6 +30,7 @@
     "@ducanh2912/next-pwa": "^10.2.7",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@faker-js/faker": "^8.4.1",
     "@fc/config": "*",
     "@fc/types": "*",
     "@fc/ui": "*",
@@ -112,7 +113,6 @@
   },
   "devDependencies": {
     "@chakra-ui/storybook-addon": "^5.1.0",
-    "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.45.0",
     "@storybook/addon-essentials": "^7.6.20",
     "@storybook/builder-webpack5": "^7.6.20",
