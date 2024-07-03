@@ -1,4 +1,4 @@
-import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
+import { FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
 export const kunsthalte = [
@@ -6,9 +6,9 @@ export const kunsthalte = [
     label: 'X',
     icon: FaXTwitter,
     link: {
-      en: 'https://x.com/sanatduragi_nl',
-      tr: 'https://x.com/sanatduragi_nl',
-      nl: 'https://x.com/sanatduragi_nl',
+      en: 'https://x.com/kunsthalte',
+      tr: 'https://x.com/kunsthalte',
+      nl: 'https://x.com/kunsthalte',
     },
   },
   {
@@ -27,6 +27,15 @@ export const kunsthalte = [
       en: 'https://instagram.com/kunsthalte',
       tr: 'https://instagram.com/kunsthalte',
       nl: 'https://instagram.com/kunsthalte',
+    },
+  },
+  {
+    label: 'Youtube',
+    icon: FaYoutube,
+    link: {
+      en: 'https://www.youtube.com/@Kunsthalte',
+      tr: 'https://www.youtube.com/@Kunsthalte',
+      nl: 'https://www.youtube.com/@Kunsthalte',
     },
   },
 ]

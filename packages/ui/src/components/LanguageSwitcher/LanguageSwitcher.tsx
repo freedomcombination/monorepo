@@ -1,7 +1,6 @@
 import { FC, useCallback } from 'react'
 
 import {
-  Box,
   Button,
   Menu,
   MenuButton,
@@ -22,16 +21,10 @@ type LanguageSwitcherProps = {
 export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
   const router = useRouter()
 
-  const currentLanguage = {
-    en: 'English',
-    nl: 'Nederlands',
-    tr: 'Türkçe',
-  }
-
   const LanguageNames: Record<StrapiLocale, string> = {
-    en: 'English',
-    nl: 'Nederlands',
-    tr: 'Türkçe',
+    en: 'EN',
+    nl: 'NL',
+    tr: 'TR',
   }
 
   const switchLocale = useCallback(
@@ -52,28 +45,29 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
         leftIcon={<Flag locale={router.locale} boxSize={6} />}
         {...(responsive && {
           iconSpacing: { base: 0, lg: 2 },
-          px: { base: 2, lg: 4 },
+          px: 2,
         })}
         colorScheme={'gray'}
       >
         <Text
+          pr={1}
           {...(responsive && {
             display: { base: 'none', lg: 'block' },
           })}
         >
-          {currentLanguage[router.locale]}
+          {LanguageNames[router.locale]}
         </Text>
       </MenuButton>
       <MenuList>
-        {Object.entries(Flag)
-          .filter(([language]) => language !== router.locale)
-          .map(([language, Flag]) => (
+        {router.locales
+          .filter(locale => locale !== router.locale)
+          .map(locale => (
             <MenuItem
-              key={language}
-              onClick={() => switchLocale(language as StrapiLocale)}
-              icon={<Box as={Flag} boxSize={8} />}
+              key={locale}
+              onClick={() => switchLocale(locale as StrapiLocale)}
+              icon={<Flag locale={locale as StrapiLocale} boxSize={8} />}
             >
-              {LanguageNames[language as StrapiLocale]}
+              {LanguageNames[locale as StrapiLocale]}
             </MenuItem>
           ))}
       </MenuList>
