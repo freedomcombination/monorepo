@@ -3,6 +3,8 @@ import { expect, test } from '@playwright/test'
 import { getVercelUrl } from '../utils'
 
 test('Homepage title', async ({ page }) => {
+
+  await page.setViewportSize({ width: 1920, height: 1080 });
   // Go to the homepage
   await page.goto(getVercelUrl('kunsthalte'))
 
@@ -24,4 +26,5 @@ test('Homepage title', async ({ page }) => {
   const titleEN = await page.textContent('h2.chakra-heading')
 
   expect(titleEN).toBe('Art Station')
+  page.close();
 })
