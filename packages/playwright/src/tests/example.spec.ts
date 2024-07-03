@@ -1,5 +1,5 @@
-const { test, expect, ElementHandle } = require('@playwright/test'); // Playwright test ve expect modüllerini dahil eder.
 
+import { expect, test, ElementHandle } from '@playwright/test' // Playwright test ve expect modüllerini dahil eder.
 // 'has title' adlı bir test tanımlar.
 test('has title', async ({ page }) => {
     // Tarayıcı penceresinin boyutunu 1920x1080 olarak ayarlar (tam ekran).
@@ -19,23 +19,23 @@ test('has title', async ({ page }) => {
     await page.getByRole('link', { name: 'Get started' }).click();
 
     // Sayfanın kapanmadan önce 5 saniye beklemesini sağlar.
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(1000);
 
     // "Writing tests" yazan metne tıklar.
     await page.click('text="Writing tests"');
 
     // Sayfanın kapanmadan önce 5 saniye beklemesini sağlar.
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(1000);
 
     // "Generating tests" yazan metne tıklar.
     await page.click('text="Generating tests"');
 
     // Sayfanın kapanmadan önce 5 saniye beklemesini sağlar.
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(1000);
 
 
     // Sayfadaki .DocSearch.DocSearch-Button seçicisine sahip öğeyi bul
-    const docSearchButton: ElementHandle<HTMLElement> | null = await page.$('.DocSearch.DocSearch-Button');
+    const docSearchButton = await page.$('.DocSearch.DocSearch-Button');
 
     // Butona tıkla
     if (docSearchButton) {
@@ -44,18 +44,24 @@ test('has title', async ({ page }) => {
         throw new Error('DocSearch button not found');
     }
 
+
+
     // 5 saniye bekle
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(1000);
 
     // Sayfadaki .DocSearch-Input seçicisine sahip öğeyi bul
-    const searchInput: ElementHandle<HTMLElement> | null = await page.$('.DocSearch-Input');
+    const searchInput = await page.$('.DocSearch-Input');
 
     // Arama kutusuna "Run" yaz
     if (searchInput) {
-        await searchInput.fill('Run');
+        await searchInput.fill('aaaaaa');
     } else {
-        throw new Error('Search input not found');
+        throw new Error('search Input not found');
     }
+
+
+
     // 5 saniye bekle
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(1000);
+    page.close(); // Sayfa kapanır.
 });
