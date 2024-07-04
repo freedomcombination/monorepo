@@ -1,8 +1,9 @@
 import { FC, useMemo, useState } from 'react'
 
-import { Box, Heading, Stack } from '@chakra-ui/react'
+import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { addDays, format } from 'date-fns'
+import { FaPlusCircle } from 'react-icons/fa'
 
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
@@ -17,12 +18,11 @@ export const AuditLogList: FC = () => {
 
   const handleSearch = (query?: string) => {
     if (!query) return setQ('')
-
     setQ(query)
   }
 
-  const { data } = useInfiniteQuery({
-    queryKey: ['audit-logs'],
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
+    queryKey: ['audit-logs', q],
     queryFn: ({ pageParam = 1 }) =>
       strapiRequest<AuditLog>({
         endpoint: 'audit-logs',
@@ -36,10 +36,15 @@ export const AuditLogList: FC = () => {
             { uid: { $containsi: q } },
           ],
         },
-        pageSize: 100,
+        pageSize: 50,
       }),
-    initialPageParam: 0,
-    getNextPageParam: r => (r.meta?.pagination?.page || 0) + 1,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage: any, allPages: any) => {
+      const totalPages = lastPage.meta.pagination.pageCount
+
+      return allPages.length < totalPages ? allPages.length + 1 : undefined
+    },
+
     enabled: !!token,
   })
 
@@ -83,14 +88,20 @@ export const AuditLogList: FC = () => {
   }, [logs])
 
   return (
-    <Stack spacing={4} pt={1}>
+    <Stack
+      spacing={4}
+      pt={1}
+      pr={1}
+      maxHeight={'calc(100vh - 90px)'}
+      overflowY={'auto'}
+    >
       <SearchForm
         bg={'white'}
         onSearch={handleSearch}
         placeholder={'Search by profile, action, text, or endpoint'}
       />
 
-      {logs?.length === 0 && (
+      {logs?.length === 0 && !isLoading && (
         <Box
           bg={'blackAlpha.100'}
           p={8}
@@ -163,6 +174,19 @@ export const AuditLogList: FC = () => {
               </Stack>
             </Stack>
           )}
+
+          <Text fontSize={'sm'}>{logs.length} entries</Text>
+          <Button
+            leftIcon={<FaPlusCircle />}
+            variant={'outline'}
+            onClick={() => fetchNextPage()}
+            isLoading={isLoading}
+            isDisabled={!hasNextPage}
+            mx={'auto'}
+            width={200}
+          >
+            Load More
+          </Button>
         </Stack>
       )}
     </Stack>
