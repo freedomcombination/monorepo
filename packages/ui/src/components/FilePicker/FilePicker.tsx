@@ -55,9 +55,9 @@ const FilePicker: FC<FilePickerProps> = ({
   }, [uppy])
 
   uppy.on('preprocess-complete', file => {
-    if (!file?.data || !file?.preview) return
+    if (!file?.data) return
 
-    onLoaded([file.data as File], [file.preview])
+    onLoaded([file.data as File], file.preview ? [file.preview] : [])
   })
 
   uppy.on('files-added', result => {

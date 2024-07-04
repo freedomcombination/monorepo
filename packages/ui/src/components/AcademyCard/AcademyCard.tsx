@@ -19,8 +19,6 @@ export const AcademyCard: FC<AcademyCardProps> = ({
   description,
   title,
 }) => {
-  const baseTranslate = description ? 'translateY(5rem)' : 'translateY(2rem)'
-
   return (
     <LinkBox as="article">
       <LinkOverlay as={Link} href={href}>
@@ -30,7 +28,7 @@ export const AcademyCard: FC<AcademyCardProps> = ({
             position="relative"
             role="group"
             overflow="hidden"
-            w="100%"
+            w="full"
           >
             <WImage
               src={image}
@@ -39,13 +37,15 @@ export const AcademyCard: FC<AcademyCardProps> = ({
               transitionDuration={'0.2s'}
             />
             <Stack
-              transform={baseTranslate}
               p={6}
               color="white"
               position="absolute"
+              justify={'end'}
+              top={0}
               bottom={0}
               left={0}
               w={'full'}
+              transform={description ? 'translateY(4rem)' : 'translateY(0)'}
               _groupHover={{ transform: 'translateY(0)' }}
               transition="all"
               transitionDuration="0.3s"
