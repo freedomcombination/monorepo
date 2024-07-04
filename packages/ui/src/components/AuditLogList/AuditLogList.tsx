@@ -36,7 +36,7 @@ export const AuditLogList: FC = () => {
             { uid: { $containsi: q } },
           ],
         },
-        pageSize: 20,
+        pageSize: 50,
       }),
     initialPageParam: 1,
     getNextPageParam: (lastPage: any, allPages: any) => {
