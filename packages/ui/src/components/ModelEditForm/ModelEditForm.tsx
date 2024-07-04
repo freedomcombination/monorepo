@@ -346,18 +346,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             {Object.values(fields || {})?.map((field, index) => {
               const label = t(field.name as keyof I18nNamespaces['common'])
 
-              if (
-                field.type === 'file' &&
-                [
-                  'image',
-                  'avatar',
-                  'video',
-                  'caps',
-                  'invoice',
-                  'images',
-                  'volunteerForm',
-                ].includes(field.name as string)
-              ) {
+              if (field.type === 'file') {
                 return (
                   <FormControl
                     key={index}

@@ -86,6 +86,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
 
   const mediaUrl = getMediaUrl(media)
   const isMediaFile = mime?.includes('video') || mime?.includes('image')
+
   const renderMedia = () => {
     if (isChangingMedia || (isEditing && !media)) {
       return (

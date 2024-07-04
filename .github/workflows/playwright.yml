@@ -1,7 +1,9 @@
 name: Playwright
 on:
   push:
-    branches: [dev]
+    branches:
+      - dev
+      - 'test/*'
 jobs:
   test_e2e:
     name: Test E2E
@@ -26,8 +28,8 @@ jobs:
       - run: npx playwright install --with-deps
       - name: Run tests
         env:
-          USERNAME: ${{ vars.USERNAME }}
-          PASSWORD: ${{ vars.PASSWORD }}
+          TEST_USERNAME: ${{ vars.USERNAME }}
+          TEST_PASSWORD: ${{ vars.PASSWORD }}
         run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: always()
