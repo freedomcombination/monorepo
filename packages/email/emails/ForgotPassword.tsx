@@ -17,11 +17,7 @@ type ForgotPasswordProps = {
   code: string
 }
 
-const ForgotPassword: FC<ForgotPasswordProps> = ({
-  site = 'dashboard',
-  locale = 'en',
-  code = '123',
-}) => {
+const ForgotPassword: FC<ForgotPasswordProps> = ({ site, locale, code }) => {
   const resetLink = getSiteLink(site, locale) + 'auth/reset?code=' + code
   const { t } = getTranslate(locale)
   const color = getSiteColor(site)

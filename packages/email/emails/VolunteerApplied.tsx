@@ -11,37 +11,7 @@ type VolunteerAppliedProps = {
   volunteer: Profile
 }
 
-const exampleVolunteer = {
-  name: 'Test Volunteer',
-  availableHours: 10,
-  city: 'Toronto',
-  country: 'Canada',
-  email: 'test@email.com',
-  occupation: 'Developer',
-
-  jobs: [
-    {
-      name_en: 'Job 1',
-      name_tr: 'İş 1',
-      name_nl: 'Baantje 1',
-      platform: {
-        name_en: 'Platform 1',
-      },
-    },
-    {
-      name_en: 'Job 2',
-      name_tr: 'İş 2',
-      name_nl: 'Baantje 2',
-      platform: {
-        name_en: 'Platform 1',
-      },
-    },
-  ],
-} as Profile
-
-const VolunteerApplied: FC<VolunteerAppliedProps> = ({
-  volunteer = exampleVolunteer,
-}) => {
+const VolunteerApplied: FC<VolunteerAppliedProps> = ({ volunteer }) => {
   const {
     name = '...',
     email,
