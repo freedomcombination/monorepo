@@ -1,4 +1,4 @@
-import { emailTemplates } from '../../../../../emails'
+import { emailTemplates } from '@fc/email'
 
 export default {
   async afterCreate({ result }) {

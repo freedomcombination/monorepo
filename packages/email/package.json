@@ -1,0 +1,13 @@
+{
+  "name": "@fc/email",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "email": "npx email dev -p 3333",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rm -rf .turbo node_modules",
+    "tsc": "npx tsc --noEmit"
+  }
+}

@@ -1,7 +1,7 @@
-import crypto from 'crypto'
-import utils from '@strapi/utils'
+import { emailTemplates } from '@fc/email'
 import { Site, StrapiLocale } from '@fc/types'
-import { emailTemplates } from '../../../emails'
+import utils from '@strapi/utils'
+import crypto from 'crypto'
 
 const { sanitize } = utils
 const { ApplicationError, ValidationError, NotFoundError, ForbiddenError } =

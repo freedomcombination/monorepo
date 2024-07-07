@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { Heading, Img, Preview, Section, Text } from '@react-email/components'
 
 import { Art } from '@fc/types'
+
 import { EmailProvider } from './EmailProvider'
 
 type ArtCreatedProps = {

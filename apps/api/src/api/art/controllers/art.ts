@@ -1,8 +1,9 @@
+import { emailTemplates } from '@fc/email'
 import { factories } from '@strapi/strapi'
-import { EntityService, Attribute } from '@strapi/types'
+import { Attribute, EntityService } from '@strapi/types'
 import { errors } from '@strapi/utils'
+
 import { getProfile } from '../../../utils'
-import { emailTemplates } from '../../../../emails'
 
 const { UnauthorizedError } = errors
 

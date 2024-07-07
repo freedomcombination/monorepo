@@ -1,4 +1,5 @@
 import { StrapiLocale } from '@fc/types'
+
 import { translations } from './translations'
 
 export const getTranslate = (lc: StrapiLocale) => {

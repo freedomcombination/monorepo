@@ -8,7 +8,7 @@ import { Site, StrapiLocale } from '@fc/types'
  * @returns {string} The generated link endwith a trailing slash.
  */
 export const getSiteLink = (site: Site, locale?: StrapiLocale): string => {
-  const siteLinks = {
+  const siteLinks: Partial<Record<Site, string>> = {
     kunsthalte: 'https://kunsthalte.com/',
     'trend-rights': 'https://www.trendrights.com/',
     dashboard: 'https://dashboard.freedomcombination.com/',
@@ -20,7 +20,7 @@ export const getSiteLink = (site: Site, locale?: StrapiLocale): string => {
 }
 
 export const getSiteLogo = (site: Site) => {
-  const siteLogos = {
+  const siteLogos: Partial<Record<Site, string>> = {
     kunsthalte: 'https://www.kunsthalte.com/images/logo.png',
     'trend-rights': 'https://www.trendrights.com/images/logo.png',
   }
@@ -29,7 +29,7 @@ export const getSiteLogo = (site: Site) => {
 }
 
 export const getSiteColor = (site: Site) => {
-  const siteColors = {
+  const siteColors: Partial<Record<Site, string>> = {
     kunsthalte: '#319795',
     'trend-rights': '#FF4F00',
     dashboard: '#3182CE',
@@ -39,7 +39,7 @@ export const getSiteColor = (site: Site) => {
 }
 
 export const getSiteName = (site: Site) => {
-  const siteNames = {
+  const siteNames: Partial<Record<Site, string>> = {
     kunsthalte: 'Kunsthalte',
     'trend-rights': 'Trend Rights',
     dashboard: 'Dashboard',

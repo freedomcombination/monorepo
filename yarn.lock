@@ -4024,6 +4024,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fc/email@workspace:packages/email":
+  version: 0.0.0-use.local
+  resolution: "@fc/email@workspace:packages/email"
+  languageName: unknown
+  linkType: soft
+
 "@fc/lib@workspace:packages/lib":
   version: 0.0.0-use.local
   resolution: "@fc/lib@workspace:packages/lib"
@@ -12095,10 +12101,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "api@workspace:apps/api"
   dependencies:
-    "@react-email/components": "npm:0.0.21"
-    "@react-email/font": "npm:0.0.6"
-    "@react-email/render": "npm:0.0.16"
-    "@react-email/tailwind": "npm:0.0.18"
     "@strapi/plugin-i18n": "npm:^4.25.2"
     "@strapi/plugin-sentry": "npm:^4.25.2"
     "@strapi/plugin-users-permissions": "npm:^4.25.2"
@@ -12110,7 +12112,6 @@ __metadata:
     pg-connection-string: "npm:^2.6.4"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
-    react-email: "npm:2.1.5"
     react-router-dom: "npm:^5.3.4"
     sharp: "npm:^0.33.4"
     strapi-plugin-import-export-entries: "npm:^1.23.1"
@@ -17428,6 +17429,10 @@ __metadata:
     "@fc/ui": "npm:*"
     "@hookform/resolvers": "npm:^3.7.0"
     "@playwright/test": "npm:^1.45.1"
+    "@react-email/components": "npm:0.0.21"
+    "@react-email/font": "npm:0.0.6"
+    "@react-email/render": "npm:0.0.16"
+    "@react-email/tailwind": "npm:0.0.18"
     "@sentry/nextjs": "npm:^8.14.0"
     "@sindresorhus/slugify": "npm:^2.2.1"
     "@splidejs/react-splide": "npm:^0.7.12"
@@ -17509,6 +17514,7 @@ __metadata:
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-dropzone: "npm:^14.2.3"
+    react-email: "npm:2.1.5"
     react-headroom: "npm:^3.2.1"
     react-hook-form: "npm:7.52.1"
     react-hook-form-persist: "npm:^3.0.0"

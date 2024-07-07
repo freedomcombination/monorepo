@@ -1,5 +1,6 @@
-import { Button, ButtonProps } from '@react-email/components'
 import React, { FC } from 'react'
+
+import { Button, ButtonProps } from '@react-email/components'
 
 export const EmailButton: FC<ButtonProps> = props => {
   return (
