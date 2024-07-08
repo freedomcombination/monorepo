@@ -34,7 +34,7 @@
     "@fc/types": "*",
     "@fc/ui": "*",
     "@hookform/resolvers": "^3.7.0",
-    "@sentry/nextjs": "^8.14.0",
+    "@sentry/nextjs": "^8.15.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@splidejs/react-splide": "^0.7.12",
     "@tanstack/react-query": "^5.49.2",
