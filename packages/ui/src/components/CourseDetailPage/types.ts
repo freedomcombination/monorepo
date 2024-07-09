@@ -14,11 +14,11 @@ export type CourseDetailPageProps = {
 }
 
 export type CourseInfoProps = {
-  course: Course
+  //  course: Course
 }
 
 export type CourseFaqsProps = {
-  faqs: FaqLocale[]
+  //  faqs: FaqLocale[]
 }
 
 export type CourseFaqItemProps = {
@@ -37,5 +37,6 @@ export type ApplicationFormFields = InferType<
 >
 
 export type CourseApplicationFormProps = {
-  courseId: number
+  //  courseId: number
+  //  onSuccess: () => void
 }
