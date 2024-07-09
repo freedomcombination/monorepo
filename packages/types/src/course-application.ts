@@ -1,5 +1,6 @@
 import { ApprovalStatus } from './common'
 import { Course } from './course'
+import { Profile } from './profile'
 import { StrapiBase } from './strapi'
 
 type CourseApplicationBase = {
@@ -12,17 +13,20 @@ type CourseApplicationBase = {
   hasPaid: boolean | null
   approvalStatus: ApprovalStatus
   notes: string | null
+  paymentExplanation: string | null
 }
 
 type CourseApplicationRelation = {
   course?: Course
+  profile?: Profile
 }
 
 export type CourseApplicationCreateInput = Omit<
   CourseApplicationBase,
-  'hasPaid' | 'approvalStatus' | 'notes'
+  'hasPaid' | 'approvalStatus' | 'notes' | 'paymentExplanation'
 > & {
   course: number
+  profile: number
   notes?: string
 }
 

@@ -46,6 +46,14 @@
     },
     "notes": {
       "type": "text"
+    },
+    "paymentExplanation": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::profile.profile"
     }
   }
 }

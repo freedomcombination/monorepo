@@ -5,10 +5,14 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { SITE_URL } from '@fc/config'
+import { useAuthContext } from '@fc/context'
+import { useStrapiRequest } from '@fc/services'
+import { CourseApplication } from '@fc/types'
 
-import { CourseApplicationForm } from './CourseApplicationForm'
+import { CourseContext } from './CourseContext'
 import { CourseFaqs } from './CourseFaqs'
 import { CourseInfo } from './CourseInfo'
+import { CourseRegister } from './CourseRegister'
 import { CourseDetailPageProps } from './types'
 import { Container } from '../Container'
 import { Markdown } from '../Markdown'
@@ -21,75 +25,93 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
   source,
 }) => {
   const { locale, asPath } = useRouter()
-
+  const { isLoading, profile } = useAuthContext()
   const { t } = useTranslation()
+  const {
+    data,
+    isLoading: isLoadingApplications,
+    refetch,
+  } = useStrapiRequest<CourseApplication>({
+    endpoint: 'course-applications',
+    filters: {
+      course: { id: { $eq: course.id } },
+    },
+  })
+
+  const applications = data?.data || []
+  const myApplication = applications.find(
+    application => application?.profile?.id === profile?.id,
+  )
+  const paidApplications = applications.filter(
+    application =>
+      application?.hasPaid || // all applicants who have paid
+      // OR
+      (application?.paymentExplanation && // who have an explanation
+        application?.approvalStatus !== 'rejected'), // and who have not been rejected by admin
+  )
 
   const title = course[`title_${locale || 'nl'}`]
   const description = course[`description_${locale || 'nl'}`]
-
   const URL = `${SITE_URL}/${locale}${asPath}`
 
   return (
     <Container maxW={'6xl'}>
-      <Stack spacing={12} pb={16} pt={4}>
-        <Stack spacing={4}>
-          <WImage ratio={16 / 9} src={course.image} alt="" />
+      <CourseContext.Provider
+        value={{
+          course,
+          applications: data?.data || [],
+          myApplication,
+          paidApplications,
+          isLoading: isLoading || isLoadingApplications,
+          refetchApplicants: refetch,
+        }}
+      >
+        <Stack spacing={12} pb={16} pt={4}>
+          <Stack spacing={4}>
+            <WImage ratio={16 / 9} src={course.image} alt="" />
 
-          <Stack
-            justify={'space-between'}
-            flexDir={{ base: 'column', md: 'row' }}
-          >
-            <CourseInfo course={course} />
+            <Stack
+              justify={'space-between'}
+              flexDir={{ base: 'column', md: 'row' }}
+            >
+              <CourseInfo />
 
-            <ShareButtons
-              size={'md'}
-              title={title}
-              quote={description}
-              url={URL}
-            />
+              <ShareButtons
+                size={'md'}
+                title={title}
+                quote={description}
+                url={URL}
+              />
+            </Stack>
           </Stack>
-        </Stack>
 
-        <Heading as={'h1'} size={'2xl'} textAlign={'center'} py={8}>
-          {title}
-        </Heading>
-
-        <Box>
-          <Markdown source={source} />
-        </Box>
-
-        <Stack
-          spacing={8}
-          maxW={'3xl'}
-          w={'full'}
-          p={8}
-          borderWidth={1}
-          rounded={'md'}
-          alignSelf={'center'}
-          bg={'white'}
-        >
-          <Heading as={'h3'} size={'lg'}>
-            {t('course.application-title')}
+          <Heading as={'h1'} size={'2xl'} textAlign={'center'} py={8}>
+            {title}
           </Heading>
-          <CourseApplicationForm courseId={course.id} />
-        </Stack>
 
-        <Stack spacing={4}>
-          <Heading as={'h3'} size={'lg'}>
-            {t('faq')}
-          </Heading>
-          <CourseFaqs faqs={course.faqs || []} />
-        </Stack>
+          <Box>
+            <Markdown source={source} />
+          </Box>
 
-        {courses?.length > 0 && (
+          <CourseRegister />
+
           <Stack spacing={4}>
             <Heading as={'h3'} size={'lg'}>
-              {t('course.other-courses')}
+              {t('faq')}
             </Heading>
-            {/* TODO: Add courses grid */}
+            <CourseFaqs />
           </Stack>
-        )}
-      </Stack>
+
+          {courses?.length > 0 && (
+            <Stack spacing={4}>
+              <Heading as={'h3'} size={'lg'}>
+                {t('course.other-courses')}
+              </Heading>
+              {/* TODO: Add courses grid */}
+            </Stack>
+          )}
+        </Stack>
+      </CourseContext.Provider>
     </Container>
   )
 }
