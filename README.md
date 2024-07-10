@@ -41,29 +41,29 @@ You need to have a running [PostgreSQL](https://www.postgresql.org/download/) se
 ### Start Project
 
 ```bash
-yarn install
+bun install
 # Start all apps
-yarn dev
+bun dev
 
 # Start Individual App
-yarn dashboard
-yarn foundation
-yarn kunsthalte
-yarn trend-rights
-yarn storybook
+bun dashboard
+bun foundation
+bun kunsthalte
+bun trend-rights
+bun storybook
 # The backend (api) will always be accessible via localhost:1337 for dev mode.
 ```
 
 ### Scripts
 
 ```bash
-yarn lint # Checks lint issues
-yarn clean # Deletes node_module and build folders
-yarn format # Formats all files
+pnpm lint # Checks lint issues
+pnpm clean # Deletes node_module and build folders
+pnpm format # Formats all files
 ```
 
 ### Install Packages
 
 ```bash
-yarn add -W <package-name>
+pnpm add -W <package-name>
 ```

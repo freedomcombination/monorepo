@@ -16,7 +16,7 @@
     "build": "strapi build",
     "build:dev": "strapi build",
     "strapi": "strapi",
-    "generate-types": "npm run strapi ts:generate-types --debug",
+    "generate-types": "strapi ts:generate-types --debug",
     "db": "./scripts/prepare.sh",
     "docker-up": "docker compose up --remove-orphans",
     "docker-db": "docker exec -i strapiDB bash < ./scripts/docker-db-update.sh",
@@ -44,7 +44,7 @@
     "sharp": "^0.33.4",
     "strapi-plugin-import-export-entries": "^1.23.1",
     "strapi-plugin-transformer": "^3.1.2",
-    "styled-components": "^5.2.1",
+    "styled-components": "^5.3.11",
     "web-push": "^3.6.7"
   },
   "author": {
@@ -54,7 +54,7 @@
     "uuid": "dc6c040c-fd40-4612-8858-c117ed320ff6"
   },
   "engines": {
-    "node": ">=14.19.1 <=18.x.x",
+    "node": ">=14.19.1 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

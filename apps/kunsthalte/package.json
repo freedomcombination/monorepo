@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "dotenv -e ../../.env.local next dev -- -p 3002",
+    "dev": "dotenv -e ../../.env.local bun run next dev -- -p 3002",
     "dev:test": "dotenv -e ../../.env.test next dev -- -p 3002",
-    "kunsthalte": "dotenv -e ../../.env.local next dev -- -p 3002",
+    "kunsthalte": "dotenv -e ../../.env.local bun run next dev -- -p 3002",
     "build": "next build",
     "build:dev": "next build",
     "start": "next start",
