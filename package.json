@@ -18,7 +18,7 @@
     "storybook-build": "turbo run storybook-build",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "kill-ports": "kill-port 3000 3001 3002 3003 3004 1337",
-    "test": "bun kill-ports && playwright test",
+    "test": "bun kill-ports && bun run playwright test",
     "tsc": "turbo run tsc --concurrency=20",
     "copy-locales": "cp -R packages/ui/public/locales/* apps/kunsthalte/public/locales && cp -R packages/ui/public/locales/* apps/foundation/public/locales && cp -R packages/ui/public/locales/* apps/trend-rights/public/locales && cp -R packages/ui/public/locales/* apps/lotus/public/locales  && cp -R packages/ui/public/locales/* apps/dashboard/public/locales",
     "add-word": "apps/api/scripts/add-i18.sh"
