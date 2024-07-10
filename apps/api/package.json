@@ -57,5 +57,6 @@
     "node": ">=14.19.1 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "bun@1.1.18"
 }
