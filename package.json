@@ -5,7 +5,7 @@
     "build": "turbo run build --filter=!api",
     "build:dev": "turbo run build:dev",
     "dev": "dotenv -- turbo run dev --concurrency=20",
-    "dev:test": "yarn kill-ports && dotenv -- turbo run dev:test --concurrency=20",
+    "dev:test": "bun kill-ports && dotenv -- turbo run dev:test --concurrency=20",
     "dashboard": "turbo run dashboard --concurrency=20",
     "foundation": "turbo run foundation --concurrency=20",
     "kunsthalte": "turbo run kunsthalte --concurrency=20",
@@ -16,9 +16,9 @@
     "clean": "turbo run clean && rm -rf node_modules .next .turbo",
     "storybook": "turbo run storybook --concurrency=20",
     "storybook-build": "turbo run storybook-build",
-    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "format": "bun run --bun prettier --write \"**/*.{ts,tsx,md,json}\"",
     "kill-ports": "kill-port 3000 3001 3002 3003 3004 1337",
-    "test": "yarn kill-ports && playwright test",
+    "test": "bun kill-ports && bun run playwright test",
     "tsc": "turbo run tsc --concurrency=20",
     "copy-locales": "cp -R packages/ui/public/locales/* apps/kunsthalte/public/locales && cp -R packages/ui/public/locales/* apps/foundation/public/locales && cp -R packages/ui/public/locales/* apps/trend-rights/public/locales && cp -R packages/ui/public/locales/* apps/lotus/public/locales  && cp -R packages/ui/public/locales/* apps/dashboard/public/locales",
     "add-word": "apps/api/scripts/add-i18.sh"
@@ -154,7 +154,7 @@
     "typescript": "5.4.5",
     "webpack": "^5.92.1"
   },
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "bun@1.1.18",
   "workspaces": [
     "apps/*",
     "packages/*"
