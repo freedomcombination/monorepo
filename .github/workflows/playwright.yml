@@ -21,9 +21,9 @@ jobs:
       #     time: '10m'
       - name: Prepare testing env
         uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: lts/*
+          bun-version: latest
       - run: bun install --immutable
       - run: npx playwright install --with-deps
       - name: Run tests
