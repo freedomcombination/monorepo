@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "dotenv -e ../../.env.local bun run next dev -- -p 3000",
+    "dev:next": "dotenv -e ../../.env.local next dev -- -p 3000",
+    "dev": "bun --bun dev:next",
     "dev:test": "dotenv -e ../../.env.test next dev -- -p 3000",
-    "dashboard": "dotenv -e ../../.env.local bun run next dev -- -p 3000",
-    "build": "next build",
-    "build:dev": "next build",
-    "start": "next start",
+    "dashboard": "bun run dev",
+    "build:next": "next build",
+    "build": "bun --bun run build:next",
+    "build:dev": "bun --bun next build",
+    "start:next": "next start",
+    "start": "bun --bun run start:next",
     "clean": "rm -rf node_modules .turbo .next",
-    "lint": "next lint",
+    "lint": "bun --bun next lint",
     "tsc": "npx tsc --noEmit"
   }
 }
