@@ -29,7 +29,11 @@ type CourseApplicationRelation = {
 
 export type CourseApplicationCreateInput = Omit<
   CourseApplicationBase,
-  'hasPaid' | 'approvalStatus' | 'notes'
+  | 'hasPaid'
+  | 'approvalStatus'
+  | 'notes'
+  | 'installmentCount'
+  | 'paymentExplanation'
 > & {
   course: number
   profile: number
