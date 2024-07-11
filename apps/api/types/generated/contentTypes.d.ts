@@ -1958,6 +1958,12 @@ export interface ApiCourseApplicationCourseApplication
       'oneToOne',
       'api::profile.profile'
     >
+    installmentCount: Attribute.Integer
+    payments: Attribute.Relation<
+      'api::course-application.course-application',
+      'oneToMany',
+      'api::payment.payment'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2423,6 +2429,7 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
     singularName: 'payment'
     pluralName: 'payments'
     displayName: 'Payment'
+    description: ''
   }
   options: {
     draftAndPublish: false
@@ -2438,6 +2445,11 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
     status: Attribute.String
     checkoutSessionId: Attribute.String
     email: Attribute.Email
+    courseApplication: Attribute.Relation<
+      'api::payment.payment',
+      'manyToOne',
+      'api::course-application.course-application'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

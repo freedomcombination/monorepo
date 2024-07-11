@@ -4,7 +4,8 @@
   "info": {
     "singularName": "payment",
     "pluralName": "payments",
-    "displayName": "Payment"
+    "displayName": "Payment",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -30,6 +31,12 @@
     },
     "email": {
       "type": "email"
+    },
+    "courseApplication": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::course-application.course-application",
+      "inversedBy": "payments"
     }
   }
 }

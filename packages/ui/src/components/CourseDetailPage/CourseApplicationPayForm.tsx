@@ -10,37 +10,72 @@ import {
   Stack,
   Text,
   Textarea,
+  useToast,
   VStack,
 } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { MdOutlinePayment, MdOutlineSend } from 'react-icons/md'
 
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
-import { CourseApplication } from '@fc/types'
+import { CourseApplicationUnpaid } from '@fc/types'
 
 import { useCourseContext } from './CourseContext'
 
 const EXPLANATION_LIMIT = 30
 
 export const CourseApplicationPayForm: FC = () => {
-  const { token } = useAuthContext()
+  const { token, profile } = useAuthContext()
   const { course, refetchApplicants, myApplication } = useCourseContext()
   const application = myApplication!
   const [payOnline, setPayOnline] = useState(true)
   const [payExplanation, setPayExplanation] = useState('')
   const { t } = useTranslation()
+  const [isFetching, setIsFetching] = useState(false)
+  const toast = useToast()
   const amount = course.price
   const onRadioChange = (value: string) => {
     setPayOnline(value === 'pay-online')
   }
 
-  const onCheckOut = () => {}
+  const onCheckOut = async () => {
+    if (profile === null || token === null) return
+    setIsFetching(true)
+    const fetchAsync = async () => {
+      try {
+        const result = await axios.post('/api/payment', {
+          amount,
+          name: application.name,
+          email: application.email,
+          type: 'one-time',
+          profile: profile.id,
+          courseApplication: application.id,
+          slug: course.slug,
+          isCoursePayment: true,
+          token,
+        })
+
+        window.location = result.data
+      } catch (e) {
+        console.error('request course payment error', e)
+        toast({
+          title: t('payment.dialog.unknown.title'),
+          description: t('payment.dialog.unknown.description'),
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        })
+      }
+    }
+
+    fetchAsync().finally(() => setIsFetching(false))
+  }
 
   const { mutate } = useMutation({
     mutationKey: ['course-send-info'],
-    mutationFn: (data: CourseApplication) =>
+    mutationFn: (data: CourseApplicationUnpaid) =>
       Mutation.put(
         'course-applications',
         application.id,
@@ -48,11 +83,10 @@ export const CourseApplicationPayForm: FC = () => {
         token as string,
       ),
   })
-
   const onSendInfo = () => {
     mutate({
       paymentExplanation: payExplanation,
-    } as CourseApplication),
+    }),
       {
         onSettled: () => {
           refetchApplicants()
@@ -109,9 +143,10 @@ export const CourseApplicationPayForm: FC = () => {
             </Stack>
 
             <Button
-              isDisabled={!amount}
+              isDisabled={!amount || !profile} // wait until profile is loaded
               leftIcon={<MdOutlinePayment />}
               onClick={onCheckOut}
+              isLoading={isFetching}
               colorScheme="primary"
             >
               {t('course.application-check-out')}

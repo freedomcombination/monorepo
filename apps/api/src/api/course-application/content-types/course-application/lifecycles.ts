@@ -24,7 +24,7 @@ export default {
           filters: {
             role: {
               type: {
-                $in: ['admin'], // who else we must send ??
+                $in: ['admin', 'academyeditor'],
               },
             },
           },
