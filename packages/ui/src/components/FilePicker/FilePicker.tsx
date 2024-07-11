@@ -1,43 +1,43 @@
-import { FC, useEffect, useId, useMemo } from 'react'
+import { FC, useEffect, useId, useMemo, useState } from 'react'
 
-import { Stack } from '@chakra-ui/react'
+import { Box, Button, Center, Text, VStack } from '@chakra-ui/react'
 import Compressor from '@uppy/compressor'
 import Uppy from '@uppy/core'
 import ImageEditor from '@uppy/image-editor'
 import { Dashboard } from '@uppy/react'
+import { FaUpload } from 'react-icons/fa6'
 
-import '@uppy/core/dist/style.css'
-import '@uppy/dashboard/dist/style.css'
-import '@uppy/image-editor/dist/style.min.css'
 import { FilePickerProps } from './types'
 
-const getUppy = () =>
-  new Uppy({
-    meta: { type: 'avatar' },
-    autoProceed: true,
-  })
-    .use(Compressor, {
-      id: 'Compressor',
-      quality: 0.9,
-      limit: 2,
-    })
-    .use(ImageEditor)
+import '@uppy/image-editor/dist/style.min.css'
 
-export const FilePicker: FC<FilePickerProps> = ({
+const FilePicker: FC<FilePickerProps> = ({
+  children,
+  height = 250,
   maxNumberOfFiles,
   onLoaded,
-  allowedFileTypes = ['image/*', 'video/*'],
+  allowedFileTypes = ['image/*'],
   autoOpen = 'imageEditor',
   ...props
 }) => {
-  const uppy = useMemo(() => getUppy(), [])
+  const [images, setImages] = useState<File[]>([])
 
-  uppy.on('complete', result => {
-    const files = result.successful.map(file => file.data)
-    const previews = result.successful.map(file => file.preview)
+  const id = useId()
 
-    onLoaded(files as File[], previews as string[])
-  })
+  const uppy = useMemo(
+    () =>
+      new Uppy({
+        meta: { type: 'avatar' },
+        autoProceed: true,
+      })
+        .use(Compressor, {
+          id: 'Compressor',
+          quality: 0.9,
+          limit: 2,
+        })
+        .use(ImageEditor),
+    [id],
+  )
 
   useEffect(() => {
     uppy.setOptions({
@@ -48,18 +48,135 @@ export const FilePicker: FC<FilePickerProps> = ({
     })
   }, [maxNumberOfFiles, allowedFileTypes, uppy])
 
+  useEffect(() => {
+    uppy.getFiles().forEach(file => {
+      uppy.removeFile(file.id)
+    })
+  }, [uppy])
+
+  uppy.on('preprocess-complete', file => {
+    if (!file?.data) return
+
+    onLoaded([file.data as File], file.preview ? [file.preview] : [])
+  })
+
+  uppy.on('files-added', result => {
+    const files = result.map(file => file.data as File)
+    setImages([...images, ...files])
+  })
+
+  uppy.on('cancel-all', () => {
+    onLoaded([], [])
+    setImages([])
+  })
+
+  uppy.on('file-removed', (file, reason) => {
+    if (reason === 'removed-by-user') {
+      const files = images.filter(
+        image => (image as File).name !== (file.data as File).name,
+      )
+      setImages(files)
+      onLoaded(files, [])
+    }
+  })
+
+  const showDashboard = images.length ? true : false
+
+  const onTrigger = () => {
+    // Trigger file input
+    const input = document.querySelector(
+      '.uppy-Dashboard-input',
+    ) as HTMLInputElement
+
+    if (images?.length === 0) {
+      input?.click()
+    }
+  }
+
   return (
-    <Stack>
+    <Button
+      colorScheme="blackAlpha"
+      variant={'outline'}
+      borderStyle={'dashed'}
+      color={'gray.700'}
+      onClick={onTrigger}
+      sx={{
+        '.uppy-Root': {
+          opacity: showDashboard ? 1 : 0,
+          h: 250,
+        },
+        '.uppy-Container': {
+          w: 'full',
+        },
+        '.uppy-Dashboard-overlay': {
+          display: 'none',
+        },
+        '.uppy-ImageCropper-controls': {
+          h: 'auto',
+        },
+        '.uppy-Dashboard': {
+          h: 'full',
+        },
+        '.uppy-ImageCropper-container': {
+          display: 'flex',
+          justifyContent: 'center',
+        },
+        '.uppy-Dashboard-inner': {
+          w: 'full !important',
+          h: showDashboard ? `100% !important` : '250px !important',
+        },
+        '.uppy-Dashboard-AddFiles-title,.uppy-Dashboard-progressindicators': {
+          display: 'none',
+        },
+        '.uppy-DashboardTab': {
+          h: 'full',
+        },
+        '.uppy-DashboardTab-btn': {
+          pos: 'absolute',
+          top: 0,
+          left: 0,
+          boxSize: 'full',
+          justifyContent: 'center',
+        },
+      }}
+      w="full"
+      h={showDashboard ? 'auto' : height}
+      border={1}
+      rounded={'lg'}
+      pos={'relative'}
+    >
+      {!showDashboard &&
+        (children || (
+          <Center
+            borderWidth={2}
+            rounded={'lg'}
+            borderStyle={'dashed'}
+            pos="absolute"
+            top={0}
+            left={0}
+            boxSize={'full'}
+          >
+            <VStack flex={1} p={4} textAlign={'center'}>
+              <Box as={FaUpload} boxSize={12} />
+              <Text fontSize={'2xl'} fontWeight={600}>
+                Upload
+              </Text>
+            </VStack>
+          </Center>
+        ))}
+
       <Dashboard
-        id={useId()}
-        width="100%"
-        height={300}
+        id={id}
+        width={'100%'}
+        style={{ height: 250 }}
         uppy={uppy}
         hideUploadButton
         showSelectedFiles
         autoOpen={autoOpen}
         {...props}
       />
-    </Stack>
+    </Button>
   )
 }
+
+export default FilePicker
