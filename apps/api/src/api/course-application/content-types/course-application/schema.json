@@ -54,6 +54,15 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::profile.profile"
+    },
+    "installmentCount": {
+      "type": "integer"
+    },
+    "payments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment.payment",
+      "mappedBy": "courseApplication"
     }
   }
 }

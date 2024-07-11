@@ -42,13 +42,47 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
   const myApplication = applications.find(
     application => application?.profile?.id === profile?.id,
   )
-  const paidApplications = applications.filter(
-    application =>
-      application?.hasPaid || // all applicants who have paid
-      // OR
-      (application?.paymentExplanation && // who have an explanation
-        application?.approvalStatus !== 'rejected'), // and who have not been rejected by admin
-  )
+  const paidApplications = applications.filter(application => {
+    // Step - 1
+    // hasPaid : if user pay by hand
+    if (application?.hasPaid) return true
+
+    // Step - 2
+    // payments : if user pay by stripe
+    const payments = application?.payments || []
+    if (payments.length > 0) {
+      const anyValidPayment = payments.some(
+        /*
+           we don't care if the payment fully made, 
+           only looking if there is any valid payment
+           in case there is a installment...
+          */
+        payment => payment?.status === 'paid',
+      )
+      if (anyValidPayment) return true
+    }
+
+    // Step - 3
+    /*
+        there is another case,
+        if user ask for installment and admin accept it
+        so that means application.installmentCount bigger then 0
+        but user has not paid any installment yet.
+        if this case is valid un-comment the next line
+      */
+    // if (application.installmentCount && application.installmentCount > 0) return true
+
+    // Step - 4
+    // paymentExplanation : if user has an explanation
+    if (
+      application?.paymentExplanation && // user inform an explanation about the payment
+      application?.approvalStatus !== 'rejected' // and has not been rejected by admin
+      // this case can be end up with installment payment which ll be handled in step 2 or 3
+    )
+      return true
+
+    return false
+  })
 
   const title = course[`title_${locale || 'nl'}`]
   const description = course[`description_${locale || 'nl'}`]

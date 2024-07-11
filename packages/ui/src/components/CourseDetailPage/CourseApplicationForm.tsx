@@ -92,7 +92,6 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = () => {
             defaultValue={profile.country || ''}
             register={register}
             errors={errors}
-            hideLabel
           />
 
           <FormItem
@@ -100,7 +99,6 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = () => {
             autoComplete="city"
             register={register}
             errors={errors}
-            hideLabel
           />
           <FormItem
             name="phone"
@@ -108,7 +106,6 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = () => {
             defaultValue={profile.phone || ''}
             register={register}
             errors={errors}
-            hideLabel
           />
 
           <Box gridColumn={{ lg: 'span 2' }}>
@@ -117,7 +114,6 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = () => {
               name="message"
               register={register}
               errors={errors}
-              hideLabel
               label={t('motivation') as string}
             />
           </Box>

@@ -10,7 +10,7 @@ import {
   Heading,
   AlertTitle,
 } from '@chakra-ui/react'
-import { isAfter } from 'date-fns/isAfter'
+import { isPast } from 'date-fns/isPast'
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context'
@@ -44,7 +44,7 @@ export const CourseRegister = () => {
   }
 
   if (courseLastRegisterDate) {
-    const isRegisterPast = isAfter(courseLastRegisterDate, new Date())
+    const isRegisterPast = isPast(courseLastRegisterDate)
     if (isRegisterPast) {
       return (
         <Alert status={'info'} variant="subtle" {...(style as AlertProps)}>
