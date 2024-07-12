@@ -19,7 +19,6 @@ for (const site of sitesWithLogin) {
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
 
-
     await page.waitForURL(homePage.url, { timeout: TEST_TIMEOUT })    // Timeout 10 secon
     await expect(page).toHaveURL(homePage.url) // Bu satır, 'page' nesnesinin mevcut URL'sinin 'homePage.url' ile eşleşip eşleşmediğini kontrol eder ve bu işlemin tamamlanmasını bekler.
     // Eğer URL eşleşmezse, test başarısız olur ve bir hata fırlatılır.
