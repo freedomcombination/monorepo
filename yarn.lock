@@ -11160,16 +11160,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/image-editor@npm:^2.4.6":
-  version: 2.4.6
-  resolution: "@uppy/image-editor@npm:2.4.6"
+"@uppy/image-editor@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@uppy/image-editor@npm:3.0.0"
   dependencies:
-    "@uppy/utils": "npm:^5.9.0"
+    "@uppy/utils": "npm:^6.0.0"
     cropperjs: "npm:1.5.7"
     preact: "npm:^10.5.13"
   peerDependencies:
-    "@uppy/core": ^3.11.3
-  checksum: 10/ae585046e1a3bcb9d7bde7d2a4020a85a849f48a82afd3d8f948ee92fd405483493664ed29820c8f3089bea94a6bfc3f4cada4f52283e0cfbc2cf2bd2acb12bd
+    "@uppy/core": ^4.0.0
+  checksum: 10/9bf033481d85c4d3021cf67428d75e9f33af5f87a0f2da4019a056ce6ade4073ac8a84f9b36ac335b5a559cdbb09a0131f43224d0d52b371f5dfb083d4f935ec
   languageName: node
   linkType: hard
 
@@ -11295,6 +11295,16 @@ __metadata:
     lodash: "npm:^4.17.21"
     preact: "npm:^10.5.13"
   checksum: 10/049cdcc75435014e98b419143eb25a79ee6d1500963ffcf11f9c751719d8310dde2f10660bd36d40de80bdfb951367fa58a5db5394a95d17aa421c412a3a525d
+  languageName: node
+  linkType: hard
+
+"@uppy/utils@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@uppy/utils@npm:6.0.0"
+  dependencies:
+    lodash: "npm:^4.17.21"
+    preact: "npm:^10.5.13"
+  checksum: 10/5145b9ba81cd367029347b6d40ab419fe0a7e6b79780a18e72e312c486762e3d3f68d5ca11a3612e7b9aba390a45559ec7c8892ac0f21b5178e29d906aa7bd7a
   languageName: node
   linkType: hard
 
@@ -17424,7 +17434,7 @@ __metadata:
     "@uppy/dashboard": "npm:^3.9.1"
     "@uppy/drag-drop": "npm:^3.1.1"
     "@uppy/file-input": "npm:^3.1.2"
-    "@uppy/image-editor": "npm:^2.4.6"
+    "@uppy/image-editor": "npm:^3.0.0"
     "@uppy/progress-bar": "npm:^3.1.1"
     "@uppy/react": "npm:^3.4.0"
     "@uppy/url": "npm:^3.6.1"
