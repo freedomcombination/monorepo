@@ -7512,7 +7512,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/nextjs@npm:^8.17.0":
+"@sentry/nextjs@npm:^8.16.0":
   version: 8.17.0
   resolution: "@sentry/nextjs@npm:8.17.0"
   dependencies:
@@ -9700,7 +9700,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.51.1":
+"@tanstack/react-query-devtools@npm:^5.50.1":
   version: 5.51.1
   resolution: "@tanstack/react-query-devtools@npm:5.51.1"
   dependencies:
@@ -9712,7 +9712,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.51.1":
+"@tanstack/react-query@npm:^5.50.1":
   version: 5.51.1
   resolution: "@tanstack/react-query@npm:5.51.1"
   dependencies:
@@ -11766,9 +11766,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.2.23":
-  version: 3.2.23
-  resolution: "ai@npm:3.2.23"
+"ai@npm:^3.2.19":
+  version: 3.2.24
+  resolution: "ai@npm:3.2.24"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.12"
     "@ai-sdk/provider-utils": "npm:1.0.2"
@@ -11799,7 +11799,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/ceb01b75f7a2940032ba78da05fced43ce7a99336635615ad9f9e034f1533c7840740ae894d07f9011eff8670bea4a9f317e7a7afcf25c3af0739c78961daa2d
+  checksum: 10/56fa2a046831007b699101a979fdb76186ee040e73e81c9fe75f37ab6aa630d05d7b3ccd1b324a4b2a17dd42891c387cf7d6faf2f52f810814608f2e82fb7bc4
   languageName: node
   linkType: hard
 
@@ -16515,7 +16515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^14.2.5":
+"eslint-config-next@npm:^14.2.4":
   version: 14.2.5
   resolution: "eslint-config-next@npm:14.2.5"
   dependencies:
@@ -16685,36 +16685,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:7.34.4":
-  version: 7.34.4
-  resolution: "eslint-plugin-react@npm:7.34.4"
-  dependencies:
-    array-includes: "npm:^3.1.8"
-    array.prototype.findlast: "npm:^1.2.5"
-    array.prototype.flatmap: "npm:^1.3.2"
-    array.prototype.toreversed: "npm:^1.1.2"
-    array.prototype.tosorted: "npm:^1.1.4"
-    doctrine: "npm:^2.1.0"
-    es-iterator-helpers: "npm:^1.0.19"
-    estraverse: "npm:^5.3.0"
-    hasown: "npm:^2.0.2"
-    jsx-ast-utils: "npm:^2.4.1 || ^3.0.0"
-    minimatch: "npm:^3.1.2"
-    object.entries: "npm:^1.1.8"
-    object.fromentries: "npm:^2.0.8"
-    object.values: "npm:^1.2.0"
-    prop-types: "npm:^15.8.1"
-    resolve: "npm:^2.0.0-next.5"
-    semver: "npm:^6.3.1"
-    string.prototype.matchall: "npm:^4.0.11"
-    string.prototype.repeat: "npm:^1.0.0"
-  peerDependencies:
-    eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
-  checksum: 10/9ad948a109bcb5b1f2f3a8099fa9eab3bee3eb996786f783d1f17208f44c8e3dcbc4f9dab84aa70062c03a053a48a333ca03fee21d406d5732291d204e43d9ca
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-react@npm:^7.33.2":
+"eslint-plugin-react@npm:7.34.3, eslint-plugin-react@npm:^7.33.2":
   version: 7.34.3
   resolution: "eslint-plugin-react@npm:7.34.3"
   dependencies:
@@ -17392,7 +17363,7 @@ __metadata:
     "@fc/ui": "npm:*"
     "@hookform/resolvers": "npm:^3.9.0"
     "@playwright/test": "npm:^1.45.1"
-    "@sentry/nextjs": "npm:^8.17.0"
+    "@sentry/nextjs": "npm:^8.16.0"
     "@sindresorhus/slugify": "npm:^2.2.1"
     "@splidejs/react-splide": "npm:^0.7.12"
     "@storybook/addon-essentials": "npm:^7.6.20"
@@ -17402,8 +17373,8 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.20"
     "@storybook/react": "npm:^7.6.20"
     "@storybook/types": "npm:^7.6.20"
-    "@tanstack/react-query": "npm:^5.51.1"
-    "@tanstack/react-query-devtools": "npm:^5.51.1"
+    "@tanstack/react-query": "npm:^5.50.1"
+    "@tanstack/react-query-devtools": "npm:^5.50.1"
     "@testing-library/react": "npm:^16.0.0"
     "@turbo/gen": "npm:^2.0.6"
     "@types/file-saver": "npm:^2.0.7"
@@ -17432,7 +17403,7 @@ __metadata:
     "@vercel/edge-config": "npm:^1.2.0"
     "@vercel/kv": "npm:^2.0.0"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.2.23"
+    ai: "npm:^3.2.19"
     axios: "npm:^1.7.2"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:4.9.1"
@@ -17441,13 +17412,13 @@ __metadata:
     date-fns-tz: "npm:^3.1.3"
     dotenv-cli: "npm:^7.4.2"
     eslint: "npm:^8.57.0"
-    eslint-config-next: "npm:^14.2.5"
+    eslint-config-next: "npm:^14.2.4"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-config-turbo: "npm:^2.0.6"
-    eslint-plugin-react: "npm:7.34.4"
+    eslint-plugin-react: "npm:7.34.3"
     file-saver: "npm:^2.0.5"
-    framer-motion: "npm:11.3.2"
-    i18next: "npm:^23.12.1"
+    framer-motion: "npm:11.2.14"
+    i18next: "npm:^23.11.5"
     i18next-browser-languagedetector: "npm:^7.2.1"
     i18next-http-backend: "npm:^2.5.2"
     iron-session: "npm:^8.0.2"
@@ -17458,17 +17429,17 @@ __metadata:
     lodash: "npm:^4.17.21"
     lorem-ipsum: "npm:^2.0.8"
     nanoid: "npm:^5.0.7"
-    next: "npm:^14.2.5"
+    next: "npm:^14.2.4"
     next-i18next: "npm:^15.3.0"
     next-mdx-remote: "npm:^5.0.0"
     next-recaptcha-v3: "npm:^1.4.1"
     next-seo: "npm:^6.5.0"
     next-share: "npm:^0.27.0"
-    openai: "npm:^4.52.7"
+    openai: "npm:^4.52.4"
     os-browserify: "npm:^0.3.0"
     path-browserify: "npm:^1.0.1"
     pluralize: "npm:^8.0.0"
-    prettier: "npm:^3.3.3"
+    prettier: "npm:^3.3.2"
     qs: "npm:^6.12.3"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
@@ -17478,7 +17449,7 @@ __metadata:
     react-hook-form-persist: "npm:^3.0.0"
     react-i18next: "npm:^14.1.2"
     react-icons: "npm:^5.2.1"
-    react-intersection-observer: "npm:^9.13.0"
+    react-intersection-observer: "npm:^9.10.3"
     react-markdown: "npm:^9.0.1"
     react-markdown-editor-lite: "npm:^1.3.4"
     react-masonry-css: "npm:^1.0.16"
@@ -17487,7 +17458,7 @@ __metadata:
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.15"
     react-use: "npm:^17.5.0"
-    react-virtuoso: "npm:^4.7.12"
+    react-virtuoso: "npm:^4.7.11"
     recharts: "npm:^2.12.7"
     remove-markdown: "npm:^0.5.0"
     storybook: "npm:^7.6.20"
@@ -17496,15 +17467,15 @@ __metadata:
     stripe: "npm:^16.2.0"
     tesseract.js: "npm:^5.1.0"
     turbo: "npm:^2.0.6"
-    twitter-api-v2: "npm:^1.17.2"
+    twitter-api-v2: "npm:^1.17.1"
     twitter-text: "npm:^3.1.0"
     type-fest: "npm:^4.21.0"
     typescript: "npm:5.4.5"
     usehooks-ts: "npm:^3.1.0"
     web-push: "npm:^3.6.7"
-    webpack: "npm:^5.93.0"
+    webpack: "npm:^5.92.1"
     yup: "npm:^1.4.0"
-    yup-locales: "npm:^1.2.25"
+    yup-locales: "npm:^1.2.24"
     zod: "npm:^3.23.8"
   languageName: unknown
   linkType: soft
@@ -18000,9 +17971,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:11.3.2":
-  version: 11.3.2
-  resolution: "framer-motion@npm:11.3.2"
+"framer-motion@npm:11.2.14":
+  version: 11.2.14
+  resolution: "framer-motion@npm:11.2.14"
   dependencies:
     tslib: "npm:^2.4.0"
   peerDependencies:
@@ -18016,7 +17987,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/81303fc53fe436cbaeb4727bf8be6755b14e3f5c35b4b37cb1e4801b78e654dc41f19df05b9ff1a610b7fe3daa093dfff4c83e2ce3a8d24429bef4d9c7b7102a
+  checksum: 10/741ad03761780fe6103c02f39bc86addba6900a4f395f94b06361285adc7bcb1c6bc21eb88b791a1ce303b4ededb29c5c262e9d86e3afd27915dedc3673a0842
   languageName: node
   linkType: hard
 
@@ -19401,7 +19372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^23.12.1":
+"i18next@npm:^23.11.5":
   version: 23.12.1
   resolution: "i18next@npm:23.12.1"
   dependencies:
@@ -23671,7 +23642,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^14.2.5":
+"next@npm:^14.2.4":
   version: 14.2.5
   resolution: "next@npm:14.2.5"
   dependencies:
@@ -24427,7 +24398,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openai@npm:^4.52.7":
+"openai@npm:^4.52.4":
   version: 4.52.7
   resolution: "openai@npm:4.52.7"
   dependencies:
@@ -25762,7 +25733,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.3.3":
+"prettier@npm:^3.3.2":
   version: 3.3.3
   resolution: "prettier@npm:3.3.3"
   bin:
@@ -26524,7 +26495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intersection-observer@npm:^9.13.0":
+"react-intersection-observer@npm:^9.10.3":
   version: 9.13.0
   resolution: "react-intersection-observer@npm:9.13.0"
   peerDependencies:
@@ -26998,7 +26969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-virtuoso@npm:^4.7.12":
+"react-virtuoso@npm:^4.7.11":
   version: 4.7.12
   resolution: "react-virtuoso@npm:4.7.12"
   peerDependencies:
@@ -29300,16 +29271,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string.prototype.repeat@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "string.prototype.repeat@npm:1.0.0"
-  dependencies:
-    define-properties: "npm:^1.1.3"
-    es-abstract: "npm:^1.17.5"
-  checksum: 10/4b1bd91b75fa8fdf0541625184ebe80e445a465ce4253c19c3bccd633898005dadae0f74b85ae72662a53aafb8035bf48f8f5c0755aec09bc106a7f13959d05e
-  languageName: node
-  linkType: hard
-
 "string.prototype.trim@npm:^1.2.9":
   version: 1.2.9
   resolution: "string.prototype.trim@npm:1.2.9"
@@ -30532,7 +30493,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"twitter-api-v2@npm:^1.17.2":
+"twitter-api-v2@npm:^1.17.1":
   version: 1.17.2
   resolution: "twitter-api-v2@npm:1.17.2"
   checksum: 10/79b72b8c8c396aa6f3dbf9399dfefd3587b11b82271bb82d2978d64a56bccfea43adb7700c2a241c81ffc9219841a1dc0329a00494a69e73ac270fbb8c10f623
@@ -31763,7 +31724,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.93.0":
+"webpack@npm:^5.92.1":
   version: 5.93.0
   resolution: "webpack@npm:5.93.0"
   dependencies:
@@ -32535,7 +32496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yup-locales@npm:^1.2.25":
+"yup-locales@npm:^1.2.24":
   version: 1.2.25
   resolution: "yup-locales@npm:1.2.25"
   checksum: 10/a5b6dd1873e579b6329a6a750a0da6c3758415bbcf68919b7d83c45a066dc8dcce5278ae0411a74bffec72cf9e37822cfc22075be8087006f229c235568c54b1
