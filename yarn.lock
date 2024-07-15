@@ -9074,7 +9074,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/plugin-i18n@npm:^4.25.3":
+"@strapi/plugin-i18n@npm:^4.25.2":
   version: 4.25.3
   resolution: "@strapi/plugin-i18n@npm:4.25.3"
   dependencies:
@@ -9103,7 +9103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/plugin-sentry@npm:^4.25.3":
+"@strapi/plugin-sentry@npm:^4.25.2":
   version: 4.25.3
   resolution: "@strapi/plugin-sentry@npm:4.25.3"
   dependencies:
@@ -9161,7 +9161,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/plugin-users-permissions@npm:^4.25.3":
+"@strapi/plugin-users-permissions@npm:^4.25.2":
   version: 4.25.3
   resolution: "@strapi/plugin-users-permissions@npm:4.25.3"
   dependencies:
@@ -9202,7 +9202,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/provider-email-nodemailer@npm:^4.25.3":
+"@strapi/provider-email-nodemailer@npm:^4.25.2":
   version: 4.25.3
   resolution: "@strapi/provider-email-nodemailer@npm:4.25.3"
   dependencies:
@@ -9232,7 +9232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/strapi@npm:4.25.3, @strapi/strapi@npm:^4.25.3":
+"@strapi/strapi@npm:4.25.3, @strapi/strapi@npm:^4.25.2":
   version: 4.25.3
   resolution: "@strapi/strapi@npm:4.25.3"
   dependencies:
@@ -12034,11 +12034,11 @@ __metadata:
     "@react-email/font": "npm:0.0.6"
     "@react-email/render": "npm:0.0.16"
     "@react-email/tailwind": "npm:0.0.18"
-    "@strapi/plugin-i18n": "npm:^4.25.3"
-    "@strapi/plugin-sentry": "npm:^4.25.3"
-    "@strapi/plugin-users-permissions": "npm:^4.25.3"
-    "@strapi/provider-email-nodemailer": "npm:^4.25.3"
-    "@strapi/strapi": "npm:^4.25.3"
+    "@strapi/plugin-i18n": "npm:^4.25.2"
+    "@strapi/plugin-sentry": "npm:^4.25.2"
+    "@strapi/plugin-users-permissions": "npm:^4.25.2"
+    "@strapi/provider-email-nodemailer": "npm:^4.25.2"
+    "@strapi/strapi": "npm:^4.25.2"
     apify-client: "npm:^2.9.4"
     cheerio: "npm:^1.0.0-rc.12"
     pg: "npm:^8.12.0"
