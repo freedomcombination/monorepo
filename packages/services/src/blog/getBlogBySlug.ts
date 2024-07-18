@@ -1,21 +1,17 @@
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import { useRouter } from 'next/router'
 
-import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
+import { strapiRequest } from '@fc/lib'
 import { Blog } from '@fc/types'
 
-export const getBlogBySlug = async (
-  slug: string,
-  token: string | null,
-): Promise<Blog> => {
-  const slugUrl = `${API_URL}/api/blogs/${slug}`
-  const blogResponse = await axios.get<Blog>(slugUrl, {
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
+export const getBlogBySlug = async (slug: string, token: string | null) => {
+  return strapiRequest<Blog>({
+    endpoint: 'blogs',
+    // Blog findOne endpoint can accept either an id or a slug
+    id: slug as unknown as number,
+    ...(token && { token }),
   })
-
-  return blogResponse.data
 }
 
 export const useGetBlogSlug = () => {
