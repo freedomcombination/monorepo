@@ -39,7 +39,7 @@ export default factories.createCoreController('api::blog.blog', () => {
 
       const sanitizedBlog = await this.sanitizeOutput(blog, ctx)
 
-      return sanitizedBlog
+      return { data: sanitizedBlog, meta: {} }
     },
     async find(ctx) {
       const response = await super.find(ctx)
