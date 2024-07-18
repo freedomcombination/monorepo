@@ -67,5 +67,22 @@ export default factories.createCoreController('api::blog.blog', () => {
       response.data = data
       return response
     },
+    async create(ctx) {
+      const result = await super.create(ctx)
+
+      const role = ctx.state?.user?.role?.type
+
+      if (role?.includes('author')) {
+        const profile = await getProfile()
+
+        await strapi.entityService.update('api::blog.blog', result.data.id, {
+          data: {
+            author: profile.id,
+          },
+        })
+      }
+
+      return result
+    },
   }
 })
