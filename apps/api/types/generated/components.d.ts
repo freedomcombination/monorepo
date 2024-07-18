@@ -13,24 +13,6 @@ export interface FlowFlow extends Schema.Component {
   }
 }
 
-export interface CourseCurriculum extends Schema.Component {
-  collectionName: 'components_course_curricula'
-  info: {
-    displayName: 'CurriculumItem'
-    description: ''
-  }
-  attributes: {
-    title_en: Attribute.String
-    title_tr: Attribute.String
-    title_nl: Attribute.String
-    description_en: Attribute.Text
-    description_nl: Attribute.Text
-    description_tr: Attribute.Text
-    instructor: Attribute.String
-    date: Attribute.DateTime
-  }
-}
-
 export interface ContactContact extends Schema.Component {
   collectionName: 'components_contact_contacts'
   info: {
@@ -49,6 +31,24 @@ export interface ContactContact extends Schema.Component {
     instagram: Attribute.String
     twitter: Attribute.String
     linkedin: Attribute.String
+  }
+}
+
+export interface CourseCurriculum extends Schema.Component {
+  collectionName: 'components_course_curricula'
+  info: {
+    displayName: 'CurriculumItem'
+    description: ''
+  }
+  attributes: {
+    title_en: Attribute.String
+    title_tr: Attribute.String
+    title_nl: Attribute.String
+    description_en: Attribute.Text
+    description_nl: Attribute.Text
+    description_tr: Attribute.Text
+    instructor: Attribute.String
+    date: Attribute.DateTime
   }
 }
 
@@ -72,8 +72,8 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'flow.flow': FlowFlow
-      'course.curriculum': CourseCurriculum
       'contact.contact': ContactContact
+      'course.curriculum': CourseCurriculum
       'faq.faq': FaqFaq
     }
   }
