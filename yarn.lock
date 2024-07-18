@@ -17418,7 +17418,7 @@ __metadata:
     eslint-plugin-react: "npm:7.34.3"
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:11.2.14"
-    i18next: "npm:^23.11.5"
+    i18next: "npm:^23.12.1"
     i18next-browser-languagedetector: "npm:^7.2.1"
     i18next-http-backend: "npm:^2.5.2"
     iron-session: "npm:^8.0.2"
@@ -19372,7 +19372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^23.11.5":
+"i18next@npm:^23.12.1":
   version: 23.12.1
   resolution: "i18next@npm:23.12.1"
   dependencies:
