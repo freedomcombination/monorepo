@@ -101,7 +101,7 @@
     "string-similarity": "^4.0.4",
     "stripe": "^16.2.0",
     "tesseract.js": "^5.1.0",
-    "twitter-api-v2": "^1.17.1",
+    "twitter-api-v2": "^1.17.2",
     "twitter-text": "^3.1.0",
     "usehooks-ts": "^3.1.0",
     "web-push": "^3.6.7",

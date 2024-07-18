@@ -17505,7 +17505,7 @@ __metadata:
     stripe: "npm:^16.2.0"
     tesseract.js: "npm:^5.1.0"
     turbo: "npm:^2.0.7"
-    twitter-api-v2: "npm:^1.17.1"
+    twitter-api-v2: "npm:^1.17.2"
     twitter-text: "npm:^3.1.0"
     type-fest: "npm:^4.21.0"
     typescript: "npm:5.4.5"
@@ -30530,7 +30530,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"twitter-api-v2@npm:^1.17.1":
+"twitter-api-v2@npm:^1.17.2":
   version: 1.17.2
   resolution: "twitter-api-v2@npm:1.17.2"
   checksum: 10/79b72b8c8c396aa6f3dbf9399dfefd3587b11b82271bb82d2978d64a56bccfea43adb7700c2a241c81ffc9219841a1dc0329a00494a69e73ac270fbb8c10f623
