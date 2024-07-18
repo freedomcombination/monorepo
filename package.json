@@ -111,7 +111,7 @@
   },
   "devDependencies": {
     "@chakra-ui/storybook-addon": "^5.1.0",
-    "@playwright/test": "^1.45.1",
+    "@playwright/test": "^1.45.2",
     "@storybook/addon-essentials": "^7.6.20",
     "@storybook/builder-webpack5": "^7.6.20",
     "@storybook/core-common": "^7.6.20",
