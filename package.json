@@ -27,7 +27,7 @@
     "@chakra-ui/next-js": "^2.2.0",
     "@chakra-ui/react": "^2.8.2",
     "@ctrl/tinycolor": "^4.1.0",
-    "@ducanh2912/next-pwa": "^10.2.7",
+    "@ducanh2912/next-pwa": "^10.2.8",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fc/config": "*",
