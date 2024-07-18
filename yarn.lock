@@ -17511,7 +17511,7 @@ __metadata:
     typescript: "npm:5.4.5"
     usehooks-ts: "npm:^3.1.0"
     web-push: "npm:^3.6.7"
-    webpack: "npm:^5.92.1"
+    webpack: "npm:^5.93.0"
     yup: "npm:^1.4.0"
     yup-locales: "npm:^1.2.24"
     zod: "npm:^3.23.8"
@@ -31761,7 +31761,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.92.1":
+"webpack@npm:^5.93.0":
   version: 5.93.0
   resolution: "webpack@npm:5.93.0"
   dependencies:
