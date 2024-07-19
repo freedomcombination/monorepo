@@ -13,24 +13,19 @@ export interface FlowFlow extends Schema.Component {
   }
 }
 
-export interface ContactContact extends Schema.Component {
-  collectionName: 'components_contact_contacts'
+export interface FaqFaq extends Schema.Component {
+  collectionName: 'components_faq_faqs'
   info: {
-    displayName: 'Contact'
-    icon: 'phone'
+    displayName: 'FaqLocale'
     description: ''
   }
   attributes: {
-    email: Attribute.Email
-    website: Attribute.String
-    address: Attribute.String
-    city: Attribute.String
-    country: Attribute.String
-    phone: Attribute.String
-    facebook: Attribute.String
-    instagram: Attribute.String
-    twitter: Attribute.String
-    linkedin: Attribute.String
+    question_en: Attribute.String
+    question_tr: Attribute.String
+    question_nl: Attribute.String
+    answer_en: Attribute.Text
+    answer_tr: Attribute.Text
+    answer_nl: Attribute.Text
   }
 }
 
@@ -52,19 +47,24 @@ export interface CourseCurriculum extends Schema.Component {
   }
 }
 
-export interface FaqFaq extends Schema.Component {
-  collectionName: 'components_faq_faqs'
+export interface ContactContact extends Schema.Component {
+  collectionName: 'components_contact_contacts'
   info: {
-    displayName: 'FaqLocale'
+    displayName: 'Contact'
+    icon: 'phone'
     description: ''
   }
   attributes: {
-    question_en: Attribute.String
-    question_tr: Attribute.String
-    question_nl: Attribute.String
-    answer_en: Attribute.Text
-    answer_tr: Attribute.Text
-    answer_nl: Attribute.Text
+    email: Attribute.Email
+    website: Attribute.String
+    address: Attribute.String
+    city: Attribute.String
+    country: Attribute.String
+    phone: Attribute.String
+    facebook: Attribute.String
+    instagram: Attribute.String
+    twitter: Attribute.String
+    linkedin: Attribute.String
   }
 }
 
@@ -72,9 +72,9 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'flow.flow': FlowFlow
-      'contact.contact': ContactContact
-      'course.curriculum': CourseCurriculum
       'faq.faq': FaqFaq
+      'course.curriculum': CourseCurriculum
+      'contact.contact': ContactContact
     }
   }
 }
