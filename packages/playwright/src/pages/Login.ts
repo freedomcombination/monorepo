@@ -6,11 +6,21 @@ export class LoginPage {
   readonly passwordInput: Locator
   readonly submitButton: Locator
 
+  readonly loginButton: Locator
+  readonly userNameInputDashboard: Locator
+  readonly passwordInputDashboard: Locator
+  readonly submitButtonDashboard: Locator
+
   constructor(page: Page) {
     this.page = page
-    this.usernameInput = page.getByTestId('input-email')
-    this.passwordInput = page.getByTestId('input-password')
+    this.usernameInput = page.locator('#identifier')
+    this.passwordInput = page.locator('#password')
     this.submitButton = page.getByTestId('button-submit-login')
+
+    this.loginButton = page.locator('.chakra-button.css-4jg19q')
+    this.userNameInputDashboard = page.locator('#identifier')
+    this.passwordInputDashboard = page.locator('#password')
+    this.submitButtonDashboard = page.locator('.chakra-button.css-1f0k6xd')
   }
 
   async fillUsername(username: string) {
@@ -31,5 +41,26 @@ export class LoginPage {
     await this.fillUsername(username)
     await this.fillPassword(password)
     await this.submit()
+  }
+
+  async fillUsernameDashboard(username: string) {
+    await this.userNameInputDashboard.click()
+    await this.userNameInputDashboard.fill(username)
+  }
+
+  async fillPasswordDashboard(password: string) {
+    await this.passwordInputDashboard.click()
+    await this.passwordInputDashboard.fill(password)
+  }
+
+  async signIn() {
+    await this.submitButtonDashboard.click()
+  }
+
+  async loginDashboard(username: string, password: string) {
+    await this.loginButton.click()
+    await this.fillUsernameDashboard(username)
+    await this.fillPasswordDashboard(password)
+    await this.signIn()
   }
 }

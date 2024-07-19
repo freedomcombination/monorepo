@@ -9,9 +9,11 @@ export class HomePage {
   readonly page: Page
   readonly loginLink: Locator
   readonly site: Site
+  readonly ArtsButton: Locator
 
   constructor(page: Page, site: Site) {
     this.page = page
+    this.ArtsButton = page.getByRole('link', { name: 'Arts' }).first()
     this.loginLink = page.getByRole('link', { name: 'Sign in' })
     this.site = site
   }
@@ -23,5 +25,8 @@ export class HomePage {
   async gotoLogin() {
     await this.loginLink.click({ timeout: TEST_TIMEOUT })
     expect(this.page).toHaveURL(`${this.url}/auth/login?returnUrl=/`)
+  }
+  async clickArtsMenu() {
+    await this.ArtsButton.click()
   }
 }
