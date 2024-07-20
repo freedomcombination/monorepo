@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en'
 import { expect, test } from '@playwright/test'
 
-import { PASSWORD, USERNAME } from '../constants'
+import { ADMIN_USERNAME, PASSWORD, USERNAME } from '../constants'
 import { HomePage, LoginPage } from '../pages'
 import { ArtsPage } from '../pages/Arts'
 import { DashboardArtsPage } from '../pages/Dashboard'
@@ -151,7 +151,7 @@ test.describe('Upload Arts', () => {
     await page.goto(getVercelUrl('dashboard'), {
       waitUntil: 'domcontentloaded',
     })
-    await loginPage.loginDashboard('admin', 'Test?123')
+    await loginPage.loginDashboard(ADMIN_USERNAME, PASSWORD)
 
     await dashboardPage.clickArtsMenu()
     await dashboardPage.clickPendingArtsMenu()
