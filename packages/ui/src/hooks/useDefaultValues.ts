@@ -9,6 +9,7 @@ import {
   Art,
   Asset,
   AssetsTracking,
+  Blog,
   Course,
   CourseApplication,
   FormFields,
@@ -31,6 +32,7 @@ export const useDefaultValues = <T extends StrapiModel>(
   const artModel = model as Art
   const assetModel = model as Asset
   const assetTrackingModel = model as AssetsTracking
+  const blogModel = model as Blog
   const courseModel = model as Course
   const hashtagModel = model as Hashtag
   const platformModel = model as Platform
@@ -162,6 +164,13 @@ export const useDefaultValues = <T extends StrapiModel>(
           defaults.user = {
             label: profileModel.user?.email,
             value: profileModel.user?.id.toString(),
+          }
+          break
+
+        case 'author':
+          defaults.author = {
+            label: blogModel.author?.name,
+            value: blogModel?.id.toString(),
           }
           break
 
