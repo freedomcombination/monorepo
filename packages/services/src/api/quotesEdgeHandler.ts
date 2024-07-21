@@ -1,7 +1,7 @@
 import { kv } from '@vercel/kv'
 import { NextRequest, NextResponse } from 'next/server'
 
-export const quotesRouter = async (req: NextRequest) => {
+export const quotesEdgeHandler = async (req: NextRequest) => {
   const method = req.method
 
   try {

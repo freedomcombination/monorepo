@@ -1,3 +1,3 @@
-import { resetPasswordRouter } from '@fc/services/src/api/reset-password'
+import { resetPasswordHandler } from '@fc/services/src/api/resetPasswordHandler'
 
-export default resetPasswordRouter
+export default resetPasswordHandler

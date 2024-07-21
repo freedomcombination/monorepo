@@ -13,7 +13,7 @@ const paths = [
   'M45 675H55L55 8.74228e-07L45 0C15.021 168.507 0.0209643 252.819 2.18987e-05 337.135C-0.0209205 421.569 14.9791 506.007 45 675Z',
 ]
 
-export const ogRouter = async (req: NextRequest) => {
+export const ogEdgeHandler = async (req: NextRequest) => {
   const params = new URLSearchParams(req.nextUrl.search)
   const title = params.get('title')
   const text = params.get('text')

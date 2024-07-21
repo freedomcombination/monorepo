@@ -3,7 +3,7 @@ import Stripe from 'stripe'
 
 import { donationWebhook } from '@fc/stripe'
 
-export const paymentStatusRouter: NextApiHandler = async (req, res) => {
+export const donationStatusHandler: NextApiHandler = async (req, res) => {
   try {
     const event: Stripe.Event = req.body
     if (!event) {

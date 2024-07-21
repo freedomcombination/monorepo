@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-export const imagesRouter = async (req: NextRequest) => {
+export const imageStreamEdgeHandler = async (req: NextRequest) => {
   const params = new URLSearchParams(req.nextUrl.search)
   const url = params.get('url') || ''
 

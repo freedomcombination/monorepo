@@ -8,7 +8,7 @@ import { sessionOptions } from '@fc/secrets'
 import { getSessionUser } from '@fc/services'
 import { Auth, Profile } from '@fc/types'
 
-export const resetPasswordRouter: NextApiHandler = async (req, res) => {
+export const resetPasswordHandler: NextApiHandler = async (req, res) => {
   try {
     const response = await axios.post('api/auth/reset-password', req.body, {
       baseURL: API_URL,
