@@ -7,7 +7,7 @@ import { Donation, DonationCreateInput } from '@fc/types'
 
 import { stripe } from '../initStripe'
 
-export const createCheckout = async (
+export const createDonationCheckout = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {

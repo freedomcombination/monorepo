@@ -5,25 +5,11 @@ import { sessionOptions } from '@fc/secrets'
 import { loginAuth } from '@fc/services'
 import { Auth } from '@fc/types'
 
-export const adminLoginRouter: NextApiHandler = async (req, res) => {
+export const loginHandler: NextApiHandler = async (req, res) => {
   const { identifier, password } = req.body
 
   try {
     const { profile, ...auth } = await loginAuth(identifier, password)
-
-    if (auth.user?.roles.includes('authenticated')) {
-      return res.status(401).json({
-        message: `You are not allowed to login!`,
-        type: 'unauthorized',
-      })
-    }
-
-    if (!profile) {
-      return res.status(404).json({
-        message: `Profile not found`,
-        type: 'not_found',
-      })
-    }
 
     const session = await getIronSession<Auth>(req, res, sessionOptions)
 

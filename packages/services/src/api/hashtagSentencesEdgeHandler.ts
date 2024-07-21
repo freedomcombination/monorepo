@@ -7,7 +7,7 @@ const handleError = (error: any) => {
   })
 }
 
-export const hashtagSentencesRouter = {
+export const hashtagSentencesEdgeHandler = {
   async GET(req: NextRequest) {
     try {
       const hashtagId = req.nextUrl.searchParams.get('hashtagId')?.toString()

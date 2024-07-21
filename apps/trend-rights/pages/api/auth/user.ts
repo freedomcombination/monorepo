@@ -1,11 +1,11 @@
 import { NextApiHandler } from 'next'
 
-import { userRouter } from '@fc/services/src/api/user'
+import { userHandler } from '@fc/services/src/api/userHandler'
 
 export const trendRightsUserRouter: NextApiHandler = async (req, res) => {
   req.query.platform = 'trend-rights'
 
-  return userRouter(req, res)
+  return userHandler(req, res)
 }
 
 export default trendRightsUserRouter
