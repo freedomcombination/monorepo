@@ -45,7 +45,7 @@ export const CourseApplicationPayForm: FC = () => {
     setIsFetching(true)
     const fetchAsync = async () => {
       try {
-        const result = await axios.post('/api/payment', {
+        const result = await axios.post('/api/course-payment', {
           amount,
           name: application.name,
           email: application.email,
@@ -53,7 +53,6 @@ export const CourseApplicationPayForm: FC = () => {
           profile: profile.id,
           courseApplication: application.id,
           slug: course.slug,
-          isCoursePayment: true,
           token,
         })
 

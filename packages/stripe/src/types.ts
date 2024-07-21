@@ -1,4 +1,4 @@
-export type MetaDataType = 'course' | 'donate'
+export type MetaDataType = 'course' | 'donation'
 
 // for error checking
 export type StripeMetaData = {

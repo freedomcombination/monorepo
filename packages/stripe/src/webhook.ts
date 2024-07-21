@@ -8,58 +8,7 @@ import {
   StrapiEndpoint,
 } from '@fc/types'
 
-import { MetaDataType } from '../types'
-
-export const donationWebhook = async (event: any) => {
-  /*
-  export const config = {
-    api: {
-      bodyParser: false,
-    },
-  };
-
-  const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-  TODO Next.js, 
-  by default, *parses incoming data as JSON*. However, 
-  Stripe Webhook data needs to be received in *raw* format; 
-  otherwise, the constructEvent function will fail. 
-  Therefore, when using constructEvent, 
-  you need to receive the webhook data in raw format.
-
-  const buf = await buffer(req);
-  const sig = req.headers['stripe-signature'] as string;
-
-  let event: Stripe.Event;
-
-  try { 
-    TODO ChatGPT strongly advise to use this method to verify the signature.
-    event = stripe.webhooks.constructEvent(buf, sig, process.env.STRIPE_WEBHOOK_SECRET!);
-  } catch (err) {
-    console.log(`⚠️  Webhook signature verification failed.`);
-    return res.status(400).send(`Webhook Error: ${err.message}`);
-  }
-    await donationWebhook(event);
-    res.status(200).json({ received: true });
-  };  
-  */
-
-  // check the checkout session status, if it's paid then update the donation status
-
-  if (event?.data?.object?.object === 'checkout.session') {
-    const session = event.data.object
-
-    const status = session.payment_status
-    const checkoutSessionId = session.id
-    const donationId = Number(session.success_url.split('&')[1].slice(3))
-    const type: MetaDataType = session.metadata.type
-
-    if (type === 'donate')
-      return handleDonation(status, checkoutSessionId, donationId)
-
-    if (type === 'course')
-      return handleCoursePayment(status, checkoutSessionId, donationId)
-  }
-}
+import { MetaDataType } from './types'
 
 const handleCoursePayment = async (
   status: string,
@@ -104,5 +53,56 @@ const handleDonation = async (
       {},
       getSecret('TOKEN'),
     )
+  }
+}
+
+export const donationWebhook = async (event: any) => {
+  /*
+  export const config = {
+    api: {
+      bodyParser: false,
+    },
+  };
+
+  const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+  TODO Next.js, 
+  by default, *parses incoming data as JSON*. However, 
+  Stripe Webhook data needs to be received in *raw* format; 
+  otherwise, the constructEvent function will fail. 
+  Therefore, when using constructEvent, 
+  you need to receive the webhook data in raw format.
+
+  const buf = await buffer(req);
+  const sig = req.headers['stripe-signature'] as string;
+
+  let event: Stripe.Event;
+
+  try { 
+    TODO ChatGPT strongly advise to use this method to verify the signature.
+    event = stripe.webhooks.constructEvent(buf, sig, process.env.STRIPE_WEBHOOK_SECRET!);
+  } catch (err) {
+    console.log(`⚠️  Webhook signature verification failed.`);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+    await donationWebhook(event);
+    res.status(200).json({ received: true });
+  };  
+  */
+
+  // check the checkout session status, if it's paid then update the donation status
+
+  if (event?.data?.object?.object === 'checkout.session') {
+    const session = event.data.object
+
+    const status = session.payment_status
+    const checkoutSessionId = session.id
+    const donationId = Number(session.success_url.split('&')[1].slice(3))
+    const type: MetaDataType = session.metadata.type
+
+    if (type === 'donation')
+      return handleDonation(status, checkoutSessionId, donationId)
+
+    if (type === 'course')
+      return handleCoursePayment(status, checkoutSessionId, donationId)
   }
 }
