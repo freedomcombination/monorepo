@@ -8,7 +8,7 @@ import { sessionOptions } from '@fc/secrets'
 import { loginAuth } from '@fc/services'
 import { Auth, AuthResponse, ProfileCreateInput } from '@fc/types'
 
-export const registerRouter: NextApiHandler = async (req, res) => {
+export const registerHandler: NextApiHandler = async (req, res) => {
   const { name, username, email, password } = req.body
 
   const trimmedName = name.trim()

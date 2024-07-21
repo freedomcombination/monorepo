@@ -9,7 +9,7 @@ import { createCoursePayment } from '../course-payment/coursePayment'
 import { stripe } from '../initStripe'
 import { StripeMetaData } from '../types'
 
-export const createCheckout = async (
+export const createDonationCheckout = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {

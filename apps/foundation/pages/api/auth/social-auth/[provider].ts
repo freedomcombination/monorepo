@@ -1,3 +1,3 @@
-import { socialAuthRouter } from '@fc/services/src/api/social-auth'
+import { socialAuthHandler } from '@fc/services/src/api/socialAuthHandler'
 
-export default socialAuthRouter
+export default socialAuthHandler

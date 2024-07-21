@@ -1,2 +1,2 @@
-export * from './createCheckout'
+export * from './createDonationCheckout'
 export * from './webhook'

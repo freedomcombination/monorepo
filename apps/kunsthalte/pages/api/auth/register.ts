@@ -1,3 +1,3 @@
-import { registerRouter } from '@fc/services/src/api/register'
+import { registerHandler } from '@fc/services/src/api/registerHandler'
 
-export default registerRouter
+export default registerHandler

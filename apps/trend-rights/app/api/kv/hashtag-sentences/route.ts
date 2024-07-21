@@ -1,21 +1,21 @@
 import { NextRequest } from 'next/server'
 
-import { hashtagSentencesRouter } from '@fc/services/src/api/hashtag-sentences'
+import { hashtagSentencesEdgeHandler } from '@fc/services/src/api/hashtagSentencesEdgeHandler'
 
 export const runtime = 'edge'
 
 export async function GET(req: NextRequest) {
-  return hashtagSentencesRouter.GET(req)
+  return hashtagSentencesEdgeHandler.GET(req)
 }
 
 export async function POST(req: NextRequest) {
-  return hashtagSentencesRouter.POST(req)
+  return hashtagSentencesEdgeHandler.POST(req)
 }
 
 export async function PUT(req: NextRequest) {
-  return hashtagSentencesRouter.PUT(req)
+  return hashtagSentencesEdgeHandler.PUT(req)
 }
 
 export async function DELETE(req: NextRequest) {
-  return hashtagSentencesRouter.DELETE(req)
+  return hashtagSentencesEdgeHandler.DELETE(req)
 }

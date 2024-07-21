@@ -7,7 +7,7 @@ import { sessionOptions } from '@fc/secrets'
 import { getSessionUser } from '@fc/services'
 import { Auth, AuthResponse } from '@fc/types'
 
-export const socialAuthRouter: NextApiHandler = async (req, res) => {
+export const socialAuthHandler: NextApiHandler = async (req, res) => {
   const { provider } = req.query
   if (req.method === 'POST') {
     try {

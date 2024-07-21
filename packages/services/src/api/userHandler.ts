@@ -5,7 +5,7 @@ import { strapiRequest } from '@fc/lib'
 import { sessionOptions } from '@fc/secrets'
 import { Auth, Profile } from '@fc/types'
 
-export const userRouter: NextApiHandler = async (req, res) => {
+export const userHandler: NextApiHandler = async (req, res) => {
   const session = await getIronSession<Auth>(req, res, sessionOptions)
 
   if (session.token) {
