@@ -30,20 +30,27 @@ function useStrapiRequest<T extends StrapiModel>(
   },
 ): UseQueryResult<StrapiCollectionResponse<T[]>>
 
-function useStrapiRequest<T extends StrapiModel>(
-  args: (RequestCollectionArgs<T> | RequestSingleArgs) & {
-    queryOptions?: QueryOptions
-  },
-) {
+function useStrapiRequest<T extends StrapiModel>({
+  queryOptions,
+  ...args
+}: (RequestCollectionArgs<T> | RequestSingleArgs) & {
+  queryOptions?: QueryOptions
+}) {
   const auth = useAuthContext()
   const token = auth?.token as string
 
   return useQuery({
     queryKey: Object.entries(args),
-    queryFn: () =>
-      strapiRequest<T>({ ...args, ...(token && { token }) } as any),
+    queryFn: async () => {
+      const result = await strapiRequest<T>({
+        ...args,
+        ...(token && { token }),
+      } as any)
+
+      return result
+    },
     placeholderData: previousData => previousData,
-    ...args.queryOptions,
+    ...queryOptions,
   })
 }
 
