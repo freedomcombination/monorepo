@@ -4,28 +4,15 @@ import { SITE_URL } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { CoursePayment, CoursePaymentCreateInput } from '@fc/types'
 
-import { stripe } from '../initStripe'
-import { StripeMetaData } from '../types'
+import { stripe } from './initStripe'
+import { StripeMetaData } from './types'
 
-export const createCoursePayment = async (
+export const createCourseCheckout = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
-  const {
-    amount,
-    name,
-    email,
-    type,
-    profile,
-    courseApplication,
-    slug,
-    isCoursePayment,
-    token,
-  } = req.body
-
-  if (!isCoursePayment) {
-    return res.status(400)
-  }
+  const { amount, name, email, type, profile, courseApplication, slug, token } =
+    req.body
 
   const payment = await Mutation.post<CoursePayment, CoursePaymentCreateInput>(
     'payments',
@@ -54,11 +41,11 @@ export const createCoursePayment = async (
     customer.data.length > 0
       ? customer.data[0].id
       : (
-        await stripe.customers.create({
-          email,
-          name,
-        })
-      ).id
+          await stripe.customers.create({
+            email,
+            name,
+          })
+        ).id
 
   const result = await stripe.checkout.sessions.create({
     payment_method_types: ['ideal', 'card'],
