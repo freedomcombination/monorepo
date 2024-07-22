@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en'
 import { expect, test } from '@playwright/test'
 
-import { ADMIN_USERNAME, PASSWORD, USERNAME } from '../constants'
+import { PASSWORD, USERNAME } from '../constants'
 import { HomePage, LoginPage } from '../pages'
 import { ArtsPage } from '../pages/Arts'
 import { DashboardArtsPage } from '../pages/Dashboard'
@@ -16,7 +16,6 @@ test.describe('Upload Arts', () => {
 
     await homePage.clickArtsMenu()
     await artsPage.clickOnTheUploadsArtButton()
-    await page.waitForTimeout(2000)
     expect(artsPage.warning).toContainText(
       'You must be logged in in order to be able to upload an art!',
     )
@@ -151,7 +150,7 @@ test.describe('Upload Arts', () => {
     await page.goto(getVercelUrl('dashboard'), {
       waitUntil: 'domcontentloaded',
     })
-    await loginPage.loginDashboard(ADMIN_USERNAME, PASSWORD)
+    await loginPage.loginDashboard('admin', 'Test?123')
 
     await dashboardPage.clickArtsMenu()
     await dashboardPage.clickPendingArtsMenu()

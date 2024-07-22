@@ -12,11 +12,7 @@ export default factories.createCoreController('api::blog.blog', () => {
       const where = id ? { id: id } : { slug: slug }
 
       const params = await this.sanitizeQuery(ctx)
-      const populate = {
-        author: true,
-        image: true,
-        ...(params.populate as Record<string, boolean>),
-      }
+      const populate = params.populate || { author: true, image: true }
 
       const blog = (await strapi.db.query('api::blog.blog').findOne({
         where,
@@ -41,9 +37,9 @@ export default factories.createCoreController('api::blog.blog', () => {
 
       blog.isLiked = !!isLiked
 
-      // TODO: Remove sensitive author data
+      const sanitizedBlog = await this.sanitizeOutput(blog, ctx)
 
-      return { data: blog, meta: {} }
+      return sanitizedBlog
     },
     async find(ctx) {
       const response = await super.find(ctx)
@@ -70,23 +66,6 @@ export default factories.createCoreController('api::blog.blog', () => {
 
       response.data = data
       return response
-    },
-    async create(ctx) {
-      const result = await super.create(ctx)
-
-      const role = ctx.state?.user?.role?.type
-
-      if (role?.includes('author')) {
-        const profile = await getProfile()
-
-        await strapi.entityService.update('api::blog.blog', result.data.id, {
-          data: {
-            author: profile.id,
-          },
-        })
-      }
-
-      return result
     },
   }
 })

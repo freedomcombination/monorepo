@@ -17,9 +17,7 @@ export const viewBlog = async (blog: Blog, token: string) => {
 export const useViewBlog = () => {
   const { token } = useAuthContext()
 
-  const { data, refetch } = useGetBlogSlug()
-
-  const blog = data?.data
+  const { data: blog, refetch } = useGetBlogSlug()
 
   const [blogStorage, setBlogStorage] = useLocalStorage<number[]>(
     'view-blog',

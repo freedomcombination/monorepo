@@ -22,7 +22,6 @@ export const DocumentContent = () => {
         href="/favicon-16x16.png"
       />
       <link rel="manifest" href="/manifest.json" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
       {/* For app's title to show properly */}
       <meta name="format-detection" content="telephone=no" />
       <meta name="theme-color" content="#ffffff" />

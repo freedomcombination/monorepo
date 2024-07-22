@@ -1,15 +1,11 @@
+import React from 'react'
+
 import * as Sentry from '@sentry/nextjs'
 import { NextPage } from 'next'
 import Error, { ErrorProps } from 'next/error'
 
-import { AdminLayout } from '@fc/ui'
-
 const CustomErrorComponent: NextPage<ErrorProps> = props => {
-  return (
-    <AdminLayout seo={{ title: 'Error' }}>
-      <Error withDarkMode={false} statusCode={props.statusCode} />
-    </AdminLayout>
-  )
+  return <Error statusCode={props.statusCode} />
 }
 
 CustomErrorComponent.getInitialProps = async contextData => {

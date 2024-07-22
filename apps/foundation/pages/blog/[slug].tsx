@@ -54,9 +54,7 @@ export const getServerSideProps = async (
     queryFn: () => getBlogBySlug(slug, token),
   })
 
-  const blogResponse = queryClient.getQueryData<{ data: Blog }>(queryKey)
-
-  const blog = blogResponse?.data
+  const blog = queryClient.getQueryData<Blog>(queryKey)
 
   if (!blog) return { notFound: true }
 
