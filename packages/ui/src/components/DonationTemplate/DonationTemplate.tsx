@@ -87,7 +87,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
     try {
       const { name, email } = data
 
-      const result = await axios.post('/api/payment', {
+      const result = await axios.post('/api/donation', {
         amount,
         name,
         email,
