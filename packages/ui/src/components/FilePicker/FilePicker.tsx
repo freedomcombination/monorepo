@@ -36,6 +36,7 @@ const FilePicker: FC<FilePickerProps> = ({
           limit: 2,
         })
         .use(ImageEditor),
+    // TODO: Investigate why this is needed to prevent uppy from using the same instance
     [id],
   )
 
