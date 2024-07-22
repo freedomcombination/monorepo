@@ -9,7 +9,7 @@ import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale, Term } from '@fc/types'
 import { Container, Hero, Markdown } from '@fc/ui'
 
-import { Layout } from '../../components'
+import { Layout } from '../components'
 
 type TermsProps = InferGetStaticPropsType<typeof getStaticProps>
 
