@@ -24,10 +24,10 @@
     "tsc": "npx tsc --noEmit"
   },
   "dependencies": {
-    "@react-email/components": "0.0.21",
-    "@react-email/font": "0.0.6",
-    "@react-email/render": "0.0.16",
-    "@react-email/tailwind": "0.0.18",
+    "@react-email/components": "0.0.22",
+    "@react-email/font": "0.0.7",
+    "@react-email/render": "0.0.17",
+    "@react-email/tailwind": "0.0.19",
     "@strapi/plugin-i18n": "^4.25.4",
     "@strapi/plugin-sentry": "^4.25.4",
     "@strapi/plugin-users-permissions": "^4.25.4",
@@ -38,7 +38,7 @@
     "pg": "^8.12.0",
     "pg-connection-string": "^2.6.4",
     "react-dom18": "npm:react-dom@^18.3.1",
-    "react-email": "2.1.5",
+    "react-email": "2.1.6",
     "react-router-dom": "^5.3.4",
     "react18": "npm:react@^18.3.1",
     "sharp": "^0.33.4",
