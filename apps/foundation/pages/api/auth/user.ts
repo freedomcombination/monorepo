@@ -1,3 +1,3 @@
-import { userRouter } from '@fc/services/src/api/user'
+import { userHandler } from '@fc/services/src/api/userHandler'
 
-export default userRouter
+export default userHandler

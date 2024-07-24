@@ -1,7 +1,7 @@
-import { imagesRouter } from '@fc/services/src/api/images'
+import { imageStreamEdgeHandler } from '@fc/services/src/api/imageStreamEdgeHandler'
 
 export const config = {
   runtime: 'edge',
 }
 
-export default imagesRouter
+export default imageStreamEdgeHandler

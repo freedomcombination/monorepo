@@ -1,3 +1,3 @@
-import { adminLoginRouter } from '@fc/services/src/api/admin-login'
+import { adminLoginHandler } from '@fc/services/src/api/adminLoginHandler'
 
-export default adminLoginRouter
+export default adminLoginHandler

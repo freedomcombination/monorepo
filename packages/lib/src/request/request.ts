@@ -90,7 +90,7 @@ async function strapiRequest<T extends StrapiModel>(
       ...(hasPublicationState &&
         includeDrafts && { publicationState: 'preview' }),
       populate,
-      ...(sort && { sort }),
+      ...(sort && !id && { sort }),
     },
     { encodeValuesOnly: true },
   )
@@ -122,7 +122,7 @@ async function strapiRequest<T extends StrapiModel>(
         }
 
         return {
-          data: null as unknown as T,
+          data: result as unknown as T,
           meta: { pagination: null },
         } as StrapiSingleResponse<T>
       }
@@ -152,8 +152,9 @@ async function strapiRequest<T extends StrapiModel>(
     }
 
     return result as StrapiCollectionResponse<T[]>
-  } catch (errr) {
-    const error = errr as Error | AxiosError
+  } catch (err) {
+    const error = err as Error | AxiosError
+
     if (axios.isAxiosError(error)) {
       console.error(
         'Request error',
