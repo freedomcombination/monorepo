@@ -4,19 +4,19 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "email": "bunx email dev",
-    "dev": "bun run strapi dev",
-    "dashboard": "bun run strapi dev",
-    "foundation": "bun run strapi dev",
-    "kunsthalte": "bun run strapi dev",
-    "transfer": "bun run strapi transfer --from https://api.freedomcombination.com/admin",
-    "trend-rights": "bun run strapi dev",
-    "lint": "bun run --bun eslint .",
-    "start": "bun run strapi start",
-    "build": "bun run strapi build",
-    "build:dev": "bun run strapi build",
+    "email": "npx email dev",
+    "dev": "strapi dev",
+    "dashboard": "strapi dev",
+    "foundation": "strapi dev",
+    "kunsthalte": "strapi dev",
+    "transfer": "strapi transfer --from https://api.freedomcombination.com/admin",
+    "trend-rights": "strapi dev",
+    "lint": "eslint .",
+    "start": "strapi start",
+    "build": "strapi build",
+    "build:dev": "strapi build",
     "strapi": "strapi",
-    "generate-types": "bun run strapi ts:generate-types --debug",
+    "generate-types": "yarn strapi ts:generate-types --debug",
     "db": "./scripts/prepare.sh",
     "docker-up": "docker compose up --remove-orphans",
     "docker-db": "docker exec -i strapiDB bash < ./scripts/docker-db-update.sh",
@@ -66,5 +66,5 @@
     "npm": ">=6.0.0"
   },
   "license": "MIT",
-  "packageManager": "bun@1.1.18"
+  "packageManager": "yarn@3.1.0"
 }

@@ -38,40 +38,36 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 You need to have a running [PostgreSQL](https://www.postgresql.org/download/) server locally on port 5432
 
-### Install Bun
+### Install yarn
 
-| Platform | Command                                         |
-| -------- | ----------------------------------------------- |
-| Linux    | `curl -fsSL https://bun.sh/install`             |
-| macOS    | `curl -fsSL https://bun.sh/install`             |
-| Windows  | `powershell -c "irm bun.sh/install.ps1 \| iex"` |
+`corepack enable` or `npm i -g yarn`
 
 ### Start Project
 
 ```bash
-bun install
+yarn install
 # Start all apps
-bun run dev
+yarn dev
 
 # Start Individual App
-bun run dashboard
-bun run foundation
-bun run kunsthalte
-bun run trend-rights
-bun run storybook
+yarn dashboard
+yarn foundation
+yarn kunsthalte
+yarn trend-rights
+yarn storybook
 # The backend (api) will always be accessible via localhost:1337 for dev mode.
 ```
 
 ### Scripts
 
 ```bash
-bun run lint # Checks lint issues
-bun run clean # Deletes node_module and build folders
-bun run format # Formats all files
+yarn lint # Checks lint issues
+yarn clean # Deletes node_module and build folders
+yarn format # Formats all files
 ```
 
 ### Install Packages
 
 ```bash
-bun add <package-name>
+yarn add <package-name>
 ```

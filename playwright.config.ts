@@ -27,7 +27,7 @@ export default defineConfig({
       ? undefined
       : [
           {
-            command: 'bun dev:test',
+            command: 'yarn dev:test',
             url: 'http://localhost:3000',
             timeout: 120 * 1000,
             reuseExistingServer: true,

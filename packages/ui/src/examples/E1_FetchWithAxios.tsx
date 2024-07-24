@@ -8,7 +8,7 @@ import { API_URL } from '@fc/config'
 
 // https://wsvv-api-staging.onrender.com/api/blogs?locale=tr
 // You can use local API_URL instead of the above url
-// bun --cwd apps/api dev to run the api locally (http://localhost:1337)
+// yarn --cwd apps/api dev to run the api locally (http://localhost:1337)
 const BLOG_URL = `${API_URL}/api/blogs`
 
 export const FetcWithAxios = () => {

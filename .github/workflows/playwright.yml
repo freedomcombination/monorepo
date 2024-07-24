@@ -21,16 +21,16 @@ jobs:
       #     time: '10m'
       - name: Prepare testing env
         uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
         with:
-          bun-version: latest
-      - run: bun install --immutable
-      - run: bunx playwright install --with-deps
+          node-version: lts/*
+      - run: yarn install --immutable
+      - run: npx playwright install --with-deps
       - name: Run tests
         env:
           TEST_USERNAME: ${{ vars.USERNAME }}
           TEST_PASSWORD: ${{ vars.PASSWORD }}
-        run: bunx playwright test
+        run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: always()
         with:
