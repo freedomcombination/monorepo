@@ -4,6 +4,7 @@ on:
     branches:
       - dev
       - 'test/*'
+      - 'next/*'
 jobs:
   test_e2e:
     name: Test E2E
