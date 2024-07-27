@@ -9,6 +9,8 @@ import { FaUpload } from 'react-icons/fa6'
 
 import { FilePickerProps } from './types'
 
+import '@uppy/core/dist/style.min.css'
+import '@uppy/dashboard/dist/style.min.css'
 import '@uppy/image-editor/dist/style.min.css'
 
 const FilePicker: FC<FilePickerProps> = ({
