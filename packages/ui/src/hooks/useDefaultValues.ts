@@ -80,8 +80,8 @@ export const useDefaultValues = <T extends StrapiModel>(
         case 'mentions':
           defaults.mentions =
             hashtagModel.mentions?.map(m => ({
-              label: m.username,
-              value: m.id.toString(),
+              label: m.username || '',
+              value: m.id.toString() || '',
             })) || []
           break
 
@@ -90,44 +90,44 @@ export const useDefaultValues = <T extends StrapiModel>(
             label: t(
               profileModel.profileStatus as keyof I18nNamespaces['common'],
             ),
-            value: profileModel.profileStatus,
+            value: profileModel.profileStatus || '',
           }
           break
 
         case 'jobs':
           defaults.jobs =
             profileModel.jobs?.map(j => ({
-              label: j[`name_${locale}`],
-              value: j.id.toString(),
+              label: j[`name_${locale}`] || '',
+              value: j.id.toString() || '',
             })) || []
           break
 
         case 'artist':
           defaults.artist = {
-            label: `${artModel.artist?.name} (${artModel.artist?.email})`,
-            value: artModel?.artist?.id.toString(),
+            label: `${artModel.artist?.name} (${artModel.artist?.email})` || '',
+            value: artModel?.artist?.id.toString() || '',
           }
           break
 
         case 'hashtag':
           defaults.hashtag = {
-            label: postModel.hashtag?.title,
-            value: postModel.hashtag?.id.toString(),
+            label: postModel.hashtag?.title || '',
+            value: postModel.hashtag?.id.toString() || '',
           }
           break
 
         case 'platform':
           defaults.platform = {
-            label: courseModel.platform?.[`name_${locale}`],
-            value: courseModel.platform?.id.toString(),
+            label: courseModel.platform?.[`name_${locale}`] || '',
+            value: courseModel.platform?.id.toString() || '',
           }
           break
 
         case 'peopleInCharge':
           defaults.peopleInCharge =
             assetModel?.peopleInCharge?.map(person => ({
-              label: person.name,
-              value: person.id.toString(),
+              label: person.name || person.email || '',
+              value: person.id.toString() || '',
             })) || []
           break
 
@@ -135,73 +135,74 @@ export const useDefaultValues = <T extends StrapiModel>(
           defaults.assignedTo = {
             label:
               assetTrackingModel?.assignedTo?.name ||
-              assetTrackingModel?.assignedTo?.email,
-            value: assetTrackingModel?.assignedTo?.id.toString(),
+              assetTrackingModel?.assignedTo?.email ||
+              '',
+            value: assetTrackingModel?.assignedTo?.id.toString() || '',
           }
           break
 
         case 'asset':
           defaults.asset = {
-            label: assetTrackingModel?.asset?.name,
-            value: assetTrackingModel?.asset?.id.toString(),
+            label: assetTrackingModel?.asset?.name || '',
+            value: assetTrackingModel?.asset?.id.toString() || '',
           }
           break
 
         case 'foundation':
           defaults.foundation = {
-            label: platformModel.foundation?.name,
-            value: platformModel.foundation?.id.toString(),
+            label: platformModel.foundation?.name || '',
+            value: platformModel.foundation?.id.toString() || '',
           }
           break
         case 'course':
           defaults.course = {
-            label: applicationModel.course?.[`title_${locale}`],
-            value: applicationModel.course?.id.toString(),
+            label: applicationModel.course?.[`title_${locale}`] || '',
+            value: applicationModel.course?.id.toString() || '',
           }
           break
 
         case 'user':
           defaults.user = {
-            label: profileModel.user?.email,
-            value: profileModel.user?.id.toString(),
+            label: profileModel.user?.email || '',
+            value: profileModel.user?.id.toString() || '',
           }
           break
 
         case 'author':
           defaults.author = {
-            label: blogModel.author?.name,
-            value: blogModel?.id.toString(),
+            label: blogModel.author?.name || '',
+            value: blogModel?.id?.toString() || '',
           }
           break
 
         case 'role':
           defaults.role = {
             label: userModel?.role?.name || '',
-            value: userModel?.role?.id.toString(),
+            value: userModel?.role?.id.toString() || '',
           }
           break
 
         case 'categories':
           defaults.categories =
             hashtagModel?.categories?.map(c => ({
-              label: c[`name_${locale}`],
-              value: c.id.toString(),
+              label: c[`name_${locale}`] || '',
+              value: c.id.toString() || '',
             })) || []
           break
 
         case 'platforms':
           defaults.platforms =
             activityModel?.platforms?.map(p => ({
-              label: p[`name_${locale}`],
-              value: p.id.toString(),
+              label: p[`name_${locale}`] || '',
+              value: p.id.toString() || '',
             })) || []
           break
 
         case 'tags':
           defaults.tags =
             postModel?.tags?.map(c => ({
-              label: c[`name_${locale}`],
-              value: c.id.toString(),
+              label: c[`name_${locale}`] || '',
+              value: c.id.toString() || '',
             })) || []
           break
         default:
