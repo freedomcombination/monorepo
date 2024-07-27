@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useState } from 'react'
+import { useId, useState } from 'react'
 
 import {
   Box,
@@ -12,77 +12,58 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Spinner,
   Stack,
   Text,
   Tooltip,
   VStack,
   useDisclosure,
 } from '@chakra-ui/react'
-import Compressor from '@uppy/compressor'
-import Uppy from '@uppy/core'
-import ImageEditor from '@uppy/image-editor'
-import { Dashboard as DashboardComponent } from '@uppy/react'
 import { useTranslation } from 'next-i18next'
 import { FaFileUpload, FaSave } from 'react-icons/fa'
 import { FaCity, FaPhone, FaTrash } from 'react-icons/fa6'
 
 import { useAuthContext } from '@fc/context'
-import { Mutation } from '@fc/lib'
-import { Profile, ProfileUpdateInput } from '@fc/types'
+import { useUpdateModelMutation } from '@fc/services'
+import { Profile } from '@fc/types'
 
 import { FormElement } from './FormElement'
+import { FilePicker } from '../FilePicker'
 import { WAvatar } from '../WAvatar'
 
-import '@uppy/core/dist/style.min.css'
-import '@uppy/dashboard/dist/style.min.css'
-import '@uppy/image-editor/dist/style.min.css'
-
 const AvatarForm = () => {
-  const { user, profile, token, checkAuth } = useAuthContext()
+  const { user, profile, checkAuth } = useAuthContext()
   const { t } = useTranslation()
-  const uppy = useMemo(() => getUppy(), [])
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [file, setFile] = useState<File | Blob | null>(null)
-  const [saveProgress, setSaveProgress] = useState<'delete' | 'update' | false>(
-    false,
-  )
-
-  uppy.on('complete', result => {
-    const file = result.successful[0]
-    setFile(file.data)
-  })
-
-  uppy.on('file-editor:complete', file => {
-    setFile(file.data)
-  })
 
   const onCancel = () => {
     setFile(null)
     onClose()
   }
 
-  useEffect(() => {
-    if (!saveProgress || !profile) {
-      return setSaveProgress(false)
+  const { mutate, isPending } = useUpdateModelMutation('profiles')
+
+  const onDeleteOrUpload = async (action: 'delete' | 'upload') => {
+    if (!profile) {
+      return
     }
 
-    Mutation.put<Profile, ProfileUpdateInput>(
-      'profiles',
-      profile.id,
-      { avatar: saveProgress === 'update' ? file : null } as ProfileUpdateInput,
-      token as string,
-    )
-      .then(() => {
-        checkAuth().then(() => {
-          setSaveProgress(false)
-          onClose()
-        })
-      })
-      .catch(e => console.error('Avatar update error', e))
+    const avatar = (action === 'delete' ? null : file) as File
 
-    return () => setSaveProgress(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [saveProgress])
+    mutate(
+      { id: profile.id, avatar },
+      {
+        onSuccess: async () => {
+          await checkAuth()
+          onClose()
+        },
+      },
+    )
+  }
+
+  const onUpload = () => onDeleteOrUpload('upload')
+  const onDelete = async () => onDeleteOrUpload('delete')
 
   const hasAvatar = !!profile?.avatar
   const label = hasAvatar ? t('delete') : t('profile.avatar.upload')
@@ -99,17 +80,9 @@ const AvatarForm = () => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{t('profile.avatar.header')}</ModalHeader>
-          {!saveProgress && <ModalCloseButton />}
+          {!isPending && <ModalCloseButton />}
           <ModalBody>
-            <DashboardComponent
-              id={useId()}
-              width="100%"
-              height={500}
-              uppy={uppy}
-              autoOpen={'imageEditor'}
-              hideUploadButton
-              showSelectedFiles
-            />
+            <FilePicker id={useId()} onLoaded={files => setFile(files?.[0])} />
           </ModalBody>
 
           <ModalFooter>
@@ -117,15 +90,15 @@ const AvatarForm = () => {
               colorScheme="blue"
               mr={3}
               onClick={onCancel}
-              isDisabled={!!saveProgress}
+              isDisabled={isPending}
             >
               {t('close')}
             </Button>
             <Button
               colorScheme="primary"
               isDisabled={!file}
-              isLoading={!!saveProgress}
-              onClick={() => setSaveProgress('update')}
+              isLoading={isPending}
+              onClick={onUpload}
             >
               {t('save')}
             </Button>
@@ -134,11 +107,22 @@ const AvatarForm = () => {
       </Modal>
       <VStack>
         <Box pos={'relative'}>
-          <WAvatar
-            size="2xl"
-            src={profile?.avatar}
-            name={profile?.name || user?.username}
-          />
+          {isPending ? (
+            <Center
+              bg="blackAlpha.300"
+              rounded={'full'}
+              borderWidth={1}
+              boxSize={128}
+            >
+              <Spinner />
+            </Center>
+          ) : (
+            <WAvatar
+              size="2xl"
+              src={profile?.avatar}
+              name={profile?.name || user?.username}
+            />
+          )}
           <Tooltip label={label} placement="top">
             <IconButton
               pos={'absolute'}
@@ -151,7 +135,7 @@ const AvatarForm = () => {
               rounded={'full'}
               onClick={() =>
                 hasAvatar
-                  ? confirm(t('delete.confirm')) && setSaveProgress('delete')
+                  ? confirm(t('delete.confirm')) && onDelete()
                   : onOpen()
               }
               icon={hasAvatar ? <FaTrash /> : <FaFileUpload />}
@@ -164,7 +148,7 @@ const AvatarForm = () => {
 }
 
 export const DetailsTab = () => {
-  const { profile, token, checkAuth } = useAuthContext()
+  const { profile } = useAuthContext()
   const { t } = useTranslation()
   const [details, setDetails] = useState<Profile>({
     name: profile?.name ?? null,
@@ -178,30 +162,6 @@ export const DetailsTab = () => {
   const hasChanged = Object.entries(details).some(
     ([key, value]) => profile?.[key as keyof Profile] !== value,
   )
-
-  useEffect(() => {
-    if (!saving || !profile) {
-      setSaving(false)
-
-      return
-    }
-
-    Mutation.put<Profile, ProfileUpdateInput>(
-      'profiles',
-      profile.id,
-      details as ProfileUpdateInput,
-      token as string,
-    )
-      .then(() => {
-        checkAuth().then(() => {
-          setSaving(false)
-        })
-      })
-      .catch(e => console.error('Details update error', e))
-
-    return () => setSaving(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [saving])
 
   if (!profile) {
     return (
@@ -265,21 +225,4 @@ export const DetailsTab = () => {
       </Button>
     </Stack>
   )
-}
-
-const getUppy = () => {
-  return new Uppy({
-    meta: { type: 'avatar' },
-    autoProceed: true,
-    restrictions: {
-      maxNumberOfFiles: 1,
-      allowedFileTypes: ['image/*'],
-    },
-  })
-    .use(Compressor, {
-      id: 'Compressor',
-      quality: 0.9,
-      limit: 2,
-    })
-    .use(ImageEditor)
 }
