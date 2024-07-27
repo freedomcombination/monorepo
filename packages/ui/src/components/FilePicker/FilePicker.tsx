@@ -73,14 +73,12 @@ const FilePicker: FC<FilePickerProps> = ({
     setImages([])
   })
 
-  uppy.on('file-removed', (file, reason) => {
-    if (reason === 'removed-by-user') {
-      const files = images.filter(
-        image => (image as File).name !== (file.data as File).name,
-      )
-      setImages(files)
-      onLoaded(files, [])
-    }
+  uppy.on('file-removed', file => {
+    const files = images.filter(
+      image => (image as File).name !== (file.data as File).name,
+    )
+    setImages(files)
+    onLoaded(files, [])
   })
 
   const showDashboard = images.length ? true : false
