@@ -9,6 +9,8 @@ import { FaUpload } from 'react-icons/fa6'
 
 import { FilePickerProps } from './types'
 
+import '@uppy/core/dist/style.min.css'
+import '@uppy/dashboard/dist/style.min.css'
 import '@uppy/image-editor/dist/style.min.css'
 
 const FilePicker: FC<FilePickerProps> = ({
@@ -71,14 +73,12 @@ const FilePicker: FC<FilePickerProps> = ({
     setImages([])
   })
 
-  uppy.on('file-removed', (file, reason) => {
-    if (reason === 'removed-by-user') {
-      const files = images.filter(
-        image => (image as File).name !== (file.data as File).name,
-      )
-      setImages(files)
-      onLoaded(files, [])
-    }
+  uppy.on('file-removed', file => {
+    const files = images.filter(
+      image => (image as File).name !== (file.data as File).name,
+    )
+    setImages(files)
+    onLoaded(files, [])
   })
 
   const showDashboard = images.length ? true : false
