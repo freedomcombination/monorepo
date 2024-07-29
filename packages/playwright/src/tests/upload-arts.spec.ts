@@ -109,7 +109,7 @@ test.describe('Upload Arts', () => {
     expect(profilePage.picture).toHaveAttribute('src')
   })
 
-  test('TC05- The uploaded image should be approved from the dashboard', async ({
+  test('TC05- The uploaded image should be approved from the dashboard and it must be seen that it is approved in the profile.', async ({
     page,
   }) => {
     const loginPage = new LoginPage(page)
@@ -148,7 +148,6 @@ test.describe('Upload Arts', () => {
     await page.waitForTimeout(2000)
 
     await profilePage.clickPendingArtsMenu()
-    await page.waitForTimeout(2000)
 
     await page.goto(getVercelUrl('dashboard'), {
       waitUntil: 'domcontentloaded',
@@ -158,11 +157,85 @@ test.describe('Upload Arts', () => {
     await dashboardPage.clickArtsMenu()
     await dashboardPage.clickPendingArtsMenu()
     await dashboardPage.selectUploadedPicture(titlePicture)
-    await dashboardPage.typeComment()
+    await dashboardPage.typeComment('Approved!')
     await dashboardPage.clickApproveButton()
     await dashboardPage.clickApprovedArtsMenu()
 
     await page.getByText(`${titlePicture}`).click()
     await expect(page.locator('.css-dbleiq')).toContainText('Approved')
+
+    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
+    await homePage.gotoLogin()
+    await loginPage.login(USERNAME, PASSWORD)
+
+    await homePage.gotoProfilePage()
+    await profilePage.clickArtsMenu()
+    await profilePage.clickapprovedArtsMenu()
+    await expect(page.getByText(`${titlePicture}`)).toBeVisible()
+  })
+
+  test('TC06- The uploaded image can be rejected from the board and the rejection must be visible on the profile.', async ({
+    page,
+  }) => {
+    const loginPage = new LoginPage(page)
+    const homePage = new HomePage(page, 'kunsthalte')
+    const artsPage = new ArtsPage(page)
+    const profilePage = new ProfilePage(page)
+    const dashboardPage = new DashboardArtsPage(page)
+
+    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
+    await homePage.gotoLogin()
+    await loginPage.login(USERNAME, PASSWORD)
+    await page.waitForTimeout(2000)
+
+    await homePage.clickArtsMenu()
+    await artsPage.clickOnTheUploadsArtButton()
+    await page.waitForTimeout(1000)
+    const filePath = 'apps/kunsthalte/public/arts.jpeg'
+    await artsPage.uploadButton.setInputFiles(filePath)
+    await page.waitForTimeout(1000)
+    await artsPage.saveSelectedFile()
+
+    const titlePicture = faker.internet.userName().toString()
+
+    await artsPage.fillTitle(titlePicture)
+    await artsPage.fillDescription('Description Test')
+    expect(artsPage.submitButton).toBeEnabled()
+
+    await artsPage.submit()
+
+    expect(artsPage.confirmationMessage).toBeVisible()
+
+    await page.waitForTimeout(1000)
+
+    await artsPage.goToMyProfile()
+    await profilePage.clickArtsMenu()
+    await page.waitForTimeout(2000)
+
+    await profilePage.clickPendingArtsMenu()
+
+    await page.goto(getVercelUrl('dashboard'), {
+      waitUntil: 'domcontentloaded',
+    })
+    await loginPage.loginDashboard('admin', 'Test?123')
+
+    await dashboardPage.clickArtsMenu()
+    await dashboardPage.clickPendingArtsMenu()
+    await dashboardPage.selectUploadedPicture(titlePicture)
+    await dashboardPage.typeComment('Rejected')
+    await dashboardPage.clickRejectButton()
+    await dashboardPage.clickRejectedArtsMenu()
+
+    await page.getByText(`${titlePicture}`).click()
+    await expect(page.locator('.css-633qc2')).toContainText('Rejected')
+
+    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
+    await homePage.gotoLogin()
+    await loginPage.login(USERNAME, PASSWORD)
+
+    await homePage.gotoProfilePage()
+    await profilePage.clickArtsMenu()
+    await profilePage.clickRejectedArtsMenu()
+    await expect(page.getByText(`${titlePicture}`)).toBeVisible()
   })
 })

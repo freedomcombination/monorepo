@@ -10,11 +10,16 @@ export class HomePage {
   readonly loginLink: Locator
   readonly site: Site
   readonly ArtsButton: Locator
+  readonly userName: Locator
+  readonly profile: Locator
 
   constructor(page: Page, site: Site) {
     this.page = page
     this.ArtsButton = page.getByRole('link', { name: 'Arts' }).first()
     this.loginLink = page.getByRole('link', { name: 'Sign in' })
+    this.userName = page.getByText('Authenticated User').first()
+    this.profile = page.getByText('Profile').first()
+
     this.site = site
   }
 
@@ -28,5 +33,10 @@ export class HomePage {
   }
   async clickArtsMenu() {
     await this.ArtsButton.click()
+  }
+
+  async gotoProfilePage() {
+    await this.userName.click()
+    await this.profile.click()
   }
 }

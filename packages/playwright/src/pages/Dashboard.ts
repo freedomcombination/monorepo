@@ -1,3 +1,4 @@
+import { th } from '@faker-js/faker'
 import { type Locator, type Page } from '@playwright/test'
 
 export class DashboardArtsPage {
@@ -9,6 +10,8 @@ export class DashboardArtsPage {
   readonly approveButton: Locator
   readonly approveButton2: Locator
   readonly alertCloseButton: Locator
+  readonly rejectButton: Locator
+  readonly rejectedArtsMenu: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -19,6 +22,8 @@ export class DashboardArtsPage {
     this.approveButton = page.locator('.chakra-button.css-11ygba6')
     this.approveButton2 = page.locator('.chakra-button.css-td5lcy')
     this.alertCloseButton = page.locator('.chakra-button.css-1hcn127')
+    this.rejectButton = page.getByText('Reject')
+    this.rejectedArtsMenu = page.locator('[href*="/arts?status=rejected"]')
   }
 
   async clickArtsMenu() {
@@ -38,12 +43,21 @@ export class DashboardArtsPage {
     await this.page.getByText(`${title}`).click()
   }
 
-  async typeComment() {
-    await this.comment.fill('Approved!')
+  async typeComment(comment: string) {
+    await this.comment.fill(comment)
   }
 
   async clickApproveButton() {
     await this.approveButton.click()
     await this.approveButton2.click()
+  }
+
+  async clickRejectButton() {
+    await this.rejectButton.last().click()
+    await this.rejectButton.last().click()
+  }
+
+  async clickRejectedArtsMenu() {
+    await this.rejectedArtsMenu.click()
   }
 }
