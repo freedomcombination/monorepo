@@ -13,7 +13,7 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useSubscribePushNotificationMutation } from '@fc/services'
