@@ -28,7 +28,9 @@ const useLikeBlogMutation = () => {
 
 export const useLikeBlog = () => {
   const [isDisabled, setIsDisabled] = useState(false)
-  const { data: blog, refetch } = useGetBlogSlug()
+  const { data, refetch } = useGetBlogSlug()
+
+  const blog = data?.data
 
   const { profile } = useAuthContext()
 

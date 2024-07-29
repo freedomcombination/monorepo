@@ -11470,9 +11470,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/edge-config@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "@vercel/edge-config@npm:1.2.0"
+"@vercel/edge-config@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@vercel/edge-config@npm:1.2.1"
   dependencies:
     "@vercel/edge-config-fs": "npm:0.1.0"
   peerDependencies:
@@ -11480,7 +11480,7 @@ __metadata:
   peerDependenciesMeta:
     "@opentelemetry/api":
       optional: true
-  checksum: 10/f4ae4f3cc0cabedf404f04efdfc85a066590e5c2eef0226a568bf3dffc2398db10df544390ef2b4b5b89ca7e692c39b78d299bf583cafb6c766f8278a7456288
+  checksum: 10/282d741fb319911cdbc662e0770778615cce5e2d73937dfec542727ecb4983c97cbacd12bebd351f17c340ac80c275215e79f9ee4c3a662c95b59cb3cab2e94a
   languageName: node
   linkType: hard
 
@@ -17559,7 +17559,7 @@ __metadata:
     "@uppy/react": "npm:^4.0.1"
     "@uppy/url": "npm:^4.0.0"
     "@vercel/analytics": "npm:^1.3.1"
-    "@vercel/edge-config": "npm:^1.2.0"
+    "@vercel/edge-config": "npm:^1.2.1"
     "@vercel/kv": "npm:^2.0.0"
     "@vercel/og": "npm:^0.6.2"
     ai: "npm:^3.2.38"
@@ -17612,7 +17612,7 @@ __metadata:
     react-markdown: "npm:^9.0.1"
     react-markdown-editor-lite: "npm:^1.3.4"
     react-masonry-css: "npm:^1.0.16"
-    react-medium-image-zoom: "npm:^5.2.7"
+    react-medium-image-zoom: "npm:^5.2.8"
     react-pageflip: "npm:^2.0.3"
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.15"
@@ -17626,15 +17626,15 @@ __metadata:
     stripe: "npm:^16.5.0"
     tesseract.js: "npm:^5.1.0"
     turbo: "npm:^2.0.9"
-    twitter-api-v2: "npm:^1.17.1"
+    twitter-api-v2: "npm:^1.17.2"
     twitter-text: "npm:^3.1.0"
     type-fest: "npm:^4.23.0"
     typescript: "npm:5.4.5"
     usehooks-ts: "npm:^3.1.0"
     web-push: "npm:^3.6.7"
-    webpack: "npm:^5.92.1"
+    webpack: "npm:^5.93.0"
     yup: "npm:^1.4.0"
-    yup-locales: "npm:^1.2.24"
+    yup-locales: "npm:^1.2.25"
     zod: "npm:^3.23.8"
   languageName: unknown
   linkType: soft
@@ -26750,13 +26750,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-medium-image-zoom@npm:^5.2.7":
-  version: 5.2.7
-  resolution: "react-medium-image-zoom@npm:5.2.7"
+"react-medium-image-zoom@npm:^5.2.8":
+  version: 5.2.8
+  resolution: "react-medium-image-zoom@npm:5.2.8"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/5180c21f3d64b8d30e10e3f1579311779b5d18c378466db3cd7c3ec9179de4cc952f422925f83cea5fb094266f5f3682a9796987cb629532e62531800d19a2dc
+  checksum: 10/fff1ba6ffc2b17f6c8d65f52894957291013e453c9a2ee879df2af6672caf6f403d37519dd03e564161c6fb0e58e268da269223f8fa9e7a12351d9eb9a63c23d
   languageName: node
   linkType: hard
 
@@ -30653,7 +30653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"twitter-api-v2@npm:^1.17.1":
+"twitter-api-v2@npm:^1.17.2":
   version: 1.17.2
   resolution: "twitter-api-v2@npm:1.17.2"
   checksum: 10/79b72b8c8c396aa6f3dbf9399dfefd3587b11b82271bb82d2978d64a56bccfea43adb7700c2a241c81ffc9219841a1dc0329a00494a69e73ac270fbb8c10f623
@@ -31877,7 +31877,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.92.1":
+"webpack@npm:^5.93.0":
   version: 5.93.0
   resolution: "webpack@npm:5.93.0"
   dependencies:
@@ -32694,7 +32694,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yup-locales@npm:^1.2.24":
+"yup-locales@npm:^1.2.25":
   version: 1.2.25
   resolution: "yup-locales@npm:1.2.25"
   checksum: 10/a5b6dd1873e579b6329a6a750a0da6c3758415bbcf68919b7d83c45a066dc8dcce5278ae0411a74bffec72cf9e37822cfc22075be8087006f229c235568c54b1

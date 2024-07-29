@@ -38,7 +38,9 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
   const { t } = useTranslation()
 
   useViewBlog()
-  const { data: post } = useGetBlogSlug()
+  const { data } = useGetBlogSlug()
+
+  const post = data?.data
 
   const { isLiked, toggleLike, isLoading, isDisabled } = useLikeBlog()
 
