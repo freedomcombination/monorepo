@@ -2,8 +2,8 @@ import { useState } from 'react'
 
 import { Button, Center, Stack, Text } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
-import { useTranslation } from 'react-i18next'
 import { FaSave } from 'react-icons/fa'
 import {
   FaCircleArrowRight,
