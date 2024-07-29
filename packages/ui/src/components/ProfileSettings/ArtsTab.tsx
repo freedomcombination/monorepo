@@ -9,7 +9,7 @@ import {
   TabPanels,
   Tabs,
 } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 import { FaPaintBrush } from 'react-icons/fa'
 import { FaSpinner } from 'react-icons/fa6'
 import { MdRemoveModerator } from 'react-icons/md'
