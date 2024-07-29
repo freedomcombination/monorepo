@@ -8751,7 +8751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/types@npm:7.6.20, @storybook/types@npm:^7.6.20":
+"@storybook/types@npm:7.6.20":
   version: 7.6.20
   resolution: "@storybook/types@npm:7.6.20"
   dependencies:
@@ -8760,6 +8760,15 @@ __metadata:
     "@types/express": "npm:^4.7.0"
     file-system-cache: "npm:2.3.0"
   checksum: 10/8da9513f1f34f606b114026af5fad5a7658ce5e2fa7af3363d9f3d481e5e22ed9ae6343f28aa9d14208bff07f489cb7f5ae3adcad5a603f8181e952b2ee29f3f
+  languageName: node
+  linkType: hard
+
+"@storybook/types@npm:^8.2.6":
+  version: 8.2.6
+  resolution: "@storybook/types@npm:8.2.6"
+  peerDependencies:
+    storybook: ^8.2.6
+  checksum: 10/4407e8cb278c5bf740afd6801c6085b559032ce33d0b3b13e3fb691aeb908062df1a49cadcebf105b94ef9ca60ce4732b1e234132f665f0008904bdedb6c0ea6
   languageName: node
   linkType: hard
 
@@ -17522,7 +17531,7 @@ __metadata:
     "@storybook/core-server": "npm:^7.6.20"
     "@storybook/nextjs": "npm:^7.6.20"
     "@storybook/react": "npm:^7.6.20"
-    "@storybook/types": "npm:^7.6.20"
+    "@storybook/types": "npm:^8.2.6"
     "@tanstack/react-query": "npm:^5.51.15"
     "@tanstack/react-query-devtools": "npm:^5.51.15"
     "@testing-library/react": "npm:^16.0.0"
