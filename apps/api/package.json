@@ -6,11 +6,7 @@
   "scripts": {
     "email": "npx email dev",
     "dev": "strapi dev",
-    "dashboard": "strapi dev",
-    "foundation": "strapi dev",
-    "kunsthalte": "strapi dev",
     "transfer": "strapi transfer --from https://api.freedomcombination.com/admin",
-    "trend-rights": "strapi dev",
     "lint": "eslint .",
     "start": "strapi start",
     "build": "strapi build",
@@ -37,10 +33,10 @@
     "cheerio": "^1.0.0-rc.12",
     "pg": "^8.12.0",
     "pg-connection-string": "^2.6.4",
-    "react-dom18": "npm:react-dom@^18.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-email": "2.1.6",
     "react-router-dom": "^5.3.4",
-    "react18": "npm:react@^18.3.1",
     "sharp": "^0.33.4",
     "strapi-plugin-import-export-entries": "^1.23.1",
     "strapi-plugin-transformer": "^3.1.2",
@@ -56,10 +52,6 @@
   },
   "strapi": {
     "uuid": "dc6c040c-fd40-4612-8858-c117ed320ff6"
-  },
-  "resolutions": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
   },
   "engines": {
     "node": ">=14.19.1 <=20.x.x",

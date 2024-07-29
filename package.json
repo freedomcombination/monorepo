@@ -2,6 +2,7 @@
   "name": "fc-turbo",
   "private": true,
   "scripts": {
+    "api": "yarn --cwd apps/api dev",
     "build": "turbo run build --filter=!api",
     "build:dev": "turbo run build:dev",
     "dev": "dotenv -- turbo run dev --concurrency=20",
@@ -59,6 +60,7 @@
     "file-saver": "^2.0.5",
     "framer-motion": "^11.3.17",
     "i18next": "^23.12.2",
+    "immer": "^10.1.1",
     "iron-session": "^8.0.2",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
@@ -67,7 +69,7 @@
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.8",
     "nanoid": "^5.0.7",
-    "next": "15.0.0-canary.8",
+    "next": "15.0.0-canary.89",
     "next-i18next": "^15.3.0",
     "next-mdx-remote": "^5.0.0",
     "next-recaptcha-v3": "^1.4.1",
@@ -76,8 +78,8 @@
     "openai": "^4.53.2",
     "pluralize": "^8.0.0",
     "qs": "^6.12.3",
-    "react": "19.0.0-rc-14a4699f-20240725",
-    "react-dom": "19.0.0-rc-14a4699f-20240725",
+    "react": "19.0.0-rc-941e1b4a-20240729",
+    "react-dom": "19.0.0-rc-941e1b4a-20240729",
     "react-dropzone": "^14.2.3",
     "react-headroom": "^3.2.1",
     "react-hook-form": "7.52.1",
@@ -135,7 +137,7 @@
     "browserify-fs": "^1.0.0",
     "dotenv-cli": "^7.4.2",
     "eslint": "^8.57.0",
-    "eslint-config-next": "15.0.0-canary.88",
+    "eslint-config-next": "15.0.0-canary.89",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-turbo": "^2.0.9",
     "eslint-plugin-react": "7.35.0",
@@ -153,7 +155,11 @@
   },
   "packageManager": "yarn@4.3.1",
   "workspaces": [
-    "apps/*",
+    "apps/dashboard",
+    "apps/foundation",
+    "apps/kunsthalte",
+    "apps/lotus",
+    "apps/trend-rights",
     "packages/*"
   ]
 }
