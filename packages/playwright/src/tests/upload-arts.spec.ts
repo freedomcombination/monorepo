@@ -8,6 +8,9 @@ import { DashboardArtsPage } from '../pages/Dashboard'
 import { ProfilePage } from '../pages/Profile'
 import { getVercelUrl } from '../utils'
 
+test.afterEach(async ({ page }) => {
+  await page.close()
+})
 test.describe('Upload Arts', () => {
   test('TC01- should not upload art without logging in', async ({ page }) => {
     const homePage = new HomePage(page, 'kunsthalte')

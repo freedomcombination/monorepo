@@ -17,7 +17,7 @@ export class ArtsPage {
   constructor(page: Page) {
     this.page = page
     this.uploadArtsButton = page.getByText('Upload Art')
-    this.warning = page.getByText('You must be logged in in')
+    this.warning = page.getByTestId('text-require-login')
     this.uploadButton = page.locator('.uppy-Dashboard-input').first()
     this.titleInput = page.locator('#title')
     this.descriptionInput = page.locator('#description')
