@@ -8304,7 +8304,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/core-common@npm:7.6.20, @storybook/core-common@npm:^7.6.20":
+"@storybook/core-common@npm:7.6.20":
   version: 7.6.20
   resolution: "@storybook/core-common@npm:7.6.20"
   dependencies:
@@ -8332,6 +8332,15 @@ __metadata:
     resolve-from: "npm:^5.0.0"
     ts-dedent: "npm:^2.0.0"
   checksum: 10/adc2c6dabd01904f10d2bce4f8d21fced023dfd3651661655844fa2e4f779e3774b1bf3328fd85e40091785bdb3a1cbb7bfca5b78c546493824322cd9ddae934
+  languageName: node
+  linkType: hard
+
+"@storybook/core-common@npm:^8.2.6":
+  version: 8.2.6
+  resolution: "@storybook/core-common@npm:8.2.6"
+  peerDependencies:
+    storybook: ^8.2.6
+  checksum: 10/07ba59a4931ff60df69ee15bb1233e4e9d26bdad6d43fb7a189ff5d6128f00ed121db7b176391dc295990fc5e72db03f0b3919f1e3d948ef0b798289b1620901
   languageName: node
   linkType: hard
 
@@ -17518,7 +17527,7 @@ __metadata:
     "@splidejs/react-splide": "npm:^0.7.12"
     "@storybook/addon-essentials": "npm:^7.6.20"
     "@storybook/builder-webpack5": "npm:^7.6.20"
-    "@storybook/core-common": "npm:^7.6.20"
+    "@storybook/core-common": "npm:^8.2.6"
     "@storybook/core-server": "npm:^7.6.20"
     "@storybook/nextjs": "npm:^7.6.20"
     "@storybook/react": "npm:^7.6.20"
