@@ -21,7 +21,7 @@ import {
   Tooltip,
   SimpleGrid,
 } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 import { FaInfoCircle, FaSave } from 'react-icons/fa'
 import { FaX } from 'react-icons/fa6'
 
