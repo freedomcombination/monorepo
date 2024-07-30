@@ -13,7 +13,7 @@ import {
   ModalFooter,
   Button,
 } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'

@@ -13,7 +13,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 import Markdown from 'react-markdown'
 
