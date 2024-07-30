@@ -65,9 +65,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ai-sdk/svelte@npm:0.0.25":
-  version: 0.0.25
-  resolution: "@ai-sdk/svelte@npm:0.0.25"
+"@ai-sdk/svelte@npm:0.0.26":
+  version: 0.0.26
+  resolution: "@ai-sdk/svelte@npm:0.0.26"
   dependencies:
     "@ai-sdk/provider-utils": "npm:1.0.5"
     "@ai-sdk/ui-utils": "npm:0.0.21"
@@ -77,7 +77,7 @@ __metadata:
   peerDependenciesMeta:
     svelte:
       optional: true
-  checksum: 10/fa1cf294ce3494eb51d60f2a040287e0ca9dce7b9d5533a7cb14a97c6d5681a04a214f5e9260de4e8bf6b08be17c93fa74e02c8fe5409078a11d72ef1a16eb99
+  checksum: 10/6e1f43f3a5abb4028b0a186383c45a1442ab82ae40aa5cc3baa178ef8be3829ac06e1ffb3558fc36e779fcdef99c13f7873b53e1566759ec9f4bde2c82826d0b
   languageName: node
   linkType: hard
 
@@ -11215,47 +11215,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/compressor@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@uppy/compressor@npm:2.0.0"
+"@uppy/compressor@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@uppy/compressor@npm:2.0.1"
   dependencies:
     "@transloadit/prettier-bytes": "npm:^0.3.4"
-    "@uppy/utils": "npm:^6.0.0"
+    "@uppy/utils": "npm:^6.0.1"
     compressorjs: "npm:^1.2.1"
     preact: "npm:^10.5.13"
     promise-queue: "npm:^2.2.5"
   peerDependencies:
-    "@uppy/core": ^4.0.0
-  checksum: 10/599b1a6985dabb41e5caf51312ff2a93e0cb7215844b88fbf395a8d897f1552b80c0994a10d68d8e59f7915391b877577577ba6023d71c13d90167bbd6b5b111
+    "@uppy/core": ^4.1.0
+  checksum: 10/324b09f4c3cfc6fa4ad994c2e274949de3b6442f9f63bfc8a66197c12bde8f7b2e3256ca0cf56cf2dba9b44d6f2ba7d7572158c90b31b6407bf9924490fa2d6e
   languageName: node
   linkType: hard
 
-"@uppy/core@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@uppy/core@npm:4.0.1"
+"@uppy/core@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@uppy/core@npm:4.1.0"
   dependencies:
     "@transloadit/prettier-bytes": "npm:^0.3.4"
-    "@uppy/store-default": "npm:^4.0.0"
-    "@uppy/utils": "npm:^6.0.0"
+    "@uppy/store-default": "npm:^4.1.0"
+    "@uppy/utils": "npm:^6.0.1"
     lodash: "npm:^4.17.21"
     mime-match: "npm:^1.0.2"
     namespace-emitter: "npm:^2.0.1"
     nanoid: "npm:^5.0.0"
     preact: "npm:^10.5.13"
-  checksum: 10/164c306d0c1aceccbfa35882018381c3f92182f29731b691df5a44c3a6689cdbd954ead2c60136a2c94b2a1247533fa1f7917ec6c848177733c96ed2a9b70f1a
+  checksum: 10/bbe04e1ed5622e804d6095a872b83dae22e2cbc75d063ec5722cbcb6f722c1c3ad6a59ac4571a52f4edf934b694b71e15c040462fc408cae2fded6c96ea835a2
   languageName: node
   linkType: hard
 
-"@uppy/dashboard@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@uppy/dashboard@npm:4.0.1"
+"@uppy/dashboard@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@uppy/dashboard@npm:4.0.2"
   dependencies:
     "@transloadit/prettier-bytes": "npm:^0.3.4"
     "@uppy/informer": "npm:^4.0.0"
     "@uppy/provider-views": "npm:^4.0.0"
-    "@uppy/status-bar": "npm:^4.0.0"
+    "@uppy/status-bar": "npm:^4.0.1"
     "@uppy/thumbnail-generator": "npm:^4.0.0"
-    "@uppy/utils": "npm:^6.0.0"
+    "@uppy/utils": "npm:^6.0.1"
     classnames: "npm:^2.2.6"
     lodash: "npm:^4.17.21"
     memoize-one: "npm:^6.0.0"
@@ -11263,8 +11263,8 @@ __metadata:
     preact: "npm:^10.5.13"
     shallow-equal: "npm:^3.0.0"
   peerDependencies:
-    "@uppy/core": ^4.0.1
-  checksum: 10/d0d23a9d030e3d380843c215a2df890537c76934898efdd2f1d89e317860894f3b76de0b81f9db33b81d3de0589a00779dc7f5e06a6fb5b9237991fafdffd453
+    "@uppy/core": ^4.1.0
+  checksum: 10/25d45317e7e4c2e231b47b3bf7220d6a0d4f2886ff63ce85548e1669f18ef9c57adff18e978d7120464ad9cd964f51f71f093eb640a2a2e12844f33e5f0319c3
   languageName: node
   linkType: hard
 
@@ -11373,24 +11373,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/status-bar@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@uppy/status-bar@npm:4.0.0"
+"@uppy/status-bar@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@uppy/status-bar@npm:4.0.1"
   dependencies:
     "@transloadit/prettier-bytes": "npm:^0.3.4"
-    "@uppy/utils": "npm:^6.0.0"
+    "@uppy/utils": "npm:^6.0.1"
     classnames: "npm:^2.2.6"
     preact: "npm:^10.5.13"
   peerDependencies:
-    "@uppy/core": ^4.0.0
-  checksum: 10/62064b9ba8a6600cea71148c253fc9576627689c658e84176cae7b9a6c71907b3ed326fb051d7145b8270d654c48f4316e6380b8dd782cacc92177099f9e747d
+    "@uppy/core": ^4.1.0
+  checksum: 10/507733da583f521a2e941d0fe66d4944d3f1c61a1e424bd54640e7c0d929b69e91e5232a0e8c5a69992eb9f27358b00d2f0e4a71f712300547460ea0e62b538b
   languageName: node
   linkType: hard
 
-"@uppy/store-default@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@uppy/store-default@npm:4.0.0"
-  checksum: 10/e3c98c54f1e02f830f0da89bf560515ec43b2f76982479e0c85bbc0fa980281a0632d71458e33ef5130fc5f41c12ea8d3d6c3cd4e1118d8dd828fca023f97b0d
+"@uppy/store-default@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@uppy/store-default@npm:4.1.0"
+  checksum: 10/d9cf5107bfebc61e0ca7f9154e0d6b8e9d6347f1e4d0324e30708f86c1f00e69d4f2d296442d1079ec62a8ff3a25976415dcb1d59e330dd2caf654c7c1ad8700
   languageName: node
   linkType: hard
 
@@ -11427,6 +11427,16 @@ __metadata:
     lodash: "npm:^4.17.21"
     preact: "npm:^10.5.13"
   checksum: 10/5145b9ba81cd367029347b6d40ab419fe0a7e6b79780a18e72e312c486762e3d3f68d5ca11a3612e7b9aba390a45559ec7c8892ac0f21b5178e29d906aa7bd7a
+  languageName: node
+  linkType: hard
+
+"@uppy/utils@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@uppy/utils@npm:6.0.1"
+  dependencies:
+    lodash: "npm:^4.17.21"
+    preact: "npm:^10.5.13"
+  checksum: 10/cf2cb2ceb9f47a2ebaaa4b9e77ffb22b6543284ab60934c0a8b29fbe9c60313d32d07b548f25fe6f56f7a7bbf4f57b7b544c5010950f3545f47a5fd01780b5e9
   languageName: node
   linkType: hard
 
@@ -11898,15 +11908,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.2.38":
-  version: 3.2.38
-  resolution: "ai@npm:3.2.38"
+"ai@npm:^3.2.39":
+  version: 3.2.39
+  resolution: "ai@npm:3.2.39"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.14"
     "@ai-sdk/provider-utils": "npm:1.0.5"
     "@ai-sdk/react": "npm:0.0.31"
     "@ai-sdk/solid": "npm:0.0.24"
-    "@ai-sdk/svelte": "npm:0.0.25"
+    "@ai-sdk/svelte": "npm:0.0.26"
     "@ai-sdk/ui-utils": "npm:0.0.21"
     "@ai-sdk/vue": "npm:0.0.25"
     "@opentelemetry/api": "npm:1.9.0"
@@ -11933,7 +11943,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/0e9cad8f9db4a93660a57b0c0ce3e1bf4026a32b178d9c711e83357ffac001eb52c6dfc4b606929d0d8cda653f24ea2f98a8d8c29ece3907b7ffeb1469551e80
+  checksum: 10/87416be2032e37de37f2b6b9ea753dee33de37c00f2882e91c0f2a347af929fa2914d3002cf9a7feb855ba1655d053bd1b64308c8dbf103e4dd9567816eb61cc
   languageName: node
   linkType: hard
 
@@ -17541,9 +17551,9 @@ __metadata:
     "@types/web-push": "npm:^3.6.3"
     "@typescript-eslint/eslint-plugin": "npm:^7.18.0"
     "@typescript-eslint/parser": "npm:^7.18.0"
-    "@uppy/compressor": "npm:^2.0.0"
-    "@uppy/core": "npm:^4.0.1"
-    "@uppy/dashboard": "npm:^4.0.1"
+    "@uppy/compressor": "npm:^2.0.1"
+    "@uppy/core": "npm:^4.1.0"
+    "@uppy/dashboard": "npm:^4.0.2"
     "@uppy/drag-drop": "npm:^4.0.1"
     "@uppy/file-input": "npm:^4.0.0"
     "@uppy/image-editor": "npm:^3.0.0"
@@ -17554,7 +17564,7 @@ __metadata:
     "@vercel/edge-config": "npm:^1.2.1"
     "@vercel/kv": "npm:^2.0.0"
     "@vercel/og": "npm:^0.6.2"
-    ai: "npm:^3.2.38"
+    ai: "npm:^3.2.39"
     axios: "npm:^1.7.2"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:4.9.1"
