@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
+import { Box } from '@chakra-ui/react'
 import {
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-  Box,
-} from '@chakra-ui/react'
+} from '@fc/ui'
 
 import { ArtModalProps } from './types'
 import { ArtWithDetails } from '../ArtWithDetails'

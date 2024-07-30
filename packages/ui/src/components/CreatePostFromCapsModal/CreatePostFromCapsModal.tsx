@@ -6,12 +6,6 @@ import {
   AlertIcon,
   Button,
   Divider,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Stack,
 } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
@@ -26,6 +20,14 @@ import {
   UploadFile,
 } from '@fc/types'
 import { generateOgImageParams } from '@fc/utils'
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/ui'
 
 import { ImageRecognizer } from '../ImageRecognizer/ImageRecognizer'
 import { RecognizedImage } from '../ImageRecognizer/types'
@@ -144,14 +146,14 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
           <Divider />
         </ModalBody>
         <ModalFooter justifyContent="space-between">
-          <Button colorScheme="red" onClick={handleClose}>
+          <Button colorPalette="red" onClick={handleClose}>
             Cancel
           </Button>
-          <Button colorScheme="red" onClick={onReset}>
+          <Button colorPalette="red" onClick={onReset}>
             Reset
           </Button>
           {/* isDisabled={!files} */}
-          <Button isDisabled={!state} colorScheme="blue" onClick={onCreate}>
+          <Button isDisabled={!state} colorPalette="blue" onClick={onCreate}>
             Create
           </Button>
         </ModalFooter>

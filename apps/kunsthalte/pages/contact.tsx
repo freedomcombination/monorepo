@@ -57,7 +57,7 @@ const Contact = () => {
               p={{ base: 8, lg: 12 }}
               textAlign="center"
               justify="space-evenly"
-              spacing={8}
+              gap={8}
             >
               <Heading fontWeight={900} as="h2" size="lg" color="primary.50">
                 {t('art-stop')}

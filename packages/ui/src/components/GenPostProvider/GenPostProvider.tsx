@@ -17,8 +17,8 @@ import {
   Button,
   Stack,
   Text,
-  useDisclosure,
 } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { ArchiveContent, Hashtag, Post } from '@fc/types'
@@ -74,7 +74,7 @@ export const GenPostProvider = ({
     [],
   )
   const [alertAction, setAlertAction] = useState<DialogAction>()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef<HTMLButtonElement | null>(null)
 
   const regId = post?.id ?? hashtag.id
@@ -259,7 +259,7 @@ export const GenPostProvider = ({
         <AlertDialog
           motionPreset="slideInBottom"
           onClose={onClose}
-          isOpen={isOpen}
+          isOpen={open}
           leastDestructiveRef={cancelRef}
           isCentered
         >
@@ -268,7 +268,7 @@ export const GenPostProvider = ({
             <AlertDialogHeader>Discard Changes?</AlertDialogHeader>
             <AlertDialogCloseButton />
             <AlertDialogBody>
-              <Stack spacing={8}>
+              <Stack gap={8}>
                 <Text>{alertAction?.title}</Text>
                 {alertAction?.extra && (
                   <Text fontSize="sm" borderLeft={'1px'} pl={2}>
@@ -282,7 +282,7 @@ export const GenPostProvider = ({
                 No
               </Button>
               <Button
-                colorScheme="red"
+                colorPalette="red"
                 ml={3}
                 onClick={() => {
                   alertAction?.action()

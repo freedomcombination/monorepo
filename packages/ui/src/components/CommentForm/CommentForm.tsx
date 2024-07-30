@@ -7,7 +7,6 @@ import {
   Stack,
   Text,
   Textarea,
-  Tooltip,
   useBreakpointValue,
   VStack,
 } from '@chakra-ui/react'
@@ -21,6 +20,7 @@ import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useRecaptchaToken } from '@fc/services'
 import { Comment, CommentCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils'
+import { Tooltip } from '@fc/ui'
 
 import { commentFormSchema } from './schema'
 import { CommentFormFieldValues, CommentFormProps } from './types'
@@ -93,7 +93,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
   return (
     <Stack
       display={isSuccess ? 'none' : 'flex'}
-      spacing={4}
+      gap={4}
       p={4}
       boxShadow="base"
       borderRadius="sm"

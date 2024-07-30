@@ -61,13 +61,13 @@ export const SocialLoginButtons: FC<SocialLoginButtonsProps> = ({
   )
 
   return (
-    <ButtonGroup variant="outline" spacing="4" width="full" {...rest}>
+    <ButtonGroup variant="outline" gap="4" width="full" {...rest}>
       {providers.map(({ name, icon, url, colorSchema }) => (
         <Button
           key={name}
           w="full"
           leftIcon={icon}
-          colorScheme={colorSchema}
+          colorPalette={colorSchema}
           onClick={() => {
             onSocialLogin(url)
           }}

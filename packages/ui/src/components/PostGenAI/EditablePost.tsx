@@ -9,7 +9,7 @@ export type EditablePostProps = {
   descriptionThreshold?: number
   sentenceThreshold?: number
   onlySentences?: boolean
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorPalette?: ThemeTypings['colorPalettes']
 }
 
 export const EditablePost: React.FC<EditablePostProps> = ({
@@ -18,7 +18,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
   descriptionThreshold = 250,
   sentenceThreshold = 200,
   onlySentences = false,
-  colorScheme = 'primary',
+  colorPalette = 'primary',
 }) => {
   const {
     removePost,
@@ -68,7 +68,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
           }}
           fontWeight={500}
           rounded={'md'}
-          colorScheme={colorScheme}
+          colorPalette={colorPalette}
         />
       )}
       {postObject?.sentences?.map((sentence, index) => {
@@ -87,7 +87,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
             thresholdStyles={{
               color: 'red.400',
             }}
-            colorScheme={colorScheme}
+            colorPalette={colorPalette}
           />
         )
       })}

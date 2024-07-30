@@ -1,21 +1,18 @@
 import { FC } from 'react'
 
+import { Box, Grid, Skeleton, useBreakpointValue } from '@chakra-ui/react'
+
+import { useHashtag } from '@fc/services'
 import {
-  Box,
   Drawer,
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
-  Grid,
   Modal,
   ModalBody,
   ModalContent,
   ModalOverlay,
-  Skeleton,
-  useBreakpointValue,
-} from '@chakra-ui/react'
-
-import { useHashtag } from '@fc/services'
+} from '@fc/ui'
 
 import { PostSentenceRefDrawer } from './PostSentenceRefDrawer'
 import { useHashtagContext } from '../HashtagProvider'
@@ -68,7 +65,7 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
       <Drawer
         isOpen={archiveDisclosure.isOpen}
         onClose={archiveDisclosure.onClose}
-        placement="right"
+        placement="end"
         size={'md'}
       >
         <DrawerOverlay />

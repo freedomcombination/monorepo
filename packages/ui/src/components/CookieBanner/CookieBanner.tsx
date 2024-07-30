@@ -23,7 +23,7 @@ const CookieBanner = (props: CookieBannerProps) => {
     <Stack
       justify={'center'}
       align={'center'}
-      spacing="4"
+      gap="4"
       p="4"
       direction={{ base: 'column', sm: 'row' }}
       bg="gray.900"
@@ -54,7 +54,7 @@ const CookieBanner = (props: CookieBannerProps) => {
       </Text>
       <Stack
         direction={{ base: 'column', sm: 'row' }}
-        spacing={{ base: '3', sm: '2' }}
+        gap={{ base: '3', sm: '2' }}
         align={{ base: 'stretch', sm: 'center' }}
         width={{ base: 'full', sm: 'auto' }}
       >

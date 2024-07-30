@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 
 import { useAuthContext } from '@fc/context'
 import { Art } from '@fc/types'
@@ -44,7 +44,7 @@ export const ArtsTable: FC<ArtsTableProps> = ({
         <ArtApprovalModal
           art={selectedArt}
           editor={profile}
-          isOpen={approvalDisclosure.isOpen}
+          isOpen={approvalDisclosure.open}
           onClose={approvalDisclosure.onClose}
           artist={selectedArt.artist}
           onSuccess={onSuccess}

@@ -1,4 +1,4 @@
-import { theme } from '@chakra-ui/react'
+import { theme } from '@chakra-ui/theme'
 import { sample } from 'lodash'
 
 import { OgImageParams, PlatformSlug } from '@fc/types'

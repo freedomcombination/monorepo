@@ -1,12 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
-import {
-  Center,
-  MenuDivider,
-  Spinner,
-  Stack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Center, MenuDivider, Spinner, Stack } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -58,7 +53,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   >([])
   const [selectedFilters, setSelectedFilters] = useState<FilterOption[]>([])
 
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open: isOpen, onClose, onOpen } = useDisclosure()
 
   const { locale, query, push } = useRouter()
   const columns = useColumns()

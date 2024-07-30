@@ -8,9 +8,9 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  useBoolean,
-  useDisclosure,
 } from '@chakra-ui/react'
+import { useDisclosure, useBoolean } from '@chakra-ui/hooks'
+
 import { useTranslation } from 'next-i18next'
 
 import { WConfirmProps } from './types'
@@ -55,11 +55,15 @@ export const WConfirm: FC<WConfirmProps> = props => {
           <AlertDialogBody>{description}</AlertDialogBody>
 
           <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={handleCancel} colorScheme={'gray'}>
+            <Button
+              ref={cancelRef}
+              onClick={handleCancel}
+              colorPalette={'gray'}
+            >
               {t('cancel')}
             </Button>
             <Button
-              colorScheme={isWarning ? 'red' : 'primary'}
+              colorPalette={isWarning ? 'red' : 'primary'}
               onClick={handleConfirm}
               ml={3}
             >

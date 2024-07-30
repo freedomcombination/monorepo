@@ -120,9 +120,9 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
   }
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <Stack as="form" onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={4}>
+        <Stack gap={4}>
           <FormItem
             name="subject"
             register={register}

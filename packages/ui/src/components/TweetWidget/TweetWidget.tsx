@@ -24,7 +24,7 @@ export const TweetWidget = ({
       <Box bg="white" overflow="auto">
         <VStack
           divider={<StackDivider borderColor="gray.200" />}
-          spacing={4}
+          gap={4}
           align="stretch"
         >
           {tweets && tweets.length > 0 ? (

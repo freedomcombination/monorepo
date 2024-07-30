@@ -44,7 +44,7 @@ export const ArtCreateSuccessAlert = forwardRef<
           </AlertDialogHeader>
 
           <AlertDialogBody py={4}>
-            <Stack spacing={4}>
+            <Stack gap={4}>
               <Text>{t('art.create.success.description')}</Text>
 
               {!asPath?.includes('profile') && (

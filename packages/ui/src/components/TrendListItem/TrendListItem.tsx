@@ -35,7 +35,7 @@ export const TrendListItem: FC<TrendListItemProps> = ({
   const activeTrends = activePostId ? postTrends?.[activePostId] : []
   const isAdded = activeTrends?.includes(trendName)
 
-  const colorScheme = isCurrentHashtag
+  const colorPalette = isCurrentHashtag
     ? 'twitter'
     : isAdded
       ? 'blackAlpha'
@@ -55,7 +55,7 @@ export const TrendListItem: FC<TrendListItemProps> = ({
     <Tag
       rounded="full"
       variant="outline"
-      colorScheme={colorScheme}
+      colorPalette={colorPalette}
       onClick={() => onTrendClick(trendName)}
       cursor={isCurrentHashtag ? 'not-allowed' : 'pointer'}
       py={1}

@@ -13,10 +13,9 @@ import {
   Stack,
   Switch,
   Textarea,
-  useBoolean,
-  useDisclosure,
   Wrap,
 } from '@chakra-ui/react'
+import { useDisclosure, useBoolean } from '@chakra-ui/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -388,7 +387,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                     </FormLabel>
                     <Switch
                       disabled={field.blockEdit}
-                      colorScheme={'primary'}
+                      colorPalette={'primary'}
                       size={'lg'}
                       isDisabled={!isEditing}
                       isChecked={!!watch(field.name as string)}
@@ -505,7 +504,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               onClick={onPostClick}
               leftIcon={<FaXTwitter />}
               fontSize="sm"
-              colorScheme={'purple'}
+              colorPalette={'purple'}
               isLoading={approveModelMutation.isPending}
             >
               {t('posts')}
@@ -523,7 +522,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionStack isVisible={endpoint === 'collections'} gap={0}>
               <ArtAddToCollectionModal
                 collection={model as any}
-                isOpen={artModalDisclosure.isOpen}
+                isOpen={artModalDisclosure.open}
                 onClose={artModalDisclosure.onClose}
               />
               <ActionButton
@@ -531,7 +530,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 onClick={artModalDisclosure.onOpen}
                 leftIcon={<HiPlus />}
                 fontSize="sm"
-                colorScheme={'purple'}
+                colorPalette={'purple'}
                 isLoading={approveModelMutation.isPending}
               >
                 {t('collection.add-art')}
@@ -545,7 +544,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               isVisible={!profile && endpoint === 'users'}
               onClick={onGenerateProfile}
               leftIcon={<BiUserPlus />}
-              colorScheme="primary"
+              colorPalette="primary"
             >
               {t('profile.create')}
             </ActionButton>
@@ -556,7 +555,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               onClick={onApprove}
               leftIcon={<HiOutlineCheck />}
               fontSize="sm"
-              colorScheme={'purple'}
+              colorPalette={'purple'}
               isLoading={approveModelMutation.isPending}
             >
               {t('approve')}
@@ -576,7 +575,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 isVisible={isEditing}
                 onClick={onCancel}
                 leftIcon={<MdClose />}
-                colorScheme={'gray'}
+                colorPalette={'gray'}
                 fontSize="sm"
               >
                 {t('cancel')}
@@ -596,7 +595,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               checkActions={{ endpoint, actions: ['update'] }}
               isVisible={endpointsWithPublicationState.includes(endpoint)}
               onClick={isPublished ? onUnPublish : onPublish}
-              colorScheme={isPublished ? 'yellow' : 'green'}
+              colorPalette={isPublished ? 'yellow' : 'green'}
               fontSize="sm"
               leftIcon={
                 isPublished ? (
@@ -613,7 +612,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               canDelete={endpoint}
               onClick={onDelete}
               leftIcon={<BsTrash />}
-              colorScheme="red"
+              colorPalette="red"
             >
               {t('delete')}
             </ActionButton>
@@ -621,7 +620,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionButton
               isVisible={!!onClose}
               onClick={onClose}
-              colorScheme="gray"
+              colorPalette="gray"
             >
               {t('dismiss')}
             </ActionButton>

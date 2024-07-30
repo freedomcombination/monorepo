@@ -1,15 +1,10 @@
 import { FC } from 'react'
 
-import {
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Portal,
-} from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDownWideShort } from 'react-icons/fa6'
+
+import { MenuButton, MenuItem, MenuList, Menu } from '@fc/ui'
 
 import { MenuFileItem } from './MenuFileItem'
 import { ImageViewerProps } from './types'
@@ -33,26 +28,24 @@ export const ImageViewer: FC<ImageViewerProps> = ({
         size={'sm'}
         boxSize={12}
         border={0}
-        colorScheme="gray"
+        colorPalette="gray"
       />
-      <Portal>
-        <MenuList zIndex={9999} maxH={400} overflowY={'auto'} w={500} p={0}>
-          {files.length > 0 ? (
-            files.map((file, index) => (
-              <MenuFileItem
-                renderDivider={index > 0}
-                key={file.url}
-                file={file}
-                onDelete={onDelete}
-              />
-            ))
-          ) : (
-            <MenuItem onClick={fetchFiles}>
-              {oldFiles ? t('form.uploader.old') : t('form.uploader.new')}
-            </MenuItem>
-          )}
-        </MenuList>
-      </Portal>
+      <MenuList zIndex={9999} maxH={400} overflowY={'auto'} w={500} p={0}>
+        {files.length > 0 ? (
+          files.map((file, index) => (
+            <MenuFileItem
+              renderDivider={index > 0}
+              key={file.url}
+              file={file}
+              onDelete={onDelete}
+            />
+          ))
+        ) : (
+          <MenuItem onClick={fetchFiles}>
+            {oldFiles ? t('form.uploader.old') : t('form.uploader.new')}
+          </MenuItem>
+        )}
+      </MenuList>
     </Menu>
   )
 }

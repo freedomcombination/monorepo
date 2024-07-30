@@ -34,7 +34,7 @@ export const NewsFeed = () => {
   const handleSearchKey = debounce(setSearchKey, 500)
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <Input
         size={'lg'}
         onChange={e => handleSearchKey(e.target.value)}
@@ -44,7 +44,7 @@ export const NewsFeed = () => {
           bg: 'white',
         }}
       />
-      <Tabs colorScheme="primary">
+      <Tabs colorPalette="primary">
         <TabList>
           <Tab fontWeight={600}>{t('recommended-news')}</Tab>
           <Tab fontWeight={600}>{t('blogs')}</Tab>
@@ -102,7 +102,7 @@ const Feed: FC<UseTopicReturns> = props => {
   const { t } = useTranslation()
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       {topics.length > 0 ? (
         topics.map(topic => (
           <TopicCard key={topic.id} topic={topic} {...rest} />

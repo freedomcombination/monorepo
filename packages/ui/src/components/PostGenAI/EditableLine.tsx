@@ -19,7 +19,7 @@ export type EditableProps = ContentEditableProps & {
   onDelete?: () => void
   isDescription?: boolean
   imageParams?: OgImageParams
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorPalette?: ThemeTypings['colorPalettes']
 }
 
 export const EditableLine: React.FC<EditableProps> = ({
@@ -29,7 +29,7 @@ export const EditableLine: React.FC<EditableProps> = ({
   isDisabled = false,
   imageParams = {},
   value,
-  colorScheme = 'primary',
+  colorPalette = 'primary',
   threshold,
   ...rest
 }) => {
@@ -49,7 +49,7 @@ export const EditableLine: React.FC<EditableProps> = ({
         isDisabled={disabled}
         aria-label="delete"
         variant={'ghost'}
-        colorScheme="red"
+        colorPalette="red"
         size={'xs'}
         icon={<FaX />}
         onClick={onDelete}
@@ -64,7 +64,7 @@ export const EditableLine: React.FC<EditableProps> = ({
               size="xs"
               aria-label={'Show caps'}
               icon={<FaInfo />}
-              colorScheme="blue"
+              colorPalette="blue"
               rounded={'full'}
             />
           </PopoverTrigger>
@@ -110,8 +110,8 @@ export const EditableLine: React.FC<EditableProps> = ({
             opacity: 1,
           }}
           transition={'opacity 0.3s ease-in-out'}
-          colorScheme={
-            threshold && value?.length > threshold ? 'red' : colorScheme
+          colorPalette={
+            threshold && value?.length > threshold ? 'red' : colorPalette
           }
           variant={'solid'}
           pos="absolute"

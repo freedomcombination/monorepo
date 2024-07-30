@@ -1,13 +1,7 @@
 import { FC, useState } from 'react'
 
-import {
-  Button,
-  HStack,
-  IconButton,
-  Tooltip,
-  VStack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Button, HStack, IconButton, VStack } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { TFunction } from 'i18next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -18,6 +12,7 @@ import { TbPlus } from 'react-icons/tb'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { Role } from '@fc/types'
+import { Tooltip } from '@fc/ui'
 
 import { CreateRoleModal } from './CreateRoleModal'
 import { DeleteRoleModal } from './DeleteRoleModal'
@@ -77,7 +72,7 @@ const RoleAction: FC<{
         <IconButton
           aria-label="Delete role"
           icon={<FaTrash />}
-          colorScheme="red"
+          colorPalette="red"
           rounded={'full'}
           variant={'outline'}
           size={'xs'}
@@ -94,17 +89,17 @@ const RoleAction: FC<{
 
 export const UserRoles = () => {
   const {
-    isOpen: isSaveOpen,
+    open: isSaveOpen,
     onOpen: onSaveOpen,
     onClose: onSaveClose,
   } = useDisclosure()
   const {
-    isOpen: isDeleteOpen,
+    open: isDeleteOpen,
     onOpen: onDeleteOpen,
     onClose: onDeleteClose,
   } = useDisclosure()
   const {
-    isOpen: isUserAssignOpen,
+    open: isUserAssignOpen,
     onOpen: onUserAssignOpen,
     onClose: onUserAssignClose,
   } = useDisclosure()

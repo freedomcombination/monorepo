@@ -2,16 +2,12 @@ import { useEffect, useState } from 'react'
 
 import {
   Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   MenuItem,
   Stack,
   Text,
-  useDisclosure,
   useUpdateEffect,
 } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -30,7 +26,7 @@ import {
 } from '@fc/ui'
 
 const CoursePage = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { t } = useTranslation()
 
   const { locale, query } = useRouter()
@@ -107,14 +103,14 @@ const CoursePage = () => {
           title={'Application'}
           endpoint="course-applications"
           id={selectedApplicationId}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={handleClose}
           onSuccess={refetch}
           size={'5xl'}
         />
       )}
-      <Stack spacing={8} p={6}>
-        <Accordion
+      <Stack gap={8} p={6}>
+        <Accordion.Root
           size={'lg'}
           allowToggle
           allowMultiple={false}
@@ -122,8 +118,8 @@ const CoursePage = () => {
           borderColor="transparent"
           defaultValue={1}
         >
-          <AccordionItem _notLast={{ mb: 2 }} overflow={'auto'}>
-            <AccordionButton
+          <Accordion.Item _notLast={{ mb: 2 }} overflow={'auto'}>
+            <Accordion.ItemTrigger
               justifyContent="space-between"
               cursor="pointer"
               fontSize="lg"
@@ -133,9 +129,9 @@ const CoursePage = () => {
               shadow={'sm'}
             >
               <Text>{course?.[`title_${locale}`]}</Text>
-              <AccordionIcon ml={'auto'} />
-            </AccordionButton>
-            <AccordionPanel
+              <Accordion.ItemIndicator ml={'auto'} />
+            </Accordion.ItemTrigger>
+            <Accordion.ItemContent
               mt={4}
               bg={'white'}
               rounded={'md'}
@@ -148,10 +144,10 @@ const CoursePage = () => {
                   onSuccess={refetch}
                 />
               )}
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <AccordionButton
+            </Accordion.ItemContent>
+          </Accordion.Item>
+          <Accordion.Item>
+            <Accordion.ItemTrigger
               justifyContent="space-between"
               _activeStep={{ bg: 'gray.200' }}
               cursor="pointer"
@@ -162,9 +158,9 @@ const CoursePage = () => {
               shadow={'sm'}
             >
               <Text>Applications</Text>
-              <AccordionIcon ml={'auto'} />
-            </AccordionButton>
-            <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
+              <Accordion.ItemIndicator ml={'auto'} />
+            </Accordion.ItemTrigger>
+            <Accordion.ItemContent mt={4} bg={'white'} rounded={'md'}>
               <PageHeader
                 onSearch={handleSearch}
                 sortMenu={[
@@ -189,9 +185,9 @@ const CoursePage = () => {
                 setPageSize={setPageSize}
                 totalCount={totalCount}
               />
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
+            </Accordion.ItemContent>
+          </Accordion.Item>
+        </Accordion.Root>
       </Stack>
     </AdminLayout>
   )

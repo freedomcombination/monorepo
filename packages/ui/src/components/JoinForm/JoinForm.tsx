@@ -12,7 +12,6 @@ import {
   Switch,
   Text,
   Textarea,
-  Tooltip,
   Wrap,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -24,6 +23,7 @@ import { setLocale } from 'yup'
 import { tr, nl, en } from 'yup-locales'
 
 import { sleep } from '@fc/utils'
+import { Tooltip } from '@fc/ui'
 
 import { heardFrom } from './data'
 import { joinSchema } from './schema'
@@ -81,13 +81,13 @@ export const JoinForm: FC<JoinFormProps> = ({
       rounded="lg"
       shadow="base"
       as="form"
-      spacing={4}
+      gap={4}
       onSubmit={handleSubmit(onSubmit)}
     >
       <Heading as="h3" size="lg" textAlign="center" fontWeight={900}>
         {t('apply-form.title')}
       </Heading>
-      <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
         <FormItem
           register={register}
           id="name"
@@ -105,7 +105,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           isRequired
         />
       </Stack>
-      <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
         <FormItem register={register} id="phone" name="phone" errors={errors} />
         <FormItem
           type="number"
@@ -168,7 +168,7 @@ export const JoinForm: FC<JoinFormProps> = ({
         </FormLabel>
         <Wrap
           p={4}
-          spacing={4}
+          gap={4}
           rounded="lg"
           borderWidth={2}
           borderColor={errors['heardFrom'] ? 'red.400' : 'gray.100'}
@@ -199,7 +199,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           <chakra.span color="red.500">*</chakra.span>
         </FormLabel>
         <Stack
-          spacing={8}
+          gap={8}
           rounded="lg"
           p={4}
           borderWidth={2}

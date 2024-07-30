@@ -3,14 +3,11 @@ import { useMemo, useState } from 'react'
 import {
   Box,
   Button,
-  ButtonGroup,
   Center,
+  HStack,
   IconButton,
-  MenuItemOption,
-  MenuOptionGroup,
   SimpleGrid,
   Spinner,
-  Tooltip,
 } from '@chakra-ui/react'
 import { addMinutes, formatDistanceToNow, isPast } from 'date-fns'
 import { GetStaticPropsContext } from 'next'
@@ -23,7 +20,14 @@ import { useAuthContext } from '@fc/context'
 import { useTopic, useTopicSync } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import { AdminLayout, PageHeader, TopicCard } from '@fc/ui'
+import {
+  AdminLayout,
+  PageHeader,
+  TopicCard,
+  Tooltip,
+  MenuItemOption,
+  MenuOptionGroup,
+} from '@fc/ui'
 
 const NewsPage = () => {
   const { checkActionsPermission } = useAuthContext()
@@ -144,19 +148,20 @@ const NewsPage = () => {
             aria-label="Sync news"
             isLoading={syncTopic.isPending || isLoading}
             onClick={() => syncTopic.mutate()}
-            isDisabled={!canSync || syncTopic.isPending || isLoading}
+            disabled={!canSync || syncTopic.isPending || isLoading}
             icon={<FaSyncAlt />}
           />
         </Tooltip>
       </PageHeader>
       <Box overflow={'hidden'} flexShrink={0}>
         <Box overflowX={'auto'}>
-          <ButtonGroup size={'sm'} overflowX={'auto'} colorScheme={'gray'}>
+          <HStack overflowX={'auto'}>
             <IconButton
               aria-label="Clear filters"
               icon={<AiOutlineClear />}
               size={'sm'}
               variant={'outline'}
+              colorPalette={'gray'}
               onClick={() => setSearchTerm('')}
             />
             {keywords[locale].map(keyword => (
@@ -168,7 +173,7 @@ const NewsPage = () => {
                 {keyword}
               </Button>
             ))}
-          </ButtonGroup>
+          </HStack>
         </Box>
       </Box>
       <SimpleGrid columns={{ base: 1 }} gap={4}>

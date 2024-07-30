@@ -1,16 +1,7 @@
 import { FC, useEffect } from 'react'
 
-import {
-  Box,
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
-  Stack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Box, Button, Stack } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
@@ -30,6 +21,11 @@ import {
   PostImage,
   PostMaker,
   TimeLeft,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
 } from '@fc/ui'
 import {
   getItemLink,
@@ -53,7 +49,7 @@ const HashtagPage: FC<HashtagProps> = ({
 }) => {
   const hashtag = useHashtag()
 
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
   const { query, push } = useRouter()
   const { roles } = useAuthContext()
 
@@ -85,7 +81,7 @@ const HashtagPage: FC<HashtagProps> = ({
         </Head>
       )}
       {post && (
-        <Modal isCentered isOpen={isOpen} onClose={handleClose}>
+        <Modal isCentered isOpen={open} onClose={handleClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalBody p={0}>

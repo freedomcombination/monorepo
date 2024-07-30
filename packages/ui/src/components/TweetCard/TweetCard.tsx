@@ -1,18 +1,7 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  HStack,
-  IconButton,
-  Link,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Box, HStack, IconButton, Link, Stack, Text } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { formatDistanceToNow } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -39,6 +28,7 @@ import { CreateTweetFormFieldValues } from '../CreateTweetForm/types'
 import { ModelCreateModal } from '../ModelCreateModal'
 import { TweetContent } from '../TweetContent'
 import { WAvatar } from '../WAvatar'
+import { Menu, MenuButton, MenuItem, MenuList } from '../Menu'
 
 export const TweetCard: FC<TweetCardProps> = ({
   tweet,
@@ -55,7 +45,7 @@ export const TweetCard: FC<TweetCardProps> = ({
     'bookmarked-tweets',
     [],
   )
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { t } = useTranslation()
   const { locale } = useRouter()
 
@@ -100,10 +90,10 @@ export const TweetCard: FC<TweetCardProps> = ({
 
   return (
     <>
-      {isOpen && (
+      {open && (
         <CreateTweetForm
           onSubmit={handleSubmit}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={onClose}
           originalTweet={tweet as Tweet}
           isNews={false}
@@ -119,15 +109,15 @@ export const TweetCard: FC<TweetCardProps> = ({
           />
         )}
 
-        <Stack flex={1} spacing={4}>
+        <Stack flex={1} gap={4}>
           {/* Tweet Header */}
           <HStack justify={'space-between'} title={tweet.user?.username}>
             {tweet.user && (
               <Box lineHeight={1.15}>
-                <Text noOfLines={1} wordBreak={'break-all'} fontWeight={700}>
+                <Text lineClamp={1} wordBreak={'break-all'} fontWeight={700}>
                   {tweet.user.name}
                 </Text>
-                <Text noOfLines={1} color={'gray.500'}>
+                <Text lineClamp={1} color={'gray.500'}>
                   @{tweet.user.username}
                 </Text>
               </Box>
@@ -158,7 +148,7 @@ export const TweetCard: FC<TweetCardProps> = ({
                       variant: 'ghost',
                       w: 'full',
                       justifyContent: 'start',
-                      colorScheme: 'gray',
+                      colorPalette: 'gray',
                       leftIcon: <Box fontSize={'sm'} as={TbBrandTwitter} />,
                       rounded: 'none',
                       fontWeight: 400,
@@ -228,7 +218,7 @@ export const TweetCard: FC<TweetCardProps> = ({
               <HStack>
                 <TbClock />
                 <Text
-                  noOfLines={1}
+                  lineClamp={1}
                   fontSize={'sm'}
                   color={'gray.500'}
                   textAlign={'right'}

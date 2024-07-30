@@ -20,7 +20,6 @@ import {
   SliderTrack,
   Stack,
   Text,
-  Tooltip,
   VStack,
   useBreakpointValue,
 } from '@chakra-ui/react'
@@ -35,6 +34,7 @@ import * as yup from 'yup'
 
 import { DONATION_REQUEST_LINK } from '@fc/config'
 import { Platform } from '@fc/types'
+import { Tooltip } from '@fc/ui'
 
 import { ButtonLink } from '../ButtonLink'
 import { Container } from '../Container'
@@ -109,9 +109,9 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
         gap={8}
         pos={'relative'}
       >
-        <Stack spacing={8}>
+        <Stack gap={8}>
           {DONATION_REQUEST_LINK && (
-            <VStack p={4} spacing={4} rounded="lg" shadow="lg" bg={'white'}>
+            <VStack p={4} gap={4} rounded="lg" shadow="lg" bg={'white'}>
               <Center>
                 <QRCode value={DONATION_REQUEST_LINK} />
               </Center>
@@ -128,7 +128,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
           <Stack
             px={{ base: 8, lg: 16 }}
             py={{ base: 8, lg: 12 }}
-            spacing={8}
+            gap={8}
             bg={'white'}
             {...(isDark && {
               borderColor: 'whiteAlpha.200',
@@ -147,7 +147,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
             </Heading>
 
             <Stack align="center">
-              <HStack spacing={4}>
+              <HStack gap={4}>
                 <Image src={`/images/ideal-logo.svg`} h={50} alt="ideal" />
 
                 <Image
@@ -170,7 +170,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                   w="full"
                   key={val}
                   variant={amount === val ? 'solid' : 'outline'}
-                  colorScheme={amount === val ? 'primary' : 'gray'}
+                  colorPalette={amount === val ? 'primary' : 'gray'}
                   onClick={() => setAmount(val)}
                 >
                   €{val}
@@ -183,7 +183,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               w="full"
               justify="center"
               align="center"
-              spacing={6}
+              gap={6}
             >
               <NumberInput
                 maxW={120}
@@ -205,7 +205,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                 value={amount}
                 min={5}
                 max={100}
-                colorScheme="primary"
+                colorPalette="primary"
                 onChange={v => setAmount(v)}
                 focusThumbOnChange={false}
               >
@@ -227,7 +227,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               </Slider>
             </Stack>
 
-            <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+            <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
               <FormItem
                 isRequired
                 register={register}
@@ -250,7 +250,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                 type="submit"
                 leftIcon={<FaDonate />}
                 onClick={() => setType('one-time')}
-                colorScheme="primary"
+                colorPalette="primary"
               >
                 {t('donation.title')}
                 {amount && ` €${amount}`}
@@ -261,7 +261,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               type="submit"
               leftIcon={<FaDonate />}
               onClick={() => setType('monthly')}
-              colorScheme="purple"
+              colorPalette="purple"
             >
               {t('donation.monthly')}
               {amount && ` €${amount}`}

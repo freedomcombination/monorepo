@@ -13,17 +13,17 @@ type HomePlatformProps = {
 
 const colors: Record<
   PlatformSlug,
-  { bg: string; colorScheme: string; text: string }
+  { bg: string; colorPalette: string; text: string }
 > = {
-  lotus: { bg: 'black', colorScheme: 'yellow', text: 'white' },
+  lotus: { bg: 'black', colorPalette: 'yellow', text: 'white' },
   'trend-rights': {
     bg: 'trend-rights.100',
-    colorScheme: 'trend-rights',
+    colorPalette: 'trend-rights',
     text: 'initial',
   },
-  kunsthalte: { bg: 'green.100', colorScheme: 'green', text: 'initial' },
-  academy: { bg: 'blue.100', colorScheme: 'blue', text: 'initial' },
-  'rhythmic-dreams': { bg: 'red.100', colorScheme: 'red', text: 'initial' },
+  kunsthalte: { bg: 'green.100', colorPalette: 'green', text: 'initial' },
+  academy: { bg: 'blue.100', colorPalette: 'blue', text: 'initial' },
+  'rhythmic-dreams': { bg: 'red.100', colorPalette: 'red', text: 'initial' },
 }
 
 export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
@@ -66,7 +66,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                   order={{ base: 2, lg: index % 2 ? 1 : 2 }}
                 >
                   <Stack
-                    spacing={4}
+                    gap={4}
                     textAlign={{
                       base: 'center',
                       lg: index % 2 ? 'right' : 'left',
@@ -75,7 +75,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                     <Heading
                       size="lg"
                       fontWeight={900}
-                      colorScheme={color.colorScheme}
+                      colorPalette={color.colorPalette}
                     >
                       {platform[`name_${locale}`]}
                     </Heading>
@@ -86,7 +86,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                       href={`/platforms/${platform.slug}`}
                       w="max-content"
                       size="lg"
-                      colorScheme={color.colorScheme}
+                      colorPalette={color.colorPalette}
                       variant="link"
                       alignSelf={index % 2 ? 'flex-end' : 'flex-start'}
                       fontWeight={700}

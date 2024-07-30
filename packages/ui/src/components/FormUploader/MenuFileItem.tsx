@@ -61,7 +61,7 @@ const MenuFileButton: FC<MenuFileButtonProps> = ({
           boxSize={'full'}
           bg={'white'}
         >
-          <VStack spacing={0} textAlign={'center'}>
+          <VStack gap={0} textAlign={'center'}>
             <FaCheck />
             <Text fontSize={'xs'}>Copied</Text>
           </VStack>
@@ -101,7 +101,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
         isRound
         variant={'outline'}
         bg={'white'}
-        colorScheme={'red'}
+        colorPalette={'red'}
         aria-label={'Delete'}
       />
       <Stack p={2} textAlign={'center'} fontSize={'sm'}>
@@ -122,7 +122,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
             isImage={isImage}
             name={file.name}
           >
-            <VStack fontSize={'xs'} spacing={0}>
+            <VStack fontSize={'xs'} gap={0}>
               <Box>original</Box>
               {isImage ? (
                 <Box>
@@ -147,7 +147,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
                 isImage={isImage}
                 name={file.name}
               >
-                <VStack fontSize={'xs'} spacing={0}>
+                <VStack fontSize={'xs'} gap={0}>
                   <Box>{key}</Box>
                   <Box>
                     {value.width} x {value.height}

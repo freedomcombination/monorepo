@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react'
 
-import { theme } from '@chakra-ui/react'
+import { theme } from '@chakra-ui/theme'
 import { Body, Container, Font, Html, Tailwind } from '@react-email/components'
 
 const colors = theme.colors

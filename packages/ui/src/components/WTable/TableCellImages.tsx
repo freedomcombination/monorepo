@@ -1,12 +1,6 @@
 import { FC, useState } from 'react'
 
-import {
-  AvatarGroup,
-  Box,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@chakra-ui/react'
+import { AvatarGroup, Box } from '@chakra-ui/react'
 
 import { UploadFile } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
@@ -14,6 +8,7 @@ import { getMediaUrl } from '@fc/utils'
 import { TableCellImageProps, TableCellImagesProps } from './types'
 import { WAvatar } from '../WAvatar'
 import { WImage } from '../WImage'
+import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
 
 const TableCellImage: FC<TableCellImageProps> = ({ image }) => {
   const [cellImage, setCellImage] = useState<string>()

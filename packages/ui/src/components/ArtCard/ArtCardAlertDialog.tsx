@@ -14,7 +14,7 @@ import { ArtCardAlertDialogProps } from './types'
 
 export const ArtCardAlertDialog: FC<ArtCardAlertDialogProps> = ({
   buttonText,
-  colorScheme,
+  colorPalette,
   isOpen,
   text,
   title,
@@ -42,7 +42,7 @@ export const ArtCardAlertDialog: FC<ArtCardAlertDialogProps> = ({
             <Button onClick={onClose} ref={cancelRef}>
               Cancel
             </Button>
-            <Button colorScheme={colorScheme} onClick={onClick} ml={3}>
+            <Button colorPalette={colorPalette} onClick={onClick} ml={3}>
               {buttonText}
             </Button>
           </AlertDialogFooter>

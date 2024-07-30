@@ -39,7 +39,7 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   const { locale } = useRouter()
   const { t } = useTranslation()
 
-  const colorScheme = post ? 'blue' : 'green'
+  const colorPalette = post ? 'blue' : 'green'
 
   const categories = hashtag?.categories ?? []
   const tags = post?.tags ?? []
@@ -91,13 +91,13 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
 
   return (
     <GenPostProvider hashtag={hashtag} post={post} archives={archives}>
-      <Tabs colorScheme={colorScheme}>
+      <Tabs colorPalette={colorPalette}>
         <TabList overflowX={'auto'}>
           {archives.map(archiveContent => {
             return (
               <Tab
                 key={archiveContent.id}
-                _selected={{ fontWeight: 600, color: `${colorScheme}.500` }}
+                _selected={{ fontWeight: 600, color: `${colorPalette}.500` }}
               >
                 <ArchivePopover archiveId={archiveContent.id}>
                   <Text maxW={200} whiteSpace={'nowrap'}>

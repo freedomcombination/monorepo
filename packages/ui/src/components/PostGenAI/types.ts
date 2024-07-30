@@ -9,7 +9,7 @@ export type PostGenAIProps = {
   archiveContentId: number
   content: string
   onSuccess?: (data: ArchivePostType[]) => void
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorPalette?: ThemeTypings['colorPalettes']
   onlySentences?: boolean
   apiUrl: string
   parseIncomplete: (incompleteText: string) => GeneratedArchiveContentPost[]

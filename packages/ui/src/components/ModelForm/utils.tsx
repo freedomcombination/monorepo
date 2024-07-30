@@ -182,7 +182,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
             {label}
           </FormLabel>
           <Switch
-            colorScheme={'primary'}
+            colorPalette={'primary'}
             size={'lg'}
             onChange={e => {
               setValue(field.name as string, e.target.checked)

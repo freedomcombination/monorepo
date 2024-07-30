@@ -108,7 +108,7 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
               onSuccess={onArchiveCreate}
               buttonProps={{
                 variant: 'outline',
-                colorScheme: 'orange',
+                colorPalette: 'orange',
                 leftIcon: <LuFileArchive />,
               }}
               initialValues={{

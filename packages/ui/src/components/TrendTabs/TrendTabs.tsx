@@ -21,7 +21,7 @@ export const TrendTabs = () => {
   return (
     <Stack h={400}>
       <Box overflowY="auto" bg="white">
-        <Tabs colorScheme="primary" isFitted size="sm">
+        <Tabs colorPalette="primary" isFitted size="sm">
           <TabList pos="sticky" top="0" bg="white">
             <Tab>World</Tab>
             <Tab>TR</Tab>

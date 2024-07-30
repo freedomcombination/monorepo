@@ -47,7 +47,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
           iconSpacing: { base: 0, lg: 2 },
           px: 2,
         })}
-        colorScheme={'gray'}
+        colorPalette={'gray'}
       >
         <Text
           pr={1}

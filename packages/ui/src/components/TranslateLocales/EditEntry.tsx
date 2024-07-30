@@ -78,7 +78,7 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
           size="sm"
           isAttached
           isDisabled={locked}
-          colorScheme={isSuppressed ? 'red' : 'gray'}
+          colorPalette={isSuppressed ? 'red' : 'gray'}
         >
           <IconButton
             icon={<FaTrash />}

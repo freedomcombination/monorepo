@@ -70,7 +70,7 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Stack spacing={8}>
+      <Stack gap={8}>
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={4}>
           <FormItem name="name" register={register} errors={errors} hideLabel />
           <FormItem
@@ -116,7 +116,7 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
           </Box>
         </SimpleGrid>
 
-        {/* <Stack spacing={2}>
+        {/* <Stack gap={2}>
           <Checkbox
             fontSize={'14px'}
             fontWeight={'400'}

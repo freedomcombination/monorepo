@@ -82,17 +82,17 @@ export const LoginForm: FC<LoginFormProps> = ({
       px={{ base: '0', sm: '8' }}
     >
       <Stack
-        spacing="8"
+        gap="8"
         shadow="base"
         bg="white"
         p={{ base: 8, lg: 12 }}
         rounded="lg"
       >
-        <Stack spacing="6">
-          <Stack spacing={{ base: '2', md: '3' }} textAlign="center">
+        <Stack gap="6">
+          <Stack gap={{ base: '2', md: '3' }} textAlign="center">
             <Heading>{t('login.title')}</Heading>
             {!isLoginOnly && (
-              <HStack spacing="1" justify="center">
+              <HStack gap="1" justify="center">
                 <Text color="muted">{t('login.no-account')}</Text>
 
                 <ButtonLink href="/auth/register" variant="link">
@@ -102,14 +102,14 @@ export const LoginForm: FC<LoginFormProps> = ({
             )}
           </Stack>
         </Stack>
-        <Stack spacing="6" as="form" onSubmit={handleSubmit(handleSubmitSign)}>
+        <Stack gap="6" as="form" onSubmit={handleSubmit(handleSubmitSign)}>
           {errorMessage && (
             <Alert status="error">
               <AlertIcon />
               <AlertDescription>{errorMessage}</AlertDescription>
             </Alert>
           )}
-          <Stack spacing="5">
+          <Stack gap="5">
             <FormItem
               data-testid="input-email"
               name="identifier"
@@ -139,7 +139,7 @@ export const LoginForm: FC<LoginFormProps> = ({
               {t('forgot-pass.title')}
             </ButtonLink>
           </HStack>
-          <Stack spacing="6">
+          <Stack gap="6">
             <Button
               type="submit"
               data-testid="button-submit-login"

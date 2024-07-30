@@ -47,13 +47,13 @@ export const ContactForm: FC<ContactFormProps> = ({
   }
 
   return (
-    <Stack rounded="lg" p={{ base: 8, lg: 16 }} shadow="base" spacing={4}>
+    <Stack rounded="lg" p={{ base: 8, lg: 16 }} shadow="base" gap={4}>
       <Stack>
         <Heading size="lg">{t('contact.title')}</Heading>
         <Text fontSize="sm">{t('contact.form.fill')}</Text>
       </Stack>
       <Divider />
-      <VStack spacing={5} as="form" onSubmit={handleSubmit(onSubmit)}>
+      <VStack gap={5} as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormItem
           name="fullname"
           autoComplete="name"

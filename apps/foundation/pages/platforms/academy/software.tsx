@@ -35,7 +35,7 @@ const SoftwarePage: FC<SoftwareProps> = ({ source }) => {
             href={`/join`}
             w="max-content"
             size="lg"
-            colorScheme={'primary'}
+            colorPalette={'primary'}
             variant="link"
             alignSelf={'flex-end'}
             fontWeight={700}

@@ -1,17 +1,7 @@
 import { useState } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { Button, Stack, Text, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
@@ -19,6 +9,13 @@ import { Trans, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAuthContext } from '@fc/context'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+} from '@fc/ui'
 
 import { adminLoginSchema } from '../AdminLoginForm/schema'
 import { ButtonLink } from '../ButtonLink'
@@ -81,7 +78,7 @@ export const AuthModal = () => {
       <ModalContent p={4}>
         <ModalCloseButton />
         <ModalBody>
-          <Stack textAlign="center" spacing={4} py={4} justify="center">
+          <Stack textAlign="center" gap={4} py={4} justify="center">
             <Link href="/">
               <VStack textAlign="center" w={'full'}>
                 <WAvatar boxSize={100} src={`/images/foundation-logo.svg`} />
@@ -90,9 +87,9 @@ export const AuthModal = () => {
                 </Text>
               </VStack>
             </Link>
-            <Stack spacing={4} flex={1}>
+            <Stack gap={4} flex={1}>
               <Stack
-                spacing={4}
+                gap={4}
                 as="form"
                 onSubmit={handleSubmit(handleSubmitSign)}
               >

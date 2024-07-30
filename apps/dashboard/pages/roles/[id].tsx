@@ -7,12 +7,7 @@ import {
   HStack,
   IconButton,
   Menu,
-  MenuButton,
-  MenuDivider,
   MenuItem,
-  MenuItemOption,
-  MenuList,
-  MenuOptionGroup,
   Select,
   Spinner,
   Stack,
@@ -27,7 +22,16 @@ import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Permissions, Role, RoleInput, StrapiLocale } from '@fc/types'
-import { AdminLayout, ContentEditable, PermissionCard } from '@fc/ui'
+import {
+  AdminLayout,
+  ContentEditable,
+  PermissionCard,
+  MenuButton,
+  MenuDivider,
+  MenuItemOption,
+  MenuList,
+  MenuOptionGroup,
+} from '@fc/ui'
 import { cloneRole, hasDifferences, updateRole } from '@fc/utils'
 
 type RolePageProps = InferGetServerSidePropsType<typeof getServerSideProps>
@@ -139,7 +143,7 @@ const RolePage: FC<RolePageProps> = () => {
 
             {inEditMode && (
               <Button
-                isDisabled={!needSave}
+                disabled={!needSave}
                 onClick={() => setStartSave(true)}
                 isLoading={startSave || isLoading}
                 leftIcon={<FaSave />}
@@ -148,7 +152,7 @@ const RolePage: FC<RolePageProps> = () => {
               </Button>
             )}
           </HStack>
-          <HStack spacing={4}>
+          <HStack gap={4}>
             {role && (
               <Menu closeOnSelect={false}>
                 <MenuButton

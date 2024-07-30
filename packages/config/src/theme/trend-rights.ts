@@ -1,5 +1,5 @@
-import { extendTheme } from '@chakra-ui/react'
 import { merge } from 'lodash'
+import { extendTheme } from '@chakra-ui/theme-utils'
 
 import { colors } from './colors'
 import { fonts } from './fonts'

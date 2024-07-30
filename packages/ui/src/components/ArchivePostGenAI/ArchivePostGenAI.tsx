@@ -15,7 +15,7 @@ import { PostGenAI, PostGenAIProps } from '../PostGenAI'
 
 type ArchivePostGenAIProps = Pick<
   PostGenAIProps,
-  'archiveContentId' | 'content' | 'colorScheme'
+  'archiveContentId' | 'content' | 'colorPalette'
 >
 
 export const ArchivePostGenAI = ({
@@ -127,7 +127,7 @@ export const ArchivePostGenAI = ({
 
   return (
     <PostGenAI
-      colorScheme="green"
+      colorPalette="green"
       content={content}
       archiveContentId={archiveContentId}
       apiUrl="/api/gen-archive-content-posts"

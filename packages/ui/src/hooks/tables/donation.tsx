@@ -14,7 +14,7 @@ export const useDonationColumns = (): WTableProps<Donation>['columns'] => {
       componentProps: value => {
         return {
           variant: 'outline',
-          colorScheme: (value as string) === 'paid' ? 'green' : 'yellow',
+          colorPalette: (value as string) === 'paid' ? 'green' : 'yellow',
         }
       },
     },

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Tooltip, TooltipProps } from '@chakra-ui/react'
+import { Tooltip, TooltipProps } from '@fc/ui'
 
 import { ActionWrapper, ActionWrapperProps } from '../ActionWrapper'
 

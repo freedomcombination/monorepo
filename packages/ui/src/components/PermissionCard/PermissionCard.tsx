@@ -131,13 +131,13 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
       borderColor={'gray.100'}
       borderWidth={1}
       borderRadius={12}
-      spacing={4}
+      gap={4}
     >
       <Box
         position={'absolute'}
         top={-3}
         left={6}
-        noOfLines={1}
+        lineClamp={1}
         fontWeight={'bold'}
       >
         {!readonly ? (
@@ -211,7 +211,7 @@ const ActionApi: FC<ActionApiProps> = ({
       size={'md'}
       onClick={() => !readonly && onChange(!value)}
       variant={'solid'}
-      colorScheme={blocked ? 'gray' : value ? 'green' : 'red'}
+      colorPalette={blocked ? 'gray' : value ? 'green' : 'red'}
       {...(!readonly
         ? {
             cursor: 'pointer',

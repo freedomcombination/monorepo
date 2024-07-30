@@ -31,8 +31,8 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
 
   return (
     <Container maxW={'6xl'}>
-      <Stack spacing={12} pb={16} pt={4}>
-        <Stack spacing={4}>
+      <Stack gap={12} pb={16} pt={4}>
+        <Stack gap={4}>
           <WImage ratio={16 / 9} src={course.image} alt="" />
 
           <Stack
@@ -59,7 +59,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
         </Box>
 
         <Stack
-          spacing={8}
+          gap={8}
           maxW={'3xl'}
           w={'full'}
           p={8}
@@ -74,7 +74,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
           <CourseApplicationForm courseId={course.id} />
         </Stack>
 
-        <Stack spacing={4}>
+        <Stack gap={4}>
           <Heading as={'h3'} size={'lg'}>
             {t('faq')}
           </Heading>
@@ -82,7 +82,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
         </Stack>
 
         {courses?.length > 0 && (
-          <Stack spacing={4}>
+          <Stack gap={4}>
             <Heading as={'h3'} size={'lg'}>
               {t('course.other-courses')}
             </Heading>

@@ -45,7 +45,7 @@ export const RecommendedTweetCard: FC<RecommendedTweetCardProps> = ({
       shadow={'sm'}
       align={'space-between'}
       overflow="hidden"
-      spacing={0}
+      gap={0}
     >
       <TweetCard
         tweet={mapRecommendedTweetToTweet(tweet) as Tweet}

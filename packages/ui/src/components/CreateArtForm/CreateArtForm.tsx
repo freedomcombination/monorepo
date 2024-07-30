@@ -7,21 +7,15 @@ import {
   ButtonGroup,
   ButtonProps,
   Center,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   SimpleGrid,
   Spinner,
   Stack,
   Text,
   Textarea,
-  useDisclosure,
   useToast,
   VStack,
 } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useQueryClient } from '@tanstack/react-query'
@@ -34,6 +28,14 @@ import { FaPlus, FaUpload } from 'react-icons/fa'
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useStrapiRequest } from '@fc/services'
 import { ArtCreateInput, Category } from '@fc/types'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/ui'
 
 import { ArtCreateSuccessAlert } from './CreateArtSuccessAlert'
 import { createArtSchema } from './schema'
@@ -138,7 +140,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
     <>
       {/* SUCCESS ALERT */}
       <ArtCreateSuccessAlert
-        isOpen={successDisclosure.isOpen}
+        isOpen={successDisclosure.open}
         onClose={successDisclosure.onClose}
         ref={cancelRef}
       />
@@ -153,7 +155,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
       <Modal
         isCentered
         closeOnOverlayClick={false}
-        isOpen={formDisclosure.isOpen}
+        isOpen={formDisclosure.open}
         onClose={closeForm}
         size={user ? '4xl' : 'md'}
       >
@@ -192,7 +194,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
               <SimpleGrid columns={{ base: 1, lg: 2 }} gap={4}>
                 <FilePicker onLoaded={setImages} />
                 <Stack
-                  spacing={4}
+                  gap={4}
                   as="form"
                   onSubmit={handleSubmit(handleCreateArt)}
                 >

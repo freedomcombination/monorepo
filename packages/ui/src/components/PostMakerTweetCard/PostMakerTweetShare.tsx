@@ -31,7 +31,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
       <PopoverTrigger>
         <IconButton
           aria-label="Share post"
-          colorScheme={'gray'}
+          colorPalette={'gray'}
           icon={<BsThreeDotsVertical />}
           variant={'ghost'}
         />
@@ -39,7 +39,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
       <PopoverContent w={'max'}>
         <PopoverArrow />
         <PopoverBody>
-          <HStack spacing={2}>
+          <HStack gap={2}>
             <FacebookShareButton quote={content} url={url}>
               <IconButton
                 as="span"

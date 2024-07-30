@@ -1,23 +1,7 @@
 import { FC } from 'react'
 
-import {
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  HStack,
-  Heading,
-  IconButton,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
-  Skeleton,
-  Tooltip,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Button, HStack, Heading, IconButton, Skeleton } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { useRouter } from 'next/router'
 import { BiNotificationOff } from 'react-icons/bi'
 import { FaArrowLeft, FaUser } from 'react-icons/fa'
@@ -27,6 +11,18 @@ import { MdOutlineNotifications } from 'react-icons/md'
 
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useUnsubscribePushNotificationMutation } from '@fc/services'
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  Tooltip,
+} from '@fc/ui'
 
 import { AdminSidebar } from '../AdminSidebar'
 import { CreateModelButton } from '../CreateModelButton'
@@ -42,9 +38,9 @@ type AdminHeaderProps = {
 export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
   const { user, openAuthModal, isLoading } = useAuthContext()
   const { isSubscribed } = useWebPushContext()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const {
-    isOpen: isOpenProfile,
+    open: isOpenProfile,
     onOpen: onOpenProfile,
     onClose: onCloseProfile,
   } = useDisclosure()
@@ -92,7 +88,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             {title}
           </Heading>
         )}
-        {isLoading && !title && <Skeleton noOfLines={1} w={40} />}
+        {isLoading && !title && <Skeleton lineClamp={1} w={40} />}
       </HStack>
 
       {/* TODO Create notification component */}
@@ -104,7 +100,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
               icon={<FaGear />}
               variant="outline"
               rounded="full"
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               onClick={onOpenProfile}
             />
             <Modal
@@ -130,7 +126,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             icon={<MdOutlineNotifications />}
             variant="outline"
             rounded="full"
-            colorScheme={'gray'}
+            colorPalette={'gray'}
           />
         )}
         {process.env.VERCEL_ENV !== 'production' && isSubscribed && (
@@ -139,7 +135,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             icon={<BiNotificationOff />}
             variant="outline"
             rounded="full"
-            colorScheme={'gray'}
+            colorPalette={'gray'}
             onClick={handleUnsubscribe}
           />
         )}
@@ -148,7 +144,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
         {!user && (
           <Button
             onClick={openAuthModal}
-            colorScheme={'blue'}
+            colorPalette={'blue'}
             leftIcon={<FaUser />}
             rounded={'full'}
             isLoading={isLoading}
@@ -160,12 +156,12 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
           aria-label="Open Menu"
           icon={<HiMenu />}
           variant="outline"
-          colorScheme="gray"
+          colorPalette="gray"
           rounded={'full'}
           display={{ base: 'flex', lg: 'none' }}
           onClick={onOpen}
         />
-        <Drawer isOpen={isOpen} onClose={onClose} placement={'right'}>
+        <Drawer isOpen={open} onClose={onClose} placement={'end'}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerBody px={0}>

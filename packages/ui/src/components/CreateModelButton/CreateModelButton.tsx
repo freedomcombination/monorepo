@@ -9,8 +9,8 @@ import {
   Portal,
   Stack,
   Text,
-  useDisclosure,
 } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { useTranslation } from 'next-i18next'
 import { BsCollection } from 'react-icons/bs'
 import { CgHashtag } from 'react-icons/cg'
@@ -51,7 +51,7 @@ import { ModelCreateModal } from '../ModelCreateModal'
 export const CreateModelButton = () => {
   const { t } = useTranslation()
   const {
-    isOpen: isOpenPost,
+    open: isOpenPost,
     onOpen: onOpenPost,
     onClose: onClosePost,
   } = useDisclosure()
@@ -67,7 +67,7 @@ export const CreateModelButton = () => {
     <Popover placement="bottom-start">
       <PopoverTrigger>
         <Button
-          colorScheme={'primary'}
+          colorPalette={'primary'}
           rounded={'full'}
           aria-label="create"
           leftIcon={<FaPlus />}
@@ -196,7 +196,7 @@ export const CreateModelButton = () => {
                     onClose={onClosePost}
                   />
                   <Button
-                    colorScheme="green"
+                    colorPalette="green"
                     variant="outline"
                     onClick={onOpenPost}
                   >

@@ -43,8 +43,8 @@ export const ArtsTab = () => {
 
   return (
     <Stack>
-      <Tabs isLazy colorScheme="primary" defaultIndex={defaultIndex}>
-        <HStack spacing={4}>
+      <Tabs isLazy colorPalette="primary" defaultIndex={defaultIndex}>
+        <HStack gap={4}>
           <TabList overscrollX={'auto'}>
             <CreateArtForm size="md" />
 

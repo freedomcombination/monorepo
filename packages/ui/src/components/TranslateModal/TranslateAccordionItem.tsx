@@ -1,20 +1,16 @@
 import {
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
+  Accordion,
   Badge,
   Box,
   Button,
-  ButtonGroup,
   HStack,
   Stack,
   Text,
-  Tooltip,
 } from '@chakra-ui/react'
 import { BsTranslate } from 'react-icons/bs'
 
 import { StrapiTranslatableModel } from '@fc/types'
+import { Tooltip } from '@fc/ui'
 
 import { TranslateAccordionItemProps } from './types'
 import { Flag } from '../Flag'
@@ -36,16 +32,16 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
   handleTranslate,
 }: TranslateAccordionItemProps<T>) => {
   return (
-    <AccordionItem>
-      <AccordionButton as={HStack} cursor="pointer">
+    <Accordion.Item>
+      <Accordion.ItemTrigger as={HStack} cursor="pointer">
         <HStack flex={'1'}>
-          <HStack spacing={2} flex={'1'}>
+          <HStack gap={2} flex={'1'}>
             <Flag locale={locale} />
             <HStack>
               <Text
                 fontWeight={700}
                 maxW={{ base: 150, lg: 300 }}
-                noOfLines={1}
+                lineClamp={1}
               >
                 {title}
               </Text>
@@ -55,7 +51,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
                   <Badge
                     display={{ base: 'none', lg: 'flex' }}
                     variant="outline"
-                    colorScheme={
+                    colorPalette={
                       approvalStatus === 'approved' ? 'green' : 'yellow'
                     }
                   >
@@ -76,7 +72,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
               <Badge
                 display={{ base: 'none', lg: 'flex' }}
                 variant="outline"
-                colorScheme={publishedAt ? 'purple' : 'gray'}
+                colorPalette={publishedAt ? 'purple' : 'gray'}
               >
                 {publishedAt ? 'Published' : 'Draft'}
               </Badge>
@@ -91,7 +87,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
           </HStack>
 
           {missingTranslations && (
-            <ButtonGroup>
+            <HStack>
               {missingTranslations.map(missingTranslation => (
                 <Tooltip
                   key={missingTranslation}
@@ -103,7 +99,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
                     size="xs"
                     textTransform={'uppercase'}
                     leftIcon={<BsTranslate />}
-                    colorScheme={localeColorSchemes[missingTranslation]}
+                    colorPalette={localeColorSchemes[missingTranslation]}
                     variant="ghost"
                     onClick={e => {
                       e.stopPropagation()
@@ -114,14 +110,14 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
                   </Button>
                 </Tooltip>
               ))}
-            </ButtonGroup>
+            </HStack>
           )}
         </HStack>
 
-        <AccordionIcon ml={4} />
-      </AccordionButton>
-      <AccordionPanel pb={4}>
-        <Stack spacing={2}>
+        <Accordion.ItemIndicator ml={4} />
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent pb={4}>
+        <Stack gap={2}>
           {description && (
             <Stack>
               <Text size="lg" fontWeight={700}>
@@ -140,7 +136,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
             </Stack>
           )}
         </Stack>
-      </AccordionPanel>
-    </AccordionItem>
+      </Accordion.ItemContent>
+    </Accordion.Item>
   )
 }

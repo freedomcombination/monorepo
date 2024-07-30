@@ -11,13 +11,13 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Tooltip,
-  useBoolean,
-  useMergeRefs,
 } from '@chakra-ui/react'
+import { useBoolean, useMergeRefs } from '@chakra-ui/hooks'
 import { useTranslation } from 'next-i18next'
 import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { TbInfoCircle } from 'react-icons/tb'
+
+import { Tooltip } from '@fc/ui'
 
 import { FormItemComponent } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
@@ -71,7 +71,7 @@ export const FormItem: FormItemComponent = forwardRef(
             </FormLabel>
             {tooltip && (
               <Tooltip
-                placement="top-start"
+                placement="top"
                 bg={'white'}
                 fontSize={'xs'}
                 color={'black'}

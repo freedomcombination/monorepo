@@ -1,18 +1,16 @@
+import { Center, Heading, Spinner } from '@chakra-ui/react'
+
+import { useAuthContext } from '@fc/context'
+import { useStrapiRequest } from '@fc/services'
+import { StrapiModel } from '@fc/types'
 import {
-  Center,
-  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Spinner,
-} from '@chakra-ui/react'
-
-import { useAuthContext } from '@fc/context'
-import { useStrapiRequest } from '@fc/services'
-import { StrapiModel } from '@fc/types'
+} from '@fc/ui'
 
 import { ModelEditModalProps } from './types'
 import { ModelEditForm } from '../ModelEditForm'

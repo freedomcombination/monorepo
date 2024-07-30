@@ -73,19 +73,19 @@ export const ResetPasswordForm = () => {
       px={{ base: '0', sm: '8' }}
     >
       <Stack
-        spacing="8"
+        gap="8"
         shadow="base"
         bg="white"
         p={{ base: 8, lg: 12 }}
         rounded="lg"
       >
-        <Stack spacing="6">
-          <Stack spacing={{ base: '2', md: '3' }} textAlign="center">
+        <Stack gap="6">
+          <Stack gap={{ base: '2', md: '3' }} textAlign="center">
             <Heading>{t('reset-pass.title')}</Heading>
           </Stack>
         </Stack>
-        <Stack spacing="6" as="form" onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing="5">
+        <Stack gap="6" as="form" onSubmit={handleSubmit(onSubmit)}>
+          <Stack gap="5">
             <FormItem
               id="password"
               type="password"
@@ -105,7 +105,7 @@ export const ResetPasswordForm = () => {
               name="passwordConfirmation"
             />
           </Stack>
-          <Stack spacing="6">
+          <Stack gap="6">
             <Button type="submit" isLoading={isPending}>
               {t('submit')}
             </Button>

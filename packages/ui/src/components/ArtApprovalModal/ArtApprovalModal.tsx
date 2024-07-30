@@ -7,11 +7,6 @@ import {
   ButtonGroup,
   Heading,
   HStack,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
   SimpleGrid,
   Stack,
   Tag,
@@ -22,6 +17,13 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { Art, StrapiLocale } from '@fc/types'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+} from '@fc/ui'
 
 import { ArtFeedbackForm } from './ArtFeedbackForm'
 import { ArtApprovalTypes } from './types'
@@ -65,7 +67,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
               <ArtCardImage art={art} />
               {!isEditing && (
                 <Stack overflowY={'auto'}>
-                  <Stack spacing={4} p={{ base: 4, lg: 8 }} flex={1}>
+                  <Stack gap={4} p={{ base: 4, lg: 8 }} flex={1}>
                     <ButtonGroup isAttached>
                       {['en', 'nl', 'tr'].map(lang => (
                         <Button
@@ -78,14 +80,14 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                         </Button>
                       ))}
                     </ButtonGroup>
-                    <HStack spacing={4}>
+                    <HStack gap={4}>
                       <Heading flex={1} color={'primary.500'} fontWeight={700}>
                         {title}
                       </Heading>
                       <Tag
                         flexShrink={0}
                         size={'lg'}
-                        colorScheme={
+                        colorPalette={
                           art.approvalStatus === 'approved'
                             ? 'green'
                             : art.approvalStatus === 'rejected'
@@ -101,7 +103,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                       </Tag>
                     </HStack>
 
-                    <HStack spacing={3} w={'full'}>
+                    <HStack gap={3} w={'full'}>
                       <WAvatar
                         size="md"
                         src={artist?.avatar?.url}
@@ -160,7 +162,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                 </Stack>
               )}
               {isEditing && (
-                <Stack spacing={4} p={{ base: 4, lg: 8 }} overflowY={'auto'}>
+                <Stack gap={4} p={{ base: 4, lg: 8 }} overflowY={'auto'}>
                   <HStack justify={'space-between'}>
                     <Heading color={'primary.500'} fontWeight={700}>
                       {t('edit')}

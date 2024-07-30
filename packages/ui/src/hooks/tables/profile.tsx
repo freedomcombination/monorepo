@@ -22,27 +22,29 @@ export const useProfileColumns = (): WTableProps<
       type: 'badge',
       transform: value => (value ? t('volunteer') : null),
       componentProps: {
-        colorScheme: 'primary',
+        colorPalette: 'primary',
         variant: 'outline',
       },
     },
     profileStatus: {
       type: 'badge',
       componentProps: value => {
-        const colorScheme: Record<ProfileStatus, ThemeTypings['colorSchemes']> =
-          {
-            pending: 'orange', // 'orange
-            accepted: 'blue',
-            rejected: 'red',
-            'in-progress': 'purple',
-            left: 'gray',
-            awaiting: 'yellow',
-            approved: 'green',
-          }
+        const colorPalette: Record<
+          ProfileStatus,
+          ThemeTypings['colorPalettes']
+        > = {
+          pending: 'orange', // 'orange
+          accepted: 'blue',
+          rejected: 'red',
+          'in-progress': 'purple',
+          left: 'gray',
+          awaiting: 'yellow',
+          approved: 'green',
+        }
 
         return {
           variant: 'outline',
-          colorScheme: colorScheme[value as ProfileStatus],
+          colorPalette: colorPalette[value as ProfileStatus],
         }
       },
     },
@@ -53,7 +55,7 @@ export const useProfileColumns = (): WTableProps<
       sortKey: 'role.name',
       type: 'badge',
       componentProps: value => {
-        const rolesColorMap: Record<string, ThemeTypings['colorSchemes']> = {
+        const rolesColorMap: Record<string, ThemeTypings['colorPalettes']> = {
           'ArtEditor Translator': 'pink',
           'Author Translator': 'facebook',
           'ContentManager Translator': 'orange',
@@ -73,7 +75,7 @@ export const useProfileColumns = (): WTableProps<
         }
 
         return {
-          colorScheme: rolesColorMap[value as keyof typeof rolesColorMap],
+          colorPalette: rolesColorMap[value as keyof typeof rolesColorMap],
           variant: 'outline',
         }
       },

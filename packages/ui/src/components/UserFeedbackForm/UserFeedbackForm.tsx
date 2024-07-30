@@ -5,12 +5,6 @@ import {
   ButtonGroup,
   HStack,
   IconButton,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Stack,
   Text,
   Textarea,
@@ -23,6 +17,14 @@ import { ObjectSchema } from 'yup'
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useUserFeedbackMutation } from '@fc/services'
 import { UserFeedbackCreateInput } from '@fc/types'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/ui'
 
 import { createUserFeedbackSchema } from './schema'
 import {
@@ -91,7 +93,7 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
           </ModalHeader>
           <ModalBody>
             <Stack
-              spacing={4}
+              gap={4}
               as="form"
               onSubmit={handleSubmit(handleUserFeedback)}
             >
@@ -99,7 +101,7 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
                 {[1, 2, 3, 4, 5].map(p => (
                   <IconButton
                     key={p}
-                    colorScheme={point === p ? 'primary' : 'gray'}
+                    colorPalette={point === p ? 'primary' : 'gray'}
                     variant={point === p ? 'solid' : 'outline'}
                     isRound
                     onClick={() => handlePoint(p)}

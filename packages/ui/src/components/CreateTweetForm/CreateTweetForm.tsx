@@ -6,18 +6,12 @@ import {
   ButtonGroup,
   FormLabel,
   HStack,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Progress,
   Stack,
   Text,
   Textarea,
-  useBoolean,
 } from '@chakra-ui/react'
+import { useBoolean } from '@chakra-ui/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
@@ -28,6 +22,14 @@ import { ObjectSchema } from 'yup'
 
 import { useRecommendTweet } from '@fc/services'
 import { Mention, Tweet } from '@fc/types'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/ui'
 
 import { createTweetSchema } from './schema'
 import { CreateTweetFormFieldValues, CreateTweetFormProps } from './types'
@@ -124,11 +126,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
             </Text>
           </ModalHeader>
           <ModalBody>
-            <Stack
-              spacing={4}
-              as="form"
-              onSubmit={handleSubmit(handleRecommend)}
-            >
+            <Stack gap={4} as="form" onSubmit={handleSubmit(handleRecommend)}>
               <Stack>
                 <FormLabel fontWeight={600}>Original Tweet</FormLabel>
                 <TweetContent<CreateTweetFormFieldValues>
@@ -144,7 +142,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   label="New Tweet"
                   register={register}
                   errors={errors as FieldErrorsImpl<CreateTweetFormFieldValues>}
-                  isRequired
+                  required
                 />
 
                 <ModelSelect<Mention>
@@ -172,7 +170,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   </HStack>
 
                   <Progress
-                    colorScheme={
+                    colorPalette={
                       similarity > SIMILARITY_LIMIT ? 'red' : 'green'
                     }
                     size="lg"
@@ -194,7 +192,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                 </Button>
                 <Button
                   type={'submit'}
-                  colorScheme="purple"
+                  colorPalette="purple"
                   leftIcon={<FiArrowUpRight />}
                   disabled={similarity > SIMILARITY_LIMIT}
                 >

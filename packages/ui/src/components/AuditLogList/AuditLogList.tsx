@@ -89,7 +89,7 @@ export const AuditLogList: FC = () => {
 
   return (
     <Stack
-      spacing={4}
+      gap={4}
       pt={1}
       pr={1}
       maxHeight={'calc(100vh - 90px)'}

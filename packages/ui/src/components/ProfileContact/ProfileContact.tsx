@@ -93,7 +93,7 @@ export const ProfileContact: FC<ProfileContactProps> = ({
   ].filter(Boolean) as SocialItem[]
 
   return (
-    <Stack p={{ base: 4, lg: 8 }} spacing={4}>
+    <Stack p={{ base: 4, lg: 8 }} gap={4}>
       <Heading as="h2">User Contact</Heading>
       <SocialButtons
         items={socialItems}

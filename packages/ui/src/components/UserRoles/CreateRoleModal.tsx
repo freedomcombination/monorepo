@@ -1,24 +1,21 @@
 import { FC, useEffect, useLayoutEffect, useState } from 'react'
 
-import {
-  Modal,
-  Select,
-  ModalOverlay,
-  Text,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  Input,
-  ModalFooter,
-  Button,
-} from '@chakra-ui/react'
+import { Button, Input, Select, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { RoleInput, Role } from '@fc/types'
 import { createRole } from '@fc/utils'
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  ModalCloseButton,
+} from '@fc/ui'
 
 type CreateRoleModalProps = {
   isOpen: boolean

@@ -1,17 +1,15 @@
 import { useState } from 'react'
 
+import { Center, Heading, Spinner, chakra } from '@chakra-ui/react'
+
 import {
-  Center,
-  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Spinner,
-  chakra,
-} from '@chakra-ui/react'
+} from '@fc/ui'
 
 export type ModelPdfProps = {
   title?: string

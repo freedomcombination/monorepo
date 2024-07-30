@@ -10,7 +10,6 @@ import {
   PopoverContent,
   PopoverTrigger,
   Text,
-  Tooltip,
   VStack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
@@ -18,6 +17,7 @@ import { FaPlus, FaTimes } from 'react-icons/fa'
 
 import { MentionUserData } from '@fc/types'
 import { formatNumber } from '@fc/utils'
+import { Tooltip } from '@fc/ui'
 
 import { useHashtagContext } from '../HashtagProvider'
 import { WAvatar } from '../WAvatar'
@@ -64,7 +64,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
               pos="static"
             />
             <Box>
-              <Text noOfLines={1} maxW="120px">
+              <Text lineClamp={1} maxW="120px">
                 {data.name}
               </Text>
               <Text>@{data.screen_name}</Text>
@@ -78,7 +78,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
                   aria-label={t('post.remove') + ' mention'}
                   variant="ghost"
                   onClick={() => onRemoveItem(data)}
-                  colorScheme="blackAlpha"
+                  colorPalette="blackAlpha"
                   _hover={{ color: 'red.400' }}
                   rounded="full"
                   size="sm"
@@ -92,7 +92,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
                 aria-label={t('post.add') + ' mention'}
                 variant="ghost"
                 onClick={() => onAddItem(data)}
-                colorScheme="blackAlpha"
+                colorPalette="blackAlpha"
                 _hover={{ color: 'green.400' }}
                 rounded="full"
                 size="sm"

@@ -1,15 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import {
-  Badge,
-  Box,
-  HStack,
-  IconButton,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Badge, Box, HStack, IconButton, Stack, Text } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { useRouter } from 'next/router'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaExternalLinkSquareAlt } from 'react-icons/fa'
@@ -88,21 +81,21 @@ export const ArtCard: FC<ArtCardProps> = ({
       title: 'Delete Art',
       text: 'Are you sure you want to delete this art?',
       onClick: () => deleteMutation.mutate({ id: art.id }),
-      colorScheme: 'red',
+      colorPalette: 'red',
       buttonText: 'Delete',
     },
     publish: {
       title: 'Publish Art',
       text: 'Are you sure you want to publish this art?',
       onClick: () => publishMutation.mutate({ id: art.id }),
-      colorScheme: 'green',
+      colorPalette: 'green',
       buttonText: 'Publish',
     },
     unpublish: {
       title: 'Unpublish Art',
       text: 'Are you sure you want to unpublish this art?',
       onClick: () => unpublishMutation.mutate({ id: art.id }),
-      colorScheme: 'red',
+      colorPalette: 'red',
       buttonText: 'Unpublish',
     },
   }
@@ -119,7 +112,7 @@ export const ArtCard: FC<ArtCardProps> = ({
     <>
       <ArtModal
         art={art}
-        isOpen={artModalDisclosure.isOpen}
+        isOpen={artModalDisclosure.open}
         onClose={artModalDisclosure.onClose}
         refetch={refetch}
       />
@@ -131,7 +124,7 @@ export const ArtCard: FC<ArtCardProps> = ({
           onClose={onClose}
           onClick={handleAction}
           isOpen={isOpen}
-          colorScheme={actions[actionType].colorScheme}
+          colorPalette={actions[actionType].colorPalette}
           buttonText={actions[actionType].buttonText}
         />
       )}
@@ -171,7 +164,7 @@ export const ArtCard: FC<ArtCardProps> = ({
         >
           {/* Like icon */}
           {!isOwner && (
-            <HStack spacing={1}>
+            <HStack gap={1}>
               <Text fontWeight={600} color="white">
                 {art?.likes || 0}
               </Text>
@@ -181,7 +174,7 @@ export const ArtCard: FC<ArtCardProps> = ({
                 borderColor="whiteAlpha.500"
                 borderWidth={1}
                 color={color}
-                colorScheme="blackAlpha"
+                colorPalette="blackAlpha"
                 disabled={isOwner}
                 icon={<AiFillHeart />}
                 onClick={toggleLike}
@@ -199,7 +192,7 @@ export const ArtCard: FC<ArtCardProps> = ({
               borderColor="whiteAlpha.500"
               borderWidth={1}
               color="white"
-              colorScheme="blackAlpha"
+              colorPalette="blackAlpha"
               icon={<FaExternalLinkSquareAlt />}
               rounded="full"
             />
@@ -236,13 +229,13 @@ export const ArtCard: FC<ArtCardProps> = ({
             fontSize={{ base: 'md', lg: 'sm' }}
             fontWeight={600}
             position={{ base: 'static', lg: 'absolute' }}
-            spacing={0}
+            gap={0}
             transition="all 0.2s"
             w="full"
           >
             <Text
               display={{ base: 'none', lg: 'block' }}
-              noOfLines={{ lg: 2 }}
+              lineClamp={{ lg: 2 }}
               p={2}
               pb={0}
               fontWeight={900}
@@ -252,24 +245,24 @@ export const ArtCard: FC<ArtCardProps> = ({
               {art?.[`title_${router.locale}`]}
             </Text>
 
-            <HStack
-              href={`/club/artist/${art.artist?.id}`}
-              as={Link}
-              _hover={{ bg: 'whiteAlpha.300', borderColor: 'whiteAlpha.500' }}
-              borderColor="transparent"
-              borderWidth={1}
-              m={1}
-              p={1}
-              rounded="lg"
-              w="max-content"
-            >
-              <WAvatar
-                size="xs"
-                name={artistName || artistEmail}
-                src={artistAvatar}
-              />
-              <Text noOfLines={1}>{artistName || artistEmail}</Text>
-            </HStack>
+            <Link href={`/club/artist/${art.artist?.id}`}>
+              <HStack
+                _hover={{ bg: 'whiteAlpha.300', borderColor: 'whiteAlpha.500' }}
+                borderColor="transparent"
+                borderWidth={1}
+                m={1}
+                p={1}
+                rounded="lg"
+                w="max-content"
+              >
+                <WAvatar
+                  size="xs"
+                  name={artistName || artistEmail}
+                  src={artistAvatar}
+                />
+                <Text lineClamp={1}>{artistName || artistEmail}</Text>
+              </HStack>
+            </Link>
           </Stack>
         </HStack>
       </Box>

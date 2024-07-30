@@ -46,7 +46,7 @@ export const PostGenAI = ({
   parseCompleted,
   onSave,
   apiUrl,
-  colorScheme = 'blue',
+  colorPalette = 'blue',
   noBorder,
 }: PostGenAIProps) => {
   const { t } = useTranslation()
@@ -136,16 +136,16 @@ export const PostGenAI = ({
 
   return (
     <Stack
-      spacing={4}
+      gap={4}
       p={{ base: 4, lg: 8 }}
-      bg={`${colorScheme}.100`}
+      bg={`${colorPalette}.100`}
       borderWidth={noBorder ? 0 : 2}
-      borderColor={`${colorScheme}.500`}
+      borderColor={`${colorPalette}.500`}
       rounded={noBorder ? 'none' : 'md'}
     >
-      <Heading colorScheme={colorScheme}>Post Generator</Heading>
+      <Heading colorPalette={colorPalette}>Post Generator</Heading>
       <form onSubmit={handleSubmit}>
-        <Stack spacing={4}>
+        <Stack gap={4}>
           <FormControl>
             <FormLabel mb={0} fontSize="sm" fontWeight={600}>
               Content
@@ -161,7 +161,7 @@ export const PostGenAI = ({
             />
           </FormControl>
           <HStack
-            spacing={{ base: 4, lg: 8 }}
+            gap={{ base: 4, lg: 8 }}
             flexDirection={{ base: 'column', sm: 'row' }}
           >
             {!onlySentences && (
@@ -265,7 +265,7 @@ export const PostGenAI = ({
                     id="useApiInDev"
                     isChecked={useFakeApi}
                     onChange={e => setUseFakeApi(e.target.checked)}
-                    colorScheme={colorScheme}
+                    colorPalette={colorPalette}
                   />
                 </FormControl>
               )}
@@ -275,7 +275,7 @@ export const PostGenAI = ({
                 leftIcon={<RiAiGenerate />}
                 isDisabled={isLoading}
                 type="submit"
-                colorScheme={colorScheme}
+                colorPalette={colorPalette}
               >
                 {t('generate')}
               </Button>
@@ -284,7 +284,7 @@ export const PostGenAI = ({
                   leftIcon={<FaStop />}
                   type="button"
                   onClick={stop}
-                  colorScheme="gray"
+                  colorPalette="gray"
                 >
                   Stop
                 </Button>
@@ -295,7 +295,7 @@ export const PostGenAI = ({
                     leftIcon={<FaSave />}
                     type="button"
                     onClick={handleSave}
-                    colorScheme={'purple'}
+                    colorPalette={'purple'}
                     isLoading={isSaving}
                     loadingText="Saving..."
                   >
@@ -306,7 +306,7 @@ export const PostGenAI = ({
                     type="button"
                     isDisabled={isSaving}
                     onClick={() => removePosts(archiveContentId)}
-                    colorScheme={'red'}
+                    colorPalette={'red'}
                   >
                     Clear Results
                   </Button>
@@ -318,16 +318,11 @@ export const PostGenAI = ({
       </form>
 
       {isLoading && completed?.length && posts.length === 0 && (
-        <Stack
-          spacing={4}
-          py={4}
-          transition={'0.5s'}
-          transitionProperty={'all'}
-        >
+        <Stack gap={4} py={4} transition={'0.5s'} transitionProperty={'all'}>
           <Progress
             size="xs"
             isIndeterminate
-            colorScheme={colorScheme}
+            colorPalette={colorPalette}
             bgColor={'whiteAlpha.700'}
           />
           {completed?.map((postObject, index) => (
@@ -338,7 +333,7 @@ export const PostGenAI = ({
               onlySentences={onlySentences}
               descriptionThreshold={charLimitOfDescriptions}
               sentenceThreshold={charLimitOfSentences}
-              colorScheme={colorScheme}
+              colorPalette={colorPalette}
             />
           ))}
         </Stack>
@@ -352,7 +347,7 @@ export const PostGenAI = ({
           postObject={postObject}
           descriptionThreshold={charLimitOfDescriptions}
           sentenceThreshold={charLimitOfSentences}
-          colorScheme={colorScheme}
+          colorPalette={colorPalette}
         />
       ))}
     </Stack>

@@ -105,7 +105,7 @@ const DisplayArchive: FC<{
 
   return (
     <Link isExternal href={archiveContent.link}>
-      <Stack p={2} spacing={2} textAlign={'left'} color={'gray.500'}>
+      <Stack p={2} gap={2} textAlign={'left'} color={'gray.500'}>
         <Heading size="sm" color={'gray.500'}>
           {archiveContent.title}
         </Heading>
@@ -124,7 +124,7 @@ const DisplayArchive: FC<{
           </Wrap>
         </Box>
         {includeContent && (
-          <Box noOfLines={6} overflow={'auto'}>
+          <Box lineClamp={6} overflow={'auto'}>
             <Markdown>{archiveContent.content}</Markdown>
           </Box>
         )}

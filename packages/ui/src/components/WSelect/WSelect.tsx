@@ -5,7 +5,6 @@ import {
   FormErrorMessage,
   FormHelperText,
   FormLabel,
-  Tooltip,
 } from '@chakra-ui/react'
 import { GroupBase, Select } from 'chakra-react-select'
 import { useTranslation } from 'next-i18next'
@@ -14,6 +13,7 @@ import { TbInfoCircle } from 'react-icons/tb'
 
 import { SelectOption, WSelectProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
+import { Tooltip } from '../Tooltip'
 
 export const WSelect = <T extends FieldValues = FieldValues>({
   control,

@@ -1,6 +1,6 @@
 import { FC, createContext, useContext, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -149,7 +149,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         demoPermissions,
         error,
         isAdmin,
-        isAuthModalOpen: authModalDisclosure.isOpen,
+        isAuthModalOpen: authModalDisclosure.open,
         isLoading,
         permissions,
         profile,

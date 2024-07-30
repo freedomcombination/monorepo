@@ -1,15 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Accordion, Stack, Text } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -35,7 +27,7 @@ const AssetPage = () => {
   const schemas = useSchema()
   const fields = useFields()
   const { t } = useTranslation()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { locale, query } = useRouter()
 
   const columns = useColumns<AssetsTracking>()
@@ -106,14 +98,14 @@ const AssetPage = () => {
           title={'Assets Trackings'}
           endpoint="assets-trackings"
           id={selectedAssetsTrackingId}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={handleClose}
           onSuccess={assetsTrackingsQuery.refetch}
           size={'5xl'}
         />
       )}
-      <Stack spacing={8} p={6}>
-        <Accordion
+      <Stack gap={8} p={6}>
+        <Accordion.Root
           size={'lg'}
           allowToggle
           allowMultiple={false}
@@ -121,8 +113,8 @@ const AssetPage = () => {
           borderColor="transparent"
           defaultValue={1}
         >
-          <AccordionItem _notLast={{ mb: 2 }}>
-            <AccordionButton
+          <Accordion.Item _notLast={{ mb: 2 }}>
+            <Accordion.ItemTrigger
               justifyContent="space-between"
               cursor="pointer"
               fontSize="lg"
@@ -132,9 +124,9 @@ const AssetPage = () => {
               shadow={'sm'}
             >
               <Text>{asset?.name}</Text>
-              <AccordionIcon ml={'auto'} />
-            </AccordionButton>
-            <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
+              <Accordion.ItemIndicator ml={'auto'} />
+            </Accordion.ItemTrigger>
+            <Accordion.ItemContent mt={4} bg={'white'} rounded={'md'}>
               {asset && (
                 <ModelEditForm<Asset>
                   endpoint="assets"
@@ -142,10 +134,10 @@ const AssetPage = () => {
                   onSuccess={refetch}
                 />
               )}
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <AccordionButton
+            </Accordion.ItemContent>
+          </Accordion.Item>
+          <Accordion.Item>
+            <Accordion.ItemTrigger
               justifyContent="space-between"
               _activeStep={{ bg: 'gray.200' }}
               cursor="pointer"
@@ -156,9 +148,9 @@ const AssetPage = () => {
               shadow={'sm'}
             >
               <Text>Asset Tracking</Text>
-              <AccordionIcon ml={'auto'} />
-            </AccordionButton>
-            <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
+              <Accordion.ItemIndicator ml={'auto'} />
+            </Accordion.ItemTrigger>
+            <Accordion.ItemContent mt={4} bg={'white'} rounded={'md'}>
               <PageHeader onSearch={handleSearch} />
               <DataTable<AssetsTracking>
                 columns={columns['assets-trackings']!}
@@ -172,9 +164,9 @@ const AssetPage = () => {
                 setPageSize={setPageSize}
                 totalCount={totalCount}
               />
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
+            </Accordion.ItemContent>
+          </Accordion.Item>
+        </Accordion.Root>
 
         <ModelCreateModal<AssetsTracking>
           title="assets-trackings"

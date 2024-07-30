@@ -60,14 +60,14 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
               p={{ base: 8, lg: 12 }}
               textAlign="center"
               justify="space-evenly"
-              spacing={8}
+              gap={8}
             >
               <Heading fontWeight={900} as="h2" size="lg" color="primary.50">
                 Freedom Combination <br /> Foundation
               </Heading>
               <Divider borderColor="whiteAlpha.400" />
 
-              <Wrap spacing={4} justify="center" key={foundation?.id}>
+              <Wrap gap={4} justify="center" key={foundation?.id}>
                 <ButtonLink
                   isExternal
                   variant="link"

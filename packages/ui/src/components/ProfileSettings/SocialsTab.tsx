@@ -38,7 +38,7 @@ const SocialRightElement = ({ url }: { url?: string }) => {
       rel="noreferrer noopener"
       leftIcon={<FaCircleArrowRight />}
       size={'lg'}
-      colorScheme="black"
+      colorPalette="black"
       variant={'ghost'}
       aria-label={url}
       rounded={'full'}
@@ -101,7 +101,7 @@ export const Socials = () => {
   }
 
   return (
-    <Stack spacing={8} as={'form'} onSubmit={handleSubmit(onSubmit)}>
+    <Stack gap={8} as={'form'} onSubmit={handleSubmit(onSubmit)}>
       <FormItem
         errors={errors}
         register={register}

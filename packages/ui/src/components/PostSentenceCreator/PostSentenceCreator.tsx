@@ -12,7 +12,7 @@ type PostSentenceCreatorProps = {
   hashtagId: number
   postId: number
   initialContent?: string
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorPalette?: ThemeTypings['colorPalettes']
   onSuccess?: () => void
 }
 
@@ -20,7 +20,7 @@ export const PostSentenceCreator = ({
   hashtagId,
   postId,
   initialContent,
-  colorScheme,
+  colorPalette,
   onSuccess,
 }: PostSentenceCreatorProps) => {
   const { t } = useTranslation()
@@ -81,7 +81,7 @@ export const PostSentenceCreator = ({
         aria-label="Add sentence"
         icon={<FaPlus />}
         onClick={handleAdd}
-        {...(colorScheme && { colorScheme })}
+        {...(colorPalette && { colorPalette })}
       />
     </HStack>
   )

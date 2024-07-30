@@ -10,9 +10,8 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Stack,
-  useDisclosure,
-  useUpdateEffect,
 } from '@chakra-ui/react'
+import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
 import { useRouter } from 'next/router'
@@ -31,7 +30,7 @@ type DownloadCapsModalType = {
 }
 
 export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const [isLoading, setIsLoading] = useState(false)
   const btnRef = useRef<HTMLButtonElement>(null)
 
@@ -124,7 +123,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
         Download Caps
       </Button>
       <Drawer
-        isOpen={isOpen}
+        isOpen={open}
         placement="right"
         onClose={handleClose}
         finalFocusRef={btnRef}
@@ -178,7 +177,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
           <DrawerFooter>
             <Button
               variant="outline"
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               mr={3}
               onClick={handleClose}
             >
@@ -188,7 +187,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
               leftIcon={<FaDownload />}
               w={'full'}
               onClick={onDownload}
-              colorScheme={'primary'}
+              colorPalette={'primary'}
               isLoading={isLoading}
             >
               Download Caps

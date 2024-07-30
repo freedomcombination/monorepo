@@ -10,7 +10,7 @@ export const useCourseApplicationColumns =
       approvalStatus: {
         type: 'badge',
         componentProps: value => {
-          const colorScheme = {
+          const colorPalette = {
             approved: 'green',
             pending: 'yellow',
             rejected: 'red',
@@ -18,7 +18,7 @@ export const useCourseApplicationColumns =
 
           return {
             variant: 'outline',
-            colorScheme: colorScheme[value as ApprovalStatus],
+            colorPalette: colorPalette[value as ApprovalStatus],
           }
         },
       },

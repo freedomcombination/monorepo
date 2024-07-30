@@ -72,7 +72,7 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured, onClick }) => {
           maxW={600}
           pos="relative"
           bg="white"
-          spacing={4}
+          gap={4}
           p={featured ? 6 : 0}
           {...(featured && {
             pos: 'absolute',
@@ -123,7 +123,7 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured, onClick }) => {
             <Heading as="h3" size="md">
               {post.title}
             </Heading>
-            <Text noOfLines={2} color={'gray.700'}>
+            <Text lineClamp={2} color={'gray.700'}>
               {post.description}
             </Text>
             {post.author?.name && (

@@ -159,7 +159,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
         />
       )}
       <Stack as="form" onSubmit={handleSubmit(onSaveModel)}>
-        <Stack p={8} spacing={8}>
+        <Stack p={8} gap={8}>
           {(model?.localizations?.length || 0) > 0 && (
             <FormLocaleSwitcher model={model} />
           )}
@@ -167,7 +167,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             return (
               <Stack
                 key={index}
-                spacing={4}
+                gap={4}
                 p={4}
                 rounded={'md'}
                 shadow={'md'}
@@ -266,7 +266,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             onClick={onApprove}
             leftIcon={<HiOutlineCheck />}
             fontSize="sm"
-            colorScheme={'purple'}
+            colorPalette={'purple'}
             isLoading={approveModelMutation.isPending}
           >
             {t('approve')}
@@ -295,7 +295,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
               isVisible={isEditing}
               onClick={onCancel}
               leftIcon={<MdClose />}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               fontSize="sm"
             >
               {t('cancel')}

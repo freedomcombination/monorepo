@@ -1,27 +1,25 @@
 import { useEffect } from 'react'
 
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Button, Stack, Text } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useSubscribePushNotificationMutation } from '@fc/services'
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  ModalCloseButton,
+} from '@fc/ui'
 
 export const NotificationModal = () => {
   const { t } = useTranslation()
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { user, site } = useAuthContext()
   const { isSubscribed, isSupported } = useWebPushContext()
 
@@ -65,7 +63,7 @@ export const NotificationModal = () => {
     <>
       {/* <Button onClick={onOpen}>Open Modal</Button> */}
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={open} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{t('never-miss-events')}</ModalHeader>
@@ -80,11 +78,11 @@ export const NotificationModal = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="gray" mr={3} onClick={handleClose}>
+            <Button colorPalette="gray" mr={3} onClick={handleClose}>
               {t('close')}
             </Button>
             <Button
-              colorScheme="primary"
+              colorPalette="primary"
               isLoading={subscribePushNotificationMutation.isPending}
               onClick={handleSubscribe}
             >

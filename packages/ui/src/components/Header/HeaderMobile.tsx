@@ -8,8 +8,8 @@ import {
   DrawerOverlay,
   HStack,
   IconButton,
-  useDisclosure,
 } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { FaBars } from 'react-icons/fa'
 
 import { HeaderMobileNav } from './HeaderMobileNav'
@@ -24,12 +24,12 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
   hasProfile,
   isLoggedIn,
 }) => {
-  const { isOpen, onToggle, onClose } = useDisclosure()
+  const { open, onToggle, onClose } = useDisclosure()
   const isScrolled = useScroll()
 
   return (
     <HStack display={{ base: 'flex', lg: 'none' }}>
-      <Drawer isOpen={isOpen} onClose={onClose}>
+      <Drawer isOpen={open} onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader>Menu</DrawerHeader>
@@ -43,7 +43,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
       <IconButton
         variant="outline"
         color={!isScrolled && isDark ? 'white' : 'primary.500'}
-        colorScheme={!isScrolled && isDark ? 'whiteAlpha' : 'primary'}
+        colorPalette={!isScrolled && isDark ? 'whiteAlpha' : 'primary'}
         borderColor={!isScrolled && isDark ? 'white' : 'primary.500'}
         size={'sm'}
         onClick={onToggle}

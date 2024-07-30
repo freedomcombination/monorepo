@@ -23,7 +23,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
   }
 
   return (
-    <ButtonGroup spacing={0} size="sm" alignItems="center">
+    <ButtonGroup gap={0} size="sm" alignItems="center">
       {/* TODO: Remove after storybook test */}
       {locales.map(code => {
         if (query['slug'] && !slugs?.[code]) return null
@@ -39,7 +39,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
             key={code}
             px={2}
             onClick={() => handleChangeLanguage(code)}
-            colorScheme={
+            colorPalette={
               locale === code
                 ? 'primary'
                 : !isScrolled
@@ -57,7 +57,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
             key={code}
             px={2}
             onClick={() => handleChangeLanguage(code)}
-            colorScheme={
+            colorPalette={
               locale === code
                 ? 'primary'
                 : !isScrolled && isDark

@@ -37,7 +37,7 @@ export const MentionList = () => {
       <VStack minH="0" h="full" align="stretch" bg="white" overflowY="auto">
         <Tabs
           size="sm"
-          colorScheme={'primary'}
+          colorPalette={'primary'}
           isFitted
           variant="line"
           bg="white"

@@ -92,7 +92,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
           <Tabs
             orientation={orientation}
             border={0}
-            colorScheme="primary"
+            colorPalette="primary"
             size="lg"
             variant={'unstyled'}
             gap={8}

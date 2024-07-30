@@ -1,15 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
-import {
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
-  Stack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Input, Stack } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { NextSeo, NextSeoProps } from 'next-seo'
@@ -26,6 +18,11 @@ import {
   Container,
   MasonryGrid,
   RecommendedTweetCard,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
 } from '@fc/ui'
 import { getLocalizedSlugs, getPageSeo } from '@fc/utils'
 
@@ -36,7 +33,7 @@ type RecommendsPageProps = InferGetServerSidePropsType<
 >
 
 const RecommendsPage: FC<RecommendsPageProps> = ({ tweet, tweets, seo }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const [tweetsState, setTweetsState] = useState(tweets)
   const [searchKey, setSearchKey] = useState('')
 
@@ -80,7 +77,7 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ tweet, tweets, seo }) => {
     <Layout seo={seo}>
       <NextSeo {...seo} />
 
-      <Modal size={'6xl'} isOpen={isOpen && !!tweet} onClose={handleClose}>
+      <Modal size={'6xl'} isOpen={open && !!tweet} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
@@ -90,7 +87,7 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ tweet, tweets, seo }) => {
         </ModalContent>
       </Modal>
       <Container my={8}>
-        <Stack spacing={4}>
+        <Stack gap={4}>
           <ButtonLink href={`/news`}>News</ButtonLink>
 
           <Input

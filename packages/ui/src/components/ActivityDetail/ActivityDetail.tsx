@@ -31,7 +31,7 @@ export const ActivityDetail: FC<ActivityDetailProps> = ({
 
   return (
     <Container maxW="container.md">
-      <Stack py={8} spacing={8}>
+      <Stack py={8} gap={8}>
         <WImage ratio="twitter" src={image} rounded="lg" />
         <Heading textAlign="center">{title}</Heading>
         <HStack justifyContent={'end'}>
