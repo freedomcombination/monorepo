@@ -1,9 +1,9 @@
-import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { StrapiEndpoint, StrapiModel, StrapiTranslatableModel } from '@fc/types'
+import { useToast } from '@fc/ui'
 
 import { createLocalizations } from '../createLocalizations'
 

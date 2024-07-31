@@ -5,7 +5,7 @@ import {
   AvatarProps,
   BadgeProps,
   TableCellProps,
-  TableProps,
+  TableRootProps,
   TextProps,
 } from '@chakra-ui/react'
 
@@ -54,7 +54,7 @@ export type WTableProps<T extends StrapiModel> = {
   columns: WTableRowProps<T>['columns']
   onClickRow?: WTableRowProps<T>['onClick']
   onSort?: (key?: Sort) => void
-} & TableProps
+} & TableRootProps
 
 export type TableCellImagesProps = {
   value: UploadFile | UploadFile[]

@@ -1,5 +1,6 @@
-import { Tooltip as ChakraTooltip, TooltipRootProps } from '@chakra-ui/react'
 import { FC, ReactNode } from 'react'
+
+import { Tooltip as ChakraTooltip, TooltipRootProps } from '@chakra-ui/react'
 
 export type TooltipProps = {
   label: ReactNode

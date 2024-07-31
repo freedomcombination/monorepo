@@ -6,7 +6,6 @@ import {
   Radio,
   RadioGroup,
   Stack,
-  useToast,
   chakra,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
@@ -15,6 +14,7 @@ import { Virtuoso } from 'react-virtuoso'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { StrapiLocale } from '@fc/types'
+import { useToast } from '@fc/ui'
 
 import { DictContext } from './DictContext'
 import { dicts } from './dicts'

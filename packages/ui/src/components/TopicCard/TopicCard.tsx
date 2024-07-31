@@ -13,7 +13,6 @@ import {
   PopoverTrigger,
   Stack,
   Text,
-  useToast,
 } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { formatDistanceStrict } from 'date-fns'
@@ -35,6 +34,7 @@ import { Post, RecommendedTopicCreateInput, TopicBase } from '@fc/types'
 import { TopicCardButton } from './TopicCardButton'
 import { TopicCardProps } from './types'
 import { useFields, useSchema } from '../../hooks'
+import { useToast } from '../../hooks/useToast'
 import { ActionTooltip } from '../ActionTooltip'
 import { ModelCreateModal } from '../ModelCreateModal'
 import { ShareButtons } from '../ShareButtons'

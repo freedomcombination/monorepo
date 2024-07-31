@@ -1,5 +1,6 @@
 import { FC, useRef, useState } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import { Link } from '@chakra-ui/next-js'
 import {
   Box,
@@ -12,10 +13,7 @@ import {
   Stack,
   Text,
   Textarea,
-  useToast,
-  VStack,
 } from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useQueryClient } from '@tanstack/react-query'
@@ -35,6 +33,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  useToast,
 } from '@fc/ui'
 
 import { ArtCreateSuccessAlert } from './CreateArtSuccessAlert'

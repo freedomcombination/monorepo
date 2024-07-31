@@ -1,5 +1,6 @@
-import { Menu as ChakraMenu, MenuItemGroupProps } from '@chakra-ui/react'
 import { FC } from 'react'
+
+import { Menu as ChakraMenu, MenuItemGroupProps } from '@chakra-ui/react'
 
 export const Menu = ChakraMenu.Root
 export const MenuDivider = ChakraMenu.Separator

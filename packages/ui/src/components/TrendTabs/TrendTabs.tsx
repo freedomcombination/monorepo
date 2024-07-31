@@ -1,12 +1,4 @@
-import {
-  Box,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { Box, Stack, Tabs } from '@chakra-ui/react'
 
 import { useTrends } from '@fc/services'
 
@@ -21,39 +13,37 @@ export const TrendTabs = () => {
   return (
     <Stack h={400}>
       <Box overflowY="auto" bg="white">
-        <Tabs colorPalette="primary" isFitted size="sm">
-          <TabList pos="sticky" top="0" bg="white">
-            <Tab>World</Tab>
-            <Tab>TR</Tab>
-            <Tab>NL</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <TrendList
-                isLoading={isLoading}
-                trends={trends?.en}
-                hashtagInTrends={hashtagInTrends?.en}
-                hashtagExtraInTrends={hashtagExtraInTrends?.en}
-              />
-            </TabPanel>
-            <TabPanel>
-              <TrendList
-                isLoading={isLoading}
-                trends={trends?.tr}
-                hashtagInTrends={hashtagInTrends?.tr}
-                hashtagExtraInTrends={hashtagExtraInTrends?.tr}
-              />
-            </TabPanel>
-            <TabPanel>
-              <TrendList
-                isLoading={isLoading}
-                trends={trends?.nl}
-                hashtagInTrends={hashtagInTrends?.nl}
-                hashtagExtraInTrends={hashtagExtraInTrends?.nl}
-              />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
+        <Tabs.Root colorPalette="primary" isFitted size="sm">
+          <Tabs.List pos="sticky" top="0" bg="white">
+            <Tabs.Trigger>World</Tabs.Trigger>
+            <Tabs.Trigger>TR</Tabs.Trigger>
+            <Tabs.Trigger>NL</Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Content>
+            <TrendList
+              isLoading={isLoading}
+              trends={trends?.en}
+              hashtagInTrends={hashtagInTrends?.en}
+              hashtagExtraInTrends={hashtagExtraInTrends?.en}
+            />
+          </Tabs.Content>
+          <Tabs.Content>
+            <TrendList
+              isLoading={isLoading}
+              trends={trends?.tr}
+              hashtagInTrends={hashtagInTrends?.tr}
+              hashtagExtraInTrends={hashtagExtraInTrends?.tr}
+            />
+          </Tabs.Content>
+          <Tabs.Content>
+            <TrendList
+              isLoading={isLoading}
+              trends={trends?.nl}
+              hashtagInTrends={hashtagInTrends?.nl}
+              hashtagExtraInTrends={hashtagExtraInTrends?.nl}
+            />
+          </Tabs.Content>
+        </Tabs.Root>
       </Box>
     </Stack>
   )

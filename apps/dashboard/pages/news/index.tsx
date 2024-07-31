@@ -5,7 +5,6 @@ import {
   Button,
   Center,
   HStack,
-  IconButton,
   SimpleGrid,
   Spinner,
 } from '@chakra-ui/react'
@@ -27,6 +26,7 @@ import {
   Tooltip,
   MenuItemOption,
   MenuOptionGroup,
+  IconButton,
 } from '@fc/ui'
 
 const NewsPage = () => {
@@ -143,7 +143,7 @@ const NewsPage = () => {
         filterMenu={filterMenu}
         filterMenuCloseOnSelect={false}
       >
-        <Tooltip label={syncedStr} hasArrow bg="primary.400">
+        <Tooltip label={syncedStr} hasArrow>
           <IconButton
             aria-label="Sync news"
             isLoading={syncTopic.isPending || isLoading}
