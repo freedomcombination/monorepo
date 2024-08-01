@@ -130,7 +130,7 @@ const RolePage: FC<RolePageProps> = () => {
           <HStack>
             {role && (
               <Button
-                leftIcon={inEditMode ? <FaX /> : <FaEdit />}
+                // leftIcon={inEditMode ? <FaX /> : <FaEdit />}
                 onClick={() => goEditMode(!inEditMode)}
               >
                 {t(inEditMode ? 'cancel' : 'edit')}
@@ -142,7 +142,7 @@ const RolePage: FC<RolePageProps> = () => {
                 isDisabled={!needSave}
                 onClick={() => setStartSave(true)}
                 isLoading={startSave || isLoading}
-                leftIcon={<FaSave />}
+                // leftIcon={<FaSave />}
               >
                 {t('save')}
               </Button>

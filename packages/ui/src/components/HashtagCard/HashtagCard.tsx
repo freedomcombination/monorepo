@@ -46,7 +46,7 @@ export const HashtagCard: FC<HashtagCardProps> = ({ item }) => {
         <ButtonLink
           href={link as string}
           justifySelf="end"
-          rightIcon={<FaArrowRight />}
+          // rightIcon={<FaArrowRight />}
         >
           {t('read-more')}
         </ButtonLink>

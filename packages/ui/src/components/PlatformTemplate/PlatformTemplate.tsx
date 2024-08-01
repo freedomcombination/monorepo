@@ -59,7 +59,7 @@ export const PlatformTemplate: FC<PlatformTemplateProps> = ({
               isExternal
               href={link}
               size="lg"
-              rightIcon={<FaExternalLinkAlt />}
+              // rightIcon={<FaExternalLinkAlt />}
             >
               {t('visit-website')}
             </ButtonLink>

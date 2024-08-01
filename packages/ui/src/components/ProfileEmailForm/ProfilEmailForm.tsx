@@ -139,7 +139,7 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
 
           <Button
             alignSelf="flex-end"
-            rightIcon={<FiArrowRight />}
+            // rightIcon={<FiArrowRight />}
             type="submit"
             isDisabled={!isValid}
             isLoading={isPending}

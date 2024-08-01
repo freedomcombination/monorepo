@@ -62,7 +62,7 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
+                  // leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
                   href="tel:+31685221308"
                 >
                   +31-6 85221308
@@ -74,9 +74,9 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={
-                    <Box as={FaWhatsapp} color="primary.50" size="20px" />
-                  }
+                  // leftIcon={
+                  //   <Box as={FaWhatsapp} color="primary.50" size="20px" />
+                  // }
                   href="https://api.whatsapp.com/send?phone=31685221308"
                 >
                   {t('contact.form.message')}
@@ -88,7 +88,7 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={<Box as={MdEmail} color="primary.50" size="20px" />}
+                  // leftIcon={<Box as={MdEmail} color="primary.50" size="20px" />}
                   href="mailto:info@trendrights.com"
                 >
                   info@trendrights.com
@@ -100,9 +100,9 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={
-                    <Box as={MdLocationOn} color="primary.50" size="20px" />
-                  }
+                  // leftIcon={
+                  //   <Box as={MdLocationOn} color="primary.50" size="20px" />
+                  // }
                   href="https://goo.gl/maps/E9HaayQnXmphUWtN8"
                 >
                   Tandersplein 1, 3027 CN <br /> Rotterdam, Netherland

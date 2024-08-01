@@ -45,7 +45,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
 
         <HStack justify="space-between" w="full">
           <Button
-            leftIcon={<AiOutlineEye />}
+            // leftIcon={<AiOutlineEye />}
             title="View"
             onClick={onOpen}
             variant={'ghost'}
@@ -61,7 +61,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
             canCreate="collections"
             variant={'outline'}
             colorScheme={isAdded ? 'red' : 'green'}
-            leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
+            // leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
             size="xs"
             isLoading={isLoading}
             onClick={() => {

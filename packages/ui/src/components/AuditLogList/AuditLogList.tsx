@@ -177,7 +177,7 @@ export const AuditLogList: FC = () => {
 
           <Text fontSize={'sm'}>{logs.length} entries</Text>
           <Button
-            leftIcon={<FaPlusCircle />}
+            // leftIcon={<FaPlusCircle />}
             variant={'outline'}
             onClick={() => fetchNextPage()}
             isLoading={isLoading}

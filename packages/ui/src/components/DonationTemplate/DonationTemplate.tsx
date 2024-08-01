@@ -118,7 +118,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               <ButtonLink
                 isExternal
                 href={DONATION_REQUEST_LINK}
-                rightIcon={<FaExternalLinkAlt />}
+                // rightIcon={<FaExternalLinkAlt />}
                 w={256}
               >
                 {t('donation.now')}
@@ -248,7 +248,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               <Button
                 isDisabled={!amount || !isValid}
                 type="submit"
-                leftIcon={<FaDonate />}
+                // leftIcon={<FaDonate />}
                 onClick={() => setType('one-time')}
                 colorScheme="primary"
               >
@@ -259,7 +259,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               {/* <Button
               isDisabled={!amount || !isValid}
               type="submit"
-              leftIcon={<FaDonate />}
+              // leftIcon={<FaDonate />}
               onClick={() => setType('monthly')}
               colorScheme="purple"
             >

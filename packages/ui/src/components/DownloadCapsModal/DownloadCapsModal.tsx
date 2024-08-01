@@ -185,7 +185,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
               Cancel
             </Button>
             <Button
-              leftIcon={<FaDownload />}
+              // leftIcon={<FaDownload />}
               w={'full'}
               onClick={onDownload}
               colorScheme={'primary'}

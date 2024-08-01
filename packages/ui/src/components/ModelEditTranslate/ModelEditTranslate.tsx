@@ -264,7 +264,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             }
             canApprove={endpoint}
             onClick={onApprove}
-            leftIcon={<HiOutlineCheck />}
+            // leftIcon={<HiOutlineCheck />}
             fontSize="sm"
             colorScheme={'purple'}
             isLoading={approveModelMutation.isPending}
@@ -276,7 +276,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             <ActionButton
               isVisible={!isEditing}
               onClick={setIsEditing.on}
-              leftIcon={<AiOutlineEdit />}
+              // leftIcon={<AiOutlineEdit />}
               fontSize="sm"
             >
               {t('edit')}
@@ -285,7 +285,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             <ActionButton
               isVisible={isEditing}
               type="submit"
-              leftIcon={<MdOutlineCheck />}
+              // leftIcon={<MdOutlineCheck />}
               fontSize="sm"
             >
               {t('save')}
@@ -294,7 +294,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             <ActionButton
               isVisible={isEditing}
               onClick={onCancel}
-              leftIcon={<MdClose />}
+              // leftIcon={<MdClose />}
               colorScheme={'gray'}
               fontSize="sm"
             >

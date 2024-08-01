@@ -36,7 +36,7 @@ const SocialRightElement = ({ url }: { url?: string }) => {
       href={url ?? ''}
       target="_blank"
       rel="noreferrer noopener"
-      leftIcon={<FaCircleArrowRight />}
+      // leftIcon={<FaCircleArrowRight />}
       size={'lg'}
       colorScheme="black"
       variant={'ghost'}
@@ -137,7 +137,7 @@ export const Socials = () => {
 
       <Button
         isDisabled={!hasChanged}
-        leftIcon={<FaSave />}
+        // leftIcon={<FaSave />}
         size={'lg'}
         isLoading={saving}
         alignSelf={'start'}

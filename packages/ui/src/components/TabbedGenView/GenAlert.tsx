@@ -109,7 +109,7 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
               buttonProps={{
                 variant: 'outline',
                 colorScheme: 'orange',
-                leftIcon: <LuFileArchive />,
+                // leftIcon: <LuFileArchive />,
               }}
               initialValues={{
                 categories,

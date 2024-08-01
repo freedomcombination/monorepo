@@ -503,7 +503,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               }
               checkActions={{ endpoint: 'posts', actions: ['createPosts'] }}
               onClick={onPostClick}
-              leftIcon={<FaXTwitter />}
+              // leftIcon={<FaXTwitter />}
               fontSize="sm"
               colorScheme={'purple'}
               isLoading={approveModelMutation.isPending}
@@ -529,7 +529,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               <ActionButton
                 canUpdate="collections"
                 onClick={artModalDisclosure.onOpen}
-                leftIcon={<HiPlus />}
+                // leftIcon={<HiPlus />}
                 fontSize="sm"
                 colorScheme={'purple'}
                 isLoading={approveModelMutation.isPending}
@@ -544,7 +544,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               canCreate="profiles"
               isVisible={!profile && endpoint === 'users'}
               onClick={onGenerateProfile}
-              leftIcon={<BiUserPlus />}
+              // leftIcon={<BiUserPlus />}
               colorScheme="primary"
             >
               {t('profile.create')}
@@ -554,7 +554,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               isVisible={showApproveButton}
               canApprove={endpoint}
               onClick={onApprove}
-              leftIcon={<HiOutlineCheck />}
+              // leftIcon={<HiOutlineCheck />}
               fontSize="sm"
               colorScheme={'purple'}
               isLoading={approveModelMutation.isPending}
@@ -566,7 +566,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               <ActionButton
                 isVisible={!isEditing}
                 onClick={setIsEditing.on}
-                leftIcon={<AiOutlineEdit />}
+                // leftIcon={<AiOutlineEdit />}
                 fontSize="sm"
               >
                 {t('edit')}
@@ -575,7 +575,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               <ActionButton
                 isVisible={isEditing}
                 onClick={onCancel}
-                leftIcon={<MdClose />}
+                // leftIcon={<MdClose />}
                 colorScheme={'gray'}
                 fontSize="sm"
               >
@@ -585,7 +585,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               <ActionButton
                 isVisible={isEditing}
                 type="submit"
-                leftIcon={<MdOutlineCheck />}
+                // leftIcon={<MdOutlineCheck />}
                 fontSize="sm"
               >
                 {t('save')}
@@ -598,13 +598,13 @@ export const ModelEditForm = <T extends StrapiModel>({
               onClick={isPublished ? onUnPublish : onPublish}
               colorScheme={isPublished ? 'yellow' : 'green'}
               fontSize="sm"
-              leftIcon={
-                isPublished ? (
-                  <MdOutlineUnpublished />
-                ) : (
-                  <MdOutlinePublishedWithChanges />
-                )
-              }
+              // leftIcon={
+              //   isPublished ? (
+              //     <MdOutlineUnpublished />
+              //   ) : (
+              //     <MdOutlinePublishedWithChanges />
+              //   )
+              // }
             >
               {isPublished ? t('unpublish') : t('publish')}
             </ActionButton>
@@ -612,7 +612,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionButton
               canDelete={endpoint}
               onClick={onDelete}
-              leftIcon={<BsTrash />}
+              // leftIcon={<BsTrash />}
               colorScheme="red"
             >
               {t('delete')}

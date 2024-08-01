@@ -55,7 +55,7 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
         <Button
           rounded="full"
           colorScheme={isLiked ? 'red' : 'gray'}
-          rightIcon={<AiFillHeart />}
+          // rightIcon={<AiFillHeart />}
           onClick={() => toggleLike()}
           disabled={isDisabled}
           size="sm"

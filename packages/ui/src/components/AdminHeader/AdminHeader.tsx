@@ -149,7 +149,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
           <Button
             onClick={openAuthModal}
             colorScheme={'blue'}
-            leftIcon={<FaUser />}
+            // leftIcon={<FaUser />}
             rounded={'full'}
             isLoading={isLoading}
           >

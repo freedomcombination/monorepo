@@ -49,7 +49,7 @@ export const ModelCreateModal = <T extends StrapiModel>({
   return (
     <>
       <Button
-        leftIcon={<FaPlus />}
+        // leftIcon={<FaPlus />}
         onClick={formDisclosure.onOpen}
         disabled={!hasPermission}
         isDisabled={!hasPermission}

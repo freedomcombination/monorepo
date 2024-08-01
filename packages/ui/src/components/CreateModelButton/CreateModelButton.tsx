@@ -70,7 +70,7 @@ export const CreateModelButton = () => {
           colorScheme={'primary'}
           rounded={'full'}
           aria-label="create"
-          leftIcon={<FaPlus />}
+          // leftIcon={<FaPlus />}
           iconSpacing={{ base: 0, lg: 2 }}
           px={{ base: 2, lg: 4 }}
         >
@@ -91,7 +91,7 @@ export const CreateModelButton = () => {
                   fields={fields['archive-contents']!}
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <LuFileArchive />,
+                    // leftIcon: <LuFileArchive />,
                   }}
                 >
                   {t('create-archive-content')}
@@ -104,7 +104,7 @@ export const CreateModelButton = () => {
                   fields={fields.activities!}
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <TbActivity />,
+                    // leftIcon: <TbActivity />,
                   }}
                 >
                   {t('create-activity')}
@@ -117,7 +117,7 @@ export const CreateModelButton = () => {
                   fields={fields.assets!}
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <SiMaterialdesignicons />,
+                    // leftIcon: <SiMaterialdesignicons />,
                   }}
                 >
                   {t('create-asset')}
@@ -130,7 +130,7 @@ export const CreateModelButton = () => {
                   fields={fields.blogs!}
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <TbWriting />,
+                    // leftIcon: <TbWriting />,
                   }}
                 >
                   {t('create-blog')}
@@ -144,7 +144,7 @@ export const CreateModelButton = () => {
                   shouldPublish
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <MdOutlineCastForEducation />,
+                    // leftIcon: <MdOutlineCastForEducation />,
                   }}
                 >
                   {t('create-course')}
@@ -158,7 +158,7 @@ export const CreateModelButton = () => {
                   shouldPublish
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <BsCollection />,
+                    // leftIcon: <BsCollection />,
                   }}
                 >
                   {t('create-collection')}
@@ -171,7 +171,7 @@ export const CreateModelButton = () => {
                   fields={fields.hashtags!}
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <CgHashtag />,
+                    // leftIcon: <CgHashtag />,
                   }}
                 >
                   {t('create-hashtag')}
@@ -184,7 +184,7 @@ export const CreateModelButton = () => {
                   fields={fields.posts!}
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <TbBrandTwitter />,
+                    // leftIcon: <TbBrandTwitter />,
                   }}
                 >
                   {t('create-post')}
@@ -211,7 +211,7 @@ export const CreateModelButton = () => {
                   fields={fields['categories']!}
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <MdOutlineCategory />,
+                    // leftIcon: <MdOutlineCategory />,
                   }}
                 >
                   {t('create-category')}
@@ -224,7 +224,7 @@ export const CreateModelButton = () => {
                   fields={fields['tags']!}
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <IoPricetagsOutline />,
+                    // leftIcon: <IoPricetagsOutline />,
                   }}
                 >
                   {t('create-tag')}
@@ -237,7 +237,7 @@ export const CreateModelButton = () => {
                   fields={fields.notifications!}
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <MdOutlineNotificationsActive />,
+                    // leftIcon: <MdOutlineNotificationsActive />,
                   }}
                 >
                   {t('create-notification')}
@@ -251,7 +251,7 @@ export const CreateModelButton = () => {
                   shouldPublish
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <HiOutlineNewspaper />,
+                    // leftIcon: <HiOutlineNewspaper />,
                   }}
                 >
                   {t('create-news')}
@@ -265,7 +265,7 @@ export const CreateModelButton = () => {
                   shouldPublish
                   buttonProps={{
                     variant: 'outline',
-                    leftIcon: <TbBrandTwitter />,
+                    // leftIcon: <TbBrandTwitter />,
                   }}
                 >
                   {t('create-recommended-tweet')}

@@ -122,20 +122,20 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
                   textColor={'white'}
                   onClick={handleReturn}
                   bg={'gray.400'}
-                  leftIcon={<AiOutlineArrowLeft />}
+                  // leftIcon={<AiOutlineArrowLeft />}
                 >
                   Return
                 </Button>
                 <Button
                   onClick={handleSaveDraft}
                   colorScheme={'purple'}
-                  leftIcon={<AiOutlineCheck />}
+                  // leftIcon={<AiOutlineCheck />}
                 >
                   Save Draft
                 </Button>
                 <Button
                   onClick={handleSendTranslation}
-                  leftIcon={<AiOutlineCheck />}
+                  // leftIcon={<AiOutlineCheck />}
                 >
                   Send Translation
                 </Button>

@@ -38,7 +38,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
       <NavLink
         href={link}
         justifyContent={'start'}
-        leftIcon={icon}
+        // leftIcon={icon}
         variant="ghost"
         color={'initial'}
         rounded="0"
@@ -55,15 +55,15 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
         }}
         {...(submenu && {
           onClick: setOpen.toggle,
-          rightIcon: (
-            <Box
-              as={GoChevronDown}
-              transition="all 0.2s"
-              {...(open && {
-                transform: 'rotate(180deg)',
-              })}
-            />
-          ),
+          // rightIcon: (
+          //   <Box
+          //     as={GoChevronDown}
+          //     transition="all 0.2s"
+          //     {...(open && {
+          //       transform: 'rotate(180deg)',
+          //     })}
+          //   />
+          // ),
         })}
         {...(!allowed && {
           color: 'red.700',
@@ -91,7 +91,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
                   key={item.link}
                   ml={8}
                   {...(isExternal && { isExternal, target: '_blank' })}
-                  leftIcon={item.icon}
+                  // leftIcon={item.icon}
                   size="sm"
                   variant="ghost"
                   color={'initial'}

@@ -27,7 +27,7 @@ type CredentialProps = {
   initialValue: string
   name: 'username' | 'email'
   placeholder: string
-  leftIcon: ReactNode
+  // leftIcon: ReactNode
 }
 
 const asyncUpdate = async (param: Record<string, string>, token: string) => {
@@ -52,7 +52,7 @@ const Credential: React.FC<CredentialProps> = ({
   initialValue = '',
   name,
   placeholder,
-  leftIcon,
+  // leftIcon,
 }) => {
   const { user, token, checkAuth } = useAuthContext()
   const [edit, setEdit] = useState(false)
@@ -90,7 +90,7 @@ const Credential: React.FC<CredentialProps> = ({
   return (
     <InputGroup size="lg">
       <InputLeftElement>
-        {!saving ? leftIcon : <Spinner size="sm" />}
+        {/* {!saving ? leftIcon : <Spinner size="sm" />} */}
       </InputLeftElement>
       <Input
         pr="7em"
@@ -134,7 +134,7 @@ export const SecurityTab = () => {
             return username.length > 2 && username !== user?.username
           }}
           placeholder={t('profile.username.ph')}
-          leftIcon={<FaUser />}
+          // leftIcon={<FaUser />}
         />
       </FormControl>
       <FormControl>
@@ -149,7 +149,7 @@ export const SecurityTab = () => {
             return emailRegex.test(email)
           }}
           placeholder={t('profile.email.ph')}
-          leftIcon={<FaEnvelope />}
+          // leftIcon={<FaEnvelope />}
         />
       </FormControl>
       <Divider />

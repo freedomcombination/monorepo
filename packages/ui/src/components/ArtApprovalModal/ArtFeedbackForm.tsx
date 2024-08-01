@@ -110,7 +110,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
                 isDisabled={!feedback || art.approvalStatus === 'rejected'}
                 onClick={handleReject}
                 colorScheme="red"
-                leftIcon={<HiOutlineX />}
+                // leftIcon={<HiOutlineX />}
               >
                 {t('reject')}
               </Button>
@@ -121,7 +121,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
                 isDisabled={!feedback || art.approvalStatus === 'approved'}
                 onClick={handleApprove}
                 colorScheme="primary"
-                leftIcon={<HiOutlineCheck />}
+                // leftIcon={<HiOutlineCheck />}
               >
                 {t('approve')}
               </Button>
@@ -132,7 +132,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
                 flexShrink={0}
                 onClick={onEdit}
                 colorScheme="primary"
-                leftIcon={<HiPencil />}
+                // leftIcon={<HiPencil />}
               >
                 {t('edit')}
               </ActionButton>

@@ -38,7 +38,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
           size="sm"
           isLoading={isLoading}
           variant={!isScrolled && isDark ? 'solid' : 'outline'}
-          rightIcon={<FiLogIn />}
+          // rightIcon={<FiLogIn />}
         >
           {t('login.signin')}
         </ButtonLink>
@@ -51,13 +51,13 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
       <MenuButton
         as={Button}
         size={'sm'}
-        leftIcon={
-          <WAvatar
-            size={'xs'}
-            src={profile?.avatar}
-            name={profile?.name || user?.username}
-          />
-        }
+        // leftIcon={
+        //   <WAvatar
+        //     size={'xs'}
+        //     src={profile?.avatar}
+        //     name={profile?.name || user?.username}
+        //   />
+        // }
       >
         {profile?.name || user?.username}
       </MenuButton>

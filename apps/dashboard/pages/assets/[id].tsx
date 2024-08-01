@@ -183,7 +183,7 @@ const AssetPage = () => {
           fields={fields['assets-trackings']!}
           buttonProps={{
             variant: 'outline',
-            leftIcon: <TbActivity />,
+            // leftIcon: <TbActivity />,
           }}
           onSuccess={assetsTrackingsQuery.refetch}
         >

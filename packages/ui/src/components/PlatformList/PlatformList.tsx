@@ -43,7 +43,7 @@ export const PlatformList: FC<PlatformListProps> = ({ platforms }) => {
 
             <ButtonLink
               href={`/${locale}/platforms/${platform.slug}`}
-              rightIcon={<FaChevronRight />}
+              // rightIcon={<FaChevronRight />}
               variant="link"
             >
               {t('read-more')}

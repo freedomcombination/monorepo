@@ -198,7 +198,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
       </MasonryGrid>
       <Button
         alignSelf={'end'}
-        leftIcon={<TbPlus />}
+        // leftIcon={<TbPlus />}
         type={'submit'}
         isLoading={createModelMutation.isPending}
       >
