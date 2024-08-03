@@ -207,7 +207,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
           cursor="pointer"
         >
           <Button
-            // leftIcon={<IoMdCloudUpload />}
+            leftIcon={<IoMdCloudUpload />}
             size="lg"
             colorScheme={'blackAlpha'}
           >

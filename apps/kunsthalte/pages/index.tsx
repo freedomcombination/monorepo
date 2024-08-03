@@ -50,7 +50,7 @@ const Home = () => {
               <ButtonLink
                 href={`/${locale}/club/arts`}
                 size="lg"
-                // leftIcon={<FaPaintBrush />}
+                leftIcon={<FaPaintBrush />}
               >
                 {t('view-arts')}
               </ButtonLink>
@@ -58,14 +58,14 @@ const Home = () => {
               <ButtonLink
                 href={`/${locale}/club/collections`}
                 size="lg"
-                // leftIcon={<BsCollectionFill />}
+                leftIcon={<BsCollectionFill />}
               >
                 {t('view-collections')}
               </ButtonLink>
               <ButtonLink
                 href={`/${locale}/activities`}
                 size="lg"
-                // leftIcon={<BsActivity />}
+                leftIcon={<BsActivity />}
               >
                 {t('view-activities')}
               </ButtonLink>

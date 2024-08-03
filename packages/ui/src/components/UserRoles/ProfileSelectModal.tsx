@@ -271,11 +271,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
           </SimpleGrid>
         </ModalBody>
         <ModalFooter gap={6}>
-          <Button
-            // leftIcon={<FaX />}
-            onClick={onClose}
-            isDisabled={saveUsers}
-          >
+          <Button leftIcon={<FaX />} onClick={onClose} isDisabled={saveUsers}>
             {t('cancel')}
           </Button>
           <Button

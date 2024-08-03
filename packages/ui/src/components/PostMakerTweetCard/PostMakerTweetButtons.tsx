@@ -100,7 +100,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
           mentionsDisclosure.onOpen()
         }}
         iconSpacing={{ base: 0, md: 2 }}
-        // leftIcon={<GoMention />}
+        leftIcon={<GoMention />}
       >
         <Text isTruncated display={{ base: 'none', md: 'block' }}>
           {t('post.add-mention')}
@@ -116,7 +116,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
           trendsDisclosure.onOpen()
         }}
         iconSpacing={{ base: 0, md: 2 }}
-        // leftIcon={<MdTrendingUp />}
+        leftIcon={<MdTrendingUp />}
       >
         <Text isTruncated display={{ base: 'none', md: 'block' }}>
           {t('post.add-trend')}
@@ -129,7 +129,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
         <Button
           role={'group'}
           iconSpacing={{ base: 0, md: 2 }}
-          // leftIcon={<FaXTwitter />}
+          leftIcon={<FaXTwitter />}
           onClick={() => {
             onShare().then(() => onTweet())
           }}
@@ -168,7 +168,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
             bg={'black'}
             flexShrink={0}
             iconSpacing={{ base: 0, md: 2 }}
-            // leftIcon={<FaXTwitter />}
+            leftIcon={<FaXTwitter />}
             onClick={onShare}
             fontWeight={600}
             _hover={{ bg: 'gray.800' }}

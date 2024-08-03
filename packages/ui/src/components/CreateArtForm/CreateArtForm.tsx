@@ -229,7 +229,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                     <Button
                       isDisabled={!images || images?.length === 0 || !isValid}
                       type="submit"
-                      // rightIcon={<FaPlus />}
+                      rightIcon={<FaPlus />}
                     >
                       {t('create')}
                     </Button>

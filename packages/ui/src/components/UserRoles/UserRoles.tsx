@@ -123,10 +123,7 @@ export const UserRoles = () => {
 
   return (
     <VStack alignItems={'flex-start'} gap={4}>
-      <Button
-        // leftIcon={<TbPlus />}
-        onClick={onSaveOpen}
-      >
+      <Button leftIcon={<TbPlus />} onClick={onSaveOpen}>
         {t('create')}
       </Button>
 

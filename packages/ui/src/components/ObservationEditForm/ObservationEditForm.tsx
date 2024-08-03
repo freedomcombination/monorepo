@@ -130,27 +130,27 @@ export const ObservationEditForm = ({
               <ActionButton
                 isVisible={!isEditing}
                 onClick={setIsEditing.on}
-                // leftIcon={<AiOutlineEdit />}
+                leftIcon={<AiOutlineEdit />}
                 iconSpacing={0}
               />
               <ActionButton
                 isVisible={isEditing}
                 onClick={onCancel}
-                // leftIcon={<MdClose />}
+                leftIcon={<MdClose />}
                 colorScheme={'gray'}
                 iconSpacing={0}
               />
               <ActionButton
                 isVisible={isEditing}
                 type="submit"
-                // leftIcon={<MdOutlineCheck />}
+                leftIcon={<MdOutlineCheck />}
                 iconSpacing={0}
               />
               {!isEditing && (
                 <ActionButton
                   canDelete={'observations'}
                   onClick={onDelete}
-                  // leftIcon={<BsTrash />}
+                  leftIcon={<BsTrash />}
                   colorScheme="red"
                   iconSpacing={0}
                 />

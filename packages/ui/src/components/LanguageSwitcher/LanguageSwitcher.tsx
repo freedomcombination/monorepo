@@ -42,7 +42,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
         as={Button}
         variant="outline"
         rounded="full"
-        // leftIcon={<Flag locale={router.locale} boxSize={6} />}
+        leftIcon={<Flag locale={router.locale} boxSize={6} />}
         {...(responsive && {
           iconSpacing: { base: 0, lg: 2 },
           px: 2,

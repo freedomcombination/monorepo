@@ -71,7 +71,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
               {foundation?.policy_plan && (
                 <ButtonLink
                   href={API_URL + foundation?.policy_plan?.url}
-                  // rightIcon={<GrDocumentDownload />}
+                  rightIcon={<GrDocumentDownload />}
                   colorScheme={'blackAlpha'}
                   variant={'ghost'}
                   color={'initial'}
@@ -87,7 +87,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
                     API_URL +
                     foundation?.substantive_financial_annual_report?.url
                   }
-                  // rightIcon={<GrDocumentDownload />}
+                  rightIcon={<GrDocumentDownload />}
                   colorScheme={'blackAlpha'}
                   variant={'ghost'}
                   color={'initial'}
@@ -99,7 +99,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
               {foundation?.remuneration_policy && (
                 <ButtonLink
                   href={API_URL + foundation?.remuneration_policy?.url}
-                  // rightIcon={<GrDocumentDownload />}
+                  rightIcon={<GrDocumentDownload />}
                   colorScheme={'blackAlpha'}
                   variant={'ghost'}
                   color={'initial'}

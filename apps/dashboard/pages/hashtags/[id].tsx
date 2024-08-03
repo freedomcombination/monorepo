@@ -55,7 +55,7 @@ const HashtagPage = () => {
             colorScheme={'orange'}
             variant={'outline'}
             onClick={onOpen}
-            // leftIcon={<FaPencil />}
+            leftIcon={<FaPencil />}
           >
             {t('edit')}
           </Button>

@@ -94,13 +94,13 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
                   fontSize={'2xl'}
                   flexDir={'column'}
                   borderWidth={3}
-                  // leftIcon={
-                  //   <Box
-                  //     as={FaXTwitter}
-                  //     mb={4}
-                  //     fontSize={{ base: '1.5em', lg: '2em' }}
-                  //   />
-                  // }
+                  leftIcon={
+                    <Box
+                      as={FaXTwitter}
+                      mb={4}
+                      fontSize={{ base: '1.5em', lg: '2em' }}
+                    />
+                  }
                 >
                   PostMaker
                 </Button>
@@ -114,13 +114,13 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
                   fontSize={'2xl'}
                   flexDir={'column'}
                   borderWidth={3}
-                  // leftIcon={
-                  //   <Box
-                  //     as={FaDonate}
-                  //     mb={4}
-                  //     fontSize={{ base: '1.5em', lg: '2em' }}
-                  //   />
-                  // }
+                  leftIcon={
+                    <Box
+                      as={FaDonate}
+                      mb={4}
+                      fontSize={{ base: '1.5em', lg: '2em' }}
+                    />
+                  }
                 >
                   {t('donation.title')}
                 </Button>

@@ -169,7 +169,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
           <Button
             display={{ base: 'none', sm: 'flex' }}
             alignSelf="flex-end"
-            // rightIcon={<FiArrowRight />}
+            rightIcon={<FiArrowRight />}
             isLoading={isPending}
             isDisabled={!isValid || !recaptchaToken}
             type="submit"

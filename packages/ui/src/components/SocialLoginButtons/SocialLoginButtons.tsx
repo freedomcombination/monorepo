@@ -66,7 +66,7 @@ export const SocialLoginButtons: FC<SocialLoginButtonsProps> = ({
         <Button
           key={name}
           w="full"
-          // leftIcon={icon}
+          leftIcon={icon}
           colorScheme={colorSchema}
           onClick={() => {
             onSocialLogin(url)

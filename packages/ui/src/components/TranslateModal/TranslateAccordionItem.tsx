@@ -102,7 +102,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
                   <Button
                     size="xs"
                     textTransform={'uppercase'}
-                    // leftIcon={<BsTranslate />}
+                    leftIcon={<BsTranslate />}
                     colorScheme={localeColorSchemes[missingTranslation]}
                     variant="ghost"
                     onClick={e => {

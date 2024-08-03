@@ -73,7 +73,7 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                   variant="link"
                   color="primary.50"
                   _hover={{ color: 'primary.100' }}
-                  // leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
+                  leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
                   href={`tel:${foundation?.contact?.phone}`}
                 >
                   {foundation?.contact?.phone}
@@ -84,9 +84,9 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                   variant="link"
                   color="primary.50"
                   _hover={{ color: 'primary.50' }}
-                  // leftIcon={
-                  //   <Box as={MdEmail} color="primary.100" size="20px" />
-                  // }
+                  leftIcon={
+                    <Box as={MdEmail} color="primary.100" size="20px" />
+                  }
                   href={`mailto:${foundation?.contact?.email}`}
                 >
                   {foundation?.contact?.email}

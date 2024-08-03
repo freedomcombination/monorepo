@@ -109,7 +109,7 @@ export const ChangePasswordForm = () => {
       </Stack>
 
       <Button
-        // leftIcon={<FaEdit />}
+        leftIcon={<FaEdit />}
         isLoading={isPending}
         size={'lg'}
         alignSelf={'start'}

@@ -215,7 +215,7 @@ export const DetailsTab = () => {
 
       <Button
         isDisabled={!hasChanged}
-        // leftIcon={<FaSave />}
+        leftIcon={<FaSave />}
         size={'lg'}
         isLoading={saving}
         onClick={() => setSaving(true)}

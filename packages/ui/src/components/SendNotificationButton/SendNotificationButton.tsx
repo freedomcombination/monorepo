@@ -40,7 +40,7 @@ export const SendNotificationButton: FC<SendNotificationButtonProps> = ({
   return (
     <ActionButton
       onClick={sendNotification}
-      // leftIcon={<FiSend />}
+      leftIcon={<FiSend />}
       fontSize="sm"
       colorScheme={'blue'}
       type="button"

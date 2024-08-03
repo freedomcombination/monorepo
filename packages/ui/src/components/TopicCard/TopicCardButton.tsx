@@ -13,7 +13,7 @@ export const TopicCardButton: FC<TopicCardButtonProps> = ({
     <ActionButton
       aria-label={title}
       onClick={onClick}
-      // leftIcon={icon}
+      leftIcon={icon}
       {...rest}
     >
       {title}

@@ -272,7 +272,7 @@ export const PostGenAI = ({
             </Wrap>
             <Wrap>
               <Button
-                // leftIcon={<RiAiGenerate />}
+                leftIcon={<RiAiGenerate />}
                 isDisabled={isLoading}
                 type="submit"
                 colorScheme={colorScheme}
@@ -281,7 +281,7 @@ export const PostGenAI = ({
               </Button>
               {isLoading && (
                 <Button
-                  // leftIcon={<FaStop />}
+                  leftIcon={<FaStop />}
                   type="button"
                   onClick={stop}
                   colorScheme="gray"
@@ -292,7 +292,7 @@ export const PostGenAI = ({
               {posts.length > 0 && (
                 <>
                   <Button
-                    // leftIcon={<FaSave />}
+                    leftIcon={<FaSave />}
                     type="button"
                     onClick={handleSave}
                     colorScheme={'purple'}
@@ -302,7 +302,7 @@ export const PostGenAI = ({
                     Save All
                   </Button>
                   <Button
-                    // leftIcon={<FaTrash />}
+                    leftIcon={<FaTrash />}
                     type="button"
                     isDisabled={isSaving}
                     onClick={() => removePosts(archiveContentId)}

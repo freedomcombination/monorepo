@@ -187,7 +187,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                 <Button
                   bg={'transparent'}
                   mr={3}
-                  // leftIcon={<GrFormClose />}
+                  leftIcon={<GrFormClose />}
                   onClick={closeModal}
                 >
                   Cancel
@@ -195,7 +195,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                 <Button
                   type={'submit'}
                   colorScheme="purple"
-                  // leftIcon={<FiArrowUpRight />}
+                  leftIcon={<FiArrowUpRight />}
                   disabled={similarity > SIMILARITY_LIMIT}
                 >
                   Recommend
