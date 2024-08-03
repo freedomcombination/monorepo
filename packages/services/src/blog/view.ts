@@ -17,7 +17,9 @@ export const viewBlog = async (blog: Blog, token: string) => {
 export const useViewBlog = () => {
   const { token } = useAuthContext()
 
-  const { data: blog, refetch } = useGetBlogSlug()
+  const { data, refetch } = useGetBlogSlug()
+
+  const blog = data?.data
 
   const [blogStorage, setBlogStorage] = useLocalStorage<number[]>(
     'view-blog',
@@ -28,7 +30,10 @@ export const useViewBlog = () => {
     mutationKey: ['view-blog', blog?.id],
     mutationFn: (blog: Blog) => viewBlog(blog, token as string),
     onSuccess: () => {
-      blog && setBlogStorage([...(blogStorage || []), blog.id])
+      if (blog) {
+        setBlogStorage([...(blogStorage || []), blog.id])
+      }
+
       refetch()
     },
   })

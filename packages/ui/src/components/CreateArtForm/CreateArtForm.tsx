@@ -20,7 +20,6 @@ import {
   Textarea,
   useDisclosure,
   useToast,
-  VStack,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
@@ -179,14 +178,12 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
             )}
 
             {!user && (
-              <VStack>
-                <Text>
-                  <>{t('you-must-logged-in')} </>
-                  <Link href={loginHref} color="primary.500">
-                    {t('login')}
-                  </Link>
-                </Text>
-              </VStack>
+              <Text data-testid="text-require-login">
+                <>{t('you-must-logged-in')} </>
+                <Link href={loginHref} color="primary.500">
+                  {t('login')}
+                </Link>
+              </Text>
             )}
 
             {/* CREATE FORM */}

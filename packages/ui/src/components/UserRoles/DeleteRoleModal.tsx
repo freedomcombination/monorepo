@@ -12,7 +12,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context'
 import { Role } from '@fc/types'

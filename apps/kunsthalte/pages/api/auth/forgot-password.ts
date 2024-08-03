@@ -1,3 +1,3 @@
-import { forgotPasswordRouter } from '@fc/services/src/api/forgot-password'
+import { forgotPasswordHandler } from '@fc/services/src/api/forgotPasswordHandler'
 
-export default forgotPasswordRouter
+export default forgotPasswordHandler

@@ -30,7 +30,10 @@ export const useViewArtMutation = (recaptchaToken?: string) => {
         { headers: { ...(token && { Authorization: `Bearer ${token}` }) } },
       ),
     onSuccess: () => {
-      art && setArtStorage([...(artStorage || []), art.id])
+      if (art) {
+        setArtStorage([...(artStorage || []), art.id])
+      }
+
       queryClient.invalidateQueries({ queryKey: ['art', locale, slug] })
     },
   })

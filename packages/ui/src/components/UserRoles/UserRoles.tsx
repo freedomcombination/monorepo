@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { TFunction } from 'i18next'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 import { FaEdit } from 'react-icons/fa'
 import { FaCopy, FaTrash, FaUser } from 'react-icons/fa6'
 import { TbPlus } from 'react-icons/tb'
