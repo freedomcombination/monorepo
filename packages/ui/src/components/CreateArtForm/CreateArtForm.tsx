@@ -4,8 +4,6 @@ import { useDisclosure } from '@chakra-ui/hooks'
 import { Link } from '@chakra-ui/next-js'
 import {
   Box,
-  Button,
-  ButtonProps,
   Center,
   HStack,
   SimpleGrid,
@@ -26,6 +24,14 @@ import { FaUpload } from 'react-icons/fa'
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useStrapiRequest } from '@fc/services'
 import { ArtCreateInput, Category } from '@fc/types'
+
+import { ArtCreateSuccessAlert } from './CreateArtSuccessAlert'
+import { createArtSchema } from './schema'
+import { CreateArtFormFieldValues } from './types'
+import { useToast } from '../../hooks'
+import { Button, ButtonProps } from '../Button'
+import { FilePicker } from '../FilePicker'
+import { FormItem } from '../FormItem'
 import {
   Modal,
   ModalBody,
@@ -33,14 +39,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  useToast,
-} from '@fc/ui'
-
-import { ArtCreateSuccessAlert } from './CreateArtSuccessAlert'
-import { createArtSchema } from './schema'
-import { CreateArtFormFieldValues } from './types'
-import { FilePicker } from '../FilePicker'
-import { FormItem } from '../FormItem'
+} from '../Modal'
 import { WSelect } from '../WSelect'
 
 export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {

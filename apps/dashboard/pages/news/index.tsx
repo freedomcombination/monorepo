@@ -1,13 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import {
-  Box,
-  Button,
-  Center,
-  HStack,
-  SimpleGrid,
-  Spinner,
-} from '@chakra-ui/react'
+import { Box, Center, HStack, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { addMinutes, formatDistanceToNow, isPast } from 'date-fns'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -21,6 +14,7 @@ import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
 import {
   AdminLayout,
+  Button,
   PageHeader,
   TopicCard,
   Tooltip,

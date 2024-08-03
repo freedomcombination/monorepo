@@ -1,16 +1,8 @@
-import {
-  Accordion,
-  Badge,
-  Box,
-  Button,
-  HStack,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Accordion, Badge, Box, HStack, Stack, Text } from '@chakra-ui/react'
 import { BsTranslate } from 'react-icons/bs'
 
 import { StrapiTranslatableModel } from '@fc/types'
-import { Tooltip } from '@fc/ui'
+import { Button, Tooltip } from '@fc/ui'
 
 import { TranslateAccordionItemProps } from './types'
 import { Flag } from '../Flag'

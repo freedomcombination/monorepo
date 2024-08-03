@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { Button, Stack, Text, VStack } from '@chakra-ui/react'
+import { Stack, Text, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
@@ -9,18 +9,19 @@ import { Trans, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAuthContext } from '@fc/context'
+
+import { adminLoginSchema } from '../AdminLoginForm/schema'
+import { Button } from '../Button'
+import { ButtonLink } from '../ButtonLink'
+import { FormItem } from '../FormItem'
+import { LoginFormFieldValues } from '../LoginForm'
 import {
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-} from '@fc/ui'
-
-import { adminLoginSchema } from '../AdminLoginForm/schema'
-import { ButtonLink } from '../ButtonLink'
-import { FormItem } from '../FormItem'
-import { LoginFormFieldValues } from '../LoginForm'
+} from '../Modal'
 import { WAvatar } from '../WAvatar'
 
 export const AuthModal = () => {

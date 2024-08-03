@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { Box } from '@chakra-ui/react'
+
 import {
   Modal,
   ModalBody,

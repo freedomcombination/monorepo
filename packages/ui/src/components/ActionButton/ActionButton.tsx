@@ -1,8 +1,7 @@
 import { FC } from 'react'
 
-import { Button, ButtonProps } from '@chakra-ui/react'
-
 import { ActionWrapper, ActionWrapperProps } from '../ActionWrapper'
+import { Button, ButtonProps } from '../Button'
 
 export type ActionButtonProps = Omit<ActionWrapperProps<ButtonProps>, 'ui'>
 

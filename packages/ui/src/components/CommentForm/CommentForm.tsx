@@ -1,9 +1,7 @@
 import { FC, useEffect } from 'react'
 
 import {
-  Button,
   HStack,
-  IconButton,
   Stack,
   Text,
   Textarea,
@@ -20,11 +18,13 @@ import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useRecaptchaToken } from '@fc/services'
 import { Comment, CommentCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils'
-import { Tooltip } from '@fc/ui'
 
 import { commentFormSchema } from './schema'
 import { CommentFormFieldValues, CommentFormProps } from './types'
+import { Button } from '../Button'
 import { FormItem } from '../FormItem'
+import { IconButton } from '../IconButton'
+import { Tooltip } from '../Tooltip'
 import { WAvatar } from '../WAvatar'
 
 export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {

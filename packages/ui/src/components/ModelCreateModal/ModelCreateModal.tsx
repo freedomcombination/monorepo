@@ -1,10 +1,12 @@
 import { PropsWithChildren } from 'react'
 
-import { Button } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
 import { FaPlus } from 'react-icons/fa6'
 
 import { useAuthContext } from '@fc/context'
+import { StrapiModel } from '@fc/types'
+
+import { Button } from '../Button'
 import {
   Modal,
   ModalBody,
@@ -12,9 +14,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from '@fc/ui'
-import { StrapiModel } from '@fc/types'
-
+} from '../Modal'
 import { ModelCreateForm } from '../ModelCreateForm'
 import { ModelCreateFormProps } from '../ModelCreateForm'
 
@@ -52,7 +52,6 @@ export const ModelCreateModal = <T extends StrapiModel>({
         leftIcon={<FaPlus />}
         onClick={formDisclosure.onOpen}
         disabled={!hasPermission}
-        isDisabled={!hasPermission}
         {...buttonProps}
       >
         {children}

@@ -1,5 +1,5 @@
-import { Button, Center, Spinner } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Center, Spinner } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -10,7 +10,7 @@ import { strapiRequest } from '@fc/lib'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Hashtag, StrapiLocale } from '@fc/types'
-import { AdminLayout, ModelEditModal, TabbedGenAIView } from '@fc/ui'
+import { AdminLayout, Button, ModelEditModal, TabbedGenAIView } from '@fc/ui'
 
 const HashtagPage = () => {
   const { t } = useTranslation()

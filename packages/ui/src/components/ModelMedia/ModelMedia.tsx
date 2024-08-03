@@ -1,13 +1,5 @@
-import {
-  Box,
-  Button,
-  Center,
-  Link,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Box, Center, Link, Stack, Text, VStack } from '@chakra-ui/react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'
@@ -24,6 +16,7 @@ import {
 } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
+import { Button } from '../Button'
 import { Caps } from '../Caps'
 import { FilePicker } from '../FilePicker'
 import { ModelPdf } from '../ModelPdf'

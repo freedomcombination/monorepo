@@ -1,5 +1,5 @@
-import { Box, Button } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Box } from '@chakra-ui/react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { sample } from 'lodash'
 
@@ -7,6 +7,7 @@ import { ART_MOCKS } from '@fc/mocks'
 
 import { ArtModal } from './ArtModal'
 import { ArtModalProps } from './types'
+import { Button } from '../Button'
 
 const sampleArt = sample(ART_MOCKS.data)!
 

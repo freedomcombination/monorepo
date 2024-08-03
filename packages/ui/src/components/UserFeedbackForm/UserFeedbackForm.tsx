@@ -1,14 +1,6 @@
 import React from 'react'
 
-import {
-  Box,
-  ButtonGroup,
-  HStack,
-  IconButton,
-  Stack,
-  Text,
-  Textarea,
-} from '@chakra-ui/react'
+import { Box, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
 import { IoSend } from 'react-icons/io5'
@@ -18,6 +10,7 @@ import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useUserFeedbackMutation } from '@fc/services'
 import { UserFeedbackCreateInput } from '@fc/types'
 import {
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -97,20 +90,20 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
               as="form"
               onSubmit={handleSubmit(handleUserFeedback)}
             >
-              <ButtonGroup>
+              <HStack>
                 {[1, 2, 3, 4, 5].map(p => (
                   <IconButton
                     key={p}
                     colorPalette={point === p ? 'primary' : 'gray'}
                     variant={point === p ? 'solid' : 'outline'}
-                    isRound
+                    rounded={'full'}
                     onClick={() => handlePoint(p)}
                     aria-label={`Give ${p} point`}
                     icon={<Text fontSize={'lg'}>{p}</Text>}
                     size={'lg'}
                   />
                 ))}
-              </ButtonGroup>
+              </HStack>
               <HStack>
                 <FormItem<CreateUserFeedbackFormFieldValues>
                   as={Textarea}

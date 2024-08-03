@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Button, HStack, Spacer, Stack, Text } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { HStack, Spacer, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AiOutlineEye } from 'react-icons/ai'
 import { HiPlus } from 'react-icons/hi'
@@ -11,6 +11,7 @@ import { ArtAddToCollectionCardProps } from './types'
 import { ActionButton } from '../ActionButton'
 import { ArtCardImage } from '../ArtCardImage'
 import { ArtModal } from '../ArtModal'
+import { Button } from '../Button'
 
 export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   isAdded,

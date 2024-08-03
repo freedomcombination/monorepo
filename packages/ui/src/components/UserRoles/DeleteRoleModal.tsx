@@ -8,7 +8,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  Button,
   Stack,
   Text,
 } from '@chakra-ui/react'
@@ -16,6 +15,7 @@ import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context'
 import { Role } from '@fc/types'
+import { Button } from '@fc/ui'
 import { deleteRole } from '@fc/utils'
 
 type DeleteRoleModalProps = {
@@ -104,7 +104,6 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
           <Button
             colorPalette="red"
             isLoading={countDown > 0}
-            loadingText={`${countDown}`}
             ml={3}
             minW={120}
             onClick={onCloseCompleteHandler}

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Box, HStack, IconButton, Link, Stack, Text } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Box, HStack, IconButton, Link, Stack, Text } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -25,10 +25,10 @@ import { TweetCardProps } from './types'
 import { useFields, useSchema } from '../../hooks'
 import { CreateTweetForm } from '../CreateTweetForm'
 import { CreateTweetFormFieldValues } from '../CreateTweetForm/types'
+import { Menu, MenuButton, MenuItem, MenuList } from '../Menu'
 import { ModelCreateModal } from '../ModelCreateModal'
 import { TweetContent } from '../TweetContent'
 import { WAvatar } from '../WAvatar'
-import { Menu, MenuButton, MenuItem, MenuList } from '../Menu'
 
 export const TweetCard: FC<TweetCardProps> = ({
   tweet,

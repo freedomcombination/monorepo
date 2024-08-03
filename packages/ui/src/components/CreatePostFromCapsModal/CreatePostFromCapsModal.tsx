@@ -4,7 +4,6 @@ import {
   Alert,
   AlertDescription,
   AlertIcon,
-  Button,
   Divider,
   Stack,
 } from '@chakra-ui/react'
@@ -20,6 +19,10 @@ import {
   UploadFile,
 } from '@fc/types'
 import { generateOgImageParams } from '@fc/utils'
+
+import { Button } from '../Button'
+import { ImageRecognizer } from '../ImageRecognizer'
+import { RecognizedImage } from '../ImageRecognizer/types'
 import {
   Modal,
   ModalBody,
@@ -27,10 +30,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-} from '@fc/ui'
-
-import { ImageRecognizer } from '../ImageRecognizer/ImageRecognizer'
-import { RecognizedImage } from '../ImageRecognizer/types'
+} from '../Modal'
 import { ModelSelect } from '../ModelSelect'
 
 type CreatePostFromCapsModalProps = {
@@ -153,7 +153,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
             Reset
           </Button>
           {/* isDisabled={!files} */}
-          <Button isDisabled={!state} colorPalette="blue" onClick={onCreate}>
+          <Button disabled={!state} colorPalette="blue" onClick={onCreate}>
             Create
           </Button>
         </ModalFooter>

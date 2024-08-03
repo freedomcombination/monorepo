@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   AlertDialog,
   AlertDialogBody,
@@ -14,16 +15,15 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  Button,
   Stack,
   Text,
 } from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/hooks'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { ArchiveContent, Hashtag, Post } from '@fc/types'
 
 import { ArchiveContentPosts, ArchivePostType, GenPostValueType } from './types'
+import { Button } from '../Button'
 
 const GenPostContext = createContext<GenPostValueType>({
   addPosts: () => [],

@@ -1,12 +1,13 @@
 import { FC } from 'react'
 
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { StrapiLocale } from '@fc/types'
 
 import { LocaleSwitcherProps } from './types'
 import { useScroll } from '../../hooks'
+import { Button, ButtonProps } from '../Button'
 
 const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
   const { push, pathname, locale, asPath, components, query, locales } =
@@ -23,12 +24,13 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
   }
 
   return (
-    <ButtonGroup gap={0} size="sm" alignItems="center">
+    <HStack gap={0} alignItems="center">
       {/* TODO: Remove after storybook test */}
       {locales.map(code => {
         if (query['slug'] && !slugs?.[code]) return null
 
-        let variant = 'ghost'
+        let variant: ButtonProps['variant'] = 'ghost'
+
         if (locale === code) {
           if (!isScrolled && isDark) variant = 'solid'
           else variant = 'outline'
@@ -37,6 +39,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
         return !isScrolled && isDark ? (
           <Button
             key={code}
+            size="sm"
             px={2}
             onClick={() => handleChangeLanguage(code)}
             colorPalette={
@@ -55,6 +58,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
         ) : (
           <Button
             key={code}
+            size="sm"
             px={2}
             onClick={() => handleChangeLanguage(code)}
             colorPalette={
@@ -70,7 +74,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
           </Button>
         )
       })}
-    </ButtonGroup>
+    </HStack>
   )
 }
 

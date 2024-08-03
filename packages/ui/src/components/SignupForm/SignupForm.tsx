@@ -4,7 +4,6 @@ import {
   Alert,
   AlertDescription,
   AlertIcon,
-  Button,
   Checkbox,
   Container,
   Divider,
@@ -23,6 +22,7 @@ import * as yup from 'yup'
 import { useAuthContext } from '@fc/context'
 
 import { SignupFormFieldValues, SignupFormProps } from './types'
+import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
 import { SocialLoginButtons } from '../SocialLoginButtons'
@@ -109,7 +109,7 @@ export const SignupForm: FC<SignupFormProps> = ({
             <HStack gap="1" justify="center">
               <Text color="muted">{t('login.have-account')}</Text>
 
-              <ButtonLink href="/auth/login" variant="link">
+              <ButtonLink href="/auth/login" variant="plain">
                 {t('login.signin')}
               </ButtonLink>
             </HStack>
@@ -160,7 +160,7 @@ export const SignupForm: FC<SignupFormProps> = ({
               <ButtonLink
                 href="/auth/terms"
                 target="_blank"
-                variant="link"
+                variant="plain"
                 colorPalette="gray"
                 size="sm"
               >
@@ -183,7 +183,7 @@ export const SignupForm: FC<SignupFormProps> = ({
             )}
             <SocialLoginButtons
               providersToBeShown={providersToBeShown}
-              isDisabled={!isTermsAccepted}
+              disabled={!isTermsAccepted}
             />
           </Stack>
         </Stack>

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Button, Center, HStack, Text } from '@chakra-ui/react'
+import { Center, HStack, Text } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { track } from '@vercel/analytics'
 import { useRouter } from 'next/router'
@@ -17,6 +17,7 @@ import { RedisPost } from '@fc/types'
 import { PostMakerTweetProgress } from './PostMakerTweetProgress'
 import { PostMakerTweetShare } from './PostMakerTweetShare'
 import { useHashtagContext } from '../../components/HashtagProvider'
+import { Button } from '../Button'
 import { usePostContext } from '../PostProvider'
 
 type PostMakerTweetButtonsProps = {
@@ -99,7 +100,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
           setActivePostId(post.id)
           mentionsDisclosure.onOpen()
         }}
-        iconSpacing={{ base: 0, md: 2 }}
+        gap={{ base: 0, md: 2 }}
         leftIcon={<GoMention />}
       >
         <Text isTruncated display={{ base: 'none', md: 'block' }}>
@@ -115,7 +116,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
           setActivePostId(post.id)
           trendsDisclosure.onOpen()
         }}
-        iconSpacing={{ base: 0, md: 2 }}
+        gap={{ base: 0, md: 2 }}
         leftIcon={<MdTrendingUp />}
       >
         <Text isTruncated display={{ base: 'none', md: 'block' }}>
@@ -128,7 +129,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
       {!isIosSafari && (
         <Button
           role={'group'}
-          iconSpacing={{ base: 0, md: 2 }}
+          gap={{ base: 0, md: 2 }}
           leftIcon={<FaXTwitter />}
           onClick={() => {
             onShare().then(() => onTweet())
@@ -167,7 +168,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
             colorPalette={'gray'}
             bg={'black'}
             flexShrink={0}
-            iconSpacing={{ base: 0, md: 2 }}
+            gap={{ base: 0, md: 2 }}
             leftIcon={<FaXTwitter />}
             onClick={onShare}
             fontWeight={600}

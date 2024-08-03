@@ -1,25 +1,16 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  ButtonGroup,
-  Divider,
-  HStack,
-  IconButton,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Divider, HStack, Text, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPlus, FaTimes } from 'react-icons/fa'
 
 import { MentionUserData } from '@fc/types'
 import { formatNumber } from '@fc/utils'
-import { Tooltip } from '@fc/ui'
 
 import { useHashtagContext } from '../HashtagProvider'
+import { IconButton } from '../IconButton'
+import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
+import { Tooltip } from '../Tooltip'
 import { WAvatar } from '../WAvatar'
 
 type MentionListItemProps = {
@@ -70,7 +61,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
               <Text>@{data.screen_name}</Text>
             </Box>
           </HStack>
-          <ButtonGroup>
+          <HStack>
             {onRemoveItem && (
               <Tooltip label={t('post.remove')}>
                 <IconButton
@@ -97,11 +88,10 @@ const MentionListItem: FC<MentionListItemProps> = ({
                 rounded="full"
                 size="sm"
                 icon={<FaPlus />}
-                isDisabled={isAdded}
                 disabled={isAdded}
               />
             </Tooltip>
-          </ButtonGroup>
+          </HStack>
         </HStack>
       </PopoverTrigger>
       <PopoverContent

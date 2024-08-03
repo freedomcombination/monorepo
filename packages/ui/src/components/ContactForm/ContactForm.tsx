@@ -4,7 +4,6 @@ import {
   Alert,
   AlertDescription,
   AlertIcon,
-  Button,
   Divider,
   Heading,
   Stack,
@@ -20,6 +19,7 @@ import { MdEmail } from 'react-icons/md'
 
 import { contactSchema } from './schema'
 import { ContactFormFieldValues, ContactFormProps } from './types'
+import { Button } from '../Button'
 import { FormItem } from '../FormItem'
 
 export const ContactForm: FC<ContactFormProps> = ({
@@ -81,7 +81,7 @@ export const ContactForm: FC<ContactFormProps> = ({
         <Button
           variant="solid"
           type="submit"
-          isDisabled={!isValid}
+          disabled={!isValid}
           isLoading={isLoading}
           size={'lg'}
           w="full"

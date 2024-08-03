@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { useDisclosure, useBoolean } from '@chakra-ui/hooks'
 import {
   AspectRatio,
   Box,
@@ -15,7 +16,6 @@ import {
   Textarea,
   Wrap,
 } from '@chakra-ui/react'
-import { useDisclosure, useBoolean } from '@chakra-ui/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'

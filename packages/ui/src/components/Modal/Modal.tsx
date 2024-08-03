@@ -1,5 +1,6 @@
-import { Dialog, DialogContentProps } from '@chakra-ui/react'
 import { FC } from 'react'
+
+import { Dialog, DialogContentProps } from '@chakra-ui/react'
 
 export const Modal = Dialog.Root
 export const ModalHeader = Dialog.Header

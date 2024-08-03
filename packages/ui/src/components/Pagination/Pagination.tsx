@@ -1,12 +1,14 @@
 import { FC } from 'react'
 
-import { Button, ButtonGroup, IconButton } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { BsThreeDots } from 'react-icons/bs'
 import { TbChevronLeft, TbChevronRight } from 'react-icons/tb'
 
 import { DOTS } from './dots'
 import { PaginationProps } from './types'
 import { usePagination } from './usePagination'
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
 
 // https://stackblitz.com/edit/react-1zaeqk
 export const Pagination: FC<PaginationProps> = ({
@@ -39,19 +41,14 @@ export const Pagination: FC<PaginationProps> = ({
   const lastPage = paginationRange[paginationRange.length - 1]
 
   return (
-    <ButtonGroup
-      display={'flex'}
-      justifyContent={'center'}
-      variant="ghost"
-      colorPalette="gray"
-      gap={0}
-      {...rest}
-    >
+    <HStack justifyContent={'center'} gap={0} {...rest}>
       {/* Prev button */}
       <IconButton
         aria-label="Previous page"
         icon={<TbChevronLeft />}
-        isDisabled={currentPage === 1}
+        variant="ghost"
+        colorPalette="gray"
+        disabled={currentPage === 1}
         onClick={onPrevious}
         rounded={'full'}
       />
@@ -63,7 +60,9 @@ export const Pagination: FC<PaginationProps> = ({
               key={index}
               aria-label="dots"
               rounded={'full'}
-              isDisabled
+              variant="ghost"
+              colorPalette="gray"
+              disabled
               _disabled={{ opacity: 1 }}
               icon={<BsThreeDots />}
             />
@@ -80,6 +79,8 @@ export const Pagination: FC<PaginationProps> = ({
             })}
             rounded={'full'}
             onClick={() => onPageChange(pageNumber as number)}
+            variant="ghost"
+            colorPalette="gray"
           >
             {pageNumber}
           </Button>
@@ -90,10 +91,12 @@ export const Pagination: FC<PaginationProps> = ({
       <IconButton
         aria-label="Next page"
         icon={<TbChevronRight />}
-        isDisabled={lastPage === currentPage}
+        disabled={lastPage === currentPage}
         rounded={'full'}
         onClick={onNext}
+        variant="ghost"
+        colorPalette="gray"
       />
-    </ButtonGroup>
+    </HStack>
   )
 }

@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 
-import { Button, Stack, Text } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useSubscribePushNotificationMutation } from '@fc/services'
+
+import { Button } from '../Button'
 import {
   Modal,
   ModalBody,
@@ -14,7 +16,7 @@ import {
   ModalHeader,
   ModalOverlay,
   ModalCloseButton,
-} from '@fc/ui'
+} from '../Modal'
 
 export const NotificationModal = () => {
   const { t } = useTranslation()

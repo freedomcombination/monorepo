@@ -3,8 +3,6 @@ import { FC, useState } from 'react'
 import {
   Badge,
   Box,
-  Button,
-  ButtonGroup,
   Heading,
   HStack,
   SimpleGrid,
@@ -17,17 +15,18 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { Art, StrapiLocale } from '@fc/types'
+
+import { ArtFeedbackForm } from './ArtFeedbackForm'
+import { ArtApprovalTypes } from './types'
+import { ArtCardImage } from '../ArtCardImage'
+import { Button } from '../Button'
 import {
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-} from '@fc/ui'
-
-import { ArtFeedbackForm } from './ArtFeedbackForm'
-import { ArtApprovalTypes } from './types'
-import { ArtCardImage } from '../ArtCardImage'
+} from '../Modal'
 import { ModelEditForm } from '../ModelEditForm'
 import { WAvatar } from '../WAvatar'
 
@@ -68,7 +67,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
               {!isEditing && (
                 <Stack overflowY={'auto'}>
                   <Stack gap={4} p={{ base: 4, lg: 8 }} flex={1}>
-                    <ButtonGroup isAttached>
+                    <HStack>
                       {['en', 'nl', 'tr'].map(lang => (
                         <Button
                           key={lang}
@@ -79,7 +78,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                           {lang}
                         </Button>
                       ))}
-                    </ButtonGroup>
+                    </HStack>
                     <HStack gap={4}>
                       <Heading flex={1} color={'primary.500'} fontWeight={700}>
                         {title}

@@ -7,7 +7,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  Button,
   Text,
   Stack,
 } from '@chakra-ui/react'
@@ -15,6 +14,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { CreateArtSuccessAlertProps } from './types'
+import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
 
 export const ArtCreateSuccessAlert = forwardRef<

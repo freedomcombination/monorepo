@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef } from 'react'
 
+import { useDisclosure, useBoolean } from '@chakra-ui/hooks'
 import {
   AlertDialog,
   AlertDialogBody,
@@ -7,13 +8,11 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  Button,
 } from '@chakra-ui/react'
-import { useDisclosure, useBoolean } from '@chakra-ui/hooks'
-
 import { useTranslation } from 'next-i18next'
 
 import { WConfirmProps } from './types'
+import { Button } from '../Button'
 
 export const WConfirm: FC<WConfirmProps> = props => {
   const { t } = useTranslation()

@@ -1,7 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react'
 
 import {
-  Button,
   Center,
   Divider,
   FormControl,
@@ -21,6 +20,7 @@ import { useAuthContext } from '@fc/context'
 import { SessionUser } from '@fc/types'
 
 import { ChangePasswordForm } from './ChangePasswordForm'
+import { Button } from '../Button'
 
 type CredentialProps = {
   isValid: (user: SessionUser | null, value: string) => boolean
@@ -96,7 +96,7 @@ const Credential: React.FC<CredentialProps> = ({
         pr="7em"
         type={name === 'email' ? 'email' : 'text'}
         placeholder={placeholder}
-        isDisabled={!edit}
+        disabled={!edit}
         value={value}
         onChange={e => setValue(e.target.value)}
       />

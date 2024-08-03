@@ -1,16 +1,7 @@
 import { useId, useState } from 'react'
 
-import {
-  Box,
-  Button,
-  Center,
-  IconButton,
-  Spinner,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Box, Center, Spinner, Stack, Text, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaFileUpload, FaSave } from 'react-icons/fa'
 import { FaCity, FaPhone, FaTrash } from 'react-icons/fa6'
@@ -18,6 +9,11 @@ import { FaCity, FaPhone, FaTrash } from 'react-icons/fa6'
 import { useAuthContext } from '@fc/context'
 import { useUpdateModelMutation } from '@fc/services'
 import { Profile } from '@fc/types'
+
+import { FormElement } from './FormElement'
+import { Button } from '../Button'
+import { FilePicker } from '../FilePicker'
+import { IconButton } from '../IconButton'
 import {
   Modal,
   ModalBody,
@@ -26,11 +22,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Tooltip,
-} from '@fc/ui'
-
-import { FormElement } from './FormElement'
-import { FilePicker } from '../FilePicker'
+} from '../Modal'
+import { Tooltip } from '../Tooltip'
 import { WAvatar } from '../WAvatar'
 
 const AvatarForm = () => {

@@ -1,17 +1,17 @@
 import { FC, Fragment } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { Button } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
 
 import { useAuthContext } from '@fc/context'
-import { Menu, MenuButton, MenuDivider, MenuItem, MenuList } from '@fc/ui'
 
 import { ProfileMenuProps } from './types'
 import { useScroll } from '../../hooks'
+import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
+import { Menu, MenuButton, MenuDivider, MenuItem, MenuList } from '../Menu'
 import { WAvatar } from '../WAvatar'
 
 export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {

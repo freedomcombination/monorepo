@@ -4,7 +4,6 @@ import {
   Alert,
   AlertDescription,
   AlertIcon,
-  Button,
   Stack,
   Text,
   Textarea,
@@ -23,6 +22,7 @@ import {
 } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
+import { Button } from '../Button'
 import { FormItem } from '../FormItem'
 
 interface ProfileMailFormProps {

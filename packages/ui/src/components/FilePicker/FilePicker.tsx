@@ -1,6 +1,6 @@
 import { FC, useEffect, useId, useMemo, useState } from 'react'
 
-import { Box, Button, Center, Text, VStack } from '@chakra-ui/react'
+import { Box, Center, Text, VStack } from '@chakra-ui/react'
 import Compressor from '@uppy/compressor'
 import Uppy from '@uppy/core'
 import ImageEditor from '@uppy/image-editor'
@@ -8,6 +8,7 @@ import { Dashboard } from '@uppy/react'
 import { FaUpload } from 'react-icons/fa6'
 
 import { FilePickerProps } from './types'
+import { Button } from '../Button'
 
 import '@uppy/core/dist/style.min.css'
 import '@uppy/dashboard/dist/style.min.css'
@@ -102,7 +103,7 @@ const FilePicker: FC<FilePickerProps> = ({
       borderStyle={'dashed'}
       color={'gray.700'}
       onClick={onTrigger}
-      sx={{
+      css={{
         '.uppy-Root': {
           opacity: showDashboard ? 1 : 0,
           h: 250,

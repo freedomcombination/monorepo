@@ -14,7 +14,7 @@ type IconButtonProps = ChakraIconButtonProps & {
 
 export const IconButton: FC<IconButtonProps> = props => {
   return (
-    <ChakraIconButton>
+    <ChakraIconButton {...props}>
       {props.isLoading ? (
         <AbsoluteCenter>
           <Spinner />

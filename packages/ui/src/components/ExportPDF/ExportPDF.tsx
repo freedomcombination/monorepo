@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { Button } from '@chakra-ui/react'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 import { useRouter } from 'next/router'
@@ -11,7 +10,8 @@ import { StrapiModel } from '@fc/types'
 
 import { getColumnsForPDF, getRowsForPDF } from './utils'
 import { I18nNamespaces } from '../../../@types/i18next'
-import { WTableProps } from '../../components'
+import { Button } from '../Button'
+import { WTableProps } from '../WTable'
 
 type ExportPDFProps<T extends StrapiModel> = Pick<
   WTableProps<T>,

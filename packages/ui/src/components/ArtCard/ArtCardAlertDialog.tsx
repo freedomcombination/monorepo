@@ -7,10 +7,10 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  Button,
 } from '@chakra-ui/react'
 
 import { ArtCardAlertDialogProps } from './types'
+import { Button } from '../Button'
 
 export const ArtCardAlertDialog: FC<ArtCardAlertDialogProps> = ({
   buttonText,

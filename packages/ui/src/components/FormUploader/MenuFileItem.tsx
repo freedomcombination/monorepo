@@ -2,10 +2,8 @@ import { FC, ReactNode, useEffect } from 'react'
 
 import {
   Box,
-  Button,
   Center,
   Divider,
-  IconButton,
   Stack,
   Text,
   VStack,
@@ -17,6 +15,8 @@ import { FaCheck, FaFile, FaFilePdf, FaTrash } from 'react-icons/fa6'
 import { API_URL } from '@fc/config'
 import { UploadFile } from '@fc/types'
 
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
 import { WImage } from '../WImage'
 
 type MenuFileItemProps = {
@@ -98,7 +98,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
         right={2}
         onClick={() => onDelete(file)}
         icon={<FaTrash />}
-        isRound
+        rounded={'full'}
         variant={'outline'}
         bg={'white'}
         colorPalette={'red'}

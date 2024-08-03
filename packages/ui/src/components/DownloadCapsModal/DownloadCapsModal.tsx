@@ -1,17 +1,7 @@
 import { FC, useRef, useState } from 'react'
 
-import {
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  Stack,
-} from '@chakra-ui/react'
 import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
+import { Stack } from '@chakra-ui/react'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
 import { useRouter } from 'next/router'
@@ -22,7 +12,17 @@ import { useStrapiRequest } from '@fc/services'
 import { PlatformSlug, Post } from '@fc/types'
 import { getMediaUrl, getOgImageSrc } from '@fc/utils'
 
+import { Button } from '../Button'
 import { Caps } from '../Caps'
+import {
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+} from '../Drawer'
 import { WImage } from '../WImage'
 
 type DownloadCapsModalType = {
@@ -124,7 +124,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
       </Button>
       <Drawer
         isOpen={open}
-        placement="right"
+        placement="end"
         onClose={handleClose}
         finalFocusRef={btnRef}
       >

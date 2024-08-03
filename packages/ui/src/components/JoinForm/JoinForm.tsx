@@ -2,7 +2,6 @@ import { FC, useEffect } from 'react'
 
 import {
   Box,
-  Button,
   chakra,
   Checkbox,
   FormLabel,
@@ -23,12 +22,13 @@ import { setLocale } from 'yup'
 import { tr, nl, en } from 'yup-locales'
 
 import { sleep } from '@fc/utils'
-import { Tooltip } from '@fc/ui'
 
 import { heardFrom } from './data'
 import { joinSchema } from './schema'
 import { JoinFormFieldValues, JoinFormProps } from './types'
+import { Button } from '../Button'
 import { FormItem } from '../FormItem'
+import { Tooltip } from '../Tooltip'
 
 export const JoinForm: FC<JoinFormProps> = ({
   onSubmitHandler,
@@ -94,7 +94,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           name="name"
           autoComplete="name"
           errors={errors}
-          isRequired
+          required
         />
         <FormItem
           name="email"
@@ -102,7 +102,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           autoComplete="email"
           register={register}
           errors={errors}
-          isRequired
+          required
         />
       </Stack>
       <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
@@ -113,7 +113,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           id="availableHours"
           name="availableHours"
           errors={errors}
-          isRequired
+          required
         />
         <FormItem
           type="number"
@@ -121,7 +121,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           id="age"
           name="age"
           errors={errors}
-          isRequired
+          required
         />
       </Stack>
       <FormItem
@@ -136,7 +136,7 @@ export const JoinForm: FC<JoinFormProps> = ({
         id="city"
         name="city"
         autoComplete="city"
-        isRequired
+        required
       />
 
       <FormItem

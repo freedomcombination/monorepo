@@ -1,20 +1,12 @@
 import { FC, useMemo, useState } from 'react'
 
-import {
-  Button,
-  HStack,
-  Radio,
-  RadioGroup,
-  Stack,
-  chakra,
-} from '@chakra-ui/react'
+import { HStack, Radio, RadioGroup, Stack, chakra } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaSave } from 'react-icons/fa'
 import { Virtuoso } from 'react-virtuoso'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { StrapiLocale } from '@fc/types'
-import { useToast } from '@fc/ui'
 
 import { DictContext } from './DictContext'
 import { dicts } from './dicts'
@@ -25,6 +17,8 @@ import {
   PriorityKey,
   TranslateLocalesProps,
 } from './types'
+import { useToast } from '../../hooks'
+import { Button } from '../Button'
 
 const { en, tr, nl } = dicts
 

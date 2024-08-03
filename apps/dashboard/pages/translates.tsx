@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Button } from '@chakra-ui/react'
 import { useUpdateEffect } from '@chakra-ui/hooks'
-
 import { useDisclosure } from '@chakra-ui/hooks'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -19,6 +17,7 @@ import {
   StrapiModel,
 } from '@fc/types'
 import {
+  Button,
   AdminLayout,
   DataTable,
   ModelEditTranslate,

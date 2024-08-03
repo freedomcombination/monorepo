@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
 
-import { Box, Button, Stack } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Box, Stack } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
@@ -16,6 +16,7 @@ import { getHashtagBySlug, getHashtagSentences, useHashtag } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { HashtagReturnType, PlatformSlug, Post, StrapiLocale } from '@fc/types'
 import {
+  Button,
   Container,
   HashtagProvider,
   PostImage,

@@ -6,9 +6,9 @@ import { UploadFile } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
 import { TableCellImageProps, TableCellImagesProps } from './types'
+import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
 import { WAvatar } from '../WAvatar'
 import { WImage } from '../WImage'
-import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
 
 const TableCellImage: FC<TableCellImageProps> = ({ image }) => {
   const [cellImage, setCellImage] = useState<string>()

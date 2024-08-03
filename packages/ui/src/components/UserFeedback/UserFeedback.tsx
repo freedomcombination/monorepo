@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { Box, Button } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Box } from '@chakra-ui/react'
 
+import { Button } from '../Button'
 import { UserFeedbackForm } from '../UserFeedbackForm'
 
 export const UserFeedback = () => {

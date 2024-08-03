@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
-import { Button, HStack, IconButton, VStack } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { HStack, VStack } from '@chakra-ui/react'
 import { TFunction } from 'i18next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -12,7 +12,7 @@ import { TbPlus } from 'react-icons/tb'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { Role } from '@fc/types'
-import { Tooltip } from '@fc/ui'
+import { Button, IconButton, Tooltip } from '@fc/ui'
 
 import { CreateRoleModal } from './CreateRoleModal'
 import { DeleteRoleModal } from './DeleteRoleModal'

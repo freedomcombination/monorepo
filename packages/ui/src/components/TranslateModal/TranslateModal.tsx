@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react'
 
-import { Accordion, Box, Button, HStack, IconButton } from '@chakra-ui/react'
+import { Accordion, Box, HStack } from '@chakra-ui/react'
 import { AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
 
 import { StrapiLocale, StrapiTranslatableModel } from '@fc/types'
-import { mapModelLocalization } from '@fc/utils'
 import {
+  Button,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,6 +15,7 @@ import {
   ModalHeader,
   ModalOverlay,
 } from '@fc/ui'
+import { mapModelLocalization } from '@fc/utils'
 
 import { TranslateAccordionItem } from './TranslateAccordionItem'
 import { TranslateForm } from './TranslateForm'
@@ -115,7 +117,7 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
               <HStack gap={3}>
                 <Button
                   display={{ base: 'none', lg: 'flex' }}
-                  textColor={'white'}
+                  color={'white'}
                   onClick={handleReturn}
                   bg={'gray.400'}
                   leftIcon={<AiOutlineArrowLeft />}

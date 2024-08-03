@@ -1,13 +1,6 @@
 import { FC, useContext } from 'react'
 
-import {
-  ButtonGroup,
-  HStack,
-  IconButton,
-  SimpleGrid,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { HStack, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { IconType } from 'react-icons'
 import { BiHide } from 'react-icons/bi'
 import { FaExclamationTriangle } from 'react-icons/fa'
@@ -17,6 +10,7 @@ import { IoMdRemoveCircleOutline } from 'react-icons/io'
 import { DictContext } from './DictContext'
 import { EntryInput } from './EntryInput'
 import { EditEntryProps, PriorityFilter } from './types'
+import { IconButton } from '../IconButton'
 
 export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
   const {
@@ -74,30 +68,30 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
           <EntryInput locale={'nl'} localeKey={name} />
           <EntryInput locale={'tr'} localeKey={name} />
         </SimpleGrid>
-        <ButtonGroup
-          size="sm"
-          isAttached
-          isDisabled={locked}
-          colorPalette={isSuppressed ? 'red' : 'gray'}
-        >
+        <HStack>
           <IconButton
             icon={<FaTrash />}
             aria-label="delete"
             variant={isPendingDeletion ? 'solid' : 'outline'}
             onClick={toggleDelete}
+            disabled={locked}
+            colorPalette={isSuppressed ? 'red' : 'gray'}
+            size="sm"
           />
 
           <IconButton
             icon={<BiHide />}
+            colorPalette={isSuppressed ? 'red' : 'gray'}
+            size="sm"
             aria-label="hide"
             variant={isSuppressed ? 'solid' : 'outline'}
-            isDisabled={
+            disabled={
               !isSuppressed &&
               (isPendingDeletion || value !== PriorityFilter.IDENTICAL)
             }
             onClick={toggleSuppress}
           />
-        </ButtonGroup>
+        </HStack>
       </HStack>
     </Stack>
   )

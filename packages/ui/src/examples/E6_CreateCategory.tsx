@@ -2,10 +2,11 @@
 
 import { FC, useEffect, useState } from 'react'
 
-import { Button, Code, Heading, Input, Stack } from '@chakra-ui/react'
+import { Code, Heading, Input, Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 
 import { createCategoryWithAxios, createCategoryWithMutation } from './utils'
+import { Button } from '../components'
 
 type CreateCategoryWithAxiosProps = {
   fetcher: 'axios' | 'mutation'

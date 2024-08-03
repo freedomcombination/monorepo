@@ -1,11 +1,9 @@
 import { FC, useEffect, useMemo, useState } from 'react'
 
 import {
-  Button,
   Center,
   Flex,
   HStack,
-  IconButton,
   Menu,
   MenuItem,
   Select,
@@ -24,6 +22,7 @@ import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Permissions, Role, RoleInput, StrapiLocale } from '@fc/types'
 import {
   AdminLayout,
+  Button,
   ContentEditable,
   PermissionCard,
   MenuButton,
@@ -31,6 +30,7 @@ import {
   MenuItemOption,
   MenuList,
   MenuOptionGroup,
+  IconButton,
 } from '@fc/ui'
 import { cloneRole, hasDifferences, updateRole } from '@fc/utils'
 
@@ -157,10 +157,11 @@ const RolePage: FC<RolePageProps> = () => {
               <Menu closeOnSelect={false}>
                 <MenuButton
                   aria-label="endpoint-filter"
-                  icon={<FaFilter />}
                   variant={'outline'}
                   as={IconButton}
-                />
+                >
+                  <FaFilter />
+                </MenuButton>
                 <MenuList h={400} overflow={'auto'}>
                   <MenuItem onClick={() => setFilters([])}>
                     {t('clear')}

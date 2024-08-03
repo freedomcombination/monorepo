@@ -1,9 +1,8 @@
 import { useMemo } from 'react'
 
+import { useBoolean } from '@chakra-ui/hooks'
 import {
   Box,
-  Button,
-  ButtonGroup,
   FormLabel,
   HStack,
   Progress,
@@ -11,7 +10,6 @@ import {
   Text,
   Textarea,
 } from '@chakra-ui/react'
-import { useBoolean } from '@chakra-ui/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
@@ -22,6 +20,11 @@ import { ObjectSchema } from 'yup'
 
 import { useRecommendTweet } from '@fc/services'
 import { Mention, Tweet } from '@fc/types'
+
+import { createTweetSchema } from './schema'
+import { CreateTweetFormFieldValues, CreateTweetFormProps } from './types'
+import { Button } from '../Button'
+import { FormItem } from '../FormItem'
 import {
   Modal,
   ModalBody,
@@ -29,11 +32,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from '@fc/ui'
-
-import { createTweetSchema } from './schema'
-import { CreateTweetFormFieldValues, CreateTweetFormProps } from './types'
-import { FormItem } from '../FormItem'
+} from '../Modal'
 import { ModelSelect } from '../ModelSelect'
 import { TweetContent } from '../TweetContent'
 
@@ -181,7 +180,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   </Text>
                 </Stack>
               </Stack>
-              <ButtonGroup alignSelf="end">
+              <HStack alignSelf="end">
                 <Button
                   bg={'transparent'}
                   mr={3}
@@ -198,7 +197,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                 >
                   Recommend
                 </Button>
-              </ButtonGroup>
+              </HStack>
             </Stack>
           </ModalBody>
         </ModalContent>

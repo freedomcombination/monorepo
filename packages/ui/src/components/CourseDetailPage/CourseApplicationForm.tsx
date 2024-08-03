@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Button, SimpleGrid, Stack, Textarea } from '@chakra-ui/react'
+import { Box, SimpleGrid, Stack, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
@@ -9,9 +9,10 @@ import { useForm } from 'react-hook-form'
 import { PUBLIC_TOKEN } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationCreateInput } from '@fc/types'
-import { useToast } from '@fc/ui'
 
 import { applicationSchema } from './schema'
+import { useToast } from '../../hooks'
+import { Button } from '../Button'
 import {
   ApplicationFormFields,
   CourseApplicationFormProps,
@@ -134,7 +135,7 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
             />
           </Checkbox>
         </Stack> */}
-        <Button w={'100%'} type="submit" isDisabled={!isValid}>
+        <Button w={'100%'} type="submit" disabled={!isValid}>
           {t('apply-now')}
         </Button>
       </Stack>

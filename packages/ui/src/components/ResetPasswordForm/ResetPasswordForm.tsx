@@ -1,4 +1,4 @@
-import { Button, Container, Heading, Stack } from '@chakra-ui/react'
+import { Container, Heading, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -11,6 +11,7 @@ import { toastMessage } from '@fc/utils'
 
 import { resetPasswordSchema } from './schema'
 import { ResetPasswordFieldValues } from './types'
+import { Button } from '../Button'
 import { FormItem } from '../FormItem'
 
 export const ResetPasswordForm = () => {

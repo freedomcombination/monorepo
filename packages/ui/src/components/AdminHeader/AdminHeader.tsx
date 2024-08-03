@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Button, HStack, Heading, IconButton, Skeleton } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { HStack, Heading, Skeleton } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { BiNotificationOff } from 'react-icons/bi'
 import { FaArrowLeft, FaUser } from 'react-icons/fa'
@@ -11,23 +11,22 @@ import { MdOutlineNotifications } from 'react-icons/md'
 
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useUnsubscribePushNotificationMutation } from '@fc/services'
+
+import { AdminSidebar } from '../AdminSidebar'
+import { Button } from '../Button'
+import { CreateModelButton } from '../CreateModelButton'
+import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '../Drawer'
+import { IconButton } from '../IconButton'
+import { LanguageSwitcher } from '../LanguageSwitcher'
 import {
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalOverlay,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Tooltip,
-} from '@fc/ui'
-
-import { AdminSidebar } from '../AdminSidebar'
-import { CreateModelButton } from '../CreateModelButton'
-import { LanguageSwitcher } from '../LanguageSwitcher'
+} from '../Modal'
 import { ProfilePanel } from '../ProfileSettings'
+import { Tooltip } from '../Tooltip'
 import { UserFeedback } from '../UserFeedback'
 
 type AdminHeaderProps = {

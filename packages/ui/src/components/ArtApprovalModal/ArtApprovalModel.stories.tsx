@@ -1,11 +1,12 @@
-import { Box, Button, Container } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Box, Container } from '@chakra-ui/react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
 import { ART_MOCKS, PROFILE_MOCKS } from '@fc/mocks'
 import { UploadFile } from '@fc/types'
 
 import { ArtApprovalModal } from './ArtApprovalModal'
+import { Button } from '../Button'
 
 const artMock = ART_MOCKS.data[0]
 

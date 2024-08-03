@@ -1,14 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Button,
   Flex,
   Input,
   List,
   ListItem,
   VStack,
   Text,
-  IconButton,
   Stack,
   Highlight,
   SimpleGrid,
@@ -21,8 +19,9 @@ import { useAuthContext } from '@fc/context'
 import { mutation } from '@fc/lib/src/mutation/mutation'
 import { useStrapiRequest } from '@fc/services'
 import { Role, UpdateUserInput, User } from '@fc/types'
-import { toastMessage } from '@fc/utils'
 import {
+  Button,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -32,6 +31,7 @@ import {
   ModalOverlay,
   Tooltip,
 } from '@fc/ui'
+import { toastMessage } from '@fc/utils'
 
 type ProfileSelectModalProps = {
   role?: Role

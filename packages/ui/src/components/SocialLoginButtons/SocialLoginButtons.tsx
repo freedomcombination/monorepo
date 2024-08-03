@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Button, ButtonGroup } from '@chakra-ui/react'
+import { Box, HStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaFacebook, FaGoogle, FaInstagram } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
@@ -12,31 +12,32 @@ import {
   SocialProvider,
   SocialProviderName,
 } from './types'
+import { Button } from '../Button'
 
 const loginProviders: SocialProvider[] = [
   {
     name: 'Google',
     icon: <Box as={FaGoogle} color="red.500" boxSize="5" />,
     url: '/api/connect/google',
-    colorSchema: 'red',
+    colorPalette: 'red',
   },
   {
     name: 'Facebook',
     icon: <Box as={FaFacebook} color="facebook.500" boxSize="5" />,
     url: '/api/connect/facebook',
-    colorSchema: 'facebook',
+    colorPalette: 'facebook',
   },
   {
     name: 'Twitter',
     icon: <Box as={FaXTwitter} color="black" boxSize="5" />,
     url: '/api/connect/twitter',
-    colorSchema: 'twitter',
+    colorPalette: 'twitter',
   },
   {
     name: 'Instagram',
     icon: <Box as={FaInstagram} color="purple.500" boxSize="5" />,
     url: '/api/connect/instagram',
-    colorSchema: 'purple',
+    colorPalette: 'purple',
   },
 ]
 
@@ -61,13 +62,15 @@ export const SocialLoginButtons: FC<SocialLoginButtonsProps> = ({
   )
 
   return (
-    <ButtonGroup variant="outline" gap="4" width="full" {...rest}>
-      {providers.map(({ name, icon, url, colorSchema }) => (
+    <HStack gap="4" width="full">
+      {providers.map(({ name, icon, url, colorPalette }) => (
         <Button
           key={name}
+          variant="outline"
           w="full"
           leftIcon={icon}
-          colorPalette={colorSchema}
+          colorPalette={colorPalette}
+          {...rest}
           onClick={() => {
             onSocialLogin(url)
           }}
@@ -75,6 +78,6 @@ export const SocialLoginButtons: FC<SocialLoginButtonsProps> = ({
           {t('login.sign-with', { provider: name })}
         </Button>
       ))}
-    </ButtonGroup>
+    </HStack>
   )
 }

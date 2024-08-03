@@ -2,8 +2,6 @@ import { FC, useState } from 'react'
 
 import {
   Box,
-  Button,
-  ButtonGroup,
   Center,
   HStack,
   Heading,
@@ -34,7 +32,7 @@ import * as yup from 'yup'
 
 import { DONATION_REQUEST_LINK } from '@fc/config'
 import { Platform } from '@fc/types'
-import { Tooltip } from '@fc/ui'
+import { Button, Tooltip } from '@fc/ui'
 
 import { ButtonLink } from '../ButtonLink'
 import { Container } from '../Container'
@@ -164,7 +162,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               </Text>
             </Stack>
 
-            <ButtonGroup w="full" isAttached alignSelf="center" size="lg">
+            <HStack w="full" alignSelf="center">
               {donationAmounts.map(val => (
                 <Button
                   w="full"
@@ -172,11 +170,12 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                   variant={amount === val ? 'solid' : 'outline'}
                   colorPalette={amount === val ? 'primary' : 'gray'}
                   onClick={() => setAmount(val)}
+                  size="lg"
                 >
                   €{val}
                 </Button>
               ))}
-            </ButtonGroup>
+            </HStack>
             <Stack
               direction={{ base: 'column', md: 'row' }}
               pb={8}
