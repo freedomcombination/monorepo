@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en'
 import { expect, test } from '@playwright/test'
 
+import { TEST_TIMEOUT } from '../config'
 import { PASSWORD, USERNAME } from '../constants'
 import { HomePage, LoginPage } from '../pages'
 import { ArtsPage } from '../pages/Arts'
@@ -8,9 +9,10 @@ import { DashboardArtsPage } from '../pages/Dashboard'
 import { ProfilePage } from '../pages/Profile'
 import { getVercelUrl } from '../utils'
 
-test.afterEach(async ({ page }) => {
-  await page.close()
-})
+// test.afterEach(async ({ page }) => {
+//   await page.close()
+// })
+
 test.describe('Upload Arts', () => {
   test('TC01- should not upload art without logging in', async ({ page }) => {
     const homePage = new HomePage(page, 'kunsthalte')
@@ -33,6 +35,9 @@ test.describe('Upload Arts', () => {
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await homePage.clickArtsMenu()
+    await page.waitForURL(`${homePage.url}/club/arts`, {
+      timeout: TEST_TIMEOUT,
+    })
     await artsPage.clickOnTheUploadsArtButton()
 
     await page.waitForTimeout(2000)
