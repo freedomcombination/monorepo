@@ -48,8 +48,9 @@ const AssetPage = () => {
   const [sort, setSort] = useState<Sort>()
 
   const handleSearch = (search?: string) => {
-    search ? setSearchTerm(search) : setSearchTerm(undefined)
+    setSearchTerm(search || undefined)
   }
+
   const id = Number(query.id as string)
 
   const assetsTrackingsQuery = useStrapiRequest<AssetsTracking>({

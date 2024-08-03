@@ -34,7 +34,7 @@ const AssetsPage = () => {
   })
 
   const handleSearch = (search?: string) => {
-    search ? setSearchTerm(search) : setSearchTerm(undefined)
+    setSearchTerm(search || undefined)
   }
 
   useUpdateEffect(() => {

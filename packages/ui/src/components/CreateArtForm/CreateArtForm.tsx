@@ -20,7 +20,6 @@ import {
   Textarea,
   useDisclosure,
   useToast,
-  VStack,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'

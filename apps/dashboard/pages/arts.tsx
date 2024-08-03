@@ -46,8 +46,9 @@ const ArtsPage = () => {
   })
 
   useEffect(() => setCurrentPage(1), [status])
+
   const handleSearch = (search?: string) => {
-    search ? setSearchTerm(search) : setSearchTerm(undefined)
+    setSearchTerm(search || undefined)
   }
 
   useUpdateEffect(() => {
