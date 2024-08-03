@@ -68,6 +68,8 @@ module.exports = plugin => {
         try {
           return storeEmail['reset_password'].options
         } catch (error) {
+          console.error(error)
+
           return {}
         }
       })

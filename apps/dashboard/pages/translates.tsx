@@ -49,7 +49,7 @@ const ActivitiesTranslatePage = () => {
   const modelSchemas = useSchema()
 
   const handleSearch = (search?: string) => {
-    search ? setSearchTerm(search) : setSearchTerm(undefined)
+    setSearchTerm(search || undefined)
   }
 
   const [currentPage, setCurrentPage] = useState<number>(1)
