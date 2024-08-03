@@ -1,22 +1,22 @@
 import { FC, useEffect, useRef, useState } from 'react'
 
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogCloseButton,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context'
 import { Role } from '@fc/types'
-import { Button } from '@fc/ui'
 import { deleteRole } from '@fc/utils'
+
+import { Button } from '../Button'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '../Modal'
 
 type DeleteRoleModalProps = {
   isOpen: boolean
@@ -75,18 +75,18 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
   }, [isOpen])
 
   return (
-    <AlertDialog
+    <Modal
       motionPreset="slideInBottom"
       leastDestructiveRef={cancelRef}
       onClose={onClose}
       isOpen={isOpen}
       isCentered
     >
-      <AlertDialogOverlay />
-      <AlertDialogContent>
-        <AlertDialogHeader>{t('delete')}</AlertDialogHeader>
-        <AlertDialogCloseButton />
-        <AlertDialogBody gap={2}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>{t('delete')}</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody gap={2}>
           <Text color="red.500" fontWeight="bold" mb={6}>
             Are you sure you want to delete this role?
           </Text>
@@ -96,8 +96,8 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
               <Text>{role.description}</Text>
             </Stack>
           )}
-        </AlertDialogBody>
-        <AlertDialogFooter>
+        </ModalBody>
+        <ModalFooter>
           <Button ref={cancelRef} onClick={onCloseHandler}>
             {t('cancel')}
           </Button>
@@ -110,8 +110,8 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
           >
             {t('delete')}
           </Button>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
   )
 }

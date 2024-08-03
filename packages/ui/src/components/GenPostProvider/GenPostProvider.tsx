@@ -7,23 +7,22 @@ import {
 } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogCloseButton,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { ArchiveContent, Hashtag, Post } from '@fc/types'
 
 import { ArchiveContentPosts, ArchivePostType, GenPostValueType } from './types'
 import { Button } from '../Button'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '../Modal'
 
 const GenPostContext = createContext<GenPostValueType>({
   addPosts: () => [],
@@ -256,18 +255,18 @@ export const GenPostProvider = ({
       }}
     >
       <>
-        <AlertDialog
+        <Modal
           motionPreset="slideInBottom"
           onClose={onClose}
           isOpen={open}
           leastDestructiveRef={cancelRef}
           isCentered
         >
-          <AlertDialogOverlay />
-          <AlertDialogContent>
-            <AlertDialogHeader>Discard Changes?</AlertDialogHeader>
-            <AlertDialogCloseButton />
-            <AlertDialogBody>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Discard Changes?</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
               <Stack gap={8}>
                 <Text>{alertAction?.title}</Text>
                 {alertAction?.extra && (
@@ -276,8 +275,8 @@ export const GenPostProvider = ({
                   </Text>
                 )}
               </Stack>
-            </AlertDialogBody>
-            <AlertDialogFooter>
+            </ModalBody>
+            <ModalFooter>
               <Button ref={cancelRef} onClick={onClose}>
                 No
               </Button>
@@ -291,9 +290,9 @@ export const GenPostProvider = ({
               >
                 Yes
               </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
         {children}
       </>
     </GenPostContext.Provider>
