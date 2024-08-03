@@ -52,12 +52,13 @@ const DonationsPage = () => {
   })
 
   useEffect(() => setCurrentPage(1), [])
+
   const handleSearch = (search?: string) => {
-    search ? setSearchTerm(search) : setSearchTerm(undefined)
+    setSearchTerm(search || undefined)
   }
 
   const handleSelect = (selectedDate?: RangeParams) => {
-    selectedDate ? setDate(selectedDate) : setDate(undefined)
+    setDate(selectedDate || undefined)
   }
 
   const handleClear = () => {
