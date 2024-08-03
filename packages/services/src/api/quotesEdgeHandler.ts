@@ -33,6 +33,8 @@ export const quotesEdgeHandler = async (req: NextRequest) => {
 
     return NextResponse.json(result)
   } catch (error) {
+    console.error(error)
+
     return NextResponse.error()
   }
 }

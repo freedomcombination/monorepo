@@ -12,7 +12,7 @@ const ActivitiesTranslatePage = () => {
   const { t } = useTranslation()
 
   const handleSearch = (search?: string) => {
-    search ? setSearchTerm(search) : setSearchTerm(undefined)
+    setSearchTerm(search || undefined)
   }
 
   return (
