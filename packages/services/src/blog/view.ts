@@ -30,7 +30,10 @@ export const useViewBlog = () => {
     mutationKey: ['view-blog', blog?.id],
     mutationFn: (blog: Blog) => viewBlog(blog, token as string),
     onSuccess: () => {
-      blog && setBlogStorage([...(blogStorage || []), blog.id])
+      if (blog) {
+        setBlogStorage([...(blogStorage || []), blog.id])
+      }
+
       refetch()
     },
   })

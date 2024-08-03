@@ -5,9 +5,9 @@ import { Link } from '@chakra-ui/next-js'
 import {
   Box,
   Button,
-  ButtonGroup,
   ButtonProps,
   Center,
+  HStack,
   SimpleGrid,
   Spinner,
   Stack,
@@ -21,7 +21,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
 import useFormPersist from 'react-hook-form-persist'
-import { FaPlus, FaUpload } from 'react-icons/fa'
+import { FaUpload } from 'react-icons/fa'
 
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useStrapiRequest } from '@fc/services'
@@ -199,7 +199,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                 >
                   <FormItem
                     name="title"
-                    isRequired
+                    required
                     errors={errors}
                     register={register}
                   />
@@ -219,23 +219,23 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                   <FormItem
                     name="description"
                     as={Textarea}
-                    isRequired
+                    required
                     errors={errors}
                     register={register}
                   />
 
-                  <ButtonGroup alignSelf="end">
+                  <HStack alignSelf="end">
                     <Button onClick={closeForm} mr={3} ref={cancelRef}>
                       {t('cancel')}
                     </Button>
                     <Button
-                      isDisabled={!images || images?.length === 0 || !isValid}
+                      disabled={!images || images?.length === 0 || !isValid}
                       type="submit"
-                      rightIcon={<FaPlus />}
+                      // rightIcon={<FaPlus />}
                     >
                       {t('create')}
                     </Button>
-                  </ButtonGroup>
+                  </HStack>
                 </Stack>
               </SimpleGrid>
             )}
