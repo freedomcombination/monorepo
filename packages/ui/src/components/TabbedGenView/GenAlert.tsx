@@ -1,9 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
   Box,
   Heading,
   List,
@@ -21,6 +18,7 @@ import { LuFileArchive } from 'react-icons/lu'
 import { ArchiveContent, Category, Hashtag, Tag } from '@fc/types'
 
 import { useFields, useSchema } from '../../hooks'
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
 import { ModelCreateModal } from '../ModelCreateModal'
 
 type GenAlertProps = {

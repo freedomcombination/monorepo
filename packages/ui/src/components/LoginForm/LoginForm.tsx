@@ -1,13 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
   Checkbox,
   Container,
-  Divider,
   Heading,
   HStack,
   Stack,
@@ -23,6 +18,8 @@ import { useAuthContext } from '@fc/context'
 
 import { loginSchema } from './schema'
 import { LoginFormFieldValues } from './types'
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
+import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
 import {
@@ -95,7 +92,7 @@ export const LoginForm: FC<LoginFormProps> = ({
               <HStack gap="1" justify="center">
                 <Text color="muted">{t('login.no-account')}</Text>
 
-                <ButtonLink href="/auth/register" variant="link">
+                <ButtonLink href="/auth/register" variant="plain">
                   {t('login.signup')}
                 </ButtonLink>
               </HStack>
@@ -133,7 +130,7 @@ export const LoginForm: FC<LoginFormProps> = ({
             <ButtonLink
               data-testid="button-forgot-password"
               href="/auth/forgot-password"
-              variant="link"
+              variant="plain"
               size="sm"
             >
               {t('forgot-pass.title')}
@@ -149,11 +146,11 @@ export const LoginForm: FC<LoginFormProps> = ({
             </Button>
             {providersToBeShown.length > 0 && (
               <HStack>
-                <Divider />
+                <hr />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
                   {t('login.with')}
                 </Text>
-                <Divider />
+                <hr />
               </HStack>
             )}
             <SocialLoginButtons providersToBeShown={providersToBeShown} />

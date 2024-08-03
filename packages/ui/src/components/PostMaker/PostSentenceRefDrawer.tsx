@@ -1,10 +1,6 @@
 import { FC } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
   Center,
   HStack,
   Heading,
@@ -20,7 +16,8 @@ import Markdown from 'react-markdown'
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent } from '@fc/types'
 
-import { useHashtagContext } from '../../components/HashtagProvider'
+import { Alert, AlertDescription, AlertIcon, AlertTitle } from '../Alert'
+import { useHashtagContext } from '../HashtagProvider'
 
 export const PostSentenceRefDrawer = () => {
   const { sentence } = useHashtagContext()
@@ -52,7 +49,7 @@ export const PostSentenceRefDrawer = () => {
             {archiveContent.title}
           </Heading>
           <HStack>
-            <Link isExternal href={archiveContent.link}>
+            <Link external href={archiveContent.link}>
               <HStack color="blue.500">
                 <Text>{archiveContent.source}</Text>
                 <HiOutlineExternalLink />

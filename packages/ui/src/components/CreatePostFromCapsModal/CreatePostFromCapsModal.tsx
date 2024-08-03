@@ -1,12 +1,6 @@
 import { FC, useState } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Divider,
-  Stack,
-} from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
@@ -20,6 +14,7 @@ import {
 } from '@fc/types'
 import { generateOgImageParams } from '@fc/utils'
 
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
 import { Button } from '../Button'
 import { ImageRecognizer } from '../ImageRecognizer'
 import { RecognizedImage } from '../ImageRecognizer/types'
@@ -143,7 +138,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
             setRecognized={setRecognized}
           />
 
-          <Divider />
+          <hr />
         </ModalBody>
         <ModalFooter justifyContent="space-between">
           <Button colorPalette="red" onClick={handleClose}>

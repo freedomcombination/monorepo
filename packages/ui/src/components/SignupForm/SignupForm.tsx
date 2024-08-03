@@ -1,12 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
   Checkbox,
   Container,
-  Divider,
   Heading,
   HStack,
   Stack,
@@ -22,6 +18,7 @@ import * as yup from 'yup'
 import { useAuthContext } from '@fc/context'
 
 import { SignupFormFieldValues, SignupFormProps } from './types'
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
 import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
@@ -174,11 +171,11 @@ export const SignupForm: FC<SignupFormProps> = ({
             </Button>
             {providersToBeShown.length > 0 && (
               <HStack>
-                <Divider />
+                <hr />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
                   {t('login.with')}
                 </Text>
-                <Divider />
+                <hr />
               </HStack>
             )}
             <SocialLoginButtons

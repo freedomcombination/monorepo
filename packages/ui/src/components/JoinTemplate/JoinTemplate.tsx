@@ -1,10 +1,6 @@
 import { FC } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
   Box,
   Center,
   HStack,
@@ -25,6 +21,7 @@ import { Job, Platform, Profile, ProfileCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
 import { JoinTemplateProps } from './types'
+import { Alert, AlertDescription, AlertIcon, AlertTitle } from '../Alert'
 import { Container } from '../Container'
 import { JoinForm, JoinFormFieldValues } from '../JoinForm'
 import { PageTitle } from '../PageTitle'

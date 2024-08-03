@@ -1,16 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Divider,
-  Heading,
-  Stack,
-  Text,
-  Textarea,
-  VStack,
-} from '@chakra-ui/react'
+import { Heading, Stack, Text, Textarea, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -19,6 +9,7 @@ import { MdEmail } from 'react-icons/md'
 
 import { contactSchema } from './schema'
 import { ContactFormFieldValues, ContactFormProps } from './types'
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
 import { Button } from '../Button'
 import { FormItem } from '../FormItem'
 
@@ -52,7 +43,7 @@ export const ContactForm: FC<ContactFormProps> = ({
         <Heading size="lg">{t('contact.title')}</Heading>
         <Text fontSize="sm">{t('contact.form.fill')}</Text>
       </Stack>
-      <Divider />
+      <hr />
       <VStack gap={5} as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormItem
           name="fullname"

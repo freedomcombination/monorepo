@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Alert, Box, Heading, Stack } from '@chakra-ui/react'
+import { Box, Heading, Stack } from '@chakra-ui/react'
 import {
   FaFacebook,
   FaInstagram,
@@ -11,6 +11,7 @@ import {
 
 import { Profile } from '@fc/types'
 
+import { Alert } from '../Alert'
 import { ProfileMailForm } from '../ProfileEmailForm'
 import { SocialItem, SocialButtons } from '../SocialButtons'
 

@@ -1,15 +1,6 @@
 import { FC, ReactNode, useEffect, useMemo } from 'react'
 
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  Box,
-  Center,
-  Flex,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Center, Flex, Spinner, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeo, NextSeoProps } from 'next-seo'
@@ -19,6 +10,7 @@ import { useAuthContext } from '@fc/context'
 import { AdminHeader } from '../AdminHeader'
 import { useAdminNav } from '../AdminNav/useAdminNav'
 import { AdminSidebar } from '../AdminSidebar'
+import { Alert, AlertIcon, AlertTitle } from '../Alert'
 import { AuthModal } from '../AuthModal'
 
 export type AdminLayoutProps = {
