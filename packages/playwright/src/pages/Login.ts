@@ -17,19 +17,21 @@ export class LoginPage {
     this.passwordInput = page.locator('#password')
     this.submitButton = page.getByTestId('button-submit-login')
 
-    this.loginButton = page.locator('.chakra-button.css-4jg19q')
+    this.loginButton = page.locator('.chakra-button').getByText('Login')
     this.userNameInputDashboard = page.locator('#identifier')
     this.passwordInputDashboard = page.locator('#password')
-    this.submitButtonDashboard = page.locator('.chakra-button.css-1f0k6xd')
+    this.submitButtonDashboard = page
+      .locator('.chakra-button')
+      .getByText('Sign in')
   }
 
   async fillUsername(username: string) {
-    await this.usernameInput.click()
+    await this.usernameInput.focus()
     await this.usernameInput.fill(username)
   }
 
   async fillPassword(password: string) {
-    await this.passwordInput.click()
+    await this.passwordInput.focus()
     await this.passwordInput.fill(password)
   }
 

@@ -9,13 +9,13 @@ export class HomePage {
   readonly page: Page
   readonly loginLink: Locator
   readonly site: Site
-  readonly ArtsButton: Locator
+  readonly artsButton: Locator
   readonly userName: Locator
   readonly profile: Locator
 
   constructor(page: Page, site: Site) {
     this.page = page
-    this.ArtsButton = page.getByRole('link', { name: 'Arts' }).first()
+    this.artsButton = page.getByRole('link', { name: 'Arts' }).first()
     this.loginLink = page.getByRole('link', { name: 'Sign in' })
     this.userName = page.getByText('Authenticated User').first()
     this.profile = page.getByText('Profile').first()
@@ -29,10 +29,13 @@ export class HomePage {
 
   async gotoLogin() {
     await this.loginLink.click({ timeout: TEST_TIMEOUT })
+    await this.page.waitForURL(`${this.url}/auth/login?returnUrl=/`, {
+      timeout: TEST_TIMEOUT,
+    })
     expect(this.page).toHaveURL(`${this.url}/auth/login?returnUrl=/`)
   }
   async clickArtsMenu() {
-    await this.ArtsButton.click()
+    await this.artsButton.click()
   }
 
   async gotoProfilePage() {
