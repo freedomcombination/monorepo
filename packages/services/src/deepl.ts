@@ -49,6 +49,8 @@ export const getTranslation = async (
 
     return response.data
   } catch (error) {
+    console.error(error)
+
     console.error('Error translating', content)
 
     return `**NOT_TRANSLATED** ${content}`
