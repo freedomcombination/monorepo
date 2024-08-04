@@ -65,33 +65,43 @@ test('test', async ({ page }) => {
   await page.getByRole('menuitem', { name: 'Sign Out' }).click();
 
   //user adds social address
-    await page.goto('https://kunsthalte.vercel.app/nl');
-    await page.getByRole('button', { name: 'EN' }).click();
-    await page.getByRole('link', { name: 'Sign in' }).click();
-    { timeout: 20000 }
-    await page.getByTestId('input-email').click();
-    await page.getByTestId('input-email').fill('Admin7');
-    await page.getByTestId('input-password').click();
-    await page.getByTestId('input-password').fill('1234512345Ad');
-    await page.getByTestId('button-submit-login').click();
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await page.getByRole('button', { name: 'Admin7' }).click();
-    await page.getByRole('menuitem', { name: 'Profile' }).click();
-    await page.getByRole('tab', { name: 'Socials' }).click();
-    await page.getByPlaceholder('linkedin').click();
-    await page.getByPlaceholder('linkedin').fill('https://www.linkedin.com/in/williamhgates/');
-    await page.getByRole('button', { name: 'Save' }).click();
+  await page.goto('https://kunsthalte.vercel.app/nl');
+  await page.getByRole('button', { name: 'EN' }).click();
+  await page.getByRole('link', { name: 'Sign in' }).click();
+  { timeout: 20000 }
+  await page.getByTestId('input-email').click();
+  await page.getByTestId('input-email').fill('Admin7');
+  await page.getByTestId('input-password').click();
+  await page.getByTestId('input-password').fill('1234512345Ad');
+  await page.getByTestId('button-submit-login').click();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.getByRole('button', { name: 'Admin7' }).click();
+  await page.getByRole('menuitem', { name: 'Profile' }).click();
+  await page.getByRole('tab', { name: 'Socials' }).click();
+  await page.getByPlaceholder('linkedin').click();
+  await page.getByPlaceholder('linkedin').fill('https://www.linkedin.com/in/williamhgates/');
+  await page.evaluate(() => { window.scrollTo(0, document.body.scrollHeight); }); 
+  await page.getByRole('button', { name: 'Save' }).click();
+  await page.evaluate(() => window.scrollTo(0, 0));
 
-    //user CAN NOT add social address
-    await page.getByRole('button', { name: 'Admin7' }).click();
-    await page.getByRole('tab', { name: 'Profile' }).click();
-    await page.getByRole('tab', { name: 'Socials' }).click();
-    await page.getByPlaceholder('linkedin').click();
-    { timeout: 20000 }
-    await page.getByPlaceholder('linkedin').fill('123');
-    await page.getByRole('button', { name: 'Save' }).click();
-    const errorMessageSelector2 = 'text=linkedin must be a valid URL';
-    const isVisible2 = await page.isVisible(errorMessageSelector);
+  //user CAN NOT add social address
+  await page.getByRole('button', { name: 'Admin7' }).click();
+  await page.getByRole('tab', { name: 'Profile' }).click();
+  await page.getByRole('tab', { name: 'Socials' }).click();
+  await page.getByPlaceholder('linkedin').click();
+  { timeout: 20000 }
+  await page.getByPlaceholder('linkedin').fill('123');
+  await page.evaluate(() => { window.scrollTo(0, document.body.scrollHeight); }); 
+  await page.getByRole('button', { name: 'Save' }).click();
+  const errorMessageSelector2 = 'text=linkedin must be a valid URL';
+  const isVisible2 = await page.isVisible(errorMessageSelector2);
+
+  //
+  await page.getByPlaceholder('linkedin').click();
+  await page.getByPlaceholder('linkedin').fill('https://www.linkedin.com/in/williamhgates');
+  await page.evaluate(() => { window.scrollTo(0, document.body.scrollHeight); }); 
+  await page.getByRole('button', { name: 'Save' }).click();
+
 
 
 });
