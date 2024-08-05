@@ -113,7 +113,7 @@
     "@storybook/builder-webpack5": "^7.6.20",
     "@storybook/core-common": "^7.6.20",
     "@storybook/core-server": "^7.6.20",
-    "@storybook/nextjs": "^7.6.20",
+    "@storybook/nextjs": "^8.2.7",
     "@storybook/react": "^7.6.20",
     "@storybook/types": "^7.6.20",
     "@testing-library/react": "^16.0.0",
