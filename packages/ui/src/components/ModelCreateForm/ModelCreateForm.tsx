@@ -12,11 +12,13 @@ import { InferType } from 'yup'
 import { endpointWithLocale } from '@fc/config'
 import { useCreateModelMutation } from '@fc/services'
 import {
+  Applicant,
   Course,
   Post,
   PostCreateInput,
   StrapiModel,
   StrapiTranslatableCreateInput,
+  Tag,
 } from '@fc/types'
 import { generateOgImageParams } from '@fc/utils'
 
@@ -121,7 +123,11 @@ export const ModelCreateForm = <T extends StrapiModel>({
       }
     }, {} as StrapiTranslatableCreateInput)
 
-    const title = body.title || (body as unknown as Course).title_en
+    const title =
+      body.title ||
+      (body as unknown as Course).title_en ||
+      (body as unknown as Applicant).name ||
+      (body as unknown as Tag).name_en
 
     const slug = title && slugify(title)
 
