@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Divider, HStack, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Text, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPlus, FaTimes } from 'react-icons/fa'
 
@@ -117,7 +117,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
 
           <Text px={4}>{data.description}</Text>
 
-          <Divider />
+          <hr />
 
           <HStack w="full" justify="space-evenly">
             <Box>

@@ -1,13 +1,8 @@
-import {
-  MenuDivider,
-  MenuItem,
-  MenuItemOption,
-  MenuOptionGroup,
-} from '@chakra-ui/react'
 import { Meta, StoryObj } from '@storybook/react'
 import { FaArrowUp } from 'react-icons/fa'
 
 import { PageHeader } from './index'
+import { MenuDivider, MenuItem, MenuItemOption, MenuOptionGroup } from '../Menu'
 
 export default {
   component: PageHeader,

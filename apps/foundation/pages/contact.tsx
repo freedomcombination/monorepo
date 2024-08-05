@@ -1,11 +1,4 @@
-import {
-  Box,
-  Divider,
-  Heading,
-  SimpleGrid,
-  VStack,
-  Wrap,
-} from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, VStack, Wrap } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
@@ -65,15 +58,17 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
               <Heading fontWeight={900} as="h2" size="lg" color="primary.50">
                 Freedom Combination <br /> Foundation
               </Heading>
-              <Divider borderColor="whiteAlpha.400" />
+              <hr />
 
               <Wrap gap={4} justify="center" key={foundation?.id}>
                 <ButtonLink
                   isExternal
-                  variant="link"
+                  variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.100' }}
-                  leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
+                  leftIcon={
+                    <Box as={MdPhone} color="primary.50" fontSize="20px" />
+                  }
                   href={`tel:${foundation?.contact?.phone}`}
                 >
                   {foundation?.contact?.phone}
@@ -81,11 +76,11 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
 
                 <ButtonLink
                   isExternal
-                  variant="link"
+                  variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.50' }}
                   leftIcon={
-                    <Box as={MdEmail} color="primary.100" size="20px" />
+                    <Box as={MdEmail} color="primary.100" fontSize="20px" />
                   }
                   href={`mailto:${foundation?.contact?.email}`}
                 >
@@ -93,11 +88,11 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                 </ButtonLink>
                 <ButtonLink
                   isExternal
-                  variant="link"
+                  variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.100' }}
                   leftIcon={
-                    <Box as={MdLocationOn} color="primary.50" size="20px" />
+                    <Box as={MdLocationOn} color="primary.50" fontSize="20px" />
                   }
                   href="https://goo.gl/maps/E9HaayQnXmphUWtN8"
                   textAlign="left"

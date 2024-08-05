@@ -1,11 +1,12 @@
 import { FC } from 'react'
 
-import { HStack, IconButton } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { Localize } from '@fc/types'
 
 import { SocialButtonsProps } from './types'
+import { IconButton } from '../IconButton'
 
 export const SocialButtons: FC<SocialButtonsProps> = ({ items, ...rest }) => {
   const { locale } = useRouter()

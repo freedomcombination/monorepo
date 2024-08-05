@@ -3,8 +3,8 @@ import { FC, PropsWithChildren } from 'react'
 
 import {
   Box,
-  TabProps,
-  TabsProps,
+  TabsRootProps,
+  TabsTriggerProps,
   Text,
   VStack,
   useBreakpointValue,
@@ -30,7 +30,7 @@ type ProfilePanelProps = PropsWithChildren<{
   showArts?: boolean
 }>
 
-const CustomTab = (props: TabProps) => (
+const CustomTab = (props: TabsTriggerProps) => (
   <Tab
     borderWidth={1}
     rounded={'md'}
@@ -48,7 +48,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   showArts = false,
 }) => {
   const { user, profile, site } = useAuthContext()
-  const orientation = useBreakpointValue<TabsProps['orientation']>({
+  const orientation = useBreakpointValue<TabsRootProps['orientation']>({
     base: 'horizontal',
     lg: 'vertical',
   })

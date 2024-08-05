@@ -1,9 +1,6 @@
 import {
   Box,
   Flex,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
@@ -17,6 +14,7 @@ import { Post, StrapiModel } from '@fc/types'
 import { StrapiCollectionEndpoint } from '@fc/types'
 
 import { I18nNamespaces } from '../../../@types/i18next'
+import { FormControl, FormErrorMessage, FormLabel } from '../Form'
 import { FormItem } from '../FormItem'
 import { MdFormItem } from '../MdFormItem'
 import { ModelCreateFormBodyProps } from '../ModelForm/types'

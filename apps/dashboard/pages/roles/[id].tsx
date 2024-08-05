@@ -1,15 +1,6 @@
 import { FC, useEffect, useMemo, useState } from 'react'
 
-import {
-  Center,
-  Flex,
-  HStack,
-  Menu,
-  MenuItem,
-  Select,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Center, Flex, HStack, Select, Spinner, Stack } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
@@ -31,6 +22,8 @@ import {
   MenuList,
   MenuOptionGroup,
   IconButton,
+  Menu,
+  MenuItem,
 } from '@fc/ui'
 import { cloneRole, hasDifferences, updateRole } from '@fc/utils'
 

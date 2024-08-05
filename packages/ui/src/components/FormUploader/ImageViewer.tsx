@@ -1,13 +1,12 @@
 import { FC } from 'react'
 
-import { IconButton } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDownWideShort } from 'react-icons/fa6'
 
-import { MenuButton, MenuItem, MenuList, Menu } from '@fc/ui'
-
 import { MenuFileItem } from './MenuFileItem'
 import { ImageViewerProps } from './types'
+import { IconButton } from '../IconButton'
+import { MenuButton, MenuItem, MenuList, Menu } from '../Menu'
 
 export const ImageViewer: FC<ImageViewerProps> = ({
   files,

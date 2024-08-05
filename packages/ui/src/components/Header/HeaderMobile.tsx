@@ -1,21 +1,21 @@
 import { FC } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
-  HStack,
-  IconButton,
-} from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { FaBars } from 'react-icons/fa'
 
 import { HeaderMobileNav } from './HeaderMobileNav'
 import { ProfileMenu } from './ProfileMenu'
 import { HeaderMobileProps } from './types'
 import { useScroll } from '../../hooks'
+import {
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+} from '../Drawer'
+import { IconButton } from '../IconButton'
 import { LocaleSwitcher } from '../LocaleSwitcher'
 
 export const HeaderMobile: FC<HeaderMobileProps> = ({

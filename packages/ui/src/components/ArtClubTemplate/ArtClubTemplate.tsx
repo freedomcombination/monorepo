@@ -1,19 +1,7 @@
 import { FC, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Box,
-  Center,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Grid,
-  HStack,
-  IconButton,
-  Skeleton,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Center, Grid, HStack, Skeleton, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { parse } from 'querystring'
@@ -30,6 +18,8 @@ import { ArtSideBar } from '../ArtClubSideBar'
 import { CategoryFilterSkeleton } from '../CategoryFilter'
 import { Container } from '../Container'
 import { CreateArtForm } from '../CreateArtForm'
+import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '../Drawer'
+import { IconButton } from '../IconButton'
 import { MasonryGrid } from '../MasonryGrid'
 import { Pagination } from '../Pagination'
 import { SearchForm } from '../SearchForm'

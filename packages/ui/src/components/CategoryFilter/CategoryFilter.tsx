@@ -1,9 +1,7 @@
 import { FC, useEffect, useRef } from 'react'
 
 import {
-  Divider,
   HStack,
-  IconButton,
   Spinner,
   Stack,
   Text,
@@ -14,6 +12,7 @@ import { useDebounce } from 'react-use'
 
 import { CategoryFilterCheckbox } from './CategoryFilterCheckbox'
 import { CategoryFilterProps } from './types'
+import { IconButton } from '../IconButton'
 
 export const CategoryFilter: FC<CategoryFilterProps> = ({
   categoryData = [],
@@ -76,7 +75,7 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
           />
         )}
       </HStack>
-      <Divider />
+      <hr />
       {categoryData?.map(category => (
         <CategoryFilterCheckbox
           key={category.id}

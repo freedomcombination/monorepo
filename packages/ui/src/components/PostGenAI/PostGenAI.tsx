@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
 import {
-  FormControl,
-  FormLabel,
   HStack,
   Heading,
   NumberDecrementStepper,
@@ -29,6 +27,7 @@ import { toastMessage } from '@fc/utils'
 import { EditablePost } from './EditablePost'
 import { PostGenAIProps } from './types'
 import { Button } from '../Button'
+import { FormLabel, FormControl } from '../Form'
 import { ArchivePostType, useGenPostContext } from '../GenPostProvider'
 
 const LANGUAGE_NAMES: Record<StrapiLocale, string> = {

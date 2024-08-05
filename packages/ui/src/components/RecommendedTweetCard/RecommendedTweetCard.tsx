@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Divider, Stack, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Stack, useBreakpointValue } from '@chakra-ui/react'
 
 import { RecommendedTweet, Tweet } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
@@ -53,7 +53,7 @@ export const RecommendedTweetCard: FC<RecommendedTweetCardProps> = ({
         shadow={'none'}
         isRecommended
       />
-      <Divider />
+      <hr />
       <Box p={2}>
         <RecommendedSocialButtons tweet={tweet} isVertical={isVertical} />
       </Box>

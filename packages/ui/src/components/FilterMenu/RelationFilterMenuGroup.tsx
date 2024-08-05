@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { MenuItemOption, MenuOptionGroup, chakra } from '@chakra-ui/react'
+import { chakra } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { useStrapiRequest } from '@fc/services'
@@ -8,6 +8,7 @@ import { StrapiModel } from '@fc/types'
 import { mapModelsToOptions } from '@fc/utils'
 
 import { RelationFilterMenuGroupProps } from './types'
+import { MenuItemOption, MenuOptionGroup } from '../Menu'
 
 export const RelationFilterMenuGroup = <T extends StrapiModel>({
   type = 'checkbox',

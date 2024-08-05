@@ -1,13 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-} from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import {
@@ -17,6 +10,8 @@ import {
 } from 'react-icons/md'
 
 import { ArtCardActionsProps } from './types'
+import { IconButton } from '../IconButton'
+import { Menu, MenuButton, MenuItem, MenuList } from '../Menu'
 
 export const ArtCardActions: FC<ArtCardActionsProps> = ({
   isPublished,

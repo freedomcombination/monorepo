@@ -1,15 +1,7 @@
 import { useMemo } from 'react'
 
 import { useBoolean } from '@chakra-ui/hooks'
-import {
-  Box,
-  FormLabel,
-  HStack,
-  Progress,
-  Stack,
-  Text,
-  Textarea,
-} from '@chakra-ui/react'
+import { Box, HStack, Progress, Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
@@ -24,6 +16,7 @@ import { Mention, Tweet } from '@fc/types'
 import { createTweetSchema } from './schema'
 import { CreateTweetFormFieldValues, CreateTweetFormProps } from './types'
 import { Button } from '../Button'
+import { FormLabel } from '../Form'
 import { FormItem } from '../FormItem'
 import {
   Modal,

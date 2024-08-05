@@ -1,4 +1,4 @@
-import { MenuOptionGroupProps } from '@chakra-ui/react'
+import { MenuRadioItemGroupProps } from '@chakra-ui/react'
 
 import { RequestCollectionArgs } from '@fc/lib'
 import {
@@ -64,12 +64,12 @@ export type FilterMenuProps<T extends StrapiModel> = {
 }
 
 export type RelationFilterMenuGroupProps<T extends StrapiModel> =
-  MenuOptionGroupProps & {
+  MenuRadioItemGroupProps & {
     relationFilter: RelationFilterOption<T>
     setRelationFilter: (args: RelationFilterArgs) => void
   }
 
-export type FilterMenuGroupProps = MenuOptionGroupProps & {
+export type FilterMenuGroupProps = MenuRadioItemGroupProps & {
   options: FilterOption[]
   filters: FilterOption[]
   setFilters: (filters: FilterOption[]) => void

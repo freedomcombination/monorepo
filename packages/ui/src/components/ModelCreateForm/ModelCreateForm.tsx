@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { useBoolean } from '@chakra-ui/hooks'
-import { Box, Divider, Stack } from '@chakra-ui/react'
+import { Box, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'
@@ -180,7 +180,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
 
         {groupedFields?.length > 0 && (
           <>
-            <Divider my={6} />
+            <hr />
             <RadioCards
               defaultValue={groupedFields[0]?.group?.value}
               options={options as Option[]}

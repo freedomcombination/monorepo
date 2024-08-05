@@ -4,7 +4,6 @@ import {
   Box,
   chakra,
   Checkbox,
-  FormLabel,
   Heading,
   HStack,
   Stack,
@@ -27,6 +26,7 @@ import { heardFrom } from './data'
 import { joinSchema } from './schema'
 import { JoinFormFieldValues, JoinFormProps } from './types'
 import { Button } from '../Button'
+import { FormLabel } from '../Form'
 import { FormItem } from '../FormItem'
 import { Tooltip } from '../Tooltip'
 

@@ -7,9 +7,6 @@ import {
   HStack,
   Heading,
   Link,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   Stack,
   Text,
   Wrap,
@@ -21,6 +18,7 @@ import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent } from '@fc/types'
 
 import { useGenPostContext } from '../GenPostProvider'
+import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
 
 type ArchivePopoverProps = PropsWithChildren<{
   archiveId: number

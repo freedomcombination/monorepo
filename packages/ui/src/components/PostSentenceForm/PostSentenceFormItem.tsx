@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { Box, HStack, IconButton, Textarea } from '@chakra-ui/react'
+import { Box, HStack, Textarea } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { FaPencilAlt, FaSave, FaTimes } from 'react-icons/fa'
 import { FaInfo } from 'react-icons/fa6'
@@ -14,10 +14,11 @@ import {
   useHashtag,
   useUpdateHashtagSentence,
 } from '@fc/services'
-import { Tooltip } from '@fc/ui'
 
 import { PostSentenceFormItemProps } from './types'
 import { ArchivePopover } from '../ArchivePopover'
+import { IconButton } from '../IconButton'
+import { Tooltip } from '../Tooltip'
 import { WConfirm, WConfirmProps } from '../WConfirm'
 
 export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
@@ -134,7 +135,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
               colorPalette={'green'}
               icon={<FaSave />}
               disabled={!isChanged}
-              isRound
+              rounded={'full'}
               onClick={handleUpdate}
               size={'sm'}
             />
@@ -147,7 +148,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
               aria-label={'edit'}
               colorPalette={'gray'}
               icon={<FaPencilAlt />}
-              isRound
+              rounded={'full'}
               onClick={() => setEditMode(true)}
               size={'sm'}
             />
@@ -159,7 +160,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
             aria-label={'reset shared'}
             colorPalette={'gray'}
             icon={<Box>{shareCount}</Box>}
-            isRound
+            rounded={'full'}
             onClick={handleResetShared}
             size={'sm'}
             disabled={shareCount === 0}
@@ -177,7 +178,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
                 <MdOutlinePublishedWithChanges />
               )
             }
-            isRound
+            rounded={'full'}
             onClick={() => handlePublish(isPublished ? 0 : 1)}
             size={'sm'}
           />
@@ -188,7 +189,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
             aria-label={'delete'}
             colorPalette={'red'}
             icon={<FaTimes />}
-            isRound
+            rounded={'full'}
             onClick={handleDelete}
             size={'sm'}
           />

@@ -1,12 +1,12 @@
-import { ThemeTypings } from '@chakra-ui/react'
-
 import { Art } from '@fc/types'
+
+import { ButtonProps } from '../Button'
 
 export type ArtActionType = 'delete' | 'publish' | 'unpublish'
 
 export type ArtActionContext = {
   buttonText: string
-  colorPalette: ThemeTypings['colorPalettes']
+  colorPalette: ButtonProps['colorPalette']
   text: string
   title: string
   onClick: () => void

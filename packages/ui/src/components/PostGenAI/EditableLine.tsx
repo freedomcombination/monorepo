@@ -1,25 +1,20 @@
-import {
-  Badge,
-  HStack,
-  IconButton,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  ThemeTypings,
-} from '@chakra-ui/react'
+import { Badge, HStack } from '@chakra-ui/react'
 import { FaInfo, FaX } from 'react-icons/fa6'
 
 import { OgImageParams } from '@fc/types'
 
+import { ButtonProps } from '../Button'
 import { Caps } from '../Caps'
 import { ContentEditable, ContentEditableProps } from '../ContentEditable'
+import { IconButton } from '../IconButton'
+import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
 
 export type EditableProps = ContentEditableProps & {
   disabled?: boolean
   onDelete?: () => void
   isDescription?: boolean
   imageParams?: OgImageParams
-  colorPalette?: ThemeTypings['colorPalettes']
+  colorPalette?: ButtonProps['colorPalette']
 }
 
 export const EditableLine: React.FC<EditableProps> = ({
@@ -33,7 +28,7 @@ export const EditableLine: React.FC<EditableProps> = ({
   threshold,
   ...rest
 }) => {
-  const disabled = disabled || !contentEditable
+  const isDisabled = disabled || !contentEditable
 
   return (
     <HStack
@@ -46,7 +41,7 @@ export const EditableLine: React.FC<EditableProps> = ({
     >
       <IconButton
         mt={2}
-        disabled={disabled}
+        disabled={isDisabled}
         aria-label="delete"
         variant={'ghost'}
         colorPalette="red"

@@ -5,7 +5,6 @@ import {
   Heading,
   HStack,
   Icon,
-  IconButton,
   SimpleGrid,
   Stack,
   Text,
@@ -23,6 +22,7 @@ import { getReadingTime } from '@fc/utils'
 
 import { BlogCard } from '../BlogCard'
 import { FormattedDate } from '../FormattedDate'
+import { IconButton } from '../IconButton'
 import { Markdown } from '../Markdown'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'

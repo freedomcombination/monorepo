@@ -1,14 +1,6 @@
 import { FC } from 'react'
 
-import {
-  HStack,
-  IconButton,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-} from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -21,6 +13,14 @@ import { FaFacebook, FaLinkedin, FaTelegram, FaWhatsapp } from 'react-icons/fa'
 import { PostSentenceReference } from './PostSentenceReference'
 import { PostSentencesModal } from './PostSentencesModal'
 import { PostMakerTweetShareProps } from './types'
+import { IconButton } from '../IconButton'
+import {
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+} from '../Popover'
 
 export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
   url,
@@ -43,7 +43,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
             <FacebookShareButton quote={content} url={url}>
               <IconButton
                 as="span"
-                isRound
+                rounded={'full'}
                 aria-label="share on facebook"
                 icon={<FaFacebook />}
               />
@@ -51,7 +51,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
             <WhatsappShareButton title={content} url={url}>
               <IconButton
                 as="span"
-                isRound
+                rounded={'full'}
                 variant={'outline'}
                 aria-label="share on whatsapp"
                 icon={<FaWhatsapp />}
@@ -60,7 +60,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
             <TelegramShareButton url={url} title={content}>
               <IconButton
                 as="span"
-                isRound
+                rounded={'full'}
                 bg="none"
                 variant={'outline'}
                 aria-label="share on telegram"
@@ -70,7 +70,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
             <LinkedinShareButton url={url} title={content} about={content}>
               <IconButton
                 as="span"
-                isRound
+                rounded={'full'}
                 aria-label="share on linkedin"
                 variant={'outline'}
                 icon={<FaLinkedin />}

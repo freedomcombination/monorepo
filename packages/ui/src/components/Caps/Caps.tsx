@@ -1,14 +1,15 @@
+import { forwardRef } from 'react'
+
+import { useMergeRefs } from '@chakra-ui/hooks'
 import {
   AspectRatio,
   Box,
   chakra,
   Flex,
-  forwardRef,
   ImageProps,
   Skeleton,
   Stack,
   Text,
-  useMergeRefs,
 } from '@chakra-ui/react'
 import { useMeasure } from 'react-use'
 
@@ -25,7 +26,7 @@ const paths = [
   'M45 675H55L55 8.74228e-07L45 0C15.021 168.507 0.0209643 252.819 2.18987e-05 337.135C-0.0209205 421.569 14.9791 506.007 45 675Z',
 ]
 
-export const Caps = forwardRef<CapsProps, 'div'>(
+export const Caps = forwardRef<HTMLDivElement, CapsProps>(
   ({ imageParams, hideLogo = false, hasRandomImage, ...rest }, ref) => {
     const {
       title,
@@ -195,3 +196,5 @@ export const Caps = forwardRef<CapsProps, 'div'>(
     )
   },
 )
+
+Caps.displayName = 'Caps'

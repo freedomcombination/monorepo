@@ -3,7 +3,6 @@ import { FC, ReactNode, useEffect } from 'react'
 import {
   Box,
   Center,
-  Divider,
   Stack,
   Text,
   VStack,
@@ -81,7 +80,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
 
   return (
     <Box pos={'relative'}>
-      {renderDivider && <Divider my={2} />}
+      {renderDivider && <hr />}
       {isImage ? (
         <WImage src={file} w={'full'} h={100} objectFit="cover" />
       ) : (

@@ -1,14 +1,7 @@
 import { useState } from 'react'
 
-import {
-  FormLabel,
-  HStack,
-  Stack,
-  Text,
-  Textarea,
-  useBoolean,
-  Wrap,
-} from '@chakra-ui/react'
+import { useBoolean } from '@chakra-ui/hooks'
+import { HStack, Stack, Text, Textarea, Wrap } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -34,6 +27,7 @@ import { useDefaultValues } from '../../hooks/useDefaultValues'
 import { ActionButton } from '../ActionButton'
 import { ActionStack } from '../ActionStack'
 import { Flag } from '../Flag'
+import { FormLabel } from '../Form'
 import { FormItem } from '../FormItem'
 import { FormLocaleSwitcher } from '../FormLocaleSwitcher'
 import { MdFormItem } from '../MdFormItem'

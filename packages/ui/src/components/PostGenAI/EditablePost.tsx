@@ -1,6 +1,7 @@
-import { Stack, ThemeTypings } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 
 import { EditableLine } from './EditableLine'
+import { ButtonProps } from '../Button'
 import { ArchivePostType, useGenPostContext } from '../GenPostProvider'
 
 export type EditablePostProps = {
@@ -9,7 +10,7 @@ export type EditablePostProps = {
   descriptionThreshold?: number
   sentenceThreshold?: number
   onlySentences?: boolean
-  colorPalette?: ThemeTypings['colorPalettes']
+  colorPalette?: ButtonProps['colorPalette']
 }
 
 export const EditablePost: React.FC<EditablePostProps> = ({

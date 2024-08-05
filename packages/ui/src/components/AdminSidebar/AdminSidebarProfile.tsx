@@ -1,11 +1,12 @@
 import { FC } from 'react'
 
-import { Box, HStack, IconButton, Text } from '@chakra-ui/react'
+import { Box, HStack, Text } from '@chakra-ui/react'
 import { GoSignOut } from 'react-icons/go'
 
 import { Profile, SessionUser } from '@fc/types'
-import { Tooltip } from '@fc/ui'
 
+import { IconButton } from '../IconButton'
+import { Tooltip } from '../Tooltip'
 import { WAvatar } from '../WAvatar'
 
 export type AdminSidebarProfileProps = {

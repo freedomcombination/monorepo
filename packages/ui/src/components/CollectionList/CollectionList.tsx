@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { Box, Divider, HStack, Stack, Text } from '@chakra-ui/react'
+import { Box, HStack, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MdCollectionsBookmark } from 'react-icons/md'
@@ -20,7 +20,7 @@ export const CollectionList: FC<CollectionListProps> = ({ collectionData }) => {
           {t('collections')}
         </Text>
       </HStack>
-      <Divider />
+      <hr />
       {collectionData.map((collection, index) => (
         <Link
           key={index}

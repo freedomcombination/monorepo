@@ -1,5 +1,4 @@
 import { useDisclosure } from '@chakra-ui/hooks'
-import { IconButton } from '@chakra-ui/react'
 import { FaCogs } from 'react-icons/fa'
 
 import { useHashtag } from '@fc/services'
@@ -12,6 +11,7 @@ import {
 } from '@fc/ui'
 
 import { ActionStack, PostSentenceForm } from '../../components'
+import { IconButton } from '../IconButton'
 import { usePostContext } from '../PostProvider'
 
 export const PostSentencesModal = () => {
@@ -40,7 +40,7 @@ export const PostSentencesModal = () => {
         icon={<FaCogs />}
         onClick={onOpen}
         variant={'outline'}
-        isRound
+        rounded={'full'}
       />
     </ActionStack>
   )

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { MenuItem, useUpdateEffect } from '@chakra-ui/react'
+import { useUpdateEffect } from '@chakra-ui/hooks'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -9,7 +9,7 @@ import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { ApprovalStatus, Art, Sort, StrapiLocale } from '@fc/types'
-import { AdminLayout, ArtsTable, PageHeader } from '@fc/ui'
+import { AdminLayout, ArtsTable, PageHeader, MenuItem } from '@fc/ui'
 
 const ArtsPage = () => {
   const { query } = useRouter()

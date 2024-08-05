@@ -1,4 +1,4 @@
-import { ThemeTypings } from '@chakra-ui/react'
+import { BadgeProps } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -29,18 +29,16 @@ export const useProfileColumns = (): WTableProps<
     profileStatus: {
       type: 'badge',
       componentProps: value => {
-        const colorPalette: Record<
-          ProfileStatus,
-          ThemeTypings['colorPalettes']
-        > = {
-          pending: 'orange', // 'orange
-          accepted: 'blue',
-          rejected: 'red',
-          'in-progress': 'purple',
-          left: 'gray',
-          awaiting: 'yellow',
-          approved: 'green',
-        }
+        const colorPalette: Record<ProfileStatus, BadgeProps['colorPalette']> =
+          {
+            pending: 'orange', // 'orange
+            accepted: 'blue',
+            rejected: 'red',
+            'in-progress': 'purple',
+            left: 'gray',
+            awaiting: 'yellow',
+            approved: 'green',
+          }
 
         return {
           variant: 'outline',
@@ -55,7 +53,7 @@ export const useProfileColumns = (): WTableProps<
       sortKey: 'role.name',
       type: 'badge',
       componentProps: value => {
-        const rolesColorMap: Record<string, ThemeTypings['colorPalettes']> = {
+        const rolesColorMap: Record<string, BadgeProps['colorPalette']> = {
           'ArtEditor Translator': 'pink',
           'Author Translator': 'facebook',
           'ContentManager Translator': 'orange',

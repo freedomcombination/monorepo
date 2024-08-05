@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { HStack, IconButton, Textarea, ThemeTypings } from '@chakra-ui/react'
+import { HStack, Textarea } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { FaPlus } from 'react-icons/fa'
@@ -8,11 +8,14 @@ import { FaPlus } from 'react-icons/fa'
 import { useCreateHashtagSentence } from '@fc/services'
 import { toastMessage } from '@fc/utils'
 
+import { ButtonProps } from '../Button'
+import { IconButton } from '../IconButton'
+
 type PostSentenceCreatorProps = {
   hashtagId: number
   postId: number
   initialContent?: string
-  colorPalette?: ThemeTypings['colorPalettes']
+  colorPalette?: ButtonProps['colorPalette']
   onSuccess?: () => void
 }
 
