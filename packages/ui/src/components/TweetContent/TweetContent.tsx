@@ -31,7 +31,7 @@ export const TweetContent = <T extends FieldValues>({
         <Text
           wordBreak={'break-word'}
           whiteSpace={'pre-wrap'}
-          sx={{ '& a': { color: 'twitter.500' } }}
+          css={{ '& a': { color: 'twitter.500' } }}
           dangerouslySetInnerHTML={{
             __html: twitterText?.autoLink(tweet?.text || ''),
           }}

@@ -46,8 +46,8 @@ const MarkdownEditor = forwardRef<MarkdownEditorProps, any>((props, ref) => {
 
   return (
     <Box
-      sx={{
-        '.rc-md-editor': {
+      css={{
+        '& .rc-md-editor': {
           ...disabledStyles,
           '&.full': {
             zIndex: 'modal',

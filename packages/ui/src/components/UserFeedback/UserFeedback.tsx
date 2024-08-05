@@ -25,7 +25,7 @@ export const UserFeedback = () => {
       colorPalette="primary"
       aria-label="Give feedback"
       transform="rotate(180deg)"
-      sx={{ writingMode: 'vertical-rl' }}
+      css={{ '& writingMode': 'vertical-rl' }}
       borderBottomLeftRadius={0}
       borderTopLeftRadius={0}
       transition={'all 0.2s'}

@@ -69,12 +69,12 @@ export const PageHeader: FC<PageHeaderProps> = ({
             colorPalette="gray"
           />
           <MenuList
-            sx={{
-              '.chakra-menu__group': {
+            css={{
+              '& .chakra-menu__group': {
                 maxH: 200,
                 overflowY: 'auto',
               },
-              '.chakra-menu__group__title': {
+              '& .chakra-menu__group__title': {
                 position: 'sticky',
                 top: 0,
                 bg: 'white',

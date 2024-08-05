@@ -104,37 +104,37 @@ const FilePicker: FC<FilePickerProps> = ({
       color={'gray.700'}
       onClick={onTrigger}
       css={{
-        '.uppy-Root': {
+        '& .uppy-Root': {
           opacity: showDashboard ? 1 : 0,
           h: 250,
         },
-        '.uppy-Container': {
+        '& .uppy-Container': {
           w: 'full',
         },
-        '.uppy-Dashboard-overlay': {
+        '& .uppy-Dashboard-overlay': {
           display: 'none',
         },
-        '.uppy-ImageCropper-controls': {
+        '& .uppy-ImageCropper-controls': {
           h: 'auto',
         },
-        '.uppy-Dashboard': {
+        '& .uppy-Dashboard': {
           h: 'full',
         },
-        '.uppy-ImageCropper-container': {
+        '& .uppy-ImageCropper-container': {
           display: 'flex',
           justifyContent: 'center',
         },
-        '.uppy-Dashboard-inner': {
+        '& .uppy-Dashboard-inner': {
           w: 'full !important',
           h: showDashboard ? `100% !important` : '250px !important',
         },
-        '.uppy-Dashboard-AddFiles-title,.uppy-Dashboard-progressindicators': {
+        '& .uppy-Dashboard-AddFiles-title,.uppy-Dashboard-progressindicators': {
           display: 'none',
         },
-        '.uppy-DashboardTab': {
+        '& .uppy-DashboardTab': {
           h: 'full',
         },
-        '.uppy-DashboardTab-btn': {
+        '& .uppy-DashboardTab-btn': {
           pos: 'absolute',
           top: 0,
           left: 0,

@@ -16,7 +16,7 @@ export const HeaderMobileNavItem: FC<HeaderMobileNavItemProps> = ({ item }) => {
           key={index}
           pl={4}
           py={2}
-          sx={{ a: { color: 'gray.500', fontWeight: 500 } }}
+          css={{ '& a': { color: 'gray.500', fontWeight: 500 } }}
         >
           <ChildMenuItem item={child} />
         </Box>
