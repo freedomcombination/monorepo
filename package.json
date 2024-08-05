@@ -129,7 +129,7 @@
     "@types/string-similarity": "^4.0.2",
     "@types/twitter-text": "^3.1.10",
     "@types/web-push": "^3.6.3",
-    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "@typescript-eslint/eslint-plugin": "8.0.0",
     "@typescript-eslint/parser": "7.18.0",
     "browserify-fs": "^1.0.0",
     "dotenv-cli": "^7.4.2",
