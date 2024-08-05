@@ -18,7 +18,7 @@ const { randomUser, randomEmail } = generateRandomUser()
 test('TC-0001 Happy flow', async ({ page }) => {
   await page.setViewportSize({ width: 1920, height: 1080 })
   await page.goto('https://kunsthalte.vercel.app/tr')
-  await page.getByRole('link', { name: 'Giriş yap' }).click() // 01. The user clicks the "log in" button on the "Kunsthalte" page.
+  await page.getByRole('link', { name: 'Giriş yap' }).click() // 01.. The user clicks the "log in" button on the "Kunsthalte" page.
   await page.getByRole('link', { name: 'Kayıt ol' }).click() // 02.. The user clicks on the "Register" link on the page that opens.
   await page.getByPlaceholder('İsim').click()
   await page.getByPlaceholder('İsim').fill('Filiz') // 03. The user enters the "name" text box.
