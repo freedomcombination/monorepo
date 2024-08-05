@@ -1,4 +1,4 @@
-import { SkeletonText, VStack, Wrap } from '@chakra-ui/react'
+import { Skeleton, VStack, Wrap } from '@chakra-ui/react'
 
 import { TwitterTrend } from '@fc/types'
 
@@ -36,7 +36,7 @@ export const TrendList = ({
   return (
     <VStack align="stretch">
       {isLoading || !trends ? (
-        <SkeletonText skeletonHeight={6} lineClamp={5} />
+        <Skeleton h={6} lineClamp={5} />
       ) : (
         <Wrap>
           {trends.map((tag, i) => (

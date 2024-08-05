@@ -273,7 +273,7 @@ export const PostGenAI = ({
             <Wrap>
               <Button
                 leftIcon={<RiAiGenerate />}
-                isDisabled={isLoading}
+                disabled={isLoading}
                 type="submit"
                 colorPalette={colorPalette}
               >
@@ -304,7 +304,7 @@ export const PostGenAI = ({
                   <Button
                     leftIcon={<FaTrash />}
                     type="button"
-                    isDisabled={isSaving}
+                    disabled={isSaving}
                     onClick={() => removePosts(archiveContentId)}
                     colorPalette={'red'}
                   >

@@ -112,7 +112,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={handleClose}
-      isCentered
+      centered
       size="xl"
       closeOnOverlayClick={false}
     >
@@ -122,7 +122,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
         <Stack m={10} as={'form'} onSubmit={handleSubmit(onCreate)}>
           <ModelSelect
             endpoint={'hashtags'}
-            isRequired={true}
+            required={true}
             name={'hashtags' as string}
             label={'Hashtags'}
             errors={errors}
@@ -147,7 +147,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
           <Button colorPalette="red" onClick={onReset}>
             Reset
           </Button>
-          {/* isDisabled={!files} */}
+          {/* disabled={!files} */}
           <Button disabled={!state} colorPalette="blue" onClick={onCreate}>
             Create
           </Button>

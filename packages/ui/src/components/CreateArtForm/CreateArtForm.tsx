@@ -151,7 +151,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
       </Button>
 
       <Modal
-        isCentered
+        centered
         closeOnOverlayClick={false}
         isOpen={formDisclosure.open}
         onClose={closeForm}

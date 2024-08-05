@@ -1,13 +1,13 @@
+import { useTranslation } from 'next-i18next'
+import { Control, FieldValues, useController } from 'react-hook-form'
+
+import { I18nNamespaces } from '../../../@types/i18next'
 import {
   FormControl,
   FormErrorMessage,
   FormHelperText,
   FormLabel,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { Control, FieldValues, useController } from 'react-hook-form'
-
-import { I18nNamespaces } from '../../../@types/i18next'
+} from '../Form'
 import { FormItemProps } from '../FormItem'
 import { FormUploader } from '../FormUploader/FormUploader'
 import { MarkdownEditor } from '../MarkdownEditor'
@@ -22,9 +22,9 @@ export const MdFormItem = <T extends FieldValues>({
   label: initialLabel,
   hideLabel,
   errors,
-  isRequired,
+  required,
   helperText,
-  isDisabled,
+  disabled,
   placeholder: initialPlaceholder,
   ...rest
 }: MdFormItemProps<T>) => {
@@ -45,8 +45,8 @@ export const MdFormItem = <T extends FieldValues>({
 
   return (
     <FormControl
-      isInvalid={Boolean(errors?.[name])}
-      isRequired={isRequired}
+      invalid={Boolean(errors?.[name])}
+      required={required}
       w="full"
       pos="relative"
       flex={1}
@@ -59,7 +59,7 @@ export const MdFormItem = <T extends FieldValues>({
         </FormLabel>
       )}
 
-      {!isDisabled && <FormUploader />}
+      {!disabled && <FormUploader />}
 
       <MarkdownEditor
         placeholder={placeholder}
@@ -67,7 +67,7 @@ export const MdFormItem = <T extends FieldValues>({
           onChange(value.text)
         }
         value={value}
-        isDisabled={isDisabled}
+        disabled={disabled}
         {...fieldProps}
         {...rest}
       />

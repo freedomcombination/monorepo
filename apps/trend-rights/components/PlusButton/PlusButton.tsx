@@ -105,7 +105,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
       <Modal
         isOpen={infoDisclosure.open}
         onClose={onClose}
-        isCentered
+        centered
         size={'2xl'}
       >
         <ModalOverlay />
@@ -118,7 +118,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
       <Modal
         isOpen={statsDisclosure.open}
         onClose={onClose}
-        isCentered
+        centered
         size={'2xl'}
       >
         <ModalOverlay />

@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { ReactNode } from 'react'
+import { ComponentType, ReactNode } from 'react'
 
 import {
-  AvatarProps,
   BadgeProps,
   TableCellProps,
   TableRootProps,
@@ -12,6 +11,7 @@ import {
 import { Sort, StrapiModel, UploadFile } from '@fc/types'
 
 import { FormattedDateProps } from '../FormattedDate'
+import { WAvatar } from '../WAvatar'
 
 type CustomCellType = 'text' | 'badge' | 'image' | 'date'
 
@@ -23,7 +23,7 @@ type CustomCell<Type extends CustomCellType, T, P> = {
 type CellConfigCommon<T extends StrapiModel> =
   | CustomCell<'text', T, TextProps>
   | CustomCell<'badge', T, BadgeProps>
-  | CustomCell<'image', T, AvatarProps>
+  | CustomCell<'image', T, ComponentType<typeof WAvatar>>
   | CustomCell<'date', T, Partial<FormattedDateProps>>
 
 export type CellConfig<T extends StrapiModel> = CellConfigCommon<T> & {

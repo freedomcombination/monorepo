@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect } from 'react'
 
-import { Code, Input, Stack } from '@chakra-ui/react'
+import { Code, Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 
 import { CategoryCreateInput } from '@fc/types'
-import { Button } from '@fc/ui'
 
 import { createCategoryWithMutation } from './utils'
+import { Button } from '../components/Button'
+import { Input } from '../components/Input'
 
 export const CreateCategoryWithHookForm = () => {
   const { register, handleSubmit, watch, setValue } =

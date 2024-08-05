@@ -82,7 +82,7 @@ const HashtagPage: FC<HashtagProps> = ({
         </Head>
       )}
       {post && (
-        <Modal isCentered isOpen={open} onClose={handleClose}>
+        <Modal centeredsOpen={open} onClose={handleClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalBody p={0}>

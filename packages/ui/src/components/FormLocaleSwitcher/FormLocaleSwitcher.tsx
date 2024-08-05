@@ -33,7 +33,7 @@ export const FormLocaleSwitcher = <T extends StrapiTranslatableModel>({
             key={m.id}
             textTransform={'uppercase'}
             href={href}
-            isDisabled={m.locale === model.locale}
+            disabled={m.locale === model.locale}
             variant={m.locale === model.locale ? 'solid' : 'outline'}
           >
             {m.locale}

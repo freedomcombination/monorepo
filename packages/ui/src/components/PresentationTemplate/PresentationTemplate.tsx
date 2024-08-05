@@ -6,9 +6,6 @@ import {
   HStack,
   Heading,
   Link,
-  List,
-  ListIcon,
-  ListItem,
   SimpleGrid,
   Spinner,
   Stack,
@@ -24,6 +21,7 @@ import { Flow } from '@fc/types'
 
 import { Button } from '../Button'
 import { Container } from '../Container'
+import { List, ListItem, ListIcon } from '../List'
 import { Markdown } from '../Markdown'
 import { ShareButtons } from '../ShareButtons'
 
@@ -83,7 +81,7 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
           )}
           <Stack gap={4} order={{ base: 1, md: 2 }}>
             <Link
-              isExternal
+              external
               href={'https://trendrights.com/tr/hashtags/kusatilmis-ebeveynlik'}
             >
               <Center aspectRatio={{ base: 3, md: 2 }}>
@@ -106,7 +104,7 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
                 </Button>
               </Center>
             </Link>
-            <Link isExternal href="https://freedomcombination.com/donation">
+            <Link external href="https://freedomcombination.com/donation">
               <Center aspectRatio={{ base: 3, md: 2 }}>
                 <Button
                   boxSize={'full'}

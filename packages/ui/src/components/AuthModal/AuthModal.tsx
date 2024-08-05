@@ -69,7 +69,7 @@ export const AuthModal = () => {
 
   return (
     <Modal
-      isCentered
+      centered
       isOpen={isAuthModalOpen}
       onClose={closeAuthModal}
       closeOnOverlayClick={false}

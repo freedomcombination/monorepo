@@ -112,7 +112,7 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
                   errors={
                     errors as FieldErrorsImpl<CreateUserFeedbackFormFieldValues>
                   }
-                  isRequired
+                  required
                 />
 
                 <IconButton

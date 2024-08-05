@@ -1,17 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react'
 
-import {
-  Center,
-  Divider,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Center, Spinner, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaEnvelope, FaUser } from 'react-icons/fa6'
 
@@ -21,6 +10,13 @@ import { SessionUser } from '@fc/types'
 
 import { ChangePasswordForm } from './ChangePasswordForm'
 import { Button } from '../Button'
+import { FormControl, FormLabel } from '../Form'
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+} from '../Input'
 
 type CredentialProps = {
   isValid: (user: SessionUser | null, value: string) => boolean
@@ -152,7 +148,7 @@ export const SecurityTab = () => {
           leftIcon={<FaEnvelope />}
         />
       </FormControl>
-      <Divider />
+      <hr />
       <ChangePasswordForm />
     </Stack>
   )

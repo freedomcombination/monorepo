@@ -23,7 +23,7 @@ type FormSelectFields = {
 export type FormCommonFields<T extends StrapiModel> = {
   name: keyof T
   label?: string
-  isRequired?: boolean
+  required?: boolean
   group?: { value: string; label?: string; name: string }
   blockEdit?: boolean
 }

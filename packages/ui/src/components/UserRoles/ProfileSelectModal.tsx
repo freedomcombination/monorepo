@@ -2,9 +2,6 @@ import { FC, useEffect, useState } from 'react'
 
 import {
   Flex,
-  Input,
-  List,
-  ListItem,
   VStack,
   Text,
   Stack,
@@ -19,9 +16,13 @@ import { useAuthContext } from '@fc/context'
 import { mutation } from '@fc/lib/src/mutation/mutation'
 import { useStrapiRequest } from '@fc/services'
 import { Role, UpdateUserInput, User } from '@fc/types'
+import { toastMessage } from '@fc/utils'
+
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
+import { Input } from '../Input'
+import { List, ListItem } from '../List'
 import {
-  Button,
-  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -29,9 +30,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Tooltip,
-} from '@fc/ui'
-import { toastMessage } from '@fc/utils'
+} from '../Modal'
+import { Tooltip } from '../Tooltip'
 
 type ProfileSelectModalProps = {
   role?: Role
@@ -175,11 +175,11 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
 
   return (
     <Modal
-      isCentered
+      centered
       isOpen={isOpen}
       onClose={onClose}
       onCloseComplete={handleOnClose}
-      size={'4xl'}
+      size="lg"
       scrollBehavior={'inside'}
       closeOnOverlayClick={!saveUsers}
     >
@@ -280,7 +280,6 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
             leftIcon={<FaSave />}
             onClick={() => setSaveUsers(true)}
             isLoading={saveUsers}
-            loadingText="..."
             disabled={pendingUser.length === 0}
           >
             {t('save')}

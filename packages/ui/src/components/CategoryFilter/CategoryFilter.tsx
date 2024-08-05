@@ -67,7 +67,7 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
           <Spinner size="lg" color="primary.500" />
         ) : (
           <IconButton
-            isDisabled={!value[0]}
+            disabled={!value[0]}
             aria-label="clear filter"
             rounded="full"
             size="sm"

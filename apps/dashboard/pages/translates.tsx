@@ -138,7 +138,7 @@ const ActivitiesTranslatePage = () => {
         />
       )}
       <Modal
-        isCentered
+        centered
         isOpen={open}
         onClose={handleClose}
         size={'4xl'}

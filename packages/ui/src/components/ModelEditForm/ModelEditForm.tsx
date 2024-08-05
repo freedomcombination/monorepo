@@ -4,17 +4,13 @@ import { useDisclosure, useBoolean } from '@chakra-ui/hooks'
 import {
   AspectRatio,
   Box,
-  Divider,
   Flex,
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
   Heading,
   Stack,
   Switch,
   Textarea,
   Wrap,
+  chakra,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
@@ -62,6 +58,12 @@ import { ActionButton } from '../ActionButton'
 import { ActionStack } from '../ActionStack'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
 import { DownloadCapsModal } from '../DownloadCapsModal'
+import {
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+} from '../Form'
 import { FormItem } from '../FormItem'
 import { MasonryGrid } from '../MasonryGrid'
 import { MdFormItem } from '../MdFormItem'
@@ -347,11 +349,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
               if (field.type === 'file') {
                 return (
-                  <FormControl
-                    key={index}
-                    isRequired={field.isRequired}
-                    maxW={400}
-                  >
+                  <FormControl key={index} required={field.required} maxW={400}>
                     <FormLabel
                       fontWeight={600}
                       fontSize={'sm'}
@@ -379,17 +377,16 @@ export const ModelEditForm = <T extends StrapiModel>({
                 return (
                   <FormControl
                     key={index}
-                    isRequired={field.isRequired}
-                    isDisabled={field.blockEdit}
+                    required={field.required}
+                    disabled={field.blockEdit}
                   >
                     <FormLabel fontWeight={600} fontSize={'sm'}>
                       {label}
                     </FormLabel>
                     <Switch
-                      disabled={field.blockEdit}
+                      disabled={field.blockEdit || !isEditing}
                       colorPalette={'primary'}
                       size={'lg'}
-                      isDisabled={!isEditing}
                       isChecked={!!watch(field.name as string)}
                       onChange={e => {
                         setValue(field.name as string, e.target.checked)
@@ -415,9 +412,9 @@ export const ModelEditForm = <T extends StrapiModel>({
                     populate={field.populate}
                     options={field.options}
                     isMulti={field.isMulti}
-                    isRequired={field.isRequired}
+                    required={field.required}
                     name={field.name as string}
-                    isDisabled={field.blockEdit || !isEditing}
+                    disabled={field.blockEdit || !isEditing}
                     errors={errors}
                     control={control}
                     _disabled={disabledStyle}
@@ -436,8 +433,8 @@ export const ModelEditForm = <T extends StrapiModel>({
                   <Box key={index} maxH={550} overflowY={'auto'}>
                     <MdFormItem
                       name={field.name as string}
-                      isDisabled={field.blockEdit || !isEditing}
-                      isRequired={field.isRequired}
+                      disabled={field.blockEdit || !isEditing}
+                      required={field.required}
                       errors={errors}
                       control={control}
                       _disabled={disabledStyle}
@@ -465,10 +462,10 @@ export const ModelEditForm = <T extends StrapiModel>({
                     {...(field.type === 'textarea' && { as: Textarea })}
                     name={field.name as string}
                     type={inputType}
-                    isRequired={field.isRequired}
+                    required={field.required}
                     errors={errors}
                     register={register}
-                    isDisabled={field.blockEdit || !isEditing}
+                    disabled={field.blockEdit || !isEditing}
                     _disabled={disabledStyle}
                     helperText={
                       (isEditing &&
@@ -479,7 +476,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   />
                   {field.type === 'mediaUrl' && videoUrl && (
                     <AspectRatio ratio={16 / 9}>
-                      <Box as="iframe" src={videoUrl} title={label} />
+                      <chakra.iframe src={videoUrl} title={label} />
                     </AspectRatio>
                   )}
                 </Stack>
@@ -627,7 +624,7 @@ export const ModelEditForm = <T extends StrapiModel>({
           </Wrap>
         </Flex>
       </Stack>
-      <Divider />
+      <hr />
 
       <ActionStack isVisible={!!profile}>
         <Heading p={{ base: 4, lg: 8 }}>{t('profile')}</Heading>

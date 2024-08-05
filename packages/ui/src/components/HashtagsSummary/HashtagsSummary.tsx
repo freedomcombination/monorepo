@@ -82,7 +82,7 @@ export const HashtagsSummary: FC<HashtagsSummaryProps> = ({ hashtags }) => {
               <Heading as="h3" fontSize="2xl">
                 {latestHashtag.title}
               </Heading>
-              <Text size="lg" fontWeight={400}>
+              <Text fontSize="lg" fontWeight={400}>
                 {latestHashtag.description}
               </Text>
               <ButtonLink

@@ -1,4 +1,4 @@
-import { Box, Image, Stack, StackDivider, Text, VStack } from '@chakra-ui/react'
+import { Box, Image, Stack, Text, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { Tweet } from '@fc/types'
@@ -22,11 +22,7 @@ export const TweetWidget = ({
         {title}
       </Text>
       <Box bg="white" overflow="auto">
-        <VStack
-          divider={<StackDivider borderColor="gray.200" />}
-          gap={4}
-          align="stretch"
-        >
+        <VStack divideColor={'gray.200'} gap={4} align="stretch">
           {tweets && tweets.length > 0 ? (
             tweets.map((tweet, index) => {
               return <TweetCard key={index} tweet={tweet} px={0} />

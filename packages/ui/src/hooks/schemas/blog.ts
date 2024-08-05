@@ -17,10 +17,10 @@ export const useBlogSchema = () => {
 }
 
 export const blogFields: FormFields<Blog> = [
-  { name: 'title', isRequired: true },
-  { name: 'description', isRequired: true, type: 'textarea' },
-  { name: 'image', type: 'file', isRequired: true },
-  { name: 'content', isRequired: true, type: 'markdown' },
+  { name: 'title', required: true },
+  { name: 'description', required: true, type: 'textarea' },
+  { name: 'image', type: 'file', required: true },
+  { name: 'content', required: true, type: 'markdown' },
   {
     name: 'categories',
     type: 'select',

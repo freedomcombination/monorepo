@@ -18,12 +18,12 @@ export const useActivitySchema = () => {
 }
 
 export const activityFields: FormFields<Activity> = [
-  { name: 'title', isRequired: true },
-  { name: 'description', isRequired: true, type: 'textarea' },
-  { name: 'date', isRequired: true, type: 'datetime-local' },
+  { name: 'title', required: true },
+  { name: 'description', required: true, type: 'textarea' },
+  { name: 'date', required: true, type: 'datetime-local' },
 
-  { name: 'content', isRequired: true, type: 'markdown' },
-  { name: 'image', type: 'file', isRequired: true },
+  { name: 'content', required: true, type: 'markdown' },
+  { name: 'image', type: 'file', required: true },
   {
     name: 'platforms',
     type: 'select',

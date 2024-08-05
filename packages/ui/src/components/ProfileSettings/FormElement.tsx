@@ -1,14 +1,9 @@
 import { ReactNode } from 'react'
 
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  InputRightAddon,
-  Textarea,
-} from '@chakra-ui/react'
+import { Textarea } from '@chakra-ui/react'
+
+import { FormControl, FormLabel } from '../Form'
+import { Input, InputGroup, InputLeftAddon, InputRightAddon } from '../Input'
 
 type FormElementProps = {
   title: string
@@ -33,14 +28,14 @@ export const FormElement: React.FC<FormElementProps> = ({
 }) => {
   const defValue = defaultValue ?? ''
 
-  const Tag = useTextarea ? Textarea : Input
+  const Component = useTextarea ? Textarea : Input
 
   return (
     <FormControl title={title}>
       <FormLabel fontWeight={600}>{title}</FormLabel>
       <InputGroup size={'lg'}>
         {left && <InputLeftAddon>{left}</InputLeftAddon>}
-        <Tag
+        <Component
           placeholder={placeholder}
           defaultValue={defValue}
           type={phone ? 'tel' : 'text'}

@@ -228,14 +228,14 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
 
             <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
               <FormItem
-                isRequired
+                required
                 register={register}
                 name="name"
                 autoComplete="name"
                 errors={errors}
               />
               <FormItem
-                isRequired
+                required
                 register={register}
                 name="email"
                 autoComplete="email"
@@ -245,7 +245,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
 
             <Stack>
               <Button
-                isDisabled={!amount || !isValid}
+                disabled={!amount || !isValid}
                 type="submit"
                 leftIcon={<FaDonate />}
                 onClick={() => setType('one-time')}
@@ -256,7 +256,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               </Button>
               {/* TODO: Enable it once we have Sepa payment method activated */}
               {/* <Button
-              isDisabled={!amount || !isValid}
+              disabled={!amount || !isValid}
               type="submit"
               leftIcon={<FaDonate />}
               onClick={() => setType('monthly')}

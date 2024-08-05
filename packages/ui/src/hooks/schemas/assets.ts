@@ -19,7 +19,7 @@ export const useAssetsSchema = () => {
 }
 
 export const assetFields: FormFields<Asset> = [
-  { name: 'name', isRequired: true },
+  { name: 'name', required: true },
   { name: 'sku', blockEdit: true },
   {
     name: 'platform',
@@ -27,12 +27,12 @@ export const assetFields: FormFields<Asset> = [
     endpoint: 'platforms',
   },
   { name: 'price', type: 'number-input' },
-  { name: 'location', isRequired: true },
+  { name: 'location', required: true },
   { name: 'rules', type: 'markdown' },
   { name: 'notes', type: 'markdown' },
   {
     name: 'peopleInCharge',
-    isRequired: true,
+    required: true,
     type: 'select',
     isMulti: true,
     endpoint: 'profiles',
@@ -40,7 +40,7 @@ export const assetFields: FormFields<Asset> = [
   { name: 'invoice', type: 'file' },
   {
     name: 'images',
-    isRequired: true,
+    required: true,
     type: 'file',
     group: { value: 'image', name: 'media' },
   },

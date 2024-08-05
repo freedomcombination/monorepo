@@ -3,12 +3,7 @@ import { FC, PropsWithChildren } from 'react'
 
 import {
   Box,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
   TabProps,
-  Tabs,
   TabsProps,
   Text,
   VStack,
@@ -28,6 +23,7 @@ import { SecurityTab } from './SecurityTab'
 import { Socials } from './SocialsTab'
 import { Container } from '../Container'
 import { Hero } from '../Hero'
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { WAvatar } from '../WAvatar'
 
 type ProfilePanelProps = PropsWithChildren<{
@@ -94,7 +90,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
             border={0}
             colorPalette="primary"
             size="lg"
-            variant={'unstyled'}
+            variant={'plain'}
             gap={8}
             isLazy
           >

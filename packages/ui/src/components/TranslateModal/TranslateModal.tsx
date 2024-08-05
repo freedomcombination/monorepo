@@ -4,9 +4,14 @@ import { Accordion, Box, HStack } from '@chakra-ui/react'
 import { AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
 
 import { StrapiLocale, StrapiTranslatableModel } from '@fc/types'
+import { mapModelLocalization } from '@fc/utils'
+
+import { TranslateAccordionItem } from './TranslateAccordionItem'
+import { TranslateForm } from './TranslateForm'
+import { TranslateModalProps, TranslationKey } from './types'
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
 import {
-  Button,
-  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,12 +19,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-} from '@fc/ui'
-import { mapModelLocalization } from '@fc/utils'
-
-import { TranslateAccordionItem } from './TranslateAccordionItem'
-import { TranslateForm } from './TranslateForm'
-import { TranslateModalProps, TranslationKey } from './types'
+} from '../Modal'
 
 export const TranslateModal = <T extends StrapiTranslatableModel>({
   isOpen,

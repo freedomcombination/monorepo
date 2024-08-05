@@ -7,7 +7,6 @@ import {
   HStack,
   SimpleGrid,
   Stack,
-  Tag,
   Text,
   Wrap,
 } from '@chakra-ui/react'
@@ -28,6 +27,7 @@ import {
   ModalOverlay,
 } from '../Modal'
 import { ModelEditForm } from '../ModelEditForm'
+import { Tag, TagLabel } from '../Tag'
 import { WAvatar } from '../WAvatar'
 
 export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
@@ -52,12 +52,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
 
   return (
     <Box>
-      <Modal
-        onClose={onClose}
-        isOpen={isOpen}
-        scrollBehavior="inside"
-        isCentered
-      >
+      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside" centered>
         <ModalOverlay />
         <ModalContent maxW="95vw" p={0} overflow="hidden">
           <ModalCloseButton />
@@ -94,11 +89,13 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                               : 'yellow'
                         }
                       >
-                        {art.approvalStatus === 'approved'
-                          ? 'Approved'
-                          : art.approvalStatus === 'rejected'
-                            ? 'Rejected'
-                            : 'Pending'}
+                        <TagLabel>
+                          {art.approvalStatus === 'approved'
+                            ? 'Approved'
+                            : art.approvalStatus === 'rejected'
+                              ? 'Rejected'
+                              : 'Pending'}
+                        </TagLabel>
                       </Tag>
                     </HStack>
 

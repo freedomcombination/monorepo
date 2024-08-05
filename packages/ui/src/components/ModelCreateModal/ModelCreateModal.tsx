@@ -58,7 +58,7 @@ export const ModelCreateModal = <T extends StrapiModel>({
       </Button>
 
       <Modal
-        isCentered
+        centered
         closeOnOverlayClick={true}
         isOpen={formDisclosure.open}
         onClose={formDisclosure.onClose}

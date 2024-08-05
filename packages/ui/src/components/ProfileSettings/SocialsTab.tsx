@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button, Center, Stack, Text } from '@chakra-ui/react'
+import { Center, Stack, Text } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -18,6 +18,7 @@ import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { Profile, ProfileUpdateInput } from '@fc/types'
 
+import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
 
@@ -42,7 +43,7 @@ const SocialRightElement = ({ url }: { url?: string }) => {
       variant={'ghost'}
       aria-label={url}
       rounded={'full'}
-      isDisabled={!url}
+      disabled={!url}
     />
   )
 }
@@ -136,7 +137,7 @@ export const Socials = () => {
       />
 
       <Button
-        isDisabled={!hasChanged}
+        disabled={!hasChanged}
         leftIcon={<FaSave />}
         size={'lg'}
         isLoading={saving}

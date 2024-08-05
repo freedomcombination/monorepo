@@ -23,7 +23,7 @@ const hiddenButtonClasses = hiddenButtons
 type MarkdownEditorProps = BoxProps & ComponentProps<typeof MdEditor>
 
 const MarkdownEditor = forwardRef<MarkdownEditorProps, any>((props, ref) => {
-  const disabledStyles = props.isDisabled
+  const disabledStyles = props.disabled
     ? {
         '.rc-md-navigation': { display: 'none' },
         '.sec-md': { display: 'none' },
@@ -52,7 +52,7 @@ const MarkdownEditor = forwardRef<MarkdownEditorProps, any>((props, ref) => {
           '&.full': {
             zIndex: 'modal',
           },
-          bg: props.isDisabled ? 'transparent' : '#f5f5f5',
+          bg: props.disabled ? 'transparent' : '#f5f5f5',
           [hiddenButtonClasses]: {
             display: 'none !important',
           },

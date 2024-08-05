@@ -1,14 +1,4 @@
-import {
-  Box,
-  Center,
-  HStack,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { Box, Center, HStack, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush } from 'react-icons/fa'
 import { FaSpinner } from 'react-icons/fa6'
@@ -19,6 +9,7 @@ import { useProfileArts, useRecaptchaToken } from '@fc/services'
 
 import { ArtGrid } from '../ArtGrid'
 import { CreateArtForm } from '../CreateArtForm'
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '../Tabs'
 
 export const ArtsTab = () => {
   const { t } = useTranslation('common')
@@ -48,13 +39,13 @@ export const ArtsTab = () => {
           <TabList overscrollX={'auto'}>
             <CreateArtForm size="md" />
 
-            <Tab fontWeight={600} isDisabled={!approved?.length}>
+            <Tab fontWeight={600} disabled={!approved?.length}>
               <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
             </Tab>
-            <Tab fontWeight={600} isDisabled={!pending?.length}>
+            <Tab fontWeight={600} disabled={!pending?.length}>
               <Box as={FaSpinner} mr={1} /> <>{t('pending-arts')}</>
             </Tab>
-            <Tab fontWeight={600} isDisabled={!rejected?.length}>
+            <Tab fontWeight={600} disabled={!rejected?.length}>
               <Box as={MdRemoveModerator} mr={1} /> <>{t('rejected-arts')}</>
             </Tab>
           </TabList>

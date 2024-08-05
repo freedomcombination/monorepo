@@ -114,7 +114,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           value={value}
           onChange={e => setValue(e.target.value)}
           flex={1}
-          isDisabled={!editMode}
+          disabled={!editMode}
         />
 
         <ArchivePopover archiveId={archiveId}>
@@ -133,7 +133,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
               aria-label={'approve'}
               colorPalette={'green'}
               icon={<FaSave />}
-              isDisabled={!isChanged}
+              disabled={!isChanged}
               isRound
               onClick={handleUpdate}
               size={'sm'}
@@ -162,7 +162,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
             isRound
             onClick={handleResetShared}
             size={'sm'}
-            isDisabled={shareCount === 0}
+            disabled={shareCount === 0}
           />
         </Tooltip>
 

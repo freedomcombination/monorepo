@@ -107,7 +107,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
               onClose={onCloseProfile}
               size={'5xl'}
               scrollBehavior={'inside'}
-              isCentered
+              centered
             >
               <ModalOverlay />
               <ModalContent p={0} h={'90vh'}>

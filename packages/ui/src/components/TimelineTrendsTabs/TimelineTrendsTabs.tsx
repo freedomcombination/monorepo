@@ -1,16 +1,9 @@
-import {
-  Box,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { Box, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { useHashtag } from '@fc/services'
 
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '../Tabs'
 import { TrendTabs } from '../TrendTabs'
 import { TweetWidget } from '../TweetWidget'
 

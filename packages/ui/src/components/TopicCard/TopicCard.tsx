@@ -1,19 +1,6 @@
 import { FC, useState } from 'react'
 
-import {
-  Badge,
-  Box,
-  ButtonGroup,
-  HStack,
-  Highlight,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Badge, Box, HStack, Highlight, Stack, Text } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { formatDistanceStrict } from 'date-fns'
 import { useTranslation } from 'next-i18next'
@@ -37,6 +24,13 @@ import { useFields, useSchema } from '../../hooks'
 import { useToast } from '../../hooks/useToast'
 import { ActionTooltip } from '../ActionTooltip'
 import { ModelCreateModal } from '../ModelCreateModal'
+import {
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+} from '../Popover'
 import { ShareButtons } from '../ShareButtons'
 import { WConfirm, WConfirmProps } from '../WConfirm'
 import { WImage } from '../WImage'
@@ -224,7 +218,7 @@ export const TopicCard: FC<TopicCardProps> = ({
           </Text>
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
-          <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
+          <HStack overflowX={'auto'} justifyContent={'center'}>
             <ModelCreateModal<Post>
               title={t('create-post')}
               endpoint={'posts'}
@@ -234,7 +228,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               buttonProps={{
                 variant: 'ghost',
                 colorPalette: 'gray',
-                iconSpacing: { base: 0, lg: 2 },
+                gap: { base: 0, lg: 2 },
               }}
             >
               <Box as="span" display={{ base: 'none', xl: 'inline' }}>
@@ -291,7 +285,6 @@ export const TopicCard: FC<TopicCardProps> = ({
               icon={<FaRegThumbsUp />}
               title="Recommend"
               disabled={isPending}
-              isDisabled={isPending}
               variant={'ghost'}
               colorPalette={'gray'}
             />
@@ -300,7 +293,6 @@ export const TopicCard: FC<TopicCardProps> = ({
               isVisible={!!user && topic?.isRecommended && !!id}
               label={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
               hasArrow
-              bg="primary.400"
             >
               <Box>
                 <TopicCardButton
@@ -318,7 +310,7 @@ export const TopicCard: FC<TopicCardProps> = ({
                 />
               </Box>
             </ActionTooltip>
-          </ButtonGroup>
+          </HStack>
         </Stack>
       </Stack>
     </Stack>

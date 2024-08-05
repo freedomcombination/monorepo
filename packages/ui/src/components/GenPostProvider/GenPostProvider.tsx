@@ -260,7 +260,7 @@ export const GenPostProvider = ({
           onClose={onClose}
           isOpen={open}
           leastDestructiveRef={cancelRef}
-          isCentered
+          centered
         >
           <ModalOverlay />
           <ModalContent>

@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 
-import { Input, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'
+
+import { Input } from '../components/Input'
 
 const fetchBlogs = async (title?: string) => {
   // TODO: Use strapiRequest

@@ -99,7 +99,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
 
           <Stack flex={1} gap={2}>
             <Textarea
-              isRequired
+              required
               onChange={e => setFeedback(e.target.value)}
               placeholder={'Type your comment here'}
             />
@@ -108,7 +108,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               <Button
                 flex={1}
                 flexShrink={0}
-                isDisabled={!feedback || art.approvalStatus === 'rejected'}
+                disabled={!feedback || art.approvalStatus === 'rejected'}
                 onClick={handleReject}
                 colorPalette="red"
                 leftIcon={<HiOutlineX />}
@@ -119,7 +119,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               <Button
                 flex={1}
                 flexShrink={0}
-                isDisabled={!feedback || art.approvalStatus === 'approved'}
+                disabled={!feedback || art.approvalStatus === 'approved'}
                 onClick={handleApprove}
                 colorPalette="primary"
                 leftIcon={<HiOutlineCheck />}

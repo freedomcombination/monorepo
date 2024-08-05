@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Input, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { NextSeo, NextSeoProps } from 'next-seo'
@@ -23,6 +23,7 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
+  Input,
 } from '@fc/ui'
 import { getLocalizedSlugs, getPageSeo } from '@fc/utils'
 

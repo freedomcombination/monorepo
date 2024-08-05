@@ -1,13 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import {
-  Box,
-  IconButton,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-} from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import { useDebounce } from 'react-use'
@@ -15,6 +8,13 @@ import { useDebounce } from 'react-use'
 import { useHashtag } from '@fc/services'
 
 import { useHashtagContext } from '../HashtagProvider'
+import { IconButton } from '../IconButton'
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+} from '../Input'
 
 export const MentionSearch = (): JSX.Element => {
   const { t } = useTranslation()

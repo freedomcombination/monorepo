@@ -27,8 +27,8 @@ export const useProfileSchema = () => {
 }
 
 export const profileFields: FormFields<Profile & { role: Role }> = [
-  { name: 'name', isRequired: true },
-  { name: 'email', isRequired: true, blockEdit: true },
+  { name: 'name', required: true },
+  { name: 'email', required: true, blockEdit: true },
   { name: 'phone' },
   { name: 'age' },
   { name: 'availableHours' },

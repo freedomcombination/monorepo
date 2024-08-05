@@ -1,15 +1,6 @@
 import { ReactNode } from 'react'
 
-import {
-  Heading,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-} from '@chakra-ui/react'
+import { Heading, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -22,6 +13,7 @@ import { ArchivePopover } from '../ArchivePopover'
 import { ArchivePostGenAI } from '../ArchivePostGenAI'
 import { GenPostProvider } from '../GenPostProvider'
 import { PostSentenceForm } from '../PostSentenceForm'
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '../Tabs'
 
 export type TabbedGenViewProps = {
   post?: Post

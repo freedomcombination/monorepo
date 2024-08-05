@@ -74,7 +74,7 @@ export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
           alignSelf="flex-end"
           rightIcon={<FiArrowRight />}
           isLoading={isPending}
-          isDisabled={!isValid}
+          disabled={!isValid}
           type="submit"
         >
           Send

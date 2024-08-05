@@ -2,14 +2,15 @@
 
 import { FormEventHandler, useEffect, useState } from 'react'
 
-import { Code, Input, Stack } from '@chakra-ui/react'
+import { Code, Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 import { useMutation } from '@tanstack/react-query'
 
 import { CategoryCreateInput } from '@fc/types'
-import { Button } from '@fc/ui'
 
 import { createCategoryWithMutation } from './utils'
+import { Button } from '../components/Button'
+import { Input } from '../components/Input'
 
 export const CreateCategoryWithUseMutation = () => {
   const [name_en, setNameEn] = useState<string>('')

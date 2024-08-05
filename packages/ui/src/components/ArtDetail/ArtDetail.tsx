@@ -24,7 +24,7 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
 
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
-  const { toggleLike, isLiked, isLoading, isDisabled } = useLikeArt({
+  const { toggleLike, isLiked, isLoading, disabled } = useLikeArt({
     art: art as Art,
     recaptchaToken,
     onSuccess: refetch,
@@ -58,7 +58,7 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
           colorPalette={isLiked ? 'red' : 'gray'}
           rightIcon={<AiFillHeart />}
           onClick={() => toggleLike()}
-          disabled={isDisabled}
+          disabled={disabled}
           size="sm"
           variant="outline"
           isLoading={isLoading}

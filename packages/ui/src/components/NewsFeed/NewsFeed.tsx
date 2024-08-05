@@ -1,15 +1,6 @@
 import { FC, useState } from 'react'
 
-import {
-  Center,
-  Input,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { Center, Stack } from '@chakra-ui/react'
 import { debounce } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { useLocalStorage } from 'usehooks-ts'
@@ -21,6 +12,8 @@ import {
   useBlogTopics,
   useRecommendedTopics,
 } from './useTopicFeed'
+import { Input } from '../Input'
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '../Tabs'
 import { TopicCard } from '../TopicCard'
 
 export const NewsFeed = () => {

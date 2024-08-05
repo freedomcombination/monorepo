@@ -1,9 +1,10 @@
-import { Stack, Tag, TagCloseButton, TagLabel, Wrap } from '@chakra-ui/react'
+import { Stack, Wrap } from '@chakra-ui/react'
 
 import { useHashtag } from '@fc/services'
 
 import { useHashtagContext } from '../../components/HashtagProvider'
 import { usePostContext } from '../PostProvider'
+import { Tag, TagCloseButton, TagLabel } from '../Tag'
 
 export const PostMakerTweetTags = () => {
   const { post } = usePostContext()

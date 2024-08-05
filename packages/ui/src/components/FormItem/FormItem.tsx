@@ -1,28 +1,34 @@
+import { forwardRef } from 'react'
+
 import { useBoolean, useMergeRefs } from '@chakra-ui/hooks'
+import { Box, Flex } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+import { FieldValues } from 'react-hook-form'
+import { HiEye, HiEyeOff } from 'react-icons/hi'
+import { TbInfoCircle } from 'react-icons/tb'
+
+import { FormItemProps } from './types'
+import { I18nNamespaces } from '../../../@types/i18next'
 import {
-  Box,
-  Flex,
   FormControl,
   FormErrorMessage,
   FormHelperText,
   FormLabel,
-  forwardRef,
-  IconButton,
+} from '../Form'
+import { IconButton } from '../IconButton'
+import {
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { HiEye, HiEyeOff } from 'react-icons/hi'
-import { TbInfoCircle } from 'react-icons/tb'
+} from '../Input'
+import { Tooltip } from '../Tooltip'
 
-import { Tooltip } from '@fc/ui'
-
-import { FormItemComponent } from './types'
-import { I18nNamespaces } from '../../../@types/i18next'
-
-export const FormItem: FormItemComponent = forwardRef(
+// TODO: Make it generic
+export const FormItem = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  FormItemProps<FieldValues>
+>(
   (
     {
       name,
@@ -34,7 +40,7 @@ export const FormItem: FormItemComponent = forwardRef(
       helperText,
       errors,
       register,
-      isRequired,
+      required,
       hideLabel,
       tooltip,
       placeholder: initialPlaceholder,
@@ -46,7 +52,7 @@ export const FormItem: FormItemComponent = forwardRef(
 
     const { t } = useTranslation()
 
-    const Tag = as || Input
+    const Component = as || Input
     const errorMessage = errors?.[name]?.['message'] as unknown as string
 
     const { ref: registerRef, ...registerRest } = register(name)
@@ -57,7 +63,7 @@ export const FormItem: FormItemComponent = forwardRef(
     const placeholder = initialPlaceholder || translatedName
 
     return (
-      <FormControl isInvalid={Boolean(errors?.[name])} isRequired={isRequired}>
+      <FormControl invalid={Boolean(errors?.[name])} required={required}>
         {label && !hideLabel && (
           <Flex align={'center'} mb={1}>
             <FormLabel
@@ -87,7 +93,7 @@ export const FormItem: FormItemComponent = forwardRef(
           </Flex>
         )}
         <InputGroup>
-          <Tag
+          <Component
             ref={ref}
             id={name}
             type={type === 'password' ? (isOpen ? 'text' : 'password') : type}
@@ -109,7 +115,7 @@ export const FormItem: FormItemComponent = forwardRef(
           {type === 'password' && (
             <InputRightElement h={'full'}>
               <IconButton
-                variant="link"
+                variant="ghost"
                 color={'inherit'}
                 aria-label={isOpen ? 'Mask password' : 'Reveal password'}
                 icon={isOpen ? <HiEyeOff /> : <HiEye />}
@@ -126,3 +132,5 @@ export const FormItem: FormItemComponent = forwardRef(
     )
   },
 )
+
+FormItem.displayName = 'FormItem'
