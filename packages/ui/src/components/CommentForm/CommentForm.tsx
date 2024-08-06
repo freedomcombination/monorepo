@@ -82,6 +82,8 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
 
       mutate(body, { onSuccess: () => onSuccess?.() })
     } catch (error) {
+      console.error(error)
+
       toastMessage(
         'Error',
         "Couldn't send comment. Please try again later.",

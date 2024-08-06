@@ -73,6 +73,8 @@ export const ImageRecognizer: FC<ImageRecognizerProps> = ({
           },
         }))
       } catch (error) {
+        console.error(error)
+
         setState(prevState => ({
           ...prevState,
           [id]: {

@@ -31,6 +31,14 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
 
   const titleKey = `title_${router.locale}` as const
 
+  const onHandle = () => {
+    if (isAdded) {
+      onRemove(art)
+    } else {
+      onAdd(art)
+    }
+  }
+
   return (
     <Stack boxShadow="md" rounded="md" direction={'column'} overflow="hidden">
       <ArtCardImage art={art} h={300} />
@@ -64,9 +72,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
             leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
             size="xs"
             isLoading={isLoading}
-            onClick={() => {
-              isAdded ? onRemove(art) : onAdd(art)
-            }}
+            onClick={onHandle}
           >
             {isAdded ? 'Remove' : 'Add to Collection'}
           </ActionButton>
