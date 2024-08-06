@@ -39,7 +39,8 @@ export const MonthPicker: FC<MonthPickerProps> = ({
     setStartMonth(null)
     setEndMonth(null)
     setYearOffset(0)
-    onClear && onClear()
+
+    onClear?.()
   }
 
   const handleSelectCurrent = () => {

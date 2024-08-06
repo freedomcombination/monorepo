@@ -51,6 +51,8 @@ export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
 
       mutate(body, { onSuccess: () => onSuccess?.() })
     } catch (error) {
+      console.error(error)
+
       toastMessage(
         'Error',
         "Couldn't send observation. Please try again later.",

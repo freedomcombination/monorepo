@@ -42,7 +42,9 @@ export const TweetGenAI: React.FC<TweetGenAIProps> = ({
       const src = incompleteText.substring(2, incompleteText.length - 2)
       const parts = src.split('","')
       incompletePost.sentences = parts
-    } catch (e) {}
+    } catch (e) {
+      console.error(e)
+    }
 
     return [incompletePost]
   }
