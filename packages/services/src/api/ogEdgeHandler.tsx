@@ -197,6 +197,7 @@ export const ogEdgeHandler = async (req: NextRequest) => {
                 ? dimensions.padding
                 : dimensions.image + dimensions.shape,
               display: 'flex',
+              justifyContent: 'center',
               flexDirection: 'column',
               gap: `${dimensions.font / 2}px`,
             }}
