@@ -1,5 +1,18 @@
 import type { Schema, Attribute } from '@strapi/strapi'
 
+export interface FlowFlow extends Schema.Component {
+  collectionName: 'components_flow_flows'
+  info: {
+    displayName: 'flow'
+    icon: 'manyToMany'
+  }
+  attributes: {
+    title: Attribute.String
+    duration: Attribute.String
+    presenter: Attribute.String
+  }
+}
+
 export interface FaqFaq extends Schema.Component {
   collectionName: 'components_faq_faqs'
   info: {
@@ -13,19 +26,6 @@ export interface FaqFaq extends Schema.Component {
     answer_en: Attribute.Text
     answer_tr: Attribute.Text
     answer_nl: Attribute.Text
-  }
-}
-
-export interface FlowFlow extends Schema.Component {
-  collectionName: 'components_flow_flows'
-  info: {
-    displayName: 'flow'
-    icon: 'manyToMany'
-  }
-  attributes: {
-    title: Attribute.String
-    duration: Attribute.String
-    presenter: Attribute.String
   }
 }
 
@@ -71,8 +71,8 @@ export interface ContactContact extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'faq.faq': FaqFaq
       'flow.flow': FlowFlow
+      'faq.faq': FaqFaq
       'course.curriculum': CourseCurriculum
       'contact.contact': ContactContact
     }
