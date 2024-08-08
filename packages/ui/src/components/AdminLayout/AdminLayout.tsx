@@ -28,6 +28,33 @@ export type AdminLayoutProps = {
   seo: NextSeoProps
 }
 
+const NotAllowedPage: FC<{ show?: boolean }> = ({ show }) => {
+  const { t } = useTranslation()
+
+  if (!show) return null
+
+  return (
+    <Center h={'full'}>
+      <Alert
+        status="error"
+        variant="solid"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        height="80%"
+        width="80%"
+        borderRadius="lg"
+      >
+        <AlertIcon boxSize="80px" mr={0} />
+        <AlertTitle mt={4} mb={1} fontSize="lg">
+          {t('not-allowed')}
+        </AlertTitle>
+      </Alert>
+    </Center>
+  )
+}
+
 export const AdminLayout: FC<AdminLayoutProps> = ({
   children,
   isLoading,
@@ -103,32 +130,5 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
         </Stack>
       </Flex>
     </>
-  )
-}
-
-const NotAllowedPage: FC<{ show?: boolean }> = ({ show }) => {
-  const { t } = useTranslation()
-
-  if (!show) return null
-
-  return (
-    <Center h={'full'}>
-      <Alert
-        status="error"
-        variant="solid"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
-        height="80%"
-        width="80%"
-        borderRadius="lg"
-      >
-        <AlertIcon boxSize="80px" mr={0} />
-        <AlertTitle mt={4} mb={1} fontSize="lg">
-          {t('not-allowed')}
-        </AlertTitle>
-      </Alert>
-    </Center>
   )
 }
