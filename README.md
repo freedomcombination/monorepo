@@ -38,6 +38,10 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 You need to have a running [PostgreSQL](https://www.postgresql.org/download/) server locally on port 5432
 
+### Install yarn
+
+`corepack enable` or `npm i -g yarn`
+
 ### Start Project
 
 ```bash
@@ -65,5 +69,5 @@ yarn format # Formats all files
 ### Install Packages
 
 ```bash
-yarn add -W <package-name>
+yarn add <package-name>
 ```
