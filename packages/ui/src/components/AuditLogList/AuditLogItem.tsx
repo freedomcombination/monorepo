@@ -6,8 +6,6 @@ import {
   Center,
   HStack,
   Text,
-  ThemeTypings,
-  Tooltip,
   Wrap,
   chakra,
 } from '@chakra-ui/react'
@@ -24,6 +22,7 @@ import {
 import { MdModeEditOutline, MdPublish, MdUnpublished } from 'react-icons/md'
 
 import { AuditLog, AuditLogAction } from '@fc/types'
+import { Tooltip } from '@fc/ui'
 
 type AuditLogItemProps = {
   log: AuditLog
@@ -31,7 +30,7 @@ type AuditLogItemProps = {
 }
 
 export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
-  const colorMap: Record<AuditLogAction, ThemeTypings['colorSchemes']> = {
+  const colorMap: Record<AuditLogAction, string> = {
     approved: 'blue',
     created: 'green',
     deleted: 'red',
@@ -51,7 +50,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
     rejected: FaTimes,
   }
 
-  const colorScheme = colorMap[log.action] || 'gray'
+  const colorPalette = colorMap[log.action] || 'gray'
   const profile = log.profile
   const profileName = isOwnProfile ? 'You' : profile?.name || 'Strapi'
   const profileEmail = profile?.email || 'Strapi'
@@ -83,21 +82,21 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
   const Icon = iconMap[log.action] || FaQuestion
 
   return (
-    <Wrap p={{ base: 1, md: 0 }} spacing={0}>
-      <HStack spacing={1}>
+    <Wrap p={{ base: 1, md: 0 }} gap={0}>
+      <HStack gap={1}>
         {/* <WAvatar size={'sm'} name={profile?.name || ''} src={profile?.avatar} /> */}
 
         <Center
           boxSize={6}
           borderWidth={1}
-          borderColor={`${colorScheme}.500`}
+          borderColor={`${colorPalette}.500`}
           rounded={'full'}
-          color={`${colorScheme}.500`}
+          color={`${colorPalette}.500`}
         >
           <Icon />
         </Center>
 
-        <Badge colorScheme={colorScheme} variant="outline" fontWeight={600}>
+        <Badge colorPalette={colorPalette} variant="outline" fontWeight={600}>
           {modelName}
         </Badge>
 
@@ -135,7 +134,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
           color={'gray.400'}
           fontSize={'sm'}
           fontStyle={'italic'}
-          noOfLines={1}
+          lineClamp={1}
           dangerouslySetInnerHTML={{ __html: log.text }}
         />
       </Wrap>

@@ -1,13 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-  Text,
-} from '@chakra-ui/react'
+import { Accordion, Text } from '@chakra-ui/react'
 
 import { Collection } from '@fc/types'
 
@@ -19,33 +12,33 @@ export const CollectionEdit: FC<CollectionEditProps> = ({
   onSuccess,
 }) => {
   return (
-    <Accordion
+    <Accordion.Root
       size={'lg'}
       allowToggle
       defaultIndex={0}
       borderColor="transparent"
     >
-      <AccordionItem>
-        <AccordionButton
+      <Accordion.Item>
+        <Accordion.ItemTrigger
           justifyContent="space-between"
           cursor="pointer"
           fontSize="xl"
         >
-          <Text fontWeight={700} noOfLines={1}>
+          <Text fontWeight={700} lineClamp={1}>
             {collection.title}
           </Text>
 
-          <AccordionIcon ml={'auto'} />
-        </AccordionButton>
-        <AccordionPanel p={0} mt={4}>
+          <Accordion.ItemIndicator ml={'auto'} />
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent p={0} mt={4}>
           <ModelEditForm<Collection>
             endpoint="collections"
             model={collection}
             translatedFields={['title', 'description', 'content']}
             onSuccess={onSuccess}
           />
-        </AccordionPanel>
-      </AccordionItem>
-    </Accordion>
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    </Accordion.Root>
   )
 }

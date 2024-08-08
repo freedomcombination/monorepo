@@ -1,24 +1,24 @@
 import { FC, useEffect, useLayoutEffect, useState } from 'react'
 
-import {
-  Modal,
-  Select,
-  ModalOverlay,
-  Text,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  Input,
-  ModalFooter,
-  Button,
-} from '@chakra-ui/react'
+import { Select, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { RoleInput, Role } from '@fc/types'
 import { createRole } from '@fc/utils'
+
+import { Button } from '../Button'
+import { Input } from '../Input'
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  ModalCloseButton,
+} from '../Modal'
 
 type CreateRoleModalProps = {
   isOpen: boolean
@@ -96,7 +96,7 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
 
   return (
     <Modal
-      isCentered
+      centered
       isOpen={isOpen}
       onClose={onClose}
       onCloseComplete={onCloseComplete}
@@ -113,7 +113,7 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
           <Select
             aria-label="Select base role"
             placeholder="Select base role"
-            isDisabled={startCreate}
+            disabled={startCreate}
             variant={'outline'}
             onChange={e => {
               setRoleBaseId(Number(e.target.value))
@@ -132,18 +132,18 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
           <Text>Name: </Text>
           <Input
             variant={'outline'}
-            isDisabled={startCreate}
+            disabled={startCreate}
             onChange={e => setRoleName(e.target.value)}
           />
           <Text>Description: </Text>
           <Input
             variant={'outline'}
-            isDisabled={startCreate}
+            disabled={startCreate}
             onChange={e => setRoleDescription(e.target.value)}
           />
         </ModalBody>
         <ModalFooter gap={6}>
-          <Button isDisabled={startCreate}>{t('cancel')}</Button>
+          <Button disabled={startCreate}>{t('cancel')}</Button>
           <Button isLoading={startCreate} onClick={() => setStartCreate(true)}>
             {t('create')}
           </Button>

@@ -11,7 +11,7 @@ export const HeaderMobileNav: FC<HeaderMobileNavProps> = ({ headerMenu }) => {
   const { t } = useTranslation()
 
   return (
-    <Stack spacing={0}>
+    <Stack gap={0}>
       {headerMenu.map((item, i) => {
         return <HeaderMobileNavItem key={i} item={item} />
       })}

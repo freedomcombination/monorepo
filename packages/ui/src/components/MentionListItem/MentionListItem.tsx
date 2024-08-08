@@ -1,18 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  ButtonGroup,
-  Divider,
-  HStack,
-  IconButton,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Text,
-  Tooltip,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, HStack, Text, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPlus, FaTimes } from 'react-icons/fa'
 
@@ -20,6 +8,9 @@ import { MentionUserData } from '@fc/types'
 import { formatNumber } from '@fc/utils'
 
 import { useHashtagContext } from '../HashtagProvider'
+import { IconButton } from '../IconButton'
+import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
+import { Tooltip } from '../Tooltip'
 import { WAvatar } from '../WAvatar'
 
 type MentionListItemProps = {
@@ -64,13 +55,13 @@ const MentionListItem: FC<MentionListItemProps> = ({
               pos="static"
             />
             <Box>
-              <Text noOfLines={1} maxW="120px">
+              <Text lineClamp={1} maxW="120px">
                 {data.name}
               </Text>
               <Text>@{data.screen_name}</Text>
             </Box>
           </HStack>
-          <ButtonGroup>
+          <HStack>
             {onRemoveItem && (
               <Tooltip label={t('post.remove')}>
                 <IconButton
@@ -78,7 +69,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
                   aria-label={t('post.remove') + ' mention'}
                   variant="ghost"
                   onClick={() => onRemoveItem(data)}
-                  colorScheme="blackAlpha"
+                  colorPalette="blackAlpha"
                   _hover={{ color: 'red.400' }}
                   rounded="full"
                   size="sm"
@@ -92,16 +83,15 @@ const MentionListItem: FC<MentionListItemProps> = ({
                 aria-label={t('post.add') + ' mention'}
                 variant="ghost"
                 onClick={() => onAddItem(data)}
-                colorScheme="blackAlpha"
+                colorPalette="blackAlpha"
                 _hover={{ color: 'green.400' }}
                 rounded="full"
                 size="sm"
                 icon={<FaPlus />}
-                isDisabled={isAdded}
                 disabled={isAdded}
               />
             </Tooltip>
-          </ButtonGroup>
+          </HStack>
         </HStack>
       </PopoverTrigger>
       <PopoverContent
@@ -127,7 +117,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
 
           <Text px={4}>{data.description}</Text>
 
-          <Divider />
+          <hr />
 
           <HStack w="full" justify="space-evenly">
             <Box>

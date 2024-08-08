@@ -1,18 +1,18 @@
 import { useState } from 'react'
 
-import {
-  IconButton,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  useUpdateEffect,
-} from '@chakra-ui/react'
+import { useUpdateEffect } from '@chakra-ui/hooks'
 import { FaTimes } from 'react-icons/fa'
 import { HiOutlineSearch } from 'react-icons/hi'
 import { useDebounce } from 'react-use'
 
 import { SearchFormProps } from './types'
+import { IconButton } from '../IconButton'
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+} from '../Input'
 
 export const SearchForm: React.FC<SearchFormProps> = ({
   placeholder,

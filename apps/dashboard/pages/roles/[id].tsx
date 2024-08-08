@@ -1,22 +1,6 @@
 import { FC, useEffect, useMemo, useState } from 'react'
 
-import {
-  Button,
-  Center,
-  Flex,
-  HStack,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuItemOption,
-  MenuList,
-  MenuOptionGroup,
-  Select,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Center, Flex, HStack, Select, Spinner, Stack } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
@@ -27,7 +11,20 @@ import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Permissions, Role, RoleInput, StrapiLocale } from '@fc/types'
-import { AdminLayout, ContentEditable, PermissionCard } from '@fc/ui'
+import {
+  AdminLayout,
+  Button,
+  ContentEditable,
+  PermissionCard,
+  MenuButton,
+  MenuDivider,
+  MenuItemOption,
+  MenuList,
+  MenuOptionGroup,
+  IconButton,
+  Menu,
+  MenuItem,
+} from '@fc/ui'
 import { cloneRole, hasDifferences, updateRole } from '@fc/utils'
 
 type RolePageProps = InferGetServerSidePropsType<typeof getServerSideProps>
@@ -139,7 +136,7 @@ const RolePage: FC<RolePageProps> = () => {
 
             {inEditMode && (
               <Button
-                isDisabled={!needSave}
+                disabled={!needSave}
                 onClick={() => setStartSave(true)}
                 isLoading={startSave || isLoading}
                 leftIcon={<FaSave />}
@@ -148,15 +145,16 @@ const RolePage: FC<RolePageProps> = () => {
               </Button>
             )}
           </HStack>
-          <HStack spacing={4}>
+          <HStack gap={4}>
             {role && (
               <Menu closeOnSelect={false}>
                 <MenuButton
                   aria-label="endpoint-filter"
-                  icon={<FaFilter />}
                   variant={'outline'}
                   as={IconButton}
-                />
+                >
+                  <FaFilter />
+                </MenuButton>
                 <MenuList h={400} overflow={'auto'}>
                   <MenuItem onClick={() => setFilters([])}>
                     {t('clear')}

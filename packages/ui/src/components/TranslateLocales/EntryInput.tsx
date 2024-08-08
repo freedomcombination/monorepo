@@ -1,10 +1,9 @@
 import { ChangeEventHandler, FC, useContext, useState } from 'react'
 
-import { Input, InputGroup, InputLeftAddon } from '@chakra-ui/react'
-
 import { DictContext } from './DictContext'
 import { dicts } from './dicts'
 import { EntryInputProps } from './types'
+import { Input, InputGroup, InputLeftAddon } from '../Input'
 
 export const EntryInput: FC<EntryInputProps> = ({ locale, localeKey }) => {
   const targetDict = dicts[locale]
@@ -29,7 +28,7 @@ export const EntryInput: FC<EntryInputProps> = ({ locale, localeKey }) => {
       <InputLeftAddon>{locale}</InputLeftAddon>
       <Input
         defaultValue={defaultVal}
-        isDisabled={locked}
+        disabled={locked}
         color={color}
         _placeholder={{
           color,

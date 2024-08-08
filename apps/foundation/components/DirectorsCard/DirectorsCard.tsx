@@ -9,7 +9,7 @@ interface DirectorsCardProps {
 
 export const DirectorsCard: FC<DirectorsCardProps> = ({ title, name }) => {
   return (
-    <Stack p={4} spacing={4} bg="white" rounded="lg" shadow="base">
+    <Stack p={4} gap={4} bg="white" rounded="lg" shadow="base">
       <Stack>
         <Text fontWeight={600}>{title}</Text>
         <Text fontSize="sm">{name}</Text>

@@ -33,7 +33,7 @@ export const ImageRecognizeItem: FC<ImageRecognizeItemProps> = ({
         isRound
         top={-4}
         right={-4}
-        colorScheme={'red'}
+        colorPalette={'red'}
         icon={<FaTimes />}
         onClick={onRemove}
       />

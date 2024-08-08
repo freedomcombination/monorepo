@@ -1,22 +1,18 @@
 import { FC, useEffect, useState } from 'react'
 
+import { Box, Center, HStack, Spinner, Stack } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+
+import { useStrapiRequest } from '@fc/services'
+import { Art } from '@fc/types'
 import {
-  Box,
-  Center,
-  HStack,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-
-import { useStrapiRequest } from '@fc/services'
-import { Art } from '@fc/types'
+} from '@fc/ui'
 
 import { ArtAddToCollectionGrid } from './ArtAddToCollectionGrid'
 import { ArtAddToCollectionModalProps } from './types'
@@ -62,7 +58,7 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
             </HStack>
           </ModalHeader>
           <ModalBody>
-            <Stack spacing={8}>
+            <Stack gap={8}>
               {isLoading && (
                 <Center>
                   <Spinner />

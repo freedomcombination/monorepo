@@ -9,21 +9,21 @@ type LocaleBadgesProps = {
 } & BadgeProps
 
 export const LocaleBadges: FC<LocaleBadgesProps> = ({ locales, ...rest }) => {
-  const colorScheme = {
+  const colorPalette = {
     en: 'purple',
     nl: 'orange',
     tr: 'cyan',
   }
 
   return (
-    <HStack spacing={1}>
+    <HStack gap={1}>
       {locales.map((locale, i) => (
         <Badge
           key={i}
           variant="outline"
           {...rest}
           textTransform="uppercase"
-          colorScheme={colorScheme[locale]}
+          colorPalette={colorPalette[locale]}
         >
           {locale}
         </Badge>

@@ -20,7 +20,7 @@ export const usePostSchema = () => {
 }
 
 export const postFields: FormFields<Post> = [
-  { name: 'description', isRequired: true, type: 'textarea' },
+  { name: 'description', required: true, type: 'textarea' },
   {
     name: 'image',
     type: 'file',

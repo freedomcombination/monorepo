@@ -1,6 +1,6 @@
-import { AlertStatus, createStandaloneToast } from '@chakra-ui/react'
+import { createToaster } from '@chakra-ui/react'
 
-const { toast } = createStandaloneToast()
+const toast = createToaster()
 
 /**
  * this function is used to show toast message
@@ -12,7 +12,7 @@ const { toast } = createStandaloneToast()
 export const toastMessage = (
   title: string | null,
   description: string | null,
-  status: AlertStatus,
+  status: 'info' | 'warning' | 'success' | 'error',
 ) => {
   toast({
     title,

@@ -1,5 +1,4 @@
-import { ThemeTypings } from '@chakra-ui/react'
-
+import { ButtonProps } from '../Button'
 import {
   ArchivePostType,
   GeneratedArchiveContentPost,
@@ -9,7 +8,7 @@ export type PostGenAIProps = {
   archiveContentId: number
   content: string
   onSuccess?: (data: ArchivePostType[]) => void
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorPalette?: ButtonProps['colorPalette']
   onlySentences?: boolean
   apiUrl: string
   parseIncomplete: (incompleteText: string) => GeneratedArchiveContentPost[]

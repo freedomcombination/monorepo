@@ -9,5 +9,5 @@ export const observationSchema = () => {
 }
 
 export const observationFields: FormFields<Observation> = [
-  { name: 'content', isRequired: true, type: 'markdown' },
+  { name: 'content', required: true, type: 'markdown' },
 ]

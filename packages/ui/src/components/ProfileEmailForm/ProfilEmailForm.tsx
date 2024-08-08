@@ -1,14 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
-  Stack,
-  Text,
-  Textarea,
-} from '@chakra-ui/react'
+import { Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -23,6 +15,8 @@ import {
 } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
+import { Button } from '../Button'
 import { FormItem } from '../FormItem'
 
 interface ProfileMailFormProps {
@@ -122,28 +116,28 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
   }
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <Stack as="form" onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={4}>
+        <Stack gap={4}>
           <FormItem
             name="subject"
             register={register}
             errors={errors}
-            isRequired
+            required
           />
           <FormItem
             name="content"
             as={Textarea}
             register={register}
             errors={errors}
-            isRequired
+            required
           />
 
           <Button
             alignSelf="flex-end"
             rightIcon={<FiArrowRight />}
             type="submit"
-            isDisabled={!isValid}
+            disabled={!isValid}
             isLoading={isPending}
           >
             Send

@@ -1,14 +1,7 @@
 import { useState } from 'react'
 
-import {
-  FormLabel,
-  HStack,
-  Stack,
-  Text,
-  Textarea,
-  useBoolean,
-  Wrap,
-} from '@chakra-ui/react'
+import { useBoolean } from '@chakra-ui/hooks'
+import { HStack, Stack, Text, Textarea, Wrap } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -34,6 +27,7 @@ import { useDefaultValues } from '../../hooks/useDefaultValues'
 import { ActionButton } from '../ActionButton'
 import { ActionStack } from '../ActionStack'
 import { Flag } from '../Flag'
+import { FormLabel } from '../Form'
 import { FormItem } from '../FormItem'
 import { FormLocaleSwitcher } from '../FormLocaleSwitcher'
 import { MdFormItem } from '../MdFormItem'
@@ -159,7 +153,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
         />
       )}
       <Stack as="form" onSubmit={handleSubmit(onSaveModel)}>
-        <Stack p={8} spacing={8}>
+        <Stack p={8} gap={8}>
           {(model?.localizations?.length || 0) > 0 && (
             <FormLocaleSwitcher model={model} />
           )}
@@ -167,7 +161,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             return (
               <Stack
                 key={index}
-                spacing={4}
+                gap={4}
                 p={4}
                 rounded={'md'}
                 shadow={'md'}
@@ -209,8 +203,8 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
                         {...(!isEditing && { p: 0 })}
                         key={index}
                         name={field.name as string}
-                        isDisabled={!isEditing}
-                        isRequired={field.isRequired}
+                        disabled={!isEditing}
+                        required={field.required}
                         errors={errors}
                         control={control}
                         _disabled={disabledStyle}
@@ -235,7 +229,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
                         whiteSpace={'pre-wrap'}
                         errors={errors}
                         register={register}
-                        isDisabled={!isEditing}
+                        disabled={!isEditing}
                         _disabled={disabledStyle}
                         hideLabel
                       />
@@ -266,7 +260,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             onClick={onApprove}
             leftIcon={<HiOutlineCheck />}
             fontSize="sm"
-            colorScheme={'purple'}
+            colorPalette={'purple'}
             isLoading={approveModelMutation.isPending}
           >
             {t('approve')}
@@ -295,7 +289,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
               isVisible={isEditing}
               onClick={onCancel}
               leftIcon={<MdClose />}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               fontSize="sm"
             >
               {t('cancel')}

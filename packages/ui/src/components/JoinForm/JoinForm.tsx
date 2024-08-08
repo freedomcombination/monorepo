@@ -2,17 +2,14 @@ import { FC, useEffect } from 'react'
 
 import {
   Box,
-  Button,
   chakra,
   Checkbox,
-  FormLabel,
   Heading,
   HStack,
   Stack,
   Switch,
   Text,
   Textarea,
-  Tooltip,
   Wrap,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -28,7 +25,10 @@ import { sleep } from '@fc/utils'
 import { heardFrom } from './data'
 import { joinSchema } from './schema'
 import { JoinFormFieldValues, JoinFormProps } from './types'
+import { Button } from '../Button'
+import { FormLabel } from '../Form'
 import { FormItem } from '../FormItem'
+import { Tooltip } from '../Tooltip'
 
 export const JoinForm: FC<JoinFormProps> = ({
   onSubmitHandler,
@@ -81,20 +81,20 @@ export const JoinForm: FC<JoinFormProps> = ({
       rounded="lg"
       shadow="base"
       as="form"
-      spacing={4}
+      gap={4}
       onSubmit={handleSubmit(onSubmit)}
     >
       <Heading as="h3" size="lg" textAlign="center" fontWeight={900}>
         {t('apply-form.title')}
       </Heading>
-      <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
         <FormItem
           register={register}
           id="name"
           name="name"
           autoComplete="name"
           errors={errors}
-          isRequired
+          required
         />
         <FormItem
           name="email"
@@ -102,10 +102,10 @@ export const JoinForm: FC<JoinFormProps> = ({
           autoComplete="email"
           register={register}
           errors={errors}
-          isRequired
+          required
         />
       </Stack>
-      <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
         <FormItem register={register} id="phone" name="phone" errors={errors} />
         <FormItem
           type="number"
@@ -113,7 +113,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           id="availableHours"
           name="availableHours"
           errors={errors}
-          isRequired
+          required
         />
         <FormItem
           type="number"
@@ -121,7 +121,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           id="age"
           name="age"
           errors={errors}
-          isRequired
+          required
         />
       </Stack>
       <FormItem
@@ -136,7 +136,7 @@ export const JoinForm: FC<JoinFormProps> = ({
         id="city"
         name="city"
         autoComplete="city"
-        isRequired
+        required
       />
 
       <FormItem
@@ -168,7 +168,7 @@ export const JoinForm: FC<JoinFormProps> = ({
         </FormLabel>
         <Wrap
           p={4}
-          spacing={4}
+          gap={4}
           rounded="lg"
           borderWidth={2}
           borderColor={errors['heardFrom'] ? 'red.400' : 'gray.100'}
@@ -199,7 +199,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           <chakra.span color="red.500">*</chakra.span>
         </FormLabel>
         <Stack
-          spacing={8}
+          gap={8}
           rounded="lg"
           p={4}
           borderWidth={2}

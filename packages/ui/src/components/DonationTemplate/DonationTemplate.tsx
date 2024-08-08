@@ -2,8 +2,6 @@ import { FC, useState } from 'react'
 
 import {
   Box,
-  Button,
-  ButtonGroup,
   Center,
   HStack,
   Heading,
@@ -20,7 +18,6 @@ import {
   SliderTrack,
   Stack,
   Text,
-  Tooltip,
   VStack,
   useBreakpointValue,
 } from '@chakra-ui/react'
@@ -35,6 +32,7 @@ import * as yup from 'yup'
 
 import { DONATION_REQUEST_LINK } from '@fc/config'
 import { Platform } from '@fc/types'
+import { Button, Tooltip } from '@fc/ui'
 
 import { ButtonLink } from '../ButtonLink'
 import { Container } from '../Container'
@@ -109,9 +107,9 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
         gap={8}
         pos={'relative'}
       >
-        <Stack spacing={8}>
+        <Stack gap={8}>
           {DONATION_REQUEST_LINK && (
-            <VStack p={4} spacing={4} rounded="lg" shadow="lg" bg={'white'}>
+            <VStack p={4} gap={4} rounded="lg" shadow="lg" bg={'white'}>
               <Center>
                 <QRCode value={DONATION_REQUEST_LINK} />
               </Center>
@@ -128,7 +126,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
           <Stack
             px={{ base: 8, lg: 16 }}
             py={{ base: 8, lg: 12 }}
-            spacing={8}
+            gap={8}
             bg={'white'}
             {...(isDark && {
               borderColor: 'whiteAlpha.200',
@@ -147,7 +145,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
             </Heading>
 
             <Stack align="center">
-              <HStack spacing={4}>
+              <HStack gap={4}>
                 <Image src={`/images/ideal-logo.svg`} h={50} alt="ideal" />
 
                 <Image
@@ -164,26 +162,27 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               </Text>
             </Stack>
 
-            <ButtonGroup w="full" isAttached alignSelf="center" size="lg">
+            <HStack w="full" alignSelf="center">
               {donationAmounts.map(val => (
                 <Button
                   w="full"
                   key={val}
                   variant={amount === val ? 'solid' : 'outline'}
-                  colorScheme={amount === val ? 'primary' : 'gray'}
+                  colorPalette={amount === val ? 'primary' : 'gray'}
                   onClick={() => setAmount(val)}
+                  size="lg"
                 >
                   €{val}
                 </Button>
               ))}
-            </ButtonGroup>
+            </HStack>
             <Stack
               direction={{ base: 'column', md: 'row' }}
               pb={8}
               w="full"
               justify="center"
               align="center"
-              spacing={6}
+              gap={6}
             >
               <NumberInput
                 maxW={120}
@@ -205,7 +204,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                 value={amount}
                 min={5}
                 max={100}
-                colorScheme="primary"
+                colorPalette="primary"
                 onChange={v => setAmount(v)}
                 focusThumbOnChange={false}
               >
@@ -227,16 +226,16 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               </Slider>
             </Stack>
 
-            <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+            <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
               <FormItem
-                isRequired
+                required
                 register={register}
                 name="name"
                 autoComplete="name"
                 errors={errors}
               />
               <FormItem
-                isRequired
+                required
                 register={register}
                 name="email"
                 autoComplete="email"
@@ -246,22 +245,22 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
 
             <Stack>
               <Button
-                isDisabled={!amount || !isValid}
+                disabled={!amount || !isValid}
                 type="submit"
                 leftIcon={<FaDonate />}
                 onClick={() => setType('one-time')}
-                colorScheme="primary"
+                colorPalette="primary"
               >
                 {t('donation.title')}
                 {amount && ` €${amount}`}
               </Button>
               {/* TODO: Enable it once we have Sepa payment method activated */}
               {/* <Button
-              isDisabled={!amount || !isValid}
+              disabled={!amount || !isValid}
               type="submit"
               leftIcon={<FaDonate />}
               onClick={() => setType('monthly')}
-              colorScheme="purple"
+              colorPalette="purple"
             >
               {t('donation.monthly')}
               {amount && ` €${amount}`}

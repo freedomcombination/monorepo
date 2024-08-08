@@ -1,18 +1,13 @@
 import { FC, useCallback } from 'react'
 
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
-} from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { StrapiLocale } from '@fc/types'
 
+import { Button } from '../Button'
 import { Flag } from '../Flag'
+import { Menu, MenuButton, MenuItem, MenuList } from '../Menu'
 
 type LanguageSwitcherProps = {
   responsive?: boolean
@@ -47,7 +42,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
           iconSpacing: { base: 0, lg: 2 },
           px: 2,
         })}
-        colorScheme={'gray'}
+        colorPalette={'gray'}
       >
         <Text
           pr={1}

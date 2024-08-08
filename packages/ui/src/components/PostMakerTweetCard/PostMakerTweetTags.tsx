@@ -1,9 +1,10 @@
-import { Stack, Tag, TagCloseButton, TagLabel, Wrap } from '@chakra-ui/react'
+import { Stack, Wrap } from '@chakra-ui/react'
 
 import { useHashtag } from '@fc/services'
 
 import { useHashtagContext } from '../../components/HashtagProvider'
 import { usePostContext } from '../PostProvider'
+import { Tag, TagCloseButton, TagLabel } from '../Tag'
 
 export const PostMakerTweetTags = () => {
   const { post } = usePostContext()
@@ -29,7 +30,7 @@ export const PostMakerTweetTags = () => {
         {mentionUsernames.map(mention => (
           <Tag
             key={mention}
-            colorScheme={'primary'}
+            colorPalette={'primary'}
             variant={'outline'}
             rounded={'full'}
             px={2}
@@ -49,7 +50,7 @@ export const PostMakerTweetTags = () => {
             variant={'outline'}
             rounded={'full'}
             px={2}
-            colorScheme={hashtag.hasPassed ? 'gray' : 'twitter'}
+            colorPalette={hashtag.hasPassed ? 'gray' : 'twitter'}
           >
             <TagLabel>{trend}</TagLabel>
             {hashtag.hasPassed && (

@@ -3,18 +3,10 @@ import { FC, useState } from 'react'
 import {
   Badge,
   Box,
-  Button,
-  ButtonGroup,
   Heading,
   HStack,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
   SimpleGrid,
   Stack,
-  Tag,
   Text,
   Wrap,
 } from '@chakra-ui/react'
@@ -26,7 +18,16 @@ import { Art, StrapiLocale } from '@fc/types'
 import { ArtFeedbackForm } from './ArtFeedbackForm'
 import { ArtApprovalTypes } from './types'
 import { ArtCardImage } from '../ArtCardImage'
+import { Button } from '../Button'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+} from '../Modal'
 import { ModelEditForm } from '../ModelEditForm'
+import { Tag, TagLabel } from '../Tag'
 import { WAvatar } from '../WAvatar'
 
 export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
@@ -51,12 +52,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
 
   return (
     <Box>
-      <Modal
-        onClose={onClose}
-        isOpen={isOpen}
-        scrollBehavior="inside"
-        isCentered
-      >
+      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside" centered>
         <ModalOverlay />
         <ModalContent maxW="95vw" p={0} overflow="hidden">
           <ModalCloseButton />
@@ -65,8 +61,8 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
               <ArtCardImage art={art} />
               {!isEditing && (
                 <Stack overflowY={'auto'}>
-                  <Stack spacing={4} p={{ base: 4, lg: 8 }} flex={1}>
-                    <ButtonGroup isAttached>
+                  <Stack gap={4} p={{ base: 4, lg: 8 }} flex={1}>
+                    <HStack>
                       {['en', 'nl', 'tr'].map(lang => (
                         <Button
                           key={lang}
@@ -77,15 +73,15 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                           {lang}
                         </Button>
                       ))}
-                    </ButtonGroup>
-                    <HStack spacing={4}>
+                    </HStack>
+                    <HStack gap={4}>
                       <Heading flex={1} color={'primary.500'} fontWeight={700}>
                         {title}
                       </Heading>
                       <Tag
                         flexShrink={0}
                         size={'lg'}
-                        colorScheme={
+                        colorPalette={
                           art.approvalStatus === 'approved'
                             ? 'green'
                             : art.approvalStatus === 'rejected'
@@ -93,15 +89,17 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                               : 'yellow'
                         }
                       >
-                        {art.approvalStatus === 'approved'
-                          ? 'Approved'
-                          : art.approvalStatus === 'rejected'
-                            ? 'Rejected'
-                            : 'Pending'}
+                        <TagLabel>
+                          {art.approvalStatus === 'approved'
+                            ? 'Approved'
+                            : art.approvalStatus === 'rejected'
+                              ? 'Rejected'
+                              : 'Pending'}
+                        </TagLabel>
                       </Tag>
                     </HStack>
 
-                    <HStack spacing={3} w={'full'}>
+                    <HStack gap={3} w={'full'}>
                       <WAvatar
                         size="md"
                         src={artist?.avatar?.url}
@@ -160,7 +158,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                 </Stack>
               )}
               {isEditing && (
-                <Stack spacing={4} p={{ base: 4, lg: 8 }} overflowY={'auto'}>
+                <Stack gap={4} p={{ base: 4, lg: 8 }} overflowY={'auto'}>
                   <HStack justify={'space-between'}>
                     <Heading color={'primary.500'} fontWeight={700}>
                       {t('edit')}

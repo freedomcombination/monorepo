@@ -1,17 +1,16 @@
 import { FC } from 'react'
 
+import { Box, Stack } from '@chakra-ui/react'
+
+import { ChildMenuItem } from './ChildMenuItem'
+import { MenuTypeItemProps } from './types'
 import {
-  Box,
   Popover,
   PopoverArrow,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
-  Stack,
-} from '@chakra-ui/react'
-
-import { ChildMenuItem } from './ChildMenuItem'
-import { MenuTypeItemProps } from './types'
+} from '../Popover'
 
 export const ParentMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
   return (

@@ -1,8 +1,16 @@
 import { FC, useState } from 'react'
 
+import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
+import { Box, Stack } from '@chakra-ui/react'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { FaInfo, FaPlus } from 'react-icons/fa6'
+import { MdOutlineTrendingUp } from 'react-icons/md'
+
+import { useHashtag } from '@fc/services'
 import {
-  Box,
+  HashtagStats,
   IconButton,
+  Markdown,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -13,17 +21,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
-  Portal,
-  Stack,
-  useBoolean,
-  useDisclosure,
-} from '@chakra-ui/react'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { FaInfo, FaPlus } from 'react-icons/fa6'
-import { MdOutlineTrendingUp } from 'react-icons/md'
-
-import { useHashtag } from '@fc/services'
-import { HashtagStats, Markdown } from '@fc/ui'
+} from '@fc/ui'
 
 type PlusButtonProps = {
   source: MDXRemoteSerializeResult<Record<string, unknown>>
@@ -71,7 +69,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
             right={4}
             bottom={4}
             borderRadius={'100px'}
-            colorScheme="primary"
+            colorPalette="primary"
             aria-label="Plus"
             size={'lg'}
             boxSize={{ base: 12, lg: 16 }}
@@ -80,36 +78,34 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
             icon={<FaPlus />}
           />
         </PopoverTrigger>
-        <Portal>
-          <PopoverContent p={0} w={'auto'} border={'none'} bg={'transparent'}>
-            <PopoverBody p={0}>
-              <Stack>
-                <IconButton
-                  aria-label={'stats'}
-                  colorScheme={'primary'}
-                  icon={<MdOutlineTrendingUp />}
-                  isDisabled={statsDisclosure.isOpen}
-                  isRound
-                  onClick={onClickStats}
-                />
+        <PopoverContent p={0} w={'auto'} border={'none'} bg={'transparent'}>
+          <PopoverBody p={0}>
+            <Stack>
+              <IconButton
+                aria-label={'stats'}
+                colorPalette={'primary'}
+                icon={<MdOutlineTrendingUp />}
+                disabled={statsDisclosure.open}
+                isRound
+                onClick={onClickStats}
+              />
 
-                <IconButton
-                  aria-label={'info'}
-                  colorScheme={'primary'}
-                  icon={<FaInfo />}
-                  isDisabled={infoDisclosure.isOpen}
-                  isRound
-                  onClick={onClickInfo}
-                />
-              </Stack>
-            </PopoverBody>
-          </PopoverContent>
-        </Portal>
+              <IconButton
+                aria-label={'info'}
+                colorPalette={'primary'}
+                icon={<FaInfo />}
+                disabled={infoDisclosure.open}
+                isRound
+                onClick={onClickInfo}
+              />
+            </Stack>
+          </PopoverBody>
+        </PopoverContent>
       </Popover>
       <Modal
-        isOpen={infoDisclosure.isOpen}
+        isOpen={infoDisclosure.open}
         onClose={onClose}
-        isCentered
+        centered
         size={'2xl'}
       >
         <ModalOverlay />
@@ -120,9 +116,9 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
         </ModalContent>
       </Modal>
       <Modal
-        isOpen={statsDisclosure.isOpen}
+        isOpen={statsDisclosure.open}
         onClose={onClose}
-        isCentered
+        centered
         size={'2xl'}
       >
         <ModalOverlay />

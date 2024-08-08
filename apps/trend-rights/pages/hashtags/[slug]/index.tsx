@@ -1,16 +1,7 @@
 import { FC, useEffect } from 'react'
 
-import {
-  Box,
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
-  Stack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
+import { Box, Stack } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
@@ -25,11 +16,17 @@ import { getHashtagBySlug, getHashtagSentences, useHashtag } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { HashtagReturnType, PlatformSlug, Post, StrapiLocale } from '@fc/types'
 import {
+  Button,
   Container,
   HashtagProvider,
   PostImage,
   PostMaker,
   TimeLeft,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
 } from '@fc/ui'
 import {
   getItemLink,
@@ -53,7 +50,7 @@ const HashtagPage: FC<HashtagProps> = ({
 }) => {
   const hashtag = useHashtag()
 
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
   const { query, push } = useRouter()
   const { roles } = useAuthContext()
 
@@ -85,7 +82,7 @@ const HashtagPage: FC<HashtagProps> = ({
         </Head>
       )}
       {post && (
-        <Modal isCentered isOpen={isOpen} onClose={handleClose}>
+        <Modal centeredsOpen={open} onClose={handleClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalBody p={0}>

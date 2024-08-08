@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect } from 'react'
 
-import { Button, Code, Input, Stack } from '@chakra-ui/react'
+import { Code, Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
@@ -9,6 +9,8 @@ import { useForm } from 'react-hook-form'
 import { CategoryCreateInput } from '@fc/types'
 
 import { createCategoryWithMutation } from './utils'
+import { Button } from '../components/Button'
+import { Input } from '../components/Input'
 
 export const CreateCategoryWithHookForm = () => {
   const { register, handleSubmit, watch, setValue } =
@@ -38,11 +40,7 @@ export const CreateCategoryWithHookForm = () => {
         <Input placeholder="Category name (tr)" {...register('name_en')} />
         {/* TODO: Add all inputs */}
 
-        <Button
-          type={'submit'}
-          isLoading={isPending}
-          loadingText={'Creating...'}
-        >
+        <Button type={'submit'} isLoading={isPending}>
           Submit
         </Button>
       </Stack>

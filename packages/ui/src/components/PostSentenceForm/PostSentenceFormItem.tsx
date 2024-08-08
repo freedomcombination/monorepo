@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { Box, HStack, IconButton, Textarea, Tooltip } from '@chakra-ui/react'
+import { Box, HStack, Textarea } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { FaPencilAlt, FaSave, FaTimes } from 'react-icons/fa'
 import { FaInfo } from 'react-icons/fa6'
@@ -17,6 +17,8 @@ import {
 
 import { PostSentenceFormItemProps } from './types'
 import { ArchivePopover } from '../ArchivePopover'
+import { IconButton } from '../IconButton'
+import { Tooltip } from '../Tooltip'
 import { WConfirm, WConfirmProps } from '../WConfirm'
 
 export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
@@ -113,13 +115,13 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           value={value}
           onChange={e => setValue(e.target.value)}
           flex={1}
-          isDisabled={!editMode}
+          disabled={!editMode}
         />
 
         <ArchivePopover archiveId={archiveId}>
           <IconButton
             aria-label="archiveId info"
-            colorScheme="red"
+            colorPalette="red"
             size={'sm'}
             icon={<FaInfo />}
             rounded={'full'}
@@ -130,10 +132,10 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           <Tooltip label="Save" placement="top">
             <IconButton
               aria-label={'approve'}
-              colorScheme={'green'}
+              colorPalette={'green'}
               icon={<FaSave />}
-              isDisabled={!isChanged}
-              isRound
+              disabled={!isChanged}
+              rounded={'full'}
               onClick={handleUpdate}
               size={'sm'}
             />
@@ -144,9 +146,9 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           <Tooltip label="Edit" placement="top">
             <IconButton
               aria-label={'edit'}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               icon={<FaPencilAlt />}
-              isRound
+              rounded={'full'}
               onClick={() => setEditMode(true)}
               size={'sm'}
             />
@@ -156,19 +158,19 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
         <Tooltip label="Reset shared" placement="top">
           <IconButton
             aria-label={'reset shared'}
-            colorScheme={'gray'}
+            colorPalette={'gray'}
             icon={<Box>{shareCount}</Box>}
-            isRound
+            rounded={'full'}
             onClick={handleResetShared}
             size={'sm'}
-            isDisabled={shareCount === 0}
+            disabled={shareCount === 0}
           />
         </Tooltip>
 
         <Tooltip label={isPublished ? 'Unpublish' : 'Publish'} placement="top">
           <IconButton
             aria-label={'default'}
-            colorScheme={isPublished ? 'yellow' : 'purple'}
+            colorPalette={isPublished ? 'yellow' : 'purple'}
             icon={
               isPublished ? (
                 <MdOutlineUnpublished />
@@ -176,7 +178,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
                 <MdOutlinePublishedWithChanges />
               )
             }
-            isRound
+            rounded={'full'}
             onClick={() => handlePublish(isPublished ? 0 : 1)}
             size={'sm'}
           />
@@ -185,9 +187,9 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
         <Tooltip label="Delete" placement="top">
           <IconButton
             aria-label={'delete'}
-            colorScheme={'red'}
+            colorPalette={'red'}
             icon={<FaTimes />}
-            isRound
+            rounded={'full'}
             onClick={handleDelete}
             size={'sm'}
           />

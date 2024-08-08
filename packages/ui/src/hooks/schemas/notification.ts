@@ -15,8 +15,8 @@ export const notificationFields: FormFields<
     profiles: number[]
   }
 > = [
-  { name: 'title', isRequired: true },
-  { name: 'message', isRequired: true },
+  { name: 'title', required: true },
+  { name: 'message', required: true },
   {
     name: 'roles',
     type: 'select',

@@ -1,21 +1,16 @@
 import { useState } from 'react'
 
+import { useDisclosure, useBoolean } from '@chakra-ui/hooks'
 import {
   AspectRatio,
   Box,
-  Divider,
   Flex,
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
   Heading,
   Stack,
   Switch,
   Textarea,
-  useBoolean,
-  useDisclosure,
   Wrap,
+  chakra,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
@@ -66,6 +61,12 @@ import { ActionButton } from '../ActionButton'
 import { ActionStack } from '../ActionStack'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
 import { DownloadCapsModal } from '../DownloadCapsModal'
+import {
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+} from '../Form'
 import { FormItem } from '../FormItem'
 import { MasonryGrid } from '../MasonryGrid'
 import { MdFormItem } from '../MdFormItem'
@@ -351,11 +352,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
               if (field.type === 'file') {
                 return (
-                  <FormControl
-                    key={index}
-                    isRequired={field.isRequired}
-                    maxW={400}
-                  >
+                  <FormControl key={index} required={field.required} maxW={400}>
                     <FormLabel
                       fontWeight={600}
                       fontSize={'sm'}
@@ -383,17 +380,16 @@ export const ModelEditForm = <T extends StrapiModel>({
                 return (
                   <FormControl
                     key={index}
-                    isRequired={field.isRequired}
-                    isDisabled={field.blockEdit}
+                    required={field.required}
+                    disabled={field.blockEdit}
                   >
                     <FormLabel fontWeight={600} fontSize={'sm'}>
                       {label}
                     </FormLabel>
                     <Switch
-                      disabled={field.blockEdit}
-                      colorScheme={'primary'}
+                      disabled={field.blockEdit || !isEditing}
+                      colorPalette={'primary'}
                       size={'lg'}
-                      isDisabled={!isEditing}
                       isChecked={!!watch(field.name as string)}
                       onChange={e => {
                         setValue(field.name as string, e.target.checked)
@@ -419,9 +415,9 @@ export const ModelEditForm = <T extends StrapiModel>({
                     populate={field.populate}
                     options={field.options}
                     isMulti={field.isMulti}
-                    isRequired={field.isRequired}
+                    required={field.required}
                     name={field.name as string}
-                    isDisabled={field.blockEdit || !isEditing}
+                    disabled={field.blockEdit || !isEditing}
                     errors={errors}
                     control={control}
                     _disabled={disabledStyle}
@@ -440,8 +436,8 @@ export const ModelEditForm = <T extends StrapiModel>({
                   <Box key={index} maxH={550} overflowY={'auto'}>
                     <MdFormItem
                       name={field.name as string}
-                      isDisabled={field.blockEdit || !isEditing}
-                      isRequired={field.isRequired}
+                      disabled={field.blockEdit || !isEditing}
+                      required={field.required}
                       errors={errors}
                       control={control}
                       _disabled={disabledStyle}
@@ -469,10 +465,10 @@ export const ModelEditForm = <T extends StrapiModel>({
                     {...(field.type === 'textarea' && { as: Textarea })}
                     name={field.name as string}
                     type={inputType}
-                    isRequired={field.isRequired}
+                    required={field.required}
                     errors={errors}
                     register={register}
-                    isDisabled={field.blockEdit || !isEditing}
+                    disabled={field.blockEdit || !isEditing}
                     _disabled={disabledStyle}
                     helperText={
                       (isEditing &&
@@ -483,7 +479,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   />
                   {field.type === 'mediaUrl' && videoUrl && (
                     <AspectRatio ratio={16 / 9}>
-                      <Box as="iframe" src={videoUrl} title={label} />
+                      <chakra.iframe src={videoUrl} title={label} />
                     </AspectRatio>
                   )}
                 </Stack>
@@ -508,7 +504,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               onClick={onPostClick}
               leftIcon={<FaXTwitter />}
               fontSize="sm"
-              colorScheme={'purple'}
+              colorPalette={'purple'}
               isLoading={approveModelMutation.isPending}
             >
               {t('posts')}
@@ -526,7 +522,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionStack isVisible={endpoint === 'collections'} gap={0}>
               <ArtAddToCollectionModal
                 collection={model as any}
-                isOpen={artModalDisclosure.isOpen}
+                isOpen={artModalDisclosure.open}
                 onClose={artModalDisclosure.onClose}
               />
               <ActionButton
@@ -534,7 +530,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 onClick={artModalDisclosure.onOpen}
                 leftIcon={<HiPlus />}
                 fontSize="sm"
-                colorScheme={'purple'}
+                colorPalette={'purple'}
                 isLoading={approveModelMutation.isPending}
               >
                 {t('collection.add-art')}
@@ -548,7 +544,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               isVisible={!profile && endpoint === 'users'}
               onClick={onGenerateProfile}
               leftIcon={<BiUserPlus />}
-              colorScheme="primary"
+              colorPalette="primary"
             >
               {t('profile.create')}
             </ActionButton>
@@ -559,7 +555,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               onClick={onApprove}
               leftIcon={<HiOutlineCheck />}
               fontSize="sm"
-              colorScheme={'purple'}
+              colorPalette={'purple'}
               isLoading={approveModelMutation.isPending}
             >
               {t('approve')}
@@ -579,7 +575,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 isVisible={isEditing}
                 onClick={onCancel}
                 leftIcon={<MdClose />}
-                colorScheme={'gray'}
+                colorPalette={'gray'}
                 fontSize="sm"
               >
                 {t('cancel')}
@@ -599,7 +595,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               checkActions={{ endpoint, actions: ['update'] }}
               isVisible={endpointsWithPublicationState.includes(endpoint)}
               onClick={isPublished ? onUnPublish : onPublish}
-              colorScheme={isPublished ? 'yellow' : 'green'}
+              colorPalette={isPublished ? 'yellow' : 'green'}
               fontSize="sm"
               leftIcon={
                 isPublished ? (
@@ -616,7 +612,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               canDelete={endpoint}
               onClick={onDelete}
               leftIcon={<BsTrash />}
-              colorScheme="red"
+              colorPalette="red"
             >
               {t('delete')}
             </ActionButton>
@@ -624,14 +620,14 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionButton
               isVisible={!!onClose}
               onClick={onClose}
-              colorScheme="gray"
+              colorPalette="gray"
             >
               {t('dismiss')}
             </ActionButton>
           </Wrap>
         </Flex>
       </Stack>
-      <Divider />
+      <hr />
 
       <ActionStack isVisible={!!profile}>
         <Heading p={{ base: 4, lg: 8 }}>{t('profile')}</Heading>

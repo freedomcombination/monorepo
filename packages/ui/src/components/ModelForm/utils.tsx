@@ -1,9 +1,6 @@
 import {
   Box,
   Flex,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
@@ -18,6 +15,7 @@ import { StrapiCollectionEndpoint } from '@fc/types'
 
 import { ModelCreateFormBodyProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
+import { FormControl, FormErrorMessage, FormLabel } from '../Form'
 import { FormItem } from '../FormItem'
 import { MdFormItem } from '../MdFormItem'
 import { ModelMedia } from '../ModelMedia'
@@ -77,9 +75,9 @@ export const renderCreateFormBody = <T extends StrapiModel>({
     if (field.type === 'file') {
       return (
         <FormControl
-          isInvalid={Boolean(errors?.[field.name as string])}
+          invalid={Boolean(errors?.[field.name as string])}
           key={index}
-          isRequired={field.isRequired}
+          required={field.required}
           zIndex={0}
           {...(!isActive && { display: 'none' })}
         >
@@ -113,7 +111,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           populate={field.populate}
           options={field.options}
           isMulti={field.isMulti}
-          isRequired={field.isRequired}
+          required={field.required}
           name={field.name as string}
           label={label}
           errors={errors}
@@ -130,7 +128,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           key={index}
           name={field.name as string}
           label={label}
-          isRequired={field.isRequired}
+          required={field.required}
           errors={errors}
           control={control}
           _disabled={disabledStyle}
@@ -175,14 +173,14 @@ export const renderCreateFormBody = <T extends StrapiModel>({
       return (
         <FormControl
           key={index}
-          isRequired={field.isRequired}
+          required={field.required}
           {...(!isActive && { display: 'none' })}
         >
           <FormLabel fontWeight={600} fontSize={'sm'}>
             {label}
           </FormLabel>
           <Switch
-            colorScheme={'primary'}
+            colorPalette={'primary'}
             size={'lg'}
             onChange={e => {
               setValue(field.name as string, e.target.checked)
@@ -210,7 +208,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
         name={field.name as string}
         type={inputType}
         label={label}
-        isRequired={field.isRequired}
+        required={field.required}
         errors={errors}
         register={register}
         _disabled={disabledStyle}

@@ -11,7 +11,7 @@ export const PaidBadges: FC<PaidBadgesProps> = ({ hasPaid, ...rest }) => {
     <Badge
       variant="outline"
       {...rest}
-      colorScheme={hasPaid ? 'purple' : 'gray'}
+      colorPalette={hasPaid ? 'purple' : 'gray'}
     >
       {/* TODO add translation */}
       {hasPaid ? 'Paid' : 'Not Yet'}

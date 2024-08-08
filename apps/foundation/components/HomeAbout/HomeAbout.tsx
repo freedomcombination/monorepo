@@ -17,7 +17,7 @@ const HomeAboutItem: FC<{ item: AboutItem }> = ({ item }) => {
   const { locale } = useRouter()
 
   return (
-    <VStack align="stretch" spacing={4}>
+    <VStack align="stretch" gap={4}>
       <WImage
         rounded="full"
         alignSelf="center"

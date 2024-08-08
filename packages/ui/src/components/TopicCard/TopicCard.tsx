@@ -1,20 +1,6 @@
 import { FC, useState } from 'react'
 
-import {
-  Badge,
-  Box,
-  ButtonGroup,
-  HStack,
-  Highlight,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Stack,
-  Text,
-  useToast,
-} from '@chakra-ui/react'
+import { Badge, Box, HStack, Highlight, Stack, Text } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { formatDistanceStrict } from 'date-fns'
 import { useTranslation } from 'next-i18next'
@@ -35,8 +21,16 @@ import { Post, RecommendedTopicCreateInput, TopicBase } from '@fc/types'
 import { TopicCardButton } from './TopicCardButton'
 import { TopicCardProps } from './types'
 import { useFields, useSchema } from '../../hooks'
+import { useToast } from '../../hooks/useToast'
 import { ActionTooltip } from '../ActionTooltip'
 import { ModelCreateModal } from '../ModelCreateModal'
+import {
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+} from '../Popover'
 import { ShareButtons } from '../ShareButtons'
 import { WConfirm, WConfirmProps } from '../WConfirm'
 import { WImage } from '../WImage'
@@ -164,7 +158,7 @@ export const TopicCard: FC<TopicCardProps> = ({
       backgroundImage={'url(/images/world-map.svg)'}
       backgroundPosition={{ base: 'bottom', xl: 'right' }}
       backgroundRepeat={'no-repeat'}
-      spacing={0}
+      gap={0}
     >
       {confirmState && (
         <WConfirm
@@ -187,7 +181,7 @@ export const TopicCard: FC<TopicCardProps> = ({
             unoptimized
           />
         </Box>
-        <HStack spacing={1} pos="absolute" top={0} left={0} w={'full'} p={2}>
+        <HStack gap={1} pos="absolute" top={0} left={0} w={'full'} p={2}>
           <Badge
             bg={'black'}
             variant={'solid'}
@@ -196,15 +190,15 @@ export const TopicCard: FC<TopicCardProps> = ({
           >
             {topic.publisher}
           </Badge>
-          <Badge colorScheme={'primary'} variant={'solid'} fontWeight={600}>
+          <Badge colorPalette={'primary'} variant={'solid'} fontWeight={600}>
             {time}
           </Badge>
         </HStack>
       </Box>
 
-      <Stack spacing={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
+      <Stack gap={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
         <Stack textAlign={{ base: 'center', xl: 'left' }} flex={1}>
-          <Text fontSize="lg" fontWeight={600} noOfLines={{ xl: 1 }}>
+          <Text fontSize="lg" fontWeight={600} lineClamp={{ xl: 1 }}>
             {searchKey ? (
               <Highlight query={searchKey} styles={highlightStyle}>
                 {topic.title || ''}
@@ -213,7 +207,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               topic.title
             )}
           </Text>
-          <Text maxW={1000} noOfLines={{ base: 5, xl: 3 }}>
+          <Text maxW={1000} lineClamp={{ base: 5, xl: 3 }}>
             {searchKey ? (
               <Highlight query={searchKey} styles={highlightStyle}>
                 {topic.description || ''}
@@ -224,7 +218,7 @@ export const TopicCard: FC<TopicCardProps> = ({
           </Text>
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
-          <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
+          <HStack overflowX={'auto'} justifyContent={'center'}>
             <ModelCreateModal<Post>
               title={t('create-post')}
               endpoint={'posts'}
@@ -233,8 +227,8 @@ export const TopicCard: FC<TopicCardProps> = ({
               model={postContent}
               buttonProps={{
                 variant: 'ghost',
-                colorScheme: 'gray',
-                iconSpacing: { base: 0, lg: 2 },
+                colorPalette: 'gray',
+                gap: { base: 0, lg: 2 },
               }}
             >
               <Box as="span" display={{ base: 'none', xl: 'inline' }}>
@@ -247,7 +241,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               icon={<FaRegEye />}
               title="View"
               variant="ghost"
-              colorScheme="gray"
+              colorPalette="gray"
             />
 
             <Popover placement="top">
@@ -258,7 +252,7 @@ export const TopicCard: FC<TopicCardProps> = ({
                     icon={<FaRegShareFromSquare />}
                     title="Share"
                     variant="ghost"
-                    colorScheme="gray"
+                    colorPalette="gray"
                   />
                 </Box>
               </PopoverTrigger>
@@ -282,7 +276,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               })}
               title={isBookmarked ? 'Remove' : 'Bookmark'}
               variant={'ghost'}
-              colorScheme={isBookmarked ? 'red' : 'gray'}
+              colorPalette={isBookmarked ? 'red' : 'gray'}
             />
 
             <TopicCardButton
@@ -291,16 +285,14 @@ export const TopicCard: FC<TopicCardProps> = ({
               icon={<FaRegThumbsUp />}
               title="Recommend"
               disabled={isPending}
-              isDisabled={isPending}
               variant={'ghost'}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
             />
 
             <ActionTooltip
               isVisible={!!user && topic?.isRecommended && !!id}
               label={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
               hasArrow
-              bg="primary.400"
             >
               <Box>
                 <TopicCardButton
@@ -314,11 +306,11 @@ export const TopicCard: FC<TopicCardProps> = ({
                   }
                   title={type === 'Topic' ? 'Delete' : 'Hide'}
                   variant="ghost"
-                  colorScheme="red"
+                  colorPalette="red"
                 />
               </Box>
             </ActionTooltip>
-          </ButtonGroup>
+          </HStack>
         </Stack>
       </Stack>
     </Stack>

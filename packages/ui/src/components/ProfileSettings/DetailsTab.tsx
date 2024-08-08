@@ -1,24 +1,7 @@
 import { useId, useState } from 'react'
 
-import {
-  Box,
-  Button,
-  Center,
-  IconButton,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Spinner,
-  Stack,
-  Text,
-  Tooltip,
-  VStack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
+import { Box, Center, Spinner, Stack, Text, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaFileUpload, FaSave } from 'react-icons/fa'
 import { FaCity, FaPhone, FaTrash } from 'react-icons/fa6'
@@ -28,13 +11,25 @@ import { useUpdateModelMutation } from '@fc/services'
 import { Profile } from '@fc/types'
 
 import { FormElement } from './FormElement'
+import { Button } from '../Button'
 import { FilePicker } from '../FilePicker'
+import { IconButton } from '../IconButton'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '../Modal'
+import { Tooltip } from '../Tooltip'
 import { WAvatar } from '../WAvatar'
 
 const AvatarForm = () => {
   const { user, profile, checkAuth } = useAuthContext()
   const { t } = useTranslation()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const [file, setFile] = useState<File | Blob | null>(null)
 
   const onCancel = () => {
@@ -71,7 +66,7 @@ const AvatarForm = () => {
   return (
     <>
       <Modal
-        isOpen={isOpen}
+        isOpen={open}
         onClose={onClose}
         size="lg"
         closeOnOverlayClick={false}
@@ -87,16 +82,16 @@ const AvatarForm = () => {
 
           <ModalFooter>
             <Button
-              colorScheme="blue"
+              colorPalette="blue"
               mr={3}
               onClick={onCancel}
-              isDisabled={isPending}
+              disabled={isPending}
             >
               {t('close')}
             </Button>
             <Button
-              colorScheme="primary"
-              isDisabled={!file}
+              colorPalette="primary"
+              disabled={!file}
               isLoading={isPending}
               onClick={onUpload}
             >
@@ -130,7 +125,7 @@ const AvatarForm = () => {
               top={0}
               borderWidth={4}
               borderColor={'white'}
-              colorScheme={hasAvatar ? 'red' : 'primary'}
+              colorPalette={hasAvatar ? 'red' : 'primary'}
               aria-label={label}
               rounded={'full'}
               onClick={() =>
@@ -172,7 +167,7 @@ export const DetailsTab = () => {
   }
 
   return (
-    <Stack spacing={8}>
+    <Stack gap={8}>
       <AvatarForm />
 
       <FormElement
@@ -214,7 +209,7 @@ export const DetailsTab = () => {
       />
 
       <Button
-        isDisabled={!hasChanged}
+        disabled={!hasChanged}
         leftIcon={<FaSave />}
         size={'lg'}
         isLoading={saving}

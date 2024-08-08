@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { chakra, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react'
+import { chakra, Table } from '@chakra-ui/react'
 import { camelCase, startCase } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDown, FaArrowUp, FaSort } from 'react-icons/fa'
@@ -51,9 +51,16 @@ export const WTable = <T extends StrapiModel>({
   }, [sortMode, selectedColumn])
 
   return (
-    <Table size="sm" cursor="default" {...rest}>
-      <Thead pos={'sticky'} top={0} zIndex={0} h={8} bg={'white'} shadow={'sm'}>
-        <Tr>
+    <Table.Root size="sm" cursor="default" {...rest}>
+      <Table.Header
+        pos={'sticky'}
+        top={0}
+        zIndex={0}
+        h={8}
+        bg={'white'}
+        shadow={'sm'}
+      >
+        <Table.Row>
           {Object.keys(columns).map((key, index) => {
             const isSortable = (columns[key as keyof T] as CellConfig<T>)
               .sortable
@@ -81,7 +88,7 @@ export const WTable = <T extends StrapiModel>({
             }
 
             return (
-              <Th
+              <Table.Cell
                 pos="relative"
                 key={index}
                 whiteSpace="nowrap"
@@ -93,12 +100,12 @@ export const WTable = <T extends StrapiModel>({
                 {translationLabel}
 
                 <chakra.span ml={2} display="inline" as={getSortIcon()} />
-              </Th>
+              </Table.Cell>
             )
           })}
-        </Tr>
-      </Thead>
-      <Tbody>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
         {data.map((model, index) => {
           return (
             <WTableRow
@@ -110,7 +117,7 @@ export const WTable = <T extends StrapiModel>({
             />
           )
         })}
-      </Tbody>
-    </Table>
+      </Table.Body>
+    </Table.Root>
   )
 }

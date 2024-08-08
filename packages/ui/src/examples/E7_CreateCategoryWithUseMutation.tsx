@@ -2,13 +2,15 @@
 
 import { FormEventHandler, useEffect, useState } from 'react'
 
-import { Button, Code, Input, Stack } from '@chakra-ui/react'
+import { Code, Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 import { useMutation } from '@tanstack/react-query'
 
 import { CategoryCreateInput } from '@fc/types'
 
 import { createCategoryWithMutation } from './utils'
+import { Button } from '../components/Button'
+import { Input } from '../components/Input'
 
 export const CreateCategoryWithUseMutation = () => {
   const [name_en, setNameEn] = useState<string>('')
@@ -43,11 +45,7 @@ export const CreateCategoryWithUseMutation = () => {
           />
           {/* TODO: Add all inputs */}
 
-          <Button
-            isLoading={isPending}
-            loadingText={'Creating...'}
-            type="submit"
-          >
+          <Button isLoading={isPending} type="submit">
             Submit
           </Button>
         </Stack>

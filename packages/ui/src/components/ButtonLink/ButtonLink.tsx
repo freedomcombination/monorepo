@@ -1,9 +1,11 @@
 import { FC } from 'react'
 
 import { Link, LinkProps } from '@chakra-ui/next-js'
-import { Button, ButtonProps } from '@chakra-ui/react'
+import { ButtonProps } from '@chakra-ui/react'
 
-type ButtonLinkProps = ButtonProps & LinkProps
+import { Button } from '../Button'
+
+export type ButtonLinkProps = ButtonProps & LinkProps
 
 export const ButtonLink: FC<ButtonLinkProps> = props => {
   return <Button {...(props.href ? { as: Link } : {})} {...props} />

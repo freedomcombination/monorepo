@@ -1,15 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
-  useDisclosure,
-  useUpdateEffect,
-} from '@chakra-ui/react'
+import { useUpdateEffect } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/hooks'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -25,6 +17,7 @@ import {
   StrapiModel,
 } from '@fc/types'
 import {
+  Button,
   AdminLayout,
   DataTable,
   ModelEditTranslate,
@@ -33,12 +26,17 @@ import {
   useColumns,
   useFields,
   useSchema,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
 } from '@fc/ui'
 
 const ActivitiesTranslatePage = () => {
   const [searchTerm, setSearchTerm] = useState<string>()
   const { t } = useTranslation()
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
 
   const { query, locale, push } = useRouter()
 
@@ -140,8 +138,8 @@ const ActivitiesTranslatePage = () => {
         />
       )}
       <Modal
-        isCentered
-        isOpen={isOpen}
+        centered
+        isOpen={open}
         onClose={handleClose}
         size={'4xl'}
         scrollBehavior={'inside'}
@@ -158,7 +156,7 @@ const ActivitiesTranslatePage = () => {
               fields={fields!}
               onSuccess={dataQuery.refetch}
             >
-              <Button onClick={handleClose} colorScheme={'gray'}>
+              <Button onClick={handleClose} colorPalette={'gray'}>
                 {t('dismiss')}
               </Button>
             </ModelEditTranslate>

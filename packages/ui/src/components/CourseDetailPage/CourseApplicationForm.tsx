@@ -1,13 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  Button,
-  SimpleGrid,
-  Stack,
-  Textarea,
-  useToast,
-} from '@chakra-ui/react'
+import { Box, SimpleGrid, Stack, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
@@ -18,6 +11,8 @@ import { Mutation } from '@fc/lib'
 import { CourseApplicationCreateInput } from '@fc/types'
 
 import { applicationSchema } from './schema'
+import { useToast } from '../../hooks'
+import { Button } from '../Button'
 import {
   ApplicationFormFields,
   CourseApplicationFormProps,
@@ -70,7 +65,7 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Stack spacing={8}>
+      <Stack gap={8}>
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={4}>
           <FormItem name="name" register={register} errors={errors} hideLabel />
           <FormItem
@@ -116,7 +111,7 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
           </Box>
         </SimpleGrid>
 
-        {/* <Stack spacing={2}>
+        {/* <Stack gap={2}>
           <Checkbox
             fontSize={'14px'}
             fontWeight={'400'}
@@ -140,7 +135,7 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
             />
           </Checkbox>
         </Stack> */}
-        <Button w={'100%'} type="submit" isDisabled={!isValid}>
+        <Button w={'100%'} type="submit" disabled={!isValid}>
           {t('apply-now')}
         </Button>
       </Stack>

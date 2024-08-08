@@ -1,18 +1,7 @@
 import { FC, useRef, useState } from 'react'
 
-import {
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  Stack,
-  useDisclosure,
-  useUpdateEffect,
-} from '@chakra-ui/react'
+import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
+import { Stack } from '@chakra-ui/react'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
 import { useRouter } from 'next/router'
@@ -23,7 +12,17 @@ import { useStrapiRequest } from '@fc/services'
 import { PlatformSlug, Post } from '@fc/types'
 import { getMediaUrl, getOgImageSrc } from '@fc/utils'
 
+import { Button } from '../Button'
 import { Caps } from '../Caps'
+import {
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+} from '../Drawer'
 import { WImage } from '../WImage'
 
 type DownloadCapsModalType = {
@@ -31,7 +30,7 @@ type DownloadCapsModalType = {
 }
 
 export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const [isLoading, setIsLoading] = useState(false)
   const btnRef = useRef<HTMLButtonElement>(null)
 
@@ -124,8 +123,8 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
         Download Caps
       </Button>
       <Drawer
-        isOpen={isOpen}
-        placement="right"
+        isOpen={open}
+        placement="end"
         onClose={handleClose}
         finalFocusRef={btnRef}
       >
@@ -178,7 +177,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
           <DrawerFooter>
             <Button
               variant="outline"
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               mr={3}
               onClick={handleClose}
             >
@@ -188,7 +187,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
               leftIcon={<FaDownload />}
               w={'full'}
               onClick={onDownload}
-              colorScheme={'primary'}
+              colorPalette={'primary'}
               isLoading={isLoading}
             >
               Download Caps

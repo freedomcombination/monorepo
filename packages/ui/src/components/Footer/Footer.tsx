@@ -28,7 +28,7 @@ export const Footer: FC<FooterProps> = ({
       <Container as={Stack}>
         <Stack
           direction={{ base: 'column', lg: 'row' }}
-          spacing={8}
+          gap={8}
           py={10}
           justify="space-between"
           align={{ base: 'center', lg: 'start' }}
@@ -48,7 +48,7 @@ export const Footer: FC<FooterProps> = ({
           borderTopWidth="0.5px"
           borderTopColor="primary.200"
           py={6}
-          spacing={2}
+          gap={2}
         >
           <Text fontSize={'sm'} mr={1}>
             {/* TODO Fix hydration problem for translation field */}

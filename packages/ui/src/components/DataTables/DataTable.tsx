@@ -30,12 +30,12 @@ export const DataTable = <T extends StrapiModel>({
   const { t } = useTranslation()
 
   return (
-    <Stack spacing={4} overflow={'hidden'}>
+    <Stack gap={4} overflow={'hidden'}>
       <Box bg="white" shadow="base" overflow={'auto'}>
         {tableProps.data?.length > 0 ? (
           <WTable {...tableProps} />
         ) : (
-          <VStack p={8} spacing={8}>
+          <VStack p={8} gap={8}>
             <Image w={'25vw'} src={'/images/no-blog.svg'} alt={t('no-data')} />
             <Text>{t('no-data')}</Text>
           </VStack>
@@ -70,7 +70,7 @@ export const DataTable = <T extends StrapiModel>({
               <option value={50}>50</option>
               <option value={100}>100</option>
             </Select>
-            <Text noOfLines={1}>{t('items.on-page')}</Text>
+            <Text lineClamp={1}>{t('items.on-page')}</Text>
           </HStack>
           <Pagination
             totalCount={pageCount}
@@ -80,7 +80,7 @@ export const DataTable = <T extends StrapiModel>({
           <Text
             flex={1}
             textAlign={{ base: 'center', md: 'right' }}
-            noOfLines={1}
+            lineClamp={1}
           >
             {totalCount} {t('items.total')}
           </Text>

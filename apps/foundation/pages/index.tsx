@@ -30,7 +30,7 @@ const Home: FC<HomeProps> = ({ platforms }) => {
       >
         <Container maxW="container.md" pos="relative" zIndex={1}>
           <AnimatedBox directing="to-down">
-            <VStack flex={1} py={16} spacing={4} textAlign="center">
+            <VStack flex={1} py={16} gap={4} textAlign="center">
               <Heading fontWeight={900}>Freedom Combination</Heading>
               <Text fontSize="xl">{t('home.hero')}</Text>
             </VStack>

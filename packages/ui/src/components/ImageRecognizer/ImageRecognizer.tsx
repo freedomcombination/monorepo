@@ -1,11 +1,12 @@
 import { FC } from 'react'
 
-import { Button, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { PSM, createWorker } from 'tesseract.js'
 
 import { ImageRecognizeItem } from './ImageRecognizeItem'
 import { ImageRecognizerProps, Languages, RecognizedImage } from './types'
+import { Button } from '../Button'
 import { FilePicker } from '../FilePicker'
 
 export const ImageRecognizer: FC<ImageRecognizerProps> = ({
@@ -100,7 +101,7 @@ export const ImageRecognizer: FC<ImageRecognizerProps> = ({
           <Button onClick={handleRecognize}>Recognize</Button>
         </>
       )}
-      <Stack spacing={4}>
+      <Stack gap={4}>
         {Object?.values(state).map(item => {
           const { id, preview, text, isLoading, isError, isProcessed } = item
 

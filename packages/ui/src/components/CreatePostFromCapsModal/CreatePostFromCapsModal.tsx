@@ -1,19 +1,6 @@
 import { FC, useState } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
-  Divider,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Stack,
-} from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
@@ -27,8 +14,18 @@ import {
 } from '@fc/types'
 import { generateOgImageParams } from '@fc/utils'
 
-import { ImageRecognizer } from '../ImageRecognizer/ImageRecognizer'
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
+import { Button } from '../Button'
+import { ImageRecognizer } from '../ImageRecognizer'
 import { RecognizedImage } from '../ImageRecognizer/types'
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '../Modal'
 import { ModelSelect } from '../ModelSelect'
 
 type CreatePostFromCapsModalProps = {
@@ -115,7 +112,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={handleClose}
-      isCentered
+      centered
       size="xl"
       closeOnOverlayClick={false}
     >
@@ -125,7 +122,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
         <Stack m={10} as={'form'} onSubmit={handleSubmit(onCreate)}>
           <ModelSelect
             endpoint={'hashtags'}
-            isRequired={true}
+            required={true}
             name={'hashtags' as string}
             label={'Hashtags'}
             errors={errors}
@@ -141,17 +138,17 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
             setRecognized={setRecognized}
           />
 
-          <Divider />
+          <hr />
         </ModalBody>
         <ModalFooter justifyContent="space-between">
-          <Button colorScheme="red" onClick={handleClose}>
+          <Button colorPalette="red" onClick={handleClose}>
             Cancel
           </Button>
-          <Button colorScheme="red" onClick={onReset}>
+          <Button colorPalette="red" onClick={onReset}>
             Reset
           </Button>
-          {/* isDisabled={!files} */}
-          <Button isDisabled={!state} colorScheme="blue" onClick={onCreate}>
+          {/* disabled={!files} */}
+          <Button disabled={!state} colorPalette="blue" onClick={onCreate}>
             Create
           </Button>
         </ModalFooter>

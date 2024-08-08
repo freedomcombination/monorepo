@@ -50,7 +50,7 @@ export const Month = ({
   const isSelected = isMonthSelected(monthStart)
   const isStart = isMonthStart(monthStart)
   const isEnd = isMonthEnd(monthStart)
-  const isDisabled = disableFuture && monthStart > today
+  const disabled = disableFuture && monthStart > today
 
   const { locale } = useRouter()
 
@@ -73,9 +73,9 @@ export const Month = ({
         bg: 'primary.500',
         color: 'white',
       })}
-      cursor={isDisabled ? 'default' : 'pointer'}
-      opacity={isDisabled ? 0.5 : 1}
-      onClick={isDisabled ? undefined : () => handleMonthClick(monthStart)}
+      cursor={disabled ? 'default' : 'pointer'}
+      opacity={disabled ? 0.5 : 1}
+      onClick={disabled ? undefined : () => handleMonthClick(monthStart)}
     >
       {new Intl.DateTimeFormat(locale, { month: 'short' }).format(monthStart)}
     </Flex>

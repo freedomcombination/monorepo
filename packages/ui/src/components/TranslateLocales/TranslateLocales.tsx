@@ -1,14 +1,6 @@
 import { FC, useMemo, useState } from 'react'
 
-import {
-  Button,
-  HStack,
-  Radio,
-  RadioGroup,
-  Stack,
-  useToast,
-  chakra,
-} from '@chakra-ui/react'
+import { HStack, Radio, RadioGroup, Stack, chakra } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaSave } from 'react-icons/fa'
 import { Virtuoso } from 'react-virtuoso'
@@ -25,6 +17,8 @@ import {
   PriorityKey,
   TranslateLocalesProps,
 } from './types'
+import { useToast } from '../../hooks'
+import { Button } from '../Button'
 
 const { en, tr, nl } = dicts
 
@@ -167,13 +161,13 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
 
   return (
     <Stack gap={4} bg={'white'} p={6} flex={1}>
-      <HStack justifyContent={'flex-end'} alignItems={'center'} spacing={6}>
+      <HStack justifyContent={'flex-end'} alignItems={'center'} gap={6}>
         <RadioGroup
           onChange={value => setPriorityFilter(Number(value))}
           value={`${priorityFilter}`}
-          colorScheme="primary"
+          colorPalette="primary"
         >
-          <Stack direction="row" spacing={4}>
+          <Stack direction="row" gap={4}>
             <Radio value={`${PriorityFilter.ALL}`}>
               All{' '}
               <chakra.span color="gray.400" fontSize="sm">

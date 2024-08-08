@@ -1,9 +1,7 @@
 import { FC, useEffect, useRef } from 'react'
 
 import {
-  Divider,
   HStack,
-  IconButton,
   Spinner,
   Stack,
   Text,
@@ -14,6 +12,7 @@ import { useDebounce } from 'react-use'
 
 import { CategoryFilterCheckbox } from './CategoryFilterCheckbox'
 import { CategoryFilterProps } from './types'
+import { IconButton } from '../IconButton'
 
 export const CategoryFilter: FC<CategoryFilterProps> = ({
   categoryData = [],
@@ -60,14 +59,14 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
   )
 
   return (
-    <Stack justify="stretch" w="full" spacing={1}>
+    <Stack justify="stretch" w="full" gap={1}>
       <HStack py={1.5} w="full" justify="space-between" align="center">
         <Text fontWeight={600}>{title}</Text>
         {isLoading ? (
           <Spinner size="lg" color="primary.500" />
         ) : (
           <IconButton
-            isDisabled={!value[0]}
+            disabled={!value[0]}
             aria-label="clear filter"
             rounded="full"
             size="sm"
@@ -76,7 +75,7 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
           />
         )}
       </HStack>
-      <Divider />
+      <hr />
       {categoryData?.map(category => (
         <CategoryFilterCheckbox
           key={category.id}

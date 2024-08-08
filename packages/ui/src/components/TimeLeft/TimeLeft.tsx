@@ -26,7 +26,7 @@ const TimeLeft: FC<TimeLeftProps> = ({ date }) => {
         px={{ base: 4, lg: 16 }}
         maxW={700}
         rounded="lg"
-        spacing={2}
+        gap={2}
         bg="#9EDEF8"
         w="full"
       >

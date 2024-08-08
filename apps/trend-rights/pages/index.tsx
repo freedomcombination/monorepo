@@ -41,7 +41,7 @@ const Home: FC<HomeProps> = ({ hashtags }) => {
         <Container>
           <Stack
             color="white"
-            spacing={6}
+            gap={6}
             alignItems={{ base: 'center', lg: 'center' }}
             justifyContent={'center'}
             textAlign={{ base: 'center', lg: 'center' }}

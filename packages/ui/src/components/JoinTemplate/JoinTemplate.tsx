@@ -1,10 +1,6 @@
 import { FC } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
   Box,
   Center,
   HStack,
@@ -25,6 +21,7 @@ import { Job, Platform, Profile, ProfileCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
 import { JoinTemplateProps } from './types'
+import { Alert, AlertDescription, AlertIcon, AlertTitle } from '../Alert'
 import { Container } from '../Container'
 import { JoinForm, JoinFormFieldValues } from '../JoinForm'
 import { PageTitle } from '../PageTitle'
@@ -103,7 +100,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
         <Center h="calc(70vh)">
           <Alert
             status="success"
-            colorScheme="primary"
+            colorPalette="primary"
             variant="solid"
             flexDirection="column"
             alignItems="center"
@@ -114,7 +111,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
             shadow="base"
             rounded="lg"
           >
-            <VStack spacing={4}>
+            <VStack gap={4}>
               <AlertIcon boxSize="60px" mr={0} />
               <AlertTitle mt={4} mb={1} fontSize="2xl">
                 {t('thank-you')}
@@ -135,7 +132,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
             columns={{ base: 1, lg: 2 }}
             alignItems="start"
           >
-            <Stack spacing={4}>
+            <Stack gap={4}>
               <Alert rounded="md">
                 <Link
                   lineHeight={1}

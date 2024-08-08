@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { Box, Button, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
@@ -11,6 +11,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useAuthContext } from '@fc/context'
 
 import { adminLoginSchema } from './schema'
+import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
 import { Container } from '../Container'
 import { FormItem } from '../FormItem'
@@ -70,7 +71,7 @@ export const AdminLoginForm = () => {
           h="full"
           w="full"
           textAlign="center"
-          spacing={4}
+          gap={4}
           justify="center"
           pb={8}
           pt={{ base: 8, lg: '50%' }}
@@ -85,12 +86,8 @@ export const AdminLoginForm = () => {
             </VStack>
           </Link>
 
-          <Stack spacing={4} flex={1}>
-            <Stack
-              spacing={4}
-              as="form"
-              onSubmit={handleSubmit(handleSubmitSign)}
-            >
+          <Stack gap={4} flex={1}>
+            <Stack gap={4} as="form" onSubmit={handleSubmit(handleSubmitSign)}>
               <FormItem
                 w="full"
                 name="identifier"
@@ -139,7 +136,7 @@ export const AdminLoginForm = () => {
             </Stack>
             {/* TODO Set session exp time */}
 
-            <ButtonLink href="/forgot-password" variant="link" size="sm">
+            <ButtonLink href="/forgot-password" variant="plain" size="sm">
               {t('forgot-pass.link')}
             </ButtonLink>
           </Stack>

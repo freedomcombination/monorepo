@@ -1,24 +1,11 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Button,
   Flex,
-  Input,
-  List,
-  ListItem,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   VStack,
   Text,
-  IconButton,
   Stack,
   Highlight,
-  Tooltip,
   SimpleGrid,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
@@ -30,6 +17,21 @@ import { mutation } from '@fc/lib/src/mutation/mutation'
 import { useStrapiRequest } from '@fc/services'
 import { Role, UpdateUserInput, User } from '@fc/types'
 import { toastMessage } from '@fc/utils'
+
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
+import { Input } from '../Input'
+import { List, ListItem } from '../List'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '../Modal'
+import { Tooltip } from '../Tooltip'
 
 type ProfileSelectModalProps = {
   role?: Role
@@ -60,7 +62,7 @@ const CustomListItem = ({
       justifyContent={'space-between'}
     >
       <Stack flexShrink={1} flexGrow={1} overflow={'hidden'}>
-        <Text noOfLines={1}>
+        <Text lineClamp={1}>
           {filter ? (
             <Highlight
               query={filter}
@@ -72,7 +74,7 @@ const CustomListItem = ({
             user.username
           )}
         </Text>
-        <Text fontSize={'xs'} noOfLines={1}>
+        <Text fontSize={'xs'} lineClamp={1}>
           {filter ? (
             <Highlight
               query={filter}
@@ -173,11 +175,11 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
 
   return (
     <Modal
-      isCentered
+      centered
       isOpen={isOpen}
       onClose={onClose}
       onCloseComplete={handleOnClose}
-      size={'4xl'}
+      size="lg"
       scrollBehavior={'inside'}
       closeOnOverlayClick={!saveUsers}
     >
@@ -203,7 +205,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                 onChange={e => setUserFilter(e.target.value)}
                 placeholder={t('search')}
               />
-              <List overflowX={'hidden'} overflowY={'auto'} spacing={2}>
+              <List overflowX={'hidden'} overflowY={'auto'} gap={2}>
                 {usersFiltered.map((user, index) => (
                   <CustomListItem
                     key={index}
@@ -226,7 +228,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
               rounded={'md'}
             >
               <Text>Pending:</Text>
-              <List overflowX={'hidden'} overflowY={'auto'} spacing={2}>
+              <List overflowX={'hidden'} overflowY={'auto'} gap={2}>
                 {pendingUser.map((user, index) => (
                   <CustomListItem
                     key={index}
@@ -250,7 +252,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
               rounded={'md'}
             >
               <Text>Assigned:</Text>
-              <List overflowX={'hidden'} overflowY={'auto'} spacing={2}>
+              <List overflowX={'hidden'} overflowY={'auto'} gap={2}>
                 {usersWithRole.map((user, index) => (
                   <CustomListItem
                     key={index}
@@ -271,15 +273,14 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
           </SimpleGrid>
         </ModalBody>
         <ModalFooter gap={6}>
-          <Button leftIcon={<FaX />} onClick={onClose} isDisabled={saveUsers}>
+          <Button leftIcon={<FaX />} onClick={onClose} disabled={saveUsers}>
             {t('cancel')}
           </Button>
           <Button
             leftIcon={<FaSave />}
             onClick={() => setSaveUsers(true)}
             isLoading={saveUsers}
-            loadingText="..."
-            isDisabled={pendingUser.length === 0}
+            disabled={pendingUser.length === 0}
           >
             {t('save')}
           </Button>

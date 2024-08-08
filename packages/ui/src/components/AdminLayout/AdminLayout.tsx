@@ -1,15 +1,6 @@
 import { FC, ReactNode, useEffect, useMemo } from 'react'
 
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  Box,
-  Center,
-  Flex,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Center, Flex, Spinner, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeo, NextSeoProps } from 'next-seo'
@@ -19,6 +10,7 @@ import { useAuthContext } from '@fc/context'
 import { AdminHeader } from '../AdminHeader'
 import { useAdminNav } from '../AdminNav/useAdminNav'
 import { AdminSidebar } from '../AdminSidebar'
+import { Alert, AlertIcon, AlertTitle } from '../Alert'
 import { AuthModal } from '../AuthModal'
 
 export type AdminLayoutProps = {
@@ -60,7 +52,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
         </Box>
 
         <Stack
-          spacing={0}
+          gap={0}
           as="main"
           bg="gray.50"
           h="full"
@@ -87,13 +79,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
               {!isPathAllowed && !isAdmin ? (
                 <NotAllowedPage show={!isAuthLoading && navItems.length > 0} />
               ) : (
-                <Stack
-                  px={4}
-                  h={'full'}
-                  flex={1}
-                  spacing={4}
-                  overflowY={'auto'}
-                >
+                <Stack px={4} h={'full'} flex={1} gap={4} overflowY={'auto'}>
                   {/* Page Content */}
                   {children}
                 </Stack>

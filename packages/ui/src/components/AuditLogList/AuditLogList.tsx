@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from 'react'
 
-import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { addDays, format } from 'date-fns'
 import { FaPlusCircle } from 'react-icons/fa'
@@ -10,6 +10,7 @@ import { strapiRequest } from '@fc/lib'
 import { AuditLog } from '@fc/types'
 
 import { AuditLogItem } from './AuditLogItem'
+import { Button } from '../Button'
 import { SearchForm } from '../SearchForm'
 
 export const AuditLogList: FC = () => {
@@ -89,7 +90,7 @@ export const AuditLogList: FC = () => {
 
   return (
     <Stack
-      spacing={4}
+      gap={4}
       pt={1}
       pr={1}
       maxHeight={'calc(100vh - 90px)'}
@@ -181,7 +182,7 @@ export const AuditLogList: FC = () => {
             variant={'outline'}
             onClick={() => fetchNextPage()}
             isLoading={isLoading}
-            isDisabled={!hasNextPage}
+            disabled={!hasNextPage}
             mx={'auto'}
             width={200}
           >

@@ -1,13 +1,9 @@
-import {
-  Box,
-  HStack,
-  Text,
-  useCheckbox,
-  UseCheckboxProps,
-} from '@chakra-ui/react'
+import { Box, HStack, Text, useCheckbox } from '@chakra-ui/react'
 import { FaCheck } from 'react-icons/fa'
 
-export const CategoryFilterCheckbox = (props: UseCheckboxProps) => {
+export const CategoryFilterCheckbox = (
+  props: Parameters<typeof useCheckbox>,
+) => {
   const { state, getInputProps, getLabelProps, htmlProps } = useCheckbox(props)
 
   return (

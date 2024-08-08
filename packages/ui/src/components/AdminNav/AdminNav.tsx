@@ -10,7 +10,7 @@ export const AdminNav: FC<AdminNavProps> = ({ mobile }) => {
   const { navItems } = useAdminNav()
 
   return (
-    <Stack spacing={0}>
+    <Stack gap={0}>
       {navItems.map((item, index) => {
         return (
           <AdminNavItem

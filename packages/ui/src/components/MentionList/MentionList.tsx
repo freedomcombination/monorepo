@@ -1,11 +1,4 @@
-import {
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  VStack,
-} from '@chakra-ui/react'
+import { VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { MentionUserData } from '@fc/types'
@@ -13,6 +6,7 @@ import { MentionUserData } from '@fc/types'
 import { useHashtagContext } from '../HashtagProvider'
 import { MentionListItem } from '../MentionListItem'
 import { MentionListPanel } from '../MentionListPanel'
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 
 export const MentionList = () => {
   const { activePostId, savedMentions, removeStoredMention, addMentionToPost } =
@@ -37,7 +31,7 @@ export const MentionList = () => {
       <VStack minH="0" h="full" align="stretch" bg="white" overflowY="auto">
         <Tabs
           size="sm"
-          colorScheme={'primary'}
+          colorPalette={'primary'}
           isFitted
           variant="line"
           bg="white"

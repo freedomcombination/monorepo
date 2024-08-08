@@ -1,11 +1,11 @@
-import { ButtonGroupProps } from '@chakra-ui/react'
+import { StackProps } from '@chakra-ui/react'
 
 export type PaginationProps = {
   totalCount: number
   siblingCount?: number
   currentPage: number
   onPageChange: (page: number) => void
-} & ButtonGroupProps
+} & StackProps
 
 export type UsePaginationProps = Pick<
   PaginationProps,

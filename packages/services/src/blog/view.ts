@@ -1,4 +1,4 @@
-import { useTimeout } from '@chakra-ui/react'
+import { useTimeout } from '@chakra-ui/hooks'
 import { useMutation } from '@tanstack/react-query'
 import { useLocalStorage } from 'usehooks-ts'
 

@@ -1,19 +1,11 @@
 import { FC, ReactNode } from 'react'
 
-import {
-  HStack,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuList,
-  Spacer,
-  Stack,
-} from '@chakra-ui/react'
+import { HStack, IconButton, Spacer, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { HiOutlineFilter } from 'react-icons/hi'
 import { VscListFilter } from 'react-icons/vsc'
 
+import { Menu, MenuButton, MenuDivider, MenuList } from '../Menu'
 import { SearchForm } from '../SearchForm'
 
 type PageHeaderProps = {
@@ -74,15 +66,15 @@ export const PageHeader: FC<PageHeaderProps> = ({
             icon={<HiOutlineFilter />}
             variant="outline"
             rounded="full"
-            colorScheme="gray"
+            colorPalette="gray"
           />
           <MenuList
-            sx={{
-              '.chakra-menu__group': {
+            css={{
+              '& .chakra-menu__group': {
                 maxH: 200,
                 overflowY: 'auto',
               },
-              '.chakra-menu__group__title': {
+              '& .chakra-menu__group__title': {
                 position: 'sticky',
                 top: 0,
                 bg: 'white',
@@ -102,7 +94,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
             icon={<VscListFilter />}
             variant="outline"
             rounded="full"
-            colorScheme="gray"
+            colorPalette="gray"
           />
           <MenuList>{sortMenu}</MenuList>
         </Menu>

@@ -44,7 +44,7 @@ type Story = StoryObj<typeof AuditLogItem>
 
 const AuditLogList: StoryFn<typeof AuditLogItem> = () => {
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       {Array.from({ length: logActions.length }).map((_, i) => {
         return (
           <AuditLogItem

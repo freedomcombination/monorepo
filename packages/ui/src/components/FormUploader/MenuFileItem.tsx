@@ -2,10 +2,7 @@ import { FC, ReactNode, useEffect } from 'react'
 
 import {
   Box,
-  Button,
   Center,
-  Divider,
-  IconButton,
   Stack,
   Text,
   VStack,
@@ -17,6 +14,8 @@ import { FaCheck, FaFile, FaFilePdf, FaTrash } from 'react-icons/fa6'
 import { API_URL } from '@fc/config'
 import { UploadFile } from '@fc/types'
 
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
 import { WImage } from '../WImage'
 
 type MenuFileItemProps = {
@@ -61,7 +60,7 @@ const MenuFileButton: FC<MenuFileButtonProps> = ({
           boxSize={'full'}
           bg={'white'}
         >
-          <VStack spacing={0} textAlign={'center'}>
+          <VStack gap={0} textAlign={'center'}>
             <FaCheck />
             <Text fontSize={'xs'}>Copied</Text>
           </VStack>
@@ -81,7 +80,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
 
   return (
     <Box pos={'relative'}>
-      {renderDivider && <Divider my={2} />}
+      {renderDivider && <hr />}
       {isImage ? (
         <WImage src={file} w={'full'} h={100} objectFit="cover" />
       ) : (
@@ -98,10 +97,10 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
         right={2}
         onClick={() => onDelete(file)}
         icon={<FaTrash />}
-        isRound
+        rounded={'full'}
         variant={'outline'}
         bg={'white'}
-        colorScheme={'red'}
+        colorPalette={'red'}
         aria-label={'Delete'}
       />
       <Stack p={2} textAlign={'center'} fontSize={'sm'}>
@@ -122,7 +121,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
             isImage={isImage}
             name={file.name}
           >
-            <VStack fontSize={'xs'} spacing={0}>
+            <VStack fontSize={'xs'} gap={0}>
               <Box>original</Box>
               {isImage ? (
                 <Box>
@@ -147,7 +146,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
                 isImage={isImage}
                 name={file.name}
               >
-                <VStack fontSize={'xs'} spacing={0}>
+                <VStack fontSize={'xs'} gap={0}>
                   <Box>{key}</Box>
                   <Box>
                     {value.width} x {value.height}

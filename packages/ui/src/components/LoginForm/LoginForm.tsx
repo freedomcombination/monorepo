@@ -1,13 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
   Checkbox,
   Container,
-  Divider,
   Heading,
   HStack,
   Stack,
@@ -23,6 +18,8 @@ import { useAuthContext } from '@fc/context'
 
 import { loginSchema } from './schema'
 import { LoginFormFieldValues } from './types'
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
+import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
 import {
@@ -82,34 +79,34 @@ export const LoginForm: FC<LoginFormProps> = ({
       px={{ base: '0', sm: '8' }}
     >
       <Stack
-        spacing="8"
+        gap="8"
         shadow="base"
         bg="white"
         p={{ base: 8, lg: 12 }}
         rounded="lg"
       >
-        <Stack spacing="6">
-          <Stack spacing={{ base: '2', md: '3' }} textAlign="center">
+        <Stack gap="6">
+          <Stack gap={{ base: '2', md: '3' }} textAlign="center">
             <Heading>{t('login.title')}</Heading>
             {!isLoginOnly && (
-              <HStack spacing="1" justify="center">
+              <HStack gap="1" justify="center">
                 <Text color="muted">{t('login.no-account')}</Text>
 
-                <ButtonLink href="/auth/register" variant="link">
+                <ButtonLink href="/auth/register" variant="plain">
                   {t('login.signup')}
                 </ButtonLink>
               </HStack>
             )}
           </Stack>
         </Stack>
-        <Stack spacing="6" as="form" onSubmit={handleSubmit(handleSubmitSign)}>
+        <Stack gap="6" as="form" onSubmit={handleSubmit(handleSubmitSign)}>
           {errorMessage && (
             <Alert status="error">
               <AlertIcon />
               <AlertDescription>{errorMessage}</AlertDescription>
             </Alert>
           )}
-          <Stack spacing="5">
+          <Stack gap="5">
             <FormItem
               data-testid="input-email"
               name="identifier"
@@ -133,13 +130,13 @@ export const LoginForm: FC<LoginFormProps> = ({
             <ButtonLink
               data-testid="button-forgot-password"
               href="/auth/forgot-password"
-              variant="link"
+              variant="plain"
               size="sm"
             >
               {t('forgot-pass.title')}
             </ButtonLink>
           </HStack>
-          <Stack spacing="6">
+          <Stack gap="6">
             <Button
               type="submit"
               data-testid="button-submit-login"
@@ -149,11 +146,11 @@ export const LoginForm: FC<LoginFormProps> = ({
             </Button>
             {providersToBeShown.length > 0 && (
               <HStack>
-                <Divider />
+                <hr />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
                   {t('login.with')}
                 </Text>
-                <Divider />
+                <hr />
               </HStack>
             )}
             <SocialLoginButtons providersToBeShown={providersToBeShown} />

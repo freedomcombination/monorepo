@@ -1,10 +1,14 @@
 // Ref: https://github.com/viniarruda/react-month-range-picker
 import { FC, useEffect, useState } from 'react'
 
+import { HStack, Text } from '@chakra-ui/react'
+import { FaCalendar, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+
+import { MonthPickerProps } from './types'
+import { Year } from './Year'
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
 import {
-  Button,
-  HStack,
-  IconButton,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -12,12 +16,7 @@ import {
   PopoverFooter,
   PopoverHeader,
   PopoverTrigger,
-  Text,
-} from '@chakra-ui/react'
-import { FaCalendar, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-
-import { MonthPickerProps } from './types'
-import { Year } from './Year'
+} from '../Popover'
 
 export const MonthPicker: FC<MonthPickerProps> = ({
   onRangeSelect,
@@ -109,11 +108,11 @@ export const MonthPicker: FC<MonthPickerProps> = ({
       <PopoverContent>
         <PopoverArrow />
         <PopoverHeader>
-          <HStack justify={'space-between'} align={'center'} spacing={2}>
+          <HStack justify={'space-between'} align={'center'} gap={2}>
             <IconButton
               aria-label="left"
               variant={'ghost'}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               icon={<FaChevronLeft />}
               onClick={handlePrevYear}
             />
@@ -121,9 +120,9 @@ export const MonthPicker: FC<MonthPickerProps> = ({
             <IconButton
               aria-label="left"
               variant={'ghost'}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               icon={<FaChevronRight />}
-              isDisabled={isLastYear && disableFuture}
+              disabled={isLastYear && disableFuture}
               onClick={handleNextYear}
             />
           </HStack>
@@ -144,10 +143,10 @@ export const MonthPicker: FC<MonthPickerProps> = ({
           display={'flex'}
           px={4}
         >
-          <Button variant={'link'} onClick={handleClear}>
+          <Button variant={'plain'} onClick={handleClear}>
             Clear
           </Button>
-          <Button variant={'link'} onClick={handleSelectCurrent}>
+          <Button variant={'plain'} onClick={handleSelectCurrent}>
             Select current
           </Button>
         </PopoverFooter>

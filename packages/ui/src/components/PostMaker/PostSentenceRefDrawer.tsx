@@ -1,10 +1,6 @@
 import { FC } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
   Center,
   HStack,
   Heading,
@@ -20,7 +16,8 @@ import Markdown from 'react-markdown'
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent } from '@fc/types'
 
-import { useHashtagContext } from '../../components/HashtagProvider'
+import { Alert, AlertDescription, AlertIcon, AlertTitle } from '../Alert'
+import { useHashtagContext } from '../HashtagProvider'
 
 export const PostSentenceRefDrawer = () => {
   const { sentence } = useHashtagContext()
@@ -37,7 +34,7 @@ export const PostSentenceRefDrawer = () => {
   if (!sentence) return null
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       {sentence.value && (
         <Stack background={'white'} borderRadius={'lg'} p={4}>
           <Text>{sentence.value}</Text>
@@ -47,12 +44,12 @@ export const PostSentenceRefDrawer = () => {
       {isLoading || !archiveContent ? (
         <LoadingInfo isLoading={isLoading} />
       ) : (
-        <Stack background={'white'} borderRadius={'lg'} p={4} spacing={4}>
+        <Stack background={'white'} borderRadius={'lg'} p={4} gap={4}>
           <Heading size={'md'} fontWeight={'bold'} color="gray.700">
             {archiveContent.title}
           </Heading>
           <HStack>
-            <Link isExternal href={archiveContent.link}>
+            <Link external href={archiveContent.link}>
               <HStack color="blue.500">
                 <Text>{archiveContent.source}</Text>
                 <HiOutlineExternalLink />

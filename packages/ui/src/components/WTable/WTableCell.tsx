@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Badge, Box, Td } from '@chakra-ui/react'
+import { Badge, Box, TableCell } from '@chakra-ui/react'
 
 import { StrapiModel, UploadFile } from '@fc/types'
 
@@ -47,13 +47,13 @@ export const WTableCell = <T extends StrapiModel>({
   }
 
   return (
-    <Td {...cellProps}>
+    <TableCell {...cellProps}>
       <Box
-        {...(field === 'description' && { noOfLines: 1, maxW: 120 })}
-        noOfLines={1}
+        {...(field === 'description' && { lineClamp: 1, maxW: 120 })}
+        lineClamp={1}
       >
         {cellContent || '-'}
       </Box>
-    </Td>
+    </TableCell>
   )
 }

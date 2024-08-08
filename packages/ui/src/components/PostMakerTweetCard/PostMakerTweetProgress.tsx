@@ -1,4 +1,4 @@
-import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
+import { ProgressCircle } from '@chakra-ui/react'
 
 import { usePostContext } from '../PostProvider'
 
@@ -12,7 +12,7 @@ export const PostMakerTweetProgress = () => {
       : 'black'
 
   return (
-    <CircularProgress
+    <ProgressCircle.Root
       value={percentage}
       size={isExceeded ? '32px' : '24px'}
       thickness={12}
@@ -20,10 +20,10 @@ export const PostMakerTweetProgress = () => {
       trackColor={'blackAlpha.200'}
     >
       {availableCount <= 20 && (
-        <CircularProgressLabel fontSize={'xs'}>
+        <ProgressCircle.Label fontSize={'xs'}>
           {availableCount}
-        </CircularProgressLabel>
+        </ProgressCircle.Label>
       )}
-    </CircularProgress>
+    </ProgressCircle.Root>
   )
 }

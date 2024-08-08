@@ -1,10 +1,12 @@
 import { FC } from 'react'
 
-import { Box, HStack, IconButton, Text, Tooltip } from '@chakra-ui/react'
+import { Box, HStack, Text } from '@chakra-ui/react'
 import { GoSignOut } from 'react-icons/go'
 
 import { Profile, SessionUser } from '@fc/types'
 
+import { IconButton } from '../IconButton'
+import { Tooltip } from '../Tooltip'
 import { WAvatar } from '../WAvatar'
 
 export type AdminSidebarProfileProps = {
@@ -23,10 +25,10 @@ export const AdminSidebarProfile: FC<AdminSidebarProfileProps> = ({
       <WAvatar size="sm" src={profile?.avatar} name={user?.username} />
 
       <Box flex={1} fontSize="sm" lineHeight={1.25}>
-        <Text w={160} noOfLines={1} fontWeight={600}>
+        <Text w={160} lineClamp={1} fontWeight={600}>
           {profile?.name || user?.username}
         </Text>
-        <Text w={160} noOfLines={1} textTransform={'capitalize'}>
+        <Text w={160} lineClamp={1} textTransform={'capitalize'}>
           {user?.roles.join(' - ')}
         </Text>
       </Box>

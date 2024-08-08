@@ -37,13 +37,7 @@ const CollectionBook: FC<CollectionBookProps> = ({
     <HTMLFlipBook {...flipboxOverrideProps}>
       {/* Cover */}
       <Page bgGradient={coverBgGdarient}>
-        <VStack
-          h="full"
-          justify={'center'}
-          p={8}
-          spacing={8}
-          textAlign="center"
-        >
+        <VStack h="full" justify={'center'} p={8} gap={8} textAlign="center">
           <Heading size="3xl" color="primary.500">
             {collection.title}
           </Heading>

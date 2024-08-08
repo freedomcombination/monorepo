@@ -1,19 +1,7 @@
 import { FC, useState } from 'react'
 
-import {
-  Box,
-  Center,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Grid,
-  HStack,
-  IconButton,
-  Skeleton,
-  Stack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
+import { Box, Center, Grid, HStack, Skeleton, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { parse } from 'querystring'
@@ -30,6 +18,8 @@ import { ArtSideBar } from '../ArtClubSideBar'
 import { CategoryFilterSkeleton } from '../CategoryFilter'
 import { Container } from '../Container'
 import { CreateArtForm } from '../CreateArtForm'
+import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '../Drawer'
+import { IconButton } from '../IconButton'
 import { MasonryGrid } from '../MasonryGrid'
 import { Pagination } from '../Pagination'
 import { SearchForm } from '../SearchForm'
@@ -44,7 +34,7 @@ export const ArtClubTemplate: FC = () => {
 
   const changeParam = useChangeParams()
   const [isLoading, setIsLoading] = useState(false)
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { t } = useTranslation()
 
   const categoryQuery = useStrapiRequest<Category>({
@@ -82,7 +72,7 @@ export const ArtClubTemplate: FC = () => {
 
   return (
     <>
-      <Drawer isOpen={isOpen} onClose={onClose}>
+      <Drawer isOpen={open} onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody py={8}>
@@ -110,7 +100,7 @@ export const ArtClubTemplate: FC = () => {
                 align="center"
                 w="full"
                 overflowX={{ base: 'auto', lg: 'hidden' }}
-                spacing={4}
+                gap={4}
               >
                 <Skeleton h={8} w="full" rounded="md" />
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -128,7 +118,7 @@ export const ArtClubTemplate: FC = () => {
             )}
           </Box>
 
-          <Stack w="full" spacing={4}>
+          <Stack w="full" gap={4}>
             <HStack>
               <SearchForm
                 placeholder={t('search') as string}

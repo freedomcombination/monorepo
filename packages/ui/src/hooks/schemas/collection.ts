@@ -13,9 +13,9 @@ export const useCollectionSchema = () => {
 }
 
 export const collectionFields: FormFields<Collection> = [
-  { name: 'title', isRequired: true },
-  { name: 'date', isRequired: true, type: 'datetime-local' },
-  { name: 'description', isRequired: true, type: 'textarea' },
-  { name: 'content', isRequired: true, type: 'markdown' },
-  { name: 'image', isRequired: true, type: 'file' },
+  { name: 'title', required: true },
+  { name: 'date', required: true, type: 'datetime-local' },
+  { name: 'description', required: true, type: 'textarea' },
+  { name: 'content', required: true, type: 'markdown' },
+  { name: 'image', required: true, type: 'file' },
 ]

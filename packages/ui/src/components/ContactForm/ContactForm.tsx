@@ -1,17 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
-  Divider,
-  Heading,
-  Stack,
-  Text,
-  Textarea,
-  VStack,
-} from '@chakra-ui/react'
+import { Heading, Stack, Text, Textarea, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -20,6 +9,8 @@ import { MdEmail } from 'react-icons/md'
 
 import { contactSchema } from './schema'
 import { ContactFormFieldValues, ContactFormProps } from './types'
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
+import { Button } from '../Button'
 import { FormItem } from '../FormItem'
 
 export const ContactForm: FC<ContactFormProps> = ({
@@ -47,13 +38,13 @@ export const ContactForm: FC<ContactFormProps> = ({
   }
 
   return (
-    <Stack rounded="lg" p={{ base: 8, lg: 16 }} shadow="base" spacing={4}>
+    <Stack rounded="lg" p={{ base: 8, lg: 16 }} shadow="base" gap={4}>
       <Stack>
         <Heading size="lg">{t('contact.title')}</Heading>
         <Text fontSize="sm">{t('contact.form.fill')}</Text>
       </Stack>
-      <Divider />
-      <VStack spacing={5} as="form" onSubmit={handleSubmit(onSubmit)}>
+      <hr />
+      <VStack gap={5} as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormItem
           name="fullname"
           autoComplete="name"
@@ -81,7 +72,7 @@ export const ContactForm: FC<ContactFormProps> = ({
         <Button
           variant="solid"
           type="submit"
-          isDisabled={!isValid}
+          disabled={!isValid}
           isLoading={isLoading}
           size={'lg'}
           w="full"

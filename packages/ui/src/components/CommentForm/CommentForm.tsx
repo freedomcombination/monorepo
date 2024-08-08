@@ -1,13 +1,10 @@
 import { FC, useEffect } from 'react'
 
 import {
-  Button,
   HStack,
-  IconButton,
   Stack,
   Text,
   Textarea,
-  Tooltip,
   useBreakpointValue,
   VStack,
 } from '@chakra-ui/react'
@@ -24,7 +21,10 @@ import { toastMessage } from '@fc/utils'
 
 import { commentFormSchema } from './schema'
 import { CommentFormFieldValues, CommentFormProps } from './types'
+import { Button } from '../Button'
 import { FormItem } from '../FormItem'
+import { IconButton } from '../IconButton'
+import { Tooltip } from '../Tooltip'
 import { WAvatar } from '../WAvatar'
 
 export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
@@ -95,7 +95,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
   return (
     <Stack
       display={isSuccess ? 'none' : 'flex'}
-      spacing={4}
+      gap={4}
       p={4}
       boxShadow="base"
       borderRadius="sm"
@@ -160,7 +160,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
               icon={<FiArrowRight />}
               isRound
               isLoading={isPending}
-              isDisabled={!isValid}
+              disabled={!isValid}
               type="submit"
             />
           </HStack>
@@ -173,7 +173,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
             alignSelf="flex-end"
             rightIcon={<FiArrowRight />}
             isLoading={isPending}
-            isDisabled={!isValid || !recaptchaToken}
+            disabled={!isValid || !recaptchaToken}
             type="submit"
           >
             {t('comment-form.send')}

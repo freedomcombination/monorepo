@@ -1,17 +1,12 @@
 import { FC, useState } from 'react'
 
-import {
-  AvatarGroup,
-  Box,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@chakra-ui/react'
+import { HStack, Box } from '@chakra-ui/react'
 
 import { UploadFile } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
 import { TableCellImageProps, TableCellImagesProps } from './types'
+import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
 import { WAvatar } from '../WAvatar'
 import { WImage } from '../WImage'
 
@@ -57,10 +52,10 @@ export const TableCellImages: FC<TableCellImagesProps> = ({ value }) => {
   }
 
   return (
-    <AvatarGroup>
+    <HStack gap={'-4'}>
       {images
         ?.slice(0, 5)
         .map((image, index) => <TableCellImage key={index} image={image} />)}
-    </AvatarGroup>
+    </HStack>
   )
 }

@@ -1,4 +1,4 @@
-import { Button, Container, HStack, Heading, Stack } from '@chakra-ui/react'
+import { Container, HStack, Heading, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -11,6 +11,7 @@ import { useAuthContext } from '@fc/context'
 import { toastMessage } from '@fc/utils'
 
 import { ForgotPasswordFieldValues } from './types'
+import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
 
@@ -65,19 +66,19 @@ export const ForgotPasswordForm = () => {
       px={{ base: '0', sm: '8' }}
     >
       <Stack
-        spacing="8"
+        gap="8"
         shadow="base"
         bg="white"
         p={{ base: 8, lg: 12 }}
         rounded="lg"
       >
-        <Stack spacing="6">
-          <Stack spacing={{ base: '', md: '3' }} textAlign="center">
+        <Stack gap="6">
+          <Stack gap={{ base: '', md: '3' }} textAlign="center">
             <Heading>{t('forgot-pass.link')}</Heading>
           </Stack>
         </Stack>
-        <Stack spacing="6" as="form" onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing="5">
+        <Stack gap="6" as="form" onSubmit={handleSubmit(onSubmit)}>
+          <Stack gap="5">
             <FormItem
               id="email"
               type="email"
@@ -86,9 +87,9 @@ export const ForgotPasswordForm = () => {
               name="email"
             />
           </Stack>
-          <Stack spacing="6">
+          <Stack gap="6">
             <HStack>
-              <ButtonLink href="/auth/login" variant="link">
+              <ButtonLink href="/auth/login" variant="plain">
                 {t('login.signin')}
               </ButtonLink>
             </HStack>

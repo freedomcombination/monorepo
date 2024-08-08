@@ -1,11 +1,4 @@
-import {
-  Box,
-  Divider,
-  Heading,
-  SimpleGrid,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail } from 'react-icons/md'
@@ -57,21 +50,23 @@ const Contact = () => {
               p={{ base: 8, lg: 12 }}
               textAlign="center"
               justify="space-evenly"
-              spacing={8}
+              gap={8}
             >
               <Heading fontWeight={900} as="h2" size="lg" color="primary.50">
                 {t('art-stop')}
               </Heading>
               <Text>{t('about.content')}</Text>
 
-              <Divider borderColor="whiteAlpha.400" />
+              <hr />
 
               <ButtonLink
                 isExternal
-                variant="link"
+                variant="plain"
                 color="primary.50"
                 _hover={{ color: 'primary.100' }}
-                leftIcon={<Box as={MdEmail} color="primary.50" size="20px" />}
+                leftIcon={
+                  <Box as={MdEmail} color="primary.50" fontSize="20px" />
+                }
                 href="mailto:kunsthalte@freedomcombination.com"
               >
                 kunsthalte@freedomcombination.com

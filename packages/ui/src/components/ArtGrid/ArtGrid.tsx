@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { ResponsiveObject, SimpleGrid } from '@chakra-ui/react'
+import { SimpleGrid, SimpleGridProps } from '@chakra-ui/react'
 
 import { Art } from '@fc/types'
 
@@ -10,7 +10,7 @@ type ArtGridProps = {
   arts: Art[]
   refetch: () => void
   recaptchaToken?: string
-  columns?: ResponsiveObject<number>
+  columns?: SimpleGridProps['columns']
   isModal?: boolean
 }
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { MenuDivider, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { StrapiModel } from '@fc/types'
@@ -30,7 +30,7 @@ export const FilterMenu = <T extends StrapiModel>({
     return null
 
   return (
-    <Stack divider={<MenuDivider />}>
+    <Stack divideColor={'gray.400'}>
       <FilterMenuGroup
         options={booleanFilterOptions}
         filters={selectedBooleanFilters}

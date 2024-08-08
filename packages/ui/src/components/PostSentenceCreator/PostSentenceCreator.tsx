@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { HStack, IconButton, Textarea, ThemeTypings } from '@chakra-ui/react'
+import { HStack, Textarea } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { FaPlus } from 'react-icons/fa'
@@ -8,11 +8,14 @@ import { FaPlus } from 'react-icons/fa'
 import { useCreateHashtagSentence } from '@fc/services'
 import { toastMessage } from '@fc/utils'
 
+import { ButtonProps } from '../Button'
+import { IconButton } from '../IconButton'
+
 type PostSentenceCreatorProps = {
   hashtagId: number
   postId: number
   initialContent?: string
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorPalette?: ButtonProps['colorPalette']
   onSuccess?: () => void
 }
 
@@ -20,7 +23,7 @@ export const PostSentenceCreator = ({
   hashtagId,
   postId,
   initialContent,
-  colorScheme,
+  colorPalette,
   onSuccess,
 }: PostSentenceCreatorProps) => {
   const { t } = useTranslation()
@@ -81,7 +84,7 @@ export const PostSentenceCreator = ({
         aria-label="Add sentence"
         icon={<FaPlus />}
         onClick={handleAdd}
-        {...(colorScheme && { colorScheme })}
+        {...(colorPalette && { colorPalette })}
       />
     </HStack>
   )

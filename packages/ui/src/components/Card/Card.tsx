@@ -79,13 +79,13 @@ export const Card: FC<CardProps> = ({
               textTransform="uppercase"
               fontSize="lg"
               letterSpacing="wide"
-              noOfLines={3}
+              lineClamp={3}
             >
               {title}
             </Heading>
           </LinkOverlay>
 
-          <Text fontSize="md" lineHeight="base" noOfLines={3}>
+          <Text fontSize="md" lineHeight="base" lineClamp={3}>
             {description}
           </Text>
         </Stack>

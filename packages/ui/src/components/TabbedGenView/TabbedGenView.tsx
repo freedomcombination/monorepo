@@ -1,15 +1,6 @@
 import { ReactNode } from 'react'
 
-import {
-  Heading,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-} from '@chakra-ui/react'
+import { Heading, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -22,6 +13,7 @@ import { ArchivePopover } from '../ArchivePopover'
 import { ArchivePostGenAI } from '../ArchivePostGenAI'
 import { GenPostProvider } from '../GenPostProvider'
 import { PostSentenceForm } from '../PostSentenceForm'
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '../Tabs'
 
 export type TabbedGenViewProps = {
   post?: Post
@@ -39,7 +31,7 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   const { locale } = useRouter()
   const { t } = useTranslation()
 
-  const colorScheme = post ? 'blue' : 'green'
+  const colorPalette = post ? 'blue' : 'green'
 
   const categories = hashtag?.categories ?? []
   const tags = post?.tags ?? []
@@ -91,13 +83,13 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
 
   return (
     <GenPostProvider hashtag={hashtag} post={post} archives={archives}>
-      <Tabs colorScheme={colorScheme}>
+      <Tabs colorPalette={colorPalette}>
         <TabList overflowX={'auto'}>
           {archives.map(archiveContent => {
             return (
               <Tab
                 key={archiveContent.id}
-                _selected={{ fontWeight: 600, color: `${colorScheme}.500` }}
+                _selected={{ fontWeight: 600, color: `${colorPalette}.500` }}
               >
                 <ArchivePopover archiveId={archiveContent.id}>
                   <Text maxW={200} whiteSpace={'nowrap'}>

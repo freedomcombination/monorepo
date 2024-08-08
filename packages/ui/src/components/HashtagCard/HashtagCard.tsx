@@ -26,7 +26,7 @@ export const HashtagCard: FC<HashtagCardProps> = ({ item }) => {
       <Stack
         align="start"
         flex={1}
-        spacing={8}
+        gap={8}
         p={{ base: 4, lg: 8 }}
         order={{ base: 2, lg: 1 }}
       >
@@ -38,7 +38,7 @@ export const HashtagCard: FC<HashtagCardProps> = ({ item }) => {
           <FormattedDate date={item.date as string} />
         </HStack>
         <Box>
-          <Text flex={1} noOfLines={4}>
+          <Text flex={1} lineClamp={4}>
             {item.description}
           </Text>
         </Box>

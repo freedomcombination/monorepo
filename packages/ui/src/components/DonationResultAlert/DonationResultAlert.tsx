@@ -6,7 +6,7 @@ import {
   AlertIcon,
   AlertProps,
   AlertTitle,
-} from '@chakra-ui/react'
+} from '../Alert'
 
 type DonationResultAlertProps = {
   status: AlertProps['status']

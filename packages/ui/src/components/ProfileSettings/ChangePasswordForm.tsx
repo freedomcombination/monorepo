@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Stack } from '@chakra-ui/react'
+import { Box, Heading, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -10,6 +10,7 @@ import * as Yup from 'yup'
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 
+import { Button } from '../Button'
 import { FormItem } from '../FormItem'
 
 const schema = Yup.object().shape({
@@ -71,7 +72,7 @@ export const ChangePasswordForm = () => {
   }
 
   return (
-    <Stack as={'form'} spacing={8} onSubmit={handleSubmit(onSubmit)}>
+    <Stack as={'form'} gap={8} onSubmit={handleSubmit(onSubmit)}>
       <Box>
         <Heading size="lg">{t('profile.security.password')}</Heading>
         {isError && <Box color={'red.500'}>{error?.message}</Box>}

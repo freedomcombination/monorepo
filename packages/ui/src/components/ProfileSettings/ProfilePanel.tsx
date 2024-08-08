@@ -3,13 +3,8 @@ import { FC, PropsWithChildren } from 'react'
 
 import {
   Box,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  TabProps,
-  Tabs,
-  TabsProps,
+  TabsRootProps,
+  TabsTriggerProps,
   Text,
   VStack,
   useBreakpointValue,
@@ -28,13 +23,14 @@ import { SecurityTab } from './SecurityTab'
 import { Socials } from './SocialsTab'
 import { Container } from '../Container'
 import { Hero } from '../Hero'
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { WAvatar } from '../WAvatar'
 
 type ProfilePanelProps = PropsWithChildren<{
   showArts?: boolean
 }>
 
-const CustomTab = (props: TabProps) => (
+const CustomTab = (props: TabsTriggerProps) => (
   <Tab
     borderWidth={1}
     rounded={'md'}
@@ -52,7 +48,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   showArts = false,
 }) => {
   const { user, profile, site } = useAuthContext()
-  const orientation = useBreakpointValue<TabsProps['orientation']>({
+  const orientation = useBreakpointValue<TabsRootProps['orientation']>({
     base: 'horizontal',
     lg: 'vertical',
   })
@@ -92,9 +88,9 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
           <Tabs
             orientation={orientation}
             border={0}
-            colorScheme="primary"
+            colorPalette="primary"
             size="lg"
-            variant={'unstyled'}
+            variant={'plain'}
             gap={8}
             isLazy
           >

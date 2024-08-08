@@ -35,9 +35,9 @@ export const ArtCardImage: FC<ArtCardImageProps> = memo(
     return (
       <Box
         as={Splide}
-        sx={{
-          '.splide__track': { h: 'full', maxH: '80vh' },
-          '.splide__arrow:disabled': {
+        css={{
+          '& .splide__track': { h: 'full', maxH: '80vh' },
+          '& .splide__arrow:disabled': {
             opacity: 0,
             pointerEvents: 'none',
           },

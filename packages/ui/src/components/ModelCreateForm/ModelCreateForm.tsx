@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { Box, Button, Divider, Stack, useBoolean } from '@chakra-ui/react'
+import { useBoolean } from '@chakra-ui/hooks'
+import { Box, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'
@@ -26,6 +27,7 @@ import { ModelCreateFormProps } from './types'
 import { renderCreateFormBody } from './utils'
 import { I18nNamespaces } from '../../../@types/i18next'
 import { useDefaultValues, useFileFromUrl } from '../../hooks'
+import { Button } from '../Button'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import { MasonryGrid } from '../MasonryGrid'
 import { Option } from '../ModelSelect'
@@ -184,7 +186,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
 
         {groupedFields?.length > 0 && (
           <>
-            <Divider my={6} />
+            <hr />
             <RadioCards
               defaultValue={groupedFields[0]?.group?.value}
               options={options as Option[]}

@@ -1,17 +1,11 @@
-import {
-  Divider,
-  FormLabel,
-  HStack,
-  Input,
-  Stack,
-  Text,
-  Textarea,
-} from '@chakra-ui/react'
+import { HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 
 import { StrapiTranslatableModel } from '@fc/types'
 
 import { TranslateFormProps } from './types'
 import { Flag } from '../Flag'
+import { FormLabel } from '../Form'
+import { Input } from '../Input'
 
 export const TranslateForm = <T extends StrapiTranslatableModel>({
   translationKey,
@@ -41,7 +35,7 @@ export const TranslateForm = <T extends StrapiTranslatableModel>({
 
       {currentModel.description && (
         <>
-          <Divider orientation="horizontal" />
+          <hr />
 
           <Stack>
             <FormLabel htmlFor={`${currentModel.id} description`}>
@@ -68,7 +62,7 @@ export const TranslateForm = <T extends StrapiTranslatableModel>({
 
       {currentModel.content && (
         <>
-          <Divider orientation="horizontal" />
+          <hr />
           <Stack>
             <FormLabel htmlFor={`${currentModel.id} content`}>
               Content

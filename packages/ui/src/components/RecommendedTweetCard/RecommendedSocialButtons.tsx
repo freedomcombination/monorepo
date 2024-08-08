@@ -1,14 +1,6 @@
 import { FC, useState } from 'react'
 
-import {
-  Box,
-  HStack,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-} from '@chakra-ui/react'
+import { Box, HStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { AiFillDelete, AiOutlineShareAlt } from 'react-icons/ai'
 
@@ -19,6 +11,13 @@ import { getMediaUrl } from '@fc/utils'
 import { RecommendedSocialButtonsProps } from './types'
 import { useFields, useSchema } from '../../hooks'
 import { ModelCreateModal } from '../ModelCreateModal'
+import {
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+} from '../Popover'
 import { ShareButtons } from '../ShareButtons'
 import { TopicCardButton as ActionButton } from '../TopicCard'
 import { WConfirm, WConfirmProps } from '../WConfirm'
@@ -109,7 +108,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
               icon={<AiOutlineShareAlt />}
               title="Share"
               variant="ghost"
-              colorScheme="gray"
+              colorPalette="gray"
             />
           </Box>
         </PopoverTrigger>
@@ -134,7 +133,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
         buttonProps={{
           iconSpacing: isVertical ? 0 : 2,
           variant: 'ghost',
-          colorScheme: 'gray',
+          colorPalette: 'gray',
         }}
       >
         {t('create-post')}
@@ -145,7 +144,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
         icon={<AiFillDelete />}
         title="Delete"
         variant="ghost"
-        colorScheme="gray"
+        colorPalette="gray"
       />
     </HStack>
   )

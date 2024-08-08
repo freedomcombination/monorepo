@@ -1,20 +1,19 @@
 import { FC, useRef } from 'react'
 
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-} from '@chakra-ui/react'
-
 import { ArtCardAlertDialogProps } from './types'
+import { Button } from '../Button'
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '../Modal'
 
 export const ArtCardAlertDialog: FC<ArtCardAlertDialogProps> = ({
   buttonText,
-  colorScheme,
+  colorPalette,
   isOpen,
   text,
   title,
@@ -24,30 +23,29 @@ export const ArtCardAlertDialog: FC<ArtCardAlertDialogProps> = ({
   const cancelRef = useRef<HTMLButtonElement>(null)
 
   return (
-    <AlertDialog
-      isCentered
+    <Modal
+      centered
       isOpen={isOpen}
       onClose={onClose}
       leastDestructiveRef={cancelRef}
     >
-      <AlertDialogOverlay>
-        <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight={600}>
-            {title}
-          </AlertDialogHeader>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader fontSize="lg" fontWeight={600}>
+          {title}
+        </ModalHeader>
 
-          <AlertDialogBody>{text}</AlertDialogBody>
+        <ModalBody>{text}</ModalBody>
 
-          <AlertDialogFooter>
-            <Button onClick={onClose} ref={cancelRef}>
-              Cancel
-            </Button>
-            <Button colorScheme={colorScheme} onClick={onClick} ml={3}>
-              {buttonText}
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialogOverlay>
-    </AlertDialog>
+        <ModalFooter>
+          <Button onClick={onClose} ref={cancelRef}>
+            Cancel
+          </Button>
+          <Button colorPalette={colorPalette} onClick={onClick} ml={3}>
+            {buttonText}
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
   )
 }

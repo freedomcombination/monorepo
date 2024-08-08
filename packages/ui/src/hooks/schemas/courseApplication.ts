@@ -19,13 +19,13 @@ export const useCourseApplicationSchema = () => {
 }
 
 export const courseApplicationFields: FormFields<CourseApplication> = [
-  { name: 'name', isRequired: true },
-  { name: 'email', isRequired: true },
+  { name: 'name', required: true },
+  { name: 'email', required: true },
   { name: 'city' },
-  { name: 'country', isRequired: true },
-  { name: 'phone', isRequired: true },
+  { name: 'country', required: true },
+  { name: 'phone', required: true },
   { name: 'hasPaid', type: 'boolean' },
-  { name: 'message', isRequired: true, type: 'textarea' },
+  { name: 'message', required: true, type: 'textarea' },
   {
     name: 'course',
     type: 'select',

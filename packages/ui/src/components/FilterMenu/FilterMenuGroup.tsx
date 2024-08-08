@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-import { MenuItemOption, MenuOptionGroup } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { FilterMenuGroupProps } from './types'
+import { MenuItemOption, MenuOptionGroup } from '../Menu'
 
 export const FilterMenuGroup: FC<FilterMenuGroupProps> = ({
   options,

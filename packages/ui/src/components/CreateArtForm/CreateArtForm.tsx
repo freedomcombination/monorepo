@@ -1,25 +1,16 @@
 import { FC, useRef, useState } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import { Link } from '@chakra-ui/next-js'
 import {
   Box,
-  Button,
-  ButtonGroup,
-  ButtonProps,
   Center,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
+  HStack,
   SimpleGrid,
   Spinner,
   Stack,
   Text,
   Textarea,
-  useDisclosure,
-  useToast,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
@@ -28,7 +19,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
 import useFormPersist from 'react-hook-form-persist'
-import { FaPlus, FaUpload } from 'react-icons/fa'
+import { FaUpload } from 'react-icons/fa'
 
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useStrapiRequest } from '@fc/services'
@@ -37,8 +28,18 @@ import { ArtCreateInput, Category } from '@fc/types'
 import { ArtCreateSuccessAlert } from './CreateArtSuccessAlert'
 import { createArtSchema } from './schema'
 import { CreateArtFormFieldValues } from './types'
+import { useToast } from '../../hooks'
+import { Button, ButtonProps } from '../Button'
 import { FilePicker } from '../FilePicker'
 import { FormItem } from '../FormItem'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '../Modal'
 import { WSelect } from '../WSelect'
 
 export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
@@ -137,7 +138,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
     <>
       {/* SUCCESS ALERT */}
       <ArtCreateSuccessAlert
-        isOpen={successDisclosure.isOpen}
+        isOpen={successDisclosure.open}
         onClose={successDisclosure.onClose}
         ref={cancelRef}
       />
@@ -150,9 +151,9 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
       </Button>
 
       <Modal
-        isCentered
+        centered
         closeOnOverlayClick={false}
-        isOpen={formDisclosure.isOpen}
+        isOpen={formDisclosure.open}
         onClose={closeForm}
         size={user ? '4xl' : 'md'}
       >
@@ -191,13 +192,13 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
               <SimpleGrid columns={{ base: 1, lg: 2 }} gap={4}>
                 <FilePicker onLoaded={setImages} />
                 <Stack
-                  spacing={4}
+                  gap={4}
                   as="form"
                   onSubmit={handleSubmit(handleCreateArt)}
                 >
                   <FormItem
                     name="title"
-                    isRequired
+                    required
                     errors={errors}
                     register={register}
                   />
@@ -217,23 +218,23 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                   <FormItem
                     name="description"
                     as={Textarea}
-                    isRequired
+                    required
                     errors={errors}
                     register={register}
                   />
 
-                  <ButtonGroup alignSelf="end">
+                  <HStack alignSelf="end">
                     <Button onClick={closeForm} mr={3} ref={cancelRef}>
                       {t('cancel')}
                     </Button>
                     <Button
-                      isDisabled={!images || images?.length === 0 || !isValid}
+                      disabled={!images || images?.length === 0 || !isValid}
                       type="submit"
-                      rightIcon={<FaPlus />}
+                      // rightIcon={<FaPlus />}
                     >
                       {t('create')}
                     </Button>
-                  </ButtonGroup>
+                  </HStack>
                 </Stack>
               </SimpleGrid>
             )}

@@ -1,17 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Box,
-  Heading,
-  List,
-  ListIcon,
-  ListItem,
-  Stack,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Heading, Stack, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { AiOutlineFileExclamation } from 'react-icons/ai'
@@ -21,6 +10,8 @@ import { LuFileArchive } from 'react-icons/lu'
 import { ArchiveContent, Category, Hashtag, Tag } from '@fc/types'
 
 import { useFields, useSchema } from '../../hooks'
+import { Alert, AlertDescription, AlertIcon } from '../Alert'
+import { List, ListItem, ListIcon } from '../List'
 import { ModelCreateModal } from '../ModelCreateModal'
 
 type GenAlertProps = {
@@ -108,7 +99,7 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
               onSuccess={onArchiveCreate}
               buttonProps={{
                 variant: 'outline',
-                colorScheme: 'orange',
+                colorPalette: 'orange',
                 leftIcon: <LuFileArchive />,
               }}
               initialValues={{

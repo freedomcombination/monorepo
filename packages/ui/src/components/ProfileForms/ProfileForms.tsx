@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { Divider, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 
 import { useStrapiRequest } from '@fc/services'
 import { Observation, Profile } from '@fc/types'
@@ -22,7 +22,7 @@ export const ProfileForms: FC<ProfileFormsProps> = ({ profile }) => {
   const observations = observationRequest.data?.data ?? []
 
   return (
-    <Stack divider={<Divider />}>
+    <Stack divideColor={'gray.400'}>
       <ProfileContact
         profile={profile}
         onSuccess={observationRequest.refetch}

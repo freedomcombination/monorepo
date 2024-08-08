@@ -1,39 +1,34 @@
-import {
-  Badge,
-  HStack,
-  IconButton,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  ThemeTypings,
-} from '@chakra-ui/react'
+import { Badge, HStack } from '@chakra-ui/react'
 import { FaInfo, FaX } from 'react-icons/fa6'
 
 import { OgImageParams } from '@fc/types'
 
+import { ButtonProps } from '../Button'
 import { Caps } from '../Caps'
 import { ContentEditable, ContentEditableProps } from '../ContentEditable'
+import { IconButton } from '../IconButton'
+import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
 
 export type EditableProps = ContentEditableProps & {
-  isDisabled?: boolean
+  disabled?: boolean
   onDelete?: () => void
   isDescription?: boolean
   imageParams?: OgImageParams
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorPalette?: ButtonProps['colorPalette']
 }
 
 export const EditableLine: React.FC<EditableProps> = ({
   onDelete,
   isDescription = false,
   contentEditable = true,
-  isDisabled = false,
+  disabled = false,
   imageParams = {},
   value,
-  colorScheme = 'primary',
+  colorPalette = 'primary',
   threshold,
   ...rest
 }) => {
-  const disabled = isDisabled || !contentEditable
+  const isDisabled = disabled || !contentEditable
 
   return (
     <HStack
@@ -46,10 +41,10 @@ export const EditableLine: React.FC<EditableProps> = ({
     >
       <IconButton
         mt={2}
-        isDisabled={disabled}
+        disabled={isDisabled}
         aria-label="delete"
         variant={'ghost'}
-        colorScheme="red"
+        colorPalette="red"
         size={'xs'}
         icon={<FaX />}
         onClick={onDelete}
@@ -64,7 +59,7 @@ export const EditableLine: React.FC<EditableProps> = ({
               size="xs"
               aria-label={'Show caps'}
               icon={<FaInfo />}
-              colorScheme="blue"
+              colorPalette="blue"
               rounded={'full'}
             />
           </PopoverTrigger>
@@ -110,8 +105,8 @@ export const EditableLine: React.FC<EditableProps> = ({
             opacity: 1,
           }}
           transition={'opacity 0.3s ease-in-out'}
-          colorScheme={
-            threshold && value?.length > threshold ? 'red' : colorScheme
+          colorPalette={
+            threshold && value?.length > threshold ? 'red' : colorPalette
           }
           variant={'solid'}
           pos="absolute"

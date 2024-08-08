@@ -1,17 +1,6 @@
 import { FC, useMemo } from 'react'
 
-import {
-  Box,
-  Checkbox,
-  Stack,
-  StackDivider,
-  Tag,
-  TagLabel,
-  TagLeftIcon,
-  Text,
-  VStack,
-  Wrap,
-} from '@chakra-ui/react'
+import { Box, Checkbox, Stack, Text, VStack, Wrap } from '@chakra-ui/react'
 import { TbCheck, TbX } from 'react-icons/tb'
 
 import {
@@ -23,6 +12,7 @@ import {
 
 import { useAdminNav } from '../AdminNav/useAdminNav'
 import { MasonryGrid } from '../MasonryGrid'
+import { Tag, TagLabel } from '../Tag'
 
 type PermissionCardProps = {
   permission: Permissions
@@ -131,13 +121,13 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
       borderColor={'gray.100'}
       borderWidth={1}
       borderRadius={12}
-      spacing={4}
+      gap={4}
     >
       <Box
         position={'absolute'}
         top={-3}
         left={6}
-        noOfLines={1}
+        lineClamp={1}
         fontWeight={'bold'}
       >
         {!readonly ? (
@@ -150,10 +140,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
           </Text>
         )}
       </Box>
-      <VStack
-        alignItems={'flex-start'}
-        divider={<StackDivider borderColor="gray.200" />}
-      >
+      <VStack alignItems={'flex-start'} divideColor={'gray.200'}>
         <Wrap>
           {Object.values(values).flatMap(action => {
             return Object.entries(action).map(([key, obj]) => {
@@ -178,9 +165,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
             {menuItems.map(item => {
               return (
                 <Tag key={item.label} size={'md'}>
-                  <TagLeftIcon boxSize="28px" pt={2}>
-                    {item.icon}
-                  </TagLeftIcon>
+                  {item.icon}
                   <TagLabel>{item.label}</TagLabel>
                 </Tag>
               )
@@ -211,7 +196,7 @@ const ActionApi: FC<ActionApiProps> = ({
       size={'md'}
       onClick={() => !readonly && onChange(!value)}
       variant={'solid'}
-      colorScheme={blocked ? 'gray' : value ? 'green' : 'red'}
+      colorPalette={blocked ? 'gray' : value ? 'green' : 'red'}
       {...(!readonly
         ? {
             cursor: 'pointer',
@@ -219,7 +204,7 @@ const ActionApi: FC<ActionApiProps> = ({
           }
         : {})}
     >
-      <TagLeftIcon boxSize="18px" as={value ? TbCheck : TbX} />
+      {value ? <TbCheck /> : <TbX />}
       <TagLabel>{action}</TagLabel>
     </Tag>
   )

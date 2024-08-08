@@ -1,4 +1,4 @@
-import { ResponsiveValue } from '@chakra-ui/react'
+import { StackProps } from '@chakra-ui/react'
 
 import { MenuType } from '@fc/types'
 
@@ -27,9 +27,7 @@ export interface MenuTypeItemProps {
 }
 
 export interface HeaderNavProps {
-  direction: ResponsiveValue<
-    'row' | 'column' | 'row-reverse' | 'column-reverse'
-  >
+  direction: StackProps['direction']
   menu: HeaderMenu
   isDark?: boolean
 }

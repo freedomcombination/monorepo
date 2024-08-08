@@ -5,7 +5,6 @@ import {
   Heading,
   HStack,
   Icon,
-  IconButton,
   SimpleGrid,
   Stack,
   Text,
@@ -23,6 +22,7 @@ import { getReadingTime } from '@fc/utils'
 
 import { BlogCard } from '../BlogCard'
 import { FormattedDate } from '../FormattedDate'
+import { IconButton } from '../IconButton'
 import { Markdown } from '../Markdown'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'
@@ -42,12 +42,12 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
 
   const post = data?.data
 
-  const { isLiked, toggleLike, isLoading, isDisabled } = useLikeBlog()
+  const { isLiked, toggleLike, isLoading, disabled } = useLikeBlog()
 
   const readingTime = getReadingTime(post?.content || '', locale)
 
   return (
-    <Stack py={8} spacing={8}>
+    <Stack py={8} gap={8}>
       <WImage ratio="twitter" rounded="lg" src={post?.image as UploadFile} />
       <Heading as="h1" textAlign="center">
         {post?.title}
@@ -56,9 +56,9 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
         fontSize="md"
         justify={{ base: 'center', md: 'space-between' }}
         color="gray.500"
-        spacing={4}
+        gap={4}
       >
-        <Wrap spacing={4} justify="center">
+        <Wrap gap={4} justify="center">
           <Box>
             <HStack>
               <Icon as={FaCalendarDay} />
@@ -93,7 +93,7 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
             icon={<AiFillHeart />}
             onClick={toggleLike}
             isLoading={isLoading}
-            isDisabled={isDisabled}
+            disabled={disabled}
           />
         </ShareButtons>
       </Wrap>

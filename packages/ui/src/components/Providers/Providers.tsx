@@ -1,6 +1,6 @@
 import { FC, ReactNode, useState } from 'react'
 
-import { ChakraProvider, createStandaloneToast } from '@chakra-ui/react'
+import { ChakraProvider, createToaster } from '@chakra-ui/react'
 import {
   HydrationBoundary,
   QueryClient,
@@ -27,7 +27,7 @@ type ProvidersProps = {
   enablePush?: boolean
 }
 
-const { ToastContainer } = createStandaloneToast()
+const { ToastContainer } = createToaster()
 
 export const Providers: FC<ProvidersProps> = ({
   site,
@@ -59,7 +59,7 @@ export const Providers: FC<ProvidersProps> = ({
     <QueryClientProvider client={queryClient}>
       <HydrationBoundary state={dehydratedState}>
         <AuthProvider site={site}>
-          <ChakraProvider theme={themes[site]}>
+          <ChakraProvider value={themes[site]}>
             <ReCaptchaProvider
               reCaptchaKey={RECAPTCHA_SITE_KEY}
               language={locale}

@@ -17,16 +17,16 @@ export const useAssetsTrackingSchema = () => {
 }
 
 export const assetsTrackingFields: FormFields<AssetsTracking> = [
-  { name: 'fromLocation', isRequired: true },
-  { name: 'toLocation', isRequired: true },
+  { name: 'fromLocation', required: true },
+  { name: 'toLocation', required: true },
   {
     name: 'date',
-    isRequired: true,
+    required: true,
     type: 'date',
   },
   {
     name: 'asset',
-    isRequired: true,
+    required: true,
     type: 'select',
     endpoint: 'assets',
   },
@@ -38,7 +38,7 @@ export const assetsTrackingFields: FormFields<AssetsTracking> = [
   },
   {
     name: 'assignedTo',
-    isRequired: true,
+    required: true,
     type: 'select',
     endpoint: 'profiles',
   },

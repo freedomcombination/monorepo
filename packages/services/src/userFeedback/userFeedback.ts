@@ -1,9 +1,9 @@
-import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { UserFeedback, UserFeedbackCreateInput } from '@fc/types'
+import { useToast } from '@fc/ui'
 
 export const createUserFeedback = async (
   userFeedback: UserFeedbackCreateInput,

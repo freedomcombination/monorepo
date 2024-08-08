@@ -1,4 +1,4 @@
-import { ButtonGroup } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { StrapiTranslatableModel } from '@fc/types'
@@ -18,7 +18,7 @@ export const FormLocaleSwitcher = <T extends StrapiTranslatableModel>({
   )
 
   return (
-    <ButtonGroup>
+    <HStack>
       {models?.map(m => {
         const href =
           slug && router.pathname !== '/translates'
@@ -33,13 +33,13 @@ export const FormLocaleSwitcher = <T extends StrapiTranslatableModel>({
             key={m.id}
             textTransform={'uppercase'}
             href={href}
-            isDisabled={m.locale === model.locale}
+            disabled={m.locale === model.locale}
             variant={m.locale === model.locale ? 'solid' : 'outline'}
           >
             {m.locale}
           </ButtonLink>
         )
       })}
-    </ButtonGroup>
+    </HStack>
   )
 }

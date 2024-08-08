@@ -2,14 +2,10 @@ import { FC } from 'react'
 
 import {
   Box,
-  Button,
   Center,
   HStack,
   Heading,
   Link,
-  List,
-  ListIcon,
-  ListItem,
   SimpleGrid,
   Spinner,
   Stack,
@@ -23,7 +19,9 @@ import { FaXTwitter } from 'react-icons/fa6'
 import { SITE_URL } from '@fc/config'
 import { Flow } from '@fc/types'
 
+import { Button } from '../Button'
 import { Container } from '../Container'
+import { List, ListItem, ListIcon } from '../List'
 import { Markdown } from '../Markdown'
 import { ShareButtons } from '../ShareButtons'
 
@@ -49,7 +47,7 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
 
   return (
     <Container maxW="container.md">
-      <Stack py={8} spacing={8}>
+      <Stack py={8} gap={8}>
         <HStack justifyContent={'end'}>
           <ShareButtons url={URL} title={title} quote={description || ''} />
         </HStack>
@@ -58,11 +56,11 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
         </Box>
         <SimpleGrid gap={8} columns={{ base: 1, md: 2 }} alignItems={'center'}>
           {flow.length > 0 && (
-            <Stack spacing={4} order={{ base: 2, md: 1 }}>
+            <Stack gap={4} order={{ base: 2, md: 1 }}>
               <Heading as="h2" size="md">
                 {t('program-flow')}
               </Heading>
-              <List spacing={4}>
+              <List gap={4}>
                 {flow.map((f, i) => (
                   <ListItem key={i}>
                     <HStack align={'start'}>
@@ -81,15 +79,15 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
               </List>
             </Stack>
           )}
-          <Stack spacing={4} order={{ base: 1, md: 2 }}>
+          <Stack gap={4} order={{ base: 1, md: 2 }}>
             <Link
-              isExternal
+              external
               href={'https://trendrights.com/tr/hashtags/kusatilmis-ebeveynlik'}
             >
               <Center aspectRatio={{ base: 3, md: 2 }}>
                 <Button
                   boxSize={'full'}
-                  colorScheme={'trend-rights'}
+                  colorPalette={'trend-rights'}
                   variant={'outline'}
                   fontSize={'2xl'}
                   flexDir={'column'}
@@ -106,7 +104,7 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
                 </Button>
               </Center>
             </Link>
-            <Link isExternal href="https://freedomcombination.com/donation">
+            <Link external href="https://freedomcombination.com/donation">
               <Center aspectRatio={{ base: 3, md: 2 }}>
                 <Button
                   boxSize={'full'}
