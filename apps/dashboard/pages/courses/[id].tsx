@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import {
   Accordion,
@@ -69,9 +69,19 @@ const CoursePage = () => {
     applicationsQuery.refetch()
   }, [locale, searchTerm, sort])
 
-  const applications = applicationsQuery?.data?.data || []
+  const applications = useMemo(
+    () => applicationsQuery?.data?.data || [],
+    [applicationsQuery?.data?.data],
+  )
   const pageCount = applicationsQuery?.data?.meta?.pagination?.pageCount || 0
   const totalCount = applicationsQuery?.data?.meta?.pagination?.total || 0
+  const applicantId = Number(query.applicantId as string)
+
+  useEffect(() => {
+    if (applications.some(app => app.id === applicantId)) {
+      setSelectedApplicationId(applicantId)
+    }
+  }, [applicantId, applications])
 
   const { data, isLoading, refetch } = useStrapiRequest<Course>({
     endpoint: 'courses',

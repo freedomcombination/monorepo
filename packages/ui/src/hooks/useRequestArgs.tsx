@@ -38,6 +38,10 @@ export const useRequestArgs = <
     collections: {
       searchFields: ['title', 'description'],
     },
+    payments: {
+      populate: ['profile', 'courseApplication.course'],
+      searchFields: ['email', 'name'],
+    },
     posts: {
       populate: [
         'hashtag.categories',

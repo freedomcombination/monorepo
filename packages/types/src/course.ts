@@ -28,6 +28,7 @@ type CourseBase = StrapiBase & {
   isOnline: boolean
   startDate: string
   endDate: string
+  lastRegisterDate: string
 }
 
 type CourseRelation = {

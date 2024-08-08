@@ -105,6 +105,9 @@
       "type": "component",
       "repeatable": true,
       "component": "course.curriculum"
+    },
+    "lastRegisterDate": {
+      "type": "datetime"
     }
   }
 }

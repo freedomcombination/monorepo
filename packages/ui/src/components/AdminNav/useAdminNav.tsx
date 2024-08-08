@@ -274,11 +274,24 @@ export const useAdminNav = () => {
         allowed: true,
       },
       {
-        label: t('donations'),
-        link: '/donations',
+        label: t('transactions'),
         icon: <BsCashStack />,
-        allowed: isAdmin,
+        submenu: [
+          {
+            label: t('course-payments'),
+            link: '/payments',
+            icon: <FiUsers />,
+            allowed: isAdmin,
+          },
+          {
+            label: t('donations'),
+            link: '/donations',
+            icon: <BsCashStack />,
+            allowed: isAdmin,
+          },
+        ],
       },
+
       {
         label: t('user-feedbacks'),
         link: '/user-feedbacks',

@@ -6,10 +6,15 @@ import { Profile } from '@fc/types'
 import { EmailProvider } from './EmailProvider'
 
 type VolunteerAppliedProps = {
-  volunteer: Profile
+  volunteer?: Profile
 }
 
-const VolunteerApplied: FC<VolunteerAppliedProps> = ({ volunteer }) => {
+const VolunteerApplied: FC<VolunteerAppliedProps> = ({
+  volunteer = {
+    name: 'user name',
+    platforms: [],
+  },
+}) => {
   return (
     <EmailProvider>
       <Preview>New volunteer application from {volunteer.name}</Preview>

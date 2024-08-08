@@ -17,12 +17,14 @@ import {
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
 import { FaBlog, FaKey } from 'react-icons/fa6'
+import { MdOutlinePayments } from 'react-icons/md'
 import { TbSocial } from 'react-icons/tb'
 
 import { useAuthContext } from '@fc/context'
 
 import { ArtsTab } from './ArtsTab'
 import { BlogsTab } from './BlogsTab'
+import { CoursesTab } from './CoursesTab'
 import { DetailsTab } from './DetailsTab'
 import { SecurityTab } from './SecurityTab'
 import { Socials } from './SocialsTab'
@@ -61,6 +63,10 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   const isBlogsVisible =
     (site === 'dashboard' || site === 'foundation') &&
     (user?.roles.includes('admin') || user?.roles.includes('author'))
+
+  const isCoursePaymentVisible =
+    (site === 'foundation' || site === 'dashboard') &&
+    process.env.NODE_ENV === 'development'
 
   if (!user) return <Hero></Hero>
 
@@ -117,6 +123,12 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                 <Box as={TbSocial} mr={2} />
                 <Box>{t('profile.tabs.socials')}</Box>
               </CustomTab>
+              {isCoursePaymentVisible && (
+                <CustomTab>
+                  <Box as={MdOutlinePayments} mr={2} />
+                  <Box>{t('profile.tabs.courses')}</Box>
+                </CustomTab>
+              )}
               {showArts && (
                 <CustomTab>
                   <Box as={FaPaintBrush} mr={2} />
@@ -140,6 +152,11 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
               <TabPanel p={0}>
                 <Socials />
               </TabPanel>
+              {isCoursePaymentVisible && (
+                <TabPanel p={0}>
+                  <CoursesTab />
+                </TabPanel>
+              )}
               {showArts && (
                 <TabPanel p={0}>
                   <ArtsTab />

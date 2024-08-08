@@ -5,13 +5,15 @@ import { Mutation } from '@fc/lib'
 import { getSecret } from '@fc/secrets'
 import { Donation, DonationCreateInput } from '@fc/types'
 
-import { stripe } from '../initStripe'
+import { stripe } from './initStripe'
+import { StripeMetaData } from './types'
 
 export const createDonationCheckout = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
   const { amount, name, email, type } = req.body
+
   // Create blank donation in database
   const donation = await Mutation.post<Donation, DonationCreateInput>(
     'donates',
@@ -44,7 +46,8 @@ export const createDonationCheckout = async (
             name: 'Donatie',
             metadata: {
               strapi_id: donation.id,
-            },
+              type: 'donation',
+            } satisfies StripeMetaData,
           },
           unit_amount: amount * 100,
           recurring: type === 'monthly' ? { interval: 'month' } : undefined,

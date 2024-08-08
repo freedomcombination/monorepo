@@ -5,6 +5,41 @@ export type translation = {
 }
 
 export const translations = {
+  // Common
+
+  name: {
+    en: 'Name',
+    nl: 'Naam',
+    tr: 'İsim',
+  },
+  email: {
+    en: 'Email',
+    nl: 'E-mail',
+    tr: 'E-posta',
+  },
+  date: {
+    en: 'Date',
+    nl: 'Datum',
+    tr: 'Tarih',
+  },
+  details: {
+    en: 'Details',
+    nl: 'Details',
+    tr: 'Detaylar',
+  },
+  course: {
+    en: 'Course',
+    nl: 'Cursus',
+    tr: 'Kurs',
+  },
+  go: {
+    en: 'Go',
+    nl: 'Ga',
+    tr: 'Git',
+  },
+
+  // ForgotPassword.tsx
+
   'forgot.preview': {
     en: 'Forgot Password',
     nl: 'Wachtwoord Vergeten',
@@ -24,5 +59,23 @@ export const translations = {
     en: 'Reset Password',
     nl: 'Wachtwoord Resetten',
     tr: 'Sifrenizi Sıfırlayın',
+  },
+
+  // CourseApplicantWithoutPayment.tsx
+
+  'course-applicant-unpaid-preview': {
+    en: 'New unpaid course application has been submitted by {{name}}',
+    nl: 'Nieuwe onbetaalde cursusaanvraag is gestuurd door {{name}}',
+    tr: '{{name}} tarafından, odenmemiş kurs başvurus alındı.',
+  },
+  'course-applicant-unpaid-header': {
+    tr: 'Yeni bir kullanıcı aşağıdaki kurs başvurusu yaptı.',
+    en: 'A new user has applied for the course below.',
+    nl: 'Een nieuwe gebruiker heeft zich aangemeld voor onderstaande cursus.',
+  },
+  'course-applicant-unpaid-footer': {
+    tr: "Kaydolan kişinin açıklamasını yetersiz bulduysanız aşağıdaki link'ten appreveStatus parametresine 'rejected' degerini verebilirsiniz. Aksi takdirde kontejyan bu kullanıcıya otomatik olarak ayrıldı.",
+    en: "If you find the description of the registered person insufficient, you can give the value 'rejected' to the appreveStatus parameter from the link below. Otherwise, the quota is automatically allocated to this user.",
+    nl: "Indien u de omschrijving van de geregistreerde onvoldoende vindt, kunt u via onderstaande link de waarde 'rejected' meegeven aan de parameter appreveStatus. Anders wordt het quotum automatisch aan deze gebruiker toegewezen.",
   },
 }
