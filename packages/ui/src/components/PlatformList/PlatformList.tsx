@@ -32,7 +32,6 @@ export const PlatformList: FC<PlatformListProps> = ({ platforms }) => {
           rounded="lg"
           shadow="base"
         >
-          {/* TODO Create image component to handle internal/external image paths */}
           <WAvatar size="2xl" src={getMediaUrl(platform.image)} />
           <Stack align={{ base: 'center', lg: 'start' }}>
             <Heading textAlign="center" size="md" as="h3" fontWeight={900}>
