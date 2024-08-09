@@ -148,6 +148,7 @@ export const Caps = forwardRef<HTMLDivElement, CapsProps>(
                 }px`}
                 gap={`${dimensions.font / 2}px`}
                 userSelect={'none'}
+                justify={'center'}
               >
                 {title && (
                   <Text
@@ -181,8 +182,6 @@ export const Caps = forwardRef<HTMLDivElement, CapsProps>(
                   fontSize={`${dimensions.font}px`}
                   overflow={'hidden'}
                   whiteSpace={'pre-wrap'}
-                  flexGrow={1}
-                  alignItems={'center'}
                 >
                   {text}
                 </Text>

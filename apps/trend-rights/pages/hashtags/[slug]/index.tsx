@@ -163,11 +163,11 @@ export const getServerSideProps = async (
       capsSrc =
         SITE_URL +
         getOgImageSrc({
+          ...post.imageParams,
           title: post.title,
           text: post.description || undefined,
           image: src,
           platform: post.hashtag?.platform?.slug as PlatformSlug,
-          ...post.imageParams,
         })
     }
 

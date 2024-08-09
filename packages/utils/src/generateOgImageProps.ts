@@ -34,6 +34,7 @@ export const generateOgImageParams = (props?: OgImageParams) => {
   const platform = props?.platform ?? ('trend-rights' as PlatformSlug)
 
   return {
+    ...props,
     bg,
     color,
     image: src,
@@ -41,6 +42,5 @@ export const generateOgImageParams = (props?: OgImageParams) => {
     flip,
     hasLine,
     platform,
-    ...props,
   }
 }

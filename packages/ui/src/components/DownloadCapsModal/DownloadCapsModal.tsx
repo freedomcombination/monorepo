@@ -57,13 +57,13 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
         const text = post?.description || undefined
         const capsSrc = getMediaUrl(post?.caps)
         const imageParams = post.imageParams && {
+          ...post.imageParams,
           image: imageSrc,
           title,
           text,
           scale: 1.5,
           platform: (post?.hashtag?.platform?.slug ??
             'trend-rights') as PlatformSlug,
-          ...post.imageParams,
         }
         const autoCapsPath = imageParams && getOgImageSrc(imageParams)
         const autoCapsSrc =
