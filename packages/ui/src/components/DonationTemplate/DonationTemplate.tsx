@@ -6,11 +6,6 @@ import {
   HStack,
   Heading,
   Image,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
   SimpleGrid,
   Slider,
   SliderFilledTrack,
@@ -37,6 +32,13 @@ import { Button, Tooltip } from '@fc/ui'
 import { ButtonLink } from '../ButtonLink'
 import { Container } from '../Container'
 import { FormItem } from '../FormItem'
+import {
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+} from '../NumberInput'
 import { PlatformList } from '../PlatformList'
 
 function generateSchema() {

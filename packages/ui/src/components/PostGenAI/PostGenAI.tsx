@@ -3,11 +3,6 @@ import { useState } from 'react'
 import {
   HStack,
   Heading,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
   Progress,
   Stack,
   Switch,
@@ -29,6 +24,13 @@ import { PostGenAIProps } from './types'
 import { Button } from '../Button'
 import { FormLabel, FormControl } from '../Form'
 import { ArchivePostType, useGenPostContext } from '../GenPostProvider'
+import {
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+} from '../NumberInput'
 
 const LANGUAGE_NAMES: Record<StrapiLocale, string> = {
   en: 'English',

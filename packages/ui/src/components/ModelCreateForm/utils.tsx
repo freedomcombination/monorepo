@@ -1,14 +1,4 @@
-import {
-  Box,
-  Flex,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Switch,
-  Textarea,
-} from '@chakra-ui/react'
+import { Box, Flex, Switch, Textarea } from '@chakra-ui/react'
 
 import { Post, StrapiModel } from '@fc/types'
 import { StrapiCollectionEndpoint } from '@fc/types'
@@ -20,6 +10,13 @@ import { MdFormItem } from '../MdFormItem'
 import { ModelCreateFormBodyProps } from '../ModelForm/types'
 import { ModelMedia } from '../ModelMedia'
 import { ModelSelect } from '../ModelSelect'
+import {
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+} from '../NumberInput'
 import { VideoPlayer } from '../VideoPlayer'
 
 export const renderCreateFormBody = <T extends StrapiModel>({
