@@ -1,6 +1,15 @@
 export default ({ env }) => ({
+  documentation: {
+    enabled: env('VERCEL_ENV') !== 'production',
+  },
   'import-export-entries': {
     enabled: true,
+    config: {
+      info: { version: '1.0.0' },
+      servers: [
+        { url: `${env('SERVER_URL')}/api`, description: 'Staging server' },
+      ],
+    },
   },
   email: {
     enabled: true,

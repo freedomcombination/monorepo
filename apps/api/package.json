@@ -28,6 +28,7 @@
     "@react-email/font": "0.0.7",
     "@react-email/render": "0.0.17",
     "@react-email/tailwind": "0.0.19",
+    "@strapi/plugin-documentation": "^4.25.8",
     "@strapi/plugin-i18n": "^4.25.8",
     "@strapi/plugin-sentry": "^4.25.8",
     "@strapi/plugin-users-permissions": "^4.25.8",
