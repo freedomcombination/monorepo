@@ -9,15 +9,6 @@ import { ObjectSchema } from 'yup'
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useUserFeedbackMutation } from '@fc/services'
 import { UserFeedbackCreateInput } from '@fc/types'
-import {
-  IconButton,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-} from '@fc/ui'
 
 import { createUserFeedbackSchema } from './schema'
 import {
@@ -25,6 +16,15 @@ import {
   CreateUserFeedbackFormProps,
 } from './types'
 import { FormItem } from '../FormItem'
+import { IconButton } from '../IconButton'
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '../Modal'
 
 export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
   isOpen,

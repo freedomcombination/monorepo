@@ -1,10 +1,11 @@
 import { FC, ReactNode } from 'react'
 
-import { HStack, IconButton, Spacer, Stack } from '@chakra-ui/react'
+import { HStack, Spacer, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { HiOutlineFilter } from 'react-icons/hi'
 import { VscListFilter } from 'react-icons/vsc'
 
+import { IconButton } from '../IconButton'
 import { Menu, MenuButton, MenuDivider, MenuList } from '../Menu'
 import { SearchForm } from '../SearchForm'
 

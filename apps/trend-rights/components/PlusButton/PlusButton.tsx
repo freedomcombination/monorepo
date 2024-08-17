@@ -65,7 +65,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
           <IconButton
             position={'fixed'}
             zIndex={'modal'}
-            isRound
+            rounded={'full'}
             right={4}
             bottom={4}
             borderRadius={'100px'}
@@ -86,7 +86,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
                 colorPalette={'primary'}
                 icon={<MdOutlineTrendingUp />}
                 disabled={statsDisclosure.open}
-                isRound
+                rounded={'full'}
                 onClick={onClickStats}
               />
 
@@ -95,7 +95,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
                 colorPalette={'primary'}
                 icon={<FaInfo />}
                 disabled={infoDisclosure.open}
-                isRound
+                rounded={'full'}
                 onClick={onClickInfo}
               />
             </Stack>

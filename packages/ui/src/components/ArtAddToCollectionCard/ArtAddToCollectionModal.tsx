@@ -5,6 +5,9 @@ import { useRouter } from 'next/router'
 
 import { useStrapiRequest } from '@fc/services'
 import { Art } from '@fc/types'
+
+import { ArtAddToCollectionGrid } from './ArtAddToCollectionGrid'
+import { ArtAddToCollectionModalProps } from './types'
 import {
   Modal,
   ModalBody,
@@ -12,10 +15,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from '@fc/ui'
-
-import { ArtAddToCollectionGrid } from './ArtAddToCollectionGrid'
-import { ArtAddToCollectionModalProps } from './types'
+} from '../Modal'
 import { PageHeader } from '../PageHeader'
 import { Pagination } from '../Pagination'
 

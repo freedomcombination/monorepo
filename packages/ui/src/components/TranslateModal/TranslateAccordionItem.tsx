@@ -2,10 +2,11 @@ import { Accordion, Badge, Box, HStack, Stack, Text } from '@chakra-ui/react'
 import { BsTranslate } from 'react-icons/bs'
 
 import { StrapiTranslatableModel } from '@fc/types'
-import { Button, Tooltip } from '@fc/ui'
 
 import { TranslateAccordionItemProps } from './types'
+import { Button } from '../Button'
 import { Flag } from '../Flag'
+import { Tooltip } from '../Tooltip'
 
 const localeColorSchemes = {
   en: 'purple',

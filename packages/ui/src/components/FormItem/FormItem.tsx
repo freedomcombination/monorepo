@@ -76,16 +76,13 @@ export const FormItem = forwardRef<
               {label}
             </FormLabel>
             {tooltip && (
-              <Tooltip
-                placement="top"
-                bg={'white'}
-                fontSize={'xs'}
-                color={'black'}
-                label={tooltip}
-                aria-label={tooltip}
-                cursor={'pointer'}
-              >
-                <Box color="gray.500">
+              <Tooltip hasArrow label={tooltip} aria-label={tooltip}>
+                <Box
+                  cursor={'pointer'}
+                  bg={'white'}
+                  fontSize={'xs'}
+                  color={'black'}
+                >
                   <TbInfoCircle />
                 </Box>
               </Tooltip>

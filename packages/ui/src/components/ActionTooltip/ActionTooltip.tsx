@@ -1,8 +1,7 @@
 import { FC } from 'react'
 
-import { Tooltip, TooltipProps } from '@fc/ui'
-
 import { ActionWrapper, ActionWrapperProps } from '../ActionWrapper'
+import { Tooltip, TooltipProps } from '../Tooltip'
 
 export type ActionTooltipProps = Omit<ActionWrapperProps<TooltipProps>, 'ui'>
 

@@ -2,16 +2,15 @@ import { FC } from 'react'
 
 import { Box } from '@chakra-ui/react'
 
+import { ArtModalProps } from './types'
+import { ArtWithDetails } from '../ArtWithDetails'
 import {
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-} from '@fc/ui'
-
-import { ArtModalProps } from './types'
-import { ArtWithDetails } from '../ArtWithDetails'
+} from '../Modal'
 
 export const ArtModal: FC<ArtModalProps> = ({
   art,

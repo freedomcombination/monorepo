@@ -12,11 +12,13 @@ import { TbPlus } from 'react-icons/tb'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { Role } from '@fc/types'
-import { Button, IconButton, Tooltip } from '@fc/ui'
 
 import { CreateRoleModal } from './CreateRoleModal'
 import { DeleteRoleModal } from './DeleteRoleModal'
 import { ProfileSelectModal } from './ProfileSelectModal'
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
+import { Tooltip } from '../Tooltip'
 import { WTable } from '../WTable'
 
 const RoleAction: FC<{

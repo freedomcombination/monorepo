@@ -1758,17 +1758,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/hooks@npm:3.0.0-next.14":
-  version: 3.0.0-next.14
-  resolution: "@chakra-ui/hooks@npm:3.0.0-next.14"
+"@chakra-ui/hooks@npm:3.0.0-next.15":
+  version: 3.0.0-next.15
+  resolution: "@chakra-ui/hooks@npm:3.0.0-next.15"
   dependencies:
-    "@chakra-ui/utils": "npm:3.0.0-next.14"
+    "@chakra-ui/utils": "npm:3.0.0-next.15"
     "@zag-js/element-size": "npm:0.64.0"
     copy-to-clipboard: "npm:3.3.3"
     framesync: "npm:6.1.2"
   peerDependencies:
     react: ">=18"
-  checksum: 10/56024dd651b4e0f3c1d49179068f5d66b67d1daea45709f2737a58d636dcdb3bf449b6c4452665e5afa71cb8736223fc3da5732311cec9ba66f6cd24f5c17072
+  checksum: 10/fa85110b4440dcc9d07232b5524bd6fce53b66030f0cf6f3a861af741de59319b9709e961fd67777fc9aa042bdd3b6bcc2ffd95c201d71910e3c97937eba2b80
   languageName: node
   linkType: hard
 
@@ -1786,14 +1786,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/react@npm:3.0.0-next.14":
-  version: 3.0.0-next.14
-  resolution: "@chakra-ui/react@npm:3.0.0-next.14"
+"@chakra-ui/react@npm:3.0.0-next.15":
+  version: 3.0.0-next.15
+  resolution: "@chakra-ui/react@npm:3.0.0-next.15"
   dependencies:
     "@ark-ui/anatomy": "npm:3.5.0"
     "@ark-ui/react": "npm:3.7.0"
-    "@chakra-ui/hooks": "npm:3.0.0-next.14"
-    "@chakra-ui/utils": "npm:3.0.0-next.14"
+    "@chakra-ui/hooks": "npm:3.0.0-next.15"
+    "@chakra-ui/utils": "npm:3.0.0-next.15"
     "@emotion/is-prop-valid": "npm:1.2.2"
     "@emotion/serialize": "npm:1.1.4"
     "@emotion/use-insertion-effect-with-fallbacks": "npm:1.0.1"
@@ -1805,7 +1805,7 @@ __metadata:
     "@emotion/react": ">=11"
     react: ">=18"
     react-dom: ">=18"
-  checksum: 10/dfe3bd8c8f1156e81d7b3dc0e87915ec0af9b5be08bb31ba14780228465a82c4e7660e8382ce428a66bd5e83c494e4488c236022ae4e06f97031f1a2649093a1
+  checksum: 10/c5cc80cde5ad8e6aed3041fbe50ac7970c2aa9106072e408683c3d57f4d79b833a167feef4e6442f3598ccb968a82b2f6c028b77ade656c8128824dd45510679
   languageName: node
   linkType: hard
 
@@ -1884,10 +1884,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/utils@npm:3.0.0-next.14":
-  version: 3.0.0-next.14
-  resolution: "@chakra-ui/utils@npm:3.0.0-next.14"
-  checksum: 10/cb7ef04b8da67de5f67404d5c01c0a9e2bd81bc3326b082b327721308203d7f41045cbed8188677fb3ebd42606d444629c573a9aaadd3f3b1ac6de0cf295fe4b
+"@chakra-ui/utils@npm:3.0.0-next.15":
+  version: 3.0.0-next.15
+  resolution: "@chakra-ui/utils@npm:3.0.0-next.15"
+  checksum: 10/a8644a0054130b0a7f28d12b759508b2094ea2e6005c7646334a3aad0d97e3946c1dfdde0e90a4e2a1d1dfc852d77857ad5996f8b2bd195bf86a80b09c33e312
   languageName: node
   linkType: hard
 
@@ -18013,7 +18013,7 @@ __metadata:
   resolution: "fc-turbo@workspace:."
   dependencies:
     "@chakra-ui/next-js": "npm:^2.2.0"
-    "@chakra-ui/react": "npm:3.0.0-next.14"
+    "@chakra-ui/react": "npm:3.0.0-next.15"
     "@chakra-ui/storybook-addon": "npm:^5.1.0"
     "@chakra-ui/theme-utils": "npm:^2.0.21"
     "@ctrl/tinycolor": "npm:^4.1.0"

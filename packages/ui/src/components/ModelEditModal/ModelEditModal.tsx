@@ -3,6 +3,8 @@ import { Center, Heading, Spinner } from '@chakra-ui/react'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { StrapiModel } from '@fc/types'
+
+import { ModelEditModalProps } from './types'
 import {
   Modal,
   ModalBody,
@@ -10,9 +12,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from '@fc/ui'
-
-import { ModelEditModalProps } from './types'
+} from '../Modal'
 import { ModelEditForm } from '../ModelEditForm'
 
 export const ModelEditModal = <T extends StrapiModel>({

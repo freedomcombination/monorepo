@@ -27,8 +27,8 @@ import * as yup from 'yup'
 
 import { DONATION_REQUEST_LINK } from '@fc/config'
 import { Platform } from '@fc/types'
-import { Button, Tooltip } from '@fc/ui'
 
+import { Button } from '../Button'
 import { ButtonLink } from '../ButtonLink'
 import { Container } from '../Container'
 import { FormItem } from '../FormItem'
@@ -40,6 +40,7 @@ import {
   NumberInputStepper,
 } from '../NumberInput'
 import { PlatformList } from '../PlatformList'
+import { Tooltip } from '../Tooltip'
 
 function generateSchema() {
   return yup.object().shape({

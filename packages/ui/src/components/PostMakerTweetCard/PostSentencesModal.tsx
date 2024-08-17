@@ -2,16 +2,16 @@ import { useDisclosure } from '@chakra-ui/hooks'
 import { FaCogs } from 'react-icons/fa'
 
 import { useHashtag } from '@fc/services'
+
+import { ActionStack, PostSentenceForm } from '../../components'
+import { IconButton } from '../IconButton'
 import {
   Modal,
   ModalBody,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from '@fc/ui'
-
-import { ActionStack, PostSentenceForm } from '../../components'
-import { IconButton } from '../IconButton'
+} from '../Modal'
 import { usePostContext } from '../PostProvider'
 
 export const PostSentencesModal = () => {
@@ -26,7 +26,7 @@ export const PostSentencesModal = () => {
       */
       canUpdate="posts"
     >
-      <Modal isOpen={open} onClose={onClose} size={'6xl'}>
+      <Modal isOpen={open} onClose={onClose} size={'xl'}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Manage Post Sentences</ModalHeader>

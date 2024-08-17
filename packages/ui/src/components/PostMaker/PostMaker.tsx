@@ -3,21 +3,13 @@ import { FC } from 'react'
 import { Box, Grid, Skeleton, useBreakpointValue } from '@chakra-ui/react'
 
 import { useHashtag } from '@fc/services'
-import {
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalOverlay,
-} from '@fc/ui'
 
 import { PostSentenceRefDrawer } from './PostSentenceRefDrawer'
+import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '../Drawer'
 import { useHashtagContext } from '../HashtagProvider'
 import { HashtagStats } from '../HashtagStats'
 import { MentionList } from '../MentionList'
+import { Modal, ModalBody, ModalContent, ModalOverlay } from '../Modal'
 import { PostMakerTweetList } from '../PostMakerTweetCard'
 import { TimelineTrendsTabs } from '../TimelineTrendsTabs'
 import { TrendTabs } from '../TrendTabs'

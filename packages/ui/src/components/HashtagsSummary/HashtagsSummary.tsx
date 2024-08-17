@@ -4,10 +4,12 @@ import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { Hashtag } from '@fc/types'
-import { ButtonLink, Container, WImage } from '@fc/ui'
 import { getItemLink } from '@fc/utils'
 
 import { HashtagMiniCard } from './HashtagMiniCard'
+import { ButtonLink } from '../ButtonLink'
+import { Container } from '../Container'
+import { WImage } from '../WImage'
 
 type HashtagsSummaryProps = {
   hashtags: Hashtag[]

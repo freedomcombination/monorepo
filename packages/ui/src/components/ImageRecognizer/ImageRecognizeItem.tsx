@@ -1,10 +1,11 @@
 import { FC } from 'react'
 
-import { IconButton, Image, SimpleGrid } from '@chakra-ui/react'
+import { Image, SimpleGrid } from '@chakra-ui/react'
 import { FaTimes } from 'react-icons/fa'
 
 import { ImageRecognizeItemProps } from './types'
 import { ContentEditable } from '../ContentEditable'
+import { IconButton } from '../IconButton'
 
 export const ImageRecognizeItem: FC<ImageRecognizeItemProps> = ({
   onUpdate,
@@ -30,7 +31,7 @@ export const ImageRecognizeItem: FC<ImageRecognizeItemProps> = ({
       <IconButton
         aria-label="Remove image"
         pos={'absolute'}
-        isRound
+        rounded={'full'}
         top={-4}
         right={-4}
         colorPalette={'red'}

@@ -23,7 +23,7 @@ export const AcademyCard: FC<AcademyCardProps> = ({
     <LinkBox as="article">
       <LinkOverlay as={Link} href={href}>
         <AspectRatio ratio={1}>
-          <Card
+          <Card.Root
             rounded="xl"
             position="relative"
             role="group"
@@ -66,7 +66,7 @@ export const AcademyCard: FC<AcademyCardProps> = ({
                 </Text>
               )}
             </Stack>
-          </Card>
+          </Card.Root>
         </AspectRatio>
       </LinkOverlay>
     </LinkBox>

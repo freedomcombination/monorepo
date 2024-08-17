@@ -6,8 +6,11 @@ import { FaArrowRight } from 'react-icons/fa'
 import { HiOutlineCalendar } from 'react-icons/hi'
 
 import { Hashtag } from '@fc/types'
-import { ButtonLink, FormattedDate, WImage } from '@fc/ui'
 import { getItemLink } from '@fc/utils'
+
+import { ButtonLink } from '../ButtonLink'
+import { FormattedDate } from '../FormattedDate'
+import { WImage } from '../WImage'
 
 type HashtagCardProps = {
   item: Hashtag

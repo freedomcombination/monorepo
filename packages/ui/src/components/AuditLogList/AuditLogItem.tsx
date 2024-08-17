@@ -22,7 +22,8 @@ import {
 import { MdModeEditOutline, MdPublish, MdUnpublished } from 'react-icons/md'
 
 import { AuditLog, AuditLogAction } from '@fc/types'
-import { Tooltip } from '@fc/ui'
+
+import { Tooltip } from '../Tooltip'
 
 type AuditLogItemProps = {
   log: AuditLog

@@ -4,7 +4,8 @@ import { Link } from '@chakra-ui/next-js'
 import { Card, Heading, Stack, Text } from '@chakra-ui/react'
 
 import { Hashtag } from '@fc/types'
-import { WImage } from '@fc/ui'
+
+import { WImage } from '../WImage'
 
 type HashtagMiniCardProps = {
   hashtag: Hashtag

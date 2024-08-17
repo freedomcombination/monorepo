@@ -5,10 +5,11 @@ import { Heading, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { SITE_URL } from '@fc/config'
-import { Caps, ShareButtons } from '@fc/ui'
 import { getItemLink, mapHashtagToOgParams } from '@fc/utils'
 
 import { HashtagAnnouncementProps } from './types'
+import { Caps } from '../Caps'
+import { ShareButtons } from '../ShareButtons'
 
 export const HashtagAnnouncement: FC<HashtagAnnouncementProps> = ({
   hashtag,

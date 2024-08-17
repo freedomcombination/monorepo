@@ -9,7 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from '@fc/ui'
+} from '../Modal'
 
 export type ModelPdfProps = {
   title?: string

@@ -1,8 +1,6 @@
-import { BoxProps } from '@chakra-ui/react'
-
 import { StrapiEndpoint } from '@fc/types'
 
-export type ActionWrapperProps<T extends BoxProps> = {
+export type ActionWrapperProps<T> = {
   canApprove?: StrapiEndpoint
   canCreate?: StrapiEndpoint
   canDelete?: StrapiEndpoint

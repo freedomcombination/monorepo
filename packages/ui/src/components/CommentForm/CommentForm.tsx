@@ -158,7 +158,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
               display={{ base: 'flex', sm: 'none' }}
               aria-label="Send Comment"
               icon={<FiArrowRight />}
-              isRound
+              rounded={'full'}
               isLoading={isPending}
               disabled={!isValid}
               type="submit"

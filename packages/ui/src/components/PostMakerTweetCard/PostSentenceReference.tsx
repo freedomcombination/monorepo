@@ -15,7 +15,7 @@ export const PostSentenceReference: FC = () => {
       aria-label="Manage sentences"
       icon={<FaInfo />}
       variant={'outline'}
-      isRound
+      rounded={'full'}
       onClick={() => setSentence(sentence)}
     />
   )
