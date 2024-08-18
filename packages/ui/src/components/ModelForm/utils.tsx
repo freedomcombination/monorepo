@@ -4,15 +4,17 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Switch,
+  Textarea,
+} from '@chakra-ui/react'
+
+import {
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
-  Switch,
-  Textarea,
-} from '@chakra-ui/react'
-
+} from '@fc/chakra'
 import { Post, StrapiModel } from '@fc/types'
 import { StrapiCollectionEndpoint } from '@fc/types'
 
@@ -130,7 +132,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           key={index}
           name={field.name as string}
           label={label}
-          isRequired={field.isRequired}
+          required={field.isRequired}
           errors={errors}
           control={control}
           _disabled={disabledStyle}

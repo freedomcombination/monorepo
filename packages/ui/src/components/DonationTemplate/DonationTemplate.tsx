@@ -8,11 +8,6 @@ import {
   HStack,
   Heading,
   Image,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
   SimpleGrid,
   Slider,
   SliderFilledTrack,
@@ -32,7 +27,14 @@ import { FaDonate, FaExternalLinkAlt } from 'react-icons/fa'
 import QRCode from 'react-qr-code'
 import * as yup from 'yup'
 
-import { Tooltip } from '@fc/chakra'
+import {
+  Tooltip,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+} from '@fc/chakra'
 import { DONATION_REQUEST_LINK } from '@fc/config'
 import { Platform } from '@fc/types'
 

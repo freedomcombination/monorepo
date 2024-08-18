@@ -4,15 +4,17 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Switch,
+  Textarea,
+} from '@chakra-ui/react'
+
+import {
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
-  Switch,
-  Textarea,
-} from '@chakra-ui/react'
-
+} from '@fc/chakra'
 import { Post, StrapiModel } from '@fc/types'
 import { StrapiCollectionEndpoint } from '@fc/types'
 

@@ -6,11 +6,6 @@ import {
   FormLabel,
   HStack,
   Heading,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
   Progress,
   Stack,
   Switch,
@@ -24,6 +19,13 @@ import { FaSave } from 'react-icons/fa'
 import { FaStop, FaTrash } from 'react-icons/fa6'
 import { RiAiGenerate } from 'react-icons/ri'
 
+import {
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+} from '@fc/chakra'
 import { StrapiLocale } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
@@ -173,8 +175,8 @@ export const PostGenAI = ({
                   step={1}
                   min={0}
                   max={40}
-                  defaultValue={5}
-                  onChange={(a, b) => setNumberOfDescriptions(b)}
+                  defaultValue={'5'}
+                  onValueChange={v => setNumberOfDescriptions(v.valueAsNumber)}
                 >
                   <NumberInputField bg={'whiteAlpha.700'} />
                   <NumberInputStepper>
@@ -192,8 +194,8 @@ export const PostGenAI = ({
                 step={1}
                 min={0}
                 max={40}
-                defaultValue={5}
-                onChange={(a, b) => setNumberOfSentences(b)}
+                defaultValue={'5'}
+                onValueChange={b => setNumberOfSentences(b.valueAsNumber)}
               >
                 <NumberInputField bg={'whiteAlpha.700'} />
                 <NumberInputStepper>
@@ -211,9 +213,11 @@ export const PostGenAI = ({
                   step={10}
                   min={80}
                   max={200}
-                  defaultValue={charLimitOfDescriptions}
-                  value={charLimitOfDescriptions}
-                  onChange={(a, b) => setCharLimitOfDescriptions(b)}
+                  defaultValue={`${charLimitOfDescriptions}`}
+                  value={`${charLimitOfDescriptions}`}
+                  onValueChange={v =>
+                    setCharLimitOfDescriptions(v.valueAsNumber)
+                  }
                 >
                   <NumberInputField bg={'whiteAlpha.700'} />
                   <NumberInputStepper>
@@ -231,9 +235,9 @@ export const PostGenAI = ({
                 step={10}
                 min={100}
                 max={200}
-                defaultValue={charLimitOfSentences}
-                value={charLimitOfSentences}
-                onChange={(a, b) => setCharLimitOfSentences(b)}
+                defaultValue={`${charLimitOfSentences}`}
+                value={`${charLimitOfSentences}`}
+                onValueChange={v => setCharLimitOfSentences(v.valueAsNumber)}
               >
                 <NumberInputField bg={'whiteAlpha.700'} />
                 <NumberInputStepper>
