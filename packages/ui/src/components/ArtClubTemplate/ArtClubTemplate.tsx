@@ -4,10 +4,6 @@ import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Box,
   Center,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
   Grid,
   HStack,
   IconButton,
@@ -19,6 +15,7 @@ import { useTranslation } from 'next-i18next'
 import { parse } from 'querystring'
 import { MdMenuOpen } from 'react-icons/md'
 
+import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
 import { Art, Category } from '@fc/types'
@@ -44,7 +41,7 @@ export const ArtClubTemplate: FC = () => {
 
   const changeParam = useChangeParams()
   const [loading, setLoading] = useState(false)
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onToggle } = useDisclosure()
   const { t } = useTranslation()
 
   const categoryQuery = useStrapiRequest<Category>({
@@ -82,7 +79,7 @@ export const ArtClubTemplate: FC = () => {
 
   return (
     <>
-      <Drawer isOpen={isOpen} onClose={onClose}>
+      <Drawer open={open} onOpenChange={onToggle}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody py={8}>
@@ -103,7 +100,7 @@ export const ArtClubTemplate: FC = () => {
           gridTemplateColumns={{ base: '1fr', lg: '200px 1fr' }}
         >
           <Box display={{ base: 'none', lg: 'block' }}>
-            {categoryQuery.loading ? (
+            {categoryQuery.isLoading ? (
               <Stack
                 direction={{ base: 'row', lg: 'column' }}
                 justify="stretch"
@@ -147,7 +144,7 @@ export const ArtClubTemplate: FC = () => {
             </HStack>
 
             <MasonryGrid columnGap={2} rowGap={2}>
-              {artsQuery.loading
+              {artsQuery.isLoading
                 ? Array.from({ length: 12 }).map((_, i) => (
                     <ArtCardSkeleton
                       key={'masonry-grid-skeleton' + i}
@@ -172,7 +169,7 @@ export const ArtClubTemplate: FC = () => {
                   })}
             </MasonryGrid>
 
-            {!artsQuery.loading && (
+            {!artsQuery.isLoading && (
               <Center>
                 {artsQuery.data?.meta?.pagination && (
                   <Pagination

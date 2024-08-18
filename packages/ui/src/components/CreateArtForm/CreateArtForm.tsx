@@ -139,7 +139,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
     <>
       {/* SUCCESS ALERT */}
       <ArtCreateSuccessAlert
-        isOpen={successDisclosure.isOpen}
+        isOpen={successDisclosure.open}
         onClose={successDisclosure.onClose}
         ref={cancelRef}
       />
@@ -153,10 +153,10 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
 
       <Modal
         centered
-        closeOnOverlayClick={false}
-        isOpen={formDisclosure.isOpen}
-        onClose={closeForm}
-        size={user ? '4xl' : 'md'}
+        closeOnInteractOutside={false}
+        open={formDisclosure.open}
+        onOpenChange={e => (e.open ? formDisclosure.onOpen() : closeForm())}
+        size={user ? 'xl' : 'md'}
       >
         <ModalOverlay />
         <ModalContent>
@@ -199,7 +199,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                 >
                   <FormItem
                     name="title"
-                    isRequired
+                    required
                     errors={errors}
                     register={register}
                   />

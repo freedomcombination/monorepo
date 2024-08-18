@@ -51,7 +51,6 @@ export const ModelCreateModal = <T extends StrapiModel>({
         leftIcon={<FaPlus />}
         onClick={formDisclosure.onOpen}
         disabled={!hasPermission}
-        disabled={!hasPermission}
         {...buttonProps}
       >
         {children}
@@ -59,10 +58,10 @@ export const ModelCreateModal = <T extends StrapiModel>({
 
       <Modal
         centered
-        closeOnOverlayClick={true}
-        isOpen={formDisclosure.isOpen}
-        onClose={formDisclosure.onClose}
-        size="6xl"
+        closeOnInteractOutside={true}
+        open={formDisclosure.open}
+        onOpenChange={formDisclosure.onToggle}
+        size="xl"
         scrollBehavior="inside"
       >
         <ModalOverlay />

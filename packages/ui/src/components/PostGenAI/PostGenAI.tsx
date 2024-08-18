@@ -88,30 +88,36 @@ export const PostGenAI = ({
         useFakeApi,
       }
 
-  const { completion, input, stop, loading, handleInputChange, handleSubmit } =
-    useCompletion({
-      api: apiUrl,
-      initialInput: content,
-      body,
-      onFinish(prompt: string, completion: string) {
-        const parsedCompletion = parseCompleted(completion)
-        const archived = addPosts(archiveContentId, parsedCompletion)
-        onSuccess?.(archived)
-      },
-      onError(error) {
-        if (typeof error?.message === 'string') {
-          if (error.message.includes('You exceeded your current quota')) {
-            toastMessage('Error', 'You exceeded your current quota', 'error')
+  const {
+    completion,
+    input,
+    stop,
+    isLoading,
+    handleInputChange,
+    handleSubmit,
+  } = useCompletion({
+    api: apiUrl,
+    initialInput: content,
+    body,
+    onFinish(prompt: string, completion: string) {
+      const parsedCompletion = parseCompleted(completion)
+      const archived = addPosts(archiveContentId, parsedCompletion)
+      onSuccess?.(archived)
+    },
+    onError(error) {
+      if (typeof error?.message === 'string') {
+        if (error.message.includes('You exceeded your current quota')) {
+          toastMessage('Error', 'You exceeded your current quota', 'error')
 
-            return
-          }
+          return
         }
+      }
 
-        toastMessage('Error', t('contact.form.failed'), 'error')
-      },
-    })
+      toastMessage('Error', t('contact.form.failed'), 'error')
+    },
+  })
 
-  const completed = loading ? parseIncomplete(completion) : null
+  const completed = isLoading ? parseIncomplete(completion) : null
 
   const handleSave = async () => {
     setIsSaving(true)
@@ -267,13 +273,13 @@ export const PostGenAI = ({
             <Group wrap={'wrap'}>
               <Button
                 leftIcon={<RiAiGenerate />}
-                disabled={loading}
+                disabled={isLoading}
                 type="submit"
                 colorScheme={colorScheme}
               >
                 {t('generate')}
               </Button>
-              {loading && (
+              {isLoading && (
                 <Button
                   leftIcon={<FaStop />}
                   type="button"
@@ -311,7 +317,7 @@ export const PostGenAI = ({
         </Stack>
       </form>
 
-      {loading && completed?.length && posts.length === 0 && (
+      {isLoading && completed?.length && posts.length === 0 && (
         <Stack gap={4} py={4} transition={'0.5s'} transitionProperty={'all'}>
           <Progress
             size="xs"

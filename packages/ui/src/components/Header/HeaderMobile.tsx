@@ -1,16 +1,16 @@
 import { FC } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
+import { HStack, IconButton } from '@chakra-ui/react'
+import { FaBars } from 'react-icons/fa'
+
 import {
   Drawer,
   DrawerBody,
   DrawerContent,
-  DrawerHeader,
   DrawerOverlay,
-  HStack,
-  IconButton,
-} from '@chakra-ui/react'
-import { FaBars } from 'react-icons/fa'
+  DrawerHeader,
+} from '@fc/chakra'
 
 import { HeaderMobileNav } from './HeaderMobileNav'
 import { ProfileMenu } from './ProfileMenu'
@@ -24,12 +24,12 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
   hasProfile,
   isLoggedIn,
 }) => {
-  const { isOpen, onToggle, onClose } = useDisclosure()
+  const { open, onToggle } = useDisclosure()
   const isScrolled = useScroll()
 
   return (
     <HStack display={{ base: 'flex', lg: 'none' }}>
-      <Drawer isOpen={isOpen} onClose={onClose}>
+      <Drawer open={open} onOpenChange={onToggle}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader>Menu</DrawerHeader>

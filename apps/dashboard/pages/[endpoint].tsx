@@ -306,7 +306,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         </ModelEditModal>
       )}
 
-      {loading || endpointQuery.isPending || endpointQuery.loading ? (
+      {loading || endpointQuery.isPending || endpointQuery.isLoading ? (
         <Center h={'full'}>
           <Spinner size={'xl'} color={'primary.500'} />
         </Center>

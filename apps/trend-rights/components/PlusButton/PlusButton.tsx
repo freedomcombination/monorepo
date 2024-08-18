@@ -56,6 +56,14 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
     }
   }
 
+  const onOpen = () => {
+    if (activeButton === 'info') {
+      infoDisclosure.onOpen()
+    } else {
+      statsDisclosure.onOpen()
+    }
+  }
+
   return (
     <Box>
       <Popover
@@ -89,7 +97,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
                   aria-label={'stats'}
                   colorScheme={'primary'}
                   icon={<MdOutlineTrendingUp />}
-                  disabled={statsDisclosure.isOpen}
+                  disabled={statsDisclosure.open}
                   isRound
                   onClick={onClickStats}
                 />
@@ -98,7 +106,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
                   aria-label={'info'}
                   colorScheme={'primary'}
                   icon={<FaInfo />}
-                  disabled={infoDisclosure.isOpen}
+                  disabled={infoDisclosure.open}
                   isRound
                   onClick={onClickInfo}
                 />
@@ -108,10 +116,10 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
         </Portal>
       </Popover>
       <Modal
-        isOpen={infoDisclosure.isOpen}
-        onClose={onClose}
+        open={infoDisclosure.open}
+        onOpenChange={e => (e.open ? onOpen() : onClose())}
         centered
-        size={'2xl'}
+        size={'xl'}
       >
         <ModalOverlay />
         <ModalContent>
@@ -121,8 +129,8 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
         </ModalContent>
       </Modal>
       <Modal
-        isOpen={statsDisclosure.isOpen}
-        onClose={onClose}
+        open={statsDisclosure.open}
+        onOpenChange={e => (e.open ? onOpen() : onClose())}
         centered
         size={'xl'}
       >

@@ -149,7 +149,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         demoPermissions,
         error,
         isAdmin,
-        isAuthModalOpen: authModalDisclosure.isOpen,
+        isAuthModalOpen: authModalDisclosure.open,
         loading,
         permissions,
         profile,

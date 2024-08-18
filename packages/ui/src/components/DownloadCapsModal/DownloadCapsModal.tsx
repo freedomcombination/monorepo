@@ -1,8 +1,13 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useState } from 'react'
 
 import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
+import { Button, Stack } from '@chakra-ui/react'
+import { saveAs } from 'file-saver'
+import JSZip from 'jszip'
+import { useRouter } from 'next/router'
+import { FaDownload } from 'react-icons/fa'
+
 import {
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -10,13 +15,7 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  Stack,
-} from '@chakra-ui/react'
-import { saveAs } from 'file-saver'
-import JSZip from 'jszip'
-import { useRouter } from 'next/router'
-import { FaDownload } from 'react-icons/fa'
-
+} from '@fc/chakra'
 import { SITE_URL } from '@fc/config'
 import { useStrapiRequest } from '@fc/services'
 import { PlatformSlug, Post } from '@fc/types'
@@ -30,9 +29,8 @@ type DownloadCapsModalType = {
 }
 
 export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose, onToggle } = useDisclosure()
   const [loading, setLoading] = useState(false)
-  const btnRef = useRef<HTMLButtonElement>(null)
 
   const { locale } = useRouter()
 
@@ -45,9 +43,6 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
     locale,
     includeDrafts: true,
   })
-  const handleClose = () => {
-    onClose()
-  }
 
   const postMedias =
     postsQuery?.data?.data
@@ -119,15 +114,8 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
 
   return (
     <>
-      <Button ref={btnRef} onClick={onOpen}>
-        Download Caps
-      </Button>
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={handleClose}
-        finalFocusRef={btnRef}
-      >
+      <Button onClick={onOpen}>Download Caps</Button>
+      <Drawer open={open} placement="end" onOpenChange={onToggle}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
@@ -179,7 +167,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
               variant="outline"
               colorScheme={'gray'}
               mr={3}
-              onClick={handleClose}
+              onClick={onClose}
             >
               Cancel
             </Button>

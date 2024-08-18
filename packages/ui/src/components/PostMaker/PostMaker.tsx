@@ -1,16 +1,8 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Grid,
-  Skeleton,
-  useBreakpointValue,
-} from '@chakra-ui/react'
+import { Box, Grid, Skeleton, useBreakpointValue } from '@chakra-ui/react'
 
+import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@fc/chakra'
 import { Modal, ModalBody, ModalContent, ModalOverlay } from '@fc/chakra'
 import { useHashtag } from '@fc/services'
 
@@ -39,9 +31,9 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
   return (
     <>
       <Modal
-        closeOnOverlayClick={true}
-        isOpen={!isMobile && mentionsDisclosure.isOpen}
-        onClose={mentionsDisclosure.onClose}
+        closeOnInteractOutside={true}
+        open={!isMobile && mentionsDisclosure.open}
+        onOpenChange={mentionsDisclosure.onToggle}
       >
         <ModalOverlay />
         <ModalContent>
@@ -51,9 +43,9 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
         </ModalContent>
       </Modal>
       <Modal
-        closeOnOverlayClick={true}
-        isOpen={!isMobile && trendsDisclosure.isOpen}
-        onClose={trendsDisclosure.onClose}
+        closeOnInteractOutside={true}
+        open={!isMobile && trendsDisclosure.open}
+        onOpenChange={trendsDisclosure.onToggle}
       >
         <ModalOverlay />
         <ModalContent>
@@ -63,9 +55,9 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
         </ModalContent>
       </Modal>
       <Drawer
-        isOpen={archiveDisclosure.isOpen}
-        onClose={archiveDisclosure.onClose}
-        placement="right"
+        open={archiveDisclosure.open}
+        onOpenChange={archiveDisclosure.onToggle}
+        placement="end"
         size={'md'}
       >
         <DrawerOverlay />
@@ -76,8 +68,8 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
         </DrawerContent>
       </Drawer>
       <Drawer
-        isOpen={isMobile && mentionsDisclosure.isOpen}
-        onClose={mentionsDisclosure.onClose}
+        open={isMobile && mentionsDisclosure.open}
+        onOpenChange={mentionsDisclosure.onToggle}
         placement={'bottom'}
       >
         <DrawerOverlay />
@@ -88,8 +80,8 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
         </DrawerContent>
       </Drawer>
       <Drawer
-        isOpen={isMobile && trendsDisclosure.isOpen}
-        onClose={trendsDisclosure.onClose}
+        open={isMobile && trendsDisclosure.open}
+        onOpenChange={trendsDisclosure.onToggle}
         placement={'bottom'}
       >
         <DrawerOverlay />

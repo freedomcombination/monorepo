@@ -392,7 +392,6 @@ export const ModelEditForm = <T extends StrapiModel>({
                       disabled={field.blockEdit}
                       colorScheme={'primary'}
                       size={'lg'}
-                      disabled={!isEditing}
                       isChecked={!!watch(field.name as string)}
                       onChange={e => {
                         setValue(field.name as string, e.target.checked)
@@ -440,7 +439,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                     <MdFormItem
                       name={field.name as string}
                       disabled={field.blockEdit || !isEditing}
-                      isRequired={field.isRequired}
+                      required={field.isRequired}
                       errors={errors}
                       control={control}
                       _disabled={disabledStyle}
@@ -525,7 +524,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionStack isVisible={endpoint === 'collections'} gap={0}>
               <ArtAddToCollectionModal
                 collection={model as any}
-                isOpen={artModalDisclosure.isOpen}
+                isOpen={artModalDisclosure.open}
                 onClose={artModalDisclosure.onClose}
               />
               <ActionButton

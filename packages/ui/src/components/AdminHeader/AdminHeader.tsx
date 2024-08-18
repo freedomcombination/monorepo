@@ -3,10 +3,6 @@ import { FC } from 'react'
 import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Button,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
   HStack,
   Heading,
   IconButton,
@@ -20,6 +16,7 @@ import { FaGear } from 'react-icons/fa6'
 import { HiMenu } from 'react-icons/hi'
 import { MdOutlineNotifications } from 'react-icons/md'
 
+import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@fc/chakra'
 import {
   Modal,
   ModalBody,
@@ -44,11 +41,11 @@ type AdminHeaderProps = {
 export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
   const { user, openAuthModal, loading } = useAuthContext()
   const { isSubscribed } = useWebPushContext()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onToggle } = useDisclosure()
   const {
-    isOpen: isOpenProfile,
+    open: isOpenProfile,
     onOpen: onOpenProfile,
-    onClose: onCloseProfile,
+    onToggle: onToggleProfile,
   } = useDisclosure()
   const router = useRouter()
   const slugs = router.asPath.split('/')
@@ -110,9 +107,9 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
               onClick={onOpenProfile}
             />
             <Modal
-              isOpen={isOpenProfile}
-              onClose={onCloseProfile}
-              size={'5xl'}
+              open={isOpenProfile}
+              onOpenChange={onToggleProfile}
+              size={'xl'}
               scrollBehavior={'inside'}
               centered
             >
@@ -167,7 +164,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
           display={{ base: 'flex', lg: 'none' }}
           onClick={onOpen}
         />
-        <Drawer isOpen={isOpen} onClose={onClose} placement={'right'}>
+        <Drawer open={open} onOpenChange={onToggle} placement={'end'}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerBody px={0}>

@@ -31,14 +31,14 @@ export const useRoles = () => {
 export const useRole = (roleId?: number) => {
   const { token } = useAuthContext()
 
-  const { data, loading, refetch } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ['role', roleId],
     queryFn: () => getRole(token, roleId),
   })
 
   return {
     data: data?.data,
-    loading,
+    isLoading,
     refetch,
   }
 }

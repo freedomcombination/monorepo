@@ -54,3 +54,7 @@ export const DrawerFooter = ChakraDrawer.Footer
 export const DrawerHeader = ChakraDrawer.Header
 export const DrawerBody = ChakraDrawer.Body
 export const DrawerBackdrop = ChakraDrawer.Backdrop
+
+export const Drawer = DrawerRoot
+export const DrawerOverlay = DrawerBackdrop
+export const DrawerCloseButton = DrawerCloseTrigger

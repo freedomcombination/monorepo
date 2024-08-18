@@ -112,7 +112,7 @@ export const ArtCard: FC<ArtCardProps> = ({
     <>
       <ArtModal
         art={art}
-        isOpen={artModalDisclosure.isOpen}
+        isOpen={artModalDisclosure.open}
         onClose={artModalDisclosure.onClose}
         refetch={refetch}
       />
