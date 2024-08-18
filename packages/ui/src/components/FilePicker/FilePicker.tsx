@@ -39,7 +39,7 @@ const FilePicker: FC<FilePickerProps> = ({
         })
         .use(ImageEditor),
     // TODO: Investigate why this is needed to prevent uppy from using the same instance
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
     [id],
   )
 
