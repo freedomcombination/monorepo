@@ -191,7 +191,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
               <SimpleGrid columns={{ base: 1, lg: 2 }} gap={4}>
                 <FilePicker onLoaded={setImages} />
                 <Stack
-                  spacing={4}
+                  gap={4}
                   as="form"
                   onSubmit={handleSubmit(handleCreateArt)}
                 >

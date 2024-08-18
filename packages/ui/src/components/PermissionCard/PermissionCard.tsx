@@ -131,7 +131,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
       borderColor={'gray.100'}
       borderWidth={1}
       borderRadius={12}
-      spacing={4}
+      gap={4}
     >
       <Box
         position={'absolute'}

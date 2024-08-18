@@ -39,7 +39,7 @@ export const PostMakerTweetList: FC<PostMakerTweetListProps> = ({
 
   return (
     <Stack>
-      <Stack borderWidth={1} spacing={0} divider={<Divider />}>
+      <Stack borderWidth={1} gap={0} divider={<Divider />}>
         {sortedPosts.map(post => {
           return (
             <PostProvider key={post.id} post={post}>

@@ -119,7 +119,7 @@ export const TweetCard: FC<TweetCardProps> = ({
           />
         )}
 
-        <Stack flex={1} spacing={4}>
+        <Stack flex={1} gap={4}>
           {/* Tweet Header */}
           <HStack justify={'space-between'} title={tweet.user?.username}>
             {tweet.user && (

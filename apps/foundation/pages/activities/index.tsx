@@ -85,7 +85,7 @@ const Activities = () => {
           </Container>
         </>
       ) : (
-        <Stack minH="inherit" justify="center" align="center" spacing={8}>
+        <Stack minH="inherit" justify="center" align="center" gap={8}>
           <Image h={200} src="/images/no-blog.svg" alt="no blog" />
           <Text textAlign="center" fontSize="lg">
             Sorry! No activities published in this language.

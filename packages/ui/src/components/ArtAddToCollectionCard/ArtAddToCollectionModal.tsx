@@ -62,7 +62,7 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
             </HStack>
           </ModalHeader>
           <ModalBody>
-            <Stack spacing={8}>
+            <Stack gap={8}>
               {isLoading && (
                 <Center>
                   <Spinner />

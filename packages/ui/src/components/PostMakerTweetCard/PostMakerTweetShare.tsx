@@ -39,7 +39,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
       <PopoverContent w={'max'}>
         <PopoverArrow />
         <PopoverBody>
-          <HStack spacing={2}>
+          <HStack gap={2}>
             <FacebookShareButton quote={content} url={url}>
               <IconButton
                 as="span"

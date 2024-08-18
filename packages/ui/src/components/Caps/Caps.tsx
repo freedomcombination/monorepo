@@ -145,7 +145,7 @@ export const Caps = forwardRef<CapsProps, 'div'>(
                     ? dimensions.padding
                     : dimensions.image + dimensions.shape
                 }px`}
-                spacing={`${dimensions.font / 2}px`}
+                gap={`${dimensions.font / 2}px`}
                 userSelect={'none'}
                 justify={'center'}
               >

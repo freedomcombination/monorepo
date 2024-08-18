@@ -41,7 +41,7 @@ export const ArtWithDetails: FC<ArtWithDetailsProps> = ({ art, refetch }) => {
 
       <ArtDetail art={art} refetch={refetch} />
 
-      <Stack spacing={4}>
+      <Stack gap={4}>
         {/* Single Art Content */}
         <ArtContent
           title={art[titleKey]}
@@ -53,7 +53,7 @@ export const ArtWithDetails: FC<ArtWithDetailsProps> = ({ art, refetch }) => {
           artistProfilePath={`/club/artist/${art.artist?.id}`}
         />
         {/* Single Art Comments */}
-        <Stack spacing={4}>
+        <Stack gap={4}>
           {/*  Comment form */}
           <CommentForm artId={art.id} onSuccess={commentQuery.refetch} />
 

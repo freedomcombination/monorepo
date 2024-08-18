@@ -30,12 +30,12 @@ export const DataTable = <T extends StrapiModel>({
   const { t } = useTranslation()
 
   return (
-    <Stack spacing={4} overflow={'hidden'}>
+    <Stack gap={4} overflow={'hidden'}>
       <Box bg="white" shadow="base" overflow={'auto'}>
         {tableProps.data?.length > 0 ? (
           <WTable {...tableProps} />
         ) : (
-          <VStack p={8} spacing={8}>
+          <VStack p={8} gap={8}>
             <Image w={'25vw'} src={'/images/no-blog.svg'} alt={t('no-data')} />
             <Text>{t('no-data')}</Text>
           </VStack>

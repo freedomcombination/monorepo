@@ -136,7 +136,7 @@ export const PostGenAI = ({
 
   return (
     <Stack
-      spacing={4}
+      gap={4}
       p={{ base: 4, lg: 8 }}
       bg={`${colorScheme}.100`}
       borderWidth={noBorder ? 0 : 2}
@@ -145,7 +145,7 @@ export const PostGenAI = ({
     >
       <Heading colorScheme={colorScheme}>Post Generator</Heading>
       <form onSubmit={handleSubmit}>
-        <Stack spacing={4}>
+        <Stack gap={4}>
           <FormControl>
             <FormLabel mb={0} fontSize="sm" fontWeight={600}>
               Content
@@ -161,7 +161,7 @@ export const PostGenAI = ({
             />
           </FormControl>
           <HStack
-            spacing={{ base: 4, lg: 8 }}
+            gap={{ base: 4, lg: 8 }}
             flexDirection={{ base: 'column', sm: 'row' }}
           >
             {!onlySentences && (
@@ -318,12 +318,7 @@ export const PostGenAI = ({
       </form>
 
       {isLoading && completed?.length && posts.length === 0 && (
-        <Stack
-          spacing={4}
-          py={4}
-          transition={'0.5s'}
-          transitionProperty={'all'}
-        >
+        <Stack gap={4} py={4} transition={'0.5s'} transitionProperty={'all'}>
           <Progress
             size="xs"
             isIndeterminate

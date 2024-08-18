@@ -81,7 +81,7 @@ export const AuthModal = () => {
       <ModalContent p={4}>
         <ModalCloseButton />
         <ModalBody>
-          <Stack textAlign="center" spacing={4} py={4} justify="center">
+          <Stack textAlign="center" gap={4} py={4} justify="center">
             <Link href="/">
               <VStack textAlign="center" w={'full'}>
                 <WAvatar boxSize={100} src={`/images/foundation-logo.svg`} />
@@ -90,9 +90,9 @@ export const AuthModal = () => {
                 </Text>
               </VStack>
             </Link>
-            <Stack spacing={4} flex={1}>
+            <Stack gap={4} flex={1}>
               <Stack
-                spacing={4}
+                gap={4}
                 as="form"
                 onSubmit={handleSubmit(handleSubmitSign)}
               >

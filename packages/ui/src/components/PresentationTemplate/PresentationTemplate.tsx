@@ -49,7 +49,7 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
 
   return (
     <Container maxW="container.md">
-      <Stack py={8} spacing={8}>
+      <Stack py={8} gap={8}>
         <HStack justifyContent={'end'}>
           <ShareButtons url={URL} title={title} quote={description || ''} />
         </HStack>
@@ -58,11 +58,11 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
         </Box>
         <SimpleGrid gap={8} columns={{ base: 1, md: 2 }} alignItems={'center'}>
           {flow.length > 0 && (
-            <Stack spacing={4} order={{ base: 2, md: 1 }}>
+            <Stack gap={4} order={{ base: 2, md: 1 }}>
               <Heading as="h2" size="md">
                 {t('program-flow')}
               </Heading>
-              <List spacing={4}>
+              <List gap={4}>
                 {flow.map((f, i) => (
                   <ListItem key={i}>
                     <HStack align={'start'}>
@@ -81,7 +81,7 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
               </List>
             </Stack>
           )}
-          <Stack spacing={4} order={{ base: 1, md: 2 }}>
+          <Stack gap={4} order={{ base: 1, md: 2 }}>
             <Link
               isExternal
               href={'https://trendrights.com/tr/hashtags/kusatilmis-ebeveynlik'}

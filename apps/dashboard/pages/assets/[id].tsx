@@ -113,7 +113,7 @@ const AssetPage = () => {
           size={'5xl'}
         />
       )}
-      <Stack spacing={8} p={6}>
+      <Stack gap={8} p={6}>
         <Accordion
           size={'lg'}
           allowToggle

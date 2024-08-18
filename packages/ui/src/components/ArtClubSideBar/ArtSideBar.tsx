@@ -39,7 +39,7 @@ export const ArtSideBar: FC<ArtSideBarProps> = ({
     .map(category => category.split('=')[1])
 
   return (
-    <Stack spacing={8} alignSelf="start">
+    <Stack gap={8} alignSelf="start">
       {categoryList && (
         <Box maxH="calc((100vh - 150px) / 2)" overflowY="scroll">
           <CategoryFilter

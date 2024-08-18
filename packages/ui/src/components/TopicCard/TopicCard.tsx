@@ -164,7 +164,7 @@ export const TopicCard: FC<TopicCardProps> = ({
       backgroundImage={'url(/images/world-map.svg)'}
       backgroundPosition={{ base: 'bottom', xl: 'right' }}
       backgroundRepeat={'no-repeat'}
-      spacing={0}
+      gap={0}
     >
       {confirmState && (
         <WConfirm
@@ -187,7 +187,7 @@ export const TopicCard: FC<TopicCardProps> = ({
             unoptimized
           />
         </Box>
-        <HStack spacing={1} pos="absolute" top={0} left={0} w={'full'} p={2}>
+        <HStack gap={1} pos="absolute" top={0} left={0} w={'full'} p={2}>
           <Badge
             bg={'black'}
             variant={'solid'}
@@ -202,7 +202,7 @@ export const TopicCard: FC<TopicCardProps> = ({
         </HStack>
       </Box>
 
-      <Stack spacing={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
+      <Stack gap={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
         <Stack textAlign={{ base: 'center', xl: 'left' }} flex={1}>
           <Text fontSize="lg" fontWeight={600} noOfLines={{ xl: 1 }}>
             {searchKey ? (

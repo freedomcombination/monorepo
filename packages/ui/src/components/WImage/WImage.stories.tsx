@@ -126,7 +126,7 @@ export const Float = () => (
 
 export const GridZoom = () => {
   return (
-    <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} spacing={4} h="full">
+    <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} gap={4} h="full">
       {getFiles()
         .filter(file => file.mime.includes('image'))
         .map(file => (

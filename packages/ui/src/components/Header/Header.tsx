@@ -45,9 +45,9 @@ export const Header: FC<HeaderProps> = ({
             <HStack
               display={{ base: 'none', lg: 'flex' }}
               align="center"
-              spacing={4}
+              gap={4}
             >
-              <Stack spacing={1}>
+              <Stack gap={1}>
                 <HStack justify="end">
                   <LocaleSwitcher isDark={isDark} />
                   {hasProfile && (

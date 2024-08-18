@@ -91,7 +91,7 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
           </ModalHeader>
           <ModalBody>
             <Stack
-              spacing={4}
+              gap={4}
               as="form"
               onSubmit={handleSubmit(handleUserFeedback)}
             >

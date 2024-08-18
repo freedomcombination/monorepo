@@ -44,7 +44,7 @@ const AnnouncementEvent: FC<HashtagEventsProps> = ({
             <HashtagAnnouncement hashtag={hashtag} />
           )}
           {hashtagPassed && (
-            <VStack mx={'auto'} maxW={'2xl'} textAlign={'center'} spacing={8}>
+            <VStack mx={'auto'} maxW={'2xl'} textAlign={'center'} gap={8}>
               <Text fontSize={'lg'} color={'primary'}>
                 {t('join-previous-hashtag')}
               </Text>

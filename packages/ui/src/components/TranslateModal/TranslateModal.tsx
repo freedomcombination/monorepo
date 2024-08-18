@@ -116,7 +116,7 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
           </ModalBody>
           {step === 1 && (
             <ModalFooter borderTopWidth={1}>
-              <HStack spacing={3}>
+              <HStack gap={3}>
                 <Button
                   display={{ base: 'none', lg: 'flex' }}
                   textColor={'white'}

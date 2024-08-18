@@ -44,7 +44,7 @@ export const Pagination: FC<PaginationProps> = ({
       justifyContent={'center'}
       variant="ghost"
       colorScheme="gray"
-      spacing={0}
+      gap={0}
       {...rest}
     >
       {/* Prev button */}

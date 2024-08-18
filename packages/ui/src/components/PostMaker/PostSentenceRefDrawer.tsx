@@ -37,7 +37,7 @@ export const PostSentenceRefDrawer = () => {
   if (!sentence) return null
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       {sentence.value && (
         <Stack background={'white'} borderRadius={'lg'} p={4}>
           <Text>{sentence.value}</Text>
@@ -47,7 +47,7 @@ export const PostSentenceRefDrawer = () => {
       {isLoading || !archiveContent ? (
         <LoadingInfo isLoading={isLoading} />
       ) : (
-        <Stack background={'white'} borderRadius={'lg'} p={4} spacing={4}>
+        <Stack background={'white'} borderRadius={'lg'} p={4} gap={4}>
           <Heading size={'md'} fontWeight={'bold'} color="gray.700">
             {archiveContent.title}
           </Heading>

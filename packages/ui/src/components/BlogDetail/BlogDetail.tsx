@@ -47,7 +47,7 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
   const readingTime = getReadingTime(post?.content || '', locale)
 
   return (
-    <Stack py={8} spacing={8}>
+    <Stack py={8} gap={8}>
       <WImage ratio="twitter" rounded="lg" src={post?.image as UploadFile} />
       <Heading as="h1" textAlign="center">
         {post?.title}
@@ -56,9 +56,9 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
         fontSize="md"
         justify={{ base: 'center', md: 'space-between' }}
         color="gray.500"
-        spacing={4}
+        gap={4}
       >
-        <Wrap spacing={4} justify="center">
+        <Wrap gap={4} justify="center">
           <Box>
             <HStack>
               <Icon as={FaCalendarDay} />

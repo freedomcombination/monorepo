@@ -21,7 +21,7 @@ export const ArtContent: FC<ArtContentProps> = ({
   description,
 }) => {
   return (
-    <Stack p={4} spacing={4} borderRadius="sm" bg="white" boxShadow="base">
+    <Stack p={4} gap={4} borderRadius="sm" bg="white" boxShadow="base">
       <Heading as="h2" fontSize="3xl">
         {title}
       </Heading>

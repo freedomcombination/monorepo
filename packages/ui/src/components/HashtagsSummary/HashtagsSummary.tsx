@@ -31,7 +31,7 @@ export const HashtagsSummary: FC<HashtagsSummaryProps> = ({ hashtags }) => {
       <Container p={0}>
         <Stack
           direction={{ base: 'column-reverse', lg: 'row' }}
-          spacing={{ base: 6, lg: 4 }}
+          gap={{ base: 6, lg: 4 }}
           justifyContent={'space-between'}
           borderRadius={'xl'}
           border={2}
@@ -44,7 +44,7 @@ export const HashtagsSummary: FC<HashtagsSummaryProps> = ({ hashtags }) => {
             justifyContent={
               hashtags.length <= 3 ? 'flex-start' : 'space-evenly'
             }
-            spacing={{ base: 3, lg: 6 }}
+            gap={{ base: 3, lg: 6 }}
             maxW={'lg'}
           >
             {prevHashtags &&
@@ -59,7 +59,7 @@ export const HashtagsSummary: FC<HashtagsSummaryProps> = ({ hashtags }) => {
           <Stack
             direction={'column'}
             color="white"
-            spacing={{ base: 2, lg: 8 }}
+            gap={{ base: 2, lg: 8 }}
             alignItems={'stretch'}
             justifyContent={'space-between'}
             flexGrow={1}
@@ -74,7 +74,7 @@ export const HashtagsSummary: FC<HashtagsSummaryProps> = ({ hashtags }) => {
               />
             </Box>
             <Stack
-              spacing={{ base: 2, lg: 4 }}
+              gap={{ base: 2, lg: 4 }}
               alignItems={'flex-start'}
               color={'black'}
               px={1}

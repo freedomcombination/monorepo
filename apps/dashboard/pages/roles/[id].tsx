@@ -148,7 +148,7 @@ const RolePage: FC<RolePageProps> = () => {
               </Button>
             )}
           </HStack>
-          <HStack spacing={4}>
+          <HStack gap={4}>
             {role && (
               <Menu closeOnSelect={false}>
                 <MenuButton

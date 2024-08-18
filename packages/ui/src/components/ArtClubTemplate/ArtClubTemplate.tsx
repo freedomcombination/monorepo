@@ -110,7 +110,7 @@ export const ArtClubTemplate: FC = () => {
                 align="center"
                 w="full"
                 overflowX={{ base: 'auto', lg: 'hidden' }}
-                spacing={4}
+                gap={4}
               >
                 <Skeleton h={8} w="full" rounded="md" />
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -128,7 +128,7 @@ export const ArtClubTemplate: FC = () => {
             )}
           </Box>
 
-          <Stack w="full" spacing={4}>
+          <Stack w="full" gap={4}>
             <HStack>
               <SearchForm
                 placeholder={t('search') as string}

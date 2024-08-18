@@ -100,7 +100,7 @@ export const ImageRecognizer: FC<ImageRecognizerProps> = ({
           <Button onClick={handleRecognize}>Recognize</Button>
         </>
       )}
-      <Stack spacing={4}>
+      <Stack gap={4}>
         {Object?.values(state).map(item => {
           const { id, preview, text, isLoading, isError, isProcessed } = item
 

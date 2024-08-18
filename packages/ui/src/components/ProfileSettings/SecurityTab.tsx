@@ -124,7 +124,7 @@ export const SecurityTab = () => {
   }
 
   return (
-    <Stack spacing={8}>
+    <Stack gap={8}>
       <FormControl>
         <FormLabel fontWeight={600}>{t('profile.security.username')}</FormLabel>
         <Credential

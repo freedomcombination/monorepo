@@ -28,7 +28,7 @@ export const CollectionPages = forwardRef<HTMLDivElement, CollectionPagesPops>(
           return (
             <Fragment key={index}>
               <Page ref={ref} p={8} bgGradient={pageBgGdarient}>
-                <VStack justify="center" w="full" h="full" spacing={4}>
+                <VStack justify="center" w="full" h="full" gap={4}>
                   {image && (
                     <WImage
                       rounded="sm"

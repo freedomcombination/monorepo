@@ -70,7 +70,7 @@ export const AdminLoginForm = () => {
           h="full"
           w="full"
           textAlign="center"
-          spacing={4}
+          gap={4}
           justify="center"
           pb={8}
           pt={{ base: 8, lg: '50%' }}
@@ -85,12 +85,8 @@ export const AdminLoginForm = () => {
             </VStack>
           </Link>
 
-          <Stack spacing={4} flex={1}>
-            <Stack
-              spacing={4}
-              as="form"
-              onSubmit={handleSubmit(handleSubmitSign)}
-            >
+          <Stack gap={4} flex={1}>
+            <Stack gap={4} as="form" onSubmit={handleSubmit(handleSubmitSign)}>
               <FormItem
                 w="full"
                 name="identifier"

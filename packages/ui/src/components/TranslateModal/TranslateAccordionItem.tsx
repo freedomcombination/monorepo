@@ -39,7 +39,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
     <AccordionItem>
       <AccordionButton as={HStack} cursor="pointer">
         <HStack flex={'1'}>
-          <HStack spacing={2} flex={'1'}>
+          <HStack gap={2} flex={'1'}>
             <Flag locale={locale} />
             <HStack>
               <Text
@@ -121,7 +121,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
         <AccordionIcon ml={4} />
       </AccordionButton>
       <AccordionPanel pb={4}>
-        <Stack spacing={2}>
+        <Stack gap={2}>
           {description && (
             <Stack>
               <Text size="lg" fontWeight={700}>

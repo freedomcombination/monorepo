@@ -50,7 +50,7 @@ export const AcademyCard: FC<AcademyCardProps> = ({
               transition="all"
               transitionDuration="0.3s"
               bgGradient="linear(to-t, rgba(0,0,0,0.5), rgba(0,0,0,0))"
-              spacing={4}
+              gap={4}
             >
               <Text fontWeight={600} fontSize={'xl'} noOfLines={1}>
                 {title}

@@ -23,7 +23,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
   }
 
   return (
-    <ButtonGroup spacing={0} size="sm" alignItems="center">
+    <ButtonGroup gap={0} size="sm" alignItems="center">
       {/* TODO: Remove after storybook test */}
       {locales.map(code => {
         if (query['slug'] && !slugs?.[code]) return null

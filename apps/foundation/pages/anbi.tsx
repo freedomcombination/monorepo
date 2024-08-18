@@ -25,7 +25,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
       <Hero title={title} />
       <Box minH="inherit" fontWeight={500}>
         <Container minH="inherit" py={{ base: 8, lg: 16 }}>
-          <Stack spacing={16} textAlign={'center'}>
+          <Stack gap={16} textAlign={'center'}>
             {/*  foundation details*/}
             <Stack>
               <Heading as="h3" size="lg" fontWeight={700}>
@@ -39,7 +39,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
             <FoundationDetails foundation={foundation} />
 
             {/* directors */}
-            <Stack spacing={4}>
+            <Stack gap={4}>
               <Heading as="h3" size="lg" fontWeight={700}>
                 {t('foundation.management')}
               </Heading>
@@ -67,7 +67,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
             </Stack>
             {/* documents */}
 
-            <Wrap spacing={4} justify={'center'}>
+            <Wrap gap={4} justify={'center'}>
               {foundation?.policy_plan && (
                 <ButtonLink
                   href={API_URL + foundation?.policy_plan?.url}

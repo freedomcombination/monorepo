@@ -171,7 +171,7 @@ export const ArtCard: FC<ArtCardProps> = ({
         >
           {/* Like icon */}
           {!isOwner && (
-            <HStack spacing={1}>
+            <HStack gap={1}>
               <Text fontWeight={600} color="white">
                 {art?.likes || 0}
               </Text>
@@ -236,7 +236,7 @@ export const ArtCard: FC<ArtCardProps> = ({
             fontSize={{ base: 'md', lg: 'sm' }}
             fontWeight={600}
             position={{ base: 'static', lg: 'absolute' }}
-            spacing={0}
+            gap={0}
             transition="all 0.2s"
             w="full"
           >

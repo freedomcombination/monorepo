@@ -109,9 +109,9 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
         gap={8}
         pos={'relative'}
       >
-        <Stack spacing={8}>
+        <Stack gap={8}>
           {DONATION_REQUEST_LINK && (
-            <VStack p={4} spacing={4} rounded="lg" shadow="lg" bg={'white'}>
+            <VStack p={4} gap={4} rounded="lg" shadow="lg" bg={'white'}>
               <Center>
                 <QRCode value={DONATION_REQUEST_LINK} />
               </Center>
@@ -128,7 +128,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
           <Stack
             px={{ base: 8, lg: 16 }}
             py={{ base: 8, lg: 12 }}
-            spacing={8}
+            gap={8}
             bg={'white'}
             {...(isDark && {
               borderColor: 'whiteAlpha.200',
@@ -147,7 +147,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
             </Heading>
 
             <Stack align="center">
-              <HStack spacing={4}>
+              <HStack gap={4}>
                 <Image src={`/images/ideal-logo.svg`} h={50} alt="ideal" />
 
                 <Image
@@ -183,7 +183,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               w="full"
               justify="center"
               align="center"
-              spacing={6}
+              gap={6}
             >
               <NumberInput
                 maxW={120}
@@ -227,7 +227,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               </Slider>
             </Stack>
 
-            <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+            <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
               <FormItem
                 isRequired
                 register={register}

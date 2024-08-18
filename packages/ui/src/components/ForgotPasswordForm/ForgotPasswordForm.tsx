@@ -65,19 +65,19 @@ export const ForgotPasswordForm = () => {
       px={{ base: '0', sm: '8' }}
     >
       <Stack
-        spacing="8"
+        gap={4}
         shadow="base"
         bg="white"
         p={{ base: 8, lg: 12 }}
         rounded="lg"
       >
-        <Stack spacing="6">
-          <Stack spacing={{ base: '', md: '3' }} textAlign="center">
+        <Stack gap={4}>
+          <Stack gap={{ base: '', md: '3' }} textAlign="center">
             <Heading>{t('forgot-pass.link')}</Heading>
           </Stack>
         </Stack>
-        <Stack spacing="6" as="form" onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing="5">
+        <Stack gap={6} as="form" onSubmit={handleSubmit(onSubmit)}>
+          <Stack gap={5}>
             <FormItem
               id="email"
               type="email"
@@ -86,7 +86,7 @@ export const ForgotPasswordForm = () => {
               name="email"
             />
           </Stack>
-          <Stack spacing="6">
+          <Stack gap={6}>
             <HStack>
               <ButtonLink href="/auth/login" variant="link">
                 {t('login.signin')}

@@ -90,7 +90,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
   if (!post) return null
 
   return (
-    <HStack justifyContent={'space-between'} spacing={{ base: 0, lg: 4 }}>
+    <HStack justifyContent={'space-between'} gap={{ base: 0, lg: 4 }}>
       <Button
         variant={'ghost'}
         colorScheme={'gray'}

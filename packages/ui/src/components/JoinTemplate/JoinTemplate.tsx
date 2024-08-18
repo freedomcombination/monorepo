@@ -114,7 +114,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
             shadow="base"
             rounded="lg"
           >
-            <VStack spacing={4}>
+            <VStack gap={4}>
               <AlertIcon boxSize="60px" mr={0} />
               <AlertTitle mt={4} mb={1} fontSize="2xl">
                 {t('thank-you')}
@@ -135,7 +135,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
             columns={{ base: 1, lg: 2 }}
             alignItems="start"
           >
-            <Stack spacing={4}>
+            <Stack gap={4}>
               <Alert rounded="md">
                 <Link
                   lineHeight={1}

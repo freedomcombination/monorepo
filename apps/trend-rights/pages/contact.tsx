@@ -40,7 +40,7 @@ const Contact = () => {
           <Stack
             justify="center"
             align="center"
-            spacing={8}
+            gap={8}
             direction={{ base: 'column', lg: 'row' }}
             minH="inherit"
           >
@@ -51,7 +51,7 @@ const Contact = () => {
               w={'full'}
               textAlign="center"
               justify="center"
-              spacing={{ base: 8, lg: 16 }}
+              gap={{ base: 8, lg: 16 }}
             >
               <Heading color={'primary.50'}>{t('trend-rights')}</Heading>
               <VStack alignItems="flex-start" color="primary.50">

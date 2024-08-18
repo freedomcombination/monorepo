@@ -66,7 +66,7 @@ export const Hero: FC<PropsWithChildren<HeroProps>> = memo(function Hero({
       <Container h="full">
         <VStack
           position="relative"
-          spacing={8}
+          gap={8}
           py={8}
           h="full"
           justify="end"

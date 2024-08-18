@@ -21,7 +21,7 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
       display={{ base: mobile ? 'flex' : 'none', md: 'flex' }}
       bg={'white'}
       py={4}
-      // spacing={0}
+      // gap={0}
       h={'full'}
       {...(!mobile && {
         w: 300,
@@ -31,7 +31,7 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
     >
       {/* Logo */}
       <Link href="/">
-        <HStack align="center" spacing={4} alignItems="center" justify="center">
+        <HStack align="center" gap={4} alignItems="center" justify="center">
           <WAvatar
             size={'lg'}
             src={`/images/foundation-logo.svg`}
@@ -69,7 +69,7 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
 
       {/* Footer */}
 
-      <VStack spacing={0} fontSize={'sm'}>
+      <VStack gap={0} fontSize={'sm'}>
         <Text>Freedom Combination</Text>
         <Text>&copy; All rights reserved</Text>
       </VStack>

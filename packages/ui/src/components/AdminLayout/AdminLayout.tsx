@@ -60,7 +60,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
         </Box>
 
         <Stack
-          spacing={0}
+          gap={0}
           as="main"
           bg="gray.50"
           h="full"
@@ -87,13 +87,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
               {!isPathAllowed && !isAdmin ? (
                 <NotAllowedPage show={!isAuthLoading && navItems.length > 0} />
               ) : (
-                <Stack
-                  px={4}
-                  h={'full'}
-                  flex={1}
-                  spacing={4}
-                  overflowY={'auto'}
-                >
+                <Stack px={4} h={'full'} flex={1} gap={4} overflowY={'auto'}>
                   {/* Page Content */}
                   {children}
                 </Stack>

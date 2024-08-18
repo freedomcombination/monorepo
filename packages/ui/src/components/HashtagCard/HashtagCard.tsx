@@ -26,7 +26,7 @@ export const HashtagCard: FC<HashtagCardProps> = ({ item }) => {
       <Stack
         align="start"
         flex={1}
-        spacing={8}
+        gap={8}
         p={{ base: 4, lg: 8 }}
         order={{ base: 2, lg: 1 }}
       >

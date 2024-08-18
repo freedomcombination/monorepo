@@ -167,13 +167,13 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
 
   return (
     <Stack gap={4} bg={'white'} p={6} flex={1}>
-      <HStack justifyContent={'flex-end'} alignItems={'center'} spacing={6}>
+      <HStack justifyContent={'flex-end'} alignItems={'center'} gap={6}>
         <RadioGroup
           onChange={value => setPriorityFilter(Number(value))}
           value={`${priorityFilter}`}
           colorScheme="primary"
         >
-          <Stack direction="row" spacing={4}>
+          <Stack direction="row" gap={4}>
             <Radio value={`${PriorityFilter.ALL}`}>
               All{' '}
               <chakra.span color="gray.400" fontSize="sm">

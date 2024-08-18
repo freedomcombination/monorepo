@@ -95,7 +95,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
   return (
     <Stack
       display={isSuccess ? 'none' : 'flex'}
-      spacing={4}
+      gap={4}
       p={4}
       boxShadow="base"
       borderRadius="sm"

@@ -124,11 +124,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
             </Text>
           </ModalHeader>
           <ModalBody>
-            <Stack
-              spacing={4}
-              as="form"
-              onSubmit={handleSubmit(handleRecommend)}
-            >
+            <Stack gap={4} as="form" onSubmit={handleSubmit(handleRecommend)}>
               <Stack>
                 <FormLabel fontWeight={600}>Original Tweet</FormLabel>
                 <TweetContent<CreateTweetFormFieldValues>

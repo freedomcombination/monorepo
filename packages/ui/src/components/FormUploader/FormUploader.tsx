@@ -95,7 +95,7 @@ export const FormUploader = () => {
   }
 
   return (
-    <HStack spacing={0} borderWidth={1} borderBottomWidth={0} h={12}>
+    <HStack gap={0} borderWidth={1} borderBottomWidth={0} h={12}>
       <DragZone isUploading={isUploading} onFilesSelected={onFilesSelected} />
       <Divider orientation="vertical" />
       <ImageViewer

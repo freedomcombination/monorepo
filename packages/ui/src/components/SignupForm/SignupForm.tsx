@@ -97,16 +97,16 @@ export const SignupForm: FC<SignupFormProps> = ({
       px={{ base: '0', sm: '8' }}
     >
       <Stack
-        spacing="8"
+        gap={8}
         shadow="base"
         bg="white"
         p={{ base: 8, lg: 12 }}
         rounded="lg"
       >
-        <Stack spacing="6">
-          <Stack spacing={{ base: '2', md: '3' }} textAlign="center">
+        <Stack gap={6}>
+          <Stack gap={{ base: '2', md: '3' }} textAlign="center">
             <Heading>{t('login.create-account')}</Heading>
-            <HStack spacing="1" justify="center">
+            <HStack gap={1} justify="center">
               <Text color="muted">{t('login.have-account')}</Text>
 
               <ButtonLink href="/auth/login" variant="link">
@@ -115,12 +115,8 @@ export const SignupForm: FC<SignupFormProps> = ({
             </HStack>
           </Stack>
         </Stack>
-        <Stack
-          spacing="6"
-          as="form"
-          onSubmit={handleSubmit(handleSubmitSignUp)}
-        >
-          <Stack spacing="5">
+        <Stack gap={6} as="form" onSubmit={handleSubmit(handleSubmitSignUp)}>
+          <Stack gap={5}>
             {errorMessage && (
               <Alert status="error">
                 <AlertIcon />
@@ -172,7 +168,7 @@ export const SignupForm: FC<SignupFormProps> = ({
               </ButtonLink>
             </HStack>
           </Stack>
-          <Stack spacing="6">
+          <Stack gap={6}>
             <Button type="submit" disabled={!isTermsAccepted}>
               {t('login.create-account')}
             </Button>

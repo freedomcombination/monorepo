@@ -90,7 +90,7 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ tweet, tweets, seo }) => {
         </ModalContent>
       </Modal>
       <Container my={8}>
-        <Stack spacing={4}>
+        <Stack gap={4}>
           <ButtonLink href={`/news`}>News</ButtonLink>
 
           <Input

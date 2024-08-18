@@ -85,25 +85,25 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
         />
       )}
 
-      <Stack w={'full'} spacing={2}>
+      <Stack w={'full'} gap={2}>
         <Text color={'black'} fontWeight={700}>
           {t('give-feedback')}
         </Text>
-        <HStack align="start" spacing={2}>
+        <HStack align="start" gap={2}>
           <WAvatar
             size="sm"
             src={editor?.avatar}
             name={editor?.name || editor.email}
           />
 
-          <Stack flex={1} spacing={2}>
+          <Stack flex={1} gap={2}>
             <Textarea
               isRequired
               onChange={e => setFeedback(e.target.value)}
               placeholder={'Type your comment here'}
             />
 
-            <ActionStack canApprove="arts" direction={'row'} spacing={2}>
+            <ActionStack canApprove="arts" direction={'row'} gap={2}>
               <Button
                 flex={1}
                 flexShrink={0}

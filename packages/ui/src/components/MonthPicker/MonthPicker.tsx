@@ -109,7 +109,7 @@ export const MonthPicker: FC<MonthPickerProps> = ({
       <PopoverContent>
         <PopoverArrow />
         <PopoverHeader>
-          <HStack justify={'space-between'} align={'center'} spacing={2}>
+          <HStack justify={'space-between'} align={'center'} gap={2}>
             <IconButton
               aria-label="left"
               variant={'ghost'}

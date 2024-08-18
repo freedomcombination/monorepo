@@ -71,7 +71,7 @@ export const ChangePasswordForm = () => {
   }
 
   return (
-    <Stack as={'form'} spacing={8} onSubmit={handleSubmit(onSubmit)}>
+    <Stack as={'form'} gap={8} onSubmit={handleSubmit(onSubmit)}>
       <Box>
         <Heading size="lg">{t('profile.security.password')}</Heading>
         {isError && <Box color={'red.500'}>{error?.message}</Box>}

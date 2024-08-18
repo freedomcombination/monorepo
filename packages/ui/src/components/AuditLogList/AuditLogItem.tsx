@@ -83,8 +83,8 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
   const Icon = iconMap[log.action] || FaQuestion
 
   return (
-    <Wrap p={{ base: 1, md: 0 }} spacing={0}>
-      <HStack spacing={1}>
+    <Wrap p={{ base: 1, md: 0 }} gap={0}>
+      <HStack gap={1}>
         {/* <WAvatar size={'sm'} name={profile?.name || ''} src={profile?.avatar} /> */}
 
         <Center

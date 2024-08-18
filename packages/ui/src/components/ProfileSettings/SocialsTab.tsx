@@ -101,7 +101,7 @@ export const Socials = () => {
   }
 
   return (
-    <Stack spacing={8} as={'form'} onSubmit={handleSubmit(onSubmit)}>
+    <Stack gap={8} as={'form'} onSubmit={handleSubmit(onSubmit)}>
       <FormItem
         errors={errors}
         register={register}

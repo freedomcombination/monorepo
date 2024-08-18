@@ -20,14 +20,14 @@ export const PlatformList: FC<PlatformListProps> = ({ platforms }) => {
   const { locale } = useRouter()
 
   return (
-    <Stack spacing={8}>
+    <Stack gap={8}>
       {platforms.map(platform => (
         <Stack
           direction={{ base: 'column', lg: 'row' }}
           align={{ base: 'center', lg: 'start' }}
           key={platform.slug}
           p={8}
-          spacing={4}
+          gap={4}
           bg="white"
           rounded="lg"
           shadow="base"

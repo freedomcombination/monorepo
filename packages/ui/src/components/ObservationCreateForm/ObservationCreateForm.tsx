@@ -63,7 +63,7 @@ export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(handleSendForm)}>
-      <Stack spacing={4}>
+      <Stack gap={4}>
         <FormItem
           as={Textarea}
           name="content"

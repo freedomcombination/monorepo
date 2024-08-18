@@ -72,7 +72,7 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured, onClick }) => {
           maxW={600}
           pos="relative"
           bg="white"
-          spacing={4}
+          gap={4}
           p={featured ? 6 : 0}
           {...(featured && {
             pos: 'absolute',

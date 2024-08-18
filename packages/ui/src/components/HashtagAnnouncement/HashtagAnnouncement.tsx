@@ -20,7 +20,7 @@ export const HashtagAnnouncement: FC<HashtagAnnouncementProps> = ({
   const capsParams = mapHashtagToOgParams(hashtag)
 
   return (
-    <Stack spacing={8}>
+    <Stack gap={8}>
       <Caps
         rounded={'lg'}
         overflow={'hidden'}
@@ -29,7 +29,7 @@ export const HashtagAnnouncement: FC<HashtagAnnouncementProps> = ({
         imageParams={capsParams}
         hideLogo={true}
       />
-      <Stack fontSize={'lg'} justify={'center'} spacing={6}>
+      <Stack fontSize={'lg'} justify={'center'} gap={6}>
         <Heading as={'h3'}>{hashtag.title}</Heading>
         <Text>{t('support.hashtag')}</Text>
         <Link href={link} fontWeight={'bold'} color={'primary.500'}>

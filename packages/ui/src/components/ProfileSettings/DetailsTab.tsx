@@ -172,7 +172,7 @@ export const DetailsTab = () => {
   }
 
   return (
-    <Stack spacing={8}>
+    <Stack gap={8}>
       <AvatarForm />
 
       <FormElement

@@ -268,7 +268,7 @@ export const GenPostProvider = ({
             <AlertDialogHeader>Discard Changes?</AlertDialogHeader>
             <AlertDialogCloseButton />
             <AlertDialogBody>
-              <Stack spacing={8}>
+              <Stack gap={8}>
                 <Text>{alertAction?.title}</Text>
                 {alertAction?.extra && (
                   <Text fontSize="sm" borderLeft={'1px'} pl={2}>
