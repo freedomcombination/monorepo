@@ -64,7 +64,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
               pos="static"
             />
             <Box>
-              <Text noOfLines={1} maxW="120px">
+              <Text lineClamp={1} maxW="120px">
                 {data.name}
               </Text>
               <Text>@{data.screen_name}</Text>

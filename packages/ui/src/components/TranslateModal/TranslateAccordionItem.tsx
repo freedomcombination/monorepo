@@ -47,7 +47,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
               <Text
                 fontWeight={700}
                 maxW={{ base: 150, lg: 300 }}
-                noOfLines={1}
+                lineClamp={1}
               >
                 {title}
               </Text>

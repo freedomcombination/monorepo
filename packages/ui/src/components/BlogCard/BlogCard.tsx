@@ -124,7 +124,7 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured, onClick }) => {
             <Heading as="h3" size="md">
               {post.title}
             </Heading>
-            <Text noOfLines={2} color={'gray.700'}>
+            <Text lineClamp={2} color={'gray.700'}>
               {post.description}
             </Text>
             {post.author?.name && (

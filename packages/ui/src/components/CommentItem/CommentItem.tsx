@@ -31,7 +31,7 @@ export const CommentItem: FC<CommentItemProps> = ({ comment }) => {
         </HStack>
 
         {/* TODO Add read more button like instagram */}
-        <Text noOfLines={3}>{comment.content}</Text>
+        <Text lineClamp={3}>{comment.content}</Text>
       </Stack>
     </HStack>
   )

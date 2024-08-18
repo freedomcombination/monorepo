@@ -49,8 +49,8 @@ export const WTableCell = <T extends StrapiModel>({
   return (
     <Td {...cellProps}>
       <Box
-        {...(field === 'description' && { noOfLines: 1, maxW: 120 })}
-        noOfLines={1}
+        {...(field === 'description' && { lineClamp: 1, maxW: 120 })}
+        lineClamp={1}
       >
         {cellContent || '-'}
       </Box>

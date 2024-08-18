@@ -152,7 +152,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
             <VStack>
               <Box boxSize={50} as={ext === '.pdf' ? FaFilePdf : FaFile}></Box>
 
-              <Text maxW={300} noOfLines={1}>
+              <Text maxW={300} lineClamp={1}>
                 {media.name}
                 {media.ext}
               </Text>

@@ -135,7 +135,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
           color={'gray.400'}
           fontSize={'sm'}
           fontStyle={'italic'}
-          noOfLines={1}
+          lineClamp={1}
           dangerouslySetInnerHTML={{ __html: log.text }}
         />
       </Group>

@@ -37,11 +37,11 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
     <Stack boxShadow="md" rounded="md" direction={'column'} overflow="hidden">
       <ArtCardImage art={art} h={300} />
       <Stack w="full" px={4} py={2}>
-        <Text fontSize="md" fontWeight={600} noOfLines={1}>
+        <Text fontSize="md" fontWeight={600} lineClamp={1}>
           {art[titleKey]}
         </Text>
 
-        <Text fontSize="sm" noOfLines={2}>
+        <Text fontSize="sm" lineClamp={2}>
           {art.artist?.name || art.artist?.email}
         </Text>
 

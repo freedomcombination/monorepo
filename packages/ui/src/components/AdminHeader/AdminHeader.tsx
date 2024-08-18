@@ -94,7 +94,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             {title}
           </Heading>
         )}
-        {loading && !title && <Skeleton noOfLines={1} w={40} />}
+        {loading && !title && <Skeleton lineClamp={1} w={40} />}
       </HStack>
 
       {/* TODO Create notification component */}

@@ -52,14 +52,14 @@ export const AcademyCard: FC<AcademyCardProps> = ({
               bgGradient="linear(to-t, rgba(0,0,0,0.5), rgba(0,0,0,0))"
               gap={4}
             >
-              <Text fontWeight={600} fontSize={'xl'} noOfLines={1}>
+              <Text fontWeight={600} fontSize={'xl'} lineClamp={1}>
                 {title}
               </Text>
               {description && (
                 <Text
                   opacity={0}
                   _groupHover={{ opacity: 1 }}
-                  noOfLines={2}
+                  lineClamp={2}
                   transitionDuration="0.8s"
                 >
                   {description}

@@ -204,7 +204,7 @@ export const TopicCard: FC<TopicCardProps> = ({
 
       <Stack gap={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
         <Stack textAlign={{ base: 'center', xl: 'left' }} flex={1}>
-          <Text fontSize="lg" fontWeight={600} noOfLines={{ xl: 1 }}>
+          <Text fontSize="lg" fontWeight={600} lineClamp={{ xl: 1 }}>
             {searchKey ? (
               <Highlight query={searchKey} styles={highlightStyle}>
                 {topic.title || ''}
@@ -213,7 +213,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               topic.title
             )}
           </Text>
-          <Text maxW={1000} noOfLines={{ base: 5, xl: 3 }}>
+          <Text maxW={1000} lineClamp={{ base: 5, xl: 3 }}>
             {searchKey ? (
               <Highlight query={searchKey} styles={highlightStyle}>
                 {topic.description || ''}

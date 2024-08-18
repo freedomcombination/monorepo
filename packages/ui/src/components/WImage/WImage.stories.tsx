@@ -132,7 +132,7 @@ export const GridZoom = () => {
         .map(file => (
           <VStack key={file.id} shadow="base">
             <WImage src={file} hasZoom={true} alt={''} />
-            <Text p={2} noOfLines={1}>
+            <Text p={2} lineClamp={1}>
               {file.name}
             </Text>
           </VStack>

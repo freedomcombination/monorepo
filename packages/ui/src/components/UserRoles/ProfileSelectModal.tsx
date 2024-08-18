@@ -62,7 +62,7 @@ const CustomListItem = ({
       justifyContent={'space-between'}
     >
       <Stack flexShrink={1} flexGrow={1} overflow={'hidden'}>
-        <Text noOfLines={1}>
+        <Text lineClamp={1}>
           {filter ? (
             <Highlight
               query={filter}
@@ -74,7 +74,7 @@ const CustomListItem = ({
             user.username
           )}
         </Text>
-        <Text fontSize={'xs'} noOfLines={1}>
+        <Text fontSize={'xs'} lineClamp={1}>
           {filter ? (
             <Highlight
               query={filter}

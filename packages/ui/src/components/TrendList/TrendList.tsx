@@ -36,7 +36,7 @@ export const TrendList = ({
   return (
     <VStack align="stretch">
       {loading || !trends ? (
-        <SkeletonText skeletonHeight={6} noOfLines={5} />
+        <SkeletonText skeletonHeight={6} lineClamp={5} />
       ) : (
         <Group wrap={'wrap'}>
           {trends.map((tag, i) => (

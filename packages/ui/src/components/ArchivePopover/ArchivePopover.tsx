@@ -124,7 +124,7 @@ const DisplayArchive: FC<{
           </Group>
         </Box>
         {includeContent && (
-          <Box noOfLines={6} overflow={'auto'}>
+          <Box lineClamp={6} overflow={'auto'}>
             <Markdown>{archiveContent.content}</Markdown>
           </Box>
         )}

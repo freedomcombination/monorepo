@@ -235,7 +235,7 @@ export const ArtCard: FC<ArtCardProps> = ({
           >
             <Text
               display={{ base: 'none', lg: 'block' }}
-              noOfLines={{ lg: 2 }}
+              lineClamp={{ lg: 2 }}
               p={2}
               pb={0}
               fontWeight={900}
@@ -261,7 +261,7 @@ export const ArtCard: FC<ArtCardProps> = ({
                 name={artistName || artistEmail}
                 src={artistAvatar}
               />
-              <Text noOfLines={1}>{artistName || artistEmail}</Text>
+              <Text lineClamp={1}>{artistName || artistEmail}</Text>
             </HStack>
           </Stack>
         </HStack>

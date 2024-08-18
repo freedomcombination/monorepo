@@ -137,7 +137,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
         position={'absolute'}
         top={-3}
         left={6}
-        noOfLines={1}
+        lineClamp={1}
         fontWeight={'bold'}
       >
         {!readonly ? (

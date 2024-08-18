@@ -23,10 +23,10 @@ export const AdminSidebarProfile: FC<AdminSidebarProfileProps> = ({
       <WAvatar size="sm" src={profile?.avatar} name={user?.username} />
 
       <Box flex={1} fontSize="sm" lineHeight={1.25}>
-        <Text w={160} noOfLines={1} fontWeight={600}>
+        <Text w={160} lineClamp={1} fontWeight={600}>
           {profile?.name || user?.username}
         </Text>
-        <Text w={160} noOfLines={1} textTransform={'capitalize'}>
+        <Text w={160} lineClamp={1} textTransform={'capitalize'}>
           {user?.roles.join(' - ')}
         </Text>
       </Box>
