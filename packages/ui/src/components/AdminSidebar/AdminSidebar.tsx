@@ -27,7 +27,7 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
         w: 300,
       })}
       align={'stretch'}
-      divider={<Separator />}
+      separator={<Separator />}
     >
       {/* Logo */}
       <Link href="/">

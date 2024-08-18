@@ -22,7 +22,7 @@ export const ProfileForms: FC<ProfileFormsProps> = ({ profile }) => {
   const observations = observationRequest.data?.data ?? []
 
   return (
-    <Stack divider={<Separator />}>
+    <Stack separator={<Separator />}>
       <ProfileContact
         profile={profile}
         onSuccess={observationRequest.refetch}

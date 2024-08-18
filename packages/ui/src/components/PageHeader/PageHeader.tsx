@@ -89,7 +89,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
               },
             }}
           >
-            <Stack divider={<MenuSeparator />}>{filterMenu}</Stack>
+            <Stack separator={<MenuSeparator />}>{filterMenu}</Stack>
           </MenuList>
         </Menu>
       )}

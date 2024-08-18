@@ -30,7 +30,7 @@ export const TweetWidget = ({
       </Text>
       <Box bg="white" overflow="auto">
         <VStack
-          divider={<StackSeparator borderColor="gray.200" />}
+          separator={<StackSeparator borderColor="gray.200" />}
           gap={4}
           align="stretch"
         >

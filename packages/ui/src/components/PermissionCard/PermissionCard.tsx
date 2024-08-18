@@ -152,7 +152,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
       </Box>
       <VStack
         alignItems={'flex-start'}
-        divider={<StackSeparator borderColor="gray.200" />}
+        separator={<StackSeparator borderColor="gray.200" />}
       >
         <Group wrap={'wrap'}>
           {Object.values(values).flatMap(action => {

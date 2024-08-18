@@ -33,7 +33,7 @@ export const TimelineBoard: FC<TimelineBoardProps> = ({ timelines }) => {
           <Stack
             overflowY="auto"
             h={'calc(100vh - 148px)'}
-            divider={<Separator />}
+            separator={<Separator />}
           >
             {timeline?.tweets?.map((tweet, key) => {
               // FIXME: Why image is not showing up?

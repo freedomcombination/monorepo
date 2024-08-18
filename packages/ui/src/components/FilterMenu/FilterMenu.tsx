@@ -30,7 +30,7 @@ export const FilterMenu = <T extends StrapiModel>({
     return null
 
   return (
-    <Stack divider={<MenuSeparator />}>
+    <Stack separator={<MenuSeparator />}>
       <FilterMenuGroup
         options={booleanFilterOptions}
         filters={selectedBooleanFilters}

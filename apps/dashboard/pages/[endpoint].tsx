@@ -240,7 +240,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           ...(args.searchFields && { onSearch: setQ }),
           filterMenuCloseOnSelect: false,
           filterMenu: (
-            <Stack divider={<MenuSeparator />}>
+            <Stack separator={<MenuSeparator />}>
               <ModelStatusFilters
                 args={[
                   {
