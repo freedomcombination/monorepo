@@ -5,12 +5,13 @@ import {
   FormErrorMessage,
   FormHelperText,
   FormLabel,
-  Tooltip,
 } from '@chakra-ui/react'
 import { GroupBase, Select } from 'chakra-react-select'
 import { useTranslation } from 'next-i18next'
 import { FieldValues, useController } from 'react-hook-form'
 import { TbInfoCircle } from 'react-icons/tb'
+
+import { Tooltip } from '@fc/chakra'
 
 import { SelectOption, WSelectProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
@@ -60,15 +61,7 @@ export const WSelect = <T extends FieldValues = FieldValues>({
             {label}
           </FormLabel>
           {tooltip && (
-            <Tooltip
-              placement="top-start"
-              bg={'white'}
-              fontSize={'xs'}
-              color={'black'}
-              label={tooltip}
-              aria-label={tooltip}
-              cursor={'pointer'}
-            >
+            <Tooltip positioning={{ placement: 'top-start' }} content={tooltip}>
               <Box color="gray.500">
                 <TbInfoCircle />
               </Box>

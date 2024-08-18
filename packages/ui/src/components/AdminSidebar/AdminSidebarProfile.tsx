@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
-import { Box, HStack, IconButton, Text, Tooltip } from '@chakra-ui/react'
+import { Box, HStack, IconButton, Text } from '@chakra-ui/react'
 import { GoSignOut } from 'react-icons/go'
 
+import { Tooltip } from '@fc/chakra'
 import { Profile, SessionUser } from '@fc/types'
 
 import { WAvatar } from '../WAvatar'
@@ -31,7 +32,7 @@ export const AdminSidebarProfile: FC<AdminSidebarProfileProps> = ({
         </Text>
       </Box>
 
-      <Tooltip label="Logout" bg="white" color="initial">
+      <Tooltip content="Logout">
         <IconButton
           size="sm"
           fontSize="lg"

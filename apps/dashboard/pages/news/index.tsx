@@ -3,14 +3,13 @@ import { useMemo, useState } from 'react'
 import {
   Box,
   Button,
-  ButtonGroup,
+  Group,
   Center,
   IconButton,
   MenuItemOption,
   MenuOptionGroup,
   SimpleGrid,
   Spinner,
-  Tooltip,
 } from '@chakra-ui/react'
 import { addMinutes, formatDistanceToNow, isPast } from 'date-fns'
 import { GetStaticPropsContext } from 'next'
@@ -19,6 +18,7 @@ import { useTranslation } from 'next-i18next'
 import { AiOutlineClear } from 'react-icons/ai'
 import { FaSyncAlt } from 'react-icons/fa'
 
+import { Tooltip } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useTopic, useTopicSync } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -27,7 +27,7 @@ import { AdminLayout, PageHeader, TopicCard } from '@fc/ui'
 
 const NewsPage = () => {
   const { checkActionsPermission } = useAuthContext()
-  const { data, loading } = useTopic()
+  const { data, isLoading } = useTopic()
   const syncTopic = useTopicSync()
   const [filter, setFilter] = useState<string[]>([])
   const [searchTerm, setSearchTerm] = useState<string>()
@@ -139,19 +139,19 @@ const NewsPage = () => {
         filterMenu={filterMenu}
         filterMenuCloseOnSelect={false}
       >
-        <Tooltip label={syncedStr} hasArrow bg="primary.400">
+        <Tooltip content={syncedStr} showArrow>
           <IconButton
             aria-label="Sync news"
-            loading={syncTopic.isPending || loading}
+            loading={syncTopic.isPending || isLoading}
             onClick={() => syncTopic.mutate()}
-            disabled={!canSync || syncTopic.isPending || loading}
+            disabled={!canSync || syncTopic.isPending || isLoading}
             icon={<FaSyncAlt />}
           />
         </Tooltip>
       </PageHeader>
       <Box overflow={'hidden'} flexShrink={0}>
         <Box overflowX={'auto'}>
-          <ButtonGroup size={'sm'} overflowX={'auto'} colorScheme={'gray'}>
+          <Group overflowX={'auto'} colorScheme={'gray'}>
             <IconButton
               aria-label="Clear filters"
               icon={<AiOutlineClear />}
@@ -168,11 +168,11 @@ const NewsPage = () => {
                 {keyword}
               </Button>
             ))}
-          </ButtonGroup>
+          </Group>
         </Box>
       </Box>
       <SimpleGrid columns={{ base: 1 }} gap={4}>
-        {loading ? (
+        {isLoading ? (
           <Center h="60vh">
             <Spinner size="xl" />
           </Center>

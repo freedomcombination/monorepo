@@ -1,14 +1,7 @@
 import { FC } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Button,
-  HStack,
-  Heading,
-  IconButton,
-  Skeleton,
-  Tooltip,
-} from '@chakra-ui/react'
+import { Button, HStack, Heading, IconButton, Skeleton } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { BiNotificationOff } from 'react-icons/bi'
 import { FaArrowLeft, FaUser } from 'react-icons/fa'
@@ -16,7 +9,13 @@ import { FaGear } from 'react-icons/fa6'
 import { HiMenu } from 'react-icons/hi'
 import { MdOutlineNotifications } from 'react-icons/md'
 
-import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@fc/chakra'
+import {
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  Tooltip,
+} from '@fc/chakra'
 import {
   Modal,
   ModalBody,
@@ -77,7 +76,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
     >
       <HStack minW={0}>
         {hasBackButton && (
-          <Tooltip label={'Go back'}>
+          <Tooltip content={'Go back'}>
             <IconButton
               aria-label="back"
               icon={<FaArrowLeft />}

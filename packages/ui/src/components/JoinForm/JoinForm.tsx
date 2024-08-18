@@ -12,7 +12,6 @@ import {
   Switch,
   Text,
   Textarea,
-  Tooltip,
   Group,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -23,6 +22,7 @@ import { FaCircleInfo } from 'react-icons/fa6'
 import { setLocale } from 'yup'
 import { tr, nl, en } from 'yup-locales'
 
+import { Tooltip } from '@fc/chakra'
 import { sleep } from '@fc/utils'
 
 import { heardFrom } from './data'
@@ -224,12 +224,8 @@ export const JoinForm: FC<JoinFormProps> = ({
                   </Checkbox>
                   {job[`description_${locale}`] && (
                     <Tooltip
-                      placement="top-end"
-                      bg={'white'}
-                      color={'initial'}
-                      borderWidth={1}
-                      rounded={'md'}
-                      label={job[`description_${locale}`] as string}
+                      positioning={{ placement: 'top-end' }}
+                      content={job[`description_${locale}`] as string}
                       aria-label={job[`description_${locale}`] as string}
                     >
                       <Box>

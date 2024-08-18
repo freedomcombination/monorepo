@@ -2,11 +2,10 @@ import {
   Badge,
   Box,
   Button,
-  ButtonGroup,
+  Group,
   HStack,
   Stack,
   Text,
-  Tooltip,
 } from '@chakra-ui/react'
 import { BsTranslate } from 'react-icons/bs'
 
@@ -15,6 +14,7 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  Tooltip,
 } from '@fc/chakra'
 import { StrapiTranslatableModel } from '@fc/types'
 
@@ -93,13 +93,12 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
           </HStack>
 
           {missingTranslations && (
-            <ButtonGroup>
+            <Group>
               {missingTranslations.map(missingTranslation => (
                 <Tooltip
                   key={missingTranslation}
-                  label={`Translate to ${missingTranslation}`}
-                  bg={missingTranslation === 'nl' ? 'orange.300' : 'purple.300'}
-                  hasArrow
+                  content={`Translate to ${missingTranslation}`}
+                  showArrow
                 >
                   <Button
                     size="xs"
@@ -116,7 +115,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
                   </Button>
                 </Tooltip>
               ))}
-            </ButtonGroup>
+            </Group>
           )}
         </HStack>
 

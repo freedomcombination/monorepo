@@ -3,7 +3,7 @@ import { FC, useState } from 'react'
 import {
   Box,
   Button,
-  ButtonGroup,
+  Group,
   Center,
   HStack,
   Heading,
@@ -20,7 +20,6 @@ import {
   SliderTrack,
   Stack,
   Text,
-  Tooltip,
   VStack,
   useBreakpointValue,
 } from '@chakra-ui/react'
@@ -33,6 +32,7 @@ import { FaDonate, FaExternalLinkAlt } from 'react-icons/fa'
 import QRCode from 'react-qr-code'
 import * as yup from 'yup'
 
+import { Tooltip } from '@fc/chakra'
 import { DONATION_REQUEST_LINK } from '@fc/config'
 import { Platform } from '@fc/types'
 
@@ -164,7 +164,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               </Text>
             </Stack>
 
-            <ButtonGroup w="full" isAttached alignSelf="center" size="lg">
+            <Group w="full" attached alignSelf="center" size="lg">
               {donationAmounts.map(val => (
                 <Button
                   w="full"
@@ -176,7 +176,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                   €{val}
                 </Button>
               ))}
-            </ButtonGroup>
+            </Group>
             <Stack
               direction={{ base: 'column', md: 'row' }}
               pb={8}
@@ -213,12 +213,10 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                   <SliderFilledTrack />
                 </SliderTrack>
                 <Tooltip
-                  hasArrow
-                  bg="primary.500"
-                  color="white"
-                  placement="bottom"
-                  isOpen={!!amount}
-                  label={`€${amount}`}
+                  showArrow
+                  positioning={{ placement: 'bottom' }}
+                  open={!!amount}
+                  content={`€${amount}`}
                 >
                   <SliderThumb boxSize={6} bg="primary.500" color="white">
                     <Box boxSize="full" as={AiOutlineEuroCircle} />

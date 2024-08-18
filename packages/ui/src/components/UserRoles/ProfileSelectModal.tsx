@@ -11,7 +11,6 @@ import {
   IconButton,
   Stack,
   Highlight,
-  Tooltip,
   SimpleGrid,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
@@ -26,6 +25,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Tooltip,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { mutation } from '@fc/lib/src/mutation/mutation'
@@ -88,7 +88,7 @@ const CustomListItem = ({
         </Text>
       </Stack>
       {user.role && (
-        <Tooltip label={user.role.name}>
+        <Tooltip content={user.role.name}>
           <IconButton
             variant={'ghost'}
             rounded={'full'}

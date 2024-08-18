@@ -7,7 +7,6 @@ import {
   HStack,
   Text,
   ThemeTypings,
-  Tooltip,
   Group,
   chakra,
 } from '@chakra-ui/react'
@@ -23,6 +22,7 @@ import {
 } from 'react-icons/fa6'
 import { MdModeEditOutline, MdPublish, MdUnpublished } from 'react-icons/md'
 
+import { Tooltip } from '@fc/chakra'
 import { AuditLog, AuditLogAction } from '@fc/types'
 
 type AuditLogItemProps = {
@@ -60,13 +60,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
 
   const message = (
     <>
-      <Tooltip
-        label={profileEmail}
-        placement="top"
-        bg={'white'}
-        color={'gray.700'}
-        borderWidth={1}
-      >
+      <Tooltip content={profileEmail} positioning={{ placement: 'top' }}>
         <chakra.span
           _hover={{ color: 'primary.500' }}
           textTransform={'capitalize'}
@@ -118,12 +112,8 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
         <Text display={'inline'}>{message}</Text>
         {log.text?.length > 50 && (
           <Tooltip
-            bg="white"
-            color="initial"
-            borderWidth={1}
-            rounded={'md'}
-            placement="top-start"
-            label={<Box dangerouslySetInnerHTML={{ __html: log.text }} />}
+            positioning={{ placement: 'top-start' }}
+            content={<Box dangerouslySetInnerHTML={{ __html: log.text }} />}
           >
             <Box>
               <FaCircleInfo />

@@ -7,7 +7,6 @@ import {
   Stack,
   Text,
   Textarea,
-  Tooltip,
   useBreakpointValue,
   VStack,
 } from '@chakra-ui/react'
@@ -16,6 +15,7 @@ import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
+import { Tooltip } from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useRecaptchaToken } from '@fc/services'
@@ -166,7 +166,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
           </HStack>
         </Stack>
         <Tooltip
-          label={recaptchaToken ? null : 'You are not allowed to comment'}
+          content={recaptchaToken ? null : 'You are not allowed to comment'}
         >
           <Button
             display={{ base: 'none', sm: 'flex' }}

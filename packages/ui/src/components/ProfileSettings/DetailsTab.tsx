@@ -9,7 +9,6 @@ import {
   Spinner,
   Stack,
   Text,
-  Tooltip,
   VStack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
@@ -24,6 +23,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Tooltip,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useUpdateModelMutation } from '@fc/services'
@@ -36,7 +36,7 @@ import { WAvatar } from '../WAvatar'
 const AvatarForm = () => {
   const { user, profile, checkAuth } = useAuthContext()
   const { t } = useTranslation()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose, onToggle } = useDisclosure()
   const [file, setFile] = useState<File | Blob | null>(null)
 
   const onCancel = () => {
@@ -73,11 +73,11 @@ const AvatarForm = () => {
   return (
     <>
       <Modal
-        isOpen={isOpen}
-        onClose={onClose}
+        open={open}
+        onOpenChange={onToggle}
         size="lg"
-        closeOnOverlayClick={false}
-        closeOnEsc={false}
+        closeOnInteractOutside={false}
+        closeOnEscape={false}
       >
         <ModalOverlay />
         <ModalContent>
@@ -125,7 +125,7 @@ const AvatarForm = () => {
               name={profile?.name || user?.username}
             />
           )}
-          <Tooltip label={label} placement="top">
+          <Tooltip content={label} positioning={{ placement: 'top' }}>
             <IconButton
               pos={'absolute'}
               right={0}

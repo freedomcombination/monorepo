@@ -7,13 +7,12 @@ import {
   HStack,
   IconButton,
   Text,
-  Tooltip,
   VStack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPlus, FaTimes } from 'react-icons/fa'
 
-import { Popover, PopoverContent, PopoverTrigger } from '@fc/chakra'
+import { Popover, PopoverContent, PopoverTrigger, Tooltip } from '@fc/chakra'
 import { MentionUserData } from '@fc/types'
 import { formatNumber } from '@fc/utils'
 
@@ -70,7 +69,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
           </HStack>
           <ButtonGroup>
             {onRemoveItem && (
-              <Tooltip label={t('post.remove')}>
+              <Tooltip content={t('post.remove')}>
                 <IconButton
                   pos="static"
                   aria-label={t('post.remove') + ' mention'}
@@ -84,7 +83,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
                 />
               </Tooltip>
             )}
-            <Tooltip label={t('post.add')}>
+            <Tooltip content={t('post.add')}>
               <IconButton
                 pos="static"
                 aria-label={t('post.add') + ' mention'}

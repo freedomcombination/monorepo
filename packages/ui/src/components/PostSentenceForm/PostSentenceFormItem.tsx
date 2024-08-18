@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { Box, HStack, IconButton, Textarea, Tooltip } from '@chakra-ui/react'
+import { Box, HStack, IconButton, Textarea } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { FaPencilAlt, FaSave, FaTimes } from 'react-icons/fa'
 import { FaInfo } from 'react-icons/fa6'
@@ -9,6 +9,7 @@ import {
   MdOutlineUnpublished,
 } from 'react-icons/md'
 
+import { Tooltip } from '@fc/chakra'
 import {
   useDeleteHashtagSentence,
   useHashtag,
@@ -127,7 +128,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
         </ArchivePopover>
 
         {editMode && (
-          <Tooltip label="Save" placement="top">
+          <Tooltip content="Save" positioning={{ placement: 'top' }}>
             <IconButton
               aria-label={'approve'}
               colorScheme={'green'}
@@ -141,7 +142,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
         )}
 
         {!editMode && (
-          <Tooltip label="Edit" placement="top">
+          <Tooltip content="Edit" positioning={{ placement: 'top' }}>
             <IconButton
               aria-label={'edit'}
               colorScheme={'gray'}
@@ -153,7 +154,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           </Tooltip>
         )}
 
-        <Tooltip label="Reset shared" placement="top">
+        <Tooltip content="Reset shared" positioning={{ placement: 'top' }}>
           <IconButton
             aria-label={'reset shared'}
             colorScheme={'gray'}
@@ -165,7 +166,10 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           />
         </Tooltip>
 
-        <Tooltip label={isPublished ? 'Unpublish' : 'Publish'} placement="top">
+        <Tooltip
+          content={isPublished ? 'Unpublish' : 'Publish'}
+          positioning={{ placement: 'top' }}
+        >
           <IconButton
             aria-label={'default'}
             colorScheme={isPublished ? 'yellow' : 'purple'}
@@ -182,7 +186,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           />
         </Tooltip>
 
-        <Tooltip label="Delete" placement="top">
+        <Tooltip content="Delete" positioning={{ placement: 'top' }}>
           <IconButton
             aria-label={'delete'}
             colorScheme={'red'}
