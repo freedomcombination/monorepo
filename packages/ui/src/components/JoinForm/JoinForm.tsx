@@ -13,7 +13,7 @@ import {
   Text,
   Textarea,
   Tooltip,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
@@ -166,7 +166,8 @@ export const JoinForm: FC<JoinFormProps> = ({
         <FormLabel fontSize="sm" fontWeight={600}>
           {t('apply-form.heard-from')}
         </FormLabel>
-        <Wrap
+        <Group
+          wrap={'wrap'}
           p={4}
           gap={4}
           rounded="lg"
@@ -184,7 +185,7 @@ export const JoinForm: FC<JoinFormProps> = ({
               {item?.label[locale]}
             </Checkbox>
           ))}
-        </Wrap>
+        </Group>
         {errors['heardFrom'] && (
           <Text fontSize="sm" color="red.500">
             {errors.heardFrom.message}

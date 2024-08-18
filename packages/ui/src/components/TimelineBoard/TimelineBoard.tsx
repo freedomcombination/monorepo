@@ -7,7 +7,7 @@ import { TweetCard } from '../TweetCard'
 
 export const TimelineBoard: FC<TimelineBoardProps> = ({ timelines }) => {
   return (
-    <HStack gap={4} overflowY="auto" shouldWrapChildren>
+    <HStack gap={4} overflowY="auto">
       {timelines?.map(timeline => (
         <Box
           key={timeline.id}

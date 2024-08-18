@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Heading, SimpleGrid, Stack, Text, Wrap } from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, Stack, Text, Group } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { GrDocumentDownload } from 'react-icons/gr'
@@ -67,7 +67,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
             </Stack>
             {/* documents */}
 
-            <Wrap gap={4} justify={'center'}>
+            <Group wrap={'wrap'} gap={4} justify={'center'}>
               {foundation?.policy_plan && (
                 <ButtonLink
                   href={API_URL + foundation?.policy_plan?.url}
@@ -108,7 +108,7 @@ const AnbiPage: FC<AnbiPageProps> = ({ foundation }) => {
                   {t('foundation.remuneration-policy')}
                 </ButtonLink>
               )}
-            </Wrap>
+            </Group>
           </Stack>
         </Container>
       </Box>

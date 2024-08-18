@@ -9,7 +9,7 @@ import {
   SimpleGrid,
   Stack,
   Text,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -52,13 +52,14 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
       <Heading as="h1" textAlign="center">
         {post?.title}
       </Heading>
-      <Wrap
+      <Group
+        wrap={'wrap'}
         fontSize="md"
         justify={{ base: 'center', md: 'space-between' }}
         color="gray.500"
         gap={4}
       >
-        <Wrap gap={4} justify="center">
+        <Group wrap={'wrap'} gap={4} justify="center">
           <Box>
             <HStack>
               <Icon as={FaCalendarDay} />
@@ -79,7 +80,7 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
               <Text>{post?.likes || 0} likes</Text>
             </HStack>
           </Box>
-        </Wrap>
+        </Group>
 
         <ShareButtons
           title={post?.title}
@@ -96,7 +97,7 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
             disabled={disabled}
           />
         </ShareButtons>
-      </Wrap>
+      </Group>
       <Box textAlign={{ base: 'left', lg: 'justify' }}>
         <Markdown source={source} />
         <Text>

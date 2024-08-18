@@ -10,7 +10,7 @@ import {
   Stack,
   Text,
   VStack,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { FaCheck, FaFile, FaFilePdf, FaTrash } from 'react-icons/fa6'
 
@@ -115,7 +115,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
             <Box>{(file.size / 1024).toFixed(2)} kb</Box>
           )}
         </Box>
-        <Wrap justify={'center'}>
+        <Group wrap={'wrap'} justify={'center'}>
           <MenuFileButton
             url={file.url}
             key={file.url}
@@ -155,7 +155,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
                 </VStack>
               </MenuFileButton>
             ))}
-        </Wrap>
+        </Group>
       </Stack>
     </Box>
   )

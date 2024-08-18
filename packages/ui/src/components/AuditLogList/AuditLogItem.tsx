@@ -8,7 +8,7 @@ import {
   Text,
   ThemeTypings,
   Tooltip,
-  Wrap,
+  Group,
   chakra,
 } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
@@ -83,7 +83,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
   const Icon = iconMap[log.action] || FaQuestion
 
   return (
-    <Wrap p={{ base: 1, md: 0 }} gap={0}>
+    <Group wrap={'wrap'} p={{ base: 1, md: 0 }} gap={0}>
       <HStack gap={1}>
         {/* <WAvatar size={'sm'} name={profile?.name || ''} src={profile?.avatar} /> */}
 
@@ -114,7 +114,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
         )}
       </HStack>
 
-      <Wrap align={'center'} ml={1}>
+      <Group wrap={'wrap'} align={'center'} ml={1}>
         <Text display={'inline'}>{message}</Text>
         {log.text?.length > 50 && (
           <Tooltip
@@ -138,7 +138,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
           noOfLines={1}
           dangerouslySetInnerHTML={{ __html: log.text }}
         />
-      </Wrap>
-    </Wrap>
+      </Group>
+    </Group>
   )
 }

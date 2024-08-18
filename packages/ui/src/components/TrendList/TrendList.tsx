@@ -1,4 +1,4 @@
-import { SkeletonText, VStack, Wrap } from '@chakra-ui/react'
+import { SkeletonText, VStack, Group } from '@chakra-ui/react'
 
 import { TwitterTrend } from '@fc/types'
 
@@ -38,7 +38,7 @@ export const TrendList = ({
       {loading || !trends ? (
         <SkeletonText skeletonHeight={6} noOfLines={5} />
       ) : (
-        <Wrap>
+        <Group wrap={'wrap'}>
           {trends.map((tag, i) => (
             <TrendListItem
               key={i}
@@ -51,7 +51,7 @@ export const TrendList = ({
               removeTrend={onRemoveTrendName}
             />
           ))}
-        </Wrap>
+        </Group>
       )}
     </VStack>
   )

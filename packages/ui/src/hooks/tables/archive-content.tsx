@@ -1,4 +1,4 @@
-import { Badge, Wrap } from '@chakra-ui/react'
+import { Badge, Group } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { ArchiveContent, Category, Tag } from '@fc/types'
@@ -21,7 +21,7 @@ export const useArchiveContentColumns =
       },
       categories: {
         transform: value => (
-          <Wrap>
+          <Group wrap={'wrap'}>
             {(value as Category[])
               ?.sort((a, b) =>
                 a[`name_${locale}`].localeCompare(b[`name_${locale}`]),
@@ -31,7 +31,7 @@ export const useArchiveContentColumns =
                   {c[`name_${locale}`]}
                 </Badge>
               ))}
-          </Wrap>
+          </Group>
         ),
         transformPDF: value =>
           (value as Category[])
@@ -43,13 +43,13 @@ export const useArchiveContentColumns =
       },
       tags: {
         transform: value => (
-          <Wrap>
+          <Group wrap={'wrap'}>
             {(value as Tag[])?.map(t => (
               <Badge variant={'outline'} key={t.id}>
                 {t[`name_${locale}`]}
               </Badge>
             ))}
-          </Wrap>
+          </Group>
         ),
         transformPDF: value =>
           (value as Tag[])?.map(t => `[${t[`name_${locale}`]}]`).join(', '),

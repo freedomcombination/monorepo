@@ -7,7 +7,7 @@ import {
   Stack,
   Text,
   Textarea,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { format } from 'date-fns'
@@ -118,7 +118,7 @@ export const ObservationEditForm = ({
         borderWidth={1}
         rounded={'md'}
       >
-        <Wrap justify={'space-between'}>
+        <Group wrap={'wrap'} justify={'space-between'}>
           <HStack>
             <Text fontWeight={600} fontSize={'sm'}>
               {creator?.name}
@@ -157,7 +157,7 @@ export const ObservationEditForm = ({
               )}
             </ButtonGroup>
           </ActionStack>
-        </Wrap>
+        </Group>
 
         <Stack h={'full'}>
           {isEditing ? (

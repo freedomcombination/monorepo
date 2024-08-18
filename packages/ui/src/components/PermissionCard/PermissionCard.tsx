@@ -10,7 +10,7 @@ import {
   TagLeftIcon,
   Text,
   VStack,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { TbCheck, TbX } from 'react-icons/tb'
 
@@ -154,7 +154,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
         alignItems={'flex-start'}
         divider={<StackSeparator borderColor="gray.200" />}
       >
-        <Wrap>
+        <Group wrap={'wrap'}>
           {Object.values(values).flatMap(action => {
             return Object.entries(action).map(([key, obj]) => {
               return (
@@ -172,9 +172,9 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
               )
             })
           })}
-        </Wrap>
+        </Group>
         {menuItems.length > 0 && (
-          <Wrap>
+          <Group wrap={'wrap'}>
             {menuItems.map(item => {
               return (
                 <Tag key={item.label} size={'md'}>
@@ -185,7 +185,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
                 </Tag>
               )
             })}
-          </Wrap>
+          </Group>
         )}
       </VStack>
     </Stack>

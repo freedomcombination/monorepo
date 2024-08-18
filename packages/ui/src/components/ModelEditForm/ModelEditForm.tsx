@@ -14,7 +14,7 @@ import {
   Stack,
   Switch,
   Textarea,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
@@ -498,7 +498,7 @@ export const ModelEditForm = <T extends StrapiModel>({
           bottom={0}
           bg={'white'}
         >
-          <Wrap>
+          <Group wrap={'wrap'}>
             <ActionButton
               isVisible={
                 endpoint === 'hashtags' || endpoint === 'archive-contents'
@@ -627,7 +627,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             >
               {t('dismiss')}
             </ActionButton>
-          </Wrap>
+          </Group>
         </Flex>
       </Stack>
       <Separator />

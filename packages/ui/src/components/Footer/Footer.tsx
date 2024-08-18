@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Stack, Text, Wrap } from '@chakra-ui/react'
+import { Box, Stack, Text, Group } from '@chakra-ui/react'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
@@ -43,7 +43,8 @@ export const Footer: FC<FooterProps> = ({
           </Stack>
           <FooterNav menu={menu} />
         </Stack>
-        <Wrap
+        <Group
+          wrap={'wrap'}
           justify={{ base: 'center', sm: 'space-between' }}
           borderTopWidth="0.5px"
           borderTopColor="primary.200"
@@ -56,7 +57,7 @@ export const Footer: FC<FooterProps> = ({
             <>{t('copyright', { name, year: new Date().getFullYear() })}</>
           </Text>
           <SocialButtons items={socialItems} />
-        </Wrap>
+        </Group>
       </Container>
     </Box>
   )

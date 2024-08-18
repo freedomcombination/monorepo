@@ -16,7 +16,7 @@ import {
   Stack,
   Tag,
   Text,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -119,7 +119,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                       <Text color={'black'} fontWeight={700}>
                         {t('categories')}
                       </Text>
-                      <Wrap>
+                      <Group wrap={'wrap'}>
                         {art?.categories?.map(category => (
                           <Badge
                             py={1}
@@ -131,7 +131,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                             {category[`name_${language}`]}
                           </Badge>
                         ))}
-                      </Wrap>
+                      </Group>
                     </Stack>
                     <Stack flex={1} h={'full'}>
                       <Text color={'black'} fontWeight={700}>

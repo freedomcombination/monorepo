@@ -15,7 +15,7 @@ import {
   Stack,
   Switch,
   Textarea,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { useCompletion } from 'ai/react'
 import { useRouter } from 'next/router'
@@ -237,8 +237,8 @@ export const PostGenAI = ({
               </NumberInput>
             </FormControl>
           </HStack>
-          <Wrap justify={'space-between'}>
-            <Wrap alignContent={'center'}>
+          <Group wrap={'wrap'} justify={'space-between'}>
+            <Group wrap={'wrap'} alignContent={'center'}>
               <FormControl w="auto" display="flex" alignItems="center">
                 <FormLabel htmlFor="askBeforeDelete" mb="0">
                   Always ask before deleting
@@ -263,8 +263,8 @@ export const PostGenAI = ({
                   />
                 </FormControl>
               )}
-            </Wrap>
-            <Wrap>
+            </Group>
+            <Group wrap={'wrap'}>
               <Button
                 leftIcon={<RiAiGenerate />}
                 disabled={loading}
@@ -306,8 +306,8 @@ export const PostGenAI = ({
                   </Button>
                 </>
               )}
-            </Wrap>
-          </Wrap>
+            </Group>
+          </Group>
         </Stack>
       </form>
 

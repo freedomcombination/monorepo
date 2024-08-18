@@ -10,7 +10,7 @@ import {
   Stack,
   Text,
   useBreakpointValue,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { FaCalendarDay, FaClock, FaEye, FaHeart } from 'react-icons/fa'
@@ -83,7 +83,8 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured, onClick }) => {
             mb: 0,
           })}
         >
-          <Wrap
+          <Group
+            wrap={'wrap'}
             justify={{ base: 'center', md: 'space-between' }}
             fontSize="sm"
             color="gray.500"
@@ -118,7 +119,7 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured, onClick }) => {
                 </HStack>
               )}
             </HStack>
-          </Wrap>
+          </Group>
           <Stack flex={1}>
             <Heading as="h3" size="md">
               {post.title}

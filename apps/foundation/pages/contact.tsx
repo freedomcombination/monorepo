@@ -4,7 +4,7 @@ import {
   Heading,
   SimpleGrid,
   VStack,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -67,7 +67,12 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
               </Heading>
               <Separator borderColor="whiteAlpha.400" />
 
-              <Wrap gap={4} justify="center" key={foundation?.id}>
+              <Group
+                wrap={'wrap'}
+                gap={4}
+                justify="center"
+                key={foundation?.id}
+              >
                 <ButtonLink
                   isExternal
                   variant="link"
@@ -104,7 +109,7 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                 >
                   {foundation?.contact?.address}
                 </ButtonLink>
-              </Wrap>
+              </Group>
 
               <SocialButtons items={socialLinks.foundation} />
             </VStack>

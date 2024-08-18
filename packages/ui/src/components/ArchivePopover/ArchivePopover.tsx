@@ -12,7 +12,7 @@ import {
   PopoverTrigger,
   Stack,
   Text,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import Markdown from 'react-markdown'
@@ -115,13 +115,13 @@ const DisplayArchive: FC<{
             <Text>•</Text>
             <time>{archiveContent.date}</time>
           </HStack>
-          <Wrap fontWeight={300} align={'center'}>
+          <Group wrap={'wrap'} fontWeight={300} align={'center'}>
             {archiveContent.categories &&
               archiveContent.categories.length > 0 &&
               archiveContent.categories.map(c => (
                 <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
               ))}
-          </Wrap>
+          </Group>
         </Box>
         {includeContent && (
           <Box noOfLines={6} overflow={'auto'}>

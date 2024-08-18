@@ -1,4 +1,4 @@
-import { Stack, Tag, TagCloseButton, TagLabel, Wrap } from '@chakra-ui/react'
+import { Stack, Tag, TagCloseButton, TagLabel, Group } from '@chakra-ui/react'
 
 import { useHashtag } from '@fc/services'
 
@@ -25,7 +25,7 @@ export const PostMakerTweetTags = () => {
 
   return (
     <Stack>
-      <Wrap>
+      <Group wrap={'wrap'}>
         {mentionUsernames.map(mention => (
           <Tag
             key={mention}
@@ -41,8 +41,8 @@ export const PostMakerTweetTags = () => {
             />
           </Tag>
         ))}
-      </Wrap>
-      <Wrap>
+      </Group>
+      <Group wrap={'wrap'}>
         {defaultTrendNames.map(trend => (
           <Tag
             key={trend}
@@ -67,7 +67,7 @@ export const PostMakerTweetTags = () => {
             />
           </Tag>
         ))}
-      </Wrap>
+      </Group>
     </Stack>
   )
 }

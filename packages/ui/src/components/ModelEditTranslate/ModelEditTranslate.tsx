@@ -7,7 +7,7 @@ import {
   Stack,
   Text,
   Textarea,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
@@ -247,7 +247,8 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
           })}
         </Stack>
         {/*  Button group  */}
-        <Wrap
+        <Group
+          wrap={'wrap'}
           alignSelf={'end'}
           justify={'end'}
           pos={'sticky'}
@@ -303,7 +304,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
 
             {children}
           </ActionStack>
-        </Wrap>
+        </Group>
       </Stack>
     </>
   )

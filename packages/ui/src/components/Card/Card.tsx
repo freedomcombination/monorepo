@@ -8,7 +8,7 @@ import {
   LinkOverlay,
   Stack,
   Text,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 
 import { UploadFile } from '@fc/types'
@@ -68,11 +68,11 @@ export const Card: FC<CardProps> = ({
         </Center>
 
         <Stack flex={1} p={{ base: 4, lg: 6 }}>
-          <Wrap color="gray.500">
+          <Group wrap={'wrap'} color="gray.500">
             {place && <Text>{place}</Text>}
             {date && place && <Text>•</Text>}
             {date && <Text>{date}</Text>}
-          </Wrap>
+          </Group>
           <LinkOverlay as={Link} href={href}>
             <Heading
               as="h3"
