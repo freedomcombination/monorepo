@@ -6,7 +6,6 @@ import {
   FormLabel,
   HStack,
   Heading,
-  Progress,
   Stack,
   Textarea,
   Group,
@@ -24,6 +23,7 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
+  Progress,
   Switch,
 } from '@fc/chakra'
 import { StrapiLocale } from '@fc/types'
@@ -325,7 +325,6 @@ export const PostGenAI = ({
         <Stack gap={4} py={4} transition={'0.5s'} transitionProperty={'all'}>
           <Progress
             size="xs"
-            isIndeterminate
             colorScheme={colorScheme}
             bgColor={'whiteAlpha.700'}
           />

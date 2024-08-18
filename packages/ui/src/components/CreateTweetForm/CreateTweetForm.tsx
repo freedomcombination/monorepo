@@ -4,10 +4,9 @@ import { useBoolean } from '@chakra-ui/hooks'
 import {
   Box,
   Button,
-  ButtonGroup,
+  Group,
   FormLabel,
   HStack,
-  Progress,
   Stack,
   Text,
   Textarea,
@@ -27,6 +26,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Progress,
 } from '@fc/chakra'
 import { useRecommendTweet } from '@fc/services'
 import { Mention, Tweet } from '@fc/types'
@@ -112,9 +112,9 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
   return (
     <Box>
       <Modal
-        size="4xl"
-        onClose={closeModal}
-        isOpen={isOpen}
+        size="xl"
+        onOpenChange={e => (e.open ? null : closeModal)}
+        open={isOpen}
         scrollBehavior="inside"
       >
         <ModalOverlay />
@@ -142,7 +142,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   label="New Tweet"
                   register={register}
                   errors={errors as FieldErrorsImpl<CreateTweetFormFieldValues>}
-                  isRequired
+                  required
                 />
 
                 <ModelSelect<Mention>
@@ -181,7 +181,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   </Text>
                 </Stack>
               </Stack>
-              <ButtonGroup alignSelf="end">
+              <Group alignSelf="end">
                 <Button
                   bg={'transparent'}
                   mr={3}
@@ -198,7 +198,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                 >
                   Recommend
                 </Button>
-              </ButtonGroup>
+              </Group>
             </Stack>
           </ModalBody>
         </ModalContent>

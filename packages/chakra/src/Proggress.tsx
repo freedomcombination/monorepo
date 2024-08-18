@@ -34,3 +34,13 @@ export const ProgressLabel = (props: ProgressLabelProps) => {
     </ChakraProgress.Label>
   )
 }
+
+export const Progress = (
+  props: ChakraProgress.RootProps & { inDeterminate?: boolean },
+) => {
+  return (
+    <ProgressRoot {...props}>
+      <ProgressBar />
+    </ProgressRoot>
+  )
+}
