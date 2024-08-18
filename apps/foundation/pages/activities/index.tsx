@@ -45,7 +45,7 @@ const Activities = () => {
     },
   })
 
-  const { data, isLoading } = activitiesQuery
+  const { data, loading } = activitiesQuery
 
   const pagination = data?.meta?.pagination
   const activities = data?.data || []
@@ -54,7 +54,7 @@ const Activities = () => {
     <Layout seo={{ title }} isDark>
       <Hero title={title} />
 
-      {activities[0] || isLoading ? (
+      {activities[0] || loading ? (
         <>
           <Container>
             <SimpleGrid

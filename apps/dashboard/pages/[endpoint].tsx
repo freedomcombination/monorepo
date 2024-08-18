@@ -51,7 +51,7 @@ type ModelPageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const { t } = useTranslation()
-  const { roles, profile, token, isLoading } = useAuthContext()
+  const { roles, profile, token, loading } = useAuthContext()
 
   const [selectedRelationFilters, setSelectedRelationFilters] = useState<
     RelationFilterArgs[]
@@ -311,7 +311,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         </ModelEditModal>
       )}
 
-      {isLoading || endpointQuery.isPending || endpointQuery.isLoading ? (
+      {loading || endpointQuery.isPending || endpointQuery.loading ? (
         <Center h={'full'}>
           <Spinner size={'xl'} color={'primary.500'} />
         </Center>

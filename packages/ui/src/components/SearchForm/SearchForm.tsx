@@ -63,7 +63,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
       <InputRightElement w="max-content" right={1}>
         {searchTerm.length > 1 && (
           <IconButton
-            isLoading={isFetching}
+            loading={isFetching}
             variant="ghost"
             icon={<FaTimes color="gray.400" />}
             onClick={() => setSearchTerm('')}

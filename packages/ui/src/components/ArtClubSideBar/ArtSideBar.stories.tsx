@@ -27,7 +27,7 @@ export default {
 type Story = StoryObj<ArtSideBarProps>
 
 const StoryWithHook: StoryFn<ArtSideBarProps> = args => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const { query } = useRouter()
 
   return (
@@ -41,8 +41,8 @@ const StoryWithHook: StoryFn<ArtSideBarProps> = args => {
               { id: 1, name_en: 'nature' },
             ] as Category[]
           }
-          isLoading={args.isLoading || isLoading}
-          setIsLoading={setIsLoading}
+          loading={args.loading || loading}
+          setLoading={setLoading}
         />
       </Box>
       <Center>

@@ -27,7 +27,7 @@ import { AdminLayout, PageHeader, TopicCard } from '@fc/ui'
 
 const NewsPage = () => {
   const { checkActionsPermission } = useAuthContext()
-  const { data, isLoading } = useTopic()
+  const { data, loading } = useTopic()
   const syncTopic = useTopicSync()
   const [filter, setFilter] = useState<string[]>([])
   const [searchTerm, setSearchTerm] = useState<string>()
@@ -142,9 +142,9 @@ const NewsPage = () => {
         <Tooltip label={syncedStr} hasArrow bg="primary.400">
           <IconButton
             aria-label="Sync news"
-            isLoading={syncTopic.isPending || isLoading}
+            loading={syncTopic.isPending || loading}
             onClick={() => syncTopic.mutate()}
-            isDisabled={!canSync || syncTopic.isPending || isLoading}
+            isDisabled={!canSync || syncTopic.isPending || loading}
             icon={<FaSyncAlt />}
           />
         </Tooltip>
@@ -172,7 +172,7 @@ const NewsPage = () => {
         </Box>
       </Box>
       <SimpleGrid columns={{ base: 1 }} gap={4}>
-        {isLoading ? (
+        {loading ? (
           <Center h="60vh">
             <Spinner size="xl" />
           </Center>

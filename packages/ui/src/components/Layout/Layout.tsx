@@ -16,7 +16,7 @@ export interface LayoutProps {
   hasProfile?: boolean
   headerProps: HeaderProps
   isDark?: boolean
-  isLoading?: boolean
+  loading?: boolean
   seo: NextSeoProps
 }
 
@@ -26,7 +26,7 @@ export const Layout: FC<LayoutProps> = ({
   hasProfile,
   headerProps,
   isDark,
-  isLoading = false,
+  loading = false,
   seo,
 }) => {
   const minH = isDark
@@ -45,7 +45,7 @@ export const Layout: FC<LayoutProps> = ({
           isDark={isDark}
           hasProfile={hasProfile}
         />
-        {isLoading ? (
+        {loading ? (
           <Center minH={minH}>
             <Spinner colorScheme="red" />
           </Center>

@@ -13,13 +13,13 @@ import { CollectionList } from '../CollectionList'
 
 export type ArtSideBarProps = {
   categoryList: Category[]
-  isLoading: boolean
-  setIsLoading: (isLoading: boolean) => void
+  loading: boolean
+  setIsLoading: (loading: boolean) => void
 }
 
 export const ArtSideBar: FC<ArtSideBarProps> = ({
   categoryList,
-  isLoading,
+  loading,
   setIsLoading,
 }) => {
   const { t } = useTranslation()
@@ -45,7 +45,7 @@ export const ArtSideBar: FC<ArtSideBarProps> = ({
           <CategoryFilter
             categoryData={categoryList || []}
             initialCategories={initialCategories}
-            isLoading={isLoading}
+            loading={loading}
             selectCategories={value => changeParam({ categories: value })}
             setIsLoading={setIsLoading}
             title={t('categories')}

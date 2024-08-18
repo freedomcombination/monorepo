@@ -23,18 +23,18 @@ import { AuthModal } from '../AuthModal'
 
 export type AdminLayoutProps = {
   children: ReactNode
-  isLoading?: boolean
+  loading?: boolean
   hasBackButton?: boolean
   seo: NextSeoProps
 }
 
 export const AdminLayout: FC<AdminLayoutProps> = ({
   children,
-  isLoading,
+  loading,
   hasBackButton,
   seo,
 }) => {
-  const { checkAuth, isLoading: isAuthLoading, isAdmin } = useAuthContext()
+  const { checkAuth, loading: isAuthLoading, isAdmin } = useAuthContext()
 
   useEffect(() => {
     checkAuth()
@@ -68,7 +68,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
           flex={1}
           //    pb={{ base: 12, lg: 4 }}
         >
-          {isLoading ? (
+          {loading ? (
             <Center h="full">
               <Spinner size="xl" />
             </Center>

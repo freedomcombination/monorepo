@@ -110,7 +110,7 @@ export const ChangePasswordForm = () => {
 
       <Button
         leftIcon={<FaEdit />}
-        isLoading={isPending}
+        loading={isPending}
         size={'lg'}
         alignSelf={'start'}
         type={'submit'}

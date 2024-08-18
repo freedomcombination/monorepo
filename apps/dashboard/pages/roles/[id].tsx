@@ -44,7 +44,7 @@ const RolePage: FC<RolePageProps> = () => {
 
   const roleId = query.id ? Number(query.id) : 1
 
-  const { data, isLoading, refetch } = useStrapiRequest<Role>({
+  const { data, loading, refetch } = useStrapiRequest<Role>({
     endpoint: 'users-permissions/roles',
     id: roleId,
     token: token ?? '',
@@ -122,7 +122,7 @@ const RolePage: FC<RolePageProps> = () => {
 
   return (
     <AdminLayout
-      seo={{ title: isLoading ? 'Loading...' : role?.name }}
+      seo={{ title: loading ? 'Loading...' : role?.name }}
       hasBackButton
     >
       <Flex flexDir={'column'} gap={4} maxH={'100vh'} overflow={'hidden'}>
@@ -141,7 +141,7 @@ const RolePage: FC<RolePageProps> = () => {
               <Button
                 isDisabled={!needSave}
                 onClick={() => setStartSave(true)}
-                isLoading={startSave || isLoading}
+                loading={startSave || loading}
                 leftIcon={<FaSave />}
               >
                 {t('save')}
@@ -207,7 +207,7 @@ const RolePage: FC<RolePageProps> = () => {
             )}
           </HStack>
         </HStack>
-        {!role || !role.permissions || isLoading ? (
+        {!role || !role.permissions || loading ? (
           <Center>
             <Spinner size={'xl'} />
           </Center>
@@ -245,7 +245,7 @@ const RolePage: FC<RolePageProps> = () => {
             />
             <PermissionCard
               permission={inEditMode ? demoPermissions : role.permissions}
-              editable={inEditMode && !isLoading}
+              editable={inEditMode && !loading}
               filters={filters}
               onChange={onChangePermissions}
             />

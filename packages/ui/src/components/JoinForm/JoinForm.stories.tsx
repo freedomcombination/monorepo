@@ -23,13 +23,13 @@ export default {
 type Story = StoryObj<typeof JoinForm>
 
 const StoryWithHook: StoryFn<JoinFormProps> = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
 
   const platforms = PLATFORM_MOCKS.data
   const onSubmit = (data: JoinFormFieldValues) => {
-    setIsLoading(true)
+    setLoading(true)
     setTimeout(() => {
-      setIsLoading(false)
+      setLoading(false)
     }, 2000)
 
     alert(JSON.stringify(data))
@@ -38,7 +38,7 @@ const StoryWithHook: StoryFn<JoinFormProps> = () => {
   return (
     <JoinForm
       onSubmitHandler={onSubmit}
-      isLoading={isLoading}
+      loading={loading}
       platforms={platforms}
       foundationJobs={sampleSize(JOB_MOCKS.data, 3)}
     />

@@ -42,7 +42,7 @@ export const useLikeArt = ({
     [],
   )
 
-  if (!art) return { toggleLike: () => null, isLiked: false, isLoading: false }
+  if (!art) return { toggleLike: () => null, isLiked: false, loading: false }
 
   const isLikedByUser = profile && (art.isLiked ?? false)
 
@@ -84,7 +84,7 @@ export const useLikeArt = ({
   return {
     toggleLike,
     isLiked: profile ? isLikedByUser : isLikedStorage,
-    isLoading: likeArtMutation.isPending,
+    loading: likeArtMutation.isPending,
     isDisabled,
   }
 }

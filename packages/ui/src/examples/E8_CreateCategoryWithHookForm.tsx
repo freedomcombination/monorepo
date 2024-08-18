@@ -38,11 +38,7 @@ export const CreateCategoryWithHookForm = () => {
         <Input placeholder="Category name (tr)" {...register('name_en')} />
         {/* TODO: Add all inputs */}
 
-        <Button
-          type={'submit'}
-          isLoading={isPending}
-          loadingText={'Creating...'}
-        >
+        <Button type={'submit'} loading={isPending} loadingText={'Creating...'}>
           Submit
         </Button>
       </Stack>

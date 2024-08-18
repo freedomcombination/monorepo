@@ -32,7 +32,7 @@ export const ModelEditModal = <T extends StrapiModel>({
 }: ModelEditModalProps<T>) => {
   const { token } = useAuthContext()
 
-  const { data, isLoading, refetch } = useStrapiRequest<T>({
+  const { data, loading, refetch } = useStrapiRequest<T>({
     endpoint,
     id,
     queryOptions: {
@@ -68,7 +68,7 @@ export const ModelEditModal = <T extends StrapiModel>({
           <Heading as="h3">{title}</Heading>
         </ModalHeader>
         <ModalCloseButton />
-        {isLoading && (
+        {loading && (
           <Center>
             <Spinner />
           </Center>

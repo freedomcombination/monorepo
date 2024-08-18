@@ -52,7 +52,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   })
 
   const router = useRouter()
-  const { login, isLoading, error } = useAuthContext()
+  const { login, loading, error } = useAuthContext()
   const { returnUrl } = router.query
 
   useEffect(() => {
@@ -143,7 +143,7 @@ export const LoginForm: FC<LoginFormProps> = ({
             <Button
               type="submit"
               data-testid="button-submit-login"
-              isLoading={isLoading}
+              loading={loading}
             >
               {t('login.signin')}
             </Button>

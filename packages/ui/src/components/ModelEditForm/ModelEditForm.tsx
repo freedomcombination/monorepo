@@ -509,7 +509,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               leftIcon={<FaXTwitter />}
               fontSize="sm"
               colorScheme={'purple'}
-              isLoading={approveModelMutation.isPending}
+              loading={approveModelMutation.isPending}
             >
               {t('posts')}
             </ActionButton>
@@ -535,7 +535,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 leftIcon={<HiPlus />}
                 fontSize="sm"
                 colorScheme={'purple'}
-                isLoading={approveModelMutation.isPending}
+                loading={approveModelMutation.isPending}
               >
                 {t('collection.add-art')}
               </ActionButton>
@@ -560,7 +560,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               leftIcon={<HiOutlineCheck />}
               fontSize="sm"
               colorScheme={'purple'}
-              isLoading={approveModelMutation.isPending}
+              loading={approveModelMutation.isPending}
             >
               {t('approve')}
             </ActionButton>

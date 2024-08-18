@@ -7,7 +7,7 @@ export type ContactFormFieldValues = InferType<typeof contactSchema>
 export type ContactFormProps = {
   onSubmitHandler: (data: ContactFormFieldValues) => Promise<void>
   errorMessage?: string
-  isLoading: boolean
+  loading: boolean
   isSuccess: boolean
   isError: boolean
 }

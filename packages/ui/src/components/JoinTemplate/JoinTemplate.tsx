@@ -152,7 +152,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
               </Alert>
               <JoinForm
                 onSubmitHandler={onSubmit}
-                isLoading={isPending}
+                loading={isPending}
                 platforms={platforms}
                 foundationJobs={foundationJobs}
               />

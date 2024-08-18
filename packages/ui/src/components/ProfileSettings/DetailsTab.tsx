@@ -97,7 +97,7 @@ const AvatarForm = () => {
             <Button
               colorScheme="primary"
               isDisabled={!file}
-              isLoading={isPending}
+              loading={isPending}
               onClick={onUpload}
             >
               {t('save')}
@@ -217,7 +217,7 @@ export const DetailsTab = () => {
         isDisabled={!hasChanged}
         leftIcon={<FaSave />}
         size={'lg'}
-        isLoading={saving}
+        loading={saving}
         onClick={() => setSaving(true)}
         alignSelf={'start'}
       >

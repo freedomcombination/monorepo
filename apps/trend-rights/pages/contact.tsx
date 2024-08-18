@@ -115,7 +115,7 @@ const Contact = () => {
             <Box w="full">
               <ContactForm
                 onSubmitHandler={handleSubmit}
-                isLoading={isPending}
+                loading={isPending}
                 isSuccess={isSuccess}
                 isError={isError}
               />

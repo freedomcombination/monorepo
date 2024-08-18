@@ -139,7 +139,7 @@ export const Socials = () => {
         isDisabled={!hasChanged}
         leftIcon={<FaSave />}
         size={'lg'}
-        isLoading={saving}
+        loading={saving}
         alignSelf={'start'}
         type={'submit'}
       >

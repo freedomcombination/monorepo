@@ -66,7 +66,7 @@ const FetchArchive: FC<{
         we need to fetch the archive content manually
     */
 
-  const { data, isLoading } = useStrapiRequest<ArchiveContent>({
+  const { data, loading } = useStrapiRequest<ArchiveContent>({
     endpoint: 'archive-contents',
     id,
     queryOptions: {
@@ -76,10 +76,10 @@ const FetchArchive: FC<{
 
   const archiveContent = data?.data
 
-  if (isLoading || !archiveContent)
+  if (loading || !archiveContent)
     return (
       <Center>
-        {isLoading ? (
+        {loading ? (
           <Text>Archive with id {id} is loading...</Text>
         ) : id ? (
           <Text>Archive with id {id} not found.</Text>

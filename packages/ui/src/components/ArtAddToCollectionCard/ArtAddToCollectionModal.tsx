@@ -32,7 +32,7 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
   const [page, setPage] = useState(1)
   const { locale } = useRouter()
 
-  const { data, isLoading, refetch } = useStrapiRequest<Art>({
+  const { data, loading, refetch } = useStrapiRequest<Art>({
     endpoint: 'arts',
     filters: {
       ...(search ? { [`title_${locale}`]: { $containsi: search } } : {}),
@@ -63,12 +63,12 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
           </ModalHeader>
           <ModalBody>
             <Stack gap={8}>
-              {isLoading && (
+              {loading && (
                 <Center>
                   <Spinner />
                 </Center>
               )}
-              {!isLoading && data?.data && (
+              {!loading && data?.data && (
                 <>
                   <ArtAddToCollectionGrid
                     arts={data?.data || []}

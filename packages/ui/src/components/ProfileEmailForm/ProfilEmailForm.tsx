@@ -144,7 +144,7 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
             rightIcon={<FiArrowRight />}
             type="submit"
             isDisabled={!isValid}
-            isLoading={isPending}
+            loading={isPending}
           >
             Send
           </Button>

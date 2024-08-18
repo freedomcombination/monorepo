@@ -7,14 +7,14 @@ import { TrendListItem } from '../TrendListItem'
 
 interface TrendListProps {
   trends?: TwitterTrend[] | null
-  isLoading: boolean
+  loading: boolean
   hashtagInTrends?: TwitterTrend
   hashtagExtraInTrends?: TwitterTrend
 }
 
 export const TrendList = ({
   trends,
-  isLoading,
+  loading,
   hashtagInTrends,
   hashtagExtraInTrends,
 }: TrendListProps): JSX.Element => {
@@ -35,7 +35,7 @@ export const TrendList = ({
 
   return (
     <VStack align="stretch">
-      {isLoading || !trends ? (
+      {loading || !trends ? (
         <SkeletonText skeletonHeight={6} noOfLines={5} />
       ) : (
         <Wrap>

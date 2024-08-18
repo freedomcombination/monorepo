@@ -41,7 +41,7 @@ export const useLikeBlog = () => {
     [],
   )
 
-  if (!blog) return { toggleLike: () => null, isLiked: false, isLoading: false }
+  if (!blog) return { toggleLike: () => null, isLiked: false, loading: false }
 
   const isLikedByUser = profile && blog?.isLiked
 
@@ -89,7 +89,7 @@ export const useLikeBlog = () => {
   return {
     toggleLike,
     isLiked,
-    isLoading: likeBlogMutation.isPending,
+    loading: likeBlogMutation.isPending,
     isDisabled,
   }
 }

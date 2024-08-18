@@ -20,9 +20,9 @@ const useBlogsQuery = (title?: string) => {
 
 export const FetchWithCustomQuery = () => {
   const [title, setTitle] = useState<string>()
-  const { data, isLoading, isFetching } = useBlogsQuery(title)
+  const { data, loading, isFetching } = useBlogsQuery(title)
 
-  const isLoaded = !isLoading && !isFetching
+  const isLoaded = !loading && !isFetching
 
   return (
     <Stack>

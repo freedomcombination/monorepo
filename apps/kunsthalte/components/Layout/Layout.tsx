@@ -8,16 +8,11 @@ import { Layout as AppLayout, UserFeedback } from '@fc/ui'
 
 interface LayoutProps extends PropsWithChildren {
   isDark?: boolean
-  isLoading?: boolean
+  loading?: boolean
   seo: NextSeoProps
 }
 
-export const Layout: FC<LayoutProps> = ({
-  children,
-  isDark,
-  isLoading,
-  seo,
-}) => {
+export const Layout: FC<LayoutProps> = ({ children, isDark, loading, seo }) => {
   const { checkAuth } = useAuthContext()
 
   useEffect(() => {
@@ -43,7 +38,7 @@ export const Layout: FC<LayoutProps> = ({
           logo: '/images/kunsthalte-logo.svg',
         }}
         isDark={isDark}
-        isLoading={isLoading}
+        loading={loading}
       >
         {children}
       </AppLayout>

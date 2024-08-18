@@ -24,7 +24,7 @@ import { FormItem } from '../FormItem'
 
 export const ContactForm: FC<ContactFormProps> = ({
   onSubmitHandler,
-  isLoading,
+  loading,
   isSuccess,
   isError,
   errorMessage,
@@ -82,7 +82,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           variant="solid"
           type="submit"
           isDisabled={!isValid}
-          isLoading={isLoading}
+          loading={loading}
           size={'lg'}
           w="full"
         >

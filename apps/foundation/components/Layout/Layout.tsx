@@ -8,16 +8,11 @@ import { Layout as AppLayout, UserFeedback, useScroll } from '@fc/ui'
 
 interface LayoutProps extends PropsWithChildren {
   isDark?: boolean
-  isLoading?: boolean
+  loading?: boolean
   seo: NextSeoProps
 }
 
-export const Layout: FC<LayoutProps> = ({
-  children,
-  isDark,
-  isLoading,
-  seo,
-}) => {
+export const Layout: FC<LayoutProps> = ({ children, isDark, loading, seo }) => {
   const { checkAuth } = useAuthContext()
   const isScrolled = useScroll()
 
@@ -46,7 +41,7 @@ export const Layout: FC<LayoutProps> = ({
           logo: `/images/foundation-logo-light.svg`,
         }}
         isDark={isDark}
-        isLoading={isLoading}
+        loading={loading}
         hasProfile
       >
         {children}

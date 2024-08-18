@@ -21,7 +21,7 @@ export const AuditLogList: FC = () => {
     setQ(query)
   }
 
-  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage, loading } = useInfiniteQuery({
     queryKey: ['audit-logs', q],
     queryFn: ({ pageParam = 1 }) =>
       strapiRequest<AuditLog>({
@@ -101,7 +101,7 @@ export const AuditLogList: FC = () => {
         placeholder={'Search by profile, action, text, or endpoint'}
       />
 
-      {logs?.length === 0 && !isLoading && (
+      {logs?.length === 0 && !loading && (
         <Box
           bg={'blackAlpha.100'}
           p={8}
@@ -180,7 +180,7 @@ export const AuditLogList: FC = () => {
             leftIcon={<FaPlusCircle />}
             variant={'outline'}
             onClick={() => fetchNextPage()}
-            isLoading={isLoading}
+            loading={loading}
             isDisabled={!hasNextPage}
             mx={'auto'}
             width={200}

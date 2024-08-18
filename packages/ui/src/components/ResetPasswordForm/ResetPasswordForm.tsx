@@ -106,7 +106,7 @@ export const ResetPasswordForm = () => {
             />
           </Stack>
           <Stack gap={6}>
-            <Button type="submit" isLoading={isPending}>
+            <Button type="submit" loading={isPending}>
               {t('submit')}
             </Button>
           </Stack>

@@ -277,7 +277,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
           <Button
             leftIcon={<FaSave />}
             onClick={() => setSaveUsers(true)}
-            isLoading={saveUsers}
+            loading={saveUsers}
             loadingText="..."
             isDisabled={pendingUser.length === 0}
           >

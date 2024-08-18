@@ -42,7 +42,7 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
 
   const post = data?.data
 
-  const { isLiked, toggleLike, isLoading, isDisabled } = useLikeBlog()
+  const { isLiked, toggleLike, loading, isDisabled } = useLikeBlog()
 
   const readingTime = getReadingTime(post?.content || '', locale)
 
@@ -92,7 +92,7 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
             color={isLiked ? 'red.500' : 'blue.600'}
             icon={<AiFillHeart />}
             onClick={toggleLike}
-            isLoading={isLoading}
+            loading={loading}
             isDisabled={isDisabled}
           />
         </ShareButtons>

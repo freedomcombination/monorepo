@@ -32,7 +32,7 @@ export const AdminLoginForm = () => {
 
   const [isRedirecting, setIsRedirecting] = useState(false)
 
-  const { isLoading: isAuthLoading, login, checkAuth } = useAuthContext()
+  const { loading: isAuthLoading, login, checkAuth } = useAuthContext()
 
   const router = useRouter()
 
@@ -103,7 +103,7 @@ export const AdminLoginForm = () => {
                 errors={errors}
               />
               <Button
-                isLoading={isAuthLoading || isRedirecting}
+                loading={isAuthLoading || isRedirecting}
                 w="full"
                 type="submit"
               >

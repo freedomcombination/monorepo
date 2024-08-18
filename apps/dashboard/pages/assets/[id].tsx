@@ -73,7 +73,7 @@ const AssetPage = () => {
   const pageCount = assetsTrackingsQuery?.data?.meta?.pagination?.pageCount || 0
   const totalCount = assetsTrackingsQuery?.data?.meta?.pagination?.total || 0
 
-  const { data, isLoading, refetch } = useStrapiRequest<Asset>({
+  const { data, loading, refetch } = useStrapiRequest<Asset>({
     endpoint: 'assets',
     id,
   })
@@ -99,7 +99,7 @@ const AssetPage = () => {
   return (
     <AdminLayout
       seo={{ title: t('foundation.assets') }}
-      isLoading={isLoading}
+      loading={loading}
       hasBackButton
     >
       {selectedAssetsTrackingId && (

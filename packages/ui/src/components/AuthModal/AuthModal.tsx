@@ -41,7 +41,7 @@ export const AuthModal = () => {
   const [isRedirecting, setIsRedirecting] = useState(false)
 
   const {
-    isLoading: isAuthLoading,
+    loading: isAuthLoading,
     login,
     closeAuthModal,
     isAuthModalOpen,
@@ -112,7 +112,7 @@ export const AuthModal = () => {
                   errors={errors}
                 />
                 <Button
-                  isLoading={isAuthLoading || isRedirecting}
+                  loading={isAuthLoading || isRedirecting}
                   w="full"
                   type="submit"
                 >

@@ -56,12 +56,12 @@ export const FetchWithUseQuery = () => {
   }
 
   // const blogsQuery = useQuery(['blogs'], fetchBlogs)
-  const { data, isLoading, isFetching } = useQuery({
+  const { data, loading, isFetching } = useQuery({
     queryKey: ['blogs'],
     queryFn: fetchBlogs,
   })
 
-  const isLoaded = !isLoading && !isFetching
+  const isLoaded = !loading && !isFetching
 
   return (
     <Stack>

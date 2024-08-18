@@ -207,7 +207,7 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
           </Stack>
         </RadioGroup>
 
-        <Button leftIcon={<FaSave />} isLoading={saving} onClick={onSave}>
+        <Button leftIcon={<FaSave />} loading={saving} onClick={onSave}>
           {t('save')}
         </Button>
       </HStack>

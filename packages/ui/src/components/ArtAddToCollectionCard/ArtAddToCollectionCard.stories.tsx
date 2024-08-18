@@ -85,7 +85,7 @@ const StoryWithHooks: StoryFn<ArtAddToCollectionCardProps> = args => {
       <SimpleGrid minChildWidth="300px" gap={4}>
         {ART_MOCKS.data.map(art => {
           const isAdded = collection.arts?.some(a => a.id === art.id) || false
-          const isLoading =
+          const loading =
             artToBeMutated?.id === art.id &&
             (addMutation.isPending || removeMutation.isPending)
 
@@ -94,7 +94,7 @@ const StoryWithHooks: StoryFn<ArtAddToCollectionCardProps> = args => {
               key={art.id}
               {...args}
               isAdded={isAdded}
-              isLoading={isLoading}
+              loading={loading}
               art={art}
               onAdd={handleAdd}
               onRemove={handleRemove}

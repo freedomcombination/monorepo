@@ -43,11 +43,7 @@ export const CreateCategoryWithUseMutation = () => {
           />
           {/* TODO: Add all inputs */}
 
-          <Button
-            isLoading={isPending}
-            loadingText={'Creating...'}
-            type="submit"
-          >
+          <Button loading={isPending} loadingText={'Creating...'} type="submit">
             Submit
           </Button>
         </Stack>

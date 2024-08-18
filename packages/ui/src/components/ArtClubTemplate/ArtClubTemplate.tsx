@@ -43,7 +43,7 @@ export const ArtClubTemplate: FC = () => {
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   const changeParam = useChangeParams()
-  const [isLoading, setIsLoading] = useState(false)
+  const [loading, setIsLoading] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { t } = useTranslation()
 
@@ -88,7 +88,7 @@ export const ArtClubTemplate: FC = () => {
           <DrawerBody py={8}>
             <ArtSideBar
               categoryList={categoryQuery.data?.data || []}
-              isLoading={isLoading}
+              loading={loading}
               setIsLoading={setIsLoading}
             />
           </DrawerBody>
@@ -103,7 +103,7 @@ export const ArtClubTemplate: FC = () => {
           gridTemplateColumns={{ base: '1fr', lg: '200px 1fr' }}
         >
           <Box display={{ base: 'none', lg: 'block' }}>
-            {categoryQuery.isLoading ? (
+            {categoryQuery.loading ? (
               <Stack
                 direction={{ base: 'row', lg: 'column' }}
                 justify="stretch"
@@ -122,7 +122,7 @@ export const ArtClubTemplate: FC = () => {
             ) : (
               <ArtSideBar
                 categoryList={categoryQuery.data?.data || []}
-                isLoading={isLoading}
+                loading={loading}
                 setIsLoading={setIsLoading}
               />
             )}
@@ -147,7 +147,7 @@ export const ArtClubTemplate: FC = () => {
             </HStack>
 
             <MasonryGrid columnGap={2} rowGap={2}>
-              {artsQuery.isLoading
+              {artsQuery.loading
                 ? Array.from({ length: 12 }).map((_, i) => (
                     <ArtCardSkeleton
                       key={'masonry-grid-skeleton' + i}
@@ -172,7 +172,7 @@ export const ArtClubTemplate: FC = () => {
                   })}
             </MasonryGrid>
 
-            {!artsQuery.isLoading && (
+            {!artsQuery.loading && (
               <Center>
                 {artsQuery.data?.meta?.pagination && (
                   <Pagination

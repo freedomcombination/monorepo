@@ -103,7 +103,7 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
           </Button>
           <Button
             colorScheme="red"
-            isLoading={countDown > 0}
+            loading={countDown > 0}
             loadingText={`${countDown}`}
             ml={3}
             minW={120}

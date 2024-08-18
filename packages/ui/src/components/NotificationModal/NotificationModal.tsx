@@ -85,7 +85,7 @@ export const NotificationModal = () => {
             </Button>
             <Button
               colorScheme="primary"
-              isLoading={subscribePushNotificationMutation.isPending}
+              loading={subscribePushNotificationMutation.isPending}
               onClick={handleSubscribe}
             >
               {t('subscribe')}

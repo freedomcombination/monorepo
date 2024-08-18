@@ -20,7 +20,7 @@ import { ArtModal } from '../ArtModal'
 
 export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   isAdded,
-  isLoading,
+  loading,
   art,
   onAdd,
   onRemove,
@@ -71,7 +71,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
             colorScheme={isAdded ? 'red' : 'green'}
             leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
             size="xs"
-            isLoading={isLoading}
+            loading={loading}
             onClick={onHandle}
           >
             {isAdded ? 'Remove' : 'Add to Collection'}

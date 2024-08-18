@@ -95,7 +95,7 @@ const ExportPFD = <T extends StrapiModel>({
       leftIcon={<FaFilePdf />}
       colorScheme="primary"
       variant="outline"
-      isLoading={saving}
+      loading={saving}
       onClick={beginExport}
     >
       {t('export-pdf')}

@@ -23,7 +23,7 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
 
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
-  const { toggleLike, isLiked, isLoading, isDisabled } = useLikeArt({
+  const { toggleLike, isLiked, loading, isDisabled } = useLikeArt({
     art: art as Art,
     recaptchaToken,
     onSuccess: refetch,
@@ -60,7 +60,7 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
           disabled={isDisabled}
           size="sm"
           variant="outline"
-          isLoading={isLoading}
+          loading={loading}
         >
           {(art?.likes || 0) + (art.likers?.length || 0)}
         </Button>

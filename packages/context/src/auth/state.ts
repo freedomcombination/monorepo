@@ -4,7 +4,7 @@ export const initialAuthState = {
   error: null,
   isAdmin: false,
   isAuthModalOpen: false,
-  isLoading: false,
+  loading: false,
   demoPermissions: null,
   permissions: {},
   profile: null,

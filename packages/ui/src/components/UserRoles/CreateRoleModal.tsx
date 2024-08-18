@@ -144,7 +144,7 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
         </ModalBody>
         <ModalFooter gap={6}>
           <Button isDisabled={startCreate}>{t('cancel')}</Button>
-          <Button isLoading={startCreate} onClick={() => setStartCreate(true)}>
+          <Button loading={startCreate} onClick={() => setStartCreate(true)}>
             {t('create')}
           </Button>
         </ModalFooter>

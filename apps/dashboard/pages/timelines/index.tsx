@@ -11,13 +11,13 @@ const Timelines = () => {
   const { locale } = useRouter()
   const { t } = useTranslation()
 
-  const { data: timelines, isLoading } = useStrapiRequest<Timeline>({
+  const { data: timelines, loading } = useStrapiRequest<Timeline>({
     endpoint: 'timelines',
     locale,
   })
 
   return (
-    <AdminLayout seo={{ title: t('timelines') }} isLoading={isLoading}>
+    <AdminLayout seo={{ title: t('timelines') }} loading={loading}>
       {timelines?.data && <TimelineBoard timelines={timelines?.data} />}
     </AdminLayout>
   )

@@ -24,7 +24,7 @@ import { useHashtagContext } from '../../components/HashtagProvider'
 
 export const PostSentenceRefDrawer = () => {
   const { sentence } = useHashtagContext()
-  const { data, isLoading } = useStrapiRequest<ArchiveContent>({
+  const { data, loading } = useStrapiRequest<ArchiveContent>({
     endpoint: 'archive-contents',
     id: 2,
     queryOptions: {
@@ -44,8 +44,8 @@ export const PostSentenceRefDrawer = () => {
         </Stack>
       )}
 
-      {isLoading || !archiveContent ? (
-        <LoadingInfo isLoading={isLoading} />
+      {loading || !archiveContent ? (
+        <LoadingInfo loading={loading} />
       ) : (
         <Stack background={'white'} borderRadius={'lg'} p={4} gap={4}>
           <Heading size={'md'} fontWeight={'bold'} color="gray.700">
@@ -67,7 +67,7 @@ export const PostSentenceRefDrawer = () => {
   )
 }
 
-const LoadingInfo: FC<{ isLoading: boolean }> = ({ isLoading }) => {
+const LoadingInfo: FC<{ loading: boolean }> = ({ loading }) => {
   const { t } = useTranslation()
 
   return (
@@ -77,7 +77,7 @@ const LoadingInfo: FC<{ isLoading: boolean }> = ({ isLoading }) => {
       py={16}
       overflow={'hidden'}
     >
-      {isLoading ? (
+      {loading ? (
         <Spinner size="xl" />
       ) : (
         <Alert

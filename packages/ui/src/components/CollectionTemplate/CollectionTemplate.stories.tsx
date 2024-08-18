@@ -7,7 +7,7 @@ import { CollectionTemplate, CollectionTemplateProps } from './index'
 export default {
   component: CollectionTemplate,
   title: 'Templates/CollectionTemplate',
-  isLoading: false,
+  loading: false,
   height: 60,
   width: 80,
   pageShow: 10,

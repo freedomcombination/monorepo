@@ -47,15 +47,15 @@ import { AdminNavItemProps } from './types'
 export const useAdminNav = () => {
   const { t } = useTranslation()
   const [menuRender, setMenuRender] = useState(0)
-  const { isLoading, demoPermissions, permissions, canRead, isAdmin } =
+  const { loading, demoPermissions, permissions, canRead, isAdmin } =
     useAuthContext()
 
   useEffect(() => {
-    // this isLoading changes every time
-    // if we render menuItems only when isLoading is false
+    // this loading changes every time
+    // if we render menuItems only when loading is false
     // menu wont flicker
-    if (!isLoading) setMenuRender(Date.now())
-  }, [isLoading])
+    if (!loading) setMenuRender(Date.now())
+  }, [loading])
 
   const menuItems = useMemo(() => {
     const menuItems: AdminNavItemProps[] = [
@@ -332,7 +332,7 @@ export const useAdminNav = () => {
     return mappedMenuItems.filter(filterMenu)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading, menuRender, t, permissions, demoPermissions])
+  }, [loading, menuRender, t, permissions, demoPermissions])
 
   const collectMenusRelated = (endpoint: string): AdminNavItemProps[] => {
     const link = '/' + makePlural(endpoint)

@@ -110,7 +110,7 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
             </VStack>
             <ContactForm
               onSubmitHandler={handleSubmit}
-              isLoading={isPending}
+              loading={isPending}
               isSuccess={isSuccess}
               isError={isError}
             />

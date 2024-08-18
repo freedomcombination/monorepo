@@ -159,7 +159,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
               aria-label="Send Comment"
               icon={<FiArrowRight />}
               isRound
-              isLoading={isPending}
+              loading={isPending}
               isDisabled={!isValid}
               type="submit"
             />
@@ -172,7 +172,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
             display={{ base: 'none', sm: 'flex' }}
             alignSelf="flex-end"
             rightIcon={<FiArrowRight />}
-            isLoading={isPending}
+            loading={isPending}
             isDisabled={!isValid || !recaptchaToken}
             type="submit"
           >

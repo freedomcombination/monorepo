@@ -23,7 +23,7 @@ export const ImageRecognizer: FC<ImageRecognizerProps> = ({
           file,
           preview: previews[index],
           text: '',
-          isLoading: false,
+          loading: false,
           isError: false,
           isProcessed: false,
         }
@@ -55,7 +55,7 @@ export const ImageRecognizer: FC<ImageRecognizerProps> = ({
           ...prevState,
           [id]: {
             ...prevState[id],
-            isLoading: true,
+            loading: true,
           },
         }))
 
@@ -68,7 +68,7 @@ export const ImageRecognizer: FC<ImageRecognizerProps> = ({
           [id]: {
             ...prevState[id],
             text,
-            isLoading: false,
+            loading: false,
             isProcessed: true,
           },
         }))
@@ -80,7 +80,7 @@ export const ImageRecognizer: FC<ImageRecognizerProps> = ({
           [id]: {
             ...prevState[id],
             text: '',
-            isLoading: false,
+            loading: false,
             isError: true,
             isProcessed: true,
           },
@@ -102,9 +102,9 @@ export const ImageRecognizer: FC<ImageRecognizerProps> = ({
       )}
       <Stack gap={4}>
         {Object?.values(state).map(item => {
-          const { id, preview, text, isLoading, isError, isProcessed } = item
+          const { id, preview, text, loading, isError, isProcessed } = item
 
-          const value = isLoading
+          const value = loading
             ? 'Recognizing ...'
             : isError
               ? 'Error'

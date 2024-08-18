@@ -44,7 +44,7 @@ export const SendNotificationButton: FC<SendNotificationButtonProps> = ({
       fontSize="sm"
       colorScheme={'blue'}
       type="button"
-      isLoading={sendNotificationMutation.isPending}
+      loading={sendNotificationMutation.isPending}
     >
       {t('notification.send')}
     </ActionButton>

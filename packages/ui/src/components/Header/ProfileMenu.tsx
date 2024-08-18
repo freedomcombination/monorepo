@@ -24,7 +24,7 @@ import { WAvatar } from '../WAvatar'
 export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   const isScrolled = useScroll()
   const { t } = useTranslation()
-  const { user, profile, logout, isLoading } = useAuthContext()
+  const { user, profile, logout, loading } = useAuthContext()
   const { asPath } = useRouter()
   const loginHref = `/auth/login?returnUrl=${asPath}`
 
@@ -36,7 +36,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
         <ButtonLink
           href={loginHref}
           size="sm"
-          isLoading={isLoading}
+          loading={loading}
           variant={!isScrolled && isDark ? 'solid' : 'outline'}
           rightIcon={<FiLogIn />}
         >

@@ -31,6 +31,6 @@ export const Default: Story = {}
 
 export const Loading: Story = {
   args: {
-    isLoading: true,
+    loading: true,
   },
 }

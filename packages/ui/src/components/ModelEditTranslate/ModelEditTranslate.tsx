@@ -267,7 +267,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             leftIcon={<HiOutlineCheck />}
             fontSize="sm"
             colorScheme={'purple'}
-            isLoading={approveModelMutation.isPending}
+            loading={approveModelMutation.isPending}
           >
             {t('approve')}
           </ActionButton>

@@ -73,7 +73,7 @@ const CoursePage = () => {
   const pageCount = applicationsQuery?.data?.meta?.pagination?.pageCount || 0
   const totalCount = applicationsQuery?.data?.meta?.pagination?.total || 0
 
-  const { data, isLoading, refetch } = useStrapiRequest<Course>({
+  const { data, loading, refetch } = useStrapiRequest<Course>({
     endpoint: 'courses',
     id,
   })
@@ -97,11 +97,7 @@ const CoursePage = () => {
   }
 
   return (
-    <AdminLayout
-      seo={{ title: t('course') }}
-      isLoading={isLoading}
-      hasBackButton
-    >
+    <AdminLayout seo={{ title: t('course') }} loading={loading} hasBackButton>
       {selectedApplicationId && (
         <ModelEditModal<CourseApplication>
           title={'Application'}

@@ -75,7 +75,7 @@ export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
         <Button
           alignSelf="flex-end"
           rightIcon={<FiArrowRight />}
-          isLoading={isPending}
+          loading={isPending}
           isDisabled={!isValid}
           type="submit"
         >

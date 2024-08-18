@@ -32,7 +32,7 @@ import { FormItem } from '../FormItem'
 
 export const JoinForm: FC<JoinFormProps> = ({
   onSubmitHandler,
-  isLoading,
+  loading,
   platforms = [],
   foundationJobs = [],
 }) => {
@@ -267,7 +267,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           )}
         </Stack>
       </Box>
-      <Button isLoading={isLoading} size="lg" type="submit">
+      <Button loading={loading} size="lg" type="submit">
         {t('submit')}
       </Button>
     </Stack>

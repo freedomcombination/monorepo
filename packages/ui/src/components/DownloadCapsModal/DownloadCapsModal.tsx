@@ -32,7 +32,7 @@ type DownloadCapsModalType = {
 
 export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [isLoading, setIsLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const btnRef = useRef<HTMLButtonElement>(null)
 
   const { locale } = useRouter()
@@ -87,7 +87,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
   }, [id])
 
   const onDownload = async () => {
-    setIsLoading(true)
+    setLoading(true)
     const zip = new JSZip()
     const imgFolder = zip.folder('hashtag-images')
 
@@ -115,7 +115,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
     const allImages = await zip.generateAsync({ type: 'blob' })
 
     saveAs(allImages, `hashtag-images_${locale}.zip`)
-    setIsLoading(false)
+    setLoading(false)
   }
 
   return (
@@ -189,7 +189,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
               w={'full'}
               onClick={onDownload}
               colorScheme={'primary'}
-              isLoading={isLoading}
+              loading={loading}
             >
               Download Caps
             </Button>
