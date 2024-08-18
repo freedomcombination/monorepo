@@ -12,7 +12,6 @@ import {
   FormLabel,
   Heading,
   Stack,
-  Switch,
   Textarea,
   Group,
 } from '@chakra-ui/react'
@@ -33,6 +32,7 @@ import {
 } from 'react-icons/md'
 import { InferType } from 'yup'
 
+import { Switch } from '@fc/chakra'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
@@ -392,9 +392,9 @@ export const ModelEditForm = <T extends StrapiModel>({
                       disabled={field.blockEdit}
                       colorScheme={'primary'}
                       size={'lg'}
-                      isChecked={!!watch(field.name as string)}
-                      onChange={e => {
-                        setValue(field.name as string, e.target.checked)
+                      checked={!!watch(field.name as string)}
+                      onCheckedChange={e => {
+                        setValue(field.name as string, e.checked)
                       }}
                     />
 
@@ -467,7 +467,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                     {...(field.type === 'textarea' && { as: Textarea })}
                     name={field.name as string}
                     type={inputType}
-                    isRequired={field.isRequired}
+                    required={field.isRequired}
                     errors={errors}
                     register={register}
                     disabled={field.blockEdit || !isEditing}
@@ -481,7 +481,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   />
                   {field.type === 'mediaUrl' && videoUrl && (
                     <AspectRatio ratio={16 / 9}>
-                      <Box as="iframe" src={videoUrl} title={label} />
+                      <iframe src={videoUrl} title={label} />
                     </AspectRatio>
                   )}
                 </Stack>

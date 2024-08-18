@@ -8,7 +8,6 @@ import {
   Heading,
   Progress,
   Stack,
-  Switch,
   Textarea,
   Group,
 } from '@chakra-ui/react'
@@ -25,6 +24,7 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
+  Switch,
 } from '@fc/chakra'
 import { StrapiLocale } from '@fc/types'
 import { toastMessage } from '@fc/utils'
@@ -255,8 +255,8 @@ export const PostGenAI = ({
                 </FormLabel>
                 <Switch
                   id="askBeforeDelete"
-                  isChecked={askBeforeDelete}
-                  onChange={e => setAskBeforeDelete(e.target.checked)}
+                  checked={askBeforeDelete}
+                  onCheckedChange={e => setAskBeforeDelete(e.checked)}
                   mr={5}
                 />
               </FormControl>
@@ -267,8 +267,8 @@ export const PostGenAI = ({
                   </FormLabel>
                   <Switch
                     id="useApiInDev"
-                    isChecked={useFakeApi}
-                    onChange={e => setUseFakeApi(e.target.checked)}
+                    checked={useFakeApi}
+                    onCheckedChange={e => setUseFakeApi(e.checked)}
                     colorScheme={colorScheme}
                   />
                 </FormControl>

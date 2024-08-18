@@ -9,7 +9,6 @@ import {
   Heading,
   HStack,
   Stack,
-  Switch,
   Text,
   Textarea,
   Group,
@@ -22,7 +21,7 @@ import { FaCircleInfo } from 'react-icons/fa6'
 import { setLocale } from 'yup'
 import { tr, nl, en } from 'yup-locales'
 
-import { Tooltip } from '@fc/chakra'
+import { Switch, Tooltip } from '@fc/chakra'
 import { sleep } from '@fc/utils'
 
 import { heardFrom } from './data'

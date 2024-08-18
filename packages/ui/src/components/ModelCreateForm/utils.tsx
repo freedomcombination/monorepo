@@ -4,7 +4,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Switch,
   Textarea,
 } from '@chakra-ui/react'
 
@@ -14,6 +13,7 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
+  Switch,
 } from '@fc/chakra'
 import { Post, StrapiModel } from '@fc/types'
 import { StrapiCollectionEndpoint } from '@fc/types'
@@ -186,8 +186,8 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           <Switch
             colorScheme={'primary'}
             size={'lg'}
-            onChange={e => {
-              setValue(field.name as string, e.target.checked)
+            onCheckedChange={e => {
+              setValue(field.name as string, e.checked)
             }}
           />
 
