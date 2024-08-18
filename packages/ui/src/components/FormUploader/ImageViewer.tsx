@@ -40,7 +40,7 @@ export const ImageViewer: FC<ImageViewerProps> = ({
           {files.length > 0 ? (
             files.map((file, index) => (
               <MenuFileItem
-                renderDivider={index > 0}
+                renderSeparator={index > 0}
                 key={file.url}
                 file={file}
                 onDelete={onDelete}

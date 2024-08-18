@@ -3,7 +3,7 @@ import { FC } from 'react'
 import {
   Box,
   ButtonGroup,
-  Divider,
+  Separator,
   HStack,
   IconButton,
   Popover,
@@ -127,7 +127,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
 
           <Text px={4}>{data.description}</Text>
 
-          <Divider />
+          <Separator />
 
           <HStack w="full" justify="space-evenly">
             <Box>

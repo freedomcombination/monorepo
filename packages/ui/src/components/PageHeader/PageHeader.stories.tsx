@@ -1,5 +1,5 @@
 import {
-  MenuDivider,
+  MenuSeparator,
   MenuItem,
   MenuItemOption,
   MenuOptionGroup,
@@ -50,7 +50,7 @@ export const Default: Story = {
           <MenuItemOption value="title:desc">Descending</MenuItemOption>
         </MenuOptionGroup>
 
-        <MenuDivider />
+        <MenuSeparator />
         <MenuItem
           icon={<FaArrowUp />}
           onClick={() => alert('Sort user ascending')}

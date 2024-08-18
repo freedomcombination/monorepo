@@ -5,7 +5,7 @@ import {
   AlertDescription,
   AlertIcon,
   Button,
-  Divider,
+  Separator,
   Modal,
   ModalBody,
   ModalContent,
@@ -141,7 +141,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
             setRecognized={setRecognized}
           />
 
-          <Divider />
+          <Separator />
         </ModalBody>
         <ModalFooter justifyContent="space-between">
           <Button colorScheme="red" onClick={handleClose}>

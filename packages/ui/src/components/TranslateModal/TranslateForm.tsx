@@ -1,5 +1,5 @@
 import {
-  Divider,
+  Separator,
   FormLabel,
   HStack,
   Input,
@@ -41,7 +41,7 @@ export const TranslateForm = <T extends StrapiTranslatableModel>({
 
       {currentModel.description && (
         <>
-          <Divider orientation="horizontal" />
+          <Separator orientation="horizontal" />
 
           <Stack>
             <FormLabel htmlFor={`${currentModel.id} description`}>
@@ -68,7 +68,7 @@ export const TranslateForm = <T extends StrapiTranslatableModel>({
 
       {currentModel.content && (
         <>
-          <Divider orientation="horizontal" />
+          <Separator orientation="horizontal" />
           <Stack>
             <FormLabel htmlFor={`${currentModel.id} content`}>
               Content

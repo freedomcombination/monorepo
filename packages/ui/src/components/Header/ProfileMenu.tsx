@@ -6,7 +6,7 @@ import {
   DarkMode,
   Menu,
   MenuButton,
-  MenuDivider,
+  MenuSeparator,
   MenuItem,
   MenuList,
 } from '@chakra-ui/react'
@@ -66,7 +66,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
           {t('profile')}
         </MenuItem>
 
-        <MenuDivider />
+        <MenuSeparator />
         <MenuItem icon={<FiLogOut />} color="red.400" onClick={logout}>
           {t('logout')}
         </MenuItem>

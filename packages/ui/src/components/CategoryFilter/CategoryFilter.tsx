@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef } from 'react'
 
 import {
-  Divider,
+  Separator,
   HStack,
   IconButton,
   Spinner,
@@ -76,7 +76,7 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
           />
         )}
       </HStack>
-      <Divider />
+      <Separator />
       {categoryData?.map(category => (
         <CategoryFilterCheckbox
           key={category.id}

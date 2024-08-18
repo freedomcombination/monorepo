@@ -1,6 +1,6 @@
 import {
   Box,
-  Divider,
+  Separator,
   Heading,
   SimpleGrid,
   Text,
@@ -64,7 +64,7 @@ const Contact = () => {
               </Heading>
               <Text>{t('about.content')}</Text>
 
-              <Divider borderColor="whiteAlpha.400" />
+              <Separator borderColor="whiteAlpha.400" />
 
               <ButtonLink
                 isExternal

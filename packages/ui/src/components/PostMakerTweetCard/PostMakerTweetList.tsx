@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react'
 
-import { Divider, Stack } from '@chakra-ui/react'
+import { Separator, Stack } from '@chakra-ui/react'
 
 import { useHashtag } from '@fc/services'
 
@@ -39,7 +39,7 @@ export const PostMakerTweetList: FC<PostMakerTweetListProps> = ({
 
   return (
     <Stack>
-      <Stack borderWidth={1} gap={0} divider={<Divider />}>
+      <Stack borderWidth={1} gap={0} divider={<Separator />}>
         {sortedPosts.map(post => {
           return (
             <PostProvider key={post.id} post={post}>

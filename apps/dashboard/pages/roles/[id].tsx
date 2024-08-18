@@ -8,7 +8,7 @@ import {
   IconButton,
   Menu,
   MenuButton,
-  MenuDivider,
+  MenuSeparator,
   MenuItem,
   MenuItemOption,
   MenuList,
@@ -161,7 +161,7 @@ const RolePage: FC<RolePageProps> = () => {
                   <MenuItem onClick={() => setFilters([])}>
                     {t('clear')}
                   </MenuItem>
-                  <MenuDivider />
+                  <MenuSeparator />
                   <MenuOptionGroup type="checkbox" title="Endpoints">
                     {filterKeys.map(key => (
                       <MenuItemOption

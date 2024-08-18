@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useState } from 'react'
 import {
   Button,
   Center,
-  Divider,
+  Separator,
   FormControl,
   FormLabel,
   Input,
@@ -152,7 +152,7 @@ export const SecurityTab = () => {
           leftIcon={<FaEnvelope />}
         />
       </FormControl>
-      <Divider />
+      <Separator />
       <ChangePasswordForm />
     </Stack>
   )

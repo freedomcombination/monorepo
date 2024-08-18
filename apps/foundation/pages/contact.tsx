@@ -1,6 +1,6 @@
 import {
   Box,
-  Divider,
+  Separator,
   Heading,
   SimpleGrid,
   VStack,
@@ -65,7 +65,7 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
               <Heading fontWeight={900} as="h2" size="lg" color="primary.50">
                 Freedom Combination <br /> Foundation
               </Heading>
-              <Divider borderColor="whiteAlpha.400" />
+              <Separator borderColor="whiteAlpha.400" />
 
               <Wrap gap={4} justify="center" key={foundation?.id}>
                 <ButtonLink

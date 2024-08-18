@@ -7,7 +7,7 @@ import {
   Button,
   Checkbox,
   Container,
-  Divider,
+  Separator,
   Heading,
   HStack,
   Stack,
@@ -174,11 +174,11 @@ export const SignupForm: FC<SignupFormProps> = ({
             </Button>
             {providersToBeShown.length > 0 && (
               <HStack>
-                <Divider />
+                <Separator />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
                   {t('login.with')}
                 </Text>
-                <Divider />
+                <Separator />
               </HStack>
             )}
             <SocialLoginButtons

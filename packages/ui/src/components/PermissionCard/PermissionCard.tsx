@@ -4,7 +4,7 @@ import {
   Box,
   Checkbox,
   Stack,
-  StackDivider,
+  StackSeparator,
   Tag,
   TagLabel,
   TagLeftIcon,
@@ -152,7 +152,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
       </Box>
       <VStack
         alignItems={'flex-start'}
-        divider={<StackDivider borderColor="gray.200" />}
+        divider={<StackSeparator borderColor="gray.200" />}
       >
         <Wrap>
           {Object.values(values).flatMap(action => {

@@ -1,4 +1,11 @@
-import { Box, Image, Stack, StackDivider, Text, VStack } from '@chakra-ui/react'
+import {
+  Box,
+  Image,
+  Stack,
+  StackSeparator,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { Tweet } from '@fc/types'
@@ -23,7 +30,7 @@ export const TweetWidget = ({
       </Text>
       <Box bg="white" overflow="auto">
         <VStack
-          divider={<StackDivider borderColor="gray.200" />}
+          divider={<StackSeparator borderColor="gray.200" />}
           gap={4}
           align="stretch"
         >

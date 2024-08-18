@@ -5,7 +5,7 @@ import {
   AlertDescription,
   AlertIcon,
   Button,
-  Divider,
+  Separator,
   Heading,
   Stack,
   Text,
@@ -52,7 +52,7 @@ export const ContactForm: FC<ContactFormProps> = ({
         <Heading size="lg">{t('contact.title')}</Heading>
         <Text fontSize="sm">{t('contact.form.fill')}</Text>
       </Stack>
-      <Divider />
+      <Separator />
       <VStack gap={5} as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormItem
           name="fullname"

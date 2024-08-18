@@ -4,7 +4,7 @@ import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
 import {
   AspectRatio,
   Box,
-  Divider,
+  Separator,
   Flex,
   FormControl,
   FormErrorMessage,
@@ -630,7 +630,7 @@ export const ModelEditForm = <T extends StrapiModel>({
           </Wrap>
         </Flex>
       </Stack>
-      <Divider />
+      <Separator />
 
       <ActionStack isVisible={!!profile}>
         <Heading p={{ base: 4, lg: 8 }}>{t('profile')}</Heading>

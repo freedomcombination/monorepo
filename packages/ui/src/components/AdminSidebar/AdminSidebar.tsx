@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { Box, Divider, HStack, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Separator, HStack, Stack, Text, VStack } from '@chakra-ui/react'
 
 import { useAuthContext } from '@fc/context'
 
@@ -27,7 +27,7 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
         w: 300,
       })}
       align={'stretch'}
-      divider={<Divider />}
+      divider={<Separator />}
     >
       {/* Logo */}
       <Link href="/">

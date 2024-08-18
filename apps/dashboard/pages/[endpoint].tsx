@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Center, MenuDivider, Spinner, Stack } from '@chakra-ui/react'
+import { Center, MenuSeparator, Spinner, Stack } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -240,7 +240,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           ...(args.searchFields && { onSearch: setQ }),
           filterMenuCloseOnSelect: false,
           filterMenu: (
-            <Stack divider={<MenuDivider />}>
+            <Stack divider={<MenuSeparator />}>
               <ModelStatusFilters
                 args={[
                   {

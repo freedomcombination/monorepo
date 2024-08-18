@@ -5,7 +5,7 @@ import {
   IconButton,
   Menu,
   MenuButton,
-  MenuDivider,
+  MenuSeparator,
   MenuList,
   Spacer,
   Stack,
@@ -89,7 +89,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
               },
             }}
           >
-            <Stack divider={<MenuDivider />}>{filterMenu}</Stack>
+            <Stack divider={<MenuSeparator />}>{filterMenu}</Stack>
           </MenuList>
         </Menu>
       )}

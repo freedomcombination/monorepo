@@ -5,7 +5,7 @@ import {
   Box,
   Button,
   Center,
-  Divider,
+  Separator,
   IconButton,
   Stack,
   Text,
@@ -22,7 +22,7 @@ import { WImage } from '../WImage'
 type MenuFileItemProps = {
   file: UploadFile
   onDelete: (file: UploadFile) => void
-  renderDivider?: boolean
+  renderSeparator?: boolean
 }
 
 type MenuFileButtonProps = {
@@ -72,7 +72,7 @@ const MenuFileButton: FC<MenuFileButtonProps> = ({
 }
 
 export const MenuFileItem: FC<MenuFileItemProps> = ({
-  renderDivider = false,
+  renderSeparator: renderSeparator = false,
   file,
   onDelete,
 }) => {
@@ -81,7 +81,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
 
   return (
     <Box pos={'relative'}>
-      {renderDivider && <Divider my={2} />}
+      {renderSeparator && <Separator my={2} />}
       {isImage ? (
         <WImage src={file} w={'full'} h={100} objectFit="cover" />
       ) : (
@@ -94,7 +94,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
       )}
       <IconButton
         pos={'absolute'}
-        top={renderDivider ? 4 : 2}
+        top={renderSeparator ? 4 : 2}
         right={2}
         onClick={() => onDelete(file)}
         icon={<FaTrash />}
