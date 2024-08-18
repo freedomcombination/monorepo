@@ -1,6 +1,6 @@
 import { FC, ReactNode, useState } from 'react'
 
-import { ChakraProvider, createStandaloneToast } from '@chakra-ui/react'
+import { ChakraProvider, defaultSystem } from '@chakra-ui/react'
 import {
   HydrationBoundary,
   QueryClient,
@@ -11,9 +11,10 @@ import { Analytics } from '@vercel/analytics/react'
 import { useRouter } from 'next/router'
 import { ReCaptchaProvider } from 'next-recaptcha-v3'
 import { DefaultSeo } from 'next-seo'
+import { ThemeProvider } from 'next-themes'
 import { useCookie } from 'react-use'
 
-import { RECAPTCHA_SITE_KEY, defaultSeo, themes } from '@fc/config'
+import { RECAPTCHA_SITE_KEY, defaultSeo } from '@fc/config'
 import { AuthProvider, WebPushProvider } from '@fc/context'
 import { Site } from '@fc/types'
 
@@ -26,8 +27,6 @@ type ProvidersProps = {
   dehydratedState: unknown
   enablePush?: boolean
 }
-
-const { ToastContainer } = createStandaloneToast()
 
 export const Providers: FC<ProvidersProps> = ({
   site,
@@ -59,24 +58,26 @@ export const Providers: FC<ProvidersProps> = ({
     <QueryClientProvider client={queryClient}>
       <HydrationBoundary state={dehydratedState}>
         <AuthProvider site={site}>
-          <ChakraProvider theme={themes[site]}>
-            <ReCaptchaProvider
-              reCaptchaKey={RECAPTCHA_SITE_KEY}
-              language={locale}
-            >
-              <WebPushProvider enable={enable}>
-                {enable && <NotificationModal />}
-                <DefaultSeo {...defaultSeo[site][locale]} />
-                {children}
-                <Analytics />
-                {!cookie && <CookieBanner onAllow={onAllow} />}
-                <ToastContainer />
-              </WebPushProvider>
-            </ReCaptchaProvider>
-          </ChakraProvider>
+          <ReCaptchaProvider
+            reCaptchaKey={RECAPTCHA_SITE_KEY}
+            language={locale}
+          >
+            <WebPushProvider enable={enable}>
+              <DefaultSeo {...defaultSeo[site][locale]} />
+              <ChakraProvider value={defaultSystem}>
+                <ThemeProvider attribute="class" disableTransitionOnChange>
+                  {enable && <NotificationModal />}
+                  {children}
+                  {!cookie && <CookieBanner onAllow={onAllow} />}
+                  {/* <ToastContainer /> */}
+                </ThemeProvider>
+              </ChakraProvider>
+            </WebPushProvider>
+          </ReCaptchaProvider>
         </AuthProvider>
       </HydrationBoundary>
       <ReactQueryDevtools buttonPosition="bottom-left" />
+      <Analytics />
     </QueryClientProvider>
   )
 }

@@ -1,0 +1,10 @@
+{
+  "extends": "@fc/config/tsconfig.nextjs.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true
+  },
+  "include": ["next-env.d.ts", "@types/**/*.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["dist", "build", "node_modules"]
+}

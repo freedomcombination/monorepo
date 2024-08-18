@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { Platform, PlatformSlug } from '@fc/types'
-import { AnimatedBox, ButtonLink, Container, WImage } from '@fc/ui'
+import { ButtonLink, Container, WImage } from '@fc/ui'
 
 type HomePlatformProps = {
   platforms: Platform[]
@@ -50,23 +50,16 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                 justifyItems="center"
                 gap={8}
               >
-                <AnimatedBox
-                  order={{ base: 1, lg: index % 2 ? 2 : 1 }}
-                  w="max-content"
-                  directing={index % 2 ? 'to-left' : 'to-right'}
-                >
+                <Box order={{ base: 1, lg: index % 2 ? 2 : 1 }} w="max-content">
                   <WImage
                     src={platform.image}
                     boxSize={200}
                     alt={platform[`name_${locale}`]}
                   />
-                </AnimatedBox>
-                <AnimatedBox
-                  directing={index % 2 ? 'to-right' : 'to-left'}
-                  order={{ base: 2, lg: index % 2 ? 1 : 2 }}
-                >
+                </Box>
+                <Box order={{ base: 2, lg: index % 2 ? 1 : 2 }}>
                   <Stack
-                    spacing={4}
+                    gap={4}
                     textAlign={{
                       base: 'center',
                       lg: index % 2 ? 'right' : 'left',
@@ -94,7 +87,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                       {t('read-more')}
                     </ButtonLink>
                   </Stack>
-                </AnimatedBox>
+                </Box>
               </SimpleGrid>
             </Container>
           </Center>

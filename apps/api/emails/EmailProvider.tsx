@@ -1,13 +1,15 @@
 import React, { FC, PropsWithChildren } from 'react'
 
-import { theme } from '@chakra-ui/react'
+// import { defaultSystem } from '@chakra-ui/react'
 import { Body, Container, Font, Html, Tailwind } from '@react-email/components'
 
-const colors = theme.colors
+// const colors = theme.colors
 
 export const EmailProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <Tailwind config={{ theme: { extend: { colors } } }}>
+    <Tailwind
+    // config={{ theme: { extend: { colors } } }}
+    >
       <Html>
         <Font
           fontFamily="Poppins"

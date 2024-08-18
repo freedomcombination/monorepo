@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { As, Box, Flex, HStack, Image, Stack } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, Stack } from '@chakra-ui/react'
 import Headroom from 'react-headroom'
 
 import { HeaderMobile } from './HeaderMobile'
@@ -22,7 +22,7 @@ export const Header: FC<HeaderProps> = ({
   const isScrolled = useScroll()
 
   return (
-    <Box as={Headroom as unknown as As}>
+    <Box as={Headroom}>
       <Flex
         bg={isScrolled ? 'white' : 'transparent'}
         borderBottomWidth={isScrolled ? 1 : 0}
