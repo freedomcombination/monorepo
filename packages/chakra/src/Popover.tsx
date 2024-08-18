@@ -49,3 +49,5 @@ export const PopoverFooter = ChakraPopover.Footer
 export const PopoverHeader = ChakraPopover.Header
 export const PopoverRoot = ChakraPopover.Root
 export const PopoverBody = ChakraPopover.Body
+
+export const Popover = PopoverRoot

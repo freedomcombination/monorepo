@@ -6,11 +6,6 @@ import {
   ButtonGroup,
   HStack,
   Highlight,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
   Stack,
   Text,
   useToast,
@@ -28,6 +23,13 @@ import {
 } from 'react-icons/fa6'
 import { useLocalStorage } from 'usehooks-ts'
 
+import {
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useDeleteModel, useRecommendTopic } from '@fc/services'
 import { Post, RecommendedTopicCreateInput, TopicBase } from '@fc/types'
@@ -234,7 +236,6 @@ export const TopicCard: FC<TopicCardProps> = ({
               buttonProps={{
                 variant: 'ghost',
                 colorScheme: 'gray',
-                iconSpacing: { base: 0, lg: 2 },
               }}
             >
               <Box as="span" display={{ base: 'none', xl: 'inline' }}>
@@ -250,7 +251,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               colorScheme="gray"
             />
 
-            <Popover placement="top">
+            <Popover positioning={{ placement: 'top' }}>
               <PopoverTrigger>
                 <Box>
                   <TopicCardButton
@@ -290,7 +291,6 @@ export const TopicCard: FC<TopicCardProps> = ({
               onClick={() => handleRecommend()}
               icon={<FaRegThumbsUp />}
               title="Recommend"
-              disabled={isPending}
               disabled={isPending}
               variant={'ghost'}
               colorScheme={'gray'}

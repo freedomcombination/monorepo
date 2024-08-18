@@ -1,15 +1,12 @@
 import { FC, PropsWithChildren } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import {
   Badge,
   Box,
   Center,
   HStack,
   Heading,
-  Link,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   Stack,
   Text,
   Group,
@@ -17,6 +14,7 @@ import {
 import { useRouter } from 'next/router'
 import Markdown from 'react-markdown'
 
+import { Popover, PopoverContent, PopoverTrigger } from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent } from '@fc/types'
 
@@ -37,10 +35,7 @@ export const ArchivePopover: FC<ArchivePopoverProps> = ({
   const archiveContent = getArchive(archiveId)
 
   return (
-    <Popover
-      placement="top"
-      trigger={archiveContent || !archiveId ? 'hover' : 'click'}
-    >
+    <Popover positioning={{ placement: 'top' }}>
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent>
         {archiveContent ? (
@@ -66,7 +61,7 @@ const FetchArchive: FC<{
         we need to fetch the archive content manually
     */
 
-  const { data, loading } = useStrapiRequest<ArchiveContent>({
+  const { data, isLoading } = useStrapiRequest<ArchiveContent>({
     endpoint: 'archive-contents',
     id,
     queryOptions: {
@@ -76,10 +71,10 @@ const FetchArchive: FC<{
 
   const archiveContent = data?.data
 
-  if (loading || !archiveContent)
+  if (isLoading || !archiveContent)
     return (
       <Center>
-        {loading ? (
+        {isLoading ? (
           <Text>Archive with id {id} is loading...</Text>
         ) : id ? (
           <Text>Archive with id {id} not found.</Text>

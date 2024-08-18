@@ -1,16 +1,5 @@
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Box,
-  Button,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Portal,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Box, Button, Portal, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { BsCollection } from 'react-icons/bs'
 import { CgHashtag } from 'react-icons/cg'
@@ -26,6 +15,13 @@ import {
 import { SiMaterialdesignicons } from 'react-icons/si'
 import { TbActivity, TbBrandTwitter, TbWriting } from 'react-icons/tb'
 
+import {
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import {
   Activity,
@@ -51,7 +47,7 @@ import { ModelCreateModal } from '../ModelCreateModal'
 export const CreateModelButton = () => {
   const { t } = useTranslation()
   const {
-    isOpen: isOpenPost,
+    open: isOpenPost,
     onOpen: onOpenPost,
     onClose: onClosePost,
   } = useDisclosure()
@@ -64,7 +60,11 @@ export const CreateModelButton = () => {
   if (!user) return null
 
   return (
-    <Popover placement="bottom-start">
+    <Popover
+      positioning={{
+        placement: 'bottom-start',
+      }}
+    >
       <PopoverTrigger>
         <Button
           colorScheme={'primary'}

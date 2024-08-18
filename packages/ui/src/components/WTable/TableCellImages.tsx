@@ -1,13 +1,8 @@
 import { FC, useState } from 'react'
 
-import {
-  AvatarGroup,
-  Box,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@chakra-ui/react'
+import { Group, Box } from '@chakra-ui/react'
 
+import { Popover, PopoverContent, PopoverTrigger } from '@fc/chakra'
 import { UploadFile } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
@@ -27,7 +22,7 @@ const TableCellImage: FC<TableCellImageProps> = ({ image }) => {
     image?.url) as unknown as UploadFile
 
   return (
-    <Popover trigger="hover" isLazy placement="right">
+    <Popover lazyMount positioning={{ placement: 'right-end' }}>
       <PopoverTrigger>
         <Box>
           <WAvatar
@@ -57,10 +52,10 @@ export const TableCellImages: FC<TableCellImagesProps> = ({ value }) => {
   }
 
   return (
-    <AvatarGroup>
+    <Group attached>
       {images
         ?.slice(0, 5)
         .map((image, index) => <TableCellImage key={index} image={image} />)}
-    </AvatarGroup>
+    </Group>
   )
 }

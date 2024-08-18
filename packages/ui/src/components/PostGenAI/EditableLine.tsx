@@ -1,14 +1,7 @@
-import {
-  Badge,
-  HStack,
-  IconButton,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  ThemeTypings,
-} from '@chakra-ui/react'
+import { Badge, HStack, IconButton, ThemeTypings } from '@chakra-ui/react'
 import { FaInfo, FaX } from 'react-icons/fa6'
 
+import { Popover, PopoverContent, PopoverTrigger } from '@fc/chakra'
 import { OgImageParams } from '@fc/types'
 
 import { Caps } from '../Caps'
@@ -56,7 +49,7 @@ export const EditableLine: React.FC<EditableProps> = ({
         rounded={'full'}
       />
       {isDescription && (
-        <Popover trigger="hover" placement="bottom-start" isLazy>
+        <Popover lazyMount positioning={{ placement: 'bottom-start' }}>
           <PopoverTrigger>
             <IconButton
               mt={2}

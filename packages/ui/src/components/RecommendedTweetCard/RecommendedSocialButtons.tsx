@@ -1,17 +1,16 @@
 import { FC, useState } from 'react'
 
+import { Box, HStack } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+import { AiFillDelete, AiOutlineShareAlt } from 'react-icons/ai'
+
 import {
-  Box,
-  HStack,
   Popover,
   PopoverArrow,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { AiFillDelete, AiOutlineShareAlt } from 'react-icons/ai'
-
+} from '@fc/chakra'
 import { useDeleteModel } from '@fc/services'
 import { Post } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
@@ -101,7 +100,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
           onCancel={() => setConfirmState(undefined)}
         />
       )}
-      <Popover placement="top">
+      <Popover positioning={{ placement: 'top' }}>
         <PopoverTrigger>
           <Box>
             <ActionButton
@@ -132,7 +131,6 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
         fields={fields.posts!}
         model={postContent}
         buttonProps={{
-          iconSpacing: isVertical ? 0 : 2,
           variant: 'ghost',
           colorScheme: 'gray',
         }}

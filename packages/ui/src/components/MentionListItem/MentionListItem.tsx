@@ -6,9 +6,6 @@ import {
   Separator,
   HStack,
   IconButton,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   Text,
   Tooltip,
   VStack,
@@ -16,6 +13,7 @@ import {
 import { useTranslation } from 'next-i18next'
 import { FaPlus, FaTimes } from 'react-icons/fa'
 
+import { Popover, PopoverContent, PopoverTrigger } from '@fc/chakra'
 import { MentionUserData } from '@fc/types'
 import { formatNumber } from '@fc/utils'
 
@@ -43,7 +41,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
   if (!data) return null
 
   return (
-    <Popover trigger="hover" placement="right">
+    <Popover positioning={{ placement: 'right' }}>
       <PopoverTrigger>
         <HStack
           px={4}
@@ -97,7 +95,6 @@ const MentionListItem: FC<MentionListItemProps> = ({
                 rounded="full"
                 size="sm"
                 icon={<FaPlus />}
-                disabled={isAdded}
                 disabled={isAdded}
               />
             </Tooltip>

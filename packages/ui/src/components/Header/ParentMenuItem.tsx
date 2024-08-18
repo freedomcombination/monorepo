@@ -1,21 +1,21 @@
 import { FC } from 'react'
 
+import { Box, Stack } from '@chakra-ui/react'
+
 import {
-  Box,
   Popover,
   PopoverArrow,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
-  Stack,
-} from '@chakra-ui/react'
+} from '@fc/chakra'
 
 import { ChildMenuItem } from './ChildMenuItem'
 import { MenuTypeItemProps } from './types'
 
 export const ParentMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
   return (
-    <Popover trigger="hover" arrowSize={16}>
+    <Popover>
       <PopoverTrigger>
         <Box p={2} w="max-content">
           <ChildMenuItem item={item} isDark={isDark} />
@@ -23,7 +23,7 @@ export const ParentMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
       </PopoverTrigger>
 
       <PopoverContent>
-        <PopoverArrow />
+        <PopoverArrow boxSize={16} />
         <PopoverBody>
           <Stack>
             {item.children?.map(item => (

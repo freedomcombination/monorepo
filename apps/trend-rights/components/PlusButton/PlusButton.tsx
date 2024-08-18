@@ -1,16 +1,7 @@
 import { FC, useState } from 'react'
 
 import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
-import {
-  Box,
-  IconButton,
-  Popover,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Portal,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, IconButton, Portal, Stack } from '@chakra-ui/react'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { FaInfo, FaPlus } from 'react-icons/fa6'
 import { MdOutlineTrendingUp } from 'react-icons/md'
@@ -22,6 +13,10 @@ import {
   ModalContent,
   ModalOverlay,
   ModalHeader,
+  Popover,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
 } from '@fc/chakra'
 import { useHashtag } from '@fc/services'
 import { HashtagStats, Markdown } from '@fc/ui'
@@ -67,10 +62,9 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
   return (
     <Box>
       <Popover
-        placement="top"
-        onOpen={setIsEditing.on}
-        onClose={setIsEditing.off}
-        closeOnBlur
+        positioning={{ placement: 'top' }}
+        onOpenChange={setIsEditing.toggle}
+        closeOnInteractOutside
       >
         <PopoverTrigger>
           <IconButton
