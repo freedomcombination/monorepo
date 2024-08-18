@@ -88,7 +88,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
                   aria-label={'stats'}
                   colorScheme={'primary'}
                   icon={<MdOutlineTrendingUp />}
-                  isDisabled={statsDisclosure.isOpen}
+                  disabled={statsDisclosure.isOpen}
                   isRound
                   onClick={onClickStats}
                 />
@@ -97,7 +97,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
                   aria-label={'info'}
                   colorScheme={'primary'}
                   icon={<FaInfo />}
-                  isDisabled={infoDisclosure.isOpen}
+                  disabled={infoDisclosure.isOpen}
                   isRound
                   onClick={onClickInfo}
                 />

@@ -29,7 +29,7 @@ export const EntryInput: FC<EntryInputProps> = ({ locale, localeKey }) => {
       <InputLeftAddon>{locale}</InputLeftAddon>
       <Input
         defaultValue={defaultVal}
-        isDisabled={locked}
+        disabled={locked}
         color={color}
         _placeholder={{
           color,

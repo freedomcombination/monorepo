@@ -49,7 +49,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
           color: 'primary.500',
           _hover: { color: 'primary.400', bg: 'blackAlpha.50' },
         })}
-        isDisabled={!submenu && isMenuLinkActive}
+        disabled={!submenu && isMenuLinkActive}
         _disabled={{
           color: 'primary.500',
         }}
@@ -98,7 +98,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
                   w="full"
                   px={2}
                   _hover={{ color: 'primary.500' }}
-                  isDisabled={!isAllowed && !isSubmenuLinkActive}
+                  disabled={!isAllowed && !isSubmenuLinkActive}
                   {...(isSubmenuLinkActive && {
                     _disabled: {
                       color: 'primary.500',

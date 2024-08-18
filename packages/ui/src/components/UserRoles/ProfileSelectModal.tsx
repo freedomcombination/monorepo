@@ -271,7 +271,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
           </SimpleGrid>
         </ModalBody>
         <ModalFooter gap={6}>
-          <Button leftIcon={<FaX />} onClick={onClose} isDisabled={saveUsers}>
+          <Button leftIcon={<FaX />} onClick={onClose} disabled={saveUsers}>
             {t('cancel')}
           </Button>
           <Button
@@ -279,7 +279,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
             onClick={() => setSaveUsers(true)}
             loading={saveUsers}
             loadingText="..."
-            isDisabled={pendingUser.length === 0}
+            disabled={pendingUser.length === 0}
           >
             {t('save')}
           </Button>

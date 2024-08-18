@@ -144,7 +144,7 @@ const NewsPage = () => {
             aria-label="Sync news"
             loading={syncTopic.isPending || loading}
             onClick={() => syncTopic.mutate()}
-            isDisabled={!canSync || syncTopic.isPending || loading}
+            disabled={!canSync || syncTopic.isPending || loading}
             icon={<FaSyncAlt />}
           />
         </Tooltip>

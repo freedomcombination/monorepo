@@ -15,7 +15,7 @@ import { Caps } from '../Caps'
 import { ContentEditable, ContentEditableProps } from '../ContentEditable'
 
 export type EditableProps = ContentEditableProps & {
-  isDisabled?: boolean
+  disabled?: boolean
   onDelete?: () => void
   isDescription?: boolean
   imageParams?: OgImageParams
@@ -26,14 +26,14 @@ export const EditableLine: React.FC<EditableProps> = ({
   onDelete,
   isDescription = false,
   contentEditable = true,
-  isDisabled = false,
+  disabled: initialDisabled = false,
   imageParams = {},
   value,
   colorScheme = 'primary',
   threshold,
   ...rest
 }) => {
-  const disabled = isDisabled || !contentEditable
+  const disabled = initialDisabled || !contentEditable
 
   return (
     <HStack
@@ -46,7 +46,7 @@ export const EditableLine: React.FC<EditableProps> = ({
     >
       <IconButton
         mt={2}
-        isDisabled={disabled}
+        disabled={disabled}
         aria-label="delete"
         variant={'ghost'}
         colorScheme="red"

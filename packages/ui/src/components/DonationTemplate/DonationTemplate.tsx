@@ -246,7 +246,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
 
             <Stack>
               <Button
-                isDisabled={!amount || !isValid}
+                disabled={!amount || !isValid}
                 type="submit"
                 leftIcon={<FaDonate />}
                 onClick={() => setType('one-time')}
@@ -257,7 +257,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               </Button>
               {/* TODO: Enable it once we have Sepa payment method activated */}
               {/* <Button
-              isDisabled={!amount || !isValid}
+              disabled={!amount || !isValid}
               type="submit"
               leftIcon={<FaDonate />}
               onClick={() => setType('monthly')}

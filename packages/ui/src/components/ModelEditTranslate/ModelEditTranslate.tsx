@@ -209,7 +209,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
                         {...(!isEditing && { p: 0 })}
                         key={index}
                         name={field.name as string}
-                        isDisabled={!isEditing}
+                        disabled={!isEditing}
                         isRequired={field.isRequired}
                         errors={errors}
                         control={control}
@@ -235,7 +235,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
                         whiteSpace={'pre-wrap'}
                         errors={errors}
                         register={register}
-                        isDisabled={!isEditing}
+                        disabled={!isEditing}
                         _disabled={disabledStyle}
                         hideLabel
                       />

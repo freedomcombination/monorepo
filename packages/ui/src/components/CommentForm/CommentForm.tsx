@@ -160,7 +160,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
               icon={<FiArrowRight />}
               isRound
               loading={isPending}
-              isDisabled={!isValid}
+              disabled={!isValid}
               type="submit"
             />
           </HStack>
@@ -173,7 +173,7 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
             alignSelf="flex-end"
             rightIcon={<FiArrowRight />}
             loading={isPending}
-            isDisabled={!isValid || !recaptchaToken}
+            disabled={!isValid || !recaptchaToken}
             type="submit"
           >
             {t('comment-form.send')}

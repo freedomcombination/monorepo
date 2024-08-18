@@ -150,8 +150,8 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
           <Button colorScheme="red" onClick={onReset}>
             Reset
           </Button>
-          {/* isDisabled={!files} */}
-          <Button isDisabled={!state} colorScheme="blue" onClick={onCreate}>
+          {/* disabled={!files} */}
+          <Button disabled={!state} colorScheme="blue" onClick={onCreate}>
             Create
           </Button>
         </ModalFooter>

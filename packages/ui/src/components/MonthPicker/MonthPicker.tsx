@@ -123,7 +123,7 @@ export const MonthPicker: FC<MonthPickerProps> = ({
               variant={'ghost'}
               colorScheme={'gray'}
               icon={<FaChevronRight />}
-              isDisabled={isLastYear && disableFuture}
+              disabled={isLastYear && disableFuture}
               onClick={handleNextYear}
             />
           </HStack>

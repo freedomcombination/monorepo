@@ -169,7 +169,7 @@ export const ObservationEditForm = ({
               isRequired={true}
               errors={errors}
               register={register}
-              isDisabled={!isEditing}
+              disabled={!isEditing}
               _disabled={disabledStyle}
             />
           ) : (

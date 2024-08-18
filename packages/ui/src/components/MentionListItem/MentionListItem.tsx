@@ -97,7 +97,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
                 rounded="full"
                 size="sm"
                 icon={<FaPlus />}
-                isDisabled={isAdded}
+                disabled={isAdded}
                 disabled={isAdded}
               />
             </Tooltip>

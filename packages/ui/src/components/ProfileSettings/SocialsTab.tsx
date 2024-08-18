@@ -42,7 +42,7 @@ const SocialRightElement = ({ url }: { url?: string }) => {
       variant={'ghost'}
       aria-label={url}
       rounded={'full'}
-      isDisabled={!url}
+      disabled={!url}
     />
   )
 }
@@ -136,7 +136,7 @@ export const Socials = () => {
       />
 
       <Button
-        isDisabled={!hasChanged}
+        disabled={!hasChanged}
         leftIcon={<FaSave />}
         size={'lg'}
         loading={saving}

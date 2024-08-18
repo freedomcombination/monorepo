@@ -77,7 +77,7 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
         <ButtonGroup
           size="sm"
           isAttached
-          isDisabled={locked}
+          disabled={locked}
           colorScheme={isSuppressed ? 'red' : 'gray'}
         >
           <IconButton
@@ -91,7 +91,7 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
             icon={<BiHide />}
             aria-label="hide"
             variant={isSuppressed ? 'solid' : 'outline'}
-            isDisabled={
+            disabled={
               !isSuppressed &&
               (isPendingDeletion || value !== PriorityFilter.IDENTICAL)
             }

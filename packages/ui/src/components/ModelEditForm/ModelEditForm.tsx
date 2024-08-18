@@ -384,7 +384,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   <FormControl
                     key={index}
                     isRequired={field.isRequired}
-                    isDisabled={field.blockEdit}
+                    disabled={field.blockEdit}
                   >
                     <FormLabel fontWeight={600} fontSize={'sm'}>
                       {label}
@@ -393,7 +393,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                       disabled={field.blockEdit}
                       colorScheme={'primary'}
                       size={'lg'}
-                      isDisabled={!isEditing}
+                      disabled={!isEditing}
                       isChecked={!!watch(field.name as string)}
                       onChange={e => {
                         setValue(field.name as string, e.target.checked)
@@ -421,7 +421,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                     isMulti={field.isMulti}
                     isRequired={field.isRequired}
                     name={field.name as string}
-                    isDisabled={field.blockEdit || !isEditing}
+                    disabled={field.blockEdit || !isEditing}
                     errors={errors}
                     control={control}
                     _disabled={disabledStyle}
@@ -440,7 +440,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   <Box key={index} maxH={550} overflowY={'auto'}>
                     <MdFormItem
                       name={field.name as string}
-                      isDisabled={field.blockEdit || !isEditing}
+                      disabled={field.blockEdit || !isEditing}
                       isRequired={field.isRequired}
                       errors={errors}
                       control={control}
@@ -472,7 +472,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                     isRequired={field.isRequired}
                     errors={errors}
                     register={register}
-                    isDisabled={field.blockEdit || !isEditing}
+                    disabled={field.blockEdit || !isEditing}
                     _disabled={disabledStyle}
                     helperText={
                       (isEditing &&

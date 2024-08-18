@@ -51,7 +51,7 @@ export const Pagination: FC<PaginationProps> = ({
       <IconButton
         aria-label="Previous page"
         icon={<TbChevronLeft />}
-        isDisabled={currentPage === 1}
+        disabled={currentPage === 1}
         onClick={onPrevious}
         rounded={'full'}
       />
@@ -63,7 +63,7 @@ export const Pagination: FC<PaginationProps> = ({
               key={index}
               aria-label="dots"
               rounded={'full'}
-              isDisabled
+              disabled
               _disabled={{ opacity: 1 }}
               icon={<BsThreeDots />}
             />
@@ -90,7 +90,7 @@ export const Pagination: FC<PaginationProps> = ({
       <IconButton
         aria-label="Next page"
         icon={<TbChevronRight />}
-        isDisabled={lastPage === currentPage}
+        disabled={lastPage === currentPage}
         rounded={'full'}
         onClick={onNext}
       />

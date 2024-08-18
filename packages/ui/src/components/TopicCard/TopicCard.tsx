@@ -291,7 +291,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               icon={<FaRegThumbsUp />}
               title="Recommend"
               disabled={isPending}
-              isDisabled={isPending}
+              disabled={isPending}
               variant={'ghost'}
               colorScheme={'gray'}
             />

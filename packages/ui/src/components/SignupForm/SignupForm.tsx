@@ -183,7 +183,7 @@ export const SignupForm: FC<SignupFormProps> = ({
             )}
             <SocialLoginButtons
               providersToBeShown={providersToBeShown}
-              isDisabled={!isTermsAccepted}
+              disabled={!isTermsAccepted}
             />
           </Stack>
         </Stack>

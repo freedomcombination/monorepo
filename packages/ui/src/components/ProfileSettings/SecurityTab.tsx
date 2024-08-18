@@ -96,7 +96,7 @@ const Credential: React.FC<CredentialProps> = ({
         pr="7em"
         type={name === 'email' ? 'email' : 'text'}
         placeholder={placeholder}
-        isDisabled={!edit}
+        disabled={!edit}
         value={value}
         onChange={e => setValue(e.target.value)}
       />

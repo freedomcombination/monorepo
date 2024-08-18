@@ -81,7 +81,7 @@ export const ContactForm: FC<ContactFormProps> = ({
         <Button
           variant="solid"
           type="submit"
-          isDisabled={!isValid}
+          disabled={!isValid}
           loading={loading}
           size={'lg'}
           w="full"

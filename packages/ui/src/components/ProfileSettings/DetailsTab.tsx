@@ -90,13 +90,13 @@ const AvatarForm = () => {
               colorScheme="blue"
               mr={3}
               onClick={onCancel}
-              isDisabled={isPending}
+              disabled={isPending}
             >
               {t('close')}
             </Button>
             <Button
               colorScheme="primary"
-              isDisabled={!file}
+              disabled={!file}
               loading={isPending}
               onClick={onUpload}
             >
@@ -214,7 +214,7 @@ export const DetailsTab = () => {
       />
 
       <Button
-        isDisabled={!hasChanged}
+        disabled={!hasChanged}
         leftIcon={<FaSave />}
         size={'lg'}
         loading={saving}

@@ -140,7 +140,7 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
             />
           </Checkbox>
         </Stack> */}
-        <Button w={'100%'} type="submit" isDisabled={!isValid}>
+        <Button w={'100%'} type="submit" disabled={!isValid}>
           {t('apply-now')}
         </Button>
       </Stack>

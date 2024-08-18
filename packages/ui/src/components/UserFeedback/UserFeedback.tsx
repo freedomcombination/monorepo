@@ -19,7 +19,7 @@ export const UserFeedback = () => {
       fontSize={'sm'}
       right={-2}
       onClick={onOpen}
-      isDisabled={isOpen}
+      disabled={isOpen}
       colorScheme="primary"
       aria-label="Give feedback"
       transform="rotate(180deg)"

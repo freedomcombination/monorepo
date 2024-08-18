@@ -139,7 +139,7 @@ const RolePage: FC<RolePageProps> = () => {
 
             {inEditMode && (
               <Button
-                isDisabled={!needSave}
+                disabled={!needSave}
                 onClick={() => setStartSave(true)}
                 loading={startSave || loading}
                 leftIcon={<FaSave />}

@@ -181,7 +181,7 @@ export const AuditLogList: FC = () => {
             variant={'outline'}
             onClick={() => fetchNextPage()}
             loading={loading}
-            isDisabled={!hasNextPage}
+            disabled={!hasNextPage}
             mx={'auto'}
             width={200}
           >

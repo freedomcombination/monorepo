@@ -24,7 +24,7 @@ export const MdFormItem = <T extends FieldValues>({
   errors,
   isRequired,
   helperText,
-  isDisabled,
+  disabled,
   placeholder: initialPlaceholder,
   ...rest
 }: MdFormItemProps<T>) => {
@@ -59,7 +59,7 @@ export const MdFormItem = <T extends FieldValues>({
         </FormLabel>
       )}
 
-      {!isDisabled && <FormUploader />}
+      {!disabled && <FormUploader />}
 
       <MarkdownEditor
         placeholder={placeholder}
@@ -67,7 +67,7 @@ export const MdFormItem = <T extends FieldValues>({
           onChange(value.text)
         }
         value={value}
-        isDisabled={isDisabled}
+        disabled={disabled}
         {...fieldProps}
         {...rest}
       />
