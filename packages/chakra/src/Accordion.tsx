@@ -39,3 +39,8 @@ export const AccordionItemIcon = (props: IconProps) => {
 
 export const AccordionRoot = ChakraAccordion.Root
 export const AccordionItem = ChakraAccordion.Item
+
+export const Accordion = AccordionRoot
+export const AccordionButton = AccordionItemTrigger
+export const AccordionPanel = AccordionItemContent
+export const AccordionIcon = AccordionItemIcon

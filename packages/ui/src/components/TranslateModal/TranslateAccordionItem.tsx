@@ -1,8 +1,4 @@
 import {
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Badge,
   Box,
   Button,
@@ -14,6 +10,12 @@ import {
 } from '@chakra-ui/react'
 import { BsTranslate } from 'react-icons/bs'
 
+import {
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+} from '@fc/chakra'
 import { StrapiTranslatableModel } from '@fc/types'
 
 import { TranslateAccordionItemProps } from './types'
@@ -36,7 +38,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
   handleTranslate,
 }: TranslateAccordionItemProps<T>) => {
   return (
-    <AccordionItem>
+    <AccordionItem value={title}>
       <AccordionButton as={HStack} cursor="pointer">
         <HStack flex={'1'}>
           <HStack gap={2} flex={'1'}>

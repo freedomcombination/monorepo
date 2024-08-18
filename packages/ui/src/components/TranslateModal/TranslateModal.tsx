@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
 
-import { Accordion, Box, Button, HStack, IconButton } from '@chakra-ui/react'
+import { Box, Button, HStack, IconButton } from '@chakra-ui/react'
 import { AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
 
+import { Accordion } from '@fc/chakra'
 import {
   Modal,
   ModalBody,
@@ -93,7 +94,7 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
           <ModalCloseButton />
           <ModalBody>
             {step === 0 && (
-              <Accordion size={'lg'} allowToggle allowMultiple defaultIndex={0}>
+              <Accordion size={'lg'} collapsible multiple>
                 {modelsWithMissingTranslations.map(model => (
                   <TranslateAccordionItem
                     key={model.id}

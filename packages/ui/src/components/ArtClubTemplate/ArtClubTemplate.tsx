@@ -43,7 +43,7 @@ export const ArtClubTemplate: FC = () => {
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   const changeParam = useChangeParams()
-  const [loading, setIsLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { t } = useTranslation()
 
@@ -89,7 +89,7 @@ export const ArtClubTemplate: FC = () => {
             <ArtSideBar
               categoryList={categoryQuery.data?.data || []}
               loading={loading}
-              setIsLoading={setIsLoading}
+              setLoading={setLoading}
             />
           </DrawerBody>
         </DrawerContent>
@@ -123,7 +123,7 @@ export const ArtClubTemplate: FC = () => {
               <ArtSideBar
                 categoryList={categoryQuery.data?.data || []}
                 loading={loading}
-                setIsLoading={setIsLoading}
+                setLoading={setLoading}
               />
             )}
           </Box>

@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react'
 
 import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
+import { MenuItem, Stack, Text } from '@chakra-ui/react'
+import { GetServerSidePropsContext } from 'next'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
+
 import {
   Accordion,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  MenuItem,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
-import { GetServerSidePropsContext } from 'next'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
-
+} from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Course, CourseApplication, Sort, StrapiLocale } from '@fc/types'
@@ -29,7 +27,7 @@ import {
 } from '@fc/ui'
 
 const CoursePage = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { t } = useTranslation()
 
   const { locale, query } = useRouter()
@@ -72,7 +70,7 @@ const CoursePage = () => {
   const pageCount = applicationsQuery?.data?.meta?.pagination?.pageCount || 0
   const totalCount = applicationsQuery?.data?.meta?.pagination?.total || 0
 
-  const { data, loading, refetch } = useStrapiRequest<Course>({
+  const { data, isLoading, refetch } = useStrapiRequest<Course>({
     endpoint: 'courses',
     id,
   })
@@ -96,13 +94,13 @@ const CoursePage = () => {
   }
 
   return (
-    <AdminLayout seo={{ title: t('course') }} loading={loading} hasBackButton>
+    <AdminLayout seo={{ title: t('course') }} loading={isLoading} hasBackButton>
       {selectedApplicationId && (
         <ModelEditModal<CourseApplication>
           title={'Application'}
           endpoint="course-applications"
           id={selectedApplicationId}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={handleClose}
           onSuccess={refetch}
           size={'5xl'}
@@ -111,13 +109,12 @@ const CoursePage = () => {
       <Stack gap={8} p={6}>
         <Accordion
           size={'lg'}
-          allowToggle
-          allowMultiple={false}
-          defaultIndex={0}
+          collapsible
+          multiple={false}
           borderColor="transparent"
-          defaultValue={1}
+          defaultValue={['1']}
         >
-          <AccordionItem _notLast={{ mb: 2 }} overflow={'auto'}>
+          <AccordionItem value="1" _notLast={{ mb: 2 }} overflow={'auto'}>
             <AccordionButton
               justifyContent="space-between"
               cursor="pointer"
@@ -145,7 +142,7 @@ const CoursePage = () => {
               )}
             </AccordionPanel>
           </AccordionItem>
-          <AccordionItem>
+          <AccordionItem value="2">
             <AccordionButton
               justifyContent="space-between"
               _activeStep={{ bg: 'gray.200' }}

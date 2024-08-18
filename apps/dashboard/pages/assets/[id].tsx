@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Stack, Text } from '@chakra-ui/react'
+import { GetServerSidePropsContext } from 'next'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { TbActivity } from 'react-icons/tb'
+
 import {
   Accordion,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
-import { GetServerSidePropsContext } from 'next'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-import { TbActivity } from 'react-icons/tb'
-
+} from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Asset, AssetsTracking, Sort, StrapiLocale } from '@fc/types'
@@ -35,7 +34,7 @@ const AssetPage = () => {
   const schemas = useSchema()
   const fields = useFields()
   const { t } = useTranslation()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { locale, query } = useRouter()
 
   const columns = useColumns<AssetsTracking>()
@@ -73,7 +72,7 @@ const AssetPage = () => {
   const pageCount = assetsTrackingsQuery?.data?.meta?.pagination?.pageCount || 0
   const totalCount = assetsTrackingsQuery?.data?.meta?.pagination?.total || 0
 
-  const { data, loading, refetch } = useStrapiRequest<Asset>({
+  const { data, isLoading, refetch } = useStrapiRequest<Asset>({
     endpoint: 'assets',
     id,
   })
@@ -99,7 +98,7 @@ const AssetPage = () => {
   return (
     <AdminLayout
       seo={{ title: t('foundation.assets') }}
-      loading={loading}
+      loading={isLoading}
       hasBackButton
     >
       {selectedAssetsTrackingId && (
@@ -107,7 +106,7 @@ const AssetPage = () => {
           title={'Assets Trackings'}
           endpoint="assets-trackings"
           id={selectedAssetsTrackingId}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={handleClose}
           onSuccess={assetsTrackingsQuery.refetch}
           size={'5xl'}
@@ -116,13 +115,12 @@ const AssetPage = () => {
       <Stack gap={8} p={6}>
         <Accordion
           size={'lg'}
-          allowToggle
-          allowMultiple={false}
-          defaultIndex={0}
+          collapsible
+          multiple={false}
           borderColor="transparent"
-          defaultValue={1}
+          defaultValue={['1']}
         >
-          <AccordionItem _notLast={{ mb: 2 }}>
+          <AccordionItem value="1" _notLast={{ mb: 2 }}>
             <AccordionButton
               justifyContent="space-between"
               cursor="pointer"
@@ -145,10 +143,10 @@ const AssetPage = () => {
               )}
             </AccordionPanel>
           </AccordionItem>
-          <AccordionItem>
+          <AccordionItem value="2">
             <AccordionButton
               justifyContent="space-between"
-              _activeStep={{ bg: 'gray.200' }}
+              _active={{ bg: 'gray.200' }}
               cursor="pointer"
               fontSize="lg"
               bg={'white'}

@@ -18,7 +18,7 @@ const CollectionPage: FC<CollectionPageProps> = ({ seo, collection }) => {
   const centerRef = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState(0)
   const [width, setWidth] = useState(0)
-  const [loading, setIsLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (centerRef.current && pageShow) {
@@ -27,7 +27,7 @@ const CollectionPage: FC<CollectionPageProps> = ({ seo, collection }) => {
       setTimeout(() => {
         setHeight(center.offsetHeight - 60)
         setWidth(center.offsetWidth)
-        setIsLoading(false)
+        setLoading(false)
       }, 1000)
     }
   }, [centerRef, pageShow])

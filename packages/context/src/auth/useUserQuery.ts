@@ -23,7 +23,7 @@ export const useUserQuery = (placeholderData: AuthState) => {
   })
 
   const [authState, setAuthState] = useState<AuthState>(placeholderData)
-  const [loading, setIsLoading] = useState(userQuery.loading)
+  const [loading, setLoading] = useState(userQuery.loading)
 
   useEffect(() => {
     if (userQuery.data) {
@@ -32,8 +32,8 @@ export const useUserQuery = (placeholderData: AuthState) => {
   }, [userQuery.data])
 
   useEffect(() => {
-    setIsLoading(userQuery.loading)
+    setLoading(userQuery.loading)
   }, [userQuery.loading])
 
-  return { ...userQuery, data: authState, loading, setIsLoading }
+  return { ...userQuery, data: authState, loading, setLoading }
 }

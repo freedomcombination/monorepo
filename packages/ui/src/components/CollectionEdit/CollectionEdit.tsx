@@ -1,14 +1,14 @@
 import { FC } from 'react'
 
+import { Text } from '@chakra-ui/react'
+
 import {
   Accordion,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Text,
-} from '@chakra-ui/react'
-
+} from '@fc/chakra'
 import { Collection } from '@fc/types'
 
 import { CollectionEditProps } from './types'
@@ -19,13 +19,8 @@ export const CollectionEdit: FC<CollectionEditProps> = ({
   onSuccess,
 }) => {
   return (
-    <Accordion
-      size={'lg'}
-      allowToggle
-      defaultIndex={0}
-      borderColor="transparent"
-    >
-      <AccordionItem>
+    <Accordion size={'lg'} collapsible borderColor="transparent">
+      <AccordionItem value="1">
         <AccordionButton
           justifyContent="space-between"
           cursor="pointer"

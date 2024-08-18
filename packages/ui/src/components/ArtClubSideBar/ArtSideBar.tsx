@@ -14,13 +14,13 @@ import { CollectionList } from '../CollectionList'
 export type ArtSideBarProps = {
   categoryList: Category[]
   loading: boolean
-  setIsLoading: (loading: boolean) => void
+  setLoading: (loading: boolean) => void
 }
 
 export const ArtSideBar: FC<ArtSideBarProps> = ({
   categoryList,
   loading,
-  setIsLoading,
+  setLoading,
 }) => {
   const { t } = useTranslation()
   const changeParam = useChangeParams()
@@ -47,7 +47,7 @@ export const ArtSideBar: FC<ArtSideBarProps> = ({
             initialCategories={initialCategories}
             loading={loading}
             selectCategories={value => changeParam({ categories: value })}
-            setIsLoading={setIsLoading}
+            setLoading={setLoading}
             title={t('categories')}
             locale={locale}
           />

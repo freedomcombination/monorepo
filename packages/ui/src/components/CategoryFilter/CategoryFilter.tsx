@@ -23,7 +23,7 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
   locale,
   title,
   selectCategories,
-  setIsLoading,
+  setLoading,
 }) => {
   const initialCategorySelected = useRef(false)
 
@@ -41,18 +41,18 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
       const categoriesQuery = initialCategoriesQuery
         .split('&')
         .map(c => c.split('=')[1])
-      setIsLoading(true)
+      setLoading(true)
       setValue(categoriesQuery)
     }
-  }, [initialCategoriesQuery, setValue, setIsLoading])
+  }, [initialCategoriesQuery, setValue, setLoading])
 
   useEffect(() => {
-    setIsLoading(true)
-  }, [value, setIsLoading])
+    setLoading(true)
+  }, [value, setLoading])
 
   useDebounce(
     () => {
-      setIsLoading(false)
+      setLoading(false)
       selectCategories(value as string[])
     },
     debounce,
