@@ -8,12 +8,6 @@ import {
   ButtonGroup,
   ButtonProps,
   Center,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   SimpleGrid,
   Spinner,
   Stack,
@@ -30,6 +24,14 @@ import { FieldErrorsImpl, useForm } from 'react-hook-form'
 import useFormPersist from 'react-hook-form-persist'
 import { FaPlus, FaUpload } from 'react-icons/fa'
 
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useStrapiRequest } from '@fc/services'
 import { ArtCreateInput, Category } from '@fc/types'
@@ -150,7 +152,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
       </Button>
 
       <Modal
-        isCentered
+        centered
         closeOnOverlayClick={false}
         isOpen={formDisclosure.isOpen}
         onClose={closeForm}

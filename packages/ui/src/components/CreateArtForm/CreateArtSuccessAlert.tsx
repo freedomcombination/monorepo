@@ -27,7 +27,7 @@ export const ArtCreateSuccessAlert = forwardRef<
   return (
     <AlertDialog
       closeOnOverlayClick={false}
-      isCentered
+      centered
       isOpen={isOpen}
       onClose={onClose}
       leastDestructiveRef={ref as RefObject<HTMLButtonElement>}

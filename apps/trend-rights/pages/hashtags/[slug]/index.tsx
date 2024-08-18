@@ -1,16 +1,7 @@
 import { FC, useEffect } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Box,
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Button, Stack } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
@@ -18,6 +9,13 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+} from '@fc/chakra'
 import { SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
@@ -85,7 +83,7 @@ const HashtagPage: FC<HashtagProps> = ({
         </Head>
       )}
       {post && (
-        <Modal isCentered isOpen={isOpen} onClose={handleClose}>
+        <Modal centered isOpen={isOpen} onClose={handleClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalBody p={0}>

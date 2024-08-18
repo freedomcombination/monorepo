@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Button, Stack, Text } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+
 import {
-  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -10,11 +12,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-
+} from '@fc/chakra'
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useSubscribePushNotificationMutation } from '@fc/services'
 

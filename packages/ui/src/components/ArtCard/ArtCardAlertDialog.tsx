@@ -25,7 +25,7 @@ export const ArtCardAlertDialog: FC<ArtCardAlertDialogProps> = ({
 
   return (
     <AlertDialog
-      isCentered
+      centered
       isOpen={isOpen}
       onClose={onClose}
       leastDestructiveRef={cancelRef}

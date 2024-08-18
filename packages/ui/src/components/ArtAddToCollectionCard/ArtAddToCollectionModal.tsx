@@ -1,20 +1,16 @@
 import { FC, useEffect, useState } from 'react'
 
+import { Box, Center, HStack, Spinner, Stack } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+
 import {
-  Box,
-  Center,
-  HStack,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-
+} from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services'
 import { Art } from '@fc/types'
 

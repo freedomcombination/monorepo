@@ -1,11 +1,9 @@
 import { useMemo, useState } from 'react'
 
+import { Accordion, Box, Button, HStack, IconButton } from '@chakra-ui/react'
+import { AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
+
 import {
-  Accordion,
-  Box,
-  Button,
-  HStack,
-  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -13,9 +11,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-} from '@chakra-ui/react'
-import { AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
-
+} from '@fc/chakra'
 import { StrapiLocale, StrapiTranslatableModel } from '@fc/types'
 import { mapModelLocalization } from '@fc/utils'
 

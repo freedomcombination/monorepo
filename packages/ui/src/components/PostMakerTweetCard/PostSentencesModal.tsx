@@ -1,14 +1,14 @@
 import { useDisclosure } from '@chakra-ui/hooks'
+import { IconButton } from '@chakra-ui/react'
+import { FaCogs } from 'react-icons/fa'
+
 import {
-  IconButton,
   Modal,
   ModalBody,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from '@chakra-ui/react'
-import { FaCogs } from 'react-icons/fa'
-
+} from '@fc/chakra'
 import { useHashtag } from '@fc/services'
 
 import { ActionStack, PostSentenceForm } from '../../components'

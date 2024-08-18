@@ -5,12 +5,6 @@ import {
   ButtonGroup,
   HStack,
   IconButton,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Stack,
   Text,
   Textarea,
@@ -20,6 +14,14 @@ import { FieldErrorsImpl, useForm } from 'react-hook-form'
 import { IoSend } from 'react-icons/io5'
 import { ObjectSchema } from 'yup'
 
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useUserFeedbackMutation } from '@fc/services'
 import { UserFeedbackCreateInput } from '@fc/types'

@@ -261,7 +261,7 @@ export const GenPostProvider = ({
           onClose={onClose}
           isOpen={isOpen}
           leastDestructiveRef={cancelRef}
-          isCentered
+          centered
         >
           <AlertDialogOverlay />
           <AlertDialogContent>

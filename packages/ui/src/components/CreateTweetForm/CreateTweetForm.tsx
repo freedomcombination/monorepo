@@ -7,12 +7,6 @@ import {
   ButtonGroup,
   FormLabel,
   HStack,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Progress,
   Stack,
   Text,
@@ -26,6 +20,14 @@ import { GrFormClose } from 'react-icons/gr'
 import stringSimilarity from 'string-similarity'
 import { ObjectSchema } from 'yup'
 
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
 import { useRecommendTweet } from '@fc/services'
 import { Mention, Tweet } from '@fc/types'
 

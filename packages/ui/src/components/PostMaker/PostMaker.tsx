@@ -7,14 +7,11 @@ import {
   DrawerContent,
   DrawerOverlay,
   Grid,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalOverlay,
   Skeleton,
   useBreakpointValue,
 } from '@chakra-ui/react'
 
+import { Modal, ModalBody, ModalContent, ModalOverlay } from '@fc/chakra'
 import { useHashtag } from '@fc/services'
 
 import { PostSentenceRefDrawer } from './PostSentenceRefDrawer'

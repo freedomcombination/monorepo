@@ -6,13 +6,6 @@ import {
   Button,
   Center,
   IconButton,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Spinner,
   Stack,
   Text,
@@ -23,6 +16,15 @@ import { useTranslation } from 'next-i18next'
 import { FaFileUpload, FaSave } from 'react-icons/fa'
 import { FaCity, FaPhone, FaTrash } from 'react-icons/fa6'
 
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useUpdateModelMutation } from '@fc/services'
 import { Profile } from '@fc/types'

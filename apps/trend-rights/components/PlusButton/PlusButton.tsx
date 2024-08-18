@@ -1,14 +1,9 @@
 import { FC, useState } from 'react'
 
+import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
 import {
   Box,
   IconButton,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Popover,
   PopoverBody,
   PopoverContent,
@@ -16,11 +11,18 @@ import {
   Portal,
   Stack,
 } from '@chakra-ui/react'
-import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { FaInfo, FaPlus } from 'react-icons/fa6'
 import { MdOutlineTrendingUp } from 'react-icons/md'
 
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+  ModalHeader,
+} from '@fc/chakra'
 import { useHashtag } from '@fc/services'
 import { HashtagStats, Markdown } from '@fc/ui'
 
@@ -108,7 +110,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
       <Modal
         isOpen={infoDisclosure.isOpen}
         onClose={onClose}
-        isCentered
+        centered
         size={'2xl'}
       >
         <ModalOverlay />
@@ -121,8 +123,8 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
       <Modal
         isOpen={statsDisclosure.isOpen}
         onClose={onClose}
-        isCentered
-        size={'2xl'}
+        centered
+        size={'xl'}
       >
         <ModalOverlay />
         <ModalContent>

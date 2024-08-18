@@ -10,11 +10,6 @@ import {
   HStack,
   Heading,
   IconButton,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
   Skeleton,
   Tooltip,
 } from '@chakra-ui/react'
@@ -25,6 +20,13 @@ import { FaGear } from 'react-icons/fa6'
 import { HiMenu } from 'react-icons/hi'
 import { MdOutlineNotifications } from 'react-icons/md'
 
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+} from '@fc/chakra'
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useUnsubscribePushNotificationMutation } from '@fc/services'
 
@@ -112,7 +114,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
               onClose={onCloseProfile}
               size={'5xl'}
               scrollBehavior={'inside'}
-              isCentered
+              centered
             >
               <ModalOverlay />
               <ModalContent p={0} h={'90vh'}>

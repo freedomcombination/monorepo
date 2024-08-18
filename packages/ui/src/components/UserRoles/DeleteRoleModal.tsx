@@ -80,7 +80,7 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
       leastDestructiveRef={cancelRef}
       onClose={onClose}
       isOpen={isOpen}
-      isCentered
+      centered
     >
       <AlertDialogOverlay />
       <AlertDialogContent>

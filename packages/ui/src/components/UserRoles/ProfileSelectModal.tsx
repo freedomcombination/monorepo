@@ -6,13 +6,6 @@ import {
   Input,
   List,
   ListItem,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   VStack,
   Text,
   IconButton,
@@ -25,6 +18,15 @@ import { useTranslation } from 'next-i18next'
 import { FaInfoCircle, FaSave } from 'react-icons/fa'
 import { FaX } from 'react-icons/fa6'
 
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { mutation } from '@fc/lib/src/mutation/mutation'
 import { useStrapiRequest } from '@fc/services'
@@ -173,7 +175,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
 
   return (
     <Modal
-      isCentered
+      centered
       isOpen={isOpen}
       onClose={onClose}
       onCloseComplete={handleOnClose}

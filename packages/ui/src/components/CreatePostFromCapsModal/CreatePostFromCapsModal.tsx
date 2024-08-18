@@ -6,18 +6,20 @@ import {
   AlertIcon,
   Button,
   Separator,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Stack,
 } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
 import { useCreateModelMutation } from '@fc/services'
 import {
   Post,
@@ -115,7 +117,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={handleClose}
-      isCentered
+      centered
       size="xl"
       closeOnOverlayClick={false}
     >

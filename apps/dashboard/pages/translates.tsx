@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
 
 import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
+import { Button } from '@chakra-ui/react'
+import { GetStaticPropsContext } from 'next'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
 import {
-  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-} from '@chakra-ui/react'
-import { GetStaticPropsContext } from 'next'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-
+} from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import {
@@ -139,10 +139,10 @@ const ActivitiesTranslatePage = () => {
         />
       )}
       <Modal
-        isCentered
+        centered
         isOpen={isOpen}
         onClose={handleClose}
-        size={'4xl'}
+        size={'xl'}
         scrollBehavior={'inside'}
       >
         <ModalOverlay />

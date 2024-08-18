@@ -1,22 +1,21 @@
 import { PropsWithChildren } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
+import { Button } from '@chakra-ui/react'
+import { FaPlus } from 'react-icons/fa6'
+
 import {
-  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from '@chakra-ui/react'
-import { FaPlus } from 'react-icons/fa6'
-
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { StrapiModel } from '@fc/types'
 
-import { ModelCreateForm } from '../ModelCreateForm'
-import { ModelCreateFormProps } from '../ModelCreateForm'
+import { ModelCreateForm, ModelCreateFormProps } from '../ModelCreateForm'
 
 export const ModelCreateModal = <T extends StrapiModel>({
   fields,
@@ -59,7 +58,7 @@ export const ModelCreateModal = <T extends StrapiModel>({
       </Button>
 
       <Modal
-        isCentered
+        centered
         closeOnOverlayClick={true}
         isOpen={formDisclosure.isOpen}
         onClose={formDisclosure.onClose}

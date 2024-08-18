@@ -1,23 +1,20 @@
 import { useState } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { Button, Stack, Text, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
 import { adminLoginSchema } from '../AdminLoginForm/schema'
@@ -71,7 +68,7 @@ export const AuthModal = () => {
 
   return (
     <Modal
-      isCentered
+      centered
       isOpen={isAuthModalOpen}
       onClose={closeAuthModal}
       closeOnOverlayClick={false}

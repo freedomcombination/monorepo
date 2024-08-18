@@ -1,20 +1,17 @@
 import { FC, useEffect, useLayoutEffect, useState } from 'react'
 
-import {
-  Modal,
-  Select,
-  ModalOverlay,
-  Text,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  Input,
-  ModalFooter,
-  Button,
-} from '@chakra-ui/react'
+import { Select, Text, Input, Button } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { RoleInput, Role } from '@fc/types'
@@ -96,7 +93,7 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
 
   return (
     <Modal
-      isCentered
+      centered
       isOpen={isOpen}
       onClose={onClose}
       onCloseComplete={onCloseComplete}

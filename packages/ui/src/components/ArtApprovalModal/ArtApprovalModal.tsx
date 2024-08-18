@@ -5,22 +5,24 @@ import {
   Box,
   Button,
   ButtonGroup,
+  Group,
   Heading,
   HStack,
+  SimpleGrid,
+  Stack,
+  Tag,
+  Text,
+} from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
+import {
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-  SimpleGrid,
-  Stack,
-  Tag,
-  Text,
-  Group,
-} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-
+} from '@fc/chakra'
 import { Art, StrapiLocale } from '@fc/types'
 
 import { ArtFeedbackForm } from './ArtFeedbackForm'
@@ -51,12 +53,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
 
   return (
     <Box>
-      <Modal
-        onClose={onClose}
-        isOpen={isOpen}
-        scrollBehavior="inside"
-        isCentered
-      >
+      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside" centered>
         <ModalOverlay />
         <ModalContent maxW="95vw" p={0} overflow="hidden">
           <ModalCloseButton />
