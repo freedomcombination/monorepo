@@ -1,3 +1,4 @@
+import { useBoolean, useMergeRefs } from '@chakra-ui/hooks'
 import {
   Box,
   Flex,
@@ -12,8 +13,6 @@ import {
   InputLeftElement,
   InputRightElement,
   Tooltip,
-  useBoolean,
-  useMergeRefs,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { HiEye, HiEyeOff } from 'react-icons/hi'

@@ -1,5 +1,6 @@
 import { FC, useRef, useState } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import { Link } from '@chakra-ui/next-js'
 import {
   Box,
@@ -18,7 +19,6 @@ import {
   Stack,
   Text,
   Textarea,
-  useDisclosure,
   useToast,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'

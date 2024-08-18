@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
 import {
   AspectRatio,
   Box,
@@ -13,8 +14,6 @@ import {
   Stack,
   Switch,
   Textarea,
-  useBoolean,
-  useDisclosure,
   Wrap,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'

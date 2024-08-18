@@ -1,5 +1,6 @@
 import { FC, ReactNode, useEffect } from 'react'
 
+import { useClipboard } from '@chakra-ui/hooks'
 import {
   Box,
   Button,
@@ -10,7 +11,6 @@ import {
   Text,
   VStack,
   Wrap,
-  useClipboard,
 } from '@chakra-ui/react'
 import { FaCheck, FaFile, FaFilePdf, FaTrash } from 'react-icons/fa6'
 

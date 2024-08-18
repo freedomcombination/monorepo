@@ -1,4 +1,5 @@
-import { Box, Button, useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
+import { Box, Button } from '@chakra-ui/react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
 import { TWEET_MOCKS } from '@fc/mocks'

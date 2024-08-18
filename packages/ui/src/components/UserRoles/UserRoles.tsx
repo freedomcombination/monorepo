@@ -1,13 +1,7 @@
 import { FC, useState } from 'react'
 
-import {
-  Button,
-  HStack,
-  IconButton,
-  Tooltip,
-  VStack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
+import { Button, HStack, IconButton, Tooltip, VStack } from '@chakra-ui/react'
 import { TFunction } from 'i18next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'

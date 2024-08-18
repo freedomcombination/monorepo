@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 
-import { AspectRatio, Box, useBoolean } from '@chakra-ui/react'
+import { useBoolean } from '@chakra-ui/hooks'
+import { AspectRatio, Box } from '@chakra-ui/react'
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
 import ReactPlayer from 'react-player'
 

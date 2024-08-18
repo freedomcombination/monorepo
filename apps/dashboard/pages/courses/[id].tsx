@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
 import {
   Accordion,
   AccordionButton,
@@ -9,8 +10,6 @@ import {
   MenuItem,
   Stack,
   Text,
-  useDisclosure,
-  useUpdateEffect,
 } from '@chakra-ui/react'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'

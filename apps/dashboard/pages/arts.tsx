@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { MenuItem, useUpdateEffect } from '@chakra-ui/react'
+import { useUpdateEffect } from '@chakra-ui/hooks'
+import { MenuItem } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
+import { useBoolean } from '@chakra-ui/hooks'
 import {
   FormLabel,
   HStack,
   Stack,
   Text,
   Textarea,
-  useBoolean,
   Wrap,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'

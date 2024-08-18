@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
 import {
   Button,
   Modal,
@@ -7,8 +8,6 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-  useDisclosure,
-  useUpdateEffect,
 } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'

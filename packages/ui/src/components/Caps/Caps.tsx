@@ -1,3 +1,4 @@
+import { useMergeRefs } from '@chakra-ui/hooks'
 import {
   AspectRatio,
   Box,
@@ -8,7 +9,6 @@ import {
   Skeleton,
   Stack,
   Text,
-  useMergeRefs,
 } from '@chakra-ui/react'
 import { useMeasure } from 'react-use'
 

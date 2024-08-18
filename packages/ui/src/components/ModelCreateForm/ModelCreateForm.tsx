@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { Box, Button, Divider, Stack, useBoolean } from '@chakra-ui/react'
+import { useBoolean } from '@chakra-ui/hooks'
+import { Box, Button, Divider, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'

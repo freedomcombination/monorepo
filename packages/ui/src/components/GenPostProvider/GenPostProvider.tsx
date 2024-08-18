@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   AlertDialog,
   AlertDialogBody,
@@ -17,7 +18,6 @@ import {
   Button,
   Stack,
   Text,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { useLocalStorage } from 'usehooks-ts'
 

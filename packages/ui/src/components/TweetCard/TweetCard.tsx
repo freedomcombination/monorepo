@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Box,
   HStack,
@@ -11,7 +12,6 @@ import {
   MenuList,
   Stack,
   Text,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { useRouter } from 'next/router'

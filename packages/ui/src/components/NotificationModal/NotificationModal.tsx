@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Button,
   Modal,
@@ -11,7 +12,6 @@ import {
   ModalOverlay,
   Stack,
   Text,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 

@@ -1,3 +1,4 @@
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Box,
   Button,
@@ -9,7 +10,6 @@ import {
   Portal,
   Stack,
   Text,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { BsCollection } from 'react-icons/bs'

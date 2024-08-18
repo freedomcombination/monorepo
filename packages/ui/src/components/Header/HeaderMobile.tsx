@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Drawer,
   DrawerBody,
@@ -8,7 +9,6 @@ import {
   DrawerOverlay,
   HStack,
   IconButton,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { FaBars } from 'react-icons/fa'
 

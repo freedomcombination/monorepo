@@ -1,5 +1,6 @@
 import { useId, useState } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Box,
   Button,
@@ -17,7 +18,6 @@ import {
   Text,
   Tooltip,
   VStack,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaFileUpload, FaSave } from 'react-icons/fa'

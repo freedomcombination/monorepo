@@ -15,9 +15,8 @@ import {
   PopoverTrigger,
   Portal,
   Stack,
-  useBoolean,
-  useDisclosure,
 } from '@chakra-ui/react'
+import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { FaInfo, FaPlus } from 'react-icons/fa6'
 import { MdOutlineTrendingUp } from 'react-icons/md'

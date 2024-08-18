@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
+import { useUpdateEffect } from '@chakra-ui/hooks'
 import {
   IconButton,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  useUpdateEffect,
 } from '@chakra-ui/react'
 import { FaTimes } from 'react-icons/fa'
 import { HiOutlineSearch } from 'react-icons/hi'

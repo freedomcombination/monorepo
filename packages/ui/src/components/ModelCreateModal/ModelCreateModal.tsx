@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Button,
   Modal,
@@ -8,7 +9,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { FaPlus } from 'react-icons/fa6'
 

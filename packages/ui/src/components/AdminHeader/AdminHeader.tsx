@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Button,
   Drawer,
@@ -16,7 +17,6 @@ import {
   ModalOverlay,
   Skeleton,
   Tooltip,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { BiNotificationOff } from 'react-icons/bi'

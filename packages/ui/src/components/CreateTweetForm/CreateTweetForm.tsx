@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 
+import { useBoolean } from '@chakra-ui/hooks'
 import {
   Box,
   Button,
@@ -16,7 +17,6 @@ import {
   Stack,
   Text,
   Textarea,
-  useBoolean,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'

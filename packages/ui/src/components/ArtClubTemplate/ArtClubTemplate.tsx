@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Box,
   Center,
@@ -12,7 +13,6 @@ import {
   IconButton,
   Skeleton,
   Stack,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'

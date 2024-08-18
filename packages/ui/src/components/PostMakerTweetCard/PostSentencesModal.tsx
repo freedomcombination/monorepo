@@ -1,3 +1,4 @@
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   IconButton,
   Modal,
@@ -5,7 +6,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { FaCogs } from 'react-icons/fa'
 

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { useBoolean } from '@chakra-ui/hooks'
 import {
   ButtonGroup,
   HStack,
@@ -7,7 +8,6 @@ import {
   Text,
   Textarea,
   Wrap,
-  useBoolean,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { format } from 'date-fns'

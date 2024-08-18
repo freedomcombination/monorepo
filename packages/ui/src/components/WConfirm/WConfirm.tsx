@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef } from 'react'
 
+import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
 import {
   AlertDialog,
   AlertDialogBody,
@@ -8,8 +9,6 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  useBoolean,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 

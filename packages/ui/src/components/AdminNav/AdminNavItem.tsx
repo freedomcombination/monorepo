@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react'
 
-import { Box, chakra, Collapse, useBoolean } from '@chakra-ui/react'
+import { useBoolean } from '@chakra-ui/hooks'
+import { Box, chakra, Collapse } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { GoChevronDown } from 'react-icons/go'
 

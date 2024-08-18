@@ -1,4 +1,5 @@
-import { Button, Center, Spinner, useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/hooks'
+import { Button, Center, Spinner } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'

@@ -1,3 +1,4 @@
+import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Box,
   Button,
@@ -6,7 +7,6 @@ import {
   Stack,
   Text,
   VStack,
-  useDisclosure,
 } from '@chakra-ui/react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'

@@ -11,13 +11,23 @@ import type { ButtonProps as ChakraButtonProps } from '@chakra-ui/react'
 interface ButtonLoadingProps {
   loading?: boolean
   loadingText?: React.ReactNode
+  leftIcon?: React.ReactNode
+  rightIcon?: React.ReactNode
 }
 
 export interface ButtonProps extends ChakraButtonProps, ButtonLoadingProps {}
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(props, ref) {
-    const { loading, disabled, loadingText, children, ...rest } = props
+    const {
+      loading,
+      disabled,
+      loadingText,
+      children,
+      leftIcon,
+      rightIcon,
+      ...rest
+    } = props
 
     const trulyDisabled = loading || disabled
     const showSpinner = loading && !loadingText
@@ -25,9 +35,21 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <ChakraButton disabled={trulyDisabled} ref={ref} {...rest}>
         {showSpinner && <ButtonSpinner />}
-        {loading
-          ? loadingText || <Span opacity={0}>{children}</Span>
-          : children}
+        {loading ? (
+          loadingText || (
+            <Span opacity={0}>
+              {leftIcon}
+              {children}
+              {rightIcon}
+            </Span>
+          )
+        ) : (
+          <>
+            {leftIcon}
+            {children}
+            {rightIcon}
+          </>
+        )}
       </ChakraButton>
     )
   },
