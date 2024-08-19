@@ -12,9 +12,7 @@ import { Field, IconButton, Tooltip } from '@fc/chakra'
 import { FormItemProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
 
-export const FormItem = forwardRef(function FormItem<
-  TFieldValues extends FieldValues = FieldValues,
->(
+function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
   {
     name,
     type,
@@ -101,4 +99,12 @@ export const FormItem = forwardRef(function FormItem<
       </Group>
     </Field>
   )
-})
+}
+
+export const FormItem = forwardRef(FormItemBase) as <
+  TFieldValues extends FieldValues = FieldValues,
+>(
+  props: FormItemProps<TFieldValues> & {
+    ref?: Ref<HTMLInputElement | HTMLTextAreaElement>
+  },
+) => JSX.Element

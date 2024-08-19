@@ -4,7 +4,6 @@ import {
   Flex,
   Input,
   List,
-  ListItem,
   VStack,
   Text,
   Stack,
@@ -51,7 +50,7 @@ const CustomListItem = ({
   filter?: string
 }) => {
   return (
-    <ListItem
+    <List.Item
       onClick={onClick}
       p={2}
       cursor={'pointer'}
@@ -98,7 +97,7 @@ const CustomListItem = ({
           />
         </Tooltip>
       )}
-    </ListItem>
+    </List.Item>
   )
 }
 
@@ -177,7 +176,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
     <Modal
       centered
       open={isOpen}
-      onOpenChange={e => (e.open ? null : onClose())}
+      onOpenChange={e => (e.open ? null : handleOnClose())}
       size={'xl'}
       scrollBehavior={'inside'}
       closeOnInteractOutside={!saveUsers}
@@ -204,7 +203,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                 onChange={e => setUserFilter(e.target.value)}
                 placeholder={t('search')}
               />
-              <List overflowX={'hidden'} overflowY={'auto'} gap={2}>
+              <List.Root overflowX={'hidden'} overflowY={'auto'} gap={2}>
                 {usersFiltered.map((user, index) => (
                   <CustomListItem
                     key={index}
@@ -213,7 +212,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                     onClick={() => setPendingUser(prev => [...prev, user])}
                   />
                 ))}
-              </List>
+              </List.Root>
             </Flex>
 
             {/* pending users */}
@@ -227,7 +226,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
               rounded={'md'}
             >
               <Text>Pending:</Text>
-              <List overflowX={'hidden'} overflowY={'auto'} gap={2}>
+              <List.Root overflowX={'hidden'} overflowY={'auto'} gap={2}>
                 {pendingUser.map((user, index) => (
                   <CustomListItem
                     key={index}
@@ -237,7 +236,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                     }}
                   />
                 ))}
-              </List>
+              </List.Root>
             </VStack>
 
             {/* assigned users */}
@@ -251,7 +250,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
               rounded={'md'}
             >
               <Text>Assigned:</Text>
-              <List overflowX={'hidden'} overflowY={'auto'} gap={2}>
+              <List.Root overflowX={'hidden'} overflowY={'auto'} gap={2}>
                 {usersWithRole.map((user, index) => (
                   <CustomListItem
                     key={index}
@@ -268,7 +267,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                     }}
                   />
                 ))}
-              </List>
+              </List.Root>
             </VStack>
           </SimpleGrid>
         </ModalBody>

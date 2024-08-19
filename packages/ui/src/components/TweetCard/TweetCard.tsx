@@ -186,37 +186,40 @@ export const TweetCard: FC<TweetCardProps> = ({
           />
           <HStack justify={'space-between'}>
             {tweet.likes != null && (
-              <HStack
-                as={Link}
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={`https://x.com/intent/like?tweet_id=${tweet.id}`}
               >
-                <TbHeart />
-                <Text fontSize={'sm'}>{tweet.likes}</Text>
-              </HStack>
+                <HStack>
+                  <TbHeart />
+                  <Text fontSize={'sm'}>{tweet.likes}</Text>
+                </HStack>
+              </Link>
             )}
             {tweet.retweets != null && (
-              <HStack
-                as={Link}
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={`https://x.com/intent/retweet?tweet_id=${tweet.id}`}
               >
-                <TbRefresh />
-                <Text fontSize={'sm'}>{tweet.retweets}</Text>
-              </HStack>
+                <HStack>
+                  <TbRefresh />
+                  <Text fontSize={'sm'}>{tweet.retweets}</Text>
+                </HStack>
+              </Link>
             )}
             {tweet.replies != null && (
-              <HStack
-                as={Link}
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={`https://x.com/intent/tweet?in_reply_to=${tweet.id}`}
               >
-                <TbMessageCircle />
-                <Text fontSize={'sm'}>{tweet.replies}</Text>
-              </HStack>
+                <HStack>
+                  <TbMessageCircle />
+                  <Text fontSize={'sm'}>{tweet.replies}</Text>
+                </HStack>
+              </Link>
             )}
             {tweet.impressions != null && (
               <HStack>

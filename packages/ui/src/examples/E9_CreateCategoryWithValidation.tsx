@@ -49,7 +49,7 @@ export const CreateCategoryWithValidation = () => {
     <Stack>
       <Code as={'pre'}>{JSON.stringify(data, null, 2)}</Code>
       <Stack as={'form'} onSubmit={handleSubmit(onSubmit)}>
-        <FormItem
+        <FormItem<CategoryCreateInput>
           placeholder="Category name (en)"
           name="name_en"
           register={register}

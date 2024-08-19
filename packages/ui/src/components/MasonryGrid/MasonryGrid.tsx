@@ -22,12 +22,8 @@ export const MasonryGrid: FC<MasonryGridProps> = ({
 
   return (
     <Flex
-      as={Masonry}
-      breakpointCols={breakpointCols}
-      className="masonry-grid"
-      columnClassName="masonry-grid_column"
       w={'full'}
-      sx={{
+      css={{
         '& .masonry-grid_column': {
           display: 'flex',
           flexDirection: 'column',
@@ -45,7 +41,14 @@ export const MasonryGrid: FC<MasonryGridProps> = ({
         },
       }}
     >
-      {children}
+      <Masonry
+        breakpointCols={breakpointCols}
+        className="masonry-grid"
+        columnClassName="masonry-grid_column"
+        width={'100%'}
+      >
+        {children}
+      </Masonry>
     </Flex>
   )
 }

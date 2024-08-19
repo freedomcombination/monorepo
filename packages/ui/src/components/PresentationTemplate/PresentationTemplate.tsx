@@ -7,8 +7,6 @@ import {
   HStack,
   Heading,
   List,
-  ListIcon,
-  ListItem,
   SimpleGrid,
   Spinner,
   Stack,
@@ -62,13 +60,13 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
               <Heading as="h2" size="md">
                 {t('program-flow')}
               </Heading>
-              <List gap={4}>
+              <List.Root gap={4}>
                 {flow.map((f, i) => (
-                  <ListItem key={i}>
+                  <List.Item key={i}>
                     <HStack align={'start'}>
-                      <ListIcon mt={2}>
+                      <List.Icon mt={2}>
                         <FaChevronRight />
-                      </ListIcon>
+                      </List.Icon>
                       <Box>
                         <Box fontWeight={600}>{f.title}</Box>
                         <Box fontSize={'sm'} color={'gray.500'}>
@@ -76,9 +74,9 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
                         </Box>
                       </Box>
                     </HStack>
-                  </ListItem>
+                  </List.Item>
                 ))}
-              </List>
+              </List.Root>
             </Stack>
           )}
           <Stack gap={4} order={{ base: 1, md: 2 }}>

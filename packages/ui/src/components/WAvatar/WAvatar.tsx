@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react'
 
-import { Avatar, AvatarProps } from '@chakra-ui/react'
-
+import { Avatar, AvatarProps } from '@fc/chakra'
 import { FileFormats, UploadFile } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 

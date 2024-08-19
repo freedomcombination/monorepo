@@ -51,7 +51,9 @@ export const SignupForm: FC<SignupFormProps> = ({
   providersToBeShown = [],
 }) => {
   const { t } = useTranslation()
-  const [isTermsAccepted, setIsTermsAccepted] = useState<boolean>(true)
+  const [isTermsAccepted, setIsTermsAccepted] = useState<
+    boolean | 'indeterminate'
+  >(true)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const {

@@ -16,26 +16,26 @@ export const SocialButtons: FC<SocialButtonsProps> = ({ items, ...rest }) => {
       {items?.map((item, i) => {
         const link = (item?.link as Localize<string>)?.[locale] || item.link
 
+        const Icon = item.icon
+
         return (
-          <IconButton
-            key={i}
-            aria-label={item.label}
-            as="a"
-            size="sm"
-            target="_blank"
-            icon={<item.icon />}
-            href={link}
-            variant="outline"
-            colorScheme="primary"
-            borderColor="primary.100"
-            color="primary.100"
-            _hover={{
-              bg: 'whiteAlpha.100',
-              borderColor: 'primary.50',
-              color: 'primary.50',
-            }}
-            {...rest}
-          />
+          <a key={i} target="_blank" href={link as string}>
+            <IconButton
+              aria-label={item.label}
+              size="sm"
+              variant="outline"
+              colorScheme="primary"
+              borderColor="primary.100"
+              color="primary.100"
+              _hover={{
+                bg: 'whiteAlpha.100',
+                borderColor: 'primary.50',
+                color: 'primary.50',
+              }}
+              {...rest}
+              icon={<Icon />}
+            />
+          </a>
         )
       })}
     </HStack>
