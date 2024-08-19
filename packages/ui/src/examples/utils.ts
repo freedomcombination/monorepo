@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-import { PUBLIC_TOKEN } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { Category, CategoryCreateInput } from '@fc/types'
 import { sleep } from '@fc/utils'
@@ -12,11 +11,7 @@ const CATEGORY_URL = `${STAGING_API_URL}/api/categories`
 
 // Create with axios
 export const createCategoryWithAxios = async (data: CategoryCreateInput) => {
-  return await axios.post(
-    CATEGORY_URL,
-    { data },
-    { headers: { Authorization: `Bearer ${PUBLIC_TOKEN}` } },
-  )
+  return await axios.post(CATEGORY_URL, { data })
 }
 
 // Create with our custom mutation function
@@ -26,6 +21,6 @@ export const createCategoryWithMutation = async (data: CategoryCreateInput) => {
   return await Mutation.post<Category, CategoryCreateInput>(
     'categories',
     data,
-    PUBLIC_TOKEN as string,
+    '',
   )
 }

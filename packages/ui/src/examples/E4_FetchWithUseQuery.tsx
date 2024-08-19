@@ -14,7 +14,6 @@ import {
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
-import { PUBLIC_TOKEN } from '@fc/config'
 import { Blog, StrapiCollectionResponse } from '@fc/types'
 import { getMediaUrl, sleep } from '@fc/utils'
 
@@ -48,9 +47,6 @@ export const FetchWithUseQuery = () => {
     // TODO: Replace with strapiRequest
     return axios<StrapiCollectionResponse<Blog[]>>(BLOG_URL, {
       params: { locale: 'tr', populate: 'image' },
-      headers: {
-        Authorization: `Bearer ${PUBLIC_TOKEN}`,
-      },
     })
   }
 
