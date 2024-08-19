@@ -17,22 +17,22 @@ export const useArchiveContentsSchema = () => {
 }
 
 export const archiveContentFields: FormFields<ArchiveContent> = [
-  { name: 'date', isRequired: true, type: 'date' },
-  { name: 'title', isRequired: true },
+  { name: 'date', required: true, type: 'date' },
+  { name: 'title', required: true },
   {
     name: 'categories',
     type: 'select',
     isMulti: true,
     endpoint: 'categories',
-    isRequired: true,
+    required: true,
   },
-  { name: 'source', isRequired: true },
+  { name: 'source', required: true },
   {
     name: 'tags',
     type: 'select',
     isMulti: true,
     endpoint: 'tags',
   },
-  { name: 'link', isRequired: true },
-  { name: 'content', isRequired: true, type: 'markdown' },
+  { name: 'link', required: true },
+  { name: 'content', required: true, type: 'markdown' },
 ]

@@ -122,7 +122,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
         <Stack m={10} as={'form'} onSubmit={handleSubmit(onCreate)}>
           <ModelSelect
             endpoint={'hashtags'}
-            isRequired={true}
+            required={true}
             name={'hashtags' as string}
             label={'Hashtags'}
             errors={errors}

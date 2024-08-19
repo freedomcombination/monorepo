@@ -1,14 +1,8 @@
 import { ReactNode } from 'react'
 
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  InputRightAddon,
-  Textarea,
-} from '@chakra-ui/react'
+import { Input, Group, InputAddon, Textarea } from '@chakra-ui/react'
+
+import { Field } from '@fc/chakra'
 
 type FormElementProps = {
   title: string
@@ -36,19 +30,19 @@ export const FormElement: React.FC<FormElementProps> = ({
   const Tag = useTextarea ? Textarea : Input
 
   return (
-    <FormControl title={title}>
-      <FormLabel fontWeight={600}>{title}</FormLabel>
-      <InputGroup size={'lg'}>
-        {left && <InputLeftAddon>{left}</InputLeftAddon>}
+    <Field title={title} label={title}>
+      <Group>
+        {left && <InputAddon>{left}</InputAddon>}
         <Tag
           placeholder={placeholder}
           defaultValue={defValue}
           type={phone ? 'tel' : 'text'}
           onChange={e => onChange(e.target.value)}
+          size={'lg'}
           {...(useTextarea && { resize: 'vertical' })}
         />
-        {right && <InputRightAddon>{right}</InputRightAddon>}
-      </InputGroup>
-    </FormControl>
+        {right && <InputAddon>{right}</InputAddon>}
+      </Group>
+    </Field>
   )
 }

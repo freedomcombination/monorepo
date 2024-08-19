@@ -3,19 +3,16 @@ import { ReactNode, useEffect, useState } from 'react'
 import {
   Center,
   Separator,
-  FormControl,
-  FormLabel,
   Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
+  Group,
+  InputElement,
   Spinner,
   Stack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaEnvelope, FaUser } from 'react-icons/fa6'
 
-import { Button } from '@fc/chakra'
+import { Button, Field } from '@fc/chakra'
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { SessionUser } from '@fc/types'
@@ -88,24 +85,23 @@ const Credential: React.FC<CredentialProps> = ({
   const { t } = useTranslation()
 
   return (
-    <InputGroup size="lg">
-      <InputLeftElement>
-        {!saving ? leftIcon : <Spinner size="sm" />}
-      </InputLeftElement>
+    <Group>
+      <InputElement>{!saving ? leftIcon : <Spinner size="sm" />}</InputElement>
       <Input
         pr="7em"
+        size="lg"
         type={name === 'email' ? 'email' : 'text'}
         placeholder={placeholder}
         disabled={!edit}
         value={value}
         onChange={e => setValue(e.target.value)}
       />
-      <InputRightElement width="7rem" justifyContent={'flex-end'} pr={1}>
+      <InputElement width="7rem" justifyContent={'flex-end'} pr={1}>
         <Button h="1.75rem" size="sm" onClick={handleClick}>
           {edit ? (isValid(user, value) ? t('save') : t('cancel')) : t('edit')}
         </Button>
-      </InputRightElement>
-    </InputGroup>
+      </InputElement>
+    </Group>
   )
 }
 
@@ -125,8 +121,7 @@ export const SecurityTab = () => {
 
   return (
     <Stack gap={8}>
-      <FormControl>
-        <FormLabel fontWeight={600}>{t('profile.security.username')}</FormLabel>
+      <Field label={t('profile.security.username')}>
         <Credential
           name={'username'}
           initialValue={user.username}
@@ -136,9 +131,8 @@ export const SecurityTab = () => {
           placeholder={t('profile.username.ph')}
           leftIcon={<FaUser />}
         />
-      </FormControl>
-      <FormControl>
-        <FormLabel fontWeight={600}>{t('profile.security.email')}</FormLabel>
+      </Field>
+      <Field label={t('profile.security.email')}>
         <Credential
           name={'email'}
           initialValue={user.email}
@@ -151,7 +145,7 @@ export const SecurityTab = () => {
           placeholder={t('profile.email.ph')}
           leftIcon={<FaEnvelope />}
         />
-      </FormControl>
+      </Field>
       <Separator />
       <ChangePasswordForm />
     </Stack>

@@ -15,10 +15,10 @@ export const useTopicSchema = () => {
 }
 
 export const topicFields: FormFields<RecommendedTopic> = [
-  { name: 'title', isRequired: true },
-  { name: 'url', isRequired: true },
-  { name: 'description', isRequired: true, type: 'textarea' },
-  { name: 'publisher', isRequired: true },
+  { name: 'title', required: true },
+  { name: 'url', required: true },
+  { name: 'description', required: true, type: 'textarea' },
+  { name: 'publisher', required: true },
   { name: 'time', type: 'datetime-local' },
   { name: 'category' },
   { name: 'image' },

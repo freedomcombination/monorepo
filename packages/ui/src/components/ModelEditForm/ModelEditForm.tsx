@@ -6,10 +6,6 @@ import {
   Box,
   Separator,
   Flex,
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
   Heading,
   Stack,
   Textarea,
@@ -32,7 +28,7 @@ import {
 } from 'react-icons/md'
 import { InferType } from 'yup'
 
-import { Switch } from '@fc/chakra'
+import { Field, Switch } from '@fc/chakra'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
@@ -350,18 +346,13 @@ export const ModelEditForm = <T extends StrapiModel>({
 
               if (field.type === 'file') {
                 return (
-                  <FormControl
+                  <Field
                     key={index}
-                    isRequired={field.isRequired}
+                    required={field.required}
                     maxW={400}
+                    label={label}
+                    errorText={errors[field.name as string]?.message as string}
                   >
-                    <FormLabel
-                      fontWeight={600}
-                      fontSize={'sm'}
-                      textTransform={'capitalize'}
-                    >
-                      {label}
-                    </FormLabel>
                     <ModelMedia
                       endpoint={endpoint}
                       isEditing={isEditing}
@@ -371,23 +362,22 @@ export const ModelEditForm = <T extends StrapiModel>({
                       isChangingMedia={isChangingImage[field.name as string]}
                       toggleChangingMedia={() => toggleChangingMedia(field)}
                     />
-                    <FormErrorMessage>
-                      {errors[field.name as string]?.message as string}
-                    </FormErrorMessage>
-                  </FormControl>
+                  </Field>
                 )
               }
 
               if (field.type === 'boolean') {
                 return (
-                  <FormControl
+                  <Field
                     key={index}
-                    isRequired={field.isRequired}
+                    required={field.required}
                     disabled={field.blockEdit}
+                    label={label}
+                    helperText={
+                      isEditing && field.blockEdit && 'Blocked from editing'
+                    }
+                    errorText={errors[field.name as string]?.message as string}
                   >
-                    <FormLabel fontWeight={600} fontSize={'sm'}>
-                      {label}
-                    </FormLabel>
                     <Switch
                       disabled={field.blockEdit}
                       colorScheme={'primary'}
@@ -397,15 +387,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                         setValue(field.name as string, e.checked)
                       }}
                     />
-
-                    <FormHelperText color={'orange.400'}>
-                      {isEditing && field.blockEdit && 'Blocked from editing'}
-                    </FormHelperText>
-
-                    <FormErrorMessage>
-                      {errors[field.name as string]?.message as string}
-                    </FormErrorMessage>
-                  </FormControl>
+                  </Field>
                 )
               }
 
@@ -417,7 +399,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                     populate={field.populate}
                     options={field.options}
                     isMulti={field.isMulti}
-                    isRequired={field.isRequired}
+                    required={field.required}
                     name={field.name as string}
                     disabled={field.blockEdit || !isEditing}
                     errors={errors}
@@ -439,7 +421,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                     <MdFormItem
                       name={field.name as string}
                       disabled={field.blockEdit || !isEditing}
-                      required={field.isRequired}
+                      required={field.required}
                       errors={errors}
                       control={control}
                       _disabled={disabledStyle}
@@ -467,7 +449,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                     {...(field.type === 'textarea' && { as: Textarea })}
                     name={field.name as string}
                     type={inputType}
-                    required={field.isRequired}
+                    required={field.required}
                     errors={errors}
                     register={register}
                     disabled={field.blockEdit || !isEditing}

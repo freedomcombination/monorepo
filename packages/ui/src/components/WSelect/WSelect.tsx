@@ -1,17 +1,8 @@
-import {
-  Box,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
-} from '@chakra-ui/react'
 import { GroupBase, Select } from 'chakra-react-select'
 import { useTranslation } from 'next-i18next'
 import { FieldValues, useController } from 'react-hook-form'
-import { TbInfoCircle } from 'react-icons/tb'
 
-import { Tooltip } from '@fc/chakra'
+import { Field } from '@fc/chakra'
 
 import { SelectOption, WSelectProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
@@ -20,9 +11,8 @@ export const WSelect = <T extends FieldValues = FieldValues>({
   control,
   name,
   label: initialLabel,
-  hideLabel,
   errors,
-  isRequired,
+  required,
   helperText,
   placeholder: initialPlaceholder,
   options,
@@ -43,33 +33,16 @@ export const WSelect = <T extends FieldValues = FieldValues>({
   const errorMessage = errors?.[name]?.['message'] as unknown as string
 
   return (
-    <FormControl
-      isInvalid={Boolean(errors?.[name])}
-      isRequired={isRequired}
+    <Field
+      invalid={Boolean(errors?.[name])}
+      required={required}
       w="full"
       pos="relative"
+      helperText={helperText}
+      errorText={errorMessage}
+      label={label}
+      tooltip={tooltip}
     >
-      {label && !hideLabel && (
-        <Flex align={'center'} mb={1}>
-          <FormLabel
-            mb={0}
-            htmlFor={name}
-            fontSize="sm"
-            fontWeight={600}
-            textTransform={'capitalize'}
-          >
-            {label}
-          </FormLabel>
-          {tooltip && (
-            <Tooltip positioning={{ placement: 'top-start' }} content={tooltip}>
-              <Box color="gray.500">
-                <TbInfoCircle />
-              </Box>
-            </Tooltip>
-          )}
-        </Flex>
-      )}
-
       <Select<SelectOption, boolean, GroupBase<SelectOption>>
         options={options}
         placeholder={placeholder}
@@ -77,11 +50,6 @@ export const WSelect = <T extends FieldValues = FieldValues>({
         onChange={val => field.onChange(val as any)}
         {...rest}
       />
-
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-      {helperText && (
-        <FormHelperText color={'orange.400'}>{helperText}</FormHelperText>
-      )}
-    </FormControl>
+    </Field>
   )
 }

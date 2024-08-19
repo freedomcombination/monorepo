@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, RefAttributes } from 'react'
+import { ReactNode } from 'react'
 
 import { InputProps } from '@chakra-ui/react'
 import {
@@ -20,8 +20,3 @@ export type FormItemProps<T extends FieldValues> = InputProps & {
   errors: Partial<FieldErrorsImpl<T>>
   register: UseFormRegister<T>
 }
-
-export type FormItemComponent = <FormValues extends FieldValues>(
-  props: FormItemProps<FormValues> &
-    RefAttributes<HTMLInputElement | HTMLTextAreaElement>,
-) => ReactElement

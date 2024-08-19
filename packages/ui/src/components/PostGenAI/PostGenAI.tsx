@@ -1,14 +1,6 @@
 import { useState } from 'react'
 
-import {
-  FormControl,
-  FormLabel,
-  HStack,
-  Heading,
-  Stack,
-  Textarea,
-  Group,
-} from '@chakra-ui/react'
+import { HStack, Heading, Stack, Textarea, Group } from '@chakra-ui/react'
 import { useCompletion } from 'ai/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -18,6 +10,7 @@ import { RiAiGenerate } from 'react-icons/ri'
 
 import {
   Button,
+  Field,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
@@ -160,10 +153,7 @@ export const PostGenAI = ({
       <Heading colorScheme={colorScheme}>Post Generator</Heading>
       <form onSubmit={handleSubmit}>
         <Stack gap={4}>
-          <FormControl>
-            <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-              Content
-            </FormLabel>
+          <Field label={'Content'}>
             <Textarea
               name="prompt"
               placeholder="Enter a content..."
@@ -173,16 +163,13 @@ export const PostGenAI = ({
               rows={6}
               bg={'whiteAlpha.700'}
             />
-          </FormControl>
+          </Field>
           <HStack
             gap={{ base: 4, lg: 8 }}
             flexDirection={{ base: 'column', sm: 'row' }}
           >
             {!onlySentences && (
-              <FormControl>
-                <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                  Number of Caps Content
-                </FormLabel>
+              <Field label={'Number of Caps Content'}>
                 <NumberInput
                   step={1}
                   min={0}
@@ -196,12 +183,9 @@ export const PostGenAI = ({
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
-              </FormControl>
+              </Field>
             )}
-            <FormControl>
-              <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                Number of Posts
-              </FormLabel>
+            <Field label={'Number of Posts'}>
               <NumberInput
                 step={1}
                 min={0}
@@ -215,12 +199,9 @@ export const PostGenAI = ({
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </FormControl>
+            </Field>
             {!onlySentences && (
-              <FormControl>
-                <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                  Character Limit (Caps)
-                </FormLabel>
+              <Field label={'Character Limit (Caps)'}>
                 <NumberInput
                   step={10}
                   min={80}
@@ -237,12 +218,9 @@ export const PostGenAI = ({
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
-              </FormControl>
+              </Field>
             )}
-            <FormControl>
-              <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                Character Limit (Posts)
-              </FormLabel>
+            <Field label={' Character Limit (Posts)'}>
               <NumberInput
                 step={10}
                 min={100}
@@ -257,33 +235,37 @@ export const PostGenAI = ({
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </FormControl>
+            </Field>
           </HStack>
           <Group wrap={'wrap'} justify={'space-between'}>
             <Group wrap={'wrap'} alignContent={'center'}>
-              <FormControl w="auto" display="flex" alignItems="center">
-                <FormLabel htmlFor="askBeforeDelete" mb="0">
-                  Always ask before deleting
-                </FormLabel>
+              <Field
+                w="auto"
+                display="flex"
+                alignItems="center"
+                label={'Always ask before deleting'}
+              >
                 <Switch
                   id="askBeforeDelete"
                   checked={askBeforeDelete}
                   onCheckedChange={e => setAskBeforeDelete(e.checked)}
                   mr={5}
                 />
-              </FormControl>
+              </Field>
               {process.env.NODE_ENV !== 'production' && (
-                <FormControl w="auto" display="flex" alignItems="center">
-                  <FormLabel htmlFor="useApiInDev" mb="0">
-                    Use fake API
-                  </FormLabel>
+                <Field
+                  w="auto"
+                  display="flex"
+                  alignItems="center"
+                  label={'Use fake API'}
+                >
                   <Switch
                     id="useApiInDev"
                     checked={useFakeApi}
                     onCheckedChange={e => setUseFakeApi(e.checked)}
                     colorScheme={colorScheme}
                   />
-                </FormControl>
+                </Field>
               )}
             </Group>
             <Group wrap={'wrap'}>

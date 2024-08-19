@@ -20,15 +20,15 @@ export const useHashtagSchema = () => {
 }
 
 export const hashtagFields: FormFields<Hashtag> = [
-  { name: 'title', isRequired: true },
-  { name: 'date', type: 'datetime-local', isRequired: true },
-  { name: 'description', isRequired: true, type: 'textarea' },
-  { name: 'image', type: 'file', isRequired: true },
+  { name: 'title', required: true },
+  { name: 'date', type: 'datetime-local', required: true },
+  { name: 'description', required: true, type: 'textarea' },
+  { name: 'image', type: 'file', required: true },
   { name: 'platform', type: 'select', endpoint: 'platforms', isMulti: false },
   { name: 'content', type: 'markdown' },
   {
     name: 'hashtagDefault',
-    isRequired: true,
+    required: true,
   },
   { name: 'hashtagExtra' },
   {
