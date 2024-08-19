@@ -1,20 +1,13 @@
 import React from 'react'
 
-import {
-  Box,
-  Group,
-  HStack,
-  IconButton,
-  Stack,
-  Text,
-  Textarea,
-} from '@chakra-ui/react'
+import { Box, Group, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
 import { IoSend } from 'react-icons/io5'
 import { ObjectSchema } from 'yup'
 
 import {
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,

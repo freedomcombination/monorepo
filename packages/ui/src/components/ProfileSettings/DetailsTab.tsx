@@ -1,21 +1,14 @@
 import { useId, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Box,
-  Center,
-  IconButton,
-  Spinner,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Center, Spinner, Stack, Text, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaFileUpload, FaSave } from 'react-icons/fa'
 import { FaCity, FaPhone, FaTrash } from 'react-icons/fa6'
 
 import {
   Button,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,

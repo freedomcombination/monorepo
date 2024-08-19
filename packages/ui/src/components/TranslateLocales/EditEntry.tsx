@@ -1,18 +1,13 @@
 import { FC, useContext } from 'react'
 
-import {
-  Group,
-  HStack,
-  IconButton,
-  SimpleGrid,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Group, HStack, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { IconType } from 'react-icons'
 import { BiHide } from 'react-icons/bi'
 import { FaExclamationTriangle } from 'react-icons/fa'
 import { FaCheck, FaCheckDouble, FaTrash } from 'react-icons/fa6'
 import { IoMdRemoveCircleOutline } from 'react-icons/io'
+
+import { IconButton } from '@fc/chakra'
 
 import { DictContext } from './DictContext'
 import { EntryInput } from './EntryInput'

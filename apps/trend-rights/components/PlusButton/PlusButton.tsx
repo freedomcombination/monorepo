@@ -1,12 +1,13 @@
 import { FC, useState } from 'react'
 
 import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
-import { Box, IconButton, Portal, Stack } from '@chakra-ui/react'
+import { Box, Portal, Stack } from '@chakra-ui/react'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { FaInfo, FaPlus } from 'react-icons/fa6'
 import { MdOutlineTrendingUp } from 'react-icons/md'
 
 import {
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,

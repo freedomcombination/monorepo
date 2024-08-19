@@ -1,6 +1,7 @@
-import { Progress as ChakraProgress, IconButton } from '@chakra-ui/react'
+import { Progress as ChakraProgress } from '@chakra-ui/react'
 import { HiOutlineInformationCircle } from 'react-icons/hi'
 
+import { IconButton } from './IconButton'
 import { ToggleTip } from './ToggleTip'
 
 export const ProgressBar = (props: ChakraProgress.TrackProps) => {
@@ -26,9 +27,13 @@ export const ProgressLabel = (props: ProgressLabelProps) => {
       {children}
       {info && (
         <ToggleTip content={info}>
-          <IconButton variant="ghost" aria-label="info" size="xs" ms="1">
-            <HiOutlineInformationCircle />
-          </IconButton>
+          <IconButton
+            variant="ghost"
+            aria-label="info"
+            size="xs"
+            ms="1"
+            icon={<HiOutlineInformationCircle />}
+          />
         </ToggleTip>
       )}
     </ChakraProgress.Label>

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { HStack, IconButton } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -11,6 +11,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 import { FaFacebook, FaLinkedin, FaTelegram, FaWhatsapp } from 'react-icons/fa'
 
 import {
+  IconButton,
   Popover,
   PopoverArrow,
   PopoverBody,

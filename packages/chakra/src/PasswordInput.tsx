@@ -4,13 +4,9 @@ import { forwardRef } from 'react'
 
 import { useControllableState } from '@chakra-ui/hooks'
 import type { GroupProps, InputProps } from '@chakra-ui/react'
-import {
-  Group,
-  IconButton,
-  Input,
-  InputElement,
-  createIcon,
-} from '@chakra-ui/react'
+import { Group, Input, InputElement, createIcon } from '@chakra-ui/react'
+
+import { IconButton } from './IconButton'
 
 interface VisibilityProps {
   defaultVisible?: boolean
@@ -49,9 +45,11 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           type={visible ? 'text' : 'password'}
         />
         <InputElement placement="end">
-          <IconButton disabled={rest.disabled} onClick={handleClick}>
-            {visible ? <EyeOffIcon /> : <EyeOnIcon />}
-          </IconButton>
+          <IconButton
+            disabled={rest.disabled}
+            onClick={handleClick}
+            icon={visible ? <EyeOffIcon /> : <EyeOnIcon />}
+          />
         </InputElement>
       </Group>
     )

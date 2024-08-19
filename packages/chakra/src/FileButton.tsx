@@ -4,12 +4,13 @@ import { forwardRef } from 'react'
 
 import {
   FileUpload as ChakraFileUpload,
-  IconButton,
   Square,
   Stack,
   Text,
 } from '@chakra-ui/react'
 import { LuFile, LuTrash2 } from 'react-icons/lu'
+
+import { IconButton } from './IconButton'
 
 export interface FileUploadRootProps extends ChakraFileUpload.RootProps {
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>
@@ -97,9 +98,7 @@ const FileUploadItem = (props: FileUploadItemProps) => {
 
       {showDelete && (
         <ChakraFileUpload.ItemDeleteTrigger asChild>
-          <IconButton variant="ghost" color="fg.muted">
-            <LuTrash2 />
-          </IconButton>
+          <IconButton variant="ghost" color="fg.muted" icon={<LuTrash2 />} />
         </ChakraFileUpload.ItemDeleteTrigger>
       )}
     </ChakraFileUpload.Item>

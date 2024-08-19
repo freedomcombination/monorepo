@@ -3,7 +3,6 @@ import { FC, useEffect, useRef } from 'react'
 import {
   Separator,
   HStack,
-  IconButton,
   Spinner,
   Stack,
   Text,
@@ -11,6 +10,8 @@ import {
 } from '@chakra-ui/react'
 import { RiFilterOffLine } from 'react-icons/ri'
 import { useDebounce } from 'react-use'
+
+import { IconButton } from '@fc/chakra'
 
 import { CategoryFilterCheckbox } from './CategoryFilterCheckbox'
 import { CategoryFilterProps } from './types'

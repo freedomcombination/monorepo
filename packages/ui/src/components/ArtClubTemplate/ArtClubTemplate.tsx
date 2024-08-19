@@ -1,21 +1,19 @@
 import { FC, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Box,
-  Center,
-  Grid,
-  HStack,
-  IconButton,
-  Skeleton,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Center, Grid, HStack, Skeleton, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { parse } from 'querystring'
 import { MdMenuOpen } from 'react-icons/md'
 
-import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@fc/chakra'
+import {
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  IconButton,
+} from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
 import { Art, Category } from '@fc/types'

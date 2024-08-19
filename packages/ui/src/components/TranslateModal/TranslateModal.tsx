@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react'
 
-import { Box, HStack, IconButton } from '@chakra-ui/react'
+import { Box, HStack } from '@chakra-ui/react'
 import { AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
 
 import {
   Button,
   Accordion,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,

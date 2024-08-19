@@ -2,7 +2,6 @@ import { FC, useEffect } from 'react'
 
 import {
   HStack,
-  IconButton,
   Stack,
   Text,
   Textarea,
@@ -14,7 +13,7 @@ import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
-import { Button, Tooltip, toaster } from '@fc/chakra'
+import { Button, IconButton, Tooltip, toaster } from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useRecaptchaToken } from '@fc/services'

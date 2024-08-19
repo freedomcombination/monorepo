@@ -1,7 +1,7 @@
-import { Badge, ButtonProps, HStack, IconButton } from '@chakra-ui/react'
+import { Badge, ButtonProps, HStack } from '@chakra-ui/react'
 import { FaInfo, FaX } from 'react-icons/fa6'
 
-import { Popover, PopoverContent, PopoverTrigger } from '@fc/chakra'
+import { IconButton, Popover, PopoverContent, PopoverTrigger } from '@fc/chakra'
 import { OgImageParams } from '@fc/types'
 
 import { Caps } from '../Caps'

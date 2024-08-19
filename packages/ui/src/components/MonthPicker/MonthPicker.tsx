@@ -1,11 +1,12 @@
 // Ref: https://github.com/viniarruda/react-month-range-picker
 import { FC, useEffect, useState } from 'react'
 
-import { HStack, IconButton, Text } from '@chakra-ui/react'
+import { HStack, Text } from '@chakra-ui/react'
 import { FaCalendar, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 import {
   Button,
+  IconButton,
   Popover,
   PopoverArrow,
   PopoverBody,

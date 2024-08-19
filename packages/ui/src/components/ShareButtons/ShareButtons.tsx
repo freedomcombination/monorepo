@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { Group, GroupProps, IconButton } from '@chakra-ui/react'
+import { Group, GroupProps } from '@chakra-ui/react'
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -11,6 +11,7 @@ import {
 import { FaFacebook, FaLinkedin, FaTelegram, FaWhatsapp } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
+import { IconButton } from '@fc/chakra'
 import { makeSocialContent } from '@fc/utils'
 
 type ShareButtonsProps = GroupProps & {

@@ -1,18 +1,16 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  Separator,
-  HStack,
-  IconButton,
-  Text,
-  VStack,
-  Group,
-} from '@chakra-ui/react'
+import { Box, Separator, HStack, Text, VStack, Group } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPlus, FaTimes } from 'react-icons/fa'
 
-import { Popover, PopoverContent, PopoverTrigger, Tooltip } from '@fc/chakra'
+import {
+  IconButton,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Tooltip,
+} from '@fc/chakra'
 import { MentionUserData } from '@fc/types'
 import { formatNumber } from '@fc/utils'
 

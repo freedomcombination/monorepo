@@ -1,8 +1,9 @@
 import { forwardRef } from 'react'
 
-import { DataList as ChakraDataList, IconButton } from '@chakra-ui/react'
+import { DataList as ChakraDataList } from '@chakra-ui/react'
 import { HiOutlineInformationCircle } from 'react-icons/hi2'
 
+import { IconButton } from './IconButton'
 import { ToggleTip } from './ToggleTip'
 
 export const DataListRoot = ChakraDataList.Root
@@ -23,9 +24,12 @@ export const DataListItem = forwardRef<HTMLDivElement, ItemProps>(
           {label}
           {info && (
             <ToggleTip content={info}>
-              <IconButton variant="ghost" aria-label="info" size="xs">
-                <HiOutlineInformationCircle />
-              </IconButton>
+              <IconButton
+                variant="ghost"
+                aria-label="info"
+                size="xs"
+                icon={<HiOutlineInformationCircle />}
+              />
             </ToggleTip>
           )}
         </ChakraDataList.ItemLabel>

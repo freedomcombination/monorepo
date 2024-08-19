@@ -1,15 +1,10 @@
 import { FC } from 'react'
 
-import {
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Portal,
-} from '@chakra-ui/react'
+import { Menu, MenuButton, MenuItem, MenuList, Portal } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDownWideShort } from 'react-icons/fa6'
+
+import { IconButton } from '@fc/chakra'
 
 import { MenuFileItem } from './MenuFileItem'
 import { ImageViewerProps } from './types'

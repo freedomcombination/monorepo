@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react'
 
 import {
   Box,
-  IconButton,
   Input,
   InputGroup,
   InputLeftElement,
@@ -12,6 +11,7 @@ import { useTranslation } from 'next-i18next'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import { useDebounce } from 'react-use'
 
+import { IconButton } from '@fc/chakra'
 import { useHashtag } from '@fc/services'
 
 import { useHashtagContext } from '../HashtagProvider'

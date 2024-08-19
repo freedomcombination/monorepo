@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { HStack, IconButton, VStack } from '@chakra-ui/react'
+import { HStack, VStack } from '@chakra-ui/react'
 import { TFunction } from 'i18next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -9,7 +9,7 @@ import { FaEdit } from 'react-icons/fa'
 import { FaCopy, FaTrash, FaUser } from 'react-icons/fa6'
 import { TbPlus } from 'react-icons/tb'
 
-import { Button, Tooltip } from '@fc/chakra'
+import { Button, IconButton, Tooltip } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { Role } from '@fc/types'

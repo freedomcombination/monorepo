@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 import { useUpdateEffect } from '@chakra-ui/hooks'
 import {
-  IconButton,
   Input,
   InputGroup,
   InputLeftElement,
@@ -11,6 +10,8 @@ import {
 import { FaTimes } from 'react-icons/fa'
 import { HiOutlineSearch } from 'react-icons/hi'
 import { useDebounce } from 'react-use'
+
+import { IconButton } from '@fc/chakra'
 
 import { SearchFormProps } from './types'
 

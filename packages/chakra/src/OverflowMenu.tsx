@@ -1,9 +1,10 @@
-import type { ButtonProps, MenuRootProps } from '@chakra-ui/react'
-import { IconButton } from '@chakra-ui/react'
+import type { MenuRootProps } from '@chakra-ui/react'
 import {
   HiMiniEllipsisHorizontal,
   HiMiniEllipsisVertical,
 } from 'react-icons/hi2'
+
+import { IconButton, ButtonProps } from '@fc/chakra'
 
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from './Menu'
 
@@ -27,9 +28,14 @@ export const OverflowMenuTrigger = (props: OverflowMenuTriggerProps) => {
 
   return (
     <MenuTrigger asChild>
-      <IconButton variant="plain" size="sm" {...rest}>
-        {vertical ? <HiMiniEllipsisVertical /> : <HiMiniEllipsisHorizontal />}
-      </IconButton>
+      <IconButton
+        variant="plain"
+        size="sm"
+        {...rest}
+        icon={
+          vertical ? <HiMiniEllipsisVertical /> : <HiMiniEllipsisHorizontal />
+        }
+      />
     </MenuTrigger>
   )
 }

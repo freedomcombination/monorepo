@@ -4,7 +4,6 @@ import {
   Center,
   Flex,
   HStack,
-  IconButton,
   Menu,
   MenuButton,
   MenuSeparator,
@@ -21,7 +20,7 @@ import { useTranslation } from 'react-i18next'
 import { FaEdit, FaSave } from 'react-icons/fa'
 import { FaFilter, FaX } from 'react-icons/fa6'
 
-import { Button, Select } from '@fc/chakra'
+import { Button, Select, IconButton } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'

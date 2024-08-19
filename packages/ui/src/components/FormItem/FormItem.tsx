@@ -7,7 +7,6 @@ import {
   FormHelperText,
   FormLabel,
   forwardRef,
-  IconButton,
   Input,
   InputGroup,
   InputLeftElement,
@@ -17,7 +16,7 @@ import { useTranslation } from 'next-i18next'
 import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { TbInfoCircle } from 'react-icons/tb'
 
-import { Tooltip } from '@fc/chakra'
+import { IconButton, Tooltip } from '@fc/chakra'
 
 import { FormItemComponent } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'

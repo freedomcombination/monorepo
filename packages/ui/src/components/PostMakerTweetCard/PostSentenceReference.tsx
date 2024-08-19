@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
-import { IconButton } from '@chakra-ui/react'
 import { FaInfo } from 'react-icons/fa6'
+
+import { IconButton } from '@fc/chakra'
 
 import { useHashtagContext } from '../../components/HashtagProvider'
 import { usePostContext } from '../PostProvider'

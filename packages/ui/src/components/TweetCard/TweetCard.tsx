@@ -4,7 +4,6 @@ import { useDisclosure } from '@chakra-ui/hooks'
 import {
   Box,
   HStack,
-  IconButton,
   Link,
   Menu,
   MenuButton,
@@ -29,6 +28,7 @@ import {
 } from 'react-icons/tb'
 import { useLocalStorage } from 'usehooks-ts'
 
+import { IconButton } from '@fc/chakra'
 import { useRecommendTweet } from '@fc/services'
 import { Post, RecommendedTweetCreateInput, Tweet } from '@fc/types'
 

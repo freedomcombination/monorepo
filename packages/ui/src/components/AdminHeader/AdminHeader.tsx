@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { HStack, Heading, IconButton, Skeleton } from '@chakra-ui/react'
+import { HStack, Heading, Skeleton } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { BiNotificationOff } from 'react-icons/bi'
 import { FaArrowLeft, FaUser } from 'react-icons/fa'
@@ -11,6 +11,7 @@ import { MdOutlineNotifications } from 'react-icons/md'
 
 import {
   Button,
+  IconButton,
   Drawer,
   DrawerBody,
   DrawerContent,
@@ -87,7 +88,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
           </Tooltip>
         )}
         {!loading && !hasBackButton && title && (
-          <Heading size={{ base: 'lg', lg: 'xl' }} isTruncated>
+          <Heading fontSize={{ base: 'lg', lg: 'xl' }} isTruncated>
             {title}
           </Heading>
         )}

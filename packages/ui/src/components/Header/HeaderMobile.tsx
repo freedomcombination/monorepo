@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { HStack, IconButton } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { FaBars } from 'react-icons/fa'
 
 import {
@@ -10,6 +10,7 @@ import {
   DrawerContent,
   DrawerOverlay,
   DrawerHeader,
+  IconButton,
 } from '@fc/chakra'
 
 import { HeaderMobileNav } from './HeaderMobileNav'

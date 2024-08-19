@@ -7,7 +7,6 @@ import {
   ListItem,
   VStack,
   Text,
-  IconButton,
   Stack,
   Highlight,
   SimpleGrid,
@@ -18,6 +17,7 @@ import { FaX } from 'react-icons/fa6'
 
 import {
   Button,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -176,12 +176,11 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
   return (
     <Modal
       centered
-      isOpen={isOpen}
-      onClose={onClose}
-      onCloseComplete={handleOnClose}
-      size={'4xl'}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
+      size={'xl'}
       scrollBehavior={'inside'}
-      closeOnOverlayClick={!saveUsers}
+      closeOnInteractOutside={!saveUsers}
     >
       <ModalOverlay />
       <ModalContent>

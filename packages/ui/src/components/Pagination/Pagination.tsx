@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
-import { Group, IconButton } from '@chakra-ui/react'
+import { Group } from '@chakra-ui/react'
 import { BsThreeDots } from 'react-icons/bs'
 import { TbChevronLeft, TbChevronRight } from 'react-icons/tb'
 
-import { Button } from '@fc/chakra'
+import { Button, IconButton } from '@fc/chakra'
 
 import { DOTS } from './dots'
 import { PaginationProps } from './types'

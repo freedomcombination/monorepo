@@ -3,10 +3,10 @@ import {
   type BadgeProps,
   Stat as ChakraStat,
   FormatNumber,
-  IconButton,
 } from '@chakra-ui/react'
 import { HiOutlineInformationCircle } from 'react-icons/hi'
 
+import { IconButton } from './IconButton'
 import { ToggleTip } from './ToggleTip'
 
 interface StatLabelProps extends ChakraStat.LabelProps {
@@ -21,9 +21,12 @@ export const StatLabel = (props: StatLabelProps) => {
       {children}
       {info && (
         <ToggleTip content={info}>
-          <IconButton variant="ghost" aria-label="info" size="xs">
-            <HiOutlineInformationCircle />
-          </IconButton>
+          <IconButton
+            variant="ghost"
+            aria-label="info"
+            size="xs"
+            icon={<HiOutlineInformationCircle />}
+          />
         </ToggleTip>
       )}
     </ChakraStat.Label>
@@ -41,9 +44,7 @@ export const StatValueText = (props: StatValueTextProps) => {
   return (
     <ChakraStat.ValueText {...rest}>
       {children ||
-        (value != null && (
-          <FormatNumber value={value} {...props.formatOptions} />
-        ))}
+        (value != null && <FormatNumber value={value} {...formatOptions} />)}
     </ChakraStat.ValueText>
   )
 }

@@ -2,7 +2,6 @@ import { FC, ReactNode } from 'react'
 
 import {
   HStack,
-  IconButton,
   Menu,
   MenuButton,
   MenuSeparator,
@@ -13,6 +12,8 @@ import {
 import { useTranslation } from 'next-i18next'
 import { HiOutlineFilter } from 'react-icons/hi'
 import { VscListFilter } from 'react-icons/vsc'
+
+import { IconButton } from '@fc/chakra'
 
 import { SearchForm } from '../SearchForm'
 
@@ -77,12 +78,12 @@ export const PageHeader: FC<PageHeaderProps> = ({
             colorScheme="gray"
           />
           <MenuList
-            sx={{
-              '.chakra-menu__group': {
+            css={{
+              '& .chakra-menu__group': {
                 maxH: 200,
                 overflowY: 'auto',
               },
-              '.chakra-menu__group__title': {
+              '& .chakra-menu__group__title': {
                 position: 'sticky',
                 top: 0,
                 bg: 'white',

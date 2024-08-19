@@ -1,6 +1,6 @@
-import { IconButtonProps } from '@chakra-ui/react'
 import { IconType } from 'react-icons'
 
+import { IconButtonProps } from '@fc/chakra'
 import { Localize } from '@fc/types'
 
 export type SocialItem = {

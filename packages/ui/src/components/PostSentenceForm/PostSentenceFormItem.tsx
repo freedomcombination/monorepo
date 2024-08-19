@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { Box, HStack, IconButton, Textarea } from '@chakra-ui/react'
+import { Box, HStack, Textarea } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { FaPencilAlt, FaSave, FaTimes } from 'react-icons/fa'
 import { FaInfo } from 'react-icons/fa6'
@@ -9,7 +9,7 @@ import {
   MdOutlineUnpublished,
 } from 'react-icons/md'
 
-import { Tooltip } from '@fc/chakra'
+import { IconButton, Tooltip } from '@fc/chakra'
 import {
   useDeleteHashtagSentence,
   useHashtag,

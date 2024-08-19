@@ -1,8 +1,8 @@
 import { useDisclosure } from '@chakra-ui/hooks'
-import { IconButton } from '@chakra-ui/react'
 import { FaCogs } from 'react-icons/fa'
 
 import {
+  IconButton,
   Modal,
   ModalBody,
   ModalContent,

@@ -2,11 +2,12 @@ import { FC, useEffect, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
 import { Link } from '@chakra-ui/next-js'
-import { Badge, Box, HStack, IconButton, Stack, Text } from '@chakra-ui/react'
+import { Badge, Box, HStack, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaExternalLinkSquareAlt } from 'react-icons/fa'
 
+import { IconButton } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import {
   useDeleteModel,
@@ -16,7 +17,7 @@ import {
 } from '@fc/services'
 
 import { ArtCardActions } from './ArtCardActions'
-import { ArtCardAlertDialog } from './ArtCardAlertDialog'
+import { ArtCardDialog } from './ArtCardAlertDialog'
 import { ArtActionType, ArtCardProps } from './types'
 import { ArtCardImage } from '../ArtCardImage'
 import { ArtModal } from '../ArtModal'
@@ -64,7 +65,7 @@ export const ArtCard: FC<ArtCardProps> = ({
     }
   }
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   const artistName = art.artist?.name
   const artistEmail = art.artist?.email
@@ -118,12 +119,12 @@ export const ArtCard: FC<ArtCardProps> = ({
       />
       {/* Card Action Alert Dialog */}
       {actionType && (
-        <ArtCardAlertDialog
+        <ArtCardDialog
           title={actions[actionType].title}
           text={actions[actionType].text}
           onClose={onClose}
           onClick={handleAction}
-          isOpen={isOpen}
+          isOpen={open}
           colorScheme={actions[actionType].colorScheme}
           buttonText={actions[actionType].buttonText}
         />

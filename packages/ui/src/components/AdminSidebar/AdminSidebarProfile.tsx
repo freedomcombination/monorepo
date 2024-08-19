@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-import { Box, HStack, IconButton, Text } from '@chakra-ui/react'
+import { Box, HStack, Text } from '@chakra-ui/react'
 import { GoSignOut } from 'react-icons/go'
 
-import { Tooltip } from '@fc/chakra'
+import { IconButton, Tooltip } from '@fc/chakra'
 import { Profile, SessionUser } from '@fc/types'
 
 import { WAvatar } from '../WAvatar'

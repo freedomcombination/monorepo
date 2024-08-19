@@ -1,13 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-} from '@chakra-ui/react'
+import { Box, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import {
@@ -15,6 +8,8 @@ import {
   MdOutlinePublishedWithChanges,
   MdOutlineUnpublished,
 } from 'react-icons/md'
+
+import { IconButton } from '@fc/chakra'
 
 import { ArtCardActionsProps } from './types'
 

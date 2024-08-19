@@ -6,7 +6,6 @@ import type { ButtonProps, TextProps } from '@chakra-ui/react'
 import {
   Button,
   Pagination as ChakraPagination,
-  IconButton,
   Text,
   createContext,
   usePaginationContext,
@@ -16,6 +15,8 @@ import {
   HiChevronRight,
   HiMiniEllipsisHorizontal,
 } from 'react-icons/hi2'
+
+import { IconButton } from './IconButton'
 
 interface ButtonVariantMap {
   current: ButtonProps['variant']
@@ -100,9 +101,11 @@ export const PaginationPrevTrigger = forwardRef<
 
   return (
     <ChakraPagination.PrevTrigger ref={ref} asChild {...props}>
-      <IconButton variant={variantMap.default} size={size}>
-        <HiChevronLeft />
-      </IconButton>
+      <IconButton
+        variant={variantMap.default}
+        size={size}
+        icon={<HiChevronLeft />}
+      />
     </ChakraPagination.PrevTrigger>
   )
 })
@@ -115,9 +118,11 @@ export const PaginationNextTrigger = forwardRef<
 
   return (
     <ChakraPagination.NextTrigger ref={ref} asChild {...props}>
-      <IconButton variant={variantMap.default} size={size}>
-        <HiChevronRight />
-      </IconButton>
+      <IconButton
+        variant={variantMap.default}
+        size={size}
+        icon={<HiChevronRight />}
+      />
     </ChakraPagination.NextTrigger>
   )
 })

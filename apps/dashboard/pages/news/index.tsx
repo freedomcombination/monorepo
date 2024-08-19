@@ -4,7 +4,6 @@ import {
   Box,
   Group,
   Center,
-  IconButton,
   MenuItemOption,
   MenuOptionGroup,
   SimpleGrid,
@@ -17,7 +16,7 @@ import { useTranslation } from 'next-i18next'
 import { AiOutlineClear } from 'react-icons/ai'
 import { FaSyncAlt } from 'react-icons/fa'
 
-import { Tooltip, Button } from '@fc/chakra'
+import { Tooltip, Button, IconButton } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useTopic, useTopicSync } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'

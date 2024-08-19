@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
-import { HStack, IconButton } from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
+import { IconButton } from '@fc/chakra'
 import { Localize } from '@fc/types'
 
 import { SocialButtonsProps } from './types'

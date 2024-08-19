@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import { HStack, IconButton, Textarea, ButtonProps } from '@chakra-ui/react'
+import { HStack, Textarea, ButtonProps } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { FaPlus } from 'react-icons/fa'
 
-import { toaster } from '@fc/chakra'
+import { IconButton, toaster } from '@fc/chakra'
 import { useCreateHashtagSentence } from '@fc/services'
 
 type PostSentenceCreatorProps = {

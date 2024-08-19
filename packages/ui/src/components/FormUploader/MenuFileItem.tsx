@@ -5,7 +5,6 @@ import {
   Box,
   Center,
   Separator,
-  IconButton,
   Stack,
   Text,
   VStack,
@@ -13,7 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { FaCheck, FaFile, FaFilePdf, FaTrash } from 'react-icons/fa6'
 
-import { Button } from '@fc/chakra'
+import { Button, IconButton } from '@fc/chakra'
 import { API_URL } from '@fc/config'
 import { UploadFile } from '@fc/types'
 
