@@ -15,7 +15,6 @@ export const DONATION_REQUEST_LINK = process.env[
 export const API_URL = process.env['NEXT_PUBLIC_API_URL'] as string
 export const ASSETS_URL = assetUrls.production
 export const ASSETS_FALLBACK_URL = VERCEL_ENV ? assetUrls[VERCEL_ENV] : API_URL
-export const PUBLIC_TOKEN = process.env['NEXT_PUBLIC_TOKEN'] as string
 export const EMAIL = process.env['NEXT_PUBLIC_EMAIL'] as string
 export const GA_MEASUREMENT_ID = process.env[
   'NEXT_PUBLIC_GA_MEASUREMENT_ID'

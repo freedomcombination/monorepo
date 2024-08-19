@@ -32,7 +32,6 @@
     "apify-client": "^2.9.4",
     "cheerio": "^1.0.0",
     "pg": "^8.12.0",
-    "pg-connection-string": "^2.6.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-email": "2.1.6",
@@ -54,7 +53,7 @@
     "uuid": "dc6c040c-fd40-4612-8858-c117ed320ff6"
   },
   "engines": {
-    "node": ">=14.19.1 <=20.x.x",
+    "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT",
