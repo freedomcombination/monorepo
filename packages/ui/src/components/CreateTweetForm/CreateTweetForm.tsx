@@ -4,7 +4,7 @@ import { useBoolean } from '@chakra-ui/hooks'
 import {
   Box,
   Group,
-  FormLabel,
+  Field,
   HStack,
   Stack,
   Text,
@@ -128,7 +128,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
           <ModalBody>
             <Stack gap={4} as="form" onSubmit={handleSubmit(handleRecommend)}>
               <Stack>
-                <FormLabel fontWeight={600}>Original Tweet</FormLabel>
+                <Field.Label fontWeight={600}>Original Tweet</Field.Label>
                 <TweetContent<CreateTweetFormFieldValues>
                   horizontal
                   tweet={originalTweet as Tweet}

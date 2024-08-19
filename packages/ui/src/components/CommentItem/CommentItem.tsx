@@ -25,7 +25,7 @@ export const CommentItem: FC<CommentItemProps> = ({ comment }) => {
       <Stack fontSize="sm">
         <HStack>
           <Text fontWeight={600}>{name}</Text>
-          <Text textColor="gray.500" fontSize="xs">
+          <Text color="gray.500" fontSize="xs">
             {formatDistanceStrict(new Date(comment.createdAt), new Date())}
           </Text>
         </HStack>

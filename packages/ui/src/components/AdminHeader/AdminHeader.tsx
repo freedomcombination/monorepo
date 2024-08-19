@@ -88,7 +88,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
           </Tooltip>
         )}
         {!loading && !hasBackButton && title && (
-          <Heading fontSize={{ base: 'lg', lg: 'xl' }} isTruncated>
+          <Heading fontSize={{ base: 'lg', lg: 'xl' }} truncate>
             {title}
           </Heading>
         )}

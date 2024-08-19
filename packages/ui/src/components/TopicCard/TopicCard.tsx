@@ -295,9 +295,8 @@ export const TopicCard: FC<TopicCardProps> = ({
 
             <ActionTooltip
               isVisible={!!user && topic?.isRecommended && !!id}
-              label={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
-              hasArrow
-              bg="primary.400"
+              content={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
+              showArrow
             >
               <Box>
                 <TopicCardButton

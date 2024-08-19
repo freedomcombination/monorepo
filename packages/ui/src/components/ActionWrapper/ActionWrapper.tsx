@@ -1,12 +1,13 @@
 import { ReactElement } from 'react'
 
-import { ChakraProps } from '@chakra-ui/react'
+import { StackProps, BoxProps } from '@chakra-ui/react'
 
 import { useAuthContext } from '@fc/context'
 
 import { ActionWrapperProps } from './types'
+import { ButtonProps } from '@fc/chakra'
 
-export const ActionWrapper = <T extends ChakraProps>(
+export const ActionWrapper = <T extends StackProps | BoxProps | ButtonProps>(
   props: ActionWrapperProps<T>,
 ): ReactElement<T> | null => {
   const {
