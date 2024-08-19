@@ -60,7 +60,6 @@ export const endpointsWithPublicationState: StrapiEndpoint[] = [
   'hashtags',
   'posts',
   'presentations',
-  'tags',
   'timelines',
   'votes',
 ]

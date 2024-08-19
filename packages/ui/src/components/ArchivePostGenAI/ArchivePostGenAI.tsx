@@ -101,6 +101,8 @@ export const ArchivePostGenAI = ({
 
       return parsedPosts
     } catch (e) {
+      console.error(e)
+
       return lastParsedPosts
     }
   }
