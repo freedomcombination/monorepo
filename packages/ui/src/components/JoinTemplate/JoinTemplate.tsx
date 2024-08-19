@@ -16,7 +16,7 @@ import { useTranslation } from 'next-i18next'
 import { FaRegFilePdf } from 'react-icons/fa6'
 
 import { Alert, toaster } from '@fc/chakra'
-import { PUBLIC_TOKEN, RecaptchaKeys } from '@fc/config'
+import { RecaptchaKeys } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
 import { Job, Platform, Profile, ProfileCreateInput } from '@fc/types'
@@ -61,7 +61,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
           // now we make sure recaptchaToken is not undefined
           // and backend ll check if recaptchaToken exists then checks it
         },
-        PUBLIC_TOKEN as string,
+        '',
       ),
   })
 

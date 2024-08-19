@@ -21,6 +21,10 @@ export default {
       })
     }
 
+    if (process.env.NODE_ENV === 'development') {
+      return { message: 'Email sent (Dev mode)' }
+    }
+
     await strapi.plugins['email'].services.email.send(email)
 
     await strapi.entityService.create('api::audit-log.audit-log', {
