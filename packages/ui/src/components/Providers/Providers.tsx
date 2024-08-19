@@ -14,6 +14,7 @@ import { DefaultSeo } from 'next-seo'
 import { ThemeProvider } from 'next-themes'
 import { useCookie } from 'react-use'
 
+import { Toaster } from '@fc/chakra'
 import { RECAPTCHA_SITE_KEY, defaultSeo } from '@fc/config'
 import { AuthProvider, WebPushProvider } from '@fc/context'
 import { Site } from '@fc/types'
@@ -69,7 +70,7 @@ export const Providers: FC<ProvidersProps> = ({
                   {enable && <NotificationModal />}
                   {children}
                   {!cookie && <CookieBanner onAllow={onAllow} />}
-                  {/* <ToastContainer /> */}
+                  <Toaster />
                 </ThemeProvider>
               </ChakraProvider>
             </WebPushProvider>

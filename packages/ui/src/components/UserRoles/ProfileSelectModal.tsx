@@ -26,12 +26,12 @@ import {
   ModalHeader,
   ModalOverlay,
   Tooltip,
+  toaster,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { mutation } from '@fc/lib/src/mutation/mutation'
 import { useStrapiRequest } from '@fc/services'
 import { Role, UpdateUserInput, User } from '@fc/types'
-import { toastMessage } from '@fc/utils'
 
 type ProfileSelectModalProps = {
   role?: Role
@@ -260,11 +260,12 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                     onClick={() => {
                       // users has to have role...
                       // this list is only for display
-                      toastMessage(
-                        'Info',
-                        'A user without role can cause issues, A role can not be removed',
-                        'info',
-                      )
+                      toaster.create({
+                        title: 'Info',
+                        description:
+                          'A user without role can cause issues, A role can not be removed',
+                        type: 'info',
+                      })
                     }}
                   />
                 ))}

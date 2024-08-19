@@ -5,9 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
+import { toaster } from '@fc/chakra'
 import { useCreateModelMutation } from '@fc/services'
 import { Observation, ObservationCreateInput } from '@fc/types/src/observation'
-import { toastMessage } from '@fc/utils'
 
 import { observationFormSchema } from './schema'
 import {
@@ -53,11 +53,11 @@ export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
     } catch (error) {
       console.error(error)
 
-      toastMessage(
-        'Error',
-        "Couldn't send observation. Please try again later.",
-        'error',
-      )
+      toaster.create({
+        title: 'Error',
+        description: "Couldn't send observation. Please try again later.",
+        type: 'error',
+      })
     }
   }
 

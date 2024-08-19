@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ObjectSchema } from 'yup'
 
-import { toastMessage } from '@fc/utils'
+import { toaster } from '@fc/chakra'
 
 import { resetPasswordSchema } from './schema'
 import { ResetPasswordFieldValues } from './types'
@@ -48,14 +48,14 @@ export const ResetPasswordForm = () => {
         passwordConfirmation: data.passwordConfirmation,
       }),
     onSuccess: () => {
-      toastMessage(null, t('reset-pass.text'), 'success')
+      toaster.create({ title: t('reset-pass.text'), type: 'success' })
       reset()
       setTimeout(() => {
         router.push('/auth/login')
       }, 2000)
     },
     onError: () => {
-      toastMessage(t('error'), null, 'error')
+      toaster.create({ title: t('error'), type: 'error' })
       setTimeout(() => {
         reset()
       }, 2000)

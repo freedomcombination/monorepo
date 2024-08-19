@@ -1,9 +1,27 @@
-import { theme } from '@chakra-ui/react'
 import { sample } from 'lodash'
 
 import { OgImageParams, PlatformSlug } from '@fc/types'
 
 import { getMediaUrl } from './getMediaUrl'
+
+const theme = {
+  colors: {
+    black: '#000000',
+    white: '#ffffff',
+    primary: {
+      50: '#ffffff',
+      100: '#ffffff',
+      200: '#ffffff',
+      300: '#ffffff',
+      400: '#ffffff',
+      500: '#ffffff',
+      600: '#ffffff',
+      700: '#ffffff',
+      800: '#ffffff',
+      900: '#ffffff',
+    },
+  },
+}
 
 export const generateOgImageParams = (props?: OgImageParams) => {
   const image = props?.image

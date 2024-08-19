@@ -7,8 +7,8 @@ import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
+import { toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
-import { toastMessage } from '@fc/utils'
 
 import { ForgotPasswordFieldValues } from './types'
 import { ButtonLink } from '../ButtonLink'
@@ -45,12 +45,19 @@ export const ForgotPasswordForm = () => {
         locale,
       }),
     onSuccess: () => {
-      toastMessage(null, t('forgot-pass.text'), 'success')
+      toaster.create({
+        description: t('forgot-pass.text'),
+        type: 'success',
+      })
       reset()
     },
     onError: err => {
       const code = (err as any)?.details?.code
-      toastMessage(t('error'), code ? t(code) : null, 'error')
+      toaster.create({
+        title: t('error'),
+        description: code ? t(code) : null,
+        type: 'error',
+      })
     },
   })
 

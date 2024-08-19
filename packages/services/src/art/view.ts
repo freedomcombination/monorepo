@@ -1,4 +1,4 @@
-import { useTimeout } from '@chakra-ui/react'
+import { useTimeout } from '@chakra-ui/hooks'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import { useRouter } from 'next/router'

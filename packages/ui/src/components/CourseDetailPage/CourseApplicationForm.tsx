@@ -1,18 +1,12 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  Button,
-  SimpleGrid,
-  Stack,
-  Textarea,
-  useToast,
-} from '@chakra-ui/react'
+import { Box, Button, SimpleGrid, Stack, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 
+import { toaster } from '@fc/chakra'
 import { PUBLIC_TOKEN } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationCreateInput } from '@fc/types'
@@ -30,8 +24,6 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
   const { t } = useTranslation()
   // const [termsAccepted, setTermsAccepted] = useState(false)
   // const [privacyAccepted, setPrivacyAccepted] = useState(false)
-
-  const toast = useToast()
 
   const {
     register,
@@ -56,10 +48,10 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
         onSuccess: () => {
           reset()
 
-          toast({
+          toaster.create({
             title: 'Success',
             description: 'Your application has been submitted',
-            status: 'success',
+            type: 'success',
           })
         },
       },

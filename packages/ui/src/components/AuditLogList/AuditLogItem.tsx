@@ -6,9 +6,9 @@ import {
   Center,
   HStack,
   Text,
-  ThemeTypings,
   Group,
   chakra,
+  ButtonProps,
 } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { IconType } from 'react-icons'
@@ -31,7 +31,7 @@ type AuditLogItemProps = {
 }
 
 export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
-  const colorMap: Record<AuditLogAction, ThemeTypings['colorSchemes']> = {
+  const colorMap: Record<AuditLogAction, ButtonProps['colorScheme']> = {
     approved: 'blue',
     created: 'green',
     deleted: 'red',

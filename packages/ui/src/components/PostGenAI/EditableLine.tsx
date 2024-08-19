@@ -1,4 +1,4 @@
-import { Badge, HStack, IconButton, ThemeTypings } from '@chakra-ui/react'
+import { Badge, ButtonProps, HStack, IconButton } from '@chakra-ui/react'
 import { FaInfo, FaX } from 'react-icons/fa6'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@fc/chakra'
@@ -12,7 +12,7 @@ export type EditableProps = ContentEditableProps & {
   onDelete?: () => void
   isDescription?: boolean
   imageParams?: OgImageParams
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorScheme?: ButtonProps['colorScheme']
 }
 
 export const EditableLine: React.FC<EditableProps> = ({

@@ -8,7 +8,6 @@ import {
   Highlight,
   Stack,
   Text,
-  useToast,
 } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { formatDistanceStrict } from 'date-fns'
@@ -29,6 +28,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
+  toaster,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useDeleteModel, useRecommendTopic } from '@fc/services'
@@ -61,7 +61,7 @@ export const TopicCard: FC<TopicCardProps> = ({
   const type = topic.type ?? 'Topic'
   const deleteModelMutation = useDeleteModel('recommended-topics')
   const queryClient = useQueryClient()
-  const toast = useToast()
+
   const { mutateAsync, isPending } = useRecommendTopic()
   const isBookmarked = bookmarksStorage?.some(t => t.url === topic.url)
 
@@ -84,12 +84,9 @@ export const TopicCard: FC<TopicCardProps> = ({
         queryClient.invalidateQueries({ queryKey: ['topics'] })
       },
     })
-    toast({
+    toaster.create({
       title: 'Recommended',
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-      position: 'top',
+      type: 'success',
     })
   }
 

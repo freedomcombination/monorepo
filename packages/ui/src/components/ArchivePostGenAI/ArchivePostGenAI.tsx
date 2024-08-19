@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router'
 
+import { toaster } from '@fc/chakra'
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { createHashtagSentence } from '@fc/services'
 import { PlatformSlug, PostCreateInput, RedisPost } from '@fc/types'
-import { generateOgImageParams, sleep, toastMessage } from '@fc/utils'
+import { generateOgImageParams, sleep } from '@fc/utils'
 
 import {
   ArchivePostType,
@@ -55,7 +56,11 @@ export const ArchivePostGenAI = ({
       const localPost = posts.find(p => p.description === post.description)
 
       if (!localPost) {
-        toastMessage('Error', 'Post not found : ' + post.description, 'error')
+        toaster.create({
+          title: 'Error',
+          description: 'Post not found : ' + post.description,
+          type: 'error',
+        })
         continue
       }
 

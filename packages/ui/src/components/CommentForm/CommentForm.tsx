@@ -15,12 +15,11 @@ import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
-import { Tooltip } from '@fc/chakra'
+import { Tooltip, toaster } from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useRecaptchaToken } from '@fc/services'
 import { Comment, CommentCreateInput } from '@fc/types'
-import { toastMessage } from '@fc/utils'
 
 import { commentFormSchema } from './schema'
 import { CommentFormFieldValues, CommentFormProps } from './types'
@@ -84,11 +83,11 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
     } catch (error) {
       console.error(error)
 
-      toastMessage(
-        'Error',
-        "Couldn't send comment. Please try again later.",
-        'error',
-      )
+      toaster.create({
+        title: 'Error',
+        description: "Couldn't send comment. Please try again later.",
+        type: 'error',
+      })
     }
   }
 

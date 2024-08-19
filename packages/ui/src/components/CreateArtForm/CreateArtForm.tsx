@@ -5,7 +5,7 @@ import { Link } from '@chakra-ui/next-js'
 import {
   Box,
   Button,
-  ButtonGroup,
+  Group,
   ButtonProps,
   Center,
   SimpleGrid,
@@ -13,7 +13,6 @@ import {
   Stack,
   Text,
   Textarea,
-  useToast,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
@@ -57,7 +56,6 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
   const cancelRef = useRef<HTMLButtonElement>(null)
   const formDisclosure = useDisclosure()
   const successDisclosure = useDisclosure()
-  const toast = useToast()
 
   const {
     register,
@@ -110,7 +108,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
         queryClient.invalidateQueries({ queryKey: ['user-arts', profile?.id] })
       },
       onError: () => {
-        toast({
+        toaster.create({
           title: 'Error',
           description: 'Something went wrong',
           status: 'error',
@@ -219,12 +217,12 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                   <FormItem
                     name="description"
                     as={Textarea}
-                    isRequired
+                    required
                     errors={errors}
                     register={register}
                   />
 
-                  <ButtonGroup alignSelf="end">
+                  <Group alignSelf="end">
                     <Button onClick={closeForm} mr={3} ref={cancelRef}>
                       {t('cancel')}
                     </Button>
@@ -235,7 +233,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                     >
                       {t('create')}
                     </Button>
-                  </ButtonGroup>
+                  </Group>
                 </Stack>
               </SimpleGrid>
             )}

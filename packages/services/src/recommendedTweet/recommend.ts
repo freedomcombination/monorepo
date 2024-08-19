@@ -1,6 +1,6 @@
-import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
+import { toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { RecommendedTweet, RecommendedTweetCreateInput } from '@fc/types'
@@ -17,7 +17,6 @@ export const recommendTweet = (
 }
 
 export const useRecommendTweet = () => {
-  const toast = useToast()
   const { token } = useAuthContext()
 
   return useMutation({
@@ -26,21 +25,17 @@ export const useRecommendTweet = () => {
       return recommendTweet(recommendedTweet, token as string)
     },
     onSuccess: () => {
-      toast({
+      toaster.create({
         title: 'Recommended',
         description: 'Recommended Tweet Created',
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+        type: 'success',
       })
     },
     onError: () => {
-      toast({
+      toaster.create({
         title: 'Error',
         description: 'Something went wrong',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     },
   })

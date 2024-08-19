@@ -6,7 +6,6 @@ import {
   Radio,
   RadioGroup,
   Stack,
-  useToast,
   chakra,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
@@ -14,6 +13,7 @@ import { FaSave } from 'react-icons/fa'
 import { Virtuoso } from 'react-virtuoso'
 import { useLocalStorage } from 'usehooks-ts'
 
+import { toaster } from '@fc/chakra'
 import { StrapiLocale } from '@fc/types'
 
 import { DictContext } from './DictContext'
@@ -43,7 +43,6 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
     'suppressWarning',
     [],
   )
-  const toast = useToast()
 
   const toggleWillDelete = (name: string) => {
     if (keysToDelete.includes(name)) {
@@ -120,19 +119,15 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
         throw new Error(response.statusText)
       }
 
-      toast({
+      toaster.create({
         title: 'Çeviriler başarıyla kaydedildi!',
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+        type: 'success',
       })
     } catch (error: any) {
-      toast({
+      toaster.create({
         title: 'Çevirileri kaydederken hata oluştu!',
         description: error.message,
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     } finally {
       setSaving(false)

@@ -25,9 +25,9 @@ import {
   NumberInputStepper,
   Progress,
   Switch,
+  toaster,
 } from '@fc/chakra'
 import { StrapiLocale } from '@fc/types'
-import { toastMessage } from '@fc/utils'
 
 import { EditablePost } from './EditablePost'
 import { PostGenAIProps } from './types'
@@ -109,13 +109,21 @@ export const PostGenAI = ({
     onError(error) {
       if (typeof error?.message === 'string') {
         if (error.message.includes('You exceeded your current quota')) {
-          toastMessage('Error', 'You exceeded your current quota', 'error')
+          toaster.create({
+            title: 'Error',
+            description: 'You exceeded your current quota',
+            type: 'error',
+          })
 
           return
         }
       }
 
-      toastMessage('Error', t('contact.form.failed'), 'error')
+      toaster.create({
+        title: 'Error',
+        description: t('contact.form.failed'),
+        type: 'error',
+      })
     },
   })
 
@@ -126,10 +134,14 @@ export const PostGenAI = ({
     try {
       onSave(posts)
       removePosts(archiveContentId, true)
-      toastMessage('Success', 'Posts saved', 'success')
+      toaster.create({
+        title: 'Success',
+        description: 'Posts saved',
+        type: 'success',
+      })
     } catch (error) {
       const msg = error instanceof Error ? error.message : String(error)
-      toastMessage('Error', msg, 'error')
+      toaster.create({ title: 'Error', description: msg, type: 'error' })
       console.error(msg)
     }
 

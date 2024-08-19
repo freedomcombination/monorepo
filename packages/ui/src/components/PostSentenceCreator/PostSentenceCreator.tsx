@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
 
-import { HStack, IconButton, Textarea, ThemeTypings } from '@chakra-ui/react'
+import { HStack, IconButton, Textarea, ButtonProps } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { FaPlus } from 'react-icons/fa'
 
+import { toaster } from '@fc/chakra'
 import { useCreateHashtagSentence } from '@fc/services'
-import { toastMessage } from '@fc/utils'
 
 type PostSentenceCreatorProps = {
   hashtagId: number
   postId: number
   initialContent?: string
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorScheme?: ButtonProps['colorScheme']
   onSuccess?: () => void
 }
 
@@ -49,7 +49,11 @@ export const PostSentenceCreator = ({
         value?.trim().replace(/[.!]$/, '') ===
         sentence.split('::')[0].trim().replace(/[.!]$/, '')
       ) {
-        toastMessage('Error', t('addExistingHashtagPost'), 'error')
+        toaster.create({
+          title: 'Error',
+          description: t('addExistingHashtagPost'),
+          type: 'error',
+        })
 
         return
       }
@@ -63,7 +67,11 @@ export const PostSentenceCreator = ({
             queryKey: ['kv-hashtag-sentences', hashtagId],
           })
           onSuccess?.()
-          toastMessage('Success', t('post.add.success.description'), 'success')
+          toaster.create({
+            title: 'Success',
+            description: t('post.add.success.description'),
+            type: 'success',
+          })
         },
       },
     )

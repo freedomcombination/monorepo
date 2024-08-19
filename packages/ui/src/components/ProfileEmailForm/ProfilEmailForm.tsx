@@ -1,27 +1,19 @@
 import { FC } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
-  Stack,
-  Text,
-  Textarea,
-} from '@chakra-ui/react'
+import { Button, Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 import * as yup from 'yup'
 
+import { toaster, Alert } from '@fc/chakra'
 import { useCreateModelMutation, useSendEmail } from '@fc/services'
 import {
   EmailCreateInput,
   Observation,
   ObservationCreateInput,
 } from '@fc/types'
-import { toastMessage } from '@fc/utils'
 
 import { FormItem } from '../FormItem'
 
@@ -84,11 +76,11 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
     } catch (error) {
       console.error(error)
 
-      toastMessage(
-        'Error',
-        "Couldn't send observation. Please try again later.",
-        'error',
-      )
+      toaster.create({
+        title: 'Error',
+        description: "Couldn't send observation. Please try again later.",
+        type: 'error',
+      })
     }
   }
 
@@ -112,7 +104,11 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
           onSuccess?.()
         },
         onError: error => {
-          toastMessage('Error', error.message, 'error')
+          toaster.create({
+            title: 'Error',
+            description: error.message,
+            type: 'error',
+          })
         },
       })
       reset()
@@ -129,14 +125,14 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
             name="subject"
             register={register}
             errors={errors}
-            isRequired
+            required
           />
           <FormItem
             name="content"
             as={Textarea}
             register={register}
             errors={errors}
-            isRequired
+            required
           />
 
           <Button
@@ -153,19 +149,13 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
 
       {isSuccess && (
         <Alert status="success">
-          <AlertIcon />
-          <AlertDescription>
-            <Text>{t('contact.form.success')}</Text>
-          </AlertDescription>
+          <Text>{t('contact.form.success')}</Text>
         </Alert>
       )}
       {error?.message && (
         <Alert status="error">
-          <AlertIcon />
-          <AlertDescription>
-            <>{t('contact.form.failed')} </>
-            {error.message}
-          </AlertDescription>
+          <>{t('contact.form.failed')} </>
+          {error.message}
         </Alert>
       )}
     </Stack>

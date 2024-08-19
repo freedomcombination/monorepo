@@ -18,11 +18,11 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaRegFilePdf } from 'react-icons/fa6'
 
+import { toaster } from '@fc/chakra'
 import { PUBLIC_TOKEN, RecaptchaKeys } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
 import { Job, Platform, Profile, ProfileCreateInput } from '@fc/types'
-import { toastMessage } from '@fc/utils'
 
 import { JoinTemplateProps } from './types'
 import { Container } from '../Container'
@@ -85,11 +85,13 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
 
       mutate(body, {
         onError: errCode => {
-          toastMessage(
-            t('apply-form.error.title'),
-            errCode ? t(errCode as any) : t('apply-form.error.description'),
-            'error',
-          )
+          toaster.create({
+            title: t('apply-form.error.title'),
+            description: errCode
+              ? t(errCode as any)
+              : t('apply-form.error.description'),
+            type: 'error',
+          })
         },
       })
     } catch (error) {

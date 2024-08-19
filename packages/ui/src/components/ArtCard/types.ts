@@ -1,4 +1,4 @@
-import { ThemeTypings } from '@chakra-ui/react'
+import { ButtonProps } from '@chakra-ui/react'
 
 import { Art } from '@fc/types'
 
@@ -6,7 +6,7 @@ export type ArtActionType = 'delete' | 'publish' | 'unpublish'
 
 export type ArtActionContext = {
   buttonText: string
-  colorScheme: ThemeTypings['colorSchemes']
+  colorScheme: ButtonProps['colorScheme']
   text: string
   title: string
   onClick: () => void

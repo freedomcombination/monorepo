@@ -1,6 +1,6 @@
-import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
+import { toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { UserFeedback, UserFeedbackCreateInput } from '@fc/types'
@@ -25,7 +25,6 @@ export const createUserFeedback = async (
 }
 
 export const useUserFeedbackMutation = (recaptchaToken?: string) => {
-  const toast = useToast()
   const { token } = useAuthContext()
 
   return useMutation({
@@ -34,22 +33,18 @@ export const useUserFeedbackMutation = (recaptchaToken?: string) => {
       return createUserFeedback(userFeedback, token as string, recaptchaToken)
     },
     onSuccess: () => {
-      toast({
+      toaster.create({
         title: `Feedback.`,
         description: `We recieved your feedback. Thank you for your opinion.`,
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+        type: 'success',
       })
     },
     onError: error => {
       console.error(error)
-      toast({
+      toaster.create({
         title: 'Error',
         description: 'Something went wrong',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     },
   })

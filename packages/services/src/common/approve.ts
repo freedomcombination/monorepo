@@ -1,6 +1,6 @@
-import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
+import { toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { StrapiEndpoint, StrapiModel, StrapiTranslatableModel } from '@fc/types'
@@ -24,7 +24,6 @@ export const useApproveModel = <T extends StrapiTranslatableModel>(
   endpoint: StrapiEndpoint,
   translatedFields?: (keyof T)[],
 ) => {
-  const toast = useToast()
   const { token } = useAuthContext()
 
   return useMutation({
@@ -62,21 +61,17 @@ export const useApproveModel = <T extends StrapiTranslatableModel>(
         }
       }
 
-      toast({
+      toaster.create({
         title: `Model ${model?.approvalStatus}`,
         description: `Model has been ${model?.approvalStatus}`,
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+        type: 'success',
       })
     },
     onError: () => {
-      toast({
+      toaster.create({
         title: 'Error',
         description: 'Something went wrong',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     },
   })
