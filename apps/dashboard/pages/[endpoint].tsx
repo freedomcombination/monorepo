@@ -53,7 +53,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   >([])
   const [selectedFilters, setSelectedFilters] = useState<FilterOption[]>([])
 
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
 
   const { locale, query, push } = useRouter()
   const columns = useColumns()
@@ -292,7 +292,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         <ModelEditModal<StrapiModel>
           endpoint={endpoint}
           id={selectedId}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={handleClose}
           title={`Edit ${endpoint}`}
           onSuccess={endpointQuery.refetch}

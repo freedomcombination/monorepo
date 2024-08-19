@@ -21,7 +21,7 @@ export default {
 type Story = StoryObj<CreateTweetFormProps>
 
 const StoryWithHook: StoryFn<CreateTweetFormProps> = args => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   const { mutateAsync } = useRecommendTweet()
 
@@ -53,7 +53,7 @@ const StoryWithHook: StoryFn<CreateTweetFormProps> = args => {
       <CreateTweetForm
         {...args}
         onSubmit={handleSubmit}
-        isOpen={isOpen}
+        isOpen={open}
         onClose={onClose}
         originalTweet={args.originalTweet}
       />

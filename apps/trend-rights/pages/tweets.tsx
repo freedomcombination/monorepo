@@ -35,7 +35,7 @@ type RecommendsPageProps = InferGetServerSidePropsType<
 >
 
 const RecommendsPage: FC<RecommendsPageProps> = ({ tweet, tweets, seo }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const [tweetsState, setTweetsState] = useState(tweets)
   const [searchKey, setSearchKey] = useState('')
 
@@ -79,7 +79,7 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ tweet, tweets, seo }) => {
     <Layout seo={seo}>
       <NextSeo {...seo} />
 
-      <Modal size={'6xl'} isOpen={isOpen && !!tweet} onClose={handleClose}>
+      <Modal size={'6xl'} isOpen={open && !!tweet} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />

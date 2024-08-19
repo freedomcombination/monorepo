@@ -55,7 +55,7 @@ export const TweetCard: FC<TweetCardProps> = ({
     'bookmarked-tweets',
     [],
   )
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { t } = useTranslation()
   const { locale } = useRouter()
 
@@ -100,10 +100,10 @@ export const TweetCard: FC<TweetCardProps> = ({
 
   return (
     <>
-      {isOpen && (
+      {open && (
         <CreateTweetForm
           onSubmit={handleSubmit}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={onClose}
           originalTweet={tweet as Tweet}
           isNews={false}

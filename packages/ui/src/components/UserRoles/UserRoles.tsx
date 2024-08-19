@@ -89,17 +89,17 @@ const RoleAction: FC<{
 
 export const UserRoles = () => {
   const {
-    isOpen: isSaveOpen,
+    open: isSaveOpen,
     onOpen: onSaveOpen,
     onClose: onSaveClose,
   } = useDisclosure()
   const {
-    isOpen: isDeleteOpen,
+    open: isDeleteOpen,
     onOpen: onDeleteOpen,
     onClose: onDeleteClose,
   } = useDisclosure()
   const {
-    isOpen: isUserAssignOpen,
+    open: isUserAssignOpen,
     onOpen: onUserAssignOpen,
     onClose: onUserAssignClose,
   } = useDisclosure()
