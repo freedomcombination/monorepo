@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker/locale/en'
+import { faker } from '@faker-js/faker'
 import { expect, test } from '@playwright/test'
 
 import { TEST_TIMEOUT } from '../config'
