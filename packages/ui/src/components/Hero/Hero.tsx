@@ -1,6 +1,6 @@
 import { FC, memo, PropsWithChildren } from 'react'
 
-import { Box, Heading, Text, VStack } from '@chakra-ui/react'
+import { chakra, Box, Heading, Text, VStack } from '@chakra-ui/react'
 
 import { HeroProps } from './types'
 import { Container } from '../Container'
@@ -22,8 +22,7 @@ export const Hero: FC<PropsWithChildren<HeroProps>> = memo(function Hero({
       marginTop={{ base: '-64px', lg: '-100px' }}
     >
       {video && (
-        <Box
-          as="video"
+        <chakra.video
           top={0}
           left={0}
           w="full"
@@ -34,7 +33,7 @@ export const Hero: FC<PropsWithChildren<HeroProps>> = memo(function Hero({
           position="absolute"
         >
           <source src={video} type="video/webm" />
-        </Box>
+        </chakra.video>
       )}
       {image && (
         <Box

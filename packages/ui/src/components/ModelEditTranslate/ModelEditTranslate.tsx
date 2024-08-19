@@ -1,14 +1,7 @@
 import { useState } from 'react'
 
 import { useBoolean } from '@chakra-ui/hooks'
-import {
-  FormLabel,
-  HStack,
-  Stack,
-  Text,
-  Textarea,
-  Group,
-} from '@chakra-ui/react'
+import { Field, HStack, Stack, Text, Textarea, Group } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -173,13 +166,13 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
                 shadow={'md'}
                 bg={'white'}
               >
-                <FormLabel
+                <Field.Label
                   htmlFor={`${model?.id}`}
                   textTransform={'capitalize'}
                   fontWeight={600}
                 >
                   {t(field.name as keyof I18nNamespaces['common'])}
-                </FormLabel>
+                </Field.Label>
                 <Stack direction={{ base: 'column', lg: 'row' }}>
                   {!isReferenceSelf && referenceModel && (
                     <HStack w={{ base: 'full', lg: '33%' }} align="baseline">

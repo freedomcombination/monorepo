@@ -15,7 +15,7 @@ import { ActionStack, PostSentenceForm } from '../../components'
 import { usePostContext } from '../PostProvider'
 
 export const PostSentencesModal = () => {
-  const { open, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onToggle } = useDisclosure()
   const { post } = usePostContext()
   const hashtag = useHashtag()
 
@@ -26,7 +26,7 @@ export const PostSentencesModal = () => {
       */
       canUpdate="posts"
     >
-      <Modal isOpen={open} onClose={onClose} size={'6xl'}>
+      <Modal open={open} onOpenChange={onToggle} size={'xl'}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Manage Post Sentences</ModalHeader>

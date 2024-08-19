@@ -6,12 +6,12 @@ import { FaEnvelope } from 'react-icons/fa'
 import * as yup from 'yup'
 
 import { FormItem } from './FormItem'
-import { FormItemComponent } from './types'
+import { FormItemProps } from './types'
 
 export default {
   title: 'Forms/FormItem',
   component: FormItem,
-} as Meta<FormItemComponent>
+} as Meta<FormItemProps>
 
 type FormType = {
   email: string
@@ -21,9 +21,9 @@ const schema = yup.object({
   email: yup.string().email().required(),
 })
 
-type Story = StoryObj<FormItemComponent>
+type Story = StoryObj<FormItemProps>
 
-const StoryWithHook: StoryFn<FormItemComponent> = args => {
+const StoryWithHook: StoryFn<FormItemProps> = args => {
   const {
     register,
     formState: { errors },

@@ -8,7 +8,7 @@ import {
   UseFormRegister,
 } from 'react-hook-form'
 
-export type FormItemProps<T extends FieldValues> = InputProps & {
+export type FormItemProps<T extends FieldValues = FieldValues> = InputProps & {
   name: Path<T>
   label?: string
   placeholder?: string

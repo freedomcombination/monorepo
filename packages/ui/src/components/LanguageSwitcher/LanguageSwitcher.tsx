@@ -32,7 +32,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
 
   return (
     <Menu>
-      <MenuButton asChild>
+      <MenuButton value="language-swithc-menu" asChild>
         <Button
           variant="outline"
           rounded="full"

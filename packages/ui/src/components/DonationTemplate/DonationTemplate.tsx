@@ -8,10 +8,6 @@ import {
   Heading,
   Image,
   SimpleGrid,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
   Stack,
   Text,
   VStack,
@@ -34,6 +30,7 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
+  Slider,
 } from '@fc/chakra'
 import { DONATION_REQUEST_LINK } from '@fc/config'
 import { Platform } from '@fc/types'
@@ -64,7 +61,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
   platforms,
   isDark,
 }) => {
-  const [amount, setAmount] = useState(5)
+  const [amountRange, setAmountRange] = useState([0, 5])
   const [type, setType] = useState<'one-time' | 'monthly'>('one-time')
   const { t } = useTranslation()
 
@@ -90,7 +87,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
       const { name, email } = data
 
       const result = await axios.post('/api/donation', {
-        amount,
+        amount: amountRange[1],
         name,
         email,
         type,
@@ -166,14 +163,15 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               </Text>
             </Stack>
 
-            <Group w="full" attached alignSelf="center" size="lg">
+            <Group w="full" attached alignSelf="center">
               {donationAmounts.map(val => (
                 <Button
+                  size="lg"
                   w="full"
                   key={val}
-                  variant={amount === val ? 'solid' : 'outline'}
-                  colorScheme={amount === val ? 'primary' : 'gray'}
-                  onClick={() => setAmount(val)}
+                  variant={amountRange[1] === val ? 'solid' : 'outline'}
+                  colorScheme={amountRange[1] === val ? 'primary' : 'gray'}
+                  onClick={() => setAmountRange([0, val])}
                 >
                   €{val}
                 </Button>
@@ -189,8 +187,8 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
             >
               <NumberInput
                 maxW={120}
-                onChange={valueString => setAmount(parse(valueString))}
-                value={format(amount)}
+                onValueChange={e => setAmountRange([0, parse(e.value)])}
+                value={format(amountRange[1])}
                 min={5}
                 size="lg"
               >
@@ -203,28 +201,14 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               <Slider
                 flex={1}
                 id="slider"
-                defaultValue={5}
-                value={amount}
+                defaultValue={[0, 5]}
+                value={amountRange}
                 min={5}
                 max={100}
                 colorScheme="primary"
-                onChange={v => setAmount(v)}
-                focusThumbOnChange={false}
-              >
-                <SliderTrack height={3} rounded="lg">
-                  <SliderFilledTrack />
-                </SliderTrack>
-                <Tooltip
-                  showArrow
-                  positioning={{ placement: 'bottom' }}
-                  open={!!amount}
-                  content={`€${amount}`}
-                >
-                  <SliderThumb boxSize={6} bg="primary.500" color="white">
-                    <Box boxSize="full" as={AiOutlineEuroCircle} />
-                  </SliderThumb>
-                </Tooltip>
-              </Slider>
+                onValueChange={e => setAmountRange(e.value)}
+                thumbSize={{ width: 6, height: 6 }}
+              />
             </Stack>
 
             <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
@@ -246,14 +230,14 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
 
             <Stack>
               <Button
-                disabled={!amount || !isValid}
+                disabled={!amountRange || !isValid}
                 type="submit"
                 leftIcon={<FaDonate />}
                 onClick={() => setType('one-time')}
                 colorScheme="primary"
               >
                 {t('donation.title')}
-                {amount && ` €${amount}`}
+                {amountRange && ` €${amountRange}`}
               </Button>
               {/* TODO: Enable it once we have Sepa payment method activated */}
               {/* <Button

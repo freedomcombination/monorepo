@@ -30,7 +30,7 @@ export const ModelEditModal = <T extends StrapiModel>({
 }: ModelEditModalProps<T>) => {
   const { token } = useAuthContext()
 
-  const { data, loading, refetch } = useStrapiRequest<T>({
+  const { data, isLoading, refetch } = useStrapiRequest<T>({
     endpoint,
     id,
     queryOptions: {
@@ -47,12 +47,12 @@ export const ModelEditModal = <T extends StrapiModel>({
   return (
     <Modal
       centered
-      isOpen={isOpen}
-      onClose={onClose}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
       size={size}
       scrollBehavior="inside"
-      closeOnOverlayClick={false}
-      closeOnEsc={false}
+      closeOnInteractOutside={false}
+      closeOnEscape={false}
       {...rest}
     >
       <ModalOverlay />
@@ -66,7 +66,7 @@ export const ModelEditModal = <T extends StrapiModel>({
           <Heading as="h3">{title}</Heading>
         </ModalHeader>
         <ModalCloseButton />
-        {loading && (
+        {isLoading && (
           <Center>
             <Spinner />
           </Center>

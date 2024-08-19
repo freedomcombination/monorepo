@@ -29,12 +29,12 @@ export const ModelPdf = ({
   return (
     <Modal
       centered
-      isOpen={isOpen}
-      onClose={onClose}
-      size={'3xl'}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
+      size={'xl'}
       scrollBehavior="inside"
-      closeOnOverlayClick={false}
-      closeOnEsc={false}
+      closeOnInteractOutside={false}
+      closeOnEscape={false}
     >
       <ModalOverlay />
       <ModalContent h={'90vh'} p={0}>

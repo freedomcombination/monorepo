@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { Group, GroupProps } from '@chakra-ui/react'
+import { ButtonProps, Group, GroupProps } from '@chakra-ui/react'
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -18,6 +18,7 @@ type ShareButtonsProps = GroupProps & {
   title?: string
   url: string
   quote: string
+  size?: ButtonProps['size']
 }
 
 export const ShareButtons: FC<PropsWithChildren<ShareButtonsProps>> = ({
