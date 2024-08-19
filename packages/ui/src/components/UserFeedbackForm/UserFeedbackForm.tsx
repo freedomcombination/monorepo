@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
   Box,
-  ButtonGroup,
+  Group,
   HStack,
   IconButton,
   Stack,
@@ -79,8 +79,8 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
     <Box>
       <Modal
         size="sm"
-        onClose={closeModal}
-        isOpen={isOpen}
+        onOpenChange={e => (e.open ? null : closeModal())}
+        open={isOpen}
         scrollBehavior="inside"
       >
         <ModalOverlay />
@@ -97,20 +97,20 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
               as="form"
               onSubmit={handleSubmit(handleUserFeedback)}
             >
-              <ButtonGroup>
+              <Group>
                 {[1, 2, 3, 4, 5].map(p => (
                   <IconButton
                     key={p}
                     colorScheme={point === p ? 'primary' : 'gray'}
                     variant={point === p ? 'solid' : 'outline'}
-                    isRound
+                    rounded={'full'}
                     onClick={() => handlePoint(p)}
                     aria-label={`Give ${p} point`}
                     icon={<Text fontSize={'lg'}>{p}</Text>}
                     size={'lg'}
                   />
                 ))}
-              </ButtonGroup>
+              </Group>
               <HStack>
                 <FormItem<CreateUserFeedbackFormFieldValues>
                   as={Textarea}
@@ -119,7 +119,7 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
                   errors={
                     errors as FieldErrorsImpl<CreateUserFeedbackFormFieldValues>
                   }
-                  isRequired
+                  required
                 />
 
                 <IconButton

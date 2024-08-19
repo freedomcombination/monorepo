@@ -1,15 +1,9 @@
 import { Link } from '@chakra-ui/next-js'
-import {
-  Button,
-  Center,
-  Icon,
-  Square,
-  Stack,
-  StackProps,
-  Text,
-} from '@chakra-ui/react'
+import { Center, Icon, Square, Stack, StackProps, Text } from '@chakra-ui/react'
 import { Trans, useTranslation } from 'next-i18next'
 import { BiCookie } from 'react-icons/bi'
+
+import { Button } from '@fc/chakra'
 
 type CookieBannerProps = StackProps & {
   onAllow?: () => void

@@ -1,8 +1,9 @@
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Box, Button } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { sample } from 'lodash'
 
+import { Button } from '@fc/chakra'
 import { ART_MOCKS } from '@fc/mocks'
 
 import { ArtModal } from './ArtModal'
@@ -18,14 +19,14 @@ export default {
 type Story = StoryObj<ArtModalProps>
 
 const StoryWithHooks: StoryFn<ArtModalProps> = args => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   return (
     <Box>
       <Button onClick={() => onOpen()} m={4}>
         {`Open Modal`}
       </Button>
-      <ArtModal {...args} art={sampleArt} isOpen={isOpen} onClose={onClose} />
+      <ArtModal {...args} art={sampleArt} isOpen={open} onClose={onClose} />
     </Box>
   )
 }

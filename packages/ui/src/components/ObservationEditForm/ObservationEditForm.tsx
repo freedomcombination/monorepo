@@ -1,14 +1,7 @@
 import { useState } from 'react'
 
 import { useBoolean } from '@chakra-ui/hooks'
-import {
-  ButtonGroup,
-  HStack,
-  Stack,
-  Text,
-  Textarea,
-  Group,
-} from '@chakra-ui/react'
+import { Group, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { format } from 'date-fns'
 import { useForm } from 'react-hook-form'
@@ -126,25 +119,28 @@ export const ObservationEditForm = ({
             <Text fontSize={'sm'}>{createdDate}</Text>
           </HStack>
           <ActionStack canUpdate={'observations'} justifyContent={'flex-end'}>
-            <ButtonGroup size={'sm'} variant={'outline'}>
+            <Group>
               <ActionButton
                 isVisible={!isEditing}
                 onClick={setIsEditing.on}
                 leftIcon={<AiOutlineEdit />}
-                iconSpacing={0}
+                variant={'outline'}
+                size={'sm'}
               />
               <ActionButton
                 isVisible={isEditing}
                 onClick={onCancel}
                 leftIcon={<MdClose />}
                 colorScheme={'gray'}
-                iconSpacing={0}
+                variant={'outline'}
+                size={'sm'}
               />
               <ActionButton
                 isVisible={isEditing}
                 type="submit"
                 leftIcon={<MdOutlineCheck />}
-                iconSpacing={0}
+                variant={'outline'}
+                size={'sm'}
               />
               {!isEditing && (
                 <ActionButton
@@ -152,10 +148,11 @@ export const ObservationEditForm = ({
                   onClick={onDelete}
                   leftIcon={<BsTrash />}
                   colorScheme="red"
-                  iconSpacing={0}
+                  variant={'outline'}
+                  size={'sm'}
                 />
               )}
-            </ButtonGroup>
+            </Group>
           </ActionStack>
         </Group>
 
@@ -166,7 +163,7 @@ export const ObservationEditForm = ({
               name={'content'}
               type={'textarea'}
               hideLabel
-              isRequired={true}
+              required
               errors={errors}
               register={register}
               disabled={!isEditing}

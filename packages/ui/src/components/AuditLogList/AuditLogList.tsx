@@ -1,10 +1,11 @@
 import { FC, useMemo, useState } from 'react'
 
-import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { addDays, format } from 'date-fns'
 import { FaPlusCircle } from 'react-icons/fa'
 
+import { Button } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { AuditLog } from '@fc/types'
@@ -21,7 +22,7 @@ export const AuditLogList: FC = () => {
     setQ(query)
   }
 
-  const { data, fetchNextPage, hasNextPage, loading } = useInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
     queryKey: ['audit-logs', q],
     queryFn: ({ pageParam = 1 }) =>
       strapiRequest<AuditLog>({
@@ -101,7 +102,7 @@ export const AuditLogList: FC = () => {
         placeholder={'Search by profile, action, text, or endpoint'}
       />
 
-      {logs?.length === 0 && !loading && (
+      {logs?.length === 0 && !isLoading && (
         <Box
           bg={'blackAlpha.100'}
           p={8}
@@ -180,7 +181,7 @@ export const AuditLogList: FC = () => {
             leftIcon={<FaPlusCircle />}
             variant={'outline'}
             onClick={() => fetchNextPage()}
-            loading={loading}
+            loading={isLoading}
             disabled={!hasNextPage}
             mx={'auto'}
             width={200}

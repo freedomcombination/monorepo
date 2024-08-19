@@ -1,6 +1,6 @@
-import { ButtonProps } from '@chakra-ui/react'
 import { AnyObjectSchema } from 'yup'
 
+import { ButtonProps } from '@fc/chakra'
 import { FormFields, StrapiEndpoint, StrapiModel } from '@fc/types'
 
 export type ModelCreateFormProps<T extends StrapiModel> = {

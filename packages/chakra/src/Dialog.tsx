@@ -67,6 +67,9 @@ export const DialogHeader = ChakraDialog.Header
 export const DialogBody = ChakraDialog.Body
 export const DialogBackdrop = ChakraDialog.Backdrop
 
+export const Dialog = DialogRoot
+export const DialogOverlay = DialogBackdrop
+export const DialogCloseButton = DialogCloseTrigger
 export const Modal = DialogRoot
 export const ModalBody = DialogBody
 export const ModalFooter = DialogFooter

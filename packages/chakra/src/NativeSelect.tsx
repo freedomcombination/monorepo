@@ -2,9 +2,12 @@
 
 import { forwardRef, useMemo } from 'react'
 
-import { NativeSelect as Select } from '@chakra-ui/react'
+import {
+  NativeSelect as ChakraSelect,
+  NativeSelectFieldProps,
+} from '@chakra-ui/react'
 
-interface NativeSelectRootProps extends Select.RootProps {
+interface NativeSelectRootProps extends ChakraSelect.RootProps {
   icon?: React.ReactNode
 }
 
@@ -15,10 +18,10 @@ export const NativeSelectRoot = forwardRef<
   const { icon, children, ...rest } = props
 
   return (
-    <Select.Root ref={ref} {...rest}>
+    <ChakraSelect.Root ref={ref} {...rest}>
       {children}
-      <Select.Indicator>{icon}</Select.Indicator>
-    </Select.Root>
+      <ChakraSelect.Indicator>{icon}</ChakraSelect.Indicator>
+    </ChakraSelect.Root>
   )
 })
 
@@ -28,7 +31,7 @@ interface NativeSelectItem {
   disabled?: boolean
 }
 
-interface NativeSelectField extends Select.FieldProps {
+interface NativeSelectField extends ChakraSelect.FieldProps {
   items?: Array<string | NativeSelectItem>
 }
 
@@ -47,13 +50,24 @@ export const NativeSelectField = forwardRef<
   )
 
   return (
-    <Select.Field ref={ref} {...rest}>
+    <ChakraSelect.Field ref={ref} {...rest}>
       {children}
       {items?.map(item => (
         <option key={item.value} value={item.value} disabled={item.disabled}>
           {item.label}
         </option>
       ))}
-    </Select.Field>
+    </ChakraSelect.Field>
+  )
+})
+
+export const Select = forwardRef<
+  HTMLSelectElement,
+  Omit<NativeSelectRootProps, 'onChange'> & NativeSelectFieldProps
+>(function Select({ placeholder, variant, ...props }, ref) {
+  return (
+    <NativeSelectRoot variant={variant}>
+      <NativeSelectField ref={ref} placeholder={placeholder} {...props} />
+    </NativeSelectRoot>
   )
 })

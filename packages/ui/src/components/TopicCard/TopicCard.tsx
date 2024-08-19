@@ -3,7 +3,7 @@ import { FC, useState } from 'react'
 import {
   Badge,
   Box,
-  ButtonGroup,
+  Group,
   HStack,
   Highlight,
   Stack,
@@ -223,7 +223,7 @@ export const TopicCard: FC<TopicCardProps> = ({
           </Text>
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
-          <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
+          <Group overflowX={'auto'} justifyContent={'center'}>
             <ModelCreateModal<Post>
               title={t('create-post')}
               endpoint={'posts'}
@@ -315,7 +315,7 @@ export const TopicCard: FC<TopicCardProps> = ({
                 />
               </Box>
             </ActionTooltip>
-          </ButtonGroup>
+          </Group>
         </Stack>
       </Stack>
     </Stack>

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Button, Center, HStack, Text } from '@chakra-ui/react'
+import { Center, HStack, Text } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { track } from '@vercel/analytics'
 import { useRouter } from 'next/router'
@@ -10,6 +10,7 @@ import { FaXTwitter } from 'react-icons/fa6'
 import { GoMention } from 'react-icons/go'
 import { MdTrendingUp } from 'react-icons/md'
 
+import { Button } from '@fc/chakra'
 import { SITE_URL } from '@fc/config'
 import { useHashtag, useUpdateHashtagSentence } from '@fc/services'
 import { RedisPost } from '@fc/types'
@@ -99,10 +100,9 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
           setActivePostId(post.id)
           mentionsDisclosure.onOpen()
         }}
-        iconSpacing={{ base: 0, md: 2 }}
         leftIcon={<GoMention />}
       >
-        <Text isTruncated display={{ base: 'none', md: 'block' }}>
+        <Text truncate display={{ base: 'none', md: 'block' }}>
           {t('post.add-mention')}
         </Text>
       </Button>
@@ -115,10 +115,9 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
           setActivePostId(post.id)
           trendsDisclosure.onOpen()
         }}
-        iconSpacing={{ base: 0, md: 2 }}
         leftIcon={<MdTrendingUp />}
       >
-        <Text isTruncated display={{ base: 'none', md: 'block' }}>
+        <Text truncate display={{ base: 'none', md: 'block' }}>
           {t('post.add-trend')}
         </Text>
       </Button>
@@ -128,7 +127,6 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
       {!isIosSafari && (
         <Button
           role={'group'}
-          iconSpacing={{ base: 0, md: 2 }}
           leftIcon={<FaXTwitter />}
           onClick={() => {
             onShare().then(() => onTweet())
@@ -167,7 +165,6 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
             colorScheme={'gray'}
             bg={'black'}
             flexShrink={0}
-            iconSpacing={{ base: 0, md: 2 }}
             leftIcon={<FaXTwitter />}
             onClick={onShare}
             fontWeight={600}

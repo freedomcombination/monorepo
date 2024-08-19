@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react'
 
 import {
-  ButtonGroup,
+  Group,
   HStack,
   IconButton,
   SimpleGrid,
@@ -74,14 +74,11 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
           <EntryInput locale={'nl'} localeKey={name} />
           <EntryInput locale={'tr'} localeKey={name} />
         </SimpleGrid>
-        <ButtonGroup
-          size="sm"
-          isAttached
-          disabled={locked}
-          colorScheme={isSuppressed ? 'red' : 'gray'}
-        >
+        <Group attached colorScheme={isSuppressed ? 'red' : 'gray'}>
           <IconButton
             icon={<FaTrash />}
+            size="sm"
+            disabled={locked}
             aria-label="delete"
             variant={isPendingDeletion ? 'solid' : 'outline'}
             onClick={toggleDelete}
@@ -89,6 +86,7 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
 
           <IconButton
             icon={<BiHide />}
+            size="sm"
             aria-label="hide"
             variant={isSuppressed ? 'solid' : 'outline'}
             disabled={
@@ -97,7 +95,7 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
             }
             onClick={toggleSuppress}
           />
-        </ButtonGroup>
+        </Group>
       </HStack>
     </Stack>
   )

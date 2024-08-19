@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect } from 'react'
 
-import { Button, Code, Input, Stack } from '@chakra-ui/react'
+import { Code, Input, Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 
+import { Button } from '@fc/chakra'
 import { CategoryCreateInput } from '@fc/types'
 
 import { createCategoryWithMutation } from './utils'

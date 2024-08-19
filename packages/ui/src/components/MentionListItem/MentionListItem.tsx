@@ -2,12 +2,12 @@ import { FC } from 'react'
 
 import {
   Box,
-  ButtonGroup,
   Separator,
   HStack,
   IconButton,
   Text,
   VStack,
+  Group,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPlus, FaTimes } from 'react-icons/fa'
@@ -67,7 +67,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
               <Text>@{data.screen_name}</Text>
             </Box>
           </HStack>
-          <ButtonGroup>
+          <Group>
             {onRemoveItem && (
               <Tooltip content={t('post.remove')}>
                 <IconButton
@@ -97,7 +97,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
                 disabled={isAdded}
               />
             </Tooltip>
-          </ButtonGroup>
+          </Group>
         </HStack>
       </PopoverTrigger>
       <PopoverContent

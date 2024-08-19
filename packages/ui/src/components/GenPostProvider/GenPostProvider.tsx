@@ -7,20 +7,19 @@ import {
 } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogCloseButton,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import { useLocalStorage } from 'usehooks-ts'
 
+import {
+  Dialog,
+  DialogBody,
+  DialogCloseButton,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  Button,
+} from '@fc/chakra'
 import { ArchiveContent, Hashtag, Post } from '@fc/types'
 
 import { ArchiveContentPosts, ArchivePostType, GenPostValueType } from './types'
@@ -74,7 +73,7 @@ export const GenPostProvider = ({
     [],
   )
   const [alertAction, setAlertAction] = useState<DialogAction>()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef<HTMLButtonElement | null>(null)
 
   const regId = post?.id ?? hashtag.id
@@ -256,18 +255,17 @@ export const GenPostProvider = ({
       }}
     >
       <>
-        <AlertDialog
-          motionPreset="slideInBottom"
-          onClose={onClose}
-          isOpen={isOpen}
-          leastDestructiveRef={cancelRef}
+        <Dialog
+          motionPreset="slide-in-bottom"
+          onOpenChange={e => (e.open ? null : onClose())}
+          open={open}
           centered
         >
-          <AlertDialogOverlay />
-          <AlertDialogContent>
-            <AlertDialogHeader>Discard Changes?</AlertDialogHeader>
-            <AlertDialogCloseButton />
-            <AlertDialogBody>
+          <DialogOverlay />
+          <DialogContent>
+            <DialogHeader>Discard Changes?</DialogHeader>
+            <DialogCloseButton />
+            <DialogBody>
               <Stack gap={8}>
                 <Text>{alertAction?.title}</Text>
                 {alertAction?.extra && (
@@ -276,8 +274,8 @@ export const GenPostProvider = ({
                   </Text>
                 )}
               </Stack>
-            </AlertDialogBody>
-            <AlertDialogFooter>
+            </DialogBody>
+            <DialogFooter>
               <Button ref={cancelRef} onClick={onClose}>
                 No
               </Button>
@@ -291,9 +289,9 @@ export const GenPostProvider = ({
               >
                 Yes
               </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
         {children}
       </>
     </GenPostContext.Provider>

@@ -3,25 +3,24 @@ import { FC, useState } from 'react'
 import {
   Badge,
   Box,
-  Button,
-  ButtonGroup,
   Group,
   Heading,
   HStack,
   SimpleGrid,
   Stack,
-  Tag,
   Text,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
+  Tag,
 } from '@fc/chakra'
 import { Art, StrapiLocale } from '@fc/types'
 
@@ -53,7 +52,12 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
 
   return (
     <Box>
-      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside" centered>
+      <Modal
+        onOpenChange={e => (e.open ? null : onClose())}
+        open={isOpen}
+        scrollBehavior="inside"
+        centered
+      >
         <ModalOverlay />
         <ModalContent maxW="95vw" p={0} overflow="hidden">
           <ModalCloseButton />
@@ -63,7 +67,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
               {!isEditing && (
                 <Stack overflowY={'auto'}>
                   <Stack gap={4} p={{ base: 4, lg: 8 }} flex={1}>
-                    <ButtonGroup isAttached>
+                    <Group attached>
                       {['en', 'nl', 'tr'].map(lang => (
                         <Button
                           key={lang}
@@ -74,7 +78,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                           {lang}
                         </Button>
                       ))}
-                    </ButtonGroup>
+                    </Group>
                     <HStack gap={4}>
                       <Heading flex={1} color={'primary.500'} fontWeight={700}>
                         {title}

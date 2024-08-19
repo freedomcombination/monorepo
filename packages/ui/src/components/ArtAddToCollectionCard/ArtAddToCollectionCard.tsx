@@ -1,11 +1,13 @@
 import { FC } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Button, HStack, Spacer, Stack, Text } from '@chakra-ui/react'
+import { HStack, Spacer, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AiOutlineEye } from 'react-icons/ai'
 import { HiPlus } from 'react-icons/hi'
 import { IoCloseSharp } from 'react-icons/io5'
+
+import { Button } from '@fc/chakra'
 
 import { ArtAddToCollectionCardProps } from './types'
 import { ActionButton } from '../ActionButton'
@@ -19,7 +21,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   onAdd,
   onRemove,
 }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   const router = useRouter()
 
@@ -72,12 +74,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
           </ActionButton>
         </HStack>
       </Stack>
-      <ArtModal
-        refetch={() => {}}
-        art={art}
-        isOpen={isOpen}
-        onClose={onClose}
-      />
+      <ArtModal refetch={() => {}} art={art} isOpen={open} onClose={onClose} />
     </Stack>
   )
 }

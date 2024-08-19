@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 
 import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
-import { Button } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -37,7 +37,7 @@ import {
 const ActivitiesTranslatePage = () => {
   const [searchTerm, setSearchTerm] = useState<string>()
   const { t } = useTranslation()
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
 
   const { query, locale, push } = useRouter()
 
@@ -140,8 +140,8 @@ const ActivitiesTranslatePage = () => {
       )}
       <Modal
         centered
-        isOpen={isOpen}
-        onClose={handleClose}
+        open={open}
+        onOpenChange={e => (e.open ? onOpen() : handleClose())}
         size={'xl'}
         scrollBehavior={'inside'}
       >

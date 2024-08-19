@@ -68,7 +68,7 @@ const Contact = () => {
 
               <ButtonLink
                 isExternal
-                variant="link"
+                variant="plain"
                 color="primary.50"
                 _hover={{ color: 'primary.100' }}
                 leftIcon={<Box as={MdEmail} color="primary.50" size="20px" />}

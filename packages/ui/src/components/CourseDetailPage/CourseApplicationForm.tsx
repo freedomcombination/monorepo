@@ -1,12 +1,12 @@
 import { FC } from 'react'
 
-import { Box, Button, SimpleGrid, Stack, Textarea } from '@chakra-ui/react'
+import { Box, SimpleGrid, Stack, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 
-import { toaster } from '@fc/chakra'
+import { Button, toaster } from '@fc/chakra'
 import { PUBLIC_TOKEN } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationCreateInput } from '@fc/types'

@@ -1,19 +1,12 @@
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Box,
-  Button,
-  Center,
-  Link,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Center, Link, Stack, Text, VStack } from '@chakra-ui/react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'
 import { FaFile, FaFilePdf } from 'react-icons/fa6'
 import { IoMdCloudUpload } from 'react-icons/io'
 
+import { Button } from '@fc/chakra'
 import {
   PlatformSlug,
   Post,
@@ -50,7 +43,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
   name,
 }: ModelMediaProps<T>) => {
   const { title, description } = (model || {}) as StrapiTranslatableModel
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
 
   const key = name || 'image'
 
@@ -126,7 +119,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
         <>
           <ModelPdf
             mediaUrl={mediaUrl}
-            isOpen={isOpen}
+            isOpen={open}
             onClose={onClose}
             title={name}
           />

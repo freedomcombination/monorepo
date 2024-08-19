@@ -1,15 +1,8 @@
-import {
-  Badge,
-  Box,
-  Button,
-  Group,
-  HStack,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Badge, Box, Group, HStack, Stack, Text } from '@chakra-ui/react'
 import { BsTranslate } from 'react-icons/bs'
 
 import {
+  Button,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
@@ -125,7 +118,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
         <Stack gap={2}>
           {description && (
             <Stack>
-              <Text size="lg" fontWeight={700}>
+              <Text fontSize="lg" fontWeight={700}>
                 Description
               </Text>
               <Text>{description}</Text>
@@ -133,7 +126,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
           )}
           {content && (
             <Stack>
-              <Text size="lg" fontWeight={700}>
+              <Text fontSize="lg" fontWeight={700}>
                 Content
               </Text>
               {/* TODO: Display in markdown format */}

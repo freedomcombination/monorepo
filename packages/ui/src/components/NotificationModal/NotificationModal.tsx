@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Button, Stack, Text } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -19,7 +20,7 @@ import { useSubscribePushNotificationMutation } from '@fc/services'
 export const NotificationModal = () => {
   const { t } = useTranslation()
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose, onToggle } = useDisclosure()
   const { user, site } = useAuthContext()
   const { isSubscribed, isSupported } = useWebPushContext()
 
@@ -63,7 +64,7 @@ export const NotificationModal = () => {
     <>
       {/* <Button onClick={onOpen}>Open Modal</Button> */}
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal open={open} onOpenChange={onToggle}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{t('never-miss-events')}</ModalHeader>

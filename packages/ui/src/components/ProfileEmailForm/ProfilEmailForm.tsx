@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
-import { Button, Stack, Text, Textarea } from '@chakra-ui/react'
+import { Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 import * as yup from 'yup'
 
-import { toaster, Alert } from '@fc/chakra'
+import { toaster, Alert, Button } from '@fc/chakra'
 import { useCreateModelMutation, useSendEmail } from '@fc/services'
 import {
   EmailCreateInput,

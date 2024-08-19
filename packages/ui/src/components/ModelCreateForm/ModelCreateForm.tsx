@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { useBoolean } from '@chakra-ui/hooks'
-import { Box, Button, Separator, Stack } from '@chakra-ui/react'
+import { Box, Separator, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'
@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form'
 import { TbPlus } from 'react-icons/tb'
 import { InferType } from 'yup'
 
+import { Button } from '@fc/chakra'
 import { endpointWithLocale } from '@fc/config'
 import { useCreateModelMutation } from '@fc/services'
 import {

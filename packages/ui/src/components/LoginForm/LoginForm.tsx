@@ -1,11 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
-  Checkbox,
   Container,
   Separator,
   Heading,
@@ -19,6 +14,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { Alert, Button, Checkbox } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
 import { loginSchema } from './schema'
@@ -95,7 +91,7 @@ export const LoginForm: FC<LoginFormProps> = ({
               <HStack gap={1} justify="center">
                 <Text color="muted">{t('login.no-account')}</Text>
 
-                <ButtonLink href="/auth/register" variant="link">
+                <ButtonLink href="/auth/register" variant="plain">
                   {t('login.signup')}
                 </ButtonLink>
               </HStack>
@@ -103,12 +99,7 @@ export const LoginForm: FC<LoginFormProps> = ({
           </Stack>
         </Stack>
         <Stack gap={6} as="form" onSubmit={handleSubmit(handleSubmitSign)}>
-          {errorMessage && (
-            <Alert status="error">
-              <AlertIcon />
-              <AlertDescription>{errorMessage}</AlertDescription>
-            </Alert>
-          )}
+          {errorMessage && <Alert status="error">{errorMessage}</Alert>}
           <Stack gap={5}>
             <FormItem
               data-testid="input-email"
@@ -133,7 +124,7 @@ export const LoginForm: FC<LoginFormProps> = ({
             <ButtonLink
               data-testid="button-forgot-password"
               href="/auth/forgot-password"
-              variant="link"
+              variant="plain"
               size="sm"
             >
               {t('forgot-pass.title')}

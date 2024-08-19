@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
-import { Button, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { PSM, createWorker } from 'tesseract.js'
+
+import { Button } from '@fc/chakra'
 
 import { ImageRecognizeItem } from './ImageRecognizeItem'
 import { ImageRecognizerProps, Languages, RecognizedImage } from './types'

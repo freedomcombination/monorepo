@@ -1,10 +1,11 @@
 import { FC } from 'react'
 
-import { Box, Button, ButtonGroup } from '@chakra-ui/react'
+import { Box, Group } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaFacebook, FaGoogle, FaInstagram } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
+import { Button } from '@fc/chakra'
 import { API_URL } from '@fc/config'
 
 import {
@@ -61,7 +62,7 @@ export const SocialLoginButtons: FC<SocialLoginButtonsProps> = ({
   )
 
   return (
-    <ButtonGroup variant="outline" gap={4} width="full" {...rest}>
+    <Group variant="outline" gap={4} width="full" {...rest}>
       {providers.map(({ name, icon, url, colorSchema }) => (
         <Button
           key={name}
@@ -75,6 +76,6 @@ export const SocialLoginButtons: FC<SocialLoginButtonsProps> = ({
           {t('login.sign-with', { provider: name })}
         </Button>
       ))}
-    </ButtonGroup>
+    </Group>
   )
 }

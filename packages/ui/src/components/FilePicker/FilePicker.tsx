@@ -1,11 +1,13 @@
 import { FC, useEffect, useId, useMemo, useState } from 'react'
 
-import { Box, Button, Center, Text, VStack } from '@chakra-ui/react'
+import { Box, Center, Text, VStack } from '@chakra-ui/react'
 import Compressor from '@uppy/compressor'
 import Uppy from '@uppy/core'
 import ImageEditor from '@uppy/image-editor'
 import { Dashboard } from '@uppy/react'
 import { FaUpload } from 'react-icons/fa6'
+
+import { Button } from '@fc/chakra'
 
 import { FilePickerProps } from './types'
 
@@ -102,38 +104,38 @@ const FilePicker: FC<FilePickerProps> = ({
       borderStyle={'dashed'}
       color={'gray.700'}
       onClick={onTrigger}
-      sx={{
-        '.uppy-Root': {
+      css={{
+        '& .uppy-Root': {
           opacity: showDashboard ? 1 : 0,
           h: 250,
         },
-        '.uppy-Container': {
+        '& .uppy-Container': {
           w: 'full',
         },
-        '.uppy-Dashboard-overlay': {
+        '& .uppy-Dashboard-overlay': {
           display: 'none',
         },
-        '.uppy-ImageCropper-controls': {
+        '& .uppy-ImageCropper-controls': {
           h: 'auto',
         },
-        '.uppy-Dashboard': {
+        '& .uppy-Dashboard': {
           h: 'full',
         },
-        '.uppy-ImageCropper-container': {
+        '& .uppy-ImageCropper-container': {
           display: 'flex',
           justifyContent: 'center',
         },
-        '.uppy-Dashboard-inner': {
+        '& .uppy-Dashboard-inner': {
           w: 'full !important',
           h: showDashboard ? `100% !important` : '250px !important',
         },
-        '.uppy-Dashboard-AddFiles-title,.uppy-Dashboard-progressindicators': {
+        '& .uppy-Dashboard-AddFiles-title,.uppy-Dashboard-progressindicators': {
           display: 'none',
         },
-        '.uppy-DashboardTab': {
+        '& .uppy-DashboardTab': {
           h: 'full',
         },
-        '.uppy-DashboardTab-btn': {
+        '& .uppy-DashboardTab-btn': {
           pos: 'absolute',
           top: 0,
           left: 0,

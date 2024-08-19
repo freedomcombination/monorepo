@@ -1,10 +1,6 @@
 import { FC } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
   Separator,
   Heading,
   Stack,
@@ -17,6 +13,8 @@ import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { BsPerson } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
+
+import { Button, Alert } from '@fc/chakra'
 
 import { contactSchema } from './schema'
 import { ContactFormFieldValues, ContactFormProps } from './types'
@@ -90,18 +88,12 @@ export const ContactForm: FC<ContactFormProps> = ({
         </Button>
 
         {isSuccess && (
-          <Alert status="success">
-            <AlertIcon />
-            <AlertDescription>{t('contact.form.success')}</AlertDescription>
-          </Alert>
+          <Alert status="success">{t('contact.form.success')}</Alert>
         )}
         {isError && (
           <Alert status="error">
-            <AlertIcon />
-            <AlertDescription>
-              <>{t('contact.form.failed')} </>
-              {errorMessage ? errorMessage : ''}
-            </AlertDescription>
+            <>{t('contact.form.failed')} </>
+            {errorMessage ? errorMessage : ''}
           </Alert>
         )}
       </VStack>

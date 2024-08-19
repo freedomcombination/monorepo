@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Button } from '@chakra-ui/react'
 import { FaPlus } from 'react-icons/fa6'
 
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,

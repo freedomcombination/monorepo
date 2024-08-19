@@ -1,9 +1,11 @@
 import { FC, useEffect, useLayoutEffect, useState } from 'react'
 
-import { Select, Text, Input, Button } from '@chakra-ui/react'
+import { Text, Input } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import {
+  Select,
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -30,7 +32,6 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
   isOpen,
   roleId,
   refetchRoles,
-  onCloseComplete,
   onClose,
   roles = [],
 }) => {
@@ -94,12 +95,11 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
   return (
     <Modal
       centered
-      isOpen={isOpen}
-      onClose={onClose}
-      onCloseComplete={onCloseComplete}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
       size={'xl'}
       scrollBehavior={'inside'}
-      closeOnOverlayClick={!startCreate}
+      closeOnInteractOutside={!startCreate}
     >
       <ModalOverlay />
       <ModalContent>

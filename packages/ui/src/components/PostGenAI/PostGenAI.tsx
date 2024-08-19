@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import {
-  Button,
   FormControl,
   FormLabel,
   HStack,
@@ -18,6 +17,7 @@ import { FaStop, FaTrash } from 'react-icons/fa6'
 import { RiAiGenerate } from 'react-icons/ri'
 
 import {
+  Button,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,

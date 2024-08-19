@@ -3,7 +3,9 @@
 import { forwardRef } from 'react'
 
 import type { HTMLChakraProps, SlotRecipeProps } from '@chakra-ui/react'
-import { Button, chakra, useRecipe } from '@chakra-ui/react'
+import { chakra, useRecipe } from '@chakra-ui/react'
+
+import { Button } from '@fc/chakra'
 
 export interface LinkButtonProps
   extends HTMLChakraProps<'a'>,

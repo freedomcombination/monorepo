@@ -1,7 +1,6 @@
 import { FC, useEffect, useMemo, useState } from 'react'
 
 import {
-  Button,
   Center,
   Flex,
   HStack,
@@ -13,7 +12,6 @@ import {
   MenuItemOption,
   MenuList,
   MenuOptionGroup,
-  Select,
   Spinner,
   Stack,
 } from '@chakra-ui/react'
@@ -23,6 +21,7 @@ import { useTranslation } from 'react-i18next'
 import { FaEdit, FaSave } from 'react-icons/fa'
 import { FaFilter, FaX } from 'react-icons/fa6'
 
+import { Button, Select } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'

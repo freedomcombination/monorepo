@@ -1,4 +1,4 @@
-import { Button, Container, Heading, Stack } from '@chakra-ui/react'
+import { Container, Heading, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ObjectSchema } from 'yup'
 
-import { toaster } from '@fc/chakra'
+import { Button, toaster } from '@fc/chakra'
 
 import { resetPasswordSchema } from './schema'
 import { ResetPasswordFieldValues } from './types'

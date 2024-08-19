@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
-import { Button, ButtonGroup, IconButton } from '@chakra-ui/react'
+import { Group, IconButton } from '@chakra-ui/react'
 import { BsThreeDots } from 'react-icons/bs'
 import { TbChevronLeft, TbChevronRight } from 'react-icons/tb'
+
+import { Button } from '@fc/chakra'
 
 import { DOTS } from './dots'
 import { PaginationProps } from './types'
@@ -39,7 +41,7 @@ export const Pagination: FC<PaginationProps> = ({
   const lastPage = paginationRange[paginationRange.length - 1]
 
   return (
-    <ButtonGroup
+    <Group
       display={'flex'}
       justifyContent={'center'}
       variant="ghost"
@@ -94,6 +96,6 @@ export const Pagination: FC<PaginationProps> = ({
         rounded={'full'}
         onClick={onNext}
       />
-    </ButtonGroup>
+    </Group>
   )
 }

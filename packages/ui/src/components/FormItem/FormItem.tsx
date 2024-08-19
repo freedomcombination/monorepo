@@ -104,7 +104,7 @@ export const FormItem: FormItemComponent = forwardRef(
           {type === 'password' && (
             <InputRightElement h={'full'}>
               <IconButton
-                variant="link"
+                variant="plain"
                 color={'inherit'}
                 aria-label={isOpen ? 'Mask password' : 'Reveal password'}
                 icon={isOpen ? <HiEyeOff /> : <HiEye />}

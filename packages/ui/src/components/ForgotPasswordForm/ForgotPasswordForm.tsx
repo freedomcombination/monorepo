@@ -1,4 +1,4 @@
-import { Button, Container, HStack, Heading, Stack } from '@chakra-ui/react'
+import { Container, HStack, Heading, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
-import { toaster } from '@fc/chakra'
+import { Button, toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
 import { ForgotPasswordFieldValues } from './types'
@@ -95,7 +95,7 @@ export const ForgotPasswordForm = () => {
           </Stack>
           <Stack gap={6}>
             <HStack>
-              <ButtonLink href="/auth/login" variant="link">
+              <ButtonLink href="/auth/login" variant="plain">
                 {t('login.signin')}
               </ButtonLink>
             </HStack>

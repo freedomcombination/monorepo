@@ -2,7 +2,6 @@ import { FC, useState } from 'react'
 
 import {
   Box,
-  Button,
   Group,
   Center,
   HStack,
@@ -28,6 +27,7 @@ import QRCode from 'react-qr-code'
 import * as yup from 'yup'
 
 import {
+  Button,
   Tooltip,
   NumberDecrementStepper,
   NumberIncrementStepper,

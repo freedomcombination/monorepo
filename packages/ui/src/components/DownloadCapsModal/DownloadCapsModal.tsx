@@ -1,13 +1,14 @@
 import { FC, useState } from 'react'
 
 import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
-import { Button, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
 import { useRouter } from 'next/router'
 import { FaDownload } from 'react-icons/fa'
 
 import {
+  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,

@@ -1,12 +1,11 @@
 import { FC } from 'react'
 
+import { Link } from '@chakra-ui/next-js'
 import {
   Box,
-  Button,
   Center,
   HStack,
   Heading,
-  Link,
   List,
   ListIcon,
   ListItem,
@@ -20,6 +19,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { FaChevronRight, FaDonate } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
+import { Button } from '@fc/chakra'
 import { SITE_URL } from '@fc/config'
 import { Flow } from '@fc/types'
 

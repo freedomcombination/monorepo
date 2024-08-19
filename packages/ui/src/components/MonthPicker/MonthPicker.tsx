@@ -1,10 +1,11 @@
 // Ref: https://github.com/viniarruda/react-month-range-picker
 import { FC, useEffect, useState } from 'react'
 
-import { Button, HStack, IconButton, Text } from '@chakra-ui/react'
+import { HStack, IconButton, Text } from '@chakra-ui/react'
 import { FaCalendar, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 import {
+  Button,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -142,10 +143,10 @@ export const MonthPicker: FC<MonthPickerProps> = ({
           display={'flex'}
           px={4}
         >
-          <Button variant={'link'} onClick={handleClear}>
+          <Button variant={'plain'} onClick={handleClear}>
             Clear
           </Button>
-          <Button variant={'link'} onClick={handleSelectCurrent}>
+          <Button variant={'plain'} onClick={handleSelectCurrent}>
             Select current
           </Button>
         </PopoverFooter>

@@ -80,7 +80,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                       w="max-content"
                       size="lg"
                       colorScheme={color.colorScheme}
-                      variant="link"
+                      variant="plain"
                       alignSelf={index % 2 ? 'flex-end' : 'flex-start'}
                       fontWeight={700}
                     >

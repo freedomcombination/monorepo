@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Button, HStack, Heading, IconButton, Skeleton } from '@chakra-ui/react'
+import { HStack, Heading, IconButton, Skeleton } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { BiNotificationOff } from 'react-icons/bi'
 import { FaArrowLeft, FaUser } from 'react-icons/fa'
@@ -10,6 +10,7 @@ import { HiMenu } from 'react-icons/hi'
 import { MdOutlineNotifications } from 'react-icons/md'
 
 import {
+  Button,
   Drawer,
   DrawerBody,
   DrawerContent,

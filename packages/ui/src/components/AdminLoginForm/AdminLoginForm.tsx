@@ -1,13 +1,14 @@
 import { useState } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
-import { Box, Button, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { Button } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
 import { adminLoginSchema } from './schema'
@@ -135,7 +136,7 @@ export const AdminLoginForm = () => {
             </Stack>
             {/* TODO Set session exp time */}
 
-            <ButtonLink href="/forgot-password" variant="link" size="sm">
+            <ButtonLink href="/forgot-password" variant="plain" size="sm">
               {t('forgot-pass.link')}
             </ButtonLink>
           </Stack>

@@ -2,8 +2,10 @@
 
 import { FC, useEffect, useState } from 'react'
 
-import { Button, Code, Heading, Input, Stack } from '@chakra-ui/react'
+import { Code, Heading, Input, Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
+
+import { Button } from '@fc/chakra'
 
 import { createCategoryWithAxios, createCategoryWithMutation } from './utils'
 

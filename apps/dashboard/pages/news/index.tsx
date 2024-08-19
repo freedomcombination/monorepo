@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 
 import {
   Box,
-  Button,
   Group,
   Center,
   IconButton,
@@ -18,7 +17,7 @@ import { useTranslation } from 'next-i18next'
 import { AiOutlineClear } from 'react-icons/ai'
 import { FaSyncAlt } from 'react-icons/fa'
 
-import { Tooltip } from '@fc/chakra'
+import { Tooltip, Button } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useTopic, useTopicSync } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -70,7 +69,6 @@ const NewsPage = () => {
   const filterMenu = (
     <MenuOptionGroup
       title="Publishers"
-      type="checkbox"
       onChange={value => setFilter(value as string[])}
     >
       {publishers?.map(publisher => (

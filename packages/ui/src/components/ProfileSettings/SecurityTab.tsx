@@ -1,7 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react'
 
 import {
-  Button,
   Center,
   Separator,
   FormControl,
@@ -16,6 +15,7 @@ import {
 import { useTranslation } from 'next-i18next'
 import { FaEnvelope, FaUser } from 'react-icons/fa6'
 
+import { Button } from '@fc/chakra'
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { SessionUser } from '@fc/types'

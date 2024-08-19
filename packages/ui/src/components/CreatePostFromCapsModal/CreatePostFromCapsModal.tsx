@@ -1,18 +1,13 @@
 import { FC, useState } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
-  Separator,
-  Stack,
-} from '@chakra-ui/react'
+import { Separator, Stack } from '@chakra-ui/react'
 import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 
 import {
+  Alert,
+  Button,
   Modal,
   ModalBody,
   ModalContent,
@@ -115,11 +110,11 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
 
   return (
     <Modal
-      isOpen={isOpen}
-      onClose={handleClose}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : handleClose())}
       centered
       size="xl"
-      closeOnOverlayClick={false}
+      closeOnInteractOutside={false}
     >
       <ModalOverlay />
       <ModalContent>
@@ -162,8 +157,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
           if (isError) {
             return (
               <Alert status="error" key={id}>
-                <AlertIcon />
-                <AlertDescription>An error occured </AlertDescription>
+                An error occured
               </Alert>
             )
           }

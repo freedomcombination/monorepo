@@ -79,6 +79,9 @@ export const MenuRoot = ChakraMenu.Root
 export const MenuSeparator = ChakraMenu.Separator
 export const MenuItem = ChakraMenu.Item
 export const MenuItemCommand = ChakraMenu.ItemCommand
+export const Menu = MenuRoot
+export const MenuButton = ChakraMenu.Trigger
+export const MenuList = ChakraMenu.ItemGroup
 
 export interface MenuTriggerItemProps extends ChakraMenu.ItemProps {
   startIcon?: React.ReactNode

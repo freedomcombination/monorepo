@@ -1,11 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
   Button,
-  Checkbox,
   Container,
   Separator,
   Heading,
@@ -20,6 +16,7 @@ import { TFunction, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
+import { Alert, Checkbox } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
 import { SignupFormFieldValues, SignupFormProps } from './types'
@@ -109,7 +106,7 @@ export const SignupForm: FC<SignupFormProps> = ({
             <HStack gap={1} justify="center">
               <Text color="muted">{t('login.have-account')}</Text>
 
-              <ButtonLink href="/auth/login" variant="link">
+              <ButtonLink href="/auth/login" variant="plain">
                 {t('login.signin')}
               </ButtonLink>
             </HStack>
@@ -117,12 +114,7 @@ export const SignupForm: FC<SignupFormProps> = ({
         </Stack>
         <Stack gap={6} as="form" onSubmit={handleSubmit(handleSubmitSignUp)}>
           <Stack gap={5}>
-            {errorMessage && (
-              <Alert status="error">
-                <AlertIcon />
-                <AlertDescription>{errorMessage}</AlertDescription>
-              </Alert>
-            )}
+            {errorMessage && <Alert status="error">{errorMessage}</Alert>}
             <FormItem
               name="name"
               autoComplete="name"
@@ -154,13 +146,13 @@ export const SignupForm: FC<SignupFormProps> = ({
               {/* TODO Set session exp time */}
               <Checkbox
                 defaultChecked
-                onChange={e => setIsTermsAccepted(e.target.checked)}
+                onCheckedChange={e => setIsTermsAccepted(e.checked)}
               />
 
               <ButtonLink
                 href="/auth/terms"
                 target="_blank"
-                variant="link"
+                variant="plain"
                 colorScheme="gray"
                 size="sm"
               >

@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react'
 
-import { Box, Button, HStack, IconButton } from '@chakra-ui/react'
+import { Box, HStack, IconButton } from '@chakra-ui/react'
 import { AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
 
-import { Accordion } from '@fc/chakra'
 import {
+  Button,
+  Accordion,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -71,7 +72,11 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
 
   return (
     <Box>
-      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside">
+      <Modal
+        onOpenChange={e => (e.open ? null : onClose)}
+        open={isOpen}
+        scrollBehavior="inside"
+      >
         <ModalOverlay />
         <ModalContent maxW="95vw" h="full">
           <ModalHeader
@@ -116,7 +121,7 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
               <HStack gap={3}>
                 <Button
                   display={{ base: 'none', lg: 'flex' }}
-                  textColor={'white'}
+                  color={'white'}
                   onClick={handleReturn}
                   bg={'gray.400'}
                   leftIcon={<AiOutlineArrowLeft />}

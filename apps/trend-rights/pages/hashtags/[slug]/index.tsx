@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Box, Button, Stack } from '@chakra-ui/react'
+import { Box, Stack } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
@@ -10,6 +10,7 @@ import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 
 import {
+  Button,
   Modal,
   ModalBody,
   ModalContent,
@@ -51,7 +52,7 @@ const HashtagPage: FC<HashtagProps> = ({
 }) => {
   const hashtag = useHashtag()
 
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
   const { query, push } = useRouter()
   const { roles } = useAuthContext()
 
@@ -83,7 +84,11 @@ const HashtagPage: FC<HashtagProps> = ({
         </Head>
       )}
       {post && (
-        <Modal centered isOpen={isOpen} onClose={handleClose}>
+        <Modal
+          centered
+          open={open}
+          onOpenChange={e => (e.open ? onOpen() : handleClose())}
+        >
           <ModalOverlay />
           <ModalContent>
             <ModalBody p={0}>

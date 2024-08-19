@@ -1,9 +1,10 @@
 import { FC, useState } from 'react'
 
-import { Button, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
+import { HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { HiOutlineCheck, HiOutlineX, HiPencil } from 'react-icons/hi'
 
+import { Button } from '@fc/chakra'
 import { useArtFeedbackMutation } from '@fc/services'
 
 import { ArtFeedbackFormTypes } from './types'
@@ -98,7 +99,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
 
           <Stack flex={1} gap={2}>
             <Textarea
-              isRequired
+              required
               onChange={e => setFeedback(e.target.value)}
               placeholder={'Type your comment here'}
             />

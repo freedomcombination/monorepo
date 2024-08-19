@@ -1,5 +1,5 @@
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Box, Button, Portal, Stack, Text } from '@chakra-ui/react'
+import { Box, Portal, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { BsCollection } from 'react-icons/bs'
 import { CgHashtag } from 'react-icons/cg'
@@ -16,6 +16,7 @@ import { SiMaterialdesignicons } from 'react-icons/si'
 import { TbActivity, TbBrandTwitter, TbWriting } from 'react-icons/tb'
 
 import {
+  Button,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -71,7 +72,6 @@ export const CreateModelButton = () => {
           rounded={'full'}
           aria-label="create"
           leftIcon={<FaPlus />}
-          iconSpacing={{ base: 0, lg: 2 }}
           px={{ base: 2, lg: 4 }}
         >
           <Text display={{ base: 'none', lg: 'block' }}>{t('create')}</Text>

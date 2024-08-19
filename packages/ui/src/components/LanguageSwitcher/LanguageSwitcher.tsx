@@ -1,15 +1,9 @@
 import { FC, useCallback } from 'react'
 
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
-} from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
+import { Button, Menu, MenuButton, MenuItem, MenuList } from '@fc/chakra'
 import { StrapiLocale } from '@fc/types'
 
 import { Flag } from '../Flag'
@@ -38,25 +32,25 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
 
   return (
     <Menu>
-      <MenuButton
-        as={Button}
-        variant="outline"
-        rounded="full"
-        leftIcon={<Flag locale={router.locale} boxSize={6} />}
-        {...(responsive && {
-          iconSpacing: { base: 0, lg: 2 },
-          px: 2,
-        })}
-        colorScheme={'gray'}
-      >
-        <Text
-          pr={1}
+      <MenuButton asChild>
+        <Button
+          variant="outline"
+          rounded="full"
+          leftIcon={<Flag locale={router.locale} boxSize={6} />}
           {...(responsive && {
-            display: { base: 'none', lg: 'block' },
+            px: 2,
           })}
+          colorScheme={'gray'}
         >
-          {LanguageNames[router.locale]}
-        </Text>
+          <Text
+            pr={1}
+            {...(responsive && {
+              display: { base: 'none', lg: 'block' },
+            })}
+          >
+            {LanguageNames[router.locale]}
+          </Text>
+        </Button>
       </MenuButton>
       <MenuList>
         {router.locales
@@ -65,8 +59,9 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
             <MenuItem
               key={locale}
               onClick={() => switchLocale(locale as StrapiLocale)}
-              icon={<Flag locale={locale as StrapiLocale} boxSize={8} />}
+              value={locale}
             >
+              <Flag locale={locale as StrapiLocale} boxSize={8} />
               {LanguageNames[locale as StrapiLocale]}
             </MenuItem>
           ))}

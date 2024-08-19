@@ -36,7 +36,7 @@ const SoftwarePage: FC<SoftwareProps> = ({ source }) => {
             w="max-content"
             size="lg"
             colorScheme={'primary'}
-            variant="link"
+            variant="plain"
             alignSelf={'flex-end'}
             fontWeight={700}
           >

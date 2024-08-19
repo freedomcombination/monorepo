@@ -1,16 +1,17 @@
 import { FC, useEffect, useRef } from 'react'
 
 import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-} from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+
+import {
+  Button,
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogBackdrop,
+} from '@fc/chakra'
 
 import { WConfirmProps } from './types'
 
@@ -44,16 +45,16 @@ export const WConfirm: FC<WConfirmProps> = props => {
   }
 
   return (
-    <AlertDialog leastDestructiveRef={cancelRef} {...disclosure}>
-      <AlertDialogOverlay>
-        <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight={700}>
+    <Dialog {...disclosure}>
+      <DialogBackdrop>
+        <DialogContent>
+          <DialogHeader fontSize="lg" fontWeight={700}>
             {title}
-          </AlertDialogHeader>
+          </DialogHeader>
 
-          <AlertDialogBody>{description}</AlertDialogBody>
+          <DialogBody>{description}</DialogBody>
 
-          <AlertDialogFooter>
+          <DialogFooter>
             <Button ref={cancelRef} onClick={handleCancel} colorScheme={'gray'}>
               {t('cancel')}
             </Button>
@@ -64,9 +65,9 @@ export const WConfirm: FC<WConfirmProps> = props => {
             >
               {buttonText}
             </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialogOverlay>
-    </AlertDialog>
+          </DialogFooter>
+        </DialogContent>
+      </DialogBackdrop>
+    </Dialog>
   )
 }

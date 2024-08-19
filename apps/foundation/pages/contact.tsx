@@ -75,7 +75,7 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
               >
                 <ButtonLink
                   isExternal
-                  variant="link"
+                  variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.100' }}
                   leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
@@ -86,11 +86,11 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
 
                 <ButtonLink
                   isExternal
-                  variant="link"
+                  variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.50' }}
                   leftIcon={
-                    <Box as={MdEmail} color="primary.100" size="20px" />
+                    <Box as={MdEmail} color="primary.100" boxSize="20px" />
                   }
                   href={`mailto:${foundation?.contact?.email}`}
                 >
@@ -98,11 +98,11 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                 </ButtonLink>
                 <ButtonLink
                   isExternal
-                  variant="link"
+                  variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.100' }}
                   leftIcon={
-                    <Box as={MdLocationOn} color="primary.50" size="20px" />
+                    <Box as={MdLocationOn} color="primary.50" boxSize="20px" />
                   }
                   href="https://goo.gl/maps/E9HaayQnXmphUWtN8"
                   textAlign="left"

@@ -1,10 +1,11 @@
 import { FC } from 'react'
 
-import { Box, Button, HStack, Text } from '@chakra-ui/react'
+import { Box, HStack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaEye } from 'react-icons/fa'
 
+import { Button } from '@fc/chakra'
 import { RecaptchaKeys, SITE_URL } from '@fc/config'
 import { useLikeArt, useRecaptchaToken } from '@fc/services'
 import { Art } from '@fc/types'

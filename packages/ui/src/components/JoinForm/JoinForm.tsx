@@ -2,9 +2,7 @@ import { FC, useEffect } from 'react'
 
 import {
   Box,
-  Button,
   chakra,
-  Checkbox,
   FormLabel,
   Heading,
   HStack,
@@ -21,7 +19,7 @@ import { FaCircleInfo } from 'react-icons/fa6'
 import { setLocale } from 'yup'
 import { tr, nl, en } from 'yup-locales'
 
-import { Switch, Tooltip } from '@fc/chakra'
+import { Button, Checkbox, Switch, Tooltip } from '@fc/chakra'
 import { sleep } from '@fc/utils'
 
 import { heardFrom } from './data'
@@ -93,7 +91,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           name="name"
           autoComplete="name"
           errors={errors}
-          isRequired
+          required
         />
         <FormItem
           name="email"
@@ -101,7 +99,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           autoComplete="email"
           register={register}
           errors={errors}
-          isRequired
+          required
         />
       </Stack>
       <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
@@ -112,7 +110,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           id="availableHours"
           name="availableHours"
           errors={errors}
-          isRequired
+          required
         />
         <FormItem
           type="number"
@@ -120,7 +118,7 @@ export const JoinForm: FC<JoinFormProps> = ({
           id="age"
           name="age"
           errors={errors}
-          isRequired
+          required
         />
       </Stack>
       <FormItem
@@ -135,7 +133,7 @@ export const JoinForm: FC<JoinFormProps> = ({
         id="city"
         name="city"
         autoComplete="city"
-        isRequired
+        required
       />
 
       <FormItem
@@ -216,7 +214,7 @@ export const JoinForm: FC<JoinFormProps> = ({
                     key={job.id}
                     id={job.id.toString()}
                     {...register(`jobs`)}
-                    value={job.id}
+                    value={`${job.id}`}
                     textTransform={'capitalize'}
                   >
                     {job[`name_${locale}`]}
@@ -247,7 +245,7 @@ export const JoinForm: FC<JoinFormProps> = ({
                   key={job.id}
                   id={job.id.toString()}
                   {...register(`jobs`)}
-                  value={job.id}
+                  value={`${job.id}`}
                   textTransform={'capitalize'}
                 >
                   {job[`name_${locale}`]}

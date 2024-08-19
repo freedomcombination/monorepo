@@ -1,7 +1,8 @@
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Box, Button } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
+import { Button } from '@fc/chakra'
 import { TWEET_MOCKS } from '@fc/mocks'
 import { useRecommendTweet } from '@fc/services'
 import { RecommendedTweetCreateInput } from '@fc/types'

@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react'
 
-import { Button, Stack, Textarea } from '@chakra-ui/react'
+import { Stack, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
-import { toaster } from '@fc/chakra'
+import { Button, toaster } from '@fc/chakra'
 import { useCreateModelMutation } from '@fc/services'
 import { Observation, ObservationCreateInput } from '@fc/types/src/observation'
 

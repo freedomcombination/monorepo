@@ -33,6 +33,6 @@ export type AdminNavItemProps = {
 } & ButtonProps
 
 export type NavLinkProps = ButtonProps &
-  Omit<LinkProps, 'href'> & {
+  Omit<LinkProps, 'href' | 'onClick'> & {
     href?: DashboardRoute
   }

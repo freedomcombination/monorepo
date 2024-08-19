@@ -4,7 +4,6 @@ import { useDisclosure } from '@chakra-ui/hooks'
 import { Link } from '@chakra-ui/next-js'
 import {
   Box,
-  Button,
   Group,
   ButtonProps,
   Center,
@@ -24,12 +23,14 @@ import useFormPersist from 'react-hook-form-persist'
 import { FaPlus, FaUpload } from 'react-icons/fa'
 
 import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  toaster,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useStrapiRequest } from '@fc/services'
@@ -111,9 +112,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
         toaster.create({
           title: 'Error',
           description: 'Something went wrong',
-          status: 'error',
-          duration: 5000,
-          isClosable: true,
+          type: 'error',
         })
       },
     })
