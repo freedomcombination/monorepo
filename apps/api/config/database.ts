@@ -1,17 +1,10 @@
-import { parse } from 'pg-connection-string'
-
 export default ({ env }) => {
-  const { host, user, password = '', database } = parse(env('DATABASE_URL'))
-
   return {
     connection: {
       client: 'postgres',
       connection: {
-        host: env('DATABASE_HOST', host),
-        port: '5432',
-        database: env('DATABASE_NAME', database),
-        user: env('DATABASE_USER', user),
-        password: env('DATABASE_PASSWORD', password),
+        connectionString: env('DATABASE_URL'),
+        port: env.int('DATABASE_PORT', 5432),
         pool: {
           min: 0,
           max: 10,
