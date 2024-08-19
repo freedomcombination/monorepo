@@ -49,7 +49,7 @@
     "@vercel/edge-config": "^1.2.1",
     "@vercel/kv": "^2.0.0",
     "@vercel/og": "^0.6.2",
-    "ai": "3.0.12",
+    "ai": "3.3.10",
     "axios": "^1.7.4",
     "chakra-react-select": "4.9.1",
     "cookies-next": "^4.2.1",
