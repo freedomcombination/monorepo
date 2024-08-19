@@ -9,6 +9,9 @@ export type SocialItem = {
   link: Localize<string> | string
 }
 
-export type SocialButtonsProps = Omit<IconButtonProps, 'aria-label'> & {
+export type SocialButtonsProps = Omit<
+  IconButtonProps,
+  'aria-label' | 'icon'
+> & {
   items: SocialItem[]
 }

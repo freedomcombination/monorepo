@@ -1,19 +1,17 @@
 import { FC, ReactNode } from 'react'
 
-import {
-  HStack,
-  Menu,
-  MenuButton,
-  MenuSeparator,
-  MenuList,
-  Spacer,
-  Stack,
-} from '@chakra-ui/react'
+import { HStack, Spacer, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { HiOutlineFilter } from 'react-icons/hi'
 import { VscListFilter } from 'react-icons/vsc'
 
-import { IconButton } from '@fc/chakra'
+import {
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuSeparator,
+  MenuList,
+} from '@fc/chakra'
 
 import { SearchForm } from '../SearchForm'
 
@@ -64,19 +62,16 @@ export const PageHeader: FC<PageHeaderProps> = ({
       )}
 
       {filterMenu && (
-        <Menu
-          closeOnSelect={filterMenuCloseOnSelect}
-          isLazy
-          lazyBehavior="keepMounted"
-        >
-          <MenuButton
-            aria-label="Open filter menu"
-            as={IconButton}
-            icon={<HiOutlineFilter />}
-            variant="outline"
-            rounded="full"
-            colorScheme="gray"
-          />
+        <Menu closeOnSelect={filterMenuCloseOnSelect} lazyMount>
+          <MenuButton value="page-header-filter-menu" asChild>
+            <IconButton
+              aria-label="Open filter menu"
+              icon={<HiOutlineFilter />}
+              variant="outline"
+              rounded="full"
+              colorScheme="gray"
+            />
+          </MenuButton>
           <MenuList
             css={{
               '& .chakra-menu__group': {
@@ -96,15 +91,16 @@ export const PageHeader: FC<PageHeaderProps> = ({
       )}
 
       {sortMenu && (
-        <Menu isLazy lazyBehavior="keepMounted">
-          <MenuButton
-            aria-label="Open sort menu"
-            as={IconButton}
-            icon={<VscListFilter />}
-            variant="outline"
-            rounded="full"
-            colorScheme="gray"
-          />
+        <Menu lazyMount>
+          <MenuButton asChild value="page-header-sort-menu">
+            <IconButton
+              aria-label="Open sort menu"
+              icon={<VscListFilter />}
+              variant="outline"
+              rounded="full"
+              colorScheme="gray"
+            />
+          </MenuButton>
           <MenuList>{sortMenu}</MenuList>
         </Menu>
       )}

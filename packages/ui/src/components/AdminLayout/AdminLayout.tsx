@@ -1,19 +1,11 @@
 import { FC, ReactNode, useEffect, useMemo } from 'react'
 
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  Box,
-  Center,
-  Flex,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Center, Flex, Spinner, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeo, NextSeoProps } from 'next-seo'
 
+import { Alert } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
 import { AdminHeader } from '../AdminHeader'
@@ -118,10 +110,7 @@ const NotAllowedPage: FC<{ show?: boolean }> = ({ show }) => {
         width="80%"
         borderRadius="lg"
       >
-        <AlertIcon boxSize="80px" mr={0} />
-        <AlertTitle mt={4} mb={1} fontSize="lg">
-          {t('not-allowed')}
-        </AlertTitle>
+        {t('not-allowed')}
       </Alert>
     </Center>
   )

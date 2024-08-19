@@ -1,19 +1,17 @@
-import { FC, Fragment } from 'react'
+import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import {
-  Button,
-  DarkMode,
-  Menu,
-  MenuButton,
-  MenuSeparator,
-  MenuItem,
-  MenuList,
-} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
 
+import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  MenuSeparator,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
 import { ProfileMenuProps } from './types'
@@ -28,47 +26,46 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   const { asPath } = useRouter()
   const loginHref = `/auth/login?returnUrl=${asPath}`
 
-  const Wrapper = !isScrolled && isDark ? DarkMode : Fragment
-
   if (!isLoggedIn) {
     return (
-      <Wrapper>
-        <ButtonLink
-          href={loginHref}
-          size="sm"
-          loading={loading}
-          variant={!isScrolled && isDark ? 'solid' : 'outline'}
-          rightIcon={<FiLogIn />}
-        >
-          {t('login.signin')}
-        </ButtonLink>
-      </Wrapper>
+      <ButtonLink
+        href={loginHref}
+        size="sm"
+        loading={loading}
+        variant={!isScrolled && isDark ? 'solid' : 'outline'}
+        rightIcon={<FiLogIn />}
+      >
+        {t('login.signin')}
+      </ButtonLink>
     )
   }
 
   return (
-    <Menu placement="bottom">
-      <MenuButton
-        as={Button}
-        size={'sm'}
-        leftIcon={
-          <WAvatar
-            size={'xs'}
-            src={profile?.avatar}
-            name={profile?.name || user?.username}
-          />
-        }
-      >
-        {profile?.name || user?.username}
+    <Menu positioning={{ placement: 'bottom' }}>
+      <MenuButton value="profile-menu" asChild>
+        <Button
+          size={'sm'}
+          leftIcon={
+            <WAvatar
+              size={'xs'}
+              src={profile?.avatar}
+              name={profile?.name || user?.username}
+            />
+          }
+        >
+          {profile?.name || user?.username}
+        </Button>
       </MenuButton>
       <MenuList>
-        <MenuItem as={Link} href={'/profile'}>
-          {t('profile')}
+        <MenuItem value="profile" asChild>
+          <ButtonLink href={'/profile'}>{t('profile')}</ButtonLink>
         </MenuItem>
 
         <MenuSeparator />
-        <MenuItem icon={<FiLogOut />} color="red.400" onClick={logout}>
-          {t('logout')}
+        <MenuItem value="logout">
+          <Button leftIcon={<FiLogOut />} color="red.400" onClick={logout}>
+            {t('logout')}
+          </Button>
         </MenuItem>
       </MenuList>
     </Menu>

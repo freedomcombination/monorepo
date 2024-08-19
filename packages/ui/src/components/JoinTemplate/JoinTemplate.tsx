@@ -1,13 +1,10 @@
 import { FC } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
   Box,
   Center,
   HStack,
+  Icon,
   Link,
   SimpleGrid,
   Stack,
@@ -18,7 +15,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaRegFilePdf } from 'react-icons/fa6'
 
-import { toaster } from '@fc/chakra'
+import { Alert, toaster } from '@fc/chakra'
 import { PUBLIC_TOKEN, RecaptchaKeys } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
@@ -115,15 +112,10 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
             w="container.sm"
             shadow="base"
             rounded="lg"
+            title={t('thank-you')}
           >
             <VStack gap={4}>
-              <AlertIcon boxSize="60px" mr={0} />
-              <AlertTitle mt={4} mb={1} fontSize="2xl">
-                {t('thank-you')}
-              </AlertTitle>
-              <AlertDescription maxWidth="sm">
-                {t('apply-form.thanks.description')}
-              </AlertDescription>
+              <Box maxWidth="sm">{t('apply-form.thanks.description')}</Box>
             </VStack>
           </Alert>
         </Center>
@@ -147,7 +139,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
                   _hover={{ textDecoration: 'underline', color: 'primary.500' }}
                 >
                   <HStack as="span" display={'inline-flex'} align={'center'}>
-                    <AlertIcon color={'inherit'} m={0} as={FaRegFilePdf} />
+                    <Icon color={'inherit'} m={0} as={FaRegFilePdf} />
                     <span>{t('download-volunteer-form')}</span>
                   </HStack>
                 </Link>

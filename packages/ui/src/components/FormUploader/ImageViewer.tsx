@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
-import { Menu, MenuButton, MenuItem, MenuList, Portal } from '@chakra-ui/react'
+import { Portal } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDownWideShort } from 'react-icons/fa6'
 
-import { IconButton } from '@fc/chakra'
+import { IconButton, Menu, MenuButton, MenuItem, MenuList } from '@fc/chakra'
 
 import { MenuFileItem } from './MenuFileItem'
 import { ImageViewerProps } from './types'
@@ -18,18 +18,19 @@ export const ImageViewer: FC<ImageViewerProps> = ({
   const { t } = useTranslation()
 
   return (
-    <Menu placement="bottom" autoSelect={false}>
-      <MenuButton
-        as={IconButton}
-        icon={<FaArrowDownWideShort />}
-        aria-label="Show Menu"
-        variant={'outline'}
-        rounded={0}
-        size={'sm'}
-        boxSize={12}
-        border={0}
-        colorScheme="gray"
-      />
+    <Menu positioning={{ placement: 'bottom' }}>
+      <MenuButton value="image-view-menu">
+        <IconButton
+          icon={<FaArrowDownWideShort />}
+          aria-label="Show Menu"
+          variant={'outline'}
+          rounded={0}
+          size={'sm'}
+          boxSize={12}
+          border={0}
+          colorScheme="gray"
+        />
+      </MenuButton>
       <Portal>
         <MenuList zIndex={9999} maxH={400} overflowY={'auto'} w={500} p={0}>
           {files.length > 0 ? (
@@ -42,7 +43,7 @@ export const ImageViewer: FC<ImageViewerProps> = ({
               />
             ))
           ) : (
-            <MenuItem onClick={fetchFiles}>
+            <MenuItem value={oldFiles ? 'old' : 'new'} onClick={fetchFiles}>
               {oldFiles ? t('form.uploader.old') : t('form.uploader.new')}
             </MenuItem>
           )}

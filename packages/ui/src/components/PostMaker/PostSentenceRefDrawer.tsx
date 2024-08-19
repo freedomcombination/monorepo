@@ -1,10 +1,7 @@
 import { FC } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
+  Box,
   Center,
   HStack,
   Heading,
@@ -17,6 +14,7 @@ import { useTranslation } from 'next-i18next'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 import Markdown from 'react-markdown'
 
+import { Alert } from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services'
 import { ArchiveContent } from '@fc/types'
 
@@ -24,7 +22,7 @@ import { useHashtagContext } from '../../components/HashtagProvider'
 
 export const PostSentenceRefDrawer = () => {
   const { sentence } = useHashtagContext()
-  const { data, loading } = useStrapiRequest<ArchiveContent>({
+  const { data, isLoading } = useStrapiRequest<ArchiveContent>({
     endpoint: 'archive-contents',
     id: 2,
     queryOptions: {
@@ -44,15 +42,15 @@ export const PostSentenceRefDrawer = () => {
         </Stack>
       )}
 
-      {loading || !archiveContent ? (
-        <LoadingInfo loading={loading} />
+      {isLoading || !archiveContent ? (
+        <LoadingInfo loading={isLoading} />
       ) : (
         <Stack background={'white'} borderRadius={'lg'} p={4} gap={4}>
           <Heading size={'md'} fontWeight={'bold'} color="gray.700">
             {archiveContent.title}
           </Heading>
           <HStack>
-            <Link isExternal href={archiveContent.link}>
+            <Link rel="noOpener" target="_blank" href={archiveContent.link}>
               <HStack color="blue.500">
                 <Text>{archiveContent.source}</Text>
                 <HiOutlineExternalLink />
@@ -88,14 +86,9 @@ const LoadingInfo: FC<{ loading: boolean }> = ({ loading }) => {
           justifyContent="center"
           textAlign="center"
           background={'white'}
+          title={t('reference')}
         >
-          <AlertIcon boxSize="40px" mr={0} />
-          <AlertTitle mt={4} mb={1} fontSize="lg">
-            {t('reference')}
-          </AlertTitle>
-          <AlertDescription maxWidth="sm">
-            {t('no-reference-found')}
-          </AlertDescription>
+          <Box maxWidth="sm">{t('no-reference-found')}</Box>
         </Alert>
       )}
     </Center>

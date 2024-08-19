@@ -1,26 +1,24 @@
 import { FC, useEffect, useMemo, useState } from 'react'
 
-import {
-  Center,
-  Flex,
-  HStack,
-  Menu,
-  MenuButton,
-  MenuSeparator,
-  MenuItem,
-  MenuItemOption,
-  MenuList,
-  MenuOptionGroup,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Center, Flex, HStack, Spinner, Stack } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { FaEdit, FaSave } from 'react-icons/fa'
 import { FaFilter, FaX } from 'react-icons/fa6'
 
-import { Button, Select, IconButton } from '@fc/chakra'
+import {
+  Button,
+  Select,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuSeparator,
+  MenuItem,
+  MenuCheckboxItem,
+  MenuList,
+  MenuItemGroup,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -149,23 +147,24 @@ const RolePage: FC<RolePageProps> = () => {
           <HStack gap={4}>
             {role && (
               <Menu closeOnSelect={false}>
-                <MenuButton
-                  aria-label="endpoint-filter"
-                  icon={<FaFilter />}
-                  variant={'outline'}
-                  as={IconButton}
-                />
+                <MenuButton value="menu" asChild>
+                  <IconButton
+                    aria-label="endpoint-filter"
+                    icon={<FaFilter />}
+                    variant={'outline'}
+                  />
+                </MenuButton>
                 <MenuList h={400} overflow={'auto'}>
-                  <MenuItem onClick={() => setFilters([])}>
+                  <MenuItem value="clear" onClick={() => setFilters([])}>
                     {t('clear')}
                   </MenuItem>
                   <MenuSeparator />
-                  <MenuOptionGroup type="checkbox" title="Endpoints">
+                  <MenuItemGroup title="Endpoints">
                     {filterKeys.map(key => (
-                      <MenuItemOption
+                      <MenuCheckboxItem
                         key={key}
                         value={key}
-                        isChecked={filters.includes(key)}
+                        checked={filters.includes(key)}
                         onClick={() =>
                           setFilters(filters =>
                             filters.includes(key)
@@ -175,9 +174,9 @@ const RolePage: FC<RolePageProps> = () => {
                         }
                       >
                         {key.split('::')[1]}
-                      </MenuItemOption>
+                      </MenuCheckboxItem>
                     ))}
-                  </MenuOptionGroup>
+                  </MenuItemGroup>
                 </MenuList>
               </Menu>
             )}

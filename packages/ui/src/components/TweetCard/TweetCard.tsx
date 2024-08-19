@@ -1,17 +1,7 @@
 import { FC } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Box,
-  HStack,
-  Link,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Box, HStack, Link, Stack, Text } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -28,7 +18,7 @@ import {
 } from 'react-icons/tb'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { IconButton } from '@fc/chakra'
+import { IconButton, Menu, MenuButton, MenuItem, MenuList } from '@fc/chakra'
 import { useRecommendTweet } from '@fc/services'
 import { Post, RecommendedTweetCreateInput, Tweet } from '@fc/types'
 
@@ -134,17 +124,19 @@ export const TweetCard: FC<TweetCardProps> = ({
             )}
 
             {(bookmarkable || editable) && (
-              <Menu placement="bottom-end">
-                <MenuButton
-                  size="sm"
-                  rounded="full"
-                  as={IconButton}
-                  icon={<BsThreeDots />}
-                  variant="ghost"
-                />
+              <Menu positioning={{ placement: 'bottom-end' }}>
+                <MenuButton asChild value="recommend">
+                  <IconButton
+                    size="sm"
+                    rounded="full"
+                    icon={<BsThreeDots />}
+                    variant="ghost"
+                  />
+                </MenuButton>
                 <MenuList>
                   {!isRecommended && (
-                    <MenuItem icon={<TbThumbUp />} onClick={handleEdit}>
+                    <MenuItem value="recommend" onClick={handleEdit}>
+                      <TbThumbUp />
                       Recommend
                     </MenuItem>
                   )}
@@ -167,10 +159,8 @@ export const TweetCard: FC<TweetCardProps> = ({
                   >
                     {t('create-post')}
                   </ModelCreateModal>
-                  <MenuItem
-                    icon={<TbBookmark color={isBookmarked ? 'red' : ''} />}
-                    onClick={handleBookmark}
-                  >
+                  <MenuItem value="bookmark" onClick={handleBookmark}>
+                    <TbBookmark color={isBookmarked ? 'red' : ''} />
                     {isBookmarked ? 'Remove' : 'Save'} (Bookmark)
                   </MenuItem>
                 </MenuList>

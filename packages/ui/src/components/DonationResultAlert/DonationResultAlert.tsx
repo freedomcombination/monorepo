@@ -1,12 +1,8 @@
 import { FC } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertProps,
-  AlertTitle,
-} from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
+
+import { Alert, AlertProps } from '@fc/chakra'
 
 type DonationResultAlertProps = {
   status: AlertProps['status']
@@ -27,11 +23,9 @@ export const DonationResultAlert: FC<DonationResultAlertProps> = ({
     justifyContent="center"
     textAlign="center"
     height="200px"
+    title={title}
   >
-    <AlertIcon boxSize="40px" mr={0} />
-    <AlertTitle mt={4} mb={1} fontSize="lg">
-      {title}
-    </AlertTitle>
-    <AlertDescription maxWidth="sm">{description}</AlertDescription>
+    {title}
+    <Box maxWidth="sm">{description}</Box>
   </Alert>
 )
