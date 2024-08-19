@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
-import { MenuItemOption, MenuOptionGroup } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+
+import { MenuRadioItem, MenuRadioItemGroup } from '@fc/chakra'
 
 import { I18nNamespaces } from '../../../@types/i18next'
 import { Option } from '../ModelSelect'
@@ -38,10 +39,10 @@ export const ModelStatusFilters: FC<ModelStatusFiltersProps> = ({ args }) => {
           }
 
           return (
-            <MenuOptionGroup
+            <MenuRadioItemGroup
               key={i}
               value={currentValue || defaultValue}
-              onChange={handleChange}
+              onValueChange={e => handleChange([e.value])}
               title={t(title as keyof I18nNamespaces['common'])}
             >
               {statuses?.map((status, i) => {
@@ -49,12 +50,12 @@ export const ModelStatusFilters: FC<ModelStatusFiltersProps> = ({ args }) => {
                 const label = typeof status === 'string' ? status : status.label
 
                 return (
-                  <MenuItemOption key={i} value={`${value}`}>
+                  <MenuRadioItem key={i} value={`${value}`}>
                     {t(label as keyof I18nNamespaces['common'])}
-                  </MenuItemOption>
+                  </MenuRadioItem>
                 )
               })}
-            </MenuOptionGroup>
+            </MenuRadioItemGroup>
           )
         })}
     </>

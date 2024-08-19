@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
-import { MenuItemOption, MenuOptionGroup } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+
+import { MenuRadioItem, MenuRadioItemGroup } from '@fc/chakra'
 
 import { FilterMenuGroupProps } from './types'
 
@@ -9,7 +10,6 @@ export const FilterMenuGroup: FC<FilterMenuGroupProps> = ({
   options,
   setFilters,
   filters,
-  type = 'checkbox',
   ...props
 }) => {
   const { t } = useTranslation()
@@ -27,22 +27,21 @@ export const FilterMenuGroup: FC<FilterMenuGroupProps> = ({
   if (!options?.length) return null
 
   return (
-    <MenuOptionGroup
-      onChange={handleChangeFilters}
+    <MenuRadioItemGroup
+      onValueChange={e => handleChangeFilters([e.value])}
       title={t('filters')}
-      value={selectedValues}
-      type={type}
+      value={selectedValues[0]}
       maxH={300}
       overflowY={'auto'}
       {...props}
     >
       {options.map(option => {
         return (
-          <MenuItemOption key={option.field} value={`${option.field}`}>
+          <MenuRadioItem key={option.field} value={`${option.field}`}>
             {option.label}
-          </MenuItemOption>
+          </MenuRadioItem>
         )
       })}
-    </MenuOptionGroup>
+    </MenuRadioItemGroup>
   )
 }

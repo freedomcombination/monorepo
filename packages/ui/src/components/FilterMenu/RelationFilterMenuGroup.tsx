@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
-import { MenuItemOption, MenuOptionGroup, chakra } from '@chakra-ui/react'
+import { chakra } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
+import { MenuRadioItem, MenuRadioItemGroup } from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services'
 import { StrapiModel } from '@fc/types'
 import { mapModelsToOptions } from '@fc/utils'
@@ -10,7 +11,6 @@ import { mapModelsToOptions } from '@fc/utils'
 import { RelationFilterMenuGroupProps } from './types'
 
 export const RelationFilterMenuGroup = <T extends StrapiModel>({
-  type = 'checkbox',
   relationFilter,
   setRelationFilter,
   ...props
@@ -40,19 +40,18 @@ export const RelationFilterMenuGroup = <T extends StrapiModel>({
   }
 
   return (
-    <MenuOptionGroup
-      onChange={handleChangeRelationFilters}
-      value={ids.map(id => id.toString())}
-      type={type}
+    <MenuRadioItemGroup
+      onValueChange={e => handleChangeRelationFilters([e.value])}
+      value={ids.map(id => id.toString())[0]}
       {...props}
     >
       {mapModelsToOptions(parentData, locale)?.map(model => {
         return (
-          <MenuItemOption key={model.value} value={model.value} maxW={300}>
+          <MenuRadioItem key={model.value} value={model.value} maxW={300}>
             <chakra.span lineClamp={1}>{model.label}</chakra.span>
-          </MenuItemOption>
+          </MenuRadioItem>
         )
       })}
-    </MenuOptionGroup>
+    </MenuRadioItemGroup>
   )
 }

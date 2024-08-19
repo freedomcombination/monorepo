@@ -1,14 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import {
-  Box,
-  Group,
-  Center,
-  MenuItemOption,
-  MenuOptionGroup,
-  SimpleGrid,
-  Spinner,
-} from '@chakra-ui/react'
+import { Box, Group, Center, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { addMinutes, formatDistanceToNow, isPast } from 'date-fns'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -16,7 +8,13 @@ import { useTranslation } from 'next-i18next'
 import { AiOutlineClear } from 'react-icons/ai'
 import { FaSyncAlt } from 'react-icons/fa'
 
-import { Tooltip, Button, IconButton } from '@fc/chakra'
+import {
+  Tooltip,
+  Button,
+  IconButton,
+  MenuRadioItemGroup,
+  MenuRadioItem,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useTopic, useTopicSync } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -66,16 +64,16 @@ const NewsPage = () => {
   }, [data, filter, locale, searchTerm])
 
   const filterMenu = (
-    <MenuOptionGroup
+    <MenuRadioItemGroup
       title="Publishers"
-      onChange={value => setFilter(value as string[])}
+      onValueChange={e => setFilter([e.value])}
     >
       {publishers?.map(publisher => (
-        <MenuItemOption key={publisher} value={publisher}>
+        <MenuRadioItem key={publisher} value={publisher}>
           {publisher}
-        </MenuItemOption>
+        </MenuRadioItem>
       ))}
-    </MenuOptionGroup>
+    </MenuRadioItemGroup>
   )
 
   const canSync =

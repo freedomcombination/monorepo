@@ -1,11 +1,14 @@
-import {
-  MenuSeparator,
-  MenuItem,
-  MenuItemOption,
-  MenuOptionGroup,
-} from '@chakra-ui/react'
+import { MenuSeparator, MenuItem } from '@chakra-ui/react'
 import { Meta, StoryObj } from '@storybook/react'
 import { FaArrowUp } from 'react-icons/fa'
+
+import {
+  Button,
+  MenuCheckboxItem,
+  MenuItemGroup,
+  MenuRadioItem,
+  MenuRadioItemGroup,
+} from '@fc/chakra'
 
 import { PageHeader } from './index'
 
@@ -22,40 +25,40 @@ export const Default: Story = {
       alert(item)
     },
     filterMenu: (
-      <MenuOptionGroup
+      <MenuItemGroup
         title="Artists"
-        type="checkbox"
         onChange={value => alert(`Filter applied: ${value}`)}
       >
-        <MenuItemOption closeOnSelect={false} value="1">
+        <MenuCheckboxItem closeOnSelect={false} value="1" checked>
           Ali
-        </MenuItemOption>
-        <MenuItemOption closeOnSelect={false} value="2">
+        </MenuCheckboxItem>
+        <MenuCheckboxItem closeOnSelect={false} value="2" checked={false}>
           Mehmet
-        </MenuItemOption>
-        <MenuItemOption closeOnSelect={false} value="3">
+        </MenuCheckboxItem>
+        <MenuCheckboxItem closeOnSelect={false} value="3" checked={false}>
           Merve
-        </MenuItemOption>
-      </MenuOptionGroup>
+        </MenuCheckboxItem>
+      </MenuItemGroup>
     ),
     sortMenu: (
       <>
-        <MenuOptionGroup
+        <MenuRadioItemGroup
           defaultValue="title:asc"
           title="Order"
-          type="radio"
-          onChange={value => alert(`Sorted by ${value}`)}
+          onValueChange={e => alert(`Sorted by ${e.value}`)}
         >
-          <MenuItemOption value="title:asc">Ascending</MenuItemOption>
-          <MenuItemOption value="title:desc">Descending</MenuItemOption>
-        </MenuOptionGroup>
+          <MenuRadioItem value="title:asc">Ascending</MenuRadioItem>
+          <MenuRadioItem value="title:desc">Descending</MenuRadioItem>
+        </MenuRadioItemGroup>
 
         <MenuSeparator />
-        <MenuItem
-          icon={<FaArrowUp />}
-          onClick={() => alert('Sort user ascending')}
-        >
-          User name ascending
+        <MenuItem value="name:asc" asChild>
+          <Button
+            leftIcon={<FaArrowUp />}
+            onClick={() => alert('Sort user ascending')}
+          >
+            User name ascending
+          </Button>
         </MenuItem>
       </>
     ),
