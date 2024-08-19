@@ -17521,7 +17521,7 @@ __metadata:
     framer-motion: "npm:^11.3.28"
     i18next: "npm:^23.13.0"
     i18next-browser-languagedetector: "npm:^8.0.0"
-    i18next-http-backend: "npm:^2.5.2"
+    i18next-http-backend: "npm:^2.6.0"
     iron-session: "npm:^8.0.2"
     jspdf: "npm:^2.5.1"
     jspdf-autotable: "npm:^3.8.2"
@@ -19476,12 +19476,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-http-backend@npm:^2.5.2":
-  version: 2.5.2
-  resolution: "i18next-http-backend@npm:2.5.2"
+"i18next-http-backend@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "i18next-http-backend@npm:2.6.0"
   dependencies:
     cross-fetch: "npm:4.0.0"
-  checksum: 10/3cdaea60df9d199366dd9b4c5c0f4bbd55cd4480b49d13037381a2ba825b514cc6fda7c0bb475e879eb7e94daa62d88d96d3c74bed3e57443d3b527d70abf64b
+  checksum: 10/c7c083ce099d6dd5b9a97f4dbd197c371e39d599b6c6ee5d758c94cbf4fcc033dbb2c81861de25398bedc753ffd044c712ed5892eb000633366fa9dce6c5eb8d
   languageName: node
   linkType: hard
 

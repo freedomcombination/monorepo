@@ -139,7 +139,7 @@
     "eslint-config-turbo": "^2.0.14",
     "eslint-plugin-react": "7.35.0",
     "i18next-browser-languagedetector": "^8.0.0",
-    "i18next-http-backend": "^2.5.2",
+    "i18next-http-backend": "^2.6.0",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "prettier": "^3.3.3",
