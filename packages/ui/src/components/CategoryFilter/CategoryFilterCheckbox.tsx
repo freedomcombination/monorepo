@@ -1,21 +1,23 @@
-import {
-  Box,
-  HStack,
-  Text,
-  useCheckbox,
-  UseCheckboxProps,
-} from '@chakra-ui/react'
+import { Box, HStack, Text, useCheckbox } from '@chakra-ui/react'
 import { FaCheck } from 'react-icons/fa'
 
-export const CategoryFilterCheckbox = (props: UseCheckboxProps) => {
-  const { state, getInputProps, getLabelProps, htmlProps } = useCheckbox(props)
+import {
+  CheckboxCardRoot,
+  CheckboxCardControl,
+  CheckboxCardLabel,
+  CheckboxProps,
+} from '@fc/chakra'
+
+export const CategoryFilterCheckbox = (props: CheckboxProps) => {
+  const { checked, getControlProps, getLabelProps, getRootProps } =
+    useCheckbox(props)
 
   return (
-    <HStack
+    <CheckboxCardRoot
       as="label"
-      color={state.isChecked ? 'primary.500' : 'initial'}
+      color={checked ? 'primary.500' : 'initial'}
       borderWidth={2}
-      borderColor={state.isChecked ? 'primary.500' : 'transparent'}
+      borderColor={checked ? 'primary.500' : 'transparent'}
       _hover={{ bg: 'blackAlpha.50' }}
       rounded="full"
       py={2}
@@ -23,18 +25,17 @@ export const CategoryFilterCheckbox = (props: UseCheckboxProps) => {
       fontWeight={600}
       cursor="pointer"
       fontSize="md"
-      {...htmlProps}
+      {...getRootProps()}
     >
-      <input {...getInputProps()} hidden />
-      <Box
-        maxW={state.isChecked ? 'auto' : 0}
-        ml={state.isChecked ? 2 : 0}
-        transition="all 0.2s"
-        as={FaCheck}
-      />
-      <Text w="max-content" {...getLabelProps()}>
-        {props.name}
-      </Text>
-    </HStack>
+      <CheckboxCardControl {...getControlProps()} />
+      <CheckboxCardLabel {...getLabelProps()}>
+        <HStack>
+          {checked && <Box as={FaCheck} />}
+          <Text w="max-content" {...getLabelProps()}>
+            {props.name}
+          </Text>
+        </HStack>
+      </CheckboxCardLabel>
+    </CheckboxCardRoot>
   )
 }

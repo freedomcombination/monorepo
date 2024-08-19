@@ -1,6 +1,6 @@
 import { FC } from 'react'
+import Link from 'next/link'
 
-import { Link } from '@chakra-ui/next-js'
 import { Box, Separator, HStack, Stack, Text, VStack } from '@chakra-ui/react'
 
 import { useAuthContext } from '@fc/context'

@@ -21,7 +21,11 @@ export const ArtModal: FC<ArtModalProps> = ({
 }) => {
   return (
     <Box>
-      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside">
+      <Modal
+        onOpenChange={e => (e.open ? null : onClose())}
+        open={isOpen}
+        scrollBehavior="inside"
+      >
         <ModalOverlay />
         <ModalContent maxW="95vw" p={{ base: 4, lg: 8 }}>
           <ModalBody p={0}>

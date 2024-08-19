@@ -1,5 +1,6 @@
 import { useDisclosure } from '@chakra-ui/hooks'
 import { Box, Center, Link, Stack, Text, VStack } from '@chakra-ui/react'
+// @ts-ignore
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'

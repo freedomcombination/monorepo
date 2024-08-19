@@ -7,5 +7,5 @@ import { ActionWrapper, ActionWrapperProps } from '../ActionWrapper'
 export type ActionTooltipProps = Omit<ActionWrapperProps<TooltipProps>, 'ui'>
 
 export const ActionTooltip: FC<ActionTooltipProps> = props => {
-  return <ActionWrapper {...props} ui={Tooltip} />
+  return <ActionWrapper<TooltipProps> {...props} ui={Tooltip} />
 }

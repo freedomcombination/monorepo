@@ -1,4 +1,5 @@
 import { Heading, Stack, useBreakpointValue } from '@chakra-ui/react'
+// @ts-ignore
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { useTranslation } from 'next-i18next'
 

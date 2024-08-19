@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
 
 import { useBoolean } from '@chakra-ui/hooks'
-import { Box, chakra, Collapse } from '@chakra-ui/react'
+import { Box, chakra, Collapsible } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { GoChevronDown } from 'react-icons/go'
 
@@ -78,14 +78,14 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
 
       {/* Submenu */}
       {submenu && (
-        <Collapse in={open}>
+        <Collapsible.Root open={open}>
           {submenu?.map((item, index) => {
             const isSubmenuLinkActive = router.asPath === item.link
             const isExternal = item.link?.startsWith('http')
             const isAllowed = item.allowed === true
 
             return (
-              <Box key={index}>
+              <Collapsible.Content key={index}>
                 <ButtonLink
                   href={item.link as string}
                   justifyContent="start"
@@ -114,10 +114,10 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
                 >
                   {item.label}
                 </ButtonLink>
-              </Box>
+              </Collapsible.Content>
             )
           })}
-        </Collapse>
+        </Collapsible.Root>
       )}
     </Box>
   )

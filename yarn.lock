@@ -1765,20 +1765,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/next-js@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@chakra-ui/next-js@npm:2.2.0"
-  dependencies:
-    "@emotion/cache": "npm:^11.11.0"
-  peerDependencies:
-    "@chakra-ui/react": ">=2.4.0"
-    "@emotion/react": ">=11"
-    next: ">=13"
-    react: ">=18"
-  checksum: 10/e69800e99be5bfbbd10d97a6a5b055208f98e8619cd6b8e1f4715dc861018e606af1e642d8ee0a6baf294a65d49049fd0530293e76a93e631079d9c9c91fc47b
-  languageName: node
-  linkType: hard
-
 "@chakra-ui/react@npm:3.0.0-next.16":
   version: 3.0.0-next.16
   resolution: "@chakra-ui/react@npm:3.0.0-next.16"
@@ -17948,7 +17934,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "fc-turbo@workspace:."
   dependencies:
-    "@chakra-ui/next-js": "npm:^2.2.0"
     "@chakra-ui/react": "npm:3.0.0-next.16"
     "@chakra-ui/storybook-addon": "npm:^5.1.0"
     "@ctrl/tinycolor": "npm:^4.1.0"

@@ -1,4 +1,4 @@
-import { Link } from '@chakra-ui/next-js'
+import Link from 'next/link'
 import { Center, Icon, Square, Stack, StackProps, Text } from '@chakra-ui/react'
 import { Trans, useTranslation } from 'next-i18next'
 import { BiCookie } from 'react-icons/bi'

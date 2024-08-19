@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import Link from 'next/link'
 import {
   Badge,
   Box,
@@ -99,7 +99,7 @@ const DisplayArchive: FC<{
   const { locale } = useRouter()
 
   return (
-    <Link isExternal href={archiveContent.link}>
+    <Link target="_blank" rel="noreferrer noopener" href={archiveContent.link}>
       <Stack p={2} gap={2} textAlign={'left'} color={'gray.500'}>
         <Heading size="sm" color={'gray.500'}>
           {archiveContent.title}

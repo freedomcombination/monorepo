@@ -5,9 +5,11 @@ import { StackProps, BoxProps } from '@chakra-ui/react'
 import { useAuthContext } from '@fc/context'
 
 import { ActionWrapperProps } from './types'
-import { ButtonProps } from '@fc/chakra'
+import { ButtonProps, TooltipProps } from '@fc/chakra'
 
-export const ActionWrapper = <T extends StackProps | BoxProps | ButtonProps>(
+export const ActionWrapper = <
+  T extends StackProps | BoxProps | ButtonProps | TooltipProps,
+>(
   props: ActionWrapperProps<T>,
 ): ReactElement<T> | null => {
   const {

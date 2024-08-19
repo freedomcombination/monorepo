@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import Link from 'next/link'
 import { ButtonProps, Group, GroupProps } from '@chakra-ui/react'
 import {
   FacebookShareButton,
@@ -59,7 +59,7 @@ export const ShareButtons: FC<PropsWithChildren<ShareButtonsProps>> = ({
           icon={<FaFacebook />}
         />
       </FacebookShareButton>
-      <Link href={postUrl} isExternal>
+      <Link href={postUrl} rel="noreferrer noopener" target="_blank">
         <IconButton
           variant="outline"
           size={size}

@@ -1,7 +1,14 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import { Box, Separator, HStack, Stack, Text } from '@chakra-ui/react'
+import Link from 'next/link'
+import {
+  Box,
+  Separator,
+  HStack,
+  Stack,
+  Text,
+  Link as ChakraLink,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MdCollectionsBookmark } from 'react-icons/md'
@@ -22,15 +29,17 @@ export const CollectionList: FC<CollectionListProps> = ({ collectionData }) => {
       </HStack>
       <Separator />
       {collectionData.map((collection, index) => (
-        <Link
+        <ChakraLink
           key={index}
-          href={`/${locale}/club/collections/${collection.slug}`}
+          asChild
           py={2}
           lineHeight="1.15"
           _hover={{ color: 'primary.500' }}
         >
-          {collection.title}
-        </Link>
+          <Link href={`/${locale}/club/collections/${collection.slug}`}>
+            {collection.title}
+          </Link>
+        </ChakraLink>
       ))}
     </Stack>
   )

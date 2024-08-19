@@ -22,7 +22,7 @@ export const ModelEditModal = <T extends StrapiModel>({
   isFullHeight,
   isOpen,
   onClose,
-  size = '6xl',
+  size = 'xl',
   maxW,
   onSuccess,
   children = null,

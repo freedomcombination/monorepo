@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import Link from 'next/link'
 import { Box, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
@@ -119,7 +119,8 @@ export const AdminLoginForm = () => {
                       components={{
                         a: (
                           <Link
-                            isExternal
+                            rel="noreferrer noopener"
+                            target="_blank"
                             href={'https://freedomcombination.com/tr/contact'}
                             color="blue.500"
                           />

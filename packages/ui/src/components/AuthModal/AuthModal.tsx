@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import { Stack, Text, VStack } from '@chakra-ui/react'
+import Link from 'next/link'
+import { Stack, Text, VStack, Link as ChakraLink } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
@@ -125,11 +125,15 @@ export const AuthModal = () => {
                         i18nKey="login.error.unauthorized"
                         components={{
                           a: (
-                            <Link
-                              isExternal
-                              href={'https://freedomcombination.com/tr/contact'}
-                              color="blue.500"
-                            />
+                            <ChakraLink asChild color="blue.500">
+                              <Link
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                href={
+                                  'https://freedomcombination.com/tr/contact'
+                                }
+                              />
+                            </ChakraLink>
                           ),
                         }}
                       />

@@ -1,10 +1,11 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { MenuTypeItemProps } from './types'
 import { useScroll } from '../../hooks'
+import { Link as ChakraLink } from '@chakra-ui/react'
 
 export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
   const { asPath, locale } = useRouter()
@@ -13,11 +14,10 @@ export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
   const isExternal = item.link?.startsWith('http')
 
   return (
-    <Link
-      href={item.link as string}
-      fontWeight={600}
+    <ChakraLink
+      asChild
       p={2}
-      {...(isExternal && { isExternal, target: '_blank' })}
+      fontWeight={600}
       color={
         isActive
           ? isDark
@@ -31,7 +31,15 @@ export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
         color: !isScrolled && isDark ? 'whiteAlpha.800' : 'primary.500',
       }}
     >
-      {item[locale || 'en']}
-    </Link>
+      <Link
+        href={item.link as string}
+        {...(isExternal && {
+          target: '_blank',
+          rel: 'noreferrer noopener',
+        })}
+      >
+        {item[locale || 'en']}
+      </Link>
+    </ChakraLink>
   )
 }

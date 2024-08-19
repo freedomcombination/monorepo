@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import Link from 'next/link'
 import { Box, Center, Heading, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 

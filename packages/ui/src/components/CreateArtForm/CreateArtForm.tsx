@@ -1,7 +1,7 @@
 import { FC, useRef, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Link } from '@chakra-ui/next-js'
+import Link from 'next/link'
 import {
   Box,
   Group,

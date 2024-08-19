@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import Link from 'next/link'
 import {
   Box,
   Center,
@@ -81,7 +81,8 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
           )}
           <Stack gap={4} order={{ base: 1, md: 2 }}>
             <Link
-              isExternal
+              rel="noreferrer noopener"
+              target="_blank"
               href={'https://trendrights.com/tr/hashtags/kusatilmis-ebeveynlik'}
             >
               <Center aspectRatio={{ base: 3, md: 2 }}>
@@ -104,7 +105,11 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
                 </Button>
               </Center>
             </Link>
-            <Link isExternal href="https://freedomcombination.com/donation">
+            <Link
+              rel="noreferrer noopener"
+              target="_blank"
+              href="https://freedomcombination.com/donation"
+            >
               <Center aspectRatio={{ base: 3, md: 2 }}>
                 <Button
                   boxSize={'full'}

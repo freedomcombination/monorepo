@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Link } from '@chakra-ui/next-js'
+import Link from 'next/link'
 import { Badge, Box, HStack, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AiFillHeart } from 'react-icons/ai'
@@ -246,24 +246,24 @@ export const ArtCard: FC<ArtCardProps> = ({
               {art?.[`title_${router.locale}`]}
             </Text>
 
-            <HStack
-              href={`/club/artist/${art.artist?.id}`}
-              as={Link}
-              _hover={{ bg: 'whiteAlpha.300', borderColor: 'whiteAlpha.500' }}
-              borderColor="transparent"
-              borderWidth={1}
-              m={1}
-              p={1}
-              rounded="lg"
-              w="max-content"
-            >
-              <WAvatar
-                size="xs"
-                name={artistName || artistEmail}
-                src={artistAvatar}
-              />
-              <Text lineClamp={1}>{artistName || artistEmail}</Text>
-            </HStack>
+            <Link href={`/club/artist/${art.artist?.id}`}>
+              <HStack
+                _hover={{ bg: 'whiteAlpha.300', borderColor: 'whiteAlpha.500' }}
+                borderColor="transparent"
+                borderWidth={1}
+                m={1}
+                p={1}
+                rounded="lg"
+                w="max-content"
+              >
+                <WAvatar
+                  size="xs"
+                  name={artistName || artistEmail}
+                  src={artistAvatar}
+                />
+                <Text lineClamp={1}>{artistName || artistEmail}</Text>
+              </HStack>
+            </Link>
           </Stack>
         </HStack>
       </Box>

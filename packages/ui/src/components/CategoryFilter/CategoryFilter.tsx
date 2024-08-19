@@ -32,7 +32,7 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
     ?.map((category, index) => `${index}=${category}`)
     .join('&')
 
-  const { value, getCheckboxProps, setValue } = useCheckboxGroup({
+  const { value, getItemProps, setValue } = useCheckboxGroup({
     defaultValue: initialCategories,
   })
 
@@ -81,10 +81,10 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
       {categoryData?.map(category => (
         <CategoryFilterCheckbox
           key={category.id}
-          {...getCheckboxProps({
-            id: category.id,
+          {...getItemProps({
+            // id: category.id,
             value: category.slug,
-            name: category[`name_${locale}`],
+            // name: category[`name_${locale}`],
           })}
         />
       ))}
