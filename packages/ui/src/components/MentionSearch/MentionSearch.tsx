@@ -1,12 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import {
-  Box,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-} from '@chakra-ui/react'
+import { Box, Input, Group, InputElement } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import { useDebounce } from 'react-use'
@@ -50,10 +44,10 @@ export const MentionSearch = (): JSX.Element => {
   }, [filteredMentions])
 
   return (
-    <InputGroup>
-      <InputLeftElement pointerEvents="none">
+    <Group>
+      <InputElement pointerEvents="none">
         <Box color="gray.300" as={FaSearch} />
-      </InputLeftElement>
+      </InputElement>
       <Input
         bg="white"
         borderWidth={0}
@@ -69,7 +63,7 @@ export const MentionSearch = (): JSX.Element => {
           outline: 'none',
         }}
       />
-      <InputRightElement>
+      <InputElement>
         <IconButton
           aria-label={'Clear mention search'}
           onClick={() => setValue('')}
@@ -78,7 +72,7 @@ export const MentionSearch = (): JSX.Element => {
           size={'sm'}
           colorScheme={'blackAlpha'}
         />
-      </InputRightElement>
-    </InputGroup>
+      </InputElement>
+    </Group>
   )
 }

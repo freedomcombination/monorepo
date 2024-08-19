@@ -1,6 +1,6 @@
 import { ChangeEventHandler, FC, useContext, useState } from 'react'
 
-import { Input, InputGroup, InputLeftAddon } from '@chakra-ui/react'
+import { Input, Group, InputAddon } from '@chakra-ui/react'
 
 import { DictContext } from './DictContext'
 import { dicts } from './dicts'
@@ -25,9 +25,10 @@ export const EntryInput: FC<EntryInputProps> = ({ locale, localeKey }) => {
   }
 
   return (
-    <InputGroup size={'sm'}>
-      <InputLeftAddon>{locale}</InputLeftAddon>
+    <Group>
+      <InputAddon size={'sm'}>{locale}</InputAddon>
       <Input
+        size={'sm'}
         defaultValue={defaultVal}
         disabled={locked}
         color={color}
@@ -36,6 +37,6 @@ export const EntryInput: FC<EntryInputProps> = ({ locale, localeKey }) => {
         }}
         onChange={handleChange}
       />
-    </InputGroup>
+    </Group>
   )
 }

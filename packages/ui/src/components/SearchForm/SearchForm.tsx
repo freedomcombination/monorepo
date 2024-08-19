@@ -1,12 +1,7 @@
 import { useState } from 'react'
 
 import { useUpdateEffect } from '@chakra-ui/hooks'
-import {
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-} from '@chakra-ui/react'
+import { Input, Group, InputElement } from '@chakra-ui/react'
 import { FaTimes } from 'react-icons/fa'
 import { HiOutlineSearch } from 'react-icons/hi'
 import { useDebounce } from 'react-use'
@@ -47,12 +42,13 @@ export const SearchForm: React.FC<SearchFormProps> = ({
   }, [debouncedSearchTerm, onReset])
 
   return (
-    <InputGroup size="lg" flex="1">
-      <InputLeftElement pointerEvents="none" color="gray.400">
+    <Group flex="1">
+      <InputElement pointerEvents="none" color="gray.400">
         <HiOutlineSearch />
-      </InputLeftElement>
+      </InputElement>
 
       <Input
+        size="lg"
         placeholder={placeholder}
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
@@ -61,7 +57,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         }
         {...rest}
       />
-      <InputRightElement w="max-content" right={1}>
+      <InputElement w="max-content" right={1}>
         {searchTerm.length > 1 && (
           <IconButton
             loading={isFetching}
@@ -78,7 +74,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
             aria-label="Search"
           />
         )}
-      </InputRightElement>
-    </InputGroup>
+      </InputElement>
+    </Group>
   )
 }
