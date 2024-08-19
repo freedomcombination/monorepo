@@ -1,11 +1,4 @@
-import {
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  VStack,
-} from '@chakra-ui/react'
+import { Tabs, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { MentionUserData } from '@fc/types'
@@ -35,22 +28,26 @@ export const MentionList = () => {
   return (
     <VStack align="stretch" h={400}>
       <VStack minH="0" h="full" align="stretch" bg="white" overflowY="auto">
-        <Tabs
+        <Tabs.Root
           size="sm"
           colorScheme={'primary'}
-          isFitted
+          fitted
           variant="line"
           bg="white"
         >
-          <TabList pos="sticky" top="0" bg="white">
-            <Tab>{t('post.mention-tab-popular')}</Tab>
-            <Tab>{t('post.mention-tab-saved')}</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel p={0}>
+          <Tabs.List pos="sticky" top="0" bg="white">
+            <Tabs.Trigger value="popular">
+              {t('post.mention-tab-popular')}
+            </Tabs.Trigger>
+            <Tabs.Trigger value="saved">
+              {t('post.mention-tab-saved')}
+            </Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.ContentGroup>
+            <Tabs.Content value="popular" p={0}>
               <MentionListPanel />
-            </TabPanel>
-            <TabPanel p={0}>
+            </Tabs.Content>
+            <Tabs.Content value="saved" p={0}>
               {savedMentions?.map((data, i) => (
                 <MentionListItem
                   key={i}
@@ -59,9 +56,9 @@ export const MentionList = () => {
                   onAddItem={onAddMention}
                 />
               ))}
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
+            </Tabs.Content>
+          </Tabs.ContentGroup>
+        </Tabs.Root>
       </VStack>
     </VStack>
   )

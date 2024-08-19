@@ -1,15 +1,6 @@
 import { FC, useState } from 'react'
 
-import {
-  Center,
-  Input,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { Center, Input, Stack, Tabs } from '@chakra-ui/react'
 import { debounce } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { useLocalStorage } from 'usehooks-ts'
@@ -44,37 +35,43 @@ export const NewsFeed = () => {
           bg: 'white',
         }}
       />
-      <Tabs colorScheme="primary">
-        <TabList>
-          <Tab fontWeight={600}>{t('recommended-news')}</Tab>
-          <Tab fontWeight={600}>{t('blogs')}</Tab>
-          <Tab fontWeight={600}>{t('activities')}</Tab>
-        </TabList>
+      <Tabs.Root colorScheme="primary">
+        <Tabs.List>
+          <Tabs.Trigger value="news" fontWeight={600}>
+            {t('recommended-news')}
+          </Tabs.Trigger>
+          <Tabs.Trigger value="blogs" fontWeight={600}>
+            {t('blogs')}
+          </Tabs.Trigger>
+          <Tabs.Trigger value="activities" fontWeight={600}>
+            {t('activities')}
+          </Tabs.Trigger>
+        </Tabs.List>
 
-        <TabPanels>
-          <TabPanel px={0}>
+        <Tabs.ContentGroup>
+          <Tabs.Content value="news" px={0}>
             <PanelRecommended
               searchKey={searchKey}
               hiddenUrls={hiddenUrls}
               setHiddenUrls={setHiddenUrls}
             />
-          </TabPanel>
-          <TabPanel px={0}>
+          </Tabs.Content>
+          <Tabs.Content value="blogs" px={0}>
             <PanelBlog
               searchKey={searchKey}
               hiddenUrls={hiddenUrls}
               setHiddenUrls={setHiddenUrls}
             />
-          </TabPanel>
-          <TabPanel px={0}>
+          </Tabs.Content>
+          <Tabs.Content value="activities" px={0}>
             <PanelActivity
               searchKey={searchKey}
               hiddenUrls={hiddenUrls}
               setHiddenUrls={setHiddenUrls}
             />
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+          </Tabs.Content>
+        </Tabs.ContentGroup>
+      </Tabs.Root>
     </Stack>
   )
 }

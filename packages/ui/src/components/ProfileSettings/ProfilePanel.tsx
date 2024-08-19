@@ -1,19 +1,7 @@
 'use client'
 import { FC, PropsWithChildren } from 'react'
 
-import {
-  Box,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  TabProps,
-  Tabs,
-  TabsProps,
-  Text,
-  VStack,
-  useBreakpointValue,
-} from '@chakra-ui/react'
+import { Box, Tabs, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
 import { FaBlog, FaKey } from 'react-icons/fa6'
@@ -34,8 +22,8 @@ type ProfilePanelProps = PropsWithChildren<{
   showArts?: boolean
 }>
 
-const CustomTab = (props: TabProps) => (
-  <Tab
+const CustomTab = (props: Tabs.TriggerProps) => (
+  <Tabs.Trigger
     borderWidth={1}
     rounded={'md'}
     borderColor={'transparent'}
@@ -52,7 +40,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   showArts = false,
 }) => {
   const { user, profile, site } = useAuthContext()
-  const orientation = useBreakpointValue<TabsProps['orientation']>({
+  const orientation = useBreakpointValue<Tabs.RootProps['orientation']>({
     base: 'horizontal',
     lg: 'vertical',
   })
@@ -89,70 +77,70 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
 
       <Box bg="white" py={8} px={{ lg: 8 }}>
         <Container>
-          <Tabs
+          <Tabs.Root
             orientation={orientation}
             border={0}
             colorScheme="primary"
             size="lg"
-            variant={'unstyled'}
+            variant={'plain'}
             gap={8}
-            isLazy
+            lazyMount
           >
-            <TabList
+            <Tabs.List
               border={0}
               minW={{ base: 'auto', lg: 300 }}
               mb={{ base: 8, lg: 0 }}
               h="max-content"
               overflowX={'auto'}
             >
-              <CustomTab>
+              <CustomTab value="profile">
                 <Box as={FaUserCircle} mr={2} />
                 <Box>{t('profile.tabs.profile')}</Box>
               </CustomTab>
-              <CustomTab>
+              <CustomTab value="security">
                 <Box as={FaKey} mr={2} />
                 <Box>{t('profile.tabs.security')}</Box>
               </CustomTab>
-              <CustomTab>
+              <CustomTab value="socials">
                 <Box as={TbSocial} mr={2} />
                 <Box>{t('profile.tabs.socials')}</Box>
               </CustomTab>
               {showArts && (
-                <CustomTab>
+                <CustomTab value="arts">
                   <Box as={FaPaintBrush} mr={2} />
                   <Box>{t('profile.tabs.arts')}</Box>
                 </CustomTab>
               )}
               {isBlogsVisible && (
-                <CustomTab>
+                <CustomTab value="blogs">
                   <Box as={FaBlog} mr={2} />
                   <Box>{t('profile.tabs.blogs')}</Box>
                 </CustomTab>
               )}
-            </TabList>
-            <TabPanels>
-              <TabPanel p={0}>
+            </Tabs.List>
+            <Tabs.ContentGroup>
+              <Tabs.Content value="profile" p={0}>
                 <DetailsTab />
-              </TabPanel>
-              <TabPanel p={0}>
+              </Tabs.Content>
+              <Tabs.Content value="security" p={0}>
                 <SecurityTab />
-              </TabPanel>
-              <TabPanel p={0}>
+              </Tabs.Content>
+              <Tabs.Content value="socials" p={0}>
                 <Socials />
-              </TabPanel>
+              </Tabs.Content>
               {showArts && (
-                <TabPanel p={0}>
+                <Tabs.Content value="arts" p={0}>
                   <ArtsTab />
-                </TabPanel>
+                </Tabs.Content>
               )}
               {isBlogsVisible && (
-                <TabPanel p={0}>
+                <Tabs.Content value="blogs" p={0}>
                   <BlogsTab />
-                </TabPanel>
+                </Tabs.Content>
               )}
-            </TabPanels>
+            </Tabs.ContentGroup>
             {children}
-          </Tabs>
+          </Tabs.Root>
         </Container>
       </Box>
     </>

@@ -1,12 +1,4 @@
-import {
-  Box,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { Box, Stack, Tabs } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { useHashtag } from '@fc/services'
@@ -24,23 +16,27 @@ export const TimelineTrendsTabs = () => {
   return (
     <Stack h={780}>
       <Box overflowY="auto" bg="white" borderWidth={1}>
-        <Tabs colorScheme="primary" isFitted size="sm">
-          <TabList pos="sticky" top="0" bg="white">
-            <Tab py={2}>Timeline</Tab>
-            <Tab py={2}>{t('post.trends-label')}</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
+        <Tabs.Root colorScheme="primary" fitted size="sm">
+          <Tabs.List pos="sticky" top="0" bg="white">
+            <Tabs.Trigger value="timeline" py={2}>
+              Timeline
+            </Tabs.Trigger>
+            <Tabs.Trigger value="trends" py={2}>
+              {t('post.trends-label')}
+            </Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.ContentGroup>
+            <Tabs.Content value="timeline">
               <TweetWidget
                 title={t('post.latest-tweets-label')}
                 tweets={hashtag?.tweets}
               />
-            </TabPanel>
-            <TabPanel>
+            </Tabs.Content>
+            <Tabs.Content value="trends">
               <TrendTabs />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
+            </Tabs.Content>
+          </Tabs.ContentGroup>
+        </Tabs.Root>
       </Box>
     </Stack>
   )

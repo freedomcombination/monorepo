@@ -1,15 +1,6 @@
 import { ReactNode } from 'react'
 
-import {
-  Heading,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-} from '@chakra-ui/react'
+import { Heading, Stack, Tabs, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -91,11 +82,12 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
 
   return (
     <GenPostProvider hashtag={hashtag} post={post} archives={archives}>
-      <Tabs colorScheme={colorScheme}>
-        <TabList overflowX={'auto'}>
+      <Tabs.Root colorScheme={colorScheme}>
+        <Tabs.List overflowX={'auto'}>
           {archives.map(archiveContent => {
             return (
-              <Tab
+              <Tabs.Trigger
+                value={`${archiveContent.id}`}
                 key={archiveContent.id}
                 _selected={{ fontWeight: 600, color: `${colorScheme}.500` }}
               >
@@ -104,14 +96,19 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
                     Archive {archiveContent.id}
                   </Text>
                 </ArchivePopover>
-              </Tab>
+              </Tabs.Trigger>
             )
           })}
-        </TabList>
-        <TabPanels>
+        </Tabs.List>
+        <Tabs.ContentGroup>
           {archives.map(archiveContent => {
             return (
-              <TabPanel px={0} py={noBorder ? 0 : 2} key={archiveContent.id}>
+              <Tabs.Content
+                value={`${archiveContent.id}`}
+                px={0}
+                py={noBorder ? 0 : 2}
+                key={archiveContent.id}
+              >
                 {post ? (
                   <TweetGenAI
                     archiveContentId={archiveContent.id}
@@ -124,11 +121,11 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
                     content={archiveContent.content}
                   />
                 )}
-              </TabPanel>
+              </Tabs.Content>
             )
           })}
-        </TabPanels>
-      </Tabs>
+        </Tabs.ContentGroup>
+      </Tabs.Root>
       {post && (
         <Stack p={{ base: 4, lg: 8 }}>
           <Heading>{t('sentences')}</Heading>

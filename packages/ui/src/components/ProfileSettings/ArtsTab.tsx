@@ -1,14 +1,4 @@
-import {
-  Box,
-  Center,
-  HStack,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { Box, Center, HStack, Stack, Tabs } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush } from 'react-icons/fa'
 import { FaSpinner } from 'react-icons/fa6'
@@ -37,32 +27,52 @@ export const ArtsTab = () => {
   )
   const artPanelData = [approved, pending, rejected]
 
-  const defaultIndex = approved?.length ? 0 : pending?.length ? 1 : 2
+  const defaultValue = approved?.length
+    ? 'approved'
+    : pending?.length
+      ? 'pending'
+      : 'rejected'
 
   if (!data?.length) return null
 
   return (
     <Stack>
-      <Tabs isLazy colorScheme="primary" defaultIndex={defaultIndex}>
+      <Tabs.Root lazyMount colorScheme="primary" defaultValue={defaultValue}>
         <HStack gap={4}>
-          <TabList overscrollX={'auto'}>
+          <Tabs.List overscrollX={'auto'}>
             <CreateArtForm size="md" />
 
-            <Tab fontWeight={600} disabled={!approved?.length}>
+            <Tabs.Trigger
+              value="approved"
+              fontWeight={600}
+              disabled={!approved?.length}
+            >
               <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
-            </Tab>
-            <Tab fontWeight={600} disabled={!pending?.length}>
+            </Tabs.Trigger>
+            <Tabs.Trigger
+              value="pending"
+              fontWeight={600}
+              disabled={!pending?.length}
+            >
               <Box as={FaSpinner} mr={1} /> <>{t('pending-arts')}</>
-            </Tab>
-            <Tab fontWeight={600} disabled={!rejected?.length}>
+            </Tabs.Trigger>
+            <Tabs.Trigger
+              value="rejected"
+              fontWeight={600}
+              disabled={!rejected?.length}
+            >
               <Box as={MdRemoveModerator} mr={1} /> <>{t('rejected-arts')}</>
-            </Tab>
-          </TabList>
+            </Tabs.Trigger>
+          </Tabs.List>
         </HStack>
 
-        <TabPanels>
+        <Tabs.ContentGroup>
           {artPanelData.map((artData, index) => (
-            <TabPanel key={index} px={0}>
+            <Tabs.Content
+              value={artData?.[index].approvalStatus || 'approved'}
+              key={index}
+              px={0}
+            >
               {artData && artData.length > 0 ? (
                 <ArtGrid
                   arts={artData}
@@ -74,10 +84,10 @@ export const ArtsTab = () => {
               ) : (
                 noContent
               )}
-            </TabPanel>
+            </Tabs.Content>
           ))}
-        </TabPanels>
-      </Tabs>
+        </Tabs.ContentGroup>
+      </Tabs.Root>
     </Stack>
   )
 }
