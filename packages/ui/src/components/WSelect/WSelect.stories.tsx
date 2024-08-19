@@ -63,20 +63,11 @@ export const Default: Story<SelectFormFieldValues> = {
   },
 }
 
-export const Check: Story<SelectFormFieldValues> = {
+export const Multiple: Story<SelectFormFieldValues> = {
   render: StoryWithHooksSingle,
   args: {
     label: 'Check',
-    selectedOptionStyle: 'check',
-  },
-}
-
-export const Color: Story<SelectFormFieldValues> = {
-  render: StoryWithHooksSingle,
-  args: {
-    label: 'Color',
-    selectedOptionStyle: 'color',
-    selectedOptionColor: 'green',
+    multiple: true,
   },
 }
 
@@ -106,7 +97,7 @@ const StoryWithHooksMultiple: StoryFn<
       errors={errors}
       control={control}
       options={options}
-      isMulti
+      multiple
       colorScheme="primary"
       placeholder="Select categories"
     />
@@ -117,26 +108,5 @@ export const Multi: Story<SelectFormMultiFieldValues> = {
   render: StoryWithHooksMultiple,
   args: {
     label: 'Multi',
-  },
-}
-
-export const MultiCheck: Story<SelectFormMultiFieldValues> = {
-  render: StoryWithHooksMultiple,
-  args: {
-    label: 'Multi Check',
-    selectedOptionStyle: 'check',
-    closeMenuOnSelect: false,
-    hideSelectedOptions: false,
-  },
-}
-
-export const MultiColor: Story<SelectFormMultiFieldValues> = {
-  render: StoryWithHooksMultiple,
-  args: {
-    label: 'Multi Color',
-    selectedOptionStyle: 'color',
-    selectedOptionColor: 'purple',
-    closeMenuOnSelect: false,
-    hideSelectedOptions: false,
   },
 }

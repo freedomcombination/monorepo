@@ -1,9 +1,9 @@
 import { FC, useCallback } from 'react'
 
-import { Text } from '@chakra-ui/react'
+import { MenuContent, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import { Button, Menu, MenuButton, MenuItem, MenuList } from '@fc/chakra'
+import { Button, MenuItem, MenuRoot, MenuTrigger } from '@fc/chakra'
 import { StrapiLocale } from '@fc/types'
 
 import { Flag } from '../Flag'
@@ -31,17 +31,17 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
   )
 
   return (
-    <Menu>
-      <MenuButton value="language-swithc-menu" asChild>
+    <MenuRoot>
+      <MenuTrigger value="language-swithc-menu" asChild>
         <Button
-          variant="outline"
           rounded="full"
-          leftIcon={<Flag locale={router.locale} boxSize={6} />}
           {...(responsive && {
             px: 2,
           })}
-          colorScheme={'gray'}
+          variant={'outline'}
+          w={'auto'}
         >
+          <Flag locale={router.locale} boxSize={6} />
           <Text
             pr={1}
             {...(responsive && {
@@ -51,8 +51,8 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
             {LanguageNames[router.locale]}
           </Text>
         </Button>
-      </MenuButton>
-      <MenuList>
+      </MenuTrigger>
+      <MenuContent>
         {router.locales
           .filter(locale => locale !== router.locale)
           .map(locale => (
@@ -65,7 +65,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ responsive }) => {
               {LanguageNames[locale as StrapiLocale]}
             </MenuItem>
           ))}
-      </MenuList>
-    </Menu>
+      </MenuContent>
+    </MenuRoot>
   )
 }

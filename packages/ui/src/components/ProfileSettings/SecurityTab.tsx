@@ -86,7 +86,7 @@ const Credential: React.FC<CredentialProps> = ({
 
   return (
     <Group>
-      <InputElement>{!saving ? leftIcon : <Spinner size="sm" />}</InputElement>
+      {/* <InputElement>{!saving ? leftIcon : <Spinner size="sm" />}</InputElement> */}
       <Input
         pr="7em"
         size="lg"
@@ -96,11 +96,11 @@ const Credential: React.FC<CredentialProps> = ({
         value={value}
         onChange={e => setValue(e.target.value)}
       />
-      <InputElement width="7rem" justifyContent={'flex-end'} pr={1}>
+      {/* <InputElement width="7rem" justifyContent={'flex-end'} pr={1}>
         <Button h="1.75rem" size="sm" onClick={handleClick}>
           {edit ? (isValid(user, value) ? t('save') : t('cancel')) : t('edit')}
         </Button>
-      </InputElement>
+      </InputElement> */}
     </Group>
   )
 }

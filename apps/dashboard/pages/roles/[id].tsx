@@ -9,15 +9,15 @@ import { FaFilter, FaX } from 'react-icons/fa6'
 
 import {
   Button,
-  Select,
   IconButton,
-  Menu,
-  MenuButton,
-  MenuSeparator,
-  MenuItem,
   MenuCheckboxItem,
-  MenuList,
+  MenuContent,
+  MenuItem,
   MenuItemGroup,
+  MenuRoot,
+  MenuSeparator,
+  MenuTrigger,
+  Select,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
@@ -146,15 +146,15 @@ const RolePage: FC<RolePageProps> = () => {
           </HStack>
           <HStack gap={4}>
             {role && (
-              <Menu closeOnSelect={false}>
-                <MenuButton value="menu" asChild>
+              <MenuRoot closeOnSelect={false}>
+                <MenuTrigger value="menu" asChild>
                   <IconButton
                     aria-label="endpoint-filter"
                     icon={<FaFilter />}
                     variant={'outline'}
                   />
-                </MenuButton>
-                <MenuList h={400} overflow={'auto'}>
+                </MenuTrigger>
+                <MenuContent h={400} overflow={'auto'}>
                   <MenuItem value="clear" onClick={() => setFilters([])}>
                     {t('clear')}
                   </MenuItem>
@@ -177,8 +177,8 @@ const RolePage: FC<RolePageProps> = () => {
                       </MenuCheckboxItem>
                     ))}
                   </MenuItemGroup>
-                </MenuList>
-              </Menu>
+                </MenuContent>
+              </MenuRoot>
             )}
             {allRoles && (
               <Select

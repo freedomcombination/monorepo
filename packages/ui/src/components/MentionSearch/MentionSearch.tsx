@@ -45,9 +45,9 @@ export const MentionSearch = (): JSX.Element => {
 
   return (
     <Group>
-      <InputElement pointerEvents="none">
+      {/* <InputElement pointerEvents="none">
         <Box color="gray.300" as={FaSearch} />
-      </InputElement>
+      </InputElement> */}
       <Input
         bg="white"
         borderWidth={0}
@@ -63,7 +63,7 @@ export const MentionSearch = (): JSX.Element => {
           outline: 'none',
         }}
       />
-      <InputElement>
+      {/* <InputElement>
         <IconButton
           aria-label={'Clear mention search'}
           onClick={() => setValue('')}
@@ -72,7 +72,7 @@ export const MentionSearch = (): JSX.Element => {
           size={'sm'}
           colorScheme={'blackAlpha'}
         />
-      </InputElement>
+      </InputElement> */}
     </Group>
   )
 }

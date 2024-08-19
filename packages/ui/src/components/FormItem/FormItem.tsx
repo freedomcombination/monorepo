@@ -1,17 +1,15 @@
 import { forwardRef, Ref } from 'react'
 
 import { useBoolean, useMergeRefs } from '@chakra-ui/hooks'
-import { Box, Flex, Group, Input, InputElement } from '@chakra-ui/react'
+import { Group, Input } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FieldValues } from 'react-hook-form'
-import { HiEye, HiEyeOff } from 'react-icons/hi'
-import { TbInfoCircle } from 'react-icons/tb'
 
-import { Field, IconButton, Tooltip } from '@fc/chakra'
+import { Field } from '@fc/chakra'
 
-import { FormItemProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
-
+import { I18nNamespaces } from '../../../@types/i18next'
+import { FormItemProps } from './types'
 function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
   {
     name,
@@ -53,39 +51,28 @@ function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
       invalid={Boolean(errors?.[name])}
       required={required}
     >
-      {label && !hideLabel && (
-        <Flex align={'center'} mb={1}>
-          {tooltip && (
-            <Tooltip positioning={{ placement: 'top-start' }} content={tooltip}>
-              <Box color="gray.500">
-                <TbInfoCircle />
-              </Box>
-            </Tooltip>
-          )}
-        </Flex>
-      )}
-      <Group>
-        {leftElement && (
-          <InputElement pointerEvents="none" h={'full'}>
-            <Box color="gray.300">{leftElement}</Box>
+      <Group w={'full'}>
+        {/* {leftElement && (
+          <InputElement placement={'start'} h={'full'} color={'gray.300'}>
+            <IconButton icon={<EyeOnIcon />} />
           </InputElement>
-        )}
+        )} */}
         <Tag
           ref={ref}
           id={name}
           type={type === 'password' ? (isOpen ? 'text' : 'password') : type}
           placeholder={placeholder}
           _placeholder={{ color: 'gray.300' }}
+          w={'full'}
           {...registerRest}
           {...rest}
         />
-
-        {type !== 'password' && rightElement && (
-          <InputElement h={'full'}>
-            <Box color="gray.300">{rightElement}</Box>
+        {/* {type !== 'password' && rightElement && (
+          <InputElement h={'full'} color="gray.300">
+            {rightElement}
           </InputElement>
-        )}
-        {type === 'password' && (
+        )} */}
+        {/* {type === 'password' && (
           <InputElement h={'full'}>
             <IconButton
               variant="plain"
@@ -95,7 +82,7 @@ function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
               onClick={setIsOpen.toggle}
             />
           </InputElement>
-        )}
+        )} */}
       </Group>
     </Field>
   )

@@ -94,7 +94,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
                   {...(isExternal && { isExternal, target: '_blank' })}
                   leftIcon={item.icon}
                   size="sm"
-                  variant="ghost"
+                  variant="plain"
                   color={'initial'}
                   w="full"
                   px={2}

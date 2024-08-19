@@ -1,7 +1,7 @@
-import { GroupBase, Props as SelectProps } from 'chakra-react-select'
 import { Control, FieldValues } from 'react-hook-form'
 
 import { FormItemProps } from '../FormItem'
+import { SelectRootProps } from '@chakra-ui/react'
 
 export type SelectOption = {
   label: string
@@ -10,5 +10,6 @@ export type SelectOption = {
 
 export type WSelectProps<T extends FieldValues> = {
   control: Control<T>
+  options: SelectOption[]
 } & Omit<FormItemProps<T>, 'register' | 'leftElement'> &
-  SelectProps<SelectOption, boolean, GroupBase<SelectOption>>
+  Omit<SelectRootProps, 'items'>

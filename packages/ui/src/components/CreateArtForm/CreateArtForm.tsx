@@ -204,7 +204,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                     name="categories"
                     errors={errors}
                     control={control}
-                    isMulti
+                    multiple
                     options={
                       categories.data?.data?.map(c => ({
                         value: c.id.toString(),

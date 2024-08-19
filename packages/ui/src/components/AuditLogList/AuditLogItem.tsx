@@ -9,6 +9,7 @@ import {
   Group,
   chakra,
   ButtonProps,
+  Flex,
 } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { IconType } from 'react-icons'
@@ -108,7 +109,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
         )}
       </HStack>
 
-      <Group wrap={'wrap'} align={'center'} ml={1}>
+      <Flex wrap={'wrap'} align={'center'} ml={1}>
         <Text display={'inline'}>{message}</Text>
         {log.text?.length > 50 && (
           <Tooltip
@@ -128,7 +129,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
           lineClamp={1}
           dangerouslySetInnerHTML={{ __html: log.text }}
         />
-      </Group>
+      </Flex>
     </Group>
   )
 }

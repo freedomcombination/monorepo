@@ -1,23 +1,23 @@
 import { FC } from 'react'
 
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
 
 import {
   Button,
-  Menu,
-  MenuButton,
+  MenuContent,
   MenuItem,
-  MenuList,
+  MenuRoot,
   MenuSeparator,
+  MenuTrigger,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
-import { ProfileMenuProps } from './types'
 import { useScroll } from '../../hooks'
 import { ButtonLink } from '../ButtonLink'
 import { WAvatar } from '../WAvatar'
+import { ProfileMenuProps } from './types'
 
 export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   const isScrolled = useScroll()
@@ -41,8 +41,8 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   }
 
   return (
-    <Menu positioning={{ placement: 'bottom' }}>
-      <MenuButton value="profile-menu" asChild>
+    <MenuRoot positioning={{ placement: 'bottom' }}>
+      <MenuTrigger value="profile-menu" asChild>
         <Button
           size={'sm'}
           leftIcon={
@@ -55,8 +55,8 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
         >
           {profile?.name || user?.username}
         </Button>
-      </MenuButton>
-      <MenuList>
+      </MenuTrigger>
+      <MenuContent>
         <MenuItem value="profile" asChild>
           <ButtonLink href={'/profile'}>{t('profile')}</ButtonLink>
         </MenuItem>
@@ -67,7 +67,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
             {t('logout')}
           </Button>
         </MenuItem>
-      </MenuList>
-    </Menu>
+      </MenuContent>
+    </MenuRoot>
   )
 }

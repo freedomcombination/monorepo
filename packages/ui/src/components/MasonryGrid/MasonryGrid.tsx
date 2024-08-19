@@ -23,8 +23,9 @@ export const MasonryGrid: FC<MasonryGridProps> = ({
   return (
     <Flex
       w={'full'}
+      className="masonry-grid-wrapper"
       css={{
-        '& .masonry-grid_column': {
+        '& > .masonry-grid_column': {
           display: 'flex',
           flexDirection: 'column',
           '&:not(:nth-of-type(1))': {
@@ -45,7 +46,7 @@ export const MasonryGrid: FC<MasonryGridProps> = ({
         breakpointCols={breakpointCols}
         className="masonry-grid"
         columnClassName="masonry-grid_column"
-        width={'100%'}
+        style={{ width: '100%' }}
       >
         {children}
       </Masonry>

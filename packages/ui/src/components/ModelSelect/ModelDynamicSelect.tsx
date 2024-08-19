@@ -44,9 +44,11 @@ export const ModelDynamicSelect = <T extends StrapiModel>({
 
   const options = models && mapModelsToOptions(models, locale)
 
+  if (!options) return null
+
   return (
     <WSelect
-      onMenuOpen={() => setIsMenuOpened(true)}
+      onOpenChange={e => setIsMenuOpened(e.open)}
       {...rest}
       options={options}
     />

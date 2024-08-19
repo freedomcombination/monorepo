@@ -7,7 +7,7 @@ import { ButtonLink } from '../ButtonLink'
 
 export const NavLink: FC<NavLinkProps> = ({ href, children, ...rest }) =>
   href ? (
-    <ButtonLink href={href} variant={'plain'} w={'full'} {...rest}>
+    <ButtonLink href={href} w={'full'} {...rest} variant={'plain'}>
       {children}
     </ButtonLink>
   ) : (

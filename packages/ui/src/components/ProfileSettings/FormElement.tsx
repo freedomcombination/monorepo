@@ -31,7 +31,7 @@ export const FormElement: React.FC<FormElementProps> = ({
 
   return (
     <Field title={title} label={title}>
-      <Group>
+      {/* <Group>
         {left && <InputAddon>{left}</InputAddon>}
         <Tag
           placeholder={placeholder}
@@ -42,7 +42,7 @@ export const FormElement: React.FC<FormElementProps> = ({
           {...(useTextarea && { resize: 'vertical' })}
         />
         {right && <InputAddon>{right}</InputAddon>}
-      </Group>
+      </Group> */}
     </Field>
   )
 }

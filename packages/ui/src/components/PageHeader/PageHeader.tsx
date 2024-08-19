@@ -7,10 +7,10 @@ import { VscListFilter } from 'react-icons/vsc'
 
 import {
   IconButton,
-  Menu,
-  MenuButton,
   MenuSeparator,
-  MenuList,
+  MenuRoot,
+  MenuTrigger,
+  MenuContent,
 } from '@fc/chakra'
 
 import { SearchForm } from '../SearchForm'
@@ -62,8 +62,8 @@ export const PageHeader: FC<PageHeaderProps> = ({
       )}
 
       {filterMenu && (
-        <Menu closeOnSelect={filterMenuCloseOnSelect} lazyMount>
-          <MenuButton value="page-header-filter-menu" asChild>
+        <MenuRoot closeOnSelect={filterMenuCloseOnSelect} lazyMount>
+          <MenuTrigger value="page-header-filter-menu" asChild>
             <IconButton
               aria-label="Open filter menu"
               icon={<HiOutlineFilter />}
@@ -71,8 +71,8 @@ export const PageHeader: FC<PageHeaderProps> = ({
               rounded="full"
               colorScheme="gray"
             />
-          </MenuButton>
-          <MenuList
+          </MenuTrigger>
+          <MenuContent
             css={{
               '& .chakra-menu__group': {
                 maxH: 200,
@@ -86,13 +86,13 @@ export const PageHeader: FC<PageHeaderProps> = ({
             }}
           >
             <Stack separator={<MenuSeparator />}>{filterMenu}</Stack>
-          </MenuList>
-        </Menu>
+          </MenuContent>
+        </MenuRoot>
       )}
 
       {sortMenu && (
-        <Menu lazyMount>
-          <MenuButton asChild value="page-header-sort-menu">
+        <MenuRoot lazyMount>
+          <MenuTrigger asChild value="page-header-sort-menu">
             <IconButton
               aria-label="Open sort menu"
               icon={<VscListFilter />}
@@ -100,9 +100,9 @@ export const PageHeader: FC<PageHeaderProps> = ({
               rounded="full"
               colorScheme="gray"
             />
-          </MenuButton>
-          <MenuList>{sortMenu}</MenuList>
-        </Menu>
+          </MenuTrigger>
+          <MenuContent>{sortMenu}</MenuContent>
+        </MenuRoot>
       )}
       {children}
     </HStack>

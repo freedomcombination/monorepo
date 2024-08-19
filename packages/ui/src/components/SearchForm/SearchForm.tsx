@@ -43,9 +43,9 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 
   return (
     <Group flex="1">
-      <InputElement pointerEvents="none" color="gray.400">
+      {/* <InputElement pointerEvents="none" color="gray.400">
         <HiOutlineSearch />
-      </InputElement>
+      </InputElement> */}
 
       <Input
         size="lg"
@@ -57,7 +57,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         }
         {...rest}
       />
-      <InputElement w="max-content" right={1}>
+      {/* <InputElement w="max-content" right={1}>
         {searchTerm.length > 1 && (
           <IconButton
             loading={isFetching}
@@ -74,7 +74,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
             aria-label="Search"
           />
         )}
-      </InputElement>
+      </InputElement> */}
     </Group>
   )
 }

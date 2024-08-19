@@ -9,7 +9,16 @@ import {
   MdOutlineUnpublished,
 } from 'react-icons/md'
 
-import { IconButton, Menu, MenuButton, MenuItem, MenuList } from '@fc/chakra'
+import {
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuContent,
+  MenuItem,
+  MenuList,
+  MenuRoot,
+  MenuTrigger,
+} from '@fc/chakra'
 
 import { ArtCardActionsProps } from './types'
 
@@ -20,8 +29,8 @@ export const ArtCardActions: FC<ArtCardActionsProps> = ({
   const { t } = useTranslation('common')
 
   return (
-    <Menu>
-      <MenuButton value="art-card-menu" asChild>
+    <MenuRoot>
+      <MenuTrigger value="art-card-menu" asChild>
         <IconButton
           aria-label="Art actions"
           color="white"
@@ -31,8 +40,8 @@ export const ArtCardActions: FC<ArtCardActionsProps> = ({
           icon={<BsThreeDotsVertical />}
           rounded="full"
         />
-      </MenuButton>
-      <MenuList fontSize="md">
+      </MenuTrigger>
+      <MenuContent fontSize="md">
         {/* Publish */}
         {isPublished && (
           <MenuItem
@@ -61,7 +70,7 @@ export const ArtCardActions: FC<ArtCardActionsProps> = ({
           <Box as={MdDeleteOutline} mr={2} />
           <>{t('delete')}</>
         </MenuItem>
-      </MenuList>
-    </Menu>
+      </MenuContent>
+    </MenuRoot>
   )
 }

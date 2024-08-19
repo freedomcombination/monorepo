@@ -18,7 +18,16 @@ import {
 } from 'react-icons/tb'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { IconButton, Menu, MenuButton, MenuItem, MenuList } from '@fc/chakra'
+import {
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuContent,
+  MenuItem,
+  MenuList,
+  MenuRoot,
+  MenuTrigger,
+} from '@fc/chakra'
 import { useRecommendTweet } from '@fc/services'
 import { Post, RecommendedTweetCreateInput, Tweet } from '@fc/types'
 
@@ -124,16 +133,16 @@ export const TweetCard: FC<TweetCardProps> = ({
             )}
 
             {(bookmarkable || editable) && (
-              <Menu positioning={{ placement: 'bottom-end' }}>
-                <MenuButton asChild value="recommend">
+              <MenuRoot positioning={{ placement: 'bottom-end' }}>
+                <MenuTrigger asChild value="recommend">
                   <IconButton
                     size="sm"
                     rounded="full"
                     icon={<BsThreeDots />}
                     variant="ghost"
                   />
-                </MenuButton>
-                <MenuList>
+                </MenuTrigger>
+                <MenuContent>
                   {!isRecommended && (
                     <MenuItem value="recommend" onClick={handleEdit}>
                       <TbThumbUp />
@@ -163,8 +172,8 @@ export const TweetCard: FC<TweetCardProps> = ({
                     <TbBookmark color={isBookmarked ? 'red' : ''} />
                     {isBookmarked ? 'Remove' : 'Save'} (Bookmark)
                   </MenuItem>
-                </MenuList>
-              </Menu>
+                </MenuContent>
+              </MenuRoot>
             )}
           </HStack>
 

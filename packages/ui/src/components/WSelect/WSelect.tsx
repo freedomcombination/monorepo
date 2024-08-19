@@ -1,8 +1,15 @@
-import { GroupBase, Select } from 'chakra-react-select'
 import { useTranslation } from 'next-i18next'
 import { FieldValues, useController } from 'react-hook-form'
 
-import { Field } from '@fc/chakra'
+import {
+  Field,
+  SelectRoot,
+  SelectLabel,
+  SelectTrigger,
+  SelectContent,
+  SelectValueText,
+  SelectItem,
+} from '@fc/chakra'
 
 import { SelectOption, WSelectProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
@@ -32,6 +39,8 @@ export const WSelect = <T extends FieldValues = FieldValues>({
 
   const errorMessage = errors?.[name]?.['message'] as unknown as string
 
+  return null
+
   return (
     <Field
       invalid={Boolean(errors?.[name])}
@@ -40,16 +49,26 @@ export const WSelect = <T extends FieldValues = FieldValues>({
       pos="relative"
       helperText={helperText}
       errorText={errorMessage}
-      label={label}
       tooltip={tooltip}
     >
-      <Select<SelectOption, boolean, GroupBase<SelectOption>>
-        options={options}
-        placeholder={placeholder}
+      <SelectRoot
         {...field}
-        onChange={val => field.onChange(val as any)}
+        onValueChange={e => field.onChange(e.value)}
         {...rest}
-      />
+        items={options}
+      >
+        <SelectLabel>{label}</SelectLabel>
+        <SelectTrigger>
+          <SelectValueText placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map((option: SelectOption) => (
+            <SelectItem key={option.value} item={option}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </SelectRoot>
     </Field>
   )
 }
