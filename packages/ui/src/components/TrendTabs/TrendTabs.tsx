@@ -16,7 +16,7 @@ import { TrendList } from '../TrendList'
 export const TrendTabs = () => {
   const [hashtagInTrends, hashtagExtraInTrends] = useFindHashtagInTrends()
 
-  const { data: trends, loading } = useTrends()
+  const { data: trends, isLoading } = useTrends()
 
   return (
     <Stack h={400}>
@@ -30,7 +30,7 @@ export const TrendTabs = () => {
           <TabPanels>
             <TabPanel>
               <TrendList
-                loading={loading}
+                loading={isLoading}
                 trends={trends?.en}
                 hashtagInTrends={hashtagInTrends?.en}
                 hashtagExtraInTrends={hashtagExtraInTrends?.en}
@@ -38,7 +38,7 @@ export const TrendTabs = () => {
             </TabPanel>
             <TabPanel>
               <TrendList
-                loading={loading}
+                loading={isLoading}
                 trends={trends?.tr}
                 hashtagInTrends={hashtagInTrends?.tr}
                 hashtagExtraInTrends={hashtagExtraInTrends?.tr}
@@ -46,7 +46,7 @@ export const TrendTabs = () => {
             </TabPanel>
             <TabPanel>
               <TrendList
-                loading={loading}
+                loading={isLoading}
                 trends={trends?.nl}
                 hashtagInTrends={hashtagInTrends?.nl}
                 hashtagExtraInTrends={hashtagExtraInTrends?.nl}

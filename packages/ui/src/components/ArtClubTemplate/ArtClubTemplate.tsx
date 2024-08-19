@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Box, Center, Grid, HStack, Skeleton, Stack } from '@chakra-ui/react'
+import { Box, Center, Grid, HStack, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { parse } from 'querystring'
@@ -13,6 +13,8 @@ import {
   DrawerContent,
   DrawerOverlay,
   IconButton,
+  Pagination,
+  Skeleton,
 } from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
@@ -26,7 +28,6 @@ import { CategoryFilterSkeleton } from '../CategoryFilter'
 import { Container } from '../Container'
 import { CreateArtForm } from '../CreateArtForm'
 import { MasonryGrid } from '../MasonryGrid'
-import { Pagination } from '../Pagination'
 import { SearchForm } from '../SearchForm'
 
 export const ArtClubTemplate: FC = () => {
@@ -171,11 +172,9 @@ export const ArtClubTemplate: FC = () => {
               <Center>
                 {artsQuery.data?.meta?.pagination && (
                   <Pagination
-                    totalCount={artsQuery.data.meta.pagination?.pageCount}
-                    currentPage={artsQuery.data.meta.pagination?.page}
-                    onPageChange={page =>
-                      changeParam({ page: page.toString() })
-                    }
+                    count={artsQuery.data.meta.pagination?.pageCount}
+                    page={artsQuery.data.meta.pagination?.page}
+                    onPageChange={e => changeParam({ page: e.page })}
                   />
                 )}
               </Center>

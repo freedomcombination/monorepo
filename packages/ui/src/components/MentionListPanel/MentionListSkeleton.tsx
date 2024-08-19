@@ -1,9 +1,6 @@
-import {
-  HStack,
-  Skeleton,
-  SkeletonCircle,
-  SkeletonText,
-} from '@chakra-ui/react'
+import { HStack, Skeleton } from '@chakra-ui/react'
+
+import { SkeletonCircle, SkeletonText } from '@fc/chakra'
 
 interface MentionListSkeletonProps {
   itemCount?: number

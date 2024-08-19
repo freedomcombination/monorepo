@@ -2,18 +2,15 @@ import { FC, useMemo } from 'react'
 
 import {
   Box,
-  Checkbox,
   Stack,
   StackSeparator,
-  Tag,
-  TagLabel,
-  TagLeftIcon,
   Text,
   VStack,
   Group,
 } from '@chakra-ui/react'
 import { TbCheck, TbX } from 'react-icons/tb'
 
+import { Checkbox, Tag } from '@fc/chakra'
 import {
   EndpointAction,
   ControllerGroup,
@@ -141,7 +138,7 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
         fontWeight={'bold'}
       >
         {!readonly ? (
-          <Checkbox bg={'white'} isChecked={!backup} onChange={handleChange}>
+          <Checkbox bg={'white'} checked={!backup} onChange={handleChange}>
             {name}
           </Checkbox>
         ) : (
@@ -177,11 +174,8 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
           <Group wrap={'wrap'}>
             {menuItems.map(item => {
               return (
-                <Tag key={item.label} size={'md'}>
-                  <TagLeftIcon boxSize="28px" pt={2}>
-                    {item.icon}
-                  </TagLeftIcon>
-                  <TagLabel>{item.label}</TagLabel>
+                <Tag key={item.label} size={'md'} startElement={item.icon}>
+                  {item.label}
                 </Tag>
               )
             })}
@@ -218,9 +212,15 @@ const ActionApi: FC<ActionApiProps> = ({
             _hover: { boxShadow: 'lg' },
           }
         : {})}
+      startElement={
+        value ? (
+          <TbCheck width={'18px'} height={'18px'} />
+        ) : (
+          <TbX width={'18px'} height={'18px'} />
+        )
+      }
     >
-      <TagLeftIcon boxSize="18px" as={value ? TbCheck : TbX} />
-      <TagLabel>{action}</TagLabel>
+      {action}
     </Tag>
   )
 }

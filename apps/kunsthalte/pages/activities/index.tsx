@@ -3,18 +3,12 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
+import { Pagination } from '@fc/chakra'
 import { RequestCollectionArgs } from '@fc/lib'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Activity, StrapiLocale, UploadFile } from '@fc/types'
-import {
-  AnimatedBox,
-  Card,
-  Container,
-  Hero,
-  Pagination,
-  useChangeParams,
-} from '@fc/ui'
+import { AnimatedBox, Card, Container, Hero, useChangeParams } from '@fc/ui'
 
 import { Layout } from '../../components'
 
@@ -44,7 +38,7 @@ const Activities = () => {
     page,
   })
 
-  const { data, loading } = activitiesQuery
+  const { data, isLoading } = activitiesQuery
 
   const pagination = data?.meta?.pagination
   const activities = data?.data || []
@@ -53,7 +47,7 @@ const Activities = () => {
     <Layout seo={{ title }} isDark>
       <Hero title={title} />
 
-      {activities[0] || loading ? (
+      {activities[0] || isLoading ? (
         <>
           <Container>
             <SimpleGrid
@@ -74,9 +68,9 @@ const Activities = () => {
             </SimpleGrid>
             {pagination && (
               <Pagination
-                totalCount={pagination.pageCount}
-                currentPage={+(query.page || 1)}
-                onPageChange={page => changeParam({ page })}
+                count={pagination.pageCount}
+                page={+(query.page || 1)}
+                onPageChange={e => changeParam({ page: e.page })}
               />
             )}
           </Container>

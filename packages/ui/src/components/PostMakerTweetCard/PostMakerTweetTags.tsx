@@ -1,5 +1,6 @@
-import { Stack, Tag, TagCloseButton, TagLabel, Group } from '@chakra-ui/react'
+import { Stack, Group } from '@chakra-ui/react'
 
+import { Tag } from '@fc/chakra'
 import { useHashtag } from '@fc/services'
 
 import { useHashtagContext } from '../../components/HashtagProvider'
@@ -33,12 +34,10 @@ export const PostMakerTweetTags = () => {
             variant={'outline'}
             rounded={'full'}
             px={2}
+            onClose={() => removeMentionFromPost(post.id, mention)}
+            closable
           >
-            <TagLabel>@{mention}</TagLabel>
-
-            <TagCloseButton
-              onClick={() => removeMentionFromPost(post.id, mention)}
-            />
+            @{mention}
           </Tag>
         ))}
       </Group>
@@ -50,21 +49,22 @@ export const PostMakerTweetTags = () => {
             rounded={'full'}
             px={2}
             colorScheme={hashtag.hasPassed ? 'gray' : 'twitter'}
+            closable={hashtag.hasPassed}
+            onClose={() => removeDefaultTrendFromPost(post.id, trend)}
           >
-            <TagLabel>{trend}</TagLabel>
-            {hashtag.hasPassed && (
-              <TagCloseButton
-                onClick={() => removeDefaultTrendFromPost(post.id, trend)}
-              />
-            )}
+            {trend}
           </Tag>
         ))}
         {trendNames.map(trend => (
-          <Tag key={trend} variant={'outline'} rounded={'full'} px={2}>
-            <TagLabel>{trend}</TagLabel>
-            <TagCloseButton
-              onClick={() => removeTrendFromPost(post.id, trend)}
-            />
+          <Tag
+            key={trend}
+            variant={'outline'}
+            rounded={'full'}
+            px={2}
+            closable
+            onClose={() => removeTrendFromPost(post.id, trend)}
+          >
+            {trend}
           </Tag>
         ))}
       </Group>

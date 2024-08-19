@@ -2,7 +2,6 @@ import {
   Box,
   HStack,
   Image,
-  Select,
   Spacer,
   Stack,
   Text,
@@ -10,10 +9,11 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
+import { Pagination, Select } from '@fc/chakra'
 import { StrapiModel } from '@fc/types'
 
 import { DataTableProps } from './types'
-import { Pagination, WTable } from '../../components'
+import { WTable } from '../../components'
 import { ExportPDF } from '../ExportPDF'
 
 export const DataTable = <T extends StrapiModel>({
@@ -73,9 +73,9 @@ export const DataTable = <T extends StrapiModel>({
             <Text lineClamp={1}>{t('items.on-page')}</Text>
           </HStack>
           <Pagination
-            totalCount={pageCount}
-            currentPage={currentPage}
-            onPageChange={setCurrentPage}
+            count={pageCount}
+            page={currentPage}
+            onPageChange={e => setCurrentPage(e.page)}
           />
           <Text
             flex={1}

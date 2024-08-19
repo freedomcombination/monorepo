@@ -6,6 +6,7 @@ import type { ButtonProps, TextProps } from '@chakra-ui/react'
 import {
   Button,
   Pagination as ChakraPagination,
+  HStack,
   Text,
   createContext,
   usePaginationContext,
@@ -178,3 +179,17 @@ export const PaginationPageText = (props: PageTextProps) => {
     </Text>
   )
 }
+
+export const Pagination = forwardRef<HTMLDivElement, PaginationRootProps>(
+  function Pagination(props, ref) {
+    return (
+      <PaginationRoot ref={ref} {...props}>
+        <HStack>
+          <PaginationPrevTrigger />
+          <PaginationItems />
+          <PaginationNextTrigger />
+        </HStack>
+      </PaginationRoot>
+    )
+  },
+)

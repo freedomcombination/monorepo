@@ -10,6 +10,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Pagination,
 } from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services'
 import { Art } from '@fc/types'
@@ -17,7 +18,6 @@ import { Art } from '@fc/types'
 import { ArtAddToCollectionGrid } from './ArtAddToCollectionGrid'
 import { ArtAddToCollectionModalProps } from './types'
 import { PageHeader } from '../PageHeader'
-import { Pagination } from '../Pagination'
 
 export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
   isOpen,
@@ -28,7 +28,7 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
   const [page, setPage] = useState(1)
   const { locale } = useRouter()
 
-  const { data, loading, refetch } = useStrapiRequest<Art>({
+  const { data, isLoading, refetch } = useStrapiRequest<Art>({
     endpoint: 'arts',
     filters: {
       ...(search ? { [`title_${locale}`]: { $containsi: search } } : {}),
@@ -45,7 +45,11 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
 
   return (
     <Box>
-      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside">
+      <Modal
+        onOpenChange={e => (e.open ? null : onClose())}
+        open={isOpen}
+        scrollBehavior="inside"
+      >
         <ModalOverlay />
         <ModalContent maxW="95vw" h="full" p={{ base: 2, lg: 4 }}>
           <ModalHeader>
@@ -59,12 +63,12 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
           </ModalHeader>
           <ModalBody>
             <Stack gap={8}>
-              {loading && (
+              {isLoading && (
                 <Center>
                   <Spinner />
                 </Center>
               )}
-              {!loading && data?.data && (
+              {!isLoading && data?.data && (
                 <>
                   <ArtAddToCollectionGrid
                     arts={data?.data || []}
@@ -73,9 +77,9 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
                   />
                   <Pagination
                     alignSelf="center"
-                    currentPage={page}
-                    onPageChange={setPage}
-                    totalCount={data?.meta.pagination?.pageCount as number}
+                    page={page}
+                    onPageChange={e => setPage(e.page)}
+                    count={data?.meta.pagination?.pageCount as number}
                   />
                 </>
               )}

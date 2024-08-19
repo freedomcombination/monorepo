@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react'
 import {
   Box,
   chakra,
-  FormLabel,
+  Field,
   Heading,
   HStack,
   Stack,
@@ -160,9 +160,9 @@ export const JoinForm: FC<JoinFormProps> = ({
 
       {/* heard FROM */}
       <Box>
-        <FormLabel fontSize="sm" fontWeight={600}>
+        <Field.Label fontSize="sm" fontWeight={600}>
           {t('apply-form.heard-from')}
-        </FormLabel>
+        </Field.Label>
         <Group
           wrap={'wrap'}
           p={4}
@@ -192,10 +192,10 @@ export const JoinForm: FC<JoinFormProps> = ({
 
       {/* JOBS */}
       <Box>
-        <FormLabel fontSize="sm" fontWeight={600}>
+        <Field.Label fontSize="sm" fontWeight={600}>
           {t('jobs')}
           <chakra.span color="red.500">*</chakra.span>
-        </FormLabel>
+        </Field.Label>
         <Stack
           gap={8}
           rounded="lg"

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Badge, Box, Td } from '@chakra-ui/react'
+import { Badge, Box, Table } from '@chakra-ui/react'
 
 import { StrapiModel, UploadFile } from '@fc/types'
 
@@ -27,7 +27,13 @@ export const WTableCell = <T extends StrapiModel>({
 
   // Badge
   if (type === 'badge') {
-    cellContent = data ? <Badge {...props}>{data}</Badge> : '-'
+    cellContent = data ? (
+      <Badge {...props} size={'md'}>
+        {data}
+      </Badge>
+    ) : (
+      '-'
+    )
   }
 
   // Date
@@ -47,13 +53,13 @@ export const WTableCell = <T extends StrapiModel>({
   }
 
   return (
-    <Td {...cellProps}>
+    <Table.Cell {...cellProps}>
       <Box
         {...(field === 'description' && { lineClamp: 1, maxW: 120 })}
         lineClamp={1}
       >
         {cellContent || '-'}
       </Box>
-    </Td>
+    </Table.Cell>
   )
 }

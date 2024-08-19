@@ -1,19 +1,12 @@
 import { FC, useMemo, useState } from 'react'
 
-import {
-  Button,
-  HStack,
-  Radio,
-  RadioGroup,
-  Stack,
-  chakra,
-} from '@chakra-ui/react'
+import { HStack, Stack, chakra } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaSave } from 'react-icons/fa'
 import { Virtuoso } from 'react-virtuoso'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { toaster } from '@fc/chakra'
+import { Button, Radio, RadioGroup, toaster } from '@fc/chakra'
 import { StrapiLocale } from '@fc/types'
 
 import { DictContext } from './DictContext'

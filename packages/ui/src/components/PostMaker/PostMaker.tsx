@@ -1,8 +1,14 @@
 import { FC } from 'react'
 
-import { Box, Grid, Skeleton, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Grid, useBreakpointValue } from '@chakra-ui/react'
 
-import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@fc/chakra'
+import {
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  Skeleton,
+} from '@fc/chakra'
 import { Modal, ModalBody, ModalContent, ModalOverlay } from '@fc/chakra'
 import { useHashtag } from '@fc/services'
 

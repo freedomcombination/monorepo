@@ -1,4 +1,4 @@
-import { Tr } from '@chakra-ui/react'
+import { Table } from '@chakra-ui/react'
 
 import { StrapiModel } from '@fc/types'
 
@@ -12,7 +12,7 @@ export const WTableRow = <T extends StrapiModel>({
   onClick,
 }: WTableRowProps<T>) => {
   return (
-    <Tr
+    <Table.Row
       onClick={() => onClick?.(modelIndex, model.id)}
       _hover={{ bg: 'blackAlpha.50', cursor: 'pointer' }}
     >
@@ -30,6 +30,6 @@ export const WTableRow = <T extends StrapiModel>({
           />
         )
       })}
-    </Tr>
+    </Table.Row>
   )
 }

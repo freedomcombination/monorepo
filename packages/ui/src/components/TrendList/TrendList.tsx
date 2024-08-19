@@ -1,5 +1,6 @@
-import { SkeletonText, VStack, Group } from '@chakra-ui/react'
+import { VStack, Group } from '@chakra-ui/react'
 
+import { SkeletonText } from '@fc/chakra'
 import { TwitterTrend } from '@fc/types'
 
 import { useHashtagContext } from '../HashtagProvider'
