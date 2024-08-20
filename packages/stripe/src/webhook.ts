@@ -13,11 +13,12 @@ import { MetaDataType } from './types'
 const handleCoursePayment = async (
   status: string,
   checkoutSessionId: string,
-  donationId: number,
+  paymentId: number,
+  token: string,
 ) => {
   await Mutation.put<CoursePayment, PaymentUpdateInput>(
     'payments',
-    donationId,
+    paymentId,
     {
       status,
       checkoutSessionId: checkoutSessionId as string,
@@ -25,7 +26,7 @@ const handleCoursePayment = async (
         ? { paymentDatetime: new Date().toISOString() }
         : {}),
     },
-    getSecret('TOKEN'),
+    token,
   )
 
   // handle mail stuff with strapi
@@ -35,6 +36,7 @@ const handleDonation = async (
   status: string,
   checkoutSessionId: string,
   donationId: number,
+  token: string,
 ) => {
   // Update donation status and stripe fields in database
   await Mutation.put<Donation, DonationUpdateInput>(
@@ -44,14 +46,14 @@ const handleDonation = async (
       status,
       checkoutSessionId: checkoutSessionId as string,
     },
-    getSecret('TOKEN'),
+    token,
   )
   // Send email to customer
   if (status === 'paid') {
     await Mutation.post(
       `donates/email/${donationId}` as StrapiEndpoint,
       {},
-      getSecret('TOKEN'),
+      token,
     )
   }
 }
@@ -90,20 +92,23 @@ export const donationWebhook = async (event: any) => {
   */
 
   // check the checkout session status, if it's paid then update the donation status
-  console.log("Webhook called", event)
   if (event?.data?.object?.object === 'checkout.session') {
     const session = event.data.object
-    console.log("#### WEBHOOK:", session)
-
     const status = session.payment_status
     const checkoutSessionId = session.id
-    const donationId = Number(session.success_url.split('&')[1].slice(3))
+
+    const params = new URLSearchParams(new URL(session.success_url).search);
+    const id = params.get("id");
+    const donationId = Number(id)
     const type: MetaDataType = session.metadata.type
+    const token = session.metadata.token as string ?? getSecret('TOKEN')
+
+    console.log("#### WEBHOOK PARAMS:", status, checkoutSessionId, donationId, type)
 
     if (type === 'donation')
-      return handleDonation(status, checkoutSessionId, donationId)
+      return handleDonation(status, checkoutSessionId, donationId, token)
 
     if (type === 'course')
-      return handleCoursePayment(status, checkoutSessionId, donationId)
+      return handleCoursePayment(status, checkoutSessionId, donationId, token)
   }
 }

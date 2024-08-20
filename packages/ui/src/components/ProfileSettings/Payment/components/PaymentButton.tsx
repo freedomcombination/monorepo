@@ -10,6 +10,7 @@ import { MdOutlinePayment, MdOutlineWarning } from 'react-icons/md'
 import { useAuthContext } from '@fc/context'
 import { Course, CourseApplication } from '@fc/types'
 import { formatDate } from '@fc/utils'
+import { SITE_URL } from '@fc/config'
 
 type PaymentButtonProps = {
   amount: number
@@ -46,6 +47,7 @@ export const PaymentButton: FC<PaymentButtonProps> = ({
           profile: profile.id,
           courseApplication: application.id,
           slug: course.slug,
+          returnUrl: `${SITE_URL}/profile?tab=courses`,
           installmentNumber,
           token,
         })

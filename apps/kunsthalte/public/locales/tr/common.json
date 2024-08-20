@@ -428,5 +428,7 @@
   "course.payment.message.unpaid-not-started": "Kurs, {{date}} tarihinde başlayacak ve {{amount}} euro ücret görünüyor.",
   "course.payment.message.not-started": "Kurs, {{date}} tarihinde başlayacak.",
   "course.payment.message.unfinished": "Kurs devam ediyor.",
-  "course.payment.message.finished": "Kurs bitti."
+  "course.payment.message.finished": "Kurs bitti.",
+  "course.payment.message.success": "Ödeme başarı ile alındı.",
+  "course.payment.message.failed": "Ödeme alınamadı."
 }

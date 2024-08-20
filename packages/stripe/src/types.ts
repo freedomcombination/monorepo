@@ -4,4 +4,5 @@ export type MetaDataType = 'course' | 'donation'
 export type StripeMetaData = {
   strapi_id: number
   type: MetaDataType
+  token?: string
 }
