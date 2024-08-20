@@ -1,47 +1,70 @@
-"use client"
-import { FC } from "react"
+import { FC } from 'react'
 
-import { HStack, Text, useToast, VStack } from "@chakra-ui/react"
-import { isPast } from "date-fns"
-import { useRouter } from "next/router"
-import { MdOutlinePayment, MdOutlineWarning } from "react-icons/md"
+import { HStack, Text, useToast, VStack } from '@chakra-ui/react'
+import axios from 'axios'
+import { isPast } from 'date-fns'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { MdOutlinePayment, MdOutlineWarning } from 'react-icons/md'
 
-import { formatDate } from "@fc/utils"
-
-
+import { useAuthContext } from '@fc/context'
+import { Course, CourseApplication } from '@fc/types'
+import { formatDate } from '@fc/utils'
 
 type PaymentButtonProps = {
   amount: number
   date?: Date | string | number
   installmentNumber: number
+  application: CourseApplication
+  course: Course
   onPayment?: () => void
 }
 
 export const PaymentButton: FC<PaymentButtonProps> = ({
   amount,
   installmentNumber,
-  date
+  application,
+  course,
+  date,
 }) => {
   const toast = useToast()
   const past = date ? isPast(date) : false
   const { locale } = useRouter()
+  const { profile, token } = useAuthContext()
+  const { t } = useTranslation()
 
-  const makePayment = () => {
-    // TODO: Implement payment
-    // like packages\ui\src\components\CourseDetailPage\CourseApplicationPayForm.tsx line 48
+  const makePayment = async () => {
+    if (profile === null || token === null) return
 
-    toast({
-      title: 'Payment',
-      description: 'Payment is not implemented yet.',
-      status: 'error',
-      duration: 3000,
-      isClosable: true,
-    })
+    const fetchAsync = async () => {
+      try {
+        const result = await axios.post('/api/course-payment', {
+          amount,
+          name: application.name,
+          email: application.email,
+          type: 'one-time',
+          profile: profile.id,
+          courseApplication: application.id,
+          slug: course.slug,
+          installmentNumber,
+          token,
+        })
+
+        window.location = result.data
+      } catch (e) {
+        console.error('request course payment error', e)
+        toast({
+          title: t('payment.dialog.unknown.title'),
+          description: t('payment.dialog.unknown.description'),
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        })
+      }
+    }
+
+    fetchAsync()
   }
-  /*
-
-
-  */
 
   return (
     <HStack
@@ -56,24 +79,20 @@ export const PaymentButton: FC<PaymentButtonProps> = ({
       px={4}
       py={3}
     >
+      {past ? (
+        <MdOutlineWarning size={24} color={'red'} />
+      ) : (
+        <MdOutlinePayment size={24} />
+      )}
 
-      {
-        past ? (
-          <MdOutlineWarning size={24} color={'red'} />
-        ) : (
-          <MdOutlinePayment size={24} />
-        )
-      }
-
-      <VStack
-        alignItems={'flex-start'}
-        spacing={2}
-      >
-        {!!date && <Text fontSize={'sm'}>{formatDate(date, 'dd MMMM yyyy', locale)}</Text>}
-        <Text
-          fontSize={'xl'}
-        >
-          Pay {amount} euro
+      <VStack alignItems={'flex-start'} spacing={2}>
+        {!!date && (
+          <Text fontSize={'sm'}>
+            {formatDate(date, 'dd MMMM yyyy', locale)}
+          </Text>
+        )}
+        <Text fontSize={'xl'}>
+          {t('course.payment.title.pay-euro', { amount })}
         </Text>
       </VStack>
     </HStack>

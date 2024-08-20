@@ -90,9 +90,10 @@ export const donationWebhook = async (event: any) => {
   */
 
   // check the checkout session status, if it's paid then update the donation status
-
+  console.log("Webhook called", event)
   if (event?.data?.object?.object === 'checkout.session') {
     const session = event.data.object
+    console.log("#### WEBHOOK:", session)
 
     const status = session.payment_status
     const checkoutSessionId = session.id

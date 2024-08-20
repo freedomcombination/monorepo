@@ -1,5 +1,14 @@
 'use client'
-import { Children, FC, isValidElement, PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  Children,
+  FC,
+  isValidElement,
+  PropsWithChildren,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 
 import {
   Box,
@@ -37,11 +46,7 @@ type ProfilePanelProps = PropsWithChildren<{
   showArts?: boolean
 }>
 
-
-const CustomTab: FC<{ title: string } & TabProps> = ({
-  title,
-  ...props
-}) => {
+const CustomTab: FC<{ title: string } & TabProps> = ({ title, ...props }) => {
   return (
     <Tab
       borderWidth={1}
@@ -57,16 +62,19 @@ const CustomTab: FC<{ title: string } & TabProps> = ({
   )
 }
 
-const findTabIndexByTitle = (tabList: HTMLDivElement | null, title: string): number => {
-  if (!tabList) return 0;
+const findTabIndexByTitle = (
+  tabList: HTMLDivElement | null,
+  title: string,
+): number => {
+  if (!tabList) return 0
 
-  const tabs = Array.from(tabList.children);
+  const tabs = Array.from(tabList.children)
   const index = tabs.findIndex(
-    (child) => (child as unknown as { title: string }).title === title
-  );
+    child => (child as unknown as { title: string }).title === title,
+  )
 
-  return index === -1 ? 0 : index;
-};
+  return index === -1 ? 0 : index
+}
 
 export const ProfilePanel: FC<ProfilePanelProps> = ({
   children,
@@ -80,7 +88,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   const { t } = useTranslation()
 
   const router = useRouter()
-  const activeTab = router.query.tab as string ?? "profile"
+  const activeTab = (router.query.tab as string) ?? 'profile'
   const tabListRef = useRef<HTMLDivElement>(null)
   const [activeTabIndex, setActiveTabIndex] = useState(0)
 
@@ -93,14 +101,14 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
     process.env.NODE_ENV === 'development'
 
   useEffect(() => {
-    const index = findTabIndexByTitle(tabListRef.current, activeTab);
-    setActiveTabIndex(index);
+    const index = findTabIndexByTitle(tabListRef.current, activeTab)
+    setActiveTabIndex(index)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeTab, tabListRef.current]);
+  }, [activeTab, tabListRef.current])
 
   const updateSelectedTab = (index: number) => {
     setActiveTabIndex(index)
-    const tabList = Array.from(tabListRef.current?.children || []);
+    const tabList = Array.from(tabListRef.current?.children || [])
     const title = (tabList[index] as unknown as { title: string }).title
 
     router.push(`/profile?tab=${title}`)

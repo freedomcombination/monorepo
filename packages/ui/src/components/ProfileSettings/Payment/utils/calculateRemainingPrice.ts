@@ -1,8 +1,9 @@
+import { Course, CourseApplication } from '@fc/types'
 
-import { Course, CourseApplication } from "@fc/types"
-
-
-export const calculateRemainingPrice = (course: Course, application: CourseApplication) => {
+export const calculateRemainingPrice = (
+  course: Course,
+  application: CourseApplication,
+) => {
   if (!course.price) return 0 // it is a free course
 
   // that means "somehow" the applicant has no remaining fee
@@ -23,13 +24,12 @@ export const calculateRemainingPrice = (course: Course, application: CourseAppli
   }
 
   if (
-    application.paymentExplanation &&               // application inform an explanation for payment
-    application.approvalStatus !== 'rejected' &&    // admin didn't reject the application
-    application.installmentCount === 0              // and admin did not make any installment
+    application.paymentExplanation && // application inform an explanation for payment
+    application.approvalStatus !== 'rejected' && // admin didn't reject the application
+    application.installmentCount === 0 // and admin did not make any installment
   ) {
-    return 0  // it means the applicant has no remaining fee
+    return 0 // it means the applicant has no remaining fee
   }
 
   return course.price
 }
-

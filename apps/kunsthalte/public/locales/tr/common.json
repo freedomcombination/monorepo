@@ -414,5 +414,19 @@
   "course.payment.title.course-page": "Course page",
   "course.payment.title.go-to-course": "Go to course page",
   "course.payment.title.check-other-courses": "Check other courses",
-  "course.payment.title.go-to-courses": "Go to courses"
+  "course.payment.title.go-to-courses": "Go to courses",
+  "course.payment.title.pay-euro": "Pay {{amount}} euro",
+  "course.payment.title.nth-installment": "Installment #{{number}}",
+  "course.payment.title.nth-installment-paid": "{{date}} - {{amount}} euro paid.",
+  "course.payment.title.installment-paid": "Paid installments",
+  "course.payment.title.installment-unpaid": "Installments",
+  "course.payment.title.installment-overdue": "Overdue installments",
+  "course.payment.title.pay": "Pay",
+  "course.payment.title.total-payment": "Total payment",
+  "course.payment.message.unpaid-finished": "Biten kurs için ödenmemiş {{amount}} euro ücret görünüyor.",
+  "course.payment.message.unpaid-unfinished": "Devam eden kurs için ödenmemiş {{amount}} euro ücret görünüyor.",
+  "course.payment.message.unpaid-not-started": "Kurs, {{date}} tarihinde başlayacak ve {{amount}} euro ücret görünüyor.",
+  "course.payment.message.not-started": "Kurs, {{date}} tarihinde başlayacak.",
+  "course.payment.message.unfinished": "Kurs devam ediyor.",
+  "course.payment.message.finished": "Kurs bitti."
 }

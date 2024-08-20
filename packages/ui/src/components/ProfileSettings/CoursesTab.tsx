@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 
 import {
   Accordion,
@@ -13,40 +13,22 @@ import {
   Link,
   Stack,
   Text,
-  VStack
+  VStack,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { useAuthContext } from '@fc/context'
-import { strapiRequest } from '@fc/lib'
+import { useStrapiRequest } from '@fc/services'
 import { CourseApplication } from '@fc/types'
-import React from 'react'
+import { useTranslation } from 'next-i18next'
 import { CoursePaymentDetails } from './Payment/components/CoursePaymentDetails'
 import { LineText } from './Payment/components/PaymentLine'
-import { getGeneralStatus } from './Payment/utils/getGeneralStatus'
-import { useTranslation } from 'next-i18next'
+import { GetGeneralStatus } from './Payment/utils/getGeneralStatus'
 
 export const CoursesTab: FC = () => {
   const { profile } = useAuthContext()
-  const [applications, setApplications] = React.useState<CourseApplication[]>([])
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
-  useEffect(() => {
-    const fetchAsync = async () => {
-      const result = await strapiRequest<CourseApplication>({
-        endpoint: 'course-applications',
-        filters: {
-          profile: { id: { $eq: profile?.id } },
-        },
-        populate: '*'
-      })
-
-      setApplications(result.data)
-    }
-
-    fetchAsync()
-  })
-  /*
   const { data } = useStrapiRequest<CourseApplication>({
     endpoint: 'course-applications',
     filters: {
@@ -58,16 +40,15 @@ export const CoursesTab: FC = () => {
     },
   })
   const applications = data?.data || []
-  */
 
   return (
     <Box>
       {applications.length > 0 ? (
         <Stack>
-        <Accordion allowMultiple={false} width={'100%'} maxWidth={'100%'}>
-          {applications.map(application => (
-            <ApplicationView key={application.id} application={application} />
-          ))}
+          <Accordion allowMultiple={false} width={'100%'} maxWidth={'100%'}>
+            {applications.map(application => (
+              <ApplicationView key={application.id} application={application} />
+            ))}
           </Accordion>
           <Link href="/courses">
             <Button colorScheme="primary" size="md" variant={'outline'}>
@@ -101,7 +82,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
     return course[`${prop}_${locale}` as keyof CourseApplication['course']]
   }
 
-  const status = getGeneralStatus(course, application)
+  const status = GetGeneralStatus(course, application)
 
   return (
     <AccordionItem key={application.id} maxWidth={'100%'}>
@@ -109,16 +90,14 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
         <Box as="span" flex="1" textAlign="left">
           <VStack alignItems={'flex-start'}>
             <Text fontWeight={600}>{getProp(application, 'title')}</Text>
-            <LineText title={
-              <Badge
-                colorScheme={status.color}
-                variant={'outline'}
-              >
-                {t('status')}
-              </Badge>}
-              value={
-                <Text>{status.message}</Text>
-              } />
+            <LineText
+              title={
+                <Badge colorScheme={status.color} variant={'outline'}>
+                  {t('status')}
+                </Badge>
+              }
+              value={<Text>{status.message}</Text>}
+            />
           </VStack>
         </Box>
         <AccordionIcon />
@@ -130,7 +109,8 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
             value={
               <Link href={`courses/${course.slug}`}>
                 {t('course.payment.title.go-to-course')}
-              </Link>}
+              </Link>
+            }
           />
           <CoursePaymentDetails application={application} course={course} />
         </VStack>

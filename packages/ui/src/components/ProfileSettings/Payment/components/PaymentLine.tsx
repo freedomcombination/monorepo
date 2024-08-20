@@ -1,8 +1,6 @@
-import { ReactNode, FC } from "react"
+import { ReactNode, FC } from 'react'
 
-import { HStack, Text } from "@chakra-ui/react"
-
-
+import { HStack, Text } from '@chakra-ui/react'
 
 type LineTextProps = {
   title: ReactNode
