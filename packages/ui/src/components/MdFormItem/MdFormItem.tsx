@@ -72,7 +72,9 @@ export const MdFormItem = <T extends FieldValues>({
         {...rest}
       />
 
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      <FormErrorMessage data-testid={`${name}-error-text`}>
+        {errorMessage}
+      </FormErrorMessage>
       {helperText && (
         <FormHelperText color="orange.400">{helperText}</FormHelperText>
       )}
