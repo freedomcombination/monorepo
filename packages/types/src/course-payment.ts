@@ -11,6 +11,7 @@ type PaymentBase = {
   status: string
   paymentDatetime: string
   checkoutSessionId: string
+  installmentNumber: number
 }
 
 type PaymentRelation = {
@@ -20,7 +21,7 @@ type PaymentRelation = {
 
 export type CoursePaymentCreateInput = Pick<
   PaymentBase,
-  'name' | 'email' | 'amount'
+  'name' | 'email' | 'amount' | 'installmentNumber'
 > & {
   profile: number
   courseApplication: number

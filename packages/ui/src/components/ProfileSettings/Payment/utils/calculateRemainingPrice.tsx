@@ -1,5 +1,3 @@
-import { Text } from "@chakra-ui/react"
-import { isPast } from "date-fns"
 
 import { Course, CourseApplication } from "@fc/types"
 

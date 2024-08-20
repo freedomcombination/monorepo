@@ -37,6 +37,10 @@
       "relation": "manyToOne",
       "target": "api::course-application.course-application",
       "inversedBy": "payments"
+    },
+    "installmentNumber": {
+      "type": "integer",
+      "default": 0
     }
   }
 }

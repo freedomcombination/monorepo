@@ -410,5 +410,9 @@
   "welcome": "Hoşgeldin",
   "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!",
   "profile.tabs.course-payments": "Kurs Ödemeleri",
-  "profile.tabs.courses": "Kurslar"
+  "profile.tabs.courses": "Kurslar",
+  "course.payment.title.course-page": "Course page",
+  "course.payment.title.go-to-course": "Go to course page",
+  "course.payment.title.check-other-courses": "Check other courses",
+  "course.payment.title.go-to-courses": "Go to courses"
 }

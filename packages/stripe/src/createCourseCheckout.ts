@@ -11,7 +11,7 @@ export const createCourseCheckout = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
-  const { amount, name, email, type, profile, courseApplication, slug, token } =
+  const { amount, name, email, type, profile, courseApplication, installmentNumber, slug, token } =
     req.body
 
   const payment = await Mutation.post<CoursePayment, CoursePaymentCreateInput>(
@@ -22,6 +22,7 @@ export const createCourseCheckout = async (
       amount,
       profile,
       courseApplication,
+      installmentNumber
     },
     token,
   )

@@ -415,5 +415,9 @@
   "welcome": "Welcome",
   "you-must-logged-in": "You must be logged in in order to be able to upload an art!",
   "profile.tabs.course-payments": "Kurs Ödemeleri",
-  "profile.tabs.courses": "Kurslar"
+  "profile.tabs.courses": "Kurslar",
+  "course.payment.title.course-page": "Course page",
+  "course.payment.title.go-to-course": "Go to course page",
+  "course.payment.title.check-other-courses": "Check other courses",
+  "course.payment.title.go-to-courses": "Go to courses"
 }

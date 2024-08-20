@@ -1,4 +1,5 @@
 export * from './formatNumber'
+export * from './formatDate'
 export * from './generateFormData'
 export * from './generateOgImageProps'
 export * from './getItemLink'
