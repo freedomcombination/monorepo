@@ -25,7 +25,8 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
-
+  const [noResults, setNoResults] = useState(false)
+  // State that controls if any results after search
   useDebounce(
     () => {
       setDebouncedSearchTerm(searchTerm)
@@ -36,16 +37,24 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 
   // `useUpdateEffect` is used here because we don't need to call `onSearch` at the first render
   // We call `onSearch` only if  mode is `change` and the debouncedSearchTerm's lenght is greater than 2
+  // Added result for to check return length of search terms.
   useUpdateEffect(() => {
     if (mode === 'change' && debouncedSearchTerm.length > 2) {
-      onSearch?.(debouncedSearchTerm)
+      const result = onSearch?.(debouncedSearchTerm)
+    }
+    if (result && result.length === 0) {
+      setNoResults(true)
+    } else {
+      setNoResults(false)
     }
     if (debouncedSearchTerm === '') {
       onSearch?.(undefined)
+      setNoResults(false)
     }
   }, [debouncedSearchTerm, onReset])
 
   return (
+    <div>
     <InputGroup size="lg" flex="1">
       <InputLeftElement pointerEvents="none" color="gray.400">
         <HiOutlineSearch />
@@ -79,5 +88,11 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         )}
       </InputRightElement>
     </InputGroup>
+    {noResults && (
+      <p style={{ marginTop: '10px', color: 'red' }}>
+          Hiçbir şey bulunamadı
+      </p>
+      )}
+    </div>
   )
 }
