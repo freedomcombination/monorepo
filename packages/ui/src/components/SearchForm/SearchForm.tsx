@@ -25,7 +25,6 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
-  const [noResults, setNoResults] = useState(false)
   // State that controls if any results after search
   useDebounce(
     () => {
@@ -40,16 +39,10 @@ export const SearchForm: React.FC<SearchFormProps> = ({
   // Added result for to check return length of search terms.
   useUpdateEffect(() => {
     if (mode === 'change' && debouncedSearchTerm.length > 2) {
-      const result = onSearch?.(debouncedSearchTerm)
-    }
-    if (result && result.length === 0) {
-      setNoResults(true)
-    } else {
-      setNoResults(false)
+      onSearch?.(debouncedSearchTerm)
     }
     if (debouncedSearchTerm === '') {
       onSearch?.(undefined)
-      setNoResults(false)
     }
   }, [debouncedSearchTerm, onReset])
 
@@ -88,7 +81,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         )}
       </InputRightElement>
     </InputGroup>
-    {noResults && (
+    {isFetching && (
       <p style={{ marginTop: '10px', color: 'red' }}>
           Hiçbir şey bulunamadı
       </p>
