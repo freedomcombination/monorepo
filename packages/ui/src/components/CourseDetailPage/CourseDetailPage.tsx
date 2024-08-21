@@ -16,6 +16,7 @@ import { CourseRegister } from './CourseRegister'
 import { CourseDetailPageProps } from './types'
 import { Container } from '../Container'
 import { Markdown } from '../Markdown'
+import { StripeResult } from '../ProfileSettings/Payment/components/StripeResult'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'
 
@@ -90,6 +91,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
 
   return (
     <Container maxW={'6xl'}>
+      <StripeResult reValidate={refetch} />
       <CourseContext.Provider
         value={{
           course,

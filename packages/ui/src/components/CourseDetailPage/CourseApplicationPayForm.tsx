@@ -18,6 +18,7 @@ import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { MdOutlinePayment, MdOutlineSend } from 'react-icons/md'
 
+import { SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationUnpaid } from '@fc/types'
@@ -52,7 +53,8 @@ export const CourseApplicationPayForm: FC = () => {
           type: 'one-time',
           profile: profile.id,
           courseApplication: application.id,
-          slug: course.slug,
+          returnUrl: `${SITE_URL}/courses/${course.slug}?`,
+          installmentNumber: 1,
           token,
         })
 
@@ -83,14 +85,16 @@ export const CourseApplicationPayForm: FC = () => {
       ),
   })
   const onSendInfo = () => {
-    mutate({
-      paymentExplanation: payExplanation,
-    }),
+    mutate(
+      {
+        paymentExplanation: payExplanation,
+      },
       {
         onSettled: () => {
           refetchApplicants()
         },
-      }
+      },
+    )
   }
 
   return (

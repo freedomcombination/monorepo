@@ -1,7 +1,5 @@
-import { ca } from 'date-fns/locale'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { SITE_URL } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { CoursePayment, CoursePaymentCreateInput } from '@fc/types'
 
@@ -20,13 +18,15 @@ export const createCourseCheckout = async (
     profile,
     courseApplication,
     installmentNumber,
-    slug,
     returnUrl,
     token,
   } = req.body
 
   try {
-    const payment = await Mutation.post<CoursePayment, CoursePaymentCreateInput>(
+    const payment = await Mutation.post<
+      CoursePayment,
+      CoursePaymentCreateInput
+    >(
       'payments',
       {
         name,
@@ -47,11 +47,11 @@ export const createCourseCheckout = async (
       customer.data.length > 0
         ? customer.data[0].id
         : (
-          await stripe.customers.create({
-            email,
-            name,
-          })
-        ).id
+            await stripe.customers.create({
+              email,
+              name,
+            })
+          ).id
 
     const result = await stripe.checkout.sessions.create({
       payment_method_types: ['ideal', 'card'],
@@ -73,15 +73,15 @@ export const createCourseCheckout = async (
       metadata: {
         strapi_id: payment.id,
         type: 'course',
-        token
+        token,
       } satisfies StripeMetaData,
-      success_url: `${returnUrl}&status=success&id=${payment.id}&slug=${slug}`,
-      cancel_url: `${returnUrl}&status=cancel&slug=${slug}`,
+      // returnUrl must come with ? or &
+      success_url: `${returnUrl}status=success&id=${payment.id}`,
+      cancel_url: `${returnUrl}status=cancel`,
     })
 
-  return res.status(200).json(result.url)
-}
-  catch (err) {
+    return res.status(200).json(result.url)
+  } catch (err) {
     console.error(err)
     throw err
   }

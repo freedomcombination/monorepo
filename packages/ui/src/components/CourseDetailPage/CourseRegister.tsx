@@ -98,7 +98,11 @@ export const CourseRegister = () => {
   }
 
   // show payment form if user has already applied and not paid yet
-  if (!myApplication.hasPaid && !myApplication.paymentExplanation) {
+  if (
+    !myApplication.hasPaid &&
+    !myApplication.paymentExplanation &&
+    !myApplication.payments?.some(payment => payment?.status === 'paid')
+  ) {
     return (
       <Stack bg={'white'} {...(style as BoxProps)}>
         <Heading as={'h3'} size={'lg'}>
@@ -112,9 +116,9 @@ export const CourseRegister = () => {
   return (
     <Alert status={'success'} variant="subtle" {...(style as AlertProps)}>
       <AlertIcon boxSize="40px" mr={0} />
-      <AlertTitle>Thank you!</AlertTitle>
+      <AlertTitle>{t('course.payment.title.thanks')}</AlertTitle>
       <AlertDescription maxWidth="sm">
-        Kursa başarı ile kaydınız yapıldı.
+        {t('course.payment.message.thanks')}
       </AlertDescription>
     </Alert>
   )

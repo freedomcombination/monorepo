@@ -26,6 +26,20 @@ export const useCourseApplicationColumns =
       email: {},
       phone: {},
       country: { sortable: true },
+      installmentCount: {},
+      payments: {
+        transform: value => {
+          const payments = value as CourseApplication['payments']
+          const totalAmount =
+            payments?.reduce(
+              (total, payment) =>
+                payment.status === 'paid' ? total + payment.amount : total,
+              0,
+            ) ?? 0
+
+          return `${totalAmount} €`
+        },
+      },
       hasPaid: {
         transform: value => <PaidBadges hasPaid={value as boolean | null} />,
         transformPDF: value => paidBadgesPDF(value as boolean | null),

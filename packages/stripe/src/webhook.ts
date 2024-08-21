@@ -97,13 +97,11 @@ export const donationWebhook = async (event: any) => {
     const status = session.payment_status
     const checkoutSessionId = session.id
 
-    const params = new URLSearchParams(new URL(session.success_url).search);
-    const id = params.get("id");
+    const params = new URLSearchParams(new URL(session.success_url).search)
+    const id = params.get('id')
     const donationId = Number(id)
     const type: MetaDataType = session.metadata.type
-    const token = session.metadata.token as string ?? getSecret('TOKEN')
-
-    console.log("#### WEBHOOK PARAMS:", status, checkoutSessionId, donationId, type)
+    const token = (session.metadata.token as string) ?? getSecret('TOKEN')
 
     if (type === 'donation')
       return handleDonation(status, checkoutSessionId, donationId, token)

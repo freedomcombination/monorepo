@@ -20,20 +20,27 @@ export const GetGeneralStatus = (
   if (remaining > 0) {
     if (hasFinished) {
       return {
-        message: t('course.payment.message.unpaid-finished', { amount: remaining }),
+        message: t('course.payment.message.unpaid-finished', {
+          amount: remaining,
+        }),
         color: 'red',
       }
     }
 
     if (hasStarted) {
       return {
-        message: t('course.payment.message.unpaid-unfinished', { amount: remaining }),
+        message: t('course.payment.message.unpaid-unfinished', {
+          amount: remaining,
+        }),
         color: 'red',
       }
     }
 
     return {
-      message: t('course.payment.message.unpaid-not-started', { amount: remaining, date: formatDate(course.startDate, 'dd MMMM yyyy', locale) }),
+      message: t('course.payment.message.unpaid-not-started', {
+        amount: remaining,
+        date: formatDate(course.startDate, 'dd MMMM yyyy', locale),
+      }),
       color: 'red',
     }
   }
@@ -47,7 +54,9 @@ export const GetGeneralStatus = (
   }
 
   return {
-    message: t('course.payment.message.not-started', { date: formatDate(course.startDate, 'dd MMMM yyyy', locale) }),
+    message: t('course.payment.message.not-started', {
+      date: formatDate(course.startDate, 'dd MMMM yyyy', locale),
+    }),
     color: 'green',
   }
 }

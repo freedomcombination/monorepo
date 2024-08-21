@@ -7,10 +7,10 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MdOutlinePayment, MdOutlineWarning } from 'react-icons/md'
 
+import { SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { Course, CourseApplication } from '@fc/types'
 import { formatDate } from '@fc/utils'
-import { SITE_URL } from '@fc/config'
 
 type PaymentButtonProps = {
   amount: number
@@ -46,8 +46,7 @@ export const PaymentButton: FC<PaymentButtonProps> = ({
           type: 'one-time',
           profile: profile.id,
           courseApplication: application.id,
-          slug: course.slug,
-          returnUrl: `${SITE_URL}/profile?tab=courses`,
+          returnUrl: `${SITE_URL}/profile?tab=courses&slug=${course.slug}&`,
           installmentNumber,
           token,
         })

@@ -21,13 +21,10 @@ import { CourseApplicationCreateInput } from '@fc/types'
 
 import { useCourseContext } from './CourseContext'
 import { applicationSchema } from './schema'
-import {
-  ApplicationFormFields,
-  CourseApplicationFormProps,
-} from '../CourseDetailPage/types'
+import { ApplicationFormFields } from '../CourseDetailPage/types'
 import { FormItem } from '../FormItem'
 
-export const CourseApplicationForm: FC<CourseApplicationFormProps> = () => {
+export const CourseApplicationForm: FC = () => {
   const { t } = useTranslation()
   // const [termsAccepted, setTermsAccepted] = useState(false)
   // const [privacyAccepted, setPrivacyAccepted] = useState(false)

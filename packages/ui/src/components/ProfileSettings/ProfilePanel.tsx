@@ -1,14 +1,5 @@
 'use client'
-import {
-  Children,
-  FC,
-  isValidElement,
-  PropsWithChildren,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
 
 import {
   Box,
@@ -20,8 +11,8 @@ import {
   Tabs,
   TabsProps,
   Text,
-  VStack,
   useBreakpointValue,
+  VStack,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -101,7 +92,10 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
     process.env.NODE_ENV === 'development'
 
   useEffect(() => {
-    const index = findTabIndexByTitle(tabListRef.current, activeTab.toLowerCase())
+    const index = findTabIndexByTitle(
+      tabListRef.current,
+      activeTab.toLowerCase(),
+    )
     setActiveTabIndex(index)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab, tabListRef.current])
@@ -133,7 +127,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
             textAlign={'center'}
             fontWeight={600}
           >
-            <Text>{profile?.name || user?.username} : activeTab {activeTab} , {activeTabIndex}</Text>
+            <Text>{profile?.name || user?.username}</Text>
             <Text>{user.roles.join(', ')}</Text>
           </Box>
         </VStack>

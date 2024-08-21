@@ -11,7 +11,6 @@ import { RiMoneyEuroCircleLine } from 'react-icons/ri'
 
 import { useCourseContext } from './CourseContext'
 import { CourseInfoItem } from './CourseInfoItem'
-import { CourseInfoProps } from './types'
 
 enum Languages {
   en = 'English',
@@ -19,7 +18,7 @@ enum Languages {
   nl = 'Nederlands',
 }
 
-export const CourseInfo: FC<CourseInfoProps> = (/* { course } */) => {
+export const CourseInfo: FC = () => {
   const { t } = useTranslation()
   const { course, paidApplications } = useCourseContext()
 

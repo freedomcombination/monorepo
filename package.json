@@ -21,7 +21,8 @@
     "test": "yarn kill-ports && playwright test",
     "tsc": "turbo run tsc --concurrency=20",
     "copy-locales": "cp -R packages/ui/public/locales/* apps/kunsthalte/public/locales && cp -R packages/ui/public/locales/* apps/foundation/public/locales && cp -R packages/ui/public/locales/* apps/trend-rights/public/locales && cp -R packages/ui/public/locales/* apps/lotus/public/locales  && cp -R packages/ui/public/locales/* apps/dashboard/public/locales",
-    "add-word": "apps/api/scripts/add-i18.sh"
+    "add-word": "apps/api/scripts/add-i18.sh",
+    "stripe": "./stripe listen --forward-to localhost:3001/api/donation/status"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.2.0",
