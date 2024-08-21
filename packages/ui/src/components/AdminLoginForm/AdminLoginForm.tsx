@@ -107,6 +107,7 @@ export const AdminLoginForm = () => {
                 errors={errors}
               />
               <Button
+                data-testid="login-button"
                 isLoading={isAuthLoading || isRedirecting}
                 w="full"
                 type="submit"
@@ -122,6 +123,7 @@ export const AdminLoginForm = () => {
                       components={{
                         a: (
                           <Link
+                            data-testid="contact-us-error"
                             isExternal
                             href={'https://freedomcombination.com/tr/contact'}
                             color="blue.500"
@@ -131,7 +133,7 @@ export const AdminLoginForm = () => {
                     />
                   </Text>
                 ) : (
-                  <Text color="red.500" fontSize="sm">
+                  <Text data-testid="login-error" color="red.500" fontSize="sm">
                     {(loginMutation.error as any)?.response?.data?.message ||
                       'An error occured'}
                   </Text>
