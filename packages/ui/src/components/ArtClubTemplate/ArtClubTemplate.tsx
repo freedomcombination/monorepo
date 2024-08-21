@@ -13,8 +13,6 @@ import {
   Skeleton,
   Stack,
   useDisclosure,
-  Alert,
-  AlertIcon
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -32,6 +30,7 @@ import { ArtSideBar } from '../ArtClubSideBar'
 import { CategoryFilterSkeleton } from '../CategoryFilter'
 import { Container } from '../Container'
 import { CreateArtForm } from '../CreateArtForm'
+import { EmptyResultAlert } from '../EmptyResultAlert/EmptyResultAlert'
 import { MasonryGrid } from '../MasonryGrid'
 import { Pagination } from '../Pagination'
 import { SearchForm } from '../SearchForm'
@@ -174,10 +173,7 @@ export const ArtClubTemplate: FC = () => {
                     ); 
                   }) :
                   (
-                    <Alert status='info'>
-                      <AlertIcon />
-                        nothing was found
-                    </Alert>
+                    <EmptyResultAlert/>
                   )}
             </MasonryGrid>
 
