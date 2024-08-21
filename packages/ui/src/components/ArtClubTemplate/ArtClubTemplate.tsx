@@ -13,6 +13,8 @@ import {
   Skeleton,
   Stack,
   useDisclosure,
+  Alert,
+  AlertIcon
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -154,7 +156,8 @@ export const ArtClubTemplate: FC = () => {
                       isMasonry
                     />
                   ))
-                : artsQuery.data?.data?.map((art, i) => {
+                : artsQuery.data?.data?.length as number > 0
+                ? artsQuery.data?.data?.map((art, i) => {
                     return (
                       <AnimatedBox
                         key={art.id}
@@ -168,8 +171,14 @@ export const ArtClubTemplate: FC = () => {
                           recaptchaToken={recaptchaToken}
                         />
                       </AnimatedBox>
-                    )
-                  })}
+                    ); 
+                  }) :
+                  (
+                    <Alert status='info'>
+                      <AlertIcon />
+                        nothing was found
+                    </Alert>
+                  )}
             </MasonryGrid>
 
             {!artsQuery.isLoading && (
