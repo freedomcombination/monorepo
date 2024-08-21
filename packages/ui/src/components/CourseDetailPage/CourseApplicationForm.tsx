@@ -5,8 +5,8 @@ import {
   Button,
   SimpleGrid,
   Stack,
-  Textarea,
   Text,
+  Textarea,
   useToast,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -14,7 +14,6 @@ import { useMutation } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 
-import { PUBLIC_TOKEN } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationCreateInput } from '@fc/types'
@@ -30,7 +29,7 @@ export const CourseApplicationForm: FC = () => {
   // const [privacyAccepted, setPrivacyAccepted] = useState(false)
 
   const { course, refetchApplicants } = useCourseContext()
-  const { user, profile } = useAuthContext()
+  const { user, profile, token } = useAuthContext()
   const toast = useToast()
 
   const {
@@ -46,7 +45,7 @@ export const CourseApplicationForm: FC = () => {
   const { mutate } = useMutation({
     mutationKey: ['course-apply'],
     mutationFn: (data: CourseApplicationCreateInput) =>
-      Mutation.post('course-applications', data, PUBLIC_TOKEN),
+      Mutation.post('course-applications', data, token as string),
   })
 
   if (!profile || !user) return null
