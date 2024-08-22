@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import Link from 'next/link'
 import { Stack, Text, VStack, Link as ChakraLink } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'

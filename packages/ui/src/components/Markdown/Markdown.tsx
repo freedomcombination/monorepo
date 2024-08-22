@@ -1,8 +1,8 @@
 /* eslint-disable react/display-name */
 import { FC, HtmlHTMLAttributes } from 'react'
 
-import Link from 'next/link'
 import { chakra, Link as ChakraLink } from '@chakra-ui/react'
+import Link from 'next/link'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 const MarkdownComponents = {

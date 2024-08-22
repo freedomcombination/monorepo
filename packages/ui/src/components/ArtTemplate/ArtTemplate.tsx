@@ -1,5 +1,6 @@
 import { Heading, Stack, useBreakpointValue } from '@chakra-ui/react'
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { useTranslation } from 'next-i18next'
 

@@ -1,6 +1,6 @@
 import { StackProps, BoxProps } from '@chakra-ui/react'
-import { ButtonProps, TooltipProps } from '@fc/chakra'
 
+import { ButtonProps, TooltipProps } from '@fc/chakra'
 import { StrapiEndpoint } from '@fc/types'
 
 export type ActionWrapperProps<

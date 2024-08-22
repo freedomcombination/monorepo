@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import Link from 'next/link'
 import {
   Box,
   Center,
@@ -11,6 +10,7 @@ import {
   Spinner,
   Stack,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'

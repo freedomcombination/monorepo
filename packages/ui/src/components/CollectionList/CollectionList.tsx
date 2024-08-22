@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import Link from 'next/link'
 import {
   Box,
   Separator,
@@ -9,6 +8,7 @@ import {
   Text,
   Link as ChakraLink,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MdCollectionsBookmark } from 'react-icons/md'

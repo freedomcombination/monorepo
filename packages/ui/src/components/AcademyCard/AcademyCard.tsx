@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import Link from 'next/link'
 import {
   AspectRatio,
   Card,
@@ -9,6 +8,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 
 import { AcademyCardProps } from './types'
 import { WImage } from '../../components'

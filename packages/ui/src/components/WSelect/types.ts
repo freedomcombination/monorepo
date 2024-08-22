@@ -1,7 +1,7 @@
+import { SelectRootProps } from '@chakra-ui/react'
 import { Control, FieldValues } from 'react-hook-form'
 
 import { FormItemProps } from '../FormItem'
-import { SelectRootProps } from '@chakra-ui/react'
 
 export type SelectOption = {
   label: string

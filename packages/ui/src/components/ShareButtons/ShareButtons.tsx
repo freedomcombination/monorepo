@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 
-import Link from 'next/link'
 import { ButtonProps, Group, GroupProps } from '@chakra-ui/react'
+import Link from 'next/link'
 import {
   FacebookShareButton,
   LinkedinShareButton,

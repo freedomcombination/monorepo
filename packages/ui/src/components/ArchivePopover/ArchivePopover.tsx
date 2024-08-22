@@ -1,6 +1,5 @@
 import { FC, PropsWithChildren } from 'react'
 
-import Link from 'next/link'
 import {
   Badge,
   Box,
@@ -11,6 +10,7 @@ import {
   Text,
   Group,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Markdown from 'react-markdown'
 

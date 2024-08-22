@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import Link from 'next/link'
 import {
   Box,
   Flex,
@@ -12,6 +11,7 @@ import {
   useBreakpointValue,
   Group,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FaCalendarDay, FaClock, FaEye, FaHeart } from 'react-icons/fa'
 

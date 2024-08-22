@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
+import { Link as ChakraLink } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Link as ChakraLink } from '@chakra-ui/react'
 
 import { FooterNavItemProps } from './types'
 

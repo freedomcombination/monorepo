@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import Link from 'next/link'
 import { Heading, Stack, Text, Link as ChakraLink } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { SITE_URL } from '@fc/config'

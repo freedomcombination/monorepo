@@ -2,10 +2,10 @@ import { ReactElement } from 'react'
 
 import { StackProps, BoxProps } from '@chakra-ui/react'
 
+import { ButtonProps, TooltipProps } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
 import { ActionWrapperProps } from './types'
-import { ButtonProps, TooltipProps } from '@fc/chakra'
 
 export const ActionWrapper = <
   T extends StackProps | BoxProps | ButtonProps | TooltipProps,

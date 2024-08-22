@@ -1,7 +1,6 @@
 import { FC, useRef, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import Link from 'next/link'
 import {
   Box,
   Group,
@@ -16,6 +15,7 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useQueryClient } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
