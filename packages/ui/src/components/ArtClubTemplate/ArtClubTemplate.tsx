@@ -13,6 +13,9 @@ import {
   Skeleton,
   Stack,
   useDisclosure,
+  Alert,
+  AlertIcon,
+  AlertDescription,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -30,7 +33,6 @@ import { ArtSideBar } from '../ArtClubSideBar'
 import { CategoryFilterSkeleton } from '../CategoryFilter'
 import { Container } from '../Container'
 import { CreateArtForm } from '../CreateArtForm'
-import { EmptyResultAlert } from '../EmptyResultAlert/EmptyResultAlert'
 import { MasonryGrid } from '../MasonryGrid'
 import { Pagination } from '../Pagination'
 import { SearchForm } from '../SearchForm'
@@ -146,37 +148,51 @@ export const ArtClubTemplate: FC = () => {
                 onClick={onOpen}
               />
             </HStack>
-
-            <MasonryGrid columnGap={2} rowGap={2}>
-              {artsQuery.isLoading
-                ? Array.from({ length: 12 }).map((_, i) => (
-                    <ArtCardSkeleton
-                      key={'masonry-grid-skeleton' + i}
-                      isMasonry
-                    />
-                  ))
-                : artsQuery.data?.data?.length as number > 0
-                ? artsQuery.data?.data?.map((art, i) => {
-                    return (
-                      <AnimatedBox
-                        key={art.id}
-                        directing="to-down"
-                        delay={i * 0.5}
-                      >
-                        <ArtCard
-                          art={art}
-                          refetch={artsQuery.refetch}
-                          isMasonry
-                          recaptchaToken={recaptchaToken}
-                        />
-                      </AnimatedBox>
-                    ); 
-                  }) :
-                  (
-                    <EmptyResultAlert/>
-                  )}
-            </MasonryGrid>
-
+            {!artsQuery.isLoading && artsQuery.data?.data?.length === 0 ? (
+              <Alert
+                status="info"
+                variant="subtle"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+                textAlign="center"
+                height="200px"
+                gap={4}
+                rounded={'lg'}
+              >
+                <AlertIcon boxSize="40px" mr={0} />
+                <AlertDescription fontWeight={600} maxWidth="sm">
+                  {/* TODO: Translate */}
+                  No results found
+                </AlertDescription>
+              </Alert>
+            ) : (
+              <MasonryGrid columnGap={2} rowGap={2}>
+                {artsQuery.isLoading
+                  ? Array.from({ length: 12 }).map((_, i) => (
+                      <ArtCardSkeleton
+                        key={'masonry-grid-skeleton' + i}
+                        isMasonry
+                      />
+                    ))
+                  : artsQuery.data?.data?.map((art, i) => {
+                      return (
+                        <AnimatedBox
+                          key={art.id}
+                          directing="to-down"
+                          delay={i * 0.5}
+                        >
+                          <ArtCard
+                            art={art}
+                            refetch={artsQuery.refetch}
+                            isMasonry
+                            recaptchaToken={recaptchaToken}
+                          />
+                        </AnimatedBox>
+                      )
+                    })}
+              </MasonryGrid>
+            )}
             {!artsQuery.isLoading && (
               <Center>
                 {artsQuery.data?.meta?.pagination && (

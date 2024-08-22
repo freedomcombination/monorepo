@@ -48,43 +48,41 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 
   return (
     <div>
-    <InputGroup size="lg" flex="1">
-      <InputLeftElement pointerEvents="none" color="gray.400">
-        <HiOutlineSearch />
-      </InputLeftElement>
+      <InputGroup size="lg" flex="1">
+        <InputLeftElement pointerEvents="none" color="gray.400">
+          <HiOutlineSearch />
+        </InputLeftElement>
 
-      <Input
-        placeholder={placeholder}
-        value={searchTerm}
-        onChange={e => setSearchTerm(e.target.value)}
-        onKeyDown={e =>
-          e.key === 'Enter' && setSearchTerm((e.target as any).value)
-        }
-        {...rest}
-      />
-      <InputRightElement w="max-content" right={1}>
-        {searchTerm.length > 1 && (
-          <IconButton
-            isLoading={isFetching}
-            variant="ghost"
-            icon={<FaTimes color="gray.400" />}
-            onClick={() => setSearchTerm('')}
-            aria-label="Clear search"
-          />
-        )}
-        {mode === 'click' && (
-          <IconButton
-            onClick={() => onSearch(searchTerm)}
-            icon={<HiOutlineSearch />}
-            aria-label="Search"
-          />
-        )}
-      </InputRightElement>
-    </InputGroup>
-    {isFetching && (
-      <p style={{ marginTop: '10px', color: 'red' }}>
-          Hiçbir şey bulunamadı
-      </p>
+        <Input
+          placeholder={placeholder}
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+          onKeyDown={e =>
+            e.key === 'Enter' && setSearchTerm((e.target as any).value)
+          }
+          {...rest}
+        />
+        <InputRightElement w="max-content" right={1}>
+          {searchTerm.length > 1 && (
+            <IconButton
+              isLoading={isFetching}
+              variant="ghost"
+              icon={<FaTimes color="gray.400" />}
+              onClick={() => setSearchTerm('')}
+              aria-label="Clear search"
+            />
+          )}
+          {mode === 'click' && (
+            <IconButton
+              onClick={() => onSearch(searchTerm)}
+              icon={<HiOutlineSearch />}
+              aria-label="Search"
+            />
+          )}
+        </InputRightElement>
+      </InputGroup>
+      {isFetching && (
+        <p style={{ marginTop: '10px', color: 'red' }}>Hiçbir şey bulunamadı</p>
       )}
     </div>
   )
