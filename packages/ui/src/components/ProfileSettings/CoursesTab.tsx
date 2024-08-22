@@ -58,6 +58,7 @@ export const CoursesTab: FC = () => {
         <Stack>
           <Accordion
             allowMultiple={false}
+            allowToggle
             width={'100%'}
             maxWidth={'100%'}
             {...extProps}
@@ -112,8 +113,9 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
                   {t('status')}
                 </Badge>
               }
-              value={<Text>{status.message}</Text>}
-            />
+            >
+              <Text>{status.message}</Text>
+            </PaymentLine>
           </VStack>
         </Box>
         <AccordionIcon />

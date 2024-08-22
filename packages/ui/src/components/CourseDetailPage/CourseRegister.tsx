@@ -1,14 +1,13 @@
 import {
-  Center,
-  BoxProps,
-  Spinner,
   Alert,
-  AlertProps,
-  AlertIcon,
   AlertDescription,
-  Stack,
-  Heading,
+  AlertIcon,
   AlertTitle,
+  Center,
+  Heading,
+  Spinner,
+  Stack,
+  StackProps,
 } from '@chakra-ui/react'
 import { isPast } from 'date-fns/isPast'
 import { useTranslation } from 'next-i18next'
@@ -27,7 +26,7 @@ export const CourseRegister = () => {
 
   const courseLastRegisterDate = course.lastRegisterDate
 
-  const style = {
+  const style: StackProps = {
     maxW: '3xl',
     w: 'full',
     alignSelf: 'center',
@@ -36,8 +35,7 @@ export const CourseRegister = () => {
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    spacing: 8,
-    gap: 4,
+    gap: 7,
     p: 8,
     borderWidth: 1,
     rounded: 'md',
@@ -47,7 +45,7 @@ export const CourseRegister = () => {
     const isRegisterPast = isPast(courseLastRegisterDate)
     if (isRegisterPast) {
       return (
-        <Alert status={'info'} variant="subtle" {...(style as AlertProps)}>
+        <Alert status={'info'} variant="subtle" {...style}>
           <AlertIcon boxSize="40px" mr={0} />
           <AlertTitle>{t('course.application-closed')}</AlertTitle>
           <AlertDescription maxWidth="sm">
@@ -66,7 +64,7 @@ export const CourseRegister = () => {
   // show spinner while loading
   if (isLoading) {
     return (
-      <Center {...(style as BoxProps)}>
+      <Center {...style}>
         <Spinner size={'xl'} />
       </Center>
     )
@@ -75,7 +73,7 @@ export const CourseRegister = () => {
   // show login alert if user is not logged in
   if (!user || !profile) {
     return (
-      <Alert status={'info'} variant="subtle" {...(style as AlertProps)}>
+      <Alert status={'info'} variant="subtle" {...style}>
         <AlertIcon boxSize="40px" mr={0} />
         <ProfileMenu />
         <AlertDescription maxWidth="sm">
@@ -88,7 +86,7 @@ export const CourseRegister = () => {
   // show application form if user haven't applied yet
   if (!myApplication) {
     return (
-      <Stack bg={'white'} {...(style as BoxProps)}>
+      <Stack bg={'white'} {...style}>
         <Heading as={'h3'} size={'lg'}>
           {t('course.application-title')}
         </Heading>
@@ -104,7 +102,7 @@ export const CourseRegister = () => {
     !myApplication.payments?.some(payment => payment?.status === 'paid')
   ) {
     return (
-      <Stack bg={'white'} {...(style as BoxProps)}>
+      <Stack bg={'white'} {...style}>
         <Heading as={'h3'} size={'lg'}>
           {t('course.application-pay-title')}
         </Heading>
@@ -114,7 +112,7 @@ export const CourseRegister = () => {
   }
 
   return (
-    <Alert status={'success'} variant="subtle" {...(style as AlertProps)}>
+    <Alert status={'success'} variant="subtle" {...style}>
       <AlertIcon boxSize="40px" mr={0} />
       <AlertTitle>{t('course.payment.title.thanks')}</AlertTitle>
       <AlertDescription maxWidth="sm">

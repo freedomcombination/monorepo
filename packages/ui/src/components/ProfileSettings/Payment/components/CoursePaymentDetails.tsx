@@ -28,10 +28,9 @@ export const CoursePaymentDetails: FC<{
   const remainingPrice = calculateRemainingPrice(course, application)
   if (remainingPrice === 0) {
     return (
-      <PaymentLine
-        title={t('course.payment.title.total-payment')}
-        value={<Text>{`${course.price} euro`}</Text>}
-      />
+      <PaymentLine title={t('course.payment.title.total-payment')}>
+        <Text>{`${course.price} euro`}</Text>
+      </PaymentLine>
     )
   }
 
@@ -39,17 +38,14 @@ export const CoursePaymentDetails: FC<{
 
   if (installmentCount === SINGLE_INSTALLMENT) {
     return (
-      <PaymentLine
-        title={t('course.payment.title.pay')}
-        value={
-          <PaymentButton
-            amount={remainingPrice}
-            installmentNumber={1}
-            application={application}
-            course={course}
-          />
-        }
-      />
+      <PaymentLine title={t('course.payment.title.pay')}>
+        <PaymentButton
+          amount={remainingPrice}
+          installmentNumber={1}
+          application={application}
+          course={course}
+        />
+      </PaymentLine>
     )
   }
 
@@ -86,76 +82,66 @@ export const CoursePaymentDetails: FC<{
   return (
     <>
       {paidInstallments.length > 0 && (
-        <PaymentLine
-          title={t('course.payment.title.installment-paid')}
-          value={
-            <Stack>
-              {paidInstallments.map(
-                ({ date, amount, installmentNumber, payment }) => (
-                  <PaymentLine
-                    key={installmentNumber}
-                    title={
-                      <Badge
-                        colorScheme={'green'}
-                        fontWeight={payment?.id === id ? 'bold' : 'normal'}
-                      >
-                        {t('course.payment.title.nth-installment', {
-                          number: installmentNumber,
-                        })}
-                      </Badge>
-                    }
-                    value={
-                      <Text fontWeight={payment?.id === id ? 'bold' : 'normal'}>
-                        {t('course.payment.title.nth-installment-paid', {
-                          date: formatDate(date, 'dd MMMM yyyy', locale),
-                          amount,
-                        })}
-                      </Text>
-                    }
-                  />
-                ),
-              )}
-            </Stack>
-          }
-        />
+        <PaymentLine title={t('course.payment.title.installment-paid')}>
+          <Stack>
+            {paidInstallments.map(
+              ({ date, amount, installmentNumber, payment }) => (
+                <PaymentLine
+                  key={installmentNumber}
+                  title={
+                    <Badge
+                      colorScheme={'green'}
+                      fontWeight={payment?.id === id ? 'bold' : 'normal'}
+                    >
+                      {t('course.payment.title.nth-installment', {
+                        number: installmentNumber,
+                      })}
+                    </Badge>
+                  }
+                >
+                  <Text fontWeight={payment?.id === id ? 'bold' : 'normal'}>
+                    {t('course.payment.title.nth-installment-paid', {
+                      date: formatDate(date, 'dd MMMM yyyy', locale),
+                      amount,
+                    })}
+                  </Text>
+                </PaymentLine>
+              ),
+            )}
+          </Stack>
+        </PaymentLine>
       )}
       {pastInstallments.length > 0 && (
-        <PaymentLine
-          title={t('course.payment.title.installment-overdue')}
-          value={
-            <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
-              {pastInstallments.map(({ date, amount, installmentNumber }) => (
-                <PaymentButton
-                  key={installmentNumber}
-                  course={course}
-                  application={application}
-                  amount={amount}
-                  installmentNumber={installmentNumber}
-                  date={date}
-                />
-              ))}
-            </SimpleGrid>
-          }
-        />
+        <PaymentLine title={t('course.payment.title.installment-overdue')}>
+          <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
+            {pastInstallments.map(({ date, amount, installmentNumber }) => (
+              <PaymentButton
+                key={installmentNumber}
+                course={course}
+                application={application}
+                amount={amount}
+                installmentNumber={installmentNumber}
+                date={date}
+              />
+            ))}
+          </SimpleGrid>
+        </PaymentLine>
       )}
       {unpaidInstallments.length > 0 && (
-        <PaymentLine
-          title={t('course.payment.title.installment-unpaid')}
-          value={
-            <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
-              {unpaidInstallments.map(({ date, amount, installmentNumber }) => (
-                <PaymentButton
-                  key={installmentNumber}
-                  amount={amount}
-                  installmentNumber={installmentNumber}
-                  date={date}
-                  application={application}
-                  course={course}
-                />
-              ))}
-            </SimpleGrid>
-          }
-        />
+        <PaymentLine title={t('course.payment.title.installment-unpaid')}>
+          <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
+            {unpaidInstallments.map(({ date, amount, installmentNumber }) => (
+              <PaymentButton
+                key={installmentNumber}
+                amount={amount}
+                installmentNumber={installmentNumber}
+                date={date}
+                application={application}
+                course={course}
+              />
+            ))}
+          </SimpleGrid>
+        </PaymentLine>
       )}
     </>
   )

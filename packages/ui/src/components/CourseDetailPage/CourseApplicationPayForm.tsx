@@ -1,8 +1,10 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 
 import {
   Box,
   Button,
+  FormControl,
+  FormLabel,
   HStack,
   Image,
   Radio,
@@ -27,7 +29,7 @@ import { useCourseContext } from './CourseContext'
 
 const EXPLANATION_LIMIT = 30
 
-export const CourseApplicationPayForm: FC = () => {
+export const CourseApplicationPayForm = () => {
   const { token, profile } = useAuthContext()
   const { course, refetchApplicants, myApplication } = useCourseContext()
   const application = myApplication!
@@ -125,9 +127,10 @@ export const CourseApplicationPayForm: FC = () => {
           <Stack
             gap={4}
             alignItems={'center'}
+            minH={'inherit'}
             // justifyContent={'center'}
           >
-            <Stack align="center" width={'full'}>
+            <Stack align="center" width={'full'} flex={1}>
               <HStack spacing={4}>
                 <Image src={`/images/ideal-logo.svg`} h={50} alt="ideal" />
 
@@ -157,26 +160,32 @@ export const CourseApplicationPayForm: FC = () => {
             </Button>
           </Stack>
         ) : (
-          <VStack gap={4} alignItems={'flex-start'} justifyContent={'center'}>
-            <Text fontSize={'sm'} textAlign={'left'}>
-              {t('course.application-pay-info-title', {
-                limit: EXPLANATION_LIMIT,
-              })}
-            </Text>
-            <Box position={'relative'} w={'100%'}>
-              <Text
-                position={'absolute'}
-                top={-6}
-                right={1}
-                fontSize={'xs'}
-                border={'1px'}
-                borderColor={'gray.300'}
-                bg={'white'}
-                borderRadius={'lg'}
-                px={2}
-              >
-                {payExplanation.length} / 255
-              </Text>
+          <VStack
+            minH={'inherit'}
+            gap={4}
+            alignItems={'flex-start'}
+            justifyContent={'center'}
+          >
+            <FormControl position={'relative'} w={'100%'} flex={1}>
+              <HStack>
+                <FormLabel flex={1} fontSize={'sm'} textAlign={'left'}>
+                  {t('course.application-pay-info-title', {
+                    limit: EXPLANATION_LIMIT,
+                  })}
+                </FormLabel>
+                <Text
+                  mb={2}
+                  flexShrink={0}
+                  fontSize={'xs'}
+                  border={'1px'}
+                  borderColor={'gray.300'}
+                  bg={'white'}
+                  borderRadius={'lg'}
+                  px={2}
+                >
+                  {payExplanation.length} / 255
+                </Text>
+              </HStack>
               <Textarea
                 w={'full'}
                 onChange={e => setPayExplanation(e.target.value)}
@@ -185,12 +194,13 @@ export const CourseApplicationPayForm: FC = () => {
                 isInvalid={payExplanation.length < EXPLANATION_LIMIT}
                 resize={'vertical'}
               />
-            </Box>
+            </FormControl>
             <Button
               leftIcon={<MdOutlineSend />}
               colorScheme="primary"
               isDisabled={payExplanation.length < EXPLANATION_LIMIT}
               onClick={onSendInfo}
+              justifySelf={'end'}
             >
               Send
             </Button>
