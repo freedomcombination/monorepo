@@ -122,14 +122,11 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
       </AccordionButton>
       <AccordionPanel pr={4} overflow={'auto'}>
         <VStack alignItems={'flex-start'} gap={4}>
-          <PaymentLine
-            title={t('course.payment.title.course-page')}
-            value={
-              <Link href={`courses/${course.slug}`}>
-                {t('course.payment.title.go-to-course')}
-              </Link>
-            }
-          />
+          <PaymentLine title={t('course.payment.title.course-page')}>
+            <Link href={`courses/${course.slug}`}>
+              {t('course.payment.title.go-to-course')}
+            </Link>
+          </PaymentLine>
           <CoursePaymentDetails application={application} course={course} />
         </VStack>
       </AccordionPanel>

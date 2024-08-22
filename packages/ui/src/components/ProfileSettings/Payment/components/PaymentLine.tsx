@@ -4,7 +4,6 @@ import { HStack, StackProps, Text } from '@chakra-ui/react'
 
 type LineTextProps = {
   title: ReactNode
-  children: ReactNode
 } & Omit<StackProps, 'title'>
 
 export const PaymentLine: FC<LineTextProps> = ({
