@@ -99,7 +99,11 @@ export const LoginForm: FC<LoginFormProps> = ({
           </Stack>
         </Stack>
         <Stack gap={6} as="form" onSubmit={handleSubmit(handleSubmitSign)}>
-          {errorMessage && <Alert status="error">{errorMessage}</Alert>}
+          {errorMessage && (
+            <Alert status="error" data-testid="auth-error">
+              {errorMessage}
+            </Alert>
+          )}
           <Stack gap={5}>
             <FormItem
               data-testid="input-email"

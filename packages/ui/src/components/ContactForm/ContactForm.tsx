@@ -1,5 +1,3 @@
-import { FC } from 'react'
-
 import {
   Separator,
   Heading,
@@ -15,19 +13,28 @@ import { BsPerson } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
 
 import { Button, Alert } from '@fc/chakra'
+import { EMAIL } from '@fc/config'
+import { useSendEmail } from '@fc/services'
 
 import { contactSchema } from './schema'
-import { ContactFormFieldValues, ContactFormProps } from './types'
+import { ContactFormFieldValues } from './types'
 import { FormItem } from '../FormItem'
 
-export const ContactForm: FC<ContactFormProps> = ({
-  onSubmitHandler,
-  loading,
-  isSuccess,
-  isError,
-  errorMessage,
-}) => {
+export const ContactForm = () => {
   const { t } = useTranslation()
+
+  const { isError, isPending, isSuccess, mutate: sendForm } = useSendEmail()
+
+  const onSubmitHandler = async (data: ContactFormFieldValues) => {
+    const emailData = {
+      subject: `Contact from ${data.fullname} (${data.email})`,
+      text: data.message,
+      from: EMAIL,
+      to: EMAIL,
+    }
+
+    return sendForm(emailData)
+  }
 
   const {
     register,
@@ -80,7 +87,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           variant="solid"
           type="submit"
           disabled={!isValid}
-          loading={loading}
+          loading={isPending}
           size={'lg'}
           w="full"
         >
@@ -93,7 +100,6 @@ export const ContactForm: FC<ContactFormProps> = ({
         {isError && (
           <Alert status="error">
             <>{t('contact.form.failed')} </>
-            {errorMessage ? errorMessage : ''}
           </Alert>
         )}
       </VStack>

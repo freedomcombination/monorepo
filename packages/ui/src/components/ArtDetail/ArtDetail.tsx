@@ -54,6 +54,7 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
           </HStack>
         )}
         <Button
+          data-testid="like-button"
           rounded="full"
           colorScheme={isLiked ? 'red' : 'gray'}
           rightIcon={<AiFillHeart />}

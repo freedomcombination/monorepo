@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import Link from 'next/link'
 import { Box, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -104,7 +104,8 @@ export const AdminLoginForm = () => {
                 errors={errors}
               />
               <Button
-                loading={isAuthLoading || isRedirecting}
+                data-testid="login-button"
+                isLoading={isAuthLoading || isRedirecting}
                 w="full"
                 type="submit"
               >
@@ -121,6 +122,7 @@ export const AdminLoginForm = () => {
                           <Link
                             rel="noreferrer noopener"
                             target="_blank"
+                            data-testid="contact-us-error"
                             href={'https://freedomcombination.com/tr/contact'}
                             color="blue.500"
                           />
@@ -129,7 +131,7 @@ export const AdminLoginForm = () => {
                     />
                   </Text>
                 ) : (
-                  <Text color="red.500" fontSize="sm">
+                  <Text data-testid="login-error" color="red.500" fontSize="sm">
                     {(loginMutation.error as any)?.response?.data?.message ||
                       'An error occured'}
                   </Text>

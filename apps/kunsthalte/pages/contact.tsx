@@ -10,34 +10,15 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail } from 'react-icons/md'
 
-import { EMAIL, socialLinks } from '@fc/config'
-import { useSendEmail } from '@fc/services'
+import { socialLinks } from '@fc/config'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
-import {
-  ButtonLink,
-  ContactForm,
-  ContactFormFieldValues,
-  Container,
-  SocialButtons,
-} from '@fc/ui'
+import { ButtonLink, ContactForm, Container, SocialButtons } from '@fc/ui'
 
 import { Layout } from '../components'
 
 const Contact = () => {
   const { t } = useTranslation()
-
-  const { isError, isPending, isSuccess, mutate: sendForm } = useSendEmail()
-
-  const handleSubmit = async (data: ContactFormFieldValues) => {
-    const emailData = {
-      subject: `Form from ${data.fullname} (${data.email})`,
-      text: data.message,
-      from: EMAIL,
-    }
-
-    return sendForm(emailData)
-  }
 
   return (
     <Layout seo={{ title: t('contact.title') }}>
@@ -80,12 +61,7 @@ const Contact = () => {
               <SocialButtons items={socialLinks.kunsthalte} />
             </VStack>
 
-            <ContactForm
-              onSubmitHandler={handleSubmit}
-              loading={isPending}
-              isSuccess={isSuccess}
-              isError={isError}
-            />
+            <ContactForm />
           </SimpleGrid>
         </Container>
       </Box>

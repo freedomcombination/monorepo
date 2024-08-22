@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
+import { Link as ChakraLink } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { MenuTypeItemProps } from './types'
 import { useScroll } from '../../hooks'
-import { Link as ChakraLink } from '@chakra-ui/react'
 
 export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
   const { asPath, locale } = useRouter()

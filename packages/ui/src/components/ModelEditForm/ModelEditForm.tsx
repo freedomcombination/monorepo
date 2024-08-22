@@ -481,6 +481,7 @@ export const ModelEditForm = <T extends StrapiModel>({
         >
           <Group wrap={'wrap'}>
             <ActionButton
+              data-testid="posts-button"
               isVisible={
                 endpoint === 'hashtags' || endpoint === 'archive-contents'
               }

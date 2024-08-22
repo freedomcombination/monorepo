@@ -84,6 +84,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                         {title}
                       </Heading>
                       <Tag
+                        data-testid="status-tag"
                         flexShrink={0}
                         size={'lg'}
                         colorScheme={

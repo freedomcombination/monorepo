@@ -106,6 +106,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
 
             <ActionStack canApprove="arts" direction={'row'} gap={2}>
               <Button
+                data-testid="reject-button"
                 flex={1}
                 flexShrink={0}
                 disabled={!feedback || art.approvalStatus === 'rejected'}
@@ -117,6 +118,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               </Button>
 
               <Button
+                data-testid="approve-button"
                 flex={1}
                 flexShrink={0}
                 disabled={!feedback || art.approvalStatus === 'approved'}
@@ -128,6 +130,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               </Button>
 
               <ActionButton
+                data-testid="edit-button"
                 canUpdate="arts"
                 aria-label="Edit"
                 flexShrink={0}
@@ -139,6 +142,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               </ActionButton>
 
               <Button
+                data-testid="dismiss-button"
                 aria-label="Close"
                 flexShrink={0}
                 onClick={onClose}

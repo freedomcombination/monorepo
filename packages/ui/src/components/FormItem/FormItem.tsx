@@ -7,9 +7,9 @@ import { FieldValues } from 'react-hook-form'
 
 import { Field } from '@fc/chakra'
 
-import { I18nNamespaces } from '../../../@types/i18next'
-import { I18nNamespaces } from '../../../@types/i18next'
 import { FormItemProps } from './types'
+import { I18nNamespaces } from '../../../@types/i18next'
+
 function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
   {
     name,
@@ -58,6 +58,7 @@ function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
           </InputElement>
         )} */}
         <Tag
+          data-testid={`${name}-input`}
           ref={ref}
           id={name}
           type={type === 'password' ? (isOpen ? 'text' : 'password') : type}

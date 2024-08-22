@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { Box, Stack } from '@chakra-ui/react'
+import { omit } from 'lodash'
 
 import {
   Popover,
@@ -17,8 +18,8 @@ export const ParentMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
   return (
     <Popover>
       <PopoverTrigger>
-        <Box p={2} w="max-content">
-          <ChildMenuItem item={item} isDark={isDark} />
+        <Box p={2} w="max-content" cursor={'pointer'}>
+          <ChildMenuItem item={omit(item, 'link')} isDark={isDark} />
         </Box>
       </PopoverTrigger>
 
