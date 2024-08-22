@@ -21,7 +21,7 @@ export const notificationFields: FormFields<
     name: 'roles',
     type: 'select',
     endpoint: 'users-permissions/roles',
-    isMulti: true,
+    multiple: true,
   },
-  { name: 'profiles', type: 'select', endpoint: 'profiles', isMulti: true },
+  { name: 'profiles', type: 'select', endpoint: 'profiles', multiple: true },
 ]

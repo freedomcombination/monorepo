@@ -2,29 +2,22 @@
 
 import { forwardRef } from 'react'
 
-import type { HTMLChakraProps, SlotRecipeProps } from '@chakra-ui/react'
-import { chakra, useRecipe } from '@chakra-ui/react'
+import type { HTMLChakraProps, RecipeProps } from '@chakra-ui/react'
+import { Button, chakra, useRecipe } from '@chakra-ui/react'
 
-import { Button } from '@fc/chakra'
-
-export interface LinkButtonProps
-  extends HTMLChakraProps<'a'>,
-    SlotRecipeProps<'Button'> {}
+export type LinkButtonProps = HTMLChakraProps<'a', RecipeProps<'Button'>>
 
 // Replace "a" with your framework's link component
 const StyledLink = chakra('a')
 
 export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
   function LinkButton(props, ref) {
-    const { children, ...rest } = props
-    const recipe = useRecipe('Button', props.recipe)
-    const [variantProps, localProps] = recipe.splitVariantProps(rest)
+    const recipe = useRecipe({ key: 'button', recipe: props.recipe })
+    const [variantProps, restProps] = recipe.splitVariantProps(props as any)
 
     return (
       <Button asChild {...variantProps}>
-        <StyledLink ref={ref} {...localProps}>
-          {children}
-        </StyledLink>
+        <StyledLink ref={ref} {...restProps} />
       </Button>
     )
   },

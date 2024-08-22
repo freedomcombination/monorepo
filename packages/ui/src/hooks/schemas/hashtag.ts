@@ -24,7 +24,7 @@ export const hashtagFields: FormFields<Hashtag> = [
   { name: 'date', type: 'datetime-local', required: true },
   { name: 'description', required: true, type: 'textarea' },
   { name: 'image', type: 'file', required: true },
-  { name: 'platform', type: 'select', endpoint: 'platforms', isMulti: false },
+  { name: 'platform', type: 'select', endpoint: 'platforms', multiple: false },
   { name: 'content', type: 'markdown' },
   {
     name: 'hashtagDefault',
@@ -35,12 +35,12 @@ export const hashtagFields: FormFields<Hashtag> = [
     name: 'mentions',
     type: 'select',
     endpoint: 'mentions',
-    isMulti: true,
+    multiple: true,
   },
   {
     name: 'categories',
     type: 'select',
     endpoint: 'categories',
-    isMulti: true,
+    multiple: true,
   },
 ]

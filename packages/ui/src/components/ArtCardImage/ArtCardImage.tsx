@@ -1,6 +1,8 @@
 import { FC, memo } from 'react'
 
 import { Box } from '@chakra-ui/react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { useRouter } from 'next/router'
 

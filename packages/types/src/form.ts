@@ -15,7 +15,7 @@ type FormTextFields = {
 
 type FormSelectFields = {
   type: 'select'
-  isMulti?: boolean
+  multiple?: boolean
   endpoint?: StrapiCollectionEndpoint
   populate?: string | string[]
   options?: string[]

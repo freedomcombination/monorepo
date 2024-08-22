@@ -22,7 +22,7 @@ export const archiveContentFields: FormFields<ArchiveContent> = [
   {
     name: 'categories',
     type: 'select',
-    isMulti: true,
+    multiple: true,
     endpoint: 'categories',
     required: true,
   },
@@ -30,7 +30,7 @@ export const archiveContentFields: FormFields<ArchiveContent> = [
   {
     name: 'tags',
     type: 'select',
-    isMulti: true,
+    multiple: true,
     endpoint: 'tags',
   },
   { name: 'link', required: true },

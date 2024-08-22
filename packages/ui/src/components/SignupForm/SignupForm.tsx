@@ -153,7 +153,7 @@ export const SignupForm: FC<SignupFormProps> = ({
 
               <ButtonLink
                 href="/auth/terms"
-                target="_blank"
+                isExternal
                 variant="plain"
                 colorScheme="gray"
                 size="sm"

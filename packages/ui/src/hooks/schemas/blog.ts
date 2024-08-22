@@ -24,19 +24,19 @@ export const blogFields: FormFields<Blog> = [
   {
     name: 'categories',
     type: 'select',
-    isMulti: true,
+    multiple: true,
     endpoint: 'categories',
   },
   {
     name: 'tags',
     type: 'select',
-    isMulti: true,
+    multiple: true,
     endpoint: 'tags',
   },
   {
     name: 'author',
     type: 'select',
-    isMulti: false,
+    multiple: false,
     endpoint: 'profiles',
   },
 ]

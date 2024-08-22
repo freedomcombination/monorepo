@@ -30,7 +30,7 @@ export const postFields: FormFields<Post> = [
     name: 'tags',
     type: 'select',
     endpoint: 'tags',
-    isMulti: true,
+    multiple: true,
   },
   {
     name: 'videoUrl',

@@ -52,7 +52,9 @@ const Contact = () => {
                 variant="plain"
                 color="primary.50"
                 _hover={{ color: 'primary.100' }}
-                leftIcon={<Box as={MdEmail} color="primary.50" size="20px" />}
+                leftIcon={
+                  <Box as={MdEmail} color="primary.50" fontSize="20px" />
+                }
                 href="mailto:kunsthalte@freedomcombination.com"
               >
                 kunsthalte@freedomcombination.com

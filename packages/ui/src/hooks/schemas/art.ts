@@ -43,7 +43,7 @@ export const artFields: FormFields<Art> = [
   {
     name: 'categories',
     type: 'select',
-    isMulti: true,
+    multiple: true,
     endpoint: 'categories',
   },
 ]

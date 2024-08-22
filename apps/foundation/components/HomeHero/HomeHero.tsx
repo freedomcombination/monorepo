@@ -1,13 +1,14 @@
 import { FC, useCallback, useEffect, useState } from 'react'
 
-import { chakra, Flex, keyframes } from '@chakra-ui/react'
+import { chakra, Flex } from '@chakra-ui/react'
 import { useTransform, useScroll } from 'framer-motion'
 
-const moveHorizontal = keyframes`
+// TODO: Fix keyframes
+const moveHorizontal = `
   0% { transform: translateX(50px); }
   50% { transform: translateX(-100px); }
   100% { transform: translateX(50px); }
-`
+` as const
 
 export const HomeHero: FC = () => {
   const [pos, setPos] = useState(0)

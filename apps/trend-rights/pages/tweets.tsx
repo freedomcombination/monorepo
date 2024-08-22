@@ -79,7 +79,11 @@ const RecommendsPage: FC<RecommendsPageProps> = ({ tweet, tweets, seo }) => {
     <Layout seo={seo}>
       <NextSeo {...seo} />
 
-      <Modal size={'6xl'} isOpen={open && !!tweet} onClose={handleClose}>
+      <Modal
+        size={'xl'}
+        open={open && !!tweet}
+        onOpenChange={e => (e.open ? onOpen() : handleClose())}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />

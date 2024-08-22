@@ -105,7 +105,7 @@ export const AdminLoginForm = () => {
               />
               <Button
                 data-testid="login-button"
-                isLoading={isAuthLoading || isRedirecting}
+                loading={isAuthLoading || isRedirecting}
                 w="full"
                 type="submit"
               >

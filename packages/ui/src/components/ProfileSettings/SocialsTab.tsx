@@ -35,12 +35,11 @@ const SocialRightElement = ({ url }: { url?: string }) => {
   return (
     <ButtonLink
       href={url ?? ''}
-      target="_blank"
-      rel="noreferrer noopener"
+      isExternal
       leftIcon={<FaCircleArrowRight />}
       size={'lg'}
       colorScheme="black"
-      variant={'ghost'}
+      variant={'plain'}
       aria-label={url}
       rounded={'full'}
       disabled={!url}

@@ -59,7 +59,9 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                   variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.100' }}
-                  leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
+                  leftIcon={
+                    <Box as={MdPhone} color="primary.50" fontSize="20px" />
+                  }
                   href={`tel:${foundation?.contact?.phone}`}
                 >
                   {foundation?.contact?.phone}

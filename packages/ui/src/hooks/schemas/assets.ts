@@ -34,7 +34,7 @@ export const assetFields: FormFields<Asset> = [
     name: 'peopleInCharge',
     required: true,
     type: 'select',
-    isMulti: true,
+    multiple: true,
     endpoint: 'profiles',
   },
   { name: 'invoice', type: 'file' },

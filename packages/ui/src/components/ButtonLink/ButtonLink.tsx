@@ -1,11 +1,26 @@
 import { FC } from 'react'
 
-import { Link, LinkProps } from '@chakra-ui/react'
+import Link, { LinkProps } from 'next/link'
 
 import { Button, ButtonProps } from '@fc/chakra'
 
-type ButtonLinkProps = ButtonProps & LinkProps
+type ButtonLinkProps = Omit<ButtonProps, 'target'> &
+  Omit<LinkProps, 'variant'> & { isExternal?: boolean }
 
 export const ButtonLink: FC<ButtonLinkProps> = props => {
-  return <Button {...(props.href ? { as: Link } : {})} {...props} />
+  return (
+    <Button
+      {...(props.href
+        ? {
+            as: Link,
+            ...((props.isExternal && {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            }) ||
+              {}),
+          }
+        : {})}
+      {...props}
+    />
+  )
 }

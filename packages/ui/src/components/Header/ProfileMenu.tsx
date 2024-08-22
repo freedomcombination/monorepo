@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
 
 import {
@@ -14,10 +14,10 @@ import {
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
+import { ProfileMenuProps } from './types'
 import { useScroll } from '../../hooks'
 import { ButtonLink } from '../ButtonLink'
 import { WAvatar } from '../WAvatar'
-import { ProfileMenuProps } from './types'
 
 export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   const isScrolled = useScroll()

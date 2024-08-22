@@ -50,7 +50,11 @@ export const PostSentenceRefDrawer = () => {
             {archiveContent.title}
           </Heading>
           <HStack>
-            <Link rel="noOpener" target="_blank" href={archiveContent.link}>
+            <Link
+              rel="noopener noreferrer"
+              target="_blank"
+              href={archiveContent.link}
+            >
               <HStack color="blue.500">
                 <Text>{archiveContent.source}</Text>
                 <HiOutlineExternalLink />

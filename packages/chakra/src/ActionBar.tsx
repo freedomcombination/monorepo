@@ -14,7 +14,7 @@ export const ActionBarContent = forwardRef<
   HTMLDivElement,
   ActionBarContentProps
 >(function ActionBarContent(props, ref) {
-  const { children, portalled = true, containerRef, showArrow, ...rest } = props
+  const { children, portalled = true, containerRef, ...rest } = props
 
   return (
     <Portal disabled={!portalled} container={containerRef}>

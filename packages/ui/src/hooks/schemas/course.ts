@@ -82,7 +82,7 @@ export const courseFields: FormFields<Course> = [
   {
     name: 'tags',
     type: 'select',
-    isMulti: true,
+    multiple: true,
     endpoint: 'tags',
   },
   {

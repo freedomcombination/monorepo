@@ -103,7 +103,7 @@ const CoursePage = () => {
           isOpen={open}
           onClose={handleClose}
           onSuccess={refetch}
-          size={'5xl'}
+          size={'xl'}
         />
       )}
       <Stack gap={8} p={6}>
@@ -145,7 +145,7 @@ const CoursePage = () => {
           <AccordionItem value="2">
             <AccordionButton
               justifyContent="space-between"
-              _activeStep={{ bg: 'gray.200' }}
+              _active={{ bg: 'gray.200' }}
               cursor="pointer"
               fontSize="lg"
               bg={'white'}
@@ -160,11 +160,13 @@ const CoursePage = () => {
               <PageHeader
                 onSearch={handleSearch}
                 sortMenu={[
-                  <MenuItem key="asc" icon={<FaArrowUp />}>
+                  <MenuItem value="name:asc" key="asc">
                     Name Asc
+                    <FaArrowUp />
                   </MenuItem>,
-                  <MenuItem key="desc" icon={<FaArrowDown />}>
+                  <MenuItem value="name:desc" key="desc">
                     Name Desc
+                    <FaArrowDown />
                   </MenuItem>,
                 ]}
               />

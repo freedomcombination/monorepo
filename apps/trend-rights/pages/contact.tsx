@@ -43,7 +43,9 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
+                  leftIcon={
+                    <Box as={MdPhone} color="primary.50" fontSize="20px" />
+                  }
                   href="tel:+31685221308"
                 >
                   +31-6 85221308
@@ -56,7 +58,7 @@ const Contact = () => {
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
                   leftIcon={
-                    <Box as={FaWhatsapp} color="primary.50" size="20px" />
+                    <Box as={FaWhatsapp} color="primary.50" fontSize="20px" />
                   }
                   href="https://api.whatsapp.com/send?phone=31685221308"
                 >
@@ -69,7 +71,9 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={<Box as={MdEmail} color="primary.50" size="20px" />}
+                  leftIcon={
+                    <Box as={MdEmail} color="primary.50" fontSize="20px" />
+                  }
                   href="mailto:info@trendrights.com"
                 >
                   info@trendrights.com
@@ -82,7 +86,7 @@ const Contact = () => {
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
                   leftIcon={
-                    <Box as={MdLocationOn} color="primary.50" size="20px" />
+                    <Box as={MdLocationOn} color="primary.50" fontSize="20px" />
                   }
                   href="https://goo.gl/maps/E9HaayQnXmphUWtN8"
                 >

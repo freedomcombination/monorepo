@@ -12,13 +12,13 @@ const RecommendedTweetPage = () => {
 
   const { t } = useTranslation()
 
-  const { data: tweets, loading } = useStrapiRequest<RecommendedTweet>({
+  const { data: tweets, isLoading } = useStrapiRequest<RecommendedTweet>({
     endpoint: 'recommended-tweets',
     locale,
   })
 
   return (
-    <AdminLayout seo={{ title: t('recommended-tweets') }} loading={loading}>
+    <AdminLayout seo={{ title: t('recommended-tweets') }} loading={isLoading}>
       <MasonryGrid cols={[1, 1, 1, 2, 3, 4]}>
         {tweets?.data?.map((tweet, key) => (
           <RecommendedTweetCard tweet={tweet} key={key} />

@@ -109,7 +109,7 @@ const AssetPage = () => {
           isOpen={open}
           onClose={handleClose}
           onSuccess={assetsTrackingsQuery.refetch}
-          size={'5xl'}
+          size={'xl'}
         />
       )}
       <Stack gap={8} p={6}>

@@ -1,6 +1,7 @@
+import { LinkProps } from 'next/link'
+
 import { ButtonProps } from '@fc/chakra'
 import { DashboardRoute } from '@fc/config'
-import { LinkProps } from 'next/link'
 
 export type NavItemWithSubmenuProps = {
   label: string
