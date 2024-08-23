@@ -55,14 +55,10 @@ export class LoginPage {
     await this.passwordInputDashboard.fill(password)
   }
 
-  async signIn() {
-    await this.submitButtonDashboard.click()
-  }
-
   async loginDashboard(username: string, password: string) {
     await this.loginButton.click()
     await this.fillUsernameDashboard(username)
     await this.fillPasswordDashboard(password)
-    await this.signIn()
+    await this.submitButtonDashboard.click()
   }
 }

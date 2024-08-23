@@ -19,8 +19,8 @@ test.describe('Upload Arts', () => {
     const artsPage = new ArtsPage(page)
     await page.goto(getVercelUrl('kunsthalte'))
 
-    await homePage.clickArtsMenu()
-    await artsPage.clickOnTheUploadsArtButton()
+    await homePage.gotoArtsPage()
+    await artsPage.clickUploadArtsButton()
     expect(artsPage.warning).toContainText(
       'You must be logged in in order to be able to upload an art!',
     )
@@ -34,11 +34,11 @@ test.describe('Upload Arts', () => {
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await homePage.clickArtsMenu()
+    await homePage.gotoArtsPage()
     await page.waitForURL(`${homePage.url}/club/arts`, {
       timeout: TEST_TIMEOUT,
     })
-    await artsPage.clickOnTheUploadsArtButton()
+    await artsPage.clickUploadArtsButton()
 
     await page.waitForTimeout(2000)
     expect(artsPage.titleInput).toBeVisible()
@@ -54,19 +54,19 @@ test.describe('Upload Arts', () => {
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.clickArtsMenu()
-    await artsPage.clickOnTheUploadsArtButton()
-    await page.waitForTimeout(1000)
-    const filePath = 'apps/kunsthalte/public/arts.jpeg'
-    await artsPage.uploadButton.setInputFiles(filePath)
+    await homePage.gotoArtsPage()
+    await artsPage.clickUploadArtsButton()
     await page.waitForTimeout(1000)
 
-    await artsPage.clickTitle()
-    await artsPage.clickDescription()
-    await artsPage.clickTitle()
+    await artsPage.uploadImage()
 
-    expect(artsPage.errorMessage1).toContainText('title is a required field')
-    expect(artsPage.errorMessage2).toContainText(
+    await artsPage.titleInput.focus()
+    await artsPage.titleInput.blur()
+    expect(artsPage.titleError).toContainText('title is a required field')
+
+    await artsPage.descriptionInput.focus()
+    await artsPage.descriptionInput.blur()
+    expect(artsPage.descriptionError).toContainText(
       'description is a required field',
     )
   })
@@ -84,21 +84,11 @@ test.describe('Upload Arts', () => {
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(2000)
 
-    await homePage.clickArtsMenu()
-    await artsPage.clickOnTheUploadsArtButton()
+    await homePage.gotoArtsPage()
+    await artsPage.clickUploadArtsButton()
     await page.waitForTimeout(1000)
-    const filePath = 'apps/kunsthalte/public/arts.jpeg'
-    await artsPage.uploadButton.setInputFiles(filePath)
-    await page.waitForTimeout(1000)
-    await artsPage.saveSelectedFile()
 
-    const title = faker.internet.userName().toString()
-
-    await artsPage.fillTitle(title)
-    await artsPage.fillDescription('Description Test')
-    expect(artsPage.submitButton).toBeEnabled()
-
-    await artsPage.submit()
+    await artsPage.createArt()
 
     expect(artsPage.confirmationMessage).toBeVisible()
 
@@ -128,23 +118,13 @@ test.describe('Upload Arts', () => {
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(2000)
 
-    await homePage.clickArtsMenu()
-    await artsPage.clickOnTheUploadsArtButton()
+    await homePage.gotoArtsPage()
+    await artsPage.clickUploadArtsButton()
     await page.waitForTimeout(1000)
-    const filePath = 'apps/kunsthalte/public/arts.jpeg'
-    await artsPage.uploadButton.setInputFiles(filePath)
-    await page.waitForTimeout(1000)
-    await artsPage.saveSelectedFile()
 
-    const titlePicture = faker.internet.userName().toString()
+    const artTitle = faker.internet.userName().toString()
 
-    await artsPage.fillTitle(titlePicture)
-    await artsPage.fillDescription('Description Test')
-    expect(artsPage.submitButton).toBeEnabled()
-
-    await artsPage.submit()
-
-    expect(artsPage.confirmationMessage).toBeVisible()
+    await artsPage.createArt({ title: artTitle })
 
     await page.waitForTimeout(1000)
 
@@ -161,13 +141,13 @@ test.describe('Upload Arts', () => {
 
     await dashboardPage.clickArtsMenu()
     await dashboardPage.clickPendingArtsMenu()
-    await dashboardPage.selectUploadedPicture(titlePicture)
+    await dashboardPage.selectUploadedPicture(artTitle)
     await dashboardPage.typeComment('Approved!')
     await dashboardPage.clickApproveButton()
     await dashboardPage.clickApprovedArtsMenu()
 
-    await page.getByText(`${titlePicture}`).click()
-    await expect(page.locator('.css-dbleiq')).toContainText('Approved')
+    await page.getByText(artTitle).click()
+    await expect(dashboardPage.statusArt).toContainText('Approved')
 
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()
@@ -176,7 +156,7 @@ test.describe('Upload Arts', () => {
     await homePage.gotoProfilePage()
     await profilePage.clickArtsMenu()
     await profilePage.clickapprovedArtsMenu()
-    await expect(page.getByText(`${titlePicture}`)).toBeVisible()
+    await expect(page.getByText(`${artTitle}`)).toBeVisible()
   })
 
   test('TC06- The uploaded image can be rejected from the board and the rejection must be visible on the profile.', async ({
@@ -193,13 +173,11 @@ test.describe('Upload Arts', () => {
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(2000)
 
-    await homePage.clickArtsMenu()
-    await artsPage.clickOnTheUploadsArtButton()
+    await homePage.gotoArtsPage()
+    await artsPage.clickUploadArtsButton()
     await page.waitForTimeout(1000)
-    const filePath = 'apps/kunsthalte/public/arts.jpeg'
-    await artsPage.uploadButton.setInputFiles(filePath)
-    await page.waitForTimeout(1000)
-    await artsPage.saveSelectedFile()
+
+    await artsPage.uploadImage()
 
     const titlePicture = faker.internet.userName().toString()
 
@@ -232,7 +210,7 @@ test.describe('Upload Arts', () => {
     await dashboardPage.clickRejectedArtsMenu()
 
     await page.getByText(`${titlePicture}`).click()
-    await expect(page.locator('.css-633qc2')).toContainText('Rejected')
+    await expect(dashboardPage.statusArt).toContainText('Rejected')
 
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()

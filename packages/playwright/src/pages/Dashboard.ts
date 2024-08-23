@@ -1,4 +1,3 @@
-import { th } from '@faker-js/faker'
 import { type Locator, type Page } from '@playwright/test'
 
 export class DashboardArtsPage {
@@ -12,6 +11,7 @@ export class DashboardArtsPage {
   readonly alertCloseButton: Locator
   readonly rejectButton: Locator
   readonly rejectedArtsMenu: Locator
+  readonly statusArt: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -24,6 +24,7 @@ export class DashboardArtsPage {
     this.alertCloseButton = page.locator('.chakra-button.css-1hcn127')
     this.rejectButton = page.getByText('Reject')
     this.rejectedArtsMenu = page.locator('[href*="/arts?status=rejected"]')
+    this.statusArt = page.locator('[]')
   }
 
   async clickArtsMenu() {

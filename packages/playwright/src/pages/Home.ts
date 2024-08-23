@@ -31,7 +31,8 @@ export class HomePage {
     await this.loginLink.click({ timeout: TEST_TIMEOUT })
     // expect(this.page).toHaveURL(`${this.url}/auth/login?returnUrl=/`)
   }
-  async clickArtsMenu() {
+
+  async gotoArtsPage() {
     await this.artsButton.click()
   }
 
