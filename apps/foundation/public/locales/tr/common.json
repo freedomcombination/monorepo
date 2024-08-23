@@ -219,6 +219,7 @@
   "next": "Sonraki",
   "no-data": "İçerik bulunamadı!",
   "no-reference-found": "Bu post için detay bulunamadı!",
+  "no-results-found": "Sonuç bulunamadı",
   "not-allowed": "Bu sayfaya erişim izniniz yoktur.",
   "not-found": "Sayfa bulunamadı",
   "not-found-button": "Ana Sayfaya Geri Dön",
@@ -383,6 +384,5 @@
   "weeksWithCount_one": "1 hafta",
   "weeksWithCount_other": "{{count}} hafta",
   "welcome": "Hoşgeldin",
-  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!",
-  "no-results-found": "Sonuç bulunamadı"
+  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!"
 }

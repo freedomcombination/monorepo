@@ -25,6 +25,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
+
   useDebounce(
     () => {
       setDebouncedSearchTerm(searchTerm)
@@ -35,7 +36,6 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 
   // `useUpdateEffect` is used here because we don't need to call `onSearch` at the first render
   // We call `onSearch` only if  mode is `change` and the debouncedSearchTerm's lenght is greater than 2
-  // Added result for to check return length of search terms.
   useUpdateEffect(() => {
     if (mode === 'change' && debouncedSearchTerm.length > 2) {
       onSearch?.(debouncedSearchTerm)

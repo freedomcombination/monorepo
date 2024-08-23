@@ -219,6 +219,7 @@
   "next": "Volgende",
   "no-data": "Geen data gevonden!",
   "no-reference-found": "Geen details gevonden voor deze post!",
+  "no-results-found": "Geen resultaten gevonden",
   "not-allowed": "U heeft geen toegang tot deze pagina.",
   "not-found": "Pagina niet gevonden",
   "not-found-button": "Terug naar Home",
@@ -383,6 +384,5 @@
   "weeksWithCount_one": "1 week",
   "weeksWithCount_other": "{{count}} weken",
   "welcome": "Welkom",
-  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!",
-  "no-results-found": "Geen resultaten gevonden"
+  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!"
 }

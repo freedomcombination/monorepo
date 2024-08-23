@@ -224,6 +224,7 @@
   "next": "Next",
   "no-data": "No data found!",
   "no-reference-found": "No details found for this post!",
+  "no-results-found": "No results found",
   "not-allowed": "You are not allowed to access this page.",
   "not-found": "Page not found",
   "not-found-button": "Back to Home",
@@ -388,6 +389,5 @@
   "weeksWithCount_one": "1 week",
   "weeksWithCount_other": "{{count}} weeks",
   "welcome": "Welcome",
-  "you-must-logged-in": "You must be logged in in order to be able to upload an art!",
-  "no-results-found": "No results found"
+  "you-must-logged-in": "You must be logged in in order to be able to upload an art!"
 }
