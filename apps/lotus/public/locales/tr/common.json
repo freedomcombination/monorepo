@@ -383,6 +383,5 @@
   "weeksWithCount_one": "1 hafta",
   "weeksWithCount_other": "{{count}} hafta",
   "welcome": "Hoşgeldin",
-  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!",
-  "no-results-found": "Sonuç bulunamadı"
+  "you-must-logged-in": "Eser yükleyebilmek için giriş yapmalısınız!"
 }

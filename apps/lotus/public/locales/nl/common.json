@@ -383,6 +383,5 @@
   "weeksWithCount_one": "1 week",
   "weeksWithCount_other": "{{count}} weken",
   "welcome": "Welkom",
-  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!",
-  "no-results-found": "Geen resultaten gevonden"
+  "you-must-logged-in": "Je moet ingelogd zijn om een kunstwerk te kunnen uploaden!"
 }
