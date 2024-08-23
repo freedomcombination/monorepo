@@ -170,7 +170,7 @@ test('TC-0002 Contact', async ({ page }) => {
   // Optionally, assert that the href is not empty or null
   expect(Youtube_element).not.toBeNull() // 12. When clicking on the Youtube icon, the user should be directed to another page.
   console.log('12. Youtube_element successfully opened.')
-  await page.getByLabel('Youtube').first().click()
+  await page.click('button:has-text("EN")')
 })
 test('TC-0003 Donate', async ({ page }) => {
   // Click on the 'Donate' link
