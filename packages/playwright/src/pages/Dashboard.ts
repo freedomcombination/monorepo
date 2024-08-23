@@ -5,7 +5,7 @@ export class DashboardArtsPage {
   readonly artsButton: Locator
   readonly pendingsArtsButton: Locator
   readonly approvedArtsButton: Locator
-  readonly comment: Locator
+  readonly commentInput: Locator
   readonly approveButton: Locator
   readonly confirmApproveButton: Locator
   readonly alertCloseButton: Locator
@@ -18,7 +18,7 @@ export class DashboardArtsPage {
     this.artsButton = page.getByText('Arts').first()
     this.pendingsArtsButton = page.locator('[href*="/arts?status=pending"]')
     this.approvedArtsButton = page.locator('[href*="/arts?status=approved"]')
-    this.comment = page.locator('.chakra-stack.css-1wzmrn1 textarea')
+    this.commentInput = page.getByTestId('feedback-textarea')
     this.approveButton = page.getByTestId('approve-button')
     this.confirmApproveButton = page.getByTestId('confirm-button')
     this.alertCloseButton = page.locator('.chakra-button.css-1hcn127')
@@ -45,7 +45,7 @@ export class DashboardArtsPage {
   }
 
   async typeComment(comment: string) {
-    await this.comment.fill(comment)
+    await this.commentInput.fill(comment)
   }
 
   async clickApproveButton() {
