@@ -7,7 +7,7 @@ export class DashboardArtsPage {
   readonly approvedArtsButton: Locator
   readonly comment: Locator
   readonly approveButton: Locator
-  readonly approveButton2: Locator
+  readonly confirmApproveButton: Locator
   readonly alertCloseButton: Locator
   readonly rejectButton: Locator
   readonly rejectedArtsMenu: Locator
@@ -19,12 +19,12 @@ export class DashboardArtsPage {
     this.pendingsArtsButton = page.locator('[href*="/arts?status=pending"]')
     this.approvedArtsButton = page.locator('[href*="/arts?status=approved"]')
     this.comment = page.locator('.chakra-stack.css-1wzmrn1 textarea')
-    this.approveButton = page.locator('.chakra-button.css-11ygba6')
-    this.approveButton2 = page.locator('.chakra-button.css-td5lcy')
+    this.approveButton = page.getByTestId('approve-button')
+    this.confirmApproveButton = page.getByTestId('confirm-button')
     this.alertCloseButton = page.locator('.chakra-button.css-1hcn127')
-    this.rejectButton = page.getByText('Reject')
+    this.rejectButton = page.getByTestId('reject-button')
     this.rejectedArtsMenu = page.locator('[href*="/arts?status=rejected"]')
-    this.statusArt = page.locator('[]')
+    this.statusArt = page.getByTestId('status-tag')
   }
 
   async clickArtsMenu() {
@@ -50,7 +50,7 @@ export class DashboardArtsPage {
 
   async clickApproveButton() {
     await this.approveButton.click()
-    await this.approveButton2.click()
+    await this.confirmApproveButton.click()
   }
 
   async clickRejectButton() {
