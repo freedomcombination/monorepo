@@ -162,7 +162,7 @@ export const ArtClubTemplate: FC = () => {
               >
                 <AlertIcon boxSize="40px" mr={0} />
                 <AlertDescription fontWeight={600} maxWidth="sm">
-                  {t("no-results-found")}
+                  {t('no-results-found')}
                 </AlertDescription>
               </Alert>
             ) : (
