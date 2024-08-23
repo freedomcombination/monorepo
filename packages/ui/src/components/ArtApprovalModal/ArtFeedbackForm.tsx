@@ -98,6 +98,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
 
           <Stack flex={1} spacing={2}>
             <Textarea
+              data-testid="feedback-textarea"
               isRequired
               onChange={e => setFeedback(e.target.value)}
               placeholder={'Type your comment here'}
