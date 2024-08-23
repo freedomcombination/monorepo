@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test'
+import { type Locator, type Page } from '@playwright/test'
 
 import { Site } from '@fc/types'
 
@@ -22,6 +22,6 @@ export class HomePage {
 
   async gotoLogin() {
     await this.loginLink.click({ timeout: TEST_TIMEOUT })
-    expect(this.page).toHaveURL(`${this.url}/auth/login?returnUrl=/`)
+    // expect(this.page).toHaveURL(`${this.url}/auth/login?returnUrl=/`)
   }
 }

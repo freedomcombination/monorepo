@@ -9,7 +9,7 @@ export const FetchWithStrapiRequest = () => {
   const [blogs, setBlogs] = useState([])
 
   useEffect(() => {
-    // TODO: fetch blogs with strapiRequest by using the API_URL and PUBLIC_TOKEN
+    // TODO: fetch blogs with strapiRequest by using the API_URL
     // Remember that fetcher is a wrapper around axios that adds the token and api url to the request
   }, [])
 

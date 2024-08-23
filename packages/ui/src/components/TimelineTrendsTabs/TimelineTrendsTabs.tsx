@@ -26,8 +26,12 @@ export const TimelineTrendsTabs = () => {
       <Box overflowY="auto" bg="white" borderWidth={1}>
         <Tabs colorScheme="primary" isFitted size="sm">
           <TabList pos="sticky" top="0" bg="white">
-            <Tab py={2}>Timeline</Tab>
-            <Tab py={2}>{t('post.trends-label')}</Tab>
+            <Tab data-testid="tab-timeline" py={2}>
+              Timeline
+            </Tab>
+            <Tab data-testid="tab-trends" py={2}>
+              {t('post.trends-label')}
+            </Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
