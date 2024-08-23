@@ -14,6 +14,7 @@ export const AdminNav: FC<AdminNavProps> = ({ mobile }) => {
       {navItems.map((item, index) => {
         return (
           <AdminNavItem
+            id={item.id}
             icon={item.icon}
             key={index}
             label={item.label}
