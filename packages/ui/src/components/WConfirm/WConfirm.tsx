@@ -56,7 +56,7 @@ export const WConfirm: FC<WConfirmProps> = props => {
 
           <AlertDialogFooter>
             <Button
-              data-testid="cancel-confirm-button"
+              data-testid="button-cancel-confirm"
               ref={cancelRef}
               onClick={handleCancel}
               colorScheme={'gray'}
@@ -64,7 +64,7 @@ export const WConfirm: FC<WConfirmProps> = props => {
               {t('cancel')}
             </Button>
             <Button
-              data-testid="confirm-button"
+              data-testid="button-confirm"
               colorScheme={isWarning ? 'red' : 'primary'}
               onClick={handleConfirm}
               ml={3}
