@@ -2,34 +2,34 @@ import { type Locator, type Page } from '@playwright/test'
 
 export class ProfilePage {
   readonly page: Page
-  readonly artsButton: Locator
-  readonly pendingsArtsButton: Locator
-  readonly approvedArtsButton: Locator
-  readonly rejectedArtsButton: Locator
-  readonly picture: Locator
+  readonly artsMenuTab: Locator
+  readonly pendingArtsTab: Locator
+  readonly approvedArtsTab: Locator
+  readonly rejectedArtsTab: Locator
+  readonly firstArtImage: Locator
 
   constructor(page: Page) {
     this.page = page
-    this.artsButton = page.locator('.chakra-tabs__tab').last()
-    this.pendingsArtsButton = page.getByText('Pending Arts')
-    this.picture = page.locator('.chakra-aspect-ratio div div img').first()
-    this.approvedArtsButton = page.getByText('Approved Arts')
-    this.rejectedArtsButton = page.getByText('Rejected Arts')
+    this.artsMenuTab = page.getByTestId('tab-arts').last()
+    this.pendingArtsTab = page.getByTestId('tab-pending')
+    this.approvedArtsTab = page.getByTestId('tab-approved')
+    this.rejectedArtsTab = page.getByTestId('tab-rejected')
+    this.firstArtImage = page.locator('.art-image').first()
   }
 
   async clickArtsMenu() {
-    await this.artsButton.click()
+    await this.artsMenuTab.click()
   }
 
   async clickPendingArtsMenu() {
-    await this.pendingsArtsButton.click()
+    await this.pendingArtsTab.click()
   }
 
   async clickapprovedArtsMenu() {
-    await this.approvedArtsButton.click()
+    await this.approvedArtsTab.click()
   }
 
   async clickRejectedArtsMenu() {
-    await this.rejectedArtsButton.click()
+    await this.rejectedArtsTab.click()
   }
 }

@@ -46,9 +46,15 @@ export const NewsFeed = () => {
       />
       <Tabs colorScheme="primary">
         <TabList>
-          <Tab fontWeight={600}>{t('recommended-news')}</Tab>
-          <Tab fontWeight={600}>{t('blogs')}</Tab>
-          <Tab fontWeight={600}>{t('activities')}</Tab>
+          <Tab data-testid="tab-news" fontWeight={600}>
+            {t('recommended-news')}
+          </Tab>
+          <Tab data-testid="tab-blogs" fontWeight={600}>
+            {t('blogs')}
+          </Tab>
+          <Tab data-testid="tab-activities" fontWeight={600}>
+            {t('activities')}
+          </Tab>
         </TabList>
 
         <TabPanels>

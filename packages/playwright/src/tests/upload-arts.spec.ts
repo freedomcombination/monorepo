@@ -102,7 +102,7 @@ test.describe('Upload Arts', () => {
     await profilePage.clickPendingArtsMenu()
     await page.waitForTimeout(2000)
 
-    expect(profilePage.picture).toHaveAttribute('srcset')
+    expect(profilePage.firstArtImage).toHaveAttribute('srcset')
   })
 
   test('TC05- The uploaded image should be approved from the dashboard and it must be seen that it is approved in the profile.', async ({
