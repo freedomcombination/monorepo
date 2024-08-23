@@ -95,10 +95,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
   const { t } = useTranslation()
   const course = application.course!
 
-  const getProp = (ca: CourseApplication, prop: string) => {
-    return course[`${prop}_${locale}` as keyof CourseApplication['course']]
-  }
-
+  const title = course[`title_${locale}` as keyof CourseApplication['course']]
   const status = GetGeneralStatus(course, application)
 
   return (
@@ -106,7 +103,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
       <AccordionButton>
         <Box as="span" flex="1" textAlign="left">
           <VStack alignItems={'flex-start'}>
-            <Text fontWeight={600}>{getProp(application, 'title')}</Text>
+            <Text fontWeight={600}>{title}</Text>
             <PaymentLine
               title={
                 <Badge colorScheme={status.color} variant={'outline'}>

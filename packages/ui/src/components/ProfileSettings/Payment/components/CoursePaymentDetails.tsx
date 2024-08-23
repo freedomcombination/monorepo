@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Badge, SimpleGrid, Stack, Text } from '@chakra-ui/react'
-import { isPast, subMonths } from 'date-fns'
+import { isPast } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
