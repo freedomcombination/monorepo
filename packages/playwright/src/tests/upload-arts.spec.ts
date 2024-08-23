@@ -140,15 +140,15 @@ test.describe('Upload Arts', () => {
     })
     await loginPage.loginDashboard('admin', 'Test?123')
 
-    await dashboardPage.clickArtsMenu()
-    await dashboardPage.clickPendingArtsMenu()
+    await dashboardPage.toggleArtsMenu()
+    await dashboardPage.gotoPendingArts()
     await dashboardPage.selectUploadedPicture(artTitle)
-    await dashboardPage.typeComment('Approved!')
-    await dashboardPage.clickApproveButton()
-    await dashboardPage.clickApprovedArtsMenu()
+    await dashboardPage.fillFeedback('Approved!')
+    await dashboardPage.approveArt()
+    await dashboardPage.gotoApprovedArts()
 
     await page.getByText(artTitle).click()
-    await expect(dashboardPage.statusArt).toContainText('Approved')
+    await expect(dashboardPage.artStatusTag).toContainText('Approved')
 
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()
@@ -203,15 +203,15 @@ test.describe('Upload Arts', () => {
     })
     await loginPage.loginDashboard('admin', 'Test?123')
 
-    await dashboardPage.clickArtsMenu()
-    await dashboardPage.clickPendingArtsMenu()
+    await dashboardPage.toggleArtsMenu()
+    await dashboardPage.gotoPendingArts()
     await dashboardPage.selectUploadedPicture(titlePicture)
-    await dashboardPage.typeComment('Rejected')
-    await dashboardPage.clickRejectButton()
-    await dashboardPage.clickRejectedArtsMenu()
+    await dashboardPage.fillFeedback('Rejected')
+    await dashboardPage.rejectArt()
+    await dashboardPage.gotoRejectedArts()
 
     await page.getByText(`${titlePicture}`).click()
-    await expect(dashboardPage.statusArt).toContainText('Rejected')
+    await expect(dashboardPage.artStatusTag).toContainText('Rejected')
 
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()

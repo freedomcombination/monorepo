@@ -2,63 +2,64 @@ import { type Locator, type Page } from '@playwright/test'
 
 export class DashboardArtsPage {
   readonly page: Page
-  readonly artsButton: Locator
-  readonly pendingsArtsButton: Locator
-  readonly approvedArtsButton: Locator
-  readonly commentInput: Locator
+  readonly artsMenuItem: Locator
+  readonly pendingArtsLink: Locator
+  readonly approvedArtsLink: Locator
+  readonly feedbackInput: Locator
   readonly approveButton: Locator
   readonly confirmApproveButton: Locator
-  readonly alertCloseButton: Locator
   readonly rejectButton: Locator
   readonly rejectedArtsMenu: Locator
-  readonly statusArt: Locator
+  readonly artStatusTag: Locator
 
   constructor(page: Page) {
     this.page = page
-    this.artsButton = page.getByText('Arts').first()
-    this.pendingsArtsButton = page.locator('[href*="/arts?status=pending"]')
-    this.approvedArtsButton = page.locator('[href*="/arts?status=approved"]')
-    this.commentInput = page.getByTestId('feedback-textarea')
-    this.approveButton = page.getByTestId('approve-button')
-    this.confirmApproveButton = page.getByTestId('confirm-button')
-    this.alertCloseButton = page.locator('.chakra-button.css-1hcn127')
-    this.rejectButton = page.getByTestId('reject-button')
-    this.rejectedArtsMenu = page.locator('[href*="/arts?status=rejected"]')
-    this.statusArt = page.getByTestId('status-tag')
+
+    this.artsMenuItem = page.getByTestId('arts')
+    this.approvedArtsLink = page.getByTestId('approved-arts')
+    this.pendingArtsLink = page.getByTestId('pending-arts')
+    this.rejectedArtsMenu = page.getByTestId('rejected-arts')
+
+    this.feedbackInput = page.getByTestId('input-feedback')
+
+    this.approveButton = page.getByTestId('button-approve')
+    this.confirmApproveButton = page.getByTestId('button-confirm')
+    this.rejectButton = page.getByTestId('button-reject')
+
+    this.artStatusTag = page.getByTestId('tag-status')
   }
 
-  async clickArtsMenu() {
-    await this.alertCloseButton.click()
-    await this.artsButton.click()
+  async toggleArtsMenu() {
+    await this.artsMenuItem.click()
   }
 
-  async clickPendingArtsMenu() {
-    await this.pendingsArtsButton.click()
+  async gotoPendingArts() {
+    await this.pendingArtsLink.click()
   }
 
-  async clickApprovedArtsMenu() {
-    await this.approvedArtsButton.click()
+  async gotoApprovedArts() {
+    await this.approvedArtsLink.click()
+  }
+
+  async gotoRejectedArts() {
+    await this.rejectedArtsMenu.click()
   }
 
   async selectUploadedPicture(title: string) {
     await this.page.getByText(`${title}`).click()
   }
 
-  async typeComment(comment: string) {
-    await this.commentInput.fill(comment)
+  async fillFeedback(comment: string) {
+    await this.feedbackInput.fill(comment)
   }
 
-  async clickApproveButton() {
+  async approveArt() {
     await this.approveButton.click()
     await this.confirmApproveButton.click()
   }
 
-  async clickRejectButton() {
+  async rejectArt() {
     await this.rejectButton.last().click()
-    await this.rejectButton.last().click()
-  }
-
-  async clickRejectedArtsMenu() {
-    await this.rejectedArtsMenu.click()
+    await this.confirmApproveButton.click()
   }
 }
