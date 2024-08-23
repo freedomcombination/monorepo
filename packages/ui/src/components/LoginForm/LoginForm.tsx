@@ -106,7 +106,9 @@ export const LoginForm: FC<LoginFormProps> = ({
           {errorMessage && (
             <Alert status="error">
               <AlertIcon />
-              <AlertDescription>{errorMessage}</AlertDescription>
+              <AlertDescription data-testid="auth-error">
+                {errorMessage}
+              </AlertDescription>
             </Alert>
           )}
           <Stack spacing="5">

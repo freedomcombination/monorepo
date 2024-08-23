@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { ResponsiveObject, SimpleGrid } from '@chakra-ui/react'
+import { Box, ResponsiveObject, SimpleGrid } from '@chakra-ui/react'
 
 import { Art } from '@fc/types'
 
@@ -23,20 +23,19 @@ export const ArtGrid: FC<ArtGridProps> = ({
 }) => {
   return (
     <SimpleGrid columns={{ base: 1, sm: 2, lg: 4, ...columns }} gap={4}>
-      {arts
-        ?.filter(art => art)
-        ?.map(art => {
-          return (
+      {arts?.map(art => {
+        return (
+          <Box key={art.id}>
             <ArtCard
-              key={art.id}
               refetch={refetch}
               recaptchaToken={recaptchaToken}
               art={art}
               imageHeight={300}
               isModal={isModal}
             />
-          )
-        })}
+          </Box>
+        )
+      })}
     </SimpleGrid>
   )
 }
