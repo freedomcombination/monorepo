@@ -48,13 +48,25 @@ export const ArtsTab = () => {
           <TabList overscrollX={'auto'}>
             <CreateArtForm size="md" />
 
-            <Tab fontWeight={600} isDisabled={!approved?.length}>
+            <Tab
+              data-testid="tab-approved"
+              fontWeight={600}
+              isDisabled={!approved?.length}
+            >
               <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
             </Tab>
-            <Tab fontWeight={600} isDisabled={!pending?.length}>
+            <Tab
+              data-testid="tab-pending"
+              fontWeight={600}
+              isDisabled={!pending?.length}
+            >
               <Box as={FaSpinner} mr={1} /> <>{t('pending-arts')}</>
             </Tab>
-            <Tab fontWeight={600} isDisabled={!rejected?.length}>
+            <Tab
+              data-testid="tab-rejected"
+              fontWeight={600}
+              isDisabled={!rejected?.length}
+            >
               <Box as={MdRemoveModerator} mr={1} /> <>{t('rejected-arts')}</>
             </Tab>
           </TabList>
