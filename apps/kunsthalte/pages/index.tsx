@@ -48,6 +48,7 @@ const Home = () => {
               spacing={4}
             >
               <ButtonLink
+                data-testid="view-arts"
                 href={`/${locale}/club/arts`}
                 size="lg"
                 leftIcon={<FaPaintBrush />}
@@ -56,6 +57,7 @@ const Home = () => {
               </ButtonLink>
 
               <ButtonLink
+                data-testid="view-collections"
                 href={`/${locale}/club/collections`}
                 size="lg"
                 leftIcon={<BsCollectionFill />}
@@ -63,6 +65,7 @@ const Home = () => {
                 {t('view-collections')}
               </ButtonLink>
               <ButtonLink
+                data-testid="view-activities"
                 href={`/${locale}/activities`}
                 size="lg"
                 leftIcon={<BsActivity />}

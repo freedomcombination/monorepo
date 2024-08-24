@@ -30,6 +30,7 @@
     "@ducanh2912/next-pwa": "^10.2.8",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@faker-js/faker": "^8.4.1",
     "@hookform/resolvers": "^3.9.0",
     "@sentry/nextjs": "^8.26.0",
     "@sindresorhus/slugify": "^2.2.1",
