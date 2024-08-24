@@ -80,10 +80,16 @@ export const NotificationModal = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="gray" mr={3} onClick={handleClose}>
+            <Button
+              data-testid="button-close-notification"
+              colorScheme="gray"
+              mr={3}
+              onClick={handleClose}
+            >
               {t('close')}
             </Button>
             <Button
+              data-testid="button-subscribe-notification"
               colorScheme="primary"
               isLoading={subscribePushNotificationMutation.isPending}
               onClick={handleSubscribe}

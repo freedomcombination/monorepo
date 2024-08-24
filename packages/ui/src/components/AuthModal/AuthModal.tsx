@@ -112,6 +112,7 @@ export const AuthModal = () => {
                   errors={errors}
                 />
                 <Button
+                  data-testid="button-submit-login"
                   isLoading={isAuthLoading || isRedirecting}
                   w="full"
                   type="submit"

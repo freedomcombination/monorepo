@@ -39,6 +39,7 @@ export const SendNotificationButton: FC<SendNotificationButtonProps> = ({
 
   return (
     <ActionButton
+      data-testid="button-send-notification"
       onClick={sendNotification}
       leftIcon={<FiSend />}
       fontSize="sm"

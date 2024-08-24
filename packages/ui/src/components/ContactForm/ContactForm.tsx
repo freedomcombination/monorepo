@@ -1,5 +1,3 @@
-import { FC } from 'react'
-
 import {
   Alert,
   AlertDescription,
@@ -18,18 +16,28 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { BsPerson } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
 
+import { EMAIL } from '@fc/config'
+import { useSendEmail } from '@fc/services'
+
 import { contactSchema } from './schema'
-import { ContactFormFieldValues, ContactFormProps } from './types'
+import { ContactFormFieldValues } from './types'
 import { FormItem } from '../FormItem'
 
-export const ContactForm: FC<ContactFormProps> = ({
-  onSubmitHandler,
-  isLoading,
-  isSuccess,
-  isError,
-  errorMessage,
-}) => {
+export const ContactForm = () => {
   const { t } = useTranslation()
+
+  const { isError, isPending, isSuccess, mutate: sendForm } = useSendEmail()
+
+  const onSubmitHandler = async (data: ContactFormFieldValues) => {
+    const emailData = {
+      subject: `Contact from ${data.fullname} (${data.email})`,
+      text: data.message,
+      from: EMAIL,
+      to: EMAIL,
+    }
+
+    return sendForm(emailData)
+  }
 
   const {
     register,
@@ -82,7 +90,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           variant="solid"
           type="submit"
           isDisabled={!isValid}
-          isLoading={isLoading}
+          isLoading={isPending}
           size={'lg'}
           w="full"
         >
@@ -100,7 +108,6 @@ export const ContactForm: FC<ContactFormProps> = ({
             <AlertIcon />
             <AlertDescription>
               <>{t('contact.form.failed')} </>
-              {errorMessage ? errorMessage : ''}
             </AlertDescription>
           </Alert>
         )}
