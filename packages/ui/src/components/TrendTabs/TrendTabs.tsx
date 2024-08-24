@@ -15,9 +15,15 @@ export const TrendTabs = () => {
       <Box overflowY="auto" bg="white">
         <Tabs.Root colorScheme="primary" fitted size="sm">
           <Tabs.List pos="sticky" top="0" bg="white">
-            <Tabs.Trigger value="world">World</Tabs.Trigger>
-            <Tabs.Trigger value="tr">TR</Tabs.Trigger>
-            <Tabs.Trigger value="nl">NL</Tabs.Trigger>
+            <Tabs.Trigger data-testid="tab-world" value="world">
+              World
+            </Tabs.Trigger>
+            <Tabs.Trigger data-testid="tab-tr" value="tr">
+              TR
+            </Tabs.Trigger>
+            <Tabs.Trigger data-testid="tab-nl" value="nl">
+              NL
+            </Tabs.Trigger>
           </Tabs.List>
           <Tabs.ContentGroup>
             <Tabs.Content value="world">

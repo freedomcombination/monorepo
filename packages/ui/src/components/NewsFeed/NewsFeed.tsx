@@ -37,13 +37,17 @@ export const NewsFeed = () => {
       />
       <Tabs.Root colorScheme="primary">
         <Tabs.List>
-          <Tabs.Trigger value="news" fontWeight={600}>
+          <Tabs.Trigger data-testid="tab-news" value="news" fontWeight={600}>
             {t('recommended-news')}
           </Tabs.Trigger>
-          <Tabs.Trigger value="blogs" fontWeight={600}>
+          <Tabs.Trigger data-testid="tab-blogs" value="blogs" fontWeight={600}>
             {t('blogs')}
           </Tabs.Trigger>
-          <Tabs.Trigger value="activities" fontWeight={600}>
+          <Tabs.Trigger
+            data-testid="tab-activities"
+            value="activities"
+            fontWeight={600}
+          >
             {t('activities')}
           </Tabs.Trigger>
         </Tabs.List>

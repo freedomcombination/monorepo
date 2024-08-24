@@ -1,21 +1,28 @@
 import { FC, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Box, Center, Grid, HStack, Stack } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  Box,
+  Center,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  Grid,
+  HStack,
+  IconButton,
+  Skeleton,
+  Stack,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { parse } from 'querystring'
 import { MdMenuOpen } from 'react-icons/md'
 
-import {
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  IconButton,
-  Pagination,
-  Skeleton,
-} from '@fc/chakra'
+import { Pagination } from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
 import { Art, Category } from '@fc/types'
@@ -141,33 +148,50 @@ export const ArtClubTemplate: FC = () => {
                 onClick={onOpen}
               />
             </HStack>
-
-            <MasonryGrid columnGap={2} rowGap={2}>
-              {artsQuery.isLoading
-                ? Array.from({ length: 12 }).map((_, i) => (
-                    <ArtCardSkeleton
-                      key={'masonry-grid-skeleton' + i}
-                      isMasonry
-                    />
-                  ))
-                : artsQuery.data?.data?.map((art, i) => {
-                    return (
-                      <AnimatedBox
-                        key={art.id}
-                        directing="to-down"
-                        delay={i * 0.5}
-                      >
-                        <ArtCard
-                          art={art}
-                          refetch={artsQuery.refetch}
-                          isMasonry
-                          recaptchaToken={recaptchaToken}
-                        />
-                      </AnimatedBox>
-                    )
-                  })}
-            </MasonryGrid>
-
+            {!artsQuery.isLoading && artsQuery.data?.data?.length === 0 ? (
+              <Alert
+                status="info"
+                variant="subtle"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+                textAlign="center"
+                height="200px"
+                gap={4}
+                rounded={'lg'}
+              >
+                <AlertIcon boxSize="40px" mr={0} />
+                <AlertDescription fontWeight={600} maxWidth="sm">
+                  {t('no-results-found')}
+                </AlertDescription>
+              </Alert>
+            ) : (
+              <MasonryGrid columnGap={2} rowGap={2}>
+                {artsQuery.isLoading
+                  ? Array.from({ length: 12 }).map((_, i) => (
+                      <ArtCardSkeleton
+                        key={'masonry-grid-skeleton' + i}
+                        isMasonry
+                      />
+                    ))
+                  : artsQuery.data?.data?.map((art, i) => {
+                      return (
+                        <AnimatedBox
+                          key={art.id}
+                          directing="to-down"
+                          delay={i * 0.5}
+                        >
+                          <ArtCard
+                            art={art}
+                            refetch={artsQuery.refetch}
+                            isMasonry
+                            recaptchaToken={recaptchaToken}
+                          />
+                        </AnimatedBox>
+                      )
+                    })}
+              </MasonryGrid>
+            )}
             {!artsQuery.isLoading && (
               <Center>
                 {artsQuery.data?.meta?.pagination && (

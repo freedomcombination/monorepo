@@ -93,26 +93,26 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
               h="max-content"
               overflowX={'auto'}
             >
-              <CustomTab value="profile">
+              <CustomTab data-testid="tab-profile" value="profile">
                 <Box as={FaUserCircle} mr={2} />
                 <Box>{t('profile.tabs.profile')}</Box>
               </CustomTab>
-              <CustomTab value="security">
+              <CustomTab data-testid="tab-security" value="security">
                 <Box as={FaKey} mr={2} />
                 <Box>{t('profile.tabs.security')}</Box>
               </CustomTab>
-              <CustomTab value="socials">
+              <CustomTab data-testid="tab-socials" value="socials">
                 <Box as={TbSocial} mr={2} />
                 <Box>{t('profile.tabs.socials')}</Box>
               </CustomTab>
               {showArts && (
-                <CustomTab value="arts">
+                <CustomTab data-testid="tab-arts" value="arts">
                   <Box as={FaPaintBrush} mr={2} />
                   <Box>{t('profile.tabs.arts')}</Box>
                 </CustomTab>
               )}
               {isBlogsVisible && (
-                <CustomTab value="blogs">
+                <CustomTab data-testid="tab-blogs" value="blogs">
                   <Box as={FaBlog} mr={2} />
                   <Box>{t('profile.tabs.blogs')}</Box>
                 </CustomTab>

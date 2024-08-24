@@ -100,13 +100,14 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
           <Stack flex={1} gap={2}>
             <Textarea
               required
+              data-testid="input-feedback"
               onChange={e => setFeedback(e.target.value)}
               placeholder={'Type your comment here'}
             />
 
             <ActionStack canApprove="arts" direction={'row'} gap={2}>
               <Button
-                data-testid="reject-button"
+                data-testid="button-reject"
                 flex={1}
                 flexShrink={0}
                 disabled={!feedback || art.approvalStatus === 'rejected'}
@@ -118,7 +119,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               </Button>
 
               <Button
-                data-testid="approve-button"
+                data-testid="button-approve"
                 flex={1}
                 flexShrink={0}
                 disabled={!feedback || art.approvalStatus === 'approved'}
@@ -130,7 +131,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               </Button>
 
               <ActionButton
-                data-testid="edit-button"
+                data-testid="button-edit"
                 canUpdate="arts"
                 aria-label="Edit"
                 flexShrink={0}
@@ -142,7 +143,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
               </ActionButton>
 
               <Button
-                data-testid="dismiss-button"
+                data-testid="button-dismiss"
                 aria-label="Close"
                 flexShrink={0}
                 onClick={onClose}

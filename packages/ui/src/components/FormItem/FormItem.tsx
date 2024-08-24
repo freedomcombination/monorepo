@@ -58,7 +58,7 @@ function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
           </InputElement>
         )} */}
         <Tag
-          data-testid={`${name}-input`}
+          data-testid={`input-${name}`}
           ref={ref}
           id={name}
           type={type === 'password' ? (isOpen ? 'text' : 'password') : type}

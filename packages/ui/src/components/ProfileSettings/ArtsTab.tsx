@@ -43,6 +43,7 @@ export const ArtsTab = () => {
             <CreateArtForm size="md" />
 
             <Tabs.Trigger
+              data-testid="tab-approved"
               value="approved"
               fontWeight={600}
               disabled={!approved?.length}
@@ -50,6 +51,7 @@ export const ArtsTab = () => {
               <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
             </Tabs.Trigger>
             <Tabs.Trigger
+              data-testid="tab-pending"
               value="pending"
               fontWeight={600}
               disabled={!pending?.length}
@@ -57,6 +59,7 @@ export const ArtsTab = () => {
               <Box as={FaSpinner} mr={1} /> <>{t('pending-arts')}</>
             </Tabs.Trigger>
             <Tabs.Trigger
+              data-testid="tab-rejected"
               value="rejected"
               fontWeight={600}
               disabled={!rejected?.length}

@@ -100,20 +100,18 @@ export const LoginForm: FC<LoginFormProps> = ({
         </Stack>
         <Stack gap={6} as="form" onSubmit={handleSubmit(handleSubmitSign)}>
           {errorMessage && (
-            <Alert status="error" data-testid="auth-error">
+            <Alert status="error" data-testid="error-auth">
               {errorMessage}
             </Alert>
           )}
           <Stack gap={5}>
             <FormItem
-              data-testid="input-email"
               name="identifier"
               autoComplete="email"
               register={register}
               errors={errors}
             />
             <FormItem
-              data-testid="input-password"
               name="password"
               type="password"
               autoComplete="current-password"

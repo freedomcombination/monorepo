@@ -36,10 +36,10 @@ export const MentionList = () => {
           bg="white"
         >
           <Tabs.List pos="sticky" top="0" bg="white">
-            <Tabs.Trigger value="popular">
+            <Tabs.Trigger data-testid="tab-popular" value="popular">
               {t('post.mention-tab-popular')}
             </Tabs.Trigger>
-            <Tabs.Trigger value="saved">
+            <Tabs.Trigger data-testid="tab-saved" value="saved">
               {t('post.mention-tab-saved')}
             </Tabs.Trigger>
           </Tabs.List>

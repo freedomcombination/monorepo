@@ -22,6 +22,8 @@ export const ArtCardImage: FC<ArtCardImageProps> = memo(
     if (art?.image?.length === 1) {
       return (
         <WImage
+          className="art-image"
+          data-testid={`image-art-${art.id}`}
           maxH={'80vh'}
           pos="relative"
           h={isMasonry ? undefined : h || height}

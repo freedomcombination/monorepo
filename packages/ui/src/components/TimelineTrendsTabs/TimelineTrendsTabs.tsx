@@ -18,10 +18,10 @@ export const TimelineTrendsTabs = () => {
       <Box overflowY="auto" bg="white" borderWidth={1}>
         <Tabs.Root colorScheme="primary" fitted size="sm">
           <Tabs.List pos="sticky" top="0" bg="white">
-            <Tabs.Trigger value="timeline" py={2}>
+            <Tabs.Trigger data-testid="tab-timeline" value="timeline" py={2}>
               Timeline
             </Tabs.Trigger>
-            <Tabs.Trigger value="trends" py={2}>
+            <Tabs.Trigger data-testid="tab-trends" value="trends" py={2}>
               {t('post.trends-label')}
             </Tabs.Trigger>
           </Tabs.List>
