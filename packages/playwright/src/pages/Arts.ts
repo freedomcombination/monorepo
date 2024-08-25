@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { type Locator, type Page } from '@playwright/test'
+import { type Locator, type Page, expect } from '@playwright/test'
 
 import { IMAGE_PATH } from '../constants'
 
@@ -9,11 +9,13 @@ export class ArtsPage {
   readonly title: string
   readonly description: string
 
-  readonly uploadArtsButton: Locator
+  readonly uploadArtButton: Locator
   readonly warning: Locator
+
   readonly titleInput: Locator
-  readonly uploadButton: Locator
   readonly descriptionInput: Locator
+
+  readonly filePicker: Locator
   readonly titleError: Locator
   readonly descriptionError: Locator
   readonly saveButton: Locator
@@ -25,23 +27,24 @@ export class ArtsPage {
     this.page = page
 
     this.title = faker.internet.displayName()
-    this.description = faker.string.sample(200)
+    this.description = faker.string.sample(100)
 
-    this.uploadArtsButton = page.getByText('Upload Art')
+    this.uploadArtButton = page.getByTestId('upload-art')
     this.warning = page.getByTestId('text-require-login')
-    this.uploadButton = page.locator('.uppy-Dashboard-input').first()
-    this.titleInput = page.locator('#title')
-    this.descriptionInput = page.locator('#description')
-    this.titleError = page.locator('.chakra-form__error-message').first()
-    this.descriptionError = page.locator('.chakra-form__error-message').last()
+    this.filePicker = page.locator('.uppy-Dashboard-input').first()
+    this.titleInput = page.getByTestId('input-title')
+    this.descriptionInput = page.getByTestId('input-description')
+    this.titleError = page.getByTestId('error-text-title')
+    this.descriptionError = page.getByTestId('error-text-description')
     this.saveButton = page.locator('.uppy-DashboardContent-save')
-    this.submitButton = page.locator("//*[@type='submit']")
-    this.confirmationMessage = page.getByText('Art successfully submitted')
-    this.goToMyProfileLink = page.getByText('Go to my profile')
+    this.submitButton = page.getByTestId('button-create-art')
+    this.confirmationMessage = page.getByTestId('text-create-art-success')
+    this.goToMyProfileLink = page.getByTestId('link-goto-profile')
   }
 
-  async clickUploadArtsButton() {
-    await this.uploadArtsButton.click()
+  async clickUploadArtButton() {
+    await this.uploadArtButton.click()
+    await this.page.waitForTimeout(1000)
   }
 
   async submit() {
@@ -61,7 +64,7 @@ export class ArtsPage {
   }
 
   async uploadImage(imagePath = IMAGE_PATH) {
-    await this.uploadButton.setInputFiles(imagePath)
+    await this.filePicker.setInputFiles(imagePath)
     await this.page.waitForTimeout(1000)
     await this.saveButton.click()
   }
@@ -76,6 +79,10 @@ export class ArtsPage {
     await this.fillTitle(args?.title)
     await this.fillDescription(args?.description)
 
+    expect(this.submitButton).toBeEnabled()
+
     await this.submit()
+
+    expect(this.confirmationMessage).toBeVisible()
   }
 }

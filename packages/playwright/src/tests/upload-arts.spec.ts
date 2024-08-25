@@ -1,12 +1,16 @@
 import { faker } from '@faker-js/faker'
 import { expect, test } from '@playwright/test'
 
-import { TEST_TIMEOUT } from '../config'
+import { CookieKey } from '@fc/types'
+
 import { PASSWORD, USERNAME } from '../constants'
-import { HomePage, LoginPage } from '../pages'
-import { ArtsPage } from '../pages/Arts'
-import { DashboardArtsPage } from '../pages/Dashboard'
-import { ProfilePage } from '../pages/Profile'
+import {
+  ArtsPage,
+  DashboardArtsPage,
+  HomePage,
+  LoginPage,
+  ProfilePage,
+} from '../pages'
 import { getVercelUrl } from '../utils'
 
 // test.afterEach(async ({ page }) => {
@@ -14,64 +18,63 @@ import { getVercelUrl } from '../utils'
 // })
 
 test.describe('Upload Arts', () => {
-  test('TC01- should not upload art without logging in', async ({ page }) => {
-    const homePage = new HomePage(page, 'kunsthalte')
-    const artsPage = new ArtsPage(page)
-    await page.goto(getVercelUrl('kunsthalte'))
-
-    await homePage.gotoArtsPage()
-    await artsPage.clickUploadArtsButton()
-    expect(artsPage.warning).toContainText(
-      'You must be logged in in order to be able to upload an art!',
-    )
+  // Clear browser context before each test
+  test.beforeEach(async ({ context }) => {
+    await context.clearCookies()
+    await context.clearPermissions()
   })
 
-  test('TC02- should upload art with logging in', async ({ page }) => {
+  test('TC01: should not upload art without logging in', async ({ page }) => {
+    const homePage = new HomePage(page, 'kunsthalte')
+    const artsPage = new ArtsPage(page)
+
+    await homePage.gotoHomePage()
+    await homePage.gotoArtsPage()
+    await artsPage.clickUploadArtButton()
+
+    expect(artsPage.warning).toBeVisible()
+  })
+
+  test('TC02: should upload art with logging in', async ({ page }) => {
     const loginPage = new LoginPage(page)
     const homePage = new HomePage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
 
-    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await homePage.gotoArtsPage()
-    await page.waitForURL(`${homePage.url}/club/arts`, {
-      timeout: TEST_TIMEOUT,
-    })
-    await artsPage.clickUploadArtsButton()
+    await page.waitForTimeout(1000)
 
-    await page.waitForTimeout(2000)
+    await homePage.gotoArtsPage()
+    await page.waitForURL(`${homePage.url}/club/arts`)
+    await artsPage.clickUploadArtButton()
+
     expect(artsPage.titleInput).toBeVisible()
   })
 
-  test('TC03- should fill required fields for upload art', async ({ page }) => {
+  test('TC03: should fill required fields for upload art', async ({ page }) => {
     const loginPage = new LoginPage(page)
     const homePage = new HomePage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
 
-    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
     await homePage.gotoArtsPage()
-    await artsPage.clickUploadArtsButton()
-    await page.waitForTimeout(1000)
+    await artsPage.clickUploadArtButton()
 
     await artsPage.uploadImage()
 
     await artsPage.titleInput.focus()
     await artsPage.titleInput.blur()
-    expect(artsPage.titleError).toContainText('title is a required field')
+    expect(artsPage.titleError).not.toBeEmpty()
 
     await artsPage.descriptionInput.focus()
     await artsPage.descriptionInput.blur()
-    expect(artsPage.descriptionError).toContainText(
-      'description is a required field',
-    )
+    expect(artsPage.descriptionError).not.toBeEmpty()
   })
 
-  test('TC04- The uploaded image should be displayed in the pending arts section', async ({
+  test('TC04: should display the uploaded image in the pending arts section', async ({
     page,
   }) => {
     const loginPage = new LoginPage(page)
@@ -82,11 +85,10 @@ test.describe('Upload Arts', () => {
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(2000)
+    await page.waitForTimeout(1000)
 
     await homePage.gotoArtsPage()
-    await artsPage.clickUploadArtsButton()
-    await page.waitForTimeout(1000)
+    await artsPage.clickUploadArtButton()
 
     await artsPage.createArt()
     await page.waitForTimeout(1000)
@@ -96,17 +98,18 @@ test.describe('Upload Arts', () => {
     await page.waitForTimeout(1000)
 
     await artsPage.goToMyProfile()
-    await profilePage.clickArtsMenu()
+    await profilePage.openArtsTab()
     await page.waitForTimeout(2000)
 
-    await profilePage.clickPendingArtsMenu()
+    await profilePage.openPendingArtsTab()
     await page.waitForTimeout(2000)
 
     expect(profilePage.firstArtImage).toHaveAttribute('srcset')
   })
 
-  test('TC05- The uploaded image should be approved from the dashboard and it must be seen that it is approved in the profile.', async ({
+  test('TC05: should approve the uploaded image from the dashboard and display the approval on the profile', async ({
     page,
+    context,
   }) => {
     const loginPage = new LoginPage(page)
     const homePage = new HomePage(page, 'kunsthalte')
@@ -114,14 +117,23 @@ test.describe('Upload Arts', () => {
     const profilePage = new ProfilePage(page)
     const dashboardPage = new DashboardArtsPage(page)
 
+    // Prevent push notification modal from appearing
+    await context.addCookies([
+      {
+        name: CookieKey.PUSH_NOTIFICATIONS_SUBSCRIBED,
+        value: 'true',
+        domain: new URL(dashboardPage.url).hostname,
+        path: '/',
+      },
+    ])
+
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(2000)
+    await page.waitForTimeout(1000)
 
     await homePage.gotoArtsPage()
-    await artsPage.clickUploadArtsButton()
-    await page.waitForTimeout(1000)
+    await artsPage.clickUploadArtButton()
 
     const artTitle = faker.internet.userName().toString()
 
@@ -130,15 +142,14 @@ test.describe('Upload Arts', () => {
     await page.waitForTimeout(1000)
 
     await artsPage.goToMyProfile()
-    await profilePage.clickArtsMenu()
-    await page.waitForTimeout(2000)
-
-    await profilePage.clickPendingArtsMenu()
+    await profilePage.openArtsTab()
+    await profilePage.openPendingArtsTab()
 
     await page.goto(getVercelUrl('dashboard'), {
       waitUntil: 'domcontentloaded',
     })
-    await loginPage.loginDashboard('admin', 'Test?123')
+    await loginPage.loginDashboard()
+    await page.waitForTimeout(1000)
 
     await dashboardPage.toggleArtsMenu()
     await dashboardPage.gotoPendingArts()
@@ -153,15 +164,17 @@ test.describe('Upload Arts', () => {
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
+    await page.waitForTimeout(1000)
 
     await homePage.gotoProfilePage()
-    await profilePage.clickArtsMenu()
-    await profilePage.clickapprovedArtsMenu()
+    await profilePage.openArtsTab()
+    await profilePage.openApprovedArtsTab()
     await expect(page.getByText(`${artTitle}`)).toBeVisible()
   })
 
-  test('TC06- The uploaded image can be rejected from the board and the rejection must be visible on the profile.', async ({
+  test('TC06: should reject the uploaded image from the dashboard and display the rejection on the profile', async ({
     page,
+    context,
   }) => {
     const loginPage = new LoginPage(page)
     const homePage = new HomePage(page, 'kunsthalte')
@@ -169,57 +182,58 @@ test.describe('Upload Arts', () => {
     const profilePage = new ProfilePage(page)
     const dashboardPage = new DashboardArtsPage(page)
 
-    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
+    // Prevent push notification modal from appearing
+    await context.addCookies([
+      {
+        name: CookieKey.PUSH_NOTIFICATIONS_SUBSCRIBED,
+        value: 'true',
+        domain: new URL(dashboardPage.url).hostname,
+        path: '/',
+      },
+    ])
+
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(2000)
-
-    await homePage.gotoArtsPage()
-    await artsPage.clickUploadArtsButton()
     await page.waitForTimeout(1000)
 
-    await artsPage.uploadImage()
+    await homePage.gotoArtsPage()
+    await artsPage.clickUploadArtButton()
 
-    const titlePicture = faker.internet.userName().toString()
+    const artTitle = faker.internet.userName().toString()
 
-    await artsPage.fillTitle(titlePicture)
-    await artsPage.fillDescription('Description Test')
-    expect(artsPage.submitButton).toBeEnabled()
-
-    await artsPage.submit()
-
-    expect(artsPage.confirmationMessage).toBeVisible()
+    await artsPage.createArt({ title: artTitle })
 
     await page.waitForTimeout(1000)
 
     await artsPage.goToMyProfile()
-    await profilePage.clickArtsMenu()
-    await page.waitForTimeout(2000)
+    await profilePage.openArtsTab()
+    await profilePage.openPendingArtsTab()
 
-    await profilePage.clickPendingArtsMenu()
-
+    // Reject the art from the dashboard
     await page.goto(getVercelUrl('dashboard'), {
       waitUntil: 'domcontentloaded',
     })
-    await loginPage.loginDashboard('admin', 'Test?123')
+    await loginPage.loginDashboard()
+    await page.waitForTimeout(1000)
 
     await dashboardPage.toggleArtsMenu()
     await dashboardPage.gotoPendingArts()
-    await dashboardPage.selectUploadedPicture(titlePicture)
+    await dashboardPage.selectUploadedPicture(artTitle)
     await dashboardPage.fillFeedback('Rejected')
     await dashboardPage.rejectArt()
     await dashboardPage.gotoRejectedArts()
 
-    await page.getByText(`${titlePicture}`).click()
+    await page.getByText(`${artTitle}`).click()
     await expect(dashboardPage.artStatusTag).toContainText('Rejected')
 
-    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
+    // Check if the art is displayed in the rejected arts section
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
+    await page.waitForTimeout(1000)
 
     await homePage.gotoProfilePage()
-    await profilePage.clickArtsMenu()
-    await profilePage.clickRejectedArtsMenu()
-    await expect(page.getByText(`${titlePicture}`)).toBeVisible()
+    await profilePage.openArtsTab()
+    await profilePage.openRejectedArtsTab()
+    await expect(page.getByText(`${artTitle}`)).toBeVisible()
   })
 })

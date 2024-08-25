@@ -27,7 +27,12 @@ export class HomePage {
     return getVercelUrl(this.site)
   }
 
+  async gotoHomePage() {
+    await this.page.goto(this.url, { waitUntil: 'domcontentloaded' })
+  }
+
   async gotoLogin() {
+    await this.gotoHomePage()
     await this.loginLink.click({ timeout: TEST_TIMEOUT })
     // expect(this.page).toHaveURL(`${this.url}/auth/login?returnUrl=/`)
   }

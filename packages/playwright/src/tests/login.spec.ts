@@ -26,6 +26,11 @@ for (const site of sitesWithLogin) {
         value: 'true',
         url: homePage.url,
       },
+      {
+        name: CookieKey.PUSH_NOTIFICATIONS_SUBSCRIBED,
+        value: 'true',
+        url: homePage.url,
+      },
     ])
 
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })

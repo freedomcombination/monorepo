@@ -17,19 +17,23 @@ export class ProfilePage {
     this.firstArtImage = page.locator('.art-image').first()
   }
 
-  async clickArtsMenu() {
+  async openArtsTab() {
     await this.artsMenuTab.click()
+    await this.page.waitForTimeout(1000)
   }
 
-  async clickPendingArtsMenu() {
+  async openPendingArtsTab() {
     await this.pendingArtsTab.click()
+    await this.page.waitForTimeout(1000)
   }
 
-  async clickapprovedArtsMenu() {
+  async openApprovedArtsTab() {
     await this.approvedArtsTab.click()
+    await this.page.waitForTimeout(1000)
   }
 
-  async clickRejectedArtsMenu() {
+  async openRejectedArtsTab() {
     await this.rejectedArtsTab.click()
+    await this.page.waitForTimeout(1000)
   }
 }

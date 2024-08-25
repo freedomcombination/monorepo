@@ -1,5 +1,7 @@
 import { type Locator, type Page } from '@playwright/test'
 
+import { getVercelUrl } from '../utils'
+
 export class DashboardArtsPage {
   readonly page: Page
   readonly artsMenuItem: Locator
@@ -29,20 +31,27 @@ export class DashboardArtsPage {
     this.artStatusTag = page.getByTestId('tag-status')
   }
 
+  get url() {
+    return getVercelUrl('dashboard')
+  }
+
   async toggleArtsMenu() {
     await this.artsMenuItem.click()
   }
 
   async gotoPendingArts() {
     await this.pendingArtsLink.click()
+    await this.page.waitForURL(`${this.url}/arts?status=pending`)
   }
 
   async gotoApprovedArts() {
     await this.approvedArtsLink.click()
+    await this.page.waitForURL(`${this.url}/arts?status=approved`)
   }
 
   async gotoRejectedArts() {
     await this.rejectedArtsMenu.click()
+    await this.page.waitForURL(`${this.url}/arts?status=rejected`)
   }
 
   async selectUploadedPicture(title: string) {
