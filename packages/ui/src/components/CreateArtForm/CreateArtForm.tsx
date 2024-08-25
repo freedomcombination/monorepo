@@ -142,7 +142,12 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
         ref={cancelRef}
       />
 
-      <Button size={size} onClick={formDisclosure.onOpen} {...rest}>
+      <Button
+        data-testid="upload-art"
+        size={size}
+        onClick={formDisclosure.onOpen}
+        {...rest}
+      >
         <Box mr={{ base: 0, lg: 4 }}>
           <FaUpload />
         </Box>
@@ -180,7 +185,11 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
             {!user && (
               <Text data-testid="text-require-login">
                 <>{t('you-must-logged-in')} </>
-                <Link href={loginHref} color="primary.500">
+                <Link
+                  data-testid="link-login"
+                  href={loginHref}
+                  color="primary.500"
+                >
                   {t('login')}
                 </Link>
               </Text>
