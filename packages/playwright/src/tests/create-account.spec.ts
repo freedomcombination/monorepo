@@ -65,7 +65,6 @@ test('TC-0004 Negative flow (login with invalid information)', async ({
   await registerPage.navigateToRegister()
   await registerPage.register({ name, username, email, password })
 
-  await page.setViewportSize({ width: 1920, height: 1080 })
   await page.goto('https://kunsthalte.vercel.app/tr')
 
   await page.getByRole('link', { name: 'Giriş yap' }).click() // Go to login page
