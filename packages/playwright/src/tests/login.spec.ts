@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-import { Site } from '@fc/types'
+import { Site, CookieKey } from '@fc/types'
 
 import { TEST_TIMEOUT } from '../config'
 import { ADMIN_USERNAME, PASSWORD, USERNAME } from '../constants'
@@ -21,7 +21,11 @@ for (const site of sitesWithLogin) {
     // Prevent showing the cookie banner
     // TODO: Write a test to accept the cookie banner
     await context.addCookies([
-      { name: '__CB-ALLOWED', value: 'true', url: homePage.url },
+      {
+        name: CookieKey.COOKIE_BANNER_ALLOWED,
+        value: 'true',
+        url: homePage.url,
+      },
     ])
 
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
