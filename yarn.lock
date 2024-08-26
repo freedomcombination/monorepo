@@ -7034,6 +7034,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-email/tailwind@npm:0.1.0":
+  version: 0.1.0
+  resolution: "@react-email/tailwind@npm:0.1.0"
+  peerDependencies:
+    react: ^18.0 || ^19.0 || ^19.0.0-rc
+  checksum: 10/3e002b23e0c72d6e27b8be9c640e7b7392aec651b6bc50a8a92064d398e66615b1a1647f4641302f7e1949a7d7878c88c8f3b4b98f295b0882875b4a097f2122
+  languageName: node
+  linkType: hard
+
 "@react-email/text@npm:0.0.9":
   version: 0.0.9
   resolution: "@react-email/text@npm:0.0.9"
@@ -12122,7 +12131,7 @@ __metadata:
     "@react-email/components": "npm:0.0.22"
     "@react-email/font": "npm:0.0.7"
     "@react-email/render": "npm:0.0.17"
-    "@react-email/tailwind": "npm:0.0.19"
+    "@react-email/tailwind": "npm:0.1.0"
     "@strapi/plugin-i18n": "npm:^4.25.8"
     "@strapi/plugin-sentry": "npm:^4.25.8"
     "@strapi/plugin-users-permissions": "npm:^4.25.8"
