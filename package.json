@@ -149,7 +149,7 @@
     "turbo": "^2.0.14",
     "type-fest": "^4.25.0",
     "typescript": "5.4.5",
-    "webpack": "^5.93.0"
+    "webpack": "^5.94.0"
   },
   "packageManager": "yarn@4.4.0",
   "workspaces": [
