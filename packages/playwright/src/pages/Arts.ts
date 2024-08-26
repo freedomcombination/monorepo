@@ -82,6 +82,7 @@ export class ArtsPage {
     expect(this.submitButton).toBeEnabled()
 
     await this.submit()
+    await this.page.waitForTimeout(1000)
 
     expect(this.confirmationMessage).toBeVisible()
   }
