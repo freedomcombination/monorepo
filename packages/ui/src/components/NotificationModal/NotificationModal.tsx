@@ -14,9 +14,11 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+import { useCookie } from 'react-use'
 
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useSubscribePushNotificationMutation } from '@fc/services'
+import { CookieKey } from '@fc/types'
 
 export const NotificationModal = () => {
   const { t } = useTranslation()
@@ -25,12 +27,17 @@ export const NotificationModal = () => {
   const { user, site } = useAuthContext()
   const { isSubscribed, isSupported } = useWebPushContext()
 
+  const [cookieNotification, updateCookieNotification] = useCookie(
+    CookieKey.PUSH_NOTIFICATIONS_SUBSCRIBED,
+  )
+
   const subscribePushNotificationMutation =
     useSubscribePushNotificationMutation()
 
   const handleSubscribe = async () => {
     subscribePushNotificationMutation.mutateAsync(undefined, {
       onSuccess: () => {
+        updateCookieNotification('true')
         onClose()
       },
       // TODO: Show toast notification
@@ -44,7 +51,7 @@ export const NotificationModal = () => {
       return
     }
 
-    if (!isSubscribed && isSupported) {
+    if (!isSubscribed && isSupported && cookieNotification !== 'true') {
       const timer = setTimeout(() => {
         onOpen()
       }, 3000)
@@ -52,7 +59,7 @@ export const NotificationModal = () => {
       // Clean-up on depend. change
       return () => clearTimeout(timer)
     }
-  }, [isSubscribed, isSupported, user, site, onOpen])
+  }, [isSubscribed, isSupported, user, site, cookieNotification, onOpen])
 
   const handleClose = () => {
     onClose()
@@ -80,10 +87,16 @@ export const NotificationModal = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="gray" mr={3} onClick={handleClose}>
+            <Button
+              data-testid="button-close-notification"
+              colorScheme="gray"
+              mr={3}
+              onClick={handleClose}
+            >
               {t('close')}
             </Button>
             <Button
+              data-testid="button-subscribe-notification"
               colorScheme="primary"
               isLoading={subscribePushNotificationMutation.isPending}
               onClick={handleSubscribe}

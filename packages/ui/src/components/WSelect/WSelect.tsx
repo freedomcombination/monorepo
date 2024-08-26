@@ -78,6 +78,7 @@ export const WSelect = <T extends FieldValues = FieldValues>({
       )}
 
       <Select<SelectOption, boolean, GroupBase<SelectOption>>
+        id={`${name}-select`}
         options={options}
         placeholder={placeholder}
         {...field}
@@ -85,7 +86,9 @@ export const WSelect = <T extends FieldValues = FieldValues>({
         {...rest}
       />
 
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      <FormErrorMessage data-testid={`error-text-${name}`}>
+        {errorMessage}
+      </FormErrorMessage>
       {helperText && (
         <FormHelperText color={'orange.400'}>{helperText}</FormHelperText>
       )}

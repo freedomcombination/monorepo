@@ -1,12 +1,13 @@
 import { FC } from 'react'
 
-import { Container, Stack, Text } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken } from '@fc/services'
 import { Art, Profile } from '@fc/types'
 
 import { ArtGrid } from '../ArtGrid'
+import { Container } from '../Container'
 import { Hero } from '../Hero'
 import { WAvatar } from '../WAvatar'
 

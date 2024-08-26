@@ -34,7 +34,10 @@ import {
 } from 'react-icons/md'
 import { InferType } from 'yup'
 
-import { endpointsWithPublicationState } from '@fc/config'
+import {
+  endpointsWithApprovalStatus,
+  endpointsWithPublicationState,
+} from '@fc/config'
 import {
   useApproveModel,
   useCreateModelMutation,
@@ -318,7 +321,7 @@ export const ModelEditForm = <T extends StrapiModel>({
   }
 
   const showApproveButton =
-    endpointsWithPublicationState.includes(endpoint) &&
+    endpointsWithApprovalStatus.includes(endpoint) &&
     translatableModel.approvalStatus !== 'approved'
 
   const [title, message, roles, profiles] = watch([
@@ -498,6 +501,7 @@ export const ModelEditForm = <T extends StrapiModel>({
         >
           <Wrap>
             <ActionButton
+              data-testid="button-posts"
               isVisible={
                 endpoint === 'hashtags' || endpoint === 'archive-contents'
               }
