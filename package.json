@@ -51,7 +51,7 @@
     "@vercel/kv": "^2.0.0",
     "@vercel/og": "^0.6.2",
     "ai": "3.0.12",
-    "axios": "^1.7.4",
+    "axios": "^1.7.5",
     "chakra-react-select": "4.9.1",
     "cookies-next": "^4.2.1",
     "date-fns": "^3.6.0",
@@ -149,7 +149,7 @@
     "turbo": "^2.0.14",
     "type-fest": "^4.25.0",
     "typescript": "5.4.5",
-    "webpack": "^5.93.0"
+    "webpack": "^5.94.0"
   },
   "packageManager": "yarn@4.4.0",
   "workspaces": [
