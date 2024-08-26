@@ -35,6 +35,7 @@ export const ArtCreateSuccessAlert = forwardRef<
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader
+            data-testid="text-create-art-success"
             bg="primary.500"
             color="white"
             fontSize="lg"

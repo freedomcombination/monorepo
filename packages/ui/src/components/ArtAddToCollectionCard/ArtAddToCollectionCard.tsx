@@ -53,6 +53,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
 
         <HStack justify="space-between" w="full">
           <Button
+            data-testid="button-view"
             leftIcon={<AiOutlineEye />}
             title="View"
             onClick={onOpen}
@@ -66,6 +67,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
           <Spacer />
 
           <ActionButton
+            data-testid="button-add-to-collection"
             canCreate="collections"
             variant={'outline'}
             colorScheme={isAdded ? 'red' : 'green'}

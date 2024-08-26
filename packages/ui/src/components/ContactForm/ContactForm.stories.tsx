@@ -1,22 +1,16 @@
 import { StoryFn, Meta, StoryObj } from '@storybook/react'
 
 import { ContactForm } from '.'
-import { ContactFormProps } from './types'
-import { ContactFormFieldValues } from './types'
 
 export default {
   title: 'Forms/ContactForm',
   component: ContactForm,
 } as Meta<typeof ContactForm>
 
-type Story = StoryObj<ContactFormProps>
+type Story = StoryObj
 
-const StoryWithHook: StoryFn<ContactFormProps> = args => {
-  const handleSubmitContact = async (data: ContactFormFieldValues) => {
-    alert(JSON.stringify(data))
-  }
-
-  return <ContactForm {...args} onSubmitHandler={handleSubmitContact} />
+const StoryWithHook: StoryFn = () => {
+  return <ContactForm />
 }
 
 export const Default: Story = {

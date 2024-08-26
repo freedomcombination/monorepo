@@ -23,9 +23,9 @@ export const TrendTabs = () => {
       <Box overflowY="auto" bg="white">
         <Tabs colorScheme="primary" isFitted size="sm">
           <TabList pos="sticky" top="0" bg="white">
-            <Tab>World</Tab>
-            <Tab>TR</Tab>
-            <Tab>NL</Tab>
+            <Tab data-testid="tab-world">World</Tab>
+            <Tab data-testid="tab-tr">TR</Tab>
+            <Tab data-testid="tab-nl">NL</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
