@@ -6917,6 +6917,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-email/font@npm:0.0.8":
+  version: 0.0.8
+  resolution: "@react-email/font@npm:0.0.8"
+  peerDependencies:
+    react: ^18.0 || ^19.0 || ^19.0.0-rc
+  checksum: 10/ce93b03c29d721f6a93f63fdfa29590c96785b8e9689bdb01e70ee482ff43a4834096092b7f888ee750fb57fe8fed4f9c990dd5c63d22af12ee592ca8f1fb2db
+  languageName: node
+  linkType: hard
+
 "@react-email/head@npm:0.0.10":
   version: 0.0.10
   resolution: "@react-email/head@npm:0.0.10"
@@ -12120,7 +12129,7 @@ __metadata:
   resolution: "api@workspace:apps/api"
   dependencies:
     "@react-email/components": "npm:0.0.22"
-    "@react-email/font": "npm:0.0.7"
+    "@react-email/font": "npm:0.0.8"
     "@react-email/render": "npm:0.0.17"
     "@react-email/tailwind": "npm:0.0.19"
     "@strapi/plugin-i18n": "npm:^4.25.8"

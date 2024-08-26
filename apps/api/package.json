@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@react-email/components": "0.0.22",
-    "@react-email/font": "0.0.7",
+    "@react-email/font": "0.0.8",
     "@react-email/render": "0.0.17",
     "@react-email/tailwind": "0.0.19",
     "@strapi/plugin-i18n": "^4.25.8",
