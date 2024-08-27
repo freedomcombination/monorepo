@@ -11,7 +11,7 @@ import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 
 import { FormItem } from '../FormItem'
-// mark
+
 const schema = Yup.object().shape({
   currentPassword: Yup.string().required(),
   password: Yup.string().required(),

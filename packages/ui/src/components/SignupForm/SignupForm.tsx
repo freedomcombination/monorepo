@@ -26,7 +26,7 @@ import { SignupFormFieldValues, SignupFormProps } from './types'
 import { ButtonLink } from '../ButtonLink'
 import { FormItem } from '../FormItem'
 import { SocialLoginButtons } from '../SocialLoginButtons'
-// mark
+
 const schema = (t: TFunction) =>
   yup.object({
     name: yup.string().required(),
