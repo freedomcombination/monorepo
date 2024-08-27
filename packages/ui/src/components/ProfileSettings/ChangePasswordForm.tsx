@@ -7,18 +7,16 @@ import { useForm } from 'react-hook-form'
 import { FaEdit } from 'react-icons/fa'
 import * as Yup from 'yup'
 
-
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 
 import { FormItem } from '../FormItem'
 
 // const schema = Yup.object().shape({
-  const schema = (t: TFunction) => 
-    Yup.object({
-  currentPassword: Yup.string().required(),
-  password: Yup
-      .string()
+const schema = (t: TFunction) =>
+  Yup.object({
+    currentPassword: Yup.string().required(),
+    password: Yup.string()
       .min(8, t('login.password.warning', { count: 8 }) as string)
       .required()
       .matches(
@@ -33,12 +31,12 @@ import { FormItem } from '../FormItem'
         RegExp('(.*\\d.*)'),
         t('login.password.matches.number') as string,
       ),
-  // password: Yup.string().required(),
-  passwordConfirmation: Yup.string().oneOf(
-    [Yup.ref('password'), undefined],
-    'Passwords must match',
-  ),
-})
+    // password: Yup.string().required(),
+    passwordConfirmation: Yup.string().oneOf(
+      [Yup.ref('password'), undefined],
+      'Passwords must match',
+    ),
+  })
 
 type PasswordFormValues = Yup.InferType<ReturnType<typeof schema>>
 
@@ -75,7 +73,7 @@ export const ChangePasswordForm = () => {
       reset()
     },
   })
-  
+
   const {
     handleSubmit,
     formState: { errors },
@@ -84,8 +82,6 @@ export const ChangePasswordForm = () => {
   } = useForm<PasswordFormValues>({
     resolver: yupResolver(schema(t)),
   })
-
-
 
   const onSubmit = async (data: PasswordFormValues) => {
     mutate(data)
