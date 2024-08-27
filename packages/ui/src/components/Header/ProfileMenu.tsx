@@ -44,6 +44,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
     <MenuRoot positioning={{ placement: 'bottom' }}>
       <MenuTrigger value="profile-menu" asChild>
         <Button
+          data-testid="button-profile-menu"
           size={'sm'}
           leftIcon={
             <WAvatar
@@ -58,12 +59,19 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
       </MenuTrigger>
       <MenuContent>
         <MenuItem value="profile" asChild>
-          <ButtonLink href={'/profile'}>{t('profile')}</ButtonLink>
+          <ButtonLink data-testid="link-profile" href={'/profile'}>
+            {t('profile')}
+          </ButtonLink>
         </MenuItem>
 
         <MenuSeparator />
         <MenuItem value="logout">
-          <Button leftIcon={<FiLogOut />} color="red.400" onClick={logout}>
+          <Button
+            data-testid="button-logout"
+            leftIcon={<FiLogOut />}
+            color="red.400"
+            onClick={logout}
+          >
             {t('logout')}
           </Button>
         </MenuItem>

@@ -47,6 +47,7 @@ export const MdFormItem = forwardRef(function MdFormItem<T extends FieldValues>(
 
   return (
     <Field
+      name={name}
       invalid={Boolean(errors?.[name])}
       required={required}
       w="full"

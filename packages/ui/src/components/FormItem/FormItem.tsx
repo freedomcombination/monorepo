@@ -45,6 +45,7 @@ function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
 
   return (
     <Field
+      name={name}
       errorText={errorMessage}
       helperText={helperText}
       label={label}

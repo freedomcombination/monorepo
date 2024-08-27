@@ -43,6 +43,7 @@ export const WSelect = <T extends FieldValues = FieldValues>({
 
   return (
     <Field
+      name={name}
       invalid={Boolean(errors?.[name])}
       required={required}
       w="full"

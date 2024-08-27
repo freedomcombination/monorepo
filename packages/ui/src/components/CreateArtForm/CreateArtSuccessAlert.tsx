@@ -34,6 +34,7 @@ export const ArtCreateSuccessAlert = forwardRef<
       <DialogOverlay>
         <DialogContent>
           <DialogHeader
+            data-testid="text-create-art-success"
             bg="primary.500"
             color="white"
             fontSize="lg"
@@ -47,7 +48,7 @@ export const ArtCreateSuccessAlert = forwardRef<
               <Text>{t('art.create.success.description')}</Text>
 
               {!asPath?.includes('profile') && (
-                <ButtonLink href="/profile">
+                <ButtonLink data-testid="link-goto-profile" href="/profile">
                   {t('art.create.success.link')}
                 </ButtonLink>
               )}

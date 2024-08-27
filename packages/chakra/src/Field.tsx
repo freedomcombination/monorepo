@@ -6,6 +6,7 @@ import { TbInfoCircle } from 'react-icons/tb'
 import { Tooltip } from './Tooltip'
 
 export interface FieldProps extends Omit<ChakraField.RootProps, 'label'> {
+  name?: string
   label?: React.ReactNode
   helperText?: React.ReactNode
   errorText?: React.ReactNode
@@ -16,6 +17,7 @@ export interface FieldProps extends Omit<ChakraField.RootProps, 'label'> {
 export const Field = forwardRef<HTMLDivElement, FieldProps>(
   function Field(props, ref) {
     const {
+      name,
       label,
       children,
       helperText,
@@ -47,7 +49,9 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
           <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
         )}
         {errorText && (
-          <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>
+          <ChakraField.ErrorText data-testid={`error-text-${name}`}>
+            {errorText}
+          </ChakraField.ErrorText>
         )}
       </ChakraField.Root>
     )

@@ -16,6 +16,7 @@ import {
 } from '@fc/chakra'
 import { useAuthContext, useWebPushContext } from '@fc/context'
 import { useSubscribePushNotificationMutation } from '@fc/services'
+import { CookieKey } from '@fc/types'
 
 export const NotificationModal = () => {
   const { t } = useTranslation()
@@ -24,12 +25,17 @@ export const NotificationModal = () => {
   const { user, site } = useAuthContext()
   const { isSubscribed, isSupported } = useWebPushContext()
 
+  const [cookieNotification, updateCookieNotification] = useCookie(
+    CookieKey.PUSH_NOTIFICATIONS_SUBSCRIBED,
+  )
+
   const subscribePushNotificationMutation =
     useSubscribePushNotificationMutation()
 
   const handleSubscribe = async () => {
     subscribePushNotificationMutation.mutateAsync(undefined, {
       onSuccess: () => {
+        updateCookieNotification('true')
         onClose()
       },
       // TODO: Show toast notification
@@ -43,7 +49,7 @@ export const NotificationModal = () => {
       return
     }
 
-    if (!isSubscribed && isSupported) {
+    if (!isSubscribed && isSupported && cookieNotification !== 'true') {
       const timer = setTimeout(() => {
         onOpen()
       }, 3000)
@@ -51,7 +57,7 @@ export const NotificationModal = () => {
       // Clean-up on depend. change
       return () => clearTimeout(timer)
     }
-  }, [isSubscribed, isSupported, user, site, onOpen])
+  }, [isSubscribed, isSupported, user, site, cookieNotification, onOpen])
 
   const handleClose = () => {
     onClose()

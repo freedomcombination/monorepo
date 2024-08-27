@@ -15,6 +15,7 @@ export const CategoryFilterCheckbox = (props: CheckboxProps) => {
   return (
     <CheckboxCardRoot
       as="label"
+      data-testid={props.value}
       color={checked ? 'primary.500' : 'initial'}
       borderWidth={2}
       borderColor={checked ? 'primary.500' : 'transparent'}

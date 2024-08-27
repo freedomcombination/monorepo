@@ -34,6 +34,7 @@ export const AdminSidebarProfile: FC<AdminSidebarProfileProps> = ({
 
       <Tooltip content="Logout">
         <IconButton
+          data-testid="button-logout"
           size="sm"
           fontSize="lg"
           _hover={{ color: 'red.500' }}

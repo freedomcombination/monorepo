@@ -89,6 +89,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
             return (
               <Collapsible.Content key={index}>
                 <ButtonLink
+                  data-testid={item.id}
                   href={item.link as string}
                   justifyContent="start"
                   key={item.link}
