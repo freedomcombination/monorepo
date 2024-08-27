@@ -88,6 +88,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
             return (
               <Box key={index}>
                 <ButtonLink
+                  data-testid={item.id}
                   href={item.link as string}
                   justifyContent="start"
                   key={item.link}
