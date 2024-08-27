@@ -86,7 +86,7 @@ export const WSelect = <T extends FieldValues = FieldValues>({
         {...rest}
       />
 
-      <FormErrorMessage data-testid={`${name}-error-text`}>
+      <FormErrorMessage data-testid={`error-text-${name}`}>
         {errorMessage}
       </FormErrorMessage>
       {helperText && (

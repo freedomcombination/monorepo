@@ -1,5 +1,7 @@
 import { type Locator, type Page } from '@playwright/test'
 
+import { ADMIN_USERNAME, PASSWORD, USERNAME } from '../constants'
+
 export class LoginPage {
   readonly page: Page
 
@@ -19,7 +21,7 @@ export class LoginPage {
     this.loginButton = page.getByTestId('button-login')
   }
 
-  async login(username: string, password: string) {
+  async login(username = USERNAME, password = PASSWORD) {
     // await this.page.fill('[data-testid=input-identifier]', username)
     // await this.page.fill('[data-testid=input-password]', password)
 
@@ -29,7 +31,7 @@ export class LoginPage {
     await this.submitButton.click()
   }
 
-  async loginDashboard(username: string, password: string) {
+  async loginDashboard(username = ADMIN_USERNAME, password = PASSWORD) {
     await this.loginButton.click()
     await this.login(username, password)
   }

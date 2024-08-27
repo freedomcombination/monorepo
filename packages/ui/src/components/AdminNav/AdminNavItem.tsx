@@ -14,6 +14,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
   submenu,
   icon,
   allowed,
+  id,
 }) => {
   const [open, setOpen] = useBoolean(false)
 
@@ -36,6 +37,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
   return (
     <Box w="full">
       <NavLink
+        data-testid={id}
         href={link}
         justifyContent={'start'}
         leftIcon={icon}
@@ -86,6 +88,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
             return (
               <Box key={index}>
                 <ButtonLink
+                  data-testid={item.id}
                   href={item.link as string}
                   justifyContent="start"
                   key={item.link}

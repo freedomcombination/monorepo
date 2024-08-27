@@ -1,5 +1,3 @@
-import { Page } from '@playwright/test'
-
 import { Site } from '@fc/types'
 
 import { ports, stagingUrls } from './config'
