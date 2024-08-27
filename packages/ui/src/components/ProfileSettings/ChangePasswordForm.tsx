@@ -11,7 +11,6 @@ import * as Yup from 'yup'
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 
-import { ChangePasswordFieldValues } from './types'
 import { FormItem } from '../FormItem'
 
 // const schema = Yup.object().shape({
@@ -41,7 +40,7 @@ import { FormItem } from '../FormItem'
   ),
 })
 
-type PasswordFormValues = Yup.InferType<ChangePasswordFieldValues>
+type PasswordFormValues = Yup.InferType<ReturnType<typeof schema>>
 
 const changePassword = async (
   data: PasswordFormValues,
@@ -66,15 +65,6 @@ const changePassword = async (
 export const ChangePasswordForm = () => {
   const { token, checkAuth } = useAuthContext()
 
-  const {
-    handleSubmit,
-    formState: { errors },
-    register,
-    reset,
-  } = useForm<PasswordFormValues>({
-    resolver: yupResolver(schema),
-  })
-
   const { t } = useTranslation()
 
   const { mutate, isError, error, isPending } = useMutation({
@@ -85,6 +75,17 @@ export const ChangePasswordForm = () => {
       reset()
     },
   })
+  
+  const {
+    handleSubmit,
+    formState: { errors },
+    register,
+    reset,
+  } = useForm<PasswordFormValues>({
+    resolver: yupResolver(schema(t)),
+  })
+
+
 
   const onSubmit = async (data: PasswordFormValues) => {
     mutate(data)
