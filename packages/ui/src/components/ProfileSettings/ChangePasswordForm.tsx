@@ -2,26 +2,46 @@ import { Box, Button, Heading, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import { useTranslation } from 'next-i18next'
+import { useTranslation, TFunction } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FaEdit } from 'react-icons/fa'
 import * as Yup from 'yup'
 
+
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 
+import { ChangePasswordFieldValues } from './types'
 import { FormItem } from '../FormItem'
 
-const schema = Yup.object().shape({
+// const schema = Yup.object().shape({
+  const schema = (t: TFunction) => 
+    Yup.object({
   currentPassword: Yup.string().required(),
-  password: Yup.string().required(),
+  password: Yup
+      .string()
+      .min(8, t('login.password.warning', { count: 8 }) as string)
+      .required()
+      .matches(
+        RegExp('(.*[a-z].*)'),
+        t('login.password.matches.lowercase') as string,
+      )
+      .matches(
+        RegExp('(.*[A-Z].*)'),
+        t('login.password.matches.uppercase') as string,
+      )
+      .matches(
+        RegExp('(.*\\d.*)'),
+        t('login.password.matches.number') as string,
+      ),
+  // password: Yup.string().required(),
   passwordConfirmation: Yup.string().oneOf(
     [Yup.ref('password'), undefined],
     'Passwords must match',
   ),
 })
 
-type PasswordFormValues = Yup.InferType<typeof schema>
+type PasswordFormValues = Yup.InferType<ChangePasswordFieldValues>
 
 const changePassword = async (
   data: PasswordFormValues,
