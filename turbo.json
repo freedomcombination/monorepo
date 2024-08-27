@@ -1,6 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": [
+    "ADMIN_USERNAME",
     "API_TOKEN",
     "CI",
     "DEEPL_API_KEY",

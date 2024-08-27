@@ -1,9 +1,8 @@
 import { expect, test } from '@playwright/test'
 
-import { Site } from '@fc/types'
+import { CookieKey, Site } from '@fc/types'
 
 import { TEST_TIMEOUT } from '../config'
-import { ADMIN_USERNAME, PASSWORD, USERNAME } from '../constants'
 import { HomePage, LoginPage } from '../pages'
 
 const sitesWithLogin: Site[] = [
@@ -21,16 +20,25 @@ for (const site of sitesWithLogin) {
     // Prevent showing the cookie banner
     // TODO: Write a test to accept the cookie banner
     await context.addCookies([
-      { name: '__CB-ALLOWED', value: 'true', url: homePage.url },
+      {
+        name: CookieKey.COOKIE_BANNER_ALLOWED,
+        value: 'true',
+        url: homePage.url,
+      },
+      {
+        name: CookieKey.PUSH_NOTIFICATIONS_SUBSCRIBED,
+        value: 'true',
+        url: homePage.url,
+      },
     ])
 
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
 
     if (site === 'dashboard') {
-      await loginPage.loginDashboard(ADMIN_USERNAME, PASSWORD)
+      await loginPage.loginDashboard()
     } else {
       await homePage.gotoLogin()
-      await loginPage.login(USERNAME, PASSWORD)
+      await loginPage.login()
       // Timeout 10 seconds
       await page.waitForURL(homePage.url, { timeout: TEST_TIMEOUT })
       await expect(page).toHaveURL(homePage.url)
