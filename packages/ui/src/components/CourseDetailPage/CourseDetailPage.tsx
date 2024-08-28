@@ -14,7 +14,7 @@ import { Container } from '../Container'
 import { Markdown } from '../Markdown'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'
-
+// temporary markdown the working file
 export const CourseDetailPage: FC<CourseDetailPageProps> = ({
   course,
   courses,
@@ -28,7 +28,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
   const description = course[`description_${locale || 'nl'}`]
 
   const URL = `${SITE_URL}/${locale}${asPath}`
-
+  
   return (
     <Container maxW={'6xl'}>
       <Stack spacing={12} pb={16} pt={4}>
