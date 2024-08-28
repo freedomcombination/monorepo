@@ -88,6 +88,7 @@ export const FormItem: FormItemComponent = forwardRef(
         )}
         <InputGroup>
           <Tag
+            data-testid={`input-${name}`}
             ref={ref}
             id={name}
             type={type === 'password' ? (isOpen ? 'text' : 'password') : type}
@@ -109,6 +110,7 @@ export const FormItem: FormItemComponent = forwardRef(
           {type === 'password' && (
             <InputRightElement h={'full'}>
               <IconButton
+                data-testid={`toggle-password`}
                 variant="link"
                 color={'inherit'}
                 aria-label={isOpen ? 'Mask password' : 'Reveal password'}
@@ -118,7 +120,9 @@ export const FormItem: FormItemComponent = forwardRef(
             </InputRightElement>
           )}
         </InputGroup>
-        <FormErrorMessage>{errorMessage}</FormErrorMessage>
+        <FormErrorMessage data-testid={`error-text-${name}`}>
+          {errorMessage}
+        </FormErrorMessage>
         {helperText && (
           <FormHelperText color={'orange.400'}>{helperText}</FormHelperText>
         )}

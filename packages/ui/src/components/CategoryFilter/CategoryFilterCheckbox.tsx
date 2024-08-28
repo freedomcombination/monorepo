@@ -12,6 +12,7 @@ export const CategoryFilterCheckbox = (props: UseCheckboxProps) => {
 
   return (
     <HStack
+      data-testid={props.value}
       as="label"
       color={state.isChecked ? 'primary.500' : 'initial'}
       borderWidth={2}

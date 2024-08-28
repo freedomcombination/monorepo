@@ -10,18 +10,11 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 
-import { EMAIL, socialLinks } from '@fc/config'
+import { socialLinks } from '@fc/config'
 import { strapiRequest } from '@fc/lib'
-import { useSendEmail } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Foundation, StrapiLocale } from '@fc/types'
-import {
-  ButtonLink,
-  ContactForm,
-  ContactFormFieldValues,
-  Container,
-  SocialButtons,
-} from '@fc/ui'
+import { ButtonLink, ContactForm, Container, SocialButtons } from '@fc/ui'
 
 import { Layout } from '../components'
 
@@ -29,18 +22,6 @@ type ContactProps = InferGetStaticPropsType<typeof getStaticProps>
 
 const Contact = ({ foundation }: ContactProps): JSX.Element => {
   const { t } = useTranslation()
-
-  const { isError, isPending, isSuccess, mutate: sendForm } = useSendEmail()
-
-  const handleSubmit = async (data: ContactFormFieldValues) => {
-    const emailData = {
-      subject: `Form from ${data.fullname} (${data.email})`,
-      text: data.message,
-      from: EMAIL,
-    }
-
-    return sendForm(emailData)
-  }
 
   return (
     <Layout seo={{ title: t('contact.title') }}>
@@ -108,12 +89,7 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
 
               <SocialButtons items={socialLinks.foundation} />
             </VStack>
-            <ContactForm
-              onSubmitHandler={handleSubmit}
-              isLoading={isPending}
-              isSuccess={isSuccess}
-              isError={isError}
-            />
+            <ContactForm />
           </SimpleGrid>
         </Container>
       </Box>

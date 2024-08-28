@@ -31,6 +31,14 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
 
   const titleKey = `title_${router.locale}` as const
 
+  const onHandle = () => {
+    if (isAdded) {
+      onRemove(art)
+    } else {
+      onAdd(art)
+    }
+  }
+
   return (
     <Stack boxShadow="md" rounded="md" direction={'column'} overflow="hidden">
       <ArtCardImage art={art} h={300} />
@@ -45,6 +53,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
 
         <HStack justify="space-between" w="full">
           <Button
+            data-testid="button-view"
             leftIcon={<AiOutlineEye />}
             title="View"
             onClick={onOpen}
@@ -58,15 +67,14 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
           <Spacer />
 
           <ActionButton
+            data-testid="button-add-to-collection"
             canCreate="collections"
             variant={'outline'}
             colorScheme={isAdded ? 'red' : 'green'}
             leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
             size="xs"
             isLoading={isLoading}
-            onClick={() => {
-              isAdded ? onRemove(art) : onAdd(art)
-            }}
+            onClick={onHandle}
           >
             {isAdded ? 'Remove' : 'Add to Collection'}
           </ActionButton>

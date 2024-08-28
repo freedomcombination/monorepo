@@ -49,6 +49,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   return (
     <Menu placement="bottom">
       <MenuButton
+        data-testid="button-profile-menu"
         as={Button}
         size={'sm'}
         leftIcon={
@@ -62,12 +63,17 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
         {profile?.name || user?.username}
       </MenuButton>
       <MenuList>
-        <MenuItem as={Link} href={'/profile'}>
+        <MenuItem data-testid="link-profile" as={Link} href={'/profile'}>
           {t('profile')}
         </MenuItem>
 
         <MenuDivider />
-        <MenuItem icon={<FiLogOut />} color="red.400" onClick={logout}>
+        <MenuItem
+          data-testid="button-logout"
+          icon={<FiLogOut />}
+          color="red.400"
+          onClick={logout}
+        >
           {t('logout')}
         </MenuItem>
       </MenuList>
