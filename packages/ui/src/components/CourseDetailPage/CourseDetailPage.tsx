@@ -14,7 +14,7 @@ import { Container } from '../Container'
 import { Markdown } from '../Markdown'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'
-// temporary markdown the working file
+
 export const CourseDetailPage: FC<CourseDetailPageProps> = ({
   course,
   courses,

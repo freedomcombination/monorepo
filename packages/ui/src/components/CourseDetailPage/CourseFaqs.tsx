@@ -4,7 +4,7 @@ import { Accordion, AccordionItem } from '@chakra-ui/react'
 
 import { CourseFaqsProps } from './types'
 import { CourseFaqItem } from '../CourseDetailFaqItem'
-// temporary markdown the working file
+
 export const CourseFaqs: FC<CourseFaqsProps> = ({ faqs }) => {
   return (
     <Accordion allowMultiple>
