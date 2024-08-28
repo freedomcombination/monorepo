@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test'
 
 import { RegisterPage } from './RegisterPage'
 
-// Rastgele kullanıcı bilgileri üreten fonksiyon
+// Function that generates random user information
 function generateRandomUser() {
   const name = faker.person.firstName()
   const username = faker.internet.userName()
@@ -13,7 +13,6 @@ function generateRandomUser() {
   return { name, username, email, password }
 }
 
-// TC-0001 Happy Flow
 test('TC-0001 Happy flow', async ({ page }) => {
   const registerPage = new RegisterPage(page)
   const { name, username, email, password } = generateRandomUser()
@@ -22,11 +21,10 @@ test('TC-0001 Happy flow', async ({ page }) => {
   await registerPage.register({ name, username, email, password })
 
   await page.getByRole('button', { name }).click() // Click on the button named "name"
-  await page.click('[id*="menu-list-"]') // Log out
+  await page.click('[data-testid*="button-logout"]') // Log out
   await page.waitForTimeout(1000)
 })
 
-// TC-0002 Negative Flow (Leave Email Field Blank)
 test('TC-0002 Negative flow (Leave Email Field Blank)', async ({ page }) => {
   const registerPage = new RegisterPage(page)
   const { name, username, password } = generateRandomUser()
@@ -38,7 +36,6 @@ test('TC-0002 Negative flow (Leave Email Field Blank)', async ({ page }) => {
   await page.waitForTimeout(1000)
 })
 
-// TC-0003 Negative Flow (Invalid e-mail address)
 test('TC-0003 Negative flow (Invalid e-mail address)', async ({ page }) => {
   const registerPage = new RegisterPage(page)
   const { name, username, password } = generateRandomUser()
@@ -55,7 +52,6 @@ test('TC-0003 Negative flow (Invalid e-mail address)', async ({ page }) => {
   await page.waitForTimeout(1000)
 })
 
-// TC-0004 Negative Flow (login with invalid information)
 test('TC-0004 Negative flow (login with invalid information)', async ({
   page,
 }) => {
