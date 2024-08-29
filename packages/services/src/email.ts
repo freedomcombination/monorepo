@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 
 import { EMAIL, RecaptchaKeys } from '@fc/config'
+import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { EmailCreateInput } from '@fc/types'
 
@@ -8,7 +9,7 @@ import { useRecaptchaToken } from './common'
 
 export const sendEmail = async (
   data: EmailCreateInput,
-  token?: string | null,
+  token: string,
   recaptchaToken?: string,
 ) => {
   const body: EmailCreateInput = {
@@ -18,16 +19,17 @@ export const sendEmail = async (
     ...(!token && { recaptchaToken }),
   }
 
-  return Mutation.post('contact/email', body, '')
+  return Mutation.post('contact/email', body, token)
 }
 
-export const useSendEmail = (token?: string) => {
+export const useSendEmail = () => {
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.CONTACT_FORM)
+  const { token } = useAuthContext()
 
   return useMutation({
     mutationKey: ['email'],
     mutationFn: async (data: EmailCreateInput) => {
-      return sendEmail(data, token, recaptchaToken)
+      return sendEmail(data, token || '', recaptchaToken)
     },
   })
 }
