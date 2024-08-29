@@ -8,11 +8,12 @@ import {
   term,
   news,
   tweets,
+  why_we_are,
 } from './routes'
 import { Menus } from './types'
 
 export const trendRights: Menus = {
-  headerMenu: [announcements, hashtags, about, contact, foundation],
+  headerMenu: [announcements, hashtags, why_we_are, about, contact, foundation],
   footerMenu: [
     {
       children: [foundation, about, contact],
