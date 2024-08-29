@@ -108,7 +108,11 @@ export const SignupForm: FC<SignupFormProps> = ({
             <HStack gap={1} justify="center">
               <Text color="muted">{t('login.have-account')}</Text>
 
-              <ButtonLink href="/auth/login" variant="plain">
+              <ButtonLink
+                data-testid="link-login"
+                href="/auth/login"
+                variant="plain"
+              >
                 {t('login.signin')}
               </ButtonLink>
             </HStack>
@@ -163,7 +167,11 @@ export const SignupForm: FC<SignupFormProps> = ({
             </HStack>
           </Stack>
           <Stack gap={6}>
-            <Button type="submit" disabled={!isTermsAccepted}>
+            <Button
+              data-testid="button-register"
+              type="submit"
+              disabled={!isTermsAccepted}
+            >
               {t('login.create-account')}
             </Button>
             {providersToBeShown.length > 0 && (
