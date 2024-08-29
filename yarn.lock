@@ -7376,12 +7376,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.16.1":
-  version: 20.16.1
-  resolution: "@types/node@npm:20.16.1"
+"@types/node@npm:^20.16.2":
+  version: 20.16.2
+  resolution: "@types/node@npm:20.16.2"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10/9bae1dffd2094694147a91ebec51dc89a60a607d16d47a0d770320f1a75d3ba58663708fd93c37954a63acb701a4e0fd64245139c57ae810d3ad524e75481d4e
+  checksum: 10/fcae2ffaa681c2947cd3dae67a6dcf83ef666fc0994281ad881b9e3bb542fec3a9206d9ce899c20e5cdddace2b96b42e32f247864de9baf95756c07b9eff15d7
   languageName: node
   linkType: hard
 
@@ -12670,7 +12670,7 @@ __metadata:
     "@turbo/gen": "npm:^2.1.0"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
-    "@types/node": "npm:^20.16.1"
+    "@types/node": "npm:^20.16.2"
     "@types/pluralize": "npm:^0.0.33"
     "@types/react": "npm:18.3.4"
     "@types/react-dom": "npm:18.3.0"
@@ -12746,7 +12746,7 @@ __metadata:
     react-markdown: "npm:^9.0.1"
     react-markdown-editor-lite: "npm:^1.3.4"
     react-masonry-css: "npm:^1.0.16"
-    react-medium-image-zoom: "npm:^5.2.8"
+    react-medium-image-zoom: "npm:^5.2.9"
     react-pageflip: "npm:^2.0.3"
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.15"
@@ -12762,7 +12762,7 @@ __metadata:
     turbo: "npm:^2.1.0"
     twitter-api-v2: "npm:^1.17.2"
     twitter-text: "npm:^3.1.0"
-    type-fest: "npm:^4.25.0"
+    type-fest: "npm:^4.26.0"
     typescript: "npm:5.4.5"
     usehooks-ts: "npm:^3.1.0"
     web-push: "npm:^3.6.7"
@@ -19116,13 +19116,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-medium-image-zoom@npm:^5.2.8":
-  version: 5.2.8
-  resolution: "react-medium-image-zoom@npm:5.2.8"
+"react-medium-image-zoom@npm:^5.2.9":
+  version: 5.2.9
+  resolution: "react-medium-image-zoom@npm:5.2.9"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/fff1ba6ffc2b17f6c8d65f52894957291013e453c9a2ee879df2af6672caf6f403d37519dd03e564161c6fb0e58e268da269223f8fa9e7a12351d9eb9a63c23d
+  checksum: 10/0d02a152209061cd9659c3c3670de44a9d8b899d770d2b0895e91436f8ccb30747ad9e8917f6d7fba9a5568efd1534d3a41fa1f403a3a434dbb8710b0a4605e0
   languageName: node
   linkType: hard
 
@@ -21927,10 +21927,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^4.25.0":
-  version: 4.25.0
-  resolution: "type-fest@npm:4.25.0"
-  checksum: 10/16ddf51dbfeef45e6f0a139c16f06d6cd05b61be76b048c41e79997f150a66422219d7ec10a2717ab926505402d59b1ddc8560f5f6c245e1b8a35971c2f1b754
+"type-fest@npm:^4.26.0":
+  version: 4.26.0
+  resolution: "type-fest@npm:4.26.0"
+  checksum: 10/f5fe86d2c3db693f7154c8ab0d228a89394e4c446f2ed30ea3b61afaea9757c87c4e79475ef8d6f5fafbd7a4efd302e3b0237d9657dd425228f20a27feee3aef
   languageName: node
   linkType: hard
 

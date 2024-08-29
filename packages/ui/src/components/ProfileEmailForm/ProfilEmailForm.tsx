@@ -15,7 +15,6 @@ import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 import * as yup from 'yup'
 
-import { useAuthContext } from '@fc/context'
 import { useCreateModelMutation, useSendEmail } from '@fc/services'
 import {
   EmailCreateInput,
@@ -45,7 +44,6 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
   onSuccess,
 }) => {
   const { t } = useTranslation()
-  const { token } = useAuthContext()
 
   const {
     register,
@@ -95,12 +93,7 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
   }
 
   // send email
-  const {
-    error,
-    isPending,
-    isSuccess,
-    mutateAsync: sendEmail,
-  } = useSendEmail(token || undefined)
+  const { error, isPending, isSuccess, mutateAsync: sendEmail } = useSendEmail()
 
   const onSubmit = async (data: EmailFormValues) => {
     const content = data.content.replace(/\n/g, '<br>')
