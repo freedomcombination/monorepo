@@ -16,6 +16,8 @@ export const WImage: FC<WImageProps> = ({
   hasZoom,
   sizes,
   unoptimized,
+  testId,
+  className,
   ...rest
 }) => {
   if (!src) {
@@ -49,6 +51,8 @@ export const WImage: FC<WImageProps> = ({
     >
       <Wrapper {...(hasZoom && { zoomImg })}>
         <StrapiImage
+          className={className}
+          data-testid={testId}
           style={{ objectFit }}
           src={src}
           alt={alternativeText}
