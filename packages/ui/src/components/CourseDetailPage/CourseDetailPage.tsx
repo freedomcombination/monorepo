@@ -74,12 +74,14 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
           <CourseApplicationForm courseId={course.id} />
         </Stack>
 
-        <Stack spacing={4}>
-          <Heading as={'h3'} size={'lg'}>
-            {t('faq')}
-          </Heading>
-          <CourseFaqs faqs={course.faqs || []} />
-        </Stack>
+        {course.faqs && course.faqs?.length > 0 && (
+          <Stack spacing={4}>
+            <Heading as={'h3'} size={'lg'}>
+              {t('faq')}
+            </Heading>
+            <CourseFaqs faqs={course.faqs || []} />
+          </Stack>
+        )}
 
         {courses?.length > 0 && (
           <Stack spacing={4}>
