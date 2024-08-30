@@ -154,32 +154,32 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
               ref={tabListRef}
               overflowX={'auto'}
             >
-              <CustomTab data-testid="tab-profile">
+              <CustomTab data-testid="tab-profile" title={'profile'} >
                 <Box as={FaUserCircle} mr={2} />
                 <Box>{t('profile.tabs.profile')}</Box>
               </CustomTab>
-              <CustomTab data-testid="tab-security">
+              <CustomTab data-testid="tab-security" title={'security'}>
                 <Box as={FaKey} mr={2} />
                 <Box>{t('profile.tabs.security')}</Box>
               </CustomTab>
-              <CustomTab data-testid="tab-socials">
+              <CustomTab data-testid="tab-socials" title={'socials'}>
                 <Box as={TbSocial} mr={2} />
                 <Box>{t('profile.tabs.socials')}</Box>
               </CustomTab>
               {isCoursePaymentVisible && (
-                <CustomTab title={'courses'}>
+                <CustomTab title={'courses'} data-testid="tab-courses">
                   <Box as={MdOutlinePayments} mr={2} />
                   <Box>{t('profile.tabs.courses')}</Box>
                 </CustomTab>
               )}
               {showArts && (
-                <CustomTab data-testid="tab-arts">
+                <CustomTab data-testid="tab-arts" title={'arts'}>
                   <Box as={FaPaintBrush} mr={2} />
                   <Box>{t('profile.tabs.arts')}</Box>
                 </CustomTab>
               )}
               {isBlogsVisible && (
-                <CustomTab data-testid="tab-blogs">
+                <CustomTab data-testid="tab-blogs" title={'blogs'}>
                   <Box as={FaBlog} mr={2} />
                   <Box>{t('profile.tabs.blogs')}</Box>
                 </CustomTab>
