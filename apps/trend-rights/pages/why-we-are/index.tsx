@@ -1,6 +1,5 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
-import { useTranslation } from 'next-i18next'
 
 import { getSession } from '@fc/secrets'
 import { getBlogs, useGetBlogs } from '@fc/services'
@@ -12,7 +11,6 @@ import { WhyWeAre } from '../../components/WhyWeAre'
 
 const Blogs = () => {
   const { data: blogs = [] } = useGetBlogs()
-  const { t } = useTranslation()
 
   const title = 'Why we are here'
 
