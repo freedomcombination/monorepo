@@ -98,6 +98,7 @@ export const CourseRegister = () => {
 
   // show payment form if user has already applied and not paid yet
   if (
+    course.price &&
     !myApplication.hasPaid &&
     !myApplication.paymentExplanation &&
     !myApplication.payments?.some(payment => payment?.status === 'paid')

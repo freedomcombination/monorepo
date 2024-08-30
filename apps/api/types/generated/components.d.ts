@@ -1,18 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi'
 
-export interface FlowFlow extends Schema.Component {
-  collectionName: 'components_flow_flows'
-  info: {
-    displayName: 'flow'
-    icon: 'manyToMany'
-  }
-  attributes: {
-    title: Attribute.String
-    duration: Attribute.String
-    presenter: Attribute.String
-  }
-}
-
 export interface FaqFaq extends Schema.Component {
   collectionName: 'components_faq_faqs'
   info: {
@@ -26,6 +13,19 @@ export interface FaqFaq extends Schema.Component {
     answer_en: Attribute.Text
     answer_tr: Attribute.Text
     answer_nl: Attribute.Text
+  }
+}
+
+export interface FlowFlow extends Schema.Component {
+  collectionName: 'components_flow_flows'
+  info: {
+    displayName: 'flow'
+    icon: 'manyToMany'
+  }
+  attributes: {
+    title: Attribute.String
+    duration: Attribute.String
+    presenter: Attribute.String
   }
 }
 
@@ -68,46 +68,13 @@ export interface ContactContact extends Schema.Component {
   }
 }
 
-export interface CourseCurriculum extends Schema.Component {
-  collectionName: 'components_course_curricula'
-  info: {
-    displayName: 'CurriculumItem'
-    description: ''
-  }
-  attributes: {
-    title_en: Attribute.String
-    title_tr: Attribute.String
-    title_nl: Attribute.String
-    description_en: Attribute.Text
-    description_nl: Attribute.Text
-    description_tr: Attribute.Text
-    instructor: Attribute.String
-    date: Attribute.DateTime
-  }
-}
-
-export interface FlowFlow extends Schema.Component {
-  collectionName: 'components_flow_flows'
-  info: {
-    displayName: 'flow'
-    icon: 'manyToMany'
-  }
-  attributes: {
-    title: Attribute.String
-    duration: Attribute.String
-    presenter: Attribute.String
-  }
-}
-
 declare module '@strapi/types' {
-  export namespace Shared {
+  export module Shared {
     export interface Components {
-      'flow.flow': FlowFlow
       'faq.faq': FaqFaq
+      'flow.flow': FlowFlow
       'course.curriculum': CourseCurriculum
       'contact.contact': ContactContact
-      'course.curriculum': CourseCurriculum
-      'flow.flow': FlowFlow
     }
   }
 }

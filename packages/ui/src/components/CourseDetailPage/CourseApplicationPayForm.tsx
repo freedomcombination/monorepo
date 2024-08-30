@@ -114,22 +114,22 @@ export const CourseApplicationPayForm = () => {
         display={'flex'}
         flexDirection={'column'}
         justifyItems={'flex-start'}
-        alignItems={'flex-start'}
-        width={'120px'}
-        gap={1}
+
+        width={'180px'}
+        gap={6}
         value={payOnline ? 'pay-online' : 'pay-declare'}
         onChange={onRadioChange}
       >
         <Radio value={'pay-online'}>
-          <VStack>
-            <Text>Pay Online</Text>
-            <Text fontSize={'xs'} textAlign={'left'}>Ödemenizi hemen gerçekleştirin.</Text>
+          <VStack alignItems={'flex-start'} gap={0} spacing={0}>
+            <Text textAlign={'left'} fontWeight={'bold'}>{t('course.application-radio-pay')}</Text>
+            <Text fontSize={'xs'} textAlign={'left'}>{t('course.application-radio-pay-desc')}</Text>
           </VStack>
         </Radio>
         <Radio value={'pay-declare'}>
-          <VStack>
-            <Text>Inform</Text>
-            <Text fontSize={'xs'} textAlign={'left'}>Ödeme şeklinizi bize bildirin.</Text>
+          <VStack alignItems={'flex-start'} gap={0} spacing={0}>
+            <Text textAlign={'left'} fontWeight={'bold'}>{t('course.application-radio-inform')}</Text>
+            <Text fontSize={'xs'} textAlign={'left'}>{t('course.application-radio-inform-desc')}</Text>
           </VStack>
         </Radio>
       </RadioGroup>
@@ -138,11 +138,13 @@ export const CourseApplicationPayForm = () => {
         {payOnline ? (
           <Stack
             gap={4}
-            alignItems={'center'}
+            // alignItems={'center'}
             minH={'inherit'}
             // justifyContent={'center'}
+            alignItems={'flex-start'}
+            justifyContent={'center'}
           >
-            <Stack align="center" width={'full'} flex={1}>
+            <Stack width={'full'} flex={1}>
               <HStack spacing={4}>
                 <Image src={`/images/ideal-logo.svg`} h={50} alt="ideal" />
 
@@ -155,7 +157,7 @@ export const CourseApplicationPayForm = () => {
 
                 <Image src={`/images/google-pay.svg`} h={50} alt="google pay" />
               </HStack>
-              <Text textAlign="center" fontSize="md" color="gray.500">
+              <Text textAlign="left" fontSize="md" color="gray.500">
                 {t('donation.check-payment-method')}
               </Text>
             </Stack>
