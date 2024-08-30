@@ -154,15 +154,15 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
               ref={tabListRef}
               overflowX={'auto'}
             >
-              <CustomTab title={'profile'}>
+              <CustomTab data-testid="tab-profile">
                 <Box as={FaUserCircle} mr={2} />
                 <Box>{t('profile.tabs.profile')}</Box>
               </CustomTab>
-              <CustomTab title={'security'}>
+              <CustomTab data-testid="tab-security">
                 <Box as={FaKey} mr={2} />
                 <Box>{t('profile.tabs.security')}</Box>
               </CustomTab>
-              <CustomTab title={'socials'}>
+              <CustomTab data-testid="tab-socials">
                 <Box as={TbSocial} mr={2} />
                 <Box>{t('profile.tabs.socials')}</Box>
               </CustomTab>
@@ -173,13 +173,13 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                 </CustomTab>
               )}
               {showArts && (
-                <CustomTab title={'arts'}>
+                <CustomTab data-testid="tab-arts">
                   <Box as={FaPaintBrush} mr={2} />
                   <Box>{t('profile.tabs.arts')}</Box>
                 </CustomTab>
               )}
               {isBlogsVisible && (
-                <CustomTab title={'blogs'}>
+                <CustomTab data-testid="tab-blogs">
                   <Box as={FaBlog} mr={2} />
                   <Box>{t('profile.tabs.blogs')}</Box>
                 </CustomTab>

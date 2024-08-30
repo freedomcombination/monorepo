@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { Course, CourseApplication } from '@fc/types'
-import { formatDate, formatNumber } from '@fc/utils'
+import { formatDate, formatPrice } from '@fc/utils'
 
 import { PaymentButton } from './PaymentButton'
 import { PaymentLine } from './PaymentLine'
@@ -29,12 +29,7 @@ export const CoursePaymentDetails: FC<{
   if (remainingPrice === 0) {
     return (
       <PaymentLine title={t('course.payment.title.total-payment')}>
-        <Text>{`${formatNumber(course.price, {
-          style: 'currency',
-          currency: 'EUR',
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        })} euro`}</Text>
+        <Text>{`${formatPrice(course.price)} euro`}</Text>
       </PaymentLine>
     )
   }
@@ -107,12 +102,7 @@ export const CoursePaymentDetails: FC<{
                   <Text fontWeight={payment?.id === id ? 'bold' : 'normal'}>
                     {t('course.payment.title.nth-installment-paid', {
                       date: formatDate(date, 'dd MMMM yyyy', locale),
-                      amount: formatNumber(amount, {
-                        style: 'currency',
-                        currency: 'EUR',
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      }),
+                      amount: formatPrice(amount),
                     })}
                   </Text>
                 </PaymentLine>

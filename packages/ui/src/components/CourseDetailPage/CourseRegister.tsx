@@ -108,7 +108,7 @@ export const CourseRegister = () => {
           {t('course.application-pay-title')}
         </Heading>
         <Text w={'100%'} px={20} textAlign={'center'}>
-          {t('course.application-pay-description')}
+          {t('course.application.pay-description')}
         </Text>
         <CourseApplicationPayForm />
       </Stack>

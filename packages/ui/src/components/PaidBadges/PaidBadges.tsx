@@ -3,18 +3,21 @@ import { FC } from 'react'
 import { Badge, BadgeProps } from '@chakra-ui/react'
 
 type PaidBadgesProps = {
-  hasPaid: boolean | null
+  status: 'paid' | 'not yet' | 'free'
 } & BadgeProps
 
-export const PaidBadges: FC<PaidBadgesProps> = ({ hasPaid, ...rest }) => {
+export const PaidBadges: FC<PaidBadgesProps> = ({ status, ...rest }) => {
+  const scheme = status === 'paid' ? 'green' : status === 'not yet' ? 'gray' : 'purple'
+  const text = status === 'paid' ? 'Paid' : status === 'not yet' ? 'Not Yet' : 'Free'
+
   return (
     <Badge
       variant="outline"
       {...rest}
-      colorScheme={hasPaid ? 'purple' : 'gray'}
+      colorScheme={scheme}
     >
       {/* TODO add translation */}
-      {hasPaid ? 'Paid' : 'Not Yet'}
+      {text}
     </Badge>
   )
 }

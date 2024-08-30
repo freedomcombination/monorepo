@@ -501,7 +501,7 @@ export const ModelEditForm = <T extends StrapiModel>({
         >
           <Wrap>
             <ActionButton
-              data-testid="posts-button"
+              data-testid="button-posts"
               isVisible={
                 endpoint === 'hashtags' || endpoint === 'archive-contents'
               }

@@ -30,8 +30,9 @@ export type CellConfig<T extends StrapiModel> = CellConfigCommon<T> & {
   cellProps?: TableCellProps
   label?: string
   sortable?: boolean // Currently not supported when transform is used
-  transform?: (value: T[keyof T]) => ReactNode
-  transformPDF?: (value: T[keyof T]) => string
+  transform?: ((value: T[keyof T]) => ReactNode)
+  transformWithModel?: (value: T[keyof T], model: T) => ReactNode
+  transformPDF?: ((value: T[keyof T]) => string)
   sortKey?: string
 }
 
@@ -40,6 +41,7 @@ export type WTableCellProps<T extends StrapiModel> = {
   // TODO Add specific type for each cell value
   cellConfig: CellConfig<T>
   field: keyof T
+  model: T
 }
 
 export type WTableRowProps<T extends StrapiModel> = {
@@ -63,3 +65,8 @@ export type TableCellImagesProps = {
 export type TableCellImageProps = {
   image: UploadFile
 }
+
+export type ExportPDFProps<T extends StrapiModel> = Pick<
+  WTableProps<T>,
+  'data' | 'columns'
+>

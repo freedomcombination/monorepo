@@ -100,10 +100,13 @@ const getCellForPDF = async <T extends StrapiModel>(
   value: T[keyof T],
   cellConfig: CellConfig<T>,
   field: keyof T,
+  model: T,
   locale: StrapiLocale,
   t: TranslateFunction,
 ): Promise<PDFCellData> => {
   const { type, transform, transformPDF } = cellConfig
+
+  // TODO ADD MODEL FOR PDF
 
   const convertFunc = transformPDF ?? transform
   const data = (
@@ -189,7 +192,7 @@ const getRowForPDF = <T extends StrapiModel>(
       const value = model[field]
       const cell = columns[field] as CellConfig<T>
 
-      const cellValue = await getCellForPDF(value, cell, field, locale, t)
+      const cellValue = await getCellForPDF(value, cell, field, model, locale, t)
 
       return typeof cellValue === 'string'
         ? convertTRCharsToEN(cellValue)

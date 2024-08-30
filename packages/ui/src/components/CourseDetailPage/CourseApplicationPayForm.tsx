@@ -24,6 +24,7 @@ import { SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationUnpaid } from '@fc/types'
+import { formatPrice } from '@fc/utils'
 
 import { useCourseContext } from './CourseContext'
 
@@ -167,7 +168,7 @@ export const CourseApplicationPayForm = () => {
               colorScheme="primary"
             >
               {t('course.application-check-out')}
-              {amount && `  €${amount}`}
+              {amount && `  ${formatPrice(amount)}`}
             </Button>
           </Stack>
         ) : (

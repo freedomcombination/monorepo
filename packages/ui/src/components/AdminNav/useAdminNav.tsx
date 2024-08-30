@@ -60,21 +60,25 @@ export const useAdminNav = () => {
   const menuItems = useMemo(() => {
     const menuItems: AdminNavItemProps[] = [
       {
+        id: 'dashboard',
         label: t('dashboard'),
         link: '/',
         icon: <MdOutlineSpaceDashboard />,
         allowed: true,
       },
       {
+        id: 'foundation',
         label: t('foundation'),
         icon: <MdFoundation />,
         submenu: [
           {
+            id: 'foundation-general',
             label: t('foundation.general'),
             link: '/foundations',
             icon: <SiGeneralelectric />,
           },
           {
+            id: 'foundation-assets',
             label: t('foundation.assets'),
             link: '/assets',
             icon: <SiMaterialdesignicons />,
@@ -82,25 +86,30 @@ export const useAdminNav = () => {
         ],
       },
       {
+        id: 'translates',
         label: t('translates'),
         icon: <BsTranslate />,
         submenu: [
           {
+            id: 'translates-activities',
             label: t('activities'),
             link: '/translates?slug=activities',
             icon: <TbActivity />,
           },
           {
+            id: 'translates-collections',
             label: t('collections'),
             link: '/translates?slug=collections',
             icon: <BsCollection />,
           },
           {
+            id: 'translates-hashtags',
             label: t('hashtags'),
             link: '/translates?slug=hashtags',
             icon: <CgHashtag />,
           },
           {
+            id: 'translates-posts',
             label: t('posts'),
             link: '/translates?slug=posts',
             icon: <TbBrandTwitter />,
@@ -108,6 +117,7 @@ export const useAdminNav = () => {
           ...(process.env.NODE_ENV === 'development'
             ? [
                 {
+                  id: 'translates-locales',
                   label: 'Locales',
                   link: '/locales',
                   icon: <MdTranslate />,
@@ -118,31 +128,36 @@ export const useAdminNav = () => {
         ],
       },
       {
+        id: 'archive-contents',
         label: t('archive-contents'),
         icon: <LuFileArchive />,
         link: '/archive-contents',
       },
       {
+        id: 'activities',
         label: t('activities'),
         icon: <FiActivity />,
         link: '/activities',
       },
       {
+        id: 'arts',
         label: t('arts'),
         icon: <TbBrush />,
-
         submenu: [
           {
+            id: 'pending-arts',
             label: t('pending-arts'),
             link: '/arts?status=pending',
             icon: <TbClock />,
           },
           {
+            id: 'approved-arts',
             label: t('approvedArts'),
             link: '/arts?status=approved',
             icon: <TbChecks />,
           },
           {
+            id: 'rejected-arts',
             label: t('rejected-arts'),
             link: '/arts?status=rejected',
             icon: <TbX />,
@@ -150,36 +165,43 @@ export const useAdminNav = () => {
         ],
       },
       {
+        id: 'art-collections',
         label: t('art.collections'),
         link: '/collections',
         icon: <BsCollection />,
       },
       {
+        id: 'hashtags',
         label: t('hashtags'),
         icon: <CgHashtag />,
         link: '/hashtags',
       },
       {
+        id: 'hashtag-posts',
         label: t('hashtagPosts'),
         icon: <TbBrandTwitter />,
         link: '/posts',
       },
       {
+        id: 'categories',
         label: t('categories'),
         icon: <MdOutlineCategory />,
         link: '/categories',
       },
       {
+        id: 'tags',
         label: t('tags'),
         icon: <IoPricetagsOutline />,
         link: '/tags',
       },
       {
+        id: 'news',
         label: t('news'),
         icon: <HiOutlineNewspaper />,
 
         submenu: [
           {
+            id: 'news-news',
             label: t('news'),
             link: '/news',
             icon: <HiOutlineNewspaper />,
@@ -188,6 +210,7 @@ export const useAdminNav = () => {
             allowed: canRead('topic'),
           },
           {
+            id: 'news-bookmarked-news',
             label: t('bookmarked-news'),
             link: '/news/bookmarks',
             icon: <TbBookmarks />,
@@ -195,6 +218,7 @@ export const useAdminNav = () => {
             allowed: canRead('topic'),
           },
           {
+            id: 'news-recommended-news',
             label: t('recommended-news'),
             link: '/news/recommended',
             icon: <TbThumbUp />,
@@ -203,25 +227,30 @@ export const useAdminNav = () => {
         ],
       },
       {
+        id: 'notifications',
         label: t('notifications'),
         icon: <MdOutlineNotificationsActive />,
         link: '/notifications',
       },
       {
+        id: 'timelines',
         label: t('timelines'),
         icon: <FaTimeline />,
         submenu: [
           {
+            id: 'timelines-timelines',
             label: t('timelines'),
             link: '/timelines',
             icon: <GiHumanPyramid />,
           },
           {
+            id: 'timelines-bookmarked-tweets',
             label: t('bookmarked-tweets'),
             link: '/timelines/bookmarks',
             icon: <TbBookmarks />,
           },
           {
+            id: 'timelines-recommended-tweets',
             label: t('recommended-tweets'),
             link: '/timelines/recommended',
             icon: <TbThumbUp />,
@@ -229,26 +258,31 @@ export const useAdminNav = () => {
         ],
       },
       {
+        id: 'courses',
         label: t('courses'),
         link: '/courses',
         icon: <GiHumanPyramid />,
       },
       {
+        id: 'profiles',
         label: t('profiles'),
         link: '/profiles',
         icon: <CgProfile />,
       },
       {
+        id: 'users',
         label: t('users'),
         icon: <FiUsers />,
         submenu: [
           {
+            id: 'users-users',
             label: t('users'),
             link: '/users',
             icon: <FiUsers />,
             allowed: canRead('users-permissions/roles'),
           },
           {
+            id: 'users-roles',
             label: t('role'),
             link: '/roles',
             icon: <TbMilitaryRank />,
@@ -257,16 +291,19 @@ export const useAdminNav = () => {
         ],
       },
       {
+        id: 'blogs',
         label: t('blogs'),
         icon: <TbWriting />,
         link: '/blogs',
       },
       {
+        id: 'competitions',
         label: t('competitions'),
         link: '/competitions',
         icon: <BsCommand />,
       },
       {
+        id: 'donation',
         label: 'Donation',
         // NOTE: Page slug is different from endpoint
         link: '/donation',
@@ -293,6 +330,7 @@ export const useAdminNav = () => {
       },
 
       {
+        id: 'user-feedbacks',
         label: t('user-feedbacks'),
         link: '/user-feedbacks',
         icon: <MdOutlineFeedback />,
