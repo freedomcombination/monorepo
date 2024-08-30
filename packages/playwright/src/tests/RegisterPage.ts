@@ -1,4 +1,8 @@
 import { Page } from '@playwright/test'
+// Defining the getVercelUrl function
+function getVercelUrl(projectName: string): string {
+  return `https://${projectName}.vercel.app/tr`
+}
 
 type RegisterArgs = {
   name: string
@@ -15,11 +19,12 @@ export class RegisterPage {
   }
 
   async navigateToRegister() {
-    await this.page.goto('https://kunsthalte.vercel.app/tr')
-    await this.page.click('a[href*="auth/login"]') // Go to login page
-    await this.page.click('a[href*="auth/register"]') // Go to register page
-  }
+    const url = getVercelUrl('kunsthalte') // Dynamically generate Vercel URL
+    await this.page.goto(url) // Go to dynamically generated URL
 
+    await this.page.click('a[href*="auth/login"]') // Go to login page
+    await this.page.click('a[href*="auth/register"]') // Go to registration page
+  }
   async register({ name, username, email, password }: RegisterArgs) {
     await this.page.click('#name')
     await this.page.fill('#name', name) // Fill name
@@ -33,6 +38,6 @@ export class RegisterPage {
     await this.page.click('#password')
     await this.page.fill('#password', password) // Fill password
 
-    await this.page.click('button.css-1vhfr1i') // Click "Create Account" button
+    await this.page.getByTestId('button-register').click() // Click "Create Account" button
   }
 }

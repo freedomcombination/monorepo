@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker'
 import { test, expect } from '@playwright/test'
 
 import { RegisterPage } from './RegisterPage'
+import { getVercelUrl } from '../utils'
 
 // Function that generates random user information
 function generateRandomUser() {
@@ -61,7 +62,8 @@ test('TC-0004 Negative flow (login with invalid information)', async ({
   await registerPage.navigateToRegister()
   await registerPage.register({ name, username, email, password })
 
-  await page.goto('https://kunsthalte.vercel.app/tr')
+  await page.goto(getVercelUrl('kunsthalte'))
+  await page.click('button:has-text("TR")')
 
   await page.getByRole('link', { name: 'Giriş yap' }).click() // Go to login page
 
