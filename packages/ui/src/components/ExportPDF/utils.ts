@@ -192,7 +192,14 @@ const getRowForPDF = <T extends StrapiModel>(
       const value = model[field]
       const cell = columns[field] as CellConfig<T>
 
-      const cellValue = await getCellForPDF(value, cell, field, model, locale, t)
+      const cellValue = await getCellForPDF(
+        value,
+        cell,
+        field,
+        model,
+        locale,
+        t,
+      )
 
       return typeof cellValue === 'string'
         ? convertTRCharsToEN(cellValue)

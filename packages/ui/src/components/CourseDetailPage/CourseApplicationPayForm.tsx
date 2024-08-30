@@ -114,7 +114,6 @@ export const CourseApplicationPayForm = () => {
         display={'flex'}
         flexDirection={'column'}
         justifyItems={'flex-start'}
-
         width={'180px'}
         gap={6}
         value={payOnline ? 'pay-online' : 'pay-declare'}
@@ -122,14 +121,22 @@ export const CourseApplicationPayForm = () => {
       >
         <Radio value={'pay-online'}>
           <VStack alignItems={'flex-start'} gap={0} spacing={0}>
-            <Text textAlign={'left'} fontWeight={'bold'}>{t('course.application-radio-pay')}</Text>
-            <Text fontSize={'xs'} textAlign={'left'}>{t('course.application-radio-pay-desc')}</Text>
+            <Text textAlign={'left'} fontWeight={'bold'}>
+              {t('course.application-radio-pay')}
+            </Text>
+            <Text fontSize={'xs'} textAlign={'left'}>
+              {t('course.application-radio-pay-desc')}
+            </Text>
           </VStack>
         </Radio>
         <Radio value={'pay-declare'}>
           <VStack alignItems={'flex-start'} gap={0} spacing={0}>
-            <Text textAlign={'left'} fontWeight={'bold'}>{t('course.application-radio-inform')}</Text>
-            <Text fontSize={'xs'} textAlign={'left'}>{t('course.application-radio-inform-desc')}</Text>
+            <Text textAlign={'left'} fontWeight={'bold'}>
+              {t('course.application-radio-inform')}
+            </Text>
+            <Text fontSize={'xs'} textAlign={'left'}>
+              {t('course.application-radio-inform-desc')}
+            </Text>
           </VStack>
         </Radio>
       </RadioGroup>

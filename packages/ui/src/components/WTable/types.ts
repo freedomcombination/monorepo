@@ -30,9 +30,9 @@ export type CellConfig<T extends StrapiModel> = CellConfigCommon<T> & {
   cellProps?: TableCellProps
   label?: string
   sortable?: boolean // Currently not supported when transform is used
-  transform?: ((value: T[keyof T]) => ReactNode)
+  transform?: (value: T[keyof T]) => ReactNode
   transformWithModel?: (value: T[keyof T], model: T) => ReactNode
-  transformPDF?: ((value: T[keyof T]) => string)
+  transformPDF?: (value: T[keyof T]) => string
   sortKey?: string
 }
 

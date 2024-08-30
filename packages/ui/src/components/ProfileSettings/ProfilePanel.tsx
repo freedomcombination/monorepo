@@ -154,7 +154,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
               ref={tabListRef}
               overflowX={'auto'}
             >
-              <CustomTab data-testid="tab-profile" title={'profile'} >
+              <CustomTab data-testid="tab-profile" title={'profile'}>
                 <Box as={FaUserCircle} mr={2} />
                 <Box>{t('profile.tabs.profile')}</Box>
               </CustomTab>

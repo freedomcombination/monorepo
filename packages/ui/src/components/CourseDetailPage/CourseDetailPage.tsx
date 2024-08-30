@@ -131,14 +131,14 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
 
           <CourseRegister />
 
-        {course.faqs && course.faqs?.length > 0 && (
+          {course.faqs && course.faqs?.length > 0 && (
             <Stack spacing={4}>
               <Heading as={'h3'} size={'lg'}>
                 {t('faq')}
               </Heading>
               <CourseFaqs />
             </Stack>
-        )}
+          )}
 
           {courses?.length > 0 && (
             <Stack spacing={4}>
