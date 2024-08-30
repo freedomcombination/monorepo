@@ -113,13 +113,24 @@ export const CourseApplicationPayForm = () => {
         display={'flex'}
         flexDirection={'column'}
         justifyItems={'flex-start'}
+        alignItems={'flex-start'}
         width={'120px'}
-        gap={4}
+        gap={1}
         value={payOnline ? 'pay-online' : 'pay-declare'}
         onChange={onRadioChange}
       >
-        <Radio value={'pay-online'}>Pay Online</Radio>
-        <Radio value={'pay-declare'}>Inform</Radio>
+        <Radio value={'pay-online'}>
+          <VStack>
+            <Text>Pay Online</Text>
+            <Text fontSize={'xs'} textAlign={'left'}>Ödemenizi hemen gerçekleştirin.</Text>
+          </VStack>
+        </Radio>
+        <Radio value={'pay-declare'}>
+          <VStack>
+            <Text>Inform</Text>
+            <Text fontSize={'xs'} textAlign={'left'}>Ödeme şeklinizi bize bildirin.</Text>
+          </VStack>
+        </Radio>
       </RadioGroup>
 
       <Box minHeight={'200px'} width={'100%'}>

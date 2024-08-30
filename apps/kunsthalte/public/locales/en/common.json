@@ -88,6 +88,7 @@
   "course.application-pay-title": "Make payment",
   "course.application-registered": "You are registered.",
   "course.application-title": "Application Form",
+  "course.application.pay-description": "Your pre-application for the course has been completed, please select the appropriate option below to pay for the course.",
   "course.left-quota": "Remaining quota",
   "course.other-courses": "Other Courses",
   "course.payment.message.failed": "Payment could not be received.",

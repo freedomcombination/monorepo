@@ -5,6 +5,7 @@ import {
   AlertTitle,
   Center,
   Heading,
+  Text,
   Spinner,
   Stack,
   StackProps,
@@ -106,6 +107,9 @@ export const CourseRegister = () => {
         <Heading as={'h3'} size={'lg'}>
           {t('course.application-pay-title')}
         </Heading>
+        <Text w={'100%'} px={20} textAlign={'center'}>
+          {t('course.application-pay-description')}
+        </Text>
         <CourseApplicationPayForm />
       </Stack>
     )

@@ -10,7 +10,7 @@ import { MdOutlinePayment, MdOutlineWarning } from 'react-icons/md'
 import { SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { Course, CourseApplication } from '@fc/types'
-import { formatDate } from '@fc/utils'
+import { formatDate, formatNumber } from '@fc/utils'
 
 type PaymentButtonProps = {
   amount: number
@@ -67,6 +67,13 @@ export const PaymentButton: FC<PaymentButtonProps> = ({
     fetchAsync()
   }
 
+  const amountStr = formatNumber(amount, {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })
+
   return (
     <HStack
       onClick={makePayment}
@@ -93,7 +100,7 @@ export const PaymentButton: FC<PaymentButtonProps> = ({
           </Text>
         )}
         <Text fontSize={'xl'}>
-          {t('course.payment.title.pay-euro', { amount })}
+          {t('course.payment.title.pay-euro', { amount: amountStr })}
         </Text>
       </VStack>
     </HStack>

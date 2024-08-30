@@ -86,6 +86,7 @@
   "course.application-pay-title": " Ödeme yapın",
   "course.application-registered": "Siz kayıtlısınız.",
   "course.application-title": "Kurs Başvuru Formu",
+  "course.application.pay-description": "Kurs için ön başvurunuz tamamlandı, kurs ödemesini için aşağıdan uygun seçeneği seçiniz",
   "course.left-quota": "Kalan kota",
   "course.other-courses": "Diğer Kurslar",
   "course.payment.message.failed": "Ödeme alınamadı.",
