@@ -28,7 +28,8 @@
     "TEST_PASSWORD",
     "TEST_USERNAME",
     "VERCEL_ENV",
-    "VERCEL_URL"
+    "VERCEL_URL",
+    "ALLOW_COURSE_PAYMENT"
   ],
   "tasks": {
     "build:dev": {

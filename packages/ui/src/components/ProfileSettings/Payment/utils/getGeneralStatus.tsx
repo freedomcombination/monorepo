@@ -3,9 +3,10 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { Course, CourseApplication } from '@fc/types'
-import { formatDate, formatNumber } from '@fc/utils'
+import { formatDate, formatPrice } from '@fc/utils'
 
 import { calculateRemainingPrice } from './calculateRemainingPrice'
+import { isPaymentActive } from './isPaymentActive'
 
 export const GetGeneralStatus = (
   course: Course,
@@ -16,14 +17,9 @@ export const GetGeneralStatus = (
   const hasStarted = isPast(course.startDate)
   const { locale } = useRouter()
   const { t } = useTranslation()
-  const remainingStr = formatNumber(remaining, {
-    style: 'currency',
-    currency: 'EUR',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })
+  const remainingStr = formatPrice(remaining)
 
-  if (remaining > 0) {
+  if (remaining > 0 && isPaymentActive()) {
     if (hasFinished) {
       return {
         message: t('course.payment.message.unpaid-finished', {

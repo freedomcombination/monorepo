@@ -12,6 +12,7 @@ import { PaymentButton } from './PaymentButton'
 import { PaymentLine } from './PaymentLine'
 import { calculateInstallments } from '../utils/calculateInstallments'
 import { calculateRemainingPrice } from '../utils/calculateRemainingPrice'
+import { isPaymentActive } from '../utils/isPaymentActive'
 
 const SINGLE_INSTALLMENT = 1
 
@@ -22,6 +23,8 @@ export const CoursePaymentDetails: FC<{
   const { locale, query } = useRouter()
   const { t } = useTranslation()
   const id = Number(query.id) ?? -1
+
+  if (!isPaymentActive()) return
 
   if (!course.price) return
 

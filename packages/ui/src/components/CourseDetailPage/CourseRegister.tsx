@@ -19,6 +19,7 @@ import { CourseApplicationForm } from './CourseApplicationForm'
 import { CourseApplicationPayForm } from './CourseApplicationPayForm'
 import { useCourseContext } from './CourseContext'
 import { ProfileMenu } from '../Header/ProfileMenu'
+import { isPaymentActive } from '../ProfileSettings/Payment/utils/isPaymentActive'
 
 export const CourseRegister = () => {
   const { isLoading, myApplication, course } = useCourseContext()
@@ -96,24 +97,26 @@ export const CourseRegister = () => {
     )
   }
 
-  // show payment form if user has already applied and not paid yet
-  if (
-    course.price &&
-    !myApplication.hasPaid &&
-    !myApplication.paymentExplanation &&
-    !myApplication.payments?.some(payment => payment?.status === 'paid')
-  ) {
-    return (
-      <Stack bg={'white'} {...style}>
-        <Heading as={'h3'} size={'lg'}>
-          {t('course.application-pay-title')}
-        </Heading>
-        <Text w={'100%'} px={20} textAlign={'center'}>
-          {t('course.application.pay-description')}
-        </Text>
-        <CourseApplicationPayForm />
-      </Stack>
-    )
+  if (isPaymentActive()) {
+    // show payment form if user has already applied and not paid yet
+    if (
+      course.price &&
+      !myApplication.hasPaid &&
+      !myApplication.paymentExplanation &&
+      !myApplication.payments?.some(payment => payment?.status === 'paid')
+    ) {
+      return (
+        <Stack bg={'white'} {...style}>
+          <Heading as={'h3'} size={'lg'}>
+            {t('course.application-pay-title')}
+          </Heading>
+          <Text w={'100%'} px={20} textAlign={'center'}>
+            {t('course.application.pay-description')}
+          </Text>
+          <CourseApplicationPayForm />
+        </Stack>
+      )
+    }
   }
 
   return (
