@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+
 import {
   Box,
   HStack,
@@ -6,11 +8,12 @@ import {
   Spacer,
   Stack,
   Text,
-  VStack,
+  VStack
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-import { StrapiModel } from '@fc/types'
+import { Asset, StrapiModel } from '@fc/types'
+import { formatPrice } from '@fc/utils'
 
 import { DataTableProps } from './types'
 import { Pagination, WTable } from '../../components'
@@ -25,9 +28,20 @@ export const DataTable = <T extends StrapiModel>({
   pageSize,
   setPageSize,
   allowExportPDF = false,
+  isAsset = false,
   ...tableProps
 }: DataTableProps<T>) => {
   const { t } = useTranslation()
+
+  const totalPrice = useMemo(() => {
+    if (!isAsset) return null
+
+    const assets = tableProps.data as Asset[]
+
+    if (!assets || !assets.length) return null
+
+    return assets.reduce((prev, curr) => prev + curr.price, 0)
+  }, [isAsset, tableProps.data])
 
   return (
     <Stack spacing={4} overflow={'hidden'}>
@@ -71,6 +85,21 @@ export const DataTable = <T extends StrapiModel>({
               <option value={100}>100</option>
             </Select>
             <Text noOfLines={1}>{t('items.on-page')}</Text>
+            {totalPrice !== null && (
+              <Stack
+                rounded={'md'}
+                p={2}
+                borderWidth={1}
+                borderColor={'gray.300'}
+                ml={2}
+              >
+                <Text noOfLines={1} fontWeight={'bold'}>
+                  {t('items-asset-total', {
+                    amount: formatPrice(totalPrice, 0, 2),
+                  })}
+                </Text>
+              </Stack>
+            )}
           </HStack>
           <Pagination
             totalCount={pageCount}
