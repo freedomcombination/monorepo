@@ -27,6 +27,7 @@ export const WTableRow = <T extends StrapiModel>({
             value={value}
             cellConfig={cell}
             field={field}
+            model={model}
           />
         )
       })}
