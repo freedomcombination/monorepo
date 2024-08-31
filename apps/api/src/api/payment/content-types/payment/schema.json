@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "paymentDatetime": {
+      "type": "datetime"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::profile.profile"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "status": {
+      "type": "string"
+    },
+    "checkoutSessionId": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "courseApplication": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::course-application.course-application",
+      "inversedBy": "payments"
+    },
+    "installmentNumber": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

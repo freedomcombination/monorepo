@@ -9750,46 +9750,46 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.52.2":
-  version: 5.52.2
-  resolution: "@tanstack/query-core@npm:5.52.2"
-  checksum: 10/8dca475f8c93e78fc9419b6e82f7609f3b64548841b01577f9fe98c30ba547e9c60e0594f2abcc83145cd954553495c8910159c137176d89f3bc32ce2b2fecc1
+"@tanstack/query-core@npm:5.53.1":
+  version: 5.53.1
+  resolution: "@tanstack/query-core@npm:5.53.1"
+  checksum: 10/3519ea0a555b1febd8c2722619ba19a18bd5bdf9215ca6c3f88f5cd07aba914a74f24b8c197318827ac844117976587a7799d38b672487ddf88ca744c03c5a63
   languageName: node
   linkType: hard
 
-"@tanstack/query-devtools@npm:5.51.16":
-  version: 5.51.16
-  resolution: "@tanstack/query-devtools@npm:5.51.16"
-  checksum: 10/b0e8c1f86890a515d4ddbab4743387aecd882271f7be2cbc36f69d05ba42b803ae2e9bbfd53a03450ca4827c94f6b5d7d6fa5e013bfabe6ee0aa9a7b34a223d3
+"@tanstack/query-devtools@npm:5.52.3":
+  version: 5.52.3
+  resolution: "@tanstack/query-devtools@npm:5.52.3"
+  checksum: 10/83d9d10d7d9c3ce55531e7b7827ca231a0f1fbd65b2faa596b4d112a972266b7c771a9edd45532ccc69392b5a4aa3046bf83317e12545346880a587b7f7cb2e2
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.52.2":
-  version: 5.52.2
-  resolution: "@tanstack/react-query-devtools@npm:5.52.2"
+"@tanstack/react-query-devtools@npm:^5.53.1":
+  version: 5.53.1
+  resolution: "@tanstack/react-query-devtools@npm:5.53.1"
   dependencies:
-    "@tanstack/query-devtools": "npm:5.51.16"
+    "@tanstack/query-devtools": "npm:5.52.3"
   peerDependencies:
-    "@tanstack/react-query": ^5.52.2
+    "@tanstack/react-query": ^5.53.1
     react: ^18 || ^19
-  checksum: 10/91c61067f8fdb51677f5d361c09fd0b8823f434b5166ec862699c7347744c9d64d44c621086b6858a39158ff3398c97355de69748e35fb865f16d5348b544cbe
+  checksum: 10/0bcf33c559f4743c4551ccabfac1016e42e8ad3df0cda5f386a69601eff33b7ba5c3dd787fcc7f1717b7c22061f40b59fb77e5cd564c7aae71e25e358e989c96
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.52.2":
-  version: 5.52.2
-  resolution: "@tanstack/react-query@npm:5.52.2"
+"@tanstack/react-query@npm:^5.53.1":
+  version: 5.53.1
+  resolution: "@tanstack/react-query@npm:5.53.1"
   dependencies:
-    "@tanstack/query-core": "npm:5.52.2"
+    "@tanstack/query-core": "npm:5.53.1"
   peerDependencies:
     react: ^18 || ^19
-  checksum: 10/fe3a6482ab2ac93d02271b572999c8db2b35468e90e9dd2d911925604780c5642d292df47ed0dddec8322949eca8d0863cebe428fae4b7779c4aa88aa3a1f937
+  checksum: 10/53c85b0903f8de0e371c990e35d392a120373f28b5724af7170cc97f78f803e65113c98a78976fdc439c8f4ec61c9cef1cf42ae80bbafa37300cd9adf242862d
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^16.0.0":
-  version: 16.0.0
-  resolution: "@testing-library/react@npm:16.0.0"
+"@testing-library/react@npm:^16.0.1":
+  version: 16.0.1
+  resolution: "@testing-library/react@npm:16.0.1"
   dependencies:
     "@babel/runtime": "npm:^7.12.5"
   peerDependencies:
@@ -9803,7 +9803,7 @@ __metadata:
       optional: true
     "@types/react-dom":
       optional: true
-  checksum: 10/b32894be94e31276138decfa6bcea69dfebc0c37cf91499ff6c878f41eb1154a43a7df6eb1e72e7bede78468af6cb67ca59e4acd3206b41f3ecdae2c6efdf67e
+  checksum: 10/904b48881cf5bd208e25899e168f5c99c78ed6d77389544838d9d861a038d2c5c5385863ee9a367436770cbf7d21c5e05a991b9e24a33806e9ac985df2448185
   languageName: node
   linkType: hard
 
@@ -9849,11 +9849,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@turbo/gen@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@turbo/gen@npm:2.1.0"
+"@turbo/gen@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@turbo/gen@npm:2.1.1"
   dependencies:
-    "@turbo/workspaces": "npm:2.1.0"
+    "@turbo/workspaces": "npm:2.1.1"
     commander: "npm:^10.0.0"
     fs-extra: "npm:^10.1.0"
     inquirer: "npm:^8.2.4"
@@ -9866,13 +9866,13 @@ __metadata:
     validate-npm-package-name: "npm:^5.0.0"
   bin:
     gen: dist/cli.js
-  checksum: 10/42aaccbc5f7d402c5fbb068d5acca2f5954a2942cebaa9067fa0a9e7594dcab5af6e56c96889edd647c3d69d85c3c9cdb6131ce59bf86e3c78c70c21e20be1c6
+  checksum: 10/d2c3b1f0ff60357976d5fa9c43f51b2fc9c8b072e791903faf27a71d189c352e55dbbbc203107bb06444c421f655f27800b15d2d564c3da2fac0121f6a62967f
   languageName: node
   linkType: hard
 
-"@turbo/workspaces@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@turbo/workspaces@npm:2.1.0"
+"@turbo/workspaces@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@turbo/workspaces@npm:2.1.1"
   dependencies:
     commander: "npm:^10.0.0"
     execa: "npm:5.1.1"
@@ -9888,7 +9888,7 @@ __metadata:
     update-check: "npm:^1.5.4"
   bin:
     workspaces: dist/cli.js
-  checksum: 10/e2795da5d13a8c4c677f459049a8a48f32b77a41f23f5fdf38aa68f7da3445f3c12907f34a4bb7819086c230aa4d856c27b61dd1f177bcb28829a61972b7344d
+  checksum: 10/c606b1b66b7bb59aaa153ec7497fd354ff229cf5249a3af923345b6789a78dca94dbfb349c7b75f006e3d57437223f442b8a2564bb7b8e35189d32fd972f1590
   languageName: node
   linkType: hard
 
@@ -10670,13 +10670,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.3.4":
-  version: 18.3.4
-  resolution: "@types/react@npm:18.3.4"
+"@types/react@npm:18.3.5":
+  version: 18.3.5
+  resolution: "@types/react@npm:18.3.5"
   dependencies:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/359973924be42cf9e7366e1d885b28e0b3bd56d31f24458c5351af7a3f2fc070511e90d517b2195fb229146cdcb70342db6318e279c31dd5057beec1105b704e
+  checksum: 10/ba0477c5ad4a762157c6262a199af6ccf9e24576877a26a7f516d5a9ba35374a6ac7f8686a10e5e8030513214f02bcb66e8363e43905afb7cd313deaf673de05
   languageName: node
   linkType: hard
 
@@ -12554,14 +12554,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.7.5":
-  version: 1.7.5
-  resolution: "axios@npm:1.7.5"
+"axios@npm:^1.7.6":
+  version: 1.7.6
+  resolution: "axios@npm:1.7.6"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10/6cbcfe943a84089f420a900a3a3aeb54ee94dcc9c2b81b150434896357be5d1079eff0b1bbb628597371e79f896b1bc5776df04184756ba99656ff31df9a75bf
+  checksum: 10/c9a488da1e5bae690b4832d270bf0bc99c4246407f65783446c94216a6d63d228bccbacff4bde1891d6612c4a89369356101a1cbbd66efeac1776950750a561b
   languageName: node
   linkType: hard
 
@@ -16690,14 +16690,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-turbo@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "eslint-config-turbo@npm:2.1.0"
+"eslint-config-turbo@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "eslint-config-turbo@npm:2.1.1"
   dependencies:
-    eslint-plugin-turbo: "npm:2.1.0"
+    eslint-plugin-turbo: "npm:2.1.1"
   peerDependencies:
     eslint: ">6.6.0"
-  checksum: 10/bcb4062a84389dcdd93fdfd791ba9bc8c37159e9663c31a277120886af162ad3a09388cc8f042c4136b597e02c3033b79010525e2a8769a05ab5fb5c8529d2e5
+  checksum: 10/8a7900ccd773e511c0df751dbc8eec3aee853f751fb9b5ed6587a2cdd69939cb4fc37c8f7d22430a599dbf13bce239d50d754946ffce9fea8990d1ba6f45dd2c
   languageName: node
   linkType: hard
 
@@ -16871,14 +16871,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-turbo@npm:2.1.0":
-  version: 2.1.0
-  resolution: "eslint-plugin-turbo@npm:2.1.0"
+"eslint-plugin-turbo@npm:2.1.1":
+  version: 2.1.1
+  resolution: "eslint-plugin-turbo@npm:2.1.1"
   dependencies:
     dotenv: "npm:16.0.3"
   peerDependencies:
     eslint: ">6.6.0"
-  checksum: 10/980e35027f3214b172175eeab00d3c7fb429b26b8465d0bb5c3bc1d4993d12a9b3a7fe11666964ce8573ea68f0507dbd15aad5fbd346219919916281a593ccb8
+  checksum: 10/a256e5e01073c163265883ebdeadb8013a199f744b3b7f96ae915fceaecf2f42ca06ad119688b859629cae97078aee03021c76f0d3017f959831c46fb5a1e222
   languageName: node
   linkType: hard
 
@@ -17511,15 +17511,15 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.20"
     "@storybook/react": "npm:^7.6.20"
     "@storybook/types": "npm:^7.6.20"
-    "@tanstack/react-query": "npm:^5.52.2"
-    "@tanstack/react-query-devtools": "npm:^5.52.2"
-    "@testing-library/react": "npm:^16.0.0"
-    "@turbo/gen": "npm:^2.1.0"
+    "@tanstack/react-query": "npm:^5.53.1"
+    "@tanstack/react-query-devtools": "npm:^5.53.1"
+    "@testing-library/react": "npm:^16.0.1"
+    "@turbo/gen": "npm:^2.1.1"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.16.2"
     "@types/pluralize": "npm:^0.0.33"
-    "@types/react": "npm:18.3.4"
+    "@types/react": "npm:18.3.5"
     "@types/react-dom": "npm:18.3.0"
     "@types/react-headroom": "npm:^3.2.3"
     "@types/remove-markdown": "npm:^0.3.4"
@@ -17542,7 +17542,7 @@ __metadata:
     "@vercel/kv": "npm:^2.0.0"
     "@vercel/og": "npm:^0.6.2"
     ai: "npm:3.0.12"
-    axios: "npm:^1.7.5"
+    axios: "npm:^1.7.6"
     browserify-fs: "npm:^1.0.0"
     chakra-react-select: "npm:4.9.1"
     cookies-next: "npm:^4.2.1"
@@ -17552,7 +17552,7 @@ __metadata:
     eslint: "npm:^8.57.0"
     eslint-config-next: "npm:^14.2.7"
     eslint-config-prettier: "npm:^9.1.0"
-    eslint-config-turbo: "npm:^2.1.0"
+    eslint-config-turbo: "npm:^2.1.1"
     eslint-plugin-react: "npm:7.35.0"
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:^11.3.31"
@@ -17561,7 +17561,7 @@ __metadata:
     i18next-http-backend: "npm:^2.6.1"
     iron-session: "npm:^8.0.3"
     jspdf: "npm:^2.5.1"
-    jspdf-autotable: "npm:^3.8.2"
+    jspdf-autotable: "npm:^3.8.3"
     jszip: "npm:^3.10.1"
     kill-port-process: "npm:^3.2.1"
     lodash: "npm:^4.17.21"
@@ -17596,15 +17596,15 @@ __metadata:
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.15"
     react-use: "npm:^17.5.1"
-    react-virtuoso: "npm:^4.10.1"
+    react-virtuoso: "npm:^4.10.2"
     recharts: "npm:^2.12.7"
-    remove-markdown: "npm:^0.5.2"
+    remove-markdown: "npm:^0.5.3"
     storybook: "npm:^7.6.20"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
-    stripe: "npm:^16.8.0"
+    stripe: "npm:^16.9.0"
     tesseract.js: "npm:^5.1.1"
-    turbo: "npm:^2.1.0"
+    turbo: "npm:^2.1.1"
     twitter-api-v2: "npm:^1.17.2"
     twitter-text: "npm:^3.1.0"
     type-fest: "npm:^4.26.0"
@@ -21243,12 +21243,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jspdf-autotable@npm:^3.8.2":
-  version: 3.8.2
-  resolution: "jspdf-autotable@npm:3.8.2"
+"jspdf-autotable@npm:^3.8.3":
+  version: 3.8.3
+  resolution: "jspdf-autotable@npm:3.8.3"
   peerDependencies:
     jspdf: ^2.5.1
-  checksum: 10/2976b45b268c42c73f25f318acee48bd7c25712b154b5d1bd025b05c78e9a62dee33d31a0ee006f7a95c0b50a2f07d97298ae5aa379fae62851ddfa9ce920baf
+  checksum: 10/d887d93168580ce025a4161bf64bbe2127fdd432a846f2d416d5a601327256537497fd70d69e9cecc90f5a8530e5c03f7fc0a82a933af0df9bccfb0c86817fad
   languageName: node
   linkType: hard
 
@@ -27135,13 +27135,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-virtuoso@npm:^4.10.1":
-  version: 4.10.1
-  resolution: "react-virtuoso@npm:4.10.1"
+"react-virtuoso@npm:^4.10.2":
+  version: 4.10.2
+  resolution: "react-virtuoso@npm:4.10.2"
   peerDependencies:
     react: ">=16 || >=17 || >= 18"
     react-dom: ">=16 || >=17 || >= 18"
-  checksum: 10/63d77e85c84ce1ecb014ba65e0f353bf1fc108df9f2d071431a088a4964b616f2ceb8dac9458db8bcd7015e93817254a587ccaa5f3a0ebf59606cce526c3adf8
+  checksum: 10/0cc8518d965974b195f460eeec8fb1acc1bc0b87830fcd514fab8d2cc03f837de39942f4a61a04c2e1c11d5daa80f8cdc341be002c84761632593a5f2ecad07f
   languageName: node
   linkType: hard
 
@@ -27575,10 +27575,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remove-markdown@npm:^0.5.2":
-  version: 0.5.2
-  resolution: "remove-markdown@npm:0.5.2"
-  checksum: 10/5773135765b7996fbfa49ed4e515c6d1cd289b5ee2e573a962443b32f01f195674b9ce27402d35ed5aaeafd02db2f41e53df09f41437a37036842768f64421be
+"remove-markdown@npm:^0.5.3":
+  version: 0.5.3
+  resolution: "remove-markdown@npm:0.5.3"
+  checksum: 10/e04873bb554e78cb7dec826d242d082abc4d8ad6df47f3df1d2cf01a57ea90bb80bb1d9b6ccdfc40b942d8b08023c50c07729920a4cbcd2dc2c3544b3a2edb14
   languageName: node
   linkType: hard
 
@@ -29638,13 +29638,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^16.8.0":
-  version: 16.8.0
-  resolution: "stripe@npm:16.8.0"
+"stripe@npm:^16.9.0":
+  version: 16.9.0
+  resolution: "stripe@npm:16.9.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10/9b9e2eba365098b488995f90ecffdb5837ef105f6ff4f4c40a767d5dfa13e85e5f6b1fc3325c114fc5246cd5a44251d596a4994a5c15a477cb7259000cce78b8
+  checksum: 10/37328c6b29d3473ac7151923890e357342608c898524bc11864c62971a3eb64d08f2afff3cdd30d6c3caf06355abee2bdf66a1dc762e3cabfba4a7e981526245
   languageName: node
   linkType: hard
 
@@ -30608,58 +30608,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:2.1.0":
-  version: 2.1.0
-  resolution: "turbo-darwin-64@npm:2.1.0"
+"turbo-darwin-64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "turbo-darwin-64@npm:2.1.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:2.1.0":
-  version: 2.1.0
-  resolution: "turbo-darwin-arm64@npm:2.1.0"
+"turbo-darwin-arm64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "turbo-darwin-arm64@npm:2.1.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:2.1.0":
-  version: 2.1.0
-  resolution: "turbo-linux-64@npm:2.1.0"
+"turbo-linux-64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "turbo-linux-64@npm:2.1.1"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:2.1.0":
-  version: 2.1.0
-  resolution: "turbo-linux-arm64@npm:2.1.0"
+"turbo-linux-arm64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "turbo-linux-arm64@npm:2.1.1"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:2.1.0":
-  version: 2.1.0
-  resolution: "turbo-windows-64@npm:2.1.0"
+"turbo-windows-64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "turbo-windows-64@npm:2.1.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:2.1.0":
-  version: 2.1.0
-  resolution: "turbo-windows-arm64@npm:2.1.0"
+"turbo-windows-arm64@npm:2.1.1":
+  version: 2.1.1
+  resolution: "turbo-windows-arm64@npm:2.1.1"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "turbo@npm:2.1.0"
+"turbo@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "turbo@npm:2.1.1"
   dependencies:
-    turbo-darwin-64: "npm:2.1.0"
-    turbo-darwin-arm64: "npm:2.1.0"
-    turbo-linux-64: "npm:2.1.0"
-    turbo-linux-arm64: "npm:2.1.0"
-    turbo-windows-64: "npm:2.1.0"
-    turbo-windows-arm64: "npm:2.1.0"
+    turbo-darwin-64: "npm:2.1.1"
+    turbo-darwin-arm64: "npm:2.1.1"
+    turbo-linux-64: "npm:2.1.1"
+    turbo-linux-arm64: "npm:2.1.1"
+    turbo-windows-64: "npm:2.1.1"
+    turbo-windows-arm64: "npm:2.1.1"
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -30675,7 +30675,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 10/e180ac4cf6a2df9c53b894a0ddd320686bd64a3afb3f686d28f04eeecca2642aa8f8b168104663debf3414014533b4b1178a36497ac47e3a9076dd5ae1813814
+  checksum: 10/4137d17936d1773cdf393ef503ebf6faf3bf08b366bc9b515b14c64a77841e81cff584d094883301d58e496516ac690f80368b5d926be8994b046ef06399c09f
   languageName: node
   linkType: hard
 
