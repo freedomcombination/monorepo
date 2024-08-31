@@ -32,12 +32,11 @@ export const useCourseApplicationColumns =
       country: { sortable: true },
       installmentCount: {},
       payments: {
-        transformWithModel: (value, model) => {
+        transform: (value, application) => {
           const payments = value as CourseApplication['payments']
-          const application = model as CourseApplication
 
           if (
-            application.installmentCount &&
+            application?.installmentCount &&
             application.installmentCount > 1
           ) {
             const installments = calculateInstallments(
@@ -74,13 +73,11 @@ export const useCourseApplicationColumns =
         },
       },
       hasPaid: {
-        transformWithModel: (value, model) => {
+        transform: (value, application) => {
           const getPaidStatus = () => {
             if (value) return 'paid'
 
-            const application = model as CourseApplication
-
-            if (!application.course) return value ? 'paid' : 'not yet'
+            if (!application?.course) return value ? 'paid' : 'not yet'
 
             const course = application.course as Course
             const price = course.price
