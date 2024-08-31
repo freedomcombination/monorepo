@@ -18,7 +18,7 @@ export const WTableCell = <T extends StrapiModel>({
     cellConfig
   const data = (
     typeof transformWithModel === 'function'
-      ? transformWithModel(value as T[keyof T], model as T)
+      ? transformWithModel(value as T[keyof T], model as T) // TODO remove transformWithModel function and make transform with model parameter
       : typeof transform === 'function'
         ? transform(value as T[keyof T])
         : value

@@ -2,6 +2,7 @@
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": [
     "ADMIN_USERNAME",
+    "ALLOW_COURSE_PAYMENT",
     "API_TOKEN",
     "CI",
     "DEEPL_API_KEY",
@@ -28,8 +29,7 @@
     "TEST_PASSWORD",
     "TEST_USERNAME",
     "VERCEL_ENV",
-    "VERCEL_URL",
-    "ALLOW_COURSE_PAYMENT"
+    "VERCEL_URL"
   ],
   "tasks": {
     "build:dev": {

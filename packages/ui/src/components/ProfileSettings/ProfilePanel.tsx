@@ -57,6 +57,7 @@ const findTabIndexByTitle = (
   tabList: HTMLDivElement | null,
   title: string,
 ): number => {
+  // TODO when chakra-ui add support select tab with title or some fixed id, remove this.
   if (!tabList) return 0
 
   const tabs = Array.from(tabList.children)

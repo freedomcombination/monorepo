@@ -5,21 +5,21 @@ import {
   AlertTitle,
   Center,
   Heading,
-  Text,
   Spinner,
   Stack,
   StackProps,
+  Text,
 } from '@chakra-ui/react'
 import { isPast } from 'date-fns/isPast'
 import { useTranslation } from 'next-i18next'
 
+import { ALLOW_COURSE_PAYMENT } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 
 import { CourseApplicationForm } from './CourseApplicationForm'
 import { CourseApplicationPayForm } from './CourseApplicationPayForm'
 import { useCourseContext } from './CourseContext'
 import { ProfileMenu } from '../Header/ProfileMenu'
-import { isPaymentActive } from '../ProfileSettings/Payment/utils/isPaymentActive'
 
 export const CourseRegister = () => {
   const { isLoading, myApplication, course } = useCourseContext()
@@ -97,7 +97,7 @@ export const CourseRegister = () => {
     )
   }
 
-  if (isPaymentActive()) {
+  if (ALLOW_COURSE_PAYMENT) {
     // show payment form if user has already applied and not paid yet
     if (
       course.price &&

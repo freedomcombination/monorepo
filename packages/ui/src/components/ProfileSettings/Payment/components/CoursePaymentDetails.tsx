@@ -5,6 +5,7 @@ import { isPast } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
+import { ALLOW_COURSE_PAYMENT } from '@fc/config'
 import { Course, CourseApplication } from '@fc/types'
 import { formatDate, formatPrice } from '@fc/utils'
 
@@ -12,7 +13,6 @@ import { PaymentButton } from './PaymentButton'
 import { PaymentLine } from './PaymentLine'
 import { calculateInstallments } from '../utils/calculateInstallments'
 import { calculateRemainingPrice } from '../utils/calculateRemainingPrice'
-import { isPaymentActive } from '../utils/isPaymentActive'
 
 const SINGLE_INSTALLMENT = 1
 
@@ -24,7 +24,7 @@ export const CoursePaymentDetails: FC<{
   const { t } = useTranslation()
   const id = Number(query.id) ?? -1
 
-  if (!isPaymentActive()) return
+  if (!ALLOW_COURSE_PAYMENT) return
 
   if (!course.price) return
 

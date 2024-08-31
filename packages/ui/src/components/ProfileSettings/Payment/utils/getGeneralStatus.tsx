@@ -2,11 +2,11 @@ import { isPast } from 'date-fns/isPast'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
+import { ALLOW_COURSE_PAYMENT } from '@fc/config'
 import { Course, CourseApplication } from '@fc/types'
 import { formatDate, formatPrice } from '@fc/utils'
 
 import { calculateRemainingPrice } from './calculateRemainingPrice'
-import { isPaymentActive } from './isPaymentActive'
 
 export const GetGeneralStatus = (
   course: Course,
@@ -19,7 +19,7 @@ export const GetGeneralStatus = (
   const { t } = useTranslation()
   const remainingStr = formatPrice(remaining)
 
-  if (remaining > 0 && isPaymentActive()) {
+  if (remaining > 0 && ALLOW_COURSE_PAYMENT) {
     if (hasFinished) {
       return {
         message: t('course.payment.message.unpaid-finished', {
