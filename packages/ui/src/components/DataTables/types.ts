@@ -1,8 +1,15 @@
 import { ReactNode } from 'react'
 
+import { BadgeProps } from '@chakra-ui/react'
+
 import { StrapiModel } from '@fc/types'
 
 import { WTableProps } from '../WTable'
+
+export type DataTableBadgeProps<T extends StrapiModel> = {
+  badgeProp?: BadgeProps
+  badgeText: (data: T[]) => string
+}
 
 export type DataTableProps<T extends StrapiModel> = {
   pageCount: number
@@ -13,5 +20,5 @@ export type DataTableProps<T extends StrapiModel> = {
   children?: ReactNode
   setPageSize: (pageSize: number) => void
   allowExportPDF?: boolean
-  isAsset?: boolean
+  badges?: DataTableBadgeProps<T> | DataTableBadgeProps<T>[]
 } & Pick<WTableProps<T>, 'data' | 'columns' | 'onClickRow' | 'onSort'>

@@ -1,6 +1,6 @@
-import { useMemo } from 'react'
 
 import {
+  Badge,
   Box,
   HStack,
   Image,
@@ -8,12 +8,11 @@ import {
   Spacer,
   Stack,
   Text,
-  VStack
+  VStack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-import { Asset, StrapiModel } from '@fc/types'
-import { formatPrice } from '@fc/utils'
+import { StrapiModel } from '@fc/types'
 
 import { DataTableProps } from './types'
 import { Pagination, WTable } from '../../components'
@@ -28,20 +27,12 @@ export const DataTable = <T extends StrapiModel>({
   pageSize,
   setPageSize,
   allowExportPDF = false,
-  isAsset = false,
+  badges,
   ...tableProps
 }: DataTableProps<T>) => {
   const { t } = useTranslation()
 
-  const totalPrice = useMemo(() => {
-    if (!isAsset) return null
-
-    const assets = tableProps.data as Asset[]
-
-    if (!assets || !assets.length) return null
-
-    return assets.reduce((prev, curr) => prev + curr.price, 0)
-  }, [isAsset, tableProps.data])
+  const badgeArray = !badges ? [] : Array.isArray(badges) ? badges : [badges]
 
   return (
     <Stack spacing={4} overflow={'hidden'}>
@@ -57,7 +48,7 @@ export const DataTable = <T extends StrapiModel>({
       </Box>
       {children}
       <Spacer />
-      {(totalCount > 10 || allowExportPDF) && (
+      {(totalCount > 10 || allowExportPDF || badgeArray.length > 0) && (
         <Stack
           direction={{ base: 'column', md: 'row' }}
           justify={{ base: 'center', md: 'space-between' }}
@@ -85,21 +76,21 @@ export const DataTable = <T extends StrapiModel>({
               <option value={100}>100</option>
             </Select>
             <Text noOfLines={1}>{t('items.on-page')}</Text>
-            {totalPrice !== null && (
-              <Stack
-                rounded={'md'}
-                p={2}
-                borderWidth={1}
-                borderColor={'gray.300'}
-                ml={2}
-              >
-                <Text noOfLines={1} fontWeight={'bold'}>
-                  {t('items-asset-total', {
-                    amount: formatPrice(totalPrice, 0, 2),
-                  })}
-                </Text>
-              </Stack>
-            )}
+            {badgeArray.length > 0 &&
+              Array.isArray(tableProps.data) &&
+              badgeArray.map((badge, index) => (
+                <Badge
+                  key={index}
+                  variant="outline"
+                  size={'2xl'}
+                  fontSize={'md'}
+                  p={1}
+                  colorScheme={'primary'}
+                  {...badge.badgeProp}
+                >
+                  {badge.badgeText(tableProps.data)}
+                </Badge>
+              ))}
           </HStack>
           <Pagination
             totalCount={pageCount}
