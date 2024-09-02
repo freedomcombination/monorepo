@@ -69,13 +69,8 @@ const CourseApplicantWithoutPayment: FC<CourseApplicantWithoutPaymentProps> = ({
           name: applicant?.name || 'user name',
         })}
       >
-        <Section>
-          <Text
-            style={{
-              padding: '10px',
-              fontSize: '16px',
-            }}
-          >
+        <Section style={{ padding: '10px' }}>
+          <Text style={{ fontSize: '16px' }}>
             {t('course-applicant-unpaid-header')}
           </Text>
         </Section>
@@ -90,19 +85,15 @@ const CourseApplicantWithoutPayment: FC<CourseApplicantWithoutPaymentProps> = ({
               <Column style={{ textAlign: 'right', width: '80px' }}>
                 <Text>{t(tKey)} :</Text>
               </Column>
-              <Column>
-                <Text style={{ fontWeight: 'bold', textAlign: 'left' }}>
+              <Column style={{ textAlign: 'left' }}>
+                <Text style={{ fontWeight: 'bold' }}>
                   {url ? <Link href={url}>{value}</Link> : value}
                 </Text>
               </Column>
             </Row>
           ))}
         </Section>
-        <Section
-          style={{
-            padding: '10px',
-          }}
-        >
+        <Section style={{ padding: '10px' }}>
           <Text style={{ fontSize: '16px' }}>
             {t('course-applicant-unpaid-footer')}
           </Text>
