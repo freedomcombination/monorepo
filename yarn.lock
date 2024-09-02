@@ -7007,6 +7007,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-email/render@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@react-email/render@npm:1.0.1"
+  dependencies:
+    html-to-text: "npm:9.0.5"
+    js-beautify: "npm:^1.14.11"
+    react-promise-suspense: "npm:0.3.4"
+  peerDependencies:
+    react: ^18.0 || ^19.0 || ^19.0.0-rc
+    react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
+  checksum: 10/0ddc28a8a523802c34f4fe0e69de93c0d495ba05357a7061bee1ea34e29a4c17a4bba82569568b920006d17a2e67689b9b1cb41b106e684b826ed7017d49b4d2
+  languageName: node
+  linkType: hard
+
 "@react-email/row@npm:0.0.9":
   version: 0.0.9
   resolution: "@react-email/row@npm:0.0.9"
@@ -12111,7 +12125,7 @@ __metadata:
   dependencies:
     "@react-email/components": "npm:0.0.22"
     "@react-email/font": "npm:0.0.7"
-    "@react-email/render": "npm:0.0.17"
+    "@react-email/render": "npm:1.0.1"
     "@react-email/tailwind": "npm:0.0.19"
     "@strapi/plugin-i18n": "npm:^4.25.9"
     "@strapi/plugin-sentry": "npm:^4.25.9"
