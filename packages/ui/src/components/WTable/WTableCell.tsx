@@ -14,14 +14,11 @@ export const WTableCell = <T extends StrapiModel>({
   field,
   model,
 }: WTableCellProps<T>) => {
-  const { type, transform, transformWithModel, componentProps, cellProps } =
-    cellConfig
+  const { type, transform, componentProps, cellProps } = cellConfig
   const data = (
-    typeof transformWithModel === 'function'
-      ? transformWithModel(value as T[keyof T], model as T) // TODO remove transformWithModel function and make transform with model parameter
-      : typeof transform === 'function'
-        ? transform(value as T[keyof T])
-        : value
+    typeof transform === 'function'
+      ? transform(value as T[keyof T], model)
+      : value
   ) as string | number | boolean
 
   let cellContent: ReactNode
