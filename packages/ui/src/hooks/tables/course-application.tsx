@@ -9,9 +9,10 @@ import { calculateInstallments } from '../../components/ProfileSettings/Payment/
 
 export const useCourseApplicationColumns =
   (): WTableProps<CourseApplication>['columns'] => {
-    return {
-      name: { sortable: true },
-      approvalStatus: {
+    return [
+      { accessorKey: 'name', sortable: true },
+      {
+        accessorKey: 'approvalStatus',
         type: 'badge',
         componentProps: value => {
           const colorScheme = {
@@ -26,12 +27,19 @@ export const useCourseApplicationColumns =
           }
         },
       },
-      city: { sortable: true },
-      email: {},
-      phone: {},
-      country: { sortable: true },
-      installmentCount: {},
-      payments: {
+      { accessorKey: 'city', sortable: true },
+      {
+        accessorKey: 'email',
+      },
+      {
+        accessorKey: 'phone',
+      },
+      { accessorKey: 'country', sortable: true },
+      {
+        accessorKey: 'installmentCount',
+      },
+      {
+        accessorKey: 'payments',
         transform: (value, application) => {
           const payments = value as CourseApplication['payments']
 
@@ -72,7 +80,8 @@ export const useCourseApplicationColumns =
           return `${formatPrice(totalAmount)}`
         },
       },
-      hasPaid: {
+      {
+        accessorKey: 'hasPaid',
         transform: (value, application) => {
           const getPaidStatus = () => {
             if (value) return 'paid'
@@ -100,6 +109,6 @@ export const useCourseApplicationColumns =
         },
         transformPDF: value => paidBadgesPDF(value as boolean | null),
       },
-      course: { transform: value => (value as Course).title_nl },
-    }
+      { accessorKey: 'course', transform: value => (value as Course).title_nl },
+    ]
   }

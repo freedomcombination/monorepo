@@ -156,12 +156,12 @@ export const getColumnsForPDF = <T extends StrapiModel>(
   columns: WTableRowProps<T>['columns'],
   t: TranslateFunction,
 ): string[] => {
-  return Object.keys(columns).map(key => {
-    const { label } = columns[key as keyof T] as CellConfig<T>
+  return columns.map(column => {
+    const { accessorKey, label } = column
     const translationLabel = t(
-      (label || key) as keyof I18nNamespaces['common'],
+      (label || accessorKey) as keyof I18nNamespaces['common'],
       {
-        defaultValue: label || startCase(camelCase(key)),
+        defaultValue: label || startCase(camelCase(accessorKey as string)),
       },
     )
 
@@ -182,19 +182,18 @@ export const getColumnsForPDF = <T extends StrapiModel>(
  */
 const getRowForPDF = <T extends StrapiModel>(
   model: T,
-  columns: { [key in keyof T]?: CellConfig<T> },
+  columns: Array<CellConfig<T>>,
   locale: StrapiLocale,
   t: TranslateFunction,
 ): Promise<PDFCellData[]> => {
   return Promise.all(
-    Object.keys(columns).map(async key => {
-      const field = key as keyof T
+    columns.map(async column => {
+      const field = column.accessorKey as keyof T
       const value = model[field]
-      const cell = columns[field] as CellConfig<T>
 
       const cellValue = await getCellForPDF(
         value,
-        cell,
+        column,
         field,
         model,
         locale,

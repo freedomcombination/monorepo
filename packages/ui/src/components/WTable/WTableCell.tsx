@@ -9,12 +9,13 @@ import { WTableCellProps } from './types'
 import { FormattedDate } from '../FormattedDate'
 
 export const WTableCell = <T extends StrapiModel>({
-  value,
-  cellConfig,
-  field,
+  column,
   model,
 }: WTableCellProps<T>) => {
-  const { type, transform, componentProps, cellProps } = cellConfig
+  const { accessorKey, type, transform, componentProps, cellProps } = column
+
+  const value = model[accessorKey]
+
   const data = (
     typeof transform === 'function'
       ? transform(value as T[keyof T], model)
@@ -58,7 +59,7 @@ export const WTableCell = <T extends StrapiModel>({
   return (
     <Table.Cell {...cellProps}>
       <Box
-        {...(field === 'description' && { lineClamp: 1, maxW: 120 })}
+        {...(accessorKey === 'description' && { lineClamp: 1, maxW: 120 })}
         lineClamp={1}
       >
         {cellContent || '-'}

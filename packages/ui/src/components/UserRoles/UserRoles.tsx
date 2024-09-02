@@ -150,8 +150,9 @@ export const UserRoles = () => {
 
       <WTable
         data={roles?.data ?? []}
-        columns={{
-          id: {
+        columns={[
+          {
+            accessorKey: 'id',
             label: 'Actions',
             transform: value => {
               return (
@@ -173,13 +174,14 @@ export const UserRoles = () => {
               )
             },
           },
-          name: {},
-          type: {},
-          nb_users: {
+          { accessorKey: 'name' },
+          { accessorKey: 'type' },
+          {
+            accessorKey: 'nb_users',
             label: t('profiles'),
           },
-          description: {},
-        }}
+          { accessorKey: 'description' },
+        ]}
         onClickRow={onClickRow}
       />
     </VStack>

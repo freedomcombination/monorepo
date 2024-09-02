@@ -15,14 +15,19 @@ import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 export const useHashtagColumns = (): WTableProps<Hashtag>['columns'] => {
   const { locale } = useRouter()
 
-  return {
-    image: { type: 'image' },
-    title: { sortable: true },
-    platform: {
+  return [
+    { accessorKey: 'image', type: 'image' },
+    {
+      accessorKey: 'title',
+      sortable: true,
+    },
+    {
+      accessorKey: 'platform',
       sortable: true,
       transform: value => (value as Platform)?.[`name_${locale}`] || '',
     },
-    approvalStatus: {
+    {
+      accessorKey: 'approvalStatus',
       type: 'badge',
       componentProps: value => {
         const colorScheme = {
@@ -37,25 +42,30 @@ export const useHashtagColumns = (): WTableProps<Hashtag>['columns'] => {
         }
       },
     },
-    createdAt: {
+    {
+      accessorKey: 'createdAt',
       type: 'date',
       sortable: true,
     },
-    posts: {
+    {
+      accessorKey: 'posts',
       transform: value => (value as Post[])?.length,
     },
-    mentions: {
+    {
+      accessorKey: 'mentions',
       transform: value => (value as Mention[])?.length,
     },
-    translates: {
+    {
+      accessorKey: 'translates',
       transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
       transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
     },
-    publishedAt: {
+    {
+      accessorKey: 'publishedAt',
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
       transformPDF: value => publicationBadgePDF(value as string | null),
     },
-  }
+  ]
 }
