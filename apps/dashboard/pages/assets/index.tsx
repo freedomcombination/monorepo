@@ -90,13 +90,15 @@ const AssetsPage = () => {
         setPageSize={setPageSize}
         totalCount={totalCount}
         allowExportPDF
-        badges={{
-          badgeText(data) {
-            const totalPrice = data.reduce((acc, curr) => acc + curr.price, 0)
+        badges={[
+          {
+            badgeText(data) {
+              const totalPrice = data.reduce((acc, curr) => acc + curr.price, 0)
 
-            return t('items-asset-total', { amount: formatPrice(totalPrice) })
+              return t('items-asset-total', { amount: formatPrice(totalPrice) })
+            },
           },
-        }}
+        ]}
       />
     </AdminLayout>
   )

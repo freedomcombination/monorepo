@@ -20,5 +20,5 @@ export type DataTableProps<T extends StrapiModel> = {
   children?: ReactNode
   setPageSize: (pageSize: number) => void
   allowExportPDF?: boolean
-  badges?: DataTableBadgeProps<T> | DataTableBadgeProps<T>[]
+  badges?: DataTableBadgeProps<T>[]
 } & Pick<WTableProps<T>, 'data' | 'columns' | 'onClickRow' | 'onSort'>

@@ -1,4 +1,3 @@
-
 import {
   Badge,
   Box,
@@ -32,8 +31,6 @@ export const DataTable = <T extends StrapiModel>({
 }: DataTableProps<T>) => {
   const { t } = useTranslation()
 
-  const badgeArray = !badges ? [] : Array.isArray(badges) ? badges : [badges]
-
   return (
     <Stack spacing={4} overflow={'hidden'}>
       <Box bg="white" shadow="base" overflow={'auto'}>
@@ -48,7 +45,7 @@ export const DataTable = <T extends StrapiModel>({
       </Box>
       {children}
       <Spacer />
-      {(totalCount > 10 || allowExportPDF || badgeArray.length > 0) && (
+      {(totalCount > 10 || allowExportPDF || (badges ?? []).length > 0) && (
         <Stack
           direction={{ base: 'column', md: 'row' }}
           justify={{ base: 'center', md: 'space-between' }}
@@ -76,9 +73,10 @@ export const DataTable = <T extends StrapiModel>({
               <option value={100}>100</option>
             </Select>
             <Text noOfLines={1}>{t('items.on-page')}</Text>
-            {badgeArray.length > 0 &&
+            {badges &&
+              badges.length > 0 &&
               Array.isArray(tableProps.data) &&
-              badgeArray.map((badge, index) => (
+              badges.map((badge, index) => (
                 <Badge
                   key={index}
                   variant="outline"
