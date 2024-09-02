@@ -4,16 +4,20 @@ import { publicationBadgePDF } from './utils'
 import { PublicationBadges, WTableProps } from '../../components'
 
 export const useBlogColumns = (): WTableProps<Blog>['columns'] => {
-  return {
-    image: { type: 'image' },
-    author: {
+  return [
+    { accessorKey: 'image', type: 'image' },
+    {
+      accessorKey: 'author',
       transform: value => (value as Profile)?.email,
       sortKey: 'email',
       sortable: true,
     },
-    title: { sortable: true },
-    description: {},
-    approvalStatus: {
+    { accessorKey: 'title', sortable: true },
+    {
+      accessorKey: 'description',
+    },
+    {
+      accessorKey: 'approvalStatus',
       type: 'badge',
       componentProps: value => {
         const colorScheme = {
@@ -28,15 +32,17 @@ export const useBlogColumns = (): WTableProps<Blog>['columns'] => {
         }
       },
     },
-    publishedAt: {
+    {
+      accessorKey: 'publishedAt',
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
       transformPDF: value => publicationBadgePDF(value as string | null),
     },
-    createdAt: {
+    {
+      accessorKey: 'createdAt',
       type: 'date',
       sortable: true,
     },
-  }
+  ]
 }
