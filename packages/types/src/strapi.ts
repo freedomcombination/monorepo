@@ -50,7 +50,9 @@ import { Course, CourseCreateInput, CourseUpdateInput } from './course'
 import {
   CourseApplication,
   CourseApplicationCreateInput,
+  CourseApplicationUnpaid,
 } from './course-application'
+import { CoursePayment } from './course-payment'
 import { Donation, DonationCreateInput, DonationUpdateInput } from './donation'
 import { EmailCreateInput } from './email'
 import {
@@ -162,6 +164,7 @@ export type StrapiModel =
   | Competition
   | Course
   | CourseApplication
+  | CoursePayment
   | Donation
   | Feedback
   | Foundation
@@ -287,6 +290,7 @@ export type StrapiCollectionEndpoint =
   | 'comments'
   | 'competitions'
   | 'course-applications'
+  | 'payments'
   | 'courses'
   | 'donates'
   | 'donates/email'
@@ -398,6 +402,7 @@ export type StrapiUpdateInput =
   | BlogUpdateInput
   | CollectionUpdateInput
   | CompetitionUpdateInput
+  | CourseApplicationUnpaid
   | CourseUpdateInput
   | DonationUpdateInput
   | FoundationUpdateInput

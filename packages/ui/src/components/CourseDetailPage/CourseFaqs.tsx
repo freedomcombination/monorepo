@@ -2,10 +2,13 @@ import { FC } from 'react'
 
 import { Accordion, AccordionItem } from '@fc/chakra'
 
-import { CourseFaqsProps } from './types'
+import { useCourseContext } from './CourseContext'
 import { CourseFaqItem } from '../CourseDetailFaqItem'
 
-export const CourseFaqs: FC<CourseFaqsProps> = ({ faqs }) => {
+export const CourseFaqs: FC = () => {
+  const { course } = useCourseContext()
+  const faqs = course.faqs || []
+
   return (
     <Accordion multiple>
       {faqs.map(item => (

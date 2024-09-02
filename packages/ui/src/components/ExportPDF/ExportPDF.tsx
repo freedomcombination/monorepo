@@ -11,14 +11,9 @@ import { StrapiModel } from '@fc/types'
 
 import { getColumnsForPDF, getRowsForPDF } from './utils'
 import { I18nNamespaces } from '../../../@types/i18next'
-import { WTableProps } from '../../components'
+import { ExportPDFProps } from '../../components'
 
-type ExportPDFProps<T extends StrapiModel> = Pick<
-  WTableProps<T>,
-  'data' | 'columns'
->
-
-const ExportPFD = <T extends StrapiModel>({
+export const ExportPDF = <T extends StrapiModel>({
   data,
   columns,
 }: ExportPDFProps<T>) => {
@@ -103,4 +98,4 @@ const ExportPFD = <T extends StrapiModel>({
   )
 }
 
-export default ExportPFD
+export default ExportPDF

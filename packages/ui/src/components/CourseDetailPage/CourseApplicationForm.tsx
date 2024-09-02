@@ -1,28 +1,35 @@
 import { FC } from 'react'
 
-import { Box, SimpleGrid, Stack, Textarea } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  SimpleGrid,
+  Stack,
+  Text,
+  Textarea,
+} from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 
-import { Button, toaster } from '@fc/chakra'
+import { toaster } from '@fc/chakra'
+import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationCreateInput } from '@fc/types'
 
+import { useCourseContext } from './CourseContext'
 import { applicationSchema } from './schema'
-import {
-  ApplicationFormFields,
-  CourseApplicationFormProps,
-} from '../CourseDetailPage/types'
+import { ApplicationFormFields } from '../CourseDetailPage/types'
 import { FormItem } from '../FormItem'
 
-export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
-  courseId,
-}) => {
+export const CourseApplicationForm: FC = () => {
   const { t } = useTranslation()
   // const [termsAccepted, setTermsAccepted] = useState(false)
   // const [privacyAccepted, setPrivacyAccepted] = useState(false)
+
+  const { course, refetchApplicants } = useCourseContext()
+  const { user, profile, token } = useAuthContext()
 
   const {
     register,
@@ -37,12 +44,20 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
   const { mutate } = useMutation({
     mutationKey: ['course-apply'],
     mutationFn: (data: CourseApplicationCreateInput) =>
-      Mutation.post('course-applications', data, ''),
+      Mutation.post('course-applications', data, token as string),
   })
+
+  if (!profile || !user) return null
 
   const onSubmit = (data: ApplicationFormFields) => {
     mutate(
-      { ...data, course: courseId },
+      {
+        ...data,
+        course: course.id,
+        profile: profile.id,
+        name: profile.name || user.username,
+        email: profile.email || user.email,
+      },
       {
         onSuccess: () => {
           reset()
@@ -52,6 +67,9 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
             description: 'Your application has been submitted',
             type: 'success',
           })
+        },
+        onSettled: () => {
+          refetchApplicants()
         },
       },
     )
@@ -63,21 +81,12 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack gap={8}>
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={4}>
-          <FormItem name="name" register={register} errors={errors} hideLabel />
-          <FormItem
-            name="email"
-            type="email"
-            autoComplete="email"
-            register={register}
-            errors={errors}
-            hideLabel
-          />
           <FormItem
             name="country"
             autoComplete="country"
+            defaultValue={profile.country || ''}
             register={register}
             errors={errors}
-            hideLabel
           />
 
           <FormItem
@@ -85,14 +94,13 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
             autoComplete="city"
             register={register}
             errors={errors}
-            hideLabel
           />
           <FormItem
             name="phone"
             autoComplete="phone"
+            defaultValue={profile.phone || ''}
             register={register}
             errors={errors}
-            hideLabel
           />
 
           <Box gridColumn={{ lg: 'span 2' }}>
@@ -101,7 +109,6 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
               name="message"
               register={register}
               errors={errors}
-              hideLabel
               label={t('motivation') as string}
             />
           </Box>
@@ -131,6 +138,9 @@ export const CourseApplicationForm: FC<CourseApplicationFormProps> = ({
             />
           </Checkbox>
         </Stack> */}
+        <Text fontSize={'14px'} w={'100%'} textAlign={'center'}>
+          {profile.name || user.username} ({profile.email || user.email})
+        </Text>
         <Button w={'100%'} type="submit" disabled={!isValid}>
           {t('apply-now')}
         </Button>

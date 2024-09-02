@@ -6,10 +6,19 @@ import { Art } from '@fc/types'
 import { EmailProvider } from './EmailProvider'
 
 type ArtCreatedProps = {
-  art: Art
+  art?: Art
 }
 
-const ArtCreated: FC<ArtCreatedProps> = ({ art }) => {
+const ArtCreated: FC<ArtCreatedProps> = ({
+  art = {
+    // if we gave default values we can easily see the design of mail from the preview
+    artist: { name: 'artist name' },
+    title_en: 'art title',
+    title_nl: 'art title',
+    title_tr: 'art title',
+    image: [{ url: 'http://picsum.photos/200/300' }],
+  } as Art,
+}) => {
   const image = art?.image?.[0]
 
   return (

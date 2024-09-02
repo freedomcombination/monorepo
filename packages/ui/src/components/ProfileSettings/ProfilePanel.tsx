@@ -1,16 +1,18 @@
-'use client'
-import { FC, PropsWithChildren } from 'react'
+import { FC, PropsWithChildren, useRef } from 'react'
 
 import { Box, Tabs, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
 import { FaBlog, FaKey } from 'react-icons/fa6'
+import { MdOutlinePayments } from 'react-icons/md'
 import { TbSocial } from 'react-icons/tb'
 
 import { useAuthContext } from '@fc/context'
 
 import { ArtsTab } from './ArtsTab'
 import { BlogsTab } from './BlogsTab'
+import { CoursesTab } from './CoursesTab'
 import { DetailsTab } from './DetailsTab'
 import { SecurityTab } from './SecurityTab'
 import { Socials } from './SocialsTab'
@@ -46,9 +48,21 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   })
   const { t } = useTranslation()
 
+  const router = useRouter()
+  const activeTab = (router.query.tab as string) ?? 'profile'
+  const tabListRef = useRef<HTMLDivElement>(null)
+
+  const setActiveTab = (tab: string) => {
+    router.push(`/profile?tab=${tab}`)
+  }
+
   const isBlogsVisible =
     (site === 'dashboard' || site === 'foundation') &&
     (user?.roles.includes('admin') || user?.roles.includes('author'))
+
+  const isCoursePaymentVisible =
+    (site === 'foundation' || site === 'dashboard') &&
+    process.env.NODE_ENV === 'development'
 
   if (!user) return <Hero></Hero>
 
@@ -81,6 +95,8 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
             orientation={orientation}
             border={0}
             colorScheme="primary"
+            value={activeTab}
+            onValueChange={v => setActiveTab(v.value)}
             size="lg"
             variant={'plain'}
             gap={8}
@@ -91,6 +107,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
               minW={{ base: 'auto', lg: 300 }}
               mb={{ base: 8, lg: 0 }}
               h="max-content"
+              ref={tabListRef}
               overflowX={'auto'}
             >
               <CustomTab data-testid="tab-profile" value="profile">
@@ -105,6 +122,16 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                 <Box as={TbSocial} mr={2} />
                 <Box>{t('profile.tabs.socials')}</Box>
               </CustomTab>
+              {isCoursePaymentVisible && (
+                <CustomTab
+                  title={'courses'}
+                  data-testid="tab-courses"
+                  value="courses"
+                >
+                  <Box as={MdOutlinePayments} mr={2} />
+                  <Box>{t('profile.tabs.courses')}</Box>
+                </CustomTab>
+              )}
               {showArts && (
                 <CustomTab data-testid="tab-arts" value="arts">
                   <Box as={FaPaintBrush} mr={2} />
@@ -128,6 +155,11 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
               <Tabs.Content value="socials" p={0}>
                 <Socials />
               </Tabs.Content>
+              {isCoursePaymentVisible && (
+                <Tabs.Content value="courses" p={0}>
+                  <CoursesTab />
+                </Tabs.Content>
+              )}
               {showArts && (
                 <Tabs.Content value="arts" p={0}>
                   <ArtsTab />

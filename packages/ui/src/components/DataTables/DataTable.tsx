@@ -1,4 +1,5 @@
 import {
+  Badge,
   Box,
   HStack,
   Image,
@@ -25,6 +26,7 @@ export const DataTable = <T extends StrapiModel>({
   pageSize,
   setPageSize,
   allowExportPDF = false,
+  badges,
   ...tableProps
 }: DataTableProps<T>) => {
   const { t } = useTranslation()
@@ -43,7 +45,7 @@ export const DataTable = <T extends StrapiModel>({
       </Box>
       {children}
       <Spacer />
-      {(totalCount > 10 || allowExportPDF) && (
+      {(totalCount > 10 || allowExportPDF || (badges ?? []).length > 0) && (
         <Stack
           direction={{ base: 'column', md: 'row' }}
           justify={{ base: 'center', md: 'space-between' }}
@@ -71,6 +73,22 @@ export const DataTable = <T extends StrapiModel>({
               <option value={100}>100</option>
             </Select>
             <Text lineClamp={1}>{t('items.on-page')}</Text>
+            {badges &&
+              badges.length > 0 &&
+              Array.isArray(tableProps.data) &&
+              badges.map((badge, index) => (
+                <Badge
+                  key={index}
+                  variant="outline"
+                  size={'2xl'}
+                  fontSize={'md'}
+                  p={1}
+                  colorScheme={'primary'}
+                  {...badge.badgeProp}
+                >
+                  {badge.badgeText(tableProps.data)}
+                </Badge>
+              ))}
           </HStack>
           <Pagination
             count={pageCount}
