@@ -14,7 +14,7 @@ const SiteLayout: FC<SiteLayoutProps> = ({ site, children, preview }) => {
   return (
     <Section>
       <Row style={{ backgroundColor: bgColor }}>
-        <Column style={{ width: '33.333333%' }}>
+        <Column style={{ width: 'calc(100% / 3)' }}>
           <Img
             style={{
               width: '120px',
