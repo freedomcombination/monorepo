@@ -12,12 +12,14 @@ export const useProfileColumns = (): WTableProps<
   const { t } = useTranslation()
   const { locale } = useRouter()
 
-  return {
-    avatar: {
+  return [
+    {
+      accessorKey: 'avatar',
       type: 'image',
     },
-    name: { sortable: true },
-    isVolunteer: {
+    { accessorKey: 'name', sortable: true },
+    {
+      accessorKey: 'isVolunteer',
       label: 'volunteer',
       type: 'badge',
       transform: value => (value ? t('volunteer') : null),
@@ -26,7 +28,8 @@ export const useProfileColumns = (): WTableProps<
         variant: 'outline',
       },
     },
-    profileStatus: {
+    {
+      accessorKey: 'profileStatus',
       type: 'badge',
       componentProps: value => {
         const colorScheme: Record<ProfileStatus, ThemeTypings['colorSchemes']> =
@@ -46,7 +49,8 @@ export const useProfileColumns = (): WTableProps<
         }
       },
     },
-    user: {
+    {
+      accessorKey: 'user',
       label: 'role',
       transform: value => (value as User)?.role?.name,
       sortable: true,
@@ -78,22 +82,24 @@ export const useProfileColumns = (): WTableProps<
         }
       },
     },
-    platforms: {
+    {
+      accessorKey: 'platforms',
       transform: value =>
         (value as Platform[])?.map(job => job[`name_${locale}`]).join(', '),
       sortable: true,
       sortKey: `slug`,
     },
-    jobs: {
+    {
+      accessorKey: 'jobs',
       transform: value =>
         (value as Job[])?.map(job => job[`name_${locale}`]).join(', '),
       sortable: true,
       sortKey: `slug`,
     },
-    email: { sortable: true },
-    availableHours: { sortable: true },
-    phone: {},
-    country: { sortable: true },
-    createdAt: { type: 'date', sortable: true },
-  }
+    { accessorKey: 'email', sortable: true },
+    { accessorKey: 'availableHours', sortable: true },
+    { accessorKey: 'phone' },
+    { accessorKey: 'country', sortable: true },
+    { accessorKey: 'createdAt', type: 'date', sortable: true },
+  ]
 }
