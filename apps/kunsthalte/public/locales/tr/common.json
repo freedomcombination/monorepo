@@ -236,7 +236,7 @@
   "login.password.matches.special": "Şifreniz en az bir özel karakter içermelidir [(?=@...]",
   "login.password.matches.uppercase": "Şifreniz en az bir büyük harf içermelidir [A..Z]",
   "login.password.password-confirm": "Parolayı onaylayın",
-  "login.password.warning": "Parola en az {{count}} karakter olmalıdır",
+  "login.password.warning": "En az {{count}} karakter olmalıdır",
   "login.remember-me": "Beni hatırla",
   "login.sign-with": "{{provider}} ile giriş yap",
   "login.signin": "Giriş yap",

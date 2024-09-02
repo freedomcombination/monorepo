@@ -8,6 +8,7 @@ import {
   Tooltip,
 } from '@chakra-ui/react'
 import { GroupBase, Select } from 'chakra-react-select'
+import { upperFirst } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { FieldValues, useController } from 'react-hook-form'
 import { TbInfoCircle } from 'react-icons/tb'
@@ -39,7 +40,9 @@ export const WSelect = <T extends FieldValues = FieldValues>({
   const label = initialLabel || translatedName
   const placeholder = initialPlaceholder || translatedName
 
-  const errorMessage = errors?.[name]?.['message'] as unknown as string
+  const errorMessage =
+    errors?.[name]?.['message'] &&
+    upperFirst(errors?.[name]?.['message'] as string)
 
   return (
     <FormControl
