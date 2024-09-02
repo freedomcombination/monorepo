@@ -215,6 +215,7 @@
   "images": "Images",
   "instructor": "Instructor",
   "invoice": "Invoice",
+  "items-asset-total": "Total price : {{amount}}",
   "items.on-page": "items on page",
   "items.total": "total items",
   "jobs": "Jobs (The area you want to work with us)",

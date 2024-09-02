@@ -209,6 +209,7 @@
   "images": "Afbeeldingen",
   "instructor": "Instructeur",
   "invoice": "Factuur",
+  "items-asset-total": "Totale prijs: {{bedrag}}",
   "items.on-page": "items op pagina",
   "items.total": "totaal",
   "jobs": "Vacatures (Het gebied waar je met ons wilt werken)",

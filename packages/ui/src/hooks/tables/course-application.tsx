@@ -9,9 +9,10 @@ import { calculateInstallments } from '../../components/ProfileSettings/Payment/
 
 export const useCourseApplicationColumns =
   (): WTableProps<CourseApplication>['columns'] => {
-    return {
-      name: { sortable: true },
-      approvalStatus: {
+    return [
+      { accessorKey: 'name', sortable: true },
+      {
+        accessorKey: 'approvalStatus',
         type: 'badge',
         componentProps: value => {
           const colorScheme = {
@@ -26,18 +27,24 @@ export const useCourseApplicationColumns =
           }
         },
       },
-      city: { sortable: true },
-      email: {},
-      phone: {},
-      country: { sortable: true },
-      installmentCount: {},
-      payments: {
-        transformWithModel: (value, model) => {
+      { accessorKey: 'city', sortable: true },
+      {
+        accessorKey: 'email',
+      },
+      {
+        accessorKey: 'phone',
+      },
+      { accessorKey: 'country', sortable: true },
+      {
+        accessorKey: 'installmentCount',
+      },
+      {
+        accessorKey: 'payments',
+        transform: (value, application) => {
           const payments = value as CourseApplication['payments']
-          const application = model as CourseApplication
 
           if (
-            application.installmentCount &&
+            application?.installmentCount &&
             application.installmentCount > 1
           ) {
             const installments = calculateInstallments(
@@ -73,14 +80,13 @@ export const useCourseApplicationColumns =
           return `${formatPrice(totalAmount)}`
         },
       },
-      hasPaid: {
-        transformWithModel: (value, model) => {
+      {
+        accessorKey: 'hasPaid',
+        transform: (value, application) => {
           const getPaidStatus = () => {
             if (value) return 'paid'
 
-            const application = model as CourseApplication
-
-            if (!application.course) return value ? 'paid' : 'not yet'
+            if (!application?.course) return value ? 'paid' : 'not yet'
 
             const course = application.course as Course
             const price = course.price
@@ -103,6 +109,6 @@ export const useCourseApplicationColumns =
         },
         transformPDF: value => paidBadgesPDF(value as boolean | null),
       },
-      course: { transform: value => (value as Course).title_nl },
-    }
+      { accessorKey: 'course', transform: value => (value as Course).title_nl },
+    ]
   }

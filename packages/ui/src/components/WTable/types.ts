@@ -27,25 +27,32 @@ type CellConfigCommon<T extends StrapiModel> =
   | CustomCell<'date', T, Partial<FormattedDateProps>>
 
 export type CellConfig<T extends StrapiModel> = CellConfigCommon<T> & {
+  accessorKey: keyof T
   cellProps?: TableCellProps
   label?: string
   sortable?: boolean // Currently not supported when transform is used
-  transform?: (value: T[keyof T]) => ReactNode
-  transformWithModel?: (value: T[keyof T], model: T) => ReactNode
+  transform?: (value: T[keyof T], model?: T) => ReactNode
   transformPDF?: (value: T[keyof T]) => string
   sortKey?: string
 }
 
 export type WTableCellProps<T extends StrapiModel> = {
-  value: T[keyof T]
   // TODO Add specific type for each cell value
-  cellConfig: CellConfig<T>
-  field: keyof T
+  column: CellConfig<T>
   model: T
 }
 
+export type TableHeaderCellProps<T extends StrapiModel> = {
+  column: CellConfig<T>
+  index: number
+  selectedIndex: number | null
+  sortMode: 'asc' | 'desc' | null
+  setSelectedIndex: (index: number) => void
+  setSortMode: (mode: 'asc' | 'desc' | null) => void
+}
+
 export type WTableRowProps<T extends StrapiModel> = {
-  columns: { [key in keyof T]?: CellConfig<T> }
+  columns: Array<CellConfig<T>>
   model: T
   modelIndex: number
   onClick?: (index: number, id: number) => void

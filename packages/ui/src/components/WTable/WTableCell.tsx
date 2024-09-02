@@ -9,19 +9,17 @@ import { WTableCellProps } from './types'
 import { FormattedDate } from '../FormattedDate'
 
 export const WTableCell = <T extends StrapiModel>({
-  value,
-  cellConfig,
-  field,
+  column,
   model,
 }: WTableCellProps<T>) => {
-  const { type, transform, transformWithModel, componentProps, cellProps } =
-    cellConfig
+  const { accessorKey, type, transform, componentProps, cellProps } = column
+
+  const value = model[accessorKey]
+
   const data = (
-    typeof transformWithModel === 'function'
-      ? transformWithModel(value as T[keyof T], model as T) // TODO remove transformWithModel function and make transform with model parameter
-      : typeof transform === 'function'
-        ? transform(value as T[keyof T])
-        : value
+    typeof transform === 'function'
+      ? transform(value as T[keyof T], model)
+      : value
   ) as string | number | boolean
 
   let cellContent: ReactNode
@@ -55,7 +53,7 @@ export const WTableCell = <T extends StrapiModel>({
   return (
     <Td {...cellProps}>
       <Box
-        {...(field === 'description' && { noOfLines: 1, maxW: 120 })}
+        {...(accessorKey === 'description' && { noOfLines: 1, maxW: 120 })}
         noOfLines={1}
       >
         {cellContent || '-'}

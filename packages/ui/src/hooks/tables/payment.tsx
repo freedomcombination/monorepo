@@ -7,24 +7,42 @@ import { WTableProps } from '../../components'
 export const usePaymentColumns = (): WTableProps<CoursePayment>['columns'] => {
   const { locale } = useRouter()
 
-  return {
-    profile: {
+  return [
+    {
+      accessorKey: 'profile',
       type: 'image',
       transform: value => (value as Profile)?.avatar as any,
     },
-    id: { sortable: true },
-    email: { sortable: true },
-    status: { sortable: true },
-    amount: { sortable: true, transform: value => `${value} €` },
-    installmentNumber: {},
-    paymentDatetime: {
+    {
+      accessorKey: 'id',
+      sortable: true,
+    },
+    {
+      accessorKey: 'email',
+      sortable: true,
+    },
+    {
+      accessorKey: 'status',
+      sortable: true,
+    },
+    {
+      accessorKey: 'amount',
+      sortable: true,
+      transform: value => `${value} €`,
+    },
+    {
+      accessorKey: 'installmentNumber',
+    },
+    {
+      accessorKey: 'paymentDatetime',
       sortable: true,
       type: 'date',
       componentProps() {
         return { format: 'dd MMMM yy - HH:mm' }
       },
     },
-    courseApplication: {
+    {
+      accessorKey: 'courseApplication',
       transform(value) {
         const courseApplication = value as CourseApplication
         const course = courseApplication.course
@@ -32,5 +50,5 @@ export const usePaymentColumns = (): WTableProps<CoursePayment>['columns'] => {
         return course?.[`title_${locale}`] ?? ''
       },
     },
-  }
+  ]
 }
