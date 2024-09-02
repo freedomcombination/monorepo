@@ -89,8 +89,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
     (user?.roles.includes('admin') || user?.roles.includes('author'))
 
   const isCoursePaymentVisible =
-    (site === 'foundation' || site === 'dashboard') &&
-    process.env.NODE_ENV === 'development'
+    (site === 'foundation' || site === 'dashboard')
 
   useEffect(() => {
     const index = findTabIndexByTitle(
