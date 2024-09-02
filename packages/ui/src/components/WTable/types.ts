@@ -42,6 +42,15 @@ export type WTableCellProps<T extends StrapiModel> = {
   model: T
 }
 
+export type TableHeaderCellProps<T extends StrapiModel> = {
+  column: CellConfig<T>
+  index: number
+  selectedIndex: number | null
+  sortMode: 'asc' | 'desc' | null
+  setSelectedIndex: (index: number) => void
+  setSortMode: (mode: 'asc' | 'desc' | null) => void
+}
+
 export type WTableRowProps<T extends StrapiModel> = {
   columns: Array<CellConfig<T>>
   model: T

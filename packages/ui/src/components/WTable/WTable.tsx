@@ -1,15 +1,12 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import { chakra, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react'
-import { camelCase, startCase } from 'lodash'
-import { useTranslation } from 'next-i18next'
-import { FaArrowDown, FaArrowUp, FaSort } from 'react-icons/fa'
+import { Table, Tbody, Thead, Tr } from '@chakra-ui/react'
 
-import { StrapiModel, StrapiModelKeys } from '@fc/types'
+import { StrapiModel } from '@fc/types'
 
+import { TableHeaderCell } from './TableHeaderCell'
 import { WTableRow } from './TableRow'
 import { CellConfig, WTableProps } from './types'
-import { I18nNamespaces } from '../../../@types/i18next'
 
 export const WTable = <T extends StrapiModel>({
   data,
@@ -19,89 +16,44 @@ export const WTable = <T extends StrapiModel>({
   ...rest
 }: WTableProps<T>) => {
   const [sortMode, setSortMode] = useState<'desc' | 'asc' | null>(null)
-  const [selectedColumnKey, setSelectedColumnKey] = useState<string | null>(
-    null,
-  )
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
 
-  const selectedColumn = useMemo(() => {
-    return (
-      // TODO: What if there are multiple columns with the same key?
-      columns?.find(column => column.accessorKey === selectedColumnKey) ||
-      ({} as CellConfig<T>)
-    )
-  }, [selectedColumnKey, columns])
+  const selectedColumn = selectedIndex
+    ? columns[selectedIndex]
+    : ({} as CellConfig<T>)
 
-  const { t } = useTranslation()
-
-  const toggleSort = (columnKey: string) => {
-    setSelectedColumnKey(columnKey)
-
-    if (sortMode === 'asc') {
-      setSortMode('desc')
-    } else if (sortMode === 'desc') {
-      setSortMode(null)
-    } else {
-      setSortMode('asc')
-    }
-  }
+  const selectedKey = selectedColumn.accessorKey as string
 
   useEffect(() => {
     const { transform, sortKey } = selectedColumn
 
-    if (sortMode && selectedColumnKey) {
+    if (sortMode && selectedKey) {
       if (transform && sortKey) {
-        onSort?.([`${selectedColumnKey}.${sortKey}:${sortMode}`])
+        onSort?.([`${selectedKey}.${sortKey}:${sortMode}`])
       } else {
-        onSort?.([`${selectedColumnKey}:${sortMode}`])
+        onSort?.([`${selectedKey}:${sortMode}`])
       }
-    } else if (!sortMode && selectedColumnKey) {
+    } else if (!sortMode && selectedIndex) {
       onSort?.(undefined)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortMode, selectedColumnKey])
+  }, [sortMode, selectedIndex])
 
   return (
     <Table size="sm" cursor="default" {...rest}>
       <Thead pos={'sticky'} top={0} zIndex={0} h={8} bg={'white'} shadow={'sm'}>
         <Tr>
-          {Object.keys(columns).map((key, index) => {
-            const { sortable, label } = selectedColumn
-
-            const translationLabel = t(
-              (label || key) as keyof I18nNamespaces['common'],
-              {
-                defaultValue: label || startCase(camelCase(key)),
-              },
-            )
-
-            const getSortIcon = () => {
-              if (!sortable) return
-
-              if (selectedColumnKey === key) {
-                if (sortMode === 'asc') {
-                  return FaArrowUp
-                } else if (sortMode === 'desc') {
-                  return FaArrowDown
-                }
-              }
-
-              return FaSort
-            }
-
+          {columns.map((column, index) => {
             return (
-              <Th
-                pos="relative"
+              <TableHeaderCell
+                column={column}
+                index={index}
                 key={index}
-                whiteSpace="nowrap"
-                {...(sortable && {
-                  cursor: 'pointer',
-                  onClick: () => toggleSort(key as StrapiModelKeys),
-                })}
-              >
-                {translationLabel}
-
-                <chakra.span ml={2} display="inline" as={getSortIcon()} />
-              </Th>
+                selectedIndex={selectedIndex}
+                sortMode={sortMode}
+                setSelectedIndex={setSelectedIndex}
+                setSortMode={setSortMode}
+              />
             )
           })}
         </Tr>
