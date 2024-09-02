@@ -210,6 +210,7 @@
   "images": "Resimler",
   "instructor": "Eğitmen",
   "invoice": "Fatura",
+  "items-asset-total": "Toplam fiyat : {{amount}}",
   "items.on-page": "öğe sayfada",
   "items.total": "toplam öğe",
   "jobs": "Meslekler (Bizimle çalışmak istediğiniz alan)",
