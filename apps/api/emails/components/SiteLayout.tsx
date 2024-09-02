@@ -25,7 +25,7 @@ const SiteLayout: FC<SiteLayoutProps> = ({ site, children, preview }) => {
             alt={getSiteName(site)}
           />
         </Column>
-        <Column style={{ width: '66.666667%' }}>
+        <Column style={{ width: 'calc(100% * 2 / 3)' }}>
           <Text
             style={{ fontSize: '18px', fontWeight: 'bold', color: 'white' }}
           >
