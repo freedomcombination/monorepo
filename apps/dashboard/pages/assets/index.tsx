@@ -9,6 +9,7 @@ import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Asset, Sort, StrapiLocale } from '@fc/types'
 import { AdminLayout, DataTable, PageHeader, useColumns } from '@fc/ui'
+import { formatPrice } from '@fc/utils'
 
 const AssetsPage = () => {
   const { locale, query, push } = useRouter()
@@ -89,6 +90,15 @@ const AssetsPage = () => {
         setPageSize={setPageSize}
         totalCount={totalCount}
         allowExportPDF
+        badges={[
+          {
+            badgeText(data) {
+              const totalPrice = data.reduce((acc, curr) => acc + curr.price, 0)
+
+              return t('items-asset-total', { amount: formatPrice(totalPrice) })
+            },
+          },
+        ]}
       />
     </AdminLayout>
   )

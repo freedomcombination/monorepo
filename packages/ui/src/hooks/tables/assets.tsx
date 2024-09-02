@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 
 import { Asset, Platform, Profile } from '@fc/types'
+import { formatPrice } from '@fc/utils'
 
 import { WTableProps } from '../../components'
 
@@ -17,6 +18,7 @@ export const useAssetsColumns = (): WTableProps<Asset>['columns'] => {
     },
     {
       accessorKey: 'price',
+      transform: value => formatPrice(value as number, 1),
     },
     {
       accessorKey: 'peopleInCharge',
