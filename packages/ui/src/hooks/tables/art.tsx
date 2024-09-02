@@ -8,16 +8,25 @@ import { PublicationBadges, WTableProps } from '../../components'
 export const useArtColumns = (): WTableProps<Art>['columns'] => {
   const { locale } = useRouter()
 
-  return {
-    image: { type: 'image' },
-    [`title_${locale}`]: {},
-    [`description_${locale}`]: {},
-    artist: {
+  return [
+    {
+      accessorKey: 'image',
+      type: 'image',
+    },
+    {
+      accessorKey: `title_${locale}`,
+    },
+    {
+      accessorKey: `description_${locale}`,
+    },
+    {
+      accessorKey: 'artist',
       transform: value => (value as Profile)?.email,
       sortKey: 'email',
       sortable: true,
     },
-    approvalStatus: {
+    {
+      accessorKey: 'approvalStatus',
       type: 'badge',
       componentProps: value => {
         const colorScheme = {
@@ -32,15 +41,17 @@ export const useArtColumns = (): WTableProps<Art>['columns'] => {
         }
       },
     },
-    publishedAt: {
+    {
+      accessorKey: 'publishedAt',
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
       transformPDF: value => publicationBadgePDF(value as string | null),
     },
-    createdAt: {
+    {
+      accessorKey: 'createdAt',
       type: 'date',
       sortable: true,
     },
-  }
+  ]
 }

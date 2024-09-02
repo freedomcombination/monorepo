@@ -7,24 +7,30 @@ import { WTableProps } from '../../components'
 export const useAssetsColumns = (): WTableProps<Asset>['columns'] => {
   const { locale } = useRouter()
 
-  return {
-    images: { type: 'image' },
-    sku: {},
-    name: { sortable: true },
-    location: {
+  return [
+    { accessorKey: 'images', type: 'image' },
+    { accessorKey: 'sku' },
+    { accessorKey: 'name', sortable: true },
+    {
+      accessorKey: 'location',
       sortable: true,
     },
-    price: {},
-    peopleInCharge: {
+    {
+      accessorKey: 'price',
+    },
+    {
+      accessorKey: 'peopleInCharge',
       transform: value =>
         (value as Profile[])?.map(person => person.name).join(', ') || '-',
     },
-    platform: {
+    {
+      accessorKey: 'platform',
       transform: value => (value as Platform)?.[`name_${locale}`] || '-',
     },
-    createdAt: {
+    {
+      accessorKey: 'createdAt',
       type: 'date',
       sortable: true,
     },
-  }
+  ]
 }

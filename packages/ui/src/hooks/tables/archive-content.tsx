@@ -10,16 +10,18 @@ export const useArchiveContentColumns =
   (): WTableProps<ArchiveContent>['columns'] => {
     const { locale } = useRouter()
 
-    return {
-      id: { sortable: true },
-      title: { sortable: true },
-      source: { sortable: true },
-      link: { sortable: true },
-      date: {
+    return [
+      { accessorKey: 'id', sortable: true },
+      { accessorKey: 'title', sortable: true },
+      { accessorKey: 'source', sortable: true },
+      { accessorKey: 'link', sortable: true },
+      {
+        accessorKey: 'date',
         type: 'date',
         sortable: true,
       },
-      categories: {
+      {
+        accessorKey: 'categories',
         transform: value => (
           <Wrap>
             {(value as Category[])
@@ -41,7 +43,8 @@ export const useArchiveContentColumns =
             ?.map(c => `[${c[`name_${locale}`]}]`)
             .join(', '),
       },
-      tags: {
+      {
+        accessorKey: 'tags',
         transform: value => (
           <Wrap>
             {(value as Tag[])?.map(t => (
@@ -54,11 +57,12 @@ export const useArchiveContentColumns =
         transformPDF: value =>
           (value as Tag[])?.map(t => `[${t[`name_${locale}`]}]`).join(', '),
       },
-      publishedAt: {
+      {
+        accessorKey: 'publishedAt',
         transform: value => (
           <PublicationBadges publishedAt={value as string | null} />
         ),
         transformPDF: value => publicationBadgePDF(value as string | null),
       },
-    }
+    ]
   }

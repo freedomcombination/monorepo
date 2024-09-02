@@ -4,11 +4,12 @@ import { localeBadgesPDF, publicationBadgePDF } from './utils'
 import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 
 export const useActivityColumns = (): WTableProps<Activity>['columns'] => {
-  return {
-    image: { type: 'image' },
-    title: { sortable: true },
-    description: {},
-    approvalStatus: {
+  return [
+    { accessorKey: 'image', type: 'image' },
+    { accessorKey: 'title', sortable: true },
+    { accessorKey: 'description' },
+    {
+      accessorKey: 'approvalStatus',
       type: 'badge',
       componentProps: value => {
         const colorScheme = {
@@ -23,23 +24,27 @@ export const useActivityColumns = (): WTableProps<Activity>['columns'] => {
         }
       },
     },
-    translates: {
+    {
+      accessorKey: 'translates',
       transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
       transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
     },
-    publishedAt: {
+    {
+      accessorKey: 'publishedAt',
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
       transformPDF: value => publicationBadgePDF(value as string | null),
     },
-    createdAt: {
+    {
+      accessorKey: 'createdAt',
       type: 'date',
       sortable: true,
     },
-    date: {
+    {
+      accessorKey: 'date',
       type: 'date',
       sortable: true,
     },
-  }
+  ]
 }

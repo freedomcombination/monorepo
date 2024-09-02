@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { chakra, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react'
 import { camelCase, startCase } from 'lodash'
@@ -19,12 +19,22 @@ export const WTable = <T extends StrapiModel>({
   ...rest
 }: WTableProps<T>) => {
   const [sortMode, setSortMode] = useState<'desc' | 'asc' | null>(null)
-  const [selectedColumn, setSelectedColumn] = useState<string | null>(null)
+  const [selectedColumnKey, setSelectedColumnKey] = useState<string | null>(
+    null,
+  )
+
+  const selectedColumn = useMemo(() => {
+    return (
+      // TODO: What if there are multiple columns with the same key?
+      columns?.find(column => column.accessorKey === selectedColumnKey) ||
+      ({} as CellConfig<T>)
+    )
+  }, [selectedColumnKey, columns])
 
   const { t } = useTranslation()
 
   const toggleSort = (columnKey: string) => {
-    setSelectedColumn(columnKey)
+    setSelectedColumnKey(columnKey)
 
     if (sortMode === 'asc') {
       setSortMode('desc')
@@ -36,29 +46,27 @@ export const WTable = <T extends StrapiModel>({
   }
 
   useEffect(() => {
-    const { transform, sortKey } = columns?.[selectedColumn as keyof T] || {}
+    const { transform, sortKey } = selectedColumn
 
-    if (sortMode && selectedColumn) {
+    if (sortMode && selectedColumnKey) {
       if (transform && sortKey) {
-        onSort?.([`${selectedColumn}.${sortKey}:${sortMode}`])
+        onSort?.([`${selectedColumnKey}.${sortKey}:${sortMode}`])
       } else {
-        onSort?.([`${selectedColumn}:${sortMode}`])
+        onSort?.([`${selectedColumnKey}:${sortMode}`])
       }
-    } else if (!sortMode && selectedColumn) {
+    } else if (!sortMode && selectedColumnKey) {
       onSort?.(undefined)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortMode, selectedColumn])
+  }, [sortMode, selectedColumnKey])
 
   return (
     <Table size="sm" cursor="default" {...rest}>
       <Thead pos={'sticky'} top={0} zIndex={0} h={8} bg={'white'} shadow={'sm'}>
         <Tr>
           {Object.keys(columns).map((key, index) => {
-            const isSortable = (columns[key as keyof T] as CellConfig<T>)
-              .sortable
+            const { sortable, label } = selectedColumn
 
-            const { label } = columns[key as keyof T] as CellConfig<T>
             const translationLabel = t(
               (label || key) as keyof I18nNamespaces['common'],
               {
@@ -67,9 +75,9 @@ export const WTable = <T extends StrapiModel>({
             )
 
             const getSortIcon = () => {
-              if (!isSortable) return
+              if (!sortable) return
 
-              if (selectedColumn === key) {
+              if (selectedColumnKey === key) {
                 if (sortMode === 'asc') {
                   return FaArrowUp
                 } else if (sortMode === 'desc') {
@@ -85,7 +93,7 @@ export const WTable = <T extends StrapiModel>({
                 pos="relative"
                 key={index}
                 whiteSpace="nowrap"
-                {...(isSortable && {
+                {...(sortable && {
                   cursor: 'pointer',
                   onClick: () => toggleSort(key as StrapiModelKeys),
                 })}
