@@ -15,6 +15,7 @@ import {
   useBoolean,
   useMergeRefs,
 } from '@chakra-ui/react'
+import { upperFirst } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { TbInfoCircle } from 'react-icons/tb'
@@ -120,8 +121,8 @@ export const FormItem: FormItemComponent = forwardRef(
             </InputRightElement>
           )}
         </InputGroup>
-        <FormErrorMessage data-testid={`${name}-error-text`}>
-          {errorMessage}
+        <FormErrorMessage data-testid={`error-text-${name}`}>
+          {errorMessage && upperFirst(errorMessage)}
         </FormErrorMessage>
         {helperText && (
           <FormHelperText color={'orange.400'}>{helperText}</FormHelperText>

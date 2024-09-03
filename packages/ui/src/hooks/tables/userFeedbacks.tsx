@@ -7,28 +7,36 @@ import { WTableProps } from '../../components/WTable'
 
 export const useUserFeedbacksColumns =
   (): WTableProps<UserFeedback>['columns'] => {
-    return {
-      comment: {},
-      point: {
+    return [
+      {
+        accessorKey: 'comment',
+      },
+      {
+        accessorKey: 'point',
         cellProps: { textAlign: 'center' },
         sortable: true,
       },
-      issueLink: {
+      {
+        accessorKey: 'issueLink',
         transform: value => value && <Icon as={FaCheck} />,
         transformPDF: value => (value ? 'Yes' : '-'),
         cellProps: { textAlign: 'center' },
       },
-      processed: {
+      {
+        accessorKey: 'processed',
         type: 'badge',
         transform: value => value && <Icon as={FaCheck} />,
         transformPDF: value => (value ? 'Yes' : '-'),
         cellProps: { textAlign: 'center' },
         sortable: true,
       },
-      createdAt: {
+      {
+        accessorKey: 'createdAt',
         type: 'date',
         sortable: true,
       },
-      site: {},
-    }
+      {
+        accessorKey: 'site',
+      },
+    ]
   }

@@ -12,6 +12,8 @@ const assetUrls: Record<string, string> = {
 export const DONATION_REQUEST_LINK = process.env[
   'NEXT_PUBLIC_DONATION_REQUEST_LINK'
 ] as string
+export const ALLOW_COURSE_PAYMENT =
+  process.env.NODE_ENV !== 'production' || process.env.ALLOW_COURSE_PAYMENT
 export const API_URL = process.env['NEXT_PUBLIC_API_URL'] as string
 export const ASSETS_URL = assetUrls.production
 export const ASSETS_FALLBACK_URL = VERCEL_ENV ? assetUrls[VERCEL_ENV] : API_URL
