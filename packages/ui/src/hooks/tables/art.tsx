@@ -1,12 +1,14 @@
 import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
 
 import { ApprovalStatus, Art, Profile } from '@fc/types'
 
-import { publicationBadgePDF } from './utils'
+import { renderPublicationState } from './utils'
 import { PublicationBadges, WTableProps } from '../../components'
 
 export const useArtColumns = (): WTableProps<Art>['columns'] => {
   const { locale } = useRouter()
+  const { t } = useTranslation()
 
   return [
     {
@@ -46,7 +48,7 @@ export const useArtColumns = (): WTableProps<Art>['columns'] => {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
-      transformPDF: value => publicationBadgePDF(value as string | null),
+      transformPDF: value => renderPublicationState(value as string | null, t),
     },
     {
       accessorKey: 'createdAt',

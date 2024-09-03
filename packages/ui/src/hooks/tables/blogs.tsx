@@ -1,9 +1,13 @@
+import { useTranslation } from 'next-i18next'
+
 import { ApprovalStatus, Blog, Profile } from '@fc/types'
 
-import { publicationBadgePDF } from './utils'
+import { renderPublicationState } from './utils'
 import { PublicationBadges, WTableProps } from '../../components'
 
 export const useBlogColumns = (): WTableProps<Blog>['columns'] => {
+  const { t } = useTranslation()
+
   return [
     { accessorKey: 'image', type: 'image' },
     {
@@ -37,7 +41,7 @@ export const useBlogColumns = (): WTableProps<Blog>['columns'] => {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
-      transformPDF: value => publicationBadgePDF(value as string | null),
+      transformPDF: value => renderPublicationState(value as string | null, t),
     },
     {
       accessorKey: 'createdAt',
