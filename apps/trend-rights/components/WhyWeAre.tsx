@@ -1,6 +1,14 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useEffect, useMemo, useRef } from 'react'
 
-import { Button, Image, SimpleGrid, Stack, Text, Box } from '@chakra-ui/react'
+import {
+  Button,
+  Image,
+  SimpleGrid,
+  Stack,
+  Text,
+  Box,
+  Flex,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
@@ -15,41 +23,59 @@ export type WhyWeAreProps = {
 
 export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
   const { t } = useTranslation()
-  const whyWeAreCategories = [
-    { en: ['Our Story', 'Documentaries', 'General Activities', 'Books'] },
-    { tr: ['Hayat Hikayemiz', 'Belgeseller', 'Genel Aktiviteler', 'Kitaplar'] },
-    { nl: ['Ons Verhaal', 'Documentaires', 'Algemene Activiteiten', 'Boeken'] },
-  ]
+  const { locale, query, push } = useRouter()
 
-  const [category, setCategory] = useState<string>('')
-  const [filteredBlogs, setFilteredBlogs] = useState(blogs)
+  const whyWeAreCategories = {
+    en: ['Our Story', 'Documentaries', 'Global Activities', 'Books'],
+    tr: ['Hayat Hikayemiz', 'Belgeseller', 'Global Aktiviteler', 'Kitaplar'],
+    nl: ['Ons Verhaal', 'Documentaires', 'Globale Activiteiten', 'Boeken'],
+  }
 
-  const { locale } = useRouter()
+  const category = (query.category as string) || whyWeAreCategories[locale][0]
 
-  // Filtering blogs by category name
-  const getBlogs = (category: string) => {
+  const filteredBlogs = useMemo(() => {
+    if (!category) return blogs
+
     return blogs.filter(blog =>
       blog?.categories?.some(cat => cat[`name_${locale}`] === category),
     )
-  }
-
-  useEffect(() => {
-    if (!category) {
-      setFilteredBlogs(blogs)
-    } else {
-      setFilteredBlogs(getBlogs(category))
-    }
   }, [category, blogs, locale])
 
   const handleCategory = (category: string) => {
-    setCategory(category)
+    push({
+      pathname: '/why-we-are',
+      query: { category },
+    })
   }
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollLeft = 0
+      }
+    }, 0)
+  }, [locale])
 
   return (
     <>
       <Hero title={seo.title as string} image={'/images/blog-bg.jpeg'} />
 
-      <Container display="flex" flexDirection="row" pt={8}>
+      <Container display="flex" flexDirection="column" pt={8}>
+        <Flex justify="flex-start" mb={8} overflowX="auto" whiteSpace="nowrap">
+          {whyWeAreCategories[locale]?.map((name, index) => (
+            <Button
+              key={index}
+              onClick={() => handleCategory(name)}
+              m={2}
+              flexShrink={0}
+              whiteSpace="nowrap"
+            >
+              {name}
+            </Button>
+          ))}
+        </Flex>
+
         {!filteredBlogs.length && (
           <Stack minH="inherit" justify="center" align="center" spacing={8}>
             <Image h={200} src={'/images/no-blog.svg'} alt="no blog" />
@@ -58,7 +84,8 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
             </Text>
           </Stack>
         )}
-        <Box flex="1" mr={{ base: 0, md: 8 }}>
+
+        <Box flex="1">
           <SimpleGrid gap={8} py={8} columns={{ base: 1, lg: 3 }}>
             {filteredBlogs?.map((blog, index) => (
               <AnimatedBox
@@ -75,20 +102,6 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
               </AnimatedBox>
             ))}
           </SimpleGrid>
-        </Box>
-        <Box as="aside" width={{ md: '1/4' }} position="sticky" top={8}>
-          <Stack spacing={2}>
-            {whyWeAreCategories &&
-              whyWeAreCategories?.map((category, index) => (
-                <Stack key={index} spacing={2}>
-                  {category[locale]?.map((name, index) => (
-                    <Button key={index} onClick={() => handleCategory(name)}>
-                      {name}
-                    </Button>
-                  ))}
-                </Stack>
-              ))}
-          </Stack>
         </Box>
       </Container>
     </>

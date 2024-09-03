@@ -165,8 +165,8 @@ export const ROUTES: Record<RouteKey, MenuType> = {
   },
   why_we_are: {
     link: '/why-we-are',
-    en: 'Why We Are Here',
-    nl: 'Waarom Wij Zijn Here',
+    en: 'Why Are We Here',
+    nl: 'Waarom Zijn We Here',
     tr: 'Neden Buradayız',
   },
   contact: {

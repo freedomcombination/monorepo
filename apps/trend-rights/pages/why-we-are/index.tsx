@@ -1,6 +1,6 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
-import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 
 import { getSession } from '@fc/secrets'
 import { getBlogs, useGetBlogs } from '@fc/services'
@@ -12,9 +12,14 @@ import { WhyWeAre } from '../../components/WhyWeAre'
 
 const Blogs = () => {
   const { data: blogs = [] } = useGetBlogs()
-  const { t } = useTranslation()
+  const { locale } = useRouter()
 
-  const title = 'Why we are here'
+  const titles = {
+    en: 'Why are we here',
+    nl: 'Waarom zijn we hier',
+    tr: 'Neden buradayız',
+  }
+  const title = titles[locale] || titles['en']
 
   return (
     <Layout seo={{ title }} isDark={!!blogs?.length}>
