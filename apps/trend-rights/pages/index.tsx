@@ -15,7 +15,7 @@ import {
   HashtagAnnouncement,
   HashtagsSummary,
 } from '@fc/ui'
-import InstagramTimeline from '@fc/ui/src/components/InstagramTimeline/InstagramTimeline'
+import { InstagramTimeline } from '@fc/ui'
 import { getItemLink } from '@fc/utils'
 
 import { Layout } from '../components'
@@ -85,7 +85,6 @@ const Home: FC<HomeProps> = ({ hashtags }) => {
 
       {hashtags.length > 0 && <HashtagsSummary hashtags={hashtags} />}
 
-      {/* Instagram Timeline Bileşenini Buraya Ekledik */}
       <Box bg={'gray.50'} py={16}>
         <Container maxW={'6xl'}>
           <InstagramTimeline />

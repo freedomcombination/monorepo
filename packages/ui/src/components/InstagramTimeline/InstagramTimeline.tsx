@@ -13,7 +13,7 @@ import { useTranslation } from 'next-i18next'
 
 import { InstagramPost } from './types'
 
-const InstagramTimeline: FC = () => {
+export const InstagramTimeline: FC = () => {
   const { t } = useTranslation()
   const [posts, setPosts] = useState<InstagramPost[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -44,27 +44,27 @@ const InstagramTimeline: FC = () => {
     <Box py={10}>
       <Stack spacing={4} align="center">
         <Heading as="h2" size="lg" mb={4}>
-          {t('instagramPageTitle')}
+          {t('instagram-page-title')}
         </Heading>
       </Stack>
 
       <SimpleGrid columns={[2, null, 4]} spacing={6} mt={8}>
-        {posts.map(post => (
-          <Link
-            href={post.permalink}
-            key={post.id}
-            isExternal
-            _hover={{ textDecoration: 'none' }}
-          >
-            {post.media_type === 'IMAGE' && (
+        {posts
+          .filter(post => post.media_type === 'IMAGE')
+          .map(post => (
+            <Link
+              href={post.permalink}
+              key={post.id}
+              isExternal
+              _hover={{ textDecoration: 'none' }}
+            >
               <Image
                 src={post.media_url}
                 alt={post.caption}
                 borderRadius="md"
               />
-            )}
-          </Link>
-        ))}
+            </Link>
+          ))}
       </SimpleGrid>
 
       <Stack spacing={4} align="center" mt={8}>
@@ -74,13 +74,10 @@ const InstagramTimeline: FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           size="lg"
-          colorScheme="teal"
         >
-          {t('visitOurInstagram')}
+          {t('instagram-visit-button')}
         </Button>
       </Stack>
     </Box>
   )
 }
-
-export default InstagramTimeline
