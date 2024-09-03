@@ -1,9 +1,13 @@
+import { useTranslation } from 'react-i18next'
+
 import { ApprovalStatus, Hashtag, Post, StrapiLocale } from '@fc/types'
 
-import { localeBadgesPDF, publicationBadgePDF } from './utils'
+import { renderJoinedLocales, renderPublicationState } from './utils'
 import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 
 export const usePostColumns = (): WTableProps<Post>['columns'] => {
+  const { t } = useTranslation()
+
   return [
     {
       accessorKey: 'image',
@@ -22,7 +26,7 @@ export const usePostColumns = (): WTableProps<Post>['columns'] => {
     {
       accessorKey: 'translates',
       transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
-      transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
+      transformPDF: value => renderJoinedLocales(value as StrapiLocale[]),
     },
     {
       accessorKey: 'approvalStatus',
@@ -45,7 +49,7 @@ export const usePostColumns = (): WTableProps<Post>['columns'] => {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
-      transformPDF: value => publicationBadgePDF(value as string | null),
+      transformPDF: value => renderPublicationState(value as string | null, t),
     },
   ]
 }

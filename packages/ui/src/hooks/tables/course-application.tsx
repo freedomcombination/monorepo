@@ -1,14 +1,16 @@
 import { Badge, Wrap } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
 
 import { ApprovalStatus, Course, CourseApplication } from '@fc/types'
 import { formatPrice } from '@fc/utils'
 
-import { paidBadgesPDF } from './utils'
 import { PaidBadges, WTableProps } from '../../components'
 import { calculateInstallments } from '../../components/ProfileSettings/Payment/utils/calculateInstallments'
 
 export const useCourseApplicationColumns =
   (): WTableProps<CourseApplication>['columns'] => {
+    const { t } = useTranslation()
+
     return [
       { accessorKey: 'name', sortable: true },
       {
@@ -107,7 +109,7 @@ export const useCourseApplicationColumns =
 
           return <PaidBadges status={getPaidStatus()} />
         },
-        transformPDF: value => paidBadgesPDF(value as boolean | null),
+        transformPDF: value => (value ? t('paid') : t('not-paid')),
       },
       { accessorKey: 'course', transform: value => (value as Course).title_nl },
     ]
