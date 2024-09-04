@@ -2,30 +2,27 @@ import { FC } from 'react'
 
 import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { isPast } from 'date-fns'
-import { GetStaticPropsContext } from 'next'
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
-import { NextSeoProps } from 'next-seo'
 
+import { SITE_URL } from '@fc/config'
 import { strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Hashtag, StrapiLocale } from '@fc/types'
+import { Hashtag, InstagramPost, StrapiLocale } from '@fc/types'
 import {
   ButtonLink,
   Container,
   HashtagAnnouncement,
   HashtagsSummary,
+  InstagramTimeline,
 } from '@fc/ui'
-import { InstagramTimeline } from '@fc/ui'
 import { getItemLink } from '@fc/utils'
 
 import { Layout } from '../components'
 
-interface HomeProps {
-  seo: NextSeoProps
-  hashtags: Hashtag[]
-}
+type HomeProps = InferGetStaticPropsType<typeof getStaticProps>
 
-const Home: FC<HomeProps> = ({ hashtags }) => {
+const Home: FC<HomeProps> = ({ hashtags, instagramPosts }) => {
   const { t } = useTranslation()
   const link = getItemLink(hashtags?.[0], 'hashtags')
 
@@ -85,11 +82,13 @@ const Home: FC<HomeProps> = ({ hashtags }) => {
 
       {hashtags.length > 0 && <HashtagsSummary hashtags={hashtags} />}
 
-      <Box bg={'gray.50'} py={16}>
-        <Container maxW={'6xl'}>
-          <InstagramTimeline />
-        </Container>
-      </Box>
+      {instagramPosts?.length > 0 && (
+        <Box bg={'gray.50'} py={16}>
+          <Container maxW={'6xl'}>
+            <InstagramTimeline posts={instagramPosts} />
+          </Container>
+        </Box>
+      )}
     </Layout>
   )
 }
@@ -107,10 +106,29 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     pageSize: 4,
   })
 
+  let instagramPosts: InstagramPost[] = []
+
+  try {
+    const response = await fetch(
+      (process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3004'
+        : SITE_URL) + '/api/instagram',
+    )
+
+    if (!response.ok) throw new Error('Network response was not ok')
+
+    const data = await response.json()
+
+    instagramPosts = data.data
+  } catch (error: any) {
+    console.error('Error fetching Instagram posts:', error)
+  }
+
   return {
     props: {
       ...(await ssrTranslations(locale)),
       hashtags,
+      instagramPosts,
     },
     revalidate: 1,
   }

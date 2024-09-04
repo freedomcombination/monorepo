@@ -1,70 +1,50 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 
 import {
-  Box,
+  Button,
   Heading,
   Image,
   Link,
   SimpleGrid,
-  Button,
   Stack,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-import { InstagramPost } from './types'
+import { InstagramPost } from '@fc/types'
 
-export const InstagramTimeline: FC = () => {
+type InstagramTimelineProps = {
+  posts: InstagramPost[]
+}
+
+export const InstagramTimeline: FC<InstagramTimelineProps> = ({ posts }) => {
   const { t } = useTranslation()
-  const [posts, setPosts] = useState<InstagramPost[]>([])
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    const fetchInstagramPosts = async () => {
-      try {
-        const response = await fetch('/api/instagram')
-        if (!response.ok) throw new Error('Network response was not ok')
-
-        const data = await response.json()
-        const filteredPosts = data.data.filter(
-          (post: InstagramPost) => post.media_type === 'IMAGE',
-        )
-        setPosts(filteredPosts)
-      } catch (error: any) {
-        setError(error.message)
-        console.error('Error fetching Instagram posts:', error)
-      }
-    }
-
-    fetchInstagramPosts()
-  }, [])
-
-  if (error) return <div>Error: {error}</div>
 
   return (
-    <Box py={10}>
-      <Stack spacing={4} align="center">
-        <Heading as="h2" size="lg" mb={4}>
-          {t('instagram-page-title')}
-        </Heading>
-      </Stack>
+    <Stack spacing={8}>
+      <Heading as="h2" size="lg" textAlign={'center'}>
+        {t('instagram-page-title')}
+      </Heading>
 
-      <SimpleGrid columns={[2, null, 4]} spacing={6} mt={8}>
-        {posts
-          .filter(post => post.media_type === 'IMAGE')
-          .map(post => (
-            <Link
-              href={post.permalink}
-              key={post.id}
-              isExternal
-              _hover={{ textDecoration: 'none' }}
-            >
-              <Image
-                src={post.media_url}
-                alt={post.caption}
-                borderRadius="md"
-              />
-            </Link>
-          ))}
+      <SimpleGrid columns={[2, null, 4]} spacing={1}>
+        {posts.map(post => (
+          <Link
+            href={post.permalink}
+            key={post.id}
+            isExternal
+            _hover={{ textDecoration: 'none' }}
+            overflow={'hidden'}
+          >
+            <Image
+              src={post.thumbnail_url || post.media_url}
+              alt={post.caption}
+              aspectRatio={1}
+              objectFit="cover"
+              transition={'transform 0.3s ease-in-out'}
+              pos={'relative'}
+              _hover={{ opacity: 0.8 }}
+            />
+          </Link>
+        ))}
       </SimpleGrid>
 
       <Stack spacing={4} align="center" mt={8}>
@@ -78,6 +58,6 @@ export const InstagramTimeline: FC = () => {
           {t('instagram-visit-button')}
         </Button>
       </Stack>
-    </Box>
+    </Stack>
   )
 }
