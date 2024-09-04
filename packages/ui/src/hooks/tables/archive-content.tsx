@@ -1,14 +1,16 @@
 import { Badge, Group } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 
 import { ArchiveContent, Category, Tag } from '@fc/types'
 
-import { publicationBadgePDF } from './utils'
+import { renderPublicationState } from './utils'
 import { PublicationBadges, WTableProps } from '../../components'
 
 export const useArchiveContentColumns =
   (): WTableProps<ArchiveContent>['columns'] => {
     const { locale } = useRouter()
+    const { t } = useTranslation()
 
     return [
       { accessorKey: 'id', sortable: true },
@@ -62,7 +64,8 @@ export const useArchiveContentColumns =
         transform: value => (
           <PublicationBadges publishedAt={value as string | null} />
         ),
-        transformPDF: value => publicationBadgePDF(value as string | null),
+        transformPDF: value =>
+          renderPublicationState(value as string | null, t),
       },
     ]
   }

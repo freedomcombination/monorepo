@@ -1,9 +1,26 @@
 import { forwardRef, Ref } from 'react'
 
 import { useBoolean, useMergeRefs } from '@chakra-ui/hooks'
+import {
+  Box,
+  Flex,
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+  IconButton,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  Tooltip,
+} from '@chakra-ui/react'
 import { Group, Input } from '@chakra-ui/react'
+import { upperFirst } from 'lodash'
+import { useTranslation } from 'next-i18next'
 import { useTranslation } from 'next-i18next'
 import { FieldValues } from 'react-hook-form'
+import { HiEye, HiEyeOff } from 'react-icons/hi'
+import { TbInfoCircle } from 'react-icons/tb'
 
 import { Field } from '@fc/chakra'
 

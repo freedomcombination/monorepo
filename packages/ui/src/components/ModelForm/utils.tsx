@@ -53,6 +53,10 @@ export const renderCreateFormBody = <T extends StrapiModel>({
       !activeOption || !field.group || field?.group?.value === activeOption
     const videoUrl = watch(field.name as string)
 
+    const errorMessage =
+      errors?.[field.name]?.message &&
+      upperFirst(errors?.[field.name]?.message as string)
+
     if (field.type === 'mediaUrl') {
       return (
         <Box key={index} {...(!isActive && { display: 'none' })}>

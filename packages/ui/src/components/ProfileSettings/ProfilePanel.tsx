@@ -60,9 +60,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
     (site === 'dashboard' || site === 'foundation') &&
     (user?.roles.includes('admin') || user?.roles.includes('author'))
 
-  const isCoursePaymentVisible =
-    (site === 'foundation' || site === 'dashboard') &&
-    process.env.NODE_ENV === 'development'
+  const isCoursePaymentVisible = site === 'foundation' || site === 'dashboard'
 
   if (!user) return <Hero></Hero>
 

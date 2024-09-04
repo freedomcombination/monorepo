@@ -12,6 +12,7 @@ import {
   Group,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { upperFirst } from 'lodash'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -343,6 +344,9 @@ export const ModelEditForm = <T extends StrapiModel>({
           >
             {Object.values(fields || {})?.map((field, index) => {
               const label = t(field.name as keyof I18nNamespaces['common'])
+              const errorMessage =
+                errors[field.name]?.message &&
+                upperFirst(errors[field.name]?.message as string)
 
               if (field.type === 'file') {
                 return (

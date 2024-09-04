@@ -26,8 +26,12 @@ import { SocialLoginButtons } from '../SocialLoginButtons'
 
 const schema = (t: TFunction) =>
   yup.object({
-    name: yup.string().required(),
-    username: yup.string().required(),
+    name: yup
+      .string()
+      .min(3)
+      .matches(/^[a-zA-Z\s]+$/, 'Only alphabetic characters allowed')
+      .required(),
+    username: yup.string().min(3).required(),
     password: yup
       .string()
       .min(8, t('login.password.warning', { count: 8 }) as string)

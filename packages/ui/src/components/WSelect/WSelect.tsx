@@ -1,14 +1,15 @@
+import { upperFirst } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { FieldValues, useController } from 'react-hook-form'
 
 import {
   Field,
-  SelectRoot,
-  SelectLabel,
-  SelectTrigger,
   SelectContent,
-  SelectValueText,
   SelectItem,
+  SelectLabel,
+  SelectRoot,
+  SelectTrigger,
+  SelectValueText,
 } from '@fc/chakra'
 
 import { SelectOption, WSelectProps } from './types'
@@ -37,7 +38,9 @@ export const WSelect = <T extends FieldValues = FieldValues>({
   const label = initialLabel || translatedName
   const placeholder = initialPlaceholder || translatedName
 
-  const errorMessage = errors?.[name]?.['message'] as unknown as string
+  const errorMessage =
+    errors?.[name]?.['message'] &&
+    upperFirst(errors?.[name]?.['message'] as string)
 
   return null
 

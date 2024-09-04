@@ -14,7 +14,7 @@ const SiteLayout: FC<SiteLayoutProps> = ({ site, children, preview }) => {
   return (
     <Section>
       <Row style={{ backgroundColor: bgColor }}>
-        <Column className="w-1/3">
+        <Column style={{ width: 'calc(100% / 3)' }}>
           <Img
             style={{
               width: '120px',
@@ -25,15 +25,21 @@ const SiteLayout: FC<SiteLayoutProps> = ({ site, children, preview }) => {
             alt={getSiteName(site)}
           />
         </Column>
-        <Column className="w-2/3">
-          <Text className="text-lg font-bold text-white">
+        <Column style={{ width: 'calc(100% * 2 / 3)' }}>
+          <Text
+            style={{ fontSize: '18px', fontWeight: 'bold', color: 'white' }}
+          >
             {preview || getSiteName(site)}
           </Text>
         </Column>
       </Row>
-      <Row className="py-4">{children}</Row>
+      <Row style={{ paddingTop: '16px', paddingBottom: '16px' }}>
+        {children}
+      </Row>
       <Row>
-        <Column className="w-full h-8" style={{ backgroundColor: bgColor }}>
+        <Column
+          style={{ width: '100%', height: '32px', backgroundColor: bgColor }}
+        >
           {
             // TODO add footer
             ' '

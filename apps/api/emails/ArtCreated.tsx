@@ -31,7 +31,7 @@ const ArtCreated: FC<ArtCreatedProps> = ({
           {art.artist?.name}
         </Text>
         <Img
-          className="w-[300px]"
+          style={{ width: '300px' }}
           src={image?.formats?.small?.url || image?.url}
           alt={art.title_en}
         />
