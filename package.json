@@ -25,7 +25,7 @@
     "stripe": "./stripe listen --forward-to localhost:3001/api/donation/status"
   },
   "dependencies": {
-    "@chakra-ui/react": "3.0.0-next.20",
+    "@chakra-ui/react": "3.0.0-next.22",
     "@ctrl/tinycolor": "^4.1.0",
     "@ducanh2912/next-pwa": "^10.2.8",
     "@emotion/react": "^11.13.3",
