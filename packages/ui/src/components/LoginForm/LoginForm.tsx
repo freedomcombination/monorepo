@@ -106,21 +106,19 @@ export const LoginForm: FC<LoginFormProps> = ({
           {errorMessage && (
             <Alert status="error">
               <AlertIcon />
-              <AlertDescription data-testid="auth-error">
+              <AlertDescription data-testid="error-auth">
                 {errorMessage}
               </AlertDescription>
             </Alert>
           )}
           <Stack spacing="5">
             <FormItem
-              data-testid="input-email"
               name="identifier"
               autoComplete="email"
               register={register}
               errors={errors}
             />
             <FormItem
-              data-testid="input-password"
               name="password"
               type="password"
               autoComplete="current-password"

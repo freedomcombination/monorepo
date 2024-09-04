@@ -88,7 +88,7 @@ export const FormItem: FormItemComponent = forwardRef(
         )}
         <InputGroup>
           <Tag
-            data-testid={`${name}-input`}
+            data-testid={`input-${name}`}
             ref={ref}
             id={name}
             type={type === 'password' ? (isOpen ? 'text' : 'password') : type}
@@ -120,7 +120,7 @@ export const FormItem: FormItemComponent = forwardRef(
             </InputRightElement>
           )}
         </InputGroup>
-        <FormErrorMessage data-testid={`${name}-error-text`}>
+        <FormErrorMessage data-testid={`error-text-${name}`}>
           {errorMessage}
         </FormErrorMessage>
         {helperText && (
