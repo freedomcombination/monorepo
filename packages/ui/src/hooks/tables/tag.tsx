@@ -1,9 +1,13 @@
+import { useTranslation } from 'react-i18next'
+
 import { Tag } from '@fc/types'
 
-import { publicationBadgePDF } from './utils'
+import { renderPublicationState } from './utils'
 import { PublicationBadges, WTableProps } from '../../components'
 
 export const useTagColumns = (): WTableProps<Tag>['columns'] => {
+  const { t } = useTranslation()
+
   return [
     {
       accessorKey: 'id',
@@ -30,7 +34,7 @@ export const useTagColumns = (): WTableProps<Tag>['columns'] => {
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
-      transformPDF: value => publicationBadgePDF(value as string | null),
+      transformPDF: value => renderPublicationState(value as string | null, t),
     },
   ]
 }

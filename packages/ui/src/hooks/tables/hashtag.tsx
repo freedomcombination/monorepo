@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 
 import {
   ApprovalStatus,
@@ -9,11 +10,12 @@ import {
   StrapiLocale,
 } from '@fc/types'
 
-import { localeBadgesPDF, publicationBadgePDF } from './utils'
+import { renderJoinedLocales, renderPublicationState } from './utils'
 import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 
 export const useHashtagColumns = (): WTableProps<Hashtag>['columns'] => {
   const { locale } = useRouter()
+  const { t } = useTranslation()
 
   return [
     { accessorKey: 'image', type: 'image' },
@@ -58,14 +60,14 @@ export const useHashtagColumns = (): WTableProps<Hashtag>['columns'] => {
     {
       accessorKey: 'translates',
       transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
-      transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
+      transformPDF: value => renderJoinedLocales(value as StrapiLocale[]),
     },
     {
       accessorKey: 'publishedAt',
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
-      transformPDF: value => publicationBadgePDF(value as string | null),
+      transformPDF: value => renderPublicationState(value as string | null, t),
     },
   ]
 }
