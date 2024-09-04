@@ -18,6 +18,7 @@ type SiteRouteKey =
   | 'foundation'
   | 'news'
   | 'tweets'
+  | 'why-we-are'
 
 type EndpointRouteKey =
   | 'anbi'
@@ -119,6 +120,7 @@ export const ROUTES: Record<RouteKey, MenuType> = {
     nl: 'Aankondigingen',
     tr: 'Duyurular',
   },
+
   club: {
     link: '/club',
     en: 'Club',
@@ -160,6 +162,12 @@ export const ROUTES: Record<RouteKey, MenuType> = {
     en: 'Presentations',
     nl: 'Presentaties',
     tr: 'Sunumlar',
+  },
+  'why-we-are': {
+    link: '/why-we-are',
+    en: 'Why Are We Here',
+    nl: 'Waarom Zijn We Here',
+    tr: 'Neden Buradayız',
   },
   contact: {
     link: '/contact',
