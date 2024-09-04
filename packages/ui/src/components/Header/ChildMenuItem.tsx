@@ -21,7 +21,11 @@ export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
       fontWeight={600}
       cursor={'pointer'}
       p={2}
-      {...(isExternal && { isExternal, target: '_blank' })}
+      {...(isExternal && {
+        isExternal,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      })}
       color={
         isActive
           ? isDark

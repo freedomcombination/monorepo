@@ -1,8 +1,11 @@
 import { FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
-export const kunsthalte = [
+import { SocialLink } from './types'
+
+export const kunsthalte: SocialLink[] = [
   {
+    id: 'twitter',
     label: 'X',
     icon: FaXTwitter,
     link: {
@@ -12,6 +15,7 @@ export const kunsthalte = [
     },
   },
   {
+    id: 'whatsapp',
     label: 'WhatsApp',
     icon: FaWhatsapp,
     link: {
@@ -21,6 +25,7 @@ export const kunsthalte = [
     },
   },
   {
+    id: 'instagram',
     label: 'Instagram',
     icon: FaInstagram,
     link: {
@@ -30,6 +35,7 @@ export const kunsthalte = [
     },
   },
   {
+    id: 'youtube',
     label: 'Youtube',
     icon: FaYoutube,
     link: {
