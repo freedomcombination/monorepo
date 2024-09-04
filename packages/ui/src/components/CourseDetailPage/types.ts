@@ -13,14 +13,6 @@ export type CourseDetailPageProps = {
   source: MDXRemoteSerializeResult
 }
 
-export type CourseInfoProps = {
-  course: Course
-}
-
-export type CourseFaqsProps = {
-  faqs: FaqLocale[]
-}
-
 export type CourseFaqItemProps = {
   item: FaqLocale
   isExpanded: boolean
@@ -35,7 +27,3 @@ export type CourseInfoItemProps = {
 export type ApplicationFormFields = InferType<
   ReturnType<typeof applicationSchema>
 >
-
-export type CourseApplicationFormProps = {
-  courseId: number
-}

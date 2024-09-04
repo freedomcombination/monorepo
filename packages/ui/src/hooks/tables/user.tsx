@@ -6,19 +6,28 @@ import { Role, User } from '@fc/types'
 import { WTableProps } from '../../components'
 
 export const useUserColumns = (): WTableProps<User>['columns'] => {
-  return {
-    username: { sortable: true },
-    email: { sortable: true },
-    role: {
+  return [
+    {
+      accessorKey: 'username',
+      sortable: true,
+    },
+    {
+      accessorKey: 'email',
+      sortable: true,
+    },
+    {
+      accessorKey: 'role',
       transform: value => (value as Role)?.name,
       sortable: true,
       sortKey: 'type',
     },
-    createdAt: {
+    {
+      accessorKey: 'createdAt',
       type: 'date',
       sortable: true,
     },
-    confirmed: {
+    {
+      accessorKey: 'confirmed',
       cellProps: {
         textAlign: 'center',
       },
@@ -30,12 +39,13 @@ export const useUserColumns = (): WTableProps<User>['columns'] => {
         ),
       transformPDF: value => (value ? 'Yes' : 'No'),
     },
-    blocked: {
+    {
+      accessorKey: 'blocked',
       cellProps: {
         textAlign: 'center',
       },
       transform: value => value && <Icon as={FaTimesCircle} color="red.500" />,
       transformPDF: value => (value ? 'Blocked' : 'Active'),
     },
-  }
+  ]
 }
