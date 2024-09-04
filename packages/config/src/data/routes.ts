@@ -18,7 +18,7 @@ type SiteRouteKey =
   | 'foundation'
   | 'news'
   | 'tweets'
-  | 'why_we_are'
+  | 'why-we-are'
 
 type EndpointRouteKey =
   | 'anbi'
@@ -163,7 +163,7 @@ export const ROUTES: Record<RouteKey, MenuType> = {
     nl: 'Presentaties',
     tr: 'Sunumlar',
   },
-  why_we_are: {
+  'why-we-are': {
     link: '/why-we-are',
     en: 'Why Are We Here',
     nl: 'Waarom Zijn We Here',
