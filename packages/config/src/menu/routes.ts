@@ -26,4 +26,5 @@ export const {
   term,
   tweets,
   news,
+  'why-we-are': whyWeAre,
 } = ROUTES
