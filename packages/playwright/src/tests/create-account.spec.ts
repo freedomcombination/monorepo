@@ -1,83 +1,67 @@
-import { faker } from '@faker-js/faker'
-import { test, expect } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
-import { RegisterPage } from './RegisterPage'
-import { getVercelUrl } from '../utils'
+import { LoginPage, RegisterPage } from '../pages'
+import { generateRandomUser, getVercelUrl } from '../utils'
 
-// Function that generates random user information
-function generateRandomUser() {
-  const name = faker.person.firstName()
-  const username = faker.internet.userName()
-  const email = faker.internet.email()
-  const password = '2Wsx.2Wsx.' // Sabit şifre
+test.describe('Create Account', () => {
+  test('TC-01: should register', async ({ page }) => {
+    const registerPage = new RegisterPage(page, 'kunsthalte')
+    const { name, username, email, password } = generateRandomUser()
 
-  return { name, username, email, password }
-}
+    await registerPage.navigateToRegister()
+    await registerPage.register({ name, username, email, password })
 
-test('TC-0001 Happy flow', async ({ page }) => {
-  const registerPage = new RegisterPage(page)
-  const { name, username, email, password } = generateRandomUser()
+    await page.getByRole('button', { name }).click()
+    await page.getByTestId('button-logout').first().click()
+    await page.waitForTimeout(1000)
+  })
 
-  await registerPage.navigateToRegister()
-  await registerPage.register({ name, username, email, password })
+  test('TC-02: should not register with empty email', async ({ page }) => {
+    const registerPage = new RegisterPage(page, 'kunsthalte')
+    const { name, username, password } = generateRandomUser()
 
-  await page.getByRole('button', { name }).click() // Click on the button named "name"
-  await page.click('[data-testid*="button-logout"]') // Log out
-  await page.waitForTimeout(1000)
-})
+    await registerPage.navigateToRegister()
+    await registerPage.register({ name, username, email: '', password })
 
-test('TC-0002 Negative flow (Leave Email Field Blank)', async ({ page }) => {
-  const registerPage = new RegisterPage(page)
-  const { name, username, password } = generateRandomUser()
+    await expect(page.getByTestId('error-text-email')).toBeVisible()
+    await page.waitForTimeout(1000)
+  })
 
-  await registerPage.navigateToRegister()
-  await registerPage.register({ name, username, email: '', password }) // Leave email field blank
+  test('TC-03: should not register with invalid email', async ({ page }) => {
+    const registerPage = new RegisterPage(page, 'kunsthalte')
+    const { name, username, password } = generateRandomUser()
 
-  await expect(page.getByText('email is a required field')).toBeVisible() // Error message checking
-  await page.waitForTimeout(1000)
-})
+    await registerPage.navigateToRegister()
+    await registerPage.register({
+      name,
+      username,
+      email: 'invalid-email',
+      password,
+    })
 
-test('TC-0003 Negative flow (Invalid e-mail address)', async ({ page }) => {
-  const registerPage = new RegisterPage(page)
-  const { name, username, password } = generateRandomUser()
+    await expect(page.getByTestId('error-text-email')).toBeVisible()
+    await page.waitForTimeout(1000)
+  })
 
-  await registerPage.navigateToRegister()
-  await registerPage.register({
-    name,
-    username,
-    email: 'invalid-email',
-    password,
-  }) // Invalid email
+  test('TC-04: should not register with invalid password', async ({ page }) => {
+    const registerPage = new RegisterPage(page, 'kunsthalte')
+    const loginPage = new LoginPage(page)
+    const { name, username, email, password } = generateRandomUser()
 
-  await expect(page.getByText('email must be a valid email')).toBeVisible() // Error message checking
-  await page.waitForTimeout(1000)
-})
+    await registerPage.navigateToRegister()
+    await registerPage.register({ name, username, email, password })
 
-test('TC-0004 Negative flow (login with invalid information)', async ({
-  page,
-}) => {
-  const registerPage = new RegisterPage(page)
-  const { name, username, email, password } = generateRandomUser()
+    await page.goto(getVercelUrl('kunsthalte'))
+    await page.click('button:has-text("TR")')
 
-  await registerPage.navigateToRegister()
-  await registerPage.register({ name, username, email, password })
+    await page.getByRole('link', { name: 'Giriş yap' }).click()
 
-  await page.goto(getVercelUrl('kunsthalte'))
-  await page.click('button:has-text("TR")')
+    await loginPage.login(email, password + 'aaa')
 
-  await page.getByRole('link', { name: 'Giriş yap' }).click() // Go to login page
+    await page.getByTestId('button-submit-login').click()
 
-  await page.getByTestId('input-identifier').click()
-  await page.getByTestId('input-identifier').fill(email) // Nonexistent email
-
-  await page.getByTestId('input-password').click()
-  await page.getByTestId('input-password').fill(password + 'aaa') // Invalid password
-
-  await page.getByTestId('button-submit-login').click() // Click "Log in" button
-
-  await expect(
-    page.getByText('Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyiniz.'),
-  ).toBeVisible() // Error message checking
-  await page.waitForTimeout(1000)
-  page.close()
+    await expect(page.getByTestId('error-auth')).toBeVisible()
+    await page.waitForTimeout(1000)
+    page.close()
+  })
 })

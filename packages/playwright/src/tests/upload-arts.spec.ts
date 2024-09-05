@@ -1,8 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { expect, test } from '@playwright/test'
 
-import { CookieKey } from '@fc/types'
-
 import { PASSWORD, USERNAME } from '../constants'
 import {
   ArtsPage,
@@ -11,7 +9,7 @@ import {
   LoginPage,
   ProfilePage,
 } from '../pages'
-import { getVercelUrl } from '../utils'
+import { addCookies, getVercelUrl } from '../utils'
 
 // test.afterEach(async ({ page }) => {
 //   await page.close()
@@ -24,7 +22,7 @@ test.describe('Upload Arts', () => {
     await context.clearPermissions()
   })
 
-  test('TC01: should not upload art without logging in', async ({ page }) => {
+  test('TC-01: should not upload art without logging in', async ({ page }) => {
     const homePage = new HomePage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
 
@@ -35,7 +33,7 @@ test.describe('Upload Arts', () => {
     expect(artsPage.warning).toBeVisible()
   })
 
-  test('TC02: should upload art with logging in', async ({ page }) => {
+  test('TC-02: should upload art with logging in', async ({ page }) => {
     const loginPage = new LoginPage(page)
     const homePage = new HomePage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
@@ -51,7 +49,9 @@ test.describe('Upload Arts', () => {
     expect(artsPage.titleInput).toBeVisible()
   })
 
-  test('TC03: should fill required fields for upload art', async ({ page }) => {
+  test('TC-03: should fill required fields for upload art', async ({
+    page,
+  }) => {
     const loginPage = new LoginPage(page)
     const homePage = new HomePage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
@@ -74,7 +74,7 @@ test.describe('Upload Arts', () => {
     expect(artsPage.descriptionError).not.toBeEmpty()
   })
 
-  test('TC04: should display the uploaded image in the pending arts section', async ({
+  test('TC-04: should display the uploaded image in the pending arts section', async ({
     page,
   }) => {
     const loginPage = new LoginPage(page)
@@ -107,7 +107,7 @@ test.describe('Upload Arts', () => {
     expect(profilePage.firstArtImage).toHaveAttribute('srcset')
   })
 
-  test('TC05: should approve the uploaded image from the dashboard and display the approval on the profile', async ({
+  test('TC-05: should approve the uploaded image from the dashboard and display the approval on the profile', async ({
     page,
     context,
   }) => {
@@ -118,14 +118,7 @@ test.describe('Upload Arts', () => {
     const dashboardPage = new DashboardArtsPage(page)
 
     // Prevent push notification modal from appearing
-    await context.addCookies([
-      {
-        name: CookieKey.PUSH_NOTIFICATIONS_SUBSCRIBED,
-        value: 'true',
-        domain: new URL(dashboardPage.url).hostname,
-        path: '/',
-      },
-    ])
+    await addCookies(context, 'dashboard')
 
     await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
     await homePage.gotoLogin()
@@ -172,7 +165,7 @@ test.describe('Upload Arts', () => {
     await expect(page.getByText(`${artTitle}`)).toBeVisible()
   })
 
-  test('TC06: should reject the uploaded image from the dashboard and display the rejection on the profile', async ({
+  test('TC-06: should reject the uploaded image from the dashboard and display the rejection on the profile', async ({
     page,
     context,
   }) => {
@@ -183,14 +176,7 @@ test.describe('Upload Arts', () => {
     const dashboardPage = new DashboardArtsPage(page)
 
     // Prevent push notification modal from appearing
-    await context.addCookies([
-      {
-        name: CookieKey.PUSH_NOTIFICATIONS_SUBSCRIBED,
-        value: 'true',
-        domain: new URL(dashboardPage.url).hostname,
-        path: '/',
-      },
-    ])
+    await addCookies(context, 'dashboard')
 
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
