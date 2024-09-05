@@ -9,8 +9,8 @@ import { HiLanguage } from 'react-icons/hi2'
 import { IoPeopleOutline } from 'react-icons/io5'
 import { RiMoneyEuroCircleLine } from 'react-icons/ri'
 
+import { useCourseContext } from './CourseContext'
 import { CourseInfoItem } from './CourseInfoItem'
-import { CourseInfoProps } from './types'
 
 enum Languages {
   en = 'English',
@@ -18,8 +18,9 @@ enum Languages {
   nl = 'Nederlands',
 }
 
-export const CourseInfo: FC<CourseInfoProps> = ({ course }) => {
+export const CourseInfo: FC = () => {
   const { t } = useTranslation()
+  const { course, paidApplications } = useCourseContext()
 
   const totalWeeks = differenceInWeeks(
     new Date(course.endDate),
@@ -54,7 +55,9 @@ export const CourseInfo: FC<CourseInfoProps> = ({ course }) => {
     },
     {
       label: `${t('course.quota')}`,
-      value: `${course.quota}`,
+      value: paidApplications?.length
+        ? `${course.quota! - paidApplications.length} / ${course.quota}`
+        : `${course.quota}`,
       icon: <IoPeopleOutline />,
     },
   ]

@@ -20,7 +20,11 @@ export const joinSchema = () => {
   )
 
   return yup.object().shape({
-    name: yup.string().required(),
+    name: yup
+      .string()
+      .min(3)
+      .matches(/^[a-zA-Z\s]+$/, 'Only alphabetic characters allowed')
+      .required(),
     age: yup.number().required(),
     city: yup.string().required(),
     email: yup.string().email().required(),

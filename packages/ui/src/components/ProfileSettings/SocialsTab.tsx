@@ -35,7 +35,7 @@ const SocialRightElement = ({ url }: { url?: string }) => {
     <ButtonLink
       href={url ?? ''}
       target="_blank"
-      rel="noreferrer noopener"
+      rel="noopener noreferrer"
       leftIcon={<FaCircleArrowRight />}
       size={'lg'}
       colorScheme="black"

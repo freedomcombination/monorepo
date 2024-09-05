@@ -3,13 +3,15 @@ import { Donation } from '@fc/types'
 import { WTableProps } from '../../components'
 
 export const useDonationColumns = (): WTableProps<Donation>['columns'] => {
-  return {
-    email: { sortable: true },
-    createdAt: {
+  return [
+    { accessorKey: 'email', sortable: true },
+    {
+      accessorKey: 'createdAt',
       type: 'date',
       sortable: true,
     },
-    status: {
+    {
+      accessorKey: 'status',
       type: 'badge',
       componentProps: value => {
         return {
@@ -18,9 +20,10 @@ export const useDonationColumns = (): WTableProps<Donation>['columns'] => {
         }
       },
     },
-    amount: {
+    {
+      accessorKey: 'amount',
       sortable: true,
       transform: value => `${(value as number).toFixed(2)} €`,
     },
-  }
+  ]
 }
