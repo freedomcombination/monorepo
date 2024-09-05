@@ -20,7 +20,7 @@ import { CourseApplicationForm } from './CourseApplicationForm'
 import { CourseApplicationPayForm } from './CourseApplicationPayForm'
 import { useCourseContext } from './CourseContext'
 import { ProfileMenu } from '../Header/ProfileMenu'
-
+// markdown
 export const CourseRegister = () => {
   const { isLoading, myApplication, course } = useCourseContext()
   const { user, profile } = useAuthContext()

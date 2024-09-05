@@ -7,7 +7,7 @@ import { StrapiLocale } from './locale'
 import { Platform } from './platform'
 import { StrapiBase } from './strapi'
 import { Tag } from './tag'
-
+// markdown
 type CourseBase = StrapiBase & {
   title_en: string
   title_tr: string
