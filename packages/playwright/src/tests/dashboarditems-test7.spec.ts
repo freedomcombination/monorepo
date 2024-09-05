@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+
 import { getVercelUrl } from '../utils'
 
 test.beforeEach(async ({ page }) => {
@@ -11,16 +12,18 @@ test('TC-0001 About Us', async ({ page }) => {
   await page.click('a[href="/tr/about-us"]')
   await page.waitForLoadState('networkidle')
   const titleTR = await page.textContent('h2.chakra-heading')
-  expect(titleTR).toContain('Hakkımızda') //01. Does the About Us page open? (For TR)
+  expect(titleTR).toContain('Hakkımızda') // 01. Does the About Us page open? (For TR)
+
   const pageTitleTR = await page.title()
-  expect(pageTitleTR).toContain('Hakkımızda') // 02. Does the title match the page name? (For TR)
-  //Page title control could not be achieved using focus and blur events. !!!
+  // 02. Does the title match the page name? (For TR)
+  expect(pageTitleTR).toContain('Hakkımızda')
 
   await page.click('button:has-text("NL")')
   await page.getByRole('link', { name: 'Over Ons' }).first().click()
   await page.waitForLoadState('networkidle')
   const titleNL = await page.textContent('h2.chakra-heading')
-  expect(titleNL).toContain('Over ons') //03. Does the About Us page open? (For NL)
+  expect(titleNL).toContain('Over ons') // 03. Does the About Us page open? (For NL)
+
   const pageTitleNL = await page.title()
   expect(pageTitleNL).toContain('Over ons') // 04. Does the title match the page name? (For NL)
 
@@ -28,10 +31,12 @@ test('TC-0001 About Us', async ({ page }) => {
   await page.getByRole('link', { name: 'About Us' }).first().click()
   await page.waitForLoadState('networkidle')
   const titleEN = await page.textContent('h2.chakra-heading')
-  expect(titleEN).toContain('About Us') //05. Does the About Us page open? (For EN)
+  expect(titleEN).toContain('About Us') // 05. Does the About Us page open? (For EN)
+
   const pageTitleEN = await page.title()
   expect(pageTitleEN).toContain('About Us') // 06. Does the title match the page name? (For EN)
 })
+
 test('TC-0002 Contact', async ({ page }) => {
   await page.getByRole('link', { name: 'Contact' }).first().click()
   await page.waitForLoadState('networkidle')
@@ -40,11 +45,11 @@ test('TC-0002 Contact', async ({ page }) => {
     .first()
     .textContent()
 
-  expect(title).toContain('Contact') //01. Does the Contact page open?
+  expect(title).toContain('Contact') // 01. Does the Contact page open?
+
   const pageTitle = await page.title()
   await page.waitForTimeout(100)
-  expect(pageTitle).toContain('Contact') // 02. Does the title match the page name? //yapılamadı
-  //Page title control could not be achieved using focus and blur events. !!!
+  expect(pageTitle).toContain('Contact') // 02. Does the title match the page name?
 
   await page.getByPlaceholder('Your Full Name').click()
   await page.getByPlaceholder('E-mail').click()
@@ -55,7 +60,7 @@ test('TC-0002 Contact', async ({ page }) => {
     '[data-testid="error-text-fullname"]',
   )
   const isDivVisible = await fullNameErrorMessage.isVisible()
-  await expect(isDivVisible).toBe(true) // 03. Is Your Full Name a required field? // bakılacak
+  await expect(isDivVisible).toBe(true) // 03. Is Your Full Name a required field?
 
   const requiredTextEmail = await page.locator(
     '[data-testid="error-text-email"]',
@@ -72,6 +77,7 @@ test('TC-0002 Contact', async ({ page }) => {
 
   const isTextVisibleEmailError = await requiredTextEmailError.isVisible()
   await expect(isTextVisibleEmailError).toBe(true)
+
   const testEmail = 'test@example.com'
   await emailInput.fill(testEmail)
   const emailValue = await emailInput.inputValue()
@@ -79,6 +85,7 @@ test('TC-0002 Contact', async ({ page }) => {
 
   const isValidEmail = emailRegex.test(emailValue)
   expect(isValidEmail).toBe(true) // 05. Assert that the email is valid
+
   const requiredTextMessage = await page.locator(
     '[data-testid="error-text-message"]',
   )
@@ -113,8 +120,10 @@ test('TC-0002 Contact', async ({ page }) => {
 
   const YoutubeElement = page.getByLabel('Youtube').first().getAttribute('href')
   expect(YoutubeElement).not.toBeNull() // 12. When clicking on the Youtube icon, the user should be directed to another page.
+
   await page.click('button:has-text("EN")')
 })
+
 test('TC-0003 Donate', async ({ page }) => {
   await page.getByRole('link', { name: 'Donate' }).click()
 
@@ -123,10 +132,10 @@ test('TC-0003 Donate', async ({ page }) => {
     .first()
     .textContent()
   await page.waitForTimeout(100)
-  expect(title).toContain('Donate') //01. Does the Donate page open?
+  expect(title).toContain('Donate') // 01. Does the Donate page open?
+
   const pageTitle = await page.title()
   expect(pageTitle).toContain('Donate') // 02. Does the title match the page name?
-  //Page title control could not be achieved using focus and blur events. !!!!
 
   await page.getByRole('button', { name: '€10', exact: true }).click()
   const inputElement = page.locator('.chakra-numberinput input')
@@ -144,6 +153,7 @@ test('TC-0003 Donate', async ({ page }) => {
     .locator('.chakra-numberinput input')
     .inputValue()
   expect(chakraNumberInputDivvalue).toContain('11')
+
   await page.locator('.css-1jj9yua > div:nth-child(2)').click()
 
   const inputLocator = page.locator('.chakra-numberinput input')
@@ -157,13 +167,14 @@ test('TC-0003 Donate', async ({ page }) => {
 
   const isTextVisibleName = await requiredTextName.isVisible()
   await expect(isTextVisibleName).toBe(true) // 05. Is Name a required field?
+
   await page.getByPlaceholder('Name').fill('Mustafa Budak')
   const requiredTextEmail = await page.locator('text=email is a required field')
 
   const isTextVisibleEmail = await requiredTextEmail.isVisible()
   await expect(isTextVisibleEmail).toBe(true) // 06. Is E-mail a required field?
-  const emailInput = await page.locator('input[name="email"]')
 
+  const emailInput = await page.locator('input[name="email"]')
   const testEmailError = 'test_example.com'
   await emailInput.fill(testEmailError)
   const requiredTextEmailError = await page.locator(
@@ -179,6 +190,7 @@ test('TC-0003 Donate', async ({ page }) => {
 
   const isValidEmail = emailRegex.test(emailValue)
   expect(isValidEmail).toBe(true) // 07. Assert that the email is valid
+
   await Promise.all([page.getByRole('button', { name: 'Donate €' }).click()])
   const newUrl = page.url()
   expect(isValidEmail).toBe(newUrl.length > 0) // 08. When the donate button is clicked, the user should be directed to the payment page.
