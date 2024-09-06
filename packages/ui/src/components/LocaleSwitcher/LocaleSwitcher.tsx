@@ -37,6 +37,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
         return !isScrolled && isDark ? (
           <Button
             key={code}
+            aria-label={code}
             px={2}
             onClick={() => handleChangeLanguage(code)}
             colorScheme={
@@ -55,6 +56,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
         ) : (
           <Button
             key={code}
+            aria-label={code}
             px={2}
             onClick={() => handleChangeLanguage(code)}
             colorScheme={

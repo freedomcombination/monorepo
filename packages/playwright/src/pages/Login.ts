@@ -18,7 +18,7 @@ export class LoginPage {
     this.passwordInput = page.getByTestId('input-password')
     this.submitButton = page.getByTestId('button-submit-login')
 
-    this.loginButton = page.getByTestId('button-login')
+    this.loginButton = page.getByTestId('button-header-login')
   }
 
   async login(username = USERNAME, password = PASSWORD) {

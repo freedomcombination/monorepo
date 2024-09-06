@@ -25,6 +25,7 @@ export const HeaderNav: FC<HeaderNavProps> = ({
       <ButtonLink
         href={'/donation'}
         variant={'outline'}
+        data-testid={'link-desktop-donation'}
         size={'sm'}
         color={isDark && !isScrolled ? 'whiteAlpha.900' : 'gray.700'}
         borderColor={isDark && !isScrolled ? 'whiteAlpha.900' : 'gray.700'}

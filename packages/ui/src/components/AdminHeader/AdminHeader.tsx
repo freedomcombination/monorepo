@@ -147,7 +147,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
         <CreateModelButton />
         {!user && (
           <Button
-            data-testid="button-login"
+            data-testid="button-header-login"
             onClick={openAuthModal}
             colorScheme={'blue'}
             leftIcon={<FaUser />}
