@@ -1,6 +1,6 @@
 import { Page, expect, test } from '@playwright/test'
 
-import { PASSWORD, USERNAME } from '../constants'
+import { PASSWORD } from '../constants'
 import { LoginPage } from '../pages'
 import {
   addCookies,
@@ -11,10 +11,11 @@ import {
 
 const { username } = generateRandomUser()
 
+const TEMP_USERNAME = 'temp'
 const TEMP_PASSWORD = '1234567At'
 
 // TODO: Move this function to LoginPage.ts page object
-const login = async (page: Page, username?: string, password?: string) => {
+const login = async (page: Page, username: string, password: string) => {
   const loginPage = new LoginPage(page)
 
   // TODO: Add testid to the link
@@ -35,6 +36,7 @@ const logout = async (page: Page) => {
   await page.getByTestId('button-profile-menu').first().click()
   await page.getByTestId('button-logout')?.first().click()
   await page.waitForLoadState('networkidle')
+  await page.waitForSelector('[data-testid="button-profile-menu"]')
 }
 
 // TODO: Move this function to Profile.ts page object
@@ -56,45 +58,14 @@ test.afterEach(async ({ page }) => {
 })
 
 test.describe('Profile Editing Tests', () => {
-  test('TC-01: should update password and display new credentials', async ({
-    page,
-    context,
-  }) => {
-    await addCookies(context, 'kunsthalte')
-    const URL = getVercelUrl('kunsthalte')
-
-    await page.goto(URL)
-
-    await login(page)
-    await gotoProfile(page)
-
-    await page.getByTestId('tab-security').click()
-
-    // TODO: Updating the authenticated user password is not recommended
-    // Because it will affect the other tests when it fails or runs in parallel
-    // So, use a secondary account to update the password
-    await updatePassword(page, PASSWORD, TEMP_PASSWORD)
-
-    await logout(page)
-
-    // Login with the new password
-    await login(page, USERNAME, TEMP_PASSWORD)
-    await expect(page).toHaveURL(URL)
-
-    // Restore the password
-    await gotoProfile(page)
-    await page.getByTestId('tab-security').click()
-    await updatePassword(page, TEMP_PASSWORD, PASSWORD)
-  })
-
-  test('TC-02: should not update password with invalid input', async ({
+  test('TC-01: should not update password with invalid input', async ({
     page,
     context,
   }) => {
     await addCookies(context, 'kunsthalte')
     await page.goto(getVercelUrl('kunsthalte'))
 
-    await login(page)
+    await login(page, TEMP_USERNAME, PASSWORD)
     await gotoProfile(page)
     await page.getByTestId('tab-security').click()
 
@@ -106,11 +77,11 @@ test.describe('Profile Editing Tests', () => {
   })
 
   // test('User adds social address, User can display new credentials', async ({
-  test('TC-03: should update social address', async ({ page, context }) => {
+  test('TC-02: should update social address', async ({ page, context }) => {
     await addCookies(context, 'kunsthalte')
     await page.goto(getVercelUrl('kunsthalte'))
 
-    await login(page)
+    await login(page, TEMP_USERNAME, PASSWORD)
     await gotoProfile(page)
     await page.getByTestId('tab-socials').click()
 
@@ -129,14 +100,14 @@ test.describe('Profile Editing Tests', () => {
     await checkExternalLink(socialLinkLocator, LINKEDIN_URL)
   })
 
-  test('TC-04: should not add invalid social address', async ({
+  test('TC-03: should not add invalid social address', async ({
     page,
     context,
   }) => {
     await addCookies(context, 'kunsthalte')
     await page.goto(getVercelUrl('kunsthalte'))
 
-    await login(page)
+    await login(page, TEMP_USERNAME, PASSWORD)
     await gotoProfile(page)
     await page.getByTestId('tab-socials').click()
 
@@ -146,5 +117,36 @@ test.describe('Profile Editing Tests', () => {
     await page.getByRole('button', { name: 'Save' }).click()
 
     await expect(page.getByTestId('error-text-linkedin')).toBeVisible()
+  })
+
+  test('TC-04: should update password and display new credentials', async ({
+    page,
+    context,
+  }) => {
+    await addCookies(context, 'kunsthalte')
+    const URL = getVercelUrl('kunsthalte')
+
+    await page.goto(URL)
+
+    await login(page, TEMP_USERNAME, PASSWORD)
+    await gotoProfile(page)
+
+    await page.getByTestId('tab-security').click()
+
+    // TODO: Updating the authenticated user password is not recommended
+    // Because it will affect the other tests when it fails or runs in parallel
+    // So, use a secondary account to update the password
+    await updatePassword(page, PASSWORD, TEMP_PASSWORD)
+
+    await logout(page)
+
+    // Login with the new password
+    await login(page, TEMP_USERNAME, TEMP_PASSWORD)
+    await expect(page).toHaveURL(URL)
+
+    // Restore the password
+    await gotoProfile(page)
+    await page.getByTestId('tab-security').click()
+    await updatePassword(page, TEMP_PASSWORD, PASSWORD)
   })
 })
