@@ -1,7 +1,10 @@
 import { FaLinkedin, FaXTwitter, FaWhatsapp, FaYoutube } from 'react-icons/fa6'
 
-export const foundation = [
+import { SocialLink } from './types'
+
+export const foundation: SocialLink[] = [
   {
+    id: 'twitter',
     label: 'X',
     icon: FaXTwitter,
     link: {
@@ -11,6 +14,7 @@ export const foundation = [
     },
   },
   {
+    id: 'whatsapp',
     label: 'WhatsApp',
     icon: FaWhatsapp,
     link: {
@@ -20,6 +24,7 @@ export const foundation = [
     },
   },
   {
+    id: 'linkedin',
     label: 'LinkedIn',
     icon: FaLinkedin,
     link: {
@@ -29,6 +34,7 @@ export const foundation = [
     },
   },
   {
+    id: 'youtube',
     label: 'YouTube',
     icon: FaYoutube,
     link: {

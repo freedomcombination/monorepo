@@ -93,7 +93,11 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
                   justifyContent="start"
                   key={item.link}
                   ml={8}
-                  {...(isExternal && { isExternal, target: '_blank' })}
+                  {...(isExternal && {
+                    isExternal,
+                    target: '_blank',
+                    rel: 'noopener noreferrer',
+                  })}
                   leftIcon={item.icon}
                   size="sm"
                   variant="ghost"
