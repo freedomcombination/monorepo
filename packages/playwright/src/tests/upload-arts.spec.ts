@@ -5,7 +5,7 @@ import { PASSWORD, USERNAME } from '../constants'
 import {
   ArtsPage,
   DashboardArtsPage,
-  HomePage,
+  LayoutPage,
   LoginPage,
   ProfilePage,
 } from '../pages'
@@ -23,11 +23,11 @@ test.describe('Upload Arts', () => {
   })
 
   test('TC-01: should not upload art without logging in', async ({ page }) => {
-    const homePage = new HomePage(page, 'kunsthalte')
+    const layoutPage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
 
-    await homePage.gotoHomePage()
-    await homePage.gotoArtsPage()
+    await layoutPage.gotoHomePage()
+    await layoutPage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
     expect(artsPage.warning).toBeVisible()
@@ -35,14 +35,14 @@ test.describe('Upload Arts', () => {
 
   test('TC-02: should upload art with logging in', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new HomePage(page, 'kunsthalte')
+    const homePage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
 
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.gotoArtsPage()
+    await homePage.menu.desktop.arts.click()
     await page.waitForURL(`${homePage.url}/club/arts`)
     await artsPage.clickUploadArtButton()
 
@@ -53,14 +53,14 @@ test.describe('Upload Arts', () => {
     page,
   }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new HomePage(page, 'kunsthalte')
+    const homePage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
 
     await homePage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.gotoArtsPage()
+    await homePage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
     await artsPage.uploadImage()
@@ -78,7 +78,7 @@ test.describe('Upload Arts', () => {
     page,
   }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new HomePage(page, 'kunsthalte')
+    const homePage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
     const profilePage = new ProfilePage(page)
 
@@ -87,7 +87,7 @@ test.describe('Upload Arts', () => {
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.gotoArtsPage()
+    await homePage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
     await artsPage.createArt()
@@ -112,7 +112,7 @@ test.describe('Upload Arts', () => {
     context,
   }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new HomePage(page, 'kunsthalte')
+    const homePage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
     const profilePage = new ProfilePage(page)
     const dashboardPage = new DashboardArtsPage(page)
@@ -125,7 +125,7 @@ test.describe('Upload Arts', () => {
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.gotoArtsPage()
+    await homePage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
     const artTitle = faker.internet.userName().toString()
@@ -170,7 +170,7 @@ test.describe('Upload Arts', () => {
     context,
   }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new HomePage(page, 'kunsthalte')
+    const homePage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
     const profilePage = new ProfilePage(page)
     const dashboardPage = new DashboardArtsPage(page)
@@ -182,7 +182,7 @@ test.describe('Upload Arts', () => {
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.gotoArtsPage()
+    await homePage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
     const artTitle = faker.internet.userName().toString()

@@ -24,6 +24,7 @@ export type HeaderMobileNavItemProps = HeaderNavItemProps
 export interface MenuTypeItemProps {
   item: MenuType
   isDark?: boolean
+  isMobile?: boolean
 }
 
 export interface HeaderNavProps {

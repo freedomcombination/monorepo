@@ -35,6 +35,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
       <Wrapper>
         <ButtonLink
           href={loginHref}
+          data-testid="button-header-login"
           size="sm"
           isLoading={isLoading}
           variant={!isScrolled && isDark ? 'solid' : 'outline'}
