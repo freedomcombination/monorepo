@@ -11,12 +11,33 @@ import {
 
 const { username } = generateRandomUser()
 
+const TEMP_PASSWORD = '1234567At'
+
+// TODO: Move this function to LoginPage.ts page object
+const login = async (page: Page, username?: string, password?: string) => {
+  const loginPage = new LoginPage(page)
+
+  // TODO: Add testid to the link
+  await page.getByRole('link', { name: 'Sign in' }).click()
+  await page.waitForLoadState('networkidle')
+  await loginPage.login(username, password)
+}
+
+// TODO: Move this function to Layout.ts page object
 const gotoProfile = async (page: Page) => {
   await page.getByTestId('button-profile-menu').first().click()
   await page.getByTestId('link-profile').first().click()
   await page.waitForLoadState('networkidle')
 }
 
+// TODO: Move this function to Layout.ts page object
+const logout = async (page: Page) => {
+  await page.getByTestId('button-profile-menu').first().click()
+  await page.getByTestId('button-logout')?.first().click()
+  await page.waitForLoadState('networkidle')
+}
+
+// TODO: Move this function to Profile.ts page object
 const updatePassword = async (
   page: Page,
   currentPassword: string,
@@ -29,23 +50,6 @@ const updatePassword = async (
   await page.getByRole('button', { name: 'Change Password' }).click()
   await page.waitForLoadState('networkidle')
 }
-
-const login = async (page: Page, username?: string, password?: string) => {
-  const loginPage = new LoginPage(page)
-
-  // TODO: Add testid to the link
-  await page.getByRole('link', { name: 'Sign in' }).click()
-  await page.waitForLoadState('networkidle')
-  await loginPage.login(username, password)
-}
-
-const logout = async (page: Page) => {
-  await page.getByTestId('button-profile-menu').first().click()
-  await page.getByTestId('button-logout')?.first().click()
-  await page.waitForLoadState('networkidle')
-}
-
-const TEMP_PASSWORD = '1234567At'
 
 test.afterEach(async ({ page }) => {
   await page.close()
@@ -136,7 +140,9 @@ test.describe('Profile Editing Tests', () => {
     await gotoProfile(page)
     await page.getByTestId('tab-socials').click()
 
-    await page.getByTestId('input-linkedin').fill('123')
+    const INVALID_URL = 'invalid-url'
+    await page.getByTestId('input-linkedin').fill(INVALID_URL)
+    // TODO: Add testid to the button
     await page.getByRole('button', { name: 'Save' }).click()
 
     await expect(page.getByTestId('error-text-linkedin')).toBeVisible()
