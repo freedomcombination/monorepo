@@ -42,7 +42,7 @@ const sendArtCreatedEmail = async art => {
     to: editorEmails,
     from: process.env.SMTP_USERNAME,
     subject: `New Art: ${title} - ${name}`,
-    html: emailTemplates.renderArtCreated(art),
+    html: await emailTemplates.renderArtCreated(art),
   })
 }
 
