@@ -22,7 +22,7 @@ import {
 } from '@fc/types'
 
 import { I18nNamespaces } from '../../@types/i18next'
-//  markdown
+
 export const useDefaultValues = <T extends StrapiModel>(
   model?: T | null,
   fields?: FormFields<T>,
@@ -70,6 +70,7 @@ export const useDefaultValues = <T extends StrapiModel>(
         case 'createdAt':
         case 'updatedAt':
         case 'publishedAt':
+        case 'lastRegisterDate':
           if (field.type === 'date') {
             defaults[field.name] = dateFields[field.name as string][0]
           } else if (field.type === 'datetime-local') {

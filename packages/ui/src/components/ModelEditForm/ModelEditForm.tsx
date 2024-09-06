@@ -74,7 +74,7 @@ import { ModelMedia } from '../ModelMedia'
 import { ModelSelect, Option } from '../ModelSelect'
 import { SendNotificationButton } from '../SendNotificationButton'
 import { WConfirm, WConfirmProps } from '../WConfirm'
-// markdown working file
+
 export const ModelEditForm = <T extends StrapiModel>({
   endpoint,
   model,
