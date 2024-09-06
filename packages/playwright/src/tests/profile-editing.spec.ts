@@ -1,159 +1,144 @@
-import { expect, test } from '@playwright/test'
+import { Page, expect, test } from '@playwright/test'
 
-import { getVercelUrl } from '../utils'
+import { PASSWORD, USERNAME } from '../constants'
+import { LoginPage } from '../pages'
+import {
+  addCookies,
+  checkExternalLink,
+  generateRandomUser,
+  getVercelUrl,
+} from '../utils'
 
-// A function to generate random numbers
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max)
+const { username } = generateRandomUser()
+
+const gotoProfile = async (page: Page) => {
+  await page.getByTestId('button-profile-menu').first().click()
+  await page.getByTestId('link-profile').first().click()
+  await page.waitForLoadState('networkidle')
 }
 
-// A function to generate random usernames and email addresses
-function generateRandomUser() {
-  const randomNumber = getRandomInt(10000) // Generates a random number between 0 and 9999
-  const randomUser = `testuser${randomNumber}`
-  const randomEmail = `${randomUser}@gmail.com`
-
-  return { randomUser, randomEmail }
+const updatePassword = async (
+  page: Page,
+  currentPassword: string,
+  newPassword: string,
+) => {
+  await page.getByTestId('input-currentPassword').fill(currentPassword)
+  await page.getByTestId('input-password').fill(newPassword)
+  await page.getByTestId('input-passwordConfirmation').fill(newPassword)
+  // TODO: Add testid to the button
+  await page.getByRole('button', { name: 'Change Password' }).click()
+  await page.waitForLoadState('networkidle')
 }
-const { randomUser, randomEmail } = generateRandomUser()
+
+const login = async (page: Page, username?: string, password?: string) => {
+  const loginPage = new LoginPage(page)
+
+  // TODO: Add testid to the link
+  await page.getByRole('link', { name: 'Sign in' }).click()
+  await page.waitForLoadState('networkidle')
+  await loginPage.login(username, password)
+}
+
+const logout = async (page: Page) => {
+  await page.getByTestId('button-profile-menu').first().click()
+  await page.getByTestId('button-logout')?.first().click()
+  await page.waitForLoadState('networkidle')
+}
+
+const TEMP_PASSWORD = '1234567At'
+
+test.afterEach(async ({ page }) => {
+  await page.close()
+})
 
 test.describe('Profile Editing Tests', () => {
-  test('User updates password, User can display new credentials', async ({
+  test('TC-01: should update password and display new credentials', async ({
     page,
+    context,
   }) => {
-    await page.goto(getVercelUrl('kunsthalte'))
-    await page.getByRole('button', { name: 'EN' }).click()
-    await page.getByRole('link', { name: 'Sign in' }).click()
-    await page.getByRole('link', { name: 'Sign up' }).click()
-    await page.getByPlaceholder('Name', { exact: true }).click()
-    await page.getByPlaceholder('Name', { exact: true }).fill('TestUser')
-    await page.getByPlaceholder('Username').click()
-    await page.getByPlaceholder('Username').fill(randomUser)
-    await page.getByPlaceholder('E-mail').click()
-    await page.getByPlaceholder('E-mail').fill(randomEmail)
-    await page.getByPlaceholder('Password').click()
-    await page.getByPlaceholder('Password').fill('Test?123')
-    await page.getByRole('button', { name: 'Create Account' }).click()
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Profile' }).click()
+    await addCookies(context, 'kunsthalte')
+    const URL = getVercelUrl('kunsthalte')
+
+    await page.goto(URL)
+
+    await login(page)
+    await gotoProfile(page)
+
     await page.getByTestId('tab-security').click()
-    await page.getByPlaceholder('currentPassword').click()
-    await page.getByPlaceholder('currentPassword').fill('Test?123')
-    await page.getByPlaceholder('Password', { exact: true }).click()
-    await page.getByPlaceholder('Password', { exact: true }).fill('1234567At')
-    await page.getByPlaceholder('passwordConfirmation').click()
-    await page.getByPlaceholder('passwordConfirmation').fill('1234567At')
-    await page.getByRole('button', { name: 'Change Password' }).click()
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Sign Out' }).click()
-    await page.getByRole('link', { name: 'Sign in' }).click()
-    await page.getByTestId('input-identifier').click()
-    await page.getByTestId('input-identifier').fill(randomEmail)
-    await page.getByTestId('input-password').click()
-    await page.getByTestId('input-password').fill('1234567At')
-    await page.getByTestId('button-submit-login').click()
-    await expect(page).toHaveURL('https://kunsthalte.vercel.app/')
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Sign Out' }).click()
-    await page.waitForTimeout(1000)
+
+    // TODO: Updating the authenticated user password is not recommended
+    // Because it will affect the other tests when it fails or runs in parallel
+    // So, use a secondary account to update the password
+    await updatePassword(page, PASSWORD, TEMP_PASSWORD)
+
+    await logout(page)
+
+    // Login with the new password
+    await login(page, USERNAME, TEMP_PASSWORD)
+    await expect(page).toHaveURL(URL)
+
+    // Restore the password
+    await gotoProfile(page)
+    await page.getByTestId('tab-security').click()
+    await updatePassword(page, TEMP_PASSWORD, PASSWORD)
   })
 
-  test('User cannot update password with invalid input', async ({ page }) => {
-    await page.goto(getVercelUrl('kunsthalte'))
-    await page.getByRole('button', { name: 'EN' }).click()
-    await page.getByRole('link', { name: 'Sign in' }).click()
-    await page.getByTestId('input-identifier').click()
-    await page.getByTestId('input-identifier').fill(randomEmail)
-    await page.getByTestId('input-password').click()
-    await page.getByTestId('input-password').fill('1234567At')
-    await page.getByTestId('button-submit-login').click()
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.waitForTimeout(1000)
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Profile' }).click()
-    await page.getByTestId('tab-security').click()
-    await page.getByPlaceholder('currentPassword').click()
-    await page.getByPlaceholder('currentPassword').fill('1234567At')
-    await page.getByPlaceholder('Password', { exact: true }).click()
-    await page.getByPlaceholder('Password', { exact: true }).fill('1')
-    await page.getByPlaceholder('passwordConfirmation').click()
-    await page.getByPlaceholder('passwordConfirmation').fill('1')
-    await page.getByRole('button', { name: 'Change Password' }).click()
-    await expect(page.getByText('At least 8 characters long')).toBeVisible()
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Sign Out' }).click()
-    await page.waitForTimeout(1000)
-  })
-
-  test('User adds social address, User can display new credentials', async ({
+  test('TC-02: should not update password with invalid input', async ({
     page,
+    context,
   }) => {
+    await addCookies(context, 'kunsthalte')
     await page.goto(getVercelUrl('kunsthalte'))
-    await page.getByRole('link', { name: 'Sign in' }).click()
-    await page.getByTestId('input-identifier').click()
-    await page.getByTestId('input-identifier').fill(randomEmail)
-    await page.getByTestId('input-password').click()
-    await page.getByTestId('input-password').fill('1234567At')
-    await page.getByTestId('button-submit-login').click()
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Profile' }).click()
-    await page.getByTestId('tab-socials').click()
-    await page.getByPlaceholder('linkedin').click()
-    await page
-      .getByPlaceholder('linkedin')
-      .fill('https://www.linkedin.com/in/williamhgates/')
-    await page.evaluate(() => {
-      window.scrollTo(0, document.body.scrollHeight)
-    })
-    await page.getByRole('button', { name: 'Save' }).click()
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Sign Out' }).click()
-    await page.getByRole('link', { name: 'Sign in' }).click()
-    await page.getByTestId('input-identifier').click()
-    await page.getByTestId('input-identifier').fill(randomEmail)
-    await page.getByTestId('input-password').click()
-    await page.getByTestId('input-password').fill('1234567At')
-    await page.getByTestId('button-submit-login').click()
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Profile' }).click()
-    const sosyalLinkLocater = page.getByText('https://www.linkedin.com/in/')
-    const href = await sosyalLinkLocater.getAttribute('href')
-    expect(href).toBe('https://www.linkedin.com/in/')
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Sign Out' }).click()
-    await page.waitForTimeout(1000)
+
+    await login(page)
+    await gotoProfile(page)
+    await page.getByTestId('tab-security').click()
+
+    const INVALID_PASSWORD = '1'
+
+    await updatePassword(page, PASSWORD, INVALID_PASSWORD)
+
+    await expect(page.getByTestId('error-text-password')).toBeVisible()
   })
 
-  test('User cannot add invalid social address', async ({ page }) => {
+  // test('User adds social address, User can display new credentials', async ({
+  test('TC-03: should update social address', async ({ page, context }) => {
+    await addCookies(context, 'kunsthalte')
     await page.goto(getVercelUrl('kunsthalte'))
-    await page.getByRole('button', { name: 'EN' }).click()
-    await page.getByRole('link', { name: 'Sign in' }).click()
-    await page.getByTestId('input-identifier').click()
-    await page.getByTestId('input-identifier').fill(randomEmail)
-    await page.getByTestId('input-password').click()
-    await page.getByTestId('input-password').fill('1234567At')
-    await page.getByTestId('button-submit-login').click()
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.getByRole('button', { name: 'TestUser' }).click()
-    await page.getByRole('menuitem', { name: 'Profile' }).click()
+
+    await login(page)
+    await gotoProfile(page)
     await page.getByTestId('tab-socials').click()
-    await page.getByPlaceholder('linkedin').click()
-    await page.waitForTimeout(1000)
-    await page.getByPlaceholder('linkedin').fill('123')
-    await page.evaluate(() => {
-      window.scrollTo(0, document.body.scrollHeight)
-    })
+
+    // Use random username to prevent the save button being disabled
+    const LINKEDIN_URL = 'https://www.linkedin.com/in/' + username
+
+    await page.getByTestId('input-linkedin').fill(LINKEDIN_URL)
+    // TODO: Add testid to the button
     await page.getByRole('button', { name: 'Save' }).click()
-    await expect(page.getByText('linkedin must be a valid URL')).toBeVisible()
-    await page.waitForTimeout(1000)
-    page.close()
+    await page.waitForLoadState('networkidle')
+
+    // TODO: Add testid to the social links
+    const socialLinkLocator = page
+      .locator('.chakra-input__right-element a')
+      .first()
+    await checkExternalLink(socialLinkLocator, LINKEDIN_URL)
+  })
+
+  test('TC-04: should not add invalid social address', async ({
+    page,
+    context,
+  }) => {
+    await addCookies(context, 'kunsthalte')
+    await page.goto(getVercelUrl('kunsthalte'))
+
+    await login(page)
+    await gotoProfile(page)
+    await page.getByTestId('tab-socials').click()
+
+    await page.getByTestId('input-linkedin').fill('123')
+    await page.getByRole('button', { name: 'Save' }).click()
+
+    await expect(page.getByTestId('error-text-linkedin')).toBeVisible()
   })
 })

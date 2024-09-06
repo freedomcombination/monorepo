@@ -15,18 +15,14 @@ export const getVercelUrl = (site: Site) => {
 }
 
 export const checkLink = async (locator: Locator, link: string) => {
-  const href = await locator.getAttribute('href')
-  expect(href).toContain(link)
+  await expect(locator).toHaveAttribute('href', link)
 }
 
 export const checkExternalLink = async (locator: Locator, link: string) => {
   await checkLink(locator, link)
 
-  const target = await locator.getAttribute('target')
-  expect(target).toBe('_blank')
-
-  const rel = await locator.getAttribute('rel')
-  expect(rel).toBe('noopener noreferrer')
+  await expect(locator).toHaveAttribute('target', '_blank')
+  await expect(locator).toHaveAttribute('rel', 'noopener noreferrer')
 }
 
 export const addCookies = async (context: BrowserContext, site: Site) => {
