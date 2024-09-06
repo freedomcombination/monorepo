@@ -147,6 +147,7 @@ export const Caps = forwardRef<CapsProps, 'div'>(
                 }px`}
                 spacing={`${dimensions.font / 2}px`}
                 userSelect={'none'}
+                justify={'center'}
               >
                 {title && (
                   <Text
@@ -180,8 +181,6 @@ export const Caps = forwardRef<CapsProps, 'div'>(
                   fontSize={`${dimensions.font}px`}
                   overflow={'hidden'}
                   whiteSpace={'pre-wrap'}
-                  flexGrow={1}
-                  alignItems={'center'}
                 >
                   {text}
                 </Text>

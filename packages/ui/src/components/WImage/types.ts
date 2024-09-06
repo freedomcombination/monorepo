@@ -9,4 +9,5 @@ export type WImageProps = {
   hasZoom?: boolean
   objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'
   unoptimized?: boolean
+  testId?: string
 } & Omit<ChakraImageProps, 'objectFit' | 'src' | 'fill'>

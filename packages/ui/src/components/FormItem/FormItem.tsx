@@ -15,6 +15,7 @@ import {
   useBoolean,
   useMergeRefs,
 } from '@chakra-ui/react'
+import { upperFirst } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { TbInfoCircle } from 'react-icons/tb'
@@ -88,6 +89,7 @@ export const FormItem: FormItemComponent = forwardRef(
         )}
         <InputGroup>
           <Tag
+            data-testid={`input-${name}`}
             ref={ref}
             id={name}
             type={type === 'password' ? (isOpen ? 'text' : 'password') : type}
@@ -109,6 +111,7 @@ export const FormItem: FormItemComponent = forwardRef(
           {type === 'password' && (
             <InputRightElement h={'full'}>
               <IconButton
+                data-testid={`toggle-password`}
                 variant="link"
                 color={'inherit'}
                 aria-label={isOpen ? 'Mask password' : 'Reveal password'}
@@ -118,7 +121,9 @@ export const FormItem: FormItemComponent = forwardRef(
             </InputRightElement>
           )}
         </InputGroup>
-        <FormErrorMessage>{errorMessage}</FormErrorMessage>
+        <FormErrorMessage data-testid={`error-text-${name}`}>
+          {errorMessage && upperFirst(errorMessage)}
+        </FormErrorMessage>
         {helperText && (
           <FormHelperText color={'orange.400'}>{helperText}</FormHelperText>
         )}

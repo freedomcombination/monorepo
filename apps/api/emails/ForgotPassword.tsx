@@ -22,7 +22,7 @@ const ForgotPassword: FC<ForgotPasswordProps> = ({ site, locale, code }) => {
   return (
     <EmailProvider>
       <SiteLayout site={site} preview={t('forgot.preview')}>
-        <Section>
+        <Section style={{ padding: '20px' }}>
           <Heading>{t('forgot.heading')}</Heading>
           <Text>{t('forgot.message')}</Text>
           <EmailButton style={{ backgroundColor: color }} href={resetLink}>

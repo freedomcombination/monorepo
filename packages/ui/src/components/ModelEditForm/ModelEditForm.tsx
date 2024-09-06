@@ -18,6 +18,7 @@ import {
   Wrap,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { upperFirst } from 'lodash'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -34,7 +35,10 @@ import {
 } from 'react-icons/md'
 import { InferType } from 'yup'
 
-import { endpointsWithPublicationState } from '@fc/config'
+import {
+  endpointsWithApprovalStatus,
+  endpointsWithPublicationState,
+} from '@fc/config'
 import {
   useApproveModel,
   useCreateModelMutation,
@@ -318,7 +322,7 @@ export const ModelEditForm = <T extends StrapiModel>({
   }
 
   const showApproveButton =
-    endpointsWithPublicationState.includes(endpoint) &&
+    endpointsWithApprovalStatus.includes(endpoint) &&
     translatableModel.approvalStatus !== 'approved'
 
   const [title, message, roles, profiles] = watch([
@@ -345,6 +349,9 @@ export const ModelEditForm = <T extends StrapiModel>({
           >
             {Object.values(fields || {})?.map((field, index) => {
               const label = t(field.name as keyof I18nNamespaces['common'])
+              const errorMessage =
+                errors[field.name]?.message &&
+                upperFirst(errors[field.name]?.message as string)
 
               if (field.type === 'file') {
                 return (
@@ -369,9 +376,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                       isChangingMedia={isChangingImage[field.name as string]}
                       toggleChangingMedia={() => toggleChangingMedia(field)}
                     />
-                    <FormErrorMessage>
-                      {errors[field.name as string]?.message as string}
-                    </FormErrorMessage>
+                    <FormErrorMessage>{errorMessage}</FormErrorMessage>
                   </FormControl>
                 )
               }
@@ -401,9 +406,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                       {isEditing && field.blockEdit && 'Blocked from editing'}
                     </FormHelperText>
 
-                    <FormErrorMessage>
-                      {errors[field.name as string]?.message as string}
-                    </FormErrorMessage>
+                    <FormErrorMessage>{errorMessage}</FormErrorMessage>
                   </FormControl>
                 )
               }
@@ -498,6 +501,7 @@ export const ModelEditForm = <T extends StrapiModel>({
         >
           <Wrap>
             <ActionButton
+              data-testid="button-posts"
               isVisible={
                 endpoint === 'hashtags' || endpoint === 'archive-contents'
               }

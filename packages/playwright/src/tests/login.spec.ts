@@ -3,23 +3,35 @@ import { expect, test } from '@playwright/test'
 import { Site } from '@fc/types'
 
 import { TEST_TIMEOUT } from '../config'
-import { PASSWORD, USERNAME } from '../constants'
 import { HomePage, LoginPage } from '../pages'
+import { addCookies } from '../utils'
 
-const sitesWithLogin: Site[] = ['foundation', 'kunsthalte', 'trend-rights']
+const sitesWithLogin: Site[] = [
+  'foundation',
+  'kunsthalte',
+  'trend-rights',
+  'dashboard',
+]
 
-for (const site of sitesWithLogin) {
-  test(`Login for ${site}`, async ({ page }) => {
-    const homePage = new HomePage(page, site)
-    const loginPage = new LoginPage(page)
+test.describe('Login', () => {
+  sitesWithLogin.forEach(async (site, index) => {
+    test(`TC-0${index + 1}: Login for ${site}`, async ({ page, context }) => {
+      const homePage = new HomePage(page, site)
+      const loginPage = new LoginPage(page)
 
-    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
+      await addCookies(context, site)
 
-    await homePage.gotoLogin()
-    await loginPage.login(USERNAME, PASSWORD)
+      await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
 
-    // Timeout 10 seconds
-    await page.waitForURL(homePage.url, { timeout: TEST_TIMEOUT })
-    await expect(page).toHaveURL(homePage.url)
+      if (site === 'dashboard') {
+        await loginPage.loginDashboard()
+      } else {
+        await homePage.gotoLogin()
+        await loginPage.login()
+        // Timeout 10 seconds
+        await page.waitForURL(homePage.url, { timeout: TEST_TIMEOUT })
+        await expect(page).toHaveURL(homePage.url)
+      }
+    })
   })
-}
+})

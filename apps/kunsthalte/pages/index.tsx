@@ -16,7 +16,7 @@ const Home = () => {
   const { locale } = useRouter()
 
   return (
-    <Layout seo={{ title: t('home') }}>
+    <Layout seo={{ title: t('home') }} isDark>
       <Center
         minH="100vh"
         bg="gray.100"
@@ -24,7 +24,7 @@ const Home = () => {
         pt={100}
         pos="relative"
         zIndex={0}
-        backgroundImage={`url(/images/kunsthalte-home.jpeg)`}
+        backgroundImage={`linear-gradient(90deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(/images/kunsthalte-home.jpg)`}
         backgroundSize="cover"
       >
         <Container
@@ -36,7 +36,7 @@ const Home = () => {
           <AnimatedBox directing="to-down">
             <VStack flex={1} py={16} spacing={4} textAlign="center">
               <Heading fontWeight={900}>{t('art-stop')}</Heading>
-              <Text fontSize={{ base: 'md', lg: 'xl' }}>
+              <Text fontSize={{ base: 'md', lg: 'xl' }} color="white">
                 &quot;<>{t('footer-about.kunsthalte')}</>&quot;
               </Text>
             </VStack>
@@ -48,6 +48,7 @@ const Home = () => {
               spacing={4}
             >
               <ButtonLink
+                data-testid="view-arts"
                 href={`/${locale}/club/arts`}
                 size="lg"
                 leftIcon={<FaPaintBrush />}
@@ -56,6 +57,7 @@ const Home = () => {
               </ButtonLink>
 
               <ButtonLink
+                data-testid="view-collections"
                 href={`/${locale}/club/collections`}
                 size="lg"
                 leftIcon={<BsCollectionFill />}
@@ -63,6 +65,7 @@ const Home = () => {
                 {t('view-collections')}
               </ButtonLink>
               <ButtonLink
+                data-testid="view-activities"
                 href={`/${locale}/activities`}
                 size="lg"
                 leftIcon={<BsActivity />}

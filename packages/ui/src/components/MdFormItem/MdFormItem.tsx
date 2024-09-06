@@ -4,6 +4,7 @@ import {
   FormHelperText,
   FormLabel,
 } from '@chakra-ui/react'
+import { upperFirst } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { Control, FieldValues, useController } from 'react-hook-form'
 
@@ -72,7 +73,9 @@ export const MdFormItem = <T extends FieldValues>({
         {...rest}
       />
 
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      <FormErrorMessage data-testid={`error-text-${name}`}>
+        {errorMessage && upperFirst(errorMessage)}
+      </FormErrorMessage>
       {helperText && (
         <FormHelperText color="orange.400">{helperText}</FormHelperText>
       )}

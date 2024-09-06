@@ -12,6 +12,7 @@ export const useCourseApplicationSchema = () => {
     country: yup.string().required(),
     phone: yup.string().required(),
     message: yup.string().required(),
+    installmentCount: yup.number(),
     hasPaid: yup.boolean(),
     notes: yup.string(),
     course: yupSelect,
@@ -24,6 +25,7 @@ export const courseApplicationFields: FormFields<CourseApplication> = [
   { name: 'city' },
   { name: 'country', isRequired: true },
   { name: 'phone', isRequired: true },
+  { name: 'installmentCount', type: 'number-input' },
   { name: 'hasPaid', type: 'boolean' },
   { name: 'message', isRequired: true, type: 'textarea' },
   {

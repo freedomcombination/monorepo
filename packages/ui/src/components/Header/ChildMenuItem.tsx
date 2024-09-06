@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
+import { Box } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { MenuTypeItemProps } from './types'
@@ -12,12 +13,19 @@ export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
   const isActive = item.link !== '/' && asPath.includes(item.link as string)
   const isExternal = item.link?.startsWith('http')
 
+  const Wrapper = item.link ? Link : Box
+
   return (
-    <Link
+    <Wrapper
       href={item.link as string}
       fontWeight={600}
+      cursor={'pointer'}
       p={2}
-      {...(isExternal && { isExternal, target: '_blank' })}
+      {...(isExternal && {
+        isExternal,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      })}
       color={
         isActive
           ? isDark
@@ -32,6 +40,6 @@ export const ChildMenuItem: FC<MenuTypeItemProps> = ({ item, isDark }) => {
       }}
     >
       {item[locale || 'en']}
-    </Link>
+    </Wrapper>
   )
 }

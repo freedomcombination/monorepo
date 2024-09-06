@@ -42,11 +42,11 @@ export const PostImage: FC<PostImageProps> = ({
   return (
     <Caps
       imageParams={{
+        ...post.imageParams,
         text: post.description as string,
         image,
         scale: scales[size],
         platform,
-        ...post.imageParams,
       }}
       {...rest}
     />

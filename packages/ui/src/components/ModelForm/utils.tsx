@@ -12,9 +12,9 @@ import {
   Switch,
   Textarea,
 } from '@chakra-ui/react'
+import { upperFirst } from 'lodash'
 
-import { Post, StrapiModel } from '@fc/types'
-import { StrapiCollectionEndpoint } from '@fc/types'
+import { Post, StrapiCollectionEndpoint, StrapiModel } from '@fc/types'
 
 import { ModelCreateFormBodyProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
@@ -57,6 +57,10 @@ export const renderCreateFormBody = <T extends StrapiModel>({
       !activeOption || !field.group || field?.group?.value === activeOption
     const videoUrl = watch(field.name as string)
 
+    const errorMessage =
+      errors?.[field.name]?.message &&
+      upperFirst(errors?.[field.name]?.message as string)
+
     if (field.type === 'mediaUrl') {
       return (
         <Box key={index} {...(!isActive && { display: 'none' })}>
@@ -98,9 +102,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
             isChangingMedia={isChangingMedia}
             toggleChangingMedia={toggleChangingMedia}
           />
-          <FormErrorMessage>
-            {errors?.[field.name]?.message as string}
-          </FormErrorMessage>
+          <FormErrorMessage>{errorMessage}</FormErrorMessage>
         </FormControl>
       )
     }
@@ -163,9 +165,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
               </NumberInputStepper>
             </NumberInput>
 
-            <FormErrorMessage>
-              {errors[field?.name as string]?.message as string}
-            </FormErrorMessage>
+            <FormErrorMessage>{errorMessage}</FormErrorMessage>
           </FormControl>
         </Flex>
       )
@@ -189,9 +189,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
             }}
           />
 
-          <FormErrorMessage>
-            {errors[field.name as string]?.message as string}
-          </FormErrorMessage>
+          <FormErrorMessage>{errorMessage}</FormErrorMessage>
         </FormControl>
       )
     }

@@ -4,23 +4,30 @@ import { WTableProps } from '../../components'
 
 export const useAssetsTrackingsColumns =
   (): WTableProps<AssetsTracking>['columns'] => {
-    return {
-      fromLocation: {},
-      toLocation: {},
-      date: {
+    return [
+      {
+        accessorKey: 'fromLocation',
+      },
+      {
+        accessorKey: 'toLocation',
+      },
+      {
+        accessorKey: 'date',
         type: 'date',
         sortable: true,
       },
-      assignedTo: {
+      {
+        accessorKey: 'assignedTo',
         transform: value => {
           const profile = value as Profile
 
           return profile?.name || profile?.email
         },
       },
-      createdAt: {
+      {
+        accessorKey: 'createdAt',
         type: 'date',
         sortable: true,
       },
-    }
+    ]
   }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { ART_MOCKS, CATEGORY_MOCKS } from '@fc/mocks'
 import {
@@ -21,9 +21,9 @@ export default {
   title: 'Shared/WTable',
 } as Meta<WTableProps<StrapiModel>>
 
-const StoryWithHooks: StoryFn<WTableProps<StrapiModel>> = args => {
+function StoryWithHooks<T extends StrapiModel>(args: WTableProps<T>) {
   const [sortKey, setSortKey] = useState<[string] | null>(null)
-  const [data, setData] = useState<StrapiModel[]>(args.data)
+  const [data, setData] = useState<T[]>(args.data)
   const initialData = useRef(data)
 
   useEffect(() => {
@@ -32,8 +32,8 @@ const StoryWithHooks: StoryFn<WTableProps<StrapiModel>> = args => {
     const [field, sort] = sortKey[0].split(':')
 
     const sortedData = [...data].sort((a, b) => {
-      const aValue = a[field as keyof StrapiModel] as StrapiModelKeys
-      const bValue = b[field as keyof StrapiModel] as StrapiModelKeys
+      const aValue = a[field as keyof T] as StrapiModelKeys
+      const bValue = b[field as keyof T] as StrapiModelKeys
 
       if (sort === 'asc') {
         return typeof aValue === 'number' && typeof bValue === 'number'
@@ -65,12 +65,16 @@ export const Arts: Story<Art> = {
   render: StoryWithHooks,
   args: {
     data: ART_MOCKS.data,
-    columns: {
-      image: {
+    columns: [
+      {
+        accessorKey: 'image',
         type: 'image',
       },
-      title_en: {}, // default type is text
-      approvalStatus: {
+      {
+        accessorKey: 'title_en',
+      }, // default type is text
+      {
+        accessorKey: 'approvalStatus',
         type: 'badge',
         // Custom props based on value
         componentProps: value => {
@@ -86,14 +90,15 @@ export const Arts: Story<Art> = {
           }
         },
       },
-      publishedAt: {
+      {
+        accessorKey: 'publishedAt',
         type: 'date',
         componentProps: {
           format: 'dd MMMM',
         },
         sortable: true,
       },
-    },
+    ],
   },
 }
 
@@ -101,11 +106,11 @@ export const Categories: Story<Category> = {
   render: StoryWithHooks,
   args: {
     data: CATEGORY_MOCKS.data,
-    columns: {
-      name_en: {},
-      name_nl: {},
-      name_tr: {},
-      slug: {},
-    },
+    columns: [
+      { accessorKey: 'name_en' },
+      { accessorKey: 'name_nl' },
+      { accessorKey: 'name_tr' },
+      { accessorKey: 'slug' },
+    ],
   },
 }
