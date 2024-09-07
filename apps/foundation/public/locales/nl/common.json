@@ -428,6 +428,8 @@
   "unpublish": "Deactiveer",
   "unpublish.art": "Deactiveer Art",
   "unpublish.confirm": "Weet u zeker dat u de publicatie van deze kunst ongedaan wilt maken? U kunt het later altijd opnieuw publiceren.",
+  "update-failed": "Update mislukt",
+  "update-success": "Update succesvol",
   "updatedAt": "Bijgewerkt op",
   "upload.description": "Slepen en neerzetten of klikken om te uploaden",
   "upload.label": "Uploaden",

@@ -428,6 +428,8 @@
   "unpublish": "Unpublish",
   "unpublish.art": "Unpublish Art",
   "unpublish.confirm": "Are you sure you want to unpublish this art? You can always re-publish it later.",
+  "update-failed": "Update failed",
+  "update-success": "Update successful",
   "updatedAt": "Updated At",
   "upload.description": "Drag and drop or click to upload",
   "upload.label": "Upload",

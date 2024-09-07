@@ -428,6 +428,8 @@
   "unpublish": "Yayından Kaldır",
   "unpublish.art": "Yayından Kaldır",
   "unpublish.confirm": "Eserinizi yayından kaldırmak istediğinize emin misiniz? Daha sonra her zaman tekrar yayınlayabilirsiniz.",
+  "update-failed": "Güncelleme başarısız oldu",
+  "update-success": "Güncelleme başarılı",
   "updatedAt": "Güncellendi",
   "upload.description": "Dosya yüklemek için sürükleyip bırakın ya da buraya tıklayın",
   "upload.label": "Yükle",
