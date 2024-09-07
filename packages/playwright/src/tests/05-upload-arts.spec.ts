@@ -15,7 +15,7 @@ import { addCookies, getVercelUrl } from '../utils'
 //   await page.close()
 // })
 
-test.describe('Upload Arts', () => {
+test.describe('05. Upload Arts', () => {
   // Clear browser context before each test
   test.beforeEach(async ({ context }) => {
     await context.clearCookies()

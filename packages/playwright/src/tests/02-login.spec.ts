@@ -13,7 +13,7 @@ const sitesWithLogin: Site[] = [
   'dashboard',
 ]
 
-test.describe('Login', () => {
+test.describe('02. Login', () => {
   sitesWithLogin.forEach(async (site, index) => {
     test(`TC-0${index + 1}: Login for ${site}`, async ({ page, context }) => {
       const layoutPage = new LayoutPage(page, site)
@@ -21,7 +21,7 @@ test.describe('Login', () => {
 
       await addCookies(context, site)
 
-      await page.goto(layoutPage.url, { waitUntil: 'domcontentloaded' })
+      await layoutPage.gotoHomePage()
 
       if (site === 'dashboard') {
         await loginPage.loginDashboard()
