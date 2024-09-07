@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 import { getVercelUrl } from '../utils'
 
-test.describe('Kunsthalte Homepage', () => {
+test.describe('04. Kunsthalte Homepage', () => {
   // Test the title of the homepage
   test('TC-01: should display translated titles', async ({ page }) => {
     // Go to the homepage

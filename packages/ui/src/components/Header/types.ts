@@ -4,7 +4,9 @@ import { MenuType } from '@fc/types'
 
 export type HeaderMenu = Array<MenuType>
 
-export type ProfileMenuProps = Pick<HeaderProps, 'isDark' | 'isLoggedIn'>
+export type ProfileMenuProps = Pick<HeaderProps, 'isDark' | 'isLoggedIn'> & {
+  isMobile?: boolean
+}
 
 export interface HeaderProps {
   hasProfile?: boolean
@@ -24,6 +26,7 @@ export type HeaderMobileNavItemProps = HeaderNavItemProps
 export interface MenuTypeItemProps {
   item: MenuType
   isDark?: boolean
+  isMobile?: boolean
 }
 
 export interface HeaderNavProps {
