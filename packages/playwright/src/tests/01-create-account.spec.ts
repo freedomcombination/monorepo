@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-import { LayoutPage, LoginPage, RegisterPage } from '../pages'
+import { LayoutPage, RegisterPage } from '../pages'
 import { generateRandomUser } from '../utils'
 
 test.describe('01. Create Account', () => {
@@ -45,23 +45,19 @@ test.describe('01. Create Account', () => {
 
   test('TC-04: should not register with invalid password', async ({ page }) => {
     const registerPage = new RegisterPage(page, 'kunsthalte')
-    const loginPage = new LoginPage(page)
-    const layoutPage = new LayoutPage(page, 'kunsthalte')
 
-    const { name, username, email, password } = generateRandomUser()
+    const { name, username, email } = generateRandomUser()
 
     await registerPage.navigateToRegister()
-    await registerPage.register({ name, username, email, password })
+    const INVALID_PASSWORD = '123'
+    await registerPage.register({
+      name,
+      username,
+      email,
+      password: INVALID_PASSWORD,
+    })
 
-    await layoutPage.gotoHomePage()
-    await layoutPage.switchLanguage('tr')
-    await layoutPage.gotoLogin()
-
-    await loginPage.login(email, password + 'aaa')
-
-    await page.getByTestId('button-submit-login').click()
-
-    await expect(page.getByTestId('error-auth')).toBeVisible()
+    await expect(page.getByTestId('error-text-password')).toBeVisible()
     await page.waitForTimeout(1000)
     page.close()
   })
