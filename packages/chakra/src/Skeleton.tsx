@@ -19,15 +19,15 @@ export const SkeletonCircle = (props: SkeletonCircleProps) => {
 }
 
 export interface SkeletonTextProps extends ChakraSkeletonProps {
-  lineClamp?: number
+  noOfLines?: number
 }
 
 export const SkeletonText = (props: SkeletonTextProps) => {
-  const { lineClamp = 3, gap, ...rest } = props
+  const { noOfLines = 3, gap, ...rest } = props
 
   return (
     <Stack gap={gap} width="full">
-      {Array.from({ length: lineClamp }).map((_, index) => (
+      {Array.from({ length: noOfLines }).map((_, index) => (
         <ChakraSkeleton
           height="4"
           key={index}

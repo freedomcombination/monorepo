@@ -24,7 +24,7 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
 
 export const SelectClearTrigger = () => (
   <ChakraSelect.ClearTrigger asChild>
-    <CloseButton size="sm" variant="plain" />
+    <CloseButton size="sm" variant="ghost" />
   </ChakraSelect.ClearTrigger>
 )
 
@@ -58,7 +58,7 @@ export const SelectItem = (props: ChakraSelect.ItemProps) => {
 
 interface SelectValueTextProps
   extends Omit<ChakraSelect.ValueTextProps, 'children'> {
-  children?(items: any[]): React.ReactNode
+  children?(items: ChakraSelect.CollectionItem[]): React.ReactNode
 }
 
 export const SelectValueText = (props: SelectValueTextProps) => {

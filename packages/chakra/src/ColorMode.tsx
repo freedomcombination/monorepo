@@ -2,10 +2,10 @@
 
 import { ClientOnly, Skeleton } from '@chakra-ui/react'
 import { ThemeProvider, useTheme } from 'next-themes'
-import { type ThemeProviderProps } from 'next-themes/dist/types'
+import type { ThemeProviderProps } from 'next-themes/dist/types'
 import { LuMoon, LuSun } from 'react-icons/lu'
 
-import { IconButton } from './IconButton'
+import { IconButton, IconButtonProps } from './IconButton'
 
 export function ColorModeProvider(props: ThemeProviderProps) {
   return (
@@ -38,7 +38,7 @@ export function ColorModeIcon() {
   return colorMode === 'light' ? <LuSun /> : <LuMoon />
 }
 
-export function ColorModeButton() {
+export function ColorModeButton(props: IconButtonProps) {
   const { toggleColorMode } = useColorMode()
 
   return (
@@ -47,8 +47,9 @@ export function ColorModeButton() {
         onClick={toggleColorMode}
         variant="ghost"
         size="sm"
+        {...props}
         css={{
-          '& svg': {
+          _icon: {
             width: '5',
             height: '5',
           },

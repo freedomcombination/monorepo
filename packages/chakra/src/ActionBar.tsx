@@ -7,7 +7,6 @@ import { CloseButton } from './CloseButton'
 interface ActionBarContentProps extends ChakraActionBar.ContentProps {
   portalled?: boolean
   containerRef?: React.RefObject<HTMLElement>
-  showArrow?: boolean
 }
 
 export const ActionBarContent = forwardRef<

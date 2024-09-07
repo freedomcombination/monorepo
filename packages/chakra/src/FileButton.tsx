@@ -4,11 +4,12 @@ import { forwardRef } from 'react'
 
 import {
   FileUpload as ChakraFileUpload,
-  Square,
+  Icon,
   Stack,
   Text,
+  VStack,
 } from '@chakra-ui/react'
-import { LuFile, LuTrash2 } from 'react-icons/lu'
+import { RiDeleteBinLine, RiFileLine, RiUploadLine } from 'react-icons/ri'
 
 import { IconButton } from './IconButton'
 
@@ -29,33 +30,30 @@ export const FileUploadRoot = forwardRef<HTMLInputElement, FileUploadRootProps>(
   },
 )
 
-export const FileUploadTrigger = forwardRef<
-  HTMLButtonElement,
-  ChakraFileUpload.TriggerProps
->(function FileButton(props, ref) {
-  return <ChakraFileUpload.Trigger ref={ref} {...props} asChild />
-})
+export const FileUploadTrigger = ChakraFileUpload.Trigger
 
 export const FileUploadDropzone = forwardRef<
   HTMLInputElement,
   ChakraFileUpload.DropzoneProps
->(function FileDropzone(props, ref) {
+>(function FileUploadDropzone(props, ref) {
   const { children, ...rest } = props
 
   return (
     <ChakraFileUpload.Dropzone ref={ref} {...rest}>
-      <Square size="10" bg="bg" rounded="sm" borderWidth="1px">
-        <LuFile />
-      </Square>
-      <div>
-        Drag and drop your files here or{' '}
-        <ChakraFileUpload.Trigger color="blue.500">
-          click to browse
-        </ChakraFileUpload.Trigger>
-      </div>
-      <Text fontSize="sm" color="fg.muted">
-        .png, .jpg up to 5MB
-      </Text>
+      <Icon fontSize="xl" color="fg.subtle">
+        <RiUploadLine />
+      </Icon>
+      <VStack gap="1" mt="1">
+        <div>
+          Drag and drop here or{' '}
+          <ChakraFileUpload.Trigger color="blue.solid">
+            Choose file to upload
+          </ChakraFileUpload.Trigger>
+        </div>
+        <Text fontSize="sm" color="fg.subtle">
+          .png, .jpg up to 5MB
+        </Text>
+      </VStack>
       {children}
     </ChakraFileUpload.Dropzone>
   )
@@ -76,15 +74,9 @@ const FileUploadItem = (props: FileUploadItemProps) => {
   return (
     <ChakraFileUpload.Item file={file}>
       <ChakraFileUpload.ItemPreview asChild>
-        <Square
-          size="10"
-          bg="bg.muted"
-          rounded="sm"
-          fontSize="lg"
-          color="fg.muted"
-        >
-          <LuFile />
-        </Square>
+        <Icon fontSize="lg" color="fg.subtle">
+          <RiFileLine />
+        </Icon>
       </ChakraFileUpload.ItemPreview>
 
       {showSize ? (
@@ -98,7 +90,11 @@ const FileUploadItem = (props: FileUploadItemProps) => {
 
       {showDelete && (
         <ChakraFileUpload.ItemDeleteTrigger asChild>
-          <IconButton variant="ghost" color="fg.muted" icon={<LuTrash2 />} />
+          <IconButton
+            variant="ghost"
+            color="fg.subtle"
+            icon={<RiDeleteBinLine />}
+          />
         </ChakraFileUpload.ItemDeleteTrigger>
       )}
     </ChakraFileUpload.Item>

@@ -67,9 +67,11 @@ export const MenuItemGroup = (props: ChakraMenu.ItemGroupProps) => {
 
   return (
     <ChakraMenu.ItemGroup {...rest}>
-      <ChakraMenu.ItemGroupLabel userSelect="none">
-        {title}
-      </ChakraMenu.ItemGroupLabel>
+      {title && (
+        <ChakraMenu.ItemGroupLabel userSelect="none">
+          {title}
+        </ChakraMenu.ItemGroupLabel>
+      )}
       {children}
     </ChakraMenu.ItemGroup>
   )
@@ -78,6 +80,7 @@ export const MenuItemGroup = (props: ChakraMenu.ItemGroupProps) => {
 export const MenuRoot = ChakraMenu.Root
 export const MenuSeparator = ChakraMenu.Separator
 export const MenuItem = ChakraMenu.Item
+export const MenuItemText = ChakraMenu.ItemText
 export const MenuItemCommand = ChakraMenu.ItemCommand
 
 export interface MenuTriggerItemProps extends ChakraMenu.ItemProps {

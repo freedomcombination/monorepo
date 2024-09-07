@@ -2,12 +2,11 @@
 
 import { forwardRef } from 'react'
 
+import type { GroupProps, SlotRecipeProps } from '@chakra-ui/react'
 import {
   AvatarRootPropsProvider,
   Avatar as ChakraAvatar,
   Group,
-  type GroupProps,
-  type SlotRecipeProps,
 } from '@chakra-ui/react'
 
 type ImageProps = React.ImgHTMLAttributes<HTMLImageElement>
@@ -61,7 +60,7 @@ const AvatarFallback = forwardRef<HTMLDivElement, AvatarFallbackProps>(
 
 function getInitials(name: string) {
   const names = name.trim().split(' ')
-  const firstName = names[0] ?? ''
+  const firstName = names[0] != null ? names[0] : ''
   const lastName = names.length > 1 ? names[names.length - 1] : ''
 
   return firstName && lastName
