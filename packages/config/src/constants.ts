@@ -6,6 +6,8 @@ export const VERCEL_ENV = process.env['VERCEL_ENV'] as string
 export const DONATION_REQUEST_LINK = process.env[
   'NEXT_PUBLIC_DONATION_REQUEST_LINK'
 ] as string
+export const ALLOW_COURSE_PAYMENT =
+  process.env.NODE_ENV !== 'production' || process.env.ALLOW_COURSE_PAYMENT
 export const API_URL = process.env['NEXT_PUBLIC_API_URL'] as string
 export const EMAIL = process.env['NEXT_PUBLIC_EMAIL'] as string
 export const GA_MEASUREMENT_ID = process.env[

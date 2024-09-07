@@ -8,8 +8,8 @@ export const HeaderNavItem: FC<HeaderNavItemProps> = ({ item, isDark }) => {
   const isParentLink = !!item.children
 
   if (isParentLink) {
-    return <ParentMenuItem item={item} isDark={isDark} />
+    return <ParentMenuItem item={item} isDark={isDark} isMobile={false} />
   }
 
-  return <ChildMenuItem item={item} isDark={isDark} />
+  return <ChildMenuItem item={item} isDark={isDark} isMobile={false} />
 }

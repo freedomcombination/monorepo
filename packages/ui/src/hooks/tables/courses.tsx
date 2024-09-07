@@ -1,34 +1,44 @@
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 
 import { Course, StrapiLocale } from '@fc/types'
 
-import { localeBadgesPDF, publicationBadgePDF } from './utils'
+import { renderJoinedLocales, renderPublicationState } from './utils'
 import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 
 export const useCourseColumns = (): WTableProps<Course>['columns'] => {
   const { locale } = useRouter()
+  const { t } = useTranslation()
 
-  return {
-    image: { type: 'image' },
-    [`title_${locale}`]: {},
-    [`description_${locale}`]: {},
-    translates: {
-      transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
-      transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
+  return [
+    { accessorKey: 'image', type: 'image' },
+    {
+      accessorKey: `title_${locale}`,
     },
-    publishedAt: {
+    {
+      accessorKey: `description_${locale}`,
+    },
+    {
+      accessorKey: 'translates',
+      transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
+      transformPDF: value => renderJoinedLocales(value as StrapiLocale[]),
+    },
+    {
+      accessorKey: 'publishedAt',
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
-      transformPDF: value => publicationBadgePDF(value as string | null),
+      transformPDF: value => renderPublicationState(value as string | null, t),
     },
-    startDate: {
+    {
+      accessorKey: 'startDate',
       type: 'date',
       sortable: true,
     },
-    endDate: {
+    {
+      accessorKey: 'endDate',
       type: 'date',
       sortable: true,
     },
-  }
+  ]
 }

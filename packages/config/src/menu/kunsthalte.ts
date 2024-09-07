@@ -30,7 +30,7 @@ export const kunsthalte: Menus = {
       tr: 'Menu',
     },
     {
-      children: [arts, collections],
+      children: [arts, collections, activities],
       en: 'Menu',
       nl: 'Menu',
       tr: 'Menu',

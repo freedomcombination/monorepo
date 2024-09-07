@@ -1905,6 +1905,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     >
     faqs: Attribute.Component<'faq.faq', true>
     curriculum: Attribute.Component<'course.curriculum', true>
+    lastRegisterDate: Attribute.DateTime
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -1951,6 +1952,18 @@ export interface ApiCourseApplicationCourseApplication
       'api::course.course'
     >
     notes: Attribute.Text
+    paymentExplanation: Attribute.String
+    profile: Attribute.Relation<
+      'api::course-application.course-application',
+      'oneToOne',
+      'api::profile.profile'
+    >
+    installmentCount: Attribute.Integer
+    payments: Attribute.Relation<
+      'api::course-application.course-application',
+      'oneToMany',
+      'api::payment.payment'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2403,6 +2416,51 @@ export interface ApiObservationObservation extends Schema.CollectionType {
       Attribute.Private
     updatedBy: Attribute.Relation<
       'api::observation.observation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
+export interface ApiPaymentPayment extends Schema.CollectionType {
+  collectionName: 'payments'
+  info: {
+    singularName: 'payment'
+    pluralName: 'payments'
+    displayName: 'Payment'
+    description: ''
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    paymentDatetime: Attribute.DateTime
+    profile: Attribute.Relation<
+      'api::payment.payment',
+      'oneToOne',
+      'api::profile.profile'
+    >
+    amount: Attribute.Decimal
+    status: Attribute.String
+    checkoutSessionId: Attribute.String
+    email: Attribute.Email
+    courseApplication: Attribute.Relation<
+      'api::payment.payment',
+      'manyToOne',
+      'api::course-application.course-application'
+    >
+    installmentNumber: Attribute.Integer & Attribute.DefaultTo<0>
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::payment.payment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::payment.payment',
       'oneToOne',
       'admin::user'
     > &
@@ -3782,6 +3840,7 @@ declare module '@strapi/types' {
       'api::mention.mention': ApiMentionMention
       'api::notification.notification': ApiNotificationNotification
       'api::observation.observation': ApiObservationObservation
+      'api::payment.payment': ApiPaymentPayment
       'api::platform.platform': ApiPlatformPlatform
       'api::post.post': ApiPostPost
       'api::presentation.presentation': ApiPresentationPresentation

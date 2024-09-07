@@ -1,5 +1,6 @@
 export * from './Arts'
 export * from './DashboardArts'
-export * from './Home'
+export * from './Layout'
 export * from './Login'
 export * from './Profile'
+export * from './Register'

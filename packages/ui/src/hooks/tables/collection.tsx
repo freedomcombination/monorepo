@@ -1,15 +1,22 @@
+import { useTranslation } from 'next-i18next'
+
 import { ApprovalStatus, Art, Collection, StrapiLocale } from '@fc/types'
 
-import { localeBadgesPDF, publicationBadgePDF } from './utils'
+import { renderJoinedLocales, renderPublicationState } from './utils'
 import { LocaleBadges, PublicationBadges, WTableProps } from '../../components'
 
 export const useCollectionColumns = (): WTableProps<Collection>['columns'] => {
-  return {
-    image: { type: 'image' },
-    title: { sortable: true },
-    slug: { label: 'Slug' },
-    description: {},
-    approvalStatus: {
+  const { t } = useTranslation()
+
+  return [
+    { accessorKey: 'image', type: 'image' },
+    { accessorKey: 'title', sortable: true },
+    { accessorKey: 'slug', label: 'Slug' },
+    {
+      accessorKey: 'description',
+    },
+    {
+      accessorKey: 'approvalStatus',
       type: 'badge',
       componentProps: value => {
         const colorScheme = {
@@ -24,20 +31,26 @@ export const useCollectionColumns = (): WTableProps<Collection>['columns'] => {
         }
       },
     },
-    arts: { transform: value => (value as Art[])?.length },
-    translates: {
-      transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
-      transformPDF: value => localeBadgesPDF(value as StrapiLocale[]),
+    {
+      accessorKey: 'arts',
+      transform: value => (value as Art[])?.length,
     },
-    publishedAt: {
+    {
+      accessorKey: 'translates',
+      transform: value => <LocaleBadges locales={value as StrapiLocale[]} />,
+      transformPDF: value => renderJoinedLocales(value as StrapiLocale[]),
+    },
+    {
+      accessorKey: 'publishedAt',
       transform: value => (
         <PublicationBadges publishedAt={value as string | null} />
       ),
-      transformPDF: value => publicationBadgePDF(value as string | null),
+      transformPDF: value => renderPublicationState(value as string | null, t),
     },
-    createdAt: {
+    {
+      accessorKey: 'createdAt',
       type: 'date',
       sortable: true,
     },
-  }
+  ]
 }
