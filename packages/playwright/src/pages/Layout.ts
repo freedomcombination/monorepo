@@ -37,7 +37,6 @@ export class LayoutPage {
   readonly profileMenu: Locator
   readonly profileLink: Locator
   readonly logoutButton: Locator
-  readonly homeLink: Locator
 
   constructor(page: Page, site: Site) {
     this.page = page
@@ -78,7 +77,6 @@ export class LayoutPage {
     this.profileMenu = page.getByTestId('button-profile-menu')
     this.profileLink = page.getByTestId('link-profile')
     this.logoutButton = page.getByTestId('button-logout')
-    this.homeLink = page.getByTestId('link-d-logo-home')
 
     this.site = site
   }
@@ -88,7 +86,7 @@ export class LayoutPage {
   }
 
   async gotoHomePage() {
-    await this.homeLink.click()
+    await this.page.goto(this.url)
     await this.page.waitForLoadState('domcontentloaded')
   }
 
