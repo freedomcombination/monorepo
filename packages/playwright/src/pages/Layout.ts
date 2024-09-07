@@ -1,6 +1,6 @@
 import { type Locator, type Page } from '@playwright/test'
 
-import { Site } from '@fc/types'
+import { Site, StrapiLocale } from '@fc/types'
 
 import { getVercelUrl } from '../utils'
 
@@ -27,6 +27,11 @@ export class LayoutPage {
     mobile: Record<keyof typeof headerLinks, Locator>
     desktop: Record<keyof typeof headerLinks, Locator>
     footer: Record<keyof typeof footerLinks, Locator>
+  }
+  readonly languageMenu: {
+    en: Locator
+    nl: Locator
+    tr: Locator
   }
   readonly profileMenu: Locator
   readonly profileLink: Locator
@@ -62,9 +67,14 @@ export class LayoutPage {
         privacy: page.getByTestId(`link-footer/privacy`),
       },
     }
+    this.languageMenu = {
+      en: page.getByLabel('en'),
+      nl: page.getByLabel('nl'),
+      tr: page.getByLabel('tr'),
+    }
     this.profileMenu = page.getByTestId('button-d-profile-menu')
     this.profileLink = page.getByTestId('link-d-profile')
-    this.logoutButton = page.getByTestId('button-logout')
+    this.logoutButton = page.getByTestId('button-d-logout')
 
     this.site = site
   }
@@ -92,6 +102,11 @@ export class LayoutPage {
   async logout() {
     await this.profileMenu.click()
     await this.logoutButton.click()
+    await this.page.waitForLoadState('domcontentloaded')
+  }
+
+  async switchLanguage(language: StrapiLocale) {
+    await this.languageMenu[language].click()
     await this.page.waitForLoadState('domcontentloaded')
   }
 }

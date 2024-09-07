@@ -22,17 +22,16 @@ export class LoginPage {
   }
 
   async login(username = USERNAME, password = PASSWORD) {
-    // await this.page.fill('[data-testid=input-identifier]', username)
-    // await this.page.fill('[data-testid=input-password]', password)
-
     await this.usernameInput.fill(username)
     await this.passwordInput.fill(password)
 
     await this.submitButton.click()
+    await this.page.waitForLoadState('networkidle')
   }
 
   async loginDashboard(username = ADMIN_USERNAME, password = PASSWORD) {
     await this.loginButton.click()
     await this.login(username, password)
+    await this.page.waitForLoadState('networkidle')
   }
 }

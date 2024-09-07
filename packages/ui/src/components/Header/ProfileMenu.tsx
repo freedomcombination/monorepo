@@ -78,7 +78,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({
 
         <MenuDivider />
         <MenuItem
-          data-testid="button-logout"
+          data-testid={`button-${isMobile ? 'm' : 'd'}-logout`}
           icon={<FiLogOut />}
           color="red.400"
           onClick={logout}
