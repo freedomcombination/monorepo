@@ -22,6 +22,7 @@ export const SocialButtons: FC<SocialButtonsProps> = ({ items, ...rest }) => {
             as="a"
             size="sm"
             target="_blank"
+            rel="noopener noreferrer"
             icon={<item.icon />}
             href={link}
             variant="outline"

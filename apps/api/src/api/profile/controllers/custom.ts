@@ -1,3 +1,6 @@
+import utils from '@strapi/utils'
+const { ApplicationError } = utils.errors
+
 export default {
   async getProfile(ctx) {
     if (!ctx.state.user) {
@@ -56,7 +59,9 @@ export default {
     const email = data.email
 
     if (!data || (!username && !email)) {
-      throw new Error('No data provided')
+      throw new ApplicationError('No data provided', {
+        i18nKey: 'strapi.error.update-profile.missing-data',
+      })
     }
 
     return await strapi.entityService.update(

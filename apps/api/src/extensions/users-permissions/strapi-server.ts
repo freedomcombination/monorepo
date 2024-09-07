@@ -76,7 +76,7 @@ module.exports = plugin => {
 
     const userInfo = await sanitizeUser(user, ctx)
 
-    settings.message = emailTemplates.renderForgotPassword(
+    settings.message = await emailTemplates.renderForgotPassword(
       email,
       site,
       resetPasswordToken,
