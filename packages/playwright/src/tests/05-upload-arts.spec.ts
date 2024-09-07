@@ -30,7 +30,7 @@ test.describe('05. Upload Arts', () => {
     await layoutPage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
-    expect(artsPage.warning).toBeVisible()
+    await expect(artsPage.warning).toBeVisible()
   })
 
   test('TC-02: should upload art with logging in', async ({ page }) => {
@@ -46,7 +46,7 @@ test.describe('05. Upload Arts', () => {
     await page.waitForURL(`${layoutPage.url}/club/arts`)
     await artsPage.clickUploadArtButton()
 
-    expect(artsPage.titleInput).toBeVisible()
+    await expect(artsPage.titleInput).toBeVisible()
   })
 
   test('TC-03: should fill required fields for upload art', async ({
@@ -93,7 +93,7 @@ test.describe('05. Upload Arts', () => {
     await artsPage.createArt()
     await page.waitForTimeout(1000)
 
-    expect(artsPage.confirmationMessage).toBeVisible()
+    await expect(artsPage.confirmationMessage).toBeVisible()
 
     await page.waitForTimeout(1000)
 
