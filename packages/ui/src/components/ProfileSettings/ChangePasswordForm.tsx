@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Stack } from '@chakra-ui/react'
+import { Box, Button, Heading, Stack, useToast } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -62,7 +62,7 @@ const changePassword = async (
 
 export const ChangePasswordForm = () => {
   const { token, checkAuth } = useAuthContext()
-
+  const toast = useToast()
   const { t } = useTranslation()
 
   const { mutate, isError, error, isPending } = useMutation({
@@ -84,7 +84,26 @@ export const ChangePasswordForm = () => {
   })
 
   const onSubmit = async (data: PasswordFormValues) => {
-    mutate(data)
+    mutate(data, {
+      onError: () => {
+        toast({
+          title: 'Error',
+          description: t('update-failed'),
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        })
+      },
+      onSuccess: () => {
+        toast({
+          title: 'Success',
+          description: t('update-success'),
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        })
+      },
+    })
   }
 
   return (
