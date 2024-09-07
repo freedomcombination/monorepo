@@ -60,7 +60,7 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
           <Box borderWidth={1} p={2} rounded={'md'} borderColor={'orange.500'}>
             <List.Root>
               <List.Item display={'flex'} alignItems={'baseline'}>
-                <List.Icon as={FaExclamation} color={'orange.500'} />
+                <List.Indicator as={FaExclamation} color={'orange.500'} />
                 <Box>
                   {categories.length > 0
                     ? `No archives found with the hashtag's categories: "${categories.map(c => c[`name_${locale}`]).join(', ')}"`
@@ -69,7 +69,7 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
               </List.Item>
               {showTagAlert && (
                 <List.Item display={'flex'} alignItems={'baseline'}>
-                  <List.Icon as={FaExclamation} color={'orange.500'} />
+                  <List.Indicator as={FaExclamation} color={'orange.500'} />
                   {tags.length > 0
                     ? `No archives found with the post's tags: "${tags.map(t => t[`name_${locale}`]).join(', ')}"`
                     : `No tags set for the post`}

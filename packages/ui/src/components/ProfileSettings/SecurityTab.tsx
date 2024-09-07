@@ -8,12 +8,11 @@ import {
   InputElement,
   Spinner,
   Stack,
-  useToast,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaEnvelope, FaUser } from 'react-icons/fa6'
 
-import { Button, Field } from '@fc/chakra'
+import { Button, Field, toaster } from '@fc/chakra'
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { SessionUser } from '@fc/types'
@@ -60,7 +59,6 @@ const Credential: React.FC<CredentialProps> = ({
   const [edit, setEdit] = useState(false)
   const [saving, setSaving] = useState(false)
   const [value, setValue] = useState(initialValue)
-  const toast = useToast()
   const { t } = useTranslation()
 
   const handleClick = () => {
@@ -80,24 +78,22 @@ const Credential: React.FC<CredentialProps> = ({
 
       await checkAuth()
 
-      toast({
+      toaster.create({
         title: t('update-success'),
-        status: 'success',
+        type: 'success',
         duration: 5000,
-        isClosable: true,
       })
       setEdit(false)
     } catch (e) {
       console.error('Update error', name, value, e)
-      toast({
+      toaster.create({
         title: t('update-failed'),
         description: t(
           ((e as unknown as Error).message ??
             e) as keyof I18nNamespaces['common'],
         ),
-        status: 'error',
+        type: 'error',
         duration: 5000,
-        isClosable: true,
       })
     } finally {
       setSaving(false)

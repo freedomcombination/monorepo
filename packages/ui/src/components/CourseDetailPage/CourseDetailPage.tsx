@@ -102,8 +102,8 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
           refetchApplicants: refetch,
         }}
       >
-        <Stack spacing={12} pb={16} pt={4}>
-          <Stack spacing={4}>
+        <Stack gap={12} pb={16} pt={4}>
+          <Stack gap={4}>
             <WImage ratio={16 / 9} src={course.image} alt="" />
 
             <Stack
@@ -132,7 +132,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
           <CourseRegister />
 
           {course.faqs && course.faqs?.length > 0 && (
-            <Stack spacing={4}>
+            <Stack gap={4}>
               <Heading as={'h3'} size={'lg'}>
                 {t('faq')}
               </Heading>
@@ -141,7 +141,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
           )}
 
           {courses?.length > 0 && (
-            <Stack spacing={4}>
+            <Stack gap={4}>
               <Heading as={'h3'} size={'lg'}>
                 {t('course.other-courses')}
               </Heading>

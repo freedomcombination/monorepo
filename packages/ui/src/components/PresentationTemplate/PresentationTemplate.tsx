@@ -64,9 +64,9 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
                 {flow.map((f, i) => (
                   <List.Item key={i}>
                     <HStack align={'start'}>
-                      <List.Icon mt={2}>
+                      <List.Indicator mt={2}>
                         <FaChevronRight />
-                      </List.Icon>
+                      </List.Indicator>
                       <Box>
                         <Box fontWeight={600}>{f.title}</Box>
                         <Box fontSize={'sm'} color={'gray.500'}>

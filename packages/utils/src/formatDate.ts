@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
+import type { Locale } from 'date-fns'
 import { enUS, tr, nl } from 'date-fns/locale'
-import { Locale } from 'date-fns/types'
 
 import { StrapiLocale } from '@fc/types'
 

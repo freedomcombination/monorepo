@@ -1,8 +1,10 @@
 import { FC, useEffect, useRef } from 'react'
 
-import { Box, ToastId, useToast, UseToastOptions } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
+
+import { toaster } from '@fc/chakra'
 
 type StripeResultProps = {
   reValidate?: () => void
@@ -15,8 +17,8 @@ export const StripeResult: FC<StripeResultProps> = ({
   const { t } = useTranslation()
 
   const status = query.status as string
-  const toast = useToast()
-  const toastIdRef = useRef<ToastId>()
+
+  const toastIdRef = useRef<string>()
 
   useEffect(() => {
     if (status) {
@@ -30,15 +32,14 @@ export const StripeResult: FC<StripeResultProps> = ({
             ? 'course.payment.message.success'
             : 'course.payment.message.failed',
         ),
-        status: success ? 'success' : 'error',
+        type: success ? 'success' : 'error',
         duration: 5000,
-        isClosable: true,
-      } as UseToastOptions
+      }
 
       if (toastIdRef.current) {
-        toast.update(toastIdRef.current, toastContext)
+        toaster.update(toastIdRef.current, toastContext)
       } else {
-        toastIdRef.current = toast(toastContext)
+        toastIdRef.current = toaster.create(toastContext)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

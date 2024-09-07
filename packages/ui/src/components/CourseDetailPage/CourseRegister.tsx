@@ -1,8 +1,5 @@
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
+  Box,
   Center,
   Heading,
   Spinner,
@@ -13,6 +10,7 @@ import {
 import { isPast } from 'date-fns/isPast'
 import { useTranslation } from 'next-i18next'
 
+import { Alert } from '@fc/chakra'
 import { ALLOW_COURSE_PAYMENT } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 
@@ -47,16 +45,15 @@ export const CourseRegister = () => {
     const isRegisterPast = isPast(courseLastRegisterDate)
     if (isRegisterPast) {
       return (
-        <Alert status={'info'} variant="subtle" {...style}>
-          <AlertIcon boxSize="40px" mr={0} />
-          <AlertTitle>{t('course.application-closed')}</AlertTitle>
-          <AlertDescription maxWidth="sm">
-            {t('course.application-closed-description')}
-          </AlertDescription>
+        <Alert
+          title={t('course.application-closed')}
+          status={'info'}
+          variant="subtle"
+          {...style}
+        >
+          <Box maxWidth="sm">{t('course.application-closed-description')}</Box>
           {myApplication && (
-            <AlertDescription maxWidth="sm">
-              {t('course.application-registered')}
-            </AlertDescription>
+            <Box maxWidth="sm">{t('course.application-registered')}</Box>
           )}
         </Alert>
       )
@@ -76,11 +73,8 @@ export const CourseRegister = () => {
   if (!user || !profile) {
     return (
       <Alert status={'info'} variant="subtle" {...style}>
-        <AlertIcon boxSize="40px" mr={0} />
         <ProfileMenu />
-        <AlertDescription maxWidth="sm">
-          {t('course.application-login-to-continue')}
-        </AlertDescription>
+        <Box maxWidth="sm">{t('course.application-login-to-continue')}</Box>
       </Alert>
     )
   }
@@ -120,12 +114,13 @@ export const CourseRegister = () => {
   }
 
   return (
-    <Alert status={'success'} variant="subtle" {...style}>
-      <AlertIcon boxSize="40px" mr={0} />
-      <AlertTitle>{t('course.payment.title.thanks')}</AlertTitle>
-      <AlertDescription maxWidth="sm">
-        {t('course.payment.message.thanks')}
-      </AlertDescription>
+    <Alert
+      title={t('course.payment.title.thanks')}
+      status={'success'}
+      variant="subtle"
+      {...style}
+    >
+      <Box maxWidth="sm">{t('course.payment.message.thanks')}</Box>
     </Alert>
   )
 }

@@ -1,23 +1,17 @@
 import { FC } from 'react'
 
+import { Badge, Box, Center, Link, Stack, Text, VStack } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
 import {
   Accordion,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Badge,
-  Box,
   Button,
-  Center,
-  Link,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { CourseApplication } from '@fc/types'
@@ -57,8 +51,8 @@ export const CoursesTab: FC = () => {
       {applications.length > 0 ? (
         <Stack>
           <Accordion
-            allowMultiple={false}
-            allowToggle
+            multiple={false}
+            collapsible
             width={'100%'}
             maxWidth={'100%'}
             {...extProps}
@@ -99,7 +93,11 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
   const status = GetGeneralStatus(course, application)
 
   return (
-    <AccordionItem key={application.id} maxWidth={'100%'}>
+    <AccordionItem
+      value="application-view"
+      key={application.id}
+      maxWidth={'100%'}
+    >
       <AccordionButton>
         <Box as="span" flex="1" textAlign="left">
           <VStack alignItems={'flex-start'}>

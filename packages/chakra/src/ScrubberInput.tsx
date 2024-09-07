@@ -4,13 +4,13 @@ import { Group, Icon, InputElement, NumberInput } from '@chakra-ui/react'
 
 import { Tooltip } from './Tooltip'
 
-export interface StepperInputProps extends NumberInput.InputProps {
+export interface ScrubberInputProps extends NumberInput.InputProps {
   label: React.ReactNode
   icon: React.ReactNode
   rootProps?: NumberInput.RootProps
 }
 
-export const ScrubberInput = forwardRef<HTMLInputElement, StepperInputProps>(
+export const ScrubberInput = forwardRef<HTMLInputElement, ScrubberInputProps>(
   function ScrubberInput(props, ref) {
     const { label, icon, rootProps, ...rest } = props
 

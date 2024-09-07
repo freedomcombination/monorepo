@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useDisclosure } from '@chakra-ui/hooks'
 import { Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+import { useCookie } from 'react-use'
 
 import {
   Button,

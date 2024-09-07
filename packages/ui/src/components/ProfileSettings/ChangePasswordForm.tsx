@@ -89,18 +89,16 @@ export const ChangePasswordForm = () => {
         toaster.create({
           title: 'Error',
           description: t('update-failed'),
-          status: 'error',
+          type: 'error',
           duration: 3000,
-          isClosable: true,
         })
       },
       onSuccess: () => {
         toaster.create({
           title: 'Success',
           description: t('update-success'),
-          status: 'success',
+          type: 'success',
           duration: 3000,
-          isClosable: true,
         })
       },
     })

@@ -80,7 +80,7 @@ export const DataTable = <T extends StrapiModel>({
                 <Badge
                   key={index}
                   variant="outline"
-                  size={'2xl'}
+                  size={'lg'}
                   fontSize={'md'}
                   p={1}
                   colorScheme={'primary'}

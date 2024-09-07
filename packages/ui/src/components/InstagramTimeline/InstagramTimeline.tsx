@@ -12,6 +12,8 @@ import { useTranslation } from 'next-i18next'
 
 import { InstagramPost } from '@fc/types'
 
+import { ButtonLink } from '../ButtonLink'
+
 type InstagramTimelineProps = {
   posts: InstagramPost[]
 }
@@ -20,17 +22,18 @@ export const InstagramTimeline: FC<InstagramTimelineProps> = ({ posts }) => {
   const { t } = useTranslation()
 
   return (
-    <Stack spacing={8}>
+    <Stack gap={8}>
       <Heading as="h2" size="lg" textAlign={'center'}>
         {t('instagram-page-title')}
       </Heading>
 
-      <SimpleGrid columns={[2, null, 4]} spacing={1}>
+      <SimpleGrid columns={[2, null, 4]} gap={1}>
         {posts.map(post => (
           <Link
             href={post.permalink}
             key={post.id}
-            isExternal
+            target="_blank"
+            rel="noopener noreferrer"
             _hover={{ textDecoration: 'none' }}
             overflow={'hidden'}
           >
@@ -47,16 +50,14 @@ export const InstagramTimeline: FC<InstagramTimelineProps> = ({ posts }) => {
         ))}
       </SimpleGrid>
 
-      <Stack spacing={4} align="center" mt={8}>
-        <Button
-          as="a"
+      <Stack gap={4} align="center" mt={8}>
+        <ButtonLink
           href="https://www.instagram.com/trendrights"
-          target="_blank"
-          rel="noopener noreferrer"
+          isExternal
           size="lg"
         >
           {t('instagram-visit-button')}
-        </Button>
+        </ButtonLink>
       </Stack>
     </Stack>
   )

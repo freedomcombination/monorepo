@@ -1,28 +1,21 @@
 import { FC, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Box,
-  Center,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Grid,
-  HStack,
-  IconButton,
-  Skeleton,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Center, Grid, HStack, Skeleton, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { parse } from 'querystring'
 import { MdMenuOpen } from 'react-icons/md'
 
-import { Pagination } from '@fc/chakra'
+import {
+  Alert,
+  Pagination,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  IconButton,
+} from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
 import { Art, Category } from '@fc/types'
@@ -160,10 +153,9 @@ export const ArtClubTemplate: FC = () => {
                 gap={4}
                 rounded={'lg'}
               >
-                <AlertIcon boxSize="40px" mr={0} />
-                <AlertDescription fontWeight={600} maxWidth="sm">
+                <Box fontWeight={600} maxWidth="sm">
                   {t('no-results-found')}
-                </AlertDescription>
+                </Box>
               </Alert>
             ) : (
               <MasonryGrid columnGap={2} rowGap={2}>
