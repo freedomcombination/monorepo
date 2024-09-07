@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { FaEdit } from 'react-icons/fa'
 import * as Yup from 'yup'
 
-import { Button } from '@fc/chakra'
+import { Button, toaster } from '@fc/chakra'
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 
@@ -63,7 +63,6 @@ const changePassword = async (
 
 export const ChangePasswordForm = () => {
   const { token, checkAuth } = useAuthContext()
-
   const { t } = useTranslation()
 
   const { mutate, isError, error, isPending } = useMutation({
@@ -85,7 +84,26 @@ export const ChangePasswordForm = () => {
   })
 
   const onSubmit = async (data: PasswordFormValues) => {
-    mutate(data)
+    mutate(data, {
+      onError: () => {
+        toaster.create({
+          title: 'Error',
+          description: t('update-failed'),
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        })
+      },
+      onSuccess: () => {
+        toaster.create({
+          title: 'Success',
+          description: t('update-success'),
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        })
+      },
+    })
   }
 
   return (

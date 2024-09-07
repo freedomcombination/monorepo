@@ -19,7 +19,12 @@ export const SocialButtons: FC<SocialButtonsProps> = ({ items, ...rest }) => {
         const Icon = item.icon
 
         return (
-          <a key={i} target="_blank" href={link as string}>
+          <a
+            key={i}
+            target="_blank"
+            rel="noopener noreferrer"
+            href={link as string}
+          >
             <IconButton
               aria-label={item.label}
               size="sm"

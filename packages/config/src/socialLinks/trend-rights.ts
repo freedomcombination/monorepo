@@ -1,8 +1,11 @@
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
-export const trendRights = [
+import { SocialLink } from './types'
+
+export const trendRights: SocialLink[] = [
   {
+    id: 'twitter',
     label: 'X',
     icon: FaXTwitter,
     link: {
@@ -12,6 +15,7 @@ export const trendRights = [
     },
   },
   {
+    id: 'whatsapp',
     label: 'WhatsApp',
     icon: FaWhatsapp,
     link: {
@@ -21,6 +25,7 @@ export const trendRights = [
     },
   },
   {
+    id: 'instagram',
     label: 'Instagram',
     icon: FaInstagram,
     link: {

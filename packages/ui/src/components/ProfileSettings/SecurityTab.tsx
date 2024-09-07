@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useState } from 'react'
 
 import {
   Center,
@@ -8,6 +8,7 @@ import {
   InputElement,
   Spinner,
   Stack,
+  useToast,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaEnvelope, FaUser } from 'react-icons/fa6'
@@ -18,6 +19,7 @@ import { useAuthContext } from '@fc/context'
 import { SessionUser } from '@fc/types'
 
 import { ChangePasswordForm } from './ChangePasswordForm'
+import { I18nNamespaces } from '../../../@types/i18next'
 
 type CredentialProps = {
   isValid: (user: SessionUser | null, value: string) => boolean
@@ -39,7 +41,10 @@ const asyncUpdate = async (param: Record<string, string>, token: string) => {
     body,
   })
   if (!result.ok)
-    throw new Error('Failed to update user profile :' + result.status)
+    throw new Error(
+      (result as unknown as { details: { i18nKey: string } })?.details
+        ?.i18nKey ?? 'Failed to update user profile :' + result.status,
+    )
 }
 
 const Credential: React.FC<CredentialProps> = ({
@@ -55,34 +60,49 @@ const Credential: React.FC<CredentialProps> = ({
   const [edit, setEdit] = useState(false)
   const [saving, setSaving] = useState(false)
   const [value, setValue] = useState(initialValue)
+  const toast = useToast()
+  const { t } = useTranslation()
 
   const handleClick = () => {
     if (edit === false) {
       setEdit(true)
     } else if (isValid(user, value)) {
       setSaving(true)
+      handleUpdate()
     } else {
       setEdit(false)
     }
   }
 
-  useEffect(() => {
-    if (!saving) return
+  const handleUpdate = async () => {
+    try {
+      await asyncUpdate({ [name]: value }, token as string)
 
-    asyncUpdate({ [name]: value }, token as string)
-      .then(() => {
-        checkAuth().then(() => {
-          setSaving(false)
-          setEdit(false)
-        })
+      await checkAuth()
+
+      toast({
+        title: t('update-success'),
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
       })
-      .catch(e => console.error('Update error', name, value, e))
-
-    return () => setSaving(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [saving])
-
-  const { t } = useTranslation()
+      setEdit(false)
+    } catch (e) {
+      console.error('Update error', name, value, e)
+      toast({
+        title: t('update-failed'),
+        description: t(
+          ((e as unknown as Error).message ??
+            e) as keyof I18nNamespaces['common'],
+        ),
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
+    } finally {
+      setSaving(false)
+    }
+  }
 
   return (
     <Group>

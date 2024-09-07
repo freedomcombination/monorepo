@@ -40,7 +40,9 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
         </DrawerContent>
       </Drawer>
       <LocaleSwitcher isDark={isDark} />
-      {hasProfile && <ProfileMenu isLoggedIn={isLoggedIn} isDark={isDark} />}
+      {hasProfile && (
+        <ProfileMenu isLoggedIn={isLoggedIn} isDark={isDark} isMobile />
+      )}
       <IconButton
         variant="outline"
         color={!isScrolled && isDark ? 'white' : 'primary.500'}

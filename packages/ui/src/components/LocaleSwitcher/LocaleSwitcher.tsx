@@ -40,6 +40,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
           <Button
             size="sm"
             key={code}
+            aria-label={code}
             px={2}
             onClick={() => handleChangeLanguage(code)}
             colorScheme={
@@ -59,6 +60,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
           <Button
             size="sm"
             key={code}
+            aria-label={code}
             px={2}
             onClick={() => handleChangeLanguage(code)}
             colorScheme={

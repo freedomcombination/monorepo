@@ -34,7 +34,7 @@ export const Footer: FC<FooterProps> = ({
           align={{ base: 'center', lg: 'start' }}
         >
           <Stack align="center" maxW={250}>
-            <Link href="/">
+            <Link href="/" data-testid="link-m-logo-home">
               <NextImage width={92} height={92} src={logo} alt="logo" />
             </Link>
             <Text textAlign="center" paddingLeft={1} mx={2} my={2}>

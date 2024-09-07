@@ -20,7 +20,7 @@ export default {
           bcc: emails,
           from: process.env.SMTP_USERNAME,
           subject: `New volunteer ${result.name}`,
-          html: emailTemplates.renderVolunteerApplied(result),
+          html: await emailTemplates.renderVolunteerApplied(result),
         })
       } catch (error) {
         console.error('Error sending volunteer email', error)

@@ -53,6 +53,7 @@ export class ArtsPage {
 
   async goToMyProfile() {
     await this.goToMyProfileLink.click()
+    await this.page.waitForLoadState('domcontentloaded')
   }
 
   async fillTitle(title = this.title) {
@@ -84,6 +85,6 @@ export class ArtsPage {
     await this.submit()
     await this.page.waitForTimeout(1000)
 
-    expect(this.confirmationMessage).toBeVisible()
+    await expect(this.confirmationMessage).toBeVisible()
   }
 }

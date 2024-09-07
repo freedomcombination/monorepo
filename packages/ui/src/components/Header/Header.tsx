@@ -33,7 +33,7 @@ export const Header: FC<HeaderProps> = ({
       >
         <Container>
           <Flex justify="space-between" align="center" pos="relative">
-            <Link href="/">
+            <Link href="/" data-testid="link-d-logo-home">
               <Image
                 width={{ base: '64px', lg: '92px' }}
                 height={{ base: '64px', lg: '92px' }}

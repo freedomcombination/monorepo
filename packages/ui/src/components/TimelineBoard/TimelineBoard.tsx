@@ -20,7 +20,7 @@ export const TimelineBoard: FC<TimelineBoardProps> = ({ timelines }) => {
           <Link
             href={`https://x.com/${timeline?.userData?.username}`}
             target="_blank"
-            rel="noreferrer noopener"
+            rel="noopener noreferrer"
             cursor="pointer"
           >
             <Box bg="twitter.500" borderBottom="1px" color="white" p={3}>

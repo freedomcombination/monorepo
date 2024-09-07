@@ -16,7 +16,11 @@ export const HeaderMobileNav: FC<HeaderMobileNavProps> = ({ headerMenu }) => {
         return <HeaderMobileNavItem key={i} item={item} />
       })}
 
-      <ButtonLink href={'/donation'} w={'full'}>
+      <ButtonLink
+        href={'/donation'}
+        w={'full'}
+        data-testid="link-mobile-donation"
+      >
         {t('donation.title')}
       </ButtonLink>
     </Stack>

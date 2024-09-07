@@ -18,6 +18,16 @@ export const FooterNavItem: FC<FooterNavItemProps> = ({ item }) => {
       _hover={{
         color: 'primary.50',
       }}
+      {...(isExternal
+        ? {
+            isExternal,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+          }
+        : {
+            'data-testid': `link-footer${item.link}`,
+          })}
+      href={item.link as string}
     >
       <Link
         {...(isExternal && { isExternal, target: '_blank' })}

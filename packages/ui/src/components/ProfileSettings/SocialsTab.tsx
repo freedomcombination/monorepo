@@ -31,11 +31,18 @@ const schema = yup.object().shape({
 
 type SocialFormValues = yup.InferType<typeof schema>
 
-const SocialRightElement = ({ url }: { url?: string }) => {
+const SocialRightElement = ({
+  url,
+  label,
+}: {
+  url?: string
+  label: string
+}) => {
   return (
     <ButtonLink
       href={url ?? ''}
       isExternal
+      data-testid={`link-social-${label}`}
       leftIcon={<FaCircleArrowRight />}
       size={'lg'}
       colorScheme="black"
@@ -107,7 +114,7 @@ export const Socials = () => {
         register={register}
         name="linkedin"
         leftElement={<FaLinkedin />}
-        rightElement={<SocialRightElement url={linkedin} />}
+        rightElement={<SocialRightElement label="linkedin" url={linkedin} />}
         size={'lg'}
       />
       <FormItem
@@ -115,7 +122,7 @@ export const Socials = () => {
         register={register}
         name="facebook"
         leftElement={<FaFacebook />}
-        rightElement={<SocialRightElement url={facebook} />}
+        rightElement={<SocialRightElement label="facebook" url={facebook} />}
         size={'lg'}
       />
       <FormItem
@@ -123,7 +130,7 @@ export const Socials = () => {
         register={register}
         name="twitter"
         leftElement={<FaXTwitter />}
-        rightElement={<SocialRightElement url={twitter} />}
+        rightElement={<SocialRightElement label="twitter" url={twitter} />}
         size={'lg'}
       />
       <FormItem
@@ -131,12 +138,13 @@ export const Socials = () => {
         register={register}
         name="instagram"
         leftElement={<FaInstagram />}
-        rightElement={<SocialRightElement url={instagram} />}
+        rightElement={<SocialRightElement label="instagram" url={instagram} />}
         size={'lg'}
       />
 
       <Button
         disabled={!hasChanged}
+        data-testid="button-save-socials"
         leftIcon={<FaSave />}
         size={'lg'}
         loading={saving}
