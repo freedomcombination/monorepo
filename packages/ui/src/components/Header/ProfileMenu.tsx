@@ -54,7 +54,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({
   return (
     <Menu placement="bottom">
       <MenuButton
-        data-testid="button-profile-menu"
+        data-testid={`button-${isMobile ? 'm' : 'd'}-profile-menu`}
         as={Button}
         size={'sm'}
         leftIcon={

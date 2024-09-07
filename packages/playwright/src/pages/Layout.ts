@@ -22,7 +22,6 @@ const footerLinks = {
 
 export class LayoutPage {
   readonly page: Page
-  readonly loginLink: Locator
   readonly site: Site
   readonly menu: {
     mobile: Record<keyof typeof headerLinks, Locator>
@@ -63,8 +62,7 @@ export class LayoutPage {
         privacy: page.getByTestId(`link-footer/privacy`),
       },
     }
-    this.loginLink = page.getByTestId('button-d-login')
-    this.profileMenu = page.getByTestId('button-profile-menu')
+    this.profileMenu = page.getByTestId('button-d-profile-menu')
     this.profileLink = page.getByTestId('link-profile')
     this.logoutButton = page.getByTestId('button-logout')
 
@@ -81,7 +79,7 @@ export class LayoutPage {
   }
 
   async gotoLogin() {
-    await this.loginLink.click()
+    await this.page.goto(`${this.url}/auth/login?returnUrl=/`)
     await this.page.waitForLoadState('domcontentloaded')
   }
 
