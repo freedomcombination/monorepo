@@ -1,19 +1,19 @@
 import { expect, test } from '@playwright/test'
 
-import { LoginPage, RegisterPage } from '../pages'
-import { generateRandomUser, getVercelUrl } from '../utils'
+import { LayoutPage, LoginPage, RegisterPage } from '../pages'
+import { generateRandomUser } from '../utils'
 
 test.describe('Create Account', () => {
   test('TC-01: should register', async ({ page }) => {
     const registerPage = new RegisterPage(page, 'kunsthalte')
+    const layoutPage = new LayoutPage(page, 'kunsthalte')
+
     const { name, username, email, password } = generateRandomUser()
 
     await registerPage.navigateToRegister()
     await registerPage.register({ name, username, email, password })
 
-    await page.getByRole('button', { name }).click()
-    await page.getByTestId('button-logout').first().click()
-    await page.waitForTimeout(1000)
+    await layoutPage.logout()
   })
 
   test('TC-02: should not register with empty email', async ({ page }) => {
@@ -46,15 +46,16 @@ test.describe('Create Account', () => {
   test('TC-04: should not register with invalid password', async ({ page }) => {
     const registerPage = new RegisterPage(page, 'kunsthalte')
     const loginPage = new LoginPage(page)
+    const layoutPage = new LayoutPage(page, 'kunsthalte')
+
     const { name, username, email, password } = generateRandomUser()
 
     await registerPage.navigateToRegister()
     await registerPage.register({ name, username, email, password })
 
-    await page.goto(getVercelUrl('kunsthalte'))
-    await page.click('button:has-text("TR")')
-
-    await page.getByRole('link', { name: 'Giriş yap' }).click()
+    await layoutPage.gotoHomePage()
+    await layoutPage.switchLanguage('tr')
+    await layoutPage.gotoLogin()
 
     await loginPage.login(email, password + 'aaa')
 
