@@ -9,7 +9,7 @@ export const HeaderMobileNavItem: FC<HeaderMobileNavItemProps> = ({ item }) => {
   return (
     <>
       <Box py={2}>
-        <ChildMenuItem item={item} />
+        <ChildMenuItem item={item} isMobile />
       </Box>
       {item.children?.map((child, index) => (
         <Box
@@ -18,7 +18,7 @@ export const HeaderMobileNavItem: FC<HeaderMobileNavItemProps> = ({ item }) => {
           py={2}
           sx={{ a: { color: 'gray.500', fontWeight: 500 } }}
         >
-          <ChildMenuItem item={child} />
+          <ChildMenuItem item={child} isMobile />
         </Box>
       ))}
     </>

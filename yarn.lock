@@ -4059,10 +4059,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:^8.4.1":
-  version: 8.4.1
-  resolution: "@faker-js/faker@npm:8.4.1"
-  checksum: 10/5983c2ea64f26055ad6648de748878e11ebe2fb751e3c7435ae141cdffabc2dccfe4c4f49da69a3d2add71e21b415c683ac5fba196fab0d5ed6779fbec436c80
+"@faker-js/faker@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@faker-js/faker@npm:9.0.0"
+  checksum: 10/aedd68affd27065450da3c19a0ea3050e6a16078e7d591faf38402e572dd555f5ae6b402d26456eceb6b793c44b8f83ea7b48804d1fcb841610acd4988c41f91
   languageName: node
   linkType: hard
 
@@ -5389,14 +5389,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.46.1":
-  version: 1.46.1
-  resolution: "@playwright/test@npm:1.46.1"
+"@playwright/test@npm:^1.47.0":
+  version: 1.47.0
+  resolution: "@playwright/test@npm:1.47.0"
   dependencies:
-    playwright: "npm:1.46.1"
+    playwright: "npm:1.47.0"
   bin:
     playwright: cli.js
-  checksum: 10/09e2c28574402f14e2d6f6843022c5778382dc7f703bae931dd531fc0fc1b725a862d3b52932bd6912cb13cbaed54822af33eb3d70134d93b0f1c10ec3fb0756
+  checksum: 10/8c1e4386f19edb347323092708700ef46e9cddc82290df1e78120ce686cfd7d18bf15c184d2fad0ea099d7e2e57e7b75ad05d5c3398324657361c46efda8d98c
   languageName: node
   linkType: hard
 
@@ -9525,26 +9525,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:^5.54.1":
-  version: 5.54.1
-  resolution: "@tanstack/react-query-devtools@npm:5.54.1"
+"@tanstack/react-query-devtools@npm:^5.55.0":
+  version: 5.55.0
+  resolution: "@tanstack/react-query-devtools@npm:5.55.0"
   dependencies:
     "@tanstack/query-devtools": "npm:5.54.0"
   peerDependencies:
-    "@tanstack/react-query": ^5.54.1
+    "@tanstack/react-query": ^5.55.0
     react: ^18 || ^19
-  checksum: 10/da93556ff1625b1f1f4c31e893e0b926d5bff3fa27f05a9fcca1d1de65a9c6b2be562a950ab96e299cab183616b089b03980c89d2e7d5c0ffef4936380f201e4
+  checksum: 10/57f40e695dacdd030c8753069e8d8fae9cb0be5a12a5f7cee1cb82c6b9794f448d55d43df4aac0e4cd254f9ce933f7be4da97ab1370741f81f4b50b1ff4a153c
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.54.1":
-  version: 5.54.1
-  resolution: "@tanstack/react-query@npm:5.54.1"
+"@tanstack/react-query@npm:^5.55.0":
+  version: 5.55.0
+  resolution: "@tanstack/react-query@npm:5.55.0"
   dependencies:
     "@tanstack/query-core": "npm:5.54.1"
   peerDependencies:
     react: ^18 || ^19
-  checksum: 10/ec7e26907b27f51b86bd59dd03b9f8afcfac9ad9636d264a1c64d456c5aa2ec794ed8e6bb222b5e6f7d08b57c7367c5d8cc2525fa8f42864b928042ebe37b0ba
+  checksum: 10/18ab052788778205b004870d482302d475226082019b9bc6c239dc039f5b7de7cc4d3b63afe59841c5be2e518cfb2e16215faddf8972f819129e82573ff6d964
   languageName: node
   linkType: hard
 
@@ -13194,9 +13194,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chakra-react-select@npm:4.9.1":
-  version: 4.9.1
-  resolution: "chakra-react-select@npm:4.9.1"
+"chakra-react-select@npm:4.9.2":
+  version: 4.9.2
+  resolution: "chakra-react-select@npm:4.9.2"
   dependencies:
     react-select: "npm:5.8.0"
   peerDependencies:
@@ -13210,7 +13210,7 @@ __metadata:
     "@emotion/react": ^11.8.1
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10/fa77e2a9759fbd9463da9eaad3b693cb7e20a943ff742e68c5bbb8d58f19216c177c08f4b204eb92eced440678b22918bb56569f4efbfe8703b9e5ee4c57b646
+  checksum: 10/24974918f689dbb4cdab4a318bffebae796b0df2ba38da146919cacd519151453a2134231aaa17b5e6baf3d7fc676464d4b3ac00647b70f5070529894523b210
   languageName: node
   linkType: hard
 
@@ -17169,9 +17169,9 @@ __metadata:
     "@ducanh2912/next-pwa": "npm:^10.2.8"
     "@emotion/react": "npm:^11.13.3"
     "@emotion/styled": "npm:^11.13.0"
-    "@faker-js/faker": "npm:^8.4.1"
+    "@faker-js/faker": "npm:^9.0.0"
     "@hookform/resolvers": "npm:^3.9.0"
-    "@playwright/test": "npm:^1.46.1"
+    "@playwright/test": "npm:^1.47.0"
     "@sentry/nextjs": "npm:^8.28.0"
     "@sindresorhus/slugify": "npm:^2.2.1"
     "@splidejs/react-splide": "npm:^0.7.12"
@@ -17182,8 +17182,8 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.20"
     "@storybook/react": "npm:^7.6.20"
     "@storybook/types": "npm:^7.6.20"
-    "@tanstack/react-query": "npm:^5.54.1"
-    "@tanstack/react-query-devtools": "npm:^5.54.1"
+    "@tanstack/react-query": "npm:^5.55.0"
+    "@tanstack/react-query-devtools": "npm:^5.55.0"
     "@testing-library/react": "npm:^16.0.1"
     "@turbo/gen": "npm:^2.1.1"
     "@types/file-saver": "npm:^2.0.7"
@@ -17215,7 +17215,7 @@ __metadata:
     ai: "npm:3.0.12"
     axios: "npm:^1.7.7"
     browserify-fs: "npm:^1.0.0"
-    chakra-react-select: "npm:4.9.1"
+    chakra-react-select: "npm:4.9.2"
     cookies-next: "npm:^4.2.1"
     date-fns: "npm:^3.6.0"
     date-fns-tz: "npm:^3.1.3"
@@ -17273,7 +17273,7 @@ __metadata:
     storybook: "npm:^7.6.20"
     stream-browserify: "npm:^3.0.0"
     string-similarity: "npm:^4.0.4"
-    stripe: "npm:^16.9.0"
+    stripe: "npm:^16.10.0"
     tesseract.js: "npm:^5.1.1"
     turbo: "npm:^2.1.1"
     twitter-api-v2: "npm:^1.17.2"
@@ -25136,27 +25136,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.46.1":
-  version: 1.46.1
-  resolution: "playwright-core@npm:1.46.1"
+"playwright-core@npm:1.47.0":
+  version: 1.47.0
+  resolution: "playwright-core@npm:1.47.0"
   bin:
     playwright-core: cli.js
-  checksum: 10/950aa935bba0b67ed289e07f31a52104c2b2ff9e39c46cda70b83f0b327e8114bcbcdeb4e8f94333ec941f9cd49cfac3af4cad91e247206ce927283482f24d91
+  checksum: 10/181ddf5c29275fc0cfdda223c22cbfc7a74433e1e3aded96c9fb994f7fe98232c035e789986a62201d0c384b2966f1165f212f4f88eec6885ad56c04526c922c
   languageName: node
   linkType: hard
 
-"playwright@npm:1.46.1":
-  version: 1.46.1
-  resolution: "playwright@npm:1.46.1"
+"playwright@npm:1.47.0":
+  version: 1.47.0
+  resolution: "playwright@npm:1.47.0"
   dependencies:
     fsevents: "npm:2.3.2"
-    playwright-core: "npm:1.46.1"
+    playwright-core: "npm:1.47.0"
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: 10/17b0e7495a663dccbda4baf4953823a133af0b7cd4a5978bd2f40768a23e1a92d3659d7b48289a5160c9fa6269d8b9bbf5e2040aa4a63a3dd5f29475343ad3f2
+  checksum: 10/6051889d33c879847e471633453adeb741ca0542f236b3fabbb64e7ec3f17f1655f879099140e0b01a978d94caa8205b3c9437622e9953d56f5447e4ae85885d
   languageName: node
   linkType: hard
 
@@ -29120,13 +29120,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe@npm:^16.9.0":
-  version: 16.9.0
-  resolution: "stripe@npm:16.9.0"
+"stripe@npm:^16.10.0":
+  version: 16.10.0
+  resolution: "stripe@npm:16.10.0"
   dependencies:
     "@types/node": "npm:>=8.1.0"
     qs: "npm:^6.11.0"
-  checksum: 10/37328c6b29d3473ac7151923890e357342608c898524bc11864c62971a3eb64d08f2afff3cdd30d6c3caf06355abee2bdf66a1dc762e3cabfba4a7e981526245
+  checksum: 10/dbde177ce7c806712bf7d0a528ef8553ffd6ea594e5dfe1402293a6b4457c98c58d632472dcb57fc303a3b8d9ee6347ed4d922453773d18851c5a75ace2a1206
   languageName: node
   linkType: hard
 

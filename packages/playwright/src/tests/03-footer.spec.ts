@@ -5,7 +5,7 @@ import { Site } from '@fc/types'
 
 import { addCookies, checkExternalLink, getVercelUrl } from '../utils'
 
-test.describe('Footer', () => {
+test.describe('03. Footer', () => {
   Object.entries(socialLinks)
     // Filter out sites without social links
     .filter(socialLink => socialLink[1]?.length > 0)

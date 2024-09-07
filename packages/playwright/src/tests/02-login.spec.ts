@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 import { Site } from '@fc/types'
 
 import { TEST_TIMEOUT } from '../config'
-import { HomePage, LoginPage } from '../pages'
+import { LayoutPage, LoginPage } from '../pages'
 import { addCookies } from '../utils'
 
 const sitesWithLogin: Site[] = [
@@ -13,24 +13,24 @@ const sitesWithLogin: Site[] = [
   'dashboard',
 ]
 
-test.describe('Login', () => {
+test.describe('02. Login', () => {
   sitesWithLogin.forEach(async (site, index) => {
     test(`TC-0${index + 1}: Login for ${site}`, async ({ page, context }) => {
-      const homePage = new HomePage(page, site)
+      const layoutPage = new LayoutPage(page, site)
       const loginPage = new LoginPage(page)
 
       await addCookies(context, site)
 
-      await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
+      await layoutPage.gotoHomePage()
 
       if (site === 'dashboard') {
         await loginPage.loginDashboard()
       } else {
-        await homePage.gotoLogin()
+        await layoutPage.gotoLogin()
         await loginPage.login()
         // Timeout 10 seconds
-        await page.waitForURL(homePage.url, { timeout: TEST_TIMEOUT })
-        await expect(page).toHaveURL(homePage.url)
+        await page.waitForURL(layoutPage.url, { timeout: TEST_TIMEOUT })
+        await expect(page).toHaveURL(layoutPage.url)
       }
     })
   })
