@@ -68,7 +68,11 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({
         {profile?.name || user?.username}
       </MenuButton>
       <MenuList>
-        <MenuItem data-testid="link-profile" as={Link} href={'/profile'}>
+        <MenuItem
+          data-testid={`link-${isMobile ? 'm' : 'd'}-profile`}
+          as={Link}
+          href={'/profile'}
+        >
           {t('profile')}
         </MenuItem>
 
