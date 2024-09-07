@@ -21,7 +21,11 @@ import { useScroll } from '../../hooks'
 import { ButtonLink } from '../ButtonLink'
 import { WAvatar } from '../WAvatar'
 
-export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
+export const ProfileMenu: FC<ProfileMenuProps> = ({
+  isDark,
+  isLoggedIn,
+  isMobile,
+}) => {
   const isScrolled = useScroll()
   const { t } = useTranslation()
   const { user, profile, logout, isLoading } = useAuthContext()
@@ -35,7 +39,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
       <Wrapper>
         <ButtonLink
           href={loginHref}
-          data-testid="button-header-login"
+          data-testid={`link-${isMobile ? 'm' : 'd'}-login`}
           size="sm"
           isLoading={isLoading}
           variant={!isScrolled && isDark ? 'solid' : 'outline'}
@@ -50,7 +54,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
   return (
     <Menu placement="bottom">
       <MenuButton
-        data-testid="button-profile-menu"
+        data-testid={`button-${isMobile ? 'm' : 'd'}-profile-menu`}
         as={Button}
         size={'sm'}
         leftIcon={
@@ -64,7 +68,11 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({ isDark, isLoggedIn }) => {
         {profile?.name || user?.username}
       </MenuButton>
       <MenuList>
-        <MenuItem data-testid="link-profile" as={Link} href={'/profile'}>
+        <MenuItem
+          data-testid={`link-${isMobile ? 'm' : 'd'}-profile`}
+          as={Link}
+          href={'/profile'}
+        >
           {t('profile')}
         </MenuItem>
 

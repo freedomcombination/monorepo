@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 import { LayoutPage, LoginPage, RegisterPage } from '../pages'
 import { generateRandomUser } from '../utils'
 
-test.describe('Create Account', () => {
+test.describe('01. Create Account', () => {
   test('TC-01: should register', async ({ page }) => {
     const registerPage = new RegisterPage(page, 'kunsthalte')
     const layoutPage = new LayoutPage(page, 'kunsthalte')

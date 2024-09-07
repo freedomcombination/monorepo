@@ -15,7 +15,7 @@ import { addCookies, getVercelUrl } from '../utils'
 //   await page.close()
 // })
 
-test.describe('Upload Arts', () => {
+test.describe('05. Upload Arts', () => {
   // Clear browser context before each test
   test.beforeEach(async ({ context }) => {
     await context.clearCookies()
@@ -26,7 +26,7 @@ test.describe('Upload Arts', () => {
     const layoutPage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
 
-    await layoutPage.gotoHomePage()
+    await layoutPage.gotoLogin()
     await layoutPage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
@@ -35,15 +35,15 @@ test.describe('Upload Arts', () => {
 
   test('TC-02: should upload art with logging in', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new LayoutPage(page, 'kunsthalte')
+    const layoutPage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
 
-    await homePage.gotoLogin()
+    await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.menu.desktop.arts.click()
-    await page.waitForURL(`${homePage.url}/club/arts`)
+    await layoutPage.menu.desktop.arts.click()
+    await page.waitForURL(`${layoutPage.url}/club/arts`)
     await artsPage.clickUploadArtButton()
 
     expect(artsPage.titleInput).toBeVisible()
@@ -53,14 +53,14 @@ test.describe('Upload Arts', () => {
     page,
   }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new LayoutPage(page, 'kunsthalte')
+    const layoutPage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
 
-    await homePage.gotoLogin()
+    await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.menu.desktop.arts.click()
+    await layoutPage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
     await artsPage.uploadImage()
@@ -78,16 +78,16 @@ test.describe('Upload Arts', () => {
     page,
   }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new LayoutPage(page, 'kunsthalte')
+    const layoutPage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
     const profilePage = new ProfilePage(page)
 
-    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
-    await homePage.gotoLogin()
+    await page.goto(layoutPage.url, { waitUntil: 'domcontentloaded' })
+    await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.menu.desktop.arts.click()
+    await layoutPage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
     await artsPage.createArt()
@@ -112,7 +112,7 @@ test.describe('Upload Arts', () => {
     context,
   }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new LayoutPage(page, 'kunsthalte')
+    const layoutPage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
     const profilePage = new ProfilePage(page)
     const dashboardPage = new DashboardArtsPage(page)
@@ -120,12 +120,12 @@ test.describe('Upload Arts', () => {
     // Prevent push notification modal from appearing
     await addCookies(context, 'dashboard')
 
-    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
-    await homePage.gotoLogin()
+    await page.goto(layoutPage.url, { waitUntil: 'domcontentloaded' })
+    await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.menu.desktop.arts.click()
+    await layoutPage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
     const artTitle = faker.internet.userName().toString()
@@ -154,12 +154,12 @@ test.describe('Upload Arts', () => {
     await page.getByText(artTitle).click()
     await expect(dashboardPage.artStatusTag).toContainText('Approved')
 
-    await page.goto(homePage.url, { waitUntil: 'domcontentloaded' })
-    await homePage.gotoLogin()
+    await page.goto(layoutPage.url, { waitUntil: 'domcontentloaded' })
+    await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.gotoProfilePage()
+    await layoutPage.gotoProfilePage()
     await profilePage.openArtsTab()
     await profilePage.openApprovedArtsTab()
     await expect(page.getByText(`${artTitle}`)).toBeVisible()
@@ -170,7 +170,7 @@ test.describe('Upload Arts', () => {
     context,
   }) => {
     const loginPage = new LoginPage(page)
-    const homePage = new LayoutPage(page, 'kunsthalte')
+    const layoutPage = new LayoutPage(page, 'kunsthalte')
     const artsPage = new ArtsPage(page)
     const profilePage = new ProfilePage(page)
     const dashboardPage = new DashboardArtsPage(page)
@@ -178,11 +178,11 @@ test.describe('Upload Arts', () => {
     // Prevent push notification modal from appearing
     await addCookies(context, 'dashboard')
 
-    await homePage.gotoLogin()
+    await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.menu.desktop.arts.click()
+    await layoutPage.menu.desktop.arts.click()
     await artsPage.clickUploadArtButton()
 
     const artTitle = faker.internet.userName().toString()
@@ -213,11 +213,11 @@ test.describe('Upload Arts', () => {
     await expect(dashboardPage.artStatusTag).toContainText('Rejected')
 
     // Check if the art is displayed in the rejected arts section
-    await homePage.gotoLogin()
+    await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
     await page.waitForTimeout(1000)
 
-    await homePage.gotoProfilePage()
+    await layoutPage.gotoProfilePage()
     await profilePage.openArtsTab()
     await profilePage.openRejectedArtsTab()
     await expect(page.getByText(`${artTitle}`)).toBeVisible()

@@ -22,7 +22,6 @@ const footerLinks = {
 
 export class LayoutPage {
   readonly page: Page
-  readonly loginLink: Locator
   readonly site: Site
   readonly menu: {
     mobile: Record<keyof typeof headerLinks, Locator>
@@ -42,30 +41,30 @@ export class LayoutPage {
     this.page = page
     this.menu = {
       mobile: {
-        arts: page.getByTestId(`link-m-arts`),
-        collections: page.getByTestId(`link-m-collections`),
-        activities: page.getByTestId(`link-m-activities`),
-        about: page.getByTestId(`link-m-about`),
-        contact: page.getByTestId(`link-m-contact`),
-        donation: page.getByTestId(`link-m-donation`),
+        arts: page.getByTestId(`link-m/club/arts`),
+        collections: page.getByTestId(`link-m/club/collections`),
+        activities: page.getByTestId(`link-m/activities`),
+        about: page.getByTestId(`link-m/about`),
+        contact: page.getByTestId(`link-m/contact`),
+        donation: page.getByTestId(`link-m/donation`),
       },
       desktop: {
-        arts: page.getByTestId(`link-d-arts`),
-        collections: page.getByTestId(`link-d-collections`),
-        activities: page.getByTestId(`link-d-activities`),
-        about: page.getByTestId(`link-d-about`),
-        contact: page.getByTestId(`link-d-contact`),
-        donation: page.getByTestId(`link-d-donation`),
+        arts: page.getByTestId(`link-d/club/arts`),
+        collections: page.getByTestId(`link-d/club/collections`),
+        activities: page.getByTestId(`link-d/activities`),
+        about: page.getByTestId(`link-d/about`),
+        contact: page.getByTestId(`link-d/contact`),
+        donation: page.getByTestId(`link-d/donation`),
       },
       footer: {
-        arts: page.getByTestId(`link-footer-arts`),
-        collections: page.getByTestId(`link-footer-collections`),
-        activities: page.getByTestId(`link-footer-activities`),
-        about: page.getByTestId(`link-footer-about`),
-        contact: page.getByTestId(`link-footer-contact`),
-        donation: page.getByTestId(`link-footer-donation`),
-        terms: page.getByTestId(`link-footer-terms`),
-        privacy: page.getByTestId(`link-footer-privacy`),
+        arts: page.getByTestId(`link-footer/club/arts`),
+        collections: page.getByTestId(`link-footer/club/collections`),
+        activities: page.getByTestId(`link-footer/activities`),
+        about: page.getByTestId(`link-footer/about`),
+        contact: page.getByTestId(`link-footer/contact`),
+        donation: page.getByTestId(`link-footer/donation`),
+        terms: page.getByTestId(`link-footer/terms`),
+        privacy: page.getByTestId(`link-footer/privacy`),
       },
     }
     this.languageMenu = {
@@ -73,9 +72,8 @@ export class LayoutPage {
       nl: page.getByLabel('nl'),
       tr: page.getByLabel('tr'),
     }
-    this.loginLink = page.getByRole('link', { name: 'Sign in' })
-    this.profileMenu = page.getByTestId('button-profile-menu')
-    this.profileLink = page.getByTestId('link-profile')
+    this.profileMenu = page.getByTestId('button-d-profile-menu')
+    this.profileLink = page.getByTestId('link-d-profile')
     this.logoutButton = page.getByTestId('button-logout')
 
     this.site = site
@@ -91,7 +89,7 @@ export class LayoutPage {
   }
 
   async gotoLogin() {
-    await this.loginLink.click()
+    await this.page.goto(`${this.url}/auth/login?returnUrl=/`)
     await this.page.waitForLoadState('domcontentloaded')
   }
 
