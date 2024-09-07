@@ -27,7 +27,7 @@ test.describe('05. Upload Arts', () => {
     const artsPage = new ArtsPage(page)
 
     await layoutPage.gotoLogin()
-    await layoutPage.menu.desktop.arts.click()
+    await layoutPage.gotoPage('arts')
     await artsPage.clickUploadArtButton()
 
     await expect(artsPage.warning).toBeVisible()
@@ -40,10 +40,8 @@ test.describe('05. Upload Arts', () => {
 
     await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(1000)
 
-    await layoutPage.menu.desktop.arts.click()
-    await page.waitForURL(`${layoutPage.url}/club/arts`)
+    await layoutPage.gotoPage('arts')
     await artsPage.clickUploadArtButton()
 
     await expect(artsPage.titleInput).toBeVisible()
@@ -58,9 +56,8 @@ test.describe('05. Upload Arts', () => {
 
     await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(1000)
 
-    await layoutPage.menu.desktop.arts.click()
+    await layoutPage.gotoPage('arts')
     await artsPage.clickUploadArtButton()
 
     await artsPage.uploadImage()
@@ -71,7 +68,7 @@ test.describe('05. Upload Arts', () => {
 
     await artsPage.descriptionInput.focus()
     await artsPage.descriptionInput.blur()
-    expect(artsPage.descriptionError).not.toBeEmpty()
+    await expect(artsPage.descriptionError).toBeVisible()
   })
 
   test('TC-04: should display the uploaded image in the pending arts section', async ({
@@ -85,29 +82,25 @@ test.describe('05. Upload Arts', () => {
     await page.goto(layoutPage.url, { waitUntil: 'domcontentloaded' })
     await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(1000)
 
-    await layoutPage.menu.desktop.arts.click()
+    await layoutPage.gotoPage('arts')
     await artsPage.clickUploadArtButton()
 
     await artsPage.createArt()
-    await page.waitForTimeout(1000)
 
     await expect(artsPage.confirmationMessage).toBeVisible()
 
+    await artsPage.goToMyProfile()
+    await page.waitForTimeout(1000)
+    await profilePage.openTab('arts')
+
+    await profilePage.openArtsTab('pending')
     await page.waitForTimeout(1000)
 
-    await artsPage.goToMyProfile()
-    await profilePage.openArtsTab()
-    await page.waitForTimeout(2000)
-
-    await profilePage.openPendingArtsTab()
-    await page.waitForTimeout(2000)
-
-    expect(profilePage.firstArtImage).toHaveAttribute('srcset')
+    await expect(profilePage.firstArtImage).toHaveAttribute('srcset')
   })
 
-  test('TC-05: should approve the uploaded image from the dashboard and display the approval on the profile', async ({
+  test('TC-05: should approve the uploaded art from the dashboard and display it on the profile', async ({
     page,
     context,
   }) => {
@@ -123,26 +116,21 @@ test.describe('05. Upload Arts', () => {
     await page.goto(layoutPage.url, { waitUntil: 'domcontentloaded' })
     await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(1000)
 
-    await layoutPage.menu.desktop.arts.click()
+    await layoutPage.gotoPage('arts')
     await artsPage.clickUploadArtButton()
 
     const artTitle = faker.internet.userName().toString()
 
     await artsPage.createArt({ title: artTitle })
 
-    await page.waitForTimeout(1000)
-
     await artsPage.goToMyProfile()
-    await profilePage.openArtsTab()
-    await profilePage.openPendingArtsTab()
+    await profilePage.openTab('arts')
+    await profilePage.openArtsTab('pending')
 
-    await page.goto(getVercelUrl('dashboard'), {
-      waitUntil: 'domcontentloaded',
-    })
+    await page.goto(getVercelUrl('dashboard'))
+    await page.waitForLoadState('domcontentloaded')
     await loginPage.loginDashboard()
-    await page.waitForTimeout(1000)
 
     await dashboardPage.toggleArtsMenu()
     await dashboardPage.gotoPendingArts()
@@ -154,14 +142,14 @@ test.describe('05. Upload Arts', () => {
     await page.getByText(artTitle).click()
     await expect(dashboardPage.artStatusTag).toContainText('Approved')
 
-    await page.goto(layoutPage.url, { waitUntil: 'domcontentloaded' })
+    await layoutPage.gotoHome()
     await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(1000)
 
     await layoutPage.gotoProfilePage()
-    await profilePage.openArtsTab()
-    await profilePage.openApprovedArtsTab()
+    await page.waitForTimeout(1000)
+    await profilePage.openTab('arts')
+    await profilePage.openArtsTab('approved')
     await expect(page.getByText(`${artTitle}`)).toBeVisible()
   })
 
@@ -180,27 +168,23 @@ test.describe('05. Upload Arts', () => {
 
     await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(1000)
 
-    await layoutPage.menu.desktop.arts.click()
+    await layoutPage.gotoPage('arts')
     await artsPage.clickUploadArtButton()
 
     const artTitle = faker.internet.userName().toString()
 
     await artsPage.createArt({ title: artTitle })
 
-    await page.waitForTimeout(1000)
-
     await artsPage.goToMyProfile()
-    await profilePage.openArtsTab()
-    await profilePage.openPendingArtsTab()
+    await profilePage.openTab('arts')
+    await profilePage.openArtsTab('pending')
 
     // Reject the art from the dashboard
     await page.goto(getVercelUrl('dashboard'), {
       waitUntil: 'domcontentloaded',
     })
     await loginPage.loginDashboard()
-    await page.waitForTimeout(1000)
 
     await dashboardPage.toggleArtsMenu()
     await dashboardPage.gotoPendingArts()
@@ -215,11 +199,10 @@ test.describe('05. Upload Arts', () => {
     // Check if the art is displayed in the rejected arts section
     await layoutPage.gotoLogin()
     await loginPage.login(USERNAME, PASSWORD)
-    await page.waitForTimeout(1000)
 
     await layoutPage.gotoProfilePage()
-    await profilePage.openArtsTab()
-    await profilePage.openRejectedArtsTab()
+    await profilePage.openTab('arts')
+    await profilePage.openArtsTab('rejected')
     await expect(page.getByText(`${artTitle}`)).toBeVisible()
   })
 })

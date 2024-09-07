@@ -21,7 +21,7 @@ test.describe('02. Login', () => {
 
       await addCookies(context, site)
 
-      await layoutPage.gotoHomePage()
+      await layoutPage.gotoHome()
 
       if (site === 'dashboard') {
         await loginPage.loginDashboard()

@@ -39,23 +39,13 @@ export class ProfilePage {
     this.firstArtImage = page.locator('.art-image').first()
   }
 
-  async openArtsTab() {
-    await this.tabs.arts.click()
+  async openTab(tab: 'arts' | 'security' | 'socials') {
+    await this.tabs[tab].click()
     await this.page.waitForTimeout(1000)
   }
 
-  async openPendingArtsTab() {
-    await this.artTabs.pending.click()
-    await this.page.waitForTimeout(1000)
-  }
-
-  async openApprovedArtsTab() {
-    await this.artTabs.approved.click()
-    await this.page.waitForTimeout(1000)
-  }
-
-  async openRejectedArtsTab() {
-    await this.artTabs.rejected.click()
+  async openArtsTab(tab: 'approved' | 'pending' | 'rejected') {
+    await this.artTabs[tab].click()
     await this.page.waitForTimeout(1000)
   }
 
@@ -65,6 +55,6 @@ export class ProfilePage {
     await this.inputs.passwordConfirmation.fill(newPassword)
     // TODO: Add testid to the button
     await this.page.getByRole('button', { name: 'Change Password' }).click()
-    await this.page.waitForLoadState('networkidle')
+    // await this.page.waitForLoadState('networkidle')
   }
 }

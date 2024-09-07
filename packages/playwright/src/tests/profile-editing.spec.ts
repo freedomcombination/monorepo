@@ -28,7 +28,7 @@ test.describe('Profile Editing Tests', () => {
     const profilePage = new ProfilePage(page)
 
     await addCookies(context, 'kunsthalte')
-    await layoutPage.gotoHomePage()
+    await layoutPage.gotoHome()
 
     await layoutPage.gotoLogin()
     await loginPage.login(TEMP_USERNAME, PASSWORD)
@@ -49,7 +49,7 @@ test.describe('Profile Editing Tests', () => {
     const loginPage = new LoginPage(page)
 
     await addCookies(context, 'kunsthalte')
-    await layoutPage.gotoHomePage()
+    await layoutPage.gotoHome()
 
     await layoutPage.gotoLogin()
     await loginPage.login(TEMP_USERNAME, PASSWORD)
@@ -60,15 +60,10 @@ test.describe('Profile Editing Tests', () => {
     const LINKEDIN_URL = 'https://www.linkedin.com/in/' + username
 
     await page.getByTestId('input-linkedin').fill(LINKEDIN_URL)
-    // TODO: Add testid to the button
-    await page.getByRole('button', { name: 'Save' }).click()
-    await page.waitForLoadState('networkidle')
+    await page.getByTestId('button-save-socials').click()
 
-    // TODO: Add testid to the social links
-    const socialLinkLocator = page
-      .locator('.chakra-input__right-element a')
-      .first()
-    await checkExternalLink(socialLinkLocator, LINKEDIN_URL)
+    const linkedinLinkLocator = page.getByTestId('link-social-linkedin')
+    await checkExternalLink(linkedinLinkLocator, LINKEDIN_URL)
   })
 
   test('TC-03: should not add invalid social address', async ({
@@ -79,7 +74,7 @@ test.describe('Profile Editing Tests', () => {
     const loginPage = new LoginPage(page)
 
     await addCookies(context, 'kunsthalte')
-    await layoutPage.gotoHomePage()
+    await layoutPage.gotoHome()
 
     await layoutPage.gotoLogin()
     await loginPage.login(TEMP_USERNAME, PASSWORD)
@@ -88,8 +83,7 @@ test.describe('Profile Editing Tests', () => {
 
     const INVALID_URL = 'invalid-url'
     await page.getByTestId('input-linkedin').fill(INVALID_URL)
-    // TODO: Add testid to the button
-    await page.getByRole('button', { name: 'Save' }).click()
+    await page.getByTestId('button-save-socials').click()
 
     await expect(page.getByTestId('error-text-linkedin')).toBeVisible()
   })
@@ -104,7 +98,7 @@ test.describe('Profile Editing Tests', () => {
 
     await addCookies(context, 'kunsthalte')
 
-    await layoutPage.gotoHomePage()
+    await layoutPage.gotoHome()
     await layoutPage.gotoLogin()
     await loginPage.login(TEMP_USERNAME, PASSWORD)
     await layoutPage.gotoProfilePage()
@@ -127,7 +121,8 @@ test.describe('Profile Editing Tests', () => {
 
     // Restore the password
     await layoutPage.gotoProfilePage()
-    await page.getByTestId('tab-security').click()
+
+    await profilePage.tabs.security.click()
     await profilePage.updatePassword(TEMP_PASSWORD, PASSWORD)
   })
 })

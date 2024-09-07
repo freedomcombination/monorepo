@@ -83,7 +83,7 @@ export class LayoutPage {
     return getVercelUrl(this.site)
   }
 
-  async gotoHomePage() {
+  async gotoHome() {
     await this.page.goto(this.url)
     await this.page.waitForLoadState('domcontentloaded')
   }
@@ -94,19 +94,37 @@ export class LayoutPage {
   }
 
   async gotoProfilePage() {
+    // Scroll to the top of the page to see the header
+    await this.scrollToTop()
     await this.profileMenu.click()
     await this.profileLink.click()
     await this.page.waitForLoadState('domcontentloaded')
   }
 
   async logout() {
+    // Scroll to the top of the page to see the header
+    await this.scrollToTop()
     await this.profileMenu.click()
     await this.logoutButton.click()
     await this.page.waitForLoadState('domcontentloaded')
   }
 
   async switchLanguage(language: StrapiLocale) {
+    await this.scrollToTop()
     await this.languageMenu[language].click()
     await this.page.waitForLoadState('domcontentloaded')
+  }
+
+  async gotoPage(page: keyof typeof headerLinks) {
+    await this.scrollToTop()
+    await this.menu.desktop[page].click()
+    await this.page.waitForLoadState('domcontentloaded')
+  }
+
+  async scrollToTop() {
+    await this.page.evaluate(() => {
+      window.scrollTo(0, 0)
+    })
+    await this.page.waitForTimeout(1000)
   }
 }
