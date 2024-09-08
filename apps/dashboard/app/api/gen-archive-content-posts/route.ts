@@ -1,12 +1,12 @@
-import { OpenAIStream, StreamingTextResponse } from 'ai'
-import OpenAI from 'openai'
+import { createOpenAI } from '@ai-sdk/openai'
+import { streamText } from 'ai'
 
 import { generateMockArchivePost } from '@fc/utils/src/generateMockArchivePost'
 import { getMockReadableStream } from '@fc/utils/src/getMockReadableStream'
 
 export const runtime = 'edge'
 
-const openai = new OpenAI({
+const openai = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY! ?? '',
 })
 
@@ -53,35 +53,26 @@ export async function POST(req: Request) {
     // Create a ReadableStream from your mock response
     const stream = getMockReadableStream(mockResponse)
 
-    // Use the stream as input to your StreamingTextResponse
-    return new StreamingTextResponse(stream)
+    return new Response(stream, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Transfer-Encoding': 'chunked',
+      },
+    })
   }
 
-  // Request the OpenAI API for the response based on the prompt
-  const response = await openai.chat.completions.create({
-    model: 'gpt-4o',
-    // model: 'gpt-4',
-    // model: 'gpt-3.5-turbo',
-    stream: true,
-    messages: [
-      {
-        role: 'system',
-        content:
-          'You are an activist, and your task is to raise awareness about human rights violations.',
-      },
-      {
-        role: 'user',
-        content: `Given the following context, generate ${descriptionCount} descriptions and ${sentenceCount} sentences in ${capitalizeFirstLetter(language)} for each description. The description will be a gist of the context, and should not exceed ${characterLimitOfDescriptions} characters and the sentences shouldn't exceed ${characterLimitOfSentences} characters.
+  const result = await streamText({
+    model: openai('gpt-4o-mini'),
+    system:
+      'You are an activist, and your task is to raise awareness about human rights violations.',
+    prompt: `Given the following context, generate ${descriptionCount} descriptions and ${sentenceCount} sentences in ${capitalizeFirstLetter(language)} for each description. The description will be a gist of the context, and should not exceed ${characterLimitOfDescriptions} characters and the sentences shouldn't exceed ${characterLimitOfSentences} characters.
 Respond with a JSON array of objects containing description and sentences keys [{description: "description1", sentences: ["sentence1", "sentence2", ...]}, {description: "description2", sentences: ["sentence1", "sentence2", ...]}]. Only respond with an array. Context:
 ${prompt}`,
-      },
-    ],
     temperature: 0, // absolute certainty
   })
 
-  const stream = OpenAIStream(response)
-
-  return new StreamingTextResponse(stream)
+  return result.toDataStreamResponse()
 }
 
 // const sampleResponse = {

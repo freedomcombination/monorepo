@@ -25,6 +25,7 @@
     "stripe": "./stripe listen --forward-to localhost:3001/api/donation/status"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.58",
     "@chakra-ui/next-js": "^2.2.0",
     "@chakra-ui/react": "^2.8.2",
     "@ctrl/tinycolor": "^4.1.0",
@@ -51,7 +52,7 @@
     "@vercel/edge-config": "^1.2.1",
     "@vercel/kv": "^2.0.0",
     "@vercel/og": "^0.6.2",
-    "ai": "3.0.12",
+    "ai": "^3.3.28",
     "axios": "^1.7.7",
     "chakra-react-select": "4.9.2",
     "cookies-next": "^4.2.1",
@@ -74,7 +75,7 @@
     "next-recaptcha-v3": "^1.4.1",
     "next-seo": "^6.6.0",
     "next-share": "^0.27.0",
-    "openai": "4.29.1",
+    "openai": "^4.58.1",
     "pluralize": "^8.0.0",
     "qs": "^6.13.0",
     "react": "^18.3.1",
