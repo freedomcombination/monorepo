@@ -1,27 +1,11 @@
 import { forwardRef, Ref } from 'react'
 
-import { useBoolean, useMergeRefs } from '@chakra-ui/hooks'
-import {
-  Box,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
-  IconButton,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  Tooltip,
-} from '@chakra-ui/react'
-import { Group, Input } from '@chakra-ui/react'
-import { upperFirst } from 'lodash'
+import { useMergeRefs } from '@chakra-ui/hooks'
+import { Input } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FieldValues } from 'react-hook-form'
-import { HiEye, HiEyeOff } from 'react-icons/hi'
-import { TbInfoCircle } from 'react-icons/tb'
 
-import { Field } from '@fc/chakra'
+import { Field, InputGroup, PasswordInput } from '@fc/chakra'
 
 import { FormItemProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
@@ -45,11 +29,9 @@ function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
   }: FormItemProps<TFieldValues>,
   formItemRef: Ref<HTMLInputElement | HTMLTextAreaElement>,
 ) {
-  const [isOpen, setIsOpen] = useBoolean(false)
-
   const { t } = useTranslation()
 
-  const Tag = as || Input
+  const Tag = type === 'password' ? PasswordInput : as || Input
   const errorMessage = errors?.[name]?.['message'] as unknown as string
 
   const { ref: registerRef, ...registerRest } = register(name)
@@ -64,44 +46,28 @@ function FormItemBase<TFieldValues extends FieldValues = FieldValues>(
       name={name}
       errorText={errorMessage}
       helperText={helperText}
-      label={label}
+      label={hideLabel ? null : label}
+      tooltip={tooltip}
       invalid={Boolean(errors?.[name])}
       required={required}
     >
-      <Group w={'full'}>
-        {/* {leftElement && (
-          <InputElement placement={'start'} h={'full'} color={'gray.300'}>
-            <IconButton icon={<EyeOnIcon />} />
-          </InputElement>
-        )} */}
+      <InputGroup
+        w={'full'}
+        startElement={leftElement}
+        endElement={rightElement}
+      >
         <Tag
           data-testid={`input-${name}`}
           ref={ref}
           id={name}
-          type={type === 'password' ? (isOpen ? 'text' : 'password') : type}
+          type={type}
           placeholder={placeholder}
           _placeholder={{ color: 'gray.300' }}
           w={'full'}
           {...registerRest}
           {...rest}
         />
-        {/* {type !== 'password' && rightElement && (
-          <InputElement h={'full'} color="gray.300">
-            {rightElement}
-          </InputElement>
-        )} */}
-        {/* {type === 'password' && (
-          <InputElement h={'full'}>
-            <IconButton
-              variant="plain"
-              color={'inherit'}
-              aria-label={isOpen ? 'Mask password' : 'Reveal password'}
-              icon={isOpen ? <HiEyeOff /> : <HiEye />}
-              onClick={setIsOpen.toggle}
-            />
-          </InputElement>
-        )} */}
-      </Group>
+      </InputGroup>
     </Field>
   )
 }

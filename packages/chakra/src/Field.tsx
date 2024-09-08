@@ -22,16 +22,16 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
       children,
       helperText,
       errorText,
-      asterisk,
       tooltip,
+      required,
       ...rest
     } = props
 
     return (
-      <ChakraField.Root ref={ref} {...rest}>
+      <ChakraField.Root ref={ref} required={required} {...rest}>
         {label && (
           <ChakraField.Label>
-            {label} {asterisk && <ChakraField.RequiredIndicator />}
+            {label} {required && <ChakraField.RequiredIndicator />}
             {tooltip && (
               <Tooltip
                 positioning={{ placement: 'top-start' }}
@@ -49,7 +49,10 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
           <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
         )}
         {errorText && (
-          <ChakraField.ErrorText data-testid={`error-text-${name}`}>
+          <ChakraField.ErrorText
+            _firstLetter={{ textTransform: 'uppercase' }}
+            data-testid={`error-text-${name}`}
+          >
             {errorText}
           </ChakraField.ErrorText>
         )}

@@ -61,13 +61,11 @@ const MarkdownEditor = forwardRef<HTMLTextAreaElement, MarkdownEditorProps>(
         }}
         flex={1}
       >
-        <Box
-          ref={ref}
-          as={MdEditor}
-          h={'full'}
-          renderHTML={(text: string) => <ReactMarkdown>{text}</ReactMarkdown>}
-          {...props}
-        />
+        <Box asChild ref={ref} h={'full'} {...props}>
+          <MdEditor
+            renderHTML={(text: string) => <ReactMarkdown>{text}</ReactMarkdown>}
+          />
+        </Box>
       </Box>
     )
   },

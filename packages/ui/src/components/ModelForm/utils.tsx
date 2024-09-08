@@ -9,8 +9,7 @@ import {
   NumberInputStepper,
   Switch,
 } from '@fc/chakra'
-import { Post, StrapiModel } from '@fc/types'
-import { StrapiCollectionEndpoint } from '@fc/types'
+import { Post, StrapiCollectionEndpoint, StrapiModel } from '@fc/types'
 
 import { ModelCreateFormBodyProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'
@@ -53,9 +52,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
       !activeOption || !field.group || field?.group?.value === activeOption
     const videoUrl = watch(field.name as string)
 
-    const errorMessage =
-      errors?.[field.name]?.message &&
-      upperFirst(errors?.[field.name]?.message as string)
+    const errorMessage = errors?.[field.name]?.message as string
 
     if (field.type === 'mediaUrl') {
       return (
@@ -82,7 +79,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           required={field.required}
           zIndex={0}
           label={label}
-          errorText={errors?.[field.name]?.message as string}
+          errorText={errorMessage}
           {...(!isActive && { display: 'none' })}
         >
           <ModelMedia
@@ -139,10 +136,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           mb={1}
           {...(!isActive && { display: 'none' })}
         >
-          <Field
-            label={label}
-            errorText={errors[field?.name as string]?.message as string}
-          >
+          <Field label={label} errorText={errorMessage}>
             <NumberInput
               maxW={120}
               onChange={value => setValue(field.name as string, value)}
@@ -165,7 +159,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           key={index}
           required={field.required}
           label={label}
-          errorText={errors[field.name as string]?.message as string}
+          errorText={errorMessage}
           {...(!isActive && { display: 'none' })}
         >
           <Switch

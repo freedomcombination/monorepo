@@ -77,7 +77,7 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
         </Flex>
 
         {!filteredBlogs.length && (
-          <Stack minH="inherit" justify="center" align="center" spacing={8}>
+          <Stack minH="inherit" justify="center" align="center" gap={8}>
             <Image h={200} src={'/images/no-blog.svg'} alt="no blog" />
             <Text textAlign="center" fontSize="lg">
               {t('blog-no-content')}
