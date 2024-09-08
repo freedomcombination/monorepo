@@ -96,6 +96,8 @@ export const PostGenAI = ({
     handleInputChange,
     handleSubmit,
   } = useCompletion({
+    // Our mock stream response only works as intended when the stream protocol is set to 'text'
+    streamProtocol: `${useFakeApi ? 'text' : 'data'}`,
     api: apiUrl,
     initialInput: content,
     body,
@@ -114,6 +116,7 @@ export const PostGenAI = ({
       }
 
       toastMessage('Error', t('contact.form.failed'), 'error')
+      console.error('Error: ', error.message)
     },
   })
 
