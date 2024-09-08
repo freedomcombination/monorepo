@@ -54,7 +54,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({
   return (
     <Menu placement="bottom">
       <MenuButton
-        data-testid="button-profile-menu"
+        data-testid={`button-${isMobile ? 'm' : 'd'}-profile-menu`}
         as={Button}
         size={'sm'}
         leftIcon={
@@ -68,13 +68,17 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({
         {profile?.name || user?.username}
       </MenuButton>
       <MenuList>
-        <MenuItem data-testid="link-profile" as={Link} href={'/profile'}>
+        <MenuItem
+          data-testid={`link-${isMobile ? 'm' : 'd'}-profile`}
+          as={Link}
+          href={'/profile'}
+        >
           {t('profile')}
         </MenuItem>
 
         <MenuDivider />
         <MenuItem
-          data-testid="button-logout"
+          data-testid={`button-${isMobile ? 'm' : 'd'}-logout`}
           icon={<FiLogOut />}
           color="red.400"
           onClick={logout}

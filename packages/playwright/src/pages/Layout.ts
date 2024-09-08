@@ -1,6 +1,6 @@
 import { type Locator, type Page } from '@playwright/test'
 
-import { Site } from '@fc/types'
+import { Site, StrapiLocale } from '@fc/types'
 
 import { getVercelUrl } from '../utils'
 
@@ -22,12 +22,16 @@ const footerLinks = {
 
 export class LayoutPage {
   readonly page: Page
-  readonly loginLink: Locator
   readonly site: Site
   readonly menu: {
     mobile: Record<keyof typeof headerLinks, Locator>
     desktop: Record<keyof typeof headerLinks, Locator>
     footer: Record<keyof typeof footerLinks, Locator>
+  }
+  readonly languageMenu: {
+    en: Locator
+    nl: Locator
+    tr: Locator
   }
   readonly profileMenu: Locator
   readonly profileLink: Locator
@@ -63,10 +67,14 @@ export class LayoutPage {
         privacy: page.getByTestId(`link-footer/privacy`),
       },
     }
-    this.loginLink = page.getByTestId('button-d-login')
-    this.profileMenu = page.getByTestId('button-profile-menu')
-    this.profileLink = page.getByTestId('link-profile')
-    this.logoutButton = page.getByTestId('button-logout')
+    this.languageMenu = {
+      en: page.getByLabel('en'),
+      nl: page.getByLabel('nl'),
+      tr: page.getByLabel('tr'),
+    }
+    this.profileMenu = page.getByTestId('button-d-profile-menu')
+    this.profileLink = page.getByTestId('link-d-profile')
+    this.logoutButton = page.getByTestId('button-d-logout')
 
     this.site = site
   }
@@ -75,25 +83,48 @@ export class LayoutPage {
     return getVercelUrl(this.site)
   }
 
-  async gotoHomePage() {
+  async gotoHome() {
     await this.page.goto(this.url)
     await this.page.waitForLoadState('domcontentloaded')
   }
 
   async gotoLogin() {
-    await this.loginLink.click()
+    await this.page.goto(`${this.url}/auth/login?returnUrl=/`)
     await this.page.waitForLoadState('domcontentloaded')
   }
 
   async gotoProfilePage() {
+    // Scroll to the top of the page to see the header
+    await this.scrollToTop()
     await this.profileMenu.click()
     await this.profileLink.click()
     await this.page.waitForLoadState('domcontentloaded')
   }
 
   async logout() {
+    // Scroll to the top of the page to see the header
+    await this.scrollToTop()
     await this.profileMenu.click()
     await this.logoutButton.click()
     await this.page.waitForLoadState('domcontentloaded')
+  }
+
+  async switchLanguage(language: StrapiLocale) {
+    await this.scrollToTop()
+    await this.languageMenu[language].click()
+    await this.page.waitForLoadState('domcontentloaded')
+  }
+
+  async gotoPage(page: keyof typeof headerLinks) {
+    await this.scrollToTop()
+    await this.menu.desktop[page].click()
+    await this.page.waitForLoadState('domcontentloaded')
+  }
+
+  async scrollToTop() {
+    await this.page.evaluate(() => {
+      window.scrollTo(0, 0)
+    })
+    await this.page.waitForTimeout(1000)
   }
 }

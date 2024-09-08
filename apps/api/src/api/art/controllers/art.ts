@@ -12,7 +12,6 @@ type Art = EntityService.GetValues<
 >
 
 const sendArtCreatedEmail = async art => {
-  // TODO: Get editor emails from the database
   const editors = await strapi.entityService.findMany(
     'plugin::users-permissions.user',
     {
