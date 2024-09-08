@@ -5,7 +5,7 @@ import { DocumentContent } from '@fc/ui'
 export default class Document extends NextDocument {
   render() {
     return (
-      <Html>
+      <Html suppressHydrationWarning>
         <Head>
           <DocumentContent />
         </Head>

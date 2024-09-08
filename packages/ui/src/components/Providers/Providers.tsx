@@ -1,6 +1,5 @@
 import { FC, ReactNode, useState } from 'react'
 
-import { ChakraProvider, defaultSystem } from '@chakra-ui/react'
 import {
   HydrationBoundary,
   QueryClient,
@@ -11,10 +10,9 @@ import { Analytics } from '@vercel/analytics/react'
 import { useRouter } from 'next/router'
 import { ReCaptchaProvider } from 'next-recaptcha-v3'
 import { DefaultSeo } from 'next-seo'
-import { ThemeProvider } from 'next-themes'
 import { useCookie } from 'react-use'
 
-import { Toaster } from '@fc/chakra'
+import { ChakraProvider, Toaster } from '@fc/chakra'
 import { RECAPTCHA_SITE_KEY, defaultSeo } from '@fc/config'
 import { AuthProvider, WebPushProvider } from '@fc/context'
 import { Site } from '@fc/types'
@@ -65,13 +63,11 @@ export const Providers: FC<ProvidersProps> = ({
           >
             <WebPushProvider enable={enable}>
               <DefaultSeo {...defaultSeo[site][locale]} />
-              <ChakraProvider value={defaultSystem}>
-                <ThemeProvider attribute="class" disableTransitionOnChange>
-                  {enable && <NotificationModal />}
-                  {children}
-                  {!cookie && <CookieBanner onAllow={onAllow} />}
-                  <Toaster />
-                </ThemeProvider>
+              <ChakraProvider>
+                {enable && <NotificationModal />}
+                {children}
+                {!cookie && <CookieBanner onAllow={onAllow} />}
+                <Toaster />
               </ChakraProvider>
             </WebPushProvider>
           </ReCaptchaProvider>
