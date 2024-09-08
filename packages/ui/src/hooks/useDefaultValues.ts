@@ -66,7 +66,6 @@ export const useDefaultValues = <T extends StrapiModel>(
         getDate(courseModel.lastRegisterDate),
         getDate(courseModel.lastRegisterDate, true),
       ],
-      
     }
 
     fields.forEach(field => {
