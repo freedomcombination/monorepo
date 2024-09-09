@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 import { socialLinks } from '@fc/config/src/socialLinks'
 import { Site } from '@fc/types'
 
-import { addCookies, checkExternalLink, getVercelUrl } from '../utils'
+import { addCookies, checkExternalLink, getUrl } from '../utils'
 
 test.describe('03. Footer', () => {
   Object.entries(socialLinks)
@@ -17,7 +17,7 @@ test.describe('03. Footer', () => {
         page,
         context,
       }) => {
-        const url = getVercelUrl(site)
+        const url = getUrl(site)
         await page.goto(url, { waitUntil: 'domcontentloaded' })
 
         await addCookies(context, site)
