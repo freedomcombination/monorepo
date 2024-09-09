@@ -7947,7 +7947,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/builder-webpack5@npm:7.6.20, @storybook/builder-webpack5@npm:^7.6.20":
+"@storybook/builder-webpack5@npm:7.6.20":
   version: 7.6.20
   resolution: "@storybook/builder-webpack5@npm:7.6.20"
   dependencies:
@@ -7993,6 +7993,46 @@ __metadata:
     typescript:
       optional: true
   checksum: 10/deb645ccb3a3f83172e91450177db4256dac1d35994a7b5d81184065914b084475eda585b718cf7f2e7b6059f20d3a68899b4d4d059d59b765a17c1efff4c3c1
+  languageName: node
+  linkType: hard
+
+"@storybook/builder-webpack5@npm:^8.2.9":
+  version: 8.2.9
+  resolution: "@storybook/builder-webpack5@npm:8.2.9"
+  dependencies:
+    "@storybook/core-webpack": "npm:8.2.9"
+    "@types/node": "npm:^18.0.0"
+    "@types/semver": "npm:^7.3.4"
+    browser-assert: "npm:^1.2.1"
+    case-sensitive-paths-webpack-plugin: "npm:^2.4.0"
+    cjs-module-lexer: "npm:^1.2.3"
+    constants-browserify: "npm:^1.0.0"
+    css-loader: "npm:^6.7.1"
+    es-module-lexer: "npm:^1.5.0"
+    express: "npm:^4.19.2"
+    fork-ts-checker-webpack-plugin: "npm:^8.0.0"
+    fs-extra: "npm:^11.1.0"
+    html-webpack-plugin: "npm:^5.5.0"
+    magic-string: "npm:^0.30.5"
+    path-browserify: "npm:^1.0.1"
+    process: "npm:^0.11.10"
+    semver: "npm:^7.3.7"
+    style-loader: "npm:^3.3.1"
+    terser-webpack-plugin: "npm:^5.3.1"
+    ts-dedent: "npm:^2.0.0"
+    url: "npm:^0.11.0"
+    util: "npm:^0.12.4"
+    util-deprecate: "npm:^1.0.2"
+    webpack: "npm:5"
+    webpack-dev-middleware: "npm:^6.1.2"
+    webpack-hot-middleware: "npm:^2.25.1"
+    webpack-virtual-modules: "npm:^0.6.0"
+  peerDependencies:
+    storybook: ^8.2.9
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10/a9c31df0621235cbd896888e260c76bd76e292e88a2640ec21ec3fd754e9f93b7eee858f02e22242b58fa7e9752e7c245ee3ff52f81bf6586fae87716106f30f
   languageName: node
   linkType: hard
 
@@ -8221,6 +8261,18 @@ __metadata:
     "@types/node": "npm:^18.0.0"
     ts-dedent: "npm:^2.0.0"
   checksum: 10/2277c5f996e2936955e19ba52600e286cf28eca7a24eba373329ca804e3e0d5da4047a15c01cdbb03abdf59690dbd96592c1f2c10d77af2463917555774ad9e0
+  languageName: node
+  linkType: hard
+
+"@storybook/core-webpack@npm:8.2.9":
+  version: 8.2.9
+  resolution: "@storybook/core-webpack@npm:8.2.9"
+  dependencies:
+    "@types/node": "npm:^18.0.0"
+    ts-dedent: "npm:^2.0.0"
+  peerDependencies:
+    storybook: ^8.2.9
+  checksum: 10/8e6f47c2ac7febbd1f815989fe2e64b2f7d6f4060bc72d3a578dcfa2285ac32e7d82e68f5d302ebd2eb377c0e1d42492aefa982579568f2c3fdd688162c4ad28
   languageName: node
   linkType: hard
 
@@ -15882,7 +15934,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-module-lexer@npm:^1.2.1, es-module-lexer@npm:^1.4.1":
+"es-module-lexer@npm:^1.2.1, es-module-lexer@npm:^1.4.1, es-module-lexer@npm:^1.5.0":
   version: 1.5.4
   resolution: "es-module-lexer@npm:1.5.4"
   checksum: 10/f29c7c97a58eb17640dcbd71bd6ef754ad4f58f95c3073894573d29dae2cad43ecd2060d97ed5b866dfb7804d5590fb7de1d2c5339a5fceae8bd60b580387fc5
@@ -16951,7 +17003,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:^4.17.3":
+"express@npm:^4.17.3, express@npm:^4.19.2":
   version: 4.19.2
   resolution: "express@npm:4.19.2"
   dependencies:
@@ -17176,7 +17228,7 @@ __metadata:
     "@sindresorhus/slugify": "npm:^2.2.1"
     "@splidejs/react-splide": "npm:^0.7.12"
     "@storybook/addon-essentials": "npm:^7.6.20"
-    "@storybook/builder-webpack5": "npm:^7.6.20"
+    "@storybook/builder-webpack5": "npm:^8.2.9"
     "@storybook/core-common": "npm:^7.6.20"
     "@storybook/core-server": "npm:^7.6.20"
     "@storybook/nextjs": "npm:^7.6.20"
@@ -31218,7 +31270,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-dev-middleware@npm:^6.1.1":
+"webpack-dev-middleware@npm:^6.1.1, webpack-dev-middleware@npm:^6.1.2":
   version: 6.1.3
   resolution: "webpack-dev-middleware@npm:6.1.3"
   dependencies:
@@ -31282,7 +31334,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-virtual-modules@npm:^0.6.1":
+"webpack-virtual-modules@npm:^0.6.0, webpack-virtual-modules@npm:^0.6.1":
   version: 0.6.2
   resolution: "webpack-virtual-modules@npm:0.6.2"
   checksum: 10/d9a0d035f7ec0c7f1055aaf88bfe48b7f96458043916a1b2926d9012fd61de3810a6b768e31a8cd4b3c84a9b6d55824361a9dd20aaf9f5ccfb6f017af216a178
