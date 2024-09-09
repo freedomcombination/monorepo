@@ -9000,6 +9000,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/plugin-documentation@npm:^4.25.10":
+  version: 4.25.10
+  resolution: "@strapi/plugin-documentation@npm:4.25.10"
+  dependencies:
+    "@strapi/design-system": "npm:1.19.0"
+    "@strapi/helper-plugin": "npm:4.25.10"
+    "@strapi/icons": "npm:1.19.0"
+    "@strapi/utils": "npm:4.25.10"
+    bcryptjs: "npm:2.4.3"
+    cheerio: "npm:^1.0.0-rc.12"
+    formik: "npm:2.4.0"
+    fs-extra: "npm:10.0.0"
+    immer: "npm:9.0.19"
+    koa-static: "npm:^5.0.0"
+    lodash: "npm:4.17.21"
+    path-to-regexp: "npm:6.2.1"
+    react-helmet: "npm:^6.1.0"
+    react-intl: "npm:6.4.1"
+    react-query: "npm:3.39.3"
+    swagger-ui-dist: "npm:4.19.0"
+    yaml: "npm:1.10.2"
+    yup: "npm:0.32.9"
+  peerDependencies:
+    "@strapi/strapi": ^4.0.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.2.0
+    styled-components: ^5.2.1
+  checksum: 10/bc7b3c9c858eaefcb8a105c6bdb11c3357e5cad935c73fb99260d78522f84aabaef1a6753c2c0add858bdaf2a6f42952f1263bcb30860c9790ecc498ca334ad7
+  languageName: node
+  linkType: hard
+
 "@strapi/plugin-email@npm:4.25.10":
   version: 4.25.10
   resolution: "@strapi/plugin-email@npm:4.25.10"
@@ -11896,6 +11928,7 @@ __metadata:
     "@react-email/components": "npm:0.0.25"
     "@react-email/font": "npm:0.0.8"
     "@react-email/render": "npm:1.0.1"
+    "@strapi/plugin-documentation": "npm:^4.25.10"
     "@strapi/plugin-i18n": "npm:^4.25.10"
     "@strapi/plugin-sentry": "npm:^4.25.10"
     "@strapi/plugin-users-permissions": "npm:^4.25.10"
@@ -13347,7 +13380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cheerio@npm:^1.0.0":
+"cheerio@npm:^1.0.0, cheerio@npm:^1.0.0-rc.12":
   version: 1.0.0
   resolution: "cheerio@npm:1.0.0"
   dependencies:
@@ -21248,7 +21281,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"koa-static@npm:5.0.0":
+"koa-static@npm:5.0.0, koa-static@npm:^5.0.0":
   version: 5.0.0
   resolution: "koa-static@npm:5.0.0"
   dependencies:
@@ -24848,6 +24881,13 @@ __metadata:
   version: 0.1.7
   resolution: "path-to-regexp@npm:0.1.7"
   checksum: 10/701c99e1f08e3400bea4d701cf6f03517474bb1b608da71c78b1eb261415b645c5670dfae49808c89e12cea2dccd113b069f040a80de012da0400191c6dbd1c8
+  languageName: node
+  linkType: hard
+
+"path-to-regexp@npm:6.2.1":
+  version: 6.2.1
+  resolution: "path-to-regexp@npm:6.2.1"
+  checksum: 10/1e266be712d1a08086ee77beab12a1804842ec635dfed44f9ee1ba960a0e01cec8063fb8c92561115cdc0ce73158cdc7766e353ffa039340b4a85b370084c4d4
   languageName: node
   linkType: hard
 
@@ -29264,6 +29304,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"swagger-ui-dist@npm:4.19.0":
+  version: 4.19.0
+  resolution: "swagger-ui-dist@npm:4.19.0"
+  checksum: 10/40c93be4e38a0e88f65a5ca6937b72d7c681f359bf523535da5bedcb899a85dc4bd9ebc5037360b075bda1b063c6415617e8805e5369df74be2d808ba9219479
+  languageName: node
+  linkType: hard
+
 "swap-case@npm:^1.1.0":
   version: 1.1.2
   resolution: "swap-case@npm:1.1.2"
@@ -32046,7 +32093,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^1.10.0":
+"yaml@npm:1.10.2, yaml@npm:^1.10.0":
   version: 1.10.2
   resolution: "yaml@npm:1.10.2"
   checksum: 10/e088b37b4d4885b70b50c9fa1b7e54bd2e27f5c87205f9deaffd1fb293ab263d9c964feadb9817a7b129a5bf30a06582cb08750f810568ecc14f3cdbabb79cb3
