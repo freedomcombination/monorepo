@@ -18,7 +18,7 @@ test.afterEach(async ({ page }) => {
   await page.close()
 })
 
-test.describe('Profile Editing Tests', () => {
+test.describe('06. Profile Editing Tests', () => {
   test('TC-01: should not update password with invalid input', async ({
     page,
     context,
