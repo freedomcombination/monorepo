@@ -3,7 +3,7 @@
     "prefix": "pwtest",
     "body": [
       "test('TC-01: should $1', async ({ page }) => {",
-      "    const url = getVercelUrl('$3');",
+      "    const url = getUrl('$3');",
       "    await page.goto(url);",
       "",
       "    // Test code here",
@@ -16,11 +16,11 @@
     "body": [
       "import { test } from '@playwright/test'",
       "",
-      "import { getVercelUrl } from '../utils'",
+      "import { getUrl } from '../utils'",
       "",
       "describe('01. $1', () => {",
       "  test('TC-01: should $2', async ({ page }) => {",
-      "    const url = getVercelUrl('$3');",
+      "    const url = getUrl('$3');",
       "    await page.goto(url);",
       "",
       "    // Test code here",

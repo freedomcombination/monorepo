@@ -9,7 +9,7 @@ import {
   LoginPage,
   ProfilePage,
 } from '../pages'
-import { addCookies, getVercelUrl } from '../utils'
+import { addCookies, getUrl } from '../utils'
 
 // test.afterEach(async ({ page }) => {
 //   await page.close()
@@ -128,7 +128,7 @@ test.describe('05. Upload Arts', () => {
     await profilePage.openTab('arts')
     await profilePage.openArtsTab('pending')
 
-    await page.goto(getVercelUrl('dashboard'))
+    await page.goto(getUrl('dashboard'))
     await page.waitForLoadState('domcontentloaded')
     await loginPage.loginDashboard()
 
@@ -181,7 +181,7 @@ test.describe('05. Upload Arts', () => {
     await profilePage.openArtsTab('pending')
 
     // Reject the art from the dashboard
-    await page.goto(getVercelUrl('dashboard'), {
+    await page.goto(getUrl('dashboard'), {
       waitUntil: 'domcontentloaded',
     })
     await loginPage.loginDashboard()

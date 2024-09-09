@@ -6,7 +6,7 @@ import {
   addCookies,
   checkExternalLink,
   generateRandomUser,
-  getVercelUrl,
+  getUrl,
 } from '../utils'
 
 const { username } = generateRandomUser()
@@ -116,7 +116,7 @@ test.describe('06. Profile Editing Tests', () => {
     await layoutPage.gotoLogin()
     await loginPage.login(TEMP_USERNAME, TEMP_PASSWORD)
 
-    const URL = getVercelUrl('kunsthalte')
+    const URL = getUrl('kunsthalte')
     await expect(page).toHaveURL(URL)
 
     // Restore the password

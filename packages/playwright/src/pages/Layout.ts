@@ -2,7 +2,7 @@ import { type Locator, type Page } from '@playwright/test'
 
 import { Site, StrapiLocale } from '@fc/types'
 
-import { getVercelUrl } from '../utils'
+import { getUrl } from '../utils'
 
 const headerLinks = {
   arts: '/club/arts',
@@ -80,7 +80,7 @@ export class LayoutPage {
   }
 
   get url() {
-    return getVercelUrl(this.site)
+    return getUrl(this.site)
   }
 
   async gotoHome() {
