@@ -2,11 +2,7 @@
   "Playwright test": {
     "prefix": "pwtest",
     "body": [
-      "import { test } from '@playwright/test'",
-      "",
-      "import { getVercelUrl } from '../utils'",
-      "",
-      "test('TC-01: $1', async ({ page }) => {",
+      "test('TC-01: should $1', async ({ page }) => {",
       "    const url = getVercelUrl('$3');",
       "    await page.goto(url);",
       "",
@@ -23,7 +19,7 @@
       "import { getVercelUrl } from '../utils'",
       "",
       "describe('01. $1', () => {",
-      "  test('TC-01: $2', async ({ page }) => {",
+      "  test('TC-01: should $2', async ({ page }) => {",
       "    const url = getVercelUrl('$3');",
       "    await page.goto(url);",
       "",

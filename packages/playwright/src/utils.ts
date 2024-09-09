@@ -14,12 +14,12 @@ export const getVercelUrl = (site: Site) => {
   return `http://localhost:${ports[site]}`
 }
 
-export const checkLink = async (locator: Locator, link: string) => {
-  await expect(locator).toHaveAttribute('href', link)
+export const checkLink = async (locator: Locator, href: string) => {
+  await expect(locator).toHaveAttribute('href', href)
 }
 
-export const checkExternalLink = async (locator: Locator, link: string) => {
-  await checkLink(locator, link)
+export const checkExternalLink = async (locator: Locator, href: string) => {
+  await checkLink(locator, href)
 
   await expect(locator).toHaveAttribute('target', '_blank')
   await expect(locator).toHaveAttribute('rel', 'noopener noreferrer')
