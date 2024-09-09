@@ -1,6 +1,6 @@
 import { type Locator, type Page } from '@playwright/test'
 
-import { getVercelUrl } from '../utils'
+import { getUrl } from '../utils'
 
 export class DashboardArtsPage {
   readonly page: Page
@@ -32,7 +32,7 @@ export class DashboardArtsPage {
   }
 
   get url() {
-    return getVercelUrl('dashboard')
+    return getUrl('dashboard')
   }
 
   async toggleArtsMenu() {

@@ -62,6 +62,10 @@ export const useDefaultValues = <T extends StrapiModel>(
       createdAt: [getDate(createdAt), getDate(createdAt, true)],
       updatedAt: [getDate(updatedAt), getDate(updatedAt, true)],
       publishedAt: [getDate(publishedAt), getDate(publishedAt, true)],
+      lastRegisterDate: [
+        getDate(courseModel.lastRegisterDate),
+        getDate(courseModel.lastRegisterDate, true),
+      ],
     }
 
     fields.forEach(field => {
@@ -70,6 +74,7 @@ export const useDefaultValues = <T extends StrapiModel>(
         case 'createdAt':
         case 'updatedAt':
         case 'publishedAt':
+        case 'lastRegisterDate':
           if (field.type === 'date') {
             defaults[field.name] = dateFields[field.name as string][0]
           } else if (field.type === 'datetime-local') {

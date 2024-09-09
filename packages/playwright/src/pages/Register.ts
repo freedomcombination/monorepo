@@ -2,7 +2,7 @@ import { Page } from '@playwright/test'
 
 import { Site } from '@fc/types'
 
-import { getVercelUrl } from '../utils'
+import { getUrl } from '../utils'
 
 type RegisterArgs = {
   name: string
@@ -21,7 +21,7 @@ export class RegisterPage {
   }
 
   async navigateToRegister() {
-    const url = getVercelUrl(this.site)
+    const url = getUrl(this.site)
     await this.page.goto(url)
 
     await this.page.click('a[href*="auth/login"]')
