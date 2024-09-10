@@ -280,7 +280,7 @@ export const GenPostProvider = ({
                 No
               </Button>
               <Button
-                colorScheme="red"
+                colorPalette="red"
                 ml={3}
                 onClick={() => {
                   alertAction?.action()

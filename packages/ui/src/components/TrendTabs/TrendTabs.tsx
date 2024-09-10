@@ -13,7 +13,7 @@ export const TrendTabs = () => {
   return (
     <Stack h={400}>
       <Box overflowY="auto" bg="white">
-        <Tabs.Root colorScheme="primary" fitted size="sm">
+        <Tabs.Root colorPalette="primary" fitted size="sm">
           <Tabs.List pos="sticky" top="0" bg="white">
             <Tabs.Trigger data-testid="tab-world" value="world">
               World

@@ -146,17 +146,19 @@ const NewsPage = () => {
       </PageHeader>
       <Box overflow={'hidden'} flexShrink={0}>
         <Box overflowX={'auto'}>
-          <Group overflowX={'auto'} colorScheme={'gray'}>
+          <Group overflowX={'auto'}>
             <IconButton
               aria-label="Clear filters"
               icon={<AiOutlineClear />}
               size={'sm'}
               variant={'outline'}
               onClick={() => setSearchTerm('')}
+              colorPalette={'gray'}
             />
             {keywords[locale].map(keyword => (
               <Button
                 key={keyword}
+                colorPalette={'gray'}
                 onClick={() => setSearchTerm(keyword)}
                 variant={searchTerm === keyword ? 'solid' : 'outline'}
               >

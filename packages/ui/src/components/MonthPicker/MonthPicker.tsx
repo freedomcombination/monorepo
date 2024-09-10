@@ -113,7 +113,7 @@ export const MonthPicker: FC<MonthPickerProps> = ({
             <IconButton
               aria-label="left"
               variant={'ghost'}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               icon={<FaChevronLeft />}
               onClick={handlePrevYear}
             />
@@ -121,7 +121,7 @@ export const MonthPicker: FC<MonthPickerProps> = ({
             <IconButton
               aria-label="left"
               variant={'ghost'}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               icon={<FaChevronRight />}
               disabled={isLastYear && disableFuture}
               onClick={handleNextYear}

@@ -100,7 +100,7 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
             {t('cancel')}
           </Button>
           <Button
-            colorScheme="red"
+            colorPalette="red"
             loading={countDown > 0}
             loadingText={`${countDown}`}
             ml={3}

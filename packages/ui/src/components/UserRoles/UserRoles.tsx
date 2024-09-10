@@ -72,7 +72,7 @@ const RoleAction: FC<{
         <IconButton
           aria-label="Delete role"
           icon={<FaTrash />}
-          colorScheme="red"
+          colorPalette="red"
           rounded={'full'}
           variant={'outline'}
           size={'xs'}

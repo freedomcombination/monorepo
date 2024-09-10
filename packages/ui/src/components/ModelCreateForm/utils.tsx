@@ -165,7 +165,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
     //       {...(!isActive && { display: 'none' })}
     //     >
     //       <Switch
-    //         colorScheme={'primary'}
+    //         colorPalette={'primary'}
     //         size={'lg'}
     //         onCheckedChange={e => {
     //           setValue(field.name as string, e.checked)

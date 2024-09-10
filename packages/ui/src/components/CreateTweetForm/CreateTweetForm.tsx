@@ -170,7 +170,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   </HStack>
 
                   <Progress
-                    colorScheme={
+                    colorPalette={
                       similarity > SIMILARITY_LIMIT ? 'red' : 'green'
                     }
                     size="lg"
@@ -192,7 +192,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                 </Button>
                 <Button
                   type={'submit'}
-                  colorScheme="purple"
+                  colorPalette="purple"
                   leftIcon={<FiArrowUpRight />}
                   disabled={similarity > SIMILARITY_LIMIT}
                 >

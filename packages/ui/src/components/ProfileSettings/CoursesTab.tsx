@@ -62,7 +62,7 @@ export const CoursesTab: FC = () => {
             ))}
           </Accordion>
           <Link href="/courses">
-            <Button colorScheme="primary" size="md" variant={'outline'}>
+            <Button colorPalette="primary" size="md" variant={'outline'}>
               {t('course.payment.title.check-other-courses')}
             </Button>
           </Link>
@@ -70,7 +70,7 @@ export const CoursesTab: FC = () => {
       ) : (
         <Center>
           <Link href="/courses">
-            <Button colorScheme="primary" size="lg" variant={'outline'}>
+            <Button colorPalette="primary" size="lg" variant={'outline'}>
               {t('course.payment.title.go-to-courses')}
             </Button>
           </Link>
@@ -104,7 +104,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
             <Text fontWeight={600}>{title}</Text>
             <PaymentLine
               title={
-                <Badge colorScheme={status.color} variant={'outline'}>
+                <Badge colorPalette={status.color} variant={'outline'}>
                   {t('status')}
                 </Badge>
               }

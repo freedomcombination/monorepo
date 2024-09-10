@@ -384,7 +384,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   >
                     <Switch
                       disabled={field.blockEdit}
-                      colorScheme={'primary'}
+                      colorPalette={'primary'}
                       size={'lg'}
                       checked={!!watch(field.name as string)}
                       onCheckedChange={e => {
@@ -493,7 +493,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               onClick={onPostClick}
               leftIcon={<FaXTwitter />}
               fontSize="sm"
-              colorScheme={'purple'}
+              colorPalette={'purple'}
               loading={approveModelMutation.isPending}
             >
               {t('posts')}
@@ -519,7 +519,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 onClick={artModalDisclosure.onOpen}
                 leftIcon={<HiPlus />}
                 fontSize="sm"
-                colorScheme={'purple'}
+                colorPalette={'purple'}
                 loading={approveModelMutation.isPending}
               >
                 {t('collection.add-art')}
@@ -533,7 +533,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               isVisible={!profile && endpoint === 'users'}
               onClick={onGenerateProfile}
               leftIcon={<BiUserPlus />}
-              colorScheme="primary"
+              colorPalette="primary"
             >
               {t('profile.create')}
             </ActionButton>
@@ -544,7 +544,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               onClick={onApprove}
               leftIcon={<HiOutlineCheck />}
               fontSize="sm"
-              colorScheme={'purple'}
+              colorPalette={'purple'}
               loading={approveModelMutation.isPending}
             >
               {t('approve')}
@@ -564,7 +564,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 isVisible={isEditing}
                 onClick={onCancel}
                 leftIcon={<MdClose />}
-                colorScheme={'gray'}
+                colorPalette={'gray'}
                 fontSize="sm"
               >
                 {t('cancel')}
@@ -584,7 +584,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               checkActions={{ endpoint, actions: ['update'] }}
               isVisible={endpointsWithPublicationState.includes(endpoint)}
               onClick={isPublished ? onUnPublish : onPublish}
-              colorScheme={isPublished ? 'yellow' : 'green'}
+              colorPalette={isPublished ? 'yellow' : 'green'}
               fontSize="sm"
               leftIcon={
                 isPublished ? (
@@ -601,7 +601,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               canDelete={endpoint}
               onClick={onDelete}
               leftIcon={<BsTrash />}
-              colorScheme="red"
+              colorPalette="red"
             >
               {t('delete')}
             </ActionButton>
@@ -609,7 +609,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionButton
               isVisible={!!onClose}
               onClick={onClose}
-              colorScheme="gray"
+              colorPalette="gray"
             >
               {t('dismiss')}
             </ActionButton>

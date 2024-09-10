@@ -141,14 +141,14 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
           <Separator />
         </ModalBody>
         <ModalFooter justifyContent="space-between">
-          <Button colorScheme="red" onClick={handleClose}>
+          <Button colorPalette="red" onClick={handleClose}>
             Cancel
           </Button>
-          <Button colorScheme="red" onClick={onReset}>
+          <Button colorPalette="red" onClick={onReset}>
             Reset
           </Button>
           {/* disabled={!files} */}
-          <Button disabled={!state} colorScheme="blue" onClick={onCreate}>
+          <Button disabled={!state} colorPalette="blue" onClick={onCreate}>
             Create
           </Button>
         </ModalFooter>

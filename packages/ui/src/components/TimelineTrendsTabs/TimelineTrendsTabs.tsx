@@ -16,7 +16,7 @@ export const TimelineTrendsTabs = () => {
   return (
     <Stack h={780}>
       <Box overflowY="auto" bg="white" borderWidth={1}>
-        <Tabs.Root colorScheme="primary" fitted size="sm">
+        <Tabs.Root colorPalette="primary" fitted size="sm">
           <Tabs.List pos="sticky" top="0" bg="white">
             <Tabs.Trigger data-testid="tab-timeline" value="timeline" py={2}>
               Timeline

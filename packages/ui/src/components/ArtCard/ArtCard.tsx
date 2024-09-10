@@ -82,21 +82,21 @@ export const ArtCard: FC<ArtCardProps> = ({
       title: 'Delete Art',
       text: 'Are you sure you want to delete this art?',
       onClick: () => deleteMutation.mutate({ id: art.id }),
-      colorScheme: 'red',
+      colorPalette: 'red',
       buttonText: 'Delete',
     },
     publish: {
       title: 'Publish Art',
       text: 'Are you sure you want to publish this art?',
       onClick: () => publishMutation.mutate({ id: art.id }),
-      colorScheme: 'green',
+      colorPalette: 'green',
       buttonText: 'Publish',
     },
     unpublish: {
       title: 'Unpublish Art',
       text: 'Are you sure you want to unpublish this art?',
       onClick: () => unpublishMutation.mutate({ id: art.id }),
-      colorScheme: 'red',
+      colorPalette: 'red',
       buttonText: 'Unpublish',
     },
   }
@@ -125,7 +125,7 @@ export const ArtCard: FC<ArtCardProps> = ({
           onClose={onClose}
           onClick={handleAction}
           isOpen={open}
-          colorScheme={actions[actionType].colorScheme}
+          colorPalette={actions[actionType].colorPalette}
           buttonText={actions[actionType].buttonText}
         />
       )}
@@ -175,7 +175,7 @@ export const ArtCard: FC<ArtCardProps> = ({
                 borderColor="whiteAlpha.500"
                 borderWidth={1}
                 color={color}
-                colorScheme="blackAlpha"
+                colorPalette="blackAlpha"
                 disabled={isOwner}
                 icon={<AiFillHeart />}
                 onClick={toggleLike}
@@ -193,7 +193,7 @@ export const ArtCard: FC<ArtCardProps> = ({
               borderColor="whiteAlpha.500"
               borderWidth={1}
               color="white"
-              colorScheme="blackAlpha"
+              colorPalette="blackAlpha"
               icon={<FaExternalLinkSquareAlt />}
               rounded="full"
             />

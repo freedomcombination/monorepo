@@ -9,7 +9,7 @@ type LocaleBadgesProps = {
 } & BadgeProps
 
 export const LocaleBadges: FC<LocaleBadgesProps> = ({ locales, ...rest }) => {
-  const colorScheme = {
+  const colorPalettes = {
     en: 'purple',
     nl: 'orange',
     tr: 'cyan',
@@ -23,7 +23,7 @@ export const LocaleBadges: FC<LocaleBadgesProps> = ({ locales, ...rest }) => {
           variant="outline"
           {...rest}
           textTransform="uppercase"
-          colorScheme={colorScheme[locale]}
+          colorPalette={colorPalettes[locale]}
         >
           {locale}
         </Badge>

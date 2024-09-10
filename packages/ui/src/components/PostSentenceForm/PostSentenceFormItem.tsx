@@ -120,7 +120,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
         <ArchivePopover archiveId={archiveId}>
           <IconButton
             aria-label="archiveId info"
-            colorScheme="red"
+            colorPalette="red"
             size={'sm'}
             icon={<FaInfo />}
             rounded={'full'}
@@ -131,7 +131,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           <Tooltip content="Save" positioning={{ placement: 'top' }}>
             <IconButton
               aria-label={'approve'}
-              colorScheme={'green'}
+              colorPalette={'green'}
               icon={<FaSave />}
               disabled={!isChanged}
               isRound
@@ -145,7 +145,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
           <Tooltip content="Edit" positioning={{ placement: 'top' }}>
             <IconButton
               aria-label={'edit'}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               icon={<FaPencilAlt />}
               isRound
               onClick={() => setEditMode(true)}
@@ -157,7 +157,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
         <Tooltip content="Reset shared" positioning={{ placement: 'top' }}>
           <IconButton
             aria-label={'reset shared'}
-            colorScheme={'gray'}
+            colorPalette={'gray'}
             icon={<Box>{shareCount}</Box>}
             isRound
             onClick={handleResetShared}
@@ -172,7 +172,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
         >
           <IconButton
             aria-label={'default'}
-            colorScheme={isPublished ? 'yellow' : 'purple'}
+            colorPalette={isPublished ? 'yellow' : 'purple'}
             icon={
               isPublished ? (
                 <MdOutlineUnpublished />
@@ -189,7 +189,7 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
         <Tooltip content="Delete" positioning={{ placement: 'top' }}>
           <IconButton
             aria-label={'delete'}
-            colorScheme={'red'}
+            colorPalette={'red'}
             icon={<FaTimes />}
             isRound
             onClick={handleDelete}

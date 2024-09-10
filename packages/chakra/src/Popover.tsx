@@ -32,7 +32,7 @@ export const PopoverArrow = (props: ChakraPopover.ArrowProps) => {
 }
 
 export const PopoverTrigger = (props: ChakraPopover.TriggerProps) => {
-  return <ChakraPopover.Trigger {...props} />
+  return <ChakraPopover.Trigger asChild {...props} />
 }
 
 export const PopoverCloseTrigger = (props: ChakraPopover.CloseTriggerProps) => {

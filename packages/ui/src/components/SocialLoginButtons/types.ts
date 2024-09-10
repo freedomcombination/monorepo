@@ -10,7 +10,7 @@ export type SocialProvider = {
   name: Capitalize<SocialProviderName>
   icon: ReactElement
   url: `/api/connect/${SocialProviderName}`
-  colorSchema: ButtonProps['colorScheme']
+  colorSchema: ButtonProps['colorPalette']
 }
 
 export type SocialLoginButtonsProps = GroupProps &

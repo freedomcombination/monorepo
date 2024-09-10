@@ -88,7 +88,7 @@ export const PresentationTemplate: FC<PresentationTemplateProps> = ({
               <Center aspectRatio={{ base: 3, md: 2 }}>
                 <Button
                   boxSize={'full'}
-                  colorScheme={'trend-rights'}
+                  colorPalette={'trend-rights'}
                   variant={'outline'}
                   fontSize={'2xl'}
                   flexDir={'column'}

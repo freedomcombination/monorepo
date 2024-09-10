@@ -73,7 +73,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
                   aria-label={t('post.remove') + ' mention'}
                   variant="ghost"
                   onClick={() => onRemoveItem(data)}
-                  colorScheme="blackAlpha"
+                  colorPalette="blackAlpha"
                   _hover={{ color: 'red.400' }}
                   rounded="full"
                   size="sm"
@@ -87,7 +87,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
                 aria-label={t('post.add') + ' mention'}
                 variant="ghost"
                 onClick={() => onAddItem(data)}
-                colorScheme="blackAlpha"
+                colorPalette="blackAlpha"
                 _hover={{ color: 'green.400' }}
                 rounded="full"
                 size="sm"

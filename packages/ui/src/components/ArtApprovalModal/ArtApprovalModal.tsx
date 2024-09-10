@@ -88,7 +88,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                         data-status={art.approvalStatus}
                         flexShrink={0}
                         size={'lg'}
-                        colorScheme={
+                        colorPalette={
                           art.approvalStatus === 'approved'
                             ? 'green'
                             : art.approvalStatus === 'rejected'

@@ -163,7 +163,7 @@ export const SignupForm: FC<SignupFormProps> = ({
                 href="/auth/terms"
                 isExternal
                 variant="plain"
-                colorScheme="gray"
+                colorPalette="gray"
                 size="sm"
               >
                 {t('login.terms-use')}

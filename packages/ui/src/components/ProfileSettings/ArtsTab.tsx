@@ -37,7 +37,7 @@ export const ArtsTab = () => {
 
   return (
     <Stack>
-      <Tabs.Root lazyMount colorScheme="primary" defaultValue={defaultValue}>
+      <Tabs.Root lazyMount colorPalette="primary" defaultValue={defaultValue}>
         <HStack gap={4}>
           <Tabs.List overscrollX={'auto'}>
             <CreateArtForm size="md" />

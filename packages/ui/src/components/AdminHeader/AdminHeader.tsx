@@ -104,7 +104,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
               icon={<FaGear />}
               variant="outline"
               rounded="full"
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               onClick={onOpenProfile}
             />
             <Modal
@@ -128,7 +128,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             icon={<MdOutlineNotifications />}
             variant="outline"
             rounded="full"
-            colorScheme={'gray'}
+            colorPalette={'gray'}
           />
         )}
         {process.env.VERCEL_ENV !== 'production' && isSubscribed && (
@@ -137,7 +137,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             icon={<BiNotificationOff />}
             variant="outline"
             rounded="full"
-            colorScheme={'gray'}
+            colorPalette={'gray'}
             onClick={handleUnsubscribe}
           />
         )}
@@ -147,7 +147,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
           <Button
             data-testid="button-admin-login"
             onClick={openAuthModal}
-            colorScheme={'blue'}
+            colorPalette={'blue'}
             leftIcon={<FaUser />}
             rounded={'full'}
             loading={loading}
@@ -159,7 +159,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
           aria-label="Open Menu"
           icon={<HiMenu />}
           variant="outline"
-          colorScheme="gray"
+          colorPalette="gray"
           rounded={'full'}
           display={{ base: 'flex', lg: 'none' }}
           onClick={onOpen}

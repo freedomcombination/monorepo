@@ -34,7 +34,7 @@ export const ArtCardActions: FC<ArtCardActionsProps> = ({
         <IconButton
           aria-label="Art actions"
           color="white"
-          colorScheme="blackAlpha"
+          colorPalette="blackAlpha"
           borderColor="whiteAlpha.500"
           borderWidth={1}
           icon={<BsThreeDotsVertical />}

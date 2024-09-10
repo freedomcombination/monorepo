@@ -100,7 +100,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
         isRound
         variant={'outline'}
         bg={'white'}
-        colorScheme={'red'}
+        colorPalette={'red'}
         aria-label={'Delete'}
       />
       <Stack p={2} textAlign={'center'} fontSize={'sm'}>

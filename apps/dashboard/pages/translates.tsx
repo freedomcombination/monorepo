@@ -157,7 +157,7 @@ const ActivitiesTranslatePage = () => {
               fields={fields!}
               onSuccess={dataQuery.refetch}
             >
-              <Button onClick={handleClose} colorScheme={'gray'}>
+              <Button onClick={handleClose} colorPalette={'gray'}>
                 {t('dismiss')}
               </Button>
             </ModelEditTranslate>

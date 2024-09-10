@@ -35,7 +35,7 @@ export const NewsFeed = () => {
           bg: 'white',
         }}
       />
-      <Tabs.Root colorScheme="primary">
+      <Tabs.Root colorPalette="primary">
         <Tabs.List>
           <Tabs.Trigger data-testid="tab-news" value="news" fontWeight={600}>
             {t('recommended-news')}

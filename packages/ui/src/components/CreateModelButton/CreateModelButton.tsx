@@ -68,7 +68,7 @@ export const CreateModelButton = () => {
     >
       <PopoverTrigger>
         <Button
-          colorScheme={'primary'}
+          colorPalette={'primary'}
           rounded={'full'}
           aria-label="create"
           leftIcon={<FaPlus />}
@@ -196,7 +196,7 @@ export const CreateModelButton = () => {
                     onClose={onClosePost}
                   />
                   <Button
-                    colorScheme="green"
+                    colorPalette="green"
                     variant="outline"
                     onClick={onOpenPost}
                   >

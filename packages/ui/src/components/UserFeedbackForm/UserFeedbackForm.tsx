@@ -94,7 +94,7 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
                 {[1, 2, 3, 4, 5].map(p => (
                   <IconButton
                     key={p}
-                    colorScheme={point === p ? 'primary' : 'gray'}
+                    colorPalette={point === p ? 'primary' : 'gray'}
                     variant={point === p ? 'solid' : 'outline'}
                     rounded={'full'}
                     onClick={() => handlePoint(p)}

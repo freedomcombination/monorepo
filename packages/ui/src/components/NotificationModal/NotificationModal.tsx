@@ -88,7 +88,7 @@ export const NotificationModal = () => {
           <ModalFooter>
             <Button
               data-testid="button-close-notification"
-              colorScheme="gray"
+              colorPalette="gray"
               mr={3}
               onClick={handleClose}
             >
@@ -96,7 +96,7 @@ export const NotificationModal = () => {
             </Button>
             <Button
               data-testid="button-subscribe-notification"
-              colorScheme="primary"
+              colorPalette="primary"
               loading={subscribePushNotificationMutation.isPending}
               onClick={handleSubscribe}
             >

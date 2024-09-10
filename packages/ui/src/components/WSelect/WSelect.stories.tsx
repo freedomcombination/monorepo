@@ -50,7 +50,7 @@ const StoryWithHooksSingle: StoryFn<
       errors={errors}
       control={control}
       options={options}
-      colorScheme="primary"
+      colorPalette="primary"
       placeholder="Select a category"
     />
   )
@@ -98,7 +98,7 @@ const StoryWithHooksMultiple: StoryFn<
       control={control}
       options={options}
       multiple
-      colorScheme="primary"
+      colorPalette="primary"
       placeholder="Select categories"
     />
   )

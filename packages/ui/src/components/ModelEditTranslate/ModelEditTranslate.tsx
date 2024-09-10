@@ -260,7 +260,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             onClick={onApprove}
             leftIcon={<HiOutlineCheck />}
             fontSize="sm"
-            colorScheme={'purple'}
+            colorPalette={'purple'}
             loading={approveModelMutation.isPending}
           >
             {t('approve')}
@@ -289,7 +289,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
               isVisible={isEditing}
               onClick={onCancel}
               leftIcon={<MdClose />}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               fontSize="sm"
             >
               {t('cancel')}

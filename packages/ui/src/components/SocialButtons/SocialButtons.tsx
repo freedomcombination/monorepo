@@ -29,7 +29,7 @@ export const SocialButtons: FC<SocialButtonsProps> = ({ items, ...rest }) => {
               aria-label={item.label}
               size="sm"
               variant="outline"
-              colorScheme="primary"
+              colorPalette="primary"
               borderColor="primary.100"
               color="primary.100"
               _hover={{

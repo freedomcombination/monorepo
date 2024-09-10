@@ -70,7 +70,7 @@ export const MentionSearch = (): JSX.Element => {
           icon={<FaTimes />}
           variant={'ghost'}
           size={'sm'}
-          colorScheme={'blackAlpha'}
+          colorPalette={'blackAlpha'}
         />
       </InputElement> */}
     </Group>

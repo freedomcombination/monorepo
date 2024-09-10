@@ -159,7 +159,7 @@ export const TweetCard: FC<TweetCardProps> = ({
                       variant: 'ghost',
                       w: 'full',
                       justifyContent: 'start',
-                      colorScheme: 'gray',
+                      colorPalette: 'gray',
                       leftIcon: <Box fontSize={'sm'} as={TbBrandTwitter} />,
                       rounded: 'none',
                       fontWeight: 400,

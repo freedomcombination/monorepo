@@ -69,7 +69,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
               icon={<HiOutlineFilter />}
               variant="outline"
               rounded="full"
-              colorScheme="gray"
+              colorPalette="gray"
             />
           </MenuTrigger>
           <MenuContent
@@ -98,7 +98,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
               icon={<VscListFilter />}
               variant="outline"
               rounded="full"
-              colorScheme="gray"
+              colorPalette="gray"
             />
           </MenuTrigger>
           <MenuContent>{sortMenu}</MenuContent>

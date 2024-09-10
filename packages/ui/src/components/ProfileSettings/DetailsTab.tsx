@@ -82,7 +82,7 @@ const AvatarForm = () => {
 
           <ModalFooter>
             <Button
-              colorScheme="blue"
+              colorPalette="blue"
               mr={3}
               onClick={onCancel}
               disabled={isPending}
@@ -90,7 +90,7 @@ const AvatarForm = () => {
               {t('close')}
             </Button>
             <Button
-              colorScheme="primary"
+              colorPalette="primary"
               disabled={!file}
               loading={isPending}
               onClick={onUpload}
@@ -125,7 +125,7 @@ const AvatarForm = () => {
               top={0}
               borderWidth={4}
               borderColor={'white'}
-              colorScheme={hasAvatar ? 'red' : 'primary'}
+              colorPalette={hasAvatar ? 'red' : 'primary'}
               aria-label={label}
               rounded={'full'}
               onClick={() =>

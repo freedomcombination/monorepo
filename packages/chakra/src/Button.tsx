@@ -26,6 +26,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       leftIcon,
       rightIcon,
+      colorPalette = 'green',
       ...rest
     } = props
 
@@ -33,7 +34,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const showSpinner = loading && !loadingText
 
     return (
-      <ChakraButton disabled={trulyDisabled} ref={ref} {...rest}>
+      <ChakraButton
+        disabled={trulyDisabled}
+        ref={ref}
+        {...rest}
+        colorPalette={colorPalette}
+      >
         {showSpinner && <ButtonSpinner />}
         {loading ? (
           loadingText || (

@@ -131,7 +131,7 @@ export const ObservationEditForm = ({
                 isVisible={isEditing}
                 onClick={onCancel}
                 leftIcon={<MdClose />}
-                colorScheme={'gray'}
+                colorPalette={'gray'}
                 variant={'outline'}
                 size={'sm'}
               />
@@ -147,7 +147,7 @@ export const ObservationEditForm = ({
                   canDelete={'observations'}
                   onClick={onDelete}
                   leftIcon={<BsTrash />}
-                  colorScheme="red"
+                  colorPalette="red"
                   variant={'outline'}
                   size={'sm'}
                 />

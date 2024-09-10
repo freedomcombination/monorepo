@@ -204,7 +204,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
           <Button
             leftIcon={<IoMdCloudUpload />}
             size="lg"
-            colorScheme={'blackAlpha'}
+            colorPalette={'blackAlpha'}
           >
             {name === 'video' ? 'Change video' : 'Change image'}
           </Button>

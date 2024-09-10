@@ -195,7 +195,7 @@ export const TopicCard: FC<TopicCardProps> = ({
           >
             {topic.publisher}
           </Badge>
-          <Badge colorScheme={'primary'} variant={'solid'} fontWeight={600}>
+          <Badge colorPalette={'primary'} variant={'solid'} fontWeight={600}>
             {time}
           </Badge>
         </HStack>
@@ -232,7 +232,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               model={postContent}
               buttonProps={{
                 variant: 'ghost',
-                colorScheme: 'gray',
+                colorPalette: 'gray',
               }}
             >
               <Box as="span" display={{ base: 'none', xl: 'inline' }}>
@@ -245,7 +245,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               icon={<FaRegEye />}
               title="View"
               variant="ghost"
-              colorScheme="gray"
+              colorPalette="gray"
             />
 
             <Popover positioning={{ placement: 'top' }}>
@@ -256,7 +256,7 @@ export const TopicCard: FC<TopicCardProps> = ({
                     icon={<FaRegShareFromSquare />}
                     title="Share"
                     variant="ghost"
-                    colorScheme="gray"
+                    colorPalette="gray"
                   />
                 </Box>
               </PopoverTrigger>
@@ -280,7 +280,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               })}
               title={isBookmarked ? 'Remove' : 'Bookmark'}
               variant={'ghost'}
-              colorScheme={isBookmarked ? 'red' : 'gray'}
+              colorPalette={isBookmarked ? 'red' : 'gray'}
             />
 
             <TopicCardButton
@@ -290,7 +290,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               title="Recommend"
               disabled={isPending}
               variant={'ghost'}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
             />
 
             <ActionTooltip
@@ -310,7 +310,7 @@ export const TopicCard: FC<TopicCardProps> = ({
                   }
                   title={type === 'Topic' ? 'Delete' : 'Hide'}
                   variant="ghost"
-                  colorScheme="red"
+                  colorPalette="red"
                 />
               </Box>
             </ActionTooltip>

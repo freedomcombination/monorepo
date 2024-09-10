@@ -168,7 +168,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                   w="full"
                   key={val}
                   variant={amountRange[1] === val ? 'solid' : 'outline'}
-                  colorScheme={amountRange[1] === val ? 'primary' : 'gray'}
+                  colorPalette={amountRange[1] === val ? 'primary' : 'gray'}
                   onClick={() => setAmountRange([0, val])}
                 >
                   €{val}
@@ -203,7 +203,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                 value={amountRange}
                 min={5}
                 max={100}
-                colorScheme="primary"
+                colorPalette="primary"
                 onValueChange={e => setAmountRange(e.value)}
                 thumbSize={{ width: 6, height: 6 }}
               />
@@ -233,7 +233,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                 type="submit"
                 leftIcon={<FaDonate />}
                 onClick={() => setType('one-time')}
-                colorScheme="primary"
+                colorPalette="primary"
               >
                 {t('donation.title')}
                 {amountRange && ` €${amountRange}`}
@@ -244,7 +244,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               type="submit"
               leftIcon={<FaDonate />}
               onClick={() => setType('monthly')}
-              colorScheme="purple"
+              colorPalette="purple"
             >
               {t('donation.monthly')}
               {amount && ` €${amount}`}

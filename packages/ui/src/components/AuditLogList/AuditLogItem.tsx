@@ -32,7 +32,7 @@ type AuditLogItemProps = {
 }
 
 export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
-  const colorMap: Record<AuditLogAction, ButtonProps['colorScheme']> = {
+  const colorMap: Record<AuditLogAction, ButtonProps['colorPalette']> = {
     approved: 'blue',
     created: 'green',
     deleted: 'red',
@@ -52,7 +52,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
     rejected: FaTimes,
   }
 
-  const colorScheme = colorMap[log.action] || 'gray'
+  const colorPalette = colorMap[log.action] || 'gray'
   const profile = log.profile
   const profileName = isOwnProfile ? 'You' : profile?.name || 'Strapi'
   const profileEmail = profile?.email || 'Strapi'
@@ -85,14 +85,14 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
         <Center
           boxSize={6}
           borderWidth={1}
-          borderColor={`${colorScheme}.500`}
+          borderColor={`${colorPalette}.500`}
           rounded={'full'}
-          color={`${colorScheme}.500`}
+          color={`${colorPalette}.500`}
         >
           <Icon />
         </Center>
 
-        <Badge colorScheme={colorScheme} variant="outline" fontWeight={600}>
+        <Badge colorPalette={colorPalette} variant="outline" fontWeight={600}>
           {modelName}
         </Badge>
 

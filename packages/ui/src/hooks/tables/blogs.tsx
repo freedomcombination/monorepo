@@ -24,7 +24,7 @@ export const useBlogColumns = (): WTableProps<Blog>['columns'] => {
       accessorKey: 'approvalStatus',
       type: 'badge',
       componentProps: value => {
-        const colorScheme = {
+        const colorPalettes = {
           approved: 'green',
           pending: 'yellow',
           rejected: 'red',
@@ -32,7 +32,7 @@ export const useBlogColumns = (): WTableProps<Blog>['columns'] => {
 
         return {
           variant: 'outline',
-          colorScheme: colorScheme[value as ApprovalStatus],
+          colorPalette: colorPalettes[value as ApprovalStatus],
         }
       },
     },

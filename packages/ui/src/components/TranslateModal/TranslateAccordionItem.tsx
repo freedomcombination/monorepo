@@ -14,7 +14,7 @@ import { StrapiTranslatableModel } from '@fc/types'
 import { TranslateAccordionItemProps } from './types'
 import { Flag } from '../Flag'
 
-const localeColorSchemes = {
+const localeColorPalette = {
   en: 'purple',
   nl: 'orange',
   tr: 'cyan',
@@ -50,7 +50,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
                   <Badge
                     display={{ base: 'none', lg: 'flex' }}
                     variant="outline"
-                    colorScheme={
+                    colorPalette={
                       approvalStatus === 'approved' ? 'green' : 'yellow'
                     }
                   >
@@ -71,7 +71,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
               <Badge
                 display={{ base: 'none', lg: 'flex' }}
                 variant="outline"
-                colorScheme={publishedAt ? 'purple' : 'gray'}
+                colorPalette={publishedAt ? 'purple' : 'gray'}
               >
                 {publishedAt ? 'Published' : 'Draft'}
               </Badge>
@@ -97,7 +97,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
                     size="xs"
                     textTransform={'uppercase'}
                     leftIcon={<BsTranslate />}
-                    colorScheme={localeColorSchemes[missingTranslation]}
+                    colorPalette={localeColorPalette[missingTranslation]}
                     variant="ghost"
                     onClick={e => {
                       e.stopPropagation()

@@ -94,7 +94,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
     <HStack justifyContent={'space-between'} gap={{ base: 0, lg: 4 }}>
       <Button
         variant={'ghost'}
-        colorScheme={'gray'}
+        colorPalette={'gray'}
         onClick={() => {
           track('post_maker', { action: 'add_mentions' })
           setActivePostId(post.id)
@@ -109,7 +109,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
 
       <Button
         variant={'ghost'}
-        colorScheme={'gray'}
+        colorPalette={'gray'}
         onClick={() => {
           track('post_maker', { action: 'add_trends' })
           setActivePostId(post.id)
@@ -132,7 +132,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
             onShare().then(() => onTweet())
           }}
           flexShrink={0}
-          colorScheme={'gray'}
+          colorPalette={'gray'}
           bg={'black'}
           fontWeight={600}
           _hover={{ bg: 'gray.800' }}
@@ -162,7 +162,7 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
             role={'group'}
             pos={'relative'}
             as={'span'}
-            colorScheme={'gray'}
+            colorPalette={'gray'}
             bg={'black'}
             flexShrink={0}
             leftIcon={<FaXTwitter />}

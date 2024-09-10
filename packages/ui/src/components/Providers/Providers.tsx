@@ -63,7 +63,7 @@ export const Providers: FC<ProvidersProps> = ({
           >
             <WebPushProvider enable={enable}>
               <DefaultSeo {...defaultSeo[site][locale]} />
-              <ChakraProvider>
+              <ChakraProvider site={site}>
                 {enable && <NotificationModal />}
                 {children}
                 {!cookie && <CookieBanner onAllow={onAllow} />}

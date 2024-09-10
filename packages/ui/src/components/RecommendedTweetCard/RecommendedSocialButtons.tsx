@@ -108,7 +108,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
               icon={<AiOutlineShareAlt />}
               title="Share"
               variant="ghost"
-              colorScheme="gray"
+              colorPalette="gray"
             />
           </Box>
         </PopoverTrigger>
@@ -132,7 +132,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
         model={postContent}
         buttonProps={{
           variant: 'ghost',
-          colorScheme: 'gray',
+          colorPalette: 'gray',
         }}
       >
         {t('create-post')}
@@ -143,7 +143,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
         icon={<AiFillDelete />}
         title="Delete"
         variant="ghost"
-        colorScheme="gray"
+        colorPalette="gray"
       />
     </HStack>
   )

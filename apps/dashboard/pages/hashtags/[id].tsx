@@ -54,7 +54,7 @@ const HashtagPage = () => {
         hashtag={hashtag}
         alertContent={
           <Button
-            colorScheme={'orange'}
+            colorPalette={'orange'}
             variant={'outline'}
             onClick={onOpen}
             leftIcon={<FaPencil />}

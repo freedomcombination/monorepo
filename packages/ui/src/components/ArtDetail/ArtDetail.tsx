@@ -56,7 +56,7 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
         <Button
           data-testid="button-like"
           rounded="full"
-          colorScheme={isLiked ? 'red' : 'gray'}
+          colorPalette={isLiked ? 'red' : 'gray'}
           rightIcon={<AiFillHeart />}
           onClick={() => toggleLike()}
           disabled={disabled}

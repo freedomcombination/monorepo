@@ -30,7 +30,7 @@ export const PostMakerTweetTags = () => {
         {mentionUsernames.map(mention => (
           <Tag
             key={mention}
-            colorScheme={'primary'}
+            colorPalette={'primary'}
             variant={'outline'}
             rounded={'full'}
             px={2}
@@ -48,7 +48,7 @@ export const PostMakerTweetTags = () => {
             variant={'outline'}
             rounded={'full'}
             px={2}
-            colorScheme={hashtag.hasPassed ? 'gray' : 'twitter'}
+            colorPalette={hashtag.hasPassed ? 'gray' : 'twitter'}
             closable={hashtag.hasPassed}
             onClose={() => removeDefaultTrendFromPost(post.id, trend)}
           >

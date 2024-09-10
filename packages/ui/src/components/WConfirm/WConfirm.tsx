@@ -59,13 +59,13 @@ export const WConfirm: FC<WConfirmProps> = props => {
               data-testid="button-cancel-confirm"
               ref={cancelRef}
               onClick={handleCancel}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
             >
               {t('cancel')}
             </Button>
             <Button
               data-testid="button-confirm"
-              colorScheme={isWarning ? 'red' : 'primary'}
+              colorPalette={isWarning ? 'red' : 'primary'}
               onClick={handleConfirm}
               ml={3}
             >

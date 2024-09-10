@@ -6,7 +6,7 @@ export type ArtActionType = 'delete' | 'publish' | 'unpublish'
 
 export type ArtActionContext = {
   buttonText: string
-  colorScheme: ButtonProps['colorScheme']
+  colorPalette: ButtonProps['colorPalette']
   text: string
   title: string
   onClick: () => void

@@ -49,7 +49,7 @@ export const WTable = <T extends StrapiModel>({
         bg={'white'}
         shadow={'sm'}
       >
-        <Table.ColumnHeader>
+        <Table.Row>
           {columns.map((column, index) => {
             return (
               <TableHeaderCell
@@ -63,7 +63,7 @@ export const WTable = <T extends StrapiModel>({
               />
             )
           })}
-        </Table.ColumnHeader>
+        </Table.Row>
       </Table.Header>
       <Table.Body>
         {data.map((model, index) => {

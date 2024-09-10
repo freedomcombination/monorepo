@@ -159,7 +159,7 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
         <RadioGroup
           onChange={value => setPriorityFilter(Number(value))}
           value={`${priorityFilter}`}
-          colorScheme="primary"
+          colorPalette="primary"
         >
           <Stack direction="row" gap={4}>
             <Radio value={`${PriorityFilter.ALL}`}>

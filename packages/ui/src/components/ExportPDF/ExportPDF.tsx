@@ -88,7 +88,7 @@ export const ExportPDF = <T extends StrapiModel>({
   return (
     <Button
       leftIcon={<FaFilePdf />}
-      colorScheme="primary"
+      colorPalette="primary"
       variant="outline"
       loading={saving}
       onClick={beginExport}

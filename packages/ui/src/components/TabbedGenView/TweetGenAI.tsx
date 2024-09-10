@@ -6,7 +6,7 @@ import { PostGenAI, PostGenAIProps } from '../PostGenAI'
 
 type TweetGenAIProps = {
   postId: number
-} & Pick<PostGenAIProps, 'archiveContentId' | 'content' | 'colorScheme'>
+} & Pick<PostGenAIProps, 'archiveContentId' | 'content' | 'colorPalette'>
 
 export const TweetGenAI: React.FC<TweetGenAIProps> = ({
   postId,

@@ -99,7 +99,7 @@ const FilePicker: FC<FilePickerProps> = ({
 
   return (
     <Button
-      colorScheme="blackAlpha"
+      colorPalette="blackAlpha"
       variant={'outline'}
       borderStyle={'dashed'}
       color={'gray.700'}

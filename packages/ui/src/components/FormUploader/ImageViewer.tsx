@@ -37,7 +37,7 @@ export const ImageViewer: FC<ImageViewerProps> = ({
           size={'sm'}
           boxSize={12}
           border={0}
-          colorScheme="gray"
+          colorPalette="gray"
         />
       </MenuTrigger>
       <Portal>

@@ -92,7 +92,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
           <Tabs.Root
             orientation={orientation}
             border={0}
-            colorScheme="primary"
+            colorPalette="primary"
             value={activeTab}
             onValueChange={v => setActiveTab(v.value)}
             size="lg"

@@ -166,7 +166,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
           <DrawerFooter>
             <Button
               variant="outline"
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               mr={3}
               onClick={onClose}
             >
@@ -176,7 +176,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
               leftIcon={<FaDownload />}
               w={'full'}
               onClick={onDownload}
-              colorScheme={'primary'}
+              colorPalette={'primary'}
               loading={loading}
             >
               Download Caps

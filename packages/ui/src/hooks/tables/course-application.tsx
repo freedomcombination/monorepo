@@ -17,7 +17,7 @@ export const useCourseApplicationColumns =
         accessorKey: 'approvalStatus',
         type: 'badge',
         componentProps: value => {
-          const colorScheme = {
+          const colorPalettes = {
             approved: 'green',
             pending: 'yellow',
             rejected: 'red',
@@ -25,7 +25,7 @@ export const useCourseApplicationColumns =
 
           return {
             variant: 'outline',
-            colorScheme: colorScheme[value as ApprovalStatus],
+            colorPalette: colorPalettes[value as ApprovalStatus],
           }
         },
       },
@@ -61,7 +61,7 @@ export const useCourseApplicationColumns =
                 {installments.map(installment => (
                   <Badge
                     key={installment.installmentNumber}
-                    colorScheme={installment.payment ? 'green' : 'red'}
+                    colorPalette={installment.payment ? 'green' : 'red'}
                     variant={installment.payment ? 'solid' : 'outline'}
                     w={5}
                     h={5}

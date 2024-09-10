@@ -69,7 +69,7 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
           <EntryInput locale={'nl'} localeKey={name} />
           <EntryInput locale={'tr'} localeKey={name} />
         </SimpleGrid>
-        <Group attached colorScheme={isSuppressed ? 'red' : 'gray'}>
+        <Group attached colorPalette={isSuppressed ? 'red' : 'gray'}>
           <IconButton
             icon={<FaTrash />}
             size="sm"

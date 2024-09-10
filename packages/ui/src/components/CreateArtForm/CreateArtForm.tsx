@@ -239,6 +239,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                       disabled={!images || images?.length === 0 || !isValid}
                       type="submit"
                       rightIcon={<FaPlus />}
+                      colorPalette={'green'}
                     >
                       {t('create')}
                     </Button>

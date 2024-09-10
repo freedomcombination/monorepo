@@ -23,7 +23,7 @@ export const UserFeedback = () => {
       right={-2}
       onClick={onOpen}
       disabled={open}
-      colorScheme="primary"
+      colorPalette="primary"
       aria-label="Give feedback"
       transform="rotate(180deg)"
       css={{ writingMode: 'vertical-rl' }}

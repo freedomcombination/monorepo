@@ -54,7 +54,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
             title="View"
             onClick={onOpen}
             variant={'ghost'}
-            colorScheme={'gray'}
+            colorPalette={'gray'}
             size="xs"
           >
             View
@@ -66,7 +66,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
             data-testid="button-add-to-collection"
             canCreate="collections"
             variant={'outline'}
-            colorScheme={isAdded ? 'red' : 'green'}
+            colorPalette={isAdded ? 'red' : 'green'}
             leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
             size="xs"
             loading={loading}

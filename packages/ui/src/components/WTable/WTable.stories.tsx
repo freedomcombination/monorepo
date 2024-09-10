@@ -78,7 +78,7 @@ export const Arts: Story<Art> = {
         type: 'badge',
         // Custom props based on value
         componentProps: value => {
-          const colorScheme = {
+          const colorPalettes = {
             approved: 'primary',
             pending: 'yellow',
             rejected: 'red',
@@ -86,7 +86,7 @@ export const Arts: Story<Art> = {
 
           return {
             variant: 'outline',
-            colorScheme: colorScheme[value as ApprovalStatus],
+            colorPalette: colorPalettes[value as ApprovalStatus],
           }
         },
       },

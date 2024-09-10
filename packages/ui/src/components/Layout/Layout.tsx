@@ -47,7 +47,7 @@ export const Layout: FC<LayoutProps> = ({
         />
         {loading ? (
           <Center minH={minH}>
-            <Spinner colorScheme="red" />
+            <Spinner colorPalette="red" />
           </Center>
         ) : (
           <Box minH={minH}>{children}</Box>

@@ -83,7 +83,7 @@ export const DataTable = <T extends StrapiModel>({
                   size={'lg'}
                   fontSize={'md'}
                   p={1}
-                  colorScheme={'primary'}
+                  colorPalette={'primary'}
                   {...badge.badgeProp}
                 >
                   {badge.badgeText(tableProps.data)}

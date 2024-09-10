@@ -43,7 +43,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
             aria-label={code}
             px={2}
             onClick={() => handleChangeLanguage(code)}
-            colorScheme={
+            colorPalette={
               locale === code
                 ? 'primary'
                 : !isScrolled
@@ -63,7 +63,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
             aria-label={code}
             px={2}
             onClick={() => handleChangeLanguage(code)}
-            colorScheme={
+            colorPalette={
               locale === code
                 ? 'primary'
                 : !isScrolled && isDark

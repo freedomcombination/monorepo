@@ -167,7 +167,7 @@ export const CourseApplicationPayForm = () => {
               leftIcon={<MdOutlinePayment />}
               onClick={onCheckOut}
               loading={isFetching}
-              colorScheme="primary"
+              colorPalette="primary"
             >
               {t('course.application-check-out')}
               {amount && `  ${formatPrice(amount)}`}
@@ -211,7 +211,7 @@ export const CourseApplicationPayForm = () => {
             </Field>
             <Button
               leftIcon={<MdOutlineSend />}
-              colorScheme="primary"
+              colorPalette="primary"
               disabled={payExplanation.length < EXPLANATION_LIMIT}
               onClick={onSendInfo}
               justifySelf={'end'}

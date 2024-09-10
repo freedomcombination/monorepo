@@ -131,7 +131,7 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
                 </Button>
                 <Button
                   onClick={handleSaveDraft}
-                  colorScheme={'purple'}
+                  colorPalette={'purple'}
                   leftIcon={<AiOutlineCheck />}
                 >
                   Save Draft

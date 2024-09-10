@@ -205,7 +205,7 @@ const ActionApi: FC<ActionApiProps> = ({
       size={'md'}
       onClick={() => !readonly && onChange(!value)}
       variant={'solid'}
-      colorScheme={blocked ? 'gray' : value ? 'green' : 'red'}
+      colorPalette={blocked ? 'gray' : value ? 'green' : 'red'}
       {...(!readonly
         ? {
             cursor: 'pointer',

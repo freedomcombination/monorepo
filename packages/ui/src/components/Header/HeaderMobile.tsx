@@ -46,7 +46,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
       <IconButton
         variant="outline"
         color={!isScrolled && isDark ? 'white' : 'primary.500'}
-        colorScheme={!isScrolled && isDark ? 'whiteAlpha' : 'primary'}
+        colorPalette={!isScrolled && isDark ? 'whiteAlpha' : 'primary'}
         borderColor={!isScrolled && isDark ? 'white' : 'primary.500'}
         size={'sm'}
         onClick={onToggle}

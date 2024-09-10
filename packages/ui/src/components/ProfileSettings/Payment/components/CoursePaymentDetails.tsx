@@ -93,7 +93,7 @@ export const CoursePaymentDetails: FC<{
                   key={installmentNumber}
                   title={
                     <Badge
-                      colorScheme={'green'}
+                      colorPalette={'green'}
                       fontWeight={payment?.id === id ? 'bold' : 'normal'}
                     >
                       {t('course.payment.title.nth-installment', {

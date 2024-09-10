@@ -75,7 +75,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
             right={4}
             bottom={4}
             borderRadius={'100px'}
-            colorScheme="primary"
+            colorPalette="primary"
             aria-label="Plus"
             size={'lg'}
             boxSize={{ base: 12, lg: 16 }}
@@ -90,7 +90,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
               <Stack>
                 <IconButton
                   aria-label={'stats'}
-                  colorScheme={'primary'}
+                  colorPalette={'primary'}
                   icon={<MdOutlineTrendingUp />}
                   disabled={statsDisclosure.open}
                   isRound
@@ -99,7 +99,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
 
                 <IconButton
                   aria-label={'info'}
-                  colorScheme={'primary'}
+                  colorPalette={'primary'}
                   icon={<FaInfo />}
                   disabled={infoDisclosure.open}
                   isRound
