@@ -1,9 +1,8 @@
 import { FC, useState } from 'react'
 
 import {
-  Box,
-  Group,
   Center,
+  Group,
   HStack,
   Heading,
   Image,
@@ -17,14 +16,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
-import { AiOutlineEuroCircle } from 'react-icons/ai'
 import { FaDonate, FaExternalLinkAlt } from 'react-icons/fa'
 import QRCode from 'react-qr-code'
 import * as yup from 'yup'
 
 import {
   Button,
-  Tooltip,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
@@ -167,6 +164,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
               {donationAmounts.map(val => (
                 <Button
                   size="lg"
+                  data-testid={`button-donation-${val}`}
                   w="full"
                   key={val}
                   variant={amountRange[1] === val ? 'solid' : 'outline'}
@@ -192,10 +190,10 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                 min={5}
                 size="lg"
               >
-                <NumberInputField />
+                <NumberInputField data-testid="input-donation" />
                 <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
+                  <NumberIncrementStepper data-testid="button-donation-increment" />
+                  <NumberDecrementStepper data-testid="button-donation-decrement" />
                 </NumberInputStepper>
               </NumberInput>
               <Slider
@@ -230,6 +228,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
 
             <Stack>
               <Button
+                data-testid="button-donation-submit"
                 disabled={!amountRange || !isValid}
                 type="submit"
                 leftIcon={<FaDonate />}
