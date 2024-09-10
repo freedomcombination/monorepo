@@ -63,7 +63,9 @@
           }
         }
       },
-      "tags": ["Term"],
+      "tags": [
+        "Term"
+      ],
       "parameters": [
         {
           "name": "sort",
@@ -233,7 +235,9 @@
           }
         }
       },
-      "tags": ["Term"],
+      "tags": [
+        "Term"
+      ],
       "parameters": [],
       "operationId": "put/term",
       "requestBody": {
@@ -311,7 +315,9 @@
           }
         }
       },
-      "tags": ["Term"],
+      "tags": [
+        "Term"
+      ],
       "parameters": [],
       "operationId": "delete/term"
     }
@@ -380,7 +386,9 @@
           }
         }
       },
-      "tags": ["Term"],
+      "tags": [
+        "Term"
+      ],
       "parameters": [],
       "operationId": "post/term/localizations",
       "requestBody": {

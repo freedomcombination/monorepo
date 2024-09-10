@@ -63,7 +63,9 @@
           }
         }
       },
-      "tags": ["Privacy"],
+      "tags": [
+        "Privacy"
+      ],
       "parameters": [
         {
           "name": "sort",
@@ -233,7 +235,9 @@
           }
         }
       },
-      "tags": ["Privacy"],
+      "tags": [
+        "Privacy"
+      ],
       "parameters": [],
       "operationId": "put/privacy",
       "requestBody": {
@@ -311,7 +315,9 @@
           }
         }
       },
-      "tags": ["Privacy"],
+      "tags": [
+        "Privacy"
+      ],
       "parameters": [],
       "operationId": "delete/privacy"
     }
@@ -380,7 +386,9 @@
           }
         }
       },
-      "tags": ["Privacy"],
+      "tags": [
+        "Privacy"
+      ],
       "parameters": [],
       "operationId": "post/privacy/localizations",
       "requestBody": {

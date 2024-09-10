@@ -63,7 +63,9 @@
           }
         }
       },
-      "tags": ["Topic"],
+      "tags": [
+        "Topic"
+      ],
       "parameters": [
         {
           "name": "sort",
@@ -233,7 +235,9 @@
           }
         }
       },
-      "tags": ["Topic"],
+      "tags": [
+        "Topic"
+      ],
       "parameters": [],
       "operationId": "put/topic",
       "requestBody": {
@@ -311,7 +315,9 @@
           }
         }
       },
-      "tags": ["Topic"],
+      "tags": [
+        "Topic"
+      ],
       "parameters": [],
       "operationId": "delete/topic"
     }

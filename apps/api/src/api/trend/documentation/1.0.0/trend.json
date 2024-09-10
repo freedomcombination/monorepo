@@ -63,7 +63,9 @@
           }
         }
       },
-      "tags": ["Trend"],
+      "tags": [
+        "Trend"
+      ],
       "parameters": [
         {
           "name": "sort",
@@ -233,7 +235,9 @@
           }
         }
       },
-      "tags": ["Trend"],
+      "tags": [
+        "Trend"
+      ],
       "parameters": [],
       "operationId": "put/trend",
       "requestBody": {
@@ -311,7 +315,9 @@
           }
         }
       },
-      "tags": ["Trend"],
+      "tags": [
+        "Trend"
+      ],
       "parameters": [],
       "operationId": "delete/trend"
     }

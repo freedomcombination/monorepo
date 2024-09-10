@@ -63,7 +63,9 @@
           }
         }
       },
-      "tags": ["Subscriber"],
+      "tags": [
+        "Subscriber"
+      ],
       "parameters": [
         {
           "name": "sort",
@@ -233,7 +235,9 @@
           }
         }
       },
-      "tags": ["Subscriber"],
+      "tags": [
+        "Subscriber"
+      ],
       "parameters": [],
       "operationId": "post/subscribers",
       "requestBody": {
@@ -312,7 +316,9 @@
           }
         }
       },
-      "tags": ["Subscriber"],
+      "tags": [
+        "Subscriber"
+      ],
       "parameters": [
         {
           "name": "id",
@@ -390,7 +396,9 @@
           }
         }
       },
-      "tags": ["Subscriber"],
+      "tags": [
+        "Subscriber"
+      ],
       "parameters": [
         {
           "name": "id",
@@ -479,7 +487,9 @@
           }
         }
       },
-      "tags": ["Subscriber"],
+      "tags": [
+        "Subscriber"
+      ],
       "parameters": [
         {
           "name": "id",

@@ -63,7 +63,9 @@
           }
         }
       },
-      "tags": ["Blog"],
+      "tags": [
+        "Blog"
+      ],
       "parameters": [
         {
           "name": "sort",
@@ -233,7 +235,9 @@
           }
         }
       },
-      "tags": ["Blog"],
+      "tags": [
+        "Blog"
+      ],
       "parameters": [],
       "operationId": "post/blogs",
       "requestBody": {
@@ -312,7 +316,9 @@
           }
         }
       },
-      "tags": ["Blog"],
+      "tags": [
+        "Blog"
+      ],
       "parameters": [
         {
           "name": "id",
@@ -390,7 +396,9 @@
           }
         }
       },
-      "tags": ["Blog"],
+      "tags": [
+        "Blog"
+      ],
       "parameters": [
         {
           "name": "id",
@@ -479,7 +487,9 @@
           }
         }
       },
-      "tags": ["Blog"],
+      "tags": [
+        "Blog"
+      ],
       "parameters": [
         {
           "name": "id",
@@ -559,7 +569,9 @@
           }
         }
       },
-      "tags": ["Blog"],
+      "tags": [
+        "Blog"
+      ],
       "parameters": [
         {
           "name": "id",

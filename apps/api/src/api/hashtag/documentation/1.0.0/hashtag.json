@@ -63,7 +63,9 @@
           }
         }
       },
-      "tags": ["Hashtag"],
+      "tags": [
+        "Hashtag"
+      ],
       "parameters": [
         {
           "name": "sort",
@@ -233,7 +235,9 @@
           }
         }
       },
-      "tags": ["Hashtag"],
+      "tags": [
+        "Hashtag"
+      ],
       "parameters": [],
       "operationId": "post/hashtags",
       "requestBody": {
@@ -312,7 +316,9 @@
           }
         }
       },
-      "tags": ["Hashtag"],
+      "tags": [
+        "Hashtag"
+      ],
       "parameters": [
         {
           "name": "id",
@@ -390,7 +396,9 @@
           }
         }
       },
-      "tags": ["Hashtag"],
+      "tags": [
+        "Hashtag"
+      ],
       "parameters": [
         {
           "name": "id",
@@ -479,7 +487,9 @@
           }
         }
       },
-      "tags": ["Hashtag"],
+      "tags": [
+        "Hashtag"
+      ],
       "parameters": [
         {
           "name": "id",
@@ -559,7 +569,9 @@
           }
         }
       },
-      "tags": ["Hashtag"],
+      "tags": [
+        "Hashtag"
+      ],
       "parameters": [
         {
           "name": "id",
