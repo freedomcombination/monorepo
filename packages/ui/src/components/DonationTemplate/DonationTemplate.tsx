@@ -167,6 +167,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
             <ButtonGroup w="full" isAttached alignSelf="center" size="lg">
               {donationAmounts.map(val => (
                 <Button
+                  data-testid={`button-donation-${val}`}
                   w="full"
                   key={val}
                   variant={amount === val ? 'solid' : 'outline'}
@@ -192,10 +193,10 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                 min={5}
                 size="lg"
               >
-                <NumberInputField />
+                <NumberInputField data-testid="input-donation" />
                 <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
+                  <NumberIncrementStepper data-testid="button-donation-increment" />
+                  <NumberDecrementStepper data-testid="button-donation-decrement" />
                 </NumberInputStepper>
               </NumberInput>
               <Slider
@@ -220,7 +221,12 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
                   isOpen={!!amount}
                   label={`€${amount}`}
                 >
-                  <SliderThumb boxSize={6} bg="primary.500" color="white">
+                  <SliderThumb
+                    data-testid="slider-thumb-donation"
+                    boxSize={6}
+                    bg="primary.500"
+                    color="white"
+                  >
                     <Box boxSize="full" as={AiOutlineEuroCircle} />
                   </SliderThumb>
                 </Tooltip>
@@ -246,6 +252,7 @@ export const DonationTemplate: FC<DonationTemplateProps> = ({
 
             <Stack>
               <Button
+                data-testid="button-donation-submit"
                 isDisabled={!amount || !isValid}
                 type="submit"
                 leftIcon={<FaDonate />}
