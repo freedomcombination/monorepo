@@ -63,9 +63,7 @@
           }
         }
       },
-      "tags": [
-        "Vote"
-      ],
+      "tags": ["Vote"],
       "parameters": [
         {
           "name": "sort",
@@ -235,9 +233,7 @@
           }
         }
       },
-      "tags": [
-        "Vote"
-      ],
+      "tags": ["Vote"],
       "parameters": [],
       "operationId": "post/votes",
       "requestBody": {
@@ -316,9 +312,7 @@
           }
         }
       },
-      "tags": [
-        "Vote"
-      ],
+      "tags": ["Vote"],
       "parameters": [
         {
           "name": "id",
@@ -396,9 +390,7 @@
           }
         }
       },
-      "tags": [
-        "Vote"
-      ],
+      "tags": ["Vote"],
       "parameters": [
         {
           "name": "id",
@@ -487,9 +479,7 @@
           }
         }
       },
-      "tags": [
-        "Vote"
-      ],
+      "tags": ["Vote"],
       "parameters": [
         {
           "name": "id",

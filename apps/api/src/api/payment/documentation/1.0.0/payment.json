@@ -63,9 +63,7 @@
           }
         }
       },
-      "tags": [
-        "Payment"
-      ],
+      "tags": ["Payment"],
       "parameters": [
         {
           "name": "sort",
@@ -235,9 +233,7 @@
           }
         }
       },
-      "tags": [
-        "Payment"
-      ],
+      "tags": ["Payment"],
       "parameters": [],
       "operationId": "post/payments",
       "requestBody": {
@@ -316,9 +312,7 @@
           }
         }
       },
-      "tags": [
-        "Payment"
-      ],
+      "tags": ["Payment"],
       "parameters": [
         {
           "name": "id",
@@ -396,9 +390,7 @@
           }
         }
       },
-      "tags": [
-        "Payment"
-      ],
+      "tags": ["Payment"],
       "parameters": [
         {
           "name": "id",
@@ -487,9 +479,7 @@
           }
         }
       },
-      "tags": [
-        "Payment"
-      ],
+      "tags": ["Payment"],
       "parameters": [
         {
           "name": "id",

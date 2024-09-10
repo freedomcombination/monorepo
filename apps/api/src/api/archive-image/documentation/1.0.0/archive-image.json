@@ -63,9 +63,7 @@
           }
         }
       },
-      "tags": [
-        "Archive-image"
-      ],
+      "tags": ["Archive-image"],
       "parameters": [
         {
           "name": "sort",
@@ -235,9 +233,7 @@
           }
         }
       },
-      "tags": [
-        "Archive-image"
-      ],
+      "tags": ["Archive-image"],
       "parameters": [],
       "operationId": "post/archive-images",
       "requestBody": {
@@ -316,9 +312,7 @@
           }
         }
       },
-      "tags": [
-        "Archive-image"
-      ],
+      "tags": ["Archive-image"],
       "parameters": [
         {
           "name": "id",
@@ -396,9 +390,7 @@
           }
         }
       },
-      "tags": [
-        "Archive-image"
-      ],
+      "tags": ["Archive-image"],
       "parameters": [
         {
           "name": "id",
@@ -487,9 +479,7 @@
           }
         }
       },
-      "tags": [
-        "Archive-image"
-      ],
+      "tags": ["Archive-image"],
       "parameters": [
         {
           "name": "id",
