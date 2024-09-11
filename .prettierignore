@@ -5,3 +5,4 @@ dist
 coverage
 apps/api/src/admin
 apps/api/.strapi-updater.json
+apps/api/src/**/documentation/**

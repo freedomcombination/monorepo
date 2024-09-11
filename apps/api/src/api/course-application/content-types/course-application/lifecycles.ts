@@ -54,7 +54,7 @@ export default {
         subject: t('course-applicant-unpaid-preview', {
           name: application?.profile?.name,
         }),
-        html: emailTemplates.renderCourseApplicantWithoutPayment(
+        html: await emailTemplates.renderCourseApplicantWithoutPayment(
           application.profile as unknown as Profile,
           application.course as unknown as Course,
           application.updatedAt.toString(),

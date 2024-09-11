@@ -18,21 +18,26 @@ export class LoginPage {
     this.passwordInput = page.getByTestId('input-password')
     this.submitButton = page.getByTestId('button-submit-login')
 
-    this.loginButton = page.getByTestId('button-login')
+    this.loginButton = page.getByTestId('button-admin-login')
   }
 
-  async login(username = USERNAME, password = PASSWORD) {
-    // await this.page.fill('[data-testid=input-identifier]', username)
-    // await this.page.fill('[data-testid=input-password]', password)
-
+  private async _login(username = USERNAME, password = PASSWORD) {
     await this.usernameInput.fill(username)
     await this.passwordInput.fill(password)
 
     await this.submitButton.click()
   }
 
+  async login(username = USERNAME, password = PASSWORD) {
+    await this._login(username, password)
+    await this.page.waitForLoadState('domcontentloaded')
+    // Ensure the user is logged in
+    await this.page.waitForSelector('data-testid=button-d-profile-menu')
+  }
+
   async loginDashboard(username = ADMIN_USERNAME, password = PASSWORD) {
     await this.loginButton.click()
-    await this.login(username, password)
+    await this._login(username, password)
+    await this.page.waitForSelector('data-testid=button-logout')
   }
 }
