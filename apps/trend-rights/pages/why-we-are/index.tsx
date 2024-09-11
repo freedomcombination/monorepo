@@ -1,40 +1,19 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 
+import { BLOG_CATEGORIES } from '@fc/config'
 import { getSession } from '@fc/secrets'
-import { getBlogs, useGetCategoriesBlogs } from '@fc/services'
+import { getCategorizedBlogs, useGetCategorizedBlogs } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
 
-import { Layout } from '../../components'
-import { WhyWeAre } from '../../components/WhyWeAre'
+import { Layout, WhyWeAre } from '../../components'
 
 const Blogs = () => {
-  const { t } = useTranslation()
-
-  const categories = {
-    'our-story': t('trend-rights.our-story'),
-    documentaries: t('trend-rights.documentaries'),
-    'global-activities': t('trend-rights.global-activites'),
-    books: t('trend-rights.books'),
-  }
-  const categorySlugs = Object.keys(categories)
-
-  const { data: blogs } = useGetCategoriesBlogs(categorySlugs)
   const { locale } = useRouter()
 
-  const blogCategories = Array.from(
-    new Set(
-      blogs
-        ?.filter(blog => blog?.categories && blog.categories.length > 0)
-        .flatMap(
-          blog =>
-            blog.categories?.map(category => category[`name_${locale}`]) || [],
-        ),
-    ),
-  )
+  const { data: blogs } = useGetCategorizedBlogs()
 
   const titles = {
     en: 'Why are we here',
@@ -45,11 +24,7 @@ const Blogs = () => {
 
   return (
     <Layout seo={{ title }} isDark={!!blogs?.length}>
-      <WhyWeAre
-        blogs={blogs || []}
-        seo={{ title }}
-        categories={blogCategories}
-      />
+      <WhyWeAre blogs={blogs || []} seo={{ title }} />
     </Layout>
   )
 }
@@ -64,9 +39,12 @@ export const getServerSideProps = async (
   const locale = context.locale as StrapiLocale
   const { token } = await getSession(context.req, context.res)
 
+  const currentCategory =
+    (context.query.category as string) || BLOG_CATEGORIES.DEFAULT
+
   await queryClient.prefetchQuery({
     queryKey: ['blogs', locale],
-    queryFn: () => getBlogs(locale, token),
+    queryFn: () => getCategorizedBlogs(locale, currentCategory, token),
   })
 
   return {

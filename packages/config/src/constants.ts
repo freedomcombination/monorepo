@@ -41,3 +41,10 @@ export enum RecaptchaKeys {
   VIEW_ART = 'view_art',
   VIEW_BLOG = 'view_blog',
 }
+
+export enum BLOG_CATEGORIES {
+  DEFAULT = 'our-story',
+  DOCUMENTARIES = 'documentaries',
+  GLOBAL_ACTIVITIES = 'global-activities',
+  BOOKS = 'books',
+}

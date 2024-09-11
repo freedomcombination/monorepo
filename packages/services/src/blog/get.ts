@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { Blog, StrapiLocale } from '@fc/types'
+import { BLOG_CATEGORIES } from '@fc/config'
 
 export const getBlogs = async (locale: StrapiLocale, token: string | null) => {
   const response = await strapiRequest<Blog>({
@@ -15,15 +16,15 @@ export const getBlogs = async (locale: StrapiLocale, token: string | null) => {
 
   return response?.data || []
 }
-export const getCategoriesBlogs = async (
+export const getCategorizedBlogs = async (
   locale: StrapiLocale,
-  categories: string[],
+  category: string,
   token: string | null,
 ) => {
   const filters = {
     categories: {
       slug: {
-        $in: categories,
+        $eq: category,
       },
     },
   }
@@ -35,23 +36,19 @@ export const getCategoriesBlogs = async (
     ...(token && { token }),
   })
 
-  console.log('other blogs', response?.data)
-
   return response?.data || []
 }
 
-export const useGetCategoriesBlogs = (categories: string[]) => {
-  const { locale } = useRouter()
+export const useGetCategorizedBlogs = () => {
+  const { locale, query } = useRouter()
   const { token } = useAuthContext()
 
+  const category = (query.category as string) || BLOG_CATEGORIES.DEFAULT
+
   return useQuery({
-    queryKey: ['blogs', locale, categories],
+    queryKey: ['blogs', locale, category],
     queryFn: () =>
-      getCategoriesBlogs(
-        locale as StrapiLocale,
-        categories || [],
-        token as string,
-      ),
+      getCategorizedBlogs(locale as StrapiLocale, category, token as string),
   })
 }
 
