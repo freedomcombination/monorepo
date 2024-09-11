@@ -15,6 +15,45 @@ export const getBlogs = async (locale: StrapiLocale, token: string | null) => {
 
   return response?.data || []
 }
+export const getCategoriesBlogs = async (
+  locale: StrapiLocale,
+  categories: string[],
+  token: string | null,
+) => {
+  const filters = {
+    categories: {
+      slug: {
+        $in: categories,
+      },
+    },
+  }
+  const response = await strapiRequest<Blog>({
+    endpoint: 'blogs',
+    locale,
+    filters,
+    sort: ['publishedAt:desc'],
+    ...(token && { token }),
+  })
+
+  console.log('other blogs', response?.data)
+
+  return response?.data || []
+}
+
+export const useGetCategoriesBlogs = (categories: string[]) => {
+  const { locale } = useRouter()
+  const { token } = useAuthContext()
+
+  return useQuery({
+    queryKey: ['blogs', locale, categories],
+    queryFn: () =>
+      getCategoriesBlogs(
+        locale as StrapiLocale,
+        categories || [],
+        token as string,
+      ),
+  })
+}
 
 export const getAuthorBlogs = async (
   locale: StrapiLocale,

@@ -1,9 +1,10 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 
 import { getSession } from '@fc/secrets'
-import { getBlogs, useGetBlogs } from '@fc/services'
+import { getBlogs, useGetCategoriesBlogs } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
 
@@ -11,8 +12,29 @@ import { Layout } from '../../components'
 import { WhyWeAre } from '../../components/WhyWeAre'
 
 const Blogs = () => {
-  const { data: blogs = [] } = useGetBlogs()
+  const { t } = useTranslation()
+
+  const categories = {
+    'our-story': t('trend-rights.our-story'),
+    documentaries: t('trend-rights.documentaries'),
+    'global-activities': t('trend-rights.global-activites'),
+    books: t('trend-rights.books'),
+  }
+  const categorySlugs = Object.keys(categories)
+
+  const { data: blogs } = useGetCategoriesBlogs(categorySlugs)
   const { locale } = useRouter()
+
+  const blogCategories = Array.from(
+    new Set(
+      blogs
+        ?.filter(blog => blog?.categories && blog.categories.length > 0)
+        .flatMap(
+          blog =>
+            blog.categories?.map(category => category[`name_${locale}`]) || [],
+        ),
+    ),
+  )
 
   const titles = {
     en: 'Why are we here',
@@ -23,7 +45,11 @@ const Blogs = () => {
 
   return (
     <Layout seo={{ title }} isDark={!!blogs?.length}>
-      <WhyWeAre blogs={blogs} seo={{ title }} />
+      <WhyWeAre
+        blogs={blogs || []}
+        seo={{ title }}
+        categories={blogCategories}
+      />
     </Layout>
   )
 }

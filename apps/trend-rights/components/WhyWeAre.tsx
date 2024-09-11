@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useRef } from 'react'
+import { FC, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
   Button,
@@ -19,29 +19,25 @@ import { Hero, AnimatedBox, BlogCard, Container } from '@fc/ui'
 export type WhyWeAreProps = {
   seo: NextSeoProps
   blogs: Blog[]
+  categories: string[]
 }
 
-export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
+export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs, categories }) => {
   const { t } = useTranslation()
   const { locale, query, push } = useRouter()
-
-  const whyWeAreCategories = {
-    en: ['Our Story', 'Documentaries', 'Global Activities', 'Books'],
-    tr: ['Hayat Hikayemiz', 'Belgeseller', 'Global Aktiviteler', 'Kitaplar'],
-    nl: ['Ons Verhaal', 'Documentaires', 'Globale Activiteiten', 'Boeken'],
-  }
-
-  const category = (query.category as string) || whyWeAreCategories[locale][0]
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const category = (query.category as string) || 'our-story'
 
   const filteredBlogs = useMemo(() => {
     if (!category) return blogs
 
-    return blogs.filter(blog =>
+    return blogs?.filter(blog =>
       blog?.categories?.some(cat => cat[`name_${locale}`] === category),
     )
   }, [category, blogs, locale])
 
   const handleCategory = (category: string) => {
+    setSelectedCategory(category)
     push({
       pathname: '/why-we-are',
       query: { category },
@@ -60,23 +56,27 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
   return (
     <>
       <Hero title={seo.title as string} image={'/images/blog-bg.jpeg'} />
-
       <Container display="flex" flexDirection="column" pt={8}>
         <Flex justify="flex-start" mb={8} overflowX="auto" whiteSpace="nowrap">
-          {whyWeAreCategories[locale]?.map((name, index) => (
+          {categories.map((category, index) => (
             <Button
               key={index}
-              onClick={() => handleCategory(name)}
+              onClick={() => handleCategory(category)}
               m={2}
               flexShrink={0}
               whiteSpace="nowrap"
+              variant={selectedCategory === category ? 'outline' : 'solid'}
+              _hover={{
+                color: 'primary.400',
+                bg: 'blackAlpha.50',
+              }}
             >
-              {name}
+              {category}
             </Button>
           ))}
         </Flex>
 
-        {!filteredBlogs.length && (
+        {!filteredBlogs?.length && (
           <Stack minH="inherit" justify="center" align="center" spacing={8}>
             <Image h={200} src={'/images/no-blog.svg'} alt="no blog" />
             <Text textAlign="center" fontSize="lg">
