@@ -176,7 +176,7 @@ export const useDefaultValues = <T extends StrapiModel>(
         case 'author':
           defaults.author = {
             label: blogModel.author?.name || '',
-            value: blogModel?.id?.toString() || '',
+            value: blogModel?.author?.id?.toString() || '',
           }
           break
 
