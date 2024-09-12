@@ -1,9 +1,4 @@
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  KeyboardEventHandler,
-  useState,
-} from 'react'
+import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react'
 
 import {
   IconButton,
@@ -22,20 +17,23 @@ export const SearchForm: React.FC<SearchFormProps> = ({
   placeholder,
   delay,
   onSearch,
+  mode = 'change',
   isFetching,
   ...rest
 }) => {
   const [searchTerm, setSearchTerm] = useState('')
 
-  const handleSearch: ChangeEventHandler<HTMLInputElement> = e => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     setSearchTerm(e.target.value)
 
-    debounce(() => onSearch(e.target.value), delay || 500)()
+    if (mode === 'change') {
+      debounce(() => onSearch(e.target.value), delay || 500)()
+    }
   }
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = e => {
     if (e.key === 'Enter') {
-      handleSearch(e as unknown as ChangeEvent<HTMLInputElement>)
+      onSearch(searchTerm)
     }
   }
 
@@ -48,8 +46,8 @@ export const SearchForm: React.FC<SearchFormProps> = ({
       <Input
         placeholder={placeholder}
         value={searchTerm}
-        onChange={handleSearch}
-        onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        {...(mode === 'click' && { onKeyDown: handleKeyDown })}
         {...rest}
       />
       <InputRightElement w="max-content" right={1}>
@@ -60,6 +58,13 @@ export const SearchForm: React.FC<SearchFormProps> = ({
             icon={<FaTimes color="gray.400" />}
             onClick={() => setSearchTerm('')}
             aria-label="Clear search"
+          />
+        )}
+        {mode === 'click' && (
+          <IconButton
+            onClick={() => onSearch(searchTerm)}
+            icon={<HiOutlineSearch />}
+            aria-label="Search"
           />
         )}
       </InputRightElement>
