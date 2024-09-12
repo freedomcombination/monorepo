@@ -43,7 +43,7 @@ export const getServerSideProps = async (
     (context.query.category as string) || BLOG_CATEGORIES.DEFAULT
 
   await queryClient.prefetchQuery({
-    queryKey: ['blogs', locale],
+    queryKey: ['blogs', locale, currentCategory],
     queryFn: () => getCategorizedBlogs(locale, currentCategory, token),
   })
 
