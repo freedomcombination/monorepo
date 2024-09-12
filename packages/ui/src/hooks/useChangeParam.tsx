@@ -14,22 +14,8 @@ export type ChangeParamArgs = Record<
 export const useChangeParams = () => {
   const { query, push } = useRouter()
 
-  const cleanQuery = (query: ParsedUrlQuery, args: ChangeParamArgs) => {
-    return produce(query, draft => {
-      for (const key in args) {
-        const param = args[key]
-
-        if (isEmpty(param)) {
-          delete draft[key]
-        }
-      }
-
-      return draft
-    })
-  }
-
   // When we provide null value for a param, remove it from the query
-  const cleanArgs = (args: ChangeParamArgs) => {
+  const sanitizeArgs = (args: ChangeParamArgs) => {
     return produce(args, draft => {
       for (const key in draft) {
         const param = draft[key]
@@ -55,16 +41,30 @@ export const useChangeParams = () => {
     })
   }
 
+  const sanitizeQuery = (query: ParsedUrlQuery, args: ChangeParamArgs) => {
+    return produce(query, draft => {
+      for (const key in args) {
+        const param = args[key]
+
+        if (isEmpty(param)) {
+          delete draft[key]
+        }
+      }
+
+      return draft
+    })
+  }
+
   const changeParams = useCallback(
     (args: ChangeParamArgs) => {
       // In the case of query has empty string param which we want to remove,
       // it should be removed from both the query and args
-      const cleanedQuery = cleanQuery(query, args)
-      const cleanedArgs = cleanArgs(args)
+      const sanitizedQuery = sanitizeQuery(query, args)
+      const sanitizedArgs = sanitizeArgs(args)
 
       // TODO: Remove existing page query if other params are changed
 
-      const newQuery = { ...cleanedQuery, ...cleanedArgs }
+      const newQuery = { ...sanitizedQuery, ...sanitizedArgs }
 
       if (isEqual(query, newQuery)) {
         return
