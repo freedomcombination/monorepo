@@ -1,62 +1,52 @@
-import { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { FC } from 'react'
 
 import {
+  Box,
   Button,
+  Flex,
   Image,
   SimpleGrid,
   Stack,
   Text,
-  Box,
-  Flex,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
 
+import { BLOG_CATEGORIES } from '@fc/config'
 import { Blog } from '@fc/types'
-import { Hero, AnimatedBox, BlogCard, Container } from '@fc/ui'
+import { AnimatedBox, BlogCard, Container, Hero } from '@fc/ui'
 
 export type WhyWeAreProps = {
   seo: NextSeoProps
   blogs: Blog[]
-  categories: string[]
 }
 
-export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs, categories }) => {
+export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
   const { t } = useTranslation()
-  const { locale, query, push } = useRouter()
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const category = (query.category as string) || 'our-story'
+  const { push, query } = useRouter()
 
-  const filteredBlogs = useMemo(() => {
-    if (!category) return blogs
+  const currentCategory = (query.category as string) || BLOG_CATEGORIES.DEFAULT
 
-    return blogs?.filter(blog =>
-      blog?.categories?.some(cat => cat[`name_${locale}`] === category),
-    )
-  }, [category, blogs, locale])
+  const categories = Object.values(BLOG_CATEGORIES)
 
   const handleCategory = (category: string) => {
-    setSelectedCategory(category)
-    push({
-      pathname: '/why-we-are',
-      query: { category },
-    })
+    push(
+      {
+        pathname: '/why-we-are',
+        query: { category },
+      },
+      undefined,
+      // Fetch new categories from the client side
+      { shallow: true },
+    )
   }
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollLeft = 0
-      }
-    }, 0)
-  }, [locale])
 
   return (
     <>
       <Hero title={seo.title as string} image={'/images/blog-bg.jpeg'} />
       <Container display="flex" flexDirection="column" pt={8}>
+        {/* TODO: Use radio cards for accessibility */}
         <Flex justify="flex-start" mb={8} overflowX="auto" whiteSpace="nowrap">
           {categories.map((category, index) => (
             <Button
@@ -65,18 +55,18 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs, categories }) => {
               m={2}
               flexShrink={0}
               whiteSpace="nowrap"
-              variant={selectedCategory === category ? 'outline' : 'solid'}
+              variant={currentCategory === category ? 'outline' : 'solid'}
               _hover={{
                 color: 'primary.400',
                 bg: 'blackAlpha.50',
               }}
             >
-              {category}
+              {t(`trend-rights.${category}`)}
             </Button>
           ))}
         </Flex>
 
-        {!filteredBlogs?.length && (
+        {!blogs?.length && (
           <Stack minH="inherit" justify="center" align="center" spacing={8}>
             <Image h={200} src={'/images/no-blog.svg'} alt="no blog" />
             <Text textAlign="center" fontSize="lg">
@@ -87,7 +77,7 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs, categories }) => {
 
         <Box flex="1">
           <SimpleGrid gap={8} py={8} columns={{ base: 1, lg: 3 }}>
-            {filteredBlogs?.map((blog, index) => (
+            {blogs?.map((blog, index) => (
               <AnimatedBox
                 key={index}
                 directing="to-down"
