@@ -12,7 +12,6 @@ import { Layout, WhyWeAre } from '../../components'
 
 const Blogs = () => {
   const { locale } = useRouter()
-
   const { data: blogs } = useGetCategorizedBlogs()
 
   const titles = {
@@ -38,13 +37,10 @@ export const getServerSideProps = async (
 
   const locale = context.locale as StrapiLocale
   const { token } = await getSession(context.req, context.res)
-
-  const currentCategory =
-    (context.query.category as string) || BLOG_CATEGORIES.DEFAULT
-
+  const categories = Object.values(BLOG_CATEGORIES)
   await queryClient.prefetchQuery({
-    queryKey: ['blogs', locale, currentCategory],
-    queryFn: () => getCategorizedBlogs(locale, currentCategory, token),
+    queryKey: ['blogs', locale, categories],
+    queryFn: () => getCategorizedBlogs(locale, categories, token),
   })
 
   return {

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 
 import {
   Box,
@@ -28,20 +28,22 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
 
   const currentCategory = (query.category as string) || BLOG_CATEGORIES.DEFAULT
 
-  const categories = Object.values(BLOG_CATEGORIES)
-  // Compare blogs categories and static categories
-  const singleCategories = Array.from(
+  const filteredBlogs = useMemo(() => {
+    if (!currentCategory) return blogs
+
+    return blogs?.filter(blog =>
+      blog?.categories?.some(cat => cat[`name_${locale}`] === currentCategory),
+    )
+  }, [currentCategory, blogs, locale])
+
+  // get categories from blogs
+  const categories = Array.from(
     new Set(
       blogs
-        .filter(blog => blog?.categories && blog.categories.length > 0)
-        ?.flatMap(
+        ?.filter(blog => blog?.categories && blog.categories.length > 0)
+        .flatMap(
           blog =>
-            blog?.categories
-              ?.filter(category =>
-                categories.includes(category?.slug as BLOG_CATEGORIES),
-              )
-              ?.map(category => category[`name_${locale}`]) ||
-            BLOG_CATEGORIES.DEFAULT,
+            blog.categories?.map(category => category[`name_${locale}`]) || [],
         ),
     ),
   )
@@ -64,7 +66,7 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
       <Container display="flex" flexDirection="column" pt={8}>
         {/* TODO: Use radio cards for accessibility */}
         <Flex justify="flex-start" mb={8} overflowX="auto" whiteSpace="nowrap">
-          {singleCategories.map((category, index) => (
+          {categories?.map((category, index) => (
             <Button
               key={index}
               onClick={() => handleCategory(category)}
@@ -82,7 +84,7 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
           ))}
         </Flex>
 
-        {!blogs?.length && (
+        {!filteredBlogs?.length && (
           <Stack minH="inherit" justify="center" align="center" spacing={8}>
             <Image h={200} src={'/images/no-blog.svg'} alt="no blog" />
             <Text textAlign="center" fontSize="lg">
@@ -93,7 +95,7 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
 
         <Box flex="1">
           <SimpleGrid gap={8} py={8} columns={{ base: 1, lg: 3 }}>
-            {blogs?.map((blog, index) => (
+            {filteredBlogs?.map((blog, index) => (
               <AnimatedBox
                 key={index}
                 directing="to-down"
