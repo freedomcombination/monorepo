@@ -77,20 +77,20 @@ export const useChangeParams = () => {
 
   const changePage = useCallback(
     (page: number) => {
-      changeParams({ page })
+      changeParams({ page: page === 1 ? undefined : page })
     },
     [changeParams],
   )
 
   const changeCategories = useCallback(
-    (categories: string) => {
+    (categories: string[]) => {
       changeParams({ categories })
     },
     [changeParams],
   )
 
   const changeSearch = useCallback(
-    (search: string) => {
+    (search?: string) => {
       changeParams({ q: search })
     },
     [changeParams],

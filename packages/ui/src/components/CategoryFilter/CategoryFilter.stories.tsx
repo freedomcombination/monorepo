@@ -41,7 +41,7 @@ const StoryWithHook: StoryFn<CategoryFilterProps> = args => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    changeCategories(selectedCategories.join(','))
+    changeCategories(selectedCategories)
   }, [changeCategories, selectedCategories])
 
   const { query } = useRouter()
