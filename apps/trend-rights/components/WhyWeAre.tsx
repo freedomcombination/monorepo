@@ -9,9 +9,9 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
-import { useRouter } from 'next/router'
 
 import { BLOG_CATEGORIES } from '@fc/config'
 import { Blog } from '@fc/types'

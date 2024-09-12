@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 
+import { BLOG_CATEGORIES } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { Blog, StrapiLocale } from '@fc/types'
-import { BLOG_CATEGORIES } from '@fc/config'
 
 export const getBlogs = async (locale: StrapiLocale, token: string | null) => {
   const response = await strapiRequest<Blog>({
