@@ -24,11 +24,27 @@ export type WhyWeAreProps = {
 
 export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
   const { t } = useTranslation()
-  const { push, query } = useRouter()
+  const { push, query, locale } = useRouter()
 
   const currentCategory = (query.category as string) || BLOG_CATEGORIES.DEFAULT
 
   const categories = Object.values(BLOG_CATEGORIES)
+  // Compare blogs categories and static categories
+  const singleCategories = Array.from(
+    new Set(
+      blogs
+        .filter(blog => blog?.categories && blog.categories.length > 0)
+        ?.flatMap(
+          blog =>
+            blog?.categories
+              ?.filter(category =>
+                categories.includes(category?.slug as BLOG_CATEGORIES),
+              )
+              ?.map(category => category[`name_${locale}`]) ||
+            BLOG_CATEGORIES.DEFAULT,
+        ),
+    ),
+  )
 
   const handleCategory = (category: string) => {
     push(
@@ -48,7 +64,7 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
       <Container display="flex" flexDirection="column" pt={8}>
         {/* TODO: Use radio cards for accessibility */}
         <Flex justify="flex-start" mb={8} overflowX="auto" whiteSpace="nowrap">
-          {categories.map((category, index) => (
+          {singleCategories.map((category, index) => (
             <Button
               key={index}
               onClick={() => handleCategory(category)}
@@ -61,7 +77,7 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
                 bg: 'blackAlpha.50',
               }}
             >
-              {t(`trend-rights.${category}`)}
+              {category}
             </Button>
           ))}
         </Flex>
