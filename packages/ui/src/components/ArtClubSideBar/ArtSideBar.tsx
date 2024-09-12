@@ -23,7 +23,7 @@ export const ArtSideBar: FC<ArtSideBarProps> = ({
   setIsLoading,
 }) => {
   const { t } = useTranslation()
-  const changeParam = useChangeParams()
+  const { changeCategories } = useChangeParams()
   const {
     locale,
     query: { categories },
@@ -46,7 +46,7 @@ export const ArtSideBar: FC<ArtSideBarProps> = ({
             categoryData={categoryList || []}
             initialCategories={initialCategories}
             isLoading={isLoading}
-            selectCategories={value => changeParam({ categories: value })}
+            selectCategories={changeCategories}
             setIsLoading={setIsLoading}
             title={t('categories')}
             locale={locale}

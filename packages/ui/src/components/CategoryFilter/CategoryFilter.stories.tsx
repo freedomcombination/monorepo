@@ -34,15 +34,15 @@ export default {
 type Story = StoryObj<CategoryFilterProps>
 
 const StoryWithHook: StoryFn<CategoryFilterProps> = args => {
-  const changeParam = useChangeParams()
+  const { changeCategories } = useChangeParams()
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const { locale } = useRouter()
   const { t } = useTranslation()
 
   useEffect(() => {
-    changeParam({ categories: selectedCategories })
-  }, [selectedCategories, changeParam])
+    changeCategories(selectedCategories.join(','))
+  }, [changeCategories, selectedCategories])
 
   const { query } = useRouter()
 
