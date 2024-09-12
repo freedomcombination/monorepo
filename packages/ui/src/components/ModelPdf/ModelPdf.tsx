@@ -13,7 +13,7 @@ import {
   chakra,
 } from '@chakra-ui/react'
 
-export type ModelPdfProps = {
+type ModelPdfProps = {
   title?: string
   isOpen: boolean
   onClose: () => void

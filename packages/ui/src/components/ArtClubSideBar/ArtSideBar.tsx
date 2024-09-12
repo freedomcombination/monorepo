@@ -5,17 +5,12 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { useStrapiRequest } from '@fc/services'
-import { Category, Collection } from '@fc/types'
+import { Collection } from '@fc/types'
 
+import { ArtSideBarProps } from './types'
 import { useChangeParams } from '../../hooks'
 import { CategoryFilter } from '../CategoryFilter'
 import { CollectionList } from '../CollectionList'
-
-export type ArtSideBarProps = {
-  categoryList: Category[]
-  isLoading: boolean
-  setIsLoading: (isLoading: boolean) => void
-}
 
 export const ArtSideBar: FC<ArtSideBarProps> = ({
   categoryList,

@@ -1,24 +1,13 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 
 import { Box, Center, Flex, Spinner } from '@chakra-ui/react'
-import { NextSeo, NextSeoProps } from 'next-seo'
+import { NextSeo } from 'next-seo'
 
 import { useAuthContext } from '@fc/context'
 
+import { LayoutProps } from './types'
 import { Footer } from '../Footer/Footer'
-import { FooterProps } from '../Footer/types'
 import { Header } from '../Header/Header'
-import { HeaderProps } from '../Header/types'
-
-export interface LayoutProps {
-  children: ReactNode
-  footerProps: FooterProps
-  hasProfile?: boolean
-  headerProps: HeaderProps
-  isDark?: boolean
-  isLoading?: boolean
-  seo: NextSeoProps
-}
 
 export const Layout: FC<LayoutProps> = ({
   children,
