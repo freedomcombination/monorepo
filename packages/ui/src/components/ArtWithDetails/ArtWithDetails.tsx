@@ -13,7 +13,7 @@ type ArtWithDetailsProps = {
   refetch?: () => void
 }
 
-export const ArtWithDetails: FC<ArtWithDetailsProps> = ({ art, refetch }) => {
+const ArtWithDetails: FC<ArtWithDetailsProps> = ({ art, refetch }) => {
   const { locale } = useRouter()
 
   const commentQuery = useStrapiRequest<Comment>({

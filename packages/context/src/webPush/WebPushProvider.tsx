@@ -1,16 +1,7 @@
-import { FC, PropsWithChildren, createContext, useContext } from 'react'
+import { FC, PropsWithChildren } from 'react'
 
-import { WebPushState } from './type'
 import { useWebPush } from './useWebPush'
-
-const initialWebPushState: WebPushState = {
-  registration: null,
-  subscription: null,
-  isSubscribed: false,
-  isSupported: false,
-}
-
-export const WebPushContext = createContext<WebPushState>(initialWebPushState)
+import { WebPushContext } from './WebPushContext'
 
 type WebPushProviderProps = PropsWithChildren<{
   enable: boolean
@@ -27,8 +18,4 @@ export const WebPushProvider: FC<WebPushProviderProps> = ({
       {children}
     </WebPushContext.Provider>
   )
-}
-
-export const useWebPushContext = () => {
-  return useContext(WebPushContext)
 }

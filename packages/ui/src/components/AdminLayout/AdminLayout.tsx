@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useMemo } from 'react'
+import { FC, useEffect, useMemo } from 'react'
 
 import {
   Alert,
@@ -12,21 +12,15 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { NextSeo, NextSeoProps } from 'next-seo'
+import { NextSeo } from 'next-seo'
 
 import { useAuthContext } from '@fc/context'
 
+import { AdminLayoutProps } from './types'
 import { AdminHeader } from '../AdminHeader'
 import { useAdminNav } from '../AdminNav/useAdminNav'
 import { AdminSidebar } from '../AdminSidebar'
 import { AuthModal } from '../AuthModal'
-
-export type AdminLayoutProps = {
-  children: ReactNode
-  isLoading?: boolean
-  hasBackButton?: boolean
-  seo: NextSeoProps
-}
 
 const NotAllowedPage: FC<{ show?: boolean }> = ({ show }) => {
   const { t } = useTranslation()

@@ -18,7 +18,7 @@ import { useAuthContext } from '@fc/context'
 
 import { CourseApplicationForm } from './CourseApplicationForm'
 import { CourseApplicationPayForm } from './CourseApplicationPayForm'
-import { useCourseContext } from './CourseContext'
+import { useCourseContext } from './useCourseContext'
 import { ProfileMenu } from '../Header/ProfileMenu'
 
 export const CourseRegister = () => {
