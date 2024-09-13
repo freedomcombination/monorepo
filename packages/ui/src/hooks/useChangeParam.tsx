@@ -16,6 +16,10 @@ export const useChangeParams = () => {
     const newQuery = cleanQuery(query, args)
     cleanArgs(args)
 
+    if (args['category']) {
+      args['page'] = 1
+    }
+
     if (JSON.stringify(query) != JSON.stringify({ ...newQuery, ...args })) {
       push({ query: { ...newQuery, ...args } })
     }
