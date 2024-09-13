@@ -54,8 +54,7 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
   }, [value, setIsLoading])
   
   const resetPagination = () => {
-    const currentQuery = {...router.query}
-    delete currentQuery.page; 
+    const currentQuery = {...router.query, page: 1}
     router.push({
       pathname: router.pathname, 
       query: currentQuery
