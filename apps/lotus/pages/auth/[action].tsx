@@ -15,12 +15,7 @@ import {
 
 import { Layout } from '../../components'
 
-export type LoginStates =
-  | 'login'
-  | 'register'
-  | 'forgot'
-  | 'reset'
-  | 'forgot-password'
+type LoginStates = 'login' | 'register' | 'forgot' | 'reset' | 'forgot-password'
 
 const AuthPage: FC<{ action: LoginStates }> = ({ action }) => {
   const { t } = useTranslation()
