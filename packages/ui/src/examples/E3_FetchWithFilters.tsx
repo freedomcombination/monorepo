@@ -5,7 +5,7 @@ import { Box } from '@chakra-ui/react'
 
 import { strapiRequest } from '@fc/lib'
 
-export type RequestFilterProps = {
+type RequestFilterProps = {
   initialValue: string
 }
 
