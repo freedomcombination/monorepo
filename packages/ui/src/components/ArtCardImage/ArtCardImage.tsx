@@ -30,6 +30,7 @@ export const ArtCardImage: FC<ArtCardImageProps> = memo(
           alt={art?.[`title_${locale}`]}
           userSelect="none"
           ratio={image.width && image.height ? image.width / image.height : 1}
+          sizes="320px"
         />
       )
     }
