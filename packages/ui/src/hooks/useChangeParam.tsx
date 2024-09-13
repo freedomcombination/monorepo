@@ -6,10 +6,7 @@ import { useRouter } from 'next/router'
 import qs from 'qs'
 import { ParsedUrlQuery } from 'querystring'
 
-export type ChangeParamArgs = Record<
-  string,
-  string | string[] | number | undefined
->
+type ChangeParamArgs = Record<string, string | string[] | number | undefined>
 
 export const useChangeParams = () => {
   const { query, push } = useRouter()

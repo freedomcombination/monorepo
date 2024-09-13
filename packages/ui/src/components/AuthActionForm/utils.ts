@@ -1,4 +1,4 @@
-import { LoginStates } from './AuthActionForm'
+import { LoginStates } from './types'
 
 export const getTitle = (action: LoginStates) => {
   switch (action) {

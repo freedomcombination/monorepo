@@ -1,10 +1,9 @@
 import { FC } from 'react'
 
-import { Stack, StackProps } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 
-import { ActionWrapper, ActionWrapperProps } from '../ActionWrapper'
-
-export type ActionStackProps = Omit<ActionWrapperProps<StackProps>, 'ui'>
+import { ActionStackProps } from './types'
+import { ActionWrapper } from '../ActionWrapper'
 
 export const ActionStack: FC<ActionStackProps> = props => {
   return <ActionWrapper {...props} ui={Stack} />
