@@ -15,7 +15,6 @@ import { useDebounce } from 'react-use'
 import { CategoryFilterCheckbox } from './CategoryFilterCheckbox'
 import { CategoryFilterProps } from './types'
 
-
 export const CategoryFilter: FC<CategoryFilterProps> = ({
   categoryData = [],
   debounce = 1000,

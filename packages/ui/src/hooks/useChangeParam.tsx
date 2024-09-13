@@ -15,7 +15,7 @@ export const useChangeParams = () => {
     // it should be removed from both the query and args
     const newQuery = cleanQuery(query, args)
     cleanArgs(args)
-    
+
     if (args['categories']) {
       args['page'] = 1
     }
