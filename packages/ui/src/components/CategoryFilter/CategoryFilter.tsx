@@ -9,7 +9,6 @@ import {
   Text,
   useCheckboxGroup,
 } from '@chakra-ui/react'
-// import { useRouter } from 'next/router'
 import { RiFilterOffLine } from 'react-icons/ri'
 import { useDebounce } from 'react-use'
 
@@ -28,7 +27,6 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
   setIsLoading,
 }) => {
   const initialCategorySelected = useRef(false)
-  // const router = useRouter();
 
   const initialCategoriesQuery = initialCategories
     ?.map((category, index) => `${index}=${category}`)
@@ -52,19 +50,10 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
   useEffect(() => {
     setIsLoading(true)
   }, [value, setIsLoading])
-  
-  // const resetPagination = () => {
-  //   const currentQuery = {...router.query, page: 1}
-  //   router.push({
-  //     pathname: router.pathname, 
-  //     query: currentQuery
-  //   })
-  // }
 
   useDebounce(
     () => {
       setIsLoading(false)
-      // resetPagination()
       selectCategories(value as string[])
     },
     debounce,
