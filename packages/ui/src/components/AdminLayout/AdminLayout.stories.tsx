@@ -5,7 +5,8 @@ import { sample } from 'lodash'
 import { USER_MOCKS } from '@fc/mocks'
 import { mapSessionUser } from '@fc/utils'
 
-import { AdminLayout, AdminLayoutProps } from './AdminLayout'
+import { AdminLayout } from './AdminLayout'
+import { AdminLayoutProps } from './types'
 
 const sessionUser = mapSessionUser(sample(USER_MOCKS)!)
 

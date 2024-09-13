@@ -3,7 +3,7 @@ import { ButtonProps, Stack } from '@chakra-ui/react'
 import { EditableLine } from './EditableLine'
 import { ArchivePostType, useGenPostContext } from '../GenPostProvider'
 
-export type EditablePostProps = {
+type EditablePostProps = {
   postObject: ArchivePostType
   archiveId: number
   descriptionThreshold?: number

@@ -1,24 +1,18 @@
-import { FC, ReactNode, useEffect, useMemo } from 'react'
+import { FC, useEffect, useMemo } from 'react'
 
 import { Box, Center, Flex, Spinner, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { NextSeo, NextSeoProps } from 'next-seo'
+import { NextSeo } from 'next-seo'
 
 import { Alert } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 
+import { AdminLayoutProps } from './types'
 import { AdminHeader } from '../AdminHeader'
 import { useAdminNav } from '../AdminNav/useAdminNav'
 import { AdminSidebar } from '../AdminSidebar'
 import { AuthModal } from '../AuthModal'
-
-export type AdminLayoutProps = {
-  children: ReactNode
-  loading?: boolean
-  hasBackButton?: boolean
-  seo: NextSeoProps
-}
 
 export const AdminLayout: FC<AdminLayoutProps> = ({
   children,

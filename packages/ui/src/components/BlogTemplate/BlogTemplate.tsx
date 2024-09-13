@@ -2,19 +2,12 @@ import { FC } from 'react'
 
 import { Image, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-import { NextSeoProps } from 'next-seo'
 
-import { Blog } from '@fc/types'
-
+import { BlogTemplateProps } from './type'
 import { AnimatedBox } from '../AnimatedBox'
 import { BlogCard } from '../BlogCard'
 import { Container } from '../Container'
 import { Hero } from '../Hero'
-
-export type BlogTemplateProps = {
-  seo: NextSeoProps
-  blogs: Blog[]
-}
 
 export const BlogTemplate: FC<BlogTemplateProps> = ({ seo, blogs }) => {
   const { t } = useTranslation()

@@ -5,17 +5,12 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { useStrapiRequest } from '@fc/services'
-import { Category, Collection } from '@fc/types'
+import { Collection } from '@fc/types'
 
+import { ArtSideBarProps } from './types'
 import { useChangeParams } from '../../hooks'
 import { CategoryFilter } from '../CategoryFilter'
 import { CollectionList } from '../CollectionList'
-
-export type ArtSideBarProps = {
-  categoryList: Category[]
-  loading: boolean
-  setLoading: (loading: boolean) => void
-}
 
 export const ArtSideBar: FC<ArtSideBarProps> = ({
   categoryList,
@@ -23,7 +18,7 @@ export const ArtSideBar: FC<ArtSideBarProps> = ({
   setLoading,
 }) => {
   const { t } = useTranslation()
-  const changeParam = useChangeParams()
+  const { changeCategories } = useChangeParams()
   const {
     locale,
     query: { categories },
@@ -46,7 +41,7 @@ export const ArtSideBar: FC<ArtSideBarProps> = ({
             categoryData={categoryList || []}
             initialCategories={initialCategories}
             loading={loading}
-            selectCategories={value => changeParam({ categories: value })}
+            selectCategories={changeCategories}
             setLoading={setLoading}
             title={t('categories')}
             locale={locale}

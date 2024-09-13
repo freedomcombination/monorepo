@@ -5,8 +5,6 @@ import {
   FieldLabel,
   HStack,
   Image,
-  RadioGroupRoot,
-  RadioGroupRootProps,
   Stack,
   Text,
   Textarea,
@@ -17,14 +15,14 @@ import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { MdOutlinePayment, MdOutlineSend } from 'react-icons/md'
 
-import { Button, Radio, RadioGroup, Field, toaster } from '@fc/chakra'
+import { Button, Field, Radio, RadioGroup, toaster } from '@fc/chakra'
 import { SITE_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationUnpaid } from '@fc/types'
 import { formatPrice } from '@fc/utils'
 
-import { useCourseContext } from './CourseContext'
+import { useCourseContext } from './useCourseContext'
 
 const EXPLANATION_LIMIT = 30
 

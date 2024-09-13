@@ -7,7 +7,7 @@ import { OgImageParams } from '@fc/types'
 import { Caps } from '../Caps'
 import { ContentEditable, ContentEditableProps } from '../ContentEditable'
 
-export type EditableProps = ContentEditableProps & {
+type EditableProps = ContentEditableProps & {
   disabled?: boolean
   onDelete?: () => void
   isDescription?: boolean

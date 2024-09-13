@@ -7,12 +7,9 @@ import Link from 'next/link'
 import { useAuthContext } from '@fc/context'
 
 import { AdminSidebarProfile } from './AdminSidebarProfile'
+import { AdminSidebarProps } from './types'
 import { AdminNav } from '../AdminNav'
 import { WAvatar } from '../WAvatar'
-
-type AdminSidebarProps = {
-  mobile?: boolean
-}
 
 export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
   const { user, profile, logout, demoPermissions } = useAuthContext()

@@ -1,63 +1,97 @@
+import { useCallback } from 'react'
+
+import { produce } from 'immer'
+import { isEmpty, isEqual } from 'lodash'
 import { useRouter } from 'next/router'
 import qs from 'qs'
 import { ParsedUrlQuery } from 'querystring'
 
-export type ChangeParamArgs = Record<
-  string,
-  string | string[] | number | undefined
->
+type ChangeParamArgs = Record<string, string | string[] | number | undefined>
 
 export const useChangeParams = () => {
   const { query, push } = useRouter()
 
-  const changeParams = (args: ChangeParamArgs) => {
-    // In the case of query has empty string param which we want to remove,
-    // it should be removed from both the query and args
-    const newQuery = cleanQuery(query, args)
-    cleanArgs(args)
+  // When we provide null value for a param, remove it from the query
+  const sanitizeArgs = (args: ChangeParamArgs) => {
+    return produce(args, draft => {
+      for (const key in draft) {
+        const param = draft[key]
 
-    if (JSON.stringify(query) != JSON.stringify({ ...newQuery, ...args })) {
-      push({ query: { ...newQuery, ...args } })
-    }
-  }
+        if (isEmpty(param)) {
+          delete draft[key]
+        }
 
-  return changeParams
-}
+        if (Array.isArray(param)) {
+          const filtered = param.filter(Boolean)
 
-const cleanQuery = (query: ParsedUrlQuery, args: ChangeParamArgs) => {
-  const newQuery = Object.assign({}, query)
-  for (const key in args) {
-    const param = args[key]
-    if (
-      param === '' ||
-      param === null ||
-      param === undefined ||
-      (param as string).length === 0
-    ) {
-      delete newQuery[key]
-    }
-  }
-
-  return newQuery
-}
-
-// When we provide null value for a param, remove it from the query
-const cleanArgs = (args: ChangeParamArgs) => {
-  for (const key in args) {
-    const param = args[key]
-    if (param === null || param === undefined) {
-      delete args[key]
-    }
-
-    if (Array.isArray(param)) {
-      const filtered = param.filter(p => !!p)
-      if (filtered.length) {
-        args[key] = qs.stringify(filtered, {
-          encodeValuesOnly: true,
-        })
-      } else {
-        delete args[key]
+          if (filtered.length) {
+            draft[key] = qs.stringify(filtered, {
+              encodeValuesOnly: true,
+            })
+          } else {
+            delete draft[key]
+          }
+        }
       }
-    }
+
+      return draft
+    })
   }
+
+  const sanitizeQuery = (query: ParsedUrlQuery, args: ChangeParamArgs) => {
+    return produce(query, draft => {
+      for (const key in args) {
+        const param = args[key]
+
+        if (isEmpty(param)) {
+          delete draft[key]
+        }
+      }
+
+      return draft
+    })
+  }
+
+  const changeParams = useCallback(
+    (args: ChangeParamArgs) => {
+      // In the case of query has empty string param which we want to remove,
+      // it should be removed from both the query and args
+      const sanitizedQuery = sanitizeQuery(query, args)
+      const sanitizedArgs = sanitizeArgs(args)
+
+      // TODO: Remove existing page query if other params are changed
+
+      const newQuery = { ...sanitizedQuery, ...sanitizedArgs }
+
+      if (isEqual(query, newQuery)) {
+        return
+      }
+
+      push({ query: newQuery })
+    },
+    [query, push],
+  )
+
+  const changePage = useCallback(
+    ({ page }: { page: number }) => {
+      changeParams({ page: page === 1 ? undefined : `${page}` })
+    },
+    [changeParams],
+  )
+
+  const changeCategories = useCallback(
+    (categories: string[]) => {
+      changeParams({ categories })
+    },
+    [changeParams],
+  )
+
+  const changeSearch = useCallback(
+    (search?: string) => {
+      changeParams({ q: search })
+    },
+    [changeParams],
+  )
+
+  return { changeParams, changePage, changeCategories, changeSearch }
 }

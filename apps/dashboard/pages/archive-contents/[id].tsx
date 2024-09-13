@@ -9,7 +9,7 @@ import { StrapiLocale } from '@fc/types'
 import { ArchiveContent } from '@fc/types/src/archive-content'
 import { AdminLayout, ArchivePostGenAI } from '@fc/ui'
 
-export default function ArchiveContentPage() {
+const ArchiveContentPage = () => {
   const { t } = useTranslation()
   const { query } = useRouter()
   const id = query.id ? +query.id : 0
@@ -46,3 +46,5 @@ export const getServerSideProps = async (
     },
   }
 }
+
+export default ArchiveContentPage

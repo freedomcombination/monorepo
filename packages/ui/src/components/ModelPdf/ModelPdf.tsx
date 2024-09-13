@@ -11,7 +11,7 @@ import {
   ModalOverlay,
 } from '@fc/chakra'
 
-export type ModelPdfProps = {
+type ModelPdfProps = {
   title?: string
   isOpen: boolean
   onClose: () => void

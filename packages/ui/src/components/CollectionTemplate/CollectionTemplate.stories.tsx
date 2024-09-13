@@ -2,7 +2,8 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import { COLLECTION_MOCKS } from '@fc/mocks'
 
-import { CollectionTemplate, CollectionTemplateProps } from './index'
+import { CollectionTemplate } from './CollectionTemplate'
+import { CollectionTemplateProps } from './types'
 
 export default {
   component: CollectionTemplate,

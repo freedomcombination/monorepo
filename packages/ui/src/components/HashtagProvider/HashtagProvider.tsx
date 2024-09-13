@@ -1,4 +1,4 @@
-import { FC, createContext, useContext, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
 import { sampleSize } from 'lodash'
@@ -7,17 +7,8 @@ import { useRouter } from 'next/router'
 import { useGetHashtagSentences, useHashtag } from '@fc/services'
 import { PostSentence, StrapiLocale } from '@fc/types'
 
-import { initialHashtagContext } from './state'
-import {
-  HashtagContextType,
-  HashtagProviderProps,
-  HashtagStatsType,
-  PostStats,
-} from './types'
-
-export const HashtagContext = createContext<HashtagContextType>(
-  initialHashtagContext,
-)
+import { HashtagContext } from './HashtagContex'
+import { HashtagProviderProps, HashtagStatsType, PostStats } from './types'
 
 export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
   const [activePostId, setActivePostId] = useState<number | null>(null)
@@ -241,5 +232,3 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
     </HashtagContext.Provider>
   )
 }
-
-export const useHashtagContext = () => useContext(HashtagContext)

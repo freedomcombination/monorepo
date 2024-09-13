@@ -3,24 +3,14 @@ import { FC } from 'react'
 import { Box, Center, Heading, SimpleGrid, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { NextSeoProps } from 'next-seo'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 
-import { UploadFile } from '@fc/types'
-
+import { PlatformTemplateProps } from './types'
 import { AcademyCard } from '../AcademyCard'
 import { ButtonLink } from '../ButtonLink'
 import { Container } from '../Container'
 import { Markdown } from '../Markdown'
 import { WImage } from '../WImage'
-
-export type PlatformTemplateProps = {
-  seo: NextSeoProps
-  source: MDXRemoteSerializeResult
-  image: UploadFile | string
-  link: string
-}
 
 export const PlatformTemplate: FC<PlatformTemplateProps> = ({
   seo,

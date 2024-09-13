@@ -1,15 +1,9 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 
 import { Flex, useBreakpointValue } from '@chakra-ui/react'
 import Masonry from 'react-masonry-css'
 
-export interface MasonryGridProps {
-  gap?: number
-  columnGap?: number
-  rowGap?: number
-  cols?: Array<number>
-  children: ReactNode
-}
+import { MasonryGridProps } from './types'
 
 export const MasonryGrid: FC<MasonryGridProps> = ({
   children,

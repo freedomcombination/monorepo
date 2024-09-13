@@ -16,7 +16,7 @@ import { NextSeoProps } from 'next-seo'
 import { Blog } from '@fc/types'
 import { Hero, AnimatedBox, BlogCard, Container } from '@fc/ui'
 
-export type WhyWeAreProps = {
+type WhyWeAreProps = {
   seo: NextSeoProps
   blogs: Blog[]
 }

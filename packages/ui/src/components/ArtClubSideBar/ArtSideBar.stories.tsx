@@ -14,7 +14,8 @@ import { useRouter } from 'next/router'
 
 import { Category } from '@fc/types'
 
-import { ArtSideBar, ArtSideBarProps } from './ArtSideBar'
+import { ArtSideBar } from './ArtSideBar'
+import { ArtSideBarProps } from './types'
 
 export default {
   component: ArtSideBar,

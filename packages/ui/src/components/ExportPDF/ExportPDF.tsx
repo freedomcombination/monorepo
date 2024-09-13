@@ -97,5 +97,3 @@ export const ExportPDF = <T extends StrapiModel>({
     </Button>
   )
 }
-
-export default ExportPDF

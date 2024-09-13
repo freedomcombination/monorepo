@@ -1,20 +1,10 @@
-import { FC, LegacyRef } from 'react'
+import { FC } from 'react'
 
 import { Center, Spinner } from '@chakra-ui/react'
 
-import { Collection } from '@fc/types'
-
+import { CollectionTemplateProps } from './types'
 import { CollectionBook } from '../CollectionBook'
 import { Container } from '../Container'
-
-export type CollectionTemplateProps = {
-  loading: boolean
-  height: number
-  width: number
-  pageShow: number
-  collection: Collection
-  centerRef?: LegacyRef<HTMLDivElement>
-}
 
 export const CollectionTemplate: FC<CollectionTemplateProps> = ({
   centerRef,

@@ -32,13 +32,13 @@ import { SearchForm } from '../SearchForm'
 
 export const ArtClubTemplate: FC = () => {
   const {
-    query: { categories, page, searchTerm },
+    query: { categories, page, q },
     locale,
   } = useRouter()
 
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
-  const changeParam = useChangeParams()
+  const { changePage, changeSearch } = useChangeParams()
   const [loading, setLoading] = useState(false)
   const { open, onOpen, onToggle } = useDisclosure()
   const { t } = useTranslation()
@@ -70,8 +70,8 @@ export const ArtClubTemplate: FC = () => {
           },
         },
       }),
-      ...(searchTerm && {
-        [`title_${locale}`]: { $containsi: searchTerm as string },
+      ...(q && {
+        [`title_${locale}`]: { $containsi: q as string },
       }),
     },
   })
@@ -128,7 +128,7 @@ export const ArtClubTemplate: FC = () => {
             <HStack>
               <SearchForm
                 placeholder={t('search') as string}
-                onSearch={value => changeParam({ searchTerm: value as string })}
+                onSearch={changeSearch}
                 isFetching={artsQuery.isFetching}
               />
               <CreateArtForm />
@@ -190,7 +190,7 @@ export const ArtClubTemplate: FC = () => {
                   <Pagination
                     count={artsQuery.data.meta.pagination?.pageCount}
                     page={artsQuery.data.meta.pagination?.page}
-                    onPageChange={e => changeParam({ page: e.page })}
+                    onPageChange={changePage}
                   />
                 )}
               </Center>
