@@ -45,6 +45,24 @@
       "relation": "manyToOne",
       "target": "api::platform.platform",
       "inversedBy": "jobs"
+    },
+    "responsibilities_tr": {
+      "type": "blocks"
+    },
+    "responsibilities_nl": {
+      "type": "blocks"
+    },
+    "responsibilities_en": {
+      "type": "blocks"
+    },
+    "requirements_nl": {
+      "type": "blocks"
+    },
+    "requirements_tr": {
+      "type": "blocks"
+    },
+    "requirements_en": {
+      "type": "blocks"
     }
   }
 }

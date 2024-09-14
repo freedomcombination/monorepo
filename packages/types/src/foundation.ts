@@ -19,6 +19,7 @@ type FoundationBase = {
   KVK: string
   BIC: string
   RSIN: string
+  about: string | null
 }
 
 type FoundationRelation = {

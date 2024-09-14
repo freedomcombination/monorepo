@@ -45,3 +45,12 @@ export const heardFrom = [
     selected: false,
   },
 ]
+export const initialSteps = [
+  { title: 'First', description: 'Jobs' },
+  { title: 'Second', description: 'Foundation' },
+  { title: 'Third', description: 'Requirements' },
+  { title: 'Fourth', description: 'Personal' },
+  { title: 'Fifth', description: 'General' },
+  { title: 'Sixth', description: 'Upload' },
+  { title: 'Seventh', description: 'Sumbit' },
+]

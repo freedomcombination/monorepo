@@ -5,30 +5,30 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Box,
   Center,
-  HStack,
-  Link,
-  SimpleGrid,
   Stack,
   VStack,
 } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { FaRegFilePdf } from 'react-icons/fa6'
 
 import { RecaptchaKeys } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
-import { Job, Platform, Profile, ProfileCreateInput } from '@fc/types'
+import {
+  Foundation,
+  Job,
+  Platform,
+  Profile,
+  ProfileCreateInput,
+} from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
 import { JoinTemplateProps } from './types'
 import { Container } from '../Container'
 import { JoinForm, JoinFormFieldValues } from '../JoinForm'
 import { PageTitle } from '../PageTitle'
-import { PlatformList } from '../PlatformList'
 
 export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
   const { t } = useTranslation()
@@ -38,6 +38,12 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
     endpoint: 'platforms',
     locale,
   })
+
+  const foundationsData = useStrapiRequest<Foundation>({
+    endpoint: 'foundations',
+  })
+
+  const foundation = foundationsData?.data?.data || []
 
   const platforms = platformsResult.data?.data || []
 
@@ -129,14 +135,8 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
         <>
           <PageTitle>{title}</PageTitle>
 
-          <SimpleGrid
-            mb={8}
-            gap={8}
-            columns={{ base: 1, lg: 2 }}
-            alignItems="start"
-          >
-            <Stack spacing={4}>
-              <Alert rounded="md">
+          <Stack spacing={4}>
+            {/* <Alert rounded="md">
                 <Link
                   lineHeight={1}
                   href="/fc-vrijwilligersovereenkomst.pdf"
@@ -149,19 +149,15 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
                     <span>{t('download-volunteer-form')}</span>
                   </HStack>
                 </Link>
-              </Alert>
-              <JoinForm
-                onSubmitHandler={onSubmit}
-                isLoading={isPending}
-                platforms={platforms}
-                foundationJobs={foundationJobs}
-              />
-            </Stack>
-
-            <Box pos="sticky" top={8}>
-              {platforms && <PlatformList platforms={platforms} />}
-            </Box>
-          </SimpleGrid>
+              </Alert> */}
+            <JoinForm
+              onSubmitHandler={onSubmit}
+              isLoading={isPending}
+              platforms={platforms}
+              foundationJobs={foundationJobs}
+              foundation={foundation}
+            />
+          </Stack>
         </>
       )}
     </Container>

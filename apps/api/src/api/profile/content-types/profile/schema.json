@@ -421,15 +421,21 @@
       "mappedBy": "profile"
     },
     "volunteerForm": {
-      "allowedTypes": ["files"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files"]
     },
     "subscriber": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::subscriber.subscriber",
       "mappedBy": "profile"
+    },
+    "cv": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
+      "type": "media",
+      "multiple": false
     }
   }
 }

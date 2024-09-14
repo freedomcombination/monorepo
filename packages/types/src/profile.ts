@@ -51,6 +51,7 @@ type ProfileRelation = {
   applicant?: Applicant | null
   avatar?: UploadFile | null
   comments?: Array<Comment>
+  cv?: UploadFile | null
   feedbacks?: Array<Feedback>
   jobs?: Array<Job>
   juryVotes?: Array<Vote>

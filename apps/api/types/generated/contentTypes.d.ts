@@ -2114,6 +2114,7 @@ export interface ApiFoundationFoundation extends Schema.CollectionType {
     remuneration_policy: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >
+    about: Attribute.RichText
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2286,6 +2287,12 @@ export interface ApiJobJob extends Schema.CollectionType {
       'manyToOne',
       'api::platform.platform'
     >
+    responsibilities_tr: Attribute.Blocks
+    responsibilities_nl: Attribute.Blocks
+    responsibilities_en: Attribute.Blocks
+    requirements_nl: Attribute.Blocks
+    requirements_tr: Attribute.Blocks
+    requirements_en: Attribute.Blocks
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
@@ -3180,6 +3187,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToOne',
       'api::subscriber.subscriber'
     >
+    cv: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

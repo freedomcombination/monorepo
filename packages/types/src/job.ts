@@ -10,6 +10,12 @@ export type JobBase = {
   description_en: string | null
   description_nl: string | null
   description_tr: string | null
+  responsibilities_tr: string | null
+  responsibilities_nl: string | null
+  responsibilities_en: string | null
+  requirements_tr: string | null
+  requirements_nl: string | null
+  requirements_en: string | null
 }
 
 type JobRelation = {

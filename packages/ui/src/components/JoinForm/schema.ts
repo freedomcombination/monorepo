@@ -28,13 +28,13 @@ export const joinSchema = () => {
     age: yup.number().required(),
     city: yup.string().required(),
     email: yup.string().email().required(),
-    phone: yup.string(),
-    occupation: yup.string(),
+    phone: yup.string().required(),
     comment: yup.string(),
     inMailingList: yup.boolean(),
     isPublic: yup.boolean(),
     availableHours: yup.number().min(1).max(40).required(),
     heardFrom: yup.array().required().min(1),
     jobs: yup.array().required().min(1),
+    cv: yup.mixed().required(),
   })
 }

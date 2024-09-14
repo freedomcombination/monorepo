@@ -1,6 +1,6 @@
 import { InferType } from 'yup'
 
-import { Platform, StrapiLocale, Job } from '@fc/types'
+import { Platform, StrapiLocale, Job, Foundation } from '@fc/types'
 
 import { joinSchema } from './schema'
 
@@ -11,6 +11,7 @@ export type JoinFormProps = {
   foundationJobs: Job[]
   isLoading: boolean
   onSubmitHandler: (data: JoinFormFieldValues) => void
+  foundation: Foundation[]
 }
 
 //  !!  {[key in StrapiLocale]?:string} for   optinal
