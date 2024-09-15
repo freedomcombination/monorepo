@@ -2,7 +2,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
 import { ART_MOCKS } from '@fc/mocks'
 
-import { ArtWithDetails } from './ArtWithDetails'
+import ArtWithDetails from './ArtWithDetails'
 
 export default {
   component: ArtWithDetails,

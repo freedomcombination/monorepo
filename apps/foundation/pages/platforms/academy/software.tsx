@@ -11,7 +11,7 @@ import { ButtonLink, Container, Hero, Markdown } from '@fc/ui'
 
 import { Layout } from '../../../components'
 
-export type SoftwareProps = InferGetStaticPropsType<typeof getStaticProps>
+type SoftwareProps = InferGetStaticPropsType<typeof getStaticProps>
 
 const SoftwarePage: FC<SoftwareProps> = ({ source }) => {
   const { t } = useTranslation()

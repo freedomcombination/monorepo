@@ -1,18 +1,10 @@
-import {
-  FC,
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 
 import { TWITTER_CHAR_LIMIT, TWITTER_LINK_CHAR_COUNT } from './constants'
-import { initialPostContext, initialPostState } from './state'
-import { PostContextType, PostProviderProps, PostState } from './types'
+import { PostContext } from './PostContext'
+import { initialPostState } from './state'
+import { PostProviderProps, PostState } from './types'
 import { useHashtagContext } from '../HashtagProvider'
-
-export const PostContext = createContext<PostContextType>(initialPostContext)
 
 export const PostProvider: FC<PostProviderProps> = ({ post, children }) => {
   const [sentence, setSentence] = useState(initialPostState.sentence)
@@ -122,5 +114,3 @@ export const PostProvider: FC<PostProviderProps> = ({ post, children }) => {
     </PostContext.Provider>
   )
 }
-
-export const usePostContext = () => useContext(PostContext)
