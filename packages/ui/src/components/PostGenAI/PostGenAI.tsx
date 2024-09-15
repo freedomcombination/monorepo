@@ -115,7 +115,8 @@ export const PostGenAI = ({
         }
       }
 
-      toastMessage('Error', t('contact.form.failed'), 'error')
+      // toastMessage('Error', t('contact.form.failed'), 'error')
+      toastMessage('Error', error.message, 'error')
       console.error('Error: ', error.message)
     },
   })
