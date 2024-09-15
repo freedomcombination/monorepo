@@ -74,7 +74,5 @@ export class ProfilePage {
     await this.inputs.newPassword.fill(newPassword)
     await this.inputs.passwordConfirmation.fill(newPassword)
     await this.submitUpdatePassword.click()
-
-    // TODO: Assert toast message
   }
 }
