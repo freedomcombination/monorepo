@@ -11,7 +11,7 @@ import { StrapiModel } from '@fc/types'
 
 import { getColumnsForPDF, getRowsForPDF } from './utils'
 import { I18nNamespaces } from '../../../@types/i18next'
-import { ExportPDFProps } from '../../components'
+import { ExportPDFProps } from './types'
 
 const ExportPDF = <T extends StrapiModel>({
   data,
