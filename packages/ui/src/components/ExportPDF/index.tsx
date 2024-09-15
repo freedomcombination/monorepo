@@ -1,5 +1,7 @@
-import { StrapiModel } from '@fc/types'
 import dynamic from 'next/dynamic'
+
+import { StrapiModel } from '@fc/types'
+
 import { ExportPDFProps } from './types'
 
 export const ExportPDF = dynamic(() => import('./ExportPDF'), {

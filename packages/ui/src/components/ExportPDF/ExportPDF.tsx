@@ -9,9 +9,9 @@ import { FaFilePdf } from 'react-icons/fa6'
 
 import { StrapiModel } from '@fc/types'
 
+import { ExportPDFProps } from './types'
 import { getColumnsForPDF, getRowsForPDF } from './utils'
 import { I18nNamespaces } from '../../../@types/i18next'
-import { ExportPDFProps } from './types'
 
 const ExportPDF = <T extends StrapiModel>({
   data,
