@@ -64,4 +64,3 @@ tsconfig.tsbuildinfo
 .env.sentry-build-plugin
 
 .env
-i18helper.config.json

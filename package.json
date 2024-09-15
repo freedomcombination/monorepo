@@ -57,7 +57,7 @@
     "date-fns-tz": "^3.1.3",
     "file-saver": "^2.0.5",
     "framer-motion": "^11.3.31",
-    "i18help": "^0.1.2",
+    "i18n-help": "^0.1.3",
     "i18next": "^23.15.1",
     "iron-session": "^8.0.3",
     "jspdf": "^2.5.1",

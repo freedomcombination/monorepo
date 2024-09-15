@@ -17189,7 +17189,7 @@ __metadata:
     eslint-plugin-react: "npm:7.36.1"
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:^11.3.31"
-    i18help: "npm:^0.1.2"
+    i18n-help: "npm:^0.1.3"
     i18next: "npm:^23.15.1"
     i18next-browser-languagedetector: "npm:^8.0.0"
     i18next-http-backend: "npm:^2.6.1"
@@ -19114,15 +19114,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18help@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "i18help@npm:0.1.2"
+"i18n-help@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "i18n-help@npm:0.1.3"
   dependencies:
     commander: "npm:^12.1.0"
     deepl-node: "npm:^1.13.1"
   bin:
-    i18help: dist/index.js
-  checksum: 10/589ed110856a8e623e4667697865f97e1a8fd13928c72dac959b5cfe5a95af30bd8b4846c3b842b47a0256bbe390267f6444876eea20be8b9ddadc7b6e54e244
+    i18n-help: dist/index.js
+    i18nHelp: dist/index.js
+    i18nhelp: dist/index.js
+  checksum: 10/9d37d20b3dfde4062d1573a3403e50e8d6ad9bb7c0df23300aca0d7b5cd93b4cc24f7403bac8bdc2e33af292ef70cfbf1fd3e4e553fe8f58879493652ef7638e
   languageName: node
   linkType: hard
 
