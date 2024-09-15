@@ -13,25 +13,19 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaCalendarDay, FaClock, FaEye } from 'react-icons/fa'
 
 import { useGetBlogSlug, useLikeBlog, useViewBlog } from '@fc/services'
-import { Blog, UploadFile } from '@fc/types'
+import { UploadFile } from '@fc/types'
 import { getReadingTime } from '@fc/utils'
 
+import { BlogDetailProps } from './types'
 import { BlogCard } from '../BlogCard'
 import { FormattedDate } from '../FormattedDate'
 import { Markdown } from '../Markdown'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'
-
-export type BlogDetailProps = {
-  link: string
-  source: MDXRemoteSerializeResult
-  authorBlogs: Blog[]
-}
 
 const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
   const { locale } = useRouter()

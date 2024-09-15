@@ -1,10 +1,4 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useRef,
-  useState,
-} from 'react'
+import { PropsWithChildren, useRef, useState } from 'react'
 
 import {
   AlertDialog,
@@ -23,27 +17,8 @@ import { useLocalStorage } from 'usehooks-ts'
 
 import { ArchiveContent, Hashtag, Post } from '@fc/types'
 
-import { ArchiveContentPosts, ArchivePostType, GenPostValueType } from './types'
-
-const GenPostContext = createContext<GenPostValueType>({
-  addPosts: () => [],
-  removePosts: () => Promise.resolve(),
-  removePost: () => null,
-  modifyPost: () => null,
-  postCount: () => 0,
-  getArchive: () => undefined,
-  archives: [],
-  hashtag: {} as Hashtag,
-  post: undefined,
-  askBeforeDelete: true,
-  setAskBeforeDelete: () => null,
-  getPosts: () => [],
-  removeSentence: () => null,
-})
-
-export const useGenPostContext = () => {
-  return useContext(GenPostContext)
-}
+import { GenPostContext } from './GenPostContext'
+import { ArchiveContentPosts, ArchivePostType } from './types'
 
 type GenPostProviderProps = PropsWithChildren<{
   hashtag: Hashtag

@@ -7,7 +7,7 @@ import { Profile, SessionUser } from '@fc/types'
 
 import { WAvatar } from '../WAvatar'
 
-export type AdminSidebarProfileProps = {
+type AdminSidebarProfileProps = {
   user: SessionUser
   profile: Profile | null
   onLogout: () => void
