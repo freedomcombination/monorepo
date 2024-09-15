@@ -1,17 +1,17 @@
+import { Sort } from './common'
+import { StrapiLocale } from './locale'
 import {
-  Sort,
   StrapiCollectionEndpoint,
   StrapiEndpoint,
   StrapiFilter,
-  StrapiLocale,
   StrapiModel,
   StrapiSingleEndpoint,
-} from '@fc/types'
+} from './strapi'
 
 export type RequestCommonArgs = {
   fields?: string[]
   includeDrafts?: boolean
-  populate?: string | string[]
+  populate?: string | string[] | null
   token?: string
   sort?: Sort
 }

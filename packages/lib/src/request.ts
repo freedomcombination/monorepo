@@ -1,15 +1,12 @@
-import axios, { AxiosError } from 'axios'
+import { APIRequestContext } from '@playwright/test'
+import axios, { AxiosError, AxiosResponse } from 'axios'
 import { produce } from 'immer'
 import qs from 'qs'
 
 import {
-  API_URL,
-  endpointsSingleType,
-  endpointsWithApprovalStatus,
-  endpointsWithPublicationState,
-  endpointWithLocale,
-} from '@fc/config'
-import {
+  RequestByIdArgs,
+  RequestCollectionArgs,
+  RequestSingleArgs,
   StrapiCollectionResponse,
   StrapiModel,
   StrapiResponse,
@@ -18,10 +15,12 @@ import {
 } from '@fc/types'
 
 import {
-  RequestByIdArgs,
-  RequestCollectionArgs,
-  RequestSingleArgs,
-} from './types'
+  API_URL,
+  endpointsSingleType,
+  endpointsWithApprovalStatus,
+  endpointsWithPublicationState,
+  endpointWithLocale,
+} from './urls'
 
 const DEFAULT_PAGE = 1
 const DEFAULT_PAGE_SIZE = 25
@@ -34,14 +33,17 @@ const DEFAULT_PAGINATION = {
 
 function strapiRequest<T extends StrapiModel>(
   args: RequestCollectionArgs<T>,
+  fetcher?: APIRequestContext,
 ): Promise<StrapiCollectionResponse<T[]>>
 
 function strapiRequest<T extends StrapiModel>(
   args: RequestSingleArgs,
+  fetcher?: APIRequestContext,
 ): Promise<StrapiSingleResponse<T>>
 
 async function strapiRequest<T extends StrapiModel>(
   args: RequestCollectionArgs<T> | RequestSingleArgs,
+  fetcher?: APIRequestContext,
 ): Promise<StrapiResponse<T>> {
   const collectionArgs = args as RequestCollectionArgs<T>
   const singleArgs = args as RequestSingleArgs
@@ -100,12 +102,27 @@ async function strapiRequest<T extends StrapiModel>(
     : `${API_URL}/api/${endpoint}?${query}`
 
   try {
-    const response = await axios(
-      requestUrl,
-      token ? { headers: { Authorization: `Bearer ${token}` } } : {},
-    )
+    let result: StrapiResponse<T>
+    let status: number
+    let statusText: string
 
-    const result = response.data as StrapiResponse<T>
+    if (fetcher) {
+      const fetcherResponse = await fetcher.get(requestUrl)
+      console.log('fetcherResponse.status()', fetcherResponse.status())
+      status = fetcherResponse.status()
+      statusText = fetcherResponse.statusText()
+      const responseObj = await fetcherResponse.json()
+      result = responseObj as StrapiResponse<T>
+    } else {
+      const axiosResponse = (await axios(
+        requestUrl,
+        token ? { headers: { Authorization: `Bearer ${token}` } } : {},
+      )) as AxiosResponse<StrapiResponse<T>>
+      status = axiosResponse.status
+      statusText = axiosResponse.statusText
+
+      result = axiosResponse.data as StrapiResponse<T>
+    }
 
     if (!result?.data) {
       if (id || isSingleType) {
@@ -113,47 +130,61 @@ async function strapiRequest<T extends StrapiModel>(
           return {
             data: result as unknown as T,
             meta: { pagination: null },
+            status,
+            statusText,
           } as StrapiSingleResponse<T>
         } else if (endpoint === 'users-permissions/roles') {
           return {
             data: (result as any).role as unknown as T,
             meta: { pagination: null },
+            status,
+            statusText,
           } as StrapiSingleResponse<T>
         }
 
         return {
           data: result as unknown as T,
           meta: { pagination: null },
+          status,
+          statusText,
         } as StrapiSingleResponse<T>
       }
 
       if (endpoint === 'users') {
         return {
           data: result as unknown as T[],
-          meta: {
-            pagination: DEFAULT_PAGINATION,
-          },
+          meta: { pagination: DEFAULT_PAGINATION },
+          status,
+          statusText,
         }
       } else if (endpoint === 'users-permissions/roles') {
         return {
           data: (result as any).roles as unknown as T,
           meta: { pagination: null },
+          status,
+          statusText,
         } as StrapiSingleResponse<T>
       }
 
       return {
         data: [] as T[],
         meta: { pagination: DEFAULT_PAGINATION },
+        status,
+        statusText,
       } as StrapiCollectionResponse<T[]>
     }
 
     if (id) {
-      return result as StrapiSingleResponse<T>
+      return { ...result, status, statusText } as StrapiSingleResponse<T>
     }
 
-    return result as StrapiCollectionResponse<T[]>
+    return { ...result, status, statusText } as StrapiCollectionResponse<T[]>
   } catch (err) {
     const error = err as Error | AxiosError
+    const status = axios.isAxiosError(error) ? error.response?.status : 500
+    const statusText = axios.isAxiosError(error)
+      ? error.response?.statusText
+      : 'Internal server error'
 
     if (axios.isAxiosError(error)) {
       console.error(
@@ -169,12 +200,16 @@ async function strapiRequest<T extends StrapiModel>(
       return {
         data: null as unknown as T,
         meta: { pagination: null },
+        status,
+        statusText,
       } as StrapiSingleResponse<T>
     }
 
     return {
       data: [] as T[],
       meta: { pagination: DEFAULT_PAGINATION },
+      status,
+      statusText,
     } as StrapiCollectionResponse<T[]>
   }
 }

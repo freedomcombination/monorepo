@@ -28,6 +28,7 @@
     "SENTRY_PROJECT",
     "STRIPE_KEY",
     "TEST_PASSWORD",
+    "TEST_TOKEN",
     "TEST_USERNAME",
     "VERCEL_ENV",
     "VERCEL_URL"

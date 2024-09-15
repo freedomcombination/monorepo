@@ -1,6 +1,6 @@
+import { APIRequestContext } from '@playwright/test'
 import axios from 'axios'
 
-import { API_URL } from '@fc/config'
 import {
   StrapiCreateInput,
   StrapiEndpoint,
@@ -9,7 +9,9 @@ import {
   StrapiMutationResponse,
   StrapiUpdateInput,
 } from '@fc/types'
-import { generateFormData } from '@fc/utils'
+
+import { API_URL } from '../urls'
+import { generateFormData } from '../utils'
 
 type Method = 'post' | 'put' | 'delete' | 'localize'
 
@@ -34,15 +36,24 @@ type MutationParams<D> = {
 export const mutation = async <
   T extends StrapiModel,
   D extends StrapiCreateInput | StrapiUpdateInput,
->({
-  body,
-  id,
-  locale,
-  method,
-  token,
-  endpoint,
-  queryParameters,
-}: MutationParams<D>) => {
+>(
+  {
+    body,
+    id,
+    locale,
+    method,
+    token,
+    endpoint,
+    queryParameters,
+  }: MutationParams<D>,
+  fetcher?: APIRequestContext,
+) => {
+  let status: number
+  let statusText: string
+  let hasBodyFile = false
+
+  console.log('method', method)
+
   //  Throw an error if the id is not provided
   if (method !== 'post' && !id) {
     throw new Error(`Id is required for ${method} method`)
@@ -56,14 +67,35 @@ export const mutation = async <
   }
 
   if (method === 'localize') {
+    const url = `${endpoint}/${id}/localizations`
+
+    if (fetcher) {
+      const response = await fetcher.post(`${API_URL}/api/${url}`, {
+        data: JSON.stringify({ ...body, locale }),
+        ...(token && {
+          headers: { Authorization: `Bearer ${token}` },
+        }),
+      })
+
+      status = response.status()
+      statusText = response.statusText()
+
+      const data = await response.json()
+
+      return { ...data, status, statusText }
+    }
+
     // https://docs.strapi.io/developer-docs/latest/plugins/i18n.html#creating-a-localization-for-an-existing-entry
     const response = await axios.post<T>(
-      `${endpoint}/${id}/localizations`,
+      url,
       { ...body, locale }, // TODO localization body doesn't seem to have data key. Double check this
       config,
     )
 
-    return response.data || null
+    status = response.status
+    statusText = response.statusText
+
+    return { ...response.data, status, statusText }
   }
 
   const queryParams = queryParameters ? `?${queryParameters}` : ''
@@ -73,12 +105,30 @@ export const mutation = async <
     : `${endpoint}${queryParams}`
 
   if (method === 'delete') {
+    if (fetcher) {
+      const response = await fetcher.delete(`${API_URL}/api/${requestUrl}`, {
+        ...(token && {
+          headers: { Authorization: `Bearer ${token}` },
+        }),
+      })
+
+      status = response.status()
+      statusText = response.statusText()
+
+      const data = await response.json()
+
+      return { ...data?.data, status, statusText }
+    }
+
     const response = await axios[method]<StrapiMutationResponse<T>>(
       requestUrl,
       config,
     )
 
-    return response.data?.data || null
+    status = response.status
+    statusText = response.statusText
+
+    return { ...response.data?.data, status, statusText }
   }
 
   //  Throw an error if the body is not provided
@@ -103,7 +153,7 @@ export const mutation = async <
     : body
 
   if (typeof window !== 'undefined') {
-    const hasBodyFile = Object.values(body).some(
+    hasBodyFile = Object.values(body).some(
       // This might not work in Node.js environments. File is Web API only
       value =>
         value instanceof File ||
@@ -118,7 +168,29 @@ export const mutation = async <
     }
   }
 
+  console.log('requestBody', requestBody)
+
   try {
+    if (fetcher) {
+      console.log('Fetching...', method, requestUrl)
+
+      const response = await fetcher[method](`${API_URL}/api/${requestUrl}`, {
+        data: hasBodyFile ? requestBody : JSON.stringify(requestBody),
+        ...(token && {
+          headers: { Authorization: `Bearer ${token}` },
+        }),
+      })
+
+      status = response.status()
+      statusText = response.statusText()
+
+      console.log('status', status)
+
+      const data = await response.json()
+
+      return { ...data?.data, status, statusText }
+    }
+
     const response = await axios[method]<StrapiMutationResponse<T>>(
       requestUrl,
       requestBody,

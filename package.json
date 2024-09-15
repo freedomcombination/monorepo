@@ -34,7 +34,7 @@
     "@faker-js/faker": "^9.0.0",
     "@hookform/resolvers": "^3.9.0",
     "@sentry/nextjs": "^8.30.0",
-    "@sindresorhus/slugify": "^2.2.1",
+    "@sindresorhus/slugify": "1.1.0",
     "@splidejs/react-splide": "^0.7.12",
     "@tanstack/react-query": "^5.56.2",
     "@tanstack/react-query-devtools": "^5.56.2",
