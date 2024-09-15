@@ -67,3 +67,5 @@ yarn format # Formats all files
 ```bash
 yarn add -W <package-name>
 ```
+
+See [i18n-help](https://github.com/myniqx/i18n-help) for command-line translation tool usage details.
