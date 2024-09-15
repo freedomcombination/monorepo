@@ -87,19 +87,21 @@ export const ChangePasswordForm = () => {
     mutate(data, {
       onError: () => {
         toast({
+          id: 'error-update-password',
           title: 'Error',
           description: t('update-failed'),
           status: 'error',
-          duration: 3000,
+          duration: 10000,
           isClosable: true,
         })
       },
       onSuccess: () => {
         toast({
+          id: 'success-update-password',
           title: 'Success',
           description: t('update-success'),
           status: 'success',
-          duration: 3000,
+          duration: 10000,
           isClosable: true,
         })
       },
@@ -145,6 +147,7 @@ export const ChangePasswordForm = () => {
       </Stack>
 
       <Button
+        data-testid={'button-submit-update-password'}
         leftIcon={<FaEdit />}
         isLoading={isPending}
         size={'lg'}
