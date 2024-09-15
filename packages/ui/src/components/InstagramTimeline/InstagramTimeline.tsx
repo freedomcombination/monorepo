@@ -25,7 +25,7 @@ export const InstagramTimeline: FC<InstagramTimelineProps> = ({ posts }) => {
         {t('instagram-page-title')}
       </Heading>
 
-      <SimpleGrid columns={[2, null, 4]} spacing={1}>
+      <SimpleGrid columns={{ sm: 2, md: 3 }} gap={1}>
         {posts.map(post => (
           <Link
             href={post.permalink}
