@@ -1,13 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Button,
-  Heading,
-  Image,
-  Link,
-  SimpleGrid,
-  Stack,
-} from '@chakra-ui/react'
+import { Heading, Image, Link, SimpleGrid, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import { InstagramPost } from '@fc/types'
@@ -27,7 +20,7 @@ export const InstagramTimeline: FC<InstagramTimelineProps> = ({ posts }) => {
         {t('instagram-page-title')}
       </Heading>
 
-      <SimpleGrid columns={[2, null, 4]} gap={1}>
+      <SimpleGrid columns={{ sm: 2, md: 3 }} gap={1}>
         {posts.map(post => (
           <Link
             href={post.permalink}

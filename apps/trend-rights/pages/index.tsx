@@ -84,7 +84,7 @@ const Home: FC<HomeProps> = ({ hashtags, instagramPosts }) => {
 
       {instagramPosts?.length > 0 && (
         <Box bg={'gray.50'} py={16}>
-          <Container maxW={'6xl'}>
+          <Container maxW={'4xl'}>
             <InstagramTimeline posts={instagramPosts} />
           </Container>
         </Box>
