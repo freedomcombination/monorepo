@@ -78,6 +78,9 @@ export const ArchivePostGenAI = ({
   let lastParsedPosts: GeneratedArchiveContentPost[] = []
 
   const parseIncomplete = (src: string): GeneratedArchiveContentPost[] => {
+    // TODO: fix this
+    return []
+
     if (src.length < 60) {
       lastParsedPosts = []
     }
