@@ -73,4 +73,10 @@ export default ({ env }) => ({
       sendMetadata: true,
     },
   },
+  documentation: {
+    enabled: env('VERCEL_ENV') !== 'production',
+    config: {
+      info: { version: '1.0.0' },
+    },
+  },
 })

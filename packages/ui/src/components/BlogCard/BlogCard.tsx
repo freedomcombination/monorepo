@@ -15,17 +15,11 @@ import {
 import { useRouter } from 'next/router'
 import { FaCalendarDay, FaClock, FaEye, FaHeart } from 'react-icons/fa'
 
-import { Blog } from '@fc/types'
 import { getReadingTime } from '@fc/utils'
 
+import { BlogCardProps } from './types'
 import { FormattedDate } from '../FormattedDate'
 import { WImage } from '../WImage'
-
-export type BlogCardProps = {
-  post: Blog
-  isFeatured?: boolean
-  onClick?: () => void
-}
 
 export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured, onClick }) => {
   const { locale } = useRouter()

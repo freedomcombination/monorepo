@@ -11,3 +11,6 @@ export default {
 type Story = StoryObj<SearchFormProps>
 
 export const Default: Story = {}
+export const Click: Story = {
+  args: { mode: 'click' },
+}

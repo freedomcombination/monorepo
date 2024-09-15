@@ -11,7 +11,7 @@ import { Container, Hero, Markdown } from '@fc/ui'
 
 import { Layout } from '../../../components'
 
-export type SeminarsProps = InferGetStaticPropsType<typeof getStaticProps>
+type SeminarsProps = InferGetStaticPropsType<typeof getStaticProps>
 
 const SeminarsPage: FC<SeminarsProps> = ({ source }) => {
   const { t } = useTranslation()
