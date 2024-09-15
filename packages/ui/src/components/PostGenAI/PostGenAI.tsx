@@ -102,7 +102,9 @@ export const PostGenAI = ({
     initialInput: content,
     body,
     onFinish(prompt: string, completion: string) {
+      console.log('completion: ', completion)
       const parsedCompletion = parseCompleted(completion)
+      console.log('parsedCompletion: ', parsedCompletion)
       const archived = addPosts(archiveContentId, parsedCompletion)
       onSuccess?.(archived)
     },
