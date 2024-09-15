@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-import { PASSWORD } from '../constants'
+import { PASSWORD, USERNAME } from '../constants'
 import { LayoutPage, LoginPage, ProfilePage } from '../pages'
 import {
   addCookies,
@@ -31,7 +31,7 @@ test.describe('06. Profile Editing Tests', () => {
     await layoutPage.gotoHome()
 
     await layoutPage.gotoLogin()
-    await loginPage.login(TEMP_USERNAME, PASSWORD)
+    await loginPage.login(USERNAME, PASSWORD)
     await layoutPage.gotoProfilePage()
 
     await page.getByTestId('tab-security').click()
@@ -52,7 +52,7 @@ test.describe('06. Profile Editing Tests', () => {
     await layoutPage.gotoHome()
 
     await layoutPage.gotoLogin()
-    await loginPage.login(TEMP_USERNAME, PASSWORD)
+    await loginPage.login(USERNAME, PASSWORD)
     await layoutPage.gotoProfilePage()
     await page.getByTestId('tab-socials').click()
 
@@ -77,7 +77,7 @@ test.describe('06. Profile Editing Tests', () => {
     await layoutPage.gotoHome()
 
     await layoutPage.gotoLogin()
-    await loginPage.login(TEMP_USERNAME, PASSWORD)
+    await loginPage.login(USERNAME, PASSWORD)
     await layoutPage.gotoProfilePage()
     await page.getByTestId('tab-socials').click()
 
@@ -109,6 +109,7 @@ test.describe('06. Profile Editing Tests', () => {
     // Because it will affect the other tests when it fails or runs in parallel
     // So, use a secondary account to update the password
     await profilePage.updatePassword(PASSWORD, TEMP_PASSWORD)
+    // TODO: Add assertion for success toast
 
     await layoutPage.logout()
 

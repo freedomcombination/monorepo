@@ -10206,6 +10206,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:>=12.0":
+  version: 22.5.5
+  resolution: "@types/node@npm:22.5.5"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10/172d02c8e6d921699edcf559c28b3805616bd6481af1b3cb0299f89ad9a6f33b71050434c06ce7b503166054a26275344187c443f99f745d0b12601372452f19
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^18.0.0, @types/node@npm:^18.11.18":
   version: 18.19.39
   resolution: "@types/node@npm:18.19.39"
@@ -12246,7 +12255,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.7.7":
+"axios@npm:^1.7.4, axios@npm:^1.7.7":
   version: 1.7.7
   resolution: "axios@npm:1.7.7"
   dependencies:
@@ -13766,6 +13775,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "commander@npm:12.1.0"
+  checksum: 10/cdaeb672d979816853a4eed7f1310a9319e8b976172485c2a6b437ed0db0a389a44cfb222bfbde772781efa9f215bdd1b936f80d6b249485b465c6cb906e1f93
+  languageName: node
+  linkType: hard
+
 "commander@npm:^2.20.0":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
@@ -14823,6 +14839,18 @@ __metadata:
   version: 0.1.4
   resolution: "deep-is@npm:0.1.4"
   checksum: 10/ec12d074aef5ae5e81fa470b9317c313142c9e8e2afe3f8efa124db309720db96d1d222b82b84c834e5f87e7a614b44a4684b6683583118b87c833b3be40d4d8
+  languageName: node
+  linkType: hard
+
+"deepl-node@npm:^1.13.1":
+  version: 1.13.1
+  resolution: "deepl-node@npm:1.13.1"
+  dependencies:
+    "@types/node": "npm:>=12.0"
+    axios: "npm:^1.7.4"
+    form-data: "npm:^3.0.0"
+    loglevel: "npm:>=1.6.2"
+  checksum: 10/670eb97f2fe253b15a6bd532ab275ed61c3ba42b07f262c011ce6e1a978cd3965eab4b6421e7bb49a849eea98b021dc4d28f562bfda9380cf34f66e3ddebcea6
   languageName: node
   linkType: hard
 
@@ -17161,6 +17189,7 @@ __metadata:
     eslint-plugin-react: "npm:7.36.1"
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:^11.3.31"
+    i18n-help: "npm:^0.1.3"
     i18next: "npm:^23.15.1"
     i18next-browser-languagedetector: "npm:^8.0.0"
     i18next-http-backend: "npm:^2.6.1"
@@ -17609,6 +17638,17 @@ __metadata:
   version: 1.7.2
   resolution: "form-data-encoder@npm:1.7.2"
   checksum: 10/227bf2cea083284411fd67472ccc22f5cb354ca92c00690e11ff5ed942d993c13ac99dea365046306200f8bd71e1a7858d2d99e236de694b806b1f374a4ee341
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "form-data@npm:3.0.1"
+  dependencies:
+    asynckit: "npm:^0.4.0"
+    combined-stream: "npm:^1.0.8"
+    mime-types: "npm:^2.1.12"
+  checksum: 10/944b40ff63b9cb1ca7a97e70f72104c548e0b0263e3e817e49919015a0d687453086259b93005389896dbffd3777cccea2e67c51f4e827590e5979b14ff91bf7
   languageName: node
   linkType: hard
 
@@ -19071,6 +19111,20 @@ __metadata:
   version: 1.1.0
   resolution: "hyphenate-style-name@npm:1.1.0"
   checksum: 10/b9ed74e29181d96bd58a2d0e62fc4a19879db591dba268275829ff0ae595fcdf11faafaeaa63330a45c3004664d7db1f0fc7cdb372af8ee4615ed8260302c207
+  languageName: node
+  linkType: hard
+
+"i18n-help@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "i18n-help@npm:0.1.3"
+  dependencies:
+    commander: "npm:^12.1.0"
+    deepl-node: "npm:^1.13.1"
+  bin:
+    i18n-help: dist/index.js
+    i18nHelp: dist/index.js
+    i18nhelp: dist/index.js
+  checksum: 10/9d37d20b3dfde4062d1573a3403e50e8d6ad9bb7c0df23300aca0d7b5cd93b4cc24f7403bac8bdc2e33af292ef70cfbf1fd3e4e553fe8f58879493652ef7638e
   languageName: node
   linkType: hard
 
@@ -21675,6 +21729,13 @@ __metadata:
     safe-stable-stringify: "npm:^2.3.1"
     triple-beam: "npm:^1.3.0"
   checksum: 10/92de5696a529a7ccf4359fe65a21fce2398ba20c4b4e5769cba187b8fde01d590a22d3c83f797d31b436f49770fb1b2f28646e7c881d30b8d1f4080a05ae7006
+  languageName: node
+  linkType: hard
+
+"loglevel@npm:>=1.6.2":
+  version: 1.9.2
+  resolution: "loglevel@npm:1.9.2"
+  checksum: 10/6153d8db308323f7ee20130bc40309e7a976c30a10379d8666b596d9c6441965c3e074c8d7ee3347fe5cfc059c0375b6f3e8a10b93d5b813cc5547f5aa412a29
   languageName: node
   linkType: hard
 
