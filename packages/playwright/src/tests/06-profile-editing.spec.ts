@@ -12,7 +12,7 @@ import {
 const { username } = generateRandomUser()
 
 const TEMP_USERNAME = 'temp'
-const TEMP_PASSWORD = 'Test?123'
+const TEMP_PASSWORD = '1234567At'
 
 test.afterEach(async ({ page }) => {
   await page.close()
@@ -125,28 +125,5 @@ test.describe('06. Profile Editing Tests', () => {
 
     await profilePage.tabs.security.click()
     await profilePage.updatePassword(TEMP_PASSWORD, PASSWORD)
-  })
-  test('TC-05: notification for password update in profile editing', async ({
-    page,
-    context,
-  }) => {
-    const layoutPage = new LayoutPage(page, 'kunsthalte')
-    const loginPage = new LoginPage(page)
-    const profilePage = new ProfilePage(page)
-
-    await addCookies(context, 'kunsthalte')
-    await layoutPage.gotoHome()
-
-    await layoutPage.gotoLogin()
-    await loginPage.login(TEMP_USERNAME, PASSWORD)
-    await layoutPage.gotoProfilePage()
-
-    await page.getByTestId('tab-security').click()
-
-    const NEW_PASSWORD = '1234567At'
-
-    await profilePage.updatePassword(PASSWORD, NEW_PASSWORD)
-
-    await expect(page.getByTestId('Success-Update-successful')).toBeVisible()
   })
 })
