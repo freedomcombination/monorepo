@@ -13,7 +13,7 @@ import { getColumnsForPDF, getRowsForPDF } from './utils'
 import { I18nNamespaces } from '../../../@types/i18next'
 import { ExportPDFProps } from '../../components'
 
-export const ExportPDF = <T extends StrapiModel>({
+const ExportPDF = <T extends StrapiModel>({
   data,
   columns,
 }: ExportPDFProps<T>) => {
@@ -97,3 +97,5 @@ export const ExportPDF = <T extends StrapiModel>({
     </Button>
   )
 }
+
+export default ExportPDF
