@@ -51,6 +51,7 @@ test.describe('01. Example API call', () => {
           name_tr: faker.lorem.word(),
           slug: faker.lorem.slug(),
         },
+        // TODO: Create a boxing function to get token after login
         token: TOKEN,
       },
       request,
