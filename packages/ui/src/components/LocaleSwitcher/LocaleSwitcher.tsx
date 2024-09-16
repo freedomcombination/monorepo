@@ -34,10 +34,14 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark, isMobile }) => {
           else variant = 'outline'
         }
 
+        const label = isMobile ? `mobile-${code}` : code
+        const testid = `language-switcher-${code}`
+
         return !isScrolled && isDark ? (
           <Button
             key={code}
-            aria-label={isMobile ? `mobile-${code}` : code}
+            aria-label={label}
+            data-testid={testid}
             px={2}
             onClick={() => handleChangeLanguage(code)}
             colorScheme={
@@ -56,7 +60,8 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark, isMobile }) => {
         ) : (
           <Button
             key={code}
-            aria-label={code}
+            aria-label={label}
+            data-testid={testid}
             px={2}
             onClick={() => handleChangeLanguage(code)}
             colorScheme={
