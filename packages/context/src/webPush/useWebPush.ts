@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import { WebPushSubscription } from '@fc/types'
+
+import { WebPushContext } from './WebPushContext'
 
 export const useWebPush = (enable: boolean) => {
   const [registration, setRegistration] =
@@ -55,4 +57,8 @@ export const useWebPush = (enable: boolean) => {
     isSubscribed: !!subscription,
     isSupported,
   }
+}
+
+export const useWebPushContext = () => {
+  return useContext(WebPushContext)
 }

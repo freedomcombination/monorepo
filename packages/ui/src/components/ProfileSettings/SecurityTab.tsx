@@ -84,22 +84,24 @@ const Credential: React.FC<CredentialProps> = ({
       await checkAuth()
 
       toast({
+        id: `success-update-${name}`,
         title: t('update-success'),
         status: 'success',
-        duration: 5000,
+        duration: 10000,
         isClosable: true,
       })
       setEdit(false)
     } catch (e) {
       console.error('Update error', name, value, e)
       toast({
+        id: `error-update-${name}`,
         title: t('update-failed'),
         description: t(
           ((e as unknown as Error).message ??
             e) as keyof I18nNamespaces['common'],
         ),
         status: 'error',
-        duration: 5000,
+        duration: 10000,
         isClosable: true,
       })
     } finally {
