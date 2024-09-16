@@ -67,9 +67,9 @@ export class LayoutPage {
       },
     }
     this.languageMenu = {
-      en: page.getByTestId('language-switcher-en'),
-      nl: page.getByTestId('language-switcher-nl'),
-      tr: page.getByTestId('language-switcher-tr'),
+      en: page.getByTestId('button-d-en'),
+      nl: page.getByTestId('button-d-nl'),
+      tr: page.getByTestId('button-d-tr'),
     }
     this.profileMenu = page.getByTestId('button-d-profile-menu')
     this.profileLink = page.getByTestId('link-d-profile')

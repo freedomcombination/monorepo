@@ -35,7 +35,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark, isMobile }) => {
         }
 
         const label = isMobile ? `mobile-${code}` : code
-        const testid = `language-switcher-${code}`
+        const testid = isMobile ? `button-m-${code}` : `button-d-${code}`
 
         return !isScrolled && isDark ? (
           <Button
