@@ -9,12 +9,16 @@ test.beforeEach(async ({ page }) => {
 })
 
 test.describe('01. Donate', () => {
-  test('TC-01: should Donate', async ({ page }) => {
+  test('TC-01: should donation page', async ({ page }) => {
+    // TODO: Use layoutPage
     await page.getByRole('link', { name: 'Donate' }).click()
 
+    // TODO: Move it to 07-pages.spec.ts
     await expect(page.getByRole('heading')).toContainText('Donate') // 01. Does the Donate page open?
     const pageTitle = await page.title()
     expect(pageTitle).toContain('Donate') // 02. Does the title match the page name?
+
+    // TODO: Use locators in Donate.ts
     await page.getByRole('button', { name: '€10', exact: true }).click()
     const inputElement = page.locator('.chakra-numberinput input')
     const value = await inputElement.inputValue()

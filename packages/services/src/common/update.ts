@@ -1,14 +1,10 @@
 import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
+import { useRouter } from 'next/router'
 
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
-import {
-  StrapiEndpoint,
-  StrapiModel,
-  StrapiTranslatableModel,
-  StrapiUpdateInput,
-} from '@fc/types'
+import { StrapiEndpoint, StrapiModel, StrapiUpdateInput } from '@fc/types'
 
 export const updateModel = <
   T extends StrapiModel,
@@ -30,17 +26,23 @@ export const useUpdateModelMutation = <
 ) => {
   const toast = useToast()
   const { token } = useAuthContext()
+  const { locale } = useRouter()
 
   return useMutation({
     mutationKey: ['update-model', endpoint],
     mutationFn: ({ id, ...args }: D & { id: number }) =>
       updateModel<T, D>(endpoint, id, args as D, token as string),
     onSuccess: res => {
+      const data = res?.data as any
+      const title =
+        data?.title ||
+        data?.name ||
+        data?.[`title_${locale}`] ||
+        data?.[`name_${locale}`]
+
       toast({
         title: `Model updated`,
-        description: `Model ${
-          (res as StrapiTranslatableModel)?.title
-        } has been updated`,
+        description: `Model ${title} has been updated`,
         status: 'success',
         duration: 5000,
         isClosable: true,

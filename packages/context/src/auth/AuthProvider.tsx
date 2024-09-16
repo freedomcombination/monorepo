@@ -1,4 +1,4 @@
-import { FC, createContext, useContext, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/react'
 import axios from 'axios'
@@ -8,11 +8,10 @@ import { useTranslation } from 'next-i18next'
 import { Auth, Permissions, StrapiEndpoint } from '@fc/types'
 import { checkAccessForActions } from '@fc/utils'
 
+import { AuthContext } from './AuthContext'
 import { initialAuthState } from './state'
-import { AuthContextType, AuthProviderProps, AuthState } from './types'
+import { AuthProviderProps, AuthState } from './types'
 import { useUserQuery } from './useUserQuery'
-
-export const AuthContext = createContext<AuthContextType>(initialAuthState)
 
 export const AuthProvider: FC<AuthProviderProps> = ({
   children,
@@ -36,6 +35,12 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   const authModalDisclosure = useDisclosure()
   const { t } = useTranslation()
   const router = useRouter()
+
+  useEffect(() => {
+    if (user) {
+      authModalDisclosure.onClose()
+    }
+  }, [user])
 
   function checkActionsPermission(
     endpoint: StrapiEndpoint,
@@ -176,5 +181,3 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     </AuthContext.Provider>
   )
 }
-
-export const useAuthContext = () => useContext(AuthContext)

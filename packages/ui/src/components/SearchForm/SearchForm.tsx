@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react'
 
 import {
   IconButton,
@@ -6,11 +6,10 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  useUpdateEffect,
 } from '@chakra-ui/react'
+import { debounce } from 'lodash'
 import { FaTimes } from 'react-icons/fa'
 import { HiOutlineSearch } from 'react-icons/hi'
-import { useDebounce } from 'react-use'
 
 import { SearchFormProps } from './types'
 
@@ -18,32 +17,25 @@ export const SearchForm: React.FC<SearchFormProps> = ({
   placeholder,
   delay,
   onSearch,
-  onReset,
   mode = 'change',
   isFetching,
   ...rest
 }) => {
   const [searchTerm, setSearchTerm] = useState('')
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
 
-  useDebounce(
-    () => {
-      setDebouncedSearchTerm(searchTerm)
-    },
-    delay || 700,
-    [searchTerm],
-  )
+  const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
+    setSearchTerm(e.target.value)
 
-  // `useUpdateEffect` is used here because we don't need to call `onSearch` at the first render
-  // We call `onSearch` only if  mode is `change`
-  useUpdateEffect(() => {
     if (mode === 'change') {
-      onSearch?.(debouncedSearchTerm)
+      debounce(() => onSearch(e.target.value), delay || 500)()
     }
-    if (debouncedSearchTerm === '') {
-      onSearch?.(undefined)
+  }
+
+  const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = e => {
+    if (e.key === 'Enter') {
+      onSearch(searchTerm)
     }
-  }, [debouncedSearchTerm, onReset])
+  }
 
   return (
     <InputGroup size="lg" flex="1">
@@ -54,10 +46,8 @@ export const SearchForm: React.FC<SearchFormProps> = ({
       <Input
         placeholder={placeholder}
         value={searchTerm}
-        onChange={e => setSearchTerm(e.target.value)}
-        onKeyDown={e =>
-          e.key === 'Enter' && setSearchTerm((e.target as any).value)
-        }
+        onChange={handleChange}
+        {...(mode === 'click' && { onKeyDown: handleKeyDown })}
         {...rest}
       />
       <InputRightElement w="max-content" right={1}>

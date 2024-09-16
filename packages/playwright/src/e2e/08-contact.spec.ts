@@ -9,6 +9,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('08. Contact', () => {
   test('TC-01: should Contact', async ({ page }) => {
+    // TODO: Use layoutPage
     await page.getByRole('link', { name: 'Contact' }).first().click()
     await page.waitForLoadState('networkidle')
     await expect(page.locator('[id="__next"]')).toContainText('Contact') // 01. Does the Contact page open?
@@ -17,6 +18,7 @@ test.describe('08. Contact', () => {
     await page.waitForTimeout(100)
     expect(pageTitle).toContain('Contact') // 02. Does the title match the page name? //yapılamadı
 
+    // TODO: Use locators in Contact.ts
     await page.getByPlaceholder('Your Full Name').click()
     await page.getByPlaceholder('E-mail').click()
     await page.getByPlaceholder('Message').click()
@@ -64,6 +66,7 @@ test.describe('08. Contact', () => {
     const emaillink = page.locator('a[href^="mailto:"]')
     await expect(emaillink).toHaveCount(1) //  08. When clicking on the email address icon, the user should be directed to the Outlook application.
 
+    // TODO: Test social media link with checkExternalLink function
     const xElement = page.getByLabel('X').first().getAttribute('href')
     expect(xElement).not.toBeNull() // 09. When clicking on the xcom icon, the user should be directed to another page.
 

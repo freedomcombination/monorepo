@@ -54,7 +54,10 @@ export const DataTable = <T extends StrapiModel>({
         >
           <HStack flex={1} justify={{ base: 'center', md: 'start' }}>
             {allowExportPDF && (
-              <ExportPDF data={tableProps.data} columns={tableProps.columns} />
+              <ExportPDF<T>
+                data={tableProps.data}
+                columns={tableProps.columns}
+              />
             )}
             <Select
               w={20}

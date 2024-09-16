@@ -9,7 +9,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
-import { FieldValues, Path, PathValue, UseFormSetValue } from 'react-hook-form'
+import { FieldValues, Path, PathValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'
 import { FaFile, FaFilePdf } from 'react-icons/fa6'
 import { IoMdCloudUpload } from 'react-icons/io'
@@ -17,28 +17,17 @@ import { IoMdCloudUpload } from 'react-icons/io'
 import {
   PlatformSlug,
   Post,
-  StrapiEndpoint,
-  StrapiModel,
   StrapiTranslatableModel,
   UploadFile,
 } from '@fc/types'
 import { getMediaUrl } from '@fc/utils'
 
+import { ModelMediaProps } from './types'
 import { Caps } from '../Caps'
 import { FilePicker } from '../FilePicker'
 import { ModelPdf } from '../ModelPdf'
 import { VideoPlayer } from '../VideoPlayer'
 import { WImage } from '../WImage'
-
-export type ModelMediaProps<T extends FieldValues = FieldValues> = {
-  model: StrapiModel
-  name?: Path<T>
-  isEditing: boolean
-  isChangingMedia: boolean
-  toggleChangingMedia: () => void
-  setValue: UseFormSetValue<T>
-  endpoint?: StrapiEndpoint
-}
 
 export const ModelMedia = <T extends FieldValues = FieldValues>({
   setValue,
