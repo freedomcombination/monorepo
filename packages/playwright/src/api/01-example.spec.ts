@@ -50,12 +50,29 @@ test.describe('01. Example API call', () => {
       API_TOKEN,
     )
 
-    const id = response?.data?.id
+    const id = response?.data?.id ?? 0
 
     expect(response?.data?.slug).toBe(slug)
 
     const deleteResponse = await api.delete<Tag>('tags', id, API_TOKEN)
 
     expect(deleteResponse.data?.id).toBe(id)
+  })
+
+  test('TC-04: should not create tag with invalid body', async ({ api }) => {
+    const name = faker.lorem.word()
+    const invalidSlug = faker.lorem.sentence()
+    const response = await api.post<Tag, TagCreateInput>(
+      'tags',
+      {
+        slug: invalidSlug,
+        name_en: name,
+        name_nl: name,
+        name_tr: name,
+      },
+      API_TOKEN,
+    )
+
+    expect(response.status).toBe(400)
   })
 })

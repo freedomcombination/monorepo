@@ -236,8 +236,14 @@ export type StrapiSingleResponse<T extends StrapiModel> = {
   status: number
   statusText: string
 }
-export type StrapiMutationResponse<T extends StrapiModel> =
-  StrapiSingleResponse<T>
+
+export type StrapiMutationResponse<T extends StrapiModel> = Omit<
+  StrapiSingleResponse<T>,
+  'meta' | 'data'
+> & {
+  error?: string
+  data: StrapiSingleResponseData<T> | null
+}
 
 export type StrapiCollectionResponse<T extends StrapiModel[]> = {
   data: StrapiCollectionResponseData<T>

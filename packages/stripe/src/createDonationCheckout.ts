@@ -21,6 +21,14 @@ export const createDonationCheckout = async (
     getSecret('TOKEN'),
   )
 
+  const donationId = donation.data?.id
+
+  if (!donationId) {
+    res.status(500).send('Error creating donation')
+
+    return
+  }
+
   // Check if customer exists
   const customer = await stripe.customers.list({
     email,
@@ -35,6 +43,7 @@ export const createDonationCheckout = async (
     })
     customerID = newCustomer.id
   }
+
   // Create checkout session for subscription
   const payment = await stripe.checkout.sessions.create({
     payment_method_types: ['ideal', 'card'],
@@ -54,10 +63,10 @@ export const createDonationCheckout = async (
     mode: type === 'monthly' ? 'subscription' : 'payment',
     customer: customerID,
     metadata: {
-      strapi_id: donation.data?.id,
+      strapi_id: donationId,
       type: 'donation',
     } satisfies StripeMetaData,
-    success_url: `${SITE_URL}/donation/complete?status=success&id=${donation?.data.id}&session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${SITE_URL}/donation/complete?status=success&id=${donationId}&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${SITE_URL}/donation/complete?status=cancel`,
   })
 

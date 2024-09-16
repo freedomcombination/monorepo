@@ -34,9 +34,9 @@ export const useApproveModel = <T extends StrapiTranslatableModel>(
     onSuccess: async model => {
       const hasLocalizations = !!model?.data?.localizations?.[0]
 
-      if (model && translatedFields && !hasLocalizations) {
+      if (model?.data && translatedFields && !hasLocalizations) {
         const localizations = await createLocalizations({
-          model: model?.data,
+          model: model.data,
           translatedFields:
             translatedFields as (keyof StrapiTranslatableModel)[],
           endpoint,
@@ -46,16 +46,18 @@ export const useApproveModel = <T extends StrapiTranslatableModel>(
 
         // Fixes translated relation fields
         // TODO: Handle this in backend
-        const promises = localizations?.map(
-          localizedModel =>
-            localizedModel &&
-            Mutation.put(
-              `${endpoint}/relation` as StrapiEndpoint,
-              localizedModel?.data?.id,
-              {},
-              token as string,
-            ),
-        )
+        const promises = localizations?.map(localizedModel => {
+          if (!localizedModel.data) {
+            return
+          }
+
+          Mutation.put(
+            `${endpoint}/relation` as StrapiEndpoint,
+            localizedModel.data.id,
+            {},
+            token as string,
+          )
+        })
 
         if (promises) {
           await Promise.all(promises)

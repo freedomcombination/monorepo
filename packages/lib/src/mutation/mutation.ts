@@ -55,10 +55,11 @@ export const mutation = async <
     //  Throw an error if the id is not provided
     if (method !== 'post' && !id) {
       const errorMessage = `Id is required for ${method} method`
+
       if (isTest) {
         return {
-          data: { error: errorMessage } as unknown as T,
-          meta: {},
+          data: null,
+          error: errorMessage,
           status: 400,
           statusText: 'Bad Request',
         } as StrapiMutationResponse<T>
@@ -87,7 +88,6 @@ export const mutation = async <
 
       return {
         ...response,
-        meta: {},
         status,
         statusText,
       } as StrapiMutationResponse<T>
@@ -121,8 +121,8 @@ export const mutation = async <
 
       if (isTest) {
         return {
-          data: { error: errorMessage } as unknown as T,
-          meta: {},
+          data: null,
+          error: errorMessage,
           status: 400,
           statusText: 'Bad Request',
         } as StrapiMutationResponse<T>
@@ -178,21 +178,20 @@ export const mutation = async <
       console.error('Mutation error', error)
     }
 
-    // i dont know why but this way onError has first parameter
     if (error.response?.data?.error?.details?.i18nKey) {
+      const errorMessage = error.response?.data?.error?.details?.i18nKey
+
       if (!isTest) {
         return {
-          data: {
-            error: error.response?.data?.error?.details?.i18nKey,
-          } as unknown as T,
-          meta: {},
-          ...error.response,
+          data: null,
+          error: errorMessage,
           status: error.response?.status || 500,
           statusText: error.response?.statusText || 'Internal Server Error',
         } as StrapiMutationResponse<T>
       }
 
-      throw error.response?.data?.error?.details?.i18nKey
+      // I don't know why but this way onError has first parameter
+      throw errorMessage
     }
 
     const errorMessage =
@@ -202,8 +201,8 @@ export const mutation = async <
 
     if (isTest) {
       return {
-        data: { errorMessage } as unknown as T,
-        meta: {},
+        data: null,
+        error: errorMessage,
         status: error.response?.status || 500,
         statusText: error.response?.statusText || 'Internal Server Error',
       } as StrapiMutationResponse<T>

@@ -39,6 +39,14 @@ export const createCourseCheckout = async (
       token,
     )
 
+    const paymentId = payment.data?.id
+
+    if (!paymentId) {
+      res.status(500).send('Error creating payment')
+
+      return
+    }
+
     const customer = await stripe.customers.list({
       email,
     })
@@ -71,12 +79,12 @@ export const createCourseCheckout = async (
       mode: type === 'monthly' ? 'subscription' : 'payment',
       customer: customerID,
       metadata: {
-        strapi_id: payment.data?.id,
+        strapi_id: paymentId,
         type: 'course',
         token,
       } satisfies StripeMetaData,
       // returnUrl must come with ? or &
-      success_url: `${returnUrl}status=success&id=${payment.data?.id}`,
+      success_url: `${returnUrl}status=success&id=${paymentId}`,
       cancel_url: `${returnUrl}status=cancel`,
     })
 
