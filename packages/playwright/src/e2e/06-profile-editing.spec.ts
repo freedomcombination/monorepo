@@ -109,6 +109,7 @@ test.describe('06. Profile Editing Tests', () => {
     // Because it will affect the other tests when it fails or runs in parallel
     // So, use a secondary account to update the password
     await profilePage.updatePassword(PASSWORD, TEMP_PASSWORD)
+    // TODO: Add assertion for success toast
 
     await layoutPage.logout()
 
