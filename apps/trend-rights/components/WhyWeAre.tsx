@@ -1,20 +1,21 @@
-import { FC, useEffect, useMemo, useRef } from 'react'
+import { FC, useMemo } from 'react'
 
 import {
+  Box,
   Button,
+  Flex,
   Image,
   SimpleGrid,
   Stack,
   Text,
-  Box,
-  Flex,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
 
+import { BLOG_CATEGORIES } from '@fc/config'
 import { Blog } from '@fc/types'
-import { Hero, AnimatedBox, BlogCard, Container } from '@fc/ui'
+import { AnimatedBox, BlogCard, Container, Hero } from '@fc/ui'
 
 type WhyWeAreProps = {
   seo: NextSeoProps
@@ -23,60 +24,65 @@ type WhyWeAreProps = {
 
 export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
   const { t } = useTranslation()
-  const { locale, query, push } = useRouter()
+  const { push, query } = useRouter()
 
-  const whyWeAreCategories = {
-    en: ['Our Story', 'Documentaries', 'Global Activities', 'Books'],
-    tr: ['Hayat Hikayemiz', 'Belgeseller', 'Global Aktiviteler', 'Kitaplar'],
-    nl: ['Ons Verhaal', 'Documentaires', 'Globale Activiteiten', 'Boeken'],
-  }
-
-  const category = (query.category as string) || whyWeAreCategories[locale][0]
+  const currentCategory =
+    (query.category as BLOG_CATEGORIES) || BLOG_CATEGORIES.DEFAULT
 
   const filteredBlogs = useMemo(() => {
-    if (!category) return blogs
+    if (!currentCategory) return blogs
 
-    return blogs.filter(blog =>
-      blog?.categories?.some(cat => cat[`name_${locale}`] === category),
+    return blogs?.filter(blog =>
+      blog?.categories?.some(cat => cat.slug === currentCategory),
     )
-  }, [category, blogs, locale])
+  }, [currentCategory, blogs])
+
+  // get categories from blogs
+  const categories = Array.from(
+    new Set(
+      blogs
+        ?.filter(blog => blog?.categories && blog.categories.length > 0)
+        .flatMap(blog => blog.categories?.map(category => category.slug) || []),
+    ),
+  )
 
   const handleCategory = (category: string) => {
-    push({
-      pathname: '/why-we-are',
-      query: { category },
-    })
+    push(
+      {
+        pathname: '/why-we-are',
+        query: { category },
+      },
+      undefined,
+      // Fetch new categories from the client side
+      { shallow: true },
+    )
   }
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollLeft = 0
-      }
-    }, 0)
-  }, [locale])
 
   return (
     <>
       <Hero title={seo.title as string} image={'/images/blog-bg.jpeg'} />
-
       <Container display="flex" flexDirection="column" pt={8}>
+        {/* TODO: Use radio cards for accessibility */}
         <Flex justify="flex-start" mb={8} overflowX="auto" whiteSpace="nowrap">
-          {whyWeAreCategories[locale]?.map((name, index) => (
+          {categories?.map((category, index) => (
             <Button
               key={index}
-              onClick={() => handleCategory(name)}
+              onClick={() => handleCategory(category)}
               m={2}
               flexShrink={0}
               whiteSpace="nowrap"
+              variant={currentCategory === category ? 'outline' : 'solid'}
+              _hover={{
+                color: 'primary.400',
+                bg: 'blackAlpha.50',
+              }}
             >
-              {name}
+              {t(`trend-rights.${category as BLOG_CATEGORIES}`)}
             </Button>
           ))}
         </Flex>
 
-        {!filteredBlogs.length && (
+        {!filteredBlogs?.length && (
           <Stack minH="inherit" justify="center" align="center" spacing={8}>
             <Image h={200} src={'/images/no-blog.svg'} alt="no blog" />
             <Text textAlign="center" fontSize="lg">
