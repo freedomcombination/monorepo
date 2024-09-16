@@ -59,9 +59,12 @@ export const test = base.extend<ExtendProps>({
   api: async ({}, use) => {
     await use({
       get: apiGetRequest,
-      post: apiPostRequest,
-      put: apiPutRequest,
-      delete: apiDeleteRequest,
+      post: (endpoint, body, token) =>
+        apiPostRequest(endpoint, body, token, true),
+      put: (endpoint, id, body, token) =>
+        apiPutRequest(endpoint, id, body, token, true),
+      delete: (endpoint, id, token) =>
+        apiDeleteRequest(endpoint, id, token, true),
     })
   },
 })

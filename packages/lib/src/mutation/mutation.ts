@@ -35,15 +35,18 @@ type MutationParams<D> = {
 export const mutation = async <
   T extends StrapiModel,
   D extends StrapiCreateInput | StrapiUpdateInput = StrapiCreateInput,
->({
-  body,
-  id,
-  locale,
-  method,
-  token,
-  endpoint,
-  queryParameters,
-}: MutationParams<D>) => {
+>(
+  {
+    body,
+    id,
+    locale,
+    method,
+    token,
+    endpoint,
+    queryParameters,
+  }: MutationParams<D>,
+  isTest?: boolean,
+) => {
   try {
     let status: number = 200
     let statusText: string = 'OK'
@@ -51,7 +54,17 @@ export const mutation = async <
 
     //  Throw an error if the id is not provided
     if (method !== 'post' && !id) {
-      throw new Error(`Id is required for ${method} method`)
+      const errorMessage = `Id is required for ${method} method`
+      if (isTest) {
+        return {
+          data: { error: errorMessage } as unknown as T,
+          meta: {},
+          status: 400,
+          statusText: 'Bad Request',
+        } as StrapiMutationResponse<T>
+      }
+
+      throw new Error(errorMessage)
     }
 
     const config: AxiosRequestConfig<D> = {
@@ -104,7 +117,18 @@ export const mutation = async <
 
     //  Throw an error if the body is not provided
     if (!body) {
-      throw new Error(`Body is required for ${method} method`)
+      const errorMessage = `Body is required for ${method} method`
+
+      if (isTest) {
+        return {
+          data: { error: errorMessage } as unknown as T,
+          meta: {},
+          status: 400,
+          statusText: 'Bad Request',
+        } as StrapiMutationResponse<T>
+      }
+
+      throw new Error(errorMessage)
     }
 
     const hasBodyDataField = !endpointsWithoutDataField.includes(endpoint)
@@ -150,14 +174,42 @@ export const mutation = async <
       statusText,
     } as StrapiMutationResponse<T>
   } catch (error: any) {
-    console.error('Mutation error', error)
+    if (!isTest) {
+      console.error('Mutation error', error)
+    }
 
     // i dont know why but this way onError has first parameter
     if (error.response?.data?.error?.details?.i18nKey) {
+      if (!isTest) {
+        return {
+          data: {
+            error: error.response?.data?.error?.details?.i18nKey,
+          } as unknown as T,
+          meta: {},
+          ...error.response,
+          status: error.response?.status || 500,
+          statusText: error.response?.statusText || 'Internal Server Error',
+        } as StrapiMutationResponse<T>
+      }
+
       throw error.response?.data?.error?.details?.i18nKey
     }
 
+    const errorMessage =
+      error.response?.data?.message ||
+      error.response?.data?.error?.message ||
+      error.message
+
+    if (isTest) {
+      return {
+        data: { errorMessage } as unknown as T,
+        meta: {},
+        status: error.response?.status || 500,
+        statusText: error.response?.statusText || 'Internal Server Error',
+      } as StrapiMutationResponse<T>
+    }
+
     // but this way, mutate.onError doesn't have first parameter
-    throw new Error(error.response?.data?.message || error.message)
+    throw new Error(errorMessage)
   }
 }
