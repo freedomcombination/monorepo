@@ -38,7 +38,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-      <LocaleSwitcher isDark={isDark} />
+      <LocaleSwitcher isDark={isDark} isMobile />
       {hasProfile && (
         <ProfileMenu isLoggedIn={isLoggedIn} isDark={isDark} isMobile />
       )}

@@ -8,7 +8,7 @@ import { StrapiLocale } from '@fc/types'
 import { LocaleSwitcherProps } from './types'
 import { useScroll } from '../../hooks'
 
-const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
+const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark, isMobile }) => {
   const { push, pathname, locale, asPath, components, query, locales } =
     useRouter()
   const isScrolled = useScroll()
@@ -37,7 +37,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark }) => {
         return !isScrolled && isDark ? (
           <Button
             key={code}
-            aria-label={code}
+            aria-label={isMobile ? `mobile-${code}` : code}
             px={2}
             onClick={() => handleChangeLanguage(code)}
             colorScheme={
