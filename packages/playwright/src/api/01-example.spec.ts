@@ -1,14 +1,14 @@
 import { faker } from '@faker-js/faker'
-import { expect, test } from '@playwright/test'
+import { expect } from '@playwright/test'
 
 import { Art, Post, Tag, TagCreateInput } from '@fc/types'
 
 import { API_TOKEN } from '../constants'
-import { apiDeleteRequest, apiGetRequest, apiPostRequest } from '../lib'
+import { test } from '../fixtures'
 
 test.describe('01. Example API call', () => {
-  test('TC-01: should fetch arts without token', async () => {
-    const response = await apiGetRequest<Art>({ endpoint: 'arts' })
+  test('TC-01: should fetch arts without token', async ({ api }) => {
+    const response = await api.get<Art>({ endpoint: 'arts' })
 
     const arts = response.data
     const art = arts?.[0]
@@ -17,8 +17,10 @@ test.describe('01. Example API call', () => {
     expect(title).not.toBeUndefined()
   })
 
-  test('TC-02: should not fetch relational data without populate', async () => {
-    const response = await apiGetRequest<Post>({
+  test('TC-02: should not fetch relational data without populate', async ({
+    api,
+  }) => {
+    const response = await api.get<Post>({
       endpoint: 'posts',
       populate: null,
       token: API_TOKEN,
@@ -30,7 +32,7 @@ test.describe('01. Example API call', () => {
     expect(post.hashtag?.id).toBeUndefined()
   })
 
-  test('TC-03: should create tag', async () => {
+  test('TC-03: should create tag', async ({ api }) => {
     const name = faker.lorem.word()
     const slug = faker.lorem.slug()
 
@@ -41,7 +43,7 @@ test.describe('01. Example API call', () => {
       slug,
     }
 
-    const response = await apiPostRequest<Tag, TagCreateInput>(
+    const response = await api.post<Tag, TagCreateInput>(
       'tags',
       tagBody,
       // TODO: Create a boxing function to get token after login
@@ -52,7 +54,7 @@ test.describe('01. Example API call', () => {
 
     expect(response?.data?.slug).toBe(slug)
 
-    const deleteResponse = await apiDeleteRequest<Tag>('tags', id, API_TOKEN)
+    const deleteResponse = await api.delete<Tag>('tags', id, API_TOKEN)
 
     expect(deleteResponse.data?.id).toBe(id)
   })
