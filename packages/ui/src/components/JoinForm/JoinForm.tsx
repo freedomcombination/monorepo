@@ -8,6 +8,7 @@ import {
   Box,
   FormControl,
   FormLabel,
+  Text,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
@@ -17,13 +18,14 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 import { setLocale } from 'yup'
 import { tr, nl, en } from 'yup-locales'
 
-import { StrapiModel } from '@fc/types'
+import { Job, StrapiModel } from '@fc/types'
 import { sleep } from '@fc/utils'
 
 import { initialSteps } from './data'
 import { FoundationInfo } from './FoundationInfo'
 import { GeneralInfo } from './GeneralInfo'
 import { PersonalInfo } from './PersonalInfo'
+import { PreviewVolunteerForm } from './PreviewVolunteerForm'
 import { Requirements } from './Requirements'
 import { joinSchema } from './schema'
 import { SelectJobs } from './SelectJobs'
@@ -40,10 +42,11 @@ export const JoinForm: FC<JoinFormProps> = ({
 }) => {
   const { t } = useTranslation()
   const { activeStep, setActiveStep } = useSteps({
-    index: 1,
+    index: 0,
     count: initialSteps.length,
   })
   const [isChangingMedia, setIsChangingMedia] = useState(false)
+
   const { locale, push, query } = useRouter()
   const {
     register,
@@ -57,7 +60,9 @@ export const JoinForm: FC<JoinFormProps> = ({
     resolver: yupResolver(joinSchema()),
     mode: 'onTouched',
   })
-
+  const [selectedFields, setSelectedFields] = useState(
+    {} as JoinFormFieldValues,
+  )
   useEffect(() => {
     if (locale === 'tr') setLocale(tr)
     else if (locale === 'nl') setLocale(nl)
@@ -102,6 +107,37 @@ export const JoinForm: FC<JoinFormProps> = ({
     setIsChangingMedia(!isChangingMedia)
   }
 
+  const initialJobs =
+    [foundationJobs?.flat(), platforms?.map(platform => platform.jobs).flat()]
+      .flat()
+      .filter((job): job is Job => job !== undefined) || []
+
+  const getSelectedJobs = () => {
+    const formJobs = watch('jobs', [])
+
+    const selectedJobsIDs = formJobs && formJobs?.map(jobId => Number(jobId))
+    const selectedJobs = initialJobs?.filter(job =>
+      selectedJobsIDs.includes(job?.id),
+    )
+
+    return selectedJobs
+  }
+
+  const getData = () => {
+    const selectedJobFields = getSelectedJobs()
+    const volunteerFormData = watch()
+
+    const data = {
+      ...volunteerFormData,
+      jobs: selectedJobFields,
+    }
+    setSelectedFields(data)
+
+    return data
+  }
+
+  console.log('selectedFields', selectedFields)
+
   return (
     <Stack
       p={8}
@@ -125,8 +161,26 @@ export const JoinForm: FC<JoinFormProps> = ({
         ))}
       </Box>
       <Box overflowX="auto" whiteSpace="nowrap" p={4}>
+        {selectedFields && (
+          <>
+            <PreviewVolunteerForm
+              volunteerFormData={selectedFields}
+              getData={getData}
+            />
+          </>
+        )}
+
         <Steps activeStep={activeStep} setActiveStep={setActiveStep} />
       </Box>
+      {/* welcome */}
+      {activeStep === 0 && (
+        <Box>
+          <Text>
+            Welcome to Freedom Combination Foundation. We are happy to see you
+            here. Please fill the form for volunteering
+          </Text>
+        </Box>
+      )}
       {/* JOBS */}
       {activeStep === 1 && (
         <SelectJobs
@@ -140,11 +194,7 @@ export const JoinForm: FC<JoinFormProps> = ({
       {activeStep === 2 && <FoundationInfo foundation={foundation} />}
       {/* requirements*/}
       {activeStep === 3 && (
-        <Requirements
-          foundationJobs={foundationJobs}
-          platforms={platforms}
-          selectedJobs={watch('jobs', [])}
-        />
+        <Requirements jobs={initialJobs} selectedJobs={watch('jobs', [])} />
       )}
       {/* personal information */}
       {activeStep === 4 && <PersonalInfo register={register} errors={errors} />}
@@ -169,6 +219,16 @@ export const JoinForm: FC<JoinFormProps> = ({
           />
           {/* <FormErrorMessage>{errorMessage}</FormErrorMessage> */}
         </FormControl>
+      )}
+      {/* summary */}
+      {activeStep === 7 && (
+        <Box>
+          <Box>Summary</Box>
+          <Text>
+            You completed volunteer form. You can check one more time preview
+            button or click Submit button for sending form
+          </Text>
+        </Box>
       )}
       <ButtonGroup
         size={'sm'}

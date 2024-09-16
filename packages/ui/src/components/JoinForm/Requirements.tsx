@@ -3,26 +3,20 @@ import { FC } from 'react'
 import { Stack, Heading, Box, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import { Job, Platform } from '@fc/types'
+import { Job } from '@fc/types'
 
 export type RequirementsProps = {
-  platforms: Platform[]
-  foundationJobs: Job[]
+  jobs: Job[]
   selectedJobs: string[] // string array, but we need to convert to number
 }
 
-export const Requirements: FC<RequirementsProps> = ({
-  foundationJobs,
-  platforms,
-  selectedJobs,
-}) => {
+export const Requirements: FC<RequirementsProps> = ({ jobs, selectedJobs }) => {
   const { locale } = useRouter()
 
   // Convert selectedJobs (string[]) to number[]
   const selectedJobIds = selectedJobs.map(jobId => Number(jobId))
 
   // Get jobs from platforms
-  const jobs = platforms.map(platform => platform.jobs).flat()
 
   // Filter jobs based on selectedJobIds
   const currentJobs = jobs?.filter(job => selectedJobIds.includes(job?.id))
