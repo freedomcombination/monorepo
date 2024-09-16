@@ -54,10 +54,10 @@ export const createDonationCheckout = async (
     mode: type === 'monthly' ? 'subscription' : 'payment',
     customer: customerID,
     metadata: {
-      strapi_id: donation.id,
+      strapi_id: donation.data?.id,
       type: 'donation',
     } satisfies StripeMetaData,
-    success_url: `${SITE_URL}/donation/complete?status=success&id=${donation.id}&session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${SITE_URL}/donation/complete?status=success&id=${donation?.data.id}&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${SITE_URL}/donation/complete?status=cancel`,
   })
 

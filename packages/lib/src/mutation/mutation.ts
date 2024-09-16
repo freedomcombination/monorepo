@@ -1,4 +1,3 @@
-import { APIRequestContext } from '@playwright/test'
 import axios, { AxiosRequestConfig } from 'axios'
 
 import {
@@ -36,161 +35,107 @@ type MutationParams<D> = {
 export const mutation = async <
   T extends StrapiModel,
   D extends StrapiCreateInput | StrapiUpdateInput = StrapiCreateInput,
->(
-  {
-    body,
-    id,
-    locale,
-    method,
-    token,
-    endpoint,
-    queryParameters,
-  }: MutationParams<D>,
-  fetcher?: APIRequestContext,
-) => {
-  let status: number
-  let statusText: string
-  let hasBodyFile = false
-  const URL = fetcher
-    ? process.env.CI === 'true'
-      ? API_URL
-      : 'http://localhost:1337'
-    : API_URL
-
-  //  Throw an error if the id is not provided
-  if (method !== 'post' && !id) {
-    throw new Error(`Id is required for ${method} method`)
-  }
-
-  const config: AxiosRequestConfig<D> = {
-    baseURL: `${API_URL}/api`,
-    ...(token && {
-      headers: { Authorization: `Bearer ${token}` },
-    }),
-  }
-
-  if (method === 'localize') {
-    const url = `${endpoint}/${id}/localizations`
-
-    if (fetcher) {
-      const response = await fetcher.post(`${URL}/api/${url}`, {
-        data: JSON.stringify({ ...body, locale }),
-        ...(token && {
-          headers: { Authorization: `Bearer ${token}` },
-        }),
-      })
-
-      status = response.status()
-      statusText = response.statusText()
-
-      const data = await response.json()
-
-      return { ...data, status, statusText } as StrapiMutationResponse<T>
-    }
-
-    // https://docs.strapi.io/developer-docs/latest/plugins/i18n.html#creating-a-localization-for-an-existing-entry
-    const response = await axios.post<T>(
-      url,
-      { ...body, locale }, // TODO localization body doesn't seem to have data key. Double check this
-      config,
-    )
-
-    status = response.status
-    statusText = response.statusText
-
-    return {
-      ...response.data,
-      status,
-      statusText,
-    } as unknown as StrapiMutationResponse<T>
-  }
-
-  const queryParams = queryParameters ? `?${queryParameters}` : ''
-
-  const requestUrl = id
-    ? `${endpoint}/${id}${queryParams}`
-    : `${endpoint}${queryParams}`
-
-  if (method === 'delete') {
-    if (fetcher) {
-      const response = await fetcher.delete(`${URL}/api/${requestUrl}`, {
-        ...(token && {
-          headers: { Authorization: `Bearer ${token}` },
-        }),
-      })
-
-      status = response.status()
-      statusText = response.statusText()
-
-      const data = await response.json()
-
-      return { ...data, status, statusText } as StrapiMutationResponse<T>
-    }
-
-    const response = await axios[method]<StrapiMutationResponse<T>>(
-      requestUrl,
-      config,
-    )
-
-    status = response.status
-    statusText = response.statusText
-
-    return { ...response.data, status, statusText } as StrapiMutationResponse<T>
-  }
-
-  //  Throw an error if the body is not provided
-  if (!body) {
-    throw new Error(`Body is required for ${method} method`)
-  }
-
-  const hasBodyDataField = !endpointsWithoutDataField.includes(endpoint)
-
-  Object.entries(body).forEach(([key, value]) => {
-    if (value instanceof Date) {
-      const utcDate = new Date(
-        value.getTime() - value.getTimezoneOffset() * 60000,
-      ).toISOString()
-      ;(body as any)[key] = utcDate
-    }
-  })
-
-  let requestBody: MutationBody = hasBodyDataField
-    ? ({ data: body } as { data: D })
-    : body
-
-  if (typeof window !== 'undefined') {
-    hasBodyFile = Object.values(body).some(
-      // This might not work in Node.js environments. File is Web API only
-      value =>
-        value instanceof File ||
-        value instanceof Blob ||
-        value?.some?.(
-          (v: File | Blob) => v instanceof File || v instanceof Blob,
-        ),
-    )
-
-    if (hasBodyFile) {
-      requestBody = generateFormData<D>(body, hasBodyDataField, endpoint)
-    }
-  }
-
+>({
+  body,
+  id,
+  locale,
+  method,
+  token,
+  endpoint,
+  queryParameters,
+}: MutationParams<D>) => {
   try {
-    if (fetcher) {
-      console.info(`Test Request: ${URL}/api/${requestUrl}`)
+    let status: number = 200
+    let statusText: string = 'OK'
+    let hasBodyFile = false
 
-      const response = await fetcher[method](`${URL}/api/${requestUrl}`, {
-        data: requestBody,
-        ...(token && {
-          headers: { Authorization: `Bearer ${token}` },
-        }),
-      })
+    //  Throw an error if the id is not provided
+    if (method !== 'post' && !id) {
+      throw new Error(`Id is required for ${method} method`)
+    }
 
-      status = response.status()
-      statusText = response.statusText()
+    const config: AxiosRequestConfig<D> = {
+      baseURL: `${API_URL}/api`,
+      ...(token && {
+        headers: { Authorization: `Bearer ${token}` },
+      }),
+    }
 
-      const data = await response.json()
+    if (method === 'localize') {
+      // https://docs.strapi.io/developer-docs/latest/plugins/i18n.html#creating-a-localization-for-an-existing-entry
+      const response = await axios.post<T>(
+        `${endpoint}/${id}/localizations`,
+        { ...body, locale }, // TODO localization body doesn't seem to have data key. Double check this
+        config,
+      )
 
-      return { ...data, status, statusText } as StrapiMutationResponse<T>
+      status = response.status
+      statusText = response.statusText
+
+      return {
+        ...response,
+        meta: {},
+        status,
+        statusText,
+      } as StrapiMutationResponse<T>
+    }
+
+    const queryParams = queryParameters ? `?${queryParameters}` : ''
+
+    const requestUrl = id
+      ? `${endpoint}/${id}${queryParams}`
+      : `${endpoint}${queryParams}`
+
+    if (method === 'delete') {
+      const response = await axios[method]<StrapiMutationResponse<T>>(
+        requestUrl,
+        config,
+      )
+
+      status = response.status
+      statusText = response.statusText
+
+      return {
+        ...response.data,
+        status,
+        statusText,
+      } as StrapiMutationResponse<T>
+    }
+
+    //  Throw an error if the body is not provided
+    if (!body) {
+      throw new Error(`Body is required for ${method} method`)
+    }
+
+    const hasBodyDataField = !endpointsWithoutDataField.includes(endpoint)
+
+    Object.entries(body).forEach(([key, value]) => {
+      if (value instanceof Date) {
+        const utcDate = new Date(
+          value.getTime() - value.getTimezoneOffset() * 60000,
+        ).toISOString()
+        ;(body as any)[key] = utcDate
+      }
+    })
+
+    let requestBody: MutationBody = hasBodyDataField
+      ? ({ data: body } as { data: D })
+      : body
+
+    if (typeof window !== 'undefined') {
+      hasBodyFile = Object.values(body).some(
+        // This might not work in Node.js environments. File is Web API only
+        value =>
+          value instanceof File ||
+          value instanceof Blob ||
+          value?.some?.(
+            (v: File | Blob) => v instanceof File || v instanceof Blob,
+          ),
+      )
+
+      if (hasBodyFile) {
+        requestBody = generateFormData<D>(body, hasBodyDataField, endpoint)
+      }
     }
 
     const response = await axios[method]<StrapiMutationResponse<T>>(
@@ -201,8 +146,8 @@ export const mutation = async <
 
     return {
       ...response.data,
-      status: 200,
-      statusText: 'OK',
+      status,
+      statusText,
     } as StrapiMutationResponse<T>
   } catch (error: any) {
     console.error('Mutation error', error)

@@ -4,7 +4,7 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context'
-import { strapiRequest, RequestCollectionArgs } from '@fc/lib'
+import { RequestCollectionArgs, strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import {
   AccountStats,

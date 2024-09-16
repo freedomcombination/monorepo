@@ -71,12 +71,12 @@ export const createCourseCheckout = async (
       mode: type === 'monthly' ? 'subscription' : 'payment',
       customer: customerID,
       metadata: {
-        strapi_id: payment.id,
+        strapi_id: payment.data?.id,
         type: 'course',
         token,
       } satisfies StripeMetaData,
       // returnUrl must come with ? or &
-      success_url: `${returnUrl}status=success&id=${payment.id}`,
+      success_url: `${returnUrl}status=success&id=${payment.data?.id}`,
       cancel_url: `${returnUrl}status=cancel`,
     })
 

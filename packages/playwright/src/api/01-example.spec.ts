@@ -7,8 +7,8 @@ import { API_TOKEN } from '../constants'
 import { apiDeleteRequest, apiGetRequest, apiPostRequest } from '../lib'
 
 test.describe('01. Example API call', () => {
-  test('TC-01: should fetch arts without token', async ({ request }) => {
-    const response = await apiGetRequest<Art>({ endpoint: 'arts' }, request)
+  test('TC-01: should fetch arts without token', async () => {
+    const response = await apiGetRequest<Art>({ endpoint: 'arts' })
 
     const arts = response.data
     const art = arts?.[0]
@@ -17,17 +17,12 @@ test.describe('01. Example API call', () => {
     expect(title).not.toBeUndefined()
   })
 
-  test('TC-02: should not fetch relational data without populate', async ({
-    request,
-  }) => {
-    const response = await apiGetRequest<Post>(
-      {
-        endpoint: 'posts',
-        populate: null,
-        token: API_TOKEN,
-      },
-      request,
-    )
+  test('TC-02: should not fetch relational data without populate', async () => {
+    const response = await apiGetRequest<Post>({
+      endpoint: 'posts',
+      populate: null,
+      token: API_TOKEN,
+    })
 
     const posts = response.data
     const post = posts?.[0]
@@ -35,7 +30,7 @@ test.describe('01. Example API call', () => {
     expect(post.hashtag?.id).toBeUndefined()
   })
 
-  test('TC-03: should create tag', async ({ request }) => {
+  test('TC-03: should create tag', async () => {
     const name = faker.lorem.word()
     const slug = faker.lorem.slug()
 
@@ -51,19 +46,13 @@ test.describe('01. Example API call', () => {
       tagBody,
       // TODO: Create a boxing function to get token after login
       API_TOKEN,
-      request,
     )
 
     const id = response?.data?.id
 
     expect(response?.data?.slug).toBe(slug)
 
-    const deleteResponse = await apiDeleteRequest<Tag>(
-      'tags',
-      id,
-      API_TOKEN,
-      request,
-    )
+    const deleteResponse = await apiDeleteRequest<Tag>('tags', id, API_TOKEN)
 
     expect(deleteResponse.data?.id).toBe(id)
   })

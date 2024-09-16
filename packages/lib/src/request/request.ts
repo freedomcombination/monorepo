@@ -1,4 +1,3 @@
-import { APIRequestContext } from '@playwright/test'
 import axios, { AxiosError, AxiosResponse } from 'axios'
 import { produce } from 'immer'
 import qs from 'qs'
@@ -20,8 +19,8 @@ import {
   API_URL,
   endpointsSingleType,
   endpointsWithApprovalStatus,
-  endpointsWithPublicationState,
   endpointsWithLocale,
+  endpointsWithPublicationState,
 } from '../urls'
 
 const DEFAULT_PAGE = 1
@@ -35,17 +34,14 @@ const DEFAULT_PAGINATION = {
 
 function strapiRequest<T extends StrapiModel>(
   args: RequestCollectionArgs<T>,
-  fetcher?: APIRequestContext,
 ): Promise<StrapiCollectionResponse<T[]>>
 
 function strapiRequest<T extends StrapiModel>(
   args: RequestSingleArgs,
-  fetcher?: APIRequestContext,
 ): Promise<StrapiSingleResponse<T>>
 
 async function strapiRequest<T extends StrapiModel>(
   args: RequestCollectionArgs<T> | RequestSingleArgs,
-  fetcher?: APIRequestContext,
 ): Promise<StrapiResponse<T>> {
   const collectionArgs = args as RequestCollectionArgs<T>
   const singleArgs = args as RequestSingleArgs
@@ -104,27 +100,14 @@ async function strapiRequest<T extends StrapiModel>(
     : `${API_URL}/api/${endpoint}?${query}`
 
   try {
-    let result: StrapiResponse<T>
-    let status: number
-    let statusText: string
+    const axiosResponse = (await axios(
+      requestUrl,
+      token ? { headers: { Authorization: `Bearer ${token}` } } : {},
+    )) as AxiosResponse<StrapiResponse<T>>
+    const status = axiosResponse.status
+    const statusText = axiosResponse.statusText
 
-    if (fetcher) {
-      const fetcherResponse = await fetcher.get(requestUrl)
-      console.log('fetcherResponse.status()', fetcherResponse.status())
-      status = fetcherResponse.status()
-      statusText = fetcherResponse.statusText()
-      const responseObj = await fetcherResponse.json()
-      result = responseObj as StrapiResponse<T>
-    } else {
-      const axiosResponse = (await axios(
-        requestUrl,
-        token ? { headers: { Authorization: `Bearer ${token}` } } : {},
-      )) as AxiosResponse<StrapiResponse<T>>
-      status = axiosResponse.status
-      statusText = axiosResponse.statusText
-
-      result = axiosResponse.data as StrapiResponse<T>
-    }
+    const result = axiosResponse.data as StrapiResponse<T>
 
     if (!result?.data) {
       if (id || isSingleType) {
