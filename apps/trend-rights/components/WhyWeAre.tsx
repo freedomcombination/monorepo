@@ -24,27 +24,25 @@ type WhyWeAreProps = {
 
 export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
   const { t } = useTranslation()
-  const { push, query, locale } = useRouter()
+  const { push, query } = useRouter()
 
-  const currentCategory = (query.category as string) || BLOG_CATEGORIES.DEFAULT
+  const currentCategory =
+    (query.category as BLOG_CATEGORIES) || BLOG_CATEGORIES.DEFAULT
 
   const filteredBlogs = useMemo(() => {
     if (!currentCategory) return blogs
 
     return blogs?.filter(blog =>
-      blog?.categories?.some(cat => cat[`name_${locale}`] === currentCategory),
+      blog?.categories?.some(cat => cat.slug === currentCategory),
     )
-  }, [currentCategory, blogs, locale])
+  }, [currentCategory, blogs])
 
   // get categories from blogs
   const categories = Array.from(
     new Set(
       blogs
         ?.filter(blog => blog?.categories && blog.categories.length > 0)
-        .flatMap(
-          blog =>
-            blog.categories?.map(category => category[`name_${locale}`]) || [],
-        ),
+        .flatMap(blog => blog.categories?.map(category => category.slug) || []),
     ),
   )
 
@@ -79,7 +77,7 @@ export const WhyWeAre: FC<WhyWeAreProps> = ({ seo, blogs }) => {
                 bg: 'blackAlpha.50',
               }}
             >
-              {category}
+              {t(`trend-rights.${category as BLOG_CATEGORIES}`)}
             </Button>
           ))}
         </Flex>

@@ -10,8 +10,8 @@ import { StrapiLocale } from '@fc/types'
 import { Layout, WhyWeAre } from '../../components'
 
 const Blogs = () => {
-  const { locale } = useRouter()
   const { data: blogs } = useGetCategorizedBlogs()
+  const { locale } = useRouter()
 
   const titles = {
     en: 'Why are we here',
