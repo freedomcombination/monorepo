@@ -2,6 +2,8 @@ import { StrapiEndpoint, StrapiSingleEndpoint } from '@fc/types'
 
 export const API_URL = process.env['NEXT_PUBLIC_API_URL'] as string
 
+export const endpointsWithoutDataField: StrapiEndpoint[] = ['users', 'users/me']
+
 export const endpointsSingleType: StrapiSingleEndpoint[] = [
   'privacy',
   'term',
@@ -18,7 +20,7 @@ export const endpointsWithLocalizedTitle: StrapiEndpoint[] = [
   'tags',
 ]
 
-export const endpointWithLocale: StrapiEndpoint[] = [
+export const endpointsWithLocale: StrapiEndpoint[] = [
   'activities',
   'applications',
   'archive-contents',

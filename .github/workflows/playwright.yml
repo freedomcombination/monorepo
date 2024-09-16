@@ -32,6 +32,7 @@ jobs:
           ADMIN_USERNAME: ${{ vars.ADMIN_USERNAME }}
           TEST_USERNAME: ${{ vars.USERNAME }}
           TEST_PASSWORD: ${{ vars.PASSWORD }}
+          TEST_API_TOKEN: ${{ secrets.API_TOKEN }}
         run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: always()

@@ -4,9 +4,6 @@ import { produce } from 'immer'
 import qs from 'qs'
 
 import {
-  RequestByIdArgs,
-  RequestCollectionArgs,
-  RequestSingleArgs,
   StrapiCollectionResponse,
   StrapiModel,
   StrapiResponse,
@@ -15,12 +12,17 @@ import {
 } from '@fc/types'
 
 import {
+  RequestByIdArgs,
+  RequestCollectionArgs,
+  RequestSingleArgs,
+} from './types'
+import {
   API_URL,
   endpointsSingleType,
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
-  endpointWithLocale,
-} from './urls'
+  endpointsWithLocale,
+} from '../urls'
 
 const DEFAULT_PAGE = 1
 const DEFAULT_PAGE_SIZE = 25
@@ -61,7 +63,7 @@ async function strapiRequest<T extends StrapiModel>(
     pageSize = DEFAULT_PAGE_SIZE,
   } = collectionArgs
 
-  const hasLocale = !id && endpointWithLocale.includes(endpoint)
+  const hasLocale = !id && endpointsWithLocale.includes(endpoint)
   const isSingleType = endpointsSingleType.includes(
     endpoint as StrapiSingleEndpoint,
   )

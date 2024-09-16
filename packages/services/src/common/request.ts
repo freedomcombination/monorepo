@@ -5,11 +5,8 @@ import {
 } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context'
-import {
-  RequestCollectionArgs,
-  RequestSingleArgs,
-  strapiRequest,
-} from '@fc/lib'
+import { strapiRequest } from '@fc/lib'
+import { RequestCollectionArgs, RequestSingleArgs } from '@fc/lib'
 import {
   StrapiCollectionResponse,
   StrapiModel,

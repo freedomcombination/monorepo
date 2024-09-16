@@ -242,8 +242,8 @@ export type StrapiMutationResponse<T extends StrapiModel> =
 export type StrapiCollectionResponse<T extends StrapiModel[]> = {
   data: StrapiCollectionResponseData<T>
   meta: StrapiMeta
-  status: number
-  statusText: string
+  status?: number
+  statusText?: string
 }
 
 export type StrapiResponse<T extends StrapiModel> =
