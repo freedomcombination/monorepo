@@ -2,7 +2,6 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 
-import { BLOG_CATEGORIES } from '@fc/config'
 import { getSession } from '@fc/secrets'
 import { getCategorizedBlogs, useGetCategorizedBlogs } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -37,10 +36,10 @@ export const getServerSideProps = async (
 
   const locale = context.locale as StrapiLocale
   const { token } = await getSession(context.req, context.res)
-  const categories = Object.values(BLOG_CATEGORIES)
+
   await queryClient.prefetchQuery({
-    queryKey: ['blogs', locale, categories],
-    queryFn: () => getCategorizedBlogs(locale, categories, token),
+    queryKey: ['categorized-blogs', locale],
+    queryFn: () => getCategorizedBlogs(locale, token),
   })
 
   return {

@@ -18,13 +18,12 @@ export const getBlogs = async (locale: StrapiLocale, token: string | null) => {
 }
 export const getCategorizedBlogs = async (
   locale: StrapiLocale,
-  categories: string[],
   token: string | null,
 ) => {
   const filters = {
     categories: {
       slug: {
-        $in: categories,
+        $in: Object.values(BLOG_CATEGORIES),
       },
     },
   }
@@ -42,12 +41,10 @@ export const getCategorizedBlogs = async (
 export const useGetCategorizedBlogs = () => {
   const { locale } = useRouter()
   const { token } = useAuthContext()
-  const categories = Object.values(BLOG_CATEGORIES)
 
   return useQuery({
-    queryKey: ['blogs', locale, categories],
-    queryFn: () =>
-      getCategorizedBlogs(locale as StrapiLocale, categories, token as string),
+    queryKey: ['categorized-blogs', locale],
+    queryFn: () => getCategorizedBlogs(locale as StrapiLocale, token as string),
   })
 }
 

@@ -17,7 +17,7 @@ import { BLOG_CATEGORIES } from '@fc/config'
 import { Blog } from '@fc/types'
 import { AnimatedBox, BlogCard, Container, Hero } from '@fc/ui'
 
-export type WhyWeAreProps = {
+type WhyWeAreProps = {
   seo: NextSeoProps
   blogs: Blog[]
 }
