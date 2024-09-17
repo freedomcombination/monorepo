@@ -1,14 +1,7 @@
-import axios, { AxiosError } from 'axios'
+import axios, { AxiosError, AxiosResponse } from 'axios'
 import { produce } from 'immer'
 import qs from 'qs'
 
-import {
-  API_URL,
-  endpointsSingleType,
-  endpointsWithApprovalStatus,
-  endpointsWithPublicationState,
-  endpointWithLocale,
-} from '@fc/config'
 import {
   StrapiCollectionResponse,
   StrapiModel,
@@ -22,6 +15,13 @@ import {
   RequestCollectionArgs,
   RequestSingleArgs,
 } from './types'
+import {
+  API_URL,
+  endpointsSingleType,
+  endpointsWithApprovalStatus,
+  endpointsWithLocale,
+  endpointsWithPublicationState,
+} from '../urls'
 
 const DEFAULT_PAGE = 1
 const DEFAULT_PAGE_SIZE = 25
@@ -59,7 +59,7 @@ async function strapiRequest<T extends StrapiModel>(
     pageSize = DEFAULT_PAGE_SIZE,
   } = collectionArgs
 
-  const hasLocale = !id && endpointWithLocale.includes(endpoint)
+  const hasLocale = !id && endpointsWithLocale.includes(endpoint)
   const isSingleType = endpointsSingleType.includes(
     endpoint as StrapiSingleEndpoint,
   )
@@ -100,12 +100,14 @@ async function strapiRequest<T extends StrapiModel>(
     : `${API_URL}/api/${endpoint}?${query}`
 
   try {
-    const response = await axios(
+    const axiosResponse = (await axios(
       requestUrl,
       token ? { headers: { Authorization: `Bearer ${token}` } } : {},
-    )
+    )) as AxiosResponse<StrapiResponse<T>>
+    const status = axiosResponse.status
+    const statusText = axiosResponse.statusText
 
-    const result = response.data as StrapiResponse<T>
+    const result = axiosResponse.data as StrapiResponse<T>
 
     if (!result?.data) {
       if (id || isSingleType) {
@@ -113,47 +115,61 @@ async function strapiRequest<T extends StrapiModel>(
           return {
             data: result as unknown as T,
             meta: { pagination: null },
+            status,
+            statusText,
           } as StrapiSingleResponse<T>
         } else if (endpoint === 'users-permissions/roles') {
           return {
             data: (result as any).role as unknown as T,
             meta: { pagination: null },
+            status,
+            statusText,
           } as StrapiSingleResponse<T>
         }
 
         return {
           data: result as unknown as T,
           meta: { pagination: null },
+          status,
+          statusText,
         } as StrapiSingleResponse<T>
       }
 
       if (endpoint === 'users') {
         return {
           data: result as unknown as T[],
-          meta: {
-            pagination: DEFAULT_PAGINATION,
-          },
+          meta: { pagination: DEFAULT_PAGINATION },
+          status,
+          statusText,
         }
       } else if (endpoint === 'users-permissions/roles') {
         return {
           data: (result as any).roles as unknown as T,
           meta: { pagination: null },
+          status,
+          statusText,
         } as StrapiSingleResponse<T>
       }
 
       return {
         data: [] as T[],
         meta: { pagination: DEFAULT_PAGINATION },
+        status,
+        statusText,
       } as StrapiCollectionResponse<T[]>
     }
 
     if (id) {
-      return result as StrapiSingleResponse<T>
+      return { ...result, status, statusText } as StrapiSingleResponse<T>
     }
 
-    return result as StrapiCollectionResponse<T[]>
+    return { ...result, status, statusText } as StrapiCollectionResponse<T[]>
   } catch (err) {
     const error = err as Error | AxiosError
+    const status = axios.isAxiosError(error) ? error.response?.status : 500
+    const statusText = axios.isAxiosError(error)
+      ? error.response?.statusText
+      : 'Internal server error'
 
     if (axios.isAxiosError(error)) {
       console.error(
@@ -169,12 +185,16 @@ async function strapiRequest<T extends StrapiModel>(
       return {
         data: null as unknown as T,
         meta: { pagination: null },
+        status,
+        statusText,
       } as StrapiSingleResponse<T>
     }
 
     return {
       data: [] as T[],
       meta: { pagination: DEFAULT_PAGINATION },
+      status,
+      statusText,
     } as StrapiCollectionResponse<T[]>
   }
 }
