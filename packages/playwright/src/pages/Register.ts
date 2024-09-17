@@ -13,7 +13,6 @@ type RegisterArgs = {
 
 export class RegisterPage {
   readonly page: Page
-  readonly site: Site
 
   readonly nameInput: Locator
   readonly usernameInput: Locator
@@ -22,9 +21,8 @@ export class RegisterPage {
 
   readonly submitButton: Locator
 
-  constructor(page: Page, site: Site) {
+  constructor(page: Page) {
     this.page = page
-    this.site = site
 
     this.nameInput = page.getByTestId('input-name')
     this.usernameInput = page.getByTestId('input-username')
@@ -34,8 +32,8 @@ export class RegisterPage {
     this.submitButton = page.getByTestId('button-register')
   }
 
-  async navigateToRegister() {
-    const url = getUrl(this.site)
+  async navigateToRegister(site: Site) {
+    const url = getUrl(site)
     await this.page.goto(url)
 
     await this.page.click('a[href*="auth/login"]')

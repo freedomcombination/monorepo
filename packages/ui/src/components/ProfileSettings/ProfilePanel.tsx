@@ -88,6 +88,8 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
     (site === 'dashboard' || site === 'foundation') &&
     (user?.roles.includes('admin') || user?.roles.includes('author'))
 
+  const isModal = site === 'dashboard'
+
   const isCoursePaymentVisible = site === 'foundation' || site === 'dashboard'
 
   useEffect(() => {
@@ -104,7 +106,9 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
     const tabList = Array.from(tabListRef.current?.children || [])
     const title = (tabList[index] as unknown as { title: string }).title
 
-    router.push(`/profile?tab=${title}`)
+    if (!isModal) {
+      router.push(`/profile?tab=${title}`)
+    }
   }
 
   if (!user) return <Hero></Hero>
