@@ -9,4 +9,5 @@ export const postMutation = <
   endpoint: StrapiEndpoint,
   body: D,
   token: string,
-) => mutation<T, D>({ endpoint, method: 'post', body, token })
+  isTest?: boolean,
+) => mutation<T, D>({ endpoint, method: 'post', body, token }, isTest)

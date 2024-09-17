@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { useRouter } from 'next/router'
 
-import { endpointsWithApprovalStatus } from '@fc/config'
+import { endpointsWithApprovalStatus } from '@fc/lib'
 import { useStrapiRequest } from '@fc/services'
 import { StrapiCollectionEndpoint, StrapiModel } from '@fc/types'
 import { mapModelsToOptions } from '@fc/utils'

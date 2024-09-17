@@ -1,0 +1,12 @@
+{
+  "targetFolder": "packages/ui/public/locales/",
+  "additionalFolders": [
+    "apps/dashboard/public/locales/",
+    "apps/kunsthalte/public/locales/",
+    "apps/foundation/public/locales/",
+    "apps/trend-rights/public/locales/",
+    "apps/lotus/public/locales/"
+  ],
+  "sortItemByName": true,
+  "deepL_ApiKey": ""
+}
