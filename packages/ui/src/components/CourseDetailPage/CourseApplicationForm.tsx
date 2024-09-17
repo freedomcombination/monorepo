@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import {
   Box,
@@ -25,8 +25,12 @@ import { FormItem } from '../FormItem'
 
 export const CourseApplicationForm: FC = () => {
   const { t } = useTranslation()
-  // const [termsAccepted, setTermsAccepted] = useState(false)
-  // const [privacyAccepted, setPrivacyAccepted] = useState(false)
+  // const [termsAccepted, setTermsAccepted] = useState<boolean | 'indeterminate'>(
+  //   false,
+  // )
+  // const [privacyAccepted, setPrivacyAccepted] = useState<
+  //   boolean | 'indeterminate'
+  // >(false)
 
   const { course, refetchApplicants } = useCourseContext()
   const { user, profile, token } = useAuthContext()
@@ -119,7 +123,7 @@ export const CourseApplicationForm: FC = () => {
             fontSize={'14px'}
             fontWeight={'400'}
             lineHeight={'20px'}
-            onChange={e => setTermsAccepted(e.target.checked)}
+            onCheckedChange={e => setTermsAccepted(e.checked)}
           >
             <Trans
               i18nKey="apply-form.terms"
@@ -130,7 +134,7 @@ export const CourseApplicationForm: FC = () => {
             fontSize={'14px'}
             fontWeight={'400'}
             lineHeight={'20px'}
-            onChange={e => setPrivacyAccepted(e.target.checked)}
+            onCheckedChange={e => setPrivacyAccepted(e.checked)}
           >
             <Trans
               i18nKey="apply-form.agreement"

@@ -11,6 +11,7 @@ import { TbPlus } from 'react-icons/tb'
 import { InferType } from 'yup'
 
 import { Button } from '@fc/chakra'
+import { endpointsWithLocale } from '@fc/lib'
 import { useCreateModelMutation } from '@fc/services'
 import {
   Applicant,

@@ -1,18 +1,10 @@
 import { ReactNode, useState } from 'react'
 
-import {
-  Center,
-  Separator,
-  Input,
-  Group,
-  InputElement,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Center, Separator, Input, Spinner, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaEnvelope, FaUser } from 'react-icons/fa6'
 
-import { Button, Field, toaster } from '@fc/chakra'
+import { Button, Field, InputGroup, toaster } from '@fc/chakra'
 import { API_URL } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { SessionUser } from '@fc/types'
@@ -103,8 +95,14 @@ const Credential: React.FC<CredentialProps> = ({
   }
 
   return (
-    <Group>
-      {/* <InputElement>{!saving ? leftIcon : <Spinner size="sm" />}</InputElement> */}
+    <InputGroup
+      startElement={!saving ? leftIcon : <Spinner size="sm" />}
+      endElement={
+        <Button h="1.75rem" size="sm" onClick={handleClick}>
+          {edit ? (isValid(user, value) ? t('save') : t('cancel')) : t('edit')}
+        </Button>
+      }
+    >
       <Input
         pr="7em"
         size="lg"
@@ -114,12 +112,7 @@ const Credential: React.FC<CredentialProps> = ({
         value={value}
         onChange={e => setValue(e.target.value)}
       />
-      {/* <InputElement width="7rem" justifyContent={'flex-end'} pr={1}>
-        <Button h="1.75rem" size="sm" onClick={handleClick}>
-          {edit ? (isValid(user, value) ? t('save') : t('cancel')) : t('edit')}
-        </Button>
-      </InputElement> */}
-    </Group>
+    </InputGroup>
   )
 }
 

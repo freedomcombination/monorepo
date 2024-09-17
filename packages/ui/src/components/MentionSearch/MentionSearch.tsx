@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import { Box, Input, Group, InputElement } from '@chakra-ui/react'
+import { Box, Input } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import { useDebounce } from 'react-use'
 
-import { IconButton } from '@fc/chakra'
+import { IconButton, InputGroup } from '@fc/chakra'
 import { useHashtag } from '@fc/services'
 
 import { useHashtagContext } from '../HashtagProvider'
@@ -44,10 +44,21 @@ export const MentionSearch = (): JSX.Element => {
   }, [filteredMentions])
 
   return (
-    <Group>
-      {/* <InputElement pointerEvents="none">
-        <Box color="gray.300" as={FaSearch} />
-      </InputElement> */}
+    <InputGroup
+      startElement={
+        <Box pointerEvents={'none'} color="gray.300" as={FaSearch} />
+      }
+      endElement={
+        <IconButton
+          aria-label={'Clear mention search'}
+          onClick={() => setValue('')}
+          icon={<FaTimes />}
+          variant={'ghost'}
+          size={'sm'}
+          colorPalette={'blackAlpha'}
+        />
+      }
+    >
       <Input
         bg="white"
         borderWidth={0}
@@ -63,16 +74,6 @@ export const MentionSearch = (): JSX.Element => {
           outline: 'none',
         }}
       />
-      {/* <InputElement>
-        <IconButton
-          aria-label={'Clear mention search'}
-          onClick={() => setValue('')}
-          icon={<FaTimes />}
-          variant={'ghost'}
-          size={'sm'}
-          colorPalette={'blackAlpha'}
-        />
-      </InputElement> */}
-    </Group>
+    </InputGroup>
   )
 }
