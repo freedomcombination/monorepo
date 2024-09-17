@@ -107,7 +107,7 @@ export class LayoutPage {
   async switchLanguage(language: StrapiLocale) {
     await this.scrollToTop()
     await this.languageMenu[language].click()
-    await this.page.waitForLoadState('domcontentloaded')
+    await this.page.waitForTimeout(1000)
   }
 
   async gotoPage(page: keyof typeof headerLinks) {
