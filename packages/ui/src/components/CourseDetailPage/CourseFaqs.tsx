@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { Accordion, AccordionItem } from '@chakra-ui/react'
 
-import { useCourseContext } from './CourseContext'
+import { useCourseContext } from './useCourseContext'
 import { CourseFaqItem } from '../CourseDetailFaqItem'
 
 export const CourseFaqs: FC = () => {

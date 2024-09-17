@@ -4,7 +4,8 @@ import { useRouter } from 'next/router'
 import { SITE_URL } from '@fc/config'
 import { BLOG_MOCKS } from '@fc/mocks'
 
-import BlogDetail, { BlogDetailProps } from './BlogDetail'
+import BlogDetail from './BlogDetail'
+import { BlogDetailProps } from './types'
 import { Container } from '../Container'
 
 export default {

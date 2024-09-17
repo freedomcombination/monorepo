@@ -85,7 +85,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
 
       try {
         const value = await createPostMutation.mutateAsync(body)
-        if (text === value.description) {
+        if (text === value?.data?.description) {
           setState(prev => {
             const prevState = { ...prev }
             delete prevState[id]

@@ -26,7 +26,7 @@ import { Mutation } from '@fc/lib'
 import { CourseApplicationUnpaid } from '@fc/types'
 import { formatPrice } from '@fc/utils'
 
-import { useCourseContext } from './CourseContext'
+import { useCourseContext } from './useCourseContext'
 
 const EXPLANATION_LIMIT = 30
 

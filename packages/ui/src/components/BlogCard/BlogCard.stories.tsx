@@ -2,7 +2,8 @@ import { StoryObj, Meta } from '@storybook/react'
 
 import { BLOG_MOCKS } from '@fc/mocks'
 
-import { BlogCard, BlogCardProps } from './BlogCard'
+import { BlogCard } from './BlogCard'
+import { BlogCardProps } from './types'
 import { Container } from '../Container'
 
 export default {

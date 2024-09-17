@@ -17,7 +17,16 @@ export class ProfilePage {
     newPassword: Locator
     passwordConfirmation: Locator
   }
+  readonly toasts: {
+    usernameSuccess: Locator
+    usernameError: Locator
+    emailSuccess: Locator
+    emailError: Locator
+    passwordSuccess: Locator
+    passwordError: Locator
+  }
   readonly firstArtImage: Locator
+  readonly submitUpdatePassword: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -36,7 +45,18 @@ export class ProfilePage {
       newPassword: page.getByTestId('input-password'),
       passwordConfirmation: page.getByTestId('input-passwordConfirmation'),
     }
+    this.toasts = {
+      usernameSuccess: page.locator('#toast-success-update-username'),
+      usernameError: page.locator('#toast-error-update-username'),
+      emailSuccess: page.locator('#toast-success-update-email'),
+      emailError: page.locator('#toast-error-update-email'),
+      passwordSuccess: page.locator('#toast-success-update-password'),
+      passwordError: page.locator('#toast-error-update-password'),
+    }
     this.firstArtImage = page.locator('.art-image').first()
+    this.submitUpdatePassword = page.getByTestId(
+      'button-submit-update-password',
+    )
   }
 
   async openTab(tab: 'arts' | 'security' | 'socials') {
@@ -53,8 +73,6 @@ export class ProfilePage {
     await this.inputs.currentPassword.fill(currentPassword)
     await this.inputs.newPassword.fill(newPassword)
     await this.inputs.passwordConfirmation.fill(newPassword)
-    // TODO: Add testid to the button
-    await this.page.getByRole('button', { name: 'Change Password' }).click()
-    // await this.page.waitForLoadState('networkidle')
+    await this.submitUpdatePassword.click()
   }
 }

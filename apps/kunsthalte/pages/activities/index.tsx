@@ -36,7 +36,7 @@ const Activities = () => {
 
   const page = +(query.page || 1)
 
-  const changeParam = useChangeParams()
+  const { changePage } = useChangeParams()
 
   const activitiesQuery = useStrapiRequest<Activity>({
     ...args,
@@ -76,7 +76,7 @@ const Activities = () => {
               <Pagination
                 totalCount={pagination.pageCount}
                 currentPage={+(query.page || 1)}
-                onPageChange={page => changeParam({ page })}
+                onPageChange={changePage}
               />
             )}
           </Container>
