@@ -1,5 +1,5 @@
+import { faker } from '@faker-js/faker'
 import slugify from '@sindresorhus/slugify'
-import { nanoid } from 'nanoid'
 
 import { StrapiCreateInput, StrapiEndpoint, StrapiUpdateInput } from '@fc/types'
 
@@ -21,7 +21,7 @@ export const generateFormData = <
       initialData.title_en ||
       initialData.name ||
       initialData.description?.slice(0, 10) ||
-      nanoid(8),
+      faker.lorem.slug(),
   )
 
   if (endpoint) {

@@ -9,3 +9,11 @@ export const getUrl = (site: Site) => {
 
   return `http://localhost:${ports[site]}`
 }
+
+export const getApiUrl = () => {
+  if (process.env.CI === 'true') {
+    return 'https://wsvv-api-staging.onrender.com/api'
+  }
+
+  return `http://localhost:1337/api`
+}

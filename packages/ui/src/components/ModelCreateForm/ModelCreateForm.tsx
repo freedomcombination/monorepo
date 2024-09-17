@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { TbPlus } from 'react-icons/tb'
 import { InferType } from 'yup'
 
-import { endpointWithLocale } from '@fc/config'
+import { endpointsWithLocale } from '@fc/lib'
 import { useCreateModelMutation } from '@fc/services'
 import {
   Applicant,
@@ -164,7 +164,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
   })
   const [activeOption, setActiveOption] = useState(options[0]?.value)
 
-  const showLanguageSwitcher = endpointWithLocale.includes(endpoint)
+  const showLanguageSwitcher = endpointsWithLocale.includes(endpoint)
 
   return (
     <Stack as={'form'} onSubmit={handleSubmit(onCreateModel)}>
