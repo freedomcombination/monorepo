@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { useDisclosure } from '@chakra-ui/hooks'
 import axios from 'axios'
@@ -35,6 +35,12 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   const authModalDisclosure = useDisclosure()
   const { t } = useTranslation()
   const router = useRouter()
+
+  useEffect(() => {
+    if (user) {
+      authModalDisclosure.onClose()
+    }
+  }, [user])
 
   function checkActionsPermission(
     endpoint: StrapiEndpoint,

@@ -11,7 +11,7 @@ import {
 export type RequestCommonArgs = {
   fields?: string[]
   includeDrafts?: boolean
-  populate?: string | string[]
+  populate?: string | string[] | null
   token?: string
   sort?: Sort
 }

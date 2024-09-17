@@ -52,8 +52,12 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   const activeTab = (router.query.tab as string) ?? 'profile'
   const tabListRef = useRef<HTMLDivElement>(null)
 
+  const isModal = site === 'dashboard'
+
   const setActiveTab = (tab: string) => {
-    router.push(`/profile?tab=${tab}`)
+    if (!isModal) {
+      router.push(`/profile?tab=${tab}`)
+    }
   }
 
   const isBlogsVisible =

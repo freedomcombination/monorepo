@@ -87,6 +87,7 @@ export const ChangePasswordForm = () => {
     mutate(data, {
       onError: () => {
         toaster.create({
+          id: 'error-update-password',
           title: 'Error',
           description: t('update-failed'),
           type: 'error',
@@ -95,6 +96,7 @@ export const ChangePasswordForm = () => {
       },
       onSuccess: () => {
         toaster.create({
+          id: 'success-update-password',
           title: 'Success',
           description: t('update-success'),
           type: 'success',
@@ -143,6 +145,7 @@ export const ChangePasswordForm = () => {
       </Stack>
 
       <Button
+        data-testid={'button-submit-update-password'}
         leftIcon={<FaEdit />}
         loading={isPending}
         size={'lg'}

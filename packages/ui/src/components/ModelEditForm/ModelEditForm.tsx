@@ -33,7 +33,7 @@ import { Field, Switch } from '@fc/chakra'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
-} from '@fc/config'
+} from '@fc/lib'
 import {
   useApproveModel,
   useCreateModelMutation,

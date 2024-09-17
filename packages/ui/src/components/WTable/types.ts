@@ -72,8 +72,3 @@ export type TableCellImagesProps = {
 export type TableCellImageProps = {
   image: UploadFile
 }
-
-export type ExportPDFProps<T extends StrapiModel> = Pick<
-  WTableProps<T>,
-  'data' | 'columns'
->

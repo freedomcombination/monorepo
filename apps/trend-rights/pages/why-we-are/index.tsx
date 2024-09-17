@@ -3,15 +3,14 @@ import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 
 import { getSession } from '@fc/secrets'
-import { getBlogs, useGetBlogs } from '@fc/services'
+import { getCategorizedBlogs, useGetCategorizedBlogs } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { StrapiLocale } from '@fc/types'
 
-import { Layout } from '../../components'
-import { WhyWeAre } from '../../components/WhyWeAre'
+import { Layout, WhyWeAre } from '../../components'
 
 const Blogs = () => {
-  const { data: blogs = [] } = useGetBlogs()
+  const { data: blogs } = useGetCategorizedBlogs()
   const { locale } = useRouter()
 
   const titles = {
@@ -23,7 +22,7 @@ const Blogs = () => {
 
   return (
     <Layout seo={{ title }} isDark={!!blogs?.length}>
-      <WhyWeAre blogs={blogs} seo={{ title }} />
+      <WhyWeAre blogs={blogs || []} seo={{ title }} />
     </Layout>
   )
 }
@@ -39,8 +38,8 @@ export const getServerSideProps = async (
   const { token } = await getSession(context.req, context.res)
 
   await queryClient.prefetchQuery({
-    queryKey: ['blogs', locale],
-    queryFn: () => getBlogs(locale, token),
+    queryKey: ['categorized-blogs', locale],
+    queryFn: () => getCategorizedBlogs(locale, token),
   })
 
   return {

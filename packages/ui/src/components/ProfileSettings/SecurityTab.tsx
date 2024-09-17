@@ -79,6 +79,7 @@ const Credential: React.FC<CredentialProps> = ({
       await checkAuth()
 
       toaster.create({
+        id: `success-update-${name}`,
         title: t('update-success'),
         type: 'success',
         duration: 5000,
@@ -87,6 +88,7 @@ const Credential: React.FC<CredentialProps> = ({
     } catch (e) {
       console.error('Update error', name, value, e)
       toaster.create({
+        id: `error-update-${name}`,
         title: t('update-failed'),
         description: t(
           ((e as unknown as Error).message ??

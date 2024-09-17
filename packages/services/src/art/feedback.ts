@@ -45,8 +45,8 @@ export const useArtFeedbackMutation = () => {
       }),
     onSuccess: res => {
       toaster.create({
-        title: `Art ${res?.approvalStatus}`,
-        description: `Art has been ${res?.approvalStatus}`,
+        title: `Art ${res?.data?.approvalStatus}`,
+        description: `Art has been ${res?.data?.approvalStatus}`,
         type: 'success',
       })
     },
