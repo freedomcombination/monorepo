@@ -42,7 +42,10 @@ export const useChangeParams = () => {
     return produce(query, draft => {
       for (const key in args) {
         const param = args[key]
-
+        
+        if (args['categories']) {
+          args['page'] = 1
+        }
         if (isEmpty(param)) {
           delete draft[key]
         }
@@ -60,9 +63,9 @@ export const useChangeParams = () => {
       const sanitizedArgs = sanitizeArgs(args)
 
       // TODO: Remove existing page query if other params are changed
-      if (args['categories']) {
-        args['page'] = 1
-      }
+      // if (args['categories']) {
+      //   args['page'] = 1
+      // }
       const newQuery = { ...sanitizedQuery, ...sanitizedArgs }
 
       if (isEqual(query, newQuery)) {
