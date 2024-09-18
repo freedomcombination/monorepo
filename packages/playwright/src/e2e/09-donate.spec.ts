@@ -1,5 +1,6 @@
-import { test, expect } from '@playwright/test'
+import { expect } from '@playwright/test'
 
+import { test } from '../fixtures'
 import { getUrl } from '../utils'
 test.beforeEach(async ({ page }) => {
   await page.goto(getUrl('kunsthalte'))
@@ -9,63 +10,46 @@ test.beforeEach(async ({ page }) => {
 })
 
 test.describe('01. Donate', () => {
-  test('TC-01: should donation page', async ({ page }) => {
-    // TODO: Use layoutPage
-    await page.getByRole('link', { name: 'Donate' }).click()
-
-    // TODO: Move it to 07-pages.spec.ts
-    await expect(page.getByRole('heading')).toContainText('Donate') // 01. Does the Donate page open?
-    const pageTitle = await page.title()
-    expect(pageTitle).toContain('Donate') // 02. Does the title match the page name?
-
+  test('TC-01: should donation page', async ({ page, layoutPage }) => {
     // TODO: Use locators in Donate.ts
-    await page.getByRole('button', { name: '€10', exact: true }).click()
-    const inputElement = page.locator('.chakra-numberinput input')
-    const value = await inputElement.inputValue()
-    expect(value).toContain('10')
-    await page.getByRole('button', { name: '€5', exact: true }).click()
-    await page.getByRole('button', { name: '€20' }).click()
-    await page.getByRole('button', { name: '€50' }).click()
-    await page.getByRole('button', { name: '€100' }).click()
-    await page.getByRole('button', { name: '€10', exact: true }).click()
-    await page.locator('.css-8pgw4r').first().click()
+    await layoutPage.gotoPage('donation')
+    await page.getByTestId('button-donation-10').click()
+
+    const inputElement = await page.getByTestId('input-donation').inputValue()
+    expect(inputElement).toContain('10')
+
+    await page.getByTestId('button-donation-5').click()
+    await page.getByTestId('button-donation-20').click()
+    await page.getByTestId('button-donation-50').click()
+    await page.getByTestId('button-donation-100').click()
+    await page.getByTestId('button-donation-10').click()
+    await page.getByTestId('button-donation-increment').click()
     await page.waitForLoadState('networkidle')
 
     const chakraNumberInputDivvalue = await page
-      .locator('.chakra-numberinput input')
+      .getByTestId('input-donation')
       .inputValue()
     expect(chakraNumberInputDivvalue).toContain('11')
-    await page.locator('.css-1jj9yua > div:nth-child(2)').click()
+    await page.getByTestId('button-donation-decrement').click()
 
-    const inputLocator = page.locator('.chakra-numberinput input')
-    const valuee = await inputLocator.inputValue()
-    expect(valuee).toContain('10')
-    await page.getByPlaceholder('Name').click()
-    await page.getByPlaceholder('E-mail').click()
-    await page.getByPlaceholder('Name').click()
+    const inputLocatorvaluee = await page
+      .getByTestId('input-donation')
+      .inputValue()
 
-    const requiredTextName = await page.locator('text=name is a required field')
+    expect(inputLocatorvaluee).toContain('10')
+    await page.getByTestId('input-name').click()
+    await page.getByTestId('input-email').click()
+    await page.getByTestId('input-name').click()
 
-    const isTextVisibleName = await requiredTextName.isVisible()
-    await expect(isTextVisibleName).toBe(true) // 05. Is Name a required field?
-    await page.getByPlaceholder('Name').fill('Mustafa Budak')
-    const requiredTextEmail = await page.locator(
-      'text=email is a required field',
-    )
-    const isTextVisibleEmail = await requiredTextEmail.isVisible()
-    await expect(isTextVisibleEmail).toBe(true)
+    await expect(page.getByTestId('error-text-name')).toBeVisible() // 05. Is Name a required field?
+    await page.getByTestId('input-name').fill('Mustafa Budak')
 
-    // 06. Is E-mail a required field?
-    const emailInput = await page.locator('input[name="email"]')
-
+    await expect(page.getByTestId('error-text-email')).toBeVisible() // 06. Is Name a required field?
+    const emailInput = await page.getByTestId('input-email')
     const testEmailError = 'test_example.com'
     await emailInput.fill(testEmailError)
-    const requiredTextEmailError = await page.locator(
-      'text=email must be a valid email',
-    )
-
-    const isTextVisibleEmailError = await requiredTextEmailError.isVisible()
-    await expect(isTextVisibleEmailError).toBe(true)
+    await page.waitForTimeout(1000)
+    await expect(page.getByTestId('error-text-email')).toBeVisible() // 06. Email must be a valid email
     const testEmail = 'test@example.com'
     await emailInput.fill(testEmail)
     const emailValue = await emailInput.inputValue()
@@ -73,10 +57,8 @@ test.describe('01. Donate', () => {
 
     const isValidEmail = emailRegex.test(emailValue)
     expect(isValidEmail).toBe(true) // 07. Assert that the email is valid
-    await Promise.all([page.getByRole('button', { name: 'Donate €' }).click()])
+    await page.getByTestId('button-donation-submit').click()
     const newUrl = page.url()
     expect(isValidEmail).toBe(newUrl.length > 0) // 08. When the donate button is clicked, the user should be directed to the payment page.
-
-    // Test code here
   })
 })

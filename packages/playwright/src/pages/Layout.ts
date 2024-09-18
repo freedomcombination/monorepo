@@ -51,7 +51,7 @@ export class LayoutPage {
         arts: page.getByTestId(`link-d/club/arts`),
         collections: page.getByTestId(`link-d/club/collections`),
         activities: page.getByTestId(`link-d/activities`),
-        about: page.getByTestId(`link-d/about`),
+        about: page.getByTestId(`link-d/about-us`),
         contact: page.getByTestId(`link-d/contact`),
         donation: page.getByTestId(`link-d/donation`),
       },

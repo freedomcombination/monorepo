@@ -1,29 +1,20 @@
-import { test, expect } from '@playwright/test'
+import { expect } from '@playwright/test'
 
-import { getUrl } from '../utils'
+import { test } from '../fixtures'
+import { getUrl, checkExternalLink } from '../utils'
 test.beforeEach(async ({ page }) => {
   await page.goto(getUrl('kunsthalte'))
   await page.waitForTimeout(1000)
   await page.click('button:has-text("EN")')
 })
 
-test.describe('08. Contact', () => {
-  test('TC-01: should Contact', async ({ page }) => {
-    // TODO: Use layoutPage
-    await page.getByRole('link', { name: 'Contact' }).first().click()
-    await page.waitForLoadState('networkidle')
-    await expect(page.locator('[id="__next"]')).toContainText('Contact') // 01. Does the Contact page open?
-
-    const pageTitle = await page.title()
-    await page.waitForTimeout(100)
-    expect(pageTitle).toContain('Contact') // 02. Does the title match the page name? //yapılamadı
-
-    // TODO: Use locators in Contact.ts
-    await page.getByPlaceholder('Your Full Name').click()
-    await page.getByPlaceholder('E-mail').click()
-    await page.getByPlaceholder('Message').click()
-    await page.getByPlaceholder('Your Full Name').click()
-
+test.describe('08. Contact required field control', () => {
+  test('TC-01: should Contact', async ({ page, layoutPage }) => {
+    await layoutPage.gotoPage('contact')
+    await page.getByTestId('input-fullname').click()
+    await page.getByTestId('input-email').click()
+    await page.getByTestId('input-message').click()
+    await page.getByTestId('input-fullname').click()
     const fullNameErrorMessage = await page.locator(
       '[data-testid="error-text-fullname"]',
     )
@@ -54,39 +45,53 @@ test.describe('08. Contact', () => {
     )
     const isTextVisibleMessage = await requiredTextMessage.isVisible()
     await expect(isTextVisibleMessage).toBe(true) // 06. Is Message a required field?
+  })
 
-    await page.getByPlaceholder('Your Full Name').fill('Test Mustafa BUDAK')
-    await page.getByPlaceholder('Message').fill('Bu bir Deneme Mesajıdır.')
-    await page.getByRole('button', { name: 'Send message' }).click()
+  test('TC-02: should send message via contact form', async ({
+    page,
+    layoutPage,
+  }) => {
+    await layoutPage.gotoPage('contact')
     await page.waitForTimeout(1000)
-    await page.waitForLoadState('networkidle')
+    await page.getByPlaceholder('Your Full Name').fill('Test Mustafa BUDAK')
+
+    const emailInput = await page.locator('[data-testid="input-email"]')
+    const testEmail = 'test@example.com'
+    await emailInput.fill(testEmail)
+
+    await page.getByPlaceholder('Message').fill('This is a Test Message.')
+    await page.waitForTimeout(5000)
+    await page.getByRole('button', { name: 'Send message' }).click()
+    await page.waitForTimeout(2000)
     const successDiv = await page.textContent('div[data-status="success"]')
     expect(successDiv).toBe('Thank you. Your message has been delivered.') // 07. Can the user send the message successfully ?
-
+  })
+  test('TC-03: should Check if it is redirected to another page ', async ({
+    page,
+    layoutPage,
+  }) => {
+    await layoutPage.gotoPage('contact')
     const emaillink = page.locator('a[href^="mailto:"]')
-    await expect(emaillink).toHaveCount(1) //  08. When clicking on the email address icon, the user should be directed to the Outlook application.
+    await expect(emaillink).toBeVisible() //  08. When clicking on the email address icon, the user should be directed to the Outlook application.
+    const xElement = page.getByLabel('X').first()
+    await checkExternalLink(xElement, 'https://x.com/kunsthalte') // 09. When clicking on the xcom icon, the user should be directed to another page.
 
-    // TODO: Test social media link with checkExternalLink function
-    const xElement = page.getByLabel('X').first().getAttribute('href')
-    expect(xElement).not.toBeNull() // 09. When clicking on the xcom icon, the user should be directed to another page.
+    const WhatsAppElement = page.getByLabel('WhatsApp').first()
+    await checkExternalLink(
+      WhatsAppElement,
+      'https://api.whatsapp.com/send?phone=31685221308',
+    ) // 10. When clicking on the WhatsApp icon, the user should be directed to another page.
 
-    const WhatsAppElement = page
-      .getByLabel('WhatsApp')
-      .first()
-      .getAttribute('href')
-    expect(WhatsAppElement).not.toBeNull() // 10. When clicking on the WhatsApp icon, the user should be directed to another page.
-
-    const InstagramElement = page
-      .getByLabel('Instagram')
-      .first()
-      .getAttribute('href')
-    expect(InstagramElement).not.toBeNull() // 11. When clicking on the Instagram icon, the user should be directed to another page.
-
-    const YoutubeElement = page
-      .getByLabel('Youtube')
-      .first()
-      .getAttribute('href')
-    expect(YoutubeElement).not.toBeNull() // 12. When clicking on the Youtube icon, the user should be directed to another page.
+    const InstagramElement = page.getByLabel('Instagram').first()
+    await checkExternalLink(
+      InstagramElement,
+      'https://instagram.com/kunsthalte',
+    ) // 11. When clicking on the Instagram icon, the user should be directed to another page.
+    const YoutubeElement = page.getByLabel('Youtube').first()
+    await checkExternalLink(
+      YoutubeElement,
+      'https://www.youtube.com/@Kunsthalte',
+    ) // 12. When clicking on the Youtube icon, the user should be directed to another page.
     await page.click('button:has-text("EN")')
   })
 })
