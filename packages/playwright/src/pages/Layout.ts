@@ -72,7 +72,7 @@ export class LayoutPage {
       tr: page.getByTestId('button-d-tr'),
     }
     this.profileMenu = page.getByTestId('button-d-profile-menu')
-    this.profileLink = page.getByTestId('link-d-profile')
+    this.profileLink = page.getByTestId('link-d/profile')
     this.logoutButton = page.getByTestId('button-d-logout')
   }
 
