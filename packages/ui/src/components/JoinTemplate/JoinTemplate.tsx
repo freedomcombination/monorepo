@@ -8,10 +8,13 @@ import {
   Center,
   Stack,
   VStack,
+  Link,
+  HStack,
 } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { FaRegFilePdf } from 'react-icons/fa'
 
 import { RecaptchaKeys } from '@fc/config'
 import { Mutation } from '@fc/lib'
@@ -102,6 +105,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
       console.error('Submit volunteer form error', error)
     }
   }
+  const hideFields = ['jobs']
 
   return (
     <Container>
@@ -136,26 +140,27 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
           <PageTitle>{title}</PageTitle>
 
           <Stack spacing={4}>
-            {/* <Alert rounded="md">
-                <Link
-                  lineHeight={1}
-                  href="/fc-vrijwilligersovereenkomst.pdf"
-                  download
-                  fontWeight={500}
-                  _hover={{ textDecoration: 'underline', color: 'primary.500' }}
-                >
-                  <HStack as="span" display={'inline-flex'} align={'center'}>
-                    <AlertIcon color={'inherit'} m={0} as={FaRegFilePdf} />
-                    <span>{t('download-volunteer-form')}</span>
-                  </HStack>
-                </Link>
-              </Alert> */}
+            <Alert rounded="md">
+              <Link
+                lineHeight={1}
+                href="/fc-vrijwilligersovereenkomst.pdf"
+                download
+                fontWeight={500}
+                _hover={{ textDecoration: 'underline', color: 'primary.500' }}
+              >
+                <HStack as="span" display={'inline-flex'} align={'center'}>
+                  <AlertIcon color={'inherit'} m={0} as={FaRegFilePdf} />
+                  <span>{t('download-volunteer-form')}</span>
+                </HStack>
+              </Link>
+            </Alert>
             <JoinForm
               onSubmitHandler={onSubmit}
               isLoading={isPending}
               platforms={platforms}
               foundationJobs={foundationJobs}
               foundation={foundation}
+              hideFields={hideFields}
             />
           </Stack>
         </>

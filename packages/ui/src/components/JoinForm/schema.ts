@@ -36,5 +36,13 @@ export const joinSchema = () => {
     heardFrom: yup.array().required().min(1),
     jobs: yup.array().required().min(1),
     cv: yup.mixed().required(),
+    foundationConfirmation: yup
+      .boolean()
+      .oneOf([true], 'You must accept the Foundation information')
+      .required(),
+    requirementsConfirmation: yup
+      .boolean()
+      .oneOf([true], 'You have to accept to rules')
+      .required(),
   })
 }

@@ -12,6 +12,7 @@ export type JoinFormProps = {
   isLoading: boolean
   onSubmitHandler: (data: JoinFormFieldValues) => void
   foundation: Foundation[]
+  defaultJobs?: string[]
 }
 
 //  !!  {[key in StrapiLocale]?:string} for   optinal

@@ -87,7 +87,7 @@ export const PreviewVolunteerForm: FC<PreviewVolunteerFormProps> = ({
               {typeof value === 'object'
                 ? JSON.stringify(value)
                 : value
-                  ? value
+                  ? String(value)
                   : 'Not provided'}
             </Text>
           </HStack>

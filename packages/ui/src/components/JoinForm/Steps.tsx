@@ -10,18 +10,17 @@ import {
   Stepper,
   StepSeparator,
   StepStatus,
-  StepTitle,
 } from '@chakra-ui/react'
 
-import { initialSteps } from './data'
 type StepsProps = {
   activeStep: number
   setActiveStep: (index: number) => void
+  steps: { description: string }[]
 }
-export const Steps: FC<StepsProps> = ({ activeStep, setActiveStep }) => {
+export const Steps: FC<StepsProps> = ({ activeStep, setActiveStep, steps }) => {
   return (
     <Stepper size="lg" index={activeStep}>
-      {initialSteps.map((step, index) => (
+      {steps.map((step, index) => (
         <Step key={index} onClick={() => setActiveStep(index)}>
           <StepIndicator>
             <StepStatus
@@ -31,7 +30,6 @@ export const Steps: FC<StepsProps> = ({ activeStep, setActiveStep }) => {
             />
           </StepIndicator>
           <Box flexShrink="0">
-            <StepTitle>{step.title}</StepTitle>
             <StepDescription>{step.description}</StepDescription>
           </Box>
           <StepSeparator />

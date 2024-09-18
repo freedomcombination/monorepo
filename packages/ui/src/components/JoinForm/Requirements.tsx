@@ -1,22 +1,40 @@
 import { FC } from 'react'
 
-import { Stack, Heading, Box, Text } from '@chakra-ui/react'
+import {
+  Stack,
+  Heading,
+  Box,
+  Text,
+  FormControl,
+  Checkbox,
+  FormErrorMessage,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { Job } from '@fc/types'
 
+import { JoinFormFieldValues } from './types'
+
 export type RequirementsProps = {
   jobs: Job[]
-  selectedJobs: string[] // string array, but we need to convert to number
+  selectedJobs: string[]
+  register: UseFormRegister<JoinFormFieldValues>
+  errors: FieldErrors<JoinFormFieldValues>
 }
 
-export const Requirements: FC<RequirementsProps> = ({ jobs, selectedJobs }) => {
+export const Requirements: FC<RequirementsProps> = ({
+  jobs,
+  selectedJobs,
+  errors,
+  register,
+}) => {
   const { locale } = useRouter()
+  const { t } = useTranslation()
 
   // Convert selectedJobs (string[]) to number[]
   const selectedJobIds = selectedJobs.map(jobId => Number(jobId))
-
-  // Get jobs from platforms
 
   // Filter jobs based on selectedJobIds
   const currentJobs = jobs?.filter(job => selectedJobIds.includes(job?.id))
@@ -52,15 +70,19 @@ export const Requirements: FC<RequirementsProps> = ({ jobs, selectedJobs }) => {
       </Heading>
       {currentJobs?.map(job => {
         const jobName = job?.[`name_${locale}`] || job?.name_en || ''
-        const jobRequirements =
-          job?.[`requirements_${locale}`] || job?.requirements_en || []
-        const jobResponsibilities =
-          job?.[`responsibilities_${locale}`] || job?.responsibilities_en || []
+        const jobRequirements = Array.isArray(job?.[`requirements_${locale}`])
+          ? job?.[`requirements_${locale}`]
+          : []
+        const jobResponsibilities = Array.isArray(
+          job?.[`responsibilities_${locale}`],
+        )
+          ? (job?.[`responsibilities_${locale}`] as string)
+          : ([] as string[])
 
         return (
           <Box key={job?.id}>
             {
-              // check if jobName is empty
+              // Check if jobName is empty
               jobRequirements?.length > 0 || jobResponsibilities?.length > 0 ? (
                 <>
                   <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
@@ -76,15 +98,30 @@ export const Requirements: FC<RequirementsProps> = ({ jobs, selectedJobs }) => {
                   <Text fontWeight={600} fontSize="sm">
                     Responsibilities
                   </Text>
-                  {// Render richText block
-                  jobResponsibilities?.map((block: any, idx: number) => (
+                  {jobResponsibilities?.map((block: any, idx: number) => (
                     <Box key={idx}>{renderRichTextBlock(block)}</Box>
                   ))}
+                  <FormControl
+                    isRequired
+                    isInvalid={!!errors?.requirementsConfirmation}
+                  >
+                    <Checkbox
+                      {...register('requirementsConfirmation', {
+                        required:
+                          'You must accept the Requirements information',
+                      })}
+                    >
+                      {t('I have read and accept the requirements information')}
+                    </Checkbox>
+                    <FormErrorMessage>
+                      {errors?.requirementsConfirmation?.message}
+                    </FormErrorMessage>
+                  </FormControl>
                 </>
               ) : (
                 <>
                   <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
-                    {jobName} don't have any requirements or responsibilities
+                    {jobName} doesn't have any requirements or responsibilities
                   </Heading>
                 </>
               )
