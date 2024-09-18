@@ -118,6 +118,7 @@ export const COURSE_MOCKS: StrapiCollectionResponse<Course[]> = {
         createdAt: '2023-04-08T09:30:53.710Z',
         updatedAt: '2023-04-08T09:30:53.710Z',
       },
+      requireApproval: false,
       lastRegisterDate: '2023-05-10',
       tags: [
         {
@@ -148,6 +149,7 @@ export const COURSE_MOCKS: StrapiCollectionResponse<Course[]> = {
           updatedAt: '2023-04-11T09:20:28.399Z',
           publishedAt: '2023-04-11T09:20:28.393Z',
           notes: null,
+
         },
         {
           id: 4,
@@ -684,6 +686,7 @@ export const COURSE_MOCKS: StrapiCollectionResponse<Course[]> = {
         createdAt: '2023-09-23T16:24:41.348Z',
         updatedAt: '2023-09-23T16:24:41.348Z',
       },
+      requireApproval: false,
       lastRegisterDate: '2023-09-28',
       tags: [],
       applications: [
@@ -996,6 +999,7 @@ export const COURSE_MOCKS: StrapiCollectionResponse<Course[]> = {
         createdAt: '2023-09-29T07:09:05.408Z',
         updatedAt: '2023-09-29T07:09:05.408Z',
       },
+      requireApproval: false,
       lastRegisterDate: '2023-10-10',
       tags: [],
       applications: [
@@ -1197,6 +1201,7 @@ export const COURSE_MOCKS: StrapiCollectionResponse<Course[]> = {
         createdAt: '2023-12-03T20:21:13.021Z',
         updatedAt: '2023-12-03T20:21:13.021Z',
       },
+      requireApproval: false,
       lastRegisterDate: '2023-12-30',
       tags: [],
       applications: [
@@ -1798,6 +1803,7 @@ export const COURSE_MOCKS: StrapiCollectionResponse<Course[]> = {
         updatedAt: '2023-12-27T10:56:18.544Z',
         publishedAt: '2022-12-04T05:27:05.050Z',
       },
+      requireApproval: false,
       lastRegisterDate: '2024-01-31',
       faqs: [],
       curriculum: [],

@@ -30,13 +30,13 @@ type CourseBase = StrapiBase & {
   endDate: string
   lastRegisterDate: string
   requireApproval: boolean
-  assignmentFiles: File[] | null
-  assignmentSubmissionDeadline: number
-  assignmentEvaluationTime: number
+  assignmentSubmissionDeadline?: number
+  assignmentEvaluationTime?: number
 }
 
 type CourseRelation = {
   image?: UploadFile | null
+  assignmentFiles?: UploadFile[]
   tags?: Tag[]
   applications?: CourseApplication[]
   faqs?: FaqLocale[]

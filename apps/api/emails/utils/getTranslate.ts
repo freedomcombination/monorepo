@@ -1,10 +1,18 @@
 import { StrapiLocale } from '@fc/types'
 import { translations } from './translations'
 
+export type TranslateFunc = (
+  key: keyof typeof translations,
+  data?: Record<string, string>,
+) => string
+
 export const getTranslate = (lc: StrapiLocale) => {
   const locale = ['en', 'nl', 'tr'].includes(lc) ? lc : 'en'
 
-  const t = (key: keyof typeof translations, data?: Record<string, string>) => {
+  const t: TranslateFunc = (
+    key: keyof typeof translations,
+    data?: Record<string, string>,
+  ) => {
     const translation = translations[key][locale]
 
     if (!translation) {

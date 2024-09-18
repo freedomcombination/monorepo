@@ -1907,7 +1907,10 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     curriculum: Attribute.Component<'course.curriculum', true>
     lastRegisterDate: Attribute.DateTime
     requireApproval: Attribute.Boolean & Attribute.DefaultTo<false>
-    assignmentFiles: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
+    assignmentFiles: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >
     assignmentSubmissionDeadline: Attribute.Integer &
       Attribute.SetMinMax<
         {
@@ -1975,6 +1978,20 @@ export interface ApiCourseApplicationCourseApplication
       'oneToMany',
       'api::payment.payment'
     >
+    installmentStartAfter: Attribute.Date
+    installmentInterval: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      > &
+      Attribute.DefaultTo<1>
+    submittedAssignmentFiles: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >
+    lastUpdateDate: Attribute.DateTime
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

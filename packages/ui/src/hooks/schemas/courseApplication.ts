@@ -25,7 +25,6 @@ export const courseApplicationFields: FormFields<CourseApplication> = [
   { name: 'city' },
   { name: 'country', isRequired: true },
   { name: 'phone', isRequired: true },
-  { name: 'installmentCount', type: 'number-input' },
   { name: 'hasPaid', type: 'boolean' },
   { name: 'message', isRequired: true, type: 'textarea' },
   {

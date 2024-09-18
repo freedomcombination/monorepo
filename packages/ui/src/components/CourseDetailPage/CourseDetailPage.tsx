@@ -1,6 +1,18 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 
-import { Box, Heading, Stack } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Box,
+  Heading,
+  Link,
+  List,
+  ListIcon,
+  ListItem,
+  Stack,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -10,15 +22,23 @@ import { useStrapiRequest } from '@fc/services'
 import { CourseApplication } from '@fc/types'
 
 import { CourseContext } from './CourseContext'
-import { CourseFaqs } from './CourseFaqs'
-import { CourseInfo } from './CourseInfo'
-import { CourseRegister } from './CourseRegister'
+import { CourseFaqs } from './Components/CourseFaqs'
+import { CourseInfo } from './Components/CourseInfo'
+import { CourseRegister } from './Components/Register/CourseRegister'
 import { CourseDetailPageProps } from './types'
 import { Container } from '../Container'
 import { Markdown } from '../Markdown'
 import { StripeResult } from '../ProfileSettings/Payment/components/StripeResult'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'
+import {
+  MdArrowForward,
+  MdAttachFile,
+  MdCheck,
+  MdDone,
+  MdTimer,
+} from 'react-icons/md'
+import { CourseLogic } from '@fc/utils'
 
 export const CourseDetailPage: FC<CourseDetailPageProps> = ({
   course,
@@ -40,6 +60,12 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
   })
 
   const applications = data?.data || []
+  const courseLogic = useMemo(
+    () => new CourseLogic(course, applications, profile),
+    [course, applications, profile],
+  )
+
+  /*
   const myApplication = applications.find(
     application => application?.profile?.id === profile?.id,
   )
@@ -57,7 +83,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
            we don't care if the payment fully made, 
            only looking if there is any valid payment
            in case there is a installment...
-          */
+          *
         payment => payment?.status === 'paid',
       )
       if (anyValidPayment) return true
@@ -70,7 +96,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
         so that means application.installmentCount bigger then 0
         but user has not paid any installment yet.
         if this case is valid un-comment the next line
-      */
+      *
     // if (application.installmentCount && application.installmentCount > 0) return true
 
     // Step - 4
@@ -84,6 +110,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
 
     return false
   })
+  */
 
   const title = course[`title_${locale || 'nl'}`]
   const description = course[`description_${locale || 'nl'}`]
@@ -95,9 +122,8 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
       <CourseContext.Provider
         value={{
           course,
-          applications: data?.data || [],
-          myApplication,
-          paidApplications,
+          applications,
+          courseLogic,
           isLoading: isLoading || isLoadingApplications,
           refetchApplicants: refetch,
         }}
@@ -128,6 +154,58 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
           <Box>
             <Markdown source={source} />
           </Box>
+
+          {course.requireApproval && (
+            <Alert
+              status="info"
+              variant="subtle"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              maxWidth={'3xl'}
+              borderWidth={1}
+              borderRadius={'md'}
+              width="full"
+              alignSelf={'center'}
+              p={8}
+            >
+              <AlertIcon boxSize="40px" mr={0} />
+              <AlertTitle mt={4} mb={1} fontSize="lg">
+                Bu kurs, kayda devam edebilmeniz için bazı ön gereksinimler
+                gerektiyor!
+              </AlertTitle>
+              <AlertDescription>
+                <List spacing={3} mt={6} textAlign={'left'}>
+                  <ListItem>
+                    <ListIcon as={MdDone} color="green.500" />
+                    Gereksinimleri ekteki dosyadan öğrenebilirsiniz.
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdTimer} color="blue.500" />
+                    Bu belgeyi 3 gün içinde bize geri gönderin.
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdCheck} color="green.500" />
+                    Belgeyi bize gönderdikten sonra 2 gün içinde size geri dönüş
+                    yapacağız.
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdArrowForward} color="blue.500" />
+                    Ondan sonra kaydınıza devam edebileceksiniz.
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdAttachFile} color="blue.500" />
+                    {['dosya1', 'dosya2'].map(file => (
+                      <Link key={file} href={'#'} mr={2}>
+                        [{file}]{' '}
+                      </Link>
+                    ))}
+                  </ListItem>
+                </List>
+              </AlertDescription>
+            </Alert>
+          )}
 
           <CourseRegister />
 

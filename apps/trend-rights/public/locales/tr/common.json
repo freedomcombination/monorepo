@@ -81,6 +81,8 @@
   "copyright": "{{year}} {{name}}. Tüm hakları saklıdır.",
   "country": "Ülke",
   "course": "Kurs",
+  "course-application.pre-application-message": "Yukarıda belirtilen gereklilikleri tamamladıktan sonra sizinle iletişime geçeceğiz.",
+  "course-application.pre-application-success": "Başvurunuz gönderilmiştir.",
   "course-payments": "Kurs Ödemeleri",
   "course.application-check-out": "Ödeme yap",
   "course.application-closed": "Kayıt kapalı.",

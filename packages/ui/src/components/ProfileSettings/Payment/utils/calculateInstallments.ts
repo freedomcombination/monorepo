@@ -11,16 +11,18 @@ interface Installment {
 
 export const calculateInstallments = (
   installmentCount: number,
-  applicationCreatedAt: string | Date,
+  installmentStartAfter: string | Date,
   price: number,
   successfulPayments: CoursePayment[],
+  installmentInterval = 1,
 ): Installment[] => {
   const installmentDates: Installment[] = []
   const installmentAmount = price / installmentCount
+  installmentInterval = Math.max(1, installmentInterval)
 
   for (let i = 0; i < installmentCount; i++) {
     installmentDates.push({
-      date: addMonths(applicationCreatedAt, i + 1),
+      date: addMonths(installmentStartAfter, i * installmentInterval),
       amount: installmentAmount,
       installmentNumber: i + 1,
       payment: null,

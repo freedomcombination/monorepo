@@ -36,20 +36,24 @@ export const useCourseSchema = () => {
       }
     }),
     */
-    assignmentSubmissionDeadline: yup.number().when('requireApproval', ([requireApproval], schema) => {
-      if (requireApproval) {
-        return schema.min(1).required();
-      } else {
-        return schema.min(0).notRequired();
-      }
-    }),
-    assignmentEvaluationTime: yup.number().when('requireApproval', ([requireApproval], schema) => {
-      if (requireApproval) {
-        return schema.min(1).required();
-      } else {
-        return schema.min(0).notRequired();
-      }
-    }),
+    assignmentSubmissionDeadline: yup
+      .number()
+      .when('requireApproval', ([requireApproval], schema) => {
+        if (requireApproval) {
+          return schema.min(1).required()
+        } else {
+          return schema.min(0).notRequired()
+        }
+      }),
+    assignmentEvaluationTime: yup
+      .number()
+      .when('requireApproval', ([requireApproval], schema) => {
+        if (requireApproval) {
+          return schema.min(1).required()
+        } else {
+          return schema.min(0).notRequired()
+        }
+      }),
   })
 }
 
@@ -118,18 +122,18 @@ export const courseFields: FormFields<Course> = [
   },
   {
     name: 'requireApproval',
-    type: 'boolean'
+    type: 'boolean',
   },
   {
     name: 'assignmentFiles',
-    type: 'file'
+    type: 'file',
   },
   {
     name: 'assignmentSubmissionDeadline',
-    type: 'number-input'
+    type: 'number-input',
   },
   {
     name: 'assignmentEvaluationTime',
-    type: 'number-input'
-  }
+    type: 'number-input',
+  },
 ]

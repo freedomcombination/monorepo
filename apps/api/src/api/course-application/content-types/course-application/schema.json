@@ -67,6 +67,28 @@
       "relation": "oneToMany",
       "target": "api::payment.payment",
       "mappedBy": "courseApplication"
+    },
+    "installmentStartAfter": {
+      "type": "date"
+    },
+    "installmentInterval": {
+      "type": "integer",
+      "default": 1,
+      "min": 1
+    },
+    "submittedAssignmentFiles": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "lastUpdateDate": {
+      "type": "datetime"
     }
   }
 }

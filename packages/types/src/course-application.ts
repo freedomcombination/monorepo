@@ -1,6 +1,7 @@
 import { ApprovalStatus } from './common'
 import { Course } from './course'
 import { CoursePayment } from './course-payment'
+import { UploadFile } from './file'
 import { Profile } from './profile'
 import { StrapiBase } from './strapi'
 
@@ -15,6 +16,9 @@ type CourseApplicationBase = {
   approvalStatus: ApprovalStatus
   notes: string | null
   installmentCount: number | null
+  installmentInterval?: number | null
+  installmentStartAfter?: string | null
+  lastUpdateDate?: string | null
 } & CourseApplicationUnpaid
 
 export type CourseApplicationUnpaid = {
@@ -25,6 +29,7 @@ type CourseApplicationRelation = {
   course?: Course
   profile?: Profile
   payments?: CoursePayment[]
+  submittedAssignmentFiles?: UploadFile[]
 }
 
 export type CourseApplicationCreateInput = Omit<
@@ -33,7 +38,10 @@ export type CourseApplicationCreateInput = Omit<
   | 'approvalStatus'
   | 'notes'
   | 'installmentCount'
+  | 'installmentInterval'
+  | 'installmentStartAfter'
   | 'paymentExplanation'
+  | 'assignmentFilesUploaded'
 > & {
   course: number
   profile: number

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Badge, SimpleGrid, Stack, Text } from '@chakra-ui/react'
-import { isPast } from 'date-fns'
+import { addDays, isPast } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -23,6 +23,28 @@ export const CoursePaymentDetails: FC<{
   const { locale, query } = useRouter()
   const { t } = useTranslation()
   const id = Number(query.id) ?? -1
+
+  if (course.requireApproval && application.approvalStatus !== 'approved') {
+    return (
+      <PaymentLine title="Kurs Gereksinimleri">
+        <Stack>
+          <PaymentLine title="Dosyalar">
+            {course.assignmentFiles?.map(file => <Text>{file.name}</Text>)}
+          </PaymentLine>
+          <PaymentLine title="Teslim tarihi">
+            {formatDate(
+              addDays(
+                application.createdAt,
+                course.assignmentSubmissionDeadline ?? 3,
+              ),
+              'dd MMMM yyyy',
+              locale,
+            )}
+          </PaymentLine>
+        </Stack>
+      </PaymentLine>
+    )
+  }
 
   if (!ALLOW_COURSE_PAYMENT) return
 

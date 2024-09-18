@@ -6,12 +6,12 @@ import { InferType } from 'yup'
 import { Course, CourseApplication, FaqLocale } from '@fc/types'
 
 import { applicationSchema } from './schema'
+import { CourseLogic } from '@fc/utils'
 
 export type CourseContextProps = {
   course: Course
   applications: CourseApplication[]
-  myApplication?: CourseApplication
-  paidApplications?: CourseApplication[]
+  courseLogic: CourseLogic
   isLoading: boolean
   refetchApplicants: () => void
 }

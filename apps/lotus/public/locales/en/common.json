@@ -81,6 +81,8 @@
   "copyright": "{{year}} {{name}}. All rights reserved.",
   "country": "Country",
   "course": "Course",
+  "course-application.pre-application-message": "We will contact you once we have completed the requirements mentioned above.",
+  "course-application.pre-application-success": "Your application has been submitted.",
   "course-payments": "Course Payments",
   "course.application-check-out": "Check Out",
   "course.application-closed": "Registration is closed.",

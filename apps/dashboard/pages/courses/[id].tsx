@@ -22,6 +22,7 @@ import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Course, CourseApplication, Sort, StrapiLocale } from '@fc/types'
 import {
   AdminLayout,
+  CourseApplicationInstallment,
   DataTable,
   ModelEditForm,
   ModelEditModal,
@@ -121,7 +122,9 @@ const CoursePage = () => {
           onClose={handleClose}
           onSuccess={refetch}
           size={'5xl'}
-        />
+        >
+          <CourseApplicationInstallment />
+        </ModelEditModal>
       )}
       <Stack spacing={8} p={6}>
         <Accordion

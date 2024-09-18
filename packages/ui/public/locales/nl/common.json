@@ -81,6 +81,8 @@
   "copyright": "{{year}} {{name}}. Alle rechten voorbehouden.",
   "country": "Land",
   "course": "Cursus",
+  "course-application.pre-application-message": "We nemen contact met je op zodra we aan bovenstaande eisen hebben voldaan.",
+  "course-application.pre-application-success": "Uw aanvraag is ingediend.",
   "course-payments": "Cursusbetalingen",
   "course.application-check-out": "Betalen",
   "course.application-closed": "De inschrijving is gesloten.",
