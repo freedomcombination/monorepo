@@ -48,7 +48,11 @@
     },
     "language": {
       "type": "enumeration",
-      "enum": ["en", "tr", "nl"]
+      "enum": [
+        "en",
+        "tr",
+        "nl"
+      ]
     },
     "instructor": {
       "type": "string"
@@ -66,11 +70,20 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "approvalStatus": {
       "type": "enumeration",
-      "enum": ["approved", "pending", "rejected"]
+      "enum": [
+        "approved",
+        "pending",
+        "rejected"
+      ]
     },
     "startDate": {
       "type": "date"
@@ -108,6 +121,30 @@
     },
     "lastRegisterDate": {
       "type": "datetime"
+    },
+    "requireApproval": {
+      "type": "boolean",
+      "default": false
+    },
+    "assignmentFiles": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "assignmentSubmissionDeadline": {
+      "type": "integer",
+      "min": 0,
+      "default": 2
+    },
+    "assignmentEvaluationTime": {
+      "type": "integer",
+      "default": 2
     }
   }
 }

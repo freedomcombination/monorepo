@@ -1906,6 +1906,17 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     faqs: Attribute.Component<'faq.faq', true>
     curriculum: Attribute.Component<'course.curriculum', true>
     lastRegisterDate: Attribute.DateTime
+    requireApproval: Attribute.Boolean & Attribute.DefaultTo<false>
+    assignmentFiles: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
+    assignmentSubmissionDeadline: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0
+        },
+        number
+      > &
+      Attribute.DefaultTo<2>
+    assignmentEvaluationTime: Attribute.Integer & Attribute.DefaultTo<2>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
