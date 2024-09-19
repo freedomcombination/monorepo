@@ -87,6 +87,7 @@ export const ContactForm = () => {
         />
 
         <Button
+          data-testid="submit-send-message"
           variant="solid"
           type="submit"
           isDisabled={!isValid}
