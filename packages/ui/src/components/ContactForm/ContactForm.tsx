@@ -88,6 +88,7 @@ export const ContactForm = () => {
 
         <Button
           variant="solid"
+          data-testid="submit-send-message"
           type="submit"
           isDisabled={!isValid}
           isLoading={isPending}
