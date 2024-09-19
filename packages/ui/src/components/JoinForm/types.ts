@@ -7,8 +7,8 @@ import { joinSchema } from './schema'
 export type JoinFormFieldValues = InferType<ReturnType<typeof joinSchema>>
 
 export type JoinFormProps = {
-  platforms: Platform[]
-  foundationJobs: Job[]
+  platforms?: Platform[]
+  foundationJobs?: Job[]
   isLoading: boolean
   onSubmitHandler: (data: JoinFormFieldValues) => void
   foundation: Foundation[]

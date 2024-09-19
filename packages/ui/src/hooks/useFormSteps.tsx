@@ -8,6 +8,7 @@ import {
   FormLabel,
   Text,
 } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import {
   FieldErrors,
   UseFormRegister,
@@ -59,7 +60,7 @@ export const useFormSteps = ({
   toggleChangingMedia,
 }: useFormStepsProps) => {
   const { t } = useTranslation()
-
+  const { locale } = useRouter()
   const steps = useMemo(() => {
     return [
       { description: 'Welcome', component: <Text>Welcome to the Form!</Text> },
@@ -92,20 +93,24 @@ export const useFormSteps = ({
             },
           ]
         : []),
-      {
-        description: 'Requirements',
-        component: (
-          <Requirements
-            jobs={initialJobs}
-            selectedJobs={watch('jobs', [])}
-            register={register}
-            errors={errors}
-          />
-        ),
-        fields: [],
-        requiresConfirmation: true,
-        confirmationField: 'requirementsConfirmation',
-      },
+      ...(initialJobs?.map(job => job[`requirements_${locale}`]).length > 0
+        ? [
+            {
+              description: 'Requirements',
+              component: (
+                <Requirements
+                  jobs={initialJobs}
+                  selectedJobs={watch('jobs', [])}
+                  register={register}
+                  errors={errors}
+                />
+              ),
+              fields: [],
+              requiresConfirmation: true,
+              confirmationField: 'requirementsConfirmation',
+            },
+          ]
+        : []),
       {
         description: 'Personal',
         component: <PersonalInfo register={register} errors={errors} />,

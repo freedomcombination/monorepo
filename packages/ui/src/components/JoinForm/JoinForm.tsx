@@ -23,10 +23,10 @@ export const JoinForm: FC<JoinFormProps> = ({
   platforms = [],
   foundationJobs = [],
   foundation,
-  defaultJobs = ['25'],
+  defaultJobs = [],
 }) => {
   const { t } = useTranslation()
-
+  // TODO add translate
   const [selectedFields, setSelectedFields] = useState(
     {} as JoinFormFieldValues,
   )
@@ -58,7 +58,7 @@ export const JoinForm: FC<JoinFormProps> = ({
       isPublic: false,
       availableHours: 0,
       heardFrom: [],
-      cv: '',
+      cv: undefined,
       foundationConfirmation: false,
       requirementsConfirmation: false,
     },
@@ -143,22 +143,24 @@ export const JoinForm: FC<JoinFormProps> = ({
     const isStepValid = await trigger(currentStepFields)
 
     const confirmationField = steps[activeStep]?.confirmationField
-    console.log('confirmationField', confirmationField)
-    console.log(
-      'watch(confirmationField)',
-      watch(confirmationField as keyof JoinFormFieldValues),
-    )
-    if (
-      steps[activeStep]?.requiresConfirmation &&
-      confirmationField &&
-      !watch(confirmationField as keyof JoinFormFieldValues)
-    ) {
-      return
+    const requiresConfirmation = steps[activeStep]?.requiresConfirmation
+
+    if (requiresConfirmation && confirmationField) {
+      const isConfirmed = watch(confirmationField as keyof JoinFormFieldValues)
+
+      if (!isConfirmed) {
+        setValue(confirmationField as keyof JoinFormFieldValues, false, {
+          shouldValidate: true,
+        })
+
+        return
+      }
     }
 
     if (!isStepValid) {
       return
     }
+
     setActiveStep(activeStep + 1)
   }
 

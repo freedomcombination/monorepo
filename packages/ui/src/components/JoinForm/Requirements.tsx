@@ -82,49 +82,39 @@ export const Requirements: FC<RequirementsProps> = ({
         return (
           <Box key={job?.id}>
             {
-              // Check if jobName is empty
-              jobRequirements?.length > 0 || jobResponsibilities?.length > 0 ? (
-                <>
-                  <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
-                    {jobName}
-                  </Heading>
-                  {/* Render richText block */}
-                  <Text fontWeight={600} fontSize="sm">
-                    Requirements
-                  </Text>
-                  {jobRequirements?.map((block: any, idx: number) => (
-                    <Box key={idx}>{renderRichTextBlock(block)}</Box>
-                  ))}
-                  <Text fontWeight={600} fontSize="sm">
-                    Responsibilities
-                  </Text>
-                  {jobResponsibilities?.map((block: any, idx: number) => (
-                    <Box key={idx}>{renderRichTextBlock(block)}</Box>
-                  ))}
-                  <FormControl
-                    isRequired
-                    isInvalid={!!errors?.requirementsConfirmation}
+              <>
+                <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
+                  {jobName}
+                </Heading>
+                {/* Render richText block */}
+                <Text fontWeight={600} fontSize="sm">
+                  Requirements
+                </Text>
+                {jobRequirements?.map((block: any, idx: number) => (
+                  <Box key={idx}>{renderRichTextBlock(block)}</Box>
+                ))}
+                <Text fontWeight={600} fontSize="sm">
+                  Responsibilities
+                </Text>
+                {jobResponsibilities?.map((block: any, idx: number) => (
+                  <Box key={idx}>{renderRichTextBlock(block)}</Box>
+                ))}
+                <FormControl
+                  isRequired
+                  isInvalid={!!errors?.requirementsConfirmation}
+                >
+                  <Checkbox
+                    {...register('requirementsConfirmation', {
+                      required: 'You must accept the Requirements information',
+                    })}
                   >
-                    <Checkbox
-                      {...register('requirementsConfirmation', {
-                        required:
-                          'You must accept the Requirements information',
-                      })}
-                    >
-                      {t('I have read and accept the requirements information')}
-                    </Checkbox>
-                    <FormErrorMessage>
-                      {errors?.requirementsConfirmation?.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                </>
-              ) : (
-                <>
-                  <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
-                    {jobName} doesn't have any requirements or responsibilities
-                  </Heading>
-                </>
-              )
+                    {t('I have read and accept the requirements information')}
+                  </Checkbox>
+                  <FormErrorMessage>
+                    {errors?.requirementsConfirmation?.message}
+                  </FormErrorMessage>
+                </FormControl>
+              </>
             }
           </Box>
         )
