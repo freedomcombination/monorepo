@@ -39,7 +39,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({
       <Wrapper>
         <ButtonLink
           href={loginHref}
-          data-testid={`link-${isMobile ? 'm' : 'd'}-login`}
+          data-testid={`link-${isMobile ? 'm' : 'd'}/login`}
           size="sm"
           isLoading={isLoading}
           variant={!isScrolled && isDark ? 'solid' : 'outline'}
@@ -69,7 +69,7 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({
       </MenuButton>
       <MenuList>
         <MenuItem
-          data-testid={`link-${isMobile ? 'm' : 'd'}-profile`}
+          data-testid={`link-${isMobile ? 'm' : 'd'}/profile`}
           as={Link}
           href={'/profile'}
         >
