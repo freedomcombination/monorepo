@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Stack } from '@chakra-ui/react'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
+import { GeneralInfo } from './GeneralInfo'
 import { JoinFormFieldValues } from './types'
 import { FormItem } from '../FormItem'
 
@@ -54,17 +55,12 @@ export const PersonalInfo: FC<PersonalInfoProps> = ({ register, errors }) => {
       <FormItem
         register={register}
         errors={errors}
-        id="occupation"
-        name="occupation"
-      />
-      <FormItem
-        register={register}
-        errors={errors}
         id="city"
         name="city"
         autoComplete="city"
         isRequired
       />
+      <GeneralInfo register={register} errors={errors} />
     </>
   )
 }

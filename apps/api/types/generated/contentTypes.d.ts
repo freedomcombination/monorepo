@@ -2287,12 +2287,9 @@ export interface ApiJobJob extends Schema.CollectionType {
       'manyToOne',
       'api::platform.platform'
     >
-    responsibilities_tr: Attribute.Blocks
-    responsibilities_nl: Attribute.Blocks
-    responsibilities_en: Attribute.Blocks
-    requirements_nl: Attribute.Blocks
-    requirements_tr: Attribute.Blocks
-    requirements_en: Attribute.Blocks
+    info_tr: Attribute.Blocks
+    info_nl: Attribute.Blocks
+    info_en: Attribute.Blocks
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &

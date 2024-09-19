@@ -40,7 +40,7 @@ export const joinSchema = () => {
       .boolean()
       .oneOf([true], 'You must accept the Foundation information')
       .required(),
-    requirementsConfirmation: yup
+    jobInfoConfirmation: yup
       .boolean()
       .oneOf([true], 'You have to accept to rules')
       .required(),

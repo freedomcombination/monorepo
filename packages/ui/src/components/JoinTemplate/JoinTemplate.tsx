@@ -105,7 +105,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
       console.error('Submit volunteer form error', error)
     }
   }
-  const defaultJobs = ['25']
+  const defaultJobs = []
 
   return (
     <Container>
@@ -138,7 +138,6 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
       ) : (
         <>
           <PageTitle>{title}</PageTitle>
-
           <Stack spacing={4}>
             <Alert rounded="md">
               <Link
@@ -160,7 +159,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
               platforms={platforms}
               foundationJobs={foundationJobs}
               foundation={foundation}
-              defaultJobs={defaultJobs}
+              // defaultJobs={defaultJobs}
             />
           </Stack>
         </>

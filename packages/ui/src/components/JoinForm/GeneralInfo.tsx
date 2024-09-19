@@ -8,7 +8,6 @@ import {
   Text,
   Wrap,
   Checkbox,
-  Textarea,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -16,7 +15,6 @@ import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { heardFrom } from './data'
 import { JoinFormFieldValues } from './types'
-import { FormItem } from '../FormItem'
 
 export type GeneralInfoProps = {
   register: UseFormRegister<JoinFormFieldValues>
@@ -73,14 +71,6 @@ export const GeneralInfo: FC<GeneralInfoProps> = ({ register, errors }) => {
           </Text>
         )}
       </Box>
-      {/* comment */}
-      <FormItem
-        as={Textarea}
-        register={register}
-        errors={errors}
-        id="comment"
-        name="comment"
-      />
     </>
   )
 }

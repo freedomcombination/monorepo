@@ -1,12 +1,13 @@
 import { useMemo } from 'react'
 
 import {
-  Box,
   Button,
   ButtonGroup,
   FormControl,
   FormLabel,
+  Stack,
   Text,
+  Textarea,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import {
@@ -19,12 +20,11 @@ import { useTranslation } from 'react-i18next'
 
 import { Foundation, Job, Platform, StrapiModel } from '@fc/types'
 
-import { JoinFormFieldValues } from '../components'
+import { FormItem, JoinFormFieldValues } from '../components'
 import { FoundationInfo } from '../components/JoinForm/FoundationInfo'
-import { GeneralInfo } from '../components/JoinForm/GeneralInfo'
+import { JobInfo } from '../components/JoinForm/JobInfo'
 import { PersonalInfo } from '../components/JoinForm/PersonalInfo'
 import { PreviewVolunteerForm } from '../components/JoinForm/PreviewVolunteerForm'
-import { Requirements } from '../components/JoinForm/Requirements'
 import { SelectJobs } from '../components/JoinForm/SelectJobs'
 import { ModelMedia } from '../components/ModelMedia'
 
@@ -46,7 +46,6 @@ type useFormStepsProps = {
 
 export const useFormSteps = ({
   defaultJobs,
-  initialJobs,
   foundationJobs,
   platforms,
   foundation,
@@ -54,13 +53,14 @@ export const useFormSteps = ({
   errors,
   isLoading,
   selectedFields,
-  watch,
   getData,
   setValue,
   toggleChangingMedia,
 }: useFormStepsProps) => {
   const { t } = useTranslation()
   const { locale } = useRouter()
+
+  const selectedJobs = getData().jobs
   const steps = useMemo(() => {
     return [
       { description: 'Welcome', component: <Text>Welcome to the Form!</Text> },
@@ -93,21 +93,20 @@ export const useFormSteps = ({
             },
           ]
         : []),
-      ...(initialJobs?.map(job => job[`requirements_${locale}`]).length > 0
+      ...(selectedJobs?.some(job => job[`info_${locale}`])
         ? [
             {
-              description: 'Requirements',
+              description: 'Job Info',
               component: (
-                <Requirements
-                  jobs={initialJobs}
-                  selectedJobs={watch('jobs', [])}
+                <JobInfo
+                  selectedJobs={selectedJobs}
                   register={register}
                   errors={errors}
                 />
               ),
               fields: [],
               requiresConfirmation: true,
-              confirmationField: 'requirementsConfirmation',
+              confirmationField: 'jobInfoConfirmation',
             },
           ]
         : []),
@@ -115,12 +114,6 @@ export const useFormSteps = ({
         description: 'Personal',
         component: <PersonalInfo register={register} errors={errors} />,
         fields: ['name', 'email', 'phone', 'availableHours', 'age', 'city'],
-      },
-
-      {
-        description: 'General',
-        component: <GeneralInfo errors={errors} register={register} />,
-        fields: [],
       },
       {
         description: 'Upload',
@@ -148,8 +141,19 @@ export const useFormSteps = ({
       {
         description: 'Summary',
         component: (
-          <Box>
-            <Text>You completed the volunteer form.</Text>
+          <Stack spacing={4}>
+            <Text>
+              You completed the volunteer form. If you want to add one, we would
+              to hear from you.
+            </Text>
+            {/* comment */}
+            <FormItem
+              as={Textarea}
+              register={register}
+              errors={errors}
+              id="comment"
+              name="comment"
+            />
             <ButtonGroup
               size={'sm'}
               overflowX={'auto'}
@@ -161,25 +165,25 @@ export const useFormSteps = ({
                 {t('submit')}
               </Button>
             </ButtonGroup>
-          </Box>
+          </Stack>
         ),
       },
     ]
   }, [
-    initialJobs,
-    defaultJobs,
     foundation,
-    foundationJobs,
-    platforms,
     register,
     errors,
-    isLoading,
-    selectedFields,
-    watch,
-    getData,
-    t,
+    defaultJobs?.length,
+    foundationJobs,
+    platforms,
+    selectedJobs,
     setValue,
     toggleChangingMedia,
+    selectedFields,
+    getData,
+    isLoading,
+    t,
+    locale,
   ])
 
   return steps

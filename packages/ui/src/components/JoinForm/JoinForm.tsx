@@ -34,7 +34,7 @@ export const JoinForm: FC<JoinFormProps> = ({
     [foundationJobs?.flat(), platforms?.map(platform => platform.jobs).flat()]
       .flat()
       .filter((job): job is Job => job !== undefined) || []
-  console.log('hideFields', defaultJobs)
+
   const {
     register,
     handleSubmit,
@@ -60,10 +60,20 @@ export const JoinForm: FC<JoinFormProps> = ({
       heardFrom: [],
       cv: undefined,
       foundationConfirmation: false,
-      requirementsConfirmation: false,
+      jobInfoConfirmation: false,
     },
   })
-  console.log('defaultValues', defaultValues)
+
+  const getSelectedJobs = () => {
+    const formJobs = watch('jobs', [])
+
+    const selectedJobsIDs = formJobs && formJobs?.map(jobId => Number(jobId))
+    const selectedJobs = initialJobs?.filter(job =>
+      selectedJobsIDs.includes(job?.id),
+    )
+
+    return selectedJobs
+  }
 
   const getData = () => {
     const selectedJobFields = getSelectedJobs()
@@ -73,7 +83,9 @@ export const JoinForm: FC<JoinFormProps> = ({
       ...volunteerFormData,
       jobs: selectedJobFields,
     }
-    setSelectedFields(data)
+    if (JSON.stringify(selectedFields) !== JSON.stringify(data)) {
+      setSelectedFields(data)
+    }
 
     return data
   }
@@ -162,17 +174,6 @@ export const JoinForm: FC<JoinFormProps> = ({
     }
 
     setActiveStep(activeStep + 1)
-  }
-
-  const getSelectedJobs = () => {
-    const formJobs = watch('jobs', [])
-
-    const selectedJobsIDs = formJobs && formJobs?.map(jobId => Number(jobId))
-    const selectedJobs = initialJobs?.filter(job =>
-      selectedJobsIDs.includes(job?.id),
-    )
-
-    return selectedJobs
   }
 
   console.log('errors', errors)
