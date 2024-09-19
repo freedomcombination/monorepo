@@ -1,6 +1,7 @@
-import { Course, CourseApplication, CoursePayment, Profile } from '@fc/types'
 import { addDays, endOfDay, isPast } from 'date-fns'
 import { addMonths } from 'date-fns/addMonths'
+
+import { Course, CourseApplication, CoursePayment, Profile } from '@fc/types'
 
 interface Installment {
   date: Date
@@ -63,7 +64,7 @@ export class CourseLogic {
       const dueDate = addDays(
         application.createdAt,
         this.course.assignmentSubmissionDeadline ??
-        DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE,
+          DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE,
       )
       const endOfDueDate = endOfDay(dueDate)
 
@@ -78,17 +79,17 @@ export class CourseLogic {
     // Step 2 - check if applicant send files but didn't receive any approvement
     const dueEvalDate = application.lastUpdateDate
       ? addDays(
-        application.lastUpdateDate,
-        this.course.assignmentEvaluationTime ??
-        DEFAULT_ASSIGNMENT_EVALUATION_TIME,
-      )
+          application.lastUpdateDate,
+          this.course.assignmentEvaluationTime ??
+            DEFAULT_ASSIGNMENT_EVALUATION_TIME,
+        )
       : addDays(
-        application.createdAt,
-        (this.course.assignmentSubmissionDeadline ??
-          DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE) +
-        (this.course.assignmentEvaluationTime ??
-          DEFAULT_ASSIGNMENT_EVALUATION_TIME),
-      )
+          application.createdAt,
+          (this.course.assignmentSubmissionDeadline ??
+            DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE) +
+            (this.course.assignmentEvaluationTime ??
+              DEFAULT_ASSIGNMENT_EVALUATION_TIME),
+        )
 
     const endOfDueEvalDate = endOfDay(dueEvalDate)
 
@@ -176,7 +177,7 @@ export class CourseLogic {
   calculateInstallments = (): Installment[] => {
     if (!this.course || !this.course.price || !this.myApplication) return []
 
-    const price = this.course.price
+    const price = this.course.price - (this.myApplication.discount ?? 0)
     const installmentCount = this.myApplication.installmentCount || 1
     const installmentStartAfter =
       this.myApplication.installmentStartAfter ?? this.myApplication.createdAt
@@ -189,7 +190,12 @@ export class CourseLogic {
         payment => payment.status === 'paid',
       ) ?? []
     const installmentDates: Installment[] = []
-    const installmentAmount = price / installmentCount
+    const soFarPayment = successfulPayments.reduce(
+      (acc, payment) => acc + payment.amount,
+      0,
+    )
+    const installmentAmount =
+      (price - soFarPayment) / (installmentCount - successfulPayments.length)
 
     for (let i = 0; i < installmentCount; i++) {
       installmentDates.push({
@@ -203,6 +209,7 @@ export class CourseLogic {
     for (const payment of successfulPayments) {
       const installmentIndex = payment.installmentNumber - 1
       installmentDates[installmentIndex].payment = payment
+      installmentDates[installmentIndex].amount = payment.amount
     }
 
     return installmentDates

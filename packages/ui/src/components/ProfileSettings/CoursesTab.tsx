@@ -23,9 +23,9 @@ import { useStrapiRequest } from '@fc/services'
 import { CourseApplication } from '@fc/types'
 
 import { CoursePaymentDetails } from './Payment/components/CoursePaymentDetails'
-import { PaymentLine } from './Payment/components/PaymentLine'
 import { StripeResult } from './Payment/components/StripeResult'
 import { GetGeneralStatus } from './Payment/utils/getGeneralStatus'
+import { KeyValue } from '../KeyValueView'
 
 export const CoursesTab: FC = () => {
   const { profile } = useAuthContext()
@@ -104,7 +104,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
         <Box as="span" flex="1" textAlign="left">
           <VStack alignItems={'flex-start'}>
             <Text fontWeight={600}>{title}</Text>
-            <PaymentLine
+            <KeyValue
               title={
                 <Badge colorScheme={status.color} variant={'outline'}>
                   {t('status')}
@@ -112,18 +112,18 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
               }
             >
               <Text>{status.message}</Text>
-            </PaymentLine>
+            </KeyValue>
           </VStack>
         </Box>
         <AccordionIcon />
       </AccordionButton>
       <AccordionPanel pr={4} overflow={'auto'}>
         <VStack alignItems={'flex-start'} gap={4}>
-          <PaymentLine title={t('course.payment.title.course-page')}>
+          <KeyValue tKey={'course.payment.title.course-page'}>
             <Link href={`courses/${course.slug}`}>
               {t('course.payment.title.go-to-course')}
             </Link>
-          </PaymentLine>
+          </KeyValue>
           <CoursePaymentDetails application={application} course={course} />
         </VStack>
       </AccordionPanel>

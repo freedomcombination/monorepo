@@ -18,6 +18,7 @@ type CourseApplicationBase = {
   installmentCount: number | null
   installmentInterval?: number | null
   installmentStartAfter?: string | null
+  discount?: number | null
   lastUpdateDate?: string | null
 } & CourseApplicationUnpaid
 

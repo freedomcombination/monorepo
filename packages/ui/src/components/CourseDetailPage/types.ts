@@ -4,9 +4,9 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { InferType } from 'yup'
 
 import { Course, CourseApplication, FaqLocale } from '@fc/types'
+import { CourseLogic } from '@fc/utils'
 
 import { applicationSchema } from './schema'
-import { CourseLogic } from '@fc/utils'
 
 export type CourseContextProps = {
   course: Course

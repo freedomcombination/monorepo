@@ -18,10 +18,10 @@ import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationCreateInput } from '@fc/types'
 
-import { applicationSchema } from '../../schema'
-import { useCourseContext } from '../../useCourseContext'
-import { ApplicationFormFields } from '../../types'
 import { FormItem } from '../../../FormItem'
+import { applicationSchema } from '../../schema'
+import { ApplicationFormFields } from '../../types'
+import { useCourseContext } from '../../useCourseContext'
 
 export const CourseApplicationForm: FC = () => {
   const { t } = useTranslation()

@@ -89,6 +89,9 @@
     },
     "lastUpdateDate": {
       "type": "datetime"
+    },
+    "discount": {
+      "type": "decimal"
     }
   }
 }

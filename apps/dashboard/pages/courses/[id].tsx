@@ -22,7 +22,7 @@ import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Course, CourseApplication, Sort, StrapiLocale } from '@fc/types'
 import {
   AdminLayout,
-  CourseApplicationInstallment,
+  CourseApplicationDetails,
   DataTable,
   ModelEditForm,
   ModelEditModal,
@@ -123,7 +123,15 @@ const CoursePage = () => {
           onSuccess={refetch}
           size={'5xl'}
         >
-          <CourseApplicationInstallment />
+          <CourseApplicationDetails
+            course={course!}
+            application={
+              applications.find(
+                application => application.id === selectedApplicationId,
+              )!
+            }
+            onSave={() => applicationsQuery.refetch()}
+          />
         </ModelEditModal>
       )}
       <Stack spacing={8} p={6}>

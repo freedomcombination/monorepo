@@ -15,22 +15,6 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-
-import { SITE_URL } from '@fc/config'
-import { useAuthContext } from '@fc/context'
-import { useStrapiRequest } from '@fc/services'
-import { CourseApplication } from '@fc/types'
-
-import { CourseContext } from './CourseContext'
-import { CourseFaqs } from './Components/CourseFaqs'
-import { CourseInfo } from './Components/CourseInfo'
-import { CourseRegister } from './Components/Register/CourseRegister'
-import { CourseDetailPageProps } from './types'
-import { Container } from '../Container'
-import { Markdown } from '../Markdown'
-import { StripeResult } from '../ProfileSettings/Payment/components/StripeResult'
-import { ShareButtons } from '../ShareButtons'
-import { WImage } from '../WImage'
 import {
   MdArrowForward,
   MdAttachFile,
@@ -38,7 +22,23 @@ import {
   MdDone,
   MdTimer,
 } from 'react-icons/md'
+
+import { SITE_URL } from '@fc/config'
+import { useAuthContext } from '@fc/context'
+import { useStrapiRequest } from '@fc/services'
+import { CourseApplication } from '@fc/types'
 import { CourseLogic } from '@fc/utils'
+
+import { CourseFaqs } from './Components/CourseFaqs'
+import { CourseInfo } from './Components/CourseInfo'
+import { CourseRegister } from './Components/Register/CourseRegister'
+import { CourseContext } from './CourseContext'
+import { CourseDetailPageProps } from './types'
+import { Container } from '../Container'
+import { Markdown } from '../Markdown'
+import { StripeResult } from '../ProfileSettings/Payment/components/StripeResult'
+import { ShareButtons } from '../ShareButtons'
+import { WImage } from '../WImage'
 
 export const CourseDetailPage: FC<CourseDetailPageProps> = ({
   course,

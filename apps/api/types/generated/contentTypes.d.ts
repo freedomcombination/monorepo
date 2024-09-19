@@ -1992,6 +1992,7 @@ export interface ApiCourseApplicationCourseApplication
       true
     >
     lastUpdateDate: Attribute.DateTime
+    discount: Attribute.Decimal
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

@@ -1,1 +1,1 @@
-export * from './CourseApplicationInstallment'
+export * from './CourseApplicationDetails'

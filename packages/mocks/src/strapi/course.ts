@@ -149,7 +149,6 @@ export const COURSE_MOCKS: StrapiCollectionResponse<Course[]> = {
           updatedAt: '2023-04-11T09:20:28.399Z',
           publishedAt: '2023-04-11T09:20:28.393Z',
           notes: null,
-
         },
         {
           id: 4,

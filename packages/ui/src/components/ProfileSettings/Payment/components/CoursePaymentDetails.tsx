@@ -10,7 +10,7 @@ import { Course, CourseApplication } from '@fc/types'
 import { formatDate, formatPrice } from '@fc/utils'
 
 import { PaymentButton } from './PaymentButton'
-import { PaymentLine } from './PaymentLine'
+import { KeyValue } from '../../../KeyValueView'
 import { calculateInstallments } from '../utils/calculateInstallments'
 import { calculateRemainingPrice } from '../utils/calculateRemainingPrice'
 
@@ -26,12 +26,12 @@ export const CoursePaymentDetails: FC<{
 
   if (course.requireApproval && application.approvalStatus !== 'approved') {
     return (
-      <PaymentLine title="Kurs Gereksinimleri">
+      <KeyValue title="Kurs Gereksinimleri">
         <Stack>
-          <PaymentLine title="Dosyalar">
+          <KeyValue title="Dosyalar">
             {course.assignmentFiles?.map(file => <Text>{file.name}</Text>)}
-          </PaymentLine>
-          <PaymentLine title="Teslim tarihi">
+          </KeyValue>
+          <KeyValue title="Teslim tarihi">
             {formatDate(
               addDays(
                 application.createdAt,
@@ -40,9 +40,9 @@ export const CoursePaymentDetails: FC<{
               'dd MMMM yyyy',
               locale,
             )}
-          </PaymentLine>
+          </KeyValue>
         </Stack>
-      </PaymentLine>
+      </KeyValue>
     )
   }
 
@@ -53,9 +53,9 @@ export const CoursePaymentDetails: FC<{
   const remainingPrice = calculateRemainingPrice(course, application)
   if (remainingPrice === 0) {
     return (
-      <PaymentLine title={t('course.payment.title.total-payment')}>
+      <KeyValue tKey={'course.payment.title.total-payment'}>
         <Text>{`${formatPrice(course.price)} euro`}</Text>
-      </PaymentLine>
+      </KeyValue>
     )
   }
 
@@ -63,14 +63,14 @@ export const CoursePaymentDetails: FC<{
 
   if (installmentCount === SINGLE_INSTALLMENT) {
     return (
-      <PaymentLine title={t('course.payment.title.pay')}>
+      <KeyValue tKey={'course.payment.title.pay'}>
         <PaymentButton
           amount={remainingPrice}
           installmentNumber={1}
           application={application}
           course={course}
         />
-      </PaymentLine>
+      </KeyValue>
     )
   }
 
@@ -107,11 +107,11 @@ export const CoursePaymentDetails: FC<{
   return (
     <>
       {paidInstallments.length > 0 && (
-        <PaymentLine title={t('course.payment.title.installment-paid')}>
+        <KeyValue tKey={'course.payment.title.installment-paid'}>
           <Stack>
             {paidInstallments.map(
               ({ date, amount, installmentNumber, payment }) => (
-                <PaymentLine
+                <KeyValue
                   key={installmentNumber}
                   title={
                     <Badge
@@ -130,14 +130,14 @@ export const CoursePaymentDetails: FC<{
                       amount: formatPrice(amount),
                     })}
                   </Text>
-                </PaymentLine>
+                </KeyValue>
               ),
             )}
           </Stack>
-        </PaymentLine>
+        </KeyValue>
       )}
       {pastInstallments.length > 0 && (
-        <PaymentLine title={t('course.payment.title.installment-overdue')}>
+        <KeyValue tKey={'course.payment.title.installment-overdue'}>
           <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
             {pastInstallments.map(({ date, amount, installmentNumber }) => (
               <PaymentButton
@@ -150,10 +150,10 @@ export const CoursePaymentDetails: FC<{
               />
             ))}
           </SimpleGrid>
-        </PaymentLine>
+        </KeyValue>
       )}
       {unpaidInstallments.length > 0 && (
-        <PaymentLine title={t('course.payment.title.installment-unpaid')}>
+        <KeyValue tKey={'course.payment.title.installment-unpaid'}>
           <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
             {unpaidInstallments.map(({ date, amount, installmentNumber }) => (
               <PaymentButton
@@ -166,7 +166,7 @@ export const CoursePaymentDetails: FC<{
               />
             ))}
           </SimpleGrid>
-        </PaymentLine>
+        </KeyValue>
       )}
     </>
   )
