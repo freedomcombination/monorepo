@@ -65,7 +65,11 @@ export const useChangeParams = () => {
       if (isEqual(query, newQuery)) {
         return
       }
-      
+      // change page number to 1 when categories selected.
+      if (args.categories) {
+        sanitizedArgs.page = 1
+      }
+
       push({ query: newQuery })
     },
     [query, push],
