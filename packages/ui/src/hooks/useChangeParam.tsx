@@ -43,9 +43,6 @@ export const useChangeParams = () => {
       for (const key in args) {
         const param = args[key]
         
-        if (args['categories']) {
-          args['page'] = 1
-        }
         if (isEmpty(param)) {
           delete draft[key]
         }
