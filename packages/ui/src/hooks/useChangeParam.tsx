@@ -62,14 +62,16 @@ export const useChangeParams = () => {
       // TODO: Remove existing page query if other params are changed
       const newQuery = { ...sanitizedQuery, ...sanitizedArgs }
 
+      const newArgs = {...sanitizedArgs}
+
       if (isEqual(query, newQuery)) {
         return
       }
-      // change page number to 1 when categories selected.
-      if (args.categories) {
-        sanitizedArgs.page = 1
+      // if there is any new parameters delete page parameter
+      if (Object.keys(newArgs).length > 0) {
+        newArgs.page = undefined
       }
-
+      
       push({ query: newQuery })
     },
     [query, push],
