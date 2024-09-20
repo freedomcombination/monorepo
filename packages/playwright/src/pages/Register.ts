@@ -45,7 +45,6 @@ export class RegisterPage {
     await this.usernameInput.fill(username)
     await this.emailInput.fill(email)
     await this.passwordInput.fill(password)
-
     await this.submitButton.click()
   }
 }

@@ -68,7 +68,6 @@ test('TC-04: should Negative flow (login with invalid information)', async ({
   const { name, username, email, password } = generateRandomUser()
 
   await registerPage.register({ name, username, email, password })
-
   await page.click('button:has-text("TR")')
 
   await page.getByTestId('link-d/login').click() // Go to login page
