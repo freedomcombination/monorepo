@@ -3,7 +3,7 @@ import React from 'react'
 import { render } from '@react-email/render'
 
 import VolunteerApplied from './VolunteerApplied'
-import { Site, Art, Profile, StrapiLocale, Course } from '@fc/types'
+import type { Site, Art, Profile, StrapiLocale, Course } from '@fc/types'
 import ArtCreated from './ArtCreated'
 import ForgotPassword from './ForgotPassword'
 import CourseApplicantWithoutPayment from './CourseApplicantWithoutPayment'

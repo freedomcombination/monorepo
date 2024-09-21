@@ -2,10 +2,11 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale, Timeline } from '@fc/types'
-import { AdminLayout, TimelineBoard } from '@fc/ui'
+import type { StrapiLocale, Timeline } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { TimelineBoard } from '@fc/ui/components/TimelineBoard'
 
 const Timelines = () => {
   const { locale } = useRouter()

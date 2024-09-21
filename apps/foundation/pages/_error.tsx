@@ -2,7 +2,7 @@ import * as Sentry from '@sentry/nextjs'
 import { NextPage } from 'next'
 import Error, { ErrorProps } from 'next/error'
 
-import { Layout } from '../components'
+import { Layout } from '../components/Layout'
 
 const CustomErrorComponent: NextPage<ErrorProps> = props => {
   return (

@@ -19,11 +19,13 @@ import { useTranslation } from 'next-i18next'
 import { AiOutlineClear } from 'react-icons/ai'
 import { FaSyncAlt } from 'react-icons/fa'
 
-import { useAuthContext } from '@fc/context'
-import { useTopic, useTopicSync } from '@fc/services'
+import { useAuthContext } from '@fc/context/auth'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { AdminLayout, PageHeader, TopicCard } from '@fc/ui'
+import { useTopic, useTopicSync } from '@fc/services/topics'
+import type { StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import { TopicCard } from '@fc/ui/components/TopicCard'
 
 const NewsPage = () => {
   const { checkActionsPermission } = useAuthContext()

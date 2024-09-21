@@ -4,13 +4,13 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetStaticPropsType } from 'next'
 import { NextSeoProps } from 'next-seo'
 
-import { SITE_URL } from '@fc/config'
+import { SITE_URL } from '@fc/config/constants'
 import { getSession } from '@fc/secrets'
-import { getArtBySlug } from '@fc/services'
+import { getArtBySlug } from '@fc/services/art/getBySlug'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Art, StrapiLocale } from '@fc/types'
-import { ArtTemplate } from '@fc/ui'
-import { mapStrapiMediaToOgImages } from '@fc/utils'
+import type { Art, StrapiLocale } from '@fc/types'
+import { ArtTemplate } from '@fc/ui/components/ArtTemplate'
+import { mapStrapiMediaToOgImages } from '@fc/utils/mapStrapiMediaToOgImages'
 
 import { Layout } from '../../../components'
 

@@ -1,3 +1,3 @@
-import { logoutHandler } from '@fc/services/src/api/logoutHandler'
+import { logoutHandler } from '@fc/services/api/logoutHandler'
 
 export default logoutHandler

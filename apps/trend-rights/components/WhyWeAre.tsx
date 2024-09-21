@@ -13,9 +13,12 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
 
-import { BLOG_CATEGORIES } from '@fc/config'
-import { Blog } from '@fc/types'
-import { AnimatedBox, BlogCard, Container, Hero } from '@fc/ui'
+import { BLOG_CATEGORIES } from '@fc/config/constants'
+import type { Blog } from '@fc/types'
+import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
+import { BlogCard } from '@fc/ui/components/BlogCard'
+import { Container } from '@fc/ui/components/Container'
+import { Hero } from '@fc/ui/components/Hero'
 
 type WhyWeAreProps = {
   seo: NextSeoProps

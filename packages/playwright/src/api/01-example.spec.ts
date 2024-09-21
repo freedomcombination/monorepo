@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import { expect } from '@playwright/test'
 
-import { Art, Post, Tag, TagCreateInput } from '@fc/types'
+import type { Art, Post, Tag, TagCreateInput } from '@fc/types'
 
 import { API_TOKEN } from '../constants'
 import { test } from '../fixtures'

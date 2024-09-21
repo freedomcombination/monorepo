@@ -3,11 +3,12 @@ import { FC } from 'react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { strapiRequest } from '@fc/lib'
+import { strapiRequest } from '@fc/lib/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Presentation, StrapiLocale } from '@fc/types'
-import { Hero, PresentationTemplate } from '@fc/ui'
-import { getLocalizedSlugs } from '@fc/utils'
+import type { Presentation, StrapiLocale } from '@fc/types'
+import { Hero } from '@fc/ui/components/Hero'
+import { PresentationTemplate } from '@fc/ui/components/PresentationTemplate'
+import { getLocalizedSlugs } from '@fc/utils/getLocalizedSlugs'
 
 import { Layout } from '../components/index'
 

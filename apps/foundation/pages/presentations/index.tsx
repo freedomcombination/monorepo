@@ -5,12 +5,15 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { strapiRequest } from '@fc/lib'
+import { strapiRequest } from '@fc/lib/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Presentation, StrapiLocale, UploadFile } from '@fc/types'
-import { AnimatedBox, Card, FormattedDate, Hero } from '@fc/ui'
+import type { Presentation, StrapiLocale, UploadFile } from '@fc/types'
+import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
+import { Card } from '@fc/ui/components/Card'
+import { FormattedDate } from '@fc/ui/components/FormattedDate'
+import { Hero } from '@fc/ui/components/Hero'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 type PresentationsProps = InferGetStaticPropsType<typeof getStaticProps>
 

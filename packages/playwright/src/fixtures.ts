@@ -13,7 +13,7 @@ import {
   LoginPage,
   ProfilePage,
   RegisterPage,
-} from './pages/index'
+} from './pages'
 
 type ExtendProps = {
   artsPage: ArtsPage

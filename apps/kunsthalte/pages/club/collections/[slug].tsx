@@ -3,11 +3,12 @@ import { FC, useEffect, useRef, useState } from 'react'
 import { useBreakpointValue } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
-import { getCollectionBySlug, getModelStaticPaths } from '@fc/services'
+import { getCollectionBySlug } from '@fc/services/collection/getBySlug'
+import { getModelStaticPaths } from '@fc/services/common/staticPaths'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { CollectionTemplate } from '@fc/ui'
-import { getLocalizedSlugs } from '@fc/utils'
+import type { StrapiLocale } from '@fc/types'
+import { CollectionTemplate } from '@fc/ui/components/CollectionTemplate'
+import { getLocalizedSlugs } from '@fc/utils/getLocalizedSlugs'
 
 import { Layout } from '../../../components/Layout'
 

@@ -3,9 +3,10 @@ import { FC } from 'react'
 import { SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import { ABOUT_DATA } from '@fc/config'
-import { Localize } from '@fc/types'
-import { AnimatedBox, WImage } from '@fc/ui'
+import { ABOUT_DATA } from '@fc/config/data'
+import type { Localize } from '@fc/types'
+import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
+import { WImage } from '@fc/ui/components/WImage'
 
 type AboutItem = {
   image: string

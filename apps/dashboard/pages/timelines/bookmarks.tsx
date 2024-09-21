@@ -3,8 +3,11 @@ import { useTranslation } from 'next-i18next'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale, Tweet } from '@fc/types'
-import { AdminLayout, Container, MasonryGrid, TweetCard } from '@fc/ui'
+import type { StrapiLocale, Tweet } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { Container } from '@fc/ui/components/Container'
+import { MasonryGrid } from '@fc/ui/components/MasonryGrid'
+import { TweetCard } from '@fc/ui/components/TweetCard'
 
 const TweetBookmarkedPage = () => {
   const [storageTweets] = useLocalStorage<Tweet[]>('bookmarked-tweets', [])

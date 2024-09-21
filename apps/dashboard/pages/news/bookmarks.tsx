@@ -4,8 +4,9 @@ import { useTranslation } from 'next-i18next'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale, TopicBase } from '@fc/types'
-import { AdminLayout, TopicCard } from '@fc/ui'
+import type { StrapiLocale, TopicBase } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { TopicCard } from '@fc/ui/components/TopicCard'
 
 const NewsBookmarkedPage = () => {
   const [bookmarksStorage] = useLocalStorage<TopicBase[]>('bookmarks', [])

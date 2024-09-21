@@ -3,10 +3,12 @@ import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { strapiRequest } from '@fc/lib'
+import { strapiRequest } from '@fc/lib/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Collection, StrapiLocale, UploadFile } from '@fc/types'
-import { Card, Container, Hero } from '@fc/ui'
+import type { Collection, StrapiLocale, UploadFile } from '@fc/types'
+import { Card } from '@fc/ui/components/Card'
+import { Container } from '@fc/ui/components/Container'
+import { Hero } from '@fc/ui/components/Hero'
 
 import { Layout } from '../../../components'
 

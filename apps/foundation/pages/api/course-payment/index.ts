@@ -1,3 +1,3 @@
-import { createCoursePaymentHandler } from '@fc/services/src/api/createCoursePaymentHandler'
+import { createCoursePaymentHandler } from '@fc/services/api/createCoursePaymentHandler'
 
 export default createCoursePaymentHandler
