@@ -59,14 +59,9 @@ export const useChangeParams = () => {
       const sanitizedQuery = sanitizeQuery(query, args)
       const sanitizedArgs = sanitizeArgs(args)
 
-      const newArgs = { ...sanitizedArgs }
+      // TODO: Remove existing page query if other params are changed
 
-      // if there is any new parameters delete page parameter
-      if (Object.keys(newArgs).length > 1) {
-        newArgs.page = 1
-      }
-
-      const newQuery = { ...sanitizedQuery, ...newArgs }
+      const newQuery = { ...sanitizedQuery, ...sanitizedArgs }
 
       if (isEqual(query, newQuery)) {
         return
