@@ -8,6 +8,7 @@ import {
   Text,
   Tooltip,
   Heading,
+  SimpleGrid,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 // import { useTranslation } from 'next-i18next'
@@ -35,15 +36,17 @@ export const SelectJobs: FC<SelectJobsProps> = ({
   const { locale } = useRouter()
 
   return (
-    <Box>
+    <Stack gap={4}>
       <Heading as="h3" size="lg" textAlign="start" fontWeight={900}>
+        {/* TODO: Translate */}
         Hangi işlerde bizimle birlikte çalışmak istersiniz?
       </Heading>
 
       {/* {t('jobs')} */}
 
-      <Stack
-        spacing={8}
+      <SimpleGrid
+        gap={8}
+        columns={{ sm: 2, md: 3 }}
         rounded="lg"
         p={4}
         borderWidth={2}
@@ -109,7 +112,7 @@ export const SelectJobs: FC<SelectJobsProps> = ({
             {errors.jobs.message}
           </Text>
         )}
-      </Stack>
-    </Box>
+      </SimpleGrid>
+    </Stack>
   )
 }

@@ -185,14 +185,6 @@ export const JoinForm: FC<JoinFormProps> = ({
       onSubmit={handleSubmit(onSubmit)}
       width={'100%'}
     >
-      {/* errors */}
-      <Box>
-        {Object.keys(errors).map((error, index) => (
-          <Box key={index} color="red.500">
-            {errors[error as keyof JoinFormFieldValues]?.message as string}
-          </Box>
-        ))}
-      </Box>
       {/* steps */}
       <Box overflowX="auto" whiteSpace="nowrap" p={4}>
         <Steps

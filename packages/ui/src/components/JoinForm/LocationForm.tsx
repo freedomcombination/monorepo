@@ -1,10 +1,15 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 
-import { FormLabel, VStack, Stack, Text } from '@chakra-ui/react'
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Stack,
+} from '@chakra-ui/react'
 import { UseFormSetValue } from 'react-hook-form'
 import Select from 'react-select'
 
-import { getAllCountryNames, getCitiesOfCountry } from '@fc/utils'
+import { useAllCountries, useCitiesOfCountry } from '@fc/services'
 
 import { JoinFormFieldValues } from './types'
 
@@ -18,41 +23,13 @@ type LocationFormProps = {
 }
 
 export const LocationForm: FC<LocationFormProps> = ({ setValue }) => {
-  const [countries, setCountries] = useState<Option[]>([])
   const [selectedCountry, setSelectedCountry] = useState<Option | null>(null)
-  const [cities, setCities] = useState<Option[]>([])
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const getCountries = async () => {
-    try {
-      const countries = await getAllCountryNames()
+  const countriesQuery = useAllCountries()
+  const citiesQuery = useCitiesOfCountry(selectedCountry?.value)
 
-      if (countries) {
-        setCountries(countries)
-      }
-    } catch (error) {
-      setErrorMessage(`Failed to fetch countries data: ${error}`)
-    }
-  }
-  useEffect(() => {
-    getCountries()
-  }, [])
-
-  const getCities = async (selectedCountry: Option) => {
-    try {
-      const cities = await getCitiesOfCountry(selectedCountry?.value)
-      if (cities) {
-        setCities(cities)
-      }
-    } catch (error) {
-      setErrorMessage(`Failed to fetch cities data: ${error}`)
-    }
-  }
-  useEffect(() => {
-    if (selectedCountry) {
-      getCities(selectedCountry)
-    }
-  }, [selectedCountry])
+  const countries = countriesQuery.data || []
+  const cities = citiesQuery.data || []
 
   const handleCitiesChange = (option: Option) => {
     if (selectedCountry) {
@@ -62,14 +39,10 @@ export const LocationForm: FC<LocationFormProps> = ({ setValue }) => {
       })
     }
   }
-  setTimeout(() => {
-    setErrorMessage('')
-  }, 3000)
 
   return (
     <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-      {errorMessage && <Text color="red">{errorMessage}</Text>}
-      <VStack alignItems="start">
+      <FormControl>
         <FormLabel
           mb={0}
           fontSize="sm"
@@ -83,25 +56,30 @@ export const LocationForm: FC<LocationFormProps> = ({ setValue }) => {
           options={countries}
           onChange={option => setSelectedCountry(option as Option)}
         />
-      </VStack>
+        <FormErrorMessage>
+          {countriesQuery.error && 'An error occured'}
+        </FormErrorMessage>
+      </FormControl>
 
-      {selectedCountry && (
-        <VStack alignItems="start">
-          <FormLabel
-            mb={0}
-            fontSize="sm"
-            fontWeight={600}
-            textTransform={'capitalize'}
-          >
-            City
-          </FormLabel>
-          <Select
-            placeholder="Select city"
-            options={cities}
-            onChange={option => handleCitiesChange(option as Option)}
-          />
-        </VStack>
-      )}
+      <FormControl>
+        <FormLabel
+          mb={0}
+          fontSize="sm"
+          fontWeight={600}
+          textTransform={'capitalize'}
+        >
+          City
+        </FormLabel>
+        <Select
+          isDisabled={!selectedCountry}
+          placeholder="Select city"
+          options={cities}
+          onChange={option => handleCitiesChange(option as Option)}
+        />
+        <FormErrorMessage>
+          {citiesQuery.error && 'An error occured'}
+        </FormErrorMessage>
+      </FormControl>
     </Stack>
   )
 }
