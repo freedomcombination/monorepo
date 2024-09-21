@@ -1,12 +1,14 @@
+import { FC } from 'react'
+
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
-import { FC } from 'react'
 
 import { strapiRequest } from '@fc/lib'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { Foundation, Platform, StrapiLocale } from '@fc/types'
 import { JoinTemplate } from '@fc/ui'
+
 import { Layout } from '../components'
 
 type JoinPageProps = InferGetStaticPropsType<typeof getStaticProps>

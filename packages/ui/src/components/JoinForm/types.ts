@@ -1,8 +1,8 @@
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { InferType } from 'yup'
 
 import { Job, Platform, StrapiLocale } from '@fc/types'
 
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { joinSchema } from './schema'
 
 export type JoinFormFieldValues = InferType<ReturnType<typeof joinSchema>>

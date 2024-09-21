@@ -10,6 +10,7 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import {
   FieldErrors,
   UseFormRegister,
@@ -18,7 +19,7 @@ import {
 } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { Foundation, Job, Platform, StrapiModel } from '@fc/types'
+import { Job, Platform, StrapiModel } from '@fc/types'
 
 import { FormItem, JoinFormFieldValues } from '../components'
 import { FoundationInfo } from '../components/JoinForm/FoundationInfo'
@@ -27,7 +28,6 @@ import { PersonalInfo } from '../components/JoinForm/PersonalInfo'
 import { PreviewVolunteerForm } from '../components/JoinForm/PreviewVolunteerForm'
 import { SelectJobs } from '../components/JoinForm/SelectJobs'
 import { ModelMedia } from '../components/ModelMedia'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 type useFormStepsProps = {
   defaultJobs?: string[]

@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+
+import { SOURCE_MOCK } from '@fc/mocks'
 
 import { Markdown } from './Markdown'
 import { MarkdownProps } from './types'
-import { SOURCE_MOCK } from '@fc/mocks'
 
 export default {
   component: Markdown,

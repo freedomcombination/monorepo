@@ -1,16 +1,15 @@
 import { FC } from 'react'
 
 import {
-  Stack,
-  Heading,
   Box,
-  Text,
-  FormControl,
   Checkbox,
+  FormControl,
   FormErrorMessage,
+  Heading,
+  Stack,
+  Text,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { Job } from '@fc/types'
@@ -29,7 +28,6 @@ export const JobInfo: FC<JobInfoProps> = ({
   register,
 }) => {
   const { locale } = useRouter()
-  const { t } = useTranslation()
 
   // Convert selectedJobs (string[]) to number[]
   console.log('selectedJobs in job info', selectedJobs)

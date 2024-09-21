@@ -1,8 +1,9 @@
 // https://api.geoapify.com/v1/geocode/search?text=Waldkirchen&lang=en&limit=5&type=city&filter=countrycode:de&bias=proximity:13.1934588,48.633274&format=json&apiKey=d548c5ed24604be6a9dd0d989631f783
-import { getSecret } from '@fc/secrets'
-import { GeoLocationSearch, LocationType } from '@fc/types'
 import { NextRequest } from 'next/server'
 import { DeepPartial } from 'react-hook-form'
+
+import { getSecret } from '@fc/secrets'
+import { GeoLocationSearch, LocationType } from '@fc/types'
 
 export const searchLocationHandler = async (request: NextRequest) => {
   const text = request.nextUrl.searchParams.get('text')

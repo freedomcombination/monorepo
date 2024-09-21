@@ -10,11 +10,11 @@ import { en, nl, tr } from 'yup-locales'
 import { Job } from '@fc/types'
 import { sleep } from '@fc/utils'
 
-import { useFormSteps } from '../../hooks/useFormSteps'
 import { PaginationButtons } from './PaginationButtons'
 import { joinSchema } from './schema'
 import { Steps } from './Steps'
 import { JoinFormFieldValues, JoinFormProps } from './types'
+import { useFormSteps } from '../../hooks/useFormSteps'
 
 export const JoinForm: FC<JoinFormProps> = ({
   onSubmitHandler,

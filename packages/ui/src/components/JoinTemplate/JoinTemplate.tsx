@@ -6,10 +6,10 @@ import {
   AlertIcon,
   AlertTitle,
   Center,
+  HStack,
+  Link,
   Stack,
   VStack,
-  Link,
-  HStack,
 } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
@@ -19,13 +19,7 @@ import { FaRegFilePdf } from 'react-icons/fa'
 import { RecaptchaKeys } from '@fc/config'
 import { Mutation } from '@fc/lib'
 import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
-import {
-  Foundation,
-  Job,
-  Platform,
-  Profile,
-  ProfileCreateInput,
-} from '@fc/types'
+import { Job, Profile, ProfileCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
 import { JoinTemplateProps } from './types'

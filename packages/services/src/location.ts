@@ -1,5 +1,6 @@
-import { LocationType } from '@fc/types'
 import { useQuery } from '@tanstack/react-query'
+
+import { LocationType } from '@fc/types'
 
 export const searchLocation = async (text: string, type: LocationType) => {
   const params = new URLSearchParams()

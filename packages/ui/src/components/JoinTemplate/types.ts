@@ -1,5 +1,6 @@
-import { Platform } from '@fc/types'
 import { MDXRemoteProps } from 'next-mdx-remote'
+
+import { Platform } from '@fc/types'
 
 export type JoinTemplateProps = {
   title: string
