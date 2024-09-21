@@ -1,3 +1,5 @@
-export * from './types'
-export * from './actions'
+export * from './HashtagContex'
 export * from './HashtagProvider'
+export * from './actions'
+export * from './types'
+export * from './useHashtagContext'

@@ -14,11 +14,10 @@
   "Playwright describe": {
     "prefix": "pwdescribe",
     "body": [
-      "import { test } from '@playwright/test'",
-      "",
+      "import { test } from '../fixtures'",
       "import { getUrl } from '../utils'",
       "",
-      "describe('01. $1', () => {",
+      "test.describe('01. $1', () => {",
       "  test('TC-01: should $2', async ({ page }) => {",
       "    const url = getUrl('$3');",
       "    await page.goto(url);",

@@ -1,9 +1,8 @@
+import { LoginStates } from './types'
 import { ForgotPasswordForm } from '../ForgotPasswordForm'
 import { LoginForm } from '../LoginForm'
 import { ResetPasswordForm } from '../ResetPasswordForm'
 import { SignupForm } from '../SignupForm'
-
-export type LoginStates = 'login' | 'register' | 'reset' | 'forgot-password'
 
 export const AuthActionForm = ({ action }: { action: LoginStates }) => {
   switch (action) {

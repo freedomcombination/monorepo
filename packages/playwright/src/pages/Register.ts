@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import { Locator, Page } from '@playwright/test'
 
 import { Site } from '@fc/types'
 
@@ -13,15 +13,27 @@ type RegisterArgs = {
 
 export class RegisterPage {
   readonly page: Page
-  readonly site: Site
 
-  constructor(page: Page, site: Site) {
+  readonly nameInput: Locator
+  readonly usernameInput: Locator
+  readonly emailInput: Locator
+  readonly passwordInput: Locator
+
+  readonly submitButton: Locator
+
+  constructor(page: Page) {
     this.page = page
-    this.site = site
+
+    this.nameInput = page.getByTestId('input-name')
+    this.usernameInput = page.getByTestId('input-username')
+    this.emailInput = page.getByTestId('input-email')
+    this.passwordInput = page.getByTestId('input-password')
+
+    this.submitButton = page.getByTestId('button-register')
   }
 
-  async navigateToRegister() {
-    const url = getUrl(this.site)
+  async navigateToRegister(site: Site) {
+    const url = getUrl(site)
     await this.page.goto(url)
 
     await this.page.click('a[href*="auth/login"]')
@@ -29,18 +41,11 @@ export class RegisterPage {
   }
 
   async register({ name, username, email, password }: RegisterArgs) {
-    await this.page.click('#name')
-    await this.page.fill('#name', name)
+    await this.nameInput.fill(name)
+    await this.usernameInput.fill(username)
+    await this.emailInput.fill(email)
+    await this.passwordInput.fill(password)
 
-    await this.page.click('#username')
-    await this.page.fill('#username', username)
-
-    await this.page.click('#email')
-    await this.page.fill('#email', email)
-
-    await this.page.click('#password')
-    await this.page.fill('#password', password)
-
-    await this.page.getByTestId('button-register').click() // Click "Create Account" button
+    await this.submitButton.click()
   }
 }

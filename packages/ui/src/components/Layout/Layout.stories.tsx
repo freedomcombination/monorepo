@@ -1,6 +1,7 @@
 import { StoryObj, StoryFn, Meta } from '@storybook/react'
 
-import { Layout, LayoutProps } from './Layout'
+import { Layout } from './Layout'
+import { LayoutProps } from './types'
 import { FOOTER_MENU } from '../Footer'
 import { HEADER_MENU } from '../Header'
 import { Hero } from '../Hero'
