@@ -10,7 +10,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 
 import { Job } from '@fc/types'
 
@@ -18,16 +18,15 @@ import { JoinFormFieldValues } from './types'
 
 type JobInfoProps = {
   selectedJobs: Job[]
-  register: UseFormRegister<JoinFormFieldValues>
-  errors: FieldErrors<JoinFormFieldValues>
 }
 
-export const JobInfo: FC<JobInfoProps> = ({
-  selectedJobs,
-  errors,
-  register,
-}) => {
+export const JobInfo: FC<JobInfoProps> = ({ selectedJobs }) => {
   const { locale } = useRouter()
+
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<JoinFormFieldValues>()
 
   // TODO: Use @strapi/blocks-react-renderer to render richText block
   // Convert selectedJobs (string[]) to number[]

@@ -1,16 +1,9 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 
 import { Box, Stack, useSteps } from '@chakra-ui/react'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useRouter } from 'next/router'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { setLocale } from 'yup'
-import { en, nl, tr } from 'yup-locales'
-
-import { sleep } from '@fc/utils'
+import { SubmitHandler, useFormContext } from 'react-hook-form'
 
 import { PaginationButtons } from './PaginationButtons'
-import { joinSchema } from './schema'
 import { Steps } from './Steps'
 import { JoinFormFieldValues, JoinFormProps } from './types'
 import { useFormSteps } from './useFormSteps'
@@ -19,112 +12,29 @@ export const JoinForm: FC<JoinFormProps> = ({
   defaultJobs = [],
   foundationInfo,
   isLoading,
-  jobs: initialJobs = [],
+  jobs = [],
   onSubmitHandler,
 }) => {
-  // TODO add translate
-  const [selectedFields, setSelectedFields] = useState(
-    {} as JoinFormFieldValues,
-  )
-
-  const {
-    register,
-    handleSubmit,
-    trigger,
-    watch,
-    clearErrors,
-    setValue,
-    formState: { errors },
-  } = useForm<JoinFormFieldValues>({
-    resolver: yupResolver(joinSchema()),
-    mode: 'onBlur',
-    defaultValues: {
-      jobs: defaultJobs,
-      name: '',
-      age: 0,
-      address: { country: '', city: '', street: '', postcode: '' },
-      email: '',
-      phone: '',
-      comment: '',
-      inMailingList: false,
-      isPublic: false,
-      availableHours: 0,
-      heardFrom: [],
-      cv: undefined,
-      foundationConfirmation: false,
-      jobInfoConfirmation: false,
-    },
-  })
-
-  const getSelectedJobs = () => {
-    const formJobs = watch('jobs', [])
-
-    const selectedJobsIDs = formJobs && formJobs?.map(jobId => Number(jobId))
-    const selectedJobs = initialJobs?.filter(job =>
-      selectedJobsIDs.includes(job?.id),
-    )
-
-    return selectedJobs
-  }
-
-  const getData = () => {
-    const selectedJobFields = getSelectedJobs()
-    const volunteerFormData = watch()
-
-    const data = {
-      ...volunteerFormData,
-      jobs: selectedJobFields,
-    }
-    if (JSON.stringify(selectedFields) !== JSON.stringify(data)) {
-      setSelectedFields(data)
-    }
-
-    return data
-  }
   const [isChangingMedia, setIsChangingMedia] = useState(false)
+
+  const { watch, trigger, handleSubmit, setValue } =
+    useFormContext<JoinFormFieldValues>()
 
   const toggleChangingMedia = () => {
     setIsChangingMedia(!isChangingMedia)
   }
   const steps = useFormSteps({
     defaultJobs,
-    errors,
     foundationInfo,
     isLoading,
-    jobs: initialJobs,
-    selectedFields,
-    getData,
-    register,
-    setValue,
+    jobs,
     toggleChangingMedia,
-    watch,
   })
 
   const { activeStep, setActiveStep } = useSteps({
     index: 0,
     count: steps.length,
   })
-
-  const { locale } = useRouter()
-
-  useEffect(() => {
-    if (locale === 'tr') setLocale(tr)
-    else if (locale === 'nl') setLocale(nl)
-    else setLocale(en)
-
-    const updateErrorFields = async () => {
-      await sleep(100)
-      const errorKeys = Object.keys(errors) as (keyof JoinFormFieldValues)[]
-
-      errorKeys.forEach(fieldName => {
-        if (errors[fieldName]) {
-          clearErrors(fieldName)
-          trigger(fieldName)
-        }
-      })
-    }
-    updateErrorFields()
-  }, [locale])
 
   const onSubmit: SubmitHandler<JoinFormFieldValues> = data => {
     const newData = { ...data, jobs: data.jobs.map(Number) }
@@ -149,7 +59,7 @@ export const JoinForm: FC<JoinFormProps> = ({
     if (requiresConfirmation && confirmationField) {
       const isConfirmed = watch(confirmationField)
 
-      if (!isConfirmed) {
+      if (!isConfirmed && confirmationField) {
         setValue(confirmationField, false, {
           shouldValidate: true,
         })

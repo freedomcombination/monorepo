@@ -4,12 +4,14 @@ import {
   Button,
   ButtonGroup,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Stack,
   Text,
   Textarea,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { useFormContext } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
 import { StrapiModel } from '@fc/types'
@@ -19,26 +21,35 @@ import { JobInfo } from './JobInfo'
 import { PersonalInfo } from './PersonalInfo'
 import { PreviewVolunteerForm } from './PreviewVolunteerForm'
 import { SelectJobs } from './SelectJobs'
-import { UseFormStepsProps, UseFormStepsReturn } from './types'
+import {
+  JoinFormFieldValues,
+  UseFormStepsProps,
+  UseFormStepsReturn,
+} from './types'
 import { FormItem } from '../FormItem'
 import { ModelMedia } from '../ModelMedia'
 
 export const useFormSteps = ({
   defaultJobs,
-  errors,
   foundationInfo,
   isLoading,
   jobs,
-  selectedFields,
-  getData,
-  register,
-  setValue,
   toggleChangingMedia,
 }: UseFormStepsProps): UseFormStepsReturn[] => {
   const { t } = useTranslation()
   const { locale } = useRouter()
 
-  const selectedJobs = getData().jobs
+  const {
+    register,
+    setValue,
+    watch,
+    formState: { errors, isValid },
+  } = useFormContext<JoinFormFieldValues>()
+
+  const formData = watch()
+
+  const selectedJobs = formData.jobs
+
   const steps = useMemo(() => {
     return [
       {
@@ -47,13 +58,7 @@ export const useFormSteps = ({
       },
       {
         description: 'Foundation',
-        component: (
-          <FoundationInfo
-            foundationInfo={foundationInfo}
-            register={register}
-            errors={errors}
-          />
-        ),
+        component: <FoundationInfo foundationInfo={foundationInfo} />,
         requiresConfirmation: true,
         confirmationField: 'foundationConfirmation',
       },
@@ -61,9 +66,7 @@ export const useFormSteps = ({
         ? [
             {
               description: 'Jobs',
-              component: (
-                <SelectJobs jobs={jobs} register={register} errors={errors} />
-              ),
+              component: <SelectJobs jobs={jobs} />,
               fields: ['jobs'],
             },
           ]
@@ -72,13 +75,7 @@ export const useFormSteps = ({
         ? [
             {
               description: 'Job Info',
-              component: (
-                <JobInfo
-                  selectedJobs={selectedJobs}
-                  register={register}
-                  errors={errors}
-                />
-              ),
+              component: <JobInfo selectedJobs={selectedJobs} />,
               requiresConfirmation: true,
               confirmationField: 'jobInfoConfirmation',
             },
@@ -86,13 +83,7 @@ export const useFormSteps = ({
         : []),
       {
         description: 'Personal',
-        component: (
-          <PersonalInfo
-            register={register}
-            errors={errors}
-            setValue={setValue}
-          />
-        ),
+        component: <PersonalInfo />,
         fields: [
           'name',
           'email',
@@ -106,7 +97,7 @@ export const useFormSteps = ({
       {
         description: 'Upload',
         component: (
-          <FormControl isRequired={true} maxW={400}>
+          <FormControl isRequired={true} isInvalid={!!errors.cv?.message}>
             <FormLabel
               fontWeight={600}
               fontSize={'sm'}
@@ -122,6 +113,7 @@ export const useFormSteps = ({
               isChangingMedia={true}
               toggleChangingMedia={toggleChangingMedia}
             />
+            <FormErrorMessage>{errors.cv?.message}</FormErrorMessage>
           </FormControl>
         ),
         fields: ['cv'],
@@ -148,8 +140,8 @@ export const useFormSteps = ({
               justifyContent={'center'}
               spacing={4}
             >
-              {selectedFields && <PreviewVolunteerForm getData={getData} />}
-              <Button isLoading={isLoading} type="submit">
+              {isValid && <PreviewVolunteerForm />}
+              <Button isLoading={isLoading} type="submit" size={'lg'}>
                 {t('submit')}
               </Button>
             </ButtonGroup>
@@ -164,10 +156,9 @@ export const useFormSteps = ({
     isLoading,
     jobs,
     locale,
-    selectedFields,
+    isValid,
     selectedJobs,
     t,
-    getData,
     register,
     setValue,
     toggleChangingMedia,

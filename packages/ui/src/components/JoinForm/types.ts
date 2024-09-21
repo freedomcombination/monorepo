@@ -1,15 +1,17 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import {
-  FieldErrors,
-  UseFormRegister,
-  UseFormSetValue,
-  UseFormWatch,
-} from 'react-hook-form'
+import { MDXRemoteProps } from 'next-mdx-remote'
 import { InferType } from 'yup'
 
 import { Job, StrapiLocale } from '@fc/types'
 
 import { joinSchema } from './schema'
+
+export type JoinTemplateProps = {
+  title: string
+  foundationInfo: MDXRemoteProps
+  jobs: Job[]
+  defaultJobs?: number[]
+}
 
 export type JoinFormFieldValues = InferType<ReturnType<typeof joinSchema>>
 
@@ -30,16 +32,10 @@ export type HeardFrom = {
 
 export type UseFormStepsProps = {
   defaultJobs?: string[]
-  errors: FieldErrors<JoinFormFieldValues>
   foundationInfo: MDXRemoteSerializeResult
   isLoading?: boolean
   jobs: Job[]
-  selectedFields: JoinFormFieldValues
-  getData: () => JoinFormFieldValues
-  register: UseFormRegister<JoinFormFieldValues>
-  setValue: UseFormSetValue<JoinFormFieldValues>
   toggleChangingMedia: () => void
-  watch: UseFormWatch<JoinFormFieldValues>
 }
 
 export type UseFormStepsReturn = {
@@ -48,4 +44,9 @@ export type UseFormStepsReturn = {
   fields?: string[]
   requiresConfirmation?: boolean
   confirmationField?: string
+}
+
+export type JoinFormProviderProps = {
+  children: React.ReactNode
+  defaultJobs?: number[]
 }

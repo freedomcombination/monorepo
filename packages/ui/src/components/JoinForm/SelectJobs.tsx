@@ -11,7 +11,7 @@ import {
   Tooltip,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { FaCircleInfo } from 'react-icons/fa6'
 
 import { Job } from '@fc/types'
@@ -19,14 +19,16 @@ import { Job } from '@fc/types'
 import { JoinFormFieldValues } from './types'
 
 type SelectJobsProps = {
-  errors: FieldErrors<JoinFormFieldValues>
   jobs: Job[]
-  register: UseFormRegister<JoinFormFieldValues>
 }
 
-export const SelectJobs: FC<SelectJobsProps> = ({ errors, jobs, register }) => {
+export const SelectJobs: FC<SelectJobsProps> = ({ jobs }) => {
   // const { t } = useTranslation()
   const { locale } = useRouter()
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<JoinFormFieldValues>()
 
   const foundationJobs = jobs.filter(job => job.platform === null)
 

@@ -7,22 +7,21 @@ import {
   Stack,
 } from '@chakra-ui/react'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 
 import { JoinFormFieldValues } from './types'
 import { Markdown } from '../Markdown'
 
 type FoundationInfoProps = {
   foundationInfo: MDXRemoteSerializeResult
-  register: UseFormRegister<JoinFormFieldValues>
-  errors: FieldErrors<JoinFormFieldValues>
 }
 
-export const FoundationInfo: FC<FoundationInfoProps> = ({
-  foundationInfo,
-  register,
-  errors,
-}) => {
+export const FoundationInfo: FC<FoundationInfoProps> = ({ foundationInfo }) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<JoinFormFieldValues>()
+
   return (
     <Stack direction={{ base: 'column', md: 'column' }} spacing={4}>
       <Markdown source={foundationInfo} />
