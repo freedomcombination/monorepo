@@ -15,7 +15,7 @@ import { Foundation } from '@fc/types'
 import { JoinFormFieldValues } from './types'
 import { Markdown } from '../Markdown'
 
-export type FoundationInfoProps = {
+type FoundationInfoProps = {
   foundation: Foundation[]
   register: UseFormRegister<JoinFormFieldValues>
   errors: FieldErrors<JoinFormFieldValues>

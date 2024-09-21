@@ -10,7 +10,7 @@ import {
   Heading,
 } from '@chakra-ui/react'
 
-export type ModelModalProps = {
+type ModelModalProps = {
   title?: string
   isOpen: boolean
   onClose: () => void

@@ -17,6 +17,7 @@ type StepsProps = {
   setActiveStep: (index: number) => void
   steps: { description: string }[]
 }
+
 export const Steps: FC<StepsProps> = ({ activeStep, setActiveStep, steps }) => {
   return (
     <Stepper size="lg" index={activeStep}>
