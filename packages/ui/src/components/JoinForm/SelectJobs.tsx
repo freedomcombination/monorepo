@@ -2,38 +2,53 @@ import { FC } from 'react'
 
 import {
   Box,
-  Stack,
-  HStack,
   Checkbox,
+  Heading,
+  HStack,
+  SimpleGrid,
+  Stack,
   Text,
   Tooltip,
-  Heading,
-  SimpleGrid,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-// import { useTranslation } from 'next-i18next'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { FaCircleInfo } from 'react-icons/fa6'
 
-import { Job, Platform } from '@fc/types'
+import { Job } from '@fc/types'
 
 import { JoinFormFieldValues } from './types'
 
 type SelectJobsProps = {
-  foundationJobs: Job[]
   errors: FieldErrors<JoinFormFieldValues>
-  platforms: Platform[]
+  jobs: Job[]
   register: UseFormRegister<JoinFormFieldValues>
 }
 
-export const SelectJobs: FC<SelectJobsProps> = ({
-  foundationJobs,
-  errors,
-  platforms,
-  register,
-}) => {
+export const SelectJobs: FC<SelectJobsProps> = ({ errors, jobs, register }) => {
   // const { t } = useTranslation()
   const { locale } = useRouter()
+
+  const foundationJobs = jobs.filter(job => job.platform === null)
+
+  // Group by platform.name_{locale}
+  const platformJobs = jobs
+    .filter(job => job.platform)
+    .reduce(
+      (acc, job) => {
+        if (job.platform === null) return acc
+
+        const platformName = job.platform?.[`name_${locale}`] as string
+
+        if (!acc[platformName]) {
+          acc[platformName] = []
+        }
+
+        acc[platformName].push(job)
+
+        return acc
+      },
+      {} as Record<string, Job[]>,
+    )
 
   return (
     <Stack gap={4}>
@@ -88,12 +103,12 @@ export const SelectJobs: FC<SelectJobsProps> = ({
           </Stack>
         )}
 
-        {platforms?.map((platform, i) => (
+        {Object.keys(platformJobs)?.map((platform, i) => (
           <Stack key={i}>
             <Text fontWeight={600} fontSize="sm">
-              {platform[`name_${locale}`]}
+              {platform}
             </Text>
-            {platform?.jobs?.map(job => (
+            {platformJobs[platform]?.map(job => (
               <Checkbox
                 key={job.id}
                 id={job.id.toString()}

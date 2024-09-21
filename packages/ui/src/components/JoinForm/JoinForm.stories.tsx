@@ -1,7 +1,4 @@
-import { useState } from 'react'
-
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
-import { sampleSize } from 'lodash'
 
 import { JOB_MOCKS, PLATFORM_MOCKS, SOURCE_MOCK } from '@fc/mocks'
 
@@ -23,15 +20,7 @@ export default {
 type Story = StoryObj<typeof JoinForm>
 
 const StoryWithHook: StoryFn<JoinFormProps> = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-
-  const platforms = PLATFORM_MOCKS.data
   const onSubmit = (data: JoinFormFieldValues) => {
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
-
     alert(JSON.stringify(data))
   }
 
@@ -39,9 +28,7 @@ const StoryWithHook: StoryFn<JoinFormProps> = () => {
     <JoinForm
       foundationInfo={SOURCE_MOCK}
       onSubmitHandler={onSubmit}
-      isLoading={isLoading}
-      platforms={platforms}
-      foundationJobs={sampleSize(JOB_MOCKS.data, 3)}
+      jobs={JOB_MOCKS.data}
     />
   )
 }

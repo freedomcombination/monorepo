@@ -7,9 +7,6 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { setLocale } from 'yup'
 import { en, nl, tr } from 'yup-locales'
 
-import { Job } from '@fc/types'
-import { sleep } from '@fc/utils'
-
 import { PaginationButtons } from './PaginationButtons'
 import { joinSchema } from './schema'
 import { Steps } from './Steps'
@@ -17,27 +14,21 @@ import { JoinFormFieldValues, JoinFormProps } from './types'
 import { useFormSteps } from '../../hooks/useFormSteps'
 
 export const JoinForm: FC<JoinFormProps> = ({
-  onSubmitHandler,
-  isLoading,
-  platforms = [],
-  foundationJobs = [],
-  foundationInfo,
   defaultJobs = [],
+  foundationInfo,
+  isLoading,
+  jobs: initialJobs = [],
+  onSubmitHandler,
 }) => {
   // TODO add translate
   const [selectedFields, setSelectedFields] = useState(
     {} as JoinFormFieldValues,
   )
-  const initialJobs =
-    [foundationJobs?.flat(), platforms?.map(platform => platform.jobs).flat()]
-      .flat()
-      .filter((job): job is Job => job !== undefined) || []
 
   const {
     register,
     handleSubmit,
     trigger,
-    clearErrors,
     watch,
     setValue,
     formState: { errors },
@@ -96,10 +87,8 @@ export const JoinForm: FC<JoinFormProps> = ({
     defaultJobs,
     errors,
     foundationInfo,
-    foundationJobs,
-    initialJobs,
     isLoading,
-    platforms,
+    jobs: initialJobs,
     selectedFields,
     getData,
     register,
@@ -122,18 +111,6 @@ export const JoinForm: FC<JoinFormProps> = ({
     if (locale === 'tr') setLocale(tr)
     else if (locale === 'nl') setLocale(nl)
     else setLocale(en)
-
-    const updateErrorFields = async () => {
-      await sleep(100)
-      Object.keys(errors).forEach(fieldName => {
-        if (errors[fieldName as keyof JoinFormFieldValues]) {
-          clearErrors(fieldName as keyof JoinFormFieldValues)
-          trigger(fieldName as keyof JoinFormFieldValues)
-        }
-      })
-    }
-    updateErrorFields()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
   const onSubmit: SubmitHandler<JoinFormFieldValues> = data => {

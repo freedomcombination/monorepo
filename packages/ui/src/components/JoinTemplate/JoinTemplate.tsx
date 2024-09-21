@@ -12,14 +12,13 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaRegFilePdf } from 'react-icons/fa'
 
 import { RecaptchaKeys } from '@fc/config'
 import { Mutation } from '@fc/lib'
-import { useRecaptchaToken, useStrapiRequest } from '@fc/services'
-import { Job, Profile, ProfileCreateInput } from '@fc/types'
+import { useRecaptchaToken } from '@fc/services'
+import { Profile, ProfileCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils'
 
 import { JoinTemplateProps } from './types'
@@ -30,19 +29,9 @@ import { PageTitle } from '../PageTitle'
 export const JoinTemplate: FC<JoinTemplateProps> = ({
   title,
   foundationInfo,
-  platforms,
+  jobs,
 }) => {
   const { t } = useTranslation()
-  const { locale } = useRouter()
-
-  // Fetch foundation jobs
-  const foundationJobsResult = useStrapiRequest<Job>({
-    endpoint: 'jobs',
-    locale,
-    filters: { platform: { $null: true } },
-  })
-
-  const foundationJobs = foundationJobsResult.data?.data || []
 
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.JOIN_FORM)
 
@@ -140,8 +129,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
             <JoinForm
               onSubmitHandler={onSubmit}
               isLoading={isPending}
-              platforms={platforms}
-              foundationJobs={foundationJobs}
+              jobs={jobs}
               foundationInfo={foundationInfo}
               // defaultJobs={defaultJobs}
             />

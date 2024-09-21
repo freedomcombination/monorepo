@@ -19,7 +19,7 @@ import {
 } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { Job, Platform, StrapiModel } from '@fc/types'
+import { Job, StrapiModel } from '@fc/types'
 
 import { FormItem, JoinFormFieldValues } from '../components'
 import { FoundationInfo } from '../components/JoinForm/FoundationInfo'
@@ -33,10 +33,8 @@ type useFormStepsProps = {
   defaultJobs?: string[]
   errors: FieldErrors<JoinFormFieldValues>
   foundationInfo: MDXRemoteSerializeResult
-  foundationJobs: Job[]
-  initialJobs: Job[]
-  isLoading: boolean
-  platforms: Platform[]
+  isLoading?: boolean
+  jobs: Job[]
   selectedFields: JoinFormFieldValues
   getData: () => JoinFormFieldValues
   register: UseFormRegister<JoinFormFieldValues>
@@ -49,9 +47,8 @@ export const useFormSteps = ({
   defaultJobs,
   errors,
   foundationInfo,
-  foundationJobs,
   isLoading,
-  platforms,
+  jobs,
   selectedFields,
   getData,
   register,
@@ -86,12 +83,7 @@ export const useFormSteps = ({
             {
               description: 'Jobs',
               component: (
-                <SelectJobs
-                  foundationJobs={foundationJobs}
-                  platforms={platforms}
-                  register={register}
-                  errors={errors}
-                />
+                <SelectJobs jobs={jobs} register={register} errors={errors} />
               ),
               fields: ['jobs'],
             },
@@ -191,10 +183,9 @@ export const useFormSteps = ({
     defaultJobs?.length,
     errors,
     foundationInfo,
-    foundationJobs,
     isLoading,
+    jobs,
     locale,
-    platforms,
     selectedFields,
     selectedJobs,
     t,

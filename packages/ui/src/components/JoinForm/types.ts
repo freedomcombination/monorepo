@@ -1,7 +1,7 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { InferType } from 'yup'
 
-import { Job, Platform, StrapiLocale } from '@fc/types'
+import { Job, StrapiLocale } from '@fc/types'
 
 import { joinSchema } from './schema'
 
@@ -9,10 +9,9 @@ export type JoinFormFieldValues = InferType<ReturnType<typeof joinSchema>>
 
 export type JoinFormProps = {
   defaultJobs?: string[]
+  isLoading?: boolean
   foundationInfo: MDXRemoteSerializeResult
-  foundationJobs?: Job[]
-  isLoading: boolean
-  platforms: Platform[]
+  jobs: Job[]
   onSubmitHandler: (data: JoinFormFieldValues) => void
 }
 
