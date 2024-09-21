@@ -7,11 +7,13 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { setLocale } from 'yup'
 import { en, nl, tr } from 'yup-locales'
 
+import { sleep } from '@fc/utils'
+
 import { PaginationButtons } from './PaginationButtons'
 import { joinSchema } from './schema'
 import { Steps } from './Steps'
 import { JoinFormFieldValues, JoinFormProps } from './types'
-import { useFormSteps } from '../../hooks/useFormSteps'
+import { useFormSteps } from './useFormSteps'
 
 export const JoinForm: FC<JoinFormProps> = ({
   defaultJobs = [],
@@ -30,11 +32,12 @@ export const JoinForm: FC<JoinFormProps> = ({
     handleSubmit,
     trigger,
     watch,
+    clearErrors,
     setValue,
     formState: { errors },
   } = useForm<JoinFormFieldValues>({
     resolver: yupResolver(joinSchema()),
-    mode: 'onTouched',
+    mode: 'onBlur',
     defaultValues: {
       jobs: defaultJobs,
       name: '',
@@ -95,10 +98,7 @@ export const JoinForm: FC<JoinFormProps> = ({
     setValue,
     toggleChangingMedia,
     watch,
-  }).map(step => ({
-    ...step,
-    fields: step.fields || [],
-  }))
+  })
 
   const { activeStep, setActiveStep } = useSteps({
     index: 0,
@@ -111,6 +111,19 @@ export const JoinForm: FC<JoinFormProps> = ({
     if (locale === 'tr') setLocale(tr)
     else if (locale === 'nl') setLocale(nl)
     else setLocale(en)
+
+    const updateErrorFields = async () => {
+      await sleep(100)
+      const errorKeys = Object.keys(errors) as (keyof JoinFormFieldValues)[]
+
+      errorKeys.forEach(fieldName => {
+        if (errors[fieldName]) {
+          clearErrors(fieldName)
+          trigger(fieldName)
+        }
+      })
+    }
+    updateErrorFields()
   }, [locale])
 
   const onSubmit: SubmitHandler<JoinFormFieldValues> = data => {
@@ -129,14 +142,15 @@ export const JoinForm: FC<JoinFormProps> = ({
 
     const isStepValid = await trigger(currentStepFields)
 
-    const confirmationField = steps[activeStep]?.confirmationField
+    const confirmationField = steps[activeStep]
+      ?.confirmationField as keyof JoinFormFieldValues
     const requiresConfirmation = steps[activeStep]?.requiresConfirmation
 
     if (requiresConfirmation && confirmationField) {
-      const isConfirmed = watch(confirmationField as keyof JoinFormFieldValues)
+      const isConfirmed = watch(confirmationField)
 
       if (!isConfirmed) {
-        setValue(confirmationField as keyof JoinFormFieldValues, false, {
+        setValue(confirmationField, false, {
           shouldValidate: true,
         })
 

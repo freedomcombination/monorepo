@@ -12,15 +12,21 @@ import {
   StepStatus,
 } from '@chakra-ui/react'
 
+import { UseFormStepsReturn } from './types'
+
 type StepsProps = {
   activeStep: number
   setActiveStep: (index: number) => void
-  steps: { description: string }[]
+  steps: UseFormStepsReturn[]
 }
 
 export const Steps: FC<StepsProps> = ({ activeStep, setActiveStep, steps }) => {
   return (
-    <Stepper size="lg" index={activeStep}>
+    <Stepper
+      size="lg"
+      index={activeStep}
+      display={{ base: 'none', sm: 'flex' }}
+    >
       {steps.map((step, index) => (
         <Step key={index} onClick={() => setActiveStep(index)}>
           <StepIndicator>

@@ -29,6 +29,7 @@ export const JobInfo: FC<JobInfoProps> = ({
 }) => {
   const { locale } = useRouter()
 
+  // TODO: Use @strapi/blocks-react-renderer to render richText block
   // Convert selectedJobs (string[]) to number[]
   console.log('selectedJobs in job info', selectedJobs)
   const info = selectedJobs.map(job => job[`info_${locale}`])

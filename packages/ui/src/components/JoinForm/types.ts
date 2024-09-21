@@ -1,4 +1,10 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import {
+  FieldErrors,
+  UseFormRegister,
+  UseFormSetValue,
+  UseFormWatch,
+} from 'react-hook-form'
 import { InferType } from 'yup'
 
 import { Job, StrapiLocale } from '@fc/types'
@@ -20,4 +26,26 @@ export type HeardFrom = {
   label: Record<StrapiLocale, string>
   value: string
   selected: boolean
+}
+
+export type UseFormStepsProps = {
+  defaultJobs?: string[]
+  errors: FieldErrors<JoinFormFieldValues>
+  foundationInfo: MDXRemoteSerializeResult
+  isLoading?: boolean
+  jobs: Job[]
+  selectedFields: JoinFormFieldValues
+  getData: () => JoinFormFieldValues
+  register: UseFormRegister<JoinFormFieldValues>
+  setValue: UseFormSetValue<JoinFormFieldValues>
+  toggleChangingMedia: () => void
+  watch: UseFormWatch<JoinFormFieldValues>
+}
+
+export type UseFormStepsReturn = {
+  description: string
+  component: JSX.Element
+  fields?: string[]
+  requiresConfirmation?: boolean
+  confirmationField?: string
 }

@@ -10,38 +10,18 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import {
-  FieldErrors,
-  UseFormRegister,
-  UseFormSetValue,
-  UseFormWatch,
-} from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { Job, StrapiModel } from '@fc/types'
+import { StrapiModel } from '@fc/types'
 
-import { FormItem, JoinFormFieldValues } from '../components'
-import { FoundationInfo } from '../components/JoinForm/FoundationInfo'
-import { JobInfo } from '../components/JoinForm/JobInfo'
-import { PersonalInfo } from '../components/JoinForm/PersonalInfo'
-import { PreviewVolunteerForm } from '../components/JoinForm/PreviewVolunteerForm'
-import { SelectJobs } from '../components/JoinForm/SelectJobs'
-import { ModelMedia } from '../components/ModelMedia'
-
-type useFormStepsProps = {
-  defaultJobs?: string[]
-  errors: FieldErrors<JoinFormFieldValues>
-  foundationInfo: MDXRemoteSerializeResult
-  isLoading?: boolean
-  jobs: Job[]
-  selectedFields: JoinFormFieldValues
-  getData: () => JoinFormFieldValues
-  register: UseFormRegister<JoinFormFieldValues>
-  setValue: UseFormSetValue<JoinFormFieldValues>
-  toggleChangingMedia: () => void
-  watch: UseFormWatch<JoinFormFieldValues>
-}
+import { FoundationInfo } from './FoundationInfo'
+import { JobInfo } from './JobInfo'
+import { PersonalInfo } from './PersonalInfo'
+import { PreviewVolunteerForm } from './PreviewVolunteerForm'
+import { SelectJobs } from './SelectJobs'
+import { UseFormStepsProps, UseFormStepsReturn } from './types'
+import { FormItem } from '../FormItem'
+import { ModelMedia } from '../ModelMedia'
 
 export const useFormSteps = ({
   defaultJobs,
@@ -54,7 +34,7 @@ export const useFormSteps = ({
   register,
   setValue,
   toggleChangingMedia,
-}: useFormStepsProps) => {
+}: UseFormStepsProps): UseFormStepsReturn[] => {
   const { t } = useTranslation()
   const { locale } = useRouter()
 
@@ -74,7 +54,6 @@ export const useFormSteps = ({
             errors={errors}
           />
         ),
-        fields: [],
         requiresConfirmation: true,
         confirmationField: 'foundationConfirmation',
       },
@@ -100,7 +79,6 @@ export const useFormSteps = ({
                   errors={errors}
                 />
               ),
-              fields: [],
               requiresConfirmation: true,
               confirmationField: 'jobInfoConfirmation',
             },
