@@ -6,12 +6,7 @@ import Select from 'react-select'
 
 import { getAllCountryNames, getCitiesOfCountry } from '@fc/utils'
 
-import { JoinFormFieldValues } from './types'
-
-type Option = {
-  value: string
-  label: string
-}
+import { JoinFormFieldValues, Option } from './types'
 
 type LocationFormProps = {
   setValue: UseFormSetValue<JoinFormFieldValues>

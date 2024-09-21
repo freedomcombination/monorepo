@@ -21,3 +21,7 @@ export type HeardFrom = {
   value: string
   selected: boolean
 }
+export type Option = {
+  value: string
+  label: string
+}
