@@ -13,6 +13,7 @@ type PaginationButtonsProps = {
   handleNext: () => void
   handlePrev: () => void
 }
+
 export const PaginationButtons: FC<PaginationButtonsProps> = ({
   activeStep,
   steps,

@@ -18,7 +18,7 @@ import { Job, Platform } from '@fc/types'
 
 import { JoinFormFieldValues } from './types'
 
-export type SelectJobsProps = {
+type SelectJobsProps = {
   foundationJobs: Job[]
   errors: FieldErrors<JoinFormFieldValues>
   platforms: Platform[]

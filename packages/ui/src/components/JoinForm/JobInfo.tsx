@@ -17,7 +17,7 @@ import { Job } from '@fc/types'
 
 import { JoinFormFieldValues } from './types'
 
-export type JobInfoProps = {
+type JobInfoProps = {
   selectedJobs: Job[]
   register: UseFormRegister<JoinFormFieldValues>
   errors: FieldErrors<JoinFormFieldValues>

@@ -16,7 +16,7 @@ import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { heardFrom } from './data'
 import { JoinFormFieldValues } from './types'
 
-export type GeneralInfoProps = {
+type GeneralInfoProps = {
   register: UseFormRegister<JoinFormFieldValues>
   errors: FieldErrors<JoinFormFieldValues>
 }

@@ -8,11 +8,12 @@ import { LocationForm } from './LocationForm'
 import { JoinFormFieldValues } from './types'
 import { FormItem } from '../FormItem'
 
-export type PersonalInfoProps = {
+type PersonalInfoProps = {
   register: UseFormRegister<JoinFormFieldValues>
   errors: FieldErrors<JoinFormFieldValues>
   setValue: UseFormSetValue<JoinFormFieldValues>
 }
+
 export const PersonalInfo: FC<PersonalInfoProps> = ({
   register,
   errors,

@@ -8,9 +8,10 @@ import { Job } from '@fc/types'
 import { JoinFormFieldValues } from './types'
 import { ModelModal } from '../ModelModal'
 
-export type PreviewVolunteerFormProps = {
+type PreviewVolunteerFormProps = {
   getData: () => JoinFormFieldValues
 }
+
 export const PreviewVolunteerForm: FC<PreviewVolunteerFormProps> = ({
   getData,
 }) => {
