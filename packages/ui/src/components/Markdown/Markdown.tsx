@@ -3,7 +3,9 @@ import { FC, HtmlHTMLAttributes } from 'react'
 
 import { Link } from '@chakra-ui/next-js'
 import { chakra } from '@chakra-ui/react'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
+
+import { MarkdownProps } from './types'
 
 const MarkdownComponents = {
   h1: (props: HtmlHTMLAttributes<HTMLElement>) => (
@@ -68,10 +70,6 @@ const MarkdownComponents = {
     <chakra.ol apply="mdx.ul" {...props} />
   ),
   li: (props: HtmlHTMLAttributes<HTMLElement>) => <chakra.li {...props} />,
-}
-
-export type MarkdownProps = {
-  source?: MDXRemoteSerializeResult
 }
 
 export const Markdown: FC<MarkdownProps> = ({ source }) => {

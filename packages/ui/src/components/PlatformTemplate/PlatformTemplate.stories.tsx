@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { PlatformTemplate, PlatformTemplateProps } from './PlatformTemplate'
+import { PlatformTemplate } from './PlatformTemplate'
+import { PlatformTemplateProps } from './types'
 
 export default {
   component: PlatformTemplate,

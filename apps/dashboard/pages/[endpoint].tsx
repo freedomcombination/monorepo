@@ -11,11 +11,11 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
+import { useAuthContext } from '@fc/context'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
-} from '@fc/config'
-import { useAuthContext } from '@fc/context'
+} from '@fc/lib'
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import {

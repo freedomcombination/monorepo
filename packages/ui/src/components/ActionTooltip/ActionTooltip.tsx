@@ -1,10 +1,9 @@
 import { FC } from 'react'
 
-import { Tooltip, TooltipProps } from '@chakra-ui/react'
+import { Tooltip } from '@chakra-ui/react'
 
-import { ActionWrapper, ActionWrapperProps } from '../ActionWrapper'
-
-export type ActionTooltipProps = Omit<ActionWrapperProps<TooltipProps>, 'ui'>
+import { ActionTooltipProps } from './types'
+import { ActionWrapper } from '../ActionWrapper'
 
 export const ActionTooltip: FC<ActionTooltipProps> = props => {
   return <ActionWrapper {...props} ui={Tooltip} />

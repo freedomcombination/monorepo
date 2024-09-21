@@ -23,7 +23,7 @@ import { ArchivePostGenAI } from '../ArchivePostGenAI'
 import { GenPostProvider } from '../GenPostProvider'
 import { PostSentenceForm } from '../PostSentenceForm'
 
-export type TabbedGenViewProps = {
+type TabbedGenViewProps = {
   post?: Post
   hashtag: Hashtag
   noBorder?: boolean

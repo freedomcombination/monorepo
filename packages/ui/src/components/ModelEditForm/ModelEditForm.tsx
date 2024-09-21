@@ -38,7 +38,7 @@ import { InferType } from 'yup'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
-} from '@fc/config'
+} from '@fc/lib'
 import {
   useApproveModel,
   useCreateModelMutation,
