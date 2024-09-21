@@ -4,6 +4,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
   data: [
     {
       id: 1,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job',
       name_en: 'Photograph',
       name_nl: 'Fotograaf',
@@ -39,6 +42,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 2,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-1',
       name_en: 'Copywriter',
       name_nl: 'Tekstschrijver',
@@ -77,6 +83,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 3,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-2',
       name_en: 'Account user',
       name_nl: 'Account gebruiker',
@@ -115,6 +124,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 6,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-5',
       name_en: 'Technical crew',
       name_nl: 'Technische bemanning',
@@ -153,6 +165,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 5,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-4',
       name_en: 'Scriptwriter',
       name_nl: 'scenarioschrijver',
@@ -191,6 +206,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 4,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-3',
       name_en: 'Actor',
       name_nl: 'Acteur',
@@ -227,6 +245,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 8,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-7',
       name_en: 'Guitarist',
       name_nl: 'Gitarist',
@@ -262,6 +283,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 9,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-8',
       name_en: 'Soloist',
       name_nl: 'Solist',
@@ -297,6 +321,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 10,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-9',
       name_en: 'Author',
       name_nl: 'Auteur',
@@ -332,6 +359,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 11,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-10',
       name_en: 'Musician',
       name_nl: 'Musicus',
@@ -367,6 +397,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 12,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-11',
       name_en: 'Designer',
       name_nl: 'Ontwerper',
@@ -402,6 +435,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 13,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-12',
       name_en: 'Social media expert',
       name_nl: 'Expert op het gebied van sociale media',
@@ -437,6 +473,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 14,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-13',
       name_en: 'Dubbing',
       name_nl: 'Nasynchronisatie',
@@ -472,6 +511,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 15,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-14',
       name_en: 'Video editor',
       name_nl: 'Video bewerker',
@@ -507,6 +549,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 16,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-15',
       name_en: 'Project coordinator',
       name_nl: 'Project coördinator',
@@ -542,6 +587,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 17,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-16',
       name_en: 'Digital marketing specialist',
       name_nl: 'Specialist in digitale marketing',
@@ -577,6 +625,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 18,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-17',
       name_en: 'Cameraman',
       name_nl: 'Cameraman',
@@ -612,6 +663,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 19,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-18',
       name_en: 'Illustrator',
       name_nl: 'Illustrator',
@@ -647,6 +701,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 24,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-23',
       name_en: 'Director of photography',
       name_nl: 'Directeur fotografie',
@@ -682,6 +739,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 21,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-20',
       name_en: 'Piano',
       name_nl: 'Piano',
@@ -717,6 +777,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 22,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-21',
       name_en: 'Accordion',
       name_nl: 'Accordeon',
@@ -752,6 +815,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 23,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-22',
       name_en: 'Guitar bass',
       name_nl: 'Gitaar bas',
@@ -787,6 +853,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 25,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-24',
       name_en: 'Frontend Developer',
       name_nl: 'Frontend Ontwikelaar',
@@ -822,6 +891,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 26,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-25',
       name_en: 'UI/UX Designer',
       name_nl: 'UI/UX Designer',
@@ -857,6 +929,9 @@ export const JOB_MOCKS: StrapiCollectionResponse<Job[]> = {
     },
     {
       id: 27,
+      info_en: null,
+      info_nl: null,
+      info_tr: null,
       slug: 'job-26',
       name_en: 'Software Tester',
       name_nl: 'Software Tester',

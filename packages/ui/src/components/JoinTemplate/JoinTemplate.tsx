@@ -33,22 +33,13 @@ import { Container } from '../Container'
 import { JoinForm, JoinFormFieldValues } from '../JoinForm'
 import { PageTitle } from '../PageTitle'
 
-export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
+export const JoinTemplate: FC<JoinTemplateProps> = ({
+  title,
+  foundationInfo,
+  platforms,
+}) => {
   const { t } = useTranslation()
   const { locale } = useRouter()
-
-  const platformsResult = useStrapiRequest<Platform>({
-    endpoint: 'platforms',
-    locale,
-  })
-
-  const foundationsData = useStrapiRequest<Foundation>({
-    endpoint: 'foundations',
-  })
-
-  const foundation = foundationsData?.data?.data || []
-
-  const platforms = platformsResult.data?.data || []
 
   // Fetch foundation jobs
   const foundationJobsResult = useStrapiRequest<Job>({
@@ -105,7 +96,6 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
       console.error('Submit volunteer form error', error)
     }
   }
-  const defaultJobs = []
 
   return (
     <Container>
@@ -158,7 +148,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
               isLoading={isPending}
               platforms={platforms}
               foundationJobs={foundationJobs}
-              foundation={foundation}
+              foundationInfo={foundationInfo}
               // defaultJobs={defaultJobs}
             />
           </Stack>

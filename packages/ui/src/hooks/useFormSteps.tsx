@@ -27,33 +27,34 @@ import { PersonalInfo } from '../components/JoinForm/PersonalInfo'
 import { PreviewVolunteerForm } from '../components/JoinForm/PreviewVolunteerForm'
 import { SelectJobs } from '../components/JoinForm/SelectJobs'
 import { ModelMedia } from '../components/ModelMedia'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 type useFormStepsProps = {
   defaultJobs?: string[]
-  initialJobs: Job[]
-  foundationJobs: Job[]
-  platforms: Platform[]
-  foundation: Foundation[]
-  register: UseFormRegister<JoinFormFieldValues>
   errors: FieldErrors<JoinFormFieldValues>
+  foundationInfo: MDXRemoteSerializeResult
+  foundationJobs: Job[]
+  initialJobs: Job[]
   isLoading: boolean
+  platforms: Platform[]
   selectedFields: JoinFormFieldValues
-  watch: UseFormWatch<JoinFormFieldValues>
   getData: () => JoinFormFieldValues
+  register: UseFormRegister<JoinFormFieldValues>
   setValue: UseFormSetValue<JoinFormFieldValues>
   toggleChangingMedia: () => void
+  watch: UseFormWatch<JoinFormFieldValues>
 }
 
 export const useFormSteps = ({
   defaultJobs,
-  foundationJobs,
-  platforms,
-  foundation,
-  register,
   errors,
+  foundationInfo,
+  foundationJobs,
   isLoading,
+  platforms,
   selectedFields,
   getData,
+  register,
   setValue,
   toggleChangingMedia,
 }: useFormStepsProps) => {
@@ -71,7 +72,7 @@ export const useFormSteps = ({
         description: 'Foundation',
         component: (
           <FoundationInfo
-            foundation={foundation}
+            foundationInfo={foundationInfo}
             register={register}
             errors={errors}
           />
@@ -187,20 +188,20 @@ export const useFormSteps = ({
       },
     ]
   }, [
-    foundation,
-    register,
-    errors,
     defaultJobs?.length,
+    errors,
+    foundationInfo,
     foundationJobs,
+    isLoading,
+    locale,
     platforms,
+    selectedFields,
     selectedJobs,
+    t,
+    getData,
+    register,
     setValue,
     toggleChangingMedia,
-    selectedFields,
-    getData,
-    isLoading,
-    t,
-    locale,
   ])
 
   return steps

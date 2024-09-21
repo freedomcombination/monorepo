@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { sampleSize } from 'lodash'
 
-import { JOB_MOCKS, PLATFORM_MOCKS } from '@fc/mocks'
+import { JOB_MOCKS, PLATFORM_MOCKS, SOURCE_MOCK } from '@fc/mocks'
 
 import { JoinForm } from './JoinForm'
 import { JoinFormFieldValues, JoinFormProps } from './types'
@@ -37,6 +37,7 @@ const StoryWithHook: StoryFn<JoinFormProps> = () => {
 
   return (
     <JoinForm
+      foundationInfo={SOURCE_MOCK}
       onSubmitHandler={onSubmit}
       isLoading={isLoading}
       platforms={platforms}

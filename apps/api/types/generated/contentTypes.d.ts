@@ -2114,7 +2114,9 @@ export interface ApiFoundationFoundation extends Schema.CollectionType {
     remuneration_policy: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >
-    about: Attribute.RichText
+    about_en: Attribute.RichText
+    about_nl: Attribute.RichText
+    about_tr: Attribute.RichText
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2935,7 +2937,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'api::subscriber.subscriber'
     >
     cv: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    Address: Attribute.Component<'flow.address', true>
+    address: Attribute.Component<'flow.address', true>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

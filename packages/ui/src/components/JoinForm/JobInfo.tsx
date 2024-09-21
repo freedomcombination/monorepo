@@ -74,40 +74,37 @@ export const JobInfo: FC<JobInfoProps> = ({
 
           return (
             <Box key={job?.id}>
-              {
-                <>
-                  <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
-                    {jobName}
-                  </Heading>
-                  {/* Render richText block */}
-                  <Text fontWeight={600} fontSize="sm">
-                    Job Information
-                  </Text>
-                  {jobInfo &&
-                    Array.isArray(jobInfo) &&
-                    jobInfo.map((block: any, idx: number) => (
-                      <Box key={idx}>{renderRichTextBlock(block)}</Box>
-                    ))}
+              <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
+                {jobName}
+              </Heading>
+              {/* Render richText block */}
+              <Text fontWeight={600} fontSize="sm">
+                Job Information
+              </Text>
+              {jobInfo &&
+                Array.isArray(jobInfo) &&
+                jobInfo.map((block: any, idx: number) => (
+                  <Box key={idx}>{renderRichTextBlock(block)}</Box>
+                ))}
 
-                  {jobInfo && (
-                    <FormControl
-                      isRequired
-                      isInvalid={!!errors?.jobInfoConfirmation}
-                    >
-                      <Checkbox
-                        {...register('jobInfoConfirmation', {
-                          required: 'You must accept the job info information',
-                        })}
-                      >
-                        {t('I have read and accept the job info information')}
-                      </Checkbox>
-                      <FormErrorMessage>
-                        {errors?.jobInfoConfirmation?.message}
-                      </FormErrorMessage>
-                    </FormControl>
-                  )}
-                </>
-              }
+              {jobInfo && (
+                <FormControl
+                  isRequired
+                  isInvalid={!!errors?.jobInfoConfirmation}
+                >
+                  <Checkbox
+                    {...register('jobInfoConfirmation', {
+                      required: 'You must accept the job info information',
+                    })}
+                  >
+                    {/* TODO: Translate */}I have read and accept the job info
+                    information
+                  </Checkbox>
+                  <FormErrorMessage>
+                    {errors?.jobInfoConfirmation?.message}
+                  </FormErrorMessage>
+                </FormControl>
+              )}
             </Box>
           )
         })}

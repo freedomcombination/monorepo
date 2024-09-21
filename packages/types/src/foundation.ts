@@ -19,7 +19,9 @@ type FoundationBase = {
   KVK: string
   BIC: string
   RSIN: string
-  about: string | null
+  about_en: string | null
+  about_nl: string | null
+  about_tr: string | null
 }
 
 type FoundationRelation = {

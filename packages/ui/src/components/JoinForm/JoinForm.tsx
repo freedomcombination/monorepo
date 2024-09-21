@@ -1,31 +1,29 @@
 import { FC, useEffect, useState } from 'react'
 
-import { useSteps, Stack, Box } from '@chakra-ui/react'
+import { Box, Stack, useSteps } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { setLocale } from 'yup'
-import { tr, nl, en } from 'yup-locales'
+import { en, nl, tr } from 'yup-locales'
 
 import { Job } from '@fc/types'
 import { sleep } from '@fc/utils'
 
+import { useFormSteps } from '../../hooks/useFormSteps'
 import { PaginationButtons } from './PaginationButtons'
 import { joinSchema } from './schema'
 import { Steps } from './Steps'
 import { JoinFormFieldValues, JoinFormProps } from './types'
-import { useFormSteps } from '../../hooks/useFormSteps'
 
 export const JoinForm: FC<JoinFormProps> = ({
   onSubmitHandler,
   isLoading,
   platforms = [],
   foundationJobs = [],
-  foundation,
+  foundationInfo,
   defaultJobs = [],
 }) => {
-  const { t } = useTranslation()
   // TODO add translate
   const [selectedFields, setSelectedFields] = useState(
     {} as JoinFormFieldValues,
@@ -96,18 +94,18 @@ export const JoinForm: FC<JoinFormProps> = ({
   }
   const steps = useFormSteps({
     defaultJobs,
-    initialJobs,
-    foundationJobs,
-    platforms,
-    foundation,
-    register,
     errors,
+    foundationInfo,
+    foundationJobs,
+    initialJobs,
     isLoading,
+    platforms,
     selectedFields,
-    watch,
     getData,
+    register,
     setValue,
     toggleChangingMedia,
+    watch,
   }).map(step => ({
     ...step,
     fields: step.fields || [],
