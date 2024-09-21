@@ -1,18 +1,23 @@
 import { FC } from 'react'
 
 import { Stack } from '@chakra-ui/react'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import { FieldErrors, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 
 import { GeneralInfo } from './GeneralInfo'
+import { LocationForm } from './LocationForm'
 import { JoinFormFieldValues } from './types'
 import { FormItem } from '../FormItem'
 
 export type PersonalInfoProps = {
   register: UseFormRegister<JoinFormFieldValues>
   errors: FieldErrors<JoinFormFieldValues>
+  setValue: UseFormSetValue<JoinFormFieldValues>
 }
-
-export const PersonalInfo: FC<PersonalInfoProps> = ({ register, errors }) => {
+export const PersonalInfo: FC<PersonalInfoProps> = ({
+  register,
+  errors,
+  setValue,
+}) => {
   return (
     <>
       <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
@@ -52,14 +57,8 @@ export const PersonalInfo: FC<PersonalInfoProps> = ({ register, errors }) => {
           isRequired
         />
       </Stack>
-      <FormItem
-        register={register}
-        errors={errors}
-        id="city"
-        name="city"
-        autoComplete="city"
-        isRequired
-      />
+
+      <LocationForm setValue={setValue} />
       <GeneralInfo register={register} errors={errors} />
     </>
   )

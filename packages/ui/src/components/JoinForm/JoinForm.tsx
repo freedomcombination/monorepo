@@ -42,7 +42,7 @@ export const JoinForm: FC<JoinFormProps> = ({
     clearErrors,
     watch,
     setValue,
-    formState: { errors, defaultValues },
+    formState: { errors },
   } = useForm<JoinFormFieldValues>({
     resolver: yupResolver(joinSchema()),
     mode: 'onTouched',
@@ -50,7 +50,7 @@ export const JoinForm: FC<JoinFormProps> = ({
       jobs: defaultJobs,
       name: '',
       age: 0,
-      city: '',
+      address: { country: '', city: '', street: '', postcode: '' },
       email: '',
       phone: '',
       comment: '',
@@ -175,8 +175,6 @@ export const JoinForm: FC<JoinFormProps> = ({
 
     setActiveStep(activeStep + 1)
   }
-
-  console.log('errors', errors)
 
   return (
     <Stack

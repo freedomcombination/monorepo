@@ -26,7 +26,15 @@ export const joinSchema = () => {
       .matches(/^[a-zA-Z\s]+$/, 'Only alphabetic characters allowed')
       .required(),
     age: yup.number().required(),
-    city: yup.string().required(),
+    address: yup
+      .object()
+      .shape({
+        country: yup.string().required('Country is required'),
+        city: yup.string().required('City is required'),
+        street: yup.string(),
+        postcode: yup.string(),
+      })
+      .required(),
     email: yup.string().email().required(),
     phone: yup.string().required(),
     comment: yup.string(),

@@ -63,7 +63,10 @@ export const useFormSteps = ({
   const selectedJobs = getData().jobs
   const steps = useMemo(() => {
     return [
-      { description: 'Welcome', component: <Text>Welcome to the Form!</Text> },
+      {
+        description: 'Welcome',
+        component: <Text>Welcome to the Form!</Text>,
+      },
       {
         description: 'Foundation',
         component: (
@@ -112,8 +115,22 @@ export const useFormSteps = ({
         : []),
       {
         description: 'Personal',
-        component: <PersonalInfo register={register} errors={errors} />,
-        fields: ['name', 'email', 'phone', 'availableHours', 'age', 'city'],
+        component: (
+          <PersonalInfo
+            register={register}
+            errors={errors}
+            setValue={setValue}
+          />
+        ),
+        fields: [
+          'name',
+          'email',
+          'phone',
+          'availableHours',
+          'age',
+          'adress.country',
+          'adress.city',
+        ],
       },
       {
         description: 'Upload',
