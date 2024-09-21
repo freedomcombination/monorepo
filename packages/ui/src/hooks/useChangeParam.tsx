@@ -62,8 +62,8 @@ export const useChangeParams = () => {
       const newArgs = {...sanitizedArgs}
       
       // if there is any new parameters delete page parameter
-      if (Object.keys(newArgs).length > 0) {
-        newArgs.page = undefined
+      if (Object.keys(newArgs).length > 1) {
+        newArgs.page = 1
       }
 
       const newQuery = { ...sanitizedQuery, ...newArgs }
