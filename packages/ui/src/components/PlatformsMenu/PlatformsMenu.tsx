@@ -19,8 +19,8 @@ type PlatformsMenuProps = {
 }
 
 export const PlatformsMenu: FC<PlatformsMenuProps> = ({
-    authenticated,
-    public
+  authenticated,
+  public,
 }) => {
   return (
     <Popover>
@@ -29,13 +29,28 @@ export const PlatformsMenu: FC<PlatformsMenuProps> = ({
       </PopoverTrigger>
       <Portal>
         <PopoverContent>
-          <PopoverArrow />
           <PopoverHeader>Header</PopoverHeader>
-          <PopoverCloseButton />
           <PopoverBody>
             <Button colorScheme="blue">Button</Button>
           </PopoverBody>
-          <PopoverFooter>This is the footer</PopoverFooter>
+        </PopoverContent>
+        <PopoverContent>
+          <PopoverHeader>Header</PopoverHeader>
+          <PopoverBody>
+            <Button colorScheme="red">Button</Button>
+          </PopoverBody>
+        </PopoverContent>
+        <PopoverContent>
+          <PopoverHeader>Header</PopoverHeader>
+          <PopoverBody>
+            <Button colorScheme="yellow">Button</Button>
+          </PopoverBody>
+        </PopoverContent>
+        <PopoverContent>
+          <PopoverHeader>Header</PopoverHeader>
+          <PopoverBody>
+            <Button colorScheme="cyan">Button</Button>
+          </PopoverBody>
         </PopoverContent>
       </Portal>
     </Popover>
