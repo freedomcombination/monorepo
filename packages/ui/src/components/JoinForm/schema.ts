@@ -48,6 +48,9 @@ export const joinSchema = () => {
       .boolean()
       .oneOf([true], 'You must accept the Foundation information')
       .required(),
+    // NOTE: If it's required, it can't make the form valid
+    // even when job info doesn't exist
+    // TODO: use advanced validation based on jobs info
     jobInfoConfirmation: yup.boolean(),
     // .oneOf([true], 'You have to accept to rules')
     // .required(),

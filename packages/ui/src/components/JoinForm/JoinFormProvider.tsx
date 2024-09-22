@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import { useSteps } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { setLocale } from 'yup'
 import { en, nl, tr } from 'yup-locales'
 
@@ -133,24 +133,23 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
   }
 
   return (
-    <FormProvider {...form}>
-      <JoinFormContext.Provider
-        value={{
-          activeStep,
-          defaultJobs,
-          form,
-          foundationInfo,
-          isLoading,
-          jobs,
-          steps,
-          handleNext,
-          handlePrev,
-          setActiveStep,
-          toggleChangingMedia,
-        }}
-      >
-        <form onSubmit={handleSubmit(onSubmit)}>{children}</form>
-      </JoinFormContext.Provider>
-    </FormProvider>
+    <JoinFormContext.Provider
+      value={{
+        activeStep,
+        defaultJobs,
+        form,
+        foundationInfo,
+        isLoading,
+        jobs,
+        steps,
+        handleNext,
+        handlePrev,
+        setActiveStep,
+        toggleChangingMedia,
+        ...form,
+      }}
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>{children}</form>
+    </JoinFormContext.Provider>
   )
 }

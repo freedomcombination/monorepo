@@ -4,18 +4,16 @@ import {
   FormErrorMessage,
   Stack,
 } from '@chakra-ui/react'
-import { useFormContext } from 'react-hook-form'
 
-import { JoinFormFieldValues } from './types'
 import { useJoinFormContext } from './useJoinFormContext'
 import { Markdown } from '../Markdown'
 
 export const FoundationInfo = () => {
   const {
+    foundationInfo,
     register,
     formState: { errors },
-  } = useFormContext<JoinFormFieldValues>()
-  const { foundationInfo } = useJoinFormContext()
+  } = useJoinFormContext()
 
   return (
     <Stack direction={{ base: 'column', md: 'column' }} spacing={4}>

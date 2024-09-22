@@ -10,12 +10,11 @@ import {
   Spinner,
   Text,
 } from '@chakra-ui/react'
-import { useFormContext } from 'react-hook-form'
 import Select from 'react-select'
 
 import { useAllCountries } from '@fc/services'
 
-import { JoinFormFieldValues } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 
 type PhoneOption = {
   value: string
@@ -62,7 +61,7 @@ export const PhoneForm = () => {
   const {
     setValue,
     formState: { errors },
-  } = useFormContext<JoinFormFieldValues>()
+  } = useJoinFormContext()
   const [selectedCountry, setSelectedCountry] = useState<PhoneOption | null>(
     null,
   )

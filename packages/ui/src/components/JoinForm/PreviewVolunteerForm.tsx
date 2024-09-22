@@ -2,12 +2,11 @@ import { useState } from 'react'
 
 import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useFormContext } from 'react-hook-form'
 import { FaEye } from 'react-icons/fa6'
 
 import { Job } from '@fc/types'
 
-import { JoinFormFieldValues } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 import { ModelModal } from '../ModelModal'
 
 export const PreviewVolunteerForm = () => {
@@ -17,7 +16,7 @@ export const PreviewVolunteerForm = () => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const { watch } = useFormContext<JoinFormFieldValues>()
+  const { watch } = useJoinFormContext()
 
   const openModal = () => {
     setModalTitle('Volunteer Form Preview')

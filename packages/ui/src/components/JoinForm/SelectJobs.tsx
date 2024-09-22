@@ -9,22 +9,21 @@ import {
   Tooltip,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useFormContext } from 'react-hook-form'
 import { FaCircleInfo } from 'react-icons/fa6'
 
 import { Job } from '@fc/types'
 
-import { JoinFormFieldValues } from './types'
 import { useJoinFormContext } from './useJoinFormContext'
 
 export const SelectJobs = () => {
   // const { t } = useTranslation()
   const { locale } = useRouter()
+
   const {
+    jobs,
     register,
     formState: { errors },
-  } = useFormContext<JoinFormFieldValues>()
-  const { jobs } = useJoinFormContext()
+  } = useJoinFormContext()
 
   const foundationJobs = jobs.filter(job => job.platform === null)
 

@@ -45,7 +45,7 @@ export type JoinFormProviderProps = {
   onSubmitHandler: (data: JoinFormFieldValues) => void
 }
 
-export type JoinFormContextValue = {
+export type JoinFormContextValue = UseFormReturn<JoinFormFieldValues> & {
   activeStep: number
   defaultJobs?: number[]
   form: UseFormReturn<JoinFormFieldValues>

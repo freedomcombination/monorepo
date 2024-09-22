@@ -1,20 +1,16 @@
-import React from 'react'
-
 import { Button, ButtonGroup, Stack, Text, Textarea } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-import { useFormContext } from 'react-hook-form'
 
 import { PreviewVolunteerForm } from './PreviewVolunteerForm'
-import { JoinFormFieldValues } from './types'
 import { useJoinFormContext } from './useJoinFormContext'
 import { FormItem } from '../FormItem'
 
 export const Summary = () => {
   const {
+    isLoading,
     register,
     formState: { errors, isValid },
-  } = useFormContext<JoinFormFieldValues>()
-  const { isLoading } = useJoinFormContext()
+  } = useJoinFormContext()
   const { t } = useTranslation()
 
   return (

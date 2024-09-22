@@ -8,9 +8,8 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useFormContext } from 'react-hook-form'
 
-import { JoinFormFieldValues } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 
 export const JobInfo = () => {
   const { locale } = useRouter()
@@ -19,7 +18,7 @@ export const JobInfo = () => {
     watch,
     register,
     formState: { errors },
-  } = useFormContext<JoinFormFieldValues>()
+  } = useJoinFormContext()
 
   const selectedJobs = watch('jobs')
 

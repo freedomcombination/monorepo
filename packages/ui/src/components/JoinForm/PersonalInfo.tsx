@@ -1,18 +1,16 @@
 import { Stack } from '@chakra-ui/react'
-import { useFormContext } from 'react-hook-form'
 
 import { GeneralInfo } from './GeneralInfo'
 import { LocationForm } from './LocationForm'
 import { PhoneForm } from './PhoneForm'
-import { JoinFormFieldValues } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 import { FormItem } from '../FormItem'
 
 export const PersonalInfo = () => {
   const {
     register,
     formState: { errors },
-    setValue,
-  } = useFormContext<JoinFormFieldValues>()
+  } = useJoinFormContext()
 
   return (
     <>
@@ -35,7 +33,7 @@ export const PersonalInfo = () => {
         />
       </Stack>
       <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-        <PhoneForm setValue={setValue} />
+        <PhoneForm />
         <FormItem
           type="number"
           register={register}
@@ -54,8 +52,8 @@ export const PersonalInfo = () => {
         />
       </Stack>
 
-      <LocationForm setValue={setValue} />
-      <GeneralInfo register={register} errors={errors} />
+      <LocationForm />
+      <GeneralInfo />
     </>
   )
 }

@@ -1,29 +1,26 @@
-import { FC } from 'react'
-
 import {
   Box,
+  Checkbox,
   FormLabel,
   Stack,
   Switch,
   Text,
   Wrap,
-  Checkbox,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { heardFrom } from './data'
-import { JoinFormFieldValues } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 
-type GeneralInfoProps = {
-  register: UseFormRegister<JoinFormFieldValues>
-  errors: FieldErrors<JoinFormFieldValues>
-}
-
-export const GeneralInfo: FC<GeneralInfoProps> = ({ register, errors }) => {
+export const GeneralInfo = () => {
   const { t } = useTranslation()
   const { locale } = useRouter()
+
+  const {
+    register,
+    formState: { errors },
+  } = useJoinFormContext()
 
   return (
     <>

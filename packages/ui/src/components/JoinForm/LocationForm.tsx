@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 
 import {
   FormControl,
@@ -6,19 +6,16 @@ import {
   FormLabel,
   Stack,
 } from '@chakra-ui/react'
-import { UseFormSetValue } from 'react-hook-form'
 import Select from 'react-select'
 
 import { useAllCountries, useCitiesOfCountry } from '@fc/services'
 
-import { JoinFormFieldValues, Option } from './types'
+import { Option } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 
-type LocationFormProps = {
-  setValue: UseFormSetValue<JoinFormFieldValues>
-}
-
-export const LocationForm: FC<LocationFormProps> = ({ setValue }) => {
+export const LocationForm = () => {
   const [selectedCountry, setSelectedCountry] = useState<Option | null>(null)
+  const { setValue } = useJoinFormContext()
 
   const countriesQuery = useAllCountries()
   const citiesQuery = useCitiesOfCountry(selectedCountry?.value)

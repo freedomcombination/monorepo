@@ -1,20 +1,16 @@
-import React from 'react'
-
 import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/react'
-import { useFormContext } from 'react-hook-form'
 
 import { StrapiModel } from '@fc/types'
 
-import { JoinFormFieldValues } from './types'
 import { useJoinFormContext } from './useJoinFormContext'
 import { ModelMedia } from '../ModelMedia'
 
 export const UploadCv = () => {
   const {
+    toggleChangingMedia,
     formState: { errors },
     setValue,
-  } = useFormContext<JoinFormFieldValues>()
-  const { toggleChangingMedia } = useJoinFormContext()
+  } = useJoinFormContext()
 
   return (
     <FormControl isRequired={true} isInvalid={!!errors.cv?.message}>
