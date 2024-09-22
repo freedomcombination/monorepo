@@ -78,9 +78,6 @@ export const ArchivePostGenAI = ({
   let lastParsedPosts: GeneratedArchiveContentPost[] = []
 
   const parseIncomplete = (src: string): GeneratedArchiveContentPost[] => {
-    // TODO: fix this
-    // return []
-
     if (src.length < 60) {
       lastParsedPosts = []
     }
@@ -111,9 +108,7 @@ export const ArchivePostGenAI = ({
   }
 
   const parseCompleted = (completedText: string): ArchivePostType[] => {
-    // console.log('completedText: ', completedText)
     const items = JSON.parse(completedText)
-    // console.log('parsed version: ', items)
     const uniqId = Date.now()
 
     return items.map((item: ArchivePostType, index: number) => {
