@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form'
 
 import { GeneralInfo } from './GeneralInfo'
 import { LocationForm } from './LocationForm'
+import { PhoneForm } from './PhoneForm'
 import { JoinFormFieldValues } from './types'
 import { FormItem } from '../FormItem'
 
@@ -34,7 +35,7 @@ export const PersonalInfo = () => {
         />
       </Stack>
       <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-        <FormItem register={register} id="phone" name="phone" errors={errors} />
+        <PhoneForm setValue={setValue} />
         <FormItem
           type="number"
           register={register}

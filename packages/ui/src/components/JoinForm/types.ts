@@ -58,3 +58,8 @@ export type JoinFormContextValue = {
   setActiveStep: (step: number) => void
   toggleChangingMedia: () => void
 }
+
+export type Option = {
+  value: string
+  label: string
+}
