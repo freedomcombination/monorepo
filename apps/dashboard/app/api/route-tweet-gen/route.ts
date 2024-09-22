@@ -45,5 +45,5 @@ ${prompt}`,
     temperature: 0, // absolute certainty
   })
 
-  return result.toDataStreamResponse()
+  return result.toTextStreamResponse()
 }
