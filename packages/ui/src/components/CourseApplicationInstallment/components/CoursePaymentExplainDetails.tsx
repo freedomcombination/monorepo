@@ -15,10 +15,11 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
+import { useUpdateModelMutation } from '@fc/services'
+import { ApprovalStatus } from '@fc/types'
+
 import { KeyValue } from '../../KeyValueView'
 import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
-import { ApprovalStatus } from '@fc/types'
-import { useUpdateModelMutation } from '@fc/services'
 
 export const CoursePaymentExplainDetails: FC<CourseApplicationDetailsProps> = ({
   course,
@@ -32,6 +33,7 @@ export const CoursePaymentExplainDetails: FC<CourseApplicationDetailsProps> = ({
   const { t } = useTranslation()
   const updateModelMutation = useUpdateModelMutation('course-applications')
   const toast = useToast()
+  const cancelRef = React.useRef(null)
 
   const onReject = () => {
     setDialogTitle(t('course.applicant.details.explain.kv.reject'))
@@ -95,7 +97,6 @@ export const CoursePaymentExplainDetails: FC<CourseApplicationDetailsProps> = ({
     setIsOpen(false)
   }
 
-  const cancelRef = React.useRef(null)
 
   return (
     <Stack spacing={2} borderWidth={1} borderRadius={'lg'} p={4}>
