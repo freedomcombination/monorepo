@@ -102,9 +102,7 @@ export const PostGenAI = ({
     initialInput: content,
     body,
     onFinish(prompt: string, completion: string) {
-      console.log('completion: ', completion)
       const parsedCompletion = parseCompleted(completion)
-      console.log('parsedCompletion: ', parsedCompletion)
       const archived = addPosts(archiveContentId, parsedCompletion)
       onSuccess?.(archived)
     },
@@ -119,7 +117,6 @@ export const PostGenAI = ({
 
       // toastMessage('Error', t('contact.form.failed'), 'error')
       toastMessage('Error', error.message, 'error')
-      console.error('Error: ', error.message)
     },
   })
 

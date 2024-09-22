@@ -66,12 +66,15 @@ export const GenPostProvider = ({
   const addPosts = (archiveId: number, posts: ArchivePostType[]) => {
     setPosts(prevPosts => {
       const newPosts = { ...prevPosts }
+
       if (!newPosts[archiveId]) {
         newPosts[archiveId] = {}
       }
+
       if (!newPosts[archiveId][regId]) {
         newPosts[archiveId][regId] = []
       }
+
       newPosts[archiveId][regId] = [...posts, ...newPosts[archiveId][regId]]
 
       return newPosts
