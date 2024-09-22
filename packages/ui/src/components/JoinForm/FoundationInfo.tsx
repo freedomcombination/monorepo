@@ -1,26 +1,21 @@
-import { FC } from 'react'
-
 import {
   Checkbox,
   FormControl,
   FormErrorMessage,
   Stack,
 } from '@chakra-ui/react'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { useFormContext } from 'react-hook-form'
 
 import { JoinFormFieldValues } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 import { Markdown } from '../Markdown'
 
-type FoundationInfoProps = {
-  foundationInfo: MDXRemoteSerializeResult
-}
-
-export const FoundationInfo: FC<FoundationInfoProps> = ({ foundationInfo }) => {
+export const FoundationInfo = () => {
   const {
     register,
     formState: { errors },
   } = useFormContext<JoinFormFieldValues>()
+  const { foundationInfo } = useJoinFormContext()
 
   return (
     <Stack direction={{ base: 'column', md: 'column' }} spacing={4}>

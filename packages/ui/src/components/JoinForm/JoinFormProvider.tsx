@@ -1,8 +1,9 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 
+import { useSteps } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
-import { FormProvider, useForm } from 'react-hook-form'
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import { setLocale } from 'yup'
 import { en, nl, tr } from 'yup-locales'
 
@@ -11,12 +12,38 @@ import { sleep } from '@fc/utils'
 import { JoinFormContext } from './JoinFormContext'
 import { joinSchema } from './schema'
 import { JoinFormFieldValues, JoinFormProviderProps } from './types'
+import { useFormSteps } from './useFormSteps'
 
 export const JoinFormProvider: FC<JoinFormProviderProps> = ({
   children,
-  defaultJobs,
+  defaultJobs = [],
+  foundationInfo,
+  isLoading,
+  jobs = [],
+  onSubmitHandler,
 }) => {
+  const [isChangingMedia, setIsChangingMedia] = useState(false)
+
   const { locale } = useRouter()
+
+  useEffect(() => {
+    if (locale === 'tr') setLocale(tr)
+    else if (locale === 'nl') setLocale(nl)
+    else setLocale(en)
+
+    const updateErrorFields = async () => {
+      await sleep(100)
+      const errorKeys = Object.keys(errors) as (keyof JoinFormFieldValues)[]
+
+      errorKeys.forEach(fieldName => {
+        if (errors[fieldName]) {
+          clearErrors(fieldName)
+          trigger(fieldName)
+        }
+      })
+    }
+    updateErrorFields()
+  }, [locale])
 
   const form = useForm<JoinFormFieldValues>({
     resolver: yupResolver(joinSchema()),
@@ -40,33 +67,90 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
   })
 
   const {
+    watch,
+    setValue,
     trigger,
+    handleSubmit,
     clearErrors,
     formState: { errors },
   } = form
 
-  useEffect(() => {
-    if (locale === 'tr') setLocale(tr)
-    else if (locale === 'nl') setLocale(nl)
-    else setLocale(en)
+  const toggleChangingMedia = () => {
+    setIsChangingMedia(!isChangingMedia)
+  }
 
-    const updateErrorFields = async () => {
-      await sleep(100)
-      const errorKeys = Object.keys(errors) as (keyof JoinFormFieldValues)[]
+  const steps = useFormSteps({
+    defaultJobs,
+    // TODO: Check if there are re-rendering issues
+    selectedJobs: watch('jobs'),
+    jobs,
+  })
 
-      errorKeys.forEach(fieldName => {
-        if (errors[fieldName]) {
-          clearErrors(fieldName)
-          trigger(fieldName)
-        }
-      })
+  const { activeStep, setActiveStep } = useSteps({
+    index: 0,
+    count: steps.length,
+  })
+
+  const onSubmit: SubmitHandler<JoinFormFieldValues> = data => {
+    const newData = { ...data, jobs: data.jobs.map(Number) }
+
+    onSubmitHandler(newData as any)
+  }
+
+  const handlePrev = () => {
+    if (activeStep === 0) return
+
+    setActiveStep(activeStep - 1)
+  }
+
+  const handleNext = async () => {
+    const currentStepFields =
+      (steps[activeStep]?.fields as (keyof JoinFormFieldValues)[]) || []
+
+    const isStepValid = await trigger(currentStepFields)
+
+    const confirmationField = steps[activeStep]
+      ?.confirmationField as keyof JoinFormFieldValues
+    const requiresConfirmation = steps[activeStep]?.requiresConfirmation
+
+    if (requiresConfirmation && confirmationField) {
+      const isConfirmed = watch(confirmationField)
+
+      if (!isConfirmed && confirmationField) {
+        setValue(confirmationField, false, {
+          shouldValidate: true,
+        })
+
+        return
+      }
     }
-    updateErrorFields()
-  }, [locale])
+
+    if (!isStepValid) {
+      return
+    }
+
+    setActiveStep(activeStep + 1)
+  }
 
   return (
     <FormProvider {...form}>
-      <JoinFormContext.Provider value={{}}>{children}</JoinFormContext.Provider>
+      <JoinFormContext.Provider
+        value={{
+          activeStep,
+          defaultJobs,
+          form,
+          foundationInfo,
+          isLoading,
+          jobs,
+          steps,
+          handleNext,
+          handlePrev,
+          setActiveStep,
+          toggleChangingMedia,
+        }}
+      >
+        <form onSubmit={handleSubmit(onSubmit)}>{children}</form>
+      </JoinFormContext.Provider>
     </FormProvider>
   )
 }

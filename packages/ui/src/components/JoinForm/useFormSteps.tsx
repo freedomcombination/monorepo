@@ -1,64 +1,33 @@
 import { useMemo } from 'react'
 
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Stack,
-  Text,
-  Textarea,
-} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useFormContext } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { StrapiModel } from '@fc/types'
-
+import { Cover } from './Cover'
 import { FoundationInfo } from './FoundationInfo'
 import { JobInfo } from './JobInfo'
 import { PersonalInfo } from './PersonalInfo'
-import { PreviewVolunteerForm } from './PreviewVolunteerForm'
 import { SelectJobs } from './SelectJobs'
-import {
-  JoinFormFieldValues,
-  UseFormStepsProps,
-  UseFormStepsReturn,
-} from './types'
-import { FormItem } from '../FormItem'
-import { ModelMedia } from '../ModelMedia'
+import { Summary } from './Summary'
+import { UseFormStepsProps, UseFormStepsReturn } from './types'
+import { UploadCv } from './UploadCv'
 
 export const useFormSteps = ({
   defaultJobs,
-  foundationInfo,
-  isLoading,
-  jobs,
-  toggleChangingMedia,
+  selectedJobs,
 }: UseFormStepsProps): UseFormStepsReturn[] => {
   const { t } = useTranslation()
   const { locale } = useRouter()
-
-  const {
-    register,
-    setValue,
-    watch,
-    formState: { errors, isValid },
-  } = useFormContext<JoinFormFieldValues>()
-
-  const formData = watch()
-
-  const selectedJobs = formData.jobs
 
   const steps = useMemo(() => {
     return [
       {
         description: 'Welcome',
-        component: <Text>Welcome to the Form!</Text>,
+        component: <Cover />,
       },
       {
         description: 'Foundation',
-        component: <FoundationInfo foundationInfo={foundationInfo} />,
+        component: <FoundationInfo />,
         requiresConfirmation: true,
         confirmationField: 'foundationConfirmation',
       },
@@ -66,7 +35,7 @@ export const useFormSteps = ({
         ? [
             {
               description: 'Jobs',
-              component: <SelectJobs jobs={jobs} />,
+              component: <SelectJobs />,
               fields: ['jobs'],
             },
           ]
@@ -75,7 +44,7 @@ export const useFormSteps = ({
         ? [
             {
               description: 'Job Info',
-              component: <JobInfo selectedJobs={selectedJobs} />,
+              component: <JobInfo />,
               requiresConfirmation: true,
               confirmationField: 'jobInfoConfirmation',
             },
@@ -96,73 +65,15 @@ export const useFormSteps = ({
       },
       {
         description: 'Upload',
-        component: (
-          <FormControl isRequired={true} isInvalid={!!errors.cv?.message}>
-            <FormLabel
-              fontWeight={600}
-              fontSize={'sm'}
-              textTransform={'capitalize'}
-            >
-              Please Upload your CV
-            </FormLabel>
-            <ModelMedia
-              model={'Job' as unknown as StrapiModel}
-              isEditing={true}
-              name={'cv'}
-              setValue={setValue}
-              isChangingMedia={true}
-              toggleChangingMedia={toggleChangingMedia}
-            />
-            <FormErrorMessage>{errors.cv?.message}</FormErrorMessage>
-          </FormControl>
-        ),
+        component: <UploadCv />,
         fields: ['cv'],
       },
       {
         description: 'Summary',
-        component: (
-          <Stack spacing={4}>
-            <Text>
-              You completed the volunteer form. If you want to add one, we would
-              to hear from you.
-            </Text>
-            {/* comment */}
-            <FormItem
-              as={Textarea}
-              register={register}
-              errors={errors}
-              id="comment"
-              name="comment"
-            />
-            <ButtonGroup
-              size={'sm'}
-              overflowX={'auto'}
-              justifyContent={'center'}
-              spacing={4}
-            >
-              {isValid && <PreviewVolunteerForm />}
-              <Button isLoading={isLoading} type="submit" size={'lg'}>
-                {t('submit')}
-              </Button>
-            </ButtonGroup>
-          </Stack>
-        ),
+        component: <Summary />,
       },
     ]
-  }, [
-    defaultJobs?.length,
-    errors,
-    foundationInfo,
-    isLoading,
-    jobs,
-    locale,
-    isValid,
-    selectedJobs,
-    t,
-    register,
-    setValue,
-    toggleChangingMedia,
-  ])
+  }, [defaultJobs?.length, locale, selectedJobs, t])
 
   return steps
 }

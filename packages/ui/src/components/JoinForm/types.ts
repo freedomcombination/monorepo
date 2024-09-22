@@ -1,5 +1,5 @@
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { MDXRemoteProps } from 'next-mdx-remote'
+import { MDXRemoteProps, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { UseFormReturn } from 'react-hook-form'
 import { InferType } from 'yup'
 
 import { Job, StrapiLocale } from '@fc/types'
@@ -15,14 +15,6 @@ export type JoinTemplateProps = {
 
 export type JoinFormFieldValues = InferType<ReturnType<typeof joinSchema>>
 
-export type JoinFormProps = {
-  defaultJobs?: string[]
-  isLoading?: boolean
-  foundationInfo: MDXRemoteSerializeResult
-  jobs: Job[]
-  onSubmitHandler: (data: JoinFormFieldValues) => void
-}
-
 //  !!  {[key in StrapiLocale]?:string} for   optinal
 export type HeardFrom = {
   label: Record<StrapiLocale, string>
@@ -31,11 +23,9 @@ export type HeardFrom = {
 }
 
 export type UseFormStepsProps = {
-  defaultJobs?: string[]
-  foundationInfo: MDXRemoteSerializeResult
-  isLoading?: boolean
+  defaultJobs?: number[]
+  selectedJobs: Job[]
   jobs: Job[]
-  toggleChangingMedia: () => void
 }
 
 export type UseFormStepsReturn = {
@@ -49,4 +39,22 @@ export type UseFormStepsReturn = {
 export type JoinFormProviderProps = {
   children: React.ReactNode
   defaultJobs?: number[]
+  foundationInfo: MDXRemoteSerializeResult
+  isLoading?: boolean
+  jobs: Job[]
+  onSubmitHandler: (data: JoinFormFieldValues) => void
+}
+
+export type JoinFormContextValue = {
+  activeStep: number
+  defaultJobs?: number[]
+  form: UseFormReturn<JoinFormFieldValues>
+  foundationInfo: MDXRemoteSerializeResult
+  isLoading?: boolean
+  jobs: Job[]
+  steps: UseFormStepsReturn[]
+  handleNext: () => void
+  handlePrev: () => void
+  setActiveStep: (step: number) => void
+  toggleChangingMedia: () => void
 }

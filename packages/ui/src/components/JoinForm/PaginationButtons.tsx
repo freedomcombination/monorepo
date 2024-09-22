@@ -1,23 +1,11 @@
-import { FC } from 'react'
-
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 
-import { UseFormStepsReturn } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 
-type PaginationButtonsProps = {
-  activeStep: number
-  steps: UseFormStepsReturn[]
-  handleNext: () => void
-  handlePrev: () => void
-}
+export const PaginationButtons = () => {
+  const { activeStep, steps, handleNext, handlePrev } = useJoinFormContext()
 
-export const PaginationButtons: FC<PaginationButtonsProps> = ({
-  activeStep,
-  steps,
-  handleNext,
-  handlePrev,
-}) => {
   return (
     <ButtonGroup
       size={'sm'}

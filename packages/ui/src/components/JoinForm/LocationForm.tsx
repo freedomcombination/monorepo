@@ -42,7 +42,7 @@ export const LocationForm: FC<LocationFormProps> = ({ setValue }) => {
 
   return (
     <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-      <FormControl>
+      <FormControl isInvalid={countriesQuery.isError}>
         <FormLabel
           mb={0}
           fontSize="sm"
@@ -61,7 +61,7 @@ export const LocationForm: FC<LocationFormProps> = ({ setValue }) => {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl>
+      <FormControl isInvalid={citiesQuery.isError}>
         <FormLabel
           mb={0}
           fontSize="sm"

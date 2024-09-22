@@ -83,7 +83,13 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
   }
 
   return (
-    <JoinFormProvider defaultJobs={defaultJobs}>
+    <JoinFormProvider
+      defaultJobs={defaultJobs}
+      onSubmitHandler={onSubmit}
+      isLoading={isPending}
+      jobs={jobs}
+      foundationInfo={foundationInfo}
+    >
       <Container>
         {isSuccess ? (
           <Center h="calc(70vh)">
@@ -114,8 +120,8 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
         ) : (
           <>
             <PageTitle>{title}</PageTitle>
-            <Stack spacing={4}>
-              <Alert rounded="md">
+            <Stack spacing={4} alignSelf={'start'}>
+              <Alert rounded="md" w="max-content">
                 <Link
                   lineHeight={1}
                   href="/fc-vrijwilligersovereenkomst.pdf"
@@ -129,13 +135,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
                   </HStack>
                 </Link>
               </Alert>
-              <JoinForm
-                onSubmitHandler={onSubmit}
-                isLoading={isPending}
-                jobs={jobs}
-                foundationInfo={foundationInfo}
-                // defaultJobs={defaultJobs}
-              />
+              <JoinForm />
             </Stack>
           </>
         )}

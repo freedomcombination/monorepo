@@ -1,3 +1,5 @@
 import { createContext } from 'react'
 
-export const JoinFormContext = createContext({})
+import { JoinFormContextValue } from './types'
+
+export const JoinFormContext = createContext({} as JoinFormContextValue)

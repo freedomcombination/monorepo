@@ -1,5 +1,3 @@
-import { FC } from 'react'
-
 import {
   Box,
   Checkbox,
@@ -17,18 +15,16 @@ import { FaCircleInfo } from 'react-icons/fa6'
 import { Job } from '@fc/types'
 
 import { JoinFormFieldValues } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 
-type SelectJobsProps = {
-  jobs: Job[]
-}
-
-export const SelectJobs: FC<SelectJobsProps> = ({ jobs }) => {
+export const SelectJobs = () => {
   // const { t } = useTranslation()
   const { locale } = useRouter()
   const {
     register,
     formState: { errors },
   } = useFormContext<JoinFormFieldValues>()
+  const { jobs } = useJoinFormContext()
 
   const foundationJobs = jobs.filter(job => job.platform === null)
 

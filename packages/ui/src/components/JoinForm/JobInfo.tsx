@@ -1,5 +1,3 @@
-import { FC } from 'react'
-
 import {
   Box,
   Checkbox,
@@ -12,21 +10,18 @@ import {
 import { useRouter } from 'next/router'
 import { useFormContext } from 'react-hook-form'
 
-import { Job } from '@fc/types'
-
 import { JoinFormFieldValues } from './types'
 
-type JobInfoProps = {
-  selectedJobs: Job[]
-}
-
-export const JobInfo: FC<JobInfoProps> = ({ selectedJobs }) => {
+export const JobInfo = () => {
   const { locale } = useRouter()
 
   const {
+    watch,
     register,
     formState: { errors },
   } = useFormContext<JoinFormFieldValues>()
+
+  const selectedJobs = watch('jobs')
 
   // TODO: Use @strapi/blocks-react-renderer to render richText block
   // Convert selectedJobs (string[]) to number[]
