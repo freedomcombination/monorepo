@@ -15,7 +15,6 @@ export type JoinTemplateProps = {
 
 export type JoinFormFieldValues = InferType<ReturnType<typeof joinSchema>>
 
-//  !!  {[key in StrapiLocale]?:string} for   optinal
 export type HeardFrom = {
   label: Record<StrapiLocale, string>
   value: string

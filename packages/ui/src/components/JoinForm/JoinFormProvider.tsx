@@ -146,6 +146,7 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
         handlePrev,
         setActiveStep,
         toggleChangingMedia,
+
         ...form,
       }}
     >
