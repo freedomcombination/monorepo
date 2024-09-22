@@ -1,130 +1,133 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import {
-  Flex,
-  Text,
-  Spinner,
-  Input,
   Image as ChakraImage,
+  Flex,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  Spinner,
+  Text,
 } from '@chakra-ui/react'
-import { UseFormSetValue } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import Select from 'react-select'
 
-import { fetchCountryCodes } from '@fc/utils'
+import { useAllCountries } from '@fc/services'
 
 import { JoinFormFieldValues } from './types'
-
-type PhoneFormProps = {
-  setValue: UseFormSetValue<JoinFormFieldValues>
-}
 
 type PhoneOption = {
   value: string
   flag: string
   label: string
+  code: string
+  areaCode: string
 }
 
-export const PhoneForm = ({ setValue }: PhoneFormProps) => {
-  const [countries, setCountries] = useState<PhoneOption[]>([])
+const CustomSingleValue = ({ data }: { data: PhoneOption }) => (
+  <Flex alignItems="center">
+    <ChakraImage
+      src={data.flag}
+      alt={data.label}
+      height="20px"
+      width="30px"
+      style={{ marginRight: '8px' }}
+    />
+    <Text>{data.value}</Text>
+  </Flex>
+)
+
+const CustomOption = (props: any) => {
+  const { data, innerRef, innerProps } = props
+
+  return (
+    <div ref={innerRef} {...innerProps}>
+      <Flex alignItems="center">
+        <ChakraImage
+          src={data.flag}
+          alt={data.label}
+          height="20px"
+          width="30px"
+          style={{ marginRight: '8px' }}
+        />
+        <Text>{data.label}</Text>
+      </Flex>
+    </div>
+  )
+}
+
+// TODO: Use https://www.npmjs.com/package/react-phone-number-input and https://www.npmjs.com/package/yup-phone
+export const PhoneForm = () => {
+  const {
+    setValue,
+    formState: { errors },
+  } = useFormContext<JoinFormFieldValues>()
   const [selectedCountry, setSelectedCountry] = useState<PhoneOption | null>(
     null,
   )
   const [phoneNumber, setPhoneNumber] = useState('')
-  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const loadCountries = async () => {
-      const data = await fetchCountryCodes()
-      setCountries(data)
-      if (data.length > 0) {
-        const defaultCountry =
-          data.find((c: PhoneOption) => c.value === '+31') || null
-        setSelectedCountry(defaultCountry)
-      }
-      setLoading(false)
-    }
-    loadCountries()
-  }, [])
+  const countriesQuery = useAllCountries()
+
+  const countries = countriesQuery.data || []
 
   const handleCountryChange = (option: PhoneOption | null) => {
     setSelectedCountry(option)
     setPhoneNumber('')
   }
 
-  const customSingleValue = ({ data }: { data: PhoneOption }) => (
-    <Flex alignItems="center">
-      <ChakraImage
-        src={data.flag}
-        alt={data.label}
-        height="20px"
-        width="30px"
-        style={{ marginRight: '8px' }}
-      />
-      <Text>{data.value}</Text>
-    </Flex>
-  )
-
-  const customOption = (props: any) => {
-    const { data, innerRef, innerProps } = props
-
-    return (
-      <div ref={innerRef} {...innerProps}>
-        <Flex alignItems="center">
-          <ChakraImage
-            src={data.flag}
-            alt={data.label}
-            height="20px"
-            width="30px"
-            style={{ marginRight: '8px' }}
-          />
-          <Text>{data.label}</Text>
-        </Flex>
-      </div>
-    )
-  }
-
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value
     const digits = input.replace(/\D/g, '')
     const maxLength = 9
+
     if (digits.length <= maxLength) {
       setPhoneNumber(input)
+
       const fullPhoneNumber = selectedCountry
-        ? selectedCountry.value + digits
+        ? selectedCountry.areaCode + digits
         : digits
+
       setValue('phone', fullPhoneNumber)
     }
   }
 
-  if (loading) {
+  if (countriesQuery.isLoading) {
     return <Spinner size="xl" />
   }
 
   return (
-    <Flex direction="row" gap={4}>
-      <Select
-        value={selectedCountry}
-        options={countries}
-        onChange={handleCountryChange}
-        components={{ SingleValue: customSingleValue, Option: customOption }}
-        isSearchable
-        styles={{
-          control: base => ({
-            ...base,
-            minWidth: '180px',
-            maxWidth: '300px',
-          }),
-        }}
-      />
-      <Input
-        type="tel"
-        placeholder="Enter phone number"
-        value={phoneNumber}
-        onChange={handlePhoneChange}
-        pl={4}
-        maxLength={9}
-        minWidth={200}
-      />
-    </Flex>
+    <FormControl isInvalid={!!errors.phone?.message}>
+      <FormLabel fontWeight={600} fontSize={'sm'} htmlFor="phone">
+        Phone Number
+      </FormLabel>
+      <Flex gap={4}>
+        <Select
+          value={selectedCountry}
+          options={countries}
+          onChange={handleCountryChange}
+          components={{ SingleValue: CustomSingleValue, Option: CustomOption }}
+          isSearchable
+          styles={{
+            control: base => ({
+              ...base,
+              minWidth: '180px',
+              maxWidth: '300px',
+            }),
+          }}
+        />
+        <Input
+          type="tel"
+          placeholder="Enter phone number"
+          value={phoneNumber}
+          onChange={handlePhoneChange}
+          pl={4}
+          maxLength={9}
+          minWidth={200}
+        />
+      </Flex>
+      <FormErrorMessage>{errors.phone?.message}</FormErrorMessage>
+    </FormControl>
   )
 }

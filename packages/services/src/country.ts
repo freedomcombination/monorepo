@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 type CountryRaw = {
   name: { common: string }
   cca2: string
+  flags: { png: string }
+  idd: { root: string; suffixes: string[] }
 }
 
 export const getAllCountryNames = async () => {
@@ -17,6 +19,9 @@ export const getAllCountryNames = async () => {
         return {
           value: country.name.common,
           label: country.name.common,
+          flag: country.flags.png,
+          code: country.cca2,
+          areaCode: `+${country.idd.root?.replace('+', '')}${country.idd.suffixes?.[0] || ''}`,
         }
       })
       .sort((a, b) => a.label.localeCompare(b.label))
