@@ -7,12 +7,16 @@ export const putMutation = <T extends StrapiModel, D extends StrapiUpdateInput>(
   id: number,
   body: D,
   token: string,
+  isTest?: boolean,
 ) =>
-  mutation<T, D>({
-    endpoint,
-    method: 'put',
-    id,
-    body,
-    token,
-    queryParameters: 'populate[0]=localizations',
-  })
+  mutation<T, D>(
+    {
+      endpoint,
+      method: 'put',
+      id,
+      body,
+      token,
+      queryParameters: 'populate[0]=localizations',
+    },
+    isTest,
+  )

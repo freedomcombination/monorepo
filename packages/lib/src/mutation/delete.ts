@@ -6,4 +6,5 @@ export const deleteMutation = <T extends StrapiModel>(
   endpoint: StrapiEndpoint,
   id: number,
   token: string,
-) => mutation<T, any>({ endpoint, method: 'delete', id, token })
+  isTest?: boolean,
+) => mutation<T>({ endpoint, method: 'delete', id, token }, isTest)

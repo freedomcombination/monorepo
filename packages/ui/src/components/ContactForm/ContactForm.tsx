@@ -87,6 +87,7 @@ export const ContactForm = () => {
         />
 
         <Button
+          data-testid="submit-send-message"
           variant="solid"
           type="submit"
           isDisabled={!isValid}
@@ -98,13 +99,13 @@ export const ContactForm = () => {
         </Button>
 
         {isSuccess && (
-          <Alert status="success">
+          <Alert data-testid="success-contact-form" status="success">
             <AlertIcon />
             <AlertDescription>{t('contact.form.success')}</AlertDescription>
           </Alert>
         )}
         {isError && (
-          <Alert status="error">
+          <Alert data-tesid="error-contact-form" status="error">
             <AlertIcon />
             <AlertDescription>
               <>{t('contact.form.failed')} </>

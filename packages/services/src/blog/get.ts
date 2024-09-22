@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 
+import { BLOG_CATEGORIES } from '@fc/config'
 import { useAuthContext } from '@fc/context'
 import { strapiRequest } from '@fc/lib'
 import { Blog, StrapiLocale } from '@fc/types'
@@ -14,6 +15,37 @@ export const getBlogs = async (locale: StrapiLocale, token: string | null) => {
   })
 
   return response?.data || []
+}
+export const getCategorizedBlogs = async (
+  locale: StrapiLocale,
+  token: string | null,
+) => {
+  const filters = {
+    categories: {
+      slug: {
+        $in: Object.values(BLOG_CATEGORIES),
+      },
+    },
+  }
+  const response = await strapiRequest<Blog>({
+    endpoint: 'blogs',
+    locale,
+    filters,
+    sort: ['publishedAt:desc'],
+    ...(token && { token }),
+  })
+
+  return response?.data || []
+}
+
+export const useGetCategorizedBlogs = () => {
+  const { locale } = useRouter()
+  const { token } = useAuthContext()
+
+  return useQuery({
+    queryKey: ['categorized-blogs', locale],
+    queryFn: () => getCategorizedBlogs(locale as StrapiLocale, token as string),
+  })
 }
 
 export const getAuthorBlogs = async (
