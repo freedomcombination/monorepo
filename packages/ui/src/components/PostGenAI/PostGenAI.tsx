@@ -97,14 +97,14 @@ export const PostGenAI = ({
     handleSubmit,
   } = useCompletion({
     // Our mock stream response only works as intended when the stream protocol is set to 'text'
-    streamProtocol: `${useFakeApi ? 'text' : 'data'}`,
+    streamProtocol: 'text',
     api: apiUrl,
     initialInput: content,
     body,
     onFinish(prompt: string, completion: string) {
-      console.log('completion: ', completion)
+      // console.log('completion: ', completion)
       const parsedCompletion = parseCompleted(completion)
-      console.log('parsedCompletion: ', parsedCompletion)
+      // console.log('parsedCompletion: ', parsedCompletion)
       const archived = addPosts(archiveContentId, parsedCompletion)
       onSuccess?.(archived)
     },

@@ -34,9 +34,6 @@ export const TweetGenAI: React.FC<TweetGenAIProps> = ({
   } as ArchivePostType
 
   const parseIncomplete = (incompleteText: string) => {
-    // TODO: fix this
-    return []
-
     if (incompleteText.length < 5) return []
     if (incompleteText.length < 60) {
       incompletePost.sentences = []
