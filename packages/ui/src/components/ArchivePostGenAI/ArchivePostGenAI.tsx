@@ -111,7 +111,9 @@ export const ArchivePostGenAI = ({
   }
 
   const parseCompleted = (completedText: string): ArchivePostType[] => {
+    // console.log('completedText: ', completedText)
     const items = JSON.parse(completedText)
+    // console.log('parsed version: ', items)
     const uniqId = Date.now()
 
     return items.map((item: ArchivePostType, index: number) => {

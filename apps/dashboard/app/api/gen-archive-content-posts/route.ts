@@ -1,15 +1,10 @@
 import { createOpenAI } from '@ai-sdk/openai'
-import { streamText } from 'ai'
-// !temp
-// import { z } from 'zod'
+import { generateText } from 'ai'
 
 import { generateMockArchivePost } from '@fc/utils/src/generateMockArchivePost'
 import { getMockReadableStream } from '@fc/utils/src/getMockReadableStream'
 
 export const runtime = 'edge'
-// !works? +2 lines
-export const dynamic = 'force-dynamic'
-export const maxDuration = 30
 
 const openai = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY! ?? '',
@@ -67,25 +62,8 @@ export async function POST(req: Request) {
     })
   }
 
-  // ! temp: testing streaming obj
-  // https://sdk.vercel.ai/docs/ai-sdk-core/generating-structured-data
-  // const responseSchema = z.object({
-  //   description: z.string(),
-  //   sentences: z.array(z.string()),
-  // })
-
-  // const result = await streamObject({
-  //   model: openai('gpt-4o-mini', { structuredOutputs: true }),
-  //   output: 'array',
-  //   schema: responseSchema,
-  //   system:
-  //     'You are an activist, and your task is to raise awareness about human rights violations.',
-  //   prompt: `Given the following context, generate ${descriptionCount} descriptions and ${sentenceCount} sentences in ${capitalizeFirstLetter(language)} for each description. The description will be a gist of the context, and should not exceed ${characterLimitOfDescriptions} characters and the sentences shouldn't exceed ${characterLimitOfSentences} characters. Context:
-  // ${prompt}`,
-  //   temperature: 0, // absolute certainty
-  // })
-
-  const result = await streamText({
+  // https://sdk.vercel.ai/docs/reference/ai-sdk-core/generate-text
+  const { text } = await generateText({
     model: openai('gpt-4o-mini'),
     system:
       'You are an activist, and your task is to raise awareness about human rights violations.',
@@ -95,7 +73,10 @@ ${prompt}`,
     temperature: 0, // absolute certainty
   })
 
-  return result.toTextStreamResponse()
+  // use this with streamText()
+  // return result.toTextStreamResponse()
+
+  return new Response(text)
 }
 
 // const sampleResponse = {
