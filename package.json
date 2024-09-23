@@ -115,7 +115,7 @@
     "@storybook/core-common": "^7.6.20",
     "@storybook/core-server": "^7.6.20",
     "@storybook/nextjs": "^7.6.20",
-    "@storybook/react": "^7.6.20",
+    "@storybook/react": "^8.3.2",
     "@storybook/types": "^7.6.20",
     "@testing-library/react": "^16.0.1",
     "@turbo/gen": "^2.1.2",
