@@ -6,7 +6,8 @@ export const getMockReadableStream = (input: string) => {
 
       // Enqueue each chunk with a delay
       for (const chunk of chunks) {
-        await new Promise(resolve => setTimeout(resolve, 100)) // 1 second delay
+        await new Promise(resolve => setTimeout(resolve, 100)) // 0.1 second delay
+        // Gets the data and sends it to the browser via the controller
         controller.enqueue(new TextEncoder().encode(chunk))
       }
 
