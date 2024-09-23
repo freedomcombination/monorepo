@@ -22,6 +22,7 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
       children,
       helperText,
       errorText,
+      asterisk,
       tooltip,
       required,
       ...rest
@@ -31,7 +32,8 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
       <ChakraField.Root ref={ref} required={required} {...rest}>
         {label && (
           <ChakraField.Label>
-            {label} {required && <ChakraField.RequiredIndicator />}
+            {label}{' '}
+            {(asterisk || required) && <ChakraField.RequiredIndicator />}
             {tooltip && (
               <Tooltip
                 positioning={{ placement: 'top-start' }}

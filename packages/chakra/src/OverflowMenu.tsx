@@ -4,7 +4,7 @@ import {
   HiMiniEllipsisVertical,
 } from 'react-icons/hi2'
 
-import { IconButton, ButtonProps } from '@fc/chakra'
+import { IconButton, IconButtonProps } from '@fc/chakra'
 
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from './Menu'
 
@@ -19,7 +19,7 @@ export const OverflowMenuRoot = (props: OverflowMenuRootProps) => {
   )
 }
 
-export interface OverflowMenuTriggerProps extends ButtonProps {
+export interface OverflowMenuTriggerProps extends IconButtonProps {
   vertical?: boolean
 }
 
