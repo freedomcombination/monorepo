@@ -17,7 +17,7 @@ import * as yup from 'yup'
 
 import { useCreateModelMutation } from '@fc/services/common/create'
 import { useSendEmail } from '@fc/services/email'
-import {
+import type {
   EmailCreateInput,
   Observation,
   ObservationCreateInput,

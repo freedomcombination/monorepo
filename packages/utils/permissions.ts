@@ -2,7 +2,7 @@ import axios from 'axios'
 import pluralize from 'pluralize'
 
 import { API_URL } from '@fc/config/constants'
-import {
+import type {
   ControllerGroup,
   EndpointControllers,
   Permissions,

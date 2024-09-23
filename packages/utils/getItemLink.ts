@@ -1,5 +1,5 @@
 import { SITE_URL } from '@fc/config/constants'
-import {
+import type {
   Post,
   RecommendedTopic,
   RecommendedTweet,

@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash'
 
-import {
+import type {
   LocalizedModel,
   StrapiTranslatableModel,
   TranslatableModel,

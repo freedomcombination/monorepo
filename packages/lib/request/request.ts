@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios'
 import { produce } from 'immer'
 import qs from 'qs'
 
-import {
+import type {
   StrapiCollectionResponse,
   StrapiModel,
   StrapiResponse,

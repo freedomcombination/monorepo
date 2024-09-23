@@ -3,7 +3,7 @@ import { Dispatch, ReactNode } from 'react'
 
 import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
 
-import {
+import type {
   Site,
   Permissions,
   Profile,

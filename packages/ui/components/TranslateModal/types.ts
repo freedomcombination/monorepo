@@ -1,6 +1,6 @@
 import { Merge } from 'type-fest'
 
-import {
+import type {
   StrapiLocale,
   StrapiTranslatableModel,
   TranslatableModel,

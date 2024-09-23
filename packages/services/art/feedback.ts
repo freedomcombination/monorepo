@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context/auth'
 import { Mutation } from '@fc/lib/mutation'
-import {
+import type {
   Art,
   ArtUpdateInput,
   Feedback,

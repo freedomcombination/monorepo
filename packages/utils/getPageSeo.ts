@@ -2,7 +2,7 @@ import { NextSeoProps } from 'next-seo'
 
 import { SITE_URL, TWITTER_HANDLE } from '@fc/config/constants'
 import { endpointsWithLocalizedTitle } from '@fc/lib/urls'
-import {
+import type {
   Art,
   Blog,
   Hashtag,

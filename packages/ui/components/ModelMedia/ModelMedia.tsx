@@ -14,7 +14,7 @@ import { CiImageOff } from 'react-icons/ci'
 import { FaFile, FaFilePdf } from 'react-icons/fa6'
 import { IoMdCloudUpload } from 'react-icons/io'
 
-import {
+import type {
   PlatformSlug,
   Post,
   StrapiTranslatableModel,

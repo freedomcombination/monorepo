@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import {
+import type {
   Activity,
   Art,
   Asset,

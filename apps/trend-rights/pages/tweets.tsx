@@ -16,7 +16,7 @@ import { NextSeo, NextSeoProps } from 'next-seo'
 
 import { strapiRequest } from '@fc/lib/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import {
+import type {
   RecommendedTweet,
   StrapiLocale,
   StrapiTranslatableModel,

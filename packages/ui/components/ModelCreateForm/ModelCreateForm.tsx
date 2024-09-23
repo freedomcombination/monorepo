@@ -11,7 +11,7 @@ import { InferType } from 'yup'
 
 import { endpointsWithLocale } from '@fc/lib/urls'
 import { useCreateModelMutation } from '@fc/services/common/create'
-import {
+import type {
   Applicant,
   Course,
   Post,

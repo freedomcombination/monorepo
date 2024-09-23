@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import {
+import type {
   ApprovalStatus,
   Hashtag,
   Mention,

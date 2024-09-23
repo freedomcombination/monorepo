@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
-import {
+import type {
   StrapiCreateInput,
   StrapiEndpoint,
   StrapiLocale,

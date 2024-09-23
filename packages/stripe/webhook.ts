@@ -1,6 +1,6 @@
 import { Mutation } from '@fc/lib/mutation'
 import { getSecret } from '@fc/secrets'
-import {
+import type {
   CoursePayment,
   Donation,
   DonationUpdateInput,

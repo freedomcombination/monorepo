@@ -7,7 +7,7 @@ import {
 import { useAuthContext } from '@fc/context/auth'
 import { strapiRequest } from '@fc/lib/request'
 import { RequestCollectionArgs, RequestSingleArgs } from '@fc/lib/request'
-import {
+import type {
   StrapiCollectionResponse,
   StrapiModel,
   StrapiSingleResponse,

@@ -27,7 +27,7 @@ import { SiMaterialdesignicons } from 'react-icons/si'
 import { TbActivity, TbBrandTwitter, TbWriting } from 'react-icons/tb'
 
 import { useAuthContext } from '@fc/context/auth'
-import {
+import type {
   Activity,
   ArchiveContent,
   Asset,

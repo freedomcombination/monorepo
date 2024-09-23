@@ -16,7 +16,7 @@ import { useTranslation } from 'next-i18next'
 
 import { useStrapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import {
+import type {
   Activity,
   ApprovalStatus,
   Sort,

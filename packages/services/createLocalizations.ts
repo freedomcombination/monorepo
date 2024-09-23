@@ -1,5 +1,5 @@
 import { Mutation } from '@fc/lib/mutation'
-import {
+import type {
   StrapiEndpoint,
   StrapiLocalizeInput,
   StrapiTranslatableModel,
