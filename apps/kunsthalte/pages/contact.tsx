@@ -10,10 +10,13 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { MdEmail } from 'react-icons/md'
 
-import { socialLinks } from '@fc/config'
+import { socialLinks } from '@fc/config/socialLinks'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { ButtonLink, ContactForm, Container, SocialButtons } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { ContactForm } from '@fc/ui/components/ContactForm'
+import { Container } from '@fc/ui/components/Container'
+import { SocialButtons } from '@fc/ui/components/SocialButtons'
 
 import { Layout } from '../components'
 

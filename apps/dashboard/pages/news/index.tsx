@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { Box, Group, Center, SimpleGrid, Spinner } from '@chakra-ui/react'
+import { Box, Center, Group, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { addMinutes, formatDistanceToNow, isPast } from 'date-fns'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -9,17 +9,19 @@ import { AiOutlineClear } from 'react-icons/ai'
 import { FaSyncAlt } from 'react-icons/fa'
 
 import {
-  Tooltip,
   Button,
   IconButton,
-  MenuRadioItemGroup,
   MenuRadioItem,
+  MenuRadioItemGroup,
+  Tooltip,
 } from '@fc/chakra'
-import { useAuthContext } from '@fc/context'
-import { useTopic, useTopicSync } from '@fc/services'
+import { useAuthContext } from '@fc/context/auth'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { AdminLayout, PageHeader, TopicCard } from '@fc/ui'
+import { useTopic, useTopicSync } from '@fc/services/topics'
+import type { StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import { TopicCard } from '@fc/ui/components/TopicCard'
 
 const NewsPage = () => {
   const { checkActionsPermission } = useAuthContext()

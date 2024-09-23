@@ -7,10 +7,12 @@ import { useTranslation } from 'next-i18next'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 import { useUpdateEffect } from 'react-use'
 
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { ApprovalStatus, Art, Sort, StrapiLocale } from '@fc/types'
-import { AdminLayout, ArtsTable, PageHeader } from '@fc/ui'
+import type { ApprovalStatus, Art, Sort, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { ArtsTable } from '@fc/ui/components/ArtsTable'
+import { PageHeader } from '@fc/ui/components/PageHeader'
 
 const ArtsPage = () => {
   const { query } = useRouter()

@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react'
 
-import { useDisclosure } from '@chakra-ui/react'
-import { Box, Stack } from '@chakra-ui/react'
+import { Box, Stack, useDisclosure } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
@@ -17,26 +16,28 @@ import {
   ModalFooter,
   ModalOverlay,
 } from '@fc/chakra'
-import { SITE_URL } from '@fc/config'
-import { useAuthContext } from '@fc/context'
-import { strapiRequest } from '@fc/lib'
-import { getHashtagBySlug, getHashtagSentences, useHashtag } from '@fc/services'
+import { SITE_URL } from '@fc/config/constants'
+import { useAuthContext } from '@fc/context/auth'
+import { strapiRequest } from '@fc/lib/request'
+import { getHashtagBySlug, useHashtag } from '@fc/services/hashtag/getBySlug'
+import { getHashtagSentences } from '@fc/services/post'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { HashtagReturnType, PlatformSlug, Post, StrapiLocale } from '@fc/types'
-import {
-  Container,
-  HashtagProvider,
-  PostImage,
-  PostMaker,
-  TimeLeft,
-} from '@fc/ui'
-import {
-  getItemLink,
-  getLocalizedSlugs,
-  getMediaUrl,
-  getOgImageSrc,
-  getPageSeo,
-} from '@fc/utils'
+import type {
+  HashtagReturnType,
+  PlatformSlug,
+  Post,
+  StrapiLocale,
+} from '@fc/types'
+import { Container } from '@fc/ui/components/Container'
+import { HashtagProvider } from '@fc/ui/components/HashtagProvider'
+import { PostImage } from '@fc/ui/components/PostImage'
+import { PostMaker } from '@fc/ui/components/PostMaker'
+import { TimeLeft } from '@fc/ui/components/TimeLeft'
+import { getItemLink } from '@fc/utils/getItemLink'
+import { getLocalizedSlugs } from '@fc/utils/getLocalizedSlugs'
+import { getMediaUrl } from '@fc/utils/getMediaUrl'
+import { getOgImageSrc } from '@fc/utils/getOgImageSrc'
+import { getPageSeo } from '@fc/utils/getPageSeo'
 
 import { Layout, PlusButton } from '../../../components'
 

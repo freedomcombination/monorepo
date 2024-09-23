@@ -1,6 +1,6 @@
 import { type Locator, type Page } from '@playwright/test'
 
-import { Site, StrapiLocale } from '@fc/types'
+import type { Site, StrapiLocale } from '@fc/types'
 
 import { getUrl } from '../utils'
 

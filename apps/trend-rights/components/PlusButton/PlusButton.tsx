@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/react'
-import { Box, Portal, Stack } from '@chakra-ui/react'
+import { Box, Portal, Stack, useDisclosure } from '@chakra-ui/react'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { FaInfo, FaPlus } from 'react-icons/fa6'
 import { MdOutlineTrendingUp } from 'react-icons/md'
@@ -13,15 +12,16 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalOverlay,
   ModalHeader,
+  ModalOverlay,
   Popover,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
 } from '@fc/chakra'
-import { useHashtag } from '@fc/services'
-import { HashtagStats, Markdown } from '@fc/ui'
+import { useHashtag } from '@fc/services/hashtag'
+import { HashtagStats } from '@fc/ui/components/HashtagStats'
+import { Markdown } from '@fc/ui/components/Markdown'
 
 type PlusButtonProps = {
   source: MDXRemoteSerializeResult<Record<string, unknown>>

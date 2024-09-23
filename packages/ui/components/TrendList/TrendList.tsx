@@ -1,0 +1,59 @@
+import { VStack, Group } from '@chakra-ui/react'
+
+import { SkeletonText } from '@fc/chakra'
+import type { TwitterTrend } from '@fc/types'
+
+import { useHashtagContext } from '../HashtagProvider'
+import { TrendListItem } from '../TrendListItem'
+
+interface TrendListProps {
+  trends?: TwitterTrend[] | null
+  loading: boolean
+  hashtagInTrends?: TwitterTrend
+  hashtagExtraInTrends?: TwitterTrend
+}
+
+export const TrendList = ({
+  trends,
+  loading,
+  hashtagInTrends,
+  hashtagExtraInTrends,
+}: TrendListProps): JSX.Element => {
+  const { activePostId, addTrendToPost, removeTrendFromPost } =
+    useHashtagContext()
+
+  const onAddTrendName = (value: string) => {
+    if (!activePostId) return
+
+    addTrendToPost(activePostId, value)
+  }
+
+  const onRemoveTrendName = (value: string) => {
+    if (!activePostId) return
+
+    removeTrendFromPost(activePostId, value)
+  }
+
+  return (
+    <VStack align="stretch">
+      {loading || !trends ? (
+        <SkeletonText h={6} lineClamp={5} />
+      ) : (
+        <Group wrap={'wrap'}>
+          {trends.map((tag, i) => (
+            <TrendListItem
+              key={i}
+              order={i + 1}
+              trendName={tag.name}
+              tweetsCount={tag.tweet_volume}
+              hashtagInTrends={hashtagInTrends?.name}
+              hashtagExtraInTrends={hashtagExtraInTrends?.name}
+              addTrend={onAddTrendName}
+              removeTrend={onRemoveTrendName}
+            />
+          ))}
+        </Group>
+      )}
+    </VStack>
+  )
+}

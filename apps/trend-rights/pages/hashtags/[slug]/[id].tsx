@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next'
 
-import { strapiRequest } from '@fc/lib'
-import { Post, StrapiLocale } from '@fc/types'
+import { strapiRequest } from '@fc/lib/request'
+import type { Post, StrapiLocale } from '@fc/types'
 
 const Page = () => null
 

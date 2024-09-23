@@ -5,13 +5,15 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { COURSES } from '@fc/config'
-import { strapiRequest } from '@fc/lib'
+import { COURSES } from '@fc/config/data'
+import { strapiRequest } from '@fc/lib/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Course, StrapiLocale } from '@fc/types'
-import { AcademyCard, Container, Hero } from '@fc/ui'
+import type { Course, StrapiLocale } from '@fc/types'
+import { AcademyCard } from '@fc/ui/components/AcademyCard'
+import { Container } from '@fc/ui/components/Container'
+import { Hero } from '@fc/ui/components/Hero'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 type CoursesProps = InferGetStaticPropsType<typeof getStaticProps>
 

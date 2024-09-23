@@ -1,0 +1,151 @@
+import { FC, useEffect, useLayoutEffect, useState } from 'react'
+
+import { Text, Input } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+
+import {
+  Select,
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
+import { useAuthContext } from '@fc/context/auth'
+import { strapiRequest } from '@fc/lib/request'
+import type { RoleInput, Role } from '@fc/types'
+import { createRole } from '@fc/utils/permissions'
+
+type CreateRoleModalProps = {
+  isOpen: boolean
+  roleId: number
+  refetchRoles: () => void
+  onClose: () => void
+  onCloseComplete: () => void
+  roles?: Role[]
+}
+
+export const CreateRoleModal: FC<CreateRoleModalProps> = ({
+  isOpen,
+  roleId,
+  refetchRoles,
+  onClose,
+  roles = [],
+}) => {
+  const [roleBaseId, setRoleBaseId] = useState<number>(roleId)
+  const [roleName, setRoleName] = useState<string>('')
+  const [roleDescription, setRoleDescription] = useState<string>('')
+  const [startCreate, setStartCreate] = useState(false)
+  const { t } = useTranslation()
+  const { token } = useAuthContext()
+
+  useLayoutEffect(() => {
+    setRoleBaseId(roleId)
+  }, [roleId])
+
+  useEffect(() => {
+    if (!startCreate) return
+
+    const createRoleAsync = async () => {
+      const roleCreate: RoleInput = {
+        name: roleName,
+        description: roleDescription,
+        permissions: {},
+        users: [],
+      }
+
+      if (roleBaseId) {
+        const result = await strapiRequest<Role>({
+          endpoint: 'users-permissions/roles',
+          token: token ?? '',
+          id: roleBaseId,
+        })
+
+        roleCreate.permissions = result?.data?.permissions ?? {}
+
+        if (!roleCreate.name) {
+          roleCreate.name = `${result?.data?.name} - ${Date.now()}`
+        }
+
+        if (!roleCreate.description) {
+          roleCreate.description = result?.data?.description
+        }
+      }
+
+      return await createRole(roleCreate, token ?? '')
+    }
+
+    createRoleAsync()
+      .then(() => {
+        refetchRoles()
+      })
+      .finally(() => {
+        setStartCreate(false)
+        onClose()
+      })
+
+    return () => setStartCreate(false)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startCreate])
+
+  return (
+    <Modal
+      centered
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
+      size={'xl'}
+      scrollBehavior={'inside'}
+      closeOnInteractOutside={!startCreate}
+    >
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>{t('create')}</ModalHeader>
+        {!startCreate && <ModalCloseButton />}
+        <ModalBody gap={2}>
+          <Text>Base from: </Text>
+          <Select
+            aria-label="Select base role"
+            placeholder="Select base role"
+            disabled={startCreate}
+            variant={'outline'}
+            onChange={e => {
+              setRoleBaseId(Number(e.target.value))
+            }}
+          >
+            {roles?.map(role => (
+              <option
+                key={role.id}
+                value={role.id}
+                selected={role.id === roleBaseId}
+              >
+                {role.name}
+              </option>
+            ))}
+          </Select>
+          <Text>Name: </Text>
+          <Input
+            variant={'outline'}
+            disabled={startCreate}
+            onChange={e => setRoleName(e.target.value)}
+          />
+          <Text>Description: </Text>
+          <Input
+            variant={'outline'}
+            disabled={startCreate}
+            onChange={e => setRoleDescription(e.target.value)}
+          />
+        </ModalBody>
+        <ModalFooter gap={6}>
+          <Button disabled={startCreate}>{t('cancel')}</Button>
+          <Button loading={startCreate} onClick={() => setStartCreate(true)}>
+            {t('create')}
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  )
+}

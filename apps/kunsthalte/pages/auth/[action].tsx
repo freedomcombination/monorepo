@@ -5,10 +5,14 @@ import { GetServerSideProps } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { AuthActionForm, LoginStates, getTitle } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import {
+  AuthActionForm,
+  LoginStates,
+  getTitle,
+} from '@fc/ui/components/AuthActionForm'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 const AuthPage: FC<{ action: LoginStates }> = ({ action }) => {
   const { t } = useTranslation()

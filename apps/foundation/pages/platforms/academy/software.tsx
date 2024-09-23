@@ -6,8 +6,11 @@ import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { ButtonLink, Container, Hero, Markdown } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { Container } from '@fc/ui/components/Container'
+import { Hero } from '@fc/ui/components/Hero'
+import { Markdown } from '@fc/ui/components/Markdown'
 
 import { Layout } from '../../../components'
 

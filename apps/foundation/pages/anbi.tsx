@@ -5,11 +5,13 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { GrDocumentDownload } from 'react-icons/gr'
 
-import { API_URL } from '@fc/config'
-import { strapiRequest } from '@fc/lib'
+import { API_URL } from '@fc/config/constants'
+import { strapiRequest } from '@fc/lib/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Foundation, StrapiLocale } from '@fc/types'
-import { ButtonLink, Container, Hero } from '@fc/ui'
+import type { Foundation, StrapiLocale } from '@fc/types'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { Container } from '@fc/ui/components/Container'
+import { Hero } from '@fc/ui/components/Hero'
 
 import { DirectorsCard, FoundationDetails, Layout } from '../components'
 

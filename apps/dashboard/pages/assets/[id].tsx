@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/react'
-import { Stack, Text } from '@chakra-ui/react'
+import { Stack, Text, useDisclosure } from '@chakra-ui/react'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -14,20 +13,18 @@ import {
   AccordionItem,
   AccordionPanel,
 } from '@fc/chakra'
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Asset, AssetsTracking, Sort, StrapiLocale } from '@fc/types'
-import {
-  AdminLayout,
-  DataTable,
-  ModelCreateModal,
-  ModelEditForm,
-  ModelEditModal,
-  PageHeader,
-  useColumns,
-  useFields,
-  useSchema,
-} from '@fc/ui'
+import type { Asset, AssetsTracking, Sort, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { DataTable } from '@fc/ui/components/DataTable'
+import { ModelCreateModal } from '@fc/ui/components/ModelCreateModal'
+import { ModelEditForm } from '@fc/ui/components/ModelEditForm'
+import { ModelEditModal } from '@fc/ui/components/ModelEditModal'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import { useColumns } from '@fc/ui/hooks/useColumns'
+import { useFields } from '@fc/ui/hooks/useFields'
+import { useSchema } from '@fc/ui/hooks/useSchema'
 
 const AssetPage = () => {
   // const { t } = useTranslation()

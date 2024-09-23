@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { hashtagSentencesEdgeHandler } from '@fc/services/src/api/hashtagSentencesEdgeHandler'
+import { hashtagSentencesEdgeHandler } from '@fc/services/api/hashtagSentencesEdgeHandler'
 
 export const runtime = 'edge'
 

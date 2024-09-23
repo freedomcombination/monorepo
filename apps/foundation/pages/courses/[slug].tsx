@@ -4,14 +4,14 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { SITE_URL } from '@fc/config'
-import { getCourseBySlug } from '@fc/services'
+import { SITE_URL } from '@fc/config/constants'
+import { getCourseBySlug } from '@fc/services/course/getBySlug'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { CourseDetailPage } from '@fc/ui'
-import { mapStrapiMediaToOgImages } from '@fc/utils'
+import type { StrapiLocale } from '@fc/types'
+import { CourseDetailPage } from '@fc/ui/components/CourseDetailPage'
+import { mapStrapiMediaToOgImages } from '@fc/utils/mapStrapiMediaToOgImages'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 type CoursePageProps = InferGetStaticPropsType<typeof getServerSideProps>
 

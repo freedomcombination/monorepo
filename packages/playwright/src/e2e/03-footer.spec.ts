@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test'
 
-import { socialLinks } from '@fc/config/src/socialLinks'
-import { Site } from '@fc/types'
+import { socialLinks } from '@fc/config/socialLinks'
+import type { Site } from '@fc/types'
 
 import { test } from '../fixtures'
 import { addCookies, checkExternalLink, getUrl } from '../utils'

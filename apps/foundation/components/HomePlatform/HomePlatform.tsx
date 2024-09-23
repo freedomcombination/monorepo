@@ -4,8 +4,10 @@ import { Box, Center, Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { Platform, PlatformSlug } from '@fc/types'
-import { ButtonLink, Container, WImage } from '@fc/ui'
+import type { Platform, PlatformSlug } from '@fc/types'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { Container } from '@fc/ui/components/Container'
+import { WImage } from '@fc/ui/components/WImage'
 
 type HomePlatformProps = {
   platforms: Platform[]

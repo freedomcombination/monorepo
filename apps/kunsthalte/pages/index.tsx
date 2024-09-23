@@ -6,8 +6,10 @@ import { BsActivity, BsCollectionFill } from 'react-icons/bs'
 import { FaPaintBrush } from 'react-icons/fa'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { AnimatedBox, ButtonLink, Container } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { Container } from '@fc/ui/components/Container'
 
 import { Layout } from '../components'
 

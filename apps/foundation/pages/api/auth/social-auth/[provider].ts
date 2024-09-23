@@ -1,3 +1,3 @@
-import { socialAuthHandler } from '@fc/services/src/api/socialAuthHandler'
+import { socialAuthHandler } from '@fc/services/api/socialAuthHandler'
 
 export default socialAuthHandler

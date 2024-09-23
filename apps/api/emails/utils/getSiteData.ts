@@ -1,4 +1,4 @@
-import { Site, StrapiLocale } from '@fc/types'
+import type { Site, StrapiLocale } from '@fc/types'
 
 /**
  * Returns the link based on the provided site and locale.

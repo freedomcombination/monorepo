@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/react'
-import { MenuItem, Stack, Text } from '@chakra-ui/react'
+import { MenuItem, Stack, Text, useDisclosure } from '@chakra-ui/react'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -15,17 +14,15 @@ import {
   AccordionItem,
   AccordionPanel,
 } from '@fc/chakra'
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Course, CourseApplication, Sort, StrapiLocale } from '@fc/types'
-import {
-  AdminLayout,
-  DataTable,
-  ModelEditForm,
-  ModelEditModal,
-  PageHeader,
-  useColumns,
-} from '@fc/ui'
+import type { Course, CourseApplication, Sort, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { DataTable } from '@fc/ui/components/DataTable'
+import { ModelEditForm } from '@fc/ui/components/ModelEditForm'
+import { ModelEditModal } from '@fc/ui/components/ModelEditModal'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import { useColumns } from '@fc/ui/hooks/useColumns'
 
 const CoursePage = () => {
   const { open, onOpen, onClose } = useDisclosure()

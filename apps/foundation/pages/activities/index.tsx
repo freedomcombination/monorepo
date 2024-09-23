@@ -5,20 +5,18 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { Pagination } from '@fc/chakra'
-import { RequestCollectionArgs, strapiRequest } from '@fc/lib'
-import { useStrapiRequest } from '@fc/services'
+import { RequestCollectionArgs, strapiRequest } from '@fc/lib/request'
+import { useStrapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Activity, StrapiLocale, UploadFile } from '@fc/types'
-import {
-  AnimatedBox,
-  Card,
-  Container,
-  Hero,
-  useChangeParams,
-  FormattedDate,
-} from '@fc/ui'
+import type { Activity, StrapiLocale, UploadFile } from '@fc/types'
+import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
+import { Card } from '@fc/ui/components/Card'
+import { Container } from '@fc/ui/components/Container'
+import { FormattedDate } from '@fc/ui/components/FormattedDate'
+import { Hero } from '@fc/ui/components/Hero'
+import { useChangeParams } from '@fc/ui/hooks/useChangeParam'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 const args: RequestCollectionArgs<Activity> = {
   endpoint: 'activities',

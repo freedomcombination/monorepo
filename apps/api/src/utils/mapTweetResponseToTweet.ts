@@ -1,6 +1,6 @@
 import { TweetV2PaginableTimelineResult, UserV2 } from 'twitter-api-v2'
 
-import { Tweet } from '@fc/types'
+import type { Tweet } from '@fc/types'
 
 export const mapTweetResponseToTweet = (
   data: TweetV2PaginableTimelineResult,

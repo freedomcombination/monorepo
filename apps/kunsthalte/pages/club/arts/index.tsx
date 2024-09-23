@@ -2,10 +2,10 @@ import { dehydrate } from '@tanstack/react-query'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
-import { getClubQueryClient } from '@fc/services'
+import { getClubQueryClient } from '@fc/services/art/getClubQueryClient'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { ArtClubTemplate } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { ArtClubTemplate } from '@fc/ui/components/ArtClubTemplate'
 
 import { Layout } from '../../../components'
 

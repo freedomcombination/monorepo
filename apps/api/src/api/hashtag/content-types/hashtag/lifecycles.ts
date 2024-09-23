@@ -1,4 +1,4 @@
-import { StrapiLocale } from '@fc/types'
+import type { StrapiLocale } from '@fc/types'
 
 const getEdgeConfigKey = (locale: StrapiLocale) =>
   process.env.VERCEL_ENV === 'production'

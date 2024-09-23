@@ -3,8 +3,8 @@ import { FC } from 'react'
 import { AppProps } from 'next/app'
 import { appWithTranslation } from 'next-i18next'
 
-import { i18nConfig } from '@fc/config'
-import { Providers } from '@fc/ui'
+import { i18nConfig } from '@fc/config/next-i18next.config'
+import { Providers } from '@fc/ui/components/Providers'
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (

@@ -3,8 +3,9 @@ import { FC } from 'react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { AdminLayout, UserRoles } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { UserRoles } from '@fc/ui/components/UserRoles'
 
 type RolesPageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 

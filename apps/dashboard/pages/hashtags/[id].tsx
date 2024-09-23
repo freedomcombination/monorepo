@@ -1,5 +1,4 @@
-import { useDisclosure } from '@chakra-ui/react'
-import { Center, Spinner } from '@chakra-ui/react'
+import { Center, Spinner, useDisclosure } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -7,11 +6,13 @@ import { useTranslation } from 'next-i18next'
 import { FaPencil } from 'react-icons/fa6'
 
 import { Button } from '@fc/chakra'
-import { strapiRequest } from '@fc/lib'
-import { useStrapiRequest } from '@fc/services'
+import { strapiRequest } from '@fc/lib/request'
+import { useStrapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Hashtag, StrapiLocale } from '@fc/types'
-import { AdminLayout, ModelEditModal, TabbedGenAIView } from '@fc/ui'
+import type { Hashtag, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { ModelEditModal } from '@fc/ui/components/ModelEditModal'
+import { TabbedGenAIView } from '@fc/ui/components/TabbedGenAIView'
 
 const HashtagPage = () => {
   const { t } = useTranslation()
