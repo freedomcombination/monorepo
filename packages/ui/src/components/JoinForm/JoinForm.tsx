@@ -6,6 +6,7 @@ import {
   Field,
   Heading,
   HStack,
+  Field as ChakraField,
   Stack,
   Text,
   Textarea,
@@ -159,7 +160,7 @@ export const JoinForm: FC<JoinFormProps> = ({
       </Stack>
 
       {/* heard FROM */}
-      <Box>
+      <ChakraField.Root>
         <Field.Label fontSize="sm" fontWeight={600}>
           {t('apply-form.heard-from')}
         </Field.Label>
@@ -188,10 +189,10 @@ export const JoinForm: FC<JoinFormProps> = ({
             {errors.heardFrom.message}
           </Text>
         )}
-      </Box>
+      </ChakraField.Root>
 
       {/* JOBS */}
-      <Box>
+      <ChakraField.Root>
         <Field.Label fontSize="sm" fontWeight={600}>
           {t('jobs')}
           <chakra.span color="red.500">*</chakra.span>
@@ -260,7 +261,7 @@ export const JoinForm: FC<JoinFormProps> = ({
             </Text>
           )}
         </Stack>
-      </Box>
+      </ChakraField.Root>
       <Button loading={loading} size="lg" type="submit">
         {t('submit')}
       </Button>
