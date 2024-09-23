@@ -25,6 +25,8 @@ const ArchiveContentPage = () => {
     <AdminLayout seo={{ title: t('archive-contents') }}>
       <Stack>
         {archiveContentData?.id && (
+          // TODO: Won't work without GenPostProvider
+          // GenPostProvider requires a post or hashtag prop
           <ArchivePostGenAI
             archiveContentId={archiveContentData.id}
             content={archiveContentData.content}
