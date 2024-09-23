@@ -84,6 +84,7 @@ export const ContactForm = () => {
         />
 
         <Button
+          data-testid="submit-send-message"
           variant="solid"
           type="submit"
           disabled={!isValid}
@@ -95,7 +96,9 @@ export const ContactForm = () => {
         </Button>
 
         {isSuccess && (
-          <Alert status="success">{t('contact.form.success')}</Alert>
+          <Alert data-testid="success-contact-form" status="success">
+            {t('contact.form.success')}
+          </Alert>
         )}
         {isError && (
           <Alert status="error">
