@@ -14,9 +14,9 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import {
+import type {
   Activity,
   ApprovalStatus,
   Sort,
@@ -24,16 +24,14 @@ import {
   StrapiLocale,
   StrapiModel,
 } from '@fc/types'
-import {
-  AdminLayout,
-  DataTable,
-  ModelEditTranslate,
-  PageHeader,
-  WTableProps,
-  useColumns,
-  useFields,
-  useSchema,
-} from '@fc/ui'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { DataTable } from '@fc/ui/components/DataTable'
+import { ModelEditTranslate } from '@fc/ui/components/ModelEditTranslate'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import type { WTableProps } from '@fc/ui/components/WTable'
+import { useColumns } from '@fc/ui/hooks/useColumns'
+import { useFields } from '@fc/ui/hooks/useFields'
+import { useSchema } from '@fc/ui/hooks/useSchema'
 
 const ActivitiesTranslatePage = () => {
   const [searchTerm, setSearchTerm] = useState<string>()

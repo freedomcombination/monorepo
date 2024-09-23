@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { ogEdgeHandler } from '@fc/services/src/api/ogEdgeHandler'
+import { ogEdgeHandler } from '@fc/services/api/ogEdgeHandler'
 
 export const runtime = 'edge'
 

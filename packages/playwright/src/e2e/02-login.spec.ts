@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test'
 
-import { Site } from '@fc/types'
+import type { Site } from '@fc/types'
 
 import { TEST_TIMEOUT } from '../config'
 import { test } from '../fixtures'

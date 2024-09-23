@@ -5,12 +5,16 @@ import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { strapiRequest } from '@fc/lib'
-import { getModelStaticPaths } from '@fc/services'
+import { strapiRequest } from '@fc/lib/request'
+import { getModelStaticPaths } from '@fc/services/common/staticPaths'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Activity, StrapiCollectionResponse, StrapiLocale } from '@fc/types'
-import { ActivityDetail } from '@fc/ui'
-import { getLocalizedSlugs } from '@fc/utils'
+import type {
+  Activity,
+  StrapiCollectionResponse,
+  StrapiLocale,
+} from '@fc/types'
+import { ActivityDetail } from '@fc/ui/components/ActivityDetail'
+import { getLocalizedSlugs } from '@fc/utils/getLocalizedSlugs'
 
 import { Layout } from '../../components/index'
 
