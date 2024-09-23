@@ -6,11 +6,8 @@ import { FaArrowDownWideShort } from 'react-icons/fa6'
 
 import {
   IconButton,
-  Menu,
-  MenuButton,
   MenuContent,
   MenuItem,
-  MenuList,
   MenuRoot,
   MenuTrigger,
 } from '@fc/chakra'

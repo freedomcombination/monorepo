@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'

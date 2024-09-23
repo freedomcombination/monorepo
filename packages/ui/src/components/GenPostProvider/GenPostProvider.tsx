@@ -1,6 +1,6 @@
 import { PropsWithChildren, useRef, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { Stack, Text } from '@chakra-ui/react'
 import { useLocalStorage } from 'usehooks-ts'
 

@@ -3,7 +3,6 @@ import { FC } from 'react'
 import { Box, Separator, HStack, Stack, Text, VStack } from '@chakra-ui/react'
 import Link from 'next/link'
 
-
 import { useAuthContext } from '@fc/context'
 
 import { AdminSidebarProfile } from './AdminSidebarProfile'

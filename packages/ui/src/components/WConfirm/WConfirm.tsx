@@ -1,7 +1,8 @@
 import { FC, useEffect, useRef } from 'react'
 
-import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+import { useBoolean } from 'react-use'
 
 import {
   Button,
@@ -30,8 +31,8 @@ export const WConfirm: FC<WConfirmProps> = props => {
   }, [isOpen, disclosure])
 
   useEffect(() => {
-    if (props) setIsOpen.on()
-    if (!props) setIsOpen.off()
+    if (props) setIsOpen(true)
+    if (!props) setIsOpen(false)
   }, [props, setIsOpen])
 
   const handleConfirm = () => {
@@ -41,7 +42,7 @@ export const WConfirm: FC<WConfirmProps> = props => {
 
   const handleCancel = () => {
     onCancel?.()
-    setIsOpen.off()
+    setIsOpen(false)
   }
 
   return (

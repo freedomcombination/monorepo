@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { MenuItem, Stack, Text } from '@chakra-ui/react'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
+import { useUpdateEffect } from 'react-use'
 
 import {
   Accordion,

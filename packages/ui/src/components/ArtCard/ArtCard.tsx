@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { Badge, Box, HStack, Stack, Text } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'

@@ -1,4 +1,4 @@
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { Box, Portal, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { BsCollection } from 'react-icons/bs'

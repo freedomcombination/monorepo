@@ -1,4 +1,4 @@
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { Box, Center, Link, Stack, Text, VStack } from '@chakra-ui/react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error

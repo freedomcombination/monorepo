@@ -1,12 +1,12 @@
 import { forwardRef, Ref } from 'react'
 
-import { useMergeRefs } from '@chakra-ui/hooks'
 import { useTranslation } from 'next-i18next'
 import { Control, FieldValues, useController } from 'react-hook-form'
 
 import { Field } from '@fc/chakra'
 
 import { I18nNamespaces } from '../../../@types/i18next'
+import { useMergeRefs } from '../../hooks'
 import { FormItemProps } from '../FormItem'
 import { FormUploader } from '../FormUploader/FormUploader'
 import { MarkdownEditor } from '../MarkdownEditor'

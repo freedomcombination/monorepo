@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { TableCell, TableColumn, chakra } from '@chakra-ui/react'
+import { TableCell, chakra } from '@chakra-ui/react'
 import { camelCase, startCase } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDown, FaArrowUp, FaSort } from 'react-icons/fa6'

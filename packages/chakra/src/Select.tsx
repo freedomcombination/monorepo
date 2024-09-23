@@ -1,6 +1,6 @@
 'use client'
 
-import { Select as ChakraSelect, HStack, Portal } from '@chakra-ui/react'
+import { Select as ChakraSelect, Portal } from '@chakra-ui/react'
 
 import { CloseButton } from './CloseButton'
 

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 
-import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { useUpdateEffect } from 'react-use'
 
 import {
   Button,

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { HStack, Heading, Skeleton } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { BiNotificationOff } from 'react-icons/bi'
@@ -116,7 +116,9 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             >
               <ModalOverlay />
               <ModalContent p={0} h={'90vh'}>
-                <ModalBody p={0}>{/* <ProfilePanel /> */}</ModalBody>
+                <ModalBody p={0}>
+                  <ProfilePanel />
+                </ModalBody>
                 <ModalFooter bg={'primary.400'} />
               </ModalContent>
             </Modal>

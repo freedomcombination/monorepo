@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { HStack, VStack } from '@chakra-ui/react'
 import { TFunction } from 'i18next'
 import { useRouter } from 'next/router'

@@ -10,10 +10,11 @@ import {
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
-import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
+import { Trans, useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 
-import { toaster } from '@fc/chakra'
+import { Checkbox, toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context'
 import { Mutation } from '@fc/lib'
 import { CourseApplicationCreateInput } from '@fc/types'
@@ -25,12 +26,12 @@ import { FormItem } from '../FormItem'
 
 export const CourseApplicationForm: FC = () => {
   const { t } = useTranslation()
-  // const [termsAccepted, setTermsAccepted] = useState<boolean | 'indeterminate'>(
-  //   false,
-  // )
-  // const [privacyAccepted, setPrivacyAccepted] = useState<
-  //   boolean | 'indeterminate'
-  // >(false)
+  const [termsAccepted, setTermsAccepted] = useState<boolean | 'indeterminate'>(
+    false,
+  )
+  const [privacyAccepted, setPrivacyAccepted] = useState<
+    boolean | 'indeterminate'
+  >(false)
 
   const { course, refetchApplicants } = useCourseContext()
   const { user, profile, token } = useAuthContext()
@@ -118,11 +119,12 @@ export const CourseApplicationForm: FC = () => {
           </Box>
         </SimpleGrid>
 
-        {/* <Stack gap={2}>
+        <Stack gap={2}>
           <Checkbox
             fontSize={'14px'}
             fontWeight={'400'}
             lineHeight={'20px'}
+            checked={termsAccepted}
             onCheckedChange={e => setTermsAccepted(e.checked)}
           >
             <Trans
@@ -134,14 +136,16 @@ export const CourseApplicationForm: FC = () => {
             fontSize={'14px'}
             fontWeight={'400'}
             lineHeight={'20px'}
+            checked={privacyAccepted}
             onCheckedChange={e => setPrivacyAccepted(e.checked)}
           >
             <Trans
-              i18nKey="apply-form.agreement"
+              // TODO: Update i18n key
+              i18nKey="apply-form.terms"
               components={{ a: <Link href={'/'} color="primary.500" /> }}
             />
           </Checkbox>
-        </Stack> */}
+        </Stack>
         <Text fontSize={'14px'} w={'100%'} textAlign={'center'}>
           {profile.name || user.username} ({profile.email || user.email})
         </Text>

@@ -1,18 +1,17 @@
 import { useState } from 'react'
 
-import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
 import {
   AspectRatio,
   Box,
-  Separator,
   Flex,
+  Group,
   Heading,
+  Separator,
   Stack,
   Textarea,
-  Group,
+  useDisclosure,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { upperFirst } from 'lodash'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -27,6 +26,7 @@ import {
   MdOutlinePublishedWithChanges,
   MdOutlineUnpublished,
 } from 'react-icons/md'
+import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
 import { Field, Switch } from '@fc/chakra'
@@ -173,7 +173,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
   const handleSuccess = () => {
     onSuccess?.()
-    setIsEditing.off()
+    setIsEditing(false)
     setIsChangingImage({
       image: false,
       caps: false,
@@ -218,7 +218,7 @@ export const ModelEditForm = <T extends StrapiModel>({
   const onCancel = () => {
     onCancelProp?.()
     resetForm()
-    setIsEditing.off()
+    setIsEditing(false)
     setIsChangingImage({
       image: false,
       caps: false,
@@ -344,9 +344,7 @@ export const ModelEditForm = <T extends StrapiModel>({
           >
             {Object.values(fields || {})?.map((field, index) => {
               const label = t(field.name as keyof I18nNamespaces['common'])
-              const errorMessage =
-                errors[field.name]?.message &&
-                upperFirst(errors[field.name]?.message as string)
+              const errorMessage = errors[field.name]?.message as string
 
               if (field.type === 'file') {
                 return (
@@ -355,7 +353,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                     required={field.required}
                     maxW={400}
                     label={label}
-                    errorText={errors[field.name as string]?.message as string}
+                    errorText={errorMessage}
                   >
                     <ModelMedia
                       endpoint={endpoint}
@@ -553,7 +551,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionStack direction={'row'} canUpdate={endpoint}>
               <ActionButton
                 isVisible={!isEditing}
-                onClick={setIsEditing.on}
+                onClick={() => setIsEditing(true)}
                 leftIcon={<AiOutlineEdit />}
                 fontSize="sm"
               >

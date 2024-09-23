@@ -1,9 +1,9 @@
 import { FC, useEffect } from 'react'
 
-import { useBoolean } from '@chakra-ui/hooks'
 import { Box, chakra, Collapsible } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { GoChevronDown } from 'react-icons/go'
+import { useBoolean } from 'react-use'
 
 import { NavLink } from './NavLink'
 import { AdminNavItemProps } from './types'
@@ -26,7 +26,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
 
   useEffect(() => {
     if (isMenuLinkActive && submenu && !open) {
-      setOpen.on()
+      setOpen(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMenuLinkActive, submenu])
@@ -57,7 +57,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
           color: 'primary.500',
         }}
         {...(submenu && {
-          onClick: setOpen.toggle,
+          onClick: () => setOpen(!open),
           rightIcon: (
             <Box
               as={GoChevronDown}

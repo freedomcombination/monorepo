@@ -1,9 +1,9 @@
 import { FC, useState } from 'react'
 
-import { useBoolean } from '@chakra-ui/hooks'
 import { AspectRatio, Box } from '@chakra-ui/react'
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
 import ReactPlayer from 'react-player'
+import { useBoolean } from 'react-use'
 
 import { getMediaUrl } from '@fc/utils'
 
@@ -24,7 +24,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ ratio = 16 / 9, url, light }) => {
         w="full"
         rounded={'lg'}
         overflow="hidden"
-        onClick={setIsPlaying.toggle}
+        onClick={() => setIsPlaying(!isPlaying)}
         cursor="pointer"
         bg={'gray.50'}
       >

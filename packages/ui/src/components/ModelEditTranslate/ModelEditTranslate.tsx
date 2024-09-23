@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { useBoolean } from '@chakra-ui/hooks'
 import { Field, HStack, Stack, Text, Textarea, Group } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
@@ -8,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { HiOutlineCheck } from 'react-icons/hi'
 import { MdClose, MdOutlineCheck } from 'react-icons/md'
+import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
 import {
@@ -78,7 +78,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
   const handleSuccess = () => {
     onSuccess?.()
     refetch()
-    setIsEditing.off()
+    setIsEditing(false)
     setConfirmState(undefined)
   }
 
@@ -137,7 +137,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
 
   const onCancel = () => {
     resetForm()
-    setIsEditing.off()
+    setIsEditing(false)
     setConfirmState(undefined)
   }
 
@@ -269,7 +269,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
           <ActionStack direction={'row'} canUpdate={endpoint}>
             <ActionButton
               isVisible={!isEditing}
-              onClick={setIsEditing.on}
+              onClick={() => setIsEditing(true)}
               leftIcon={<AiOutlineEdit />}
               fontSize="sm"
             >

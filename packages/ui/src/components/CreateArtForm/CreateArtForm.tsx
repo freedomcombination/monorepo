@@ -1,6 +1,6 @@
 import { FC, useRef, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import {
   Box,
   Group,

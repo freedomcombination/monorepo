@@ -1,14 +1,14 @@
 import { FC, ReactNode, useEffect } from 'react'
 
-import { useClipboard } from '@chakra-ui/hooks'
 import {
   Box,
   Center,
+  Group,
   Separator,
   Stack,
   Text,
+  useClipboard,
   VStack,
-  Group,
 } from '@chakra-ui/react'
 import { FaCheck, FaFile, FaFilePdf, FaTrash } from 'react-icons/fa6'
 
@@ -37,7 +37,7 @@ const MenuFileButton: FC<MenuFileButtonProps> = ({
   isImage,
   children,
 }) => {
-  const { onCopy, setValue, hasCopied } = useClipboard('')
+  const { copy, setValue, copied } = useClipboard({ value: '' })
 
   useEffect(() => {
     setValue(`${isImage ? '!' : ''}[${name}](${API_URL}${url})`)
@@ -48,11 +48,11 @@ const MenuFileButton: FC<MenuFileButtonProps> = ({
     <Button
       aria-label="Select Image Format"
       variant={'outline'}
-      onClick={onCopy}
+      onClick={copy}
       overflow={'hidden'}
     >
       {children}
-      {hasCopied && (
+      {copied && (
         <Center
           pos={'absolute'}
           left={0}

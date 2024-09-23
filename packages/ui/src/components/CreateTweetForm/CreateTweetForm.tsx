@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 
-import { useBoolean } from '@chakra-ui/hooks'
 import {
   Box,
   Group,
@@ -15,6 +14,7 @@ import { useRouter } from 'next/router'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { GrFormClose } from 'react-icons/gr'
+import { useBoolean } from 'react-use'
 import stringSimilarity from 'string-similarity'
 import { ObjectSchema } from 'yup'
 
@@ -133,7 +133,9 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   horizontal
                   tweet={originalTweet as Tweet}
                   isChangingMedia={isChangingImage}
-                  toggleChangingMedia={setIsChangingImage.toggle}
+                  toggleChangingMedia={() =>
+                    setIsChangingImage(!isChangingImage)
+                  }
                   setValue={setValue}
                 />
                 <FormItem<CreateTweetFormFieldValues>

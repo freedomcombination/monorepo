@@ -1,6 +1,12 @@
 import { ReactNode } from 'react'
 
-import { Input, Group, InputAddon, Textarea } from '@chakra-ui/react'
+import {
+  Input,
+  Group,
+  InputAddon,
+  Textarea,
+  InputElement,
+} from '@chakra-ui/react'
 
 import { Field } from '@fc/chakra'
 
@@ -10,8 +16,10 @@ type FormElementProps = {
   defaultValue: string | null
   useTextarea?: boolean
   phone?: boolean
-  left?: ReactNode
-  right?: ReactNode
+  leftAddon?: ReactNode
+  rightAddon?: ReactNode
+  leftElement?: ReactNode
+  rightElement?: ReactNode
   onChange: (value: string) => void
 }
 
@@ -21,8 +29,10 @@ export const FormElement: React.FC<FormElementProps> = ({
   defaultValue,
   useTextarea = false,
   phone = false,
-  left,
-  right,
+  leftAddon,
+  rightAddon,
+  leftElement,
+  rightElement,
   onChange = () => {},
 }) => {
   const defValue = defaultValue ?? ''
@@ -31,8 +41,9 @@ export const FormElement: React.FC<FormElementProps> = ({
 
   return (
     <Field title={title} label={title}>
-      {/* <Group>
-        {left && <InputAddon>{left}</InputAddon>}
+      <Group>
+        {leftAddon && <InputAddon>{leftAddon}</InputAddon>}
+        {leftElement && <InputElement>{leftElement}</InputElement>}
         <Tag
           placeholder={placeholder}
           defaultValue={defValue}
@@ -41,8 +52,9 @@ export const FormElement: React.FC<FormElementProps> = ({
           size={'lg'}
           {...(useTextarea && { resize: 'vertical' })}
         />
-        {right && <InputAddon>{right}</InputAddon>}
-      </Group> */}
+        {rightAddon && <InputAddon>{rightAddon}</InputAddon>}
+        {rightElement && <InputElement>{rightElement}</InputElement>}
+      </Group>
     </Field>
   )
 }

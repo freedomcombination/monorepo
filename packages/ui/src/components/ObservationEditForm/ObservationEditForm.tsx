@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { useBoolean } from '@chakra-ui/hooks'
 import { Group, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { format } from 'date-fns'
@@ -8,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { BsTrash } from 'react-icons/bs'
 import { MdClose, MdOutlineCheck } from 'react-icons/md'
+import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
 import { useDeleteModel, useUpdateModelMutation } from '@fc/services'
@@ -63,7 +63,7 @@ export const ObservationEditForm = ({
 
   const handleSuccess = () => {
     onSuccess?.()
-    setIsEditing.off()
+    setIsEditing(false)
     setConfirmState(undefined)
   }
 
@@ -91,7 +91,7 @@ export const ObservationEditForm = ({
   }
   const onCancel = () => {
     resetForm()
-    setIsEditing.off()
+    setIsEditing(false)
     setConfirmState(undefined)
   }
 
@@ -122,7 +122,7 @@ export const ObservationEditForm = ({
             <Group>
               <ActionButton
                 isVisible={!isEditing}
-                onClick={setIsEditing.on}
+                onClick={() => setIsEditing(true)}
                 leftIcon={<AiOutlineEdit />}
                 variant={'outline'}
                 size={'sm'}

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { useBoolean } from '@chakra-ui/hooks'
 import { Box, Separator, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
@@ -8,6 +7,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { TbPlus } from 'react-icons/tb'
+import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
 import { Button } from '@fc/chakra'
@@ -180,7 +180,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
           fields: ungroupedFields,
           formProps,
           isChangingMedia: isChangingImage,
-          toggleChangingMedia: setIsChangingImage.toggle,
+          toggleChangingMedia: () => setIsChangingImage(!isChangingImage),
           t,
         })}
 
@@ -198,7 +198,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
               formProps,
               activeOption,
               isChangingMedia: isChangingImage,
-              toggleChangingMedia: setIsChangingImage.toggle,
+              toggleChangingMedia: () => setIsChangingImage(!isChangingImage),
               t,
             })}
           </>

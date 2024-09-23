@@ -2,8 +2,8 @@
 
 import { forwardRef, useRef } from 'react'
 
-import { mergeRefs, useControllableState } from '@chakra-ui/hooks'
 import type { GroupProps, InputProps, StackProps } from '@chakra-ui/react'
+import { mergeRefs, useControllableState } from '@chakra-ui/react'
 import { Box, HStack, Input, Stack } from '@chakra-ui/react'
 import { LuEye, LuEyeOff } from 'react-icons/lu'
 

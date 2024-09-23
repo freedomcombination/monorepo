@@ -1,7 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
-import { Center, MenuSeparator, Spinner, Stack } from '@chakra-ui/react'
+import {
+  Center,
+  MenuSeparator,
+  Spinner,
+  Stack,
+  useDisclosure,
+} from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'

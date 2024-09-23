@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
-import { Box, HStack, Link, Stack, Text } from '@chakra-ui/react'
+import { Box, HStack, Link, Stack, Text, useDisclosure } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -20,11 +19,8 @@ import { useLocalStorage } from 'usehooks-ts'
 
 import {
   IconButton,
-  Menu,
-  MenuButton,
   MenuContent,
   MenuItem,
-  MenuList,
   MenuRoot,
   MenuTrigger,
 } from '@fc/chakra'

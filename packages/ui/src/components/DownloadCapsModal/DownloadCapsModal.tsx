@@ -1,11 +1,11 @@
 import { FC, useState } from 'react'
 
-import { useDisclosure, useUpdateEffect } from '@chakra-ui/hooks'
-import { Stack } from '@chakra-ui/react'
+import { Stack, useDisclosure } from '@chakra-ui/react'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
 import { useRouter } from 'next/router'
 import { FaDownload } from 'react-icons/fa'
+import { useUpdateEffect } from 'react-use'
 
 import {
   Button,

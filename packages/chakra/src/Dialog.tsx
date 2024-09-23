@@ -1,7 +1,8 @@
 import { forwardRef } from 'react'
 
 import { Dialog as ChakraDialog, Heading, Portal } from '@chakra-ui/react'
-import { CloseButton } from 'compositions/ui/close-button'
+
+import { CloseButton } from './CloseButton'
 
 interface DialogContentProps extends ChakraDialog.ContentProps {
   portalled?: boolean
@@ -80,3 +81,13 @@ export const DialogFooter = ChakraDialog.Footer
 export const DialogHeader = ChakraDialog.Header
 export const DialogBody = ChakraDialog.Body
 export const DialogBackdrop = ChakraDialog.Backdrop
+export const DialogOverlay = ChakraDialog.Backdrop
+export const DialogCloseButton = DialogCloseTrigger
+export const Dialog = DialogRoot
+export const Modal = DialogRoot
+export const ModalBody = DialogBody
+export const ModalFooter = DialogFooter
+export const ModalOverlay = DialogBackdrop
+export const ModalHeader = DialogHeader
+export const ModalContent = DialogContent
+export const ModalCloseButton = DialogCloseTrigger

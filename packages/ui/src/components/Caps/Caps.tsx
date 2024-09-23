@@ -1,6 +1,5 @@
 import { forwardRef } from 'react'
 
-import { useMergeRefs } from '@chakra-ui/hooks'
 import {
   AspectRatio,
   Box,
@@ -14,6 +13,7 @@ import { useMeasure } from 'react-use'
 
 import { Skeleton } from '@fc/chakra'
 import { PlatformSlug } from '@fc/types'
+import { useMergeRefs } from '@fc/ui'
 
 import { platformLogos } from './logos'
 import { CapsProps } from './types'

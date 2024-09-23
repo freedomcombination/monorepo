@@ -1,10 +1,11 @@
 import { FC, useState } from 'react'
 
-import { useBoolean, useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { Box, Portal, Stack } from '@chakra-ui/react'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { FaInfo, FaPlus } from 'react-icons/fa6'
 import { MdOutlineTrendingUp } from 'react-icons/md'
+import { useBoolean } from 'react-use'
 
 import {
   IconButton,
@@ -29,7 +30,7 @@ type PlusButtonProps = {
 export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
   const infoDisclosure = useDisclosure()
   const statsDisclosure = useDisclosure()
-  const [isEditing, setIsEditing] = useBoolean()
+  const [isEditing, setIsEditing] = useBoolean(false)
   const [activeButton, setActiveButton] = useState<'info' | 'stats'>()
 
   const { title } = useHashtag()
@@ -64,7 +65,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
     <Box>
       <Popover
         positioning={{ placement: 'top' }}
-        onOpenChange={setIsEditing.toggle}
+        onOpenChange={() => setIsEditing(!isEditing)}
         closeOnInteractOutside
       >
         <PopoverTrigger>

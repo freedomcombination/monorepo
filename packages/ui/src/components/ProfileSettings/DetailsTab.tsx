@@ -1,6 +1,6 @@
 import { useId, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { Box, Center, Spinner, Stack, Text, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaFileUpload, FaSave } from 'react-icons/fa'
@@ -195,14 +195,14 @@ export const DetailsTab = () => {
       <FormElement
         title={t('profile.phone')}
         placeholder={t('profile.phone.ph')}
-        left={<FaPhone />}
+        leftAddon={<FaPhone />}
         defaultValue={details.phone}
         onChange={value => setDetails({ ...details, phone: value })}
       />
 
       <FormElement
         title={t('profile.city')}
-        left={<FaCity />}
+        leftAddon={<FaCity />}
         placeholder={t('profile.city.ph')}
         defaultValue={details.city}
         onChange={value => setDetails({ ...details, city: value })}

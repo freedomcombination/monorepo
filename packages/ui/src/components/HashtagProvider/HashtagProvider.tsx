@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { sampleSize } from 'lodash'
 import { useRouter } from 'next/router'
 

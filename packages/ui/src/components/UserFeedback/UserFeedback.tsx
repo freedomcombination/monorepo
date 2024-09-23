@@ -1,7 +1,4 @@
-import React from 'react'
-
-import { useDisclosure } from '@chakra-ui/hooks'
-import { Box } from '@chakra-ui/react'
+import { Box, useDisclosure } from '@chakra-ui/react'
 
 import { Button } from '@fc/chakra'
 

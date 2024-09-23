@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { HStack, Spacer, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AiOutlineEye } from 'react-icons/ai'

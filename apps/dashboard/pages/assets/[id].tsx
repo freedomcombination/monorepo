@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useDisclosure } from '@chakra-ui/hooks'
+import { useDisclosure } from '@chakra-ui/react'
 import { Stack, Text } from '@chakra-ui/react'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'

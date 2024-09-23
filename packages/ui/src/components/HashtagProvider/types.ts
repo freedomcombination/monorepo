@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { ReactNode } from 'react'
 
-import { UseDisclosureReturn } from '@chakra-ui/hooks'
+import { UseDisclosureReturn } from '@chakra-ui/react'
 
 import { MentionUserData, PostSentence, StrapiLocale } from '@fc/types'
 

@@ -1,11 +1,11 @@
 import { forwardRef, Ref } from 'react'
 
-import { useMergeRefs } from '@chakra-ui/hooks'
 import { Input } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FieldValues } from 'react-hook-form'
 
 import { Field, InputGroup, PasswordInput } from '@fc/chakra'
+import { useMergeRefs } from '@fc/ui'
 
 import { FormItemProps } from './types'
 import { I18nNamespaces } from '../../../@types/i18next'

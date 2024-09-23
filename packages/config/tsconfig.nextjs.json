@@ -15,7 +15,7 @@
     "plugins": [{ "name": "next" }],
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "target": "es5",
+    "target": "es5"
   },
   "include": [
     "next-env.d.ts",

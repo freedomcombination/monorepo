@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import { useUpdateEffect } from '@chakra-ui/hooks'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { useUpdateEffect } from 'react-use'
 
 import { useStrapiRequest } from '@fc/services'
 import { ssrTranslations } from '@fc/services/ssrTranslations'

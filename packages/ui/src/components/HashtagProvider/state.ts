@@ -1,4 +1,4 @@
-import { UseDisclosureReturn } from '@chakra-ui/hooks'
+import { UseDisclosureReturn } from '@chakra-ui/react'
 
 import { HashtagActions, HashtagContextType, HashtagState } from './types'
 
