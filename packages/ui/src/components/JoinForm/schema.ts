@@ -1,7 +1,5 @@
 import * as yup from 'yup'
-
-// TODO: @ekrem fix yup schema add methot and reduce opt.
-// Link: https://stackoverflow.com/questions/69176340/yup-addmethod-not-working-in-typescript-yup-version
+import 'yup-phone-lite'
 
 export const joinSchema = () => {
   yup.addMethod(
@@ -36,7 +34,16 @@ export const joinSchema = () => {
       })
       .required(),
     email: yup.string().email().required(),
-    phone: yup.string().required(),
+    phone: yup
+      .string()
+      .required('Phone number is required')
+      .test(
+        'is-valid-phone',
+        'Please enter a valid phone number',
+        function (value) {
+          return yup.string().phone().isValidSync(value)
+        },
+      ),
     comment: yup.string(),
     inMailingList: yup.boolean(),
     isPublic: yup.boolean(),
@@ -48,9 +55,6 @@ export const joinSchema = () => {
       .boolean()
       .oneOf([true], 'You must accept the Foundation information')
       .required(),
-    jobInfoConfirmation: yup
-      .boolean()
-      .oneOf([true], 'You have to accept to rules')
-      .required(),
+    jobInfoConfirmation: yup.boolean(),
   })
 }

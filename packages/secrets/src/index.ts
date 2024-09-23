@@ -9,6 +9,7 @@ const secrets = {
   RECAPTCHA_SECRET_KEY: process.env['RECAPTCHA_SECRET_KEY'] as string,
   STRIPE_KEY: process.env['STRIPE_KEY'] as string,
   TOKEN: process.env['API_TOKEN'] as string,
+  GEOLOCATION_API_KEY: process.env['GEOLOCATION_API_KEY'] as string,
 }
 
 type Secrets = keyof typeof secrets

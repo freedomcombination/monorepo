@@ -1,36 +1,28 @@
-import { FC } from 'react'
-
 import {
-  Stack,
-  Heading,
   Box,
-  Text,
-  FormControl,
   Checkbox,
+  FormControl,
   FormErrorMessage,
+  Heading,
+  Stack,
+  Text,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
-import { Job } from '@fc/types'
+import { useJoinFormContext } from './useJoinFormContext'
 
-import { JoinFormFieldValues } from './types'
-
-type JobInfoProps = {
-  selectedJobs: Job[]
-  register: UseFormRegister<JoinFormFieldValues>
-  errors: FieldErrors<JoinFormFieldValues>
-}
-
-export const JobInfo: FC<JobInfoProps> = ({
-  selectedJobs,
-  errors,
-  register,
-}) => {
+export const JobInfo = () => {
   const { locale } = useRouter()
-  const { t } = useTranslation()
 
+  const {
+    watch,
+    register,
+    formState: { errors },
+  } = useJoinFormContext()
+
+  const selectedJobs = watch('jobs')
+
+  // TODO: Use @strapi/blocks-react-renderer to render richText block
   // Convert selectedJobs (string[]) to number[]
   console.log('selectedJobs in job info', selectedJobs)
   const info = selectedJobs.map(job => job[`info_${locale}`])
@@ -74,40 +66,37 @@ export const JobInfo: FC<JobInfoProps> = ({
 
           return (
             <Box key={job?.id}>
-              {
-                <>
-                  <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
-                    {jobName}
-                  </Heading>
-                  {/* Render richText block */}
-                  <Text fontWeight={600} fontSize="sm">
-                    Job Information
-                  </Text>
-                  {jobInfo &&
-                    Array.isArray(jobInfo) &&
-                    jobInfo.map((block: any, idx: number) => (
-                      <Box key={idx}>{renderRichTextBlock(block)}</Box>
-                    ))}
+              <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
+                {jobName}
+              </Heading>
+              {/* Render richText block */}
+              <Text fontWeight={600} fontSize="sm">
+                Job Information
+              </Text>
+              {jobInfo &&
+                Array.isArray(jobInfo) &&
+                jobInfo.map((block: any, idx: number) => (
+                  <Box key={idx}>{renderRichTextBlock(block)}</Box>
+                ))}
 
-                  {jobInfo && (
-                    <FormControl
-                      isRequired
-                      isInvalid={!!errors?.jobInfoConfirmation}
-                    >
-                      <Checkbox
-                        {...register('jobInfoConfirmation', {
-                          required: 'You must accept the job info information',
-                        })}
-                      >
-                        {t('I have read and accept the job info information')}
-                      </Checkbox>
-                      <FormErrorMessage>
-                        {errors?.jobInfoConfirmation?.message}
-                      </FormErrorMessage>
-                    </FormControl>
-                  )}
-                </>
-              }
+              {jobInfo && (
+                <FormControl
+                  isRequired
+                  isInvalid={!!errors?.jobInfoConfirmation}
+                >
+                  <Checkbox
+                    {...register('jobInfoConfirmation', {
+                      required: 'You must accept the job info information',
+                    })}
+                  >
+                    {/* TODO: Translate */}I have read and accept the job info
+                    information
+                  </Checkbox>
+                  <FormErrorMessage>
+                    {errors?.jobInfoConfirmation?.message}
+                  </FormErrorMessage>
+                </FormControl>
+              )}
             </Box>
           )
         })}

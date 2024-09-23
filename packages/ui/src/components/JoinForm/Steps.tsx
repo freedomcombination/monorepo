@@ -1,5 +1,3 @@
-import React, { FC } from 'react'
-
 import {
   Box,
   Step,
@@ -12,22 +10,28 @@ import {
   StepStatus,
 } from '@chakra-ui/react'
 
-type StepsProps = {
-  activeStep: number
-  setActiveStep: (index: number) => void
-  steps: { description: string }[]
-}
+import { useJoinFormContext } from './useJoinFormContext'
 
-export const Steps: FC<StepsProps> = ({ activeStep, setActiveStep, steps }) => {
+export const Steps = () => {
+  const { activeStep, steps } = useJoinFormContext()
+
   return (
-    <Stepper size="lg" index={activeStep}>
+    <Stepper
+      size="lg"
+      index={activeStep}
+      display={{ base: 'none', sm: 'flex' }}
+    >
       {steps.map((step, index) => (
-        <Step key={index} onClick={() => setActiveStep(index)}>
+        <Step key={index} style={{ userSelect: 'none' }}>
           <StepIndicator>
             <StepStatus
-              complete={<StepIcon />}
-              incomplete={<StepNumber />}
-              active={<StepNumber />}
+              complete={<Box as={StepIcon} />}
+              incomplete={
+                <Box color={'gray.200'} as={StepNumber} fontWeight={600} />
+              }
+              active={
+                <Box as={StepNumber} color={'primary.500'} fontWeight={600} />
+              }
             />
           </StepIndicator>
           <Box flexShrink="0">

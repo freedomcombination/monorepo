@@ -185,7 +185,7 @@
       "required": false,
       "allowedTypes": ["images", "files", "videos", "audios"]
     },
-    "Address": {
+    "address": {
       "displayName": "Address",
       "type": "component",
       "repeatable": true,

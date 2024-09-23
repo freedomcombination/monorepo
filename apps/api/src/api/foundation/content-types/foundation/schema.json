@@ -82,7 +82,13 @@
       "required": false,
       "allowedTypes": ["images", "files", "videos", "audios"]
     },
-    "about": {
+    "about_en": {
+      "type": "richtext"
+    },
+    "about_nl": {
+      "type": "richtext"
+    },
+    "about_tr": {
       "type": "richtext"
     }
   }

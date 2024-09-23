@@ -1,49 +1,64 @@
-import { FC } from 'react'
-
 import {
   Box,
-  Stack,
-  HStack,
   Checkbox,
+  Heading,
+  HStack,
+  SimpleGrid,
+  Stack,
   Text,
   Tooltip,
-  Heading,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-// import { useTranslation } from 'next-i18next'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { FaCircleInfo } from 'react-icons/fa6'
 
-import { Job, Platform } from '@fc/types'
+import { Job } from '@fc/types'
 
-import { JoinFormFieldValues } from './types'
+import { useJoinFormContext } from './useJoinFormContext'
 
-type SelectJobsProps = {
-  foundationJobs: Job[]
-  errors: FieldErrors<JoinFormFieldValues>
-  platforms: Platform[]
-  register: UseFormRegister<JoinFormFieldValues>
-}
-
-export const SelectJobs: FC<SelectJobsProps> = ({
-  foundationJobs,
-  errors,
-  platforms,
-  register,
-}) => {
+export const SelectJobs = () => {
   // const { t } = useTranslation()
   const { locale } = useRouter()
 
+  const {
+    jobs,
+    register,
+    formState: { errors },
+  } = useJoinFormContext()
+
+  const foundationJobs = jobs.filter(job => job.platform === null)
+
+  // Group by platform.name_{locale}
+  const platformJobs = jobs
+    .filter(job => job.platform)
+    .reduce(
+      (acc, job) => {
+        if (job.platform === null) return acc
+
+        const platformName = job.platform?.[`name_${locale}`] as string
+
+        if (!acc[platformName]) {
+          acc[platformName] = []
+        }
+
+        acc[platformName].push(job)
+
+        return acc
+      },
+      {} as Record<string, Job[]>,
+    )
+
   return (
-    <Box>
+    <Stack gap={4}>
       <Heading as="h3" size="lg" textAlign="start" fontWeight={900}>
+        {/* TODO: Translate */}
         Hangi işlerde bizimle birlikte çalışmak istersiniz?
       </Heading>
 
       {/* {t('jobs')} */}
 
-      <Stack
-        spacing={8}
+      <SimpleGrid
+        gap={8}
+        columns={{ sm: 2, md: 3 }}
         rounded="lg"
         p={4}
         borderWidth={2}
@@ -85,12 +100,12 @@ export const SelectJobs: FC<SelectJobsProps> = ({
           </Stack>
         )}
 
-        {platforms?.map((platform, i) => (
+        {Object.keys(platformJobs)?.map((platform, i) => (
           <Stack key={i}>
             <Text fontWeight={600} fontSize="sm">
-              {platform[`name_${locale}`]}
+              {platform}
             </Text>
-            {platform?.jobs?.map(job => (
+            {platformJobs[platform]?.map(job => (
               <Checkbox
                 key={job.id}
                 id={job.id.toString()}
@@ -109,7 +124,7 @@ export const SelectJobs: FC<SelectJobsProps> = ({
             {errors.jobs.message}
           </Text>
         )}
-      </Stack>
-    </Box>
+      </SimpleGrid>
+    </Stack>
   )
 }

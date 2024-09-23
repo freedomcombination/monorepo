@@ -46,6 +46,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       jobs: [
         {
           id: 2,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-1',
           name_en: 'Copywriter',
           name_nl: 'Tekstschrijver',
@@ -61,6 +64,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 3,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-2',
           name_en: 'Account user',
           name_nl: 'Account gebruiker',
@@ -76,6 +82,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 14,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-13',
           name_en: 'Dubbing',
           name_nl: 'Nasynchronisatie',
@@ -88,6 +97,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 15,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-14',
           name_en: 'Video editor',
           name_nl: 'Video bewerker',
@@ -100,6 +112,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 18,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-17',
           name_en: 'Cameraman',
           name_nl: 'Cameraman',
@@ -112,6 +127,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 20,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-19',
           name_en: 'Interpreter (tr - nl - en)',
           name_nl: 'Tolk (tr - nl - en)',
@@ -124,6 +142,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 29,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-28',
           name_en: 'Representative',
           name_nl: 'Vertegenwoordiger',
@@ -319,6 +340,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       ],
       foundation: {
         id: 1,
+        about_en: null,
+        about_nl: null,
+        about_tr: null,
         email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
         bank1: 'ING BANK',
@@ -380,6 +404,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       jobs: [
         {
           id: 1,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job',
           name_en: 'Photograph',
           name_nl: 'Fotograaf',
@@ -392,6 +419,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 19,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-18',
           name_en: 'Illustrator',
           name_nl: 'Illustrator',
@@ -827,6 +857,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       ],
       foundation: {
         id: 1,
+        about_en: null,
+        about_nl: null,
+        about_tr: null,
         email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
         bank1: 'ING BANK',
@@ -888,6 +921,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       jobs: [
         {
           id: 10,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-9',
           name_en: 'Author',
           name_nl: 'Auteur',
@@ -900,6 +936,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 16,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-15',
           name_en: 'Project coordinator',
           name_nl: 'Project coördinator',
@@ -912,6 +951,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 17,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-16',
           name_en: 'Digital marketing specialist',
           name_nl: 'Specialist in digitale marketing',
@@ -924,6 +966,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 25,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-24',
           name_en: 'Frontend Developer',
           name_nl: 'Frontend Ontwikelaar',
@@ -936,6 +981,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 26,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-25',
           name_en: 'UI/UX Designer',
           name_nl: 'UI/UX Designer',
@@ -948,6 +996,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 27,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-26',
           name_en: 'Software Tester',
           name_nl: 'Software Tester',
@@ -1180,6 +1231,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       ],
       foundation: {
         id: 1,
+        about_en: null,
+        about_nl: null,
+        about_tr: null,
         email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
         bank1: 'ING BANK',
@@ -1240,6 +1294,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       },
       jobs: [
         {
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           id: 4,
           slug: 'job-3',
           name_en: 'Actor',
@@ -1254,6 +1311,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 5,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-4',
           name_en: 'Scriptwriter',
           name_nl: 'scenarioschrijver',
@@ -1269,6 +1329,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 6,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-5',
           name_en: 'Technical crew',
           name_nl: 'Technische bemanning',
@@ -1284,6 +1347,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 7,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-6',
           name_en: 'Producer',
           name_nl: 'Producent',
@@ -1299,6 +1365,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 24,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-23',
           name_en: 'Director of photography',
           name_nl: 'Directeur fotografie',
@@ -1311,6 +1380,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 13,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-12',
           name_en: 'Social media expert',
           name_nl: 'Expert op het gebied van sociale media',
@@ -1765,6 +1837,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       ],
       foundation: {
         id: 1,
+        about_en: null,
+        about_nl: null,
+        about_tr: null,
         email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
         bank1: 'ING BANK',
@@ -1826,6 +1901,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       jobs: [
         {
           id: 8,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-7',
           name_en: 'Guitarist',
           name_nl: 'Gitarist',
@@ -1838,6 +1916,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 9,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-8',
           name_en: 'Soloist',
           name_nl: 'Solist',
@@ -1850,6 +1931,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 11,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-10',
           name_en: 'Musician',
           name_nl: 'Musicus',
@@ -1862,6 +1946,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 12,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-11',
           name_en: 'Designer',
           name_nl: 'Ontwerper',
@@ -1874,6 +1961,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 21,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-20',
           name_en: 'Piano',
           name_nl: 'Piano',
@@ -1886,6 +1976,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 22,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-21',
           name_en: 'Accordion',
           name_nl: 'Accordeon',
@@ -1898,6 +1991,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 23,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-22',
           name_en: 'Guitar bass',
           name_nl: 'Gitaar bas',
@@ -1910,6 +2006,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
         },
         {
           id: 28,
+          info_en: null,
+          info_nl: null,
+          info_tr: null,
           slug: 'job-27',
           name_en:
             'Other ( (Please specify the profession you are talking about in the comments section)',
@@ -2010,6 +2109,9 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
       ],
       volunteers: [],
       foundation: {
+        about_en: null,
+        about_nl: null,
+        about_tr: null,
         id: 1,
         email: 'info@freedomcombination.com',
         name: 'Stichting Freedom Combination',
