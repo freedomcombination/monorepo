@@ -43,7 +43,7 @@ export class LayoutPage {
         arts: page.getByTestId(`link-m/club/arts`),
         collections: page.getByTestId(`link-m/club/collections`),
         activities: page.getByTestId(`link-m/activities`),
-        about: page.getByTestId(`link-m/about`),
+        about: page.getByTestId(`link-m/about-us`),
         contact: page.getByTestId(`link-m/contact`),
         donation: page.getByTestId(`link-m/donation`),
       },
@@ -59,7 +59,7 @@ export class LayoutPage {
         arts: page.getByTestId(`link-footer/club/arts`),
         collections: page.getByTestId(`link-footer/club/collections`),
         activities: page.getByTestId(`link-footer/activities`),
-        about: page.getByTestId(`link-footer/about`),
+        about: page.getByTestId(`link-footer/about-us`),
         contact: page.getByTestId(`link-footer/contact`),
         donation: page.getByTestId(`link-footer/donation`),
         terms: page.getByTestId(`link-footer/terms`),
@@ -72,7 +72,7 @@ export class LayoutPage {
       tr: page.getByTestId('button-d-tr'),
     }
     this.profileMenu = page.getByTestId('button-d-profile-menu')
-    this.profileLink = page.getByTestId('link-d-profile')
+    this.profileLink = page.getByTestId('link-d/profile')
     this.logoutButton = page.getByTestId('button-d-logout')
   }
 
@@ -107,7 +107,7 @@ export class LayoutPage {
   async switchLanguage(language: StrapiLocale) {
     await this.scrollToTop()
     await this.languageMenu[language].click()
-    await this.page.waitForLoadState('domcontentloaded')
+    await this.page.waitForTimeout(1000)
   }
 
   async gotoPage(page: keyof typeof headerLinks) {
