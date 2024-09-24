@@ -54,15 +54,15 @@ export const useChangeParams = () => {
 
   const changeParams = useCallback(
     (args: ChangeParamArgs) => {
-      // In the case of query has empty string param which we want to remove,
-      // it should be removed from both the query and args
       const sanitizedQuery = sanitizeQuery(query, args)
       const sanitizedArgs = sanitizeArgs(args)
 
       const newArgs = {...sanitizedArgs}
       
       // if there is any new parameters delete page parameter
-      if (Object.keys(newArgs).length > 1) {
+      const hasOtherParams = Object.keys(newArgs).some(key => key !== 'page')
+      
+      if (!newArgs.page && hasOtherParams) {
         newArgs.page = 1
       }
 
