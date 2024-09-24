@@ -60,10 +60,12 @@ export const useChangeParams = () => {
       const newArgs = {...sanitizedArgs}
       
       // if there is any new parameters delete page parameter
-      const hasOtherParams = Object.keys(newArgs).some(key => key !== 'page')
+      const shouldResetPage = Object.keys(newArgs).some(key => key !== 'page')
       
-      if (!newArgs.page && hasOtherParams) {
+      if (shouldResetPage) {
         newArgs.page = 1
+      } else {
+        delete newArgs.page;
       }
 
       const newQuery = { ...sanitizedQuery, ...newArgs }
