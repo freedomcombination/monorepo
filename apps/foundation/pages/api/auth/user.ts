@@ -1,3 +1,3 @@
-import { userHandler } from '@fc/services/src/api/userHandler'
+import { userHandler } from '@fc/services/api/userHandler'
 
 export default userHandler

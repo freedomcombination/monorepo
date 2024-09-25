@@ -3,7 +3,7 @@ import { FC, PropsWithChildren } from 'react'
 import { Center } from '@chakra-ui/react'
 import { NextSeo, NextSeoProps } from 'next-seo'
 
-import { UserFeedback } from '@fc/ui'
+import { UserFeedback } from '@fc/ui/components/UserFeedback'
 
 interface LayoutProps extends PropsWithChildren {
   seo: NextSeoProps

@@ -4,10 +4,12 @@ import { truncate } from 'lodash'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { strapiRequest } from '@fc/lib'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Privacy, StrapiLocale } from '@fc/types'
-import { Container, Hero, Markdown } from '@fc/ui'
+import type { Privacy, StrapiLocale } from '@fc/types'
+import { Container } from '@fc/ui/components/Container'
+import { Hero } from '@fc/ui/components/Hero'
+import { Markdown } from '@fc/ui/components/Markdown'
 
 import { Layout } from '../components'
 

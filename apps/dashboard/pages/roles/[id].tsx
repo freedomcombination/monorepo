@@ -23,12 +23,14 @@ import { useTranslation } from 'react-i18next'
 import { FaEdit, FaSave } from 'react-icons/fa'
 import { FaFilter, FaX } from 'react-icons/fa6'
 
-import { useAuthContext } from '@fc/context'
-import { useStrapiRequest } from '@fc/services'
+import { useAuthContext } from '@fc/context/auth'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Permissions, Role, RoleInput, StrapiLocale } from '@fc/types'
-import { AdminLayout, ContentEditable, PermissionCard } from '@fc/ui'
-import { cloneRole, hasDifferences, updateRole } from '@fc/utils'
+import type { Permissions, Role, RoleInput, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { ContentEditable } from '@fc/ui/components/ContentEditable'
+import { PermissionCard } from '@fc/ui/components/PermissionCard'
+import { cloneRole, hasDifferences, updateRole } from '@fc/utils/permissions'
 
 type RolePageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 

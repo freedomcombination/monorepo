@@ -3,10 +3,10 @@ import React, { Suspense, useEffect } from 'react'
 
 import { Decorator } from '@storybook/react'
 import { GlobalTypes, Parameters } from '@storybook/types'
-import { StrapiLocale } from '@fc/types'
+import type { StrapiLocale } from '@fc/types'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { I18nextProvider } from 'react-i18next'
-import { themes } from '@fc/config'
+import { themes } from '@fc/config/theme'
 
 import i18n from './i18next'
 

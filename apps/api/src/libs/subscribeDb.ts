@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AuditLogAction } from '@fc/types'
+import type { AuditLogAction } from '@fc/types'
 import { getProfile } from '../utils'
 
 export const subscribeDb = async () => {

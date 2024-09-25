@@ -1,0 +1,58 @@
+import type { User } from '@fc/types'
+
+export const USER_MOCKS: Array<User> = [
+  {
+    id: 1,
+    username: 'Academy Editor',
+    email: 'academyeditor@samenvvv.nl',
+    provider: 'local',
+    confirmed: true,
+    blocked: false,
+    createdAt: '2022-05-27T04:57:06.982Z',
+    updatedAt: '2022-09-14T02:36:08.545Z',
+    role: {
+      id: 1,
+      name: 'AcademyEditor',
+      description: 'Default role given to authenticated user.',
+      type: 'academyeditor',
+      createdAt: '2022-03-31T18:54:29.468Z',
+      updatedAt: '2022-09-14T02:07:31.634Z',
+    },
+  },
+  {
+    id: 2,
+    username: 'Artist',
+    email: 'artist@samenvvv.nl',
+    provider: 'local',
+    confirmed: true,
+    blocked: false,
+    createdAt: '2022-05-27T04:57:06.982Z',
+    updatedAt: '2022-09-14T02:36:08.545Z',
+    role: {
+      id: 2,
+      name: 'Authenticated',
+      description: 'Default role given to authenticated user.',
+      type: 'authenticated',
+      createdAt: '2022-03-31T18:54:29.468Z',
+      updatedAt: '2022-09-14T02:07:31.634Z',
+    },
+  },
+  {
+    id: 3,
+    username: 'test',
+    email: 'test@samenvvv.nl',
+    provider: 'local',
+    confirmed: true,
+    blocked: false,
+    createdAt: '2022-03-21T16:29:36.680Z',
+    updatedAt: '2022-09-14T02:42:42.037Z',
+    role: {
+      id: 1,
+      name: 'Authenticated',
+      description: 'Default role given to authenticated user.',
+      type: 'authenticated',
+      createdAt: '2022-03-31T18:54:29.468Z',
+      updatedAt: '2022-09-14T02:07:31.634Z',
+    },
+  },
+]

@@ -3,10 +3,11 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { RecommendedTopic, StrapiLocale } from '@fc/types'
-import { AdminLayout, TopicCard } from '@fc/ui'
+import type { RecommendedTopic, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { TopicCard } from '@fc/ui/components/TopicCard'
 
 const NewsBookmarkedPage = () => {
   const { locale } = useRouter()

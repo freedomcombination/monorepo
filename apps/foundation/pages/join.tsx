@@ -4,10 +4,10 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { strapiRequest } from '@fc/lib'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Foundation, Job, StrapiLocale } from '@fc/types'
-import { JoinTemplate } from '@fc/ui'
+import type { Foundation, Job, StrapiLocale } from '@fc/types'
+import { JoinTemplate } from '@fc/ui/components/JoinForm/JoinTemplate'
 
 import { Layout } from '../components'
 

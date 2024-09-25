@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { Preview, Section, Text } from '@react-email/components'
 
-import { Profile } from '@fc/types'
+import type { Profile } from '@fc/types'
 import { EmailProvider } from './EmailProvider'
 
 type VolunteerAppliedProps = {

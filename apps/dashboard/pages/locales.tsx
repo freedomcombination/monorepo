@@ -4,8 +4,10 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { AdminLayout, PageHeader, TranslateLocales } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import { TranslateLocales } from '@fc/ui/components/TranslateLocales'
 
 const ActivitiesTranslatePage = () => {
   const [searchTerm, setSearchTerm] = useState<string>()

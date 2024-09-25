@@ -4,13 +4,19 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { RequestCollectionArgs, strapiRequest } from '@fc/lib'
-import { useStrapiRequest } from '@fc/services'
+import {
+  RequestCollectionArgs,
+  strapiRequest,
+} from '@fc/services/common/strapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Hashtag, StrapiLocale } from '@fc/types'
-import { AnimatedBox, Container, HashtagCard, Hero } from '@fc/ui'
+import type { Hashtag, StrapiLocale } from '@fc/types'
+import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
+import { Container } from '@fc/ui/components/Container'
+import { HashtagCard } from '@fc/ui/components/HashtagCard'
+import { Hero } from '@fc/ui/components/Hero'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 const HashtagEvents = () => {
   const router = useRouter()
