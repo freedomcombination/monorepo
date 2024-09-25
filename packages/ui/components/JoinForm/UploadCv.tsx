@@ -1,5 +1,6 @@
-import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+
+import { Field } from '@fc/chakra'
 
 import { JoinFormFieldValues } from './types'
 import { useJoinFormContext } from './useJoinFormContext'
@@ -14,10 +15,12 @@ export const UploadCv = () => {
   } = useJoinFormContext()
 
   return (
-    <FormControl isRequired={true} isInvalid={!!errors.cv?.message}>
-      <FormLabel fontWeight={600} fontSize={'sm'} textTransform={'capitalize'}>
-        {t('upload-cv')}
-      </FormLabel>
+    <Field
+      required
+      invalid={!!errors.cv?.message}
+      errorText={errors.cv?.message as string}
+      label={t('upload-cv')}
+    >
       <ModelMedia<JoinFormFieldValues>
         isEditing={true}
         name={'cv'}
@@ -25,7 +28,6 @@ export const UploadCv = () => {
         isChangingMedia={true}
         toggleChangingMedia={toggleChangingMedia}
       />
-      <FormErrorMessage>{errors.cv?.message as string}</FormErrorMessage>
-    </FormControl>
+    </Field>
   )
 }

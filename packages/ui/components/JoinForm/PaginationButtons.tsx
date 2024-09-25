@@ -1,6 +1,8 @@
-import { Box, Button, ButtonGroup } from '@chakra-ui/react'
+import { Box, Group } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+
+import { Button } from '@fc/chakra'
 
 import { useJoinFormContext } from './useJoinFormContext'
 
@@ -9,12 +11,11 @@ export const PaginationButtons = () => {
   const { activeStep, steps, handleNext, handlePrev } = useJoinFormContext()
 
   return (
-    <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
+    <Group overflowX={'auto'} justifyContent={'center'}>
       <Button
-        isDisabled={activeStep == 0}
+        disabled={activeStep == 0}
         leftIcon={<FaChevronLeft />}
         onClick={handlePrev}
-        iconSpacing={{ base: 0, md: 2 }}
       >
         <Box as="span" display={{ base: 'none', md: 'inline' }}>
           {t('prev')}
@@ -22,15 +23,14 @@ export const PaginationButtons = () => {
       </Button>
 
       <Button
-        isDisabled={activeStep === steps.length - 1}
+        disabled={activeStep === steps.length - 1}
         rightIcon={<FaChevronRight />}
         onClick={handleNext}
-        iconSpacing={{ base: 0, md: 2 }}
       >
         <Box as="span" display={{ base: 'none', md: 'inline' }}>
           {t('next')}
         </Box>
       </Button>
-    </ButtonGroup>
+    </Group>
   )
 }

@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import { Heading } from '@chakra-ui/react'
+
 import {
   Modal,
   ModalBody,
@@ -7,8 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Heading,
-} from '@chakra-ui/react'
+} from '@fc/chakra'
 
 type ModelModalProps = {
   title?: string
@@ -25,13 +26,13 @@ export const ModelModal: FC<ModelModalProps> = ({
 }) => {
   return (
     <Modal
-      isCentered
-      isOpen={isOpen}
-      onClose={onClose}
-      size={'3xl'}
+      centered
+      open={isOpen}
+      onOpenChange={() => onClose()}
+      size={'lg'}
       scrollBehavior="inside"
-      closeOnOverlayClick={false}
-      closeOnEsc={false}
+      closeOnInteractOutside={false}
+      closeOnEscape={false}
     >
       <ModalOverlay />
       <ModalContent h={'90vh'} p={0}>

@@ -1,11 +1,7 @@
-import {
-  Box,
-  Checkbox,
-  FormControl,
-  FormErrorMessage,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+
+import { Checkbox, Field } from '@fc/chakra'
 
 import { useJoinFormContext } from './useJoinFormContext'
 import { BlocksRenderer } from '../BlocksRenderer'
@@ -19,7 +15,7 @@ export const FoundationInfo = () => {
   const { t } = useTranslation()
 
   return (
-    <Stack direction={{ base: 'column', md: 'column' }} spacing={4}>
+    <Stack direction={{ base: 'column', md: 'column' }} gap={4}>
       <Box
         maxH={500}
         overflowY={'auto'}
@@ -32,15 +28,15 @@ export const FoundationInfo = () => {
         <BlocksRenderer content={foundationInfo} />
       </Box>
 
-      <FormControl isRequired isInvalid={!!errors?.foundationConfirmation}>
+      <Field
+        required
+        invalid={!!errors?.foundationConfirmation}
+        errorText={errors.foundationConfirmation?.message}
+      >
         <Checkbox {...register('foundationConfirmation')}>
           {t('read-and-accept')}
         </Checkbox>
-        <FormErrorMessage>
-          {errors?.foundationConfirmation &&
-            errors?.foundationConfirmation.message}
-        </FormErrorMessage>
-      </FormControl>
+      </Field>
     </Stack>
   )
 }

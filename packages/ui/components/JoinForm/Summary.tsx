@@ -1,6 +1,8 @@
-import { Button, ButtonGroup, Stack, Text, Textarea } from '@chakra-ui/react'
+import { Group, Stack, Text, Textarea } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+
+import { Button } from '@fc/chakra'
 
 import { PreviewVolunteerForm } from './PreviewVolunteerForm'
 import { useJoinFormContext } from './useJoinFormContext'
@@ -22,7 +24,7 @@ export const Summary = () => {
   }
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <Text>{summaryContent[locale]}</Text>
       {/* comment */}
       <FormItem
@@ -32,12 +34,12 @@ export const Summary = () => {
         id="comment"
         name="comment"
       />
-      <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
+      <Group overflowX={'auto'} justifyContent={'center'}>
         {isValid && <PreviewVolunteerForm />}
-        <Button isLoading={isLoading} type="submit">
+        <Button loading={isLoading} type="submit">
           {t('submit')}
         </Button>
-      </ButtonGroup>
+      </Group>
     </Stack>
   )
 }

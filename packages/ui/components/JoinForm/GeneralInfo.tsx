@@ -1,14 +1,8 @@
-import {
-  Box,
-  Checkbox,
-  FormLabel,
-  Stack,
-  Switch,
-  Text,
-  Wrap,
-} from '@chakra-ui/react'
+import { Flex, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+
+import { Checkbox, Field, Switch } from '@fc/chakra'
 
 import { heardFrom } from './data'
 import { useJoinFormContext } from './useJoinFormContext'
@@ -39,13 +33,15 @@ export const GeneralInfo = () => {
         </Switch>
       </Stack>
       {/* heard FROM */}
-      <Box>
-        <FormLabel fontSize="sm" fontWeight={600}>
-          {t('apply-form.heard-from')}
-        </FormLabel>
-        <Wrap
+      <Field
+        label={t('apply-form.heard-from')}
+        invalid={!!errors.heardFrom?.message}
+        errorText={errors.heardFrom?.message}
+      >
+        <Flex
+          wrap={'wrap'}
           p={4}
-          spacing={4}
+          gap={4}
           rounded="lg"
           borderWidth={2}
           borderColor={errors['heardFrom'] ? 'red.400' : 'gray.100'}
@@ -61,13 +57,8 @@ export const GeneralInfo = () => {
               {item?.label[locale]}
             </Checkbox>
           ))}
-        </Wrap>
-        {errors['heardFrom'] && (
-          <Text fontSize="sm" color="red.500">
-            {errors.heardFrom.message}
-          </Text>
-        )}
-      </Box>
+        </Flex>
+      </Field>
     </>
   )
 }

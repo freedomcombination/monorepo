@@ -1,21 +1,13 @@
-import {
-  Box,
-  Checkbox,
-  HStack,
-  SimpleGrid,
-  Stack,
-  Text,
-  Tooltip,
-} from '@chakra-ui/react'
+import { Box, HStack, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { FaCircleInfo } from 'react-icons/fa6'
 
+import { Checkbox, Tooltip } from '@fc/chakra'
 import { Job } from '@fc/types'
 
 import { useJoinFormContext } from './useJoinFormContext'
 
 export const SelectJobs = () => {
-  // const { t } = useTranslation()
   const { locale } = useRouter()
 
   const {
@@ -69,19 +61,15 @@ export const SelectJobs = () => {
                   key={job.id}
                   id={job.id.toString()}
                   {...register(`jobs`)}
-                  value={job.id}
+                  value={`${job.id}`}
                   textTransform={'capitalize'}
                 >
                   {job[`name_${locale}`]}
                 </Checkbox>
                 {job[`description_${locale}`] && (
                   <Tooltip
-                    placement="top-end"
-                    bg={'white'}
-                    color={'initial'}
-                    borderWidth={1}
-                    rounded={'md'}
-                    label={job[`description_${locale}`] as string}
+                    positioning={{ placement: 'top-end' }}
+                    content={job[`description_${locale}`] as string}
                     aria-label={job[`description_${locale}`] as string}
                   >
                     <Box>
@@ -104,7 +92,7 @@ export const SelectJobs = () => {
                 key={job.id}
                 id={job.id.toString()}
                 {...register(`jobs`)}
-                value={job.id}
+                value={`${job.id}`}
                 textTransform={'capitalize'}
               >
                 {job[`name_${locale}`]}

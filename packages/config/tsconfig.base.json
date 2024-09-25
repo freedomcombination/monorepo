@@ -12,7 +12,7 @@
     "module": "ESNext",
     "jsx": "react-jsx",
     "lib": ["ES2015", "DOM", "DOM.Iterable", "WebWorker"],
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,

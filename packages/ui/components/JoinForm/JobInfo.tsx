@@ -1,13 +1,9 @@
-import {
-  Checkbox,
-  FormControl,
-  FormErrorMessage,
-  Heading,
-  Stack,
-} from '@chakra-ui/react'
+import { Heading, Stack } from '@chakra-ui/react'
 import { BlocksContent } from '@strapi/blocks-react-renderer'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+
+import { Checkbox, Field } from '@fc/chakra'
 
 import { useJoinFormContext } from './useJoinFormContext'
 import { BlocksRenderer } from '../BlocksRenderer'
@@ -46,14 +42,15 @@ export const JobInfo = () => {
             <BlocksRenderer content={jobInfo} />
 
             {jobInfo && (
-              <FormControl isRequired isInvalid={!!errors?.jobInfoConfirmation}>
+              <Field
+                required
+                invalid={!!errors?.jobInfoConfirmation}
+                errorText={errors?.jobInfoConfirmation?.message}
+              >
                 <Checkbox {...register('jobInfoConfirmation')}>
                   {t('read-and-accept')}
                 </Checkbox>
-                <FormErrorMessage>
-                  {errors?.jobInfoConfirmation?.message}
-                </FormErrorMessage>
-              </FormControl>
+              </Field>
             )}
           </Stack>
         )

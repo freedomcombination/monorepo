@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaEye } from 'react-icons/fa6'
 
+import { Button } from '@fc/chakra'
 import { Job } from '@fc/types'
 
 import { useJoinFormContext } from './useJoinFormContext'
@@ -93,7 +94,7 @@ export const PreviewVolunteerForm = () => {
 
     setModalContent(
       <Box p={5} borderRadius="md" shadow="md">
-        <VStack spacing={4} align="stretch">
+        <VStack gap={4} align="stretch">
           {fields}
         </VStack>
       </Box>,
@@ -106,7 +107,7 @@ export const PreviewVolunteerForm = () => {
 
   return (
     <>
-      <Button onClick={openModal} colorScheme={'green'} leftIcon={<FaEye />}>
+      <Button onClick={openModal} colorPalette={'green'} leftIcon={<FaEye />}>
         {t('preview')}
       </Button>
       <ModelModal title={modalTitle} isOpen={isOpen} onClose={closeModal}>

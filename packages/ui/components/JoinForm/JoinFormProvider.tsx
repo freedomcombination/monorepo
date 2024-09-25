@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from 'react'
 
-import { useSteps } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/router'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -13,6 +12,19 @@ import { JoinFormContext } from './JoinFormContext'
 import { joinSchema } from './schema'
 import { JoinFormFieldValues, JoinFormProviderProps } from './types'
 import { useFormSteps } from './useFormSteps'
+
+// TODO: Investigate steps
+const useSteps = ({ index, count }: { index: number; count: number }) => {
+  const [activeStep, setActiveStep] = useState(index)
+
+  const steps = Array.from({ length: count }, (_, i) => i)
+
+  return {
+    activeStep,
+    setActiveStep,
+    steps,
+  }
+}
 
 export const JoinFormProvider: FC<JoinFormProviderProps> = ({
   children,

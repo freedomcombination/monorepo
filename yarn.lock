@@ -1868,9 +1868,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/react@npm:3.0.0-next.25":
-  version: 3.0.0-next.25
-  resolution: "@chakra-ui/react@npm:3.0.0-next.25"
+"@chakra-ui/react@npm:3.0.0-next.26":
+  version: 3.0.0-next.26
+  resolution: "@chakra-ui/react@npm:3.0.0-next.26"
   dependencies:
     "@ark-ui/anatomy": "npm:3.5.0"
     "@ark-ui/react": "npm:3.12.1"
@@ -1884,7 +1884,7 @@ __metadata:
     "@emotion/react": ">=11"
     react: ">=18"
     react-dom: ">=18"
-  checksum: 10/7d2a905907aa7ddb7fc659a569b2898f76c523ba1d47b07bd99fd99e4ae35aa882785a8de53555f699ce66845eedd85ad17c74dfbd87e38ee8444889a7e21db9
+  checksum: 10/638f261fa9678a988e758c0f29889135adf8376f8593b2de15fcb689ec9da40cdfc8e2d97ba55016c6676ac65c47407480b30f619433008787631a8f9b65a1a0
   languageName: node
   linkType: hard
 
@@ -17671,7 +17671,7 @@ __metadata:
   resolution: "fc-turbo@workspace:."
   dependencies:
     "@ai-sdk/openai": "npm:^0.0.61"
-    "@chakra-ui/react": "npm:3.0.0-next.25"
+    "@chakra-ui/react": "npm:3.0.0-next.26"
     "@chakra-ui/storybook-addon": "npm:^5.1.0"
     "@ctrl/tinycolor": "npm:^4.1.0"
     "@ducanh2912/next-pwa": "npm:^10.2.9"

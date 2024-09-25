@@ -1,6 +1,8 @@
-import { Box, Button, Heading, HStack, Link, Stack } from '@chakra-ui/react'
+import { Box, Heading, HStack, Link, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaRegFilePdf } from 'react-icons/fa6'
+
+import { Button } from '@fc/chakra'
 
 import { PaginationButtons } from './PaginationButtons'
 import Steps from './Steps'
@@ -20,7 +22,7 @@ const JoinForm = () => {
           fontWeight={500}
           _hover={{ textDecoration: 'underline', color: 'primary.500' }}
         >
-          <Button colorScheme="purple" leftIcon={<FaRegFilePdf />}>
+          <Button colorPalette="purple" leftIcon={<FaRegFilePdf />}>
             {t('download-volunteer-form')}
           </Button>
         </Link>

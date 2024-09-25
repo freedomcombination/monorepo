@@ -1,15 +1,6 @@
-import {
-  Box,
-  Step,
-  StepDescription,
-  StepIcon,
-  StepIndicator,
-  StepNumber,
-  Stepper,
-  StepSeparator,
-  StepStatus,
-  VStack,
-} from '@chakra-ui/react'
+import { VStack } from '@chakra-ui/react'
+
+import { StepsItem, StepsList, StepsRoot } from '@fc/chakra'
 
 import { useJoinFormContext } from './useJoinFormContext'
 
@@ -17,30 +8,17 @@ const Steps = () => {
   const { activeStep, steps } = useJoinFormContext()
 
   return (
-    <Stepper index={activeStep} gap={2}>
+    <StepsRoot key={activeStep} gap={2} count={steps.length}>
       {steps.map((step, index) => (
-        <Step key={index} style={{ userSelect: 'none', gap: 0 }}>
+        <StepsList key={index} style={{ userSelect: 'none', gap: 0 }}>
           <VStack gap={1}>
-            <StepIndicator>
-              <StepStatus
-                complete={<Box as={StepIcon} />}
-                incomplete={
-                  <Box color={'gray.300'} as={StepNumber} fontWeight={600} />
-                }
-                active={
-                  <Box as={StepNumber} color={'primary.500'} fontWeight={600} />
-                }
-              />
-            </StepIndicator>
-
-            <Box as={StepDescription} color={'gray.300'} fontWeight={600}>
+            <StepsItem index={index} title={step.title}>
               {step.title}
-            </Box>
+            </StepsItem>
           </VStack>
-          <Box as={StepSeparator} transform={'translateY(12px)'} />
-        </Step>
+        </StepsList>
       ))}
-    </Stepper>
+    </StepsRoot>
   )
 }
 

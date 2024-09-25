@@ -1,22 +1,15 @@
 import { FC } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-  Center,
-  VStack,
-} from '@chakra-ui/react'
+import { Center } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
 
+import { Alert, toaster } from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config/constants'
 import { mutation } from '@fc/services/common/mutation'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 import { Profile, ProfileCreateInput } from '@fc/types'
-import { toastMessage } from '@fc/utils/toastMessage'
 
 import { JoinFormProvider } from './JoinFormProvider'
 import { JoinFormFieldValues, JoinTemplateProps } from './types'
@@ -69,11 +62,13 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
 
       mutate(body, {
         onError: errCode => {
-          toastMessage(
-            t('apply-form.error.title'),
-            errCode ? t(errCode as any) : t('apply-form.error.description'),
-            'error',
-          )
+          toaster.create({
+            title: t('apply-form.error.title'),
+            description: errCode
+              ? t(errCode as any)
+              : t('apply-form.error.description'),
+            type: 'error',
+          })
         },
       })
     } catch (error) {
@@ -104,16 +99,9 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
               w="container.sm"
               shadow="base"
               rounded="lg"
+              title={t('thank-you')}
             >
-              <VStack spacing={4}>
-                <AlertIcon boxSize="60px" mr={0} />
-                <AlertTitle mt={4} mb={1} fontSize="2xl">
-                  {t('thank-you')}
-                </AlertTitle>
-                <AlertDescription maxWidth="sm">
-                  {t('apply-form.thanks.description')}
-                </AlertDescription>
-              </VStack>
+              {t('apply-form.thanks.description')}
             </Alert>
           </Center>
         ) : (

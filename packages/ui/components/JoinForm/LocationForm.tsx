@@ -1,14 +1,10 @@
 import { useState } from 'react'
 
-import {
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Stack,
-} from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import Select from 'react-select'
 
+import { Field } from '@fc/chakra'
 import { useCitiesOfCountry } from '@fc/services/city'
 import { useAllCountries } from '@fc/services/country'
 
@@ -36,45 +32,31 @@ export const LocationForm = () => {
   }
 
   return (
-    <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-      <FormControl isInvalid={countriesQuery.isError}>
-        <FormLabel
-          mb={0}
-          fontSize="sm"
-          fontWeight={600}
-          textTransform={'capitalize'}
-        >
-          {t('country')}
-        </FormLabel>
+    <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
+      <Field
+        invalid={countriesQuery.isError}
+        label={t('country')}
+        errorText={countriesQuery.error && 'An error occured'}
+      >
         <Select
           placeholder={t('select-country')}
           options={countries}
           onChange={option => setSelectedCountry(option as Option)}
         />
-        <FormErrorMessage>
-          {countriesQuery.error && 'An error occured'}
-        </FormErrorMessage>
-      </FormControl>
+      </Field>
 
-      <FormControl isInvalid={citiesQuery.isError}>
-        <FormLabel
-          mb={0}
-          fontSize="sm"
-          fontWeight={600}
-          textTransform={'capitalize'}
-        >
-          {t('city')}
-        </FormLabel>
+      <Field
+        invalid={citiesQuery.isError}
+        label={t('city')}
+        errorText={citiesQuery.error && 'An error occured'}
+      >
         <Select
           isDisabled={!selectedCountry}
           placeholder={t('select-city')}
           options={cities}
           onChange={option => handleCitiesChange(option as Option)}
         />
-        <FormErrorMessage>
-          {citiesQuery.error && 'An error occured'}
-        </FormErrorMessage>
-      </FormControl>
+      </Field>
     </Stack>
   )
 }
