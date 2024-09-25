@@ -16,7 +16,58 @@ test.describe('01. Create Account', () => {
     await layoutPage.logout()
   })
 
-  test('TC-02: should not register with empty email', async ({
+  test('TC-02: should not register with invalid name', async ({
+    page,
+    registerPage,
+  }) => {
+    const shortName = 'Jo'
+    const { username, email, password } = generateRandomUser()
+
+    await registerPage.register({
+      name: shortName,
+      username,
+      email,
+      password,
+    })
+
+    await expect(page.getByTestId('error-text-name')).toBeVisible() // Name must be at least 3 characters
+  })
+
+  test('TC-03: should not register with invalid name', async ({
+    page,
+    registerPage,
+  }) => {
+    const invalidName = 'Jo1?!@'
+    const { username, email, password } = generateRandomUser()
+
+    await registerPage.register({
+      name: invalidName,
+      username,
+      email,
+      password,
+    })
+
+    await expect(page.getByTestId('error-text-name')).toBeVisible() // Only alphabetic characters allowed
+  })
+
+  test('TC-04: should not register with username less than 2 characters', async ({
+    page,
+    registerPage,
+  }) => {
+    const invalidUsername = 'A' // Invalid username less than 2 characters
+    const { name, email, password } = generateRandomUser()
+
+    await registerPage.register({
+      name,
+      username: invalidUsername,
+      email,
+      password,
+    })
+
+    await expect(page.getByTestId('error-text-username')).toBeVisible() // Username must be at least 2 characters
+  })
+
+  test('TC-05: should not register with empty email', async ({
     page,
     registerPage,
   }) => {
@@ -25,54 +76,6 @@ test.describe('01. Create Account', () => {
     await registerPage.register({ name, username, email: '', password })
 
     await expect(page.getByTestId('error-text-email')).toBeVisible()
-    await page.waitForTimeout(1000)
-  })
-
-  test('TC-03: should not register with invalid email', async ({
-    page,
-    registerPage,
-  }) => {
-    const { name, username, password } = generateRandomUser()
-
-    await registerPage.register({
-      name,
-      username,
-      email: 'invalid-email',
-      password,
-    })
-
-    await expect(page.getByTestId('error-text-email')).toBeVisible()
-    await page.waitForTimeout(1000)
-  })
-
-  test('TC-04: should not register with invalid password', async ({
-    page,
-    registerPage,
-  }) => {
-    const { name, username, email } = generateRandomUser()
-
-    const INVALID_PASSWORD = '123'
-    await registerPage.register({
-      name,
-      username,
-      email,
-      password: INVALID_PASSWORD,
-    })
-
-    await expect(page.getByTestId('error-text-password')).toBeVisible()
-    await page.waitForTimeout(1000)
-    page.close()
-  })
-
-  test('TC-05: should not register with blank email', async ({
-    page,
-    registerPage,
-  }) => {
-    const { name, username, password } = generateRandomUser()
-
-    await registerPage.register({ name, username, email: '', password }) // Leave email field blank
-
-    await expect(page.getByText('email is a required field')).toBeVisible() // Error message checking
   })
 
   test('TC-06: should not register with invalid email', async ({
@@ -88,79 +91,90 @@ test.describe('01. Create Account', () => {
       password,
     })
 
-    // TODO: Use data-testid instead of text content
-    await expect(page.getByText('email must be a valid email')).toBeVisible()
+    await expect(page.getByTestId('error-text-email')).toBeVisible()
+    page.close()
   })
 
-  test('TC-07: should Negative flow (login with invalid information)', async ({
+  test('TC-07: should not register with password less than 8 characters', async ({
     page,
     registerPage,
   }) => {
-    const { name, username, email, password } = generateRandomUser()
-
-    await registerPage.register({ name, username, email, password })
-
-    // TODO: Use layoutPage.switchLanguage
-    await page.click('button:has-text("TR")')
-
-    // TODO: Use data-testid instead of text content
-    await page.getByRole('link', { name: 'Giriş yap' }).click() // Go to login page
-
-    // TODO: Use registerPage.inputEmail ('input-username' is the correct data-testid)
-    await page.getByTestId('input-identifier').click()
-    await page.getByTestId('input-identifier').fill(email) // Nonexistent email
-
-    await page.getByTestId('input-password').click()
-    await page.getByTestId('input-password').fill(password + 'aaa') // Invalid password
-
-    await page.getByTestId('button-submit-login').click() // Click "Log in" button
-
-    // TODO: Use data-testid instead of text content
-    await expect(
-      page.getByText(
-        'Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyiniz.',
-      ),
-    ).toBeVisible()
-  })
-
-  test('TC-08: should not register with invalid name', async ({
-    page,
-    registerPage,
-  }) => {
-    const invalidName = 'Jo1?!@'
-    const { username, email, password } = generateRandomUser()
+    const { name, username, email } = generateRandomUser()
+    const shortPassword = '2Wsx.' // Geçersiz, 8 karakterden az olan şifre
 
     await registerPage.register({
-      name: invalidName,
+      name,
       username,
       email,
-      password,
+      password: shortPassword,
     })
 
-    // TODO: Use data-testid instead of text content
-    await expect(
-      page.getByText('Only alphabetic characters allowed'),
-    ).toBeVisible()
+    await expect(page.getByTestId('error-text-password')).toBeVisible() // Password must be at least 8 characters
   })
 
-  test('TC-09: should not register with invalid username', async ({
+  test('TC-08: should not register with password without an uppercase letter', async ({
     page,
     registerPage,
   }) => {
-    const shortName = 'Jo'
-    const { username, email, password } = generateRandomUser()
+    const { name, username, email } = generateRandomUser()
+    const noUppercasePassword = '2wsx.2wsx.' // Invalid password, does not contain capital letters
 
     await registerPage.register({
-      name: shortName,
+      name,
       username,
       email,
-      password,
+      password: noUppercasePassword,
     })
 
-    // TODO: Use data-testid instead of text content
-    await expect(
-      page.getByText('Name must be at least 3 characters'),
-    ).toBeVisible()
+    await expect(page.getByTestId('error-text-password')).toBeVisible() // Password must contain at least one uppercase letter
+  })
+
+  test('TC-09: should not register with password without a lowercase letter', async ({
+    page,
+    registerPage,
+  }) => {
+    const { name, username, email } = generateRandomUser()
+    const noLowercasePassword = '2WSX.2WSX.' // Invalid password, does not contain lowercase letters
+
+    await registerPage.register({
+      name,
+      username,
+      email,
+      password: noLowercasePassword,
+    })
+
+    await expect(page.getByTestId('error-text-password')).toBeVisible() // Password must contain at least one lowercase letter
+  })
+
+  test('TC-10: should not register with password without a number', async ({
+    page,
+    registerPage,
+  }) => {
+    const { name, username, email } = generateRandomUser()
+    const noNumberPassword = 'Password.' // Invalid password, does not contain numbers
+
+    await registerPage.register({
+      name,
+      username,
+      email,
+      password: noNumberPassword,
+    })
+
+    await expect(page.getByTestId('error-text-password')).toBeVisible() // Password must contain at least one number
+  })
+
+  test('TC-11: should show error for incorrect username or password', async ({
+    page,
+    layoutPage,
+  }) => {
+    // You can log out and go to the login page
+    await layoutPage.gotoLogin('kunsthalte')
+    await page.waitForTimeout(100)
+    await page.getByTestId('input-identifier').fill('warrongUser')
+    await page.getByTestId('input-password').fill('warrongPassword')
+    await page.getByTestId('button-submit-login').click()
+
+    await expect(page.getByTestId('error-auth')).toBeVisible() // Error for incorrect username
 
     page.close()
   })
