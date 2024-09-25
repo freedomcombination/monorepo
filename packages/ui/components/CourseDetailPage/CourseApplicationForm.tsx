@@ -15,12 +15,12 @@ import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
-import type { CourseApplicationCreateInput } from '@fc/types'
+import { mutation } from '@fc/services/common/mutation'
+import type { CourseApplication, CourseApplicationCreateInput } from '@fc/types'
 
 import { applicationSchema } from './schema'
-import { useCourseContext } from './useCourseContext'
 import { ApplicationFormFields } from './types'
+import { useCourseContext } from './useCourseContext'
 import { FormItem } from '../FormItem'
 
 export const CourseApplicationForm: FC = () => {
@@ -45,7 +45,12 @@ export const CourseApplicationForm: FC = () => {
   const { mutate } = useMutation({
     mutationKey: ['course-apply'],
     mutationFn: (data: CourseApplicationCreateInput) =>
-      Mutation.post('course-applications', data, token as string),
+      mutation<CourseApplication, CourseApplicationCreateInput>({
+        endpoint: 'course-applications',
+        method: 'post',
+        body: data,
+        token: token as string,
+      }),
   })
 
   if (!profile || !user) return null

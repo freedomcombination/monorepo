@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context/auth'
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import type { Role } from '@fc/types'
 
 const getRoles = async (token: string | null) => {

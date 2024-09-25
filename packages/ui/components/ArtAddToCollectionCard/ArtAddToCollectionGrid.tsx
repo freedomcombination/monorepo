@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { SimpleGrid } from '@chakra-ui/react'
 
-import { useUpdateModelMutation } from '@fc/services/common/update'
+import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import type { Art } from '@fc/types'
 
 import { ArtAddToCollectionCard } from './ArtAddToCollectionCard'

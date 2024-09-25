@@ -31,8 +31,8 @@ import useFormPersist from 'react-hook-form-persist'
 import { FaPlus, FaUpload } from 'react-icons/fa'
 
 import { useAuthContext } from '@fc/context/auth'
-import { useCreateModelMutation } from '@fc/services/common/create'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { ArtCreateInput, Category } from '@fc/types'
 
 import { ArtCreateSuccessAlert } from './CreateArtSuccessAlert'

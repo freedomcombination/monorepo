@@ -45,6 +45,15 @@
       "relation": "manyToOne",
       "target": "api::platform.platform",
       "inversedBy": "jobs"
+    },
+    "info_tr": {
+      "type": "blocks"
+    },
+    "info_nl": {
+      "type": "blocks"
+    },
+    "info_en": {
+      "type": "blocks"
     }
   }
 }

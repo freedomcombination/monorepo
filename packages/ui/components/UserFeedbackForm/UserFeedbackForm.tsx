@@ -22,7 +22,7 @@ import { ObjectSchema } from 'yup'
 
 import { RecaptchaKeys } from '@fc/config/constants'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
-import { useUserFeedbackMutation } from '@fc/services/userFeedback'
+import { useCreateUserFeedbackMutation } from '@fc/services/userFeedback/createUserFeedback'
 import type { UserFeedbackCreateInput } from '@fc/types'
 
 import { createUserFeedbackSchema } from './schema'
@@ -37,7 +37,7 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
   onClose,
 }) => {
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.FEEDBACk)
-  const { mutateAsync } = useUserFeedbackMutation(recaptchaToken)
+  const { mutateAsync } = useCreateUserFeedbackMutation(recaptchaToken)
 
   const handleUserFeedback = async (
     data: CreateUserFeedbackFormFieldValues,

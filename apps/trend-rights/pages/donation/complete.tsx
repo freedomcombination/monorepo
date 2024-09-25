@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Donation, StrapiLocale } from '@fc/types'
 import { DonationCompleteTemplate } from '@fc/ui/components/DonationCompleteTemplate'

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Center, SimpleGrid, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-import { useGetAuthorBlogs } from '@fc/services/blog/get'
+import { useAuthorBlogs } from '@fc/services/blog/getAuthorBlogs'
 import type { Blog } from '@fc/types'
 
 import { BlogCard } from '../BlogCard'
@@ -12,7 +12,7 @@ import { ModelEditForm } from '../ModelEditForm'
 export const BlogsTab = () => {
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null)
   const { t } = useTranslation()
-  const { data: blogs, refetch } = useGetAuthorBlogs()
+  const { data: blogs, refetch } = useAuthorBlogs()
 
   const onSelectBlog = (blog: Blog) => {
     setSelectedBlog(blog)

@@ -6,7 +6,7 @@ import { addDays, format } from 'date-fns'
 import { FaPlusCircle } from 'react-icons/fa'
 
 import { useAuthContext } from '@fc/context/auth'
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import type { AuditLog } from '@fc/types'
 
 import { AuditLogItem } from './AuditLogItem'

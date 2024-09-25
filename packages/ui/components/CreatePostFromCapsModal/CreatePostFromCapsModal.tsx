@@ -18,7 +18,7 @@ import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 
-import { useCreateModelMutation } from '@fc/services/common/create'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
 import type {
   Post,
   PostCreateInput,

@@ -26,8 +26,13 @@ import { GrFormClose } from 'react-icons/gr'
 import stringSimilarity from 'string-similarity'
 import { ObjectSchema } from 'yup'
 
-import { useRecommendTweet } from '@fc/services/recommendedTweet'
-import type { Mention, Tweet } from '@fc/types'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
+import type {
+  Mention,
+  RecommendedTweet,
+  RecommendedTweetCreateInput,
+  Tweet,
+} from '@fc/types'
 
 import { createTweetSchema } from './schema'
 import { CreateTweetFormFieldValues, CreateTweetFormProps } from './types'
@@ -47,7 +52,10 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
   const { locale } = useRouter()
   const [isChangingImage, setIsChangingImage] = useBoolean(false)
 
-  const { mutateAsync } = useRecommendTweet()
+  const { mutateAsync } = useCreateModelMutation<
+    RecommendedTweet,
+    RecommendedTweetCreateInput
+  >('recommended-tweets')
 
   if (isNews) {
     originalTweet = { text: originalTweet.text } as Tweet

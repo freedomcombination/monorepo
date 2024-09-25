@@ -28,6 +28,7 @@ export type ProfileBase = {
   email: string
   city: string | null
   age: number | null
+  birthDate: Date | string | null
   availableHours: number | null
   approved: boolean | null
   bio: string | null
@@ -51,6 +52,7 @@ type ProfileRelation = {
   applicant?: Applicant | null
   avatar?: UploadFile | null
   comments?: Array<Comment>
+  cv?: UploadFile | null
   feedbacks?: Array<Feedback>
   jobs?: Array<Job>
   juryVotes?: Array<Vote>

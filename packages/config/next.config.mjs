@@ -30,15 +30,7 @@ const nextConfig = {
   },
   bundlePagesRouterDependencies: true,
   reactStrictMode: true,
-  transpilePackages: [
-    '@fc/config',
-    '@fc/context',
-    '@fc/lib',
-    '@fc/services',
-    '@fc/ui',
-    '@fc/utils',
-    'next-mdx-remote',
-  ],
+  transpilePackages: ['next-mdx-remote'],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'nl', 'tr'],

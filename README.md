@@ -22,7 +22,6 @@ This Turborepo includes the following packages/apps:
 - `config`: `@fc/config` Menus, Seo, Theme, Constants
 - `context`: `@fc/context` AuthContext
 - `eslint-config-fc`: Eslint
-- `lib`: `@fc/lib` Fetchers
 - `mocks`: `@fc/mocks` Strapi Mock Data
 - `stripe`: `@fc/stripe` Stripe
 - `secrets`: `@fc/secrets` Secret Env Variables

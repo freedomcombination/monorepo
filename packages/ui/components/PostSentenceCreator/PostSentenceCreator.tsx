@@ -5,7 +5,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { FaPlus } from 'react-icons/fa'
 
-import { useCreateHashtagSentence } from '@fc/services/post'
+import { useCreateHashtagSentenceMutation } from '@fc/services/hashtagSentence/createHashtagSentence'
 import { toastMessage } from '@fc/utils/toastMessage'
 
 type PostSentenceCreatorProps = {
@@ -25,7 +25,7 @@ export const PostSentenceCreator = ({
 }: PostSentenceCreatorProps) => {
   const { t } = useTranslation()
   const [value, setValue] = useState(initialContent)
-  const onAddMutation = useCreateHashtagSentence()
+  const onAddMutation = useCreateHashtagSentenceMutation()
   const queryClient = useQueryClient()
 
   useEffect(() => {

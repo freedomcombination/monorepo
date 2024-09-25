@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 
 import { SITE_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { CourseApplication } from '@fc/types'
 
 import { CourseContext } from './CourseContext'

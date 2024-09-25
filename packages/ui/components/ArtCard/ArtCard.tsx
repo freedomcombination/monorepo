@@ -15,10 +15,10 @@ import { AiFillHeart } from 'react-icons/ai'
 import { FaExternalLinkSquareAlt } from 'react-icons/fa'
 
 import { useAuthContext } from '@fc/context/auth'
-import { useLikeArt } from '@fc/services/art/like'
-import { useDeleteModel } from '@fc/services/common/delete'
-import { usePublishModel } from '@fc/services/common/publish'
-import { useUnpublishModel } from '@fc/services/common/unpublish'
+import { useLikeArt } from '@fc/services/art/likeArt'
+import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
+import { usePublishModelMutation } from '@fc/services/common/publishModel'
+import { useUnpublishModelMutation } from '@fc/services/common/unpublishModel'
 
 import { ArtCardActions } from './ArtCardActions'
 import { ArtCardAlertDialog } from './ArtCardAlertDialog'
@@ -52,9 +52,9 @@ export const ArtCard: FC<ArtCardProps> = ({
     onSuccess: refetch,
   })
 
-  const deleteMutation = useDeleteModel('arts')
-  const publishMutation = usePublishModel('arts')
-  const unpublishMutation = useUnpublishModel('arts')
+  const deleteMutation = useDeleteModelMutation('arts')
+  const publishMutation = usePublishModelMutation('arts')
+  const unpublishMutation = useUnpublishModelMutation('arts')
 
   useEffect(() => {
     setHover({ color: isLiked ? 'red.200' : 'gray.100' })

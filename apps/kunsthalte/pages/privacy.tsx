@@ -4,7 +4,7 @@ import { truncate } from 'lodash'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Privacy, StrapiLocale } from '@fc/types'
 import { Container } from '@fc/ui/components/Container'

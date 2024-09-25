@@ -22,8 +22,8 @@ import { MdOutlinePayment, MdOutlineSend } from 'react-icons/md'
 
 import { SITE_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
-import type { CourseApplicationUnpaid } from '@fc/types'
+import { mutation } from '@fc/services/common/mutation'
+import type { CourseApplication, CourseApplicationUnpaid } from '@fc/types'
 import { formatPrice } from '@fc/utils/formatPrice'
 
 import { useCourseContext } from './useCourseContext'
@@ -80,12 +80,13 @@ export const CourseApplicationPayForm = () => {
   const { mutate } = useMutation({
     mutationKey: ['course-send-info'],
     mutationFn: (data: CourseApplicationUnpaid) =>
-      Mutation.put(
-        'course-applications',
-        application.id,
-        data,
-        token as string,
-      ),
+      mutation<CourseApplication, CourseApplicationUnpaid>({
+        endpoint: 'course-applications',
+        method: 'put',
+        id: application.id,
+        body: data,
+        token: token as string,
+      }),
   })
   const onSendInfo = () => {
     mutate(

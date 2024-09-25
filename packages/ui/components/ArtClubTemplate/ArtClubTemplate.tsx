@@ -23,7 +23,7 @@ import { parse } from 'querystring'
 import { MdMenuOpen } from 'react-icons/md'
 
 import { RecaptchaKeys } from '@fc/config/constants'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 import type { Art, Category } from '@fc/types'
 

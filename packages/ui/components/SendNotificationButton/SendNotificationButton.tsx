@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { useTranslation } from 'next-i18next'
 import { FiSend } from 'react-icons/fi'
 
-import { useSendNotificationMutation } from '@fc/services/pushNotification'
+import { useSendPushNotificationMutation } from '@fc/services/pushNotification/sendPushNotification'
 
 import { ActionButton } from '../ActionButton'
 import { Option } from '../ModelSelect'
@@ -26,7 +26,7 @@ export const SendNotificationButton: FC<SendNotificationButtonProps> = ({
   const roleIds = (roles as Option[])?.map(role => +role.value)
   const profileIds = (profiles as Option[])?.map(profile => +profile.value)
 
-  const sendNotificationMutation = useSendNotificationMutation()
+  const sendNotificationMutation = useSendPushNotificationMutation()
 
   const sendNotification = async () => {
     sendNotificationMutation.mutate({

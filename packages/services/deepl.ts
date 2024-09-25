@@ -4,7 +4,7 @@ import removeMarkdown from 'remove-markdown'
 
 import type { StrapiLocale, StrapiTranslatableModel } from '@fc/types'
 
-export const getTranslation = async (
+export const translateContent = async (
   content: string,
   locale: StrapiLocale,
   isMarkdown?: boolean,
@@ -57,7 +57,7 @@ export const getTranslation = async (
   }
 }
 
-export const getModelTranslation = async <
+export const translateModel = async <
   T extends StrapiTranslatableModel & { slug?: string },
 >(
   model: T,
@@ -82,7 +82,7 @@ export const getModelTranslation = async <
         fieldsToBeTranslated.map(async key => {
           const value = model[key as keyof T]
 
-          const translation = await getTranslation(
+          const translation = await translateContent(
             value as string,
             locale,
             key === 'content',

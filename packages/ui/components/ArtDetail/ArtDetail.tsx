@@ -6,7 +6,7 @@ import { AiFillHeart } from 'react-icons/ai'
 import { FaEye } from 'react-icons/fa'
 
 import { RecaptchaKeys, SITE_URL } from '@fc/config/constants'
-import { useLikeArt } from '@fc/services/art/like'
+import { useLikeArt } from '@fc/services/art/likeArt'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 import type { Art } from '@fc/types'
 

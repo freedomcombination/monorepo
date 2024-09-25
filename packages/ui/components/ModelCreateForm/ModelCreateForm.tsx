@@ -9,8 +9,8 @@ import { useForm } from 'react-hook-form'
 import { TbPlus } from 'react-icons/tb'
 import { InferType } from 'yup'
 
-import { endpointsWithLocale } from '@fc/lib/urls'
-import { useCreateModelMutation } from '@fc/services/common/create'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
+import { endpointsWithLocale } from '@fc/services/common/urls'
 import type {
   Applicant,
   Course,
