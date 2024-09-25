@@ -8703,6 +8703,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/blocks-react-renderer@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@strapi/blocks-react-renderer@npm:1.0.1"
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 10/f833abd925527659661b475626f68d186690658e007d29998c1518938717af07b82ae93d6a5e2eba59a1adfb2cc30d745e2319fd8dd6a4ade1ca58714bd7681b
+  languageName: node
+  linkType: hard
+
 "@strapi/cloud-cli@npm:4.25.11":
   version: 4.25.11
   resolution: "@strapi/cloud-cli@npm:4.25.11"
@@ -13506,7 +13516,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.6":
+"classnames@npm:^2.2.6, classnames@npm:^2.5.1":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: 10/58eb394e8817021b153bb6e7d782cfb667e4ab390cb2e9dac2fc7c6b979d1cc2b2a733093955fc5c94aa79ef5c8c89f11ab77780894509be6afbb91dddd79d15
@@ -14273,6 +14283,13 @@ __metadata:
     typescript:
       optional: true
   checksum: 10/91d082baca0f33b1c085bf010f9ded4af43cbedacba8821da0fb5667184d0a848addc52c31fadd080007f904a555319c238cf5f4c03e6d58ece2e4876b2e73d6
+  languageName: node
+  linkType: hard
+
+"country-flag-icons@npm:^1.5.11":
+  version: 1.5.13
+  resolution: "country-flag-icons@npm:1.5.13"
+  checksum: 10/b826614d3913cb2291297cd7771ec43f641a02d25683b0f91f2575f5786dfa6ef49af17e1c749b9a1bdb110007651b6c4d18e1f5b376b3bb99b8ddf724d9f074
   languageName: node
   linkType: hard
 
@@ -17207,6 +17224,7 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.20"
     "@storybook/react": "npm:^7.6.20"
     "@storybook/types": "npm:^7.6.20"
+    "@strapi/blocks-react-renderer": "npm:^1.0.1"
     "@tanstack/react-query": "npm:^5.56.2"
     "@tanstack/react-query-devtools": "npm:^5.56.2"
     "@testing-library/react": "npm:^16.0.1"
@@ -17289,6 +17307,7 @@ __metadata:
     react-masonry-css: "npm:^1.0.16"
     react-medium-image-zoom: "npm:^5.2.10"
     react-pageflip: "npm:^2.0.3"
+    react-phone-number-input: "npm:^3.4.8"
     react-player: "npm:^2.16.0"
     react-qr-code: "npm:^2.0.15"
     react-use: "npm:^17.5.1"
@@ -17310,6 +17329,7 @@ __metadata:
     webpack: "npm:^5.94.0"
     yup: "npm:^1.4.0"
     yup-locales: "npm:^1.2.28"
+    yup-phone-lite: "npm:^2.0.1"
     zod: "npm:^3.23.8"
   languageName: unknown
   linkType: soft
@@ -19468,6 +19488,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"input-format@npm:^0.3.10":
+  version: 0.3.10
+  resolution: "input-format@npm:0.3.10"
+  dependencies:
+    prop-types: "npm:^15.8.1"
+  checksum: 10/731721ed96d104260c80ac05c18bce02de695d8f1c66fb639f3deba66874298d84efdb436a3b8db6db6bed4478214a4ddc681afea9e6b7f9fe7e394be5176b31
+  languageName: node
+  linkType: hard
+
 "inquirer@npm:8.2.5":
   version: 8.2.5
   resolution: "inquirer@npm:8.2.5"
@@ -21521,6 +21550,13 @@ __metadata:
     libbase64: "npm:0.1.0"
     libqp: "npm:1.1.0"
   checksum: 10/c57567b5f94e4d9d91ab8c4c08b7c22aead5f8a9692886dd7a23f28ac559be2bdf819246bd0bec5af417fd83826811c05948e9cb0890c6dc6d91ddd83426ee00
+  languageName: node
+  linkType: hard
+
+"libphonenumber-js@npm:^1.10.18, libphonenumber-js@npm:^1.11.8":
+  version: 1.11.9
+  resolution: "libphonenumber-js@npm:1.11.9"
+  checksum: 10/a07cdd02adfc0feebc5671b5acd0d5d5ca1b7f649578f64ef34db82622d921bba42373af98b3f4d2539dc96eee961dff7bf622f576cdf333ebecab304ee9adb3
   languageName: node
   linkType: hard
 
@@ -26292,6 +26328,22 @@ __metadata:
   dependencies:
     page-flip: "npm:latest"
   checksum: 10/197010230050a81b7348c053229d77b006ea9b1f9519593ce222d10aacf2dc17e369343d5211d22acecee239e933f3b74d1d4a5f69315f8fdc81c5f6aff4ef4d
+  languageName: node
+  linkType: hard
+
+"react-phone-number-input@npm:^3.4.8":
+  version: 3.4.8
+  resolution: "react-phone-number-input@npm:3.4.8"
+  dependencies:
+    classnames: "npm:^2.5.1"
+    country-flag-icons: "npm:^1.5.11"
+    input-format: "npm:^0.3.10"
+    libphonenumber-js: "npm:^1.11.8"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 10/df2fdb5eedd02e74ee57e6d6d096326ca7c0219bbc7ac2894f484ed75e6a98c4d27c4cebe8463421e742f0e32bb783678755367bdfb3dd9c52aaf7b079d09cd9
   languageName: node
   linkType: hard
 
@@ -32061,6 +32113,17 @@ __metadata:
   version: 1.2.28
   resolution: "yup-locales@npm:1.2.28"
   checksum: 10/351a44f10a498a73dd5d9d61cfbec1bb1e975ee5538a1ec4811df8b8a6cb53fd627cc7b4c6fc7af257f50a2d1fe67c631fbcd14dae8c30d4db50f946c78a26a7
+  languageName: node
+  linkType: hard
+
+"yup-phone-lite@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "yup-phone-lite@npm:2.0.1"
+  dependencies:
+    libphonenumber-js: "npm:^1.10.18"
+  peerDependencies:
+    yup: ">0.32.0"
+  checksum: 10/82c2f3727ad0a660415fcaf52abe55aaf60e5a16393208ef1d6036492e92fd88d772657cac86fcf8529ec97b6f6c7747e3c15cb82cf5bbea95574efd94fb5818
   languageName: node
   linkType: hard
 

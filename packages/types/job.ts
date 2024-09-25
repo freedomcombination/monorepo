@@ -1,3 +1,5 @@
+import { BlocksContent } from '@strapi/blocks-react-renderer'
+
 import { Expand } from './common'
 import { Platform } from './platform'
 import { StrapiBase } from './strapi'
@@ -10,6 +12,9 @@ export type JobBase = {
   description_en: string | null
   description_nl: string | null
   description_tr: string | null
+  info_tr: BlocksContent | null
+  info_nl: BlocksContent | null
+  info_en: BlocksContent | null
 }
 
 type JobRelation = {
