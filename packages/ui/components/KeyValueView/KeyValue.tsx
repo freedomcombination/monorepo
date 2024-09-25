@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react'
 import { Box, HStack, StackProps, Text } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
-import { I18nNamespaces } from '../../../@types/i18next'
+import { I18nNamespaces } from '../../@types/i18next'
 
 type KeyValueProps = {
   when?: boolean

@@ -21,6 +21,7 @@ import { useTranslation } from 'next-i18next'
 import { useAuthContext } from '@fc/context/auth'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { CourseApplication } from '@fc/types'
+import { CourseLogic } from '@fc/utils/courseLogic'
 
 import { ProfileCourseDetails } from './Payment/components/ProfileCourseDetails'
 import { StripeResult } from './Payment/components/StripeResult'

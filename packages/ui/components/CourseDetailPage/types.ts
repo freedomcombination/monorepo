@@ -4,6 +4,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { InferType } from 'yup'
 
 import type { Course, CourseApplication, FaqLocale } from '@fc/types'
+import { CourseLogic } from '@fc/utils/courseLogic'
 
 import { applicationSchema } from './schema'
 

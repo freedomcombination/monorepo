@@ -1,5 +1,5 @@
 import {
-  sendReactMail,
+  // sendReactMail,
   sendReactMailByRoles,
 } from '../../../../../utils/sendReactMail'
 
@@ -29,7 +29,7 @@ export const assignmentFilesUploaded = async params => {
 
   await sendReactMailByRoles(
     ['admin', 'academyeditor'], // TODO check this roles are true
-    async t => {
+    async () => {
       return {
         // TODO change to email template
         subject: 'Bu arkadaş dosyalarını gönderdi...',

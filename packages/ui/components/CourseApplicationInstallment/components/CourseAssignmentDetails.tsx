@@ -1,25 +1,36 @@
 import { FC, useRef, useState } from 'react'
 
-import { Link, Stack, Wrap, Text, Button, HStack, AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, useToast, Badge } from '@chakra-ui/react'
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Badge,
+  Button,
+  HStack,
+  Stack,
+  Text,
+  useToast,
+  Wrap,
+} from '@chakra-ui/react'
 import { addDays } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { AiOutlineFilePdf, AiOutlineFileZip, AiOutlineFileWord } from 'react-icons/ai'
-import { FaFile } from 'react-icons/fa6'
 
-import { useUpdateModelMutation } from '@fc/services'
-import { ApprovalStatus, UploadFile } from '@fc/types'
-import { formatDate } from '@fc/utils'
+import { useUpdateModelMutation } from '@fc/services/common/updateModel'
+import type { ApprovalStatus } from '@fc/types'
+import { formatDate } from '@fc/utils/formatDate'
 
 import { CourseAssignmentFileButton } from './CourseAssignmentFile'
 import { KeyValue } from '../../KeyValueView'
 import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
 
-
 export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
   course,
   application,
-  onSave = () => { },
+  onSave = () => {},
 }) => {
   const { t } = useTranslation()
   const { locale } = useRouter()
@@ -28,7 +39,6 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
   const [isOpen, setIsOpen] = useState(false)
   const updateModelMutation = useUpdateModelMutation('course-applications')
   const toast = useToast()
-
 
   const filesSent =
     !!application.submittedAssignmentFiles &&
@@ -40,7 +50,9 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
     updateModelMutation.mutate(
       {
         id: application.id,
-        approvalStatus: (isActionReject ? 'rejected' : 'approved') satisfies ApprovalStatus,
+        approvalStatus: (isActionReject
+          ? 'rejected'
+          : 'approved') satisfies ApprovalStatus,
       },
       {
         onSuccess: () => {
@@ -60,7 +72,6 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
     setIsOpen(false)
   }
 
-
   return (
     <Stack spacing={2} borderWidth={1} borderRadius={'lg'} p={4}>
       <KeyValue tKey="course.applicant.details.assignment-files">
@@ -75,56 +86,66 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
         )}
       </KeyValue>
 
-      {application.approvalStatus === 'pending' ? <>
-        <KeyValue
-          when={filesSent}
-          tKey="course.applicant.details.assignment-files.date"
-        >
-          {formatDate(application.lastUpdateDate ?? 0, 'dd MMMM yyyy', locale)}
-        </KeyValue>
-
-        <KeyValue
-          when={!filesSent}
-          tKey="course.applicant.details.assignment-files.due-date"
-        >
-          {formatDate(
-            addDays(
-              application.createdAt ?? 0,
-              course.assignmentSubmissionDeadline ?? 3,
-            ),
-            'dd MMMM yyyy',
-            locale,
-          )}
-        </KeyValue>
-
-        <KeyValue
-          when={filesSent}
-          tKey="course.applicant.details.assignment-files.action"
-        >
-          <HStack spacing={2}>
-            <Button
-              colorScheme='green'
-              onClick={() => { setIsActionReject(false); setIsOpen(true) }}
-            >
-              {t('approve')}
-            </Button>
-            <Button
-              colorScheme='red'
-              onClick={() => { setIsActionReject(true); setIsOpen(true) }}
-            >
-              {t('reject')}
-            </Button>
-          </HStack>
-        </KeyValue>
-      </> :
-        <KeyValue title="Kullanıcı durumu">
-          <Badge
-            colorScheme='green'
-            variant='outline'
+      {application.approvalStatus === 'pending' ? (
+        <>
+          <KeyValue
+            when={filesSent}
+            tKey="course.applicant.details.assignment-files.date"
           >
+            {formatDate(
+              application.lastUpdateDate ?? 0,
+              'dd MMMM yyyy',
+              locale,
+            )}
+          </KeyValue>
+
+          <KeyValue
+            when={!filesSent}
+            tKey="course.applicant.details.assignment-files.due-date"
+          >
+            {formatDate(
+              addDays(
+                application.createdAt ?? 0,
+                course.assignmentSubmissionDeadline ?? 3,
+              ),
+              'dd MMMM yyyy',
+              locale,
+            )}
+          </KeyValue>
+
+          <KeyValue
+            when={filesSent}
+            tKey="course.applicant.details.assignment-files.action"
+          >
+            <HStack spacing={2}>
+              <Button
+                colorScheme="green"
+                onClick={() => {
+                  setIsActionReject(false)
+                  setIsOpen(true)
+                }}
+              >
+                {t('approve')}
+              </Button>
+              <Button
+                colorScheme="red"
+                onClick={() => {
+                  setIsActionReject(true)
+                  setIsOpen(true)
+                }}
+              >
+                {t('reject')}
+              </Button>
+            </HStack>
+          </KeyValue>
+        </>
+      ) : (
+        <KeyValue title="Kullanıcı durumu">
+          <Badge colorScheme="green" variant="outline">
             {application.approvalStatus}
           </Badge>
-        </KeyValue>}
+        </KeyValue>
+      )}
 
       <AlertDialog
         isOpen={isOpen}
@@ -145,11 +166,7 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
               <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
                 {t('cancel')}
               </Button>
-              <Button
-                colorScheme="red"
-                onClick={onAction}
-                ml={3}
-              >
+              <Button colorScheme="red" onClick={onAction} ml={3}>
                 {t(isActionReject ? 'reject' : 'approve')}
               </Button>
             </AlertDialogFooter>

@@ -15,14 +15,14 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-import { useUpdateModelMutation } from '@fc/services'
+import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import { ApprovalStatus } from '@fc/types'
 
 import { KeyValue } from '../../KeyValueView'
 import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
 
 export const CoursePaymentExplainDetails: FC<CourseApplicationDetailsProps> = ({
-  course,
+  // course,
   application,
   onSave = () => {},
 }) => {
@@ -96,7 +96,6 @@ export const CoursePaymentExplainDetails: FC<CourseApplicationDetailsProps> = ({
     )
     setIsOpen(false)
   }
-
 
   return (
     <Stack spacing={2} borderWidth={1} borderRadius={'lg'} p={4}>

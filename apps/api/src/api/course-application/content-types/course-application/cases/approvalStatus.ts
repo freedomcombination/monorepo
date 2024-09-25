@@ -30,7 +30,7 @@ export const approvalStatusHasChanged = async params => {
     )
   }
 
-  await sendReactMail(receiver, async t => {
+  await sendReactMail(receiver, async () => {
     return {
       // TODO change to email template
       subject: approved ? 'Kurs onaylandı' : 'Kurs reddedildi',

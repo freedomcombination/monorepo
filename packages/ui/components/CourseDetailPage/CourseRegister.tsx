@@ -18,8 +18,8 @@ import { useAuthContext } from '@fc/context/auth'
 
 import { CourseApplicationForm } from './CourseApplicationForm'
 import { CourseApplicationPayForm } from './CourseApplicationPayForm'
-import { useCourseContext } from '../../useCourseContext'
-import { ProfileMenu } from '../../../Header/ProfileMenu'
+import { useCourseContext } from './useCourseContext'
+import { ProfileMenu } from '../Header/ProfileMenu'
 
 export const CourseRegister = () => {
   const { isLoading, courseLogic, course } = useCourseContext()

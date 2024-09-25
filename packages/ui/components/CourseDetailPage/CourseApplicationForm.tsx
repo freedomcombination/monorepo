@@ -18,17 +18,10 @@ import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/services/common/mutation'
 import type { CourseApplication, CourseApplicationCreateInput } from '@fc/types'
 
-<<<<<<<< HEAD:packages/ui/src/components/CourseDetailPage/Components/Register/CourseApplicationForm.tsx
-import { FormItem } from '../../../FormItem'
-import { applicationSchema } from '../../schema'
-import { ApplicationFormFields } from '../../types'
-import { useCourseContext } from '../../useCourseContext'
-========
 import { applicationSchema } from './schema'
 import { ApplicationFormFields } from './types'
 import { useCourseContext } from './useCourseContext'
 import { FormItem } from '../FormItem'
->>>>>>>> dev:packages/ui/components/CourseDetailPage/CourseApplicationForm.tsx
 
 export const CourseApplicationForm: FC = () => {
   const { t } = useTranslation()

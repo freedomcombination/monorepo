@@ -32,8 +32,7 @@ export type PaymentUpdateInput = Pick<
   'status' | 'checkoutSessionId'
 >
 
-export type PaymentCreateInputManual =
-  CoursePaymentCreateInput &
+export type PaymentCreateInputManual = CoursePaymentCreateInput &
   PaymentUpdateInput &
   Pick<PaymentBase, 'paymentDatetime'>
 

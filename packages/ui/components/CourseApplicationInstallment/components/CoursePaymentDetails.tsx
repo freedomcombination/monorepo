@@ -24,23 +24,21 @@ import { useTranslation } from 'next-i18next'
 import { FaStripe } from 'react-icons/fa6'
 import { TbCash } from 'react-icons/tb'
 
-import { useAuthContext } from '@fc/context'
-import { Mutation } from '@fc/lib'
-import { CoursePayment, PaymentUpdateInputExt, Profile } from '@fc/types'
-import {
-  CourseLogic,
-  formatDate,
-  formatPrice
-} from '@fc/utils'
+import { useAuthContext } from '@fc/context/auth'
+import { mutation } from '@fc/services/common/mutation'
+import { CoursePayment, PaymentCreateInputManual, Profile } from '@fc/types'
+import { CourseLogic } from '@fc/utils/courseLogic'
+import { formatDate } from '@fc/utils/formatDate'
+import { formatPrice } from '@fc/utils/formatPrice'
 
-import { I18nNamespaces } from '../../../../@types/i18next'
+import { I18nNamespaces } from '../../../@types/i18next'
 import { KeyValue } from '../../KeyValueView'
 import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
 
 export const CoursePaymentDetails: FC<CourseApplicationDetailsProps> = ({
   course,
   application,
-  onSave = () => { },
+  onSave = () => {},
 }) => {
   const logicCourse = new CourseLogic(
     course,
@@ -73,12 +71,10 @@ export const CoursePaymentDetails: FC<CourseApplicationDetailsProps> = ({
       if (!token || !profile || !profile.email)
         throw new Error('You need valid profile with email...')
 
-      await Mutation.post<
-        CoursePayment,
-        PaymentUpdateInputExt
-      >(
-        'payments',
-        {
+      await mutation<CoursePayment, PaymentCreateInputManual>({
+        endpoint: 'payments',
+        method: 'post',
+        body: {
           name: application.name,
           email: application.email,
           amount: price,
@@ -90,7 +86,7 @@ export const CoursePaymentDetails: FC<CourseApplicationDetailsProps> = ({
           paymentDatetime: new Date().toISOString(),
         },
         token,
-      )
+      })
 
       toast({
         title: 'Payment successful',
@@ -148,8 +144,9 @@ export const CoursePaymentDetails: FC<CourseApplicationDetailsProps> = ({
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               {t('course.payment.title.nth-installment', {
-                number: paymentParams?.installmentNumber
-              })} : {formatPrice(paymentParams?.price ?? 0)}
+                number: paymentParams?.installmentNumber,
+              })}{' '}
+              : {formatPrice(paymentParams?.price ?? 0)}
             </AlertDialogHeader>
 
             <AlertDialogBody>
@@ -160,11 +157,7 @@ export const CoursePaymentDetails: FC<CourseApplicationDetailsProps> = ({
               <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
                 {t('cancel')}
               </Button>
-              <Button
-                colorScheme="red"
-                onClick={onPaymentWithCash}
-                ml={3}
-              >
+              <Button colorScheme="red" onClick={onPaymentWithCash} ml={3}>
                 {t('course.payment.title.pay')}
               </Button>
             </AlertDialogFooter>
@@ -182,7 +175,7 @@ const PaymentRow = ({
 }: {
   installments: CourseLogic['myInstallments']
   tKey: keyof I18nNamespaces['common']
-    setParams: (installment: number, price: number) => void
+  setParams: (installment: number, price: number) => void
 }) => {
   const total = installments.reduce((acc, cur) => acc + cur.amount, 0)
   const { locale } = useRouter()
@@ -197,7 +190,9 @@ const PaymentRow = ({
       : 'gray.500'
 
   const isValidEmail = (email: string) => {
-    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+      email,
+    )
   }
 
   return (
@@ -217,13 +212,25 @@ const PaymentRow = ({
             >
               <HStack gap={6}>
                 <VStack align={'flex-end'}>
-                  {installment.payment && <Tooltip label={installment.payment?.checkoutSessionId}>
-                    <IconButton
-                      variant={'ghost'}
-                      p={0}
-                      rounded={'full'}
-                      icon={isValidEmail(installment.payment.checkoutSessionId) ? <TbCash /> : <FaStripe />} aria-label={''} />
-                  </Tooltip>}
+                  {installment.payment && (
+                    <Tooltip label={installment.payment?.checkoutSessionId}>
+                      <IconButton
+                        variant={'ghost'}
+                        p={0}
+                        rounded={'full'}
+                        icon={
+                          isValidEmail(
+                            installment.payment.checkoutSessionId,
+                          ) ? (
+                            <TbCash />
+                          ) : (
+                            <FaStripe />
+                          )
+                        }
+                        aria-label={''}
+                      />
+                    </Tooltip>
+                  )}
                   <Heading size={'lg'} color={color}>
                     #{installment.installmentNumber}
                   </Heading>
@@ -243,7 +250,9 @@ const PaymentRow = ({
                   variant={'solid'}
                   colorScheme="primary"
                   size={'sm'}
-                  onClick={() => setParams(installment.installmentNumber, installment.amount)}
+                  onClick={() =>
+                    setParams(installment.installmentNumber, installment.amount)
+                  }
                 >
                   {t('course.payment.title.installment.pay-cash')}
                 </Button>

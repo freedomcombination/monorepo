@@ -5,15 +5,10 @@ import { isPast } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-<<<<<<<< HEAD:packages/ui/components/ProfileSettings/Payment/components/ProfileCoursePaymentDetails.tsx
-import { ALLOW_COURSE_PAYMENT } from '@fc/config'
-import { CourseLogic, formatDate, formatPrice } from '@fc/utils'
-========
 import { ALLOW_COURSE_PAYMENT } from '@fc/config/constants'
-import type { Course, CourseApplication } from '@fc/types'
+import { CourseLogic } from '@fc/utils/courseLogic'
 import { formatDate } from '@fc/utils/formatDate'
 import { formatPrice } from '@fc/utils/formatPrice'
->>>>>>>> dev:packages/ui/components/ProfileSettings/Payment/components/CoursePaymentDetails.tsx
 
 import { PaymentButton } from './PaymentButton'
 import { KeyValue } from '../../../KeyValueView'

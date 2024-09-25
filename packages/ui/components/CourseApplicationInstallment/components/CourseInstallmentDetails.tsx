@@ -19,9 +19,11 @@ import {
 import { isPast } from 'date-fns'
 import { useTranslation } from 'next-i18next'
 
-import { useUpdateModelMutation } from '@fc/services'
+import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import { CourseApplication, Profile } from '@fc/types'
-import { CourseLogic, formatPrice, formatDate } from '@fc/utils'
+import { CourseLogic } from '@fc/utils/courseLogic'
+import { formatDate } from '@fc/utils/formatDate'
+import { formatPrice } from '@fc/utils/formatPrice'
 
 import { KeyValue } from '../../KeyValueView'
 import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
