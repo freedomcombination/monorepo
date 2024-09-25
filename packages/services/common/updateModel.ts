@@ -3,8 +3,9 @@ import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
 import type { StrapiEndpoint, StrapiModel, StrapiUpdateInput } from '@fc/types'
+
+import { mutation } from './mutation'
 
 export const updateModel = <
   T extends StrapiModel,
@@ -15,7 +16,13 @@ export const updateModel = <
   args: D,
   token: string,
 ) => {
-  return Mutation.put<T, StrapiUpdateInput>(endpoint, id, args, token)
+  return mutation<T, D>({
+    endpoint,
+    method: 'put',
+    id,
+    body: args,
+    token,
+  })
 }
 
 export const useUpdateModelMutation = <

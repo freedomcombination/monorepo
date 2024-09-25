@@ -3,8 +3,9 @@ import { useRouter } from 'next/router'
 
 import { BLOG_CATEGORIES } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
-import { strapiRequest } from '@fc/lib/request'
 import { Blog, StrapiLocale } from '@fc/types'
+
+import { strapiRequest } from '../common/request'
 
 export const getCategorizedBlogs = async (
   locale: StrapiLocale,

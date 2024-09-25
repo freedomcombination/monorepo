@@ -19,7 +19,7 @@ import { useTranslation } from 'next-i18next'
 import { FaRegFilePdf } from 'react-icons/fa6'
 
 import { RecaptchaKeys } from '@fc/config/constants'
-import { Mutation } from '@fc/lib/mutation'
+import { mutation } from '@fc/services/common/mutation'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type { Job, Platform, Profile, ProfileCreateInput } from '@fc/types'
@@ -56,17 +56,18 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({ title }) => {
   const { mutate, isPending, isSuccess } = useMutation({
     mutationKey: ['create-volunteer'],
     mutationFn: (body: ProfileCreateInput) =>
-      Mutation.post<Profile, ProfileCreateInput>(
-        'profiles',
-        {
+      mutation<Profile, ProfileCreateInput>({
+        endpoint: 'profiles',
+        method: 'post',
+        body: {
           ...body,
           isVolunteer: true,
           recaptchaToken: recaptchaToken ?? 'fake token',
           // now we make sure recaptchaToken is not undefined
           // and backend ll check if recaptchaToken exists then checks it
         },
-        '',
-      ),
+        token: '',
+      }),
   })
 
   const onSubmit = (data: JoinFormFieldValues) => {

@@ -14,7 +14,7 @@ import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { NextSeo, NextSeoProps } from 'next-seo'
 
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
   RecommendedTweet,

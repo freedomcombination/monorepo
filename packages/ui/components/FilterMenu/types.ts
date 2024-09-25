@@ -1,6 +1,6 @@
 import { MenuOptionGroupProps } from '@chakra-ui/react'
 
-import { RequestCollectionArgs } from '@fc/lib/request'
+import { RequestCollectionArgs } from '@fc/services/common/request'
 import type {
   StrapiCollectionEndpoint,
   StrapiModel,

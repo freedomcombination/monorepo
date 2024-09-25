@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { GrDocumentDownload } from 'react-icons/gr'
 
 import { API_URL } from '@fc/config/constants'
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Foundation, StrapiLocale } from '@fc/types'
 import { ButtonLink } from '@fc/ui/components/ButtonLink'

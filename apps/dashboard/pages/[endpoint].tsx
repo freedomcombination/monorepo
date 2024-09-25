@@ -15,7 +15,7 @@ import { useAuthContext } from '@fc/context/auth'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
-} from '@fc/lib/urls'
+} from '@fc/services/common/urls'
 import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {

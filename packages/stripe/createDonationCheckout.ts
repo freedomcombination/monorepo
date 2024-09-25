@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { SITE_URL } from '@fc/config/constants'
-import { Mutation } from '@fc/lib/mutation'
 import { getSecret } from '@fc/secrets'
+import { mutation } from '@fc/services/common/mutation'
 import type { Donation, DonationCreateInput } from '@fc/types'
 
 import { stripe } from './initStripe'
@@ -15,11 +15,12 @@ export const createDonationCheckout = async (
   const { amount, name, email, type } = req.body
 
   // Create blank donation in database
-  const donation = await Mutation.post<Donation, DonationCreateInput>(
-    'donates',
-    { name, email, amount },
-    getSecret('TOKEN'),
-  )
+  const donation = await mutation<Donation, DonationCreateInput>({
+    endpoint: 'donates',
+    method: 'post',
+    body: { name, email, amount },
+    token: getSecret('TOKEN'),
+  })
 
   const donationId = donation.data?.id
 

@@ -3,13 +3,14 @@ import { useMutation } from '@tanstack/react-query'
 import { WEB_PUSH_PUBLIC_KEY } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 import { useWebPushContext } from '@fc/context/webPush'
-import { Mutation } from '@fc/lib/mutation'
 import type {
   Site,
   WebPushSubscription,
   Subscriber,
   SubscriberCreateInput,
 } from '@fc/types'
+
+import { mutation } from '../common/mutation'
 
 export const subscribePushNotification = async (
   registration: ServiceWorkerRegistration | null,
@@ -32,11 +33,12 @@ export const subscribePushNotification = async (
       console.info('Successfully subscribed to push service')
     }
 
-    return Mutation.post<Subscriber, SubscriberCreateInput>(
-      'subscribers',
-      { subscription, site: site as Site },
-      token as string,
-    )
+    return mutation<Subscriber, SubscriberCreateInput>({
+      endpoint: 'subscribers',
+      method: 'post',
+      body: { subscription, site: site as Site },
+      token: token as string,
+    })
   } catch (error: any) {
     console.error('error', error)
     throw new Error(

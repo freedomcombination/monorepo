@@ -9,8 +9,8 @@ import type {
   StrapiUpdateInput,
 } from '@fc/types'
 
-import { API_URL, endpointsWithoutDataField } from '../urls'
-import { generateFormData } from '../utils'
+import { API_URL, endpointsWithoutDataField } from './urls'
+import { generateFormData } from './utils'
 
 type Method = 'post' | 'put' | 'delete' | 'localize'
 

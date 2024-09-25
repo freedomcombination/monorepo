@@ -2,8 +2,9 @@ import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
 import type { StrapiEndpoint, StrapiModel } from '@fc/types'
+
+import { mutation } from './mutation'
 
 export const unpublishModel = <T extends StrapiModel>(
   id: number,
@@ -12,7 +13,13 @@ export const unpublishModel = <T extends StrapiModel>(
 ) => {
   const body = { publishedAt: null }
 
-  return Mutation.put<T, typeof body>(endpoint, id, body, token)
+  return mutation<T, typeof body>({
+    endpoint,
+    method: 'put',
+    id,
+    body,
+    token,
+  })
 }
 
 export const useUnpublishModelMutation = <T extends StrapiModel>(

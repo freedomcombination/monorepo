@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { Mutation } from '@fc/lib/mutation'
+import { mutation } from '@fc/services/common/mutation'
 import type { Category, CategoryCreateInput } from '@fc/types'
 import { sleep } from '@fc/utils/sleep'
 
@@ -18,9 +18,10 @@ export const createCategoryWithAxios = async (data: CategoryCreateInput) => {
 export const createCategoryWithMutation = async (data: CategoryCreateInput) => {
   await sleep(2000)
 
-  return await Mutation.post<Category, CategoryCreateInput>(
-    'categories',
-    data,
-    '',
-  )
+  await mutation<Category, CategoryCreateInput>({
+    endpoint: 'categories',
+    method: 'post',
+    body: data,
+    token: '',
+  })
 }

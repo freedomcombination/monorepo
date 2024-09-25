@@ -5,8 +5,8 @@ import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { strapiRequest } from '@fc/lib/request'
 import { getModelStaticPaths } from '@fc/services/common/getModelStaticPaths'
+import { strapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
   Activity,

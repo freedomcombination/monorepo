@@ -3,15 +3,21 @@ import { useMutation } from '@tanstack/react-query'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
 import type { Blog, BlogUpdateInput } from '@fc/types'
 
 import { useGetBlogSlug } from './getBlogBySlug'
+import { mutation } from '../common/mutation'
 
 export const viewBlog = async (blog: Blog, token: string) => {
   const body = { views: (blog.views || 0) + 1, token }
 
-  return Mutation.put<Blog, BlogUpdateInput>('blogs', blog.id, body, token)
+  return mutation<Blog, BlogUpdateInput>({
+    endpoint: 'blogs',
+    method: 'put',
+    id: blog.id,
+    body,
+    token,
+  })
 }
 
 export const useViewBlog = () => {

@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react'
 
 import { Box } from '@chakra-ui/react'
 
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/request'
 
 type RequestFilterProps = {
   initialValue: string

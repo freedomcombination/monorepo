@@ -2,13 +2,14 @@ import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
 import type {
   Art,
   ArtUpdateInput,
   Feedback,
   FeedbackArtCreateInput,
 } from '@fc/types'
+
+import { mutation } from '../common/mutation'
 
 export const createArtFeedback = async ({
   token,
@@ -21,13 +22,21 @@ export const createArtFeedback = async ({
     approvalStatus: args.status,
     publishedAt: args.status === 'approved' ? new Date().toISOString() : null,
   }
-  await Mutation.post<Feedback, FeedbackArtCreateInput>(
-    'feedbacks',
-    args as FeedbackArtCreateInput,
-    token,
-  )
 
-  return Mutation.put<Art, ArtUpdateInput>('arts', args.art, body, token)
+  await mutation<Feedback, FeedbackArtCreateInput>({
+    endpoint: 'feedbacks',
+    method: 'post',
+    body: args,
+    token,
+  })
+
+  return await mutation<Art, ArtUpdateInput>({
+    endpoint: 'arts',
+    method: 'put',
+    id: args.art,
+    body,
+    token,
+  })
 }
 
 export const useCreateArtFeedbackMutation = () => {

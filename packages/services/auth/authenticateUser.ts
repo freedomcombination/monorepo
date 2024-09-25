@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 import { API_URL } from '@fc/config/constants'
-import { strapiRequest } from '@fc/lib/request'
 import type { Auth, AuthResponse, Profile } from '@fc/types'
 
 import { getSessionUser } from './getSessionUser'
+import { strapiRequest } from '../common/request'
 
 const emptyAuth: Auth = {
   user: null,

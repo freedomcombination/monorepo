@@ -1,11 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
-import type { StrapiCreateInput } from '@fc/types'
+import { Topic } from '@fc/types'
+
+import { mutation } from '../common/mutation'
 
 export const syncTopics = async (token: string) => {
-  Mutation.post('topic/sync', {} as StrapiCreateInput, token)
+  return mutation<Topic>({
+    endpoint: 'topic/sync',
+    method: 'post',
+    token,
+    body: {},
+  })
 }
 
 export const useSyncTopicsMutation = () => {

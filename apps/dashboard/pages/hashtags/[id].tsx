@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaPencil } from 'react-icons/fa6'
 
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/request'
 import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Hashtag, StrapiLocale } from '@fc/types'

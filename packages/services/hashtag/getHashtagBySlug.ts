@@ -2,13 +2,14 @@ import { useQuery } from '@tanstack/react-query'
 import { addDays, isPast } from 'date-fns'
 import { useRouter } from 'next/router'
 
-import { strapiRequest } from '@fc/lib/request'
 import type {
   Hashtag,
   HashtagReturnType,
   StrapiLocale,
   UploadFile,
 } from '@fc/types'
+
+import { strapiRequest } from '../common/request'
 
 export const getHashtagBySlug = async (
   locale: StrapiLocale,

@@ -6,7 +6,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { SITE_URL } from '@fc/config/constants'
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Hashtag, InstagramPost, StrapiLocale } from '@fc/types'
 import { ButtonLink } from '@fc/ui/components/ButtonLink'

@@ -1,8 +1,9 @@
 import { QueryClient } from '@tanstack/react-query'
 import { GetStaticPropsContext } from 'next'
 
-import { RequestCollectionArgs, strapiRequest } from '@fc/lib/request'
 import type { Art, StrapiLocale } from '@fc/types'
+
+import { RequestCollectionArgs, strapiRequest } from '../common/request'
 
 export const getClubQueryClient = async (context: GetStaticPropsContext) => {
   const locale = context.locale as StrapiLocale

@@ -1,5 +1,5 @@
-import { Mutation } from '@fc/lib/mutation'
 import { getSecret } from '@fc/secrets'
+import { mutation } from '@fc/services/common/mutation'
 import type {
   CoursePayment,
   Donation,
@@ -16,10 +16,11 @@ const handleCoursePayment = async (
   paymentId: number,
   token: string,
 ) => {
-  await Mutation.put<CoursePayment, PaymentUpdateInput>(
-    'payments',
-    paymentId,
-    {
+  await mutation<CoursePayment, PaymentUpdateInput>({
+    endpoint: 'payments',
+    method: 'put',
+    id: paymentId,
+    body: {
       status,
       checkoutSessionId: checkoutSessionId as string,
       ...(status === 'paid'
@@ -27,7 +28,7 @@ const handleCoursePayment = async (
         : {}),
     },
     token,
-  )
+  })
 
   // handle mail stuff with strapi
 }
@@ -39,22 +40,25 @@ const handleDonation = async (
   token: string,
 ) => {
   // Update donation status and stripe fields in database
-  await Mutation.put<Donation, DonationUpdateInput>(
-    'donates',
-    donationId,
-    {
+  await mutation<Donation, DonationUpdateInput>({
+    endpoint: 'donates',
+    method: 'put',
+    id: donationId,
+    body: {
       status,
       checkoutSessionId: checkoutSessionId as string,
     },
     token,
-  )
+  })
+
   // Send email to customer
   if (status === 'paid') {
-    await Mutation.post(
-      `donates/email/${donationId}` as StrapiEndpoint,
-      {},
+    await mutation({
+      endpoint: `donates/email/${donationId}` as StrapiEndpoint,
+      method: 'post',
+      body: {},
       token,
-    )
+    })
   }
 }
 

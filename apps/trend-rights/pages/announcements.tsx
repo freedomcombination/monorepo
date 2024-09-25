@@ -8,7 +8,10 @@ import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 import { NextSeoProps } from 'next-seo'
 
-import { RequestCollectionArgs, strapiRequest } from '@fc/lib/request'
+import {
+  RequestCollectionArgs,
+  strapiRequest,
+} from '@fc/services/common/request'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Hashtag, StrapiCollectionResponse, StrapiLocale } from '@fc/types'
 import { ButtonLink } from '@fc/ui/components/ButtonLink'

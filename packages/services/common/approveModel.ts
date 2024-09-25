@@ -2,13 +2,13 @@ import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
 import type {
   StrapiEndpoint,
   StrapiModel,
   StrapiTranslatableModel,
 } from '@fc/types'
 
+import { mutation } from './mutation'
 import { createLocalizations } from '../createLocalizations'
 
 export const approveModel = async <T extends StrapiModel>(
@@ -16,12 +16,13 @@ export const approveModel = async <T extends StrapiModel>(
   endpoint: StrapiEndpoint,
   token?: string,
 ) => {
-  return Mutation.put<T, any>(
-    `${endpoint}` as StrapiEndpoint,
+  return mutation<T, any>({
+    endpoint,
+    method: 'put',
     id,
-    { approvalStatus: 'approved' },
-    token as string,
-  )
+    body: { approvalStatus: 'approved' },
+    token: token as string,
+  })
 }
 
 export const useApproveModelMutation = <T extends StrapiTranslatableModel>(
@@ -55,12 +56,12 @@ export const useApproveModelMutation = <T extends StrapiTranslatableModel>(
             return
           }
 
-          Mutation.put(
-            `${endpoint}/relation` as StrapiEndpoint,
-            localizedModel.data.id,
-            {},
-            token as string,
-          )
+          mutation<StrapiTranslatableModel>({
+            endpoint: `${endpoint}/relation` as StrapiEndpoint,
+            method: 'put',
+            body: {},
+            token: token as string,
+          })
         })
 
         if (promises) {

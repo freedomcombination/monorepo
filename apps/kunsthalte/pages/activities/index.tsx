@@ -3,7 +3,7 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { RequestCollectionArgs } from '@fc/lib/request'
+import { RequestCollectionArgs } from '@fc/services/common/request'
 import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Activity, StrapiLocale, UploadFile } from '@fc/types'

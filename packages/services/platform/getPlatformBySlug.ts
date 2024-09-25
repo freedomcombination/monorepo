@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 
-import { strapiRequest } from '@fc/lib/request'
 import type { Platform } from '@fc/types'
+
+import { strapiRequest } from '../common/request'
 
 export const getPlatformBySlug = async (slug: string) => {
   const response = await strapiRequest<Platform>({

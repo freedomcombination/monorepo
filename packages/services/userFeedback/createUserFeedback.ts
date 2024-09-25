@@ -2,8 +2,9 @@ import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
 import type { UserFeedback, UserFeedbackCreateInput } from '@fc/types'
+
+import { mutation } from '../common/mutation'
 
 export const createUserFeedback = async (
   userFeedback: UserFeedbackCreateInput,
@@ -14,14 +15,15 @@ export const createUserFeedback = async (
     throw new Error('feedback field is required')
   }
 
-  await Mutation.post<UserFeedback, UserFeedbackCreateInput>(
-    'user-feedbacks',
-    {
+  await mutation<UserFeedback, UserFeedbackCreateInput>({
+    endpoint: 'user-feedbacks',
+    method: 'post',
+    body: {
       ...userFeedback,
       recaptchaToken,
     },
     token,
-  )
+  })
 }
 
 export const useCreateUserFeedbackMutation = (recaptchaToken?: string) => {

@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 
-import { strapiRequest } from '@fc/lib/request'
 import type { Course } from '@fc/types'
+
+import { strapiRequest } from '../common/request'
 
 export const getCourseBySlug = async (slug: string): Promise<Course | null> => {
   const response = await strapiRequest<Course>({

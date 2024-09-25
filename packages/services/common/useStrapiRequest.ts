@@ -5,13 +5,14 @@ import {
 } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context/auth'
-import { strapiRequest } from '@fc/lib/request'
-import { RequestCollectionArgs, RequestSingleArgs } from '@fc/lib/request'
 import type {
   StrapiCollectionResponse,
   StrapiModel,
   StrapiSingleResponse,
 } from '@fc/types'
+
+import { strapiRequest } from './request'
+import { RequestCollectionArgs, RequestSingleArgs } from './request'
 
 type QueryOptions = Partial<UseQueryOptions<unknown, unknown>>
 

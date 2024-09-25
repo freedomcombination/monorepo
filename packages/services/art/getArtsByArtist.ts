@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { useAuthContext } from '@fc/context/auth'
-import { strapiRequest } from '@fc/lib/request'
 import type { Art } from '@fc/types'
+
+import { strapiRequest } from '../common/request'
 
 export const getArtsByArtist = async (
   profileId: number,
