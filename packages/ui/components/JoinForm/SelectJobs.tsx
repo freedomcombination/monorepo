@@ -15,7 +15,6 @@ import { Job } from '@fc/types'
 import { useJoinFormContext } from './useJoinFormContext'
 
 export const SelectJobs = () => {
-  // const { t } = useTranslation()
   const { locale } = useRouter()
 
   const {
@@ -48,8 +47,6 @@ export const SelectJobs = () => {
 
   return (
     <Stack gap={4}>
-      {/* {t('jobs')} */}
-
       <SimpleGrid
         gap={8}
         columns={{ sm: 2, md: 3 }}

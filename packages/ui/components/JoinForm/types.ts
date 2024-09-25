@@ -4,7 +4,7 @@ import { InferType } from 'yup'
 
 import type { Job, StrapiLocale } from '@fc/types'
 
-import { joinSchema } from './schema'
+import { useJoinFormSchema } from './schema'
 
 export type JoinTemplateProps = {
   title: string
@@ -13,7 +13,9 @@ export type JoinTemplateProps = {
   defaultJobs?: number[]
 }
 
-export type JoinFormFieldValues = InferType<ReturnType<typeof joinSchema>>
+export type JoinFormFieldValues = InferType<
+  ReturnType<typeof useJoinFormSchema>
+>
 
 export type HeardFrom = {
   label: Record<StrapiLocale, string>

@@ -47,6 +47,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       foundationInfo,
       jobs,
     },
+    revalidate: 1,
   }
 }
 

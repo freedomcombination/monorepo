@@ -2937,7 +2937,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToOne',
       'api::subscriber.subscriber'
     >
-    cv: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
+    cv: Attribute.Media<'images' | 'files'>
     address: Attribute.Component<'flow.address'>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime

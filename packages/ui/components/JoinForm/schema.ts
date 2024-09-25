@@ -1,8 +1,11 @@
 import { addYears } from 'date-fns'
+import { useTranslation } from 'next-i18next'
 import * as yup from 'yup'
 import 'yup-phone-lite'
 
-export const joinSchema = () => {
+export const useJoinFormSchema = () => {
+  const { t } = useTranslation()
+
   yup.addMethod(
     yup.object,
     'atLeastOneRequired',
@@ -58,7 +61,7 @@ export const joinSchema = () => {
     cv: yup.mixed(),
     foundationConfirmation: yup
       .boolean()
-      .oneOf([true], 'You must accept the Foundation information')
+      .oneOf([true], t('read-and-accept-required'))
       .required(),
     jobInfoConfirmation: yup.boolean(),
   })

@@ -10,7 +10,7 @@ import { en, nl, tr } from 'yup-locales'
 import { sleep } from '@fc/utils/sleep'
 
 import { JoinFormContext } from './JoinFormContext'
-import { joinSchema } from './schema'
+import { useJoinFormSchema } from './schema'
 import { JoinFormFieldValues, JoinFormProviderProps } from './types'
 import { useFormSteps } from './useFormSteps'
 
@@ -45,8 +45,10 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
     updateErrorFields()
   }, [locale])
 
+  const joinFormSchema = useJoinFormSchema()
+
   const form = useForm<JoinFormFieldValues>({
-    resolver: yupResolver(joinSchema()),
+    resolver: yupResolver(joinFormSchema),
     mode: 'onBlur',
     defaultValues: {
       jobs: defaultJobs,

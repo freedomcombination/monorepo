@@ -1,4 +1,5 @@
 import {
+  Box,
   Checkbox,
   FormControl,
   FormErrorMessage,
@@ -43,10 +44,14 @@ export const JobInfo = () => {
               {jobName}
             </Heading>
 
-            <BlocksRenderer content={jobInfo} />
+            {/* TODO: Allow users to read the content in modal as well */}
+            <Box maxH={filteredJobs?.length > 1 ? 300 : 500} overflowY={'auto'}>
+              <BlocksRenderer content={jobInfo} />
+            </Box>
 
             {jobInfo && (
               <FormControl isRequired isInvalid={!!errors?.jobInfoConfirmation}>
+                {/* TODO: Trigger job info confirmation error */}
                 <Checkbox {...register('jobInfoConfirmation')}>
                   {t('read-and-accept')}
                 </Checkbox>
