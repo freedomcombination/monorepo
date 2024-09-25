@@ -2,10 +2,11 @@ import { FC } from 'react'
 
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 
-import { strapiRequest } from '@fc/lib'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Donation, StrapiLocale } from '@fc/types'
-import { AdminLayout, DonationCompleteTemplate } from '@fc/ui'
+import type { Donation, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { DonationCompleteTemplate } from '@fc/ui/components/DonationCompleteTemplate'
 
 type DonationCompletePageProps = InferGetServerSidePropsType<
   typeof getServerSideProps

@@ -4,21 +4,22 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { RequestCollectionArgs, strapiRequest } from '@fc/lib'
-import { useStrapiRequest } from '@fc/services'
-import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Activity, StrapiLocale, UploadFile } from '@fc/types'
 import {
-  AnimatedBox,
-  Card,
-  Container,
-  Hero,
-  Pagination,
-  useChangeParams,
-  FormattedDate,
-} from '@fc/ui'
+  RequestCollectionArgs,
+  strapiRequest,
+} from '@fc/services/common/strapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
+import { ssrTranslations } from '@fc/services/ssrTranslations'
+import type { Activity, StrapiLocale, UploadFile } from '@fc/types'
+import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
+import { Card } from '@fc/ui/components/Card'
+import { Container } from '@fc/ui/components/Container'
+import { FormattedDate } from '@fc/ui/components/FormattedDate'
+import { Hero } from '@fc/ui/components/Hero'
+import { Pagination } from '@fc/ui/components/Pagination'
+import { useChangeParams } from '@fc/ui/hooks/useChangeParam'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 const args: RequestCollectionArgs<Activity> = {
   endpoint: 'activities',

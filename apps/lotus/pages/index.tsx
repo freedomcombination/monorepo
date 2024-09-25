@@ -6,8 +6,9 @@ import { useTranslation } from 'next-i18next'
 import { NextSeoProps } from 'next-seo'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { ButtonLink, Container } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { Container } from '@fc/ui/components/Container'
 
 import { Layout } from '../components'
 

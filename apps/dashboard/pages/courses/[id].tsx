@@ -17,17 +17,15 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Course, CourseApplication, Sort, StrapiLocale } from '@fc/types'
-import {
-  AdminLayout,
-  DataTable,
-  ModelEditForm,
-  ModelEditModal,
-  PageHeader,
-  useColumns,
-} from '@fc/ui'
+import type { Course, CourseApplication, Sort, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { DataTable } from '@fc/ui/components/DataTable'
+import { ModelEditForm } from '@fc/ui/components/ModelEditForm'
+import { ModelEditModal } from '@fc/ui/components/ModelEditModal'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import { useColumns } from '@fc/ui/hooks/useColumns'
 
 const CoursePage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()

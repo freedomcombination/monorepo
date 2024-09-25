@@ -1,4 +1,4 @@
-import { Course, Profile } from '@fc/types'
+import type { Course, Profile } from '@fc/types'
 import { emailTemplates } from '../../../../../emails'
 import { getTranslate } from '../../../../../emails/utils/getTranslate'
 

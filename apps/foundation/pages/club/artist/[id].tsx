@@ -3,10 +3,10 @@ import { FC } from 'react'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 
-import { getArtistServerProps } from '@fc/services'
+import { getArtistServerProps } from '@fc/services/artist/getArtistServerProps'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { ArtistTemplate } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { ArtistTemplate } from '@fc/ui/components/ArtistTemplate'
 
 import { Layout } from '../../../components'
 

@@ -5,15 +5,17 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { SITE_URL } from '@fc/config'
+import { SITE_URL } from '@fc/config/constants'
 import { getSession } from '@fc/secrets'
-import { getAuthorBlogs, getBlogBySlug } from '@fc/services'
+import { getAuthorBlogs } from '@fc/services/blog/getAuthorBlogs'
+import { getBlogBySlug } from '@fc/services/blog/getBlogBySlug'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Blog, StrapiLocale } from '@fc/types'
-import { BlogDetail, Container } from '@fc/ui'
-import { getPageSeo } from '@fc/utils'
+import type { Blog, StrapiLocale } from '@fc/types'
+import { BlogDetail } from '@fc/ui/components/BlogDetail'
+import { Container } from '@fc/ui/components/Container'
+import { getPageSeo } from '@fc/utils/getPageSeo'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 type BlogPageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 

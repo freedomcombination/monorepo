@@ -5,18 +5,16 @@ import { isPast } from 'date-fns'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 
-import { SITE_URL } from '@fc/config'
-import { strapiRequest } from '@fc/lib'
+import { SITE_URL } from '@fc/config/constants'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Hashtag, InstagramPost, StrapiLocale } from '@fc/types'
-import {
-  ButtonLink,
-  Container,
-  HashtagAnnouncement,
-  HashtagsSummary,
-  InstagramTimeline,
-} from '@fc/ui'
-import { getItemLink } from '@fc/utils'
+import type { Hashtag, InstagramPost, StrapiLocale } from '@fc/types'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { Container } from '@fc/ui/components/Container'
+import { HashtagAnnouncement } from '@fc/ui/components/HashtagAnnouncement'
+import { HashtagsSummary } from '@fc/ui/components/HashtagsSummary'
+import { InstagramTimeline } from '@fc/ui/components/InstagramTimeline'
+import { getItemLink } from '@fc/utils/getItemLink'
 
 import { Layout } from '../components'
 
