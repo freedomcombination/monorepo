@@ -2,14 +2,14 @@ import { getIronSession } from 'iron-session'
 import { NextApiHandler } from 'next'
 
 import { sessionOptions } from '@fc/secrets'
-import { loginAuth } from '@fc/services/auth/getAuth'
+import { authenticateUser } from '@fc/services/auth/authenticateUser'
 import type { Auth } from '@fc/types'
 
 export const loginHandler: NextApiHandler = async (req, res) => {
   const { identifier, password } = req.body
 
   try {
-    const { profile, ...auth } = await loginAuth(identifier, password)
+    const { profile, ...auth } = await authenticateUser(identifier, password)
 
     const session = await getIronSession<Auth>(req, res, sessionOptions)
 

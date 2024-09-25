@@ -24,7 +24,7 @@ import { FaEdit, FaSave } from 'react-icons/fa'
 import { FaFilter, FaX } from 'react-icons/fa6'
 
 import { useAuthContext } from '@fc/context/auth'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Permissions, Role, RoleInput, StrapiLocale } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'

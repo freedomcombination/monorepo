@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type { Art } from '@fc/types'
 
 import { ArtAddToCollectionGrid } from './ArtAddToCollectionGrid'

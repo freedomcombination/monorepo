@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { MenuItemOption, MenuOptionGroup, chakra } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type { StrapiModel } from '@fc/types'
 import { mapModelsToOptions } from '@fc/utils/mapModelsToOptions'
 

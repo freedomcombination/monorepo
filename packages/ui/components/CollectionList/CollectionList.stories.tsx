@@ -3,7 +3,7 @@ import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { useRouter } from 'next/router'
 
 import { COLLECTION_MOCKS } from '@fc/mocks/collection'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type { Collection } from '@fc/types'
 
 import { CollectionList } from './CollectionList'

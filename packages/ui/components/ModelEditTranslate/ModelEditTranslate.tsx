@@ -17,9 +17,9 @@ import { HiOutlineCheck } from 'react-icons/hi'
 import { MdClose, MdOutlineCheck } from 'react-icons/md'
 import { InferType } from 'yup'
 
-import { useApproveModel } from '@fc/services/common/approve'
-import { useStrapiRequest } from '@fc/services/common/request'
-import { useUpdateModelMutation } from '@fc/services/common/update'
+import { useApproveModelMutation } from '@fc/services/common/approveModel'
+import { useUpdateModelMutation } from '@fc/services/common/updateModel'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type {
   StrapiTranslatableModel,
   StrapiTranslatableUpdateInput,
@@ -63,7 +63,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
 
   const updateModelMutation = useUpdateModelMutation(endpoint)
-  const approveModelMutation = useApproveModel(
+  const approveModelMutation = useApproveModelMutation(
     endpoint,
     translatedFields as Array<keyof StrapiTranslatableModel>,
   )

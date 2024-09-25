@@ -4,8 +4,8 @@ import { useDisclosure } from '@chakra-ui/react'
 import { sampleSize } from 'lodash'
 import { useRouter } from 'next/router'
 
-import { useHashtag } from '@fc/services/hashtag'
-import { useGetHashtagSentences } from '@fc/services/post'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
+import { useGetHashtagSentences } from '@fc/services/hashtagSentence/getHashtagSentences'
 import type { PostSentence, StrapiLocale } from '@fc/types'
 
 import { HashtagContext } from './HashtagContex'
@@ -19,7 +19,7 @@ export const HashtagProvider: FC<HashtagProviderProps> = ({ children }) => {
   const [defaultTrends, setDefaultTrends] = useState<Record<number, string[]>>(
     {},
   )
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
   const [postSentenceShares, setPostSentenceShares] = useState<
     Record<StrapiLocale, Record<number, PostStats>>
   >({

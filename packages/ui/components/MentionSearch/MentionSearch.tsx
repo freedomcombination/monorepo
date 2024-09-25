@@ -12,7 +12,7 @@ import { useTranslation } from 'next-i18next'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import { useDebounce } from 'react-use'
 
-import { useHashtag } from '@fc/services/hashtag'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 
 import { useHashtagContext } from '../HashtagProvider'
 
@@ -20,7 +20,7 @@ export const MentionSearch = (): JSX.Element => {
   const { t } = useTranslation()
   const [value, setValue] = useState('')
   const { setMentionSearchKey } = useHashtagContext()
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   const filteredMentions = useMemo(
     () =>

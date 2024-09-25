@@ -22,7 +22,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { FaInfo, FaPlus } from 'react-icons/fa6'
 import { MdOutlineTrendingUp } from 'react-icons/md'
 
-import { useHashtag } from '@fc/services/hashtag'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 import { HashtagStats } from '@fc/ui/components/HashtagStats'
 import { Markdown } from '@fc/ui/components/Markdown'
 
@@ -36,7 +36,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
   const [isEditing, setIsEditing] = useBoolean()
   const [activeButton, setActiveButton] = useState<'info' | 'stats'>()
 
-  const { title } = useHashtag()
+  const { title } = useHashtagBySlug()
 
   const onClickInfo = () => {
     infoDisclosure.onOpen()

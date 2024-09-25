@@ -24,7 +24,7 @@ import { FaFileUpload, FaSave } from 'react-icons/fa'
 import { FaCity, FaPhone, FaTrash } from 'react-icons/fa6'
 
 import { useAuthContext } from '@fc/context/auth'
-import { useUpdateModelMutation } from '@fc/services/common/update'
+import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import type { Profile } from '@fc/types'
 
 import { FormElement } from './FormElement'

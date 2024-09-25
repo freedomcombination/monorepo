@@ -12,8 +12,8 @@ import {
 import { useTranslation } from 'next-i18next'
 import { AiFillDelete, AiOutlineShareAlt } from 'react-icons/ai'
 
-import { useDeleteModel } from '@fc/services/common/delete'
-import type { Post } from '@fc/types'
+import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
+import type { Post, RecommendedTweet } from '@fc/types'
 import { getMediaUrl } from '@fc/utils/getMediaUrl'
 
 import { RecommendedSocialButtonsProps } from './types'
@@ -27,7 +27,8 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
   tweet,
   isVertical,
 }) => {
-  const deleteModelMutation = useDeleteModel('recommended-tweets')
+  const deleteModelMutation =
+    useDeleteModelMutation<RecommendedTweet>('recommended-tweets')
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
   const id = tweet?.id
 

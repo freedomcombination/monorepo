@@ -20,8 +20,8 @@ import { FaRegFilePdf } from 'react-icons/fa6'
 
 import { RecaptchaKeys } from '@fc/config/constants'
 import { Mutation } from '@fc/lib/mutation'
-import { useStrapiRequest } from '@fc/services/common/request'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type { Job, Platform, Profile, ProfileCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils/toastMessage'
 

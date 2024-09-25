@@ -12,6 +12,6 @@ type ObservationRelation = {
 
 export type ObservationCreateInput = Pick<ObservationBase, 'content'>
 
-export type ObservationUpdateInput = ObservationCreateInput
+export type ObservationUpdateInput = ObservationCreateInput & { id: number }
 
 export type Observation = StrapiBase & ObservationBase & ObservationRelation

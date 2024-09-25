@@ -15,7 +15,7 @@ import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 import * as yup from 'yup'
 
-import { useCreateModelMutation } from '@fc/services/common/create'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { useSendEmail } from '@fc/services/email'
 import type {
   EmailCreateInput,

@@ -19,7 +19,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context/auth'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type { CourseApplication } from '@fc/types'
 
 import { CoursePaymentDetails } from './Payment/components/CoursePaymentDetails'

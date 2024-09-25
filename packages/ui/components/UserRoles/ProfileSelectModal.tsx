@@ -27,7 +27,7 @@ import { FaX } from 'react-icons/fa6'
 
 import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/lib/mutation/mutation'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type { Role, UpdateUserInput, User } from '@fc/types'
 import { toastMessage } from '@fc/utils/toastMessage'
 

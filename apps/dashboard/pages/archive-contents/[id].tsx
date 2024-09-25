@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { StrapiLocale, ArchiveContent } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'

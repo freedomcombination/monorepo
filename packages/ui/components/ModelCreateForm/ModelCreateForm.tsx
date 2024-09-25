@@ -10,7 +10,7 @@ import { TbPlus } from 'react-icons/tb'
 import { InferType } from 'yup'
 
 import { endpointsWithLocale } from '@fc/lib/urls'
-import { useCreateModelMutation } from '@fc/services/common/create'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
 import type {
   Applicant,
   Course,

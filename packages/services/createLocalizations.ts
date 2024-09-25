@@ -5,7 +5,7 @@ import type {
   StrapiTranslatableModel,
 } from '@fc/types'
 
-import { getModelTranslation } from './deepl'
+import { translateModel } from './deepl'
 
 type CreateLocalizationsArgs<T extends StrapiTranslatableModel> = {
   model: T
@@ -22,7 +22,7 @@ export const createLocalizations = async <T extends StrapiTranslatableModel>({
   token,
   hasSlug = true,
 }: CreateLocalizationsArgs<T>) => {
-  const modelTranslations = await getModelTranslation(
+  const modelTranslations = await translateModel(
     model as unknown as T,
     translatedFields,
     hasSlug,

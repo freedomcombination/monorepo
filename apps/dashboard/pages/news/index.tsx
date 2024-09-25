@@ -21,7 +21,8 @@ import { FaSyncAlt } from 'react-icons/fa'
 
 import { useAuthContext } from '@fc/context/auth'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { useTopic, useTopicSync } from '@fc/services/topics'
+import { useTopics } from '@fc/services/topics/getTopics'
+import { useSyncTopicsMutation } from '@fc/services/topics/syncTopics'
 import type { StrapiLocale } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'
 import { PageHeader } from '@fc/ui/components/PageHeader'
@@ -29,8 +30,8 @@ import { TopicCard } from '@fc/ui/components/TopicCard'
 
 const NewsPage = () => {
   const { checkActionsPermission } = useAuthContext()
-  const { data, isLoading } = useTopic()
-  const syncTopic = useTopicSync()
+  const { data, isLoading } = useTopics()
+  const syncTopic = useSyncTopicsMutation()
   const [filter, setFilter] = useState<string[]>([])
   const [searchTerm, setSearchTerm] = useState<string>()
 

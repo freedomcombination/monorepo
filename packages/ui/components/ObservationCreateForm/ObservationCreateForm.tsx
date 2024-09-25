@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
-import { useCreateModelMutation } from '@fc/services/common/create'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
 import type { Observation, ObservationCreateInput } from '@fc/types/observation'
 import { toastMessage } from '@fc/utils/toastMessage'
 

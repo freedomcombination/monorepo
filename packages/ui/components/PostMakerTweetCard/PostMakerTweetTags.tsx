@@ -1,6 +1,6 @@
 import { Stack, Tag, TagCloseButton, TagLabel, Wrap } from '@chakra-ui/react'
 
-import { useHashtag } from '@fc/services/hashtag'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 
 import { useHashtagContext } from '../HashtagProvider'
 import { usePostContext } from '../PostProvider'
@@ -15,7 +15,7 @@ export const PostMakerTweetTags = () => {
     removeMentionFromPost,
     removeTrendFromPost,
   } = useHashtagContext()
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   if (!post) return null
 

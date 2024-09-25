@@ -4,7 +4,7 @@ import { Button, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { HiOutlineCheck, HiOutlineX, HiPencil } from 'react-icons/hi'
 
-import { useArtFeedbackMutation } from '@fc/services/art/feedback'
+import { useCreateArtFeedbackMutation } from '@fc/services/art/createArtFeedback'
 
 import { ArtFeedbackFormTypes } from './types'
 import { ActionButton } from '../ActionButton'
@@ -23,7 +23,7 @@ export const ArtFeedbackForm: FC<ArtFeedbackFormTypes> = ({
 
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
 
-  const feedbackMutation = useArtFeedbackMutation()
+  const feedbackMutation = useCreateArtFeedbackMutation()
 
   const { t } = useTranslation()
 

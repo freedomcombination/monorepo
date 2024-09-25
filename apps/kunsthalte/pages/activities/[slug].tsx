@@ -6,7 +6,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
 import { strapiRequest } from '@fc/lib/request'
-import { getModelStaticPaths } from '@fc/services/common/staticPaths'
+import { getModelStaticPaths } from '@fc/services/common/getModelStaticPaths'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
   Activity,

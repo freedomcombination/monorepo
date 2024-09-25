@@ -16,7 +16,7 @@ import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
 } from '@fc/lib/urls'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
   ApprovalStatus,

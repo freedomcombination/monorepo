@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-import { useHashtag } from '@fc/services/hashtag'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 
 import { TrendTabs } from '../TrendTabs'
 import { TweetWidget } from '../TweetWidget'
@@ -17,7 +17,7 @@ import { TweetWidget } from '../TweetWidget'
 export const TimelineTrendsTabs = () => {
   const { t } = useTranslation()
 
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   if (!hashtag) return null
 

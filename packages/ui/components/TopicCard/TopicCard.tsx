@@ -29,9 +29,14 @@ import {
 import { useLocalStorage } from 'usehooks-ts'
 
 import { useAuthContext } from '@fc/context/auth'
-import { useDeleteModel } from '@fc/services/common/delete'
-import { useRecommendTopic } from '@fc/services/topics/recommend'
-import type { Post, RecommendedTopicCreateInput, TopicBase } from '@fc/types'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
+import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
+import type {
+  Post,
+  RecommendedTopic,
+  RecommendedTopicCreateInput,
+  TopicBase,
+} from '@fc/types'
 
 import { TopicCardButton } from './TopicCardButton'
 import { TopicCardProps } from './types'
@@ -58,10 +63,14 @@ export const TopicCard: FC<TopicCardProps> = ({
     [],
   )
   const type = topic.type ?? 'Topic'
-  const deleteModelMutation = useDeleteModel('recommended-topics')
+  const deleteModelMutation =
+    useDeleteModelMutation<RecommendedTopic>('recommended-topics')
   const queryClient = useQueryClient()
   const toast = useToast()
-  const { mutateAsync, isPending } = useRecommendTopic()
+  const { mutateAsync, isPending } = useCreateModelMutation<
+    RecommendedTopic,
+    RecommendedTopicCreateInput
+  >('recommended-topics')
   const isBookmarked = bookmarksStorage?.some(t => t.url === topic.url)
 
   const handleBookmark = () => {

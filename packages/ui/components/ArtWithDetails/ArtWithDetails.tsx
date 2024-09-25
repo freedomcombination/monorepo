@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Grid, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type { Art, Comment } from '@fc/types'
 
 import { ArtContent } from '../ArtContent'

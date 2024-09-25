@@ -5,7 +5,7 @@ import { NextApiHandler } from 'next'
 import { API_URL } from '@fc/config/constants'
 import { Mutation } from '@fc/lib/mutation'
 import { sessionOptions } from '@fc/secrets'
-import { loginAuth } from '@fc/services/auth/getAuth'
+import { authenticateUser } from '@fc/services/auth/authenticateUser'
 import type { Auth, AuthResponse, ProfileCreateInput } from '@fc/types'
 
 export const registerHandler: NextApiHandler = async (req, res) => {
@@ -32,7 +32,7 @@ export const registerHandler: NextApiHandler = async (req, res) => {
 
     await Mutation.post('profiles', body, response.data?.jwt)
 
-    const { profile, ...auth } = await loginAuth(email, password)
+    const { profile, ...auth } = await authenticateUser(email, password)
 
     const session = await getIronSession<Auth>(req, res, sessionOptions)
 

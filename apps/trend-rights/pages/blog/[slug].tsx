@@ -7,7 +7,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 import { SITE_URL } from '@fc/config/constants'
 import { getSession } from '@fc/secrets'
-import { getAuthorBlogs } from '@fc/services/blog/get'
+import { getAuthorBlogs } from '@fc/services/blog/getAuthorBlogs'
 import { getBlogBySlug } from '@fc/services/blog/getBlogBySlug'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Blog, StrapiLocale } from '@fc/types'

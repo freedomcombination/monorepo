@@ -9,11 +9,9 @@ import {
   MdOutlineUnpublished,
 } from 'react-icons/md'
 
-import { useHashtag } from '@fc/services/hashtag'
-import {
-  useDeleteHashtagSentence,
-  useUpdateHashtagSentence,
-} from '@fc/services/post'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
+import { useDeleteHashtagSentenceMutation } from '@fc/services/hashtagSentence/deleteHashtagSentence'
+import { useUpdateHashtagSentenceMutation } from '@fc/services/hashtagSentence/updateHashtagSentences'
 
 import { PostSentenceFormItemProps } from './types'
 import { ArchivePopover } from '../ArchivePopover'
@@ -30,13 +28,13 @@ export const PostSentenceFormItem: FC<PostSentenceFormItemProps> = ({
   const [value, setValue] = useState(defaultSentence)
   const [editMode, setEditMode] = useState(false)
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   const queryClient = useQueryClient()
 
-  const onUpdateMutation = useUpdateHashtagSentence()
+  const onUpdateMutation = useUpdateHashtagSentenceMutation()
 
-  const onDeleteMutation = useDeleteHashtagSentence()
+  const onDeleteMutation = useDeleteHashtagSentenceMutation()
 
   const isChanged = value !== defaultSentence
 

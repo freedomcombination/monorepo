@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { FaCogs } from 'react-icons/fa'
 
-import { useHashtag } from '@fc/services/hashtag'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 
 import { ActionStack } from '../ActionStack'
 import { usePostContext } from '../PostProvider'
@@ -18,7 +18,7 @@ import { PostSentenceForm } from '../PostSentenceForm'
 export const PostSentencesModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { post } = usePostContext()
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   return (
     <ActionStack

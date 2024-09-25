@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
 
-import { useHashtag } from '@fc/services/hashtag'
-import { useLookupTwitterUsers } from '@fc/services/mention'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
+import { useSearchMentions } from '@fc/services/mention/searchMentions'
 import type { MentionUserData } from '@fc/types'
 
 import { MentionListSkeleton } from './MentionListSkeleton'
@@ -17,7 +17,7 @@ export const MentionListPanel = () => {
     updateStoredMentions,
   } = useHashtagContext()
 
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   const onAddUserMention = (value: MentionUserData) => {
     if (activePostId) {
@@ -27,7 +27,7 @@ export const MentionListPanel = () => {
     // clearMentionSearches()
   }
 
-  const searchMentionsQuery = useLookupTwitterUsers(mentionSearchKey)
+  const searchMentionsQuery = useSearchMentions(mentionSearchKey)
 
   const content = () => {
     if (searchMentionsQuery.isFetching) {
