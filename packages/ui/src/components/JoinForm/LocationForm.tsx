@@ -6,6 +6,7 @@ import {
   FormLabel,
   Stack,
 } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
 import Select from 'react-select'
 
 import { useAllCountries, useCitiesOfCountry } from '@fc/services'
@@ -16,6 +17,7 @@ import { useJoinFormContext } from './useJoinFormContext'
 export const LocationForm = () => {
   const [selectedCountry, setSelectedCountry] = useState<Option | null>(null)
   const { setValue } = useJoinFormContext()
+  const { t } = useTranslation()
 
   const countriesQuery = useAllCountries()
   const citiesQuery = useCitiesOfCountry(selectedCountry?.value)
@@ -41,10 +43,10 @@ export const LocationForm = () => {
           fontWeight={600}
           textTransform={'capitalize'}
         >
-          Country
+          {t('country')}
         </FormLabel>
         <Select
-          placeholder="Select country"
+          placeholder={t('select-country')}
           options={countries}
           onChange={option => setSelectedCountry(option as Option)}
         />
@@ -60,11 +62,11 @@ export const LocationForm = () => {
           fontWeight={600}
           textTransform={'capitalize'}
         >
-          City
+          {t('city')}
         </FormLabel>
         <Select
           isDisabled={!selectedCountry}
-          placeholder="Select city"
+          placeholder={t('select-city')}
           options={cities}
           onChange={option => handleCitiesChange(option as Option)}
         />

@@ -8,10 +8,12 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 
 import { useJoinFormContext } from './useJoinFormContext'
 
 export const JobInfo = () => {
+  const { t } = useTranslation()
   const { locale } = useRouter()
 
   const {
@@ -24,9 +26,8 @@ export const JobInfo = () => {
 
   // TODO: Use @strapi/blocks-react-renderer to render richText block
   // Convert selectedJobs (string[]) to number[]
-  console.log('selectedJobs in job info', selectedJobs)
+
   const info = selectedJobs.map(job => job[`info_${locale}`])
-  console.log('info', info !== null)
   // Function to render richText block
   const renderRichTextBlock = (block: any) => {
     switch (block.type) {
@@ -89,8 +90,7 @@ export const JobInfo = () => {
                       required: 'You must accept the job info information',
                     })}
                   >
-                    {/* TODO: Translate */}I have read and accept the job info
-                    information
+                    {t('read-and-accept')}
                   </Checkbox>
                   <FormErrorMessage>
                     {errors?.jobInfoConfirmation?.message}

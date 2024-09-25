@@ -4,6 +4,7 @@ import {
   FormErrorMessage,
   Stack,
 } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
 
 import { useJoinFormContext } from './useJoinFormContext'
 import { Markdown } from '../Markdown'
@@ -14,6 +15,7 @@ export const FoundationInfo = () => {
     register,
     formState: { errors },
   } = useJoinFormContext()
+  const { t } = useTranslation()
 
   return (
     <Stack direction={{ base: 'column', md: 'column' }} spacing={4}>
@@ -25,8 +27,7 @@ export const FoundationInfo = () => {
             required: 'You must accept the Foundation information',
           })}
         >
-          {/* TODO: Translate */}I have read and accept the Foundation
-          information
+          {t('read-and-accept')}
         </Checkbox>
         <FormErrorMessage>
           {errors?.foundationConfirmation &&

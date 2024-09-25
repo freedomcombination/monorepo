@@ -1,4 +1,5 @@
 import { Button, ButtonGroup, Stack, Text, Textarea } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { PreviewVolunteerForm } from './PreviewVolunteerForm'
@@ -12,13 +13,16 @@ export const Summary = () => {
     formState: { errors, isValid },
   } = useJoinFormContext()
   const { t } = useTranslation()
+  const { locale } = useRouter()
+  const summaryContent = {
+    en: 'You have successfully completed the volunteer form! If you have anything else to add, please feel free to share it in the comments section. We look forward to seeing you soon!',
+    nl: 'U heeft het vrijwilligersformulier succesvol ingevuld! Als u nog iets wilt toevoegen, deel dit dan gerust in het opmerkingenveld. We hopen u snel te zien!',
+    tr: 'Gönüllü formunu başarıyla tamamladınız! Eklemek istediğiniz bir şey varsa lütfen yorum kısmında paylaşın. Yakında görüşmek dileğiyle!',
+  }
 
   return (
     <Stack spacing={4}>
-      <Text>
-        You completed the volunteer form. If you want to add one, we would to
-        hear from you.
-      </Text>
+      <Text>{summaryContent[locale]}</Text>
       {/* comment */}
       <FormItem
         as={Textarea}

@@ -6,10 +6,12 @@ import {
   FormErrorMessage,
   Input,
 } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
 import PhoneInput from 'react-phone-number-input'
 
 import 'react-phone-number-input/style.css'
 import { useJoinFormContext } from './useJoinFormContext'
+
 import 'yup-phone-lite'
 
 export const PhoneForm = () => {
@@ -26,7 +28,7 @@ export const PhoneForm = () => {
   }
 
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>(undefined)
-
+  const { t } = useTranslation()
   const handlePhoneChange = async (value = '') => {
     setPhoneNumber(value)
     setValue('phone', value)
@@ -43,7 +45,7 @@ export const PhoneForm = () => {
   return (
     <FormControl isInvalid={!!errors.phone}>
       <FormLabel fontWeight={600} fontSize={'sm'} htmlFor="phone">
-        Phone Number
+        {t('phone')}
       </FormLabel>
       <PhoneInput
         international
