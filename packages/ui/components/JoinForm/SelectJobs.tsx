@@ -1,7 +1,6 @@
 import {
   Box,
   Checkbox,
-  Heading,
   HStack,
   SimpleGrid,
   Stack,
@@ -49,11 +48,6 @@ export const SelectJobs = () => {
 
   return (
     <Stack gap={4}>
-      <Heading as="h3" size="lg" textAlign="start" fontWeight={900}>
-        {/* TODO: Translate */}
-        Hangi işlerde bizimle birlikte çalışmak istersiniz?
-      </Heading>
-
       {/* {t('jobs')} */}
 
       <SimpleGrid

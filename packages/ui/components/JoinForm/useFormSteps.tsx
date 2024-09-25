@@ -22,11 +22,11 @@ export const useFormSteps = ({
   const steps = useMemo(() => {
     return [
       {
-        description: t('welcome'),
+        title: t('welcome'),
         component: <Cover />,
       },
       {
-        description: t('foundation'),
+        title: t('foundation'),
         component: <FoundationInfo />,
         requiresConfirmation: true,
         confirmationField: 'foundationConfirmation',
@@ -34,7 +34,7 @@ export const useFormSteps = ({
       ...(defaultJobs?.length === 0
         ? [
             {
-              description: t('jobs'),
+              title: t('jobs'),
               component: <SelectJobs />,
               fields: ['jobs'],
             },
@@ -43,7 +43,7 @@ export const useFormSteps = ({
       ...(selectedJobs?.some(job => job[`info_${locale}`])
         ? [
             {
-              description: t('jobs-info'),
+              title: t('jobs-info'),
               component: <JobInfo />,
               requiresConfirmation: true,
               confirmationField: 'jobInfoConfirmation',
@@ -51,7 +51,7 @@ export const useFormSteps = ({
           ]
         : []),
       {
-        description: t('personal-info'),
+        title: t('personal-info'),
         component: <PersonalInfo />,
         fields: [
           'name',
@@ -64,12 +64,12 @@ export const useFormSteps = ({
         ],
       },
       {
-        description: t('upload'),
+        title: 'CV',
         component: <UploadCv />,
         fields: ['cv'],
       },
       {
-        description: t('summary'),
+        title: t('summary'),
         component: <Summary />,
       },
     ]

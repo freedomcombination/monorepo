@@ -22,11 +22,7 @@ export const FoundationInfo = () => {
       <Markdown source={foundationInfo} />
 
       <FormControl isRequired isInvalid={!!errors?.foundationConfirmation}>
-        <Checkbox
-          {...register('foundationConfirmation', {
-            required: 'You must accept the Foundation information',
-          })}
-        >
+        <Checkbox {...register('foundationConfirmation')}>
           {t('read-and-accept')}
         </Checkbox>
         <FormErrorMessage>

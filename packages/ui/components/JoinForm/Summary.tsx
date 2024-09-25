@@ -14,6 +14,7 @@ export const Summary = () => {
   } = useJoinFormContext()
   const { t } = useTranslation()
   const { locale } = useRouter()
+
   const summaryContent = {
     en: 'You have successfully completed the volunteer form! If you have anything else to add, please feel free to share it in the comments section. We look forward to seeing you soon!',
     nl: 'U heeft het vrijwilligersformulier succesvol ingevuld! Als u nog iets wilt toevoegen, deel dit dan gerust in het opmerkingenveld. We hopen u snel te zien!',
@@ -31,14 +32,9 @@ export const Summary = () => {
         id="comment"
         name="comment"
       />
-      <ButtonGroup
-        size={'sm'}
-        overflowX={'auto'}
-        justifyContent={'center'}
-        spacing={4}
-      >
+      <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
         {isValid && <PreviewVolunteerForm />}
-        <Button isLoading={isLoading} type="submit" size={'lg'}>
+        <Button isLoading={isLoading} type="submit">
           {t('submit')}
         </Button>
       </ButtonGroup>

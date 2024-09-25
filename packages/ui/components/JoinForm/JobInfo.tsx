@@ -37,7 +37,7 @@ export const JobInfo = () => {
         return (
           <Heading
             as={`h${block.level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'}
-            size={`lg`}
+            size={`md`}
             textAlign="start"
           >
             {block.children[0].text}
@@ -72,7 +72,7 @@ export const JobInfo = () => {
               </Heading>
               {/* Render richText block */}
               <Text fontWeight={600} fontSize="sm">
-                Job Information
+                {t('jobs-info')}
               </Text>
               {jobInfo &&
                 Array.isArray(jobInfo) &&
@@ -85,11 +85,7 @@ export const JobInfo = () => {
                   isRequired
                   isInvalid={!!errors?.jobInfoConfirmation}
                 >
-                  <Checkbox
-                    {...register('jobInfoConfirmation', {
-                      required: 'You must accept the job info information',
-                    })}
-                  >
+                  <Checkbox {...register('jobInfoConfirmation')}>
                     {t('read-and-accept')}
                   </Checkbox>
                   <FormErrorMessage>

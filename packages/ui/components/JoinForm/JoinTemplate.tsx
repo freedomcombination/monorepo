@@ -6,14 +6,11 @@ import {
   AlertIcon,
   AlertTitle,
   Center,
-  HStack,
-  Link,
-  Stack,
   VStack,
 } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
+import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
-import { FaRegFilePdf } from 'react-icons/fa'
 
 import { RecaptchaKeys } from '@fc/config/constants'
 import { mutation } from '@fc/services/common/mutation'
@@ -21,11 +18,12 @@ import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 import { Profile, ProfileCreateInput } from '@fc/types'
 import { toastMessage } from '@fc/utils/toastMessage'
 
-import { JoinForm } from './JoinForm'
 import { JoinFormProvider } from './JoinFormProvider'
 import { JoinFormFieldValues, JoinTemplateProps } from './types'
 import { Container } from '../Container'
 import { PageTitle } from '../PageTitle'
+
+const JoinForm = dynamic(() => import('./JoinForm'), { ssr: false })
 
 export const JoinTemplate: FC<JoinTemplateProps> = ({
   title,
@@ -91,7 +89,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
       jobs={jobs}
       foundationInfo={foundationInfo}
     >
-      <Container>
+      <Container maxW={'4xl'}>
         {isSuccess ? (
           <Center h="calc(70vh)">
             <Alert
@@ -121,23 +119,8 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
         ) : (
           <>
             <PageTitle>{title}</PageTitle>
-            <Stack spacing={4} alignSelf={'start'}>
-              <Alert rounded="md" w="max-content">
-                <Link
-                  lineHeight={1}
-                  href="/fc-vrijwilligersovereenkomst.pdf"
-                  download
-                  fontWeight={500}
-                  _hover={{ textDecoration: 'underline', color: 'primary.500' }}
-                >
-                  <HStack as="span" display={'inline-flex'} align={'center'}>
-                    <AlertIcon color={'inherit'} m={0} as={FaRegFilePdf} />
-                    <span>{t('download-volunteer-form')}</span>
-                  </HStack>
-                </Link>
-              </Alert>
-              <JoinForm />
-            </Stack>
+
+            <JoinForm />
           </>
         )}
       </Container>

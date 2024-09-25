@@ -1,11 +1,12 @@
 import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
 
-import { StrapiModel } from '@fc/types'
-
+import { JoinFormFieldValues } from './types'
 import { useJoinFormContext } from './useJoinFormContext'
 import { ModelMedia } from '../ModelMedia'
 
 export const UploadCv = () => {
+  const { t } = useTranslation()
   const {
     toggleChangingMedia,
     formState: { errors },
@@ -15,10 +16,9 @@ export const UploadCv = () => {
   return (
     <FormControl isRequired={true} isInvalid={!!errors.cv?.message}>
       <FormLabel fontWeight={600} fontSize={'sm'} textTransform={'capitalize'}>
-        Please Upload your CV
+        {t('upload-cv')}
       </FormLabel>
-      <ModelMedia
-        model={'Job' as unknown as StrapiModel}
+      <ModelMedia<JoinFormFieldValues>
         isEditing={true}
         name={'cv'}
         setValue={setValue}

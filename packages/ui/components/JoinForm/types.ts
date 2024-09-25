@@ -28,7 +28,8 @@ export type UseFormStepsProps = {
 }
 
 export type UseFormStepsReturn = {
-  description: string
+  title: string
+  description?: string
   component: JSX.Element
   fields?: string[]
   requiresConfirmation?: boolean

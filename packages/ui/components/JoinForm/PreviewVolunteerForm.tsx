@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { FaEye } from 'react-icons/fa6'
 
 import { Job } from '@fc/types'
@@ -10,16 +11,17 @@ import { useJoinFormContext } from './useJoinFormContext'
 import { ModelModal } from '../ModelModal'
 
 export const PreviewVolunteerForm = () => {
-  const { locale } = useRouter()
   const [modalContent, setModalContent] = useState<React.ReactNode>(null)
   const [modalTitle, setModalTitle] = useState<string>('')
-
   const [isOpen, setIsOpen] = useState(false)
+
+  const { locale } = useRouter()
+  const { t } = useTranslation()
 
   const { watch } = useJoinFormContext()
 
   const openModal = () => {
-    setModalTitle('Volunteer Form Preview')
+    setModalTitle(t('volunteer-form-preview'))
     setIsOpen(true)
     const formData = watch()
 
@@ -42,7 +44,7 @@ export const PreviewVolunteerForm = () => {
                 <Text key={job?.id}>{job[`name_${locale}`]}</Text>
               ))
             ) : (
-              <Text>Not provided</Text>
+              <Text>{t('not-provided')}</Text>
             )}
           </HStack>
         )
@@ -63,7 +65,7 @@ export const PreviewVolunteerForm = () => {
             <Text fontWeight="bold">
               {key.charAt(0).toUpperCase() + key.slice(1)}:
             </Text>
-            <Text>{name ? name : 'Not provided'}</Text>
+            <Text>{name ? name : t('not-provided')}</Text>
           </HStack>
         )
       }
@@ -83,9 +85,7 @@ export const PreviewVolunteerForm = () => {
           <Text>
             {typeof value === 'object'
               ? JSON.stringify(value)
-              : value
-                ? String(value)
-                : 'Not provided'}
+              : `${value}` || t('not-provided')}
           </Text>
         </HStack>
       )
@@ -106,13 +106,8 @@ export const PreviewVolunteerForm = () => {
 
   return (
     <>
-      <Button
-        onClick={openModal}
-        size={'lg'}
-        colorScheme={'green'}
-        leftIcon={<FaEye />}
-      >
-        Preview
+      <Button onClick={openModal} colorScheme={'green'} leftIcon={<FaEye />}>
+        {t('preview')}
       </Button>
       <ModelModal title={modalTitle} isOpen={isOpen} onClose={closeModal}>
         {modalContent}

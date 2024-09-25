@@ -53,7 +53,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
           const newModel = {
             ...model,
             [key]: m,
-          }
+          } as StrapiTranslatableModel
 
           return (
             <SplideSlide key={index}>
