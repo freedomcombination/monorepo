@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-import { HStack, Stack, Wrap, Text } from "@chakra-ui/react";
-import { addDays, isPast } from "date-fns";
+import { HStack, Stack, Text, Wrap } from "@chakra-ui/react";
+import { isPast } from "date-fns";
 import { useRouter } from "next/router";
 
-import { CourseLogic, formatDate, formatDateRelative } from "@fc/utils";
+import { CourseLogic, formatDate } from "@fc/utils";
 
 import { CourseAssignmentFileButton } from "../../../CourseApplicationInstallment";
 import { KeyValue } from "../../../KeyValueView";
