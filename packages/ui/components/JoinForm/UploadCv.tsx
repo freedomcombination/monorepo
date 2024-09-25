@@ -25,7 +25,7 @@ export const UploadCv = () => {
         isChangingMedia={true}
         toggleChangingMedia={toggleChangingMedia}
       />
-      <FormErrorMessage>{errors.cv?.message}</FormErrorMessage>
+      <FormErrorMessage>{errors.cv?.message as string}</FormErrorMessage>
     </FormControl>
   )
 }

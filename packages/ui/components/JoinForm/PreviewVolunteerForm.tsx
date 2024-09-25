@@ -51,7 +51,7 @@ export const PreviewVolunteerForm = () => {
       }
 
       if (key === 'cv') {
-        const { name } = value as File
+        const { name } = (value || {}) as File
 
         return (
           <HStack

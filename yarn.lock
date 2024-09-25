@@ -8703,6 +8703,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/blocks-react-renderer@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@strapi/blocks-react-renderer@npm:1.0.1"
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 10/f833abd925527659661b475626f68d186690658e007d29998c1518938717af07b82ae93d6a5e2eba59a1adfb2cc30d745e2319fd8dd6a4ade1ca58714bd7681b
+  languageName: node
+  linkType: hard
+
 "@strapi/cloud-cli@npm:4.25.11":
   version: 4.25.11
   resolution: "@strapi/cloud-cli@npm:4.25.11"
@@ -17248,6 +17258,7 @@ __metadata:
     "@storybook/nextjs": "npm:^7.6.20"
     "@storybook/react": "npm:^7.6.20"
     "@storybook/types": "npm:^7.6.20"
+    "@strapi/blocks-react-renderer": "npm:^1.0.1"
     "@tanstack/react-query": "npm:^5.56.2"
     "@tanstack/react-query-devtools": "npm:^5.56.2"
     "@testing-library/react": "npm:^16.0.1"

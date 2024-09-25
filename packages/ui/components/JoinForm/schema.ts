@@ -1,3 +1,4 @@
+import { addYears } from 'date-fns'
 import * as yup from 'yup'
 import 'yup-phone-lite'
 
@@ -23,7 +24,11 @@ export const joinSchema = () => {
       .min(3)
       .matches(/^[a-zA-Z\s]+$/, 'Only alphabetic characters allowed')
       .required(),
-    age: yup.number().required(),
+    birthDate: yup
+      .date()
+      .required()
+      .min(addYears(new Date(), -70))
+      .max(addYears(new Date(), -4)),
     address: yup
       .object()
       .shape({
@@ -50,7 +55,7 @@ export const joinSchema = () => {
     availableHours: yup.number().min(1).max(40).required(),
     heardFrom: yup.array().required().min(1),
     jobs: yup.array().required().min(1),
-    cv: yup.mixed().required(),
+    cv: yup.mixed(),
     foundationConfirmation: yup
       .boolean()
       .oneOf([true], 'You must accept the Foundation information')

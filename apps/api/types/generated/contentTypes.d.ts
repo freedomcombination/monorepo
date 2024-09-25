@@ -2114,9 +2114,9 @@ export interface ApiFoundationFoundation extends Schema.CollectionType {
     remuneration_policy: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >
-    about_en: Attribute.RichText
-    about_nl: Attribute.RichText
-    about_tr: Attribute.RichText
+    about_en: Attribute.Blocks
+    about_nl: Attribute.Blocks
+    about_tr: Attribute.Blocks
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2849,6 +2849,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     inMailingList: Attribute.Boolean & Attribute.DefaultTo<false>
     approved: Attribute.Boolean & Attribute.DefaultTo<false>
     isPublic: Attribute.Boolean & Attribute.DefaultTo<false>
+    birthDate: Attribute.Date
     age: Attribute.Integer
     city: Attribute.String
     platforms: Attribute.Relation<

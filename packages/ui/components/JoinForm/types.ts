@@ -1,4 +1,4 @@
-import { MDXRemoteProps, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { BlocksContent } from '@strapi/blocks-react-renderer'
 import { UseFormReturn } from 'react-hook-form'
 import { InferType } from 'yup'
 
@@ -8,7 +8,7 @@ import { joinSchema } from './schema'
 
 export type JoinTemplateProps = {
   title: string
-  foundationInfo: MDXRemoteProps
+  foundationInfo: BlocksContent | null
   jobs: Job[]
   defaultJobs?: number[]
 }
@@ -39,7 +39,7 @@ export type UseFormStepsReturn = {
 export type JoinFormProviderProps = {
   children: React.ReactNode
   defaultJobs?: number[]
-  foundationInfo: MDXRemoteSerializeResult
+  foundationInfo: BlocksContent | null
   isLoading?: boolean
   jobs: Job[]
   onSubmitHandler: (data: JoinFormFieldValues) => void
@@ -49,9 +49,10 @@ export type JoinFormContextValue = UseFormReturn<JoinFormFieldValues> & {
   activeStep: number
   defaultJobs?: number[]
   form: UseFormReturn<JoinFormFieldValues>
-  foundationInfo: MDXRemoteSerializeResult
+  foundationInfo: BlocksContent | null
   isLoading?: boolean
   jobs: Job[]
+  selectedJobs: Job[]
   steps: UseFormStepsReturn[]
   handleNext: () => void
   handlePrev: () => void

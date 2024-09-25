@@ -1,4 +1,5 @@
 import {
+  Box,
   Checkbox,
   FormControl,
   FormErrorMessage,
@@ -7,7 +8,7 @@ import {
 import { useTranslation } from 'next-i18next'
 
 import { useJoinFormContext } from './useJoinFormContext'
-import { Markdown } from '../Markdown'
+import { BlocksRenderer } from '../BlocksRenderer'
 
 export const FoundationInfo = () => {
   const {
@@ -19,7 +20,17 @@ export const FoundationInfo = () => {
 
   return (
     <Stack direction={{ base: 'column', md: 'column' }} spacing={4}>
-      <Markdown source={foundationInfo} />
+      <Box
+        maxH={500}
+        overflowY={'auto'}
+        borderWidth={1}
+        borderColor={'gray.100'}
+        bg={'gray.50'}
+        p={4}
+        rounded={'md'}
+      >
+        <BlocksRenderer content={foundationInfo} />
+      </Box>
 
       <FormControl isRequired isInvalid={!!errors?.foundationConfirmation}>
         <Checkbox {...register('foundationConfirmation')}>

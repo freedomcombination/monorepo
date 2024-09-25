@@ -83,13 +83,13 @@
       "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "about_en": {
-      "type": "richtext"
+      "type": "blocks"
     },
     "about_nl": {
-      "type": "richtext"
+      "type": "blocks"
     },
     "about_tr": {
-      "type": "richtext"
+      "type": "blocks"
     }
   }
 }

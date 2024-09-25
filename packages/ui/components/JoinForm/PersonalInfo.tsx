@@ -43,10 +43,10 @@ export const PersonalInfo = () => {
           isRequired
         />
         <FormItem
-          type="number"
+          type="date"
           register={register}
-          id="age"
-          name="age"
+          id="birthDate"
+          name="birthDate"
           errors={errors}
           isRequired
         />

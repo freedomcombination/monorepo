@@ -1,3 +1,5 @@
+import { BlocksContent } from '@strapi/blocks-react-renderer'
+
 import { Asset } from './asset'
 import { Contact } from './contact'
 import { UploadFile } from './file'
@@ -19,9 +21,9 @@ type FoundationBase = {
   KVK: string
   BIC: string
   RSIN: string
-  about_en: string | null
-  about_nl: string | null
-  about_tr: string | null
+  about_en: BlocksContent | null
+  about_nl: BlocksContent | null
+  about_tr: BlocksContent | null
 }
 
 type FoundationRelation = {

@@ -63,6 +63,9 @@
       "type": "boolean",
       "default": false
     },
+    "birthDate": {
+      "type": "date"
+    },
     "age": {
       "type": "integer"
     },

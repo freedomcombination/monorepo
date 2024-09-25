@@ -2,7 +2,6 @@ import { FC } from 'react'
 
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
-import { serialize } from 'next-mdx-remote/serialize'
 
 import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -33,7 +32,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   })
 
   const foundation = foundationResponse.data?.[0]
-  const foundationInfo = await serialize(foundation?.[`about_${locale}`] || '')
+  const foundationInfo = foundation?.[`about_${locale}`] || null
 
   const jobsResponse = await strapiRequest<Job>({
     endpoint: 'jobs',

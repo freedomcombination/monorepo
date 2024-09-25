@@ -51,7 +51,7 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
     defaultValues: {
       jobs: defaultJobs,
       name: '',
-      age: 0,
+      birthDate: undefined,
       address: { country: '', city: '', street: '', postcode: '' },
       email: '',
       phone: '',
@@ -79,10 +79,13 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
     setIsChangingMedia(!isChangingMedia)
   }
 
+  const formJobs = watch('jobs')
+
+  const selectedJobs = jobs.filter(job => formJobs?.includes(`${job.id}`))
+
   const steps = useFormSteps({
     defaultJobs,
-    // TODO: Check if there are re-rendering issues
-    selectedJobs: watch('jobs'),
+    selectedJobs,
     jobs,
   })
 
@@ -141,6 +144,7 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
         foundationInfo,
         isLoading,
         jobs,
+        selectedJobs,
         steps,
         handleNext,
         handlePrev,
