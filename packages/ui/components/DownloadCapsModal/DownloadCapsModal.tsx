@@ -18,7 +18,7 @@ import {
   DrawerOverlay,
 } from '@fc/chakra'
 import { SITE_URL } from '@fc/config/constants'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { PlatformSlug, Post } from '@fc/types'
 import { getMediaUrl } from '@fc/utils/getMediaUrl'
 import { getOgImageSrc } from '@fc/utils/getOgImageSrc'

@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { API_URL } from '@fc/config/constants'
-import { strapiRequest } from '@fc/lib/request'
 import type { Subscriber } from '@fc/types'
+
+import { strapiRequest } from '../common/strapiRequest'
 
 // Deletes subscription data from the server
 export const unsubscribeHandler = async (

@@ -14,7 +14,7 @@ import {
   ModalContent,
   ModalOverlay,
 } from '@fc/chakra'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
   Activity,

@@ -77,7 +77,11 @@ import { StrapiLocale } from './locale'
 import { Me } from './me'
 import { Mention, MentionCreateInput } from './mention'
 import { Notification, NotificationCreateInput } from './notification'
-import { Observation, ObservationCreateInput } from './observation'
+import {
+  Observation,
+  ObservationCreateInput,
+  ObservationUpdateInput,
+} from './observation'
 import { Platform } from './platform'
 import {
   Post,
@@ -417,6 +421,7 @@ export type StrapiUpdateInput =
   | DonationUpdateInput
   | FoundationUpdateInput
   | HashtagUpdateInput
+  | ObservationUpdateInput
   | PostUpdateInput
   | ProfileUpdateInput
   | SubscriberUpdateInput

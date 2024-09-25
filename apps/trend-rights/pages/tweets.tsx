@@ -12,7 +12,7 @@ import {
   ModalContent,
   ModalOverlay,
 } from '@fc/chakra'
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
   RecommendedTweet,

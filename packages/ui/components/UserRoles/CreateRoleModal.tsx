@@ -15,7 +15,7 @@ import {
   ModalOverlay,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import type { RoleInput, Role } from '@fc/types'
 import { createRole } from '@fc/utils/permissions'
 

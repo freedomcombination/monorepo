@@ -1,6 +1,7 @@
 import { Box, Stack, Tabs } from '@chakra-ui/react'
 
-import { useTrends } from '@fc/services/trend'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
+import { Trend } from '@fc/types'
 
 import { useFindHashtagInTrends } from './useFindHashtagsInTrend'
 import { TrendList } from '../TrendList'
@@ -8,7 +9,11 @@ import { TrendList } from '../TrendList'
 export const TrendTabs = () => {
   const [hashtagInTrends, hashtagExtraInTrends] = useFindHashtagInTrends()
 
-  const { data: trends, isLoading } = useTrends()
+  const { data, isLoading } = useStrapiRequest<Trend>({
+    endpoint: 'trend',
+  })
+
+  const trends = data?.data
 
   return (
     <Stack h={400}>

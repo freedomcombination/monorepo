@@ -1,2 +1,2 @@
-export * from './JoinForm'
+export * from './JoinTemplate'
 export * from './types'

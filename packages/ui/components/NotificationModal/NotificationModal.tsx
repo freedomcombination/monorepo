@@ -16,7 +16,7 @@ import {
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { useWebPushContext } from '@fc/context/webPush'
-import { useSubscribePushNotificationMutation } from '@fc/services/pushNotification'
+import { useSubscribePushNotificationMutation } from '@fc/services/pushNotification/subscribePushNotification'
 import { CookieKey } from '@fc/types'
 
 export const NotificationModal = () => {

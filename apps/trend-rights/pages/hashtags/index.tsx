@@ -4,8 +4,11 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { RequestCollectionArgs, strapiRequest } from '@fc/lib/request'
-import { useStrapiRequest } from '@fc/services/common/request'
+import {
+  RequestCollectionArgs,
+  strapiRequest,
+} from '@fc/services/common/strapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Hashtag, StrapiLocale } from '@fc/types'
 import { AnimatedBox } from '@fc/ui/components/AnimatedBox'

@@ -26,7 +26,7 @@ import {
   Tooltip,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
-import { useUpdateModelMutation } from '@fc/services/common/update'
+import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import type { Profile } from '@fc/types'
 
 import { FormElement } from './FormElement'

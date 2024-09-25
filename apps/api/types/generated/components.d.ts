@@ -13,6 +13,20 @@ export interface FlowFlow extends Schema.Component {
   }
 }
 
+export interface FlowAddress extends Schema.Component {
+  collectionName: 'components_flow_addresses'
+  info: {
+    displayName: 'Address'
+    icon: 'apps'
+  }
+  attributes: {
+    city: Attribute.String
+    street: Attribute.String
+    postcode: Attribute.String
+    country: Attribute.String
+  }
+}
+
 export interface FaqFaq extends Schema.Component {
   collectionName: 'components_faq_faqs'
   info: {
@@ -72,6 +86,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'flow.flow': FlowFlow
+      'flow.address': FlowAddress
       'faq.faq': FaqFaq
       'course.curriculum': CourseCurriculum
       'contact.contact': ContactContact

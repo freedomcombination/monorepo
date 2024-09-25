@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { Separator, Stack } from '@chakra-ui/react'
 
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { Observation, Profile } from '@fc/types'
 
 import { ObservationList } from '../ObservationList'

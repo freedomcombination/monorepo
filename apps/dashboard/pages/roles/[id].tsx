@@ -20,7 +20,7 @@ import {
   Select,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Permissions, Role, RoleInput, StrapiLocale } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'

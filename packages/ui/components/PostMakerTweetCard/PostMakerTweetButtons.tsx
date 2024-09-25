@@ -12,8 +12,8 @@ import { MdTrendingUp } from 'react-icons/md'
 
 import { Button } from '@fc/chakra'
 import { SITE_URL } from '@fc/config/constants'
-import { useHashtag } from '@fc/services/hashtag'
-import { useUpdateHashtagSentence } from '@fc/services/post'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
+import { useUpdateHashtagSentenceMutation } from '@fc/services/hashtagSentence/updateHashtagSentences'
 import type { RedisPost } from '@fc/types'
 
 import { PostMakerTweetProgress } from './PostMakerTweetProgress'
@@ -32,12 +32,12 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
   const { setActivePostId, mentionsDisclosure, trendsDisclosure } =
     useHashtagContext()
 
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
   const { postContent, post, sentence } = usePostContext()
 
   const { asPath, locale } = router
   const queryClient = useQueryClient()
-  const updatePostSentence = useUpdateHashtagSentence()
+  const updatePostSentence = useUpdateHashtagSentenceMutation()
 
   const { t } = useTranslation()
 

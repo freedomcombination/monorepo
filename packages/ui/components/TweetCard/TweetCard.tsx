@@ -24,8 +24,13 @@ import {
   MenuRoot,
   MenuTrigger,
 } from '@fc/chakra'
-import { useRecommendTweet } from '@fc/services/recommendedTweet'
-import type { Post, RecommendedTweetCreateInput, Tweet } from '@fc/types'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
+import type {
+  Post,
+  RecommendedTweet,
+  RecommendedTweetCreateInput,
+  Tweet,
+} from '@fc/types'
 
 import { TweetCardProps } from './types'
 import { useFields, useSchema } from '../../hooks'
@@ -59,7 +64,10 @@ export const TweetCard: FC<TweetCardProps> = ({
 
   const isBookmarked = storageTweets?.some(t => t.id === tweet.id)
 
-  const { mutateAsync } = useRecommendTweet()
+  const { mutateAsync } = useCreateModelMutation<
+    RecommendedTweet,
+    RecommendedTweetCreateInput
+  >('recommended-tweets')
 
   const newPost = {
     description: tweet.text,

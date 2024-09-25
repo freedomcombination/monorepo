@@ -3,10 +3,11 @@ import { getIronSession } from 'iron-session'
 import { NextApiHandler } from 'next'
 
 import { API_URL } from '@fc/config/constants'
-import { strapiRequest } from '@fc/lib/request'
 import { sessionOptions } from '@fc/secrets'
 import { getSessionUser } from '@fc/services/auth/getSessionUser'
 import type { Auth, Profile } from '@fc/types'
+
+import { strapiRequest } from '../common/strapiRequest'
 
 export const resetPasswordHandler: NextApiHandler = async (req, res) => {
   try {

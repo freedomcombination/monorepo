@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { Mutation } from '@fc/lib/mutation'
+import { mutation } from '@fc/services/common/mutation'
 import type { CoursePayment, CoursePaymentCreateInput } from '@fc/types'
 
 import { stripe } from './initStripe'
@@ -23,12 +23,10 @@ export const createCourseCheckout = async (
   } = req.body
 
   try {
-    const payment = await Mutation.post<
-      CoursePayment,
-      CoursePaymentCreateInput
-    >(
-      'payments',
-      {
+    const payment = await mutation<CoursePayment, CoursePaymentCreateInput>({
+      endpoint: 'payments',
+      method: 'post',
+      body: {
         name,
         email,
         amount,
@@ -37,7 +35,7 @@ export const createCourseCheckout = async (
         installmentNumber,
       },
       token,
-    )
+    })
 
     const paymentId = payment.data?.id
 

@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Presentation, StrapiLocale } from '@fc/types'
 import { Hero } from '@fc/ui/components/Hero'

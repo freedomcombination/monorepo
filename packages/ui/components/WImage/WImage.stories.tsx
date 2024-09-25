@@ -1,8 +1,8 @@
 import { Box, Flex, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import { Meta, StoryObj } from '@storybook/react'
 
-import { IMAGE_MOCK } from '@fc/mocks/image'
 import { getFiles } from '@fc/mocks/file'
+import { IMAGE_MOCK } from '@fc/mocks/image'
 
 import { WImageProps } from './types'
 import { WImage } from './WImage'

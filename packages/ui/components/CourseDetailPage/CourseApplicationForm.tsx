@@ -16,8 +16,8 @@ import { useForm } from 'react-hook-form'
 
 import { Checkbox, toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
-import type { CourseApplicationCreateInput } from '@fc/types'
+import { mutation } from '@fc/services/common/mutation'
+import type { CourseApplication, CourseApplicationCreateInput } from '@fc/types'
 
 import { applicationSchema } from './schema'
 import { ApplicationFormFields } from './types'
@@ -49,7 +49,12 @@ export const CourseApplicationForm: FC = () => {
   const { mutate } = useMutation({
     mutationKey: ['course-apply'],
     mutationFn: (data: CourseApplicationCreateInput) =>
-      Mutation.post('course-applications', data, token as string),
+      mutation<CourseApplication, CourseApplicationCreateInput>({
+        endpoint: 'course-applications',
+        method: 'post',
+        body: data,
+        token: token as string,
+      }),
   })
 
   if (!profile || !user) return null

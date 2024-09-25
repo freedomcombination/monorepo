@@ -5,8 +5,11 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { Pagination } from '@fc/chakra'
-import { RequestCollectionArgs, strapiRequest } from '@fc/lib/request'
-import { useStrapiRequest } from '@fc/services/common/request'
+import {
+  RequestCollectionArgs,
+  strapiRequest,
+  useStrapiRequest,
+} from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Activity, StrapiLocale, UploadFile } from '@fc/types'
 import { AnimatedBox } from '@fc/ui/components/AnimatedBox'

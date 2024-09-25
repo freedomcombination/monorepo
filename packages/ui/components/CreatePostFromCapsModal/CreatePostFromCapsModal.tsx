@@ -15,7 +15,7 @@ import {
   ModalHeader,
   ModalOverlay,
 } from '@fc/chakra'
-import { useCreateModelMutation } from '@fc/services/common/create'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
 import type {
   Post,
   PostCreateInput,

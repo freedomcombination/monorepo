@@ -17,8 +17,8 @@ import { FaCalendarDay, FaClock, FaEye } from 'react-icons/fa'
 
 import { IconButton } from '@fc/chakra'
 import { useGetBlogSlug } from '@fc/services/blog/getBlogBySlug'
-import { useLikeBlog } from '@fc/services/blog/like'
-import { useViewBlog } from '@fc/services/blog/view'
+import { useLikeBlog } from '@fc/services/blog/likeBlog'
+import { useViewBlog } from '@fc/services/blog/viewBlog'
 import type { UploadFile } from '@fc/types'
 import { getReadingTime } from '@fc/utils/getReadingTime'
 

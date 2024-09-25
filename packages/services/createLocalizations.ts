@@ -1,11 +1,11 @@
-import { Mutation } from '@fc/lib/mutation'
+import { mutation } from '@fc/services/common/mutation'
 import type {
   StrapiEndpoint,
   StrapiLocalizeInput,
   StrapiTranslatableModel,
 } from '@fc/types'
 
-import { getModelTranslation } from './deepl'
+import { translateModel } from './deepl'
 
 type CreateLocalizationsArgs<T extends StrapiTranslatableModel> = {
   model: T
@@ -22,7 +22,7 @@ export const createLocalizations = async <T extends StrapiTranslatableModel>({
   token,
   hasSlug = true,
 }: CreateLocalizationsArgs<T>) => {
-  const modelTranslations = await getModelTranslation(
+  const modelTranslations = await translateModel(
     model as unknown as T,
     translatedFields,
     hasSlug,
@@ -30,18 +30,23 @@ export const createLocalizations = async <T extends StrapiTranslatableModel>({
 
   const [firstTranslation, secondTranslation] = modelTranslations
 
-  const firstTranslationResponse = await Mutation.localize<
-    T,
-    StrapiLocalizeInput
-  >(endpoint, model.id, firstTranslation.locale, firstTranslation, token)
-
-  const secondTranslationResponse = await Mutation.localize(
+  const firstTranslationResponse = await mutation<T, StrapiLocalizeInput>({
     endpoint,
-    firstTranslationResponse?.data?.id as number,
-    secondTranslation.locale,
-    secondTranslation,
+    method: 'localize',
+    id: model.id,
+    locale: firstTranslation.locale,
+    body: firstTranslation,
     token,
-  )
+  })
+
+  const secondTranslationResponse = await mutation<T, StrapiLocalizeInput>({
+    endpoint,
+    method: 'localize',
+    id: firstTranslationResponse?.data?.id as number,
+    locale: secondTranslation.locale,
+    body: secondTranslation,
+    token,
+  })
 
   return [firstTranslationResponse, secondTranslationResponse]
 }

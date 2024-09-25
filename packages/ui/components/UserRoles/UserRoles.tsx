@@ -11,7 +11,7 @@ import { TbPlus } from 'react-icons/tb'
 
 import { Button, IconButton, Tooltip } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { Role } from '@fc/types'
 
 import { CreateRoleModal } from './CreateRoleModal'

@@ -15,7 +15,7 @@ import { HiOutlineExternalLink } from 'react-icons/hi'
 import Markdown from 'react-markdown'
 
 import { Alert } from '@fc/chakra'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { ArchiveContent } from '@fc/types'
 
 import { useHashtagContext } from '../HashtagProvider'

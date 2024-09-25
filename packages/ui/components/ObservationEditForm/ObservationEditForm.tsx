@@ -10,8 +10,8 @@ import { MdClose, MdOutlineCheck } from 'react-icons/md'
 import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
-import { useDeleteModel } from '@fc/services/common/delete'
-import { useUpdateModelMutation } from '@fc/services/common/update'
+import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
+import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import type { Observation, ObservationUpdateInput, Profile } from '@fc/types'
 
 import { observationSchema } from './schema'
@@ -68,8 +68,11 @@ export const ObservationEditForm = ({
     setConfirmState(undefined)
   }
 
-  const deleteMutation = useDeleteModel('observations')
-  const updateMutation = useUpdateModelMutation('observations')
+  const deleteMutation = useDeleteModelMutation<Observation>('observations')
+  const updateMutation = useUpdateModelMutation<
+    Observation,
+    ObservationUpdateInput
+  >('observations')
 
   const onDelete = () => {
     setConfirmState({
@@ -84,10 +87,10 @@ export const ObservationEditForm = ({
     })
   }
 
-  const onSave = async (data: ObservationUpdateInput) => {
+  const onSave = async (data: Pick<ObservationUpdateInput, 'content'>) => {
     const body = {
       content: data.content,
-    } satisfies ObservationUpdateInput
+    }
     updateMutation.mutate({ id, ...body }, { onSuccess: handleSuccess })
   }
   const onCancel = () => {

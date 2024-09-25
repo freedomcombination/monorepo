@@ -4,7 +4,7 @@ import { Heading, Stack, Tabs, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { ArchiveContent, Hashtag, Post } from '@fc/types'
 
 import { GenAlert } from './GenAlert'

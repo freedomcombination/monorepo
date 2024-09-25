@@ -1,10 +1,10 @@
-import { useHashtag } from '@fc/services/hashtag'
-import { useTrends } from '@fc/services/trend'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 import type { Trend, TwitterTrend } from '@fc/types'
 
 export const useFindHashtagInTrends = () => {
-  const hashtag = useHashtag()
-  const { data: trendsData } = useTrends()
+  const hashtag = useHashtagBySlug()
+  const { data: trendsData } = useStrapiRequest<Trend>({ endpoint: 'trend' })
 
   return [hashtag.hashtagDefault, hashtag.hashtagExtra]
     .filter(Boolean)

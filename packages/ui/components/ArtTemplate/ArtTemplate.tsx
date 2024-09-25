@@ -5,9 +5,9 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { useTranslation } from 'next-i18next'
 
 import { RecaptchaKeys } from '@fc/config/constants'
-import { useArtsByCategories } from '@fc/services/art/getByCategories'
-import { useArtBySlug } from '@fc/services/art/getBySlug'
-import { useViewArtMutation } from '@fc/services/art/view'
+import { useArtBySlug } from '@fc/services/art/getArtBySlug'
+import { useArtsByCategories } from '@fc/services/art/getArtsByCategories'
+import { useViewArtMutation } from '@fc/services/art/viewArt'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 
 import '@splidejs/react-splide/css'

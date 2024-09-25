@@ -7,10 +7,13 @@ import {
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalOverlay,
   Skeleton,
 } from '@fc/chakra'
-import { Modal, ModalBody, ModalContent, ModalOverlay } from '@fc/chakra'
-import { useHashtag } from '@fc/services/hashtag'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 
 import { PostSentenceRefDrawer } from './PostSentenceRefDrawer'
 import { useHashtagContext } from '../HashtagProvider'
@@ -30,7 +33,7 @@ export const PostMaker: FC<PostMakerProps> = ({ isIosSafari }) => {
   const { mentionsDisclosure, trendsDisclosure, archiveDisclosure } =
     useHashtagContext()
 
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   if (!hashtag) return null
 

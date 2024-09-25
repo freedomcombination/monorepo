@@ -19,7 +19,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@fc/chakra'
-import { useHashtag } from '@fc/services/hashtag'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 import { HashtagStats } from '@fc/ui/components/HashtagStats'
 import { Markdown } from '@fc/ui/components/Markdown'
 
@@ -33,7 +33,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
   const [isEditing, setIsEditing] = useBoolean(false)
   const [activeButton, setActiveButton] = useState<'info' | 'stats'>()
 
-  const { title } = useHashtag()
+  const { title } = useHashtagBySlug()
 
   const onClickInfo = () => {
     infoDisclosure.onOpen()

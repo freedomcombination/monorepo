@@ -24,7 +24,7 @@ import {
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { useWebPushContext } from '@fc/context/webPush'
-import { useUnsubscribePushNotificationMutation } from '@fc/services/pushNotification'
+import { useUnsubscribePushNotificationMutation } from '@fc/services/pushNotification/unsubscribePushNotification'
 
 import { AdminSidebar } from '../AdminSidebar'
 import { CreateModelButton } from '../CreateModelButton'

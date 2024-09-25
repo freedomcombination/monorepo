@@ -13,7 +13,7 @@ import {
   AccordionItem,
   AccordionPanel,
 } from '@fc/chakra'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Asset, AssetsTracking, Sort, StrapiLocale } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'

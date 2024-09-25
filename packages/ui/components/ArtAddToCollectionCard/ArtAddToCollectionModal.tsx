@@ -12,7 +12,7 @@ import {
   ModalOverlay,
   Pagination,
 } from '@fc/chakra'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { Art } from '@fc/types'
 
 import { ArtAddToCollectionGrid } from './ArtAddToCollectionGrid'

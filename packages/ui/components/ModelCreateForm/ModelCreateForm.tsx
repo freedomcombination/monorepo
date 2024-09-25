@@ -11,8 +11,8 @@ import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
 import { Button } from '@fc/chakra'
-import { endpointsWithLocale } from '@fc/lib/urls'
-import { useCreateModelMutation } from '@fc/services/common/create'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
+import { endpointsWithLocale } from '@fc/services/common/urls'
 import type {
   Applicant,
   Course,

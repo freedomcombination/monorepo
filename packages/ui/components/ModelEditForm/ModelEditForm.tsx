@@ -30,17 +30,17 @@ import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
 import { Field, Switch } from '@fc/chakra'
+import { useApproveModelMutation } from '@fc/services/common/approveModel'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
+import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
+import { usePublishModelMutation } from '@fc/services/common/publishModel'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
+import { useUnpublishModelMutation } from '@fc/services/common/unpublishModel'
+import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
-} from '@fc/lib/urls'
-import { useApproveModel } from '@fc/services/common/approve'
-import { useCreateModelMutation } from '@fc/services/common/create'
-import { useDeleteModel } from '@fc/services/common/delete'
-import { usePublishModel } from '@fc/services/common/publish'
-import { useStrapiRequest } from '@fc/services/common/request'
-import { useUnpublishModel } from '@fc/services/common/unpublish'
-import { useUpdateModelMutation } from '@fc/services/common/update'
+} from '@fc/services/common/urls'
 import type {
   FormCommonFields,
   Profile,
@@ -105,10 +105,10 @@ export const ModelEditForm = <T extends StrapiModel>({
   const { t } = useTranslation()
 
   const updateModelMutation = useUpdateModelMutation(endpoint)
-  const unpublishModelMutation = useUnpublishModel(endpoint)
-  const publishModelMutation = usePublishModel(endpoint)
-  const deleteModelMutation = useDeleteModel(endpoint)
-  const approveModelMutation = useApproveModel(
+  const unpublishModelMutation = useUnpublishModelMutation(endpoint)
+  const publishModelMutation = usePublishModelMutation(endpoint)
+  const deleteModelMutation = useDeleteModelMutation(endpoint)
+  const approveModelMutation = useApproveModelMutation(
     endpoint,
     translatedFields as Array<keyof StrapiTranslatableModel>,
   )

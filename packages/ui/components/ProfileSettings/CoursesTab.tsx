@@ -13,7 +13,7 @@ import {
   Button,
 } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { CourseApplication } from '@fc/types'
 
 import { CoursePaymentDetails } from './Payment/components/CoursePaymentDetails'

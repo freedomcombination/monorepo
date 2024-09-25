@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { FaPlus } from 'react-icons/fa'
 
 import { IconButton, toaster } from '@fc/chakra'
-import { useCreateHashtagSentence } from '@fc/services/post'
+import { useCreateHashtagSentenceMutation } from '@fc/services/hashtagSentence/createHashtagSentence'
 
 type PostSentenceCreatorProps = {
   hashtagId: number
@@ -25,7 +25,7 @@ export const PostSentenceCreator = ({
 }: PostSentenceCreatorProps) => {
   const { t } = useTranslation()
   const [value, setValue] = useState(initialContent)
-  const onAddMutation = useCreateHashtagSentence()
+  const onAddMutation = useCreateHashtagSentenceMutation()
   const queryClient = useQueryClient()
 
   useEffect(() => {

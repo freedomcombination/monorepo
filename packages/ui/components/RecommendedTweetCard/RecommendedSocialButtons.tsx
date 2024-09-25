@@ -11,8 +11,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@fc/chakra'
-import { useDeleteModel } from '@fc/services/common/delete'
+import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
 import type { Post } from '@fc/types'
+import type { RecommendedTweet } from '@fc/types'
 import { getMediaUrl } from '@fc/utils/getMediaUrl'
 
 import { RecommendedSocialButtonsProps } from './types'
@@ -26,7 +27,8 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
   tweet,
   isVertical,
 }) => {
-  const deleteModelMutation = useDeleteModel('recommended-tweets')
+  const deleteModelMutation =
+    useDeleteModelMutation<RecommendedTweet>('recommended-tweets')
   const [confirmState, setConfirmState] = useState<WConfirmProps>()
   const id = tweet?.id
 

@@ -16,7 +16,7 @@ import * as yup from 'yup'
 
 import { Button } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
-import { Mutation } from '@fc/lib/mutation'
+import { mutation } from '@fc/services/common/mutation'
 import type { Profile, ProfileUpdateInput } from '@fc/types'
 
 import { ButtonLink } from '../ButtonLink'
@@ -88,12 +88,13 @@ export const Socials = () => {
     if (!profile || !token) return
 
     setSaving(true)
-    await Mutation.put<Profile, ProfileUpdateInput>(
-      'profiles',
-      profile?.id,
-      data,
+    await mutation<Profile, ProfileUpdateInput>({
+      endpoint: 'profiles',
+      method: 'put',
+      id: profile.id,
+      body: data,
       token,
-    )
+    })
 
     await checkAuth()
     setSaving(false)

@@ -5,7 +5,7 @@ import { FaSpinner } from 'react-icons/fa6'
 import { MdRemoveModerator } from 'react-icons/md'
 
 import { RecaptchaKeys } from '@fc/config/constants'
-import { useProfileArts } from '@fc/services/art/getByArtist'
+import { useArtsByArtist } from '@fc/services/art/getArtsByArtist'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 
 import { ArtGrid } from '../ArtGrid'
@@ -17,7 +17,7 @@ export const ArtsTab = () => {
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   // TODO: Remove like action from profile, user shouldn't like their own arts
-  const { data, refetch } = useProfileArts(true)
+  const { data, refetch } = useArtsByArtist(true)
   const rejected = data?.filter(art => art?.approvalStatus === 'rejected')
   const approved = data?.filter(art => art?.approvalStatus === 'approved')
   const pending = data?.filter(art => art?.approvalStatus === 'pending')

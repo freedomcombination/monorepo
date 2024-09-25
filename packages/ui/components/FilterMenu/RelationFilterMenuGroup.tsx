@@ -4,7 +4,7 @@ import { chakra } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 import { MenuRadioItem, MenuRadioItemGroup } from '@fc/chakra'
-import { useStrapiRequest } from '@fc/services/common/request'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { StrapiModel } from '@fc/types'
 import { mapModelsToOptions } from '@fc/utils/mapModelsToOptions'
 

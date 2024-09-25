@@ -16,7 +16,7 @@ import { FiArrowRight } from 'react-icons/fi'
 import { Button, IconButton, toaster, Tooltip } from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
-import { useCreateModelMutation } from '@fc/services/common/create'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 import type { Comment, CommentCreateInput } from '@fc/types'
 

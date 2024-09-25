@@ -1,7 +1,5 @@
-import {
-  createHashtagSentence,
-  useGetHashtagSentences,
-} from '@fc/services/post'
+import { createHashtagSentence } from '@fc/services/hashtagSentence/createHashtagSentence'
+import { useGetHashtagSentences } from '@fc/services/hashtagSentence/getHashtagSentences'
 import type { RedisPost } from '@fc/types'
 
 import { ArchivePostType, useGenPostContext } from '../GenPostProvider'

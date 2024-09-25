@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { COURSES } from '@fc/config/data'
-import { strapiRequest } from '@fc/lib/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Course, StrapiLocale } from '@fc/types'
 import { AcademyCard } from '@fc/ui/components/AcademyCard'

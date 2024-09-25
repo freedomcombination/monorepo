@@ -28,8 +28,9 @@ import {
   ModalOverlay,
   Progress,
 } from '@fc/chakra'
-import { useRecommendTweet } from '@fc/services/recommendedTweet'
+import { useCreateModelMutation } from '@fc/services/common/createModel'
 import type { Mention, Tweet } from '@fc/types'
+import type { RecommendedTweet, RecommendedTweetCreateInput } from '@fc/types'
 
 import { createTweetSchema } from './schema'
 import { CreateTweetFormFieldValues, CreateTweetFormProps } from './types'
@@ -49,7 +50,10 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
   const { locale } = useRouter()
   const [isChangingImage, setIsChangingImage] = useBoolean(false)
 
-  const { mutateAsync } = useRecommendTweet()
+  const { mutateAsync } = useCreateModelMutation<
+    RecommendedTweet,
+    RecommendedTweetCreateInput
+  >('recommended-tweets')
 
   if (isNews) {
     originalTweet = { text: originalTweet.text } as Tweet

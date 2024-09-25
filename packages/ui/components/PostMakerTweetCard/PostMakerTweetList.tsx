@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react'
 
 import { Separator, Stack } from '@chakra-ui/react'
 
-import { useHashtag } from '@fc/services/hashtag'
+import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 
 import { PostMakerTweetCard } from './PostMakerTweetCard'
 import { PostMakerTweetListProps } from './types'
@@ -13,7 +13,7 @@ export const PostMakerTweetList: FC<PostMakerTweetListProps> = ({
   isIosSafari,
 }) => {
   const { postSentenceShares } = useHashtagContext()
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   const sortedPosts = useMemo(() => {
     return hashtag.posts.sort((a, b) => {

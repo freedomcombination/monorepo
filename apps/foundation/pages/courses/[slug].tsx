@@ -5,7 +5,7 @@ import { GetServerSidePropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
 import { SITE_URL } from '@fc/config/constants'
-import { getCourseBySlug } from '@fc/services/course/getBySlug'
+import { getCourseBySlug } from '@fc/services/course/getCourseBySlug'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { StrapiLocale } from '@fc/types'
 import { CourseDetailPage } from '@fc/ui/components/CourseDetailPage'

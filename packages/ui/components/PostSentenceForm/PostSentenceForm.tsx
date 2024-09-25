@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { Stack } from '@chakra-ui/react'
 
-import { useGetHashtagSentences } from '@fc/services/post'
+import { useGetHashtagSentences } from '@fc/services/hashtagSentence/getHashtagSentences'
 
 import { PostSentenceFormItem } from './PostSentenceFormItem'
 import { PostSentenceFormProps } from './types'

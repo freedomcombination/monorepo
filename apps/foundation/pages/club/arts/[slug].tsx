@@ -6,7 +6,7 @@ import { NextSeoProps } from 'next-seo'
 
 import { SITE_URL } from '@fc/config/constants'
 import { getSession } from '@fc/secrets'
-import { getArtBySlug } from '@fc/services/art/getBySlug'
+import { getArtBySlug } from '@fc/services/art/getArtBySlug'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Art, StrapiLocale } from '@fc/types'
 import { ArtTemplate } from '@fc/ui/components/ArtTemplate'

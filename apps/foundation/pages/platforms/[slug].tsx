@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 import { GetStaticPropsContext } from 'next'
 
-import { getModelStaticPaths } from '@fc/services/common/staticPaths'
-import { getPlatformStaticProps } from '@fc/services/platform/getStaticProps'
+import { getModelStaticPaths } from '@fc/services/common/getModelStaticPaths'
+import { getPlatformStaticProps } from '@fc/services/platform/getPlatformStaticProps'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { StrapiLocale } from '@fc/types'
 import {

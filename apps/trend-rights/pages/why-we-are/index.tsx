@@ -6,7 +6,7 @@ import { getSession } from '@fc/secrets'
 import {
   getCategorizedBlogs,
   useGetCategorizedBlogs,
-} from '@fc/services/blog/get'
+} from '@fc/services/blog/getCategorizedBlogs'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { StrapiLocale } from '@fc/types'
 

@@ -6,8 +6,10 @@ import { useTranslation } from 'next-i18next'
 import { FaPencil } from 'react-icons/fa6'
 
 import { Button } from '@fc/chakra'
-import { strapiRequest } from '@fc/lib/request'
-import { useStrapiRequest } from '@fc/services/common/request'
+import {
+  strapiRequest,
+  useStrapiRequest,
+} from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Hashtag, StrapiLocale } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'

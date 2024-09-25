@@ -18,9 +18,12 @@ import {
 } from '@fc/chakra'
 import { SITE_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
-import { strapiRequest } from '@fc/lib/request'
-import { getHashtagBySlug, useHashtag } from '@fc/services/hashtag/getBySlug'
-import { getHashtagSentences } from '@fc/services/post'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
+import {
+  getHashtagBySlug,
+  useHashtagBySlug,
+} from '@fc/services/hashtag/getHashtagBySlug'
+import { getHashtagSentences } from '@fc/services/hashtagSentence/getHashtagSentences'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
   HashtagReturnType,
@@ -51,7 +54,7 @@ const HashtagPage: FC<HashtagProps> = ({
   capsSrc,
   isIosSafari,
 }) => {
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   const { open, onClose, onOpen } = useDisclosure()
   const { query, push } = useRouter()
