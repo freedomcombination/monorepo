@@ -3,11 +3,11 @@ import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { ArchiveContent } from '@fc/types/src/archive-content'
-import { AdminLayout, ArchivePostGenAI } from '@fc/ui'
+import type { StrapiLocale, ArchiveContent } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { ArchivePostGenAI } from '@fc/ui/components/ArchivePostGenAI'
 
 const ArchiveContentPage = () => {
   const { t } = useTranslation()

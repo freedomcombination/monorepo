@@ -1,4 +1,4 @@
-import { Site } from '@fc/types'
+import type { Site } from '@fc/types'
 
 export const TEST_TIMEOUT = process.env.CI === 'true' ? 10 * 1000 : 120 * 1000
 

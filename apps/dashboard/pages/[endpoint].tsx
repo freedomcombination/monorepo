@@ -11,14 +11,14 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useAuthContext } from '@fc/context'
+import { useAuthContext } from '@fc/context/auth'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
-} from '@fc/lib'
-import { useStrapiRequest } from '@fc/services'
+} from '@fc/services/common/urls'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import {
+import type {
   ApprovalStatus,
   Post,
   Profile,
@@ -29,21 +29,18 @@ import {
   StrapiModel,
   StrapiTranslatableModel,
 } from '@fc/types'
-import {
-  AdminLayout,
-  DataTable,
-  FilterMenu,
-  FilterOption,
-  ModelEditModal,
-  ModelStatusFilters,
-  PageHeader,
-  ProfileForms,
-  RelationFilterArgs,
-  TabbedGenAIView,
-  WTableProps,
-  useColumns,
-  useRequestArgs,
-} from '@fc/ui'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { DataTable } from '@fc/ui/components/DataTable'
+import { FilterMenu } from '@fc/ui/components/FilterMenu'
+import { FilterOption, RelationFilterArgs } from '@fc/ui/components/FilterMenu'
+import { ModelEditModal } from '@fc/ui/components/ModelEditModal'
+import { ModelStatusFilters } from '@fc/ui/components/ModelStatusFilters'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import { ProfileForms } from '@fc/ui/components/ProfileForms'
+import { TabbedGenAIView } from '@fc/ui/components/TabbedGenAIView'
+import type { WTableProps } from '@fc/ui/components/WTable'
+import { useColumns } from '@fc/ui/hooks/useColumns'
+import { useRequestArgs } from '@fc/ui/hooks/useRequestArgs'
 
 import { I18nNamespaces } from '../@types/i18next'
 

@@ -1,4 +1,4 @@
-import { MentionUserData } from '@fc/types'
+import type { MentionUserData } from '@fc/types'
 
 import { getUserByUsername } from '../../../../libs'
 

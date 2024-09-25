@@ -1,8 +1,5 @@
 {
-  "extends": "@fc/config/tsconfig.react.json",
+  "extends": "@fc/config/tsconfig.base.json",
   "include": ["."],
-  "compilerOptions": {
-    "lib": ["dom", "webworker"]
-  },
   "exclude": ["dist", "build", "node_modules"]
 }

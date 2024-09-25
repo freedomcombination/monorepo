@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test'
 
-import { Site } from '@fc/types'
+import type { Site } from '@fc/types'
 
 import { getUrl } from '../utils'
 

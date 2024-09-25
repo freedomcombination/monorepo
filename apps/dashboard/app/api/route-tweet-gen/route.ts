@@ -1,8 +1,8 @@
 import { createOpenAI } from '@ai-sdk/openai'
 import { streamText } from 'ai'
 
-import { generateMockTweets } from '@fc/utils/src/generateMockTweets'
-import { getMockReadableStream } from '@fc/utils/src/getMockReadableStream'
+import { generateMockTweets } from '@fc/utils/generateMockTweets'
+import { getMockReadableStream } from '@fc/utils/getMockReadableStream'
 
 export const runtime = 'edge'
 

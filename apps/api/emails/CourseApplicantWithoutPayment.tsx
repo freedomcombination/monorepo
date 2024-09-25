@@ -1,4 +1,4 @@
-import { Course, Profile, StrapiLocale } from '@fc/types'
+import type { Course, Profile, StrapiLocale } from '@fc/types'
 import { Text, Section, Row, Column, Link } from '@react-email/components'
 import React from 'react'
 import { FC } from 'react'

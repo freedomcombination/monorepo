@@ -5,12 +5,16 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Donation, DonationStatus, Sort, StrapiLocale } from '@fc/types'
-import { MonthPicker, ModelStatusFilters } from '@fc/ui'
-import { AdminLayout, DataTable, PageHeader, useColumns } from '@fc/ui'
-import { RangeParams } from '@fc/ui/src/components/MonthPicker/types'
+import type { Donation, DonationStatus, Sort, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { DataTable } from '@fc/ui/components/DataTable'
+import { ModelStatusFilters } from '@fc/ui/components/ModelStatusFilters'
+import { MonthPicker } from '@fc/ui/components/MonthPicker'
+import { RangeParams } from '@fc/ui/components/MonthPicker/types'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import { useColumns } from '@fc/ui/hooks/useColumns'
 
 const DonationsPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
