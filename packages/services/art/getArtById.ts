@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import type { Activity } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getArtById = async (id: number) => {
   const response = await strapiRequest<Activity>({

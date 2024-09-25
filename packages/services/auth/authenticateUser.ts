@@ -4,7 +4,7 @@ import { API_URL } from '@fc/config/constants'
 import type { Auth, AuthResponse, Profile } from '@fc/types'
 
 import { getSessionUser } from './getSessionUser'
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 const emptyAuth: Auth = {
   user: null,

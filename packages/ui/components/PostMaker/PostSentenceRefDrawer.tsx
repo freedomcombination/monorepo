@@ -17,7 +17,7 @@ import { useTranslation } from 'next-i18next'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 import Markdown from 'react-markdown'
 
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { ArchiveContent } from '@fc/types'
 
 import { useHashtagContext } from '../HashtagProvider'

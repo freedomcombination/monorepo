@@ -11,7 +11,7 @@ import { NextSeoProps } from 'next-seo'
 import {
   RequestCollectionArgs,
   strapiRequest,
-} from '@fc/services/common/request'
+} from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Hashtag, StrapiCollectionResponse, StrapiLocale } from '@fc/types'
 import { ButtonLink } from '@fc/ui/components/ButtonLink'

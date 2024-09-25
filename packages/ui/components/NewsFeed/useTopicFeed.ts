@@ -4,7 +4,7 @@ import { endOfToday, subDays } from 'date-fns'
 import { useRouter } from 'next/router'
 
 import { ASSETS_URL } from '@fc/config/constants'
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { Activity, Blog, RecommendedTopic, TopicBase } from '@fc/types'
 
 export type UseTopicProps = {

@@ -39,13 +39,13 @@ import { useApproveModelMutation } from '@fc/services/common/approveModel'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
 import { usePublishModelMutation } from '@fc/services/common/publishModel'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { useUnpublishModelMutation } from '@fc/services/common/unpublishModel'
 import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
 } from '@fc/services/common/urls'
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type {
   FormCommonFields,
   Profile,

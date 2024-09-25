@@ -16,7 +16,7 @@ import {
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context/auth'
-import { strapiRequest } from '@fc/services/common/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import type { RoleInput, Role } from '@fc/types'
 import { createRole } from '@fc/utils/permissions'
 

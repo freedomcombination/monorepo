@@ -3,7 +3,7 @@ import { GetStaticPropsContext } from 'next'
 
 import type { Art, StrapiLocale } from '@fc/types'
 
-import { RequestCollectionArgs, strapiRequest } from '../common/request'
+import { RequestCollectionArgs, strapiRequest } from '../common/strapiRequest'
 
 export const getClubQueryClient = async (context: GetStaticPropsContext) => {
   const locale = context.locale as StrapiLocale

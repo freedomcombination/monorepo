@@ -32,7 +32,7 @@ import { FaPlus, FaUpload } from 'react-icons/fa'
 
 import { useAuthContext } from '@fc/context/auth'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { ArtCreateInput, Category } from '@fc/types'
 
 import { ArtCreateSuccessAlert } from './CreateArtSuccessAlert'

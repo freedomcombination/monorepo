@@ -8,7 +8,7 @@ import {
   Tabs,
 } from '@chakra-ui/react'
 
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { Trend } from '@fc/types'
 
 import { useFindHashtagInTrends } from './useFindHashtagsInTrend'

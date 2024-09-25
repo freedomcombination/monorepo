@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import type { Course } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getCourseBySlug = async (slug: string): Promise<Course | null> => {
   const response = await strapiRequest<Course>({

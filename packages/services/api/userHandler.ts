@@ -4,7 +4,7 @@ import { NextApiHandler } from 'next'
 import { sessionOptions } from '@fc/secrets'
 import type { Auth, Profile } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const userHandler: NextApiHandler = async (req, res) => {
   const session = await getIronSession<Auth>(req, res, sessionOptions)

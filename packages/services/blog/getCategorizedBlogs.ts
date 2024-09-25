@@ -5,7 +5,7 @@ import { BLOG_CATEGORIES } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 import { Blog, StrapiLocale } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getCategorizedBlogs = async (
   locale: StrapiLocale,

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import type { Topic } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getTopics = async () => {
   const response = await strapiRequest<Topic>({

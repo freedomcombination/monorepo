@@ -4,7 +4,7 @@ import type {
   StrapiModel,
 } from '@fc/types'
 
-import { strapiRequest } from './request'
+import { strapiRequest } from './strapiRequest'
 
 const getModelPaths = async <T extends StrapiModel>(
   endpoint: StrapiCollectionEndpoint,

@@ -1,6 +1,6 @@
 import type { Collection, StrapiLocale } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getCollectionBySlug = async (
   locale: StrapiLocale,

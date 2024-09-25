@@ -1,5 +1,5 @@
 import { mutation } from '@fc/services/common/mutation'
-import { strapiRequest } from '@fc/services/common/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import {
   StrapiCreateInput,
   StrapiEndpoint,

@@ -20,7 +20,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 import { SITE_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
-import { strapiRequest } from '@fc/services/common/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import {
   getHashtagBySlug,
   useHashtagBySlug,

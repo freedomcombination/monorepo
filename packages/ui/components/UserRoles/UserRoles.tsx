@@ -16,7 +16,7 @@ import { FaCopy, FaTrash, FaUser } from 'react-icons/fa6'
 import { TbPlus } from 'react-icons/tb'
 
 import { useAuthContext } from '@fc/context/auth'
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { Role } from '@fc/types'
 
 import { CreateRoleModal } from './CreateRoleModal'

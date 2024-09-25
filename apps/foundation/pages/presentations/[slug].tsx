@@ -4,7 +4,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
 import { getModelStaticPaths } from '@fc/services/common/getModelStaticPaths'
-import { strapiRequest } from '@fc/services/common/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Presentation, StrapiLocale } from '@fc/types'
 import { Hero } from '@fc/ui/components/Hero'

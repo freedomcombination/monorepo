@@ -4,7 +4,7 @@ import { Box, Center, Flex, Heading, Text, VStack } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 
-import { strapiRequest } from '@fc/services/common/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Platform, StrapiLocale } from '@fc/types'
 import { AnimatedBox } from '@fc/ui/components/AnimatedBox'

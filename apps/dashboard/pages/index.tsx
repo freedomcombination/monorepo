@@ -7,7 +7,7 @@ import { useAuthContext } from '@fc/context/auth'
 import {
   RequestCollectionArgs,
   strapiRequest,
-} from '@fc/services/common/request'
+} from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
   AccountStats,

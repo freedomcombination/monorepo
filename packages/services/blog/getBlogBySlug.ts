@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useAuthContext } from '@fc/context/auth'
 import type { Blog } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getBlogBySlug = async (slug: string, token: string | null) => {
   return strapiRequest<Blog>({

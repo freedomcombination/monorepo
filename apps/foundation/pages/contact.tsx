@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 
 import { socialLinks } from '@fc/config/socialLinks'
-import { strapiRequest } from '@fc/services/common/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Foundation, StrapiLocale } from '@fc/types'
 import { ButtonLink } from '@fc/ui/components/ButtonLink'

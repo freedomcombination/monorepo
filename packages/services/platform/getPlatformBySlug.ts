@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import type { Platform } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getPlatformBySlug = async (slug: string) => {
   const response = await strapiRequest<Platform>({

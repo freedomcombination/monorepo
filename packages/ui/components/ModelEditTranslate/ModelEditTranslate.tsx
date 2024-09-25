@@ -18,8 +18,8 @@ import { MdClose, MdOutlineCheck } from 'react-icons/md'
 import { InferType } from 'yup'
 
 import { useApproveModelMutation } from '@fc/services/common/approveModel'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { useUpdateModelMutation } from '@fc/services/common/updateModel'
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import type {
   StrapiTranslatableModel,
   StrapiTranslatableUpdateInput,

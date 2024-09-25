@@ -7,7 +7,7 @@ import { sessionOptions } from '@fc/secrets'
 import { getSessionUser } from '@fc/services/auth/getSessionUser'
 import type { Auth, Profile } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const resetPasswordHandler: NextApiHandler = async (req, res) => {
   try {

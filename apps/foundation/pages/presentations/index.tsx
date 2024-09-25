@@ -5,7 +5,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { strapiRequest } from '@fc/services/common/request'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Presentation, StrapiLocale, UploadFile } from '@fc/types'
 import { AnimatedBox } from '@fc/ui/components/AnimatedBox'

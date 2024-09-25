@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useAuthContext } from '@fc/context/auth'
 import type { Art } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getArtsByCategories = async (
   categories: string[],

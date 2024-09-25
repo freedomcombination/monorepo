@@ -12,11 +12,11 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { useAuthContext } from '@fc/context/auth'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import {
   endpointsWithApprovalStatus,
   endpointsWithPublicationState,
 } from '@fc/services/common/urls'
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
   ApprovalStatus,

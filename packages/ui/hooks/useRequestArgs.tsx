@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next'
 
-import { RequestCollectionArgs } from '@fc/services/common/request'
+import { RequestCollectionArgs } from '@fc/services/common/strapiRequest'
 import type { StrapiCollectionEndpoint, StrapiModel } from '@fc/types'
 
 import { FilterOption, RelationFilterOption } from '../components/FilterMenu'

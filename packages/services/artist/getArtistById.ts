@@ -4,7 +4,7 @@ import { getSecret } from '@fc/secrets'
 import type { Profile } from '@fc/types'
 
 import { getArtsByArtist } from '../art/getArtsByArtist'
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getArtistById = async (id: string): Promise<Profile | null> => {
   const artistResponse = await strapiRequest<Profile>({

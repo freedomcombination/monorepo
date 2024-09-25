@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import type { Course } from '@fc/types'
 
-import { strapiRequest } from '../common/request'
+import { strapiRequest } from '../common/strapiRequest'
 
 export const getCourseById = async (
   id: string,

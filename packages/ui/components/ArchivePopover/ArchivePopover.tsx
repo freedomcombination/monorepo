@@ -17,7 +17,7 @@ import {
 import { useRouter } from 'next/router'
 import Markdown from 'react-markdown'
 
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { ArchiveContent } from '@fc/types'
 
 import { useGenPostContext } from '../GenPostProvider'

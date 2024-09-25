@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 
 import { useAuthContext } from '@fc/context/auth'
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { StrapiModel } from '@fc/types'
 
 import { ModelEditModalProps } from './types'

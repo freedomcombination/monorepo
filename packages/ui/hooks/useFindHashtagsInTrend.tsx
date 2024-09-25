@@ -1,4 +1,4 @@
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 import type { Trend, TwitterTrend } from '@fc/types'
 

@@ -4,7 +4,7 @@ import { Box, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services/common/useStrapiRequest'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { Collection } from '@fc/types'
 
 import { ArtSideBarProps } from './types'

@@ -11,8 +11,8 @@ import type {
   StrapiSingleResponse,
 } from '@fc/types'
 
-import { strapiRequest } from './request'
-import { RequestCollectionArgs, RequestSingleArgs } from './request'
+import { strapiRequest } from '.'
+import { RequestCollectionArgs, RequestSingleArgs } from '.'
 
 type QueryOptions = Partial<UseQueryOptions<unknown, unknown>>
 
