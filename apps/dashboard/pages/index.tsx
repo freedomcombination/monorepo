@@ -3,15 +3,19 @@ import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
-import { useAuthContext } from '@fc/context'
-import { RequestCollectionArgs, strapiRequest } from '@fc/lib'
-import { ssrTranslations } from '@fc/services/ssrTranslations'
+import { useAuthContext } from '@fc/context/auth'
 import {
+  RequestCollectionArgs,
+  strapiRequest,
+} from '@fc/services/common/strapiRequest'
+import { ssrTranslations } from '@fc/services/ssrTranslations'
+import type {
   AccountStats,
   AccountStats as AccountStatsType,
   StrapiLocale,
 } from '@fc/types'
-import { AdminLayout, AuditLogList } from '@fc/ui'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { AuditLogList } from '@fc/ui/components/AuditLogList'
 
 const args: RequestCollectionArgs<AccountStats> = {
   endpoint: 'account-statistics',

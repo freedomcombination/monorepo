@@ -4,10 +4,12 @@ import { Heading, Image, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { NextSeoProps } from 'next-seo'
 
-import { ABOUT_US } from '@fc/config'
+import { ABOUT_US } from '@fc/config/data'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { AnimatedBox, Container, Hero } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
+import { Container } from '@fc/ui/components/Container'
+import { Hero } from '@fc/ui/components/Hero'
 
 import { Layout } from '../components'
 

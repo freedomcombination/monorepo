@@ -1,13 +1,13 @@
-import { OpenAIStream, StreamingTextResponse } from 'ai'
-import OpenAI from 'openai'
+import { createOpenAI } from '@ai-sdk/openai'
+import { streamText } from 'ai'
 
-import { generateMockTweets } from '@fc/utils/src/generateMockTweets'
-import { getMockReadableStream } from '@fc/utils/src/getMockReadableStream'
+import { generateMockTweets } from '@fc/utils/generateMockTweets'
+import { getMockReadableStream } from '@fc/utils/getMockReadableStream'
 
 export const runtime = 'edge'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
+const openai = createOpenAI({
+  apiKey: process.env.OPENAI_API_KEY! ?? '',
 })
 
 export async function POST(req: Request) {
@@ -26,36 +26,24 @@ export async function POST(req: Request) {
     // Create a ReadableStream from your mock response
     const stream = getMockReadableStream(mockResponse)
 
-    // Use the stream as input to your StreamingTextResponse
-    return new StreamingTextResponse(stream)
+    return new Response(stream, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Transfer-Encoding': 'chunked',
+      },
+    })
   }
 
-  // Request the OpenAI API for the response based on the prompt
-  const response = await openai.chat.completions.create({
-    model: 'gpt-4o',
-    // model: 'gpt-4',
-    // model: 'gpt-3.5-turbo',
-    stream: true,
-    messages: [
-      {
-        role: 'system',
-        content: `You are an activist, and your task is to raise awareness about human rights violations.`,
-      },
-      {
-        role: 'user',
-        content: `Given the following article, generate ${postCount} ${language} posts for Twitter. The post shouldn't include any hashtags, and shouldn't exceed ${characterLimit} characters.
+  const result = await streamText({
+    model: openai('gpt-4o-mini'),
+    system:
+      'You are an activist, and your task is to raise awareness about human rights violations.',
+    prompt: `Given the following article, generate ${postCount} ${language} posts for Twitter. The post shouldn't include any hashtags, and shouldn't exceed ${characterLimit} characters.
 Respond with a JSON array of posts ["post1", "post2" , ...]. Only respond with an array. Article:
 ${prompt}`,
-      },
-    ],
     temperature: 0, // absolute certainty
-    // max_tokens: 200,
-    // top_p: 1,
-    // frequency_penalty: 1,
-    // presence_penalty: 1,
   })
 
-  const stream = OpenAIStream(response)
-
-  return new StreamingTextResponse(stream)
+  return result.toTextStreamResponse()
 }

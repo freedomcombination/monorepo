@@ -2,8 +2,8 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { JoinTemplate } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { JoinTemplate } from '@fc/ui/components/JoinTemplate'
 
 import { Layout } from '../components'
 

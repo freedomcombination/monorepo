@@ -3,12 +3,12 @@ import { FC } from 'react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
 
-import { strapiRequest } from '@fc/lib'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Platform, StrapiLocale } from '@fc/types'
-import { DonationTemplate } from '@fc/ui'
+import type { Platform, StrapiLocale } from '@fc/types'
+import { DonationTemplate } from '@fc/ui/components/DonationTemplate'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 type DonationPageProps = InferGetStaticPropsType<typeof getStaticProps>
 

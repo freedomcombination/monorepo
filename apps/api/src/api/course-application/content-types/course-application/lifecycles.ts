@@ -1,6 +1,6 @@
-import { paymentExplanationChanged } from './cases/paymentExplanation'
-import { assignmentFilesUploaded } from './cases/assignmentFilesUploaded'
 import { approvalStatusHasChanged } from './cases/approvalStatus'
+import { assignmentFilesUploaded } from './cases/assignmentFilesUploaded'
+import { paymentExplanationChanged } from './cases/paymentExplanation'
 
 export default {
   async afterUpdate(event) {

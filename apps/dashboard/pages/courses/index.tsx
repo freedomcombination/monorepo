@@ -5,10 +5,13 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Course, Sort, StrapiLocale } from '@fc/types'
-import { AdminLayout, DataTable, PageHeader, useColumns } from '@fc/ui'
+import type { Course, Sort, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { DataTable } from '@fc/ui/components/DataTable'
+import { PageHeader } from '@fc/ui/components/PageHeader'
+import { useColumns } from '@fc/ui/hooks/useColumns'
 
 const CoursesPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
