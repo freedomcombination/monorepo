@@ -21,8 +21,9 @@ import { useTranslation } from 'next-i18next'
 import { useAuthContext } from '@fc/context'
 import { useStrapiRequest } from '@fc/services'
 import { CourseApplication } from '@fc/types'
+import { CourseLogic } from '@fc/utils'
 
-import { CoursePaymentDetails } from './Payment/components/CoursePaymentDetails'
+import { ProfileCourseDetails } from './Payment/components/ProfileCourseDetails'
 import { StripeResult } from './Payment/components/StripeResult'
 import { GetGeneralStatus } from './Payment/utils/getGeneralStatus'
 import { KeyValue } from '../KeyValueView'
@@ -38,7 +39,7 @@ export const CoursesTab: FC = () => {
     filters: {
       profile: { id: { $eq: profile?.id } },
     },
-    populate: '*',
+    populate: ['course', 'course.assignmentFiles', 'profile'],
     queryOptions: {
       enabled: !!profile,
     },
@@ -94,6 +95,8 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
   const { locale } = useRouter()
   const { t } = useTranslation()
   const course = application.course!
+  const { profile } = useAuthContext()
+  const courseLogic = new CourseLogic(course, [application], profile)
 
   const title = course[`title_${locale}` as keyof CourseApplication['course']]
   const status = GetGeneralStatus(course, application)
@@ -110,6 +113,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
                   {t('status')}
                 </Badge>
               }
+              divider={false}
             >
               <Text>{status.message}</Text>
             </KeyValue>
@@ -124,7 +128,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
               {t('course.payment.title.go-to-course')}
             </Link>
           </KeyValue>
-          <CoursePaymentDetails application={application} course={course} />
+          <ProfileCourseDetails courseLogic={courseLogic} />
         </VStack>
       </AccordionPanel>
     </AccordionItem>

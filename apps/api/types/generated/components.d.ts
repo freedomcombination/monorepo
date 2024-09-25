@@ -1,15 +1,18 @@
 import type { Schema, Attribute } from '@strapi/strapi'
 
-export interface FlowFlow extends Schema.Component {
-  collectionName: 'components_flow_flows'
+export interface FaqFaq extends Schema.Component {
+  collectionName: 'components_faq_faqs'
   info: {
-    displayName: 'flow'
-    icon: 'manyToMany'
+    displayName: 'FaqLocale'
+    description: ''
   }
   attributes: {
-    title: Attribute.String
-    duration: Attribute.String
-    presenter: Attribute.String
+    question_en: Attribute.String
+    question_tr: Attribute.String
+    question_nl: Attribute.String
+    answer_en: Attribute.Text
+    answer_tr: Attribute.Text
+    answer_nl: Attribute.Text
   }
 }
 
@@ -31,19 +34,16 @@ export interface CourseCurriculum extends Schema.Component {
   }
 }
 
-export interface FaqFaq extends Schema.Component {
-  collectionName: 'components_faq_faqs'
+export interface FlowFlow extends Schema.Component {
+  collectionName: 'components_flow_flows'
   info: {
-    displayName: 'FaqLocale'
-    description: ''
+    displayName: 'flow'
+    icon: 'manyToMany'
   }
   attributes: {
-    question_en: Attribute.String
-    question_tr: Attribute.String
-    question_nl: Attribute.String
-    answer_en: Attribute.Text
-    answer_tr: Attribute.Text
-    answer_nl: Attribute.Text
+    title: Attribute.String
+    duration: Attribute.String
+    presenter: Attribute.String
   }
 }
 
@@ -71,9 +71,9 @@ export interface ContactContact extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'flow.flow': FlowFlow
-      'course.curriculum': CourseCurriculum
       'faq.faq': FaqFaq
+      'course.curriculum': CourseCurriculum
+      'flow.flow': FlowFlow
       'contact.contact': ContactContact
     }
   }

@@ -11,6 +11,7 @@ import { useUpdateModelMutation } from '@fc/services'
 import { ApprovalStatus, UploadFile } from '@fc/types'
 import { formatDate } from '@fc/utils'
 
+import { CourseAssignmentFileButton } from './CourseAssignmentFile'
 import { KeyValue } from '../../KeyValueView'
 import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
 
@@ -59,31 +60,6 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
     setIsOpen(false)
   }
 
-  const FileButton: FC<{ file: UploadFile }> = ({ file }) => {
-    const fileExtension = (file.name ?? '').split('.').pop()?.toLowerCase();
-    const fileName = file.name?.length > 20 ? `${file.name.slice(0, 17)}...` : file.name ?? 'unnamed';
-    const icon =
-      fileExtension === 'pdf'
-        ? <AiOutlineFilePdf />
-        : fileExtension === 'zip' || fileExtension === 'rar'
-          ? <AiOutlineFileZip />
-          : fileExtension === 'doc' || fileExtension === 'docx'
-            ? <AiOutlineFileWord />
-            : <FaFile />;
-
-    return (
-      <Button
-        as="a"
-        href={file.url}
-        target="_blank"
-        rel="noreferrer noopener"
-        leftIcon={icon}
-        title={file.name}
-      >
-        {fileName}
-      </Button>
-    );
-  };
 
   return (
     <Stack spacing={2} borderWidth={1} borderRadius={'lg'} p={4}>
@@ -91,7 +67,7 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
         {filesSent ? (
           <Wrap spacing={2}>
             {application?.submittedAssignmentFiles?.map(file => (
-              <FileButton key={file.name} file={file} />
+              <CourseAssignmentFileButton key={file.name} file={file} />
             ))}
           </Wrap>
         ) : (

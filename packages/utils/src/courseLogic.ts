@@ -38,6 +38,55 @@ export class CourseLogic {
     this.validApplicants = this.findValidApplicants()
   }
 
+  isRejected() {
+    return this.myApplication?.approvalStatus === 'rejected'
+  }
+
+
+  isAssignmentInProgress() {
+    // if course requireApproval is not set, return false
+    if (!this.course.requireApproval) return false
+
+    // if myApplication is approved, return false (which means assignment progress is done)
+    if (this.myApplication?.approvalStatus === 'approved') return false
+
+    return true
+  }
+
+  getEvaluationDate() {
+    const application = this.myApplication!
+    let evalDate;
+    if (application.lastUpdateDate) {
+      evalDate = addDays(application.lastUpdateDate, this.course.assignmentEvaluationTime ?? DEFAULT_ASSIGNMENT_EVALUATION_TIME)
+    }
+    else {
+      evalDate = addDays(application.createdAt,
+        (this.course.assignmentSubmissionDeadline ?? DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE) +
+        (this.course.assignmentEvaluationTime ?? DEFAULT_ASSIGNMENT_EVALUATION_TIME))
+    }
+
+    return endOfDay(evalDate)
+  }
+
+  haveSubmittedAssignmentFiles() {
+    if (!this.myApplication) return false
+
+    return !!this.myApplication.submittedAssignmentFiles &&
+      this.myApplication.submittedAssignmentFiles.length > 0
+  }
+
+  getDeadlineDate() {
+    const application = this.myApplication!
+    const applicationDate = application.createdAt;
+    const deadlineDate = addDays(applicationDate, this.course.assignmentSubmissionDeadline ?? DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE)
+
+    return endOfDay(deadlineDate)
+  }
+
+  shouldShowPaymentDetails() {
+    return !this.course.requireApproval || this.myApplication?.approvalStatus === 'approved';
+  }
+
   findValidApplicants() {
     return this.courseApplicants.filter(application => {
       // Step 0 - if application is not approved, return false
@@ -64,7 +113,7 @@ export class CourseLogic {
       const dueDate = addDays(
         application.createdAt,
         this.course.assignmentSubmissionDeadline ??
-          DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE,
+        DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE,
       )
       const endOfDueDate = endOfDay(dueDate)
 
@@ -79,17 +128,17 @@ export class CourseLogic {
     // Step 2 - check if applicant send files but didn't receive any approvement
     const dueEvalDate = application.lastUpdateDate
       ? addDays(
-          application.lastUpdateDate,
-          this.course.assignmentEvaluationTime ??
-            DEFAULT_ASSIGNMENT_EVALUATION_TIME,
-        )
+        application.lastUpdateDate,
+        this.course.assignmentEvaluationTime ??
+        DEFAULT_ASSIGNMENT_EVALUATION_TIME,
+      )
       : addDays(
-          application.createdAt,
-          (this.course.assignmentSubmissionDeadline ??
-            DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE) +
-            (this.course.assignmentEvaluationTime ??
-              DEFAULT_ASSIGNMENT_EVALUATION_TIME),
-        )
+        application.createdAt,
+        (this.course.assignmentSubmissionDeadline ??
+          DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE) +
+        (this.course.assignmentEvaluationTime ??
+          DEFAULT_ASSIGNMENT_EVALUATION_TIME),
+      )
 
     const endOfDueEvalDate = endOfDay(dueEvalDate)
 

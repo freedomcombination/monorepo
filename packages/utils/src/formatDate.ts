@@ -1,5 +1,5 @@
-import { format, formatRelative } from 'date-fns'
-import { enUS, tr, nl } from 'date-fns/locale'
+import { format } from 'date-fns'
+import { enUS, nl, tr } from 'date-fns/locale'
 import { Locale } from 'date-fns/types'
 
 import { StrapiLocale } from '@fc/types'
@@ -104,20 +104,21 @@ export const formatDateRelative = (
 
   const getTimeDifference = () => {
     for (const [unit, ms] of Object.entries(durations)) {
-      if (absDiff > ms || unit === 'second') {
+      if (absDiff > ms || unit === 'minute') {
         const value = Math.floor(absDiff / ms)
+
         return { value, unit }
       }
     }
-    return { value: 0, unit: 'second' }
+
+    return { value: 0, unit: 'minute' }
   }
 
   const { value, unit } = getTimeDifference()
 
-  if (unit === 'day' && value === 1) {
-    return diff > 0 ? lang.tomorrow : lang.yesterday
-  }
-
   const formattedTime = formatUnit(value, unit)
-  return `${diff} ${formattedTime} ${diff > 0 ? lang.later : lang.ago}`
+
+  return `${formattedTime} ${diff < 0 ? lang.later : lang.ago}`
 }
+
+console.log(formatDateRelative(new Date(2024, 7, 2, 0, 0, 0, 0)))
