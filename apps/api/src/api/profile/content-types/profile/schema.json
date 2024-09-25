@@ -188,7 +188,7 @@
     "address": {
       "displayName": "Address",
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "flow.address"
     }
   }
