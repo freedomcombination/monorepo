@@ -6,8 +6,8 @@ import {
   FormLabel,
   Stack,
 } from '@chakra-ui/react'
+import { Select } from 'chakra-react-select'
 import { useTranslation } from 'next-i18next'
-import Select from 'react-select'
 
 import { useCitiesOfCountry } from '@fc/services/city'
 import { useAllCountries } from '@fc/services/country'
