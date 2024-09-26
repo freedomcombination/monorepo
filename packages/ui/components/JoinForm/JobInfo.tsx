@@ -54,10 +54,7 @@ export const JobInfo = () => {
 
             {/* TODO: Allow users to read the content in modal as well */}
             <AccordionPanel>
-              <Box
-                maxH={filteredJobs?.length > 1 ? 300 : 500}
-                overflowY={'auto'}
-              >
+              <Box maxH={420} overflowY={'auto'}>
                 <BlocksRenderer content={jobInfo} />
               </Box>
             </AccordionPanel>

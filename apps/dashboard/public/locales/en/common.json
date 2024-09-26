@@ -162,6 +162,7 @@
   "editor": "Editor",
   "education-language": "Language",
   "email": "E-mail",
+  "email-exists": "Email already exists. Please contact us if you think this is a mistake.",
   "endDate": "End Date",
   "error": "Error",
   "event": "Event",

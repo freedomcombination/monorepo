@@ -71,11 +71,15 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
 
       mutate(body, {
         onError: errCode => {
-          toastMessage(
-            t('apply-form.error.title'),
-            errCode ? t(errCode as any) : t('apply-form.error.description'),
-            'error',
+          const errorMessage = errCode?.message?.includes(
+            'This attribute must be unique',
           )
+            ? t('email-exists')
+            : errCode
+              ? t(errCode as any)
+              : t('apply-form.error.description')
+
+          toastMessage(t('apply-form.error.title'), errorMessage, 'error')
         },
       })
     } catch (error) {
