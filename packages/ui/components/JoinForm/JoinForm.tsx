@@ -12,13 +12,14 @@ const JoinForm = () => {
 
   return (
     <Stack spacing={4} width={'100%'}>
-      <HStack justify={'space-between'}>
+      <HStack justify={'space-between'} pos={'sticky'} top={2} zIndex={1}>
         <Link
           lineHeight={1}
           href="/fc-vrijwilligersovereenkomst.pdf"
           download
           fontWeight={500}
           _hover={{ textDecoration: 'underline', color: 'primary.500' }}
+          isTruncated
         >
           <Button colorScheme="purple" leftIcon={<FaRegFilePdf />}>
             {t('download-volunteer-form')}
