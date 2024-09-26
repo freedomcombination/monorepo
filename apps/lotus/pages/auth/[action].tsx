@@ -5,15 +5,13 @@ import { GetServerSideProps } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import {
-  ForgotPasswordForm,
-  LoginForm,
-  ResetPasswordForm,
-  SignupForm,
-} from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { ForgotPasswordForm } from '@fc/ui/components/ForgotPasswordForm'
+import { LoginForm } from '@fc/ui/components/LoginForm'
+import { ResetPasswordForm } from '@fc/ui/components/ResetPasswordForm'
+import { SignupForm } from '@fc/ui/components/SignupForm'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 type LoginStates = 'login' | 'register' | 'forgot' | 'reset' | 'forgot-password'
 

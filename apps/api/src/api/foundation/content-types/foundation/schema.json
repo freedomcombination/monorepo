@@ -81,6 +81,15 @@
       "multiple": false,
       "required": false,
       "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "about_en": {
+      "type": "blocks"
+    },
+    "about_nl": {
+      "type": "blocks"
+    },
+    "about_tr": {
+      "type": "blocks"
     }
   }
 }

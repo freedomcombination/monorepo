@@ -1,4 +1,4 @@
-import { Blog } from '@fc/types'
+import type { Blog } from '@fc/types'
 import { factories } from '@strapi/strapi'
 import { errors } from '@strapi/utils'
 import { getProfile } from '../../../utils'

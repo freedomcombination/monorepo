@@ -1,4 +1,4 @@
-import { Site, StrapiLocale } from '@fc/types'
+import type { Site, StrapiLocale } from '@fc/types'
 import { Heading, Section, Text } from '@react-email/components'
 import React, { FC } from 'react'
 import { EmailProvider } from './EmailProvider'
