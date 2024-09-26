@@ -35,7 +35,10 @@ export const LocationForm = () => {
     typeof Select<Option>
   >['onChange'] = option => {
     if (option) {
-      setValue('country', option?.value)
+      setValue('country', option?.value, {
+        shouldValidate: true,
+        shouldDirty: true,
+      })
     }
   }
 
@@ -43,7 +46,10 @@ export const LocationForm = () => {
     typeof Select<Option>
   >['onChange'] = option => {
     if (selectedCountry && option) {
-      setValue('city', option?.value)
+      setValue('city', option?.value, {
+        shouldValidate: true,
+        shouldDirty: true,
+      })
     }
   }
 
