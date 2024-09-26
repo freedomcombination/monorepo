@@ -33,9 +33,7 @@ export type UseFormStepsReturn = {
   title: string
   description?: string
   component: JSX.Element
-  fields?: string[]
-  requiresConfirmation?: boolean
-  confirmationField?: string
+  fields?: Array<keyof JoinFormFieldValues>
 }
 
 export type JoinFormProviderProps = {

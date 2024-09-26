@@ -54,13 +54,17 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
 
   const onSubmit = (data: JoinFormFieldValues) => {
     try {
-      const { availableHours = 0 } = data
+      const { availableHours = 0, city, country } = data
 
       const heardFrom = data.heardFrom.join(', ')
       const jobs = data.jobs
 
       const body: ProfileCreateInput = {
         ...data,
+        address: {
+          city,
+          country,
+        },
         availableHours,
         heardFrom,
         jobs,

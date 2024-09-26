@@ -19,7 +19,7 @@ export const useFormSteps = ({
   const { t } = useTranslation()
   const { locale } = useRouter()
 
-  const steps = useMemo(() => {
+  const steps = useMemo<UseFormStepsReturn[]>(() => {
     return [
       {
         title: t('welcome'),
@@ -28,10 +28,9 @@ export const useFormSteps = ({
       {
         title: t('foundation'),
         component: <FoundationInfo />,
-        requiresConfirmation: true,
-        confirmationField: 'foundationConfirmation',
+        fields: ['foundationConfirmation'],
       },
-      ...(defaultJobs?.length === 0
+      ...((defaultJobs?.length === 0
         ? [
             {
               title: t('jobs'),
@@ -39,17 +38,16 @@ export const useFormSteps = ({
               fields: ['jobs'],
             },
           ]
-        : []),
-      ...(selectedJobs?.some(job => job[`info_${locale}`])
+        : []) as UseFormStepsReturn[]),
+      ...((selectedJobs?.some(job => job[`info_${locale}`])
         ? [
             {
               title: t('jobs-info'),
               component: <JobInfo />,
-              requiresConfirmation: true,
-              confirmationField: 'jobInfoConfirmation',
-            },
+              fields: ['jobInfoConfirmation'],
+            } as UseFormStepsReturn,
           ]
-        : []),
+        : []) as UseFormStepsReturn[]),
       {
         title: t('personal-info'),
         component: <PersonalInfo />,
@@ -58,9 +56,9 @@ export const useFormSteps = ({
           'email',
           'phone',
           'availableHours',
-          'age',
-          'adress.country',
-          'adress.city',
+          'birthDate',
+          'country',
+          'city',
         ],
       },
       {

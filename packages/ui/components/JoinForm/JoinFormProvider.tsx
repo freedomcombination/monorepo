@@ -45,7 +45,7 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
     updateErrorFields()
   }, [locale])
 
-  const joinFormSchema = useJoinFormSchema()
+  const joinFormSchema = useJoinFormSchema(jobs)
 
   const form = useForm<JoinFormFieldValues>({
     resolver: yupResolver(joinFormSchema),
@@ -53,8 +53,9 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
     defaultValues: {
       jobs: defaultJobs.map(String),
       name: '',
-      birthDate: undefined,
-      address: { country: '', city: '', street: '', postcode: '' },
+      birthDate: '',
+      country: '',
+      city: '',
       email: '',
       phone: '',
       comment: '',
@@ -70,7 +71,6 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
 
   const {
     watch,
-    setValue,
     trigger,
     handleSubmit,
     clearErrors,
@@ -113,22 +113,6 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
       (steps[activeStep]?.fields as (keyof JoinFormFieldValues)[]) || []
 
     const isStepValid = await trigger(currentStepFields)
-
-    const confirmationField = steps[activeStep]
-      ?.confirmationField as keyof JoinFormFieldValues
-    const requiresConfirmation = steps[activeStep]?.requiresConfirmation
-
-    if (requiresConfirmation && confirmationField) {
-      const isConfirmed = watch(confirmationField)
-
-      if (!isConfirmed && confirmationField) {
-        setValue(confirmationField, false, {
-          shouldValidate: true,
-        })
-
-        return
-      }
-    }
 
     if (!isStepValid) {
       return
