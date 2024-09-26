@@ -1,6 +1,7 @@
-import { FC } from 'react'
+import { FC, ReactElement } from 'react'
 
 import {
+  Box,
   Heading,
   ListItem,
   OrderedList,
@@ -26,53 +27,67 @@ export const BlocksRenderer: FC<BlocksRendererProps> = ({ content }) => {
       content={content}
       blocks={{
         // You can use the default components to set class names...
-        paragraph: ({ children }) => (
-          <Text mb={2} _last={{ mb: 0 }}>
-            {children}
-          </Text>
-        ),
+        paragraph: ({ children }) => {
+          const isCode = (children as ReactElement[])?.[0]?.props?.code
+
+          if (isCode) {
+            return (
+              <Box
+                dangerouslySetInnerHTML={{
+                  __html: (children as ReactElement[])?.[0]?.props?.text,
+                }}
+              />
+            )
+          }
+
+          return (
+            <Text mb={2} _last={{ mb: 0 }}>
+              {children}
+            </Text>
+          )
+        },
         // ...or point to a design system
         heading: ({ children, level }) => {
           switch (level) {
             case 1:
               return (
-                <Heading size={'xl'} as="h1">
+                <Heading size={'xl'} as="h1" mb={5}>
                   {children}
                 </Heading>
               )
             case 2:
               return (
-                <Heading size={'lg'} as="h2">
+                <Heading size={'lg'} as="h2" mb={4}>
                   {children}
                 </Heading>
               )
             case 3:
               return (
-                <Heading size={'md'} as="h3">
+                <Heading size={'md'} as="h3" mb={3}>
                   {children}
                 </Heading>
               )
             case 4:
               return (
-                <Heading size={'md'} as="h4">
+                <Heading size={'md'} as="h4" mb={2}>
                   {children}
                 </Heading>
               )
             case 5:
               return (
-                <Heading size={'md'} as="h5">
+                <Heading size={'md'} as="h5" mb={2}>
                   {children}
                 </Heading>
               )
             case 6:
               return (
-                <Heading size={'md'} as="h6">
+                <Heading size={'md'} as="h6" mb={2}>
                   {children}
                 </Heading>
               )
             default:
               return (
-                <Heading size={'md'} as="h1">
+                <Heading size={'md'} as="h1" mb={5}>
                   {children}
                 </Heading>
               )
