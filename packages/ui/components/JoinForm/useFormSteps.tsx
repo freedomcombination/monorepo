@@ -58,7 +58,7 @@ export const useFormSteps = ({
           'email',
           'phone',
           'availableHours',
-          'age',
+          'birthDate',
           'adress.country',
           'adress.city',
         ],

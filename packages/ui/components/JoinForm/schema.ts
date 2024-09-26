@@ -1,10 +1,13 @@
-import { addYears } from 'date-fns'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import * as yup from 'yup'
+
+import { Job } from '@fc/types'
 import 'yup-phone-lite'
 
-export const useJoinFormSchema = () => {
+export const useJoinFormSchema = (jobs: Job[]) => {
   const { t } = useTranslation()
+  const { locale } = useRouter()
 
   yup.addMethod(
     yup.object,
@@ -27,11 +30,7 @@ export const useJoinFormSchema = () => {
       .min(3)
       .matches(/^[a-zA-Z\s]+$/, 'Only alphabetic characters allowed')
       .required(),
-    birthDate: yup
-      .date()
-      .required()
-      .min(addYears(new Date(), -70))
-      .max(addYears(new Date(), -4)),
+    birthDate: yup.string().required(),
     address: yup
       .object()
       .shape({
@@ -63,6 +62,20 @@ export const useJoinFormSchema = () => {
       .boolean()
       .oneOf([true], t('read-and-accept-required'))
       .required(),
-    jobInfoConfirmation: yup.boolean(),
+    // Make it required only if the jobs props contains selected jobs and it has info_${locale} field
+    jobInfoConfirmation: yup
+      .boolean()
+      .test(
+        'job-info-confirmation',
+        t('read-and-accept-required'),
+        function test(value) {
+          const selectedJobs = jobs.filter(job =>
+            this.parent.jobs?.includes(`${job.id}`),
+          )
+          const hasInfo = selectedJobs.some(job => job[`info_${locale}`])
+
+          return !hasInfo || value
+        },
+      ),
   })
 }

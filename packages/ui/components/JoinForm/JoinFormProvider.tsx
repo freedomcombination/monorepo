@@ -45,7 +45,7 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
     updateErrorFields()
   }, [locale])
 
-  const joinFormSchema = useJoinFormSchema()
+  const joinFormSchema = useJoinFormSchema(jobs)
 
   const form = useForm<JoinFormFieldValues>({
     resolver: yupResolver(joinFormSchema),
@@ -53,7 +53,7 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
     defaultValues: {
       jobs: defaultJobs.map(String),
       name: '',
-      birthDate: undefined,
+      birthDate: '',
       address: { country: '', city: '', street: '', postcode: '' },
       email: '',
       phone: '',
