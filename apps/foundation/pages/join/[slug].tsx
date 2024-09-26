@@ -4,6 +4,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
+import { getModelStaticPaths } from '@fc/services/common/getModelStaticPaths'
 import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Foundation, Job, StrapiLocale } from '@fc/types'
@@ -36,21 +37,12 @@ const JoinPage: FC<JoinPageProps> = ({ foundationInfo, jobs, defaultJobs }) => {
 }
 
 export const getStaticPaths = async () => {
-  const jobResponse = await strapiRequest<Job>({
-    endpoint: 'jobs',
-    pageSize: 100,
-  })
-
-  const jobSlugs = jobResponse.data?.map(job => job.slug) || []
-
-  return {
-    paths: jobSlugs.map(slug => ({ params: { slug } })),
-    fallback: false,
-  }
+  return await getModelStaticPaths('jobs')
 }
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const locale = context.locale as StrapiLocale
+  const slug = context.params?.['slug'] as string
 
   const foundationResponse = await strapiRequest<Foundation>({
     endpoint: 'foundations',
@@ -65,14 +57,13 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   })
 
   const jobs = jobsResponse.data || []
-  const defaultJobs = jobs
-    .filter(job => job.slug === context.params?.slug)
-    .map(job => job.id)
+  const defaultJobs = jobs.filter(job => job.slug === slug).map(job => job.id)
 
   return {
     props: {
       ...(await ssrTranslations(locale)),
       foundationInfo,
+      slugs: { en: slug, nl: slug, tr: slug },
       defaultJobs,
       jobs,
     },
