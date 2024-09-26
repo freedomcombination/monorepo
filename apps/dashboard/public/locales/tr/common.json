@@ -162,6 +162,7 @@
   "editor": "Editör",
   "education-language": "Eğitim Dili",
   "email": "E-posta",
+  "email-exists": "E-posta zaten mevcut. Bunun bir hata olduğunu düşünüyorsanız lütfen bizimle iletişime geçin.",
   "endDate": "Bitiş Tarihi",
   "error": "Hata",
   "event": "Etkinlik",

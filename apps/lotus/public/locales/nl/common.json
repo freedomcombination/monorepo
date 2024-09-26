@@ -162,6 +162,7 @@
   "editor": "Redacteur",
   "education-language": "Onderwijs taal",
   "email": "E-mail",
+  "email-exists": "E-mail bestaat al. Als je denkt dat dit een fout is, neem dan contact met ons op.",
   "endDate": "Einddatum",
   "error": "Fout",
   "event": "Evenement",
