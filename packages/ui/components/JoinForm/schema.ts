@@ -9,21 +9,6 @@ export const useJoinFormSchema = (jobs: Job[]) => {
   const { t } = useTranslation()
   const { locale } = useRouter()
 
-  yup.addMethod(
-    yup.object,
-    'atLeastOneRequired',
-    function (list: Array<any>, message) {
-      return this.test({
-        name: 'atLeastOneRequired',
-        message,
-        exclusive: true,
-        params: { keys: list.join(', ') },
-        test: value =>
-          value == null || list.some(f => !!value[`${f.id}_${f.slug}`]),
-      })
-    },
-  )
-
   return yup.object().shape({
     name: yup
       .string()
@@ -48,7 +33,7 @@ export const useJoinFormSchema = (jobs: Job[]) => {
     inMailingList: yup.boolean(),
     isPublic: yup.boolean(),
     availableHours: yup.number().min(1).max(40).required(),
-    heardFrom: yup.array().required().min(1),
+    heardFrom: yup.array(),
     jobs: yup.array().required().min(1),
     cv: yup.mixed(),
     foundationConfirmation: yup
