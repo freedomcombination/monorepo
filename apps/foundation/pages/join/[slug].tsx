@@ -14,7 +14,11 @@ import { Layout } from '../../components'
 
 type JoinPageProps = InferGetStaticPropsType<typeof getStaticProps>
 
-const JoinPage: FC<JoinPageProps> = ({ foundationInfo, jobs, defaultJobs }) => {
+const JoinPage: FC<JoinPageProps> = ({
+  foundationInfo,
+  jobs = [],
+  defaultJobs = [],
+}) => {
   const { t } = useTranslation()
   const { locale } = useRouter()
 
