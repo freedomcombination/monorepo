@@ -54,7 +54,8 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
       jobs: defaultJobs.map(String),
       name: '',
       birthDate: '',
-      address: { country: '', city: '', street: '', postcode: '' },
+      country: '',
+      city: '',
       email: '',
       phone: '',
       comment: '',
@@ -70,7 +71,6 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
 
   const {
     watch,
-    setValue,
     trigger,
     handleSubmit,
     clearErrors,
@@ -113,22 +113,6 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
       (steps[activeStep]?.fields as (keyof JoinFormFieldValues)[]) || []
 
     const isStepValid = await trigger(currentStepFields)
-
-    const confirmationField = steps[activeStep]
-      ?.confirmationField as keyof JoinFormFieldValues
-    const requiresConfirmation = steps[activeStep]?.requiresConfirmation
-
-    if (requiresConfirmation && confirmationField) {
-      const isConfirmed = watch(confirmationField)
-
-      if (!isConfirmed && confirmationField) {
-        setValue(confirmationField, false, {
-          shouldValidate: true,
-        })
-
-        return
-      }
-    }
 
     if (!isStepValid) {
       return

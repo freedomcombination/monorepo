@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ComponentProps } from 'react'
 
 import {
   FormControl,
@@ -16,30 +16,45 @@ import { Option } from './types'
 import { useJoinFormContext } from './useJoinFormContext'
 
 export const LocationForm = () => {
-  const [selectedCountry, setSelectedCountry] = useState<Option | null>(null)
-  const { setValue } = useJoinFormContext()
+  const {
+    setValue,
+    watch,
+    formState: { errors },
+  } = useJoinFormContext()
   const { t } = useTranslation()
 
+  const selectedCountry = watch('country')
+
   const countriesQuery = useAllCountries()
-  const citiesQuery = useCitiesOfCountry(selectedCountry?.value)
+  const citiesQuery = useCitiesOfCountry(selectedCountry)
 
   const countries = countriesQuery.data || []
   const cities = citiesQuery.data || []
 
-  const handleCitiesChange = (option: Option) => {
-    if (selectedCountry) {
-      setValue('address', {
-        country: selectedCountry?.value,
-        city: option?.value,
-      })
+  const handleCountryChange: ComponentProps<
+    typeof Select<Option>
+  >['onChange'] = option => {
+    if (option) {
+      setValue('country', option?.value)
+    }
+  }
+
+  const handleCityChange: ComponentProps<
+    typeof Select<Option>
+  >['onChange'] = option => {
+    if (selectedCountry && option) {
+      setValue('city', option?.value)
     }
   }
 
   return (
     <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-      <FormControl isInvalid={countriesQuery.isError}>
+      <FormControl
+        isInvalid={countriesQuery.isError || !!errors?.country?.message}
+        isRequired
+      >
         <FormLabel
-          mb={0}
+          mb={2}
           fontSize="sm"
           fontWeight={600}
           textTransform={'capitalize'}
@@ -49,16 +64,20 @@ export const LocationForm = () => {
         <Select
           placeholder={t('select-country')}
           options={countries}
-          onChange={option => setSelectedCountry(option as Option)}
+          onChange={handleCountryChange}
         />
         <FormErrorMessage>
-          {countriesQuery.error && 'An error occured'}
+          {errors?.country?.message ||
+            (countriesQuery.error && 'An error occured')}
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={citiesQuery.isError}>
+      <FormControl
+        isInvalid={citiesQuery.isError || !!errors?.city?.message}
+        isRequired
+      >
         <FormLabel
-          mb={0}
+          mb={2}
           fontSize="sm"
           fontWeight={600}
           textTransform={'capitalize'}
@@ -69,10 +88,10 @@ export const LocationForm = () => {
           isDisabled={!selectedCountry}
           placeholder={t('select-city')}
           options={cities}
-          onChange={option => handleCitiesChange(option as Option)}
+          onChange={handleCityChange}
         />
         <FormErrorMessage>
-          {citiesQuery.error && 'An error occured'}
+          {errors?.city?.message || (citiesQuery.error && 'An error occured')}
         </FormErrorMessage>
       </FormControl>
     </Stack>

@@ -49,6 +49,12 @@ export type ProfileBase = {
 }
 
 type ProfileRelation = {
+  address?: {
+    city?: string | null
+    country?: string | null
+    address?: string | null
+    postcode?: string | null
+  }
   applicant?: Applicant | null
   avatar?: UploadFile | null
   comments?: Array<Comment>
@@ -70,6 +76,12 @@ type ProfileRelation = {
 }
 
 type ProfileRelationInput = {
+  address?: {
+    city?: string
+    country?: string
+    address?: string
+    postcode?: string
+  }
   applicant?: number
   avatar?: File
   comments?: Array<number>

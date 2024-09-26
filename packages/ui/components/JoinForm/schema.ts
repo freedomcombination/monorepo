@@ -31,15 +31,8 @@ export const useJoinFormSchema = (jobs: Job[]) => {
       .matches(/^[a-zA-Z\s]+$/, 'Only alphabetic characters allowed')
       .required(),
     birthDate: yup.string().required(),
-    address: yup
-      .object()
-      .shape({
-        country: yup.string().required('Country is required'),
-        city: yup.string().required('City is required'),
-        street: yup.string(),
-        postcode: yup.string(),
-      })
-      .required(),
+    country: yup.string().required(),
+    city: yup.string().required(),
     email: yup.string().email().required(),
     phone: yup
       .string()
@@ -74,7 +67,7 @@ export const useJoinFormSchema = (jobs: Job[]) => {
           )
           const hasInfo = selectedJobs.some(job => job[`info_${locale}`])
 
-          return !hasInfo || value
+          return !hasInfo || !!value
         },
       ),
   })
