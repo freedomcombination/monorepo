@@ -56,7 +56,7 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
     try {
       const { availableHours = 0, city, country } = data
 
-      const heardFrom = data.heardFrom.join(', ')
+      const heardFrom = data.heardFrom?.join(', ')
       const jobs = data.jobs
 
       const body: ProfileCreateInput = {
