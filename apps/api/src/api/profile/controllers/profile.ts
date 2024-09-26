@@ -3,7 +3,7 @@ import { factories } from '@strapi/strapi'
 
 import { getProfile, checkAdmin, checkOwner, checkRoles } from '../../../utils'
 import utils from '@strapi/utils'
-const { ApplicationError } = utils.errors
+const { ValidationError } = utils.errors
 
 // import { checkRecaptcha, getProfile } from '../../../utils'
 import { errors } from '@strapi/utils'
@@ -76,7 +76,7 @@ export default factories.createCoreController('api::profile.profile', () => {
         .findOne({ where: { email: { $eq: email } } })
 
       if (profile && !isRegistering) {
-        throw new ApplicationError('Profile already exists', {
+        throw new ValidationError('Profile already exists', {
           i18nKey: 'strapi.error.create-profile.profile-already-exist',
         })
       }

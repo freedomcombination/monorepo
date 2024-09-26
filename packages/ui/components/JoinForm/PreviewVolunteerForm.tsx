@@ -85,16 +85,11 @@ export const PreviewVolunteerForm = () => {
                   value={selectedJobs.map(job => job[`name_${locale}`])}
                 />
                 <FieldBox field="cv" value={formData.cv?.name} />
-                {Object.entries(
-                  omit(formData, [
-                    'jobs',
-                    'cv',
-                    'foundationConfirmation',
-                    'jobInfoConfirmation',
-                  ]),
-                ).map(([key, value]) => (
-                  <FieldBox field={key} key={key} value={value} />
-                ))}
+                {Object.entries(omit(formData, ['jobs', 'cv'])).map(
+                  ([key, value]) => (
+                    <FieldBox field={key} key={key} value={value} />
+                  ),
+                )}
               </Tbody>
             </Table>
           </ModalBody>
