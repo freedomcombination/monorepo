@@ -51,7 +51,7 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
     resolver: yupResolver(joinFormSchema),
     mode: 'onBlur',
     defaultValues: {
-      jobs: defaultJobs,
+      jobs: defaultJobs.map(String),
       name: '',
       birthDate: undefined,
       address: { country: '', city: '', street: '', postcode: '' },

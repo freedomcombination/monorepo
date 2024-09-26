@@ -8,7 +8,7 @@ import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Foundation, Job, StrapiLocale } from '@fc/types'
 import { JoinTemplate } from '@fc/ui/components/JoinForm/JoinTemplate'
 
-import { Layout } from '../components'
+import { Layout } from '../../components'
 
 type JoinPageProps = InferGetStaticPropsType<typeof getStaticProps>
 
