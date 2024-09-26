@@ -33,7 +33,6 @@ export const useJoinFormSchema = (jobs: Job[]) => {
     inMailingList: yup.boolean(),
     isPublic: yup.boolean(),
     availableHours: yup.number().min(1).max(40).required(),
-    heardFrom: yup.array(),
     jobs: yup.array().required().min(1),
     cv: yup.mixed(),
     foundationConfirmation: yup
