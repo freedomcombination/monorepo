@@ -30,15 +30,9 @@ export const useJoinFormSchema = (jobs: Job[]) => {
         },
       ),
     comment: yup.string(),
-    inMailingList: yup.boolean(),
-    isPublic: yup.boolean(),
     availableHours: yup.number().min(1).max(40).required(),
     jobs: yup.array().required().min(1),
     cv: yup.mixed(),
-    foundationConfirmation: yup
-      .boolean()
-      .oneOf([true], t('read-and-accept-required'))
-      .required(),
     // Make it required only if the jobs props contains selected jobs and it has info_${locale} field
     jobInfoConfirmation: yup
       .boolean()

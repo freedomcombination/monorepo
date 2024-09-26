@@ -59,11 +59,8 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
       email: '',
       phone: '',
       comment: '',
-      inMailingList: false,
-      isPublic: false,
       availableHours: 0,
       cv: undefined,
-      foundationConfirmation: false,
       jobInfoConfirmation: false,
     },
   })

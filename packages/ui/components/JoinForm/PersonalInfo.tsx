@@ -1,6 +1,5 @@
 import { Stack } from '@chakra-ui/react'
 
-import { GeneralInfo } from './GeneralInfo'
 import { LocationForm } from './LocationForm'
 import { PhoneForm } from './PhoneForm'
 import { useJoinFormContext } from './useJoinFormContext'
@@ -53,7 +52,6 @@ export const PersonalInfo = () => {
       </Stack>
 
       <LocationForm />
-      <GeneralInfo />
     </>
   )
 }

@@ -125,7 +125,6 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
         ) : (
           <>
             <PageTitle>{title}</PageTitle>
-
             <JoinForm />
           </>
         )}

@@ -28,7 +28,6 @@ export const useFormSteps = ({
       {
         title: t('foundation'),
         component: <FoundationInfo />,
-        fields: ['foundationConfirmation'],
       },
       ...((defaultJobs?.length === 0
         ? [
