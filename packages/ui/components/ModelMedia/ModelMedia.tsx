@@ -78,6 +78,9 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
 
   const renderMedia = () => {
     if (isChangingMedia || (isEditing && !media)) {
+      console.log('name is', name)
+      console.log('key is', key)
+
       return (
         <Stack>
           {media && <Button onClick={toggleChangingMedia}>Cancel</Button>}

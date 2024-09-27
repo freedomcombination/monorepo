@@ -10,6 +10,9 @@ export const useFoundationsSchema = () => {
     bank2: yup.string(),
     iban2: yup.string(),
     email: yup.string().email().required(),
+    about_tr: yup.object().required(),
+    about_nl: yup.object().required(),
+    about_en: yup.object().required(),
     // TODO
     // contact: yup.string().required(),
   })
@@ -22,5 +25,20 @@ export const foundationFields: FormFields<Foundation> = [
   { name: 'bank2' },
   { name: 'IBAN2' },
   { name: 'email', isRequired: true },
-  // { name: 'contact', isRequired: true },
+  {
+    name: 'about_tr',
+    isRequired: true,
+    type: 'block',
+  },
+  {
+    name: 'about_en',
+    isRequired: true,
+    type: 'block',
+  },
+
+  {
+    name: 'about_nl',
+    isRequired: true,
+    type: 'block',
+  },
 ]

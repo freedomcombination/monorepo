@@ -64,6 +64,7 @@ import { useDefaultValues } from '../../hooks/useDefaultValues'
 import { ActionButton } from '../ActionButton'
 import { ActionStack } from '../ActionStack'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
+import { BlockFormItem } from '../BlockFormItem/BlockFormItem'
 import { DownloadCapsModal } from '../DownloadCapsModal'
 import { FormItem } from '../FormItem'
 import { MasonryGrid } from '../MasonryGrid'
@@ -432,6 +433,26 @@ export const ModelEditForm = <T extends StrapiModel>({
                   />
                 )
               }
+              if (field.type === 'block') {
+                return (
+                  <Box key={index} maxH={550} overflowY={'auto'}>
+                    <BlockFormItem
+                      name={field.name as string}
+                      isDisabled={field.blockEdit || !isEditing}
+                      isRequired={field.isRequired}
+                      errors={errors}
+                      control={control}
+                      _disabled={disabledStyle}
+                      helperText={
+                        (isEditing &&
+                          field.blockEdit &&
+                          'Blocked from editing') ||
+                        undefined
+                      }
+                    />
+                  </Box>
+                )
+              }
 
               if (field.type === 'markdown') {
                 return (
@@ -453,7 +474,6 @@ export const ModelEditForm = <T extends StrapiModel>({
                   </Box>
                 )
               }
-
               const inputType =
                 field.type === 'date'
                   ? 'date'
