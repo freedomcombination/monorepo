@@ -15,6 +15,7 @@ import { Job } from '@fc/types'
 import { useJoinFormContext } from './useJoinFormContext'
 
 export const SelectJobs = () => {
+  // const { t } = useTranslation()
   const { locale } = useRouter()
 
   const {
@@ -31,7 +32,6 @@ export const SelectJobs = () => {
     .reduce(
       (acc, job) => {
         if (job.platform === null) return acc
-
         const platformName = job.platform?.[`name_${locale}`] as string
 
         if (!acc[platformName]) {
@@ -47,6 +47,8 @@ export const SelectJobs = () => {
 
   return (
     <Stack gap={4}>
+      {/* {t('jobs')} */}
+
       <SimpleGrid
         gap={8}
         columns={{ sm: 2, md: 3 }}
@@ -63,7 +65,6 @@ export const SelectJobs = () => {
             {foundationJobs?.map(job => (
               <HStack key={job.id} align={'center'}>
                 <Checkbox
-                  key={job.id}
                   id={job.id.toString()}
                   {...register(`jobs`)}
                   value={job.id}
@@ -91,21 +92,37 @@ export const SelectJobs = () => {
           </Stack>
         )}
 
-        {Object.keys(platformJobs)?.map((platform, i) => (
+        {Object.keys(platformJobs).map((platform, i) => (
           <Stack key={i}>
             <Text fontWeight={600} fontSize="sm">
               {platform}
             </Text>
             {platformJobs[platform]?.map(job => (
-              <Checkbox
-                key={job.id}
-                id={job.id.toString()}
-                {...register(`jobs`)}
-                value={job.id}
-                textTransform={'capitalize'}
-              >
-                {job[`name_${locale}`]}
-              </Checkbox>
+              <HStack key={job.id} align={'center'}>
+                <Checkbox
+                  id={job.id.toString()}
+                  {...register(`jobs`)}
+                  value={job.id}
+                  textTransform={'capitalize'}
+                >
+                  {job[`name_${locale}`]}
+                </Checkbox>
+                {job[`description_${locale}`] && (
+                  <Tooltip
+                    placement="top-end"
+                    bg={'white'}
+                    color={'initial'}
+                    borderWidth={1}
+                    rounded={'md'}
+                    label={job[`description_${locale}`] as string}
+                    aria-label={job[`description_${locale}`] as string}
+                  >
+                    <Box>
+                      <FaCircleInfo />
+                    </Box>
+                  </Tooltip>
+                )}
+              </HStack>
             ))}
           </Stack>
         ))}
