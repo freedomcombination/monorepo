@@ -42,7 +42,7 @@ export const useChangeParams = () => {
     return produce(query, draft => {
       for (const key in args) {
         const param = args[key]
-        
+
         if (isEmpty(param)) {
           delete draft[key]
         }
@@ -57,11 +57,12 @@ export const useChangeParams = () => {
       const sanitizedQuery = sanitizeQuery(query, args)
       const sanitizedArgs = sanitizeArgs(args)
 
-      const newArgs = {...sanitizedArgs}
-      
+      const newArgs = { ...sanitizedArgs }
+
       // if there is any new parameters delete page parameter
-      const shouldResetPage = Object.keys(newArgs).some(key => key !== 'page') && !('page' in newArgs)
-      
+      const shouldResetPage =
+        Object.keys(newArgs).some(key => key !== 'page') && !('page' in newArgs)
+
       if (shouldResetPage) {
         delete newArgs.page
       }
@@ -71,7 +72,7 @@ export const useChangeParams = () => {
       if (isEqual(query, newQuery)) {
         return
       }
-      
+
       push({ query: newQuery })
     },
     [query, push],
