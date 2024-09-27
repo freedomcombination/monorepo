@@ -63,7 +63,7 @@ export const useChangeParams = () => {
       const shouldResetPage = Object.keys(newArgs).some(key => key !== 'page') && !('page' in newArgs)
       
       if (shouldResetPage) {
-        newArgs.page = 1
+        delete newArgs.page
       }
 
       const newQuery = { ...sanitizedQuery, ...newArgs }
