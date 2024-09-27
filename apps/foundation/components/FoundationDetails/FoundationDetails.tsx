@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
-import { Foundation } from '@fc/types'
+import type { Foundation } from '@fc/types'
 
 import { FoundationDetailItem } from './FoundationDetailItem'
 

@@ -2,13 +2,16 @@ import { FC } from 'react'
 
 import { GetStaticPropsContext } from 'next'
 
-import { getModelStaticPaths } from '@fc/services'
-import { getPlatformStaticProps } from '@fc/services/src/platform/getStaticProps'
+import { getModelStaticPaths } from '@fc/services/common/getModelStaticPaths'
+import { getPlatformStaticProps } from '@fc/services/platform/getPlatformStaticProps'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { PlatformTemplate, PlatformTemplateProps } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import {
+  PlatformTemplate,
+  PlatformTemplateProps,
+} from '@fc/ui/components/PlatformTemplate'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 const PlatformDetailPage: FC<PlatformTemplateProps> = ({
   seo,

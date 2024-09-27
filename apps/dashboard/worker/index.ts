@@ -1,1 +1,1 @@
-import '@fc/services/src/worker'
+import '@fc/services/worker'

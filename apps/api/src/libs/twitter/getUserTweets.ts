@@ -1,6 +1,6 @@
 import { UserV2 } from 'twitter-api-v2'
 
-import { Tweet } from '@fc/types'
+import type { Tweet } from '@fc/types'
 
 import { getTwitterClient } from './client'
 import { mapTweetResponseToTweet } from '../../utils'

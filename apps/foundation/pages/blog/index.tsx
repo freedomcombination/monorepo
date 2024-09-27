@@ -3,16 +3,16 @@ import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { getSession } from '@fc/secrets'
-import { getBlogs, useGetBlogs } from '@fc/services'
+import { getBlogs, useBlogs } from '@fc/services/blog/getBlogs'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { BlogTemplate } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { BlogTemplate } from '@fc/ui/components/BlogTemplate'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 // TODO: Implement author filter
 const Blogs = () => {
-  const { data: blogs = [] } = useGetBlogs()
+  const { data: blogs = [] } = useBlogs()
 
   const { t } = useTranslation()
 

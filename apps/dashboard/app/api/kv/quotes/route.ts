@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { quotesEdgeHandler } from '@fc/services/src/api/quotesEdgeHandler'
+import { quotesEdgeHandler } from '@fc/services/api/quotesEdgeHandler'
 
 export const runtime = 'edge'
 

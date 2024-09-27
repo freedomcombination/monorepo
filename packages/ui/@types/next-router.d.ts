@@ -3,7 +3,7 @@ import { NextRouter } from 'next/router'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { NextSeoProps } from 'next-seo'
 
-import { Localize, StrapiLocale } from '@fc/types'
+import type { Localize, StrapiLocale } from '@fc/types'
 
 export interface RouterComponent {
   locale: StrapiLocale

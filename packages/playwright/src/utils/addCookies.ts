@@ -2,7 +2,7 @@ import { BrowserContext } from '@playwright/test'
 
 import { CookieKey, Site } from '@fc/types'
 
-import { getUrl } from '.'
+import { getUrl } from './getUrl'
 
 export const addCookies = async (context: BrowserContext, site: Site) => {
   const url = getUrl(site)

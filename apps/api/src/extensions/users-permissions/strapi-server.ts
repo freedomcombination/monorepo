@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 import utils from '@strapi/utils'
-import { Site, StrapiLocale } from '@fc/types'
+import type { Site, StrapiLocale } from '@fc/types'
 import { emailTemplates } from '../../../emails'
 
 const { sanitize } = utils
