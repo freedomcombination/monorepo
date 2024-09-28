@@ -1,7 +1,18 @@
 import { addDays, endOfDay, isPast } from 'date-fns'
 import { addMonths } from 'date-fns/addMonths'
 
-import { Course, CourseApplication, CoursePayment, Profile } from '@fc/types'
+import { ALLOW_COURSE_PAYMENT } from '@fc/config/constants'
+import {
+  Course,
+  CourseApplication,
+  CoursePayment,
+  Profile,
+  StrapiLocale,
+} from '@fc/types'
+
+import { formatDate } from './formatDate'
+import { formatPrice } from './formatPrice'
+import { I18nNamespaces } from '../ui/@types/i18next'
 
 interface Installment {
   date: Date
@@ -22,6 +33,10 @@ export class CourseLogic {
   profile: Profile | null
   myApplication: CourseApplication | undefined
   myInstallments: Installment[]
+  allUnPaidInstallments: Installment[]
+  dueUnPaidInstallments: Installment[]
+  paidInstallments: Installment[]
+  unPaidInstallments: Installment[]
 
   constructor(
     course: Course,
@@ -35,11 +50,60 @@ export class CourseLogic {
       application => application.profile?.id === this.profile?.id,
     )
     this.myInstallments = this.calculateInstallments()
+    this.paidInstallments = this.myInstallments.filter(i => !!i.payment)
+    this.allUnPaidInstallments = this.myInstallments.filter(i => !i.payment)
+    this.dueUnPaidInstallments = this.allUnPaidInstallments.filter(i =>
+      isPast(addDays(i.date, 7)),
+    )
+    this.unPaidInstallments = this.allUnPaidInstallments.filter(
+      i =>
+        !this.dueUnPaidInstallments.some(
+          due => due.installmentNumber === i.installmentNumber,
+        ),
+    )
     this.validApplicants = this.findValidApplicants()
   }
 
-  isRejected() {
-    return this.myApplication?.approvalStatus === 'rejected'
+  isRejected(): false | keyof I18nNamespaces['common'] {
+    // if admin sets approvalStatus to 'rejected', it's rejected
+    if (this.myApplication?.approvalStatus === 'rejected')
+      return 'course.application.reject.reason.by-admin'
+
+    // if course requireApproval is not set, don't look further
+    if (!this.isAssignmentInProgress()) return false
+
+    // if applicant missed the deadline, it's rejected
+    if (this.isSubmitFilesDeadlinePassed())
+      return 'course.application.reject.reason.deadline'
+
+    // if admin somehow didn't take an action, it's rejected
+    if (this.isEvaluationDeadlinePassed())
+      return 'course.application.reject.reason.evaluation'
+
+    // otherwise, it's on progress
+    return false
+  }
+
+  isSubmitFilesDeadlinePassed() {
+    // if course requireApproval is not set, don't look further
+    if (!this.course.requireApproval) return false
+
+    // if applicant already submitted files, don't look further
+    if (this.haveSubmittedAssignmentFiles()) return false
+
+    // applicant hasn't submitted files then check the date.
+    return isPast(this.getDeadlineDate())
+  }
+
+  isEvaluationDeadlinePassed() {
+    // if course requireApproval is not set, don't look further
+    if (!this.course.requireApproval) return false
+
+    // if submittal deadline passed, no need to check evaluation deadline
+    if (this.isSubmitFilesDeadlinePassed()) return true
+
+    // admins haven't decide yet. check the date.
+    return isPast(this.getEvaluationDate())
   }
 
   isAssignmentInProgress() {
@@ -54,22 +118,30 @@ export class CourseLogic {
 
   getEvaluationDate() {
     const application = this.myApplication!
-    let evalDate
-    if (application.lastUpdateDate) {
-      evalDate = addDays(
-        application.lastUpdateDate,
+    if (
+      application.submittedAssignmentFiles &&
+      application.submittedAssignmentFiles.length > 0
+    ) {
+      // if there is a file, start evaluation date from the creation date of the file
+      const date = application.submittedAssignmentFiles[0].createdAt
+      const evalDate = addDays(
+        date, // and add evaluation time
         this.course.assignmentEvaluationTime ??
           DEFAULT_ASSIGNMENT_EVALUATION_TIME,
       )
-    } else {
-      evalDate = addDays(
-        application.createdAt,
-        (this.course.assignmentSubmissionDeadline ??
-          DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE) +
-          (this.course.assignmentEvaluationTime ??
-            DEFAULT_ASSIGNMENT_EVALUATION_TIME),
-      )
+
+      return endOfDay(evalDate)
     }
+
+    // otherwise, start evaluation date from the creation date of the application
+    const date = application.createdAt
+    const evalDate = addDays(
+      date, // and add evaluation time + submission deadline
+      (this.course.assignmentEvaluationTime ??
+        DEFAULT_ASSIGNMENT_EVALUATION_TIME) +
+        (this.course.assignmentSubmissionDeadline ??
+          DEFAULT_ASSIGNMENT_SUBMISSION_DEADLINE),
+    )
 
     return endOfDay(evalDate)
   }
@@ -81,6 +153,16 @@ export class CourseLogic {
       !!this.myApplication.submittedAssignmentFiles &&
       this.myApplication.submittedAssignmentFiles.length > 0
     )
+  }
+
+  getFilesSubmittedDate() {
+    if (this.haveSubmittedAssignmentFiles()) {
+      return new Date(
+        this.myApplication!.submittedAssignmentFiles![0].createdAt,
+      )
+    }
+
+    return null
   }
 
   getDeadlineDate() {
@@ -100,6 +182,111 @@ export class CourseLogic {
       !this.course.requireApproval ||
       this.myApplication?.approvalStatus === 'approved'
     )
+  }
+
+  getTotalPrice() {
+    return (this.course.price ?? 0) - (this.myApplication?.discount ?? 0)
+  }
+
+  getRemainingPrice() {
+    return this.getTotalPrice() - this.getTotalPaid()
+  }
+
+  getTotalPaid() {
+    return this.paidInstallments.reduce((acc, cur) => acc + cur.amount, 0)
+  }
+
+  getMessage(locale: StrapiLocale) {
+    type Message = {
+      message: keyof I18nNamespaces['common']
+      obj?: object
+      color: 'green' | 'red'
+    }
+
+    const course = this.course
+
+    const isRejected = this.isRejected()
+    if (isRejected !== false) {
+      return {
+        message: 'course.application.message.rejected-with-reason',
+        color: 'red',
+        obj: {
+          msg: isRejected,
+        },
+      } satisfies Message
+    }
+
+    if (this.isAssignmentInProgress()) {
+      if (this.haveSubmittedAssignmentFiles()) {
+        return {
+          message: 'course.payment.message.waiting-for-eval',
+          color: 'green',
+        } satisfies Message
+      }
+
+      return {
+        message: 'course.payment.message.waiting-for-files',
+        color: 'green',
+        obj: {
+          date: formatDate(this.getDeadlineDate(), 'dd MMMM yyyy', locale),
+        },
+      } satisfies Message
+    }
+
+    const remaining = this.allUnPaidInstallments.reduce(
+      (acc, cur) => acc + cur.amount,
+      0,
+    )
+    const hasFinished = isPast(course.endDate)
+    const hasStarted = isPast(course.startDate)
+    const remainingStr = formatPrice(remaining)
+
+    if (remaining > 0 && ALLOW_COURSE_PAYMENT) {
+      if (hasFinished) {
+        return {
+          message: 'course.payment.message.unpaid-finished',
+          obj: { amount: remainingStr },
+          color: 'red',
+        } satisfies Message
+      }
+
+      if (hasStarted) {
+        return {
+          message: 'course.payment.message.unpaid-unfinished',
+          obj: { amount: remainingStr },
+          color: 'red',
+        } satisfies Message
+      }
+
+      return {
+        message: 'course.payment.message.unpaid-not-started',
+        obj: {
+          amount: remainingStr,
+          date: formatDate(course.startDate, 'dd MMMM yyyy', locale),
+        },
+        color: 'red',
+      } satisfies Message
+    }
+
+    if (hasFinished) {
+      return {
+        message: 'course.payment.message.finished',
+        color: 'green',
+      } satisfies Message
+    }
+
+    if (hasStarted) {
+      return {
+        message: 'course.payment.message.unfinished',
+        color: 'green',
+      } satisfies Message
+    }
+
+    return {
+      message: 'course.payment.message.not-started',
+      obj: { date: formatDate(course.startDate, 'dd MMMM yyyy', locale) },
+      color: 'green',
+    } satisfies Message
   }
 
   findValidApplicants() {

@@ -25,7 +25,6 @@ import { CourseLogic } from '@fc/utils/courseLogic'
 
 import { ProfileCourseDetails } from './Payment/components/ProfileCourseDetails'
 import { StripeResult } from './Payment/components/StripeResult'
-import { GetGeneralStatus } from './Payment/utils/getGeneralStatus'
 import { KeyValue } from '../KeyValueView'
 
 export const CoursesTab: FC = () => {
@@ -39,7 +38,12 @@ export const CoursesTab: FC = () => {
     filters: {
       profile: { id: { $eq: profile?.id } },
     },
-    populate: ['course', 'course.assignmentFiles', 'profile'],
+    populate: [
+      'course',
+      'course.assignmentFiles',
+      'profile',
+      'submittedAssignmentFiles',
+    ],
     queryOptions: {
       enabled: !!profile,
     },
@@ -65,7 +69,11 @@ export const CoursesTab: FC = () => {
             {...extProps}
           >
             {applications.map(application => (
-              <ApplicationView key={application.id} application={application} />
+              <ApplicationView
+                key={application.id}
+                application={application}
+                onSave={refetch}
+              />
             ))}
           </Accordion>
           <Link href="/courses">
@@ -89,9 +97,10 @@ export const CoursesTab: FC = () => {
 
 type ApplicationViewProps = {
   application: CourseApplication
+  onSave: () => void
 }
 
-const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
+const ApplicationView: FC<ApplicationViewProps> = ({ application, onSave }) => {
   const { locale } = useRouter()
   const { t } = useTranslation()
   const course = application.course!
@@ -99,7 +108,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
   const courseLogic = new CourseLogic(course, [application], profile)
 
   const title = course[`title_${locale}` as keyof CourseApplication['course']]
-  const status = GetGeneralStatus(course, application)
+  const status = courseLogic.getMessage(locale)
 
   return (
     <AccordionItem key={application.id} maxWidth={'100%'}>
@@ -115,7 +124,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
               }
               divider={false}
             >
-              <Text>{status.message}</Text>
+              <Text>{t(status.message, status.obj)}</Text>
             </KeyValue>
           </VStack>
         </Box>
@@ -128,7 +137,7 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
               {t('course.payment.title.go-to-course')}
             </Link>
           </KeyValue>
-          <ProfileCourseDetails courseLogic={courseLogic} />
+          <ProfileCourseDetails courseLogic={courseLogic} onSave={onSave} />
         </VStack>
       </AccordionPanel>
     </AccordionItem>

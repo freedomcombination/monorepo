@@ -15,21 +15,19 @@ import {
   useToast,
   Wrap,
 } from '@chakra-ui/react'
-import { addDays } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import type { ApprovalStatus } from '@fc/types'
-import { formatDate } from '@fc/utils/formatDate'
+import { formatDate, formatDateRelative } from '@fc/utils/formatDate'
 
 import { CourseAssignmentFileButton } from './CourseAssignmentFile'
 import { KeyValue } from '../../KeyValueView'
-import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
+import { CourseApplicationComponentProps } from '../CourseApplicationDetails'
 
-export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
-  course,
-  application,
+export const CourseAssignmentDetails: FC<CourseApplicationComponentProps> = ({
+  courseLogic,
   onSave = () => {},
 }) => {
   const { t } = useTranslation()
@@ -40,11 +38,9 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
   const updateModelMutation = useUpdateModelMutation('course-applications')
   const toast = useToast()
 
-  const filesSent =
-    !!application.submittedAssignmentFiles &&
-    !!application.submittedAssignmentFiles.length
-
-  if (!course.requireApproval) return null
+  if (!courseLogic.course.requireApproval) return null
+  const application = courseLogic.myApplication!
+  const filesSent = courseLogic.haveSubmittedAssignmentFiles()
 
   const onAction = () => {
     updateModelMutation.mutate(
@@ -92,25 +88,43 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
             when={filesSent}
             tKey="course.applicant.details.assignment-files.date"
           >
-            {formatDate(
-              application.lastUpdateDate ?? 0,
-              'dd MMMM yyyy',
-              locale,
-            )}
+            <Text fontWeight={'bold'}>
+              {formatDate(
+                courseLogic.getFilesSubmittedDate()!,
+                'dd MMMM yyyy - HH:mm',
+                locale,
+              )}{' '}
+              (
+              {formatDateRelative(courseLogic.getFilesSubmittedDate()!, locale)}
+              )
+            </Text>
+          </KeyValue>
+
+          <KeyValue
+            when={filesSent}
+            tKey="course.applicant.details.assignment-files.evaluate"
+          >
+            <Text fontWeight={'bold'}>
+              {formatDate(
+                courseLogic.getEvaluationDate(),
+                'dd MMMM yyyy - HH:mm',
+                locale,
+              )}{' '}
+              ({formatDateRelative(courseLogic.getEvaluationDate(), locale)})
+            </Text>
           </KeyValue>
 
           <KeyValue
             when={!filesSent}
             tKey="course.applicant.details.assignment-files.due-date"
           >
-            {formatDate(
-              addDays(
-                application.createdAt ?? 0,
-                course.assignmentSubmissionDeadline ?? 3,
-              ),
-              'dd MMMM yyyy',
-              locale,
-            )}
+            <Text fontWeight={'bold'}>
+              {formatDate(
+                courseLogic.getDeadlineDate(),
+                'dd MMMM yyyy - HH:mm',
+                locale,
+              )}
+            </Text>
           </KeyValue>
 
           <KeyValue
@@ -140,7 +154,7 @@ export const CourseAssignmentDetails: FC<CourseApplicationDetailsProps> = ({
           </KeyValue>
         </>
       ) : (
-        <KeyValue title="Kullanıcı durumu">
+        <KeyValue tKey="approvalStatus">
           <Badge colorScheme="green" variant="outline">
             {application.approvalStatus}
           </Badge>

@@ -41,6 +41,7 @@ export const CourseAssignmentFileButton: FC<{ file: UploadFile }> = ({
           : ASSETS_URL) + file.url
       }
       target="_blank"
+      variant="outline"
       rel="noreferrer noopener"
       leftIcon={icon}
       title={file.name}

@@ -26,6 +26,10 @@ export type CourseApplicationUnpaid = {
   paymentExplanation: string | null
 }
 
+export type CourseApplicationFiles = {
+  submittedAssignmentFiles?: number[] | null
+}
+
 type CourseApplicationRelation = {
   course?: Course
   profile?: Profile

@@ -8,15 +8,23 @@ import { StatusRejected } from './StatusRejected'
 
 type ProfileCourseDetailsProps = {
   courseLogic: CourseLogic
+  onSave: () => void
 }
 
 export const ProfileCourseDetails: FC<ProfileCourseDetailsProps> = ({
   courseLogic,
+  onSave,
 }) => {
-  if (courseLogic.isRejected()) return <StatusRejected />
+  const isRejected = courseLogic.isRejected()
+  if (isRejected !== false) return <StatusRejected reason={isRejected} />
 
   if (courseLogic.isAssignmentInProgress())
-    return <ProfileCourseAssignmentDetails courseLogic={courseLogic} />
+    return (
+      <ProfileCourseAssignmentDetails
+        courseLogic={courseLogic}
+        onSave={onSave}
+      />
+    )
 
   if (courseLogic.shouldShowPaymentDetails())
     return <ProfileCoursePaymentDetails courseLogic={courseLogic} />

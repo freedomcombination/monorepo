@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
 import { Badge, SimpleGrid, Stack, Text } from '@chakra-ui/react'
-import { isPast } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -12,8 +11,6 @@ import { formatPrice } from '@fc/utils/formatPrice'
 
 import { PaymentButton } from './PaymentButton'
 import { KeyValue } from '../../../KeyValueView'
-import { calculateInstallments } from '../utils/calculateInstallments'
-import { calculateRemainingPrice } from '../utils/calculateRemainingPrice'
 
 const SINGLE_INSTALLMENT = 1
 
@@ -31,7 +28,7 @@ export const ProfileCoursePaymentDetails: FC<{
 
   if (!course.price) return
 
-  const remainingPrice = calculateRemainingPrice(course, application)
+  const remainingPrice = courseLogic.getRemainingPrice()
   if (remainingPrice === 0) {
     return (
       <KeyValue tKey={'course.payment.title.total-payment'}>
@@ -55,35 +52,9 @@ export const ProfileCoursePaymentDetails: FC<{
     )
   }
 
-  const successfulPayments =
-    application.payments?.filter(payment => payment.status === 'paid') ?? []
-
-  const installments = calculateInstallments(
-    installmentCount,
-    application.createdAt,
-    course.price,
-    successfulPayments,
-  )
-
-  const { paidInstallments, pastInstallments, unpaidInstallments } =
-    installments.reduce(
-      (acc, installment) => {
-        if (installment.payment !== null) {
-          acc.paidInstallments.push(installment)
-        } else if (isPast(installment.date)) {
-          acc.pastInstallments.push(installment)
-        } else {
-          acc.unpaidInstallments.push(installment)
-        }
-
-        return acc
-      },
-      {
-        paidInstallments: [] as typeof installments,
-        pastInstallments: [] as typeof installments,
-        unpaidInstallments: [] as typeof installments,
-      },
-    )
+  const paidInstallments = courseLogic.paidInstallments
+  const unPaidInstallments = courseLogic.unPaidInstallments
+  const dueUnPaidInstallments = courseLogic.dueUnPaidInstallments
 
   return (
     <>
@@ -117,26 +88,28 @@ export const ProfileCoursePaymentDetails: FC<{
           </Stack>
         </KeyValue>
       )}
-      {pastInstallments.length > 0 && (
+      {dueUnPaidInstallments.length > 0 && (
         <KeyValue tKey={'course.payment.title.installment-overdue'}>
           <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
-            {pastInstallments.map(({ date, amount, installmentNumber }) => (
-              <PaymentButton
-                key={installmentNumber}
-                course={course}
-                application={application}
-                amount={amount}
-                installmentNumber={installmentNumber}
-                date={date}
-              />
-            ))}
+            {dueUnPaidInstallments.map(
+              ({ date, amount, installmentNumber }) => (
+                <PaymentButton
+                  key={installmentNumber}
+                  course={course}
+                  application={application}
+                  amount={amount}
+                  installmentNumber={installmentNumber}
+                  date={date}
+                />
+              ),
+            )}
           </SimpleGrid>
         </KeyValue>
       )}
-      {unpaidInstallments.length > 0 && (
+      {unPaidInstallments.length > 0 && (
         <KeyValue tKey={'course.payment.title.installment-unpaid'}>
           <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
-            {unpaidInstallments.map(({ date, amount, installmentNumber }) => (
+            {unPaidInstallments.map(({ date, amount, installmentNumber }) => (
               <PaymentButton
                 key={installmentNumber}
                 amount={amount}

@@ -12,6 +12,7 @@ import {
   ListIcon,
   ListItem,
   Stack,
+  Wrap,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -35,6 +36,7 @@ import { CourseInfo } from './CourseInfo'
 import { CourseRegister } from './CourseRegister'
 import { CourseDetailPageProps } from './types'
 import { Container } from '../Container'
+import { CourseAssignmentFileButton } from '../CourseApplicationInstallment'
 import { Markdown } from '../Markdown'
 import { StripeResult } from '../ProfileSettings/Payment/components/StripeResult'
 import { ShareButtons } from '../ShareButtons'
@@ -59,7 +61,7 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
     },
   })
 
-  const applications = data?.data || []
+  const applications = useMemo(() => data?.data || [], [data?.data])
   const courseLogic = useMemo(
     () => new CourseLogic(course, applications, profile),
     [course, applications, profile],
@@ -172,35 +174,44 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
             >
               <AlertIcon boxSize="40px" mr={0} />
               <AlertTitle mt={4} mb={1} fontSize="lg">
-                Bu kurs, kayda devam edebilmeniz için bazı ön gereksinimler
-                gerektiyor!
+                {t('course.application.assignment.rules.title')}
               </AlertTitle>
               <AlertDescription>
                 <List spacing={3} mt={6} textAlign={'left'}>
                   <ListItem>
                     <ListIcon as={MdDone} color="green.500" />
-                    Gereksinimleri ekteki dosyadan öğrenebilirsiniz.
+                    {t('course.application.assignment.rules.line-1')}
                   </ListItem>
                   <ListItem>
                     <ListIcon as={MdTimer} color="blue.500" />
-                    Bu belgeyi 3 gün içinde bize geri gönderin.
+                    {t('course.application.assignment.rules.line-2', {
+                      days: course.assignmentSubmissionDeadline,
+                    })}
                   </ListItem>
                   <ListItem>
                     <ListIcon as={MdCheck} color="green.500" />
-                    Belgeyi bize gönderdikten sonra 2 gün içinde size geri dönüş
-                    yapacağız.
+                    {t('course.application.assignment.rules.line-3', {
+                      days: course.assignmentEvaluationTime,
+                    })}
                   </ListItem>
                   <ListItem>
                     <ListIcon as={MdArrowForward} color="blue.500" />
-                    Ondan sonra kaydınıza devam edebileceksiniz.
+                    {t(
+                      !!course.price
+                        ? 'course.application.assignment.rules.line-4-price'
+                        : 'course.application.assignment.rules.line-4',
+                    )}
                   </ListItem>
                   <ListItem>
                     <ListIcon as={MdAttachFile} color="blue.500" />
-                    {['dosya1', 'dosya2'].map(file => (
-                      <Link key={file} href={'#'} mr={2}>
-                        [{file}]{' '}
-                      </Link>
-                    ))}
+                    <Wrap spacing={2}>
+                      {course.assignmentFiles?.map(file => (
+                        <CourseAssignmentFileButton
+                          key={file.name}
+                          file={file}
+                        />
+                      ))}
+                    </Wrap>
                   </ListItem>
                 </List>
               </AlertDescription>

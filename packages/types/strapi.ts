@@ -50,6 +50,7 @@ import { Course, CourseCreateInput, CourseUpdateInput } from './course'
 import {
   CourseApplication,
   CourseApplicationCreateInput,
+  CourseApplicationFiles,
   CourseApplicationUnpaid,
 } from './course-application'
 import { CoursePayment } from './course-payment'
@@ -417,6 +418,7 @@ export type StrapiUpdateInput =
   | CollectionUpdateInput
   | CompetitionUpdateInput
   | CourseApplicationUnpaid
+  | CourseApplicationFiles
   | CourseUpdateInput
   | DonationUpdateInput
   | FoundationUpdateInput

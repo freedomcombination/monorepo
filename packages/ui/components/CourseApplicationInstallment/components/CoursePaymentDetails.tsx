@@ -18,7 +18,7 @@ import {
   VStack,
   useToast,
 } from '@chakra-ui/react'
-import { addDays, isPast } from 'date-fns'
+import { isPast } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaStripe } from 'react-icons/fa6'
@@ -26,25 +26,19 @@ import { TbCash } from 'react-icons/tb'
 
 import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/services/common/mutation'
-import { CoursePayment, PaymentCreateInputManual, Profile } from '@fc/types'
+import { CoursePayment, PaymentCreateInputManual } from '@fc/types'
 import { CourseLogic } from '@fc/utils/courseLogic'
 import { formatDate } from '@fc/utils/formatDate'
 import { formatPrice } from '@fc/utils/formatPrice'
 
 import { I18nNamespaces } from '../../../@types/i18next'
 import { KeyValue } from '../../KeyValueView'
-import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
+import { CourseApplicationComponentProps } from '../CourseApplicationDetails'
 
-export const CoursePaymentDetails: FC<CourseApplicationDetailsProps> = ({
-  course,
-  application,
+export const CoursePaymentDetails: FC<CourseApplicationComponentProps> = ({
+  courseLogic,
   onSave = () => {},
 }) => {
-  const logicCourse = new CourseLogic(
-    course,
-    [application],
-    application.profile as Profile,
-  )
   const { profile, token } = useAuthContext()
   const toast = useToast()
   const [isOpen, setIsOpen] = React.useState(false)
@@ -54,15 +48,12 @@ export const CoursePaymentDetails: FC<CourseApplicationDetailsProps> = ({
     price: number
     installmentNumber: number
   } | null>(null)
-  const paidInstallments = logicCourse.myInstallments.filter(i => !!i.payment)
-  const allUnPaid = logicCourse.myInstallments.filter(i => !i.payment)
-  const dueInstallments = allUnPaid.filter(i => isPast(addDays(i.date, 7)))
-  const unPaidInstallments = allUnPaid.filter(
-    i =>
-      !dueInstallments.some(
-        due => due.installmentNumber === i.installmentNumber,
-      ),
-  )
+
+  const paidInstallments = courseLogic.myInstallments.filter(i => !!i.payment)
+  const dueInstallments = courseLogic.dueUnPaidInstallments
+  const unPaidInstallments = courseLogic.unPaidInstallments
+  const application = courseLogic.myApplication!
+  const course = courseLogic.course!
 
   const onPaymentWithCash = async () => {
     if (!paymentParams) return

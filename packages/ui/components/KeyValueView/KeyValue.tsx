@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 
-import { Box, HStack, StackProps, Text } from '@chakra-ui/react'
+import { HStack, Stack, StackProps, Text } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
 import { I18nNamespaces } from '../../@types/i18next'
@@ -48,7 +48,11 @@ export const KeyValue: FC<KeyValueProps> = ({
       <Text width={'120px'} textAlign={'right'} flexShrink={0}>
         {title}
       </Text>
-      <Box>{children}</Box>
+      {typeof children === 'string' ? (
+        <Text>{children}</Text>
+      ) : (
+        <Stack>{children}</Stack>
+      )}
     </HStack>
   )
 }

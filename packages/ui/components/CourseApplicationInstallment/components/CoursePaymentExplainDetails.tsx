@@ -19,13 +19,11 @@ import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import { ApprovalStatus } from '@fc/types'
 
 import { KeyValue } from '../../KeyValueView'
-import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
+import { CourseApplicationComponentProps } from '../CourseApplicationDetails'
 
-export const CoursePaymentExplainDetails: FC<CourseApplicationDetailsProps> = ({
-  // course,
-  application,
-  onSave = () => {},
-}) => {
+export const CoursePaymentExplainDetails: FC<
+  CourseApplicationComponentProps
+> = ({ courseLogic, onSave = () => {} }) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const [dialogTitle, setDialogTitle] = React.useState('')
   const [actionText, setActionText] = React.useState('')
@@ -34,6 +32,7 @@ export const CoursePaymentExplainDetails: FC<CourseApplicationDetailsProps> = ({
   const updateModelMutation = useUpdateModelMutation('course-applications')
   const toast = useToast()
   const cancelRef = React.useRef(null)
+  const application = courseLogic.myApplication!
 
   const onReject = () => {
     setDialogTitle(t('course.applicant.details.explain.kv.reject'))
@@ -100,15 +99,15 @@ export const CoursePaymentExplainDetails: FC<CourseApplicationDetailsProps> = ({
   return (
     <Stack spacing={2} borderWidth={1} borderRadius={'lg'} p={4}>
       <KeyValue tKey="course.applicant.details.explain.kv.explain">
-        <Text fontWeight={'bold'}>{application.paymentExplanation}</Text>
+        <Text fontSize={'lg'}>{application.paymentExplanation}</Text>
       </KeyValue>
       <KeyValue tKey="course.applicant.details.explain.kv.delete-explanation">
-        <Button colorScheme="red" onClick={onDelete}>
+        <Button colorScheme="red" variant={'outline'} onClick={onDelete}>
           {t('course.applicant.details.explain.action.delete')}
         </Button>
       </KeyValue>
       <KeyValue tKey="course.applicant.details.explain.kv.reject">
-        <Button colorScheme="red" onClick={onReject}>
+        <Button colorScheme="red" variant={'outline'} onClick={onReject}>
           {t('course.applicant.details.explain.action.reject')}
         </Button>
       </KeyValue>

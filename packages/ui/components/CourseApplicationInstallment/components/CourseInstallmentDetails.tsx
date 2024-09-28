@@ -26,7 +26,7 @@ import { formatDate } from '@fc/utils/formatDate'
 import { formatPrice } from '@fc/utils/formatPrice'
 
 import { KeyValue } from '../../KeyValueView'
-import { CourseApplicationDetailsProps } from '../CourseApplicationDetails'
+import { CourseApplicationComponentProps } from '../CourseApplicationDetails'
 
 type CourseData = Pick<
   CourseApplication,
@@ -36,12 +36,12 @@ type CourseData = Pick<
   | 'discount'
 >
 
-export const CourseInstallmentDetails: FC<CourseApplicationDetailsProps> = ({
-  course,
-  application,
+export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
+  courseLogic,
   onSave = () => {},
 }) => {
   const { t } = useTranslation()
+  const application = courseLogic.myApplication!
   const [data, setData] = useState<CourseData>({
     installmentCount: application.installmentCount,
     installmentInterval: application.installmentInterval,
@@ -50,14 +50,13 @@ export const CourseInstallmentDetails: FC<CourseApplicationDetailsProps> = ({
   })
   const updateModelMutation = useUpdateModelMutation('course-applications')
   const toast = useToast()
-
+  const course = courseLogic.course!
   if (!course.price) return null
 
   const hasChanged = Object.entries(data).some(
     ([k, v]) => v !== application[k as keyof CourseApplication],
   )
-
-  const logicCourse = new CourseLogic(
+  const newCourseLogic = new CourseLogic(
     course,
     [
       {
@@ -284,7 +283,7 @@ export const CourseInstallmentDetails: FC<CourseApplicationDetailsProps> = ({
             tKey="course.applicant.details.installment.kv.preview"
           >
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={3}>
-              {logicCourse.myInstallments.map(installment => (
+              {newCourseLogic.myInstallments.map(installment => (
                 <HStack
                   key={installment.installmentNumber}
                   gap={6}

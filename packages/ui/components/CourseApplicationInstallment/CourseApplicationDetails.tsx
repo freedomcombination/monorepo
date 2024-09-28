@@ -16,16 +16,22 @@ import {
 import { useTranslation } from 'next-i18next'
 
 import { Course, CourseApplication } from '@fc/types'
+import { CourseLogic } from '@fc/utils/courseLogic'
 
 import { CourseAssignmentDetails } from './components/CourseAssignmentDetails'
 import { CourseInstallmentDetails } from './components/CourseInstallmentDetails'
 import { CoursePaymentDetails } from './components/CoursePaymentDetails'
 import { CoursePaymentExplainDetails } from './components/CoursePaymentExplainDetails'
 
-export type CourseApplicationDetailsProps = {
+type CourseApplicationDetailsProps = {
   course: Course
   application: CourseApplication
-  onSave?: () => void
+  onSave: () => void
+}
+
+export type CourseApplicationComponentProps = {
+  courseLogic: CourseLogic
+  onSave: () => void
 }
 
 export const CourseApplicationDetails: FC<CourseApplicationDetailsProps> = ({
@@ -34,6 +40,11 @@ export const CourseApplicationDetails: FC<CourseApplicationDetailsProps> = ({
   onSave,
 }) => {
   const { t } = useTranslation()
+  const courseLogic = new CourseLogic(
+    course,
+    [application],
+    application.profile!,
+  )
 
   const items = [
     {
@@ -41,8 +52,7 @@ export const CourseApplicationDetails: FC<CourseApplicationDetailsProps> = ({
       title: t('course.applicant.details.explain.header'),
       node: (
         <CoursePaymentExplainDetails
-          course={course}
-          application={application}
+          courseLogic={courseLogic}
           onSave={onSave}
         />
       ),
@@ -51,34 +61,20 @@ export const CourseApplicationDetails: FC<CourseApplicationDetailsProps> = ({
       visible: course.requireApproval,
       title: t('course.applicant.details.assignment.header'),
       node: (
-        <CourseAssignmentDetails
-          course={course}
-          application={application}
-          onSave={onSave}
-        />
+        <CourseAssignmentDetails courseLogic={courseLogic} onSave={onSave} />
       ),
     },
     {
       visible: !!course.price,
       title: t('course.applicant.details.installment.header'),
       node: (
-        <CourseInstallmentDetails
-          course={course}
-          application={application}
-          onSave={onSave}
-        />
+        <CourseInstallmentDetails courseLogic={courseLogic} onSave={onSave} />
       ),
     },
     {
       visible: !!course.price,
       title: t('course.applicant.details.payments.header'),
-      node: (
-        <CoursePaymentDetails
-          course={course}
-          application={application}
-          onSave={onSave}
-        />
-      ),
+      node: <CoursePaymentDetails courseLogic={courseLogic} onSave={onSave} />,
     },
   ]
 
