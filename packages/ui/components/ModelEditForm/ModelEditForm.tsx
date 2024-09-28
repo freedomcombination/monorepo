@@ -65,6 +65,7 @@ import { ActionButton } from '../ActionButton'
 import { ActionStack } from '../ActionStack'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
 import { BlockFormItem } from '../BlockFormItem/BlockFormItem'
+import { BlocksRenderer } from '../BlocksRenderer'
 import { DownloadCapsModal } from '../DownloadCapsModal'
 import { FormItem } from '../FormItem'
 import { MasonryGrid } from '../MasonryGrid'
@@ -436,20 +437,28 @@ export const ModelEditForm = <T extends StrapiModel>({
               if (field.type === 'block') {
                 return (
                   <Box key={index} maxH={550} overflowY={'auto'}>
-                    <BlockFormItem
-                      name={field.name as string}
-                      isDisabled={field.blockEdit || !isEditing}
-                      isRequired={field.isRequired}
-                      errors={errors}
-                      control={control}
-                      _disabled={disabledStyle}
-                      helperText={
-                        (isEditing &&
-                          field.blockEdit &&
-                          'Blocked from editing') ||
-                        undefined
-                      }
-                    />
+                    <FormLabel fontWeight={600} fontSize={'sm'}>
+                      {t(field.name as keyof I18nNamespaces['common'])}
+                    </FormLabel>
+                    {!isEditing ? (
+                      <BlocksRenderer content={model[field.name as string]} />
+                    ) : (
+                      <BlockFormItem
+                        name={field.name as string}
+                        isDisabled={field.blockEdit || !isEditing}
+                        isRequired={field.isRequired}
+                        model={model}
+                        errors={errors}
+                        control={control}
+                        _disabled={disabledStyle}
+                        helperText={
+                          (isEditing &&
+                            field.blockEdit &&
+                            'Blocked from editing') ||
+                          undefined
+                        }
+                      />
+                    )}
                   </Box>
                 )
               }
