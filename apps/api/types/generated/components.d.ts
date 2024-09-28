@@ -1,18 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi'
 
-export interface FlowFlow extends Schema.Component {
-  collectionName: 'components_flow_flows'
-  info: {
-    displayName: 'flow'
-    icon: 'manyToMany'
-  }
-  attributes: {
-    title: Attribute.String
-    duration: Attribute.String
-    presenter: Attribute.String
-  }
-}
-
 export interface FaqFaq extends Schema.Component {
   collectionName: 'components_faq_faqs'
   info: {
@@ -29,21 +16,30 @@ export interface FaqFaq extends Schema.Component {
   }
 }
 
-export interface CourseCurriculum extends Schema.Component {
-  collectionName: 'components_course_curricula'
+export interface FlowFlow extends Schema.Component {
+  collectionName: 'components_flow_flows'
   info: {
-    displayName: 'CurriculumItem'
-    description: ''
+    displayName: 'flow'
+    icon: 'manyToMany'
   }
   attributes: {
-    title_en: Attribute.String
-    title_tr: Attribute.String
-    title_nl: Attribute.String
-    description_en: Attribute.Text
-    description_nl: Attribute.Text
-    description_tr: Attribute.Text
-    instructor: Attribute.String
-    date: Attribute.DateTime
+    title: Attribute.String
+    duration: Attribute.String
+    presenter: Attribute.String
+  }
+}
+
+export interface FlowAddress extends Schema.Component {
+  collectionName: 'components_flow_addresses'
+  info: {
+    displayName: 'Address'
+    icon: 'apps'
+  }
+  attributes: {
+    city: Attribute.String
+    street: Attribute.String
+    postcode: Attribute.String
+    country: Attribute.String
   }
 }
 
@@ -68,13 +64,32 @@ export interface ContactContact extends Schema.Component {
   }
 }
 
+export interface CourseCurriculum extends Schema.Component {
+  collectionName: 'components_course_curricula'
+  info: {
+    displayName: 'CurriculumItem'
+    description: ''
+  }
+  attributes: {
+    title_en: Attribute.String
+    title_tr: Attribute.String
+    title_nl: Attribute.String
+    description_en: Attribute.Text
+    description_nl: Attribute.Text
+    description_tr: Attribute.Text
+    instructor: Attribute.String
+    date: Attribute.DateTime
+  }
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'flow.flow': FlowFlow
       'faq.faq': FaqFaq
-      'course.curriculum': CourseCurriculum
+      'flow.flow': FlowFlow
+      'flow.address': FlowAddress
       'contact.contact': ContactContact
+      'course.curriculum': CourseCurriculum
     }
   }
 }

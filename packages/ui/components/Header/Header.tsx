@@ -22,7 +22,7 @@ export const Header: FC<HeaderProps> = ({
   const isScrolled = useScroll()
 
   return (
-    <Box as={Headroom as unknown as As}>
+    <Box as={Headroom as unknown as As} pos={'relative'} zIndex={'sticky'}>
       <Flex
         bg={isScrolled ? 'white' : 'transparent'}
         borderBottomWidth={isScrolled ? 1 : 0}

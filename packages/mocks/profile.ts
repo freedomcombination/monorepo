@@ -23,6 +23,7 @@ export const PROFILE_MOCKS: StrapiCollectionResponse<Profile[]> = {
       createdAt: '2023-09-25T02:38:55.688Z',
       updatedAt: '2023-09-25T02:38:55.688Z',
       age: null,
+      birthDate: null,
       city: null,
       isVolunteer: null,
       platforms: [],

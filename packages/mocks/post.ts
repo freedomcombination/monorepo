@@ -2744,7 +2744,7 @@ export const POST_MOCKS = {
               id: '1667779505501372416',
               text: "RT @samenvvvTR: 'Yol' tiyatro oyunumuzun büyülü yolculuğu devam ediyor! Bugüne kadar 4 şehir ve 2 ülkede seyircilerle buluştuk. Şimdi sıra…",
               user: {
-                name: 'semrayokus510@gmail.com',
+                name: 'sy@gmail.com',
                 profile:
                   'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
                 username: 'Nieuwelevens',
@@ -3574,7 +3574,7 @@ export const POST_MOCKS = {
               id: '1667779505501372416',
               text: "RT @samenvvvTR: 'Yol' tiyatro oyunumuzun büyülü yolculuğu devam ediyor! Bugüne kadar 4 şehir ve 2 ülkede seyircilerle buluştuk. Şimdi sıra…",
               user: {
-                name: 'semrayokus510@gmail.com',
+                name: 'sy@gmail.com',
                 profile:
                   'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
                 username: 'Nieuwelevens',
@@ -4489,7 +4489,7 @@ export const POST_MOCKS = {
               id: '1667779505501372416',
               text: "RT @samenvvvTR: 'Yol' tiyatro oyunumuzun büyülü yolculuğu devam ediyor! Bugüne kadar 4 şehir ve 2 ülkede seyircilerle buluştuk. Şimdi sıra…",
               user: {
-                name: 'semrayokus510@gmail.com',
+                name: 'sy@gmail.com',
                 profile:
                   'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
                 username: 'Nieuwelevens',
@@ -5363,7 +5363,7 @@ export const POST_MOCKS = {
               id: '1667779505501372416',
               text: "RT @samenvvvTR: 'Yol' tiyatro oyunumuzun büyülü yolculuğu devam ediyor! Bugüne kadar 4 şehir ve 2 ülkede seyircilerle buluştuk. Şimdi sıra…",
               user: {
-                name: 'semrayokus510@gmail.com',
+                name: 'sy@gmail.com',
                 profile:
                   'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
                 username: 'Nieuwelevens',

@@ -27,7 +27,7 @@ export const Layout: FC<LayoutProps> = ({
   return (
     <>
       {seo && <NextSeo {...seo} />}
-      <Flex flexDir="column" minHeight="100vh" overflowX="hidden">
+      <Flex flexDir="column" minHeight="100vh">
         <Header
           {...headerProps}
           isLoggedIn={!!user}

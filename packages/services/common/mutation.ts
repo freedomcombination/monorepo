@@ -174,14 +174,10 @@ export const mutation = async <
       statusText,
     } as StrapiMutationResponse<T>
   } catch (error: any) {
-    if (!isTest) {
-      console.error('Mutation error', error)
-    }
-
     if (error.response?.data?.error?.details?.i18nKey) {
       const errorMessage = error.response?.data?.error?.details?.i18nKey
 
-      if (!isTest) {
+      if (isTest) {
         return {
           data: null,
           error: errorMessage,
