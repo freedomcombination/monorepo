@@ -63,6 +63,15 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const jobs = jobsResponse.data || []
   const defaultJobs = jobs.filter(job => job.slug === slug).map(job => job.id)
 
+  if (!defaultJobs.length) {
+    return {
+      redirect: {
+        destination: '/join',
+        permanent: false,
+      },
+    }
+  }
+
   return {
     props: {
       ...(await ssrTranslations(locale)),
