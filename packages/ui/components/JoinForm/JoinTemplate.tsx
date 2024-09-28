@@ -5,6 +5,7 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  Box,
   Center,
   VStack,
 } from '@chakra-ui/react'
@@ -123,10 +124,10 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
             </Alert>
           </Center>
         ) : (
-          <>
+          <Box pb={{ base: 4, lg: 6 }}>
             <PageTitle>{title}</PageTitle>
             <JoinForm />
-          </>
+          </Box>
         )}
       </Container>
     </JoinFormProvider>
