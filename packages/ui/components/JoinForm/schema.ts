@@ -1,22 +1,13 @@
-import { addYears } from 'date-fns'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import * as yup from 'yup'
+
+import { Job } from '@fc/types'
 import 'yup-phone-lite'
 
-export const joinSchema = () => {
-  yup.addMethod(
-    yup.object,
-    'atLeastOneRequired',
-    function (list: Array<any>, message) {
-      return this.test({
-        name: 'atLeastOneRequired',
-        message,
-        exclusive: true,
-        params: { keys: list.join(', ') },
-        test: value =>
-          value == null || list.some(f => !!value[`${f.id}_${f.slug}`]),
-      })
-    },
-  )
+export const useJoinFormSchema = (jobs: Job[]) => {
+  const { t } = useTranslation()
+  const { locale } = useRouter()
 
   return yup.object().shape({
     name: yup
@@ -24,20 +15,9 @@ export const joinSchema = () => {
       .min(3)
       .matches(/^[a-zA-Z\s]+$/, 'Only alphabetic characters allowed')
       .required(),
-    birthDate: yup
-      .date()
-      .required()
-      .min(addYears(new Date(), -70))
-      .max(addYears(new Date(), -4)),
-    address: yup
-      .object()
-      .shape({
-        country: yup.string().required('Country is required'),
-        city: yup.string().required('City is required'),
-        street: yup.string(),
-        postcode: yup.string(),
-      })
-      .required(),
+    birthDate: yup.string().required(),
+    country: yup.string().required(),
+    city: yup.string().required(),
     email: yup.string().email().required(),
     phone: yup
       .string()
@@ -50,16 +30,23 @@ export const joinSchema = () => {
         },
       ),
     comment: yup.string(),
-    inMailingList: yup.boolean(),
-    isPublic: yup.boolean(),
     availableHours: yup.number().min(1).max(40).required(),
-    heardFrom: yup.array().required().min(1),
     jobs: yup.array().required().min(1),
     cv: yup.mixed(),
-    foundationConfirmation: yup
+    // Make it required only if the jobs props contains selected jobs and it has info_${locale} field
+    jobInfoConfirmation: yup
       .boolean()
-      .oneOf([true], 'You must accept the Foundation information')
-      .required(),
-    jobInfoConfirmation: yup.boolean(),
+      .test(
+        'job-info-confirmation',
+        t('read-and-accept-required'),
+        function test(value) {
+          const selectedJobs = jobs.filter(job =>
+            this.parent.jobs?.includes(`${job.id}`),
+          )
+          const hasInfo = selectedJobs.some(job => job[`info_${locale}`])
+
+          return !hasInfo || !!value
+        },
+      ),
   })
 }

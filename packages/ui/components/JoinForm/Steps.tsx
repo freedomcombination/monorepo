@@ -33,7 +33,13 @@ const Steps = () => {
               />
             </StepIndicator>
 
-            <Box as={StepDescription} color={'gray.300'} fontWeight={600}>
+            <Box
+              maxW={20}
+              isTruncated
+              as={StepDescription}
+              color={'gray.300'}
+              fontWeight={600}
+            >
               {step.title}
             </Box>
           </VStack>

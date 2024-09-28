@@ -9,7 +9,7 @@ export const PaginationButtons = () => {
   const { activeStep, steps, handleNext, handlePrev } = useJoinFormContext()
 
   return (
-    <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
+    <ButtonGroup overflowX={'auto'} justifyContent={'center'} flexShrink={0}>
       <Button
         isDisabled={activeStep == 0}
         leftIcon={<FaChevronLeft />}

@@ -54,26 +54,32 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
 
   const onSubmit = (data: JoinFormFieldValues) => {
     try {
-      const { availableHours = 0 } = data
+      const { availableHours = 0, city, country } = data
 
-      const heardFrom = data.heardFrom.join(', ')
       const jobs = data.jobs
 
       const body: ProfileCreateInput = {
         ...data,
+        address: {
+          city,
+          country,
+        },
         availableHours,
-        heardFrom,
         jobs,
         isVolunteer: true,
       }
 
       mutate(body, {
         onError: errCode => {
-          toastMessage(
-            t('apply-form.error.title'),
-            errCode ? t(errCode as any) : t('apply-form.error.description'),
-            'error',
+          const errorMessage = errCode?.message?.includes(
+            'This attribute must be unique',
           )
+            ? t('email-exists')
+            : errCode
+              ? t(errCode as any)
+              : t('apply-form.error.description')
+
+          toastMessage(t('apply-form.error.title'), errorMessage, 'error')
         },
       })
     } catch (error) {
@@ -119,7 +125,6 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
         ) : (
           <>
             <PageTitle>{title}</PageTitle>
-
             <JoinForm />
           </>
         )}
