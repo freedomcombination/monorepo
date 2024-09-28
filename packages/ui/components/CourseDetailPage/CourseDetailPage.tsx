@@ -7,7 +7,6 @@ import {
   AlertTitle,
   Box,
   Heading,
-  Link,
   List,
   ListIcon,
   ListItem,

@@ -78,4 +78,32 @@ export const translations = {
     en: "If you find the description of the registered person insufficient, you can give the value 'rejected' to the appreveStatus parameter from the link below. Otherwise, the quota is automatically allocated to this user.",
     nl: "Indien u de omschrijving van de geregistreerde onvoldoende vindt, kunt u via onderstaande link de waarde 'rejected' meegeven aan de parameter appreveStatus. Anders wordt het quotum automatisch aan deze gebruiker toegewezen.",
   },
+
+  // CourseApplicantSubmittedAssignmentFiles.tsx
+
+  'course-applicant-submitted-assignment-files-preview': {
+    tr: '{{name}}, ödev için istenen dosyaları sisteme yükledi.',
+    en: '{{name}} has uploaded the requested files.',
+    nl: '{{name}} heeft de aanvraagde bestanden ge-upload.',
+  },
+  'course-applicant-submitted-assignment-files-header': {
+    tr: 'Yeni bir kullanıcı, ödev için istenen dosyaları yükledi.',
+    en: 'A new user has uploaded the requested files.',
+    nl: 'Een nieuwe gebruiker heeft de aanvraagde bestanden ge-upload.',
+  },
+  'course-applicant-submitted-assignment-files-footer': {
+    tr: "Yukarıda bilgileri verilmiş başvuru sahibinin, sisteme eklediği dosyalara buradan ulaşabilirsiniz. Ayrıca 'Dashboard'a gidip değerlendirmenizide yapmalısınız.",
+    en: 'You can download the files that were requested by the user who submitted the application. Also, you can go to the Dashboard and complete the assessment.',
+    nl: 'U kunt de bestanden die aan de gebruiker gestuurd werd downloaden. U kunt ook naar de Dashboard gaan en de assessentie voltooien.',
+  },
+  'course-applicant-submitted-assignment-files-kv-file-list': {
+    tr: 'Dosyalar',
+    en: 'Files',
+    nl: 'Bestanden',
+  },
+  'course-applicant-submitted-assignment-files-kv-evaluation-date': {
+    tr: 'Son değerlendirme tarihi',
+    en: 'Evaluation date',
+    nl: 'Evaluatiedatum',
+  },
 }

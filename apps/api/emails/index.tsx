@@ -6,7 +6,8 @@ import VolunteerApplied from './VolunteerApplied'
 import type { Site, Art, Profile, StrapiLocale, Course } from '@fc/types'
 import ArtCreated from './ArtCreated'
 import ForgotPassword from './ForgotPassword'
-import CourseApplicantWithoutPayment from './CourseApplicantWithoutPayment'
+import CourseApplicantWithoutPayment from './templates/CourseApplication/CourseApplicantWithoutPayment'
+import { TranslateFunc } from './utils/getTranslate'
 
 export const emailTemplates = {
   renderVolunteerApplied: (volunteer: Profile) =>
@@ -26,7 +27,7 @@ export const emailTemplates = {
     course: Course,
     date: string,
     explanation: string,
-    locale?: StrapiLocale,
+    t: TranslateFunc,
   ) =>
     render(
       <CourseApplicantWithoutPayment
@@ -34,7 +35,7 @@ export const emailTemplates = {
         course={course}
         date={date}
         explanation={explanation}
-        locale={locale}
+        t={t}
       />,
     ),
 }

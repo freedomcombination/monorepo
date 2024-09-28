@@ -120,5 +120,3 @@ export const formatDateRelative = (
 
   return `${formattedTime} ${diff < 0 ? lang.later : lang.ago}`
 }
-
-console.log(formatDateRelative(new Date(2024, 7, 2, 0, 0, 0, 0)))

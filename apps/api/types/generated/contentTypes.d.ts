@@ -3209,6 +3209,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToOne',
       'api::subscriber.subscriber'
     >
+    locale: Attribute.Enumeration<['en', 'tr', 'nl']>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<

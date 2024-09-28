@@ -17,12 +17,6 @@ export const sendReactMail = async (
     }
   })
 
-  if (process.env.NODE_ENV === 'development') {
-    console.log('Wont send email in development mode. Emails:', fixedReceivers)
-
-    return
-  }
-
   const groupedReceivers = fixedReceivers.reduce(
     (acc, receiver) => {
       if (!acc[receiver.locale]) {
@@ -33,6 +27,17 @@ export const sendReactMail = async (
     },
     {} as Record<StrapiLocale, string[]>,
   )
+
+  if (process.env.NODE_ENV === 'development') {
+    const { t } = getTranslate('en')
+    const body = await mailBody(t)
+
+    console.log('Email begins: ', body.subject)
+    console.log('Emails are sent with locales: ', groupedReceivers)
+    console.log('Email ends: ', body.subject)
+
+    return
+  }
 
   for (const [locale, receivers] of Object.entries(groupedReceivers)) {
     const { t } = getTranslate(locale as StrapiLocale)
@@ -51,10 +56,9 @@ export const sendReactMailByRoles = async (
   roles: string[],
   mailBody: (t: TranslateFunc) => Promise<{ subject: string; html: string }>,
 ) => {
-  const users = await strapi.entityService.findMany(
-    'plugin::users-permissions.user',
-    {
-      filters: {
+  const profiles = await strapi.entityService.findMany('api::profile.profile', {
+    filters: {
+      user: {
         role: {
           type: {
             $in: roles,
@@ -62,12 +66,12 @@ export const sendReactMailByRoles = async (
         },
       },
     },
-  )
+  })
 
-  const receivers = users.map(user => {
+  const receivers = profiles.map(profile => {
     return {
-      email: user.email,
-      locale: undefined, // user.locale,// TODO this ll be undefined for now.
+      email: profile.email,
+      locale: profile.locale as StrapiLocale,
     } satisfies EmailReceiver
   })
 

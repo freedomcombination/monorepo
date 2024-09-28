@@ -1,18 +1,10 @@
 import { sendReactMail } from '../../../../../utils/sendReactMail'
 
-export const approvalStatusHasChanged = async params => {
-  const application = await strapi.entityService.findOne(
-    'api::course-application.course-application',
-    params.where.id,
-    {
-      populate: '*',
-    },
-  )
-
+export const approvalStatusHasChanged = async (params, application) => {
   const receiver = [
     {
       email: application?.profile?.email,
-      locale: undefined /* TODO application?.profile?.locale */,
+      locale: application?.profile?.locale,
     },
   ]
   const approved = application?.approvalStatus === 'approved'
