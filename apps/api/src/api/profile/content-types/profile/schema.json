@@ -182,10 +182,6 @@
       "target": "api::subscriber.subscriber",
       "mappedBy": "profile"
     },
-    "locale": {
-      "type": "enumeration",
-      "enum": ["en", "tr", "nl"]
-    },
     "cv": {
       "type": "media",
       "multiple": false,
@@ -197,6 +193,10 @@
       "type": "component",
       "repeatable": false,
       "component": "flow.address"
+    },
+    "locale": {
+      "type": "enumeration",
+      "enum": ["en", "tr", "nl"]
     }
   }
 }
