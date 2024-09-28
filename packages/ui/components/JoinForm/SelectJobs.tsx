@@ -24,7 +24,6 @@ export const SelectJobs = () => {
     .reduce(
       (acc, job) => {
         if (job.platform === null) return acc
-
         const platformName = job.platform?.[`name_${locale}`] as string
 
         if (!acc[platformName]) {
@@ -58,7 +57,6 @@ export const SelectJobs = () => {
             {foundationJobs?.map(job => (
               <HStack key={job.id} align={'center'}>
                 <Checkbox
-                  key={job.id}
                   id={job.id.toString()}
                   {...register(`jobs`)}
                   value={`${job.id}`}
@@ -82,21 +80,33 @@ export const SelectJobs = () => {
           </Stack>
         )}
 
-        {Object.keys(platformJobs)?.map((platform, i) => (
+        {Object.keys(platformJobs).map((platform, i) => (
           <Stack key={i}>
             <Text fontWeight={600} fontSize="sm">
               {platform}
             </Text>
             {platformJobs[platform]?.map(job => (
-              <Checkbox
-                key={job.id}
-                id={job.id.toString()}
-                {...register(`jobs`)}
-                value={`${job.id}`}
-                textTransform={'capitalize'}
-              >
-                {job[`name_${locale}`]}
-              </Checkbox>
+              <HStack key={job.id} align={'center'}>
+                <Checkbox
+                  id={job.id.toString()}
+                  {...register(`jobs`)}
+                  value={`${job.id}`}
+                  textTransform={'capitalize'}
+                >
+                  {job[`name_${locale}`]}
+                </Checkbox>
+                {job[`description_${locale}`] && (
+                  <Tooltip
+                    positioning={{ placement: 'top-end' }}
+                    content={job[`description_${locale}`] as string}
+                    aria-label={job[`description_${locale}`] as string}
+                  >
+                    <Box>
+                      <FaCircleInfo />
+                    </Box>
+                  </Tooltip>
+                )}
+              </HStack>
             ))}
           </Stack>
         ))}

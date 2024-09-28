@@ -47,26 +47,33 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
 
   const onSubmit = (data: JoinFormFieldValues) => {
     try {
-      const { availableHours = 0 } = data
+      const { availableHours = 0, city, country } = data
 
-      const heardFrom = data.heardFrom.join(', ')
       const jobs = data.jobs
 
       const body: ProfileCreateInput = {
         ...data,
+        address: {
+          city,
+          country,
+        },
         availableHours,
-        heardFrom,
         jobs,
         isVolunteer: true,
       }
 
       mutate(body, {
         onError: errCode => {
+          const errorMessage = errCode?.message?.includes(
+            'This attribute must be unique',
+          )
+            ? t('email-exists')
+            : errCode
+              ? t(errCode as any)
+              : t('apply-form.error.description')
           toaster.create({
             title: t('apply-form.error.title'),
-            description: errCode
-              ? t(errCode as any)
-              : t('apply-form.error.description'),
+            description: errorMessage,
             type: 'error',
           })
         },
@@ -107,7 +114,6 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
         ) : (
           <>
             <PageTitle>{title}</PageTitle>
-
             <JoinForm />
           </>
         )}

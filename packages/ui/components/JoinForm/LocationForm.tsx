@@ -1,32 +1,44 @@
-import { useState } from 'react'
+import { ComponentProps } from 'react'
 
 import { Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-import Select from 'react-select'
 
-import { Field } from '@fc/chakra'
+import { Field, Select } from '@fc/chakra'
 import { useCitiesOfCountry } from '@fc/services/city'
 import { useAllCountries } from '@fc/services/country'
 
-import { Option } from './types'
 import { useJoinFormContext } from './useJoinFormContext'
 
 export const LocationForm = () => {
-  const [selectedCountry, setSelectedCountry] = useState<Option | null>(null)
-  const { setValue } = useJoinFormContext()
+  const {
+    setValue,
+    watch,
+    formState: { errors },
+  } = useJoinFormContext()
   const { t } = useTranslation()
 
+  const selectedCountry = watch('country')
+
   const countriesQuery = useAllCountries()
-  const citiesQuery = useCitiesOfCountry(selectedCountry?.value)
+  const citiesQuery = useCitiesOfCountry(selectedCountry)
 
   const countries = countriesQuery.data || []
   const cities = citiesQuery.data || []
 
-  const handleCitiesChange = (option: Option) => {
-    if (selectedCountry) {
-      setValue('address', {
-        country: selectedCountry?.value,
-        city: option?.value,
+  const handleCountryChange: ComponentProps<typeof Select>['onChange'] = e => {
+    if (e) {
+      setValue('country', e.target?.value, {
+        shouldValidate: true,
+        shouldDirty: true,
+      })
+    }
+  }
+
+  const handleCityChange: ComponentProps<typeof Select>['onChange'] = e => {
+    if (selectedCountry && e.target?.value) {
+      setValue('city', e.target?.value, {
+        shouldValidate: true,
+        shouldDirty: true,
       })
     }
   }
@@ -36,26 +48,41 @@ export const LocationForm = () => {
       <Field
         invalid={countriesQuery.isError}
         label={t('country')}
-        errorText={countriesQuery.error && 'An error occured'}
+        errorText={
+          (countriesQuery.error && 'An error occured') ||
+          errors.country?.message
+        }
       >
         <Select
           placeholder={t('select-country')}
-          options={countries}
-          onChange={option => setSelectedCountry(option as Option)}
-        />
+          onChange={handleCountryChange}
+        >
+          {countries.map(country => (
+            <option key={country.value} value={country.value}>
+              {country.label}
+            </option>
+          ))}
+        </Select>
       </Field>
 
       <Field
         invalid={citiesQuery.isError}
         label={t('city')}
-        errorText={citiesQuery.error && 'An error occured'}
+        errorText={
+          (citiesQuery.error && 'An error occured') || errors.city?.message
+        }
       >
         <Select
-          isDisabled={!selectedCountry}
+          disabled={!selectedCountry}
           placeholder={t('select-city')}
-          options={cities}
-          onChange={option => handleCitiesChange(option as Option)}
-        />
+          onChange={handleCityChange}
+        >
+          {cities.map(city => (
+            <option key={city.value} value={city.value}>
+              {city.label}
+            </option>
+          ))}
+        </Select>
       </Field>
     </Stack>
   )

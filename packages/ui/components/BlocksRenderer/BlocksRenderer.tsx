@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, ReactElement } from 'react'
 
-import { Heading, Text, chakra } from '@chakra-ui/react'
+import { Box, Heading, Text, chakra } from '@chakra-ui/react'
 import {
-  BlocksRenderer as StrapiBlocksRenderer,
   BlocksContent,
+  BlocksRenderer as StrapiBlocksRenderer,
 } from '@strapi/blocks-react-renderer'
 import Link from 'next/link'
 
@@ -19,24 +19,70 @@ export const BlocksRenderer: FC<BlocksRendererProps> = ({ content }) => {
       content={content}
       blocks={{
         // You can use the default components to set class names...
-        paragraph: ({ children }) => <Text>{children}</Text>,
+        paragraph: ({ children }) => {
+          const isCode = (children as ReactElement[])?.[0]?.props?.code
+
+          if (isCode) {
+            return (
+              <Box
+                dangerouslySetInnerHTML={{
+                  __html: (children as ReactElement[])?.[0]?.props?.text,
+                }}
+              />
+            )
+          }
+
+          return (
+            <Text mb={2} _last={{ mb: 0 }}>
+              {children}
+            </Text>
+          )
+        },
         // ...or point to a design system
         heading: ({ children, level }) => {
           switch (level) {
             case 1:
-              return <Heading as="h1">{children}</Heading>
+              return (
+                <Heading size={'xl'} as="h1" mb={5}>
+                  {children}
+                </Heading>
+              )
             case 2:
-              return <Heading as="h2">{children}</Heading>
+              return (
+                <Heading size={'lg'} as="h2" mb={4}>
+                  {children}
+                </Heading>
+              )
             case 3:
-              return <Heading as="h3">{children}</Heading>
+              return (
+                <Heading size={'md'} as="h3" mb={3}>
+                  {children}
+                </Heading>
+              )
             case 4:
-              return <Heading as="h4">{children}</Heading>
+              return (
+                <Heading size={'md'} as="h4" mb={2}>
+                  {children}
+                </Heading>
+              )
             case 5:
-              return <Heading as="h5">{children}</Heading>
+              return (
+                <Heading size={'md'} as="h5" mb={2}>
+                  {children}
+                </Heading>
+              )
             case 6:
-              return <Heading as="h6">{children}</Heading>
+              return (
+                <Heading size={'md'} as="h6" mb={2}>
+                  {children}
+                </Heading>
+              )
             default:
-              return <Heading as="h1">{children}</Heading>
+              return (
+                <Heading size={'md'} as="h1" mb={5}>
+                  {children}
+                </Heading>
+              )
           }
         },
         // For links, you may want to use the component from your router or framework
@@ -54,6 +100,10 @@ export const BlocksRenderer: FC<BlocksRendererProps> = ({ content }) => {
             </Link>
           )
         },
+        list: ({ children, format }) => (
+          <Box as={format === 'ordered' ? 'ol' : 'ul'}>{children}</Box>
+        ),
+        'list-item': ({ children }) => <Box as="li">{children}</Box>,
       }}
       modifiers={{
         bold: ({ children }) => (

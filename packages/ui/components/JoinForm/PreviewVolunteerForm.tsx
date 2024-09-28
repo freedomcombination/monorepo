@@ -1,118 +1,95 @@
-import { useState } from 'react'
+import { FC } from 'react'
 
-import { Box, HStack, Text, VStack } from '@chakra-ui/react'
+import { Heading, Table, useDisclosure } from '@chakra-ui/react'
+import { omit } from 'lodash'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaEye } from 'react-icons/fa6'
 
-import { Button } from '@fc/chakra'
-import { Job } from '@fc/types'
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
 
 import { useJoinFormContext } from './useJoinFormContext'
-import { ModelModal } from '../ModelModal'
+
+type FieldBoxProps = {
+  field: string
+  value: any
+}
+
+const FieldBox: FC<FieldBoxProps> = ({ field, value }) => {
+  const { t } = useTranslation()
+
+  if (!value || !field) return null
+
+  return (
+    <Table.Row rounded="lg" p={4}>
+      <Table.Column fontWeight="bold">
+        {field.charAt(0).toUpperCase() + field.slice(1)}:
+      </Table.Column>
+      <Table.Cell w="full">
+        {Array.isArray(value) ? value.join(', ') : value || t('not-provided')}
+      </Table.Cell>
+    </Table.Row>
+  )
+}
 
 export const PreviewVolunteerForm = () => {
-  const [modalContent, setModalContent] = useState<React.ReactNode>(null)
-  const [modalTitle, setModalTitle] = useState<string>('')
-  const [isOpen, setIsOpen] = useState(false)
+  const { open, onClose, onOpen } = useDisclosure()
 
   const { locale } = useRouter()
   const { t } = useTranslation()
 
-  const { watch } = useJoinFormContext()
+  const { watch, selectedJobs } = useJoinFormContext()
 
-  const openModal = () => {
-    setModalTitle(t('volunteer-form-preview'))
-    setIsOpen(true)
-    const formData = watch()
-
-    const fields = Object.entries(formData).map(([key, value]) => {
-      if (key === 'jobs') {
-        return (
-          <HStack
-            key={key}
-            align="start"
-            borderWidth={2}
-            rounded="lg"
-            p={4}
-            borderColor="gray.100"
-          >
-            <Text fontWeight="bold">
-              {key.charAt(0).toUpperCase() + key.slice(1)}:
-            </Text>
-            {Array.isArray(value) && value.length > 0 ? (
-              value.map((job: Job) => (
-                <Text key={job?.id}>{job[`name_${locale}`]}</Text>
-              ))
-            ) : (
-              <Text>{t('not-provided')}</Text>
-            )}
-          </HStack>
-        )
-      }
-
-      if (key === 'cv') {
-        const { name } = (value || {}) as File
-
-        return (
-          <HStack
-            key={key}
-            align="start"
-            borderWidth={2}
-            rounded="lg"
-            p={4}
-            borderColor="gray.100"
-          >
-            <Text fontWeight="bold">
-              {key.charAt(0).toUpperCase() + key.slice(1)}:
-            </Text>
-            <Text>{name ? name : t('not-provided')}</Text>
-          </HStack>
-        )
-      }
-
-      return (
-        <HStack
-          key={key}
-          align="start"
-          borderWidth={2}
-          rounded="lg"
-          p={4}
-          borderColor="gray.100"
-        >
-          <Text fontWeight="bold">
-            {key.charAt(0).toUpperCase() + key.slice(1)}:
-          </Text>
-          <Text>
-            {typeof value === 'object'
-              ? JSON.stringify(value)
-              : `${value}` || t('not-provided')}
-          </Text>
-        </HStack>
-      )
-    })
-
-    setModalContent(
-      <Box p={5} borderRadius="md" shadow="md">
-        <VStack gap={4} align="stretch">
-          {fields}
-        </VStack>
-      </Box>,
-    )
-  }
-
-  const closeModal = () => {
-    setIsOpen(false)
-  }
+  const formData = watch()
 
   return (
     <>
-      <Button onClick={openModal} colorPalette={'green'} leftIcon={<FaEye />}>
+      <Button onClick={onOpen} colorScheme={'green'} leftIcon={<FaEye />}>
         {t('preview')}
       </Button>
-      <ModelModal title={modalTitle} isOpen={isOpen} onClose={closeModal}>
-        {modalContent}
-      </ModelModal>
+      <Modal
+        centered
+        open={open}
+        onOpenChange={e => !e.open && onClose()}
+        size={'xl'}
+        scrollBehavior="inside"
+        closeOnInteractOutside={false}
+        closeOnEscape={false}
+      >
+        <ModalOverlay />
+        <ModalContent p={0}>
+          <ModalHeader color={'primary.500'}>
+            <Heading as="h3" textTransform={'capitalize'}>
+              {t('volunteer-form-preview')}
+            </Heading>
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pos={'relative'} p={4}>
+            <Table.Root>
+              <Table.Body>
+                <FieldBox
+                  field="jobs"
+                  value={selectedJobs.map(job => job[`name_${locale}`])}
+                />
+                <FieldBox field="cv" value={formData.cv?.name} />
+                {Object.entries(omit(formData, ['jobs', 'cv'])).map(
+                  ([key, value]) => (
+                    <FieldBox field={key} key={key} value={value} />
+                  ),
+                )}
+              </Table.Body>
+            </Table.Root>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   )
 }
