@@ -1,9 +1,3 @@
-export type translation = {
-  en: string
-  nl: string
-  tr: string
-}
-
 export const translations = {
   // Common
 
@@ -106,4 +100,4 @@ export const translations = {
     en: 'Evaluation date',
     nl: 'Evaluatiedatum',
   },
-}
+} as const

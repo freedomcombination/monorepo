@@ -1,10 +1,10 @@
 import { format } from 'date-fns'
 import { enUS, nl, tr } from 'date-fns/locale'
-//import { Locale } from 'date-fns/types'
+import { Locale } from 'date-fns/types'
 
-import type { StrapiLocale } from '@fc/types'
+import type { Localize, StrapiLocale } from '@fc/types'
 
-const locales: { [key: string]: typeof enUS } = { en: enUS, tr, nl }
+const locales: Localize<Locale> = { en: enUS, tr, nl }
 
 export const formatDate: (
   date: string | number | Date,
