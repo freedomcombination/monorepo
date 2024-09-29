@@ -1,39 +1,54 @@
 import { useState, useEffect } from 'react'
 
-import { Modal, Stack, ModalContent, Portal } from '@chakra-ui/react'
+import {
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+  Spinner,
+} from '@chakra-ui/react'
 import { Editor } from '@tinymce/tinymce-react'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-import { Control, FieldValues, useController } from 'react-hook-form'
+import { upperFirst } from 'lodash'
+import { FieldValues } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
+import { Block } from '@fc/types'
+import { parseHtmlToBlocks } from '@fc/utils/parseHtmlToBlocks'
+import { renderToHtml } from '@fc/utils/renderToHtml'
+
+import { editableInit, init, nonEditableInit } from './init'
 import { I18nNamespaces } from '../../@types/i18next'
 import { FormItemProps } from '../FormItem'
+
 import './style.css'
 
 type BlockFormItemProps<T extends FieldValues> = {
-  control: Control<T>
+  setValue: (name: string, value: Block[]) => void
+  initialContent: Block[]
+  isEditing: boolean
+  name: string
 } & Omit<FormItemProps<T>, 'register' | 'leftElement'>
 
 export const BlockFormItem = <T extends FieldValues>({
-  control,
   name,
-  model,
+  label: initialLabel,
+  initialContent,
+  isEditing,
+  setValue,
+  helperText,
+  errors,
   ...rest
 }: BlockFormItemProps<T>) => {
-  const {
-    field: { onChange, value, ...fieldProps },
-  } = useController<T>({ name, control })
-
   const { t } = useTranslation()
-
-  const initialContent = model?.[name] || ''
   const htmlContent = renderToHtml(initialContent)
-  // console.log('about ..................', initialContent)
-  const [content, setContent] = useState<string>(htmlContent ?? '')
+  const [content, setContent] = useState<string | undefined>(htmlContent ?? '')
+  const [editorKey, setEditorKey] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
+  const translatedName = t(name as keyof I18nNamespaces['common'])
+  const label = initialLabel || translatedName || name
+  const errorMessage = errors?.[name]?.['message'] as unknown as string
 
-  //   useEffect(() => {
-  //     setContent(model?.[`about_${locale}`] || '')
-  //   }, [locale, model])
+  const [edit, setEdit] = useState<init>(nonEditableInit)
 
   const handleEditorChange = (newContent: string) => {
     if (newContent == null) {
@@ -41,21 +56,15 @@ export const BlockFormItem = <T extends FieldValues>({
 
       return
     }
-    console.log('new content', newContent)
+    const parsedBlock = parseHtmlToBlocks(newContent)
     setContent(newContent ?? '')
-    onChange(newContent ?? '')
+    setValue(name, parsedBlock)
   }
-  //   console.log('initial content', content)
 
-  //   console.log('html content', htmlContent)
-  const handleEditorError = (error: any) => {
-    if (error == null) {
-      console.error('Editor Error is null')
-
-      return
-    }
-    console.error('Editor Error:', error)
-  }
+  useEffect(() => {
+    setEdit(isEditing ? editableInit : nonEditableInit)
+    setEditorKey(prevKey => prevKey + 1)
+  }, [isEditing])
 
   if (content === undefined || content === null) {
     console.error(
@@ -66,69 +75,29 @@ export const BlockFormItem = <T extends FieldValues>({
   }
 
   return (
-    <Stack>
+    <FormControl>
+      {label && (
+        <FormLabel mb={1} htmlFor={name} fontSize="sm" fontWeight={600}>
+          {label}
+        </FormLabel>
+      )}
+      {isLoading && <Spinner />}
       <Editor
+        key={editorKey}
         apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
         value={content}
-        init={{
-          height: 500,
-          menubar: true,
-          plugins: [
-            'advlist autolink blocsformat formatselect lists link image charmap print preview anchor table',
-            'searchreplace visualblocks code fullscreen',
-            'insertdatetime media table paste code help wordcount',
-          ],
-          toolbar:
-            'undo redo |blocksformat | formatselect | bold italic backcolor | table |' +
-            'alignleft aligncenter alignright alignjustify | ' +
-            'bullist numlist outdent indent | link image | ' +
-            'removeformat | help',
-        }}
+        init={edit}
         onEditorChange={handleEditorChange}
+        onError={(error: any) => console.error('Editor Error:', error)}
+        onInit={() => setIsLoading(false)}
+        {...rest}
       />
-    </Stack>
+      <FormErrorMessage data-testid={`error-text-${name}`}>
+        {errorMessage && upperFirst(errorMessage)}
+      </FormErrorMessage>
+      {helperText && (
+        <FormHelperText color="orange.400">{helperText}</FormHelperText>
+      )}
+    </FormControl>
   )
-}
-
-export const renderToHtml = (blocks: any) => {
-  if (!blocks) return ''
-
-  return Object.values(blocks)
-    .filter(block => block !== null && block !== undefined)
-    .map(block => {
-      switch (block?.type) {
-        case 'paragraph':
-          return `<p>${block?.children
-            ?.filter(child => child?.text !== null && child?.text !== undefined)
-            .map(child => child.text)
-            .join('')}</p>`
-        case 'heading':
-          return `<h${block?.level}>${block?.children
-            ?.filter(child => child?.text !== null && child?.text !== undefined)
-            .map(child => child.text)
-            .join('')}</h${block?.level}>`
-        case 'list':
-          return block?.format === 'ordered'
-            ? `<ol>${block?.children
-                ?.filter(
-                  item => item?.text !== null && item?.text !== undefined,
-                )
-                .map(item => `<li>${item.text}</li>`)
-                .join('')}</ol>`
-            : `<ul>${block?.children
-                ?.filter(
-                  item => item?.text !== null && item?.text !== undefined,
-                )
-                .map(item => `<li>${item.text}</li>`)
-                .join('')}</ul>`
-        case 'link':
-          return `<a href="${block?.url}">${block?.children
-            ?.filter(child => child?.text !== null && child?.text !== undefined)
-            .map(child => child.text)
-            .join('')}</a>`
-        default:
-          return ''
-      }
-    })
-    .join('')
 }
