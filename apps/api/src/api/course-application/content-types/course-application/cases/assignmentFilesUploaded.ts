@@ -3,16 +3,18 @@ import {
   sendReactMailByRoles,
 } from '../../../../../utils/sendReactMail'
 
+import { emailTemplates } from '../../../../../../emails'
+
 export const assignmentFilesUploaded = async (params, application) => {
-  console.log('assignmentFilesUploaded', params, application)
-  await sendReactMailByRoles(
-    ['admin', 'academyeditor'], // TODO check this roles are true
-    async () => {
-      return {
-        // TODO change to email template
-        subject: 'Bu arkadaş dosyalarını gönderdi...',
-        html: 'Bu arkadaşın dosyaları size ulaştı eğer kurs tanımındaki gün içerisinde cevaplamazsanız red edildi muamelesi görecek.',
-      }
-    },
-  )
+  await sendReactMailByRoles(['admin', 'academyeditor'], async t => {
+    return {
+      subject: t('course-applicant-submitted-assignment-files-preview', {
+        name: application?.profile?.name,
+      }),
+      html: await emailTemplates.renderCourseApplicantSubmittedAssignmentFiles(
+        application,
+        t,
+      ),
+    }
+  })
 }

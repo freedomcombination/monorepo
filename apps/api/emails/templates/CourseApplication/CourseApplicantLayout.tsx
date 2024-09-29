@@ -1,4 +1,4 @@
-import { Profile, Course, StrapiLocale } from '@fc/types'
+import { Profile, Course, StrapiLocale, CourseApplication } from '@fc/types'
 import { getTranslate, TranslateFunc } from '../../utils/getTranslate'
 import React, { FC, ReactNode } from 'react'
 import { EmailProvider } from '../../EmailProvider'
@@ -25,12 +25,13 @@ type CourseApplicantLayoutProps = {
   preview: keyof typeof translations
   header: keyof typeof translations
   footer: keyof typeof translations
+  noButton?: boolean
 }
 
-export type CourseApplicantBaseProps = Omit<
-  CourseApplicantLayoutProps,
-  'data' | 'preview' | 'header' | 'footer'
->
+export type CourseApplicantBaseProps = {
+  application: CourseApplication
+  t: TranslateFunc
+}
 
 const CourseApplicantLayout: FC<CourseApplicantLayoutProps> = ({
   applicant = {
@@ -51,6 +52,7 @@ const CourseApplicantLayout: FC<CourseApplicantLayoutProps> = ({
   header = 'Course Applicant Header' as keyof typeof translations,
   footer = 'Course Applicant Footer' as keyof typeof translations,
   data = [],
+  noButton = false,
 }) => {
   const locale = t() as StrapiLocale
   const baseData: CourseApplicationKV[] = [
@@ -72,8 +74,8 @@ const CourseApplicantLayout: FC<CourseApplicantLayoutProps> = ({
       url: getSiteLink('foundation', locale) + 'courses/' + course.slug,
     },
     {
-      tKey: 'date', value:
-        formatDate(date, 'dd MMMM yyyy - HH:mm ', locale)
+      tKey: 'date',
+      value: formatDate(date, 'dd MMMM yyyy - HH:mm ', locale),
     },
     ...data,
   ]
@@ -108,11 +110,15 @@ const CourseApplicantLayout: FC<CourseApplicantLayoutProps> = ({
         </Section>
         <Section style={{ padding: '10px' }}>
           <Text style={{ fontSize: '16px' }}>{t(footer)}</Text>
-          <EmailButton
-            href={getSiteLink('dashboard', locale) + 'profile/' + applicant.id}
-          >
-            Dashboard
-          </EmailButton>
+          {!noButton && (
+            <EmailButton
+              href={
+                getSiteLink('dashboard', locale) + 'profile/' + applicant.id
+              }
+            >
+              Dashboard
+            </EmailButton>
+          )}
         </Section>
       </SiteLayout>
     </EmailProvider>

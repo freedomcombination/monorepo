@@ -128,7 +128,7 @@ const CoursePage = () => {
                 application => application.id === selectedApplicationId,
               )!
             }
-            onSave={() => applicationsQuery.refetch()}
+            onSave={applicationsQuery.refetch}
           />
         </ModelEditModal>
       )}

@@ -7,6 +7,5 @@
     "apps/trend-rights/public/locales/",
     "apps/lotus/public/locales/"
   ],
-  "sortItemByName": true,
-  "deepL_ApiKey": "231f2ee9-abed-4758-b171-558b637f04a2:fx"
+  "sortItemByName": true
 }

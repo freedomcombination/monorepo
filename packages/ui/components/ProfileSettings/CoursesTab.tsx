@@ -25,6 +25,7 @@ import { CourseLogic } from '@fc/utils/courseLogic'
 
 import { ProfileCourseDetails } from './Payment/components/ProfileCourseDetails'
 import { StripeResult } from './Payment/components/StripeResult'
+import { I18nNamespaces } from '../../@types/i18next'
 import { KeyValue } from '../KeyValueView'
 
 export const CoursesTab: FC = () => {
@@ -109,6 +110,9 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application, onSave }) => {
 
   const title = course[`title_${locale}` as keyof CourseApplication['course']]
   const status = courseLogic.getMessage(locale)
+  if (status.obj && 'msg' in status.obj) {
+    status.obj.msg = t(status.obj.msg as keyof I18nNamespaces['common'])
+  }
 
   return (
     <AccordionItem key={application.id} maxWidth={'100%'}>

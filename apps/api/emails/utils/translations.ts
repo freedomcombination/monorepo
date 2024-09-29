@@ -100,4 +100,42 @@ export const translations = {
     en: 'Evaluation date',
     nl: 'Evaluatiedatum',
   },
+
+  // CourseApplicantApprove.tsx
+  'course-applicant-approved-preview': {
+    tr: 'Kurs başvurunuz onaylandı.',
+    en: 'Your application has been approved.',
+    nl: 'Uw applicatie is geaccepteerd.',
+  },
+  'course-applicant-approved-header-price': {
+    tr: 'Kurs başvurunuz onaylandı, ödemenizi yapabilirsiniz.',
+    en: 'Your course application has been approved, you can make your payment.',
+    nl: 'Uw cursusaanvraag is goedgekeurd, u kunt uw betaling uitvoeren.',
+  },
+  'course-applicant-approved-header-no-price': {
+    tr: 'Kurs başvurunuz onaylandı, tebrikler.',
+    en: 'Your course application has been approved, thank you.',
+    nl: 'Uw cursusaanvraag is goedgekeurd, bedankt.',
+  },
+  'course-applicant-approved-footer': {
+    tr: "Kurs başvurunuz ile ilgili detaylerı 'Profil' sayfasında bulabilirsiniz.",
+    en: 'You can find the details of your course application in your profile page.',
+    nl: 'U kunt de details van uw cursusaanvraag in uw profielpagina vinden.',
+  },
+
+  'course-applicant-rejected-preview': {
+    tr: 'Kurs başvurunuz reddedildi.',
+    en: 'Your application has been rejected.',
+    nl: 'Uw applicatie is afgewezen.',
+  },
+  'course-applicant-rejected-header': {
+    tr: 'Kurs başvurunuz reddedildi.',
+    en: 'Your course application has been rejected.',
+    nl: 'Uw cursusaanvraag is afgewezen.',
+  },
+  'course-applicant-rejected-footer': {
+    tr: "Kurs başvurunuz ile ilgili detayları 'Profil' sayfasında bulabilirsiniz.",
+    en: 'You can find the details of your course application in your profile page.',
+    nl: 'U kunt de details van uw cursusaanvraag in uw profielpagina zien.',
+  },
 } as const

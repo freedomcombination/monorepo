@@ -1,3 +1,4 @@
+import { emailTemplates } from '../../../../../../emails'
 import { sendReactMail } from '../../../../../utils/sendReactMail'
 
 export const approvalStatusHasChanged = async (params, application) => {
@@ -22,13 +23,14 @@ export const approvalStatusHasChanged = async (params, application) => {
     )
   }
 
-  await sendReactMail(receiver, async () => {
+  await sendReactMail(receiver, async t => {
     return {
-      // TODO change to email template
-      subject: approved ? 'Kurs onaylandı' : 'Kurs reddedildi',
-      html: approved
-        ? 'Kurs onaylandı if(course.price) parasını öde!!'
-        : 'Kurs reddedildi',
+      subject: t(
+        approved
+          ? 'course-applicant-approved-preview'
+          : 'course-applicant-rejected-preview',
+      ),
+      html: await emailTemplates.renderCourseApplicantApprove(application, t),
     }
   })
 }

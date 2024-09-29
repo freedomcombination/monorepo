@@ -2,25 +2,40 @@ import React, { FC } from 'react'
 import CourseApplicantLayout, {
   CourseApplicantBaseProps,
 } from './CourseApplicantLayout'
-import { translations } from '../../utils/translations'
+import { getTranslate } from '../../utils/getTranslate'
 
-type CourseApplicantApproveProps = CourseApplicantBaseProps & {
-  approved: boolean
-}
-
-const CourseApplicantApprove: FC<CourseApplicantApproveProps> = ({
-  approved = true,
-  ...props
+const CourseApplicantApprove: FC<CourseApplicantBaseProps> = ({
+  application,
+  t = getTranslate('en').t,
 }) => {
+  if (application?.approvalStatus === 'approved')
+    return (
+      <CourseApplicantLayout
+        preview="course-applicant-approved-preview"
+        header={
+          !!application?.course?.price
+            ? 'course-applicant-approved-header-price'
+            : 'course-applicant-approved-header-no-price'
+        }
+        footer="course-applicant-approved-footer"
+        course={application?.course}
+        t={t}
+        noButton
+        applicant={application?.profile}
+        date={application?.updatedAt}
+      />
+    )
+
   return (
     <CourseApplicantLayout
-
-      preview={'course-applicant-approve-preview' as keyof typeof translations}
-      header={'course-applicant-approve-header' as keyof typeof translations}
-      footer={'course-applicant-approve-footer' as keyof typeof translations}
-
-      data={approved ? [] : []}
-      {...props}
+      preview="course-applicant-rejected-preview"
+      header="course-applicant-rejected-header"
+      footer="course-applicant-rejected-footer"
+      course={application?.course}
+      t={t}
+      noButton
+      applicant={application?.profile}
+      date={application?.updatedAt}
     />
   )
 }

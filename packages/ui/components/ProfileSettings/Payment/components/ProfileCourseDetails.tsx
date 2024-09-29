@@ -16,7 +16,7 @@ export const ProfileCourseDetails: FC<ProfileCourseDetailsProps> = ({
   onSave,
 }) => {
   const isRejected = courseLogic.isRejected()
-  if (isRejected !== false) return <StatusRejected reason={isRejected} />
+  if (isRejected) return <StatusRejected reason={isRejected} />
 
   if (courseLogic.isAssignmentInProgress())
     return (

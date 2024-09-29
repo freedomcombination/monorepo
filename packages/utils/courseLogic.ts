@@ -64,13 +64,13 @@ export class CourseLogic {
     this.validApplicants = this.findValidApplicants()
   }
 
-  isRejected(): false | keyof I18nNamespaces['common'] {
+  isRejected(): null | keyof I18nNamespaces['common'] {
     // if admin sets approvalStatus to 'rejected', it's rejected
     if (this.myApplication?.approvalStatus === 'rejected')
       return 'course.application.reject.reason.by-admin'
 
     // if course requireApproval is not set, don't look further
-    if (!this.isAssignmentInProgress()) return false
+    if (!this.isAssignmentInProgress()) return null
 
     // if applicant missed the deadline, it's rejected
     if (this.isSubmitFilesDeadlinePassed())
@@ -81,7 +81,7 @@ export class CourseLogic {
       return 'course.application.reject.reason.evaluation'
 
     // otherwise, it's on progress
-    return false
+    return null
   }
 
   isSubmitFilesDeadlinePassed() {
@@ -206,12 +206,12 @@ export class CourseLogic {
     const course = this.course
 
     const isRejected = this.isRejected()
-    if (isRejected !== false) {
+    if (isRejected) {
       return {
         message: 'course.application.message.rejected-with-reason',
         color: 'red',
         obj: {
-          msg: isRejected,
+          msg: isRejected as string,
         },
       } satisfies Message
     }
