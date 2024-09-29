@@ -39,9 +39,7 @@ export const Layout: FC<LayoutProps> = ({
             <Spinner colorScheme="red" />
           </Center>
         ) : (
-          <Box minH={minH} pb={{ base: 4, md: 6 }}>
-            {children}
-          </Box>
+          <Box minH={minH}>{children}</Box>
         )}
         <Footer {...footerProps} />
       </Flex>
