@@ -37,11 +37,10 @@ export const BlockFormItem = <T extends FieldValues>({
   setValue,
   helperText,
   errors,
-  ...rest
 }: BlockFormItemProps<T>) => {
   const { t } = useTranslation()
   const htmlContent = renderToHtml(initialContent)
-  const [content, setContent] = useState<string | undefined>(htmlContent ?? '')
+  const [content, setContent] = useState<string>(htmlContent ?? '')
   const [editorKey, setEditorKey] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const translatedName = t(name as keyof I18nNamespaces['common'])
@@ -85,12 +84,10 @@ export const BlockFormItem = <T extends FieldValues>({
       <Editor
         key={editorKey}
         apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
-        value={content}
+        value={content ?? ''}
         init={edit}
         onEditorChange={handleEditorChange}
-        onError={(error: any) => console.error('Editor Error:', error)}
         onInit={() => setIsLoading(false)}
-        {...rest}
       />
       <FormErrorMessage data-testid={`error-text-${name}`}>
         {errorMessage && upperFirst(errorMessage)}
