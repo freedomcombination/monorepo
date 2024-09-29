@@ -10,9 +10,10 @@ export const useFoundationsSchema = () => {
     bank2: yup.string(),
     iban2: yup.string(),
     email: yup.string().email().required(),
-    about_tr: yup.object().required(),
-    about_nl: yup.object().required(),
-    about_en: yup.object().required(),
+    // TODO: Investigate the block type and empty validation: https://stackoverflow.com/a/59069603
+    about_tr: yup.mixed().required(),
+    about_nl: yup.mixed().required(),
+    about_en: yup.mixed().required(),
     // TODO
     // contact: yup.string().required(),
   })

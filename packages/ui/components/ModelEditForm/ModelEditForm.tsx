@@ -65,7 +65,7 @@ import { useDefaultValues } from '../../hooks/useDefaultValues'
 import { ActionButton } from '../ActionButton'
 import { ActionStack } from '../ActionStack'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
-import { BlockFormItem } from '../BlockFormItem/BlockFormItem'
+import { BlockFormItem } from '../BlockFormItem'
 import { DownloadCapsModal } from '../DownloadCapsModal'
 import { FormItem } from '../FormItem'
 import { MasonryGrid } from '../MasonryGrid'
@@ -197,6 +197,7 @@ export const ModelEditForm = <T extends StrapiModel>({
       }
 
       // TODO: Find a better way to handle updating multiple media files
+      // TODO: Handle block fields
       if (Array.isArray(value) && key !== 'images') {
         return {
           ...acc,
@@ -347,82 +348,123 @@ export const ModelEditForm = <T extends StrapiModel>({
             columnGap={8}
             rowGap={4}
           >
-            {Object.values(fields || {})?.map(
-              (field: FormCommonFields<T>, index) => {
-                const label = t(field.name as keyof I18nNamespaces['common'])
-                const errorMessage =
-                  errors[field.name]?.message &&
-                  upperFirst(errors[field.name]?.message as string)
+            {Object.values(fields || {})?.map((field, index) => {
+              const label = t(field.name as keyof I18nNamespaces['common'])
+              const errorMessage =
+                errors[field.name]?.message &&
+                upperFirst(errors[field.name]?.message as string)
 
-                if (field.type === 'file') {
-                  return (
-                    <FormControl
-                      key={index}
-                      isRequired={field.isRequired}
-                      maxW={400}
+              if (field.type === 'file') {
+                return (
+                  <FormControl
+                    key={index}
+                    isRequired={field.isRequired}
+                    maxW={400}
+                  >
+                    <FormLabel
+                      fontWeight={600}
+                      fontSize={'sm'}
+                      textTransform={'capitalize'}
                     >
-                      <FormLabel
-                        fontWeight={600}
-                        fontSize={'sm'}
-                        textTransform={'capitalize'}
-                      >
-                        {label}
-                      </FormLabel>
-                      <ModelMedia
-                        endpoint={endpoint}
-                        isEditing={isEditing}
-                        model={model}
-                        name={field.name as string}
-                        setValue={setValue}
-                        isChangingMedia={isChangingImage[field.name as string]}
-                        toggleChangingMedia={() => toggleChangingMedia(field)}
-                      />
-                      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-                    </FormControl>
-                  )
-                }
+                      {label}
+                    </FormLabel>
+                    <ModelMedia
+                      endpoint={endpoint}
+                      isEditing={isEditing}
+                      model={model}
+                      name={field.name as string}
+                      setValue={setValue}
+                      isChangingMedia={isChangingImage[field.name as string]}
+                      toggleChangingMedia={() => toggleChangingMedia(field)}
+                    />
+                    <FormErrorMessage>{errorMessage}</FormErrorMessage>
+                  </FormControl>
+                )
+              }
 
-                if (field.type === 'boolean') {
-                  return (
-                    <FormControl
-                      key={index}
-                      isRequired={field.isRequired}
-                      isDisabled={field.blockEdit}
-                    >
-                      <FormLabel fontWeight={600} fontSize={'sm'}>
-                        {label}
-                      </FormLabel>
-                      <Switch
-                        disabled={field.blockEdit}
-                        colorScheme={'primary'}
-                        size={'lg'}
-                        isDisabled={!isEditing}
-                        isChecked={!!watch(field.name as string)}
-                        onChange={e => {
-                          setValue(field.name as string, e.target.checked)
-                        }}
-                      />
+              if (field.type === 'boolean') {
+                return (
+                  <FormControl
+                    key={index}
+                    isRequired={field.isRequired}
+                    isDisabled={field.blockEdit}
+                  >
+                    <FormLabel fontWeight={600} fontSize={'sm'}>
+                      {label}
+                    </FormLabel>
+                    <Switch
+                      disabled={field.blockEdit}
+                      colorScheme={'primary'}
+                      size={'lg'}
+                      isDisabled={!isEditing}
+                      isChecked={!!watch(field.name as string)}
+                      onChange={e => {
+                        setValue(field.name as string, e.target.checked)
+                      }}
+                    />
 
-                      <FormHelperText color={'orange.400'}>
-                        {isEditing && field.blockEdit && 'Blocked from editing'}
-                      </FormHelperText>
+                    <FormHelperText color={'orange.400'}>
+                      {isEditing && field.blockEdit && 'Blocked from editing'}
+                    </FormHelperText>
 
-                      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-                    </FormControl>
-                  )
-                }
+                    <FormErrorMessage>{errorMessage}</FormErrorMessage>
+                  </FormControl>
+                )
+              }
 
-                if (field.type === 'select') {
-                  return (
-                    <ModelSelect<T>
-                      key={index}
-                      endpoint={field.endpoint as StrapiCollectionEndpoint}
-                      populate={field.populate}
-                      options={field.options}
-                      isMulti={field.isMulti}
-                      isRequired={field.isRequired}
+              if (field.type === 'select') {
+                return (
+                  <ModelSelect<T>
+                    key={index}
+                    endpoint={field.endpoint as StrapiCollectionEndpoint}
+                    populate={field.populate}
+                    options={field.options}
+                    isMulti={field.isMulti}
+                    isRequired={field.isRequired}
+                    name={field.name as string}
+                    isDisabled={field.blockEdit || !isEditing}
+                    errors={errors}
+                    control={control}
+                    _disabled={disabledStyle}
+                    helperText={
+                      (isEditing &&
+                        field.blockEdit &&
+                        'Blocked from editing') ||
+                      undefined
+                    }
+                  />
+                )
+              }
+
+              if (field.type === 'block') {
+                const initialContent = model?.[field.name] as Block[]
+
+                return (
+                  <Box key={index} maxH={550} overflowY={'auto'}>
+                    <BlockFormItem
+                      name={field.name as string}
+                      initialContent={initialContent}
+                      isEditing={isEditing}
+                      errors={errors}
+                      setValue={setValue}
+                      helperText={
+                        (isEditing &&
+                          field.blockEdit &&
+                          'Blocked from editing') ||
+                        undefined
+                      }
+                    />
+                  </Box>
+                )
+              }
+
+              if (field.type === 'markdown') {
+                return (
+                  <Box key={index} maxH={550} overflowY={'auto'}>
+                    <MdFormItem
                       name={field.name as string}
                       isDisabled={field.blockEdit || !isEditing}
+                      isRequired={field.isRequired}
                       errors={errors}
                       control={control}
                       _disabled={disabledStyle}
@@ -433,85 +475,43 @@ export const ModelEditForm = <T extends StrapiModel>({
                         undefined
                       }
                     />
-                  )
-                }
-
-                if (field.type === 'block') {
-                  const initialContent = model?.[field.name] as Block[]
-
-                  return (
-                    <Box key={index} maxH={550} overflowY={'auto'}>
-                      <BlockFormItem
-                        name={field.name as string}
-                        initialContent={initialContent}
-                        isEditing={isEditing}
-                        errors={errors}
-                        setValue={setValue}
-                        helperText={
-                          (isEditing &&
-                            field.blockEdit &&
-                            'Blocked from editing') ||
-                          undefined
-                        }
-                      />
-                    </Box>
-                  )
-                }
-
-                if (field.type === 'markdown') {
-                  return (
-                    <Box key={index} maxH={550} overflowY={'auto'}>
-                      <MdFormItem
-                        name={field.name as string}
-                        isDisabled={field.blockEdit || !isEditing}
-                        isRequired={field.isRequired}
-                        errors={errors}
-                        control={control}
-                        _disabled={disabledStyle}
-                        helperText={
-                          (isEditing &&
-                            field.blockEdit &&
-                            'Blocked from editing') ||
-                          undefined
-                        }
-                      />
-                    </Box>
-                  )
-                }
-                const inputType =
-                  field.type === 'date'
-                    ? 'date'
-                    : field.type === 'datetime-local'
-                      ? 'datetime-local'
-                      : 'text'
-
-                return (
-                  <Stack key={index}>
-                    <FormItem
-                      {...(field.type === 'textarea' && { as: Textarea })}
-                      name={field.name as string}
-                      type={inputType}
-                      isRequired={field.isRequired}
-                      errors={errors}
-                      register={register}
-                      isDisabled={field.blockEdit || !isEditing}
-                      _disabled={disabledStyle}
-                      helperText={
-                        (isEditing &&
-                          field.blockEdit &&
-                          'Blocked from editing') ||
-                        undefined
-                      }
-                    />
-                    {field.type === 'mediaUrl' && videoUrl && (
-                      <AspectRatio ratio={16 / 9}>
-                        <Box as="iframe" src={videoUrl} title={label} />
-                      </AspectRatio>
-                    )}
-                  </Stack>
+                  </Box>
                 )
-              },
-            )}
+              }
+
+              const inputType =
+                field.type === 'date'
+                  ? 'date'
+                  : field.type === 'datetime-local'
+                    ? 'datetime-local'
+                    : 'text'
+
+              return (
+                <Stack key={index}>
+                  <FormItem
+                    {...(field.type === 'textarea' && { as: Textarea })}
+                    name={field.name as string}
+                    type={inputType}
+                    isRequired={field.isRequired}
+                    errors={errors}
+                    register={register}
+                    isDisabled={field.blockEdit || !isEditing}
+                    _disabled={disabledStyle}
+                    helperText={
+                      (isEditing &&
+                        field.blockEdit &&
+                        'Blocked from editing') ||
+                      undefined
+                    }
+                  />
+                  {field.type === 'media-url' && videoUrl && (
+                    <AspectRatio ratio={16 / 9}>
+                      <Box as="iframe" src={videoUrl} title={label} />
+                    </AspectRatio>
+                  )}
+                </Stack>
+              )
+            })}
           </MasonryGrid>
         </Flex>
         <Flex
