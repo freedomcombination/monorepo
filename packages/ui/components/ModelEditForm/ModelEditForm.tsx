@@ -197,20 +197,22 @@ export const ModelEditForm = <T extends StrapiModel>({
       }
       // TODO: Find a better way to handle updating multiple media files
       // TODO: Handle block fields
+      const field = fields.find(f => f.name === key)
 
-      if (Array.isArray(value) && key !== 'images') {
+      // handle block fields
+      if (field?.type === 'block') {
         return {
           ...acc,
           [key]: value,
         }
       }
 
-      // if (Array.isArray(value) && key !== 'images') {
-      //   return {
-      //     ...acc,
-      //     [key]: value.map(v => v.value),
-      //   }
-      // }
+      if (Array.isArray(value) && key !== 'images') {
+        return {
+          ...acc,
+          [key]: value.map(v => v.value),
+        }
+      }
 
       if ((value as Option).value) {
         return {
