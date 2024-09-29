@@ -1,25 +1,65 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react'
-
-import { Box } from '@chakra-ui/react'
+import axios, { AxiosError } from 'axios'
+import { Box, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import { API_URL } from '@fc/config/constants'
+const BLOG_URL = 'https://wsvv-api-staging.onrender.com/api/blogs?locale=tr'
 
-// https://wsvv-api-staging.onrender.com/api/blogs?locale=tr
-// You can use local API_URL instead of the above url
-// yarn --cwd apps/api dev to run the api locally (http://localhost:1337)
-const BLOG_URL = `${API_URL}/api/blogs`
+interface Blog {
+  id: string
+  title?: string
+}
 
 export const FetcWithAxios = () => {
-  const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState<Blog[]>([])
   const { locale } = useRouter()
 
   useEffect(() => {
-    // TODO: fetch blogs with axios by using the API_URL and TOKEN (Authorization header with Bearer token)
-    // NOTE: Not every locale may have a blog, so you may need to change the locale to tr
-    // REF: https://docs.strapi.io/dev-docs/plugins/i18n#getting-localized-entries-with-the-locale-parameter
-  }, [])
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get(BLOG_URL, {
+          headers: {
+            Authorization: `Bearer ${process.env.API_TOKEN}`,
+          },
+          params: {
+            locale: locale || 'tr',
+          },
+        })
 
-  return <Box>{/* TODO: Show only title of the blogs */}</Box>
+        if (response.status === 200 && response.data.data) {
+          setBlogs(response.data.data)
+
+          console.log('All Blogs:', response.data.data)
+        } else {
+          console.warn('No blogs found for this locale.')
+        }
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          const axiosError = error as AxiosError
+          console.error(
+            'Axios error:',
+            axiosError.response?.data || axiosError.message,
+          )
+        } else {
+          console.error('Unexpected error:', (error as Error).message)
+        }
+      }
+    }
+
+    fetchBlogs()
+  }, [locale])
+
+  return (
+    <Box>
+      {blogs.length > 0 ? (
+        blogs.map(blog => (
+          <Text key={blog.id}>
+            {blog.title || `Blog ID: ${blog.id} - Title not available`}
+          </Text>
+        ))
+      ) : (
+        <Text>No blogs available for this locale.</Text>
+      )}
+    </Box>
+  )
 }
