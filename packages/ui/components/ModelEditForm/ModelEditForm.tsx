@@ -195,15 +195,22 @@ export const ModelEditForm = <T extends StrapiModel>({
       if (value === undefined || !fields.some(f => f.name === key)) {
         return acc
       }
-
       // TODO: Find a better way to handle updating multiple media files
       // TODO: Handle block fields
+
       if (Array.isArray(value) && key !== 'images') {
         return {
           ...acc,
-          [key]: value.map(v => v.value),
+          [key]: value,
         }
       }
+
+      // if (Array.isArray(value) && key !== 'images') {
+      //   return {
+      //     ...acc,
+      //     [key]: value.map(v => v.value),
+      //   }
+      // }
 
       if ((value as Option).value) {
         return {
