@@ -32,7 +32,7 @@ export const recommendedTweetFields: FormFields<RecommendedTweet> = [
   },
   {
     name: 'videoUrl',
-    type: 'mediaUrl',
+    type: 'media-url',
     group: {
       label: 'VideoUrl',
       value: 'videoUrl',

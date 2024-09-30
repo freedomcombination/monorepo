@@ -47,6 +47,7 @@ import {
   endpointsWithPublicationState,
 } from '@fc/services/common/urls'
 import type {
+  Block,
   FormCommonFields,
   Profile,
   ProfileCreateInput,
@@ -64,6 +65,7 @@ import { useDefaultValues } from '../../hooks/useDefaultValues'
 import { ActionButton } from '../ActionButton'
 import { ActionStack } from '../ActionStack'
 import { ArtAddToCollectionModal } from '../ArtAddToCollectionCard'
+import { BlockFormItem } from '../BlockFormItem'
 import { DownloadCapsModal } from '../DownloadCapsModal'
 import { FormItem } from '../FormItem'
 import { MasonryGrid } from '../MasonryGrid'
@@ -193,8 +195,18 @@ export const ModelEditForm = <T extends StrapiModel>({
       if (value === undefined || !fields.some(f => f.name === key)) {
         return acc
       }
-
       // TODO: Find a better way to handle updating multiple media files
+      // TODO: Handle block fields
+      const field = fields.find(f => f.name === key)
+
+      // handle block fields
+      if (field?.type === 'block') {
+        return {
+          ...acc,
+          [key]: value,
+        }
+      }
+
       if (Array.isArray(value) && key !== 'images') {
         return {
           ...acc,
@@ -433,6 +445,28 @@ export const ModelEditForm = <T extends StrapiModel>({
                 )
               }
 
+              if (field.type === 'block') {
+                const initialContent = model?.[field.name] as Block[]
+
+                return (
+                  <Box key={index} maxH={550} overflowY={'auto'}>
+                    <BlockFormItem
+                      name={field.name as string}
+                      initialContent={initialContent}
+                      isEditing={isEditing}
+                      errors={errors}
+                      setValue={setValue}
+                      helperText={
+                        (isEditing &&
+                          field.blockEdit &&
+                          'Blocked from editing') ||
+                        undefined
+                      }
+                    />
+                  </Box>
+                )
+              }
+
               if (field.type === 'markdown') {
                 return (
                   <Box key={index} maxH={550} overflowY={'auto'}>
@@ -479,7 +513,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                       undefined
                     }
                   />
-                  {field.type === 'mediaUrl' && videoUrl && (
+                  {field.type === 'media-url' && videoUrl && (
                     <AspectRatio ratio={16 / 9}>
                       <Box as="iframe" src={videoUrl} title={label} />
                     </AspectRatio>

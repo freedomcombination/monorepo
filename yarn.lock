@@ -9630,6 +9630,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tinymce/tinymce-react@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "@tinymce/tinymce-react@npm:5.1.1"
+  dependencies:
+    prop-types: "npm:^15.6.2"
+    tinymce: "npm:^7.0.0 || ^6.0.0 || ^5.5.1"
+  peerDependencies:
+    react: ^18.0.0 || ^17.0.1 || ^16.7.0
+    react-dom: ^18.0.0 || ^17.0.1 || ^16.7.0
+  checksum: 10/82c5df31cdab0b4fd762d7c100d1a3baebefef77f26c51490c0959e97ffadbdeb44e207bce0175b1d128cd3f0bd0a91bb6f5d1a704f2280b4f78a0bcc541f94c
+  languageName: node
+  linkType: hard
+
 "@tootallnate/quickjs-emscripten@npm:^0.23.0":
   version: 0.23.0
   resolution: "@tootallnate/quickjs-emscripten@npm:0.23.0"
@@ -17243,6 +17256,7 @@ __metadata:
     "@tanstack/react-query": "npm:^5.56.2"
     "@tanstack/react-query-devtools": "npm:^5.56.2"
     "@testing-library/react": "npm:^16.0.1"
+    "@tinymce/tinymce-react": "npm:^5.1.1"
     "@turbo/gen": "npm:^2.1.2"
     "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.13"
@@ -29668,6 +29682,13 @@ __metadata:
     "@types/tinycolor2": "npm:^1.4.0"
     tinycolor2: "npm:^1.0.0"
   checksum: 10/ba33884240f96fffb91b68300bc984b63c2a57617c325063ccadea8b69b006fb341ff44af7b249451fa68fd01325aabde105fdfa28f179400749f5edea756a14
+  languageName: node
+  linkType: hard
+
+"tinymce@npm:^7.0.0 || ^6.0.0 || ^5.5.1":
+  version: 7.3.0
+  resolution: "tinymce@npm:7.3.0"
+  checksum: 10/0bb6efd2fba65c00faf22fd8a59d12680d3ef7385f3d565b121d595165421b86e2eee25408d7317e073f6ae6ebdbef07d34585c6d9ccfdf399fb211a715a91f3
   languageName: node
   linkType: hard
 
