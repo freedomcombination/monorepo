@@ -116,7 +116,7 @@
     "@playwright/test": "^1.47.2",
     "@storybook/addon-essentials": "^7.6.20",
     "@storybook/builder-webpack5": "^7.6.20",
-    "@storybook/core-common": "^7.6.20",
+    "@storybook/core-common": "^8.3.4",
     "@storybook/core-server": "^7.6.20",
     "@storybook/nextjs": "^7.6.20",
     "@storybook/react": "^7.6.20",
