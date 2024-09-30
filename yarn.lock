@@ -15520,6 +15520,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-flow@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "dotenv-flow@npm:4.1.0"
+  dependencies:
+    dotenv: "npm:^16.0.0"
+  checksum: 10/75c36fefbc25e8c4f2cd6cff0a161444c7f2e992ea24662c63887aa57950007355df5bf153a6acc7e20c05ff3e5b783150e255ce543464a748de32bb9c6e222c
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:14.2.0":
   version: 14.2.0
   resolution: "dotenv@npm:14.2.0"
@@ -17285,7 +17294,7 @@ __metadata:
     eslint-plugin-react: "npm:7.37.0"
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:^11.3.31"
-    i18n-help: "npm:^0.1.3"
+    i18n-help: "npm:^0.1.4"
     i18next: "npm:^23.15.1"
     i18next-browser-languagedetector: "npm:^8.0.0"
     i18next-http-backend: "npm:^2.6.1"
@@ -19194,17 +19203,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18n-help@npm:^0.1.3":
-  version: 0.1.3
-  resolution: "i18n-help@npm:0.1.3"
+"i18n-help@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "i18n-help@npm:0.1.4"
   dependencies:
     commander: "npm:^12.1.0"
     deepl-node: "npm:^1.13.1"
+    dotenv-flow: "npm:^4.1.0"
   bin:
     i18n-help: dist/index.js
     i18nHelp: dist/index.js
     i18nhelp: dist/index.js
-  checksum: 10/9d37d20b3dfde4062d1573a3403e50e8d6ad9bb7c0df23300aca0d7b5cd93b4cc24f7403bac8bdc2e33af292ef70cfbf1fd3e4e553fe8f58879493652ef7638e
+  checksum: 10/12d2593160c57365aef49b5a95b9e22b360a30ab7f19af904cb2b562479c681d39799ffa3996e2a3fe571a7f85f562b3f72e36ae7fe8a454e10a771ee5d6f976
   languageName: node
   linkType: hard
 
