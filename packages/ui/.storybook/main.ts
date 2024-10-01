@@ -27,7 +27,6 @@ const config: StorybookConfig = {
         ...config.resolve.alias,
         '@fc/config': path.resolve(__dirname, '../../config'),
         '@fc/context': path.resolve(__dirname, '../../context'),
-        '@fc/services': path.resolve(__dirname, '../../lib'),
         '@fc/mocks': path.resolve(__dirname, '../../mocks'),
         '@fc/secrets': path.resolve(__dirname, '../../secrets'),
         '@fc/services': path.resolve(__dirname, '../../services'),
