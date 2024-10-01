@@ -1,11 +1,10 @@
 import { FC, useEffect, useId, useMemo, useState } from 'react'
 
-import { Box, Button, Center, Text, VStack } from '@chakra-ui/react'
+import { Center, Input, VStack } from '@chakra-ui/react'
 import Compressor from '@uppy/compressor'
 import Uppy from '@uppy/core'
 import ImageEditor from '@uppy/image-editor'
 import { Dashboard } from '@uppy/react'
-import { FaUpload } from 'react-icons/fa6'
 
 import { FilePickerProps } from './types'
 
@@ -15,7 +14,6 @@ import '@uppy/image-editor/dist/style.min.css'
 
 const FilePicker: FC<FilePickerProps> = ({
   children,
-  height = 250,
   maxNumberOfFiles,
   onLoaded,
   allowedFileTypes = ['image/*'],
@@ -84,69 +82,17 @@ const FilePicker: FC<FilePickerProps> = ({
 
   const showDashboard = images.length ? true : false
 
-  const onTrigger = () => {
-    // Trigger file input
-    const input = document.querySelector(
-      '.uppy-Dashboard-input',
-    ) as HTMLInputElement
-
-    if (images?.length === 0) {
-      input?.click()
-    }
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files
+    if (!files) return
+    const filesArray = Array.from(files).map(file => file as File)
+    filesArray.forEach(file =>
+      uppy.addFile({ name: file.name, type: file.type, data: file }),
+    )
   }
 
   return (
-    <Button
-      colorScheme="blackAlpha"
-      variant={'outline'}
-      borderStyle={'dashed'}
-      color={'gray.700'}
-      onClick={onTrigger}
-      sx={{
-        '.uppy-Root': {
-          opacity: showDashboard ? 1 : 0,
-          h: 250,
-        },
-        '.uppy-Container': {
-          w: 'full',
-        },
-        '.uppy-Dashboard-overlay': {
-          display: 'none',
-        },
-        '.uppy-ImageCropper-controls': {
-          h: 'auto',
-        },
-        '.uppy-Dashboard': {
-          h: 'full',
-        },
-        '.uppy-ImageCropper-container': {
-          display: 'flex',
-          justifyContent: 'center',
-        },
-        '.uppy-Dashboard-inner': {
-          w: 'full !important',
-          h: showDashboard ? `100% !important` : '250px !important',
-        },
-        '.uppy-Dashboard-AddFiles-title,.uppy-Dashboard-progressindicators': {
-          display: 'none',
-        },
-        '.uppy-DashboardTab': {
-          h: 'full',
-        },
-        '.uppy-DashboardTab-btn': {
-          pos: 'absolute',
-          top: 0,
-          left: 0,
-          boxSize: 'full',
-          justifyContent: 'center',
-        },
-      }}
-      w="full"
-      h={showDashboard ? 'auto' : height}
-      border={1}
-      rounded={'lg'}
-      pos={'relative'}
-    >
+    <>
       {!showDashboard &&
         (children || (
           <Center
@@ -159,14 +105,18 @@ const FilePicker: FC<FilePickerProps> = ({
             boxSize={'full'}
           >
             <VStack flex={1} p={4} textAlign={'center'}>
-              <Box as={FaUpload} boxSize={12} />
-              <Text fontSize={'2xl'} fontWeight={600}>
-                Upload
-              </Text>
+              <Input
+                type="file"
+                id={id}
+                display="none"
+                {...props}
+                accept={allowedFileTypes.join(',')}
+                multiple
+                onChange={handleChange}
+              />
             </VStack>
           </Center>
         ))}
-
       <Dashboard
         id={id}
         width={'100%'}
@@ -177,7 +127,7 @@ const FilePicker: FC<FilePickerProps> = ({
         autoOpen={autoOpen}
         {...props}
       />
-    </Button>
+    </>
   )
 }
 
