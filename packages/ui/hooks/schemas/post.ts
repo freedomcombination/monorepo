@@ -34,7 +34,7 @@ export const postFields: FormFields<Post> = [
   },
   {
     name: 'videoUrl',
-    type: 'mediaUrl',
+    type: 'media-url',
     group: {
       label: 'VideoUrl',
       value: 'videoUrl',
