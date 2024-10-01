@@ -13,14 +13,7 @@ export const FooterNav: FC<FooterNavProps> = ({ menu }) => {
     <>
       {menu?.map((item, i) => {
         return (
-          <Stack
-            key={i}
-            align="center"
-            marginX={4}
-            fontSize="lg"
-            color={'primary.50'}
-            py={4}
-          >
+          <Stack key={i} align="center" marginX={4} color={'primary.50'} py={4}>
             <Text
               fontWeight={600}
               fontSize={'lg'}
