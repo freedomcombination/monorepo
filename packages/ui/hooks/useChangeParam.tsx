@@ -58,15 +58,18 @@ export const useChangeParams = () => {
       const sanitizedArgs = sanitizeArgs(args)
 
       const newArgs = {...sanitizedArgs}
+
+      // sanitizedQuery is immutable so, make acopy of it for delete page property.
+      const updatedQuery = {...sanitizedQuery}
       
       // if there is any new parameters delete page parameter
-      const shouldResetPage = Object.keys(newArgs).some(key => key !== 'page') && !('page' in newArgs)
+      const shouldRemovePage = Object.keys(newArgs).some(key => key !== 'page') && 'page' in updatedQuery && !('page' in newArgs)
       
-      if (shouldResetPage) {
-        newArgs.page = 1
+      if (shouldRemovePage) {
+        delete updatedQuery.page
       }
 
-      const newQuery = { ...sanitizedQuery, ...newArgs }
+      const newQuery = { ...updatedQuery, ...newArgs }
 
       if (isEqual(query, newQuery)) {
         return
