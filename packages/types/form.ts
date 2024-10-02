@@ -2,15 +2,16 @@ import { StrapiCollectionEndpoint, StrapiModel } from './strapi'
 
 type FormTextFields = {
   type?:
+    | 'block'
     | 'boolean'
     | 'date'
     | 'datetime-local'
     | 'file'
     | 'markdown'
+    | 'media-url'
     | 'number-input'
     | 'text'
     | 'textarea'
-    | 'mediaUrl'
 }
 
 type FormSelectFields = {

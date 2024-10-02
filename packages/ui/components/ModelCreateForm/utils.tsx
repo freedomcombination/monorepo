@@ -62,7 +62,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
       errors?.[field.name]?.message &&
       upperFirst(errors?.[field.name]?.message as string)
 
-    if (field.type === 'mediaUrl') {
+    if (field.type === 'media-url') {
       return (
         <Box key={index} {...(!isActive && { display: 'none' })}>
           <FormItem

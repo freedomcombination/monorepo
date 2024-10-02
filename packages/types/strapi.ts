@@ -210,7 +210,9 @@ export type StrapiSeoModel =
   | RecommendedTweet
   | Platform
 
-export type StrapiMergedModels = Expand<UnionToIntersection<StrapiModel>>
+export type StrapiMergedModels = Expand<
+  UnionToIntersection<Exclude<StrapiModel, UploadFile>>
+>
 
 export type StrapiModelKeys = keyof StrapiMergedModels
 

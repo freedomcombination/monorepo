@@ -11,5 +11,6 @@
     "kunsthaltecoordinator",
     "platformcoordinator",
     "strapi"
-  ]
+  ],
+  "git.autofetch": true
 }

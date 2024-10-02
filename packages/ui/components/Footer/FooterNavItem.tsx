@@ -20,6 +20,7 @@ export const FooterNavItem: FC<FooterNavItemProps> = ({ item }) => {
             isExternal,
             target: '_blank',
             rel: 'noopener noreferrer',
+            'data-testid': `link-footer-${item.en.toLowerCase()}`,
           }
         : {
             'data-testid': `link-footer${item.link}`,
