@@ -37,7 +37,7 @@ import { CourseDetailPageProps } from './types'
 import { Container } from '../Container'
 import { CourseAssignmentFileButton } from '../CourseApplicationInstallment'
 import { Markdown } from '../Markdown'
-import { StripeResult } from '../ProfileSettings/Payment/components/StripeResult'
+import { StripeResult } from '../ProfileSettings/Payment/StripeResult'
 import { ShareButtons } from '../ShareButtons'
 import { WImage } from '../WImage'
 

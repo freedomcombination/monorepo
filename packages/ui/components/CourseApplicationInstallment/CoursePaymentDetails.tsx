@@ -31,9 +31,9 @@ import { CourseLogic } from '@fc/utils/courseLogic'
 import { formatDate } from '@fc/utils/formatDate'
 import { formatPrice } from '@fc/utils/formatPrice'
 
-import { I18nNamespaces } from '../../../@types/i18next'
-import { KeyValue } from '../../KeyValueView'
-import { CourseApplicationComponentProps } from '../CourseApplicationDetails'
+import { CourseApplicationComponentProps } from './CourseApplicationDetails'
+import { I18nNamespaces } from '../../@types/i18next'
+import { KeyValue } from '../KeyValueView'
 
 export const CoursePaymentDetails: FC<CourseApplicationComponentProps> = ({
   courseLogic,

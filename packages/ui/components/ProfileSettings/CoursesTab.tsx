@@ -23,8 +23,8 @@ import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { CourseApplication } from '@fc/types'
 import { CourseLogic } from '@fc/utils/courseLogic'
 
-import { ProfileCourseDetails } from './Payment/components/ProfileCourseDetails'
-import { StripeResult } from './Payment/components/StripeResult'
+import { ProfileCourseDetails } from './Payment/ProfileCourseDetails'
+import { StripeResult } from './Payment/StripeResult'
 import { I18nNamespaces } from '../../@types/i18next'
 import { KeyValue } from '../KeyValueView'
 

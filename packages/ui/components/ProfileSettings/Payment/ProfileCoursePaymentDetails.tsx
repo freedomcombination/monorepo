@@ -10,7 +10,7 @@ import { formatDate } from '@fc/utils/formatDate'
 import { formatPrice } from '@fc/utils/formatPrice'
 
 import { PaymentButton } from './PaymentButton'
-import { KeyValue } from '../../../KeyValueView'
+import { KeyValue } from '../../KeyValueView'
 
 const SINGLE_INSTALLMENT = 1
 

@@ -18,8 +18,8 @@ import { useTranslation } from 'next-i18next'
 import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import { ApprovalStatus } from '@fc/types'
 
-import { KeyValue } from '../../KeyValueView'
-import { CourseApplicationComponentProps } from '../CourseApplicationDetails'
+import { CourseApplicationComponentProps } from './CourseApplicationDetails'
+import { KeyValue } from '../KeyValueView'
 
 export const CoursePaymentExplainDetails: FC<
   CourseApplicationComponentProps

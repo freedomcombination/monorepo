@@ -18,10 +18,10 @@ import { useTranslation } from 'next-i18next'
 import { Course, CourseApplication } from '@fc/types'
 import { CourseLogic } from '@fc/utils/courseLogic'
 
-import { CourseAssignmentDetails } from './components/CourseAssignmentDetails'
-import { CourseInstallmentDetails } from './components/CourseInstallmentDetails'
-import { CoursePaymentDetails } from './components/CoursePaymentDetails'
-import { CoursePaymentExplainDetails } from './components/CoursePaymentExplainDetails'
+import { CourseAssignmentDetails } from './CourseAssignmentDetails'
+import { CourseInstallmentDetails } from './CourseInstallmentDetails'
+import { CoursePaymentDetails } from './CoursePaymentDetails'
+import { CoursePaymentExplainDetails } from './CoursePaymentExplainDetails'
 
 type CourseApplicationDetailsProps = {
   course: Course

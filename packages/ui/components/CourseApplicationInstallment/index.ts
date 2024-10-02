@@ -1,2 +1,2 @@
 export * from './CourseApplicationDetails'
-export * from './components/CourseAssignmentFile'
+export * from './CourseAssignmentFile'

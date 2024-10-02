@@ -7,7 +7,7 @@ import type {
   CourseApplication,
   Profile,
   Site,
-  StrapiLocale
+  StrapiLocale,
 } from '@fc/types'
 import ArtCreated from './ArtCreated'
 import ForgotPassword from './ForgotPassword'

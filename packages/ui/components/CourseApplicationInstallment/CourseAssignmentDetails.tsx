@@ -22,9 +22,9 @@ import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import type { ApprovalStatus } from '@fc/types'
 import { formatDate, formatDateRelative } from '@fc/utils/formatDate'
 
+import { CourseApplicationComponentProps } from './CourseApplicationDetails'
 import { CourseAssignmentFileButton } from './CourseAssignmentFile'
-import { KeyValue } from '../../KeyValueView'
-import { CourseApplicationComponentProps } from '../CourseApplicationDetails'
+import { KeyValue } from '../KeyValueView'
 
 export const CourseAssignmentDetails: FC<CourseApplicationComponentProps> = ({
   courseLogic,

@@ -25,8 +25,8 @@ import { CourseLogic } from '@fc/utils/courseLogic'
 import { formatDate } from '@fc/utils/formatDate'
 import { formatPrice } from '@fc/utils/formatPrice'
 
-import { KeyValue } from '../../KeyValueView'
-import { CourseApplicationComponentProps } from '../CourseApplicationDetails'
+import { CourseApplicationComponentProps } from './CourseApplicationDetails'
+import { KeyValue } from '../KeyValueView'
 
 type CourseData = Pick<
   CourseApplication,

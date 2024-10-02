@@ -11,9 +11,9 @@ import { UploadFile } from '@fc/types'
 import { CourseLogic } from '@fc/utils/courseLogic'
 import { formatDate } from '@fc/utils/formatDate'
 
-import { CourseAssignmentFileButton } from '../../../CourseApplicationInstallment'
-import FilePicker from '../../../FilePicker/FilePicker'
-import { KeyValue } from '../../../KeyValueView'
+import { CourseAssignmentFileButton } from '../../CourseApplicationInstallment'
+import { FilePicker } from '../../FilePicker'
+import { KeyValue } from '../../KeyValueView'
 
 export const ProfileCourseAssignmentDetails: FC<{
   courseLogic: CourseLogic
