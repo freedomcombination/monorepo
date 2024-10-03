@@ -42,7 +42,7 @@ export const useChangeParams = () => {
     return produce(query, draft => {
       for (const key in args) {
         const param = args[key]
-        
+
         if (isEmpty(param)) {
           delete draft[key]
         }
@@ -57,14 +57,17 @@ export const useChangeParams = () => {
       const sanitizedQuery = sanitizeQuery(query, args)
       const sanitizedArgs = sanitizeArgs(args)
 
-      const newArgs = {...sanitizedArgs}
+      const newArgs = { ...sanitizedArgs }
 
       // sanitizedQuery is immutable so, make acopy of it for delete page property.
-      const updatedQuery = {...sanitizedQuery}
-      
+      const updatedQuery = { ...sanitizedQuery }
+
       // if there is any new parameters delete page parameter
-      const shouldRemovePage = Object.keys(newArgs).some(key => key !== 'page') && 'page' in updatedQuery && !('page' in newArgs)
-      
+      const shouldRemovePage =
+        Object.keys(newArgs).some(key => key !== 'page') &&
+        'page' in updatedQuery &&
+        !('page' in newArgs)
+
       if (shouldRemovePage) {
         delete updatedQuery.page
       }
@@ -74,7 +77,7 @@ export const useChangeParams = () => {
       if (isEqual(query, newQuery)) {
         return
       }
-      
+
       push({ query: newQuery })
     },
     [query, push],
