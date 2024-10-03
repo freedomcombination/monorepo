@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Center } from '@chakra-ui/react'
+import { Box, Center } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
@@ -112,10 +112,10 @@ export const JoinTemplate: FC<JoinTemplateProps> = ({
             </Alert>
           </Center>
         ) : (
-          <>
+          <Box pb={{ base: 4, lg: 6 }}>
             <PageTitle>{title}</PageTitle>
             <JoinForm />
-          </>
+          </Box>
         )}
       </Container>
     </JoinFormProvider>

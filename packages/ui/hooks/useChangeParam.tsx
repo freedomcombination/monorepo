@@ -54,14 +54,25 @@ export const useChangeParams = () => {
 
   const changeParams = useCallback(
     (args: ChangeParamArgs) => {
-      // In the case of query has empty string param which we want to remove,
-      // it should be removed from both the query and args
       const sanitizedQuery = sanitizeQuery(query, args)
       const sanitizedArgs = sanitizeArgs(args)
 
-      // TODO: Remove existing page query if other params are changed
+      const newArgs = { ...sanitizedArgs }
 
-      const newQuery = { ...sanitizedQuery, ...sanitizedArgs }
+      // sanitizedQuery is immutable so, make acopy of it for delete page property.
+      const updatedQuery = { ...sanitizedQuery }
+
+      // if there is any new parameters delete page parameter
+      const shouldRemovePage =
+        Object.keys(newArgs).some(key => key !== 'page') &&
+        'page' in updatedQuery &&
+        !('page' in newArgs)
+
+      if (shouldRemovePage) {
+        delete updatedQuery.page
+      }
+
+      const newQuery = { ...updatedQuery, ...newArgs }
 
       if (isEqual(query, newQuery)) {
         return

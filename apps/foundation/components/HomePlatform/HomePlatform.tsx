@@ -51,6 +51,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                 columns={{ base: 1, lg: 2 }}
                 justifyItems="center"
                 gap={8}
+                overflow={'hidden'}
               >
                 <Box order={{ base: 1, lg: index % 2 ? 2 : 1 }} w="max-content">
                   <WImage
@@ -83,7 +84,10 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                       size="lg"
                       colorPalette={color.colorPalette}
                       variant="plain"
-                      alignSelf={index % 2 ? 'flex-end' : 'flex-start'}
+                      alignSelf={{
+                        base: 'center',
+                        md: index % 2 ? 'end' : 'start',
+                      }}
                       fontWeight={700}
                     >
                       {t('read-more')}
