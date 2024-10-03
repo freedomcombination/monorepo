@@ -128,7 +128,7 @@ const AssetPage = () => {
               shadow={'sm'}
             >
               <Text>{asset?.name}</Text>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
             <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
               {asset && (
@@ -152,7 +152,7 @@ const AssetPage = () => {
               shadow={'sm'}
             >
               <Text>Asset Tracking</Text>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
             <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
               <PageHeader onSearch={handleSearch} />

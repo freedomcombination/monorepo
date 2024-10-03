@@ -1,17 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-import {
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
-  Spinner,
-} from '@chakra-ui/react'
+import { Spinner } from '@chakra-ui/react'
 import { Editor } from '@tinymce/tinymce-react'
-import { upperFirst } from 'lodash'
 import { FieldValues } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
+import { Field } from '@fc/chakra'
 import { Block } from '@fc/types'
 import { parseHtmlToBlocks } from '@fc/utils/parseHtmlToBlocks'
 import { renderToHtml } from '@fc/utils/renderToHtml'
@@ -74,13 +68,14 @@ export const BlockFormItem = <T extends FieldValues>({
   }
 
   return (
-    <FormControl>
-      {label && (
-        <FormLabel mb={1} htmlFor={name} fontSize="sm" fontWeight={600}>
-          {label}
-        </FormLabel>
-      )}
+    <Field
+      name={name}
+      label={label}
+      errorText={errorMessage}
+      helperText={helperText}
+    >
       {isLoading && <Spinner />}
+
       <Editor
         key={editorKey}
         apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
@@ -89,12 +84,6 @@ export const BlockFormItem = <T extends FieldValues>({
         onEditorChange={handleEditorChange}
         onInit={() => setIsLoading(false)}
       />
-      <FormErrorMessage data-testid={`error-text-${name}`}>
-        {errorMessage && upperFirst(errorMessage)}
-      </FormErrorMessage>
-      {helperText && (
-        <FormHelperText color="orange.400">{helperText}</FormHelperText>
-      )}
-    </FormControl>
+    </Field>
   )
 }

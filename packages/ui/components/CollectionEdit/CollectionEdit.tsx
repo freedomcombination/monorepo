@@ -30,7 +30,7 @@ export const CollectionEdit: FC<CollectionEditProps> = ({
             {collection.title}
           </Text>
 
-          <AccordionIcon ml={'auto'} />
+          <AccordionIcon />
         </AccordionButton>
         <AccordionPanel p={0} mt={4}>
           <ModelEditForm<Collection>

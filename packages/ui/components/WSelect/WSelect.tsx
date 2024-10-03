@@ -1,3 +1,4 @@
+import { createListCollection } from '@chakra-ui/react'
 import { upperFirst } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { FieldValues, useController } from 'react-hook-form'
@@ -42,7 +43,9 @@ export const WSelect = <T extends FieldValues = FieldValues>({
     errors?.[name]?.['message'] &&
     upperFirst(errors?.[name]?.['message'] as string)
 
-  return null
+  const collection = createListCollection({
+    items: options,
+  })
 
   return (
     <Field
@@ -59,7 +62,7 @@ export const WSelect = <T extends FieldValues = FieldValues>({
         {...field}
         onValueChange={e => field.onChange(e.value)}
         {...rest}
-        items={options}
+        collection={collection}
       >
         <SelectLabel>{label}</SelectLabel>
         <SelectTrigger>

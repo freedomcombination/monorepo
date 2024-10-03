@@ -49,7 +49,7 @@ export const JobInfo = () => {
               <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
                 {jobName}
               </Heading>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
 
             {/* TODO: Allow users to read the content in modal as well */}

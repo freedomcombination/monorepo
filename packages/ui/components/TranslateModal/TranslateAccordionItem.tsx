@@ -32,7 +32,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
 }: TranslateAccordionItemProps<T>) => {
   return (
     <AccordionItem value={title}>
-      <AccordionButton as={HStack} cursor="pointer">
+      <AccordionButton as={HStack} gap={4} cursor="pointer">
         <HStack flex={'1'}>
           <HStack gap={2} flex={'1'}>
             <Flag locale={locale} />
@@ -112,7 +112,7 @@ export const TranslateAccordionItem = <T extends StrapiTranslatableModel>({
           )}
         </HStack>
 
-        <AccordionIcon ml={4} />
+        <AccordionIcon />
       </AccordionButton>
       <AccordionPanel pb={4}>
         <Stack gap={2}>

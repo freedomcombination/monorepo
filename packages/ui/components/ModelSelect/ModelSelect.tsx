@@ -1,3 +1,5 @@
+import { createListCollection } from '@chakra-ui/react'
+
 import type { StrapiModel } from '@fc/types'
 
 import { ModelDynamicSelect } from './ModelDynamicSelect'
@@ -12,9 +14,13 @@ export const ModelSelect = <T extends StrapiModel>(props: ModelSelectProps) => {
   const dynamicProps = props as ModelDynamicSelectProps
   const staticProps = props as ModelStaticSelectProps
 
+  const collection = createListCollection({
+    items: staticProps.options,
+  })
+
   if (dynamicProps.endpoint) {
-    return <ModelDynamicSelect<T> {...dynamicProps} />
+    return <ModelDynamicSelect<T> {...dynamicProps} collection={collection} />
   }
 
-  return <ModelStaticSelect {...staticProps} />
+  return <ModelStaticSelect {...staticProps} collection={collection} />
 }

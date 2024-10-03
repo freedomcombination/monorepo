@@ -48,15 +48,13 @@ export const renderCreateFormBody = <T extends StrapiModel>({
     const label = t(field.name as keyof I18nNamespaces['common'], {
       defaultValue: field.label,
     })
+    const errorMessage = errors?.[field.name]?.message as string
+
     const isActive =
       !activeOption || !field.group || field?.group?.value === activeOption
     const videoUrl = watch(field.name as string)
 
     if (field.type === 'media-url') {
-      const errorMessage =
-        errors?.[field.name]?.message &&
-        upperFirst(errors?.[field.name]?.message as string)
-
       return (
         <Box key={index} {...(!isActive && { display: 'none' })}>
           <FormItem
@@ -76,12 +74,12 @@ export const renderCreateFormBody = <T extends StrapiModel>({
     if (field.type === 'file') {
       return (
         <Field
-          invalid={Boolean(errors?.[field.name as string])}
+          invalid={!!errorMessage}
           key={index}
           required={field.required}
           zIndex={0}
           label={label}
-          errorText={errors?.[field.name]?.message as string}
+          errorText={errorMessage}
           {...(!isActive && { display: 'none' })}
         >
           <ModelMedia
@@ -138,10 +136,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           mb={1}
           {...(!isActive && { display: 'none' })}
         >
-          <Field
-            label={label}
-            errorText={errors[field?.name as string]?.message as string}
-          >
+          <Field label={label} errorText={errorMessage}>
             <NumberInput
               maxW={120}
               onChange={value => setValue(field.name as string, value)}
@@ -164,7 +159,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           key={index}
           required={field.required}
           label={label}
-          errorText={errors[field.name as string]?.message as string}
+          errorText={errorMessage}
           {...(!isActive && { display: 'none' })}
         >
           <Switch

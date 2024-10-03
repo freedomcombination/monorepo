@@ -2,6 +2,8 @@ import { FC } from 'react'
 
 import { HStack, Icon, Spinner, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { useDropzone } from 'react-dropzone'
 import { BiUpload } from 'react-icons/bi'
 

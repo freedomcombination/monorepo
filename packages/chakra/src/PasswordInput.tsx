@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react'
 import { LuEye, LuEyeOff } from 'react-icons/lu'
 
-import { InputGroup } from './input-group'
+import { InputGroup } from './InputGroup'
 
 export interface PasswordVisibilityProps {
   defaultVisible?: boolean

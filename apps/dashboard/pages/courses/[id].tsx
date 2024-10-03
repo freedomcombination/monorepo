@@ -133,7 +133,7 @@ const CoursePage = () => {
               shadow={'sm'}
             >
               <Text>{course?.[`title_${locale}`]}</Text>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
             <AccordionPanel
               mt={4}
@@ -162,7 +162,7 @@ const CoursePage = () => {
               shadow={'sm'}
             >
               <Text>Applications</Text>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
             <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
               <PageHeader

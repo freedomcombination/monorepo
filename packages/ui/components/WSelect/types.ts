@@ -12,4 +12,4 @@ export type WSelectProps<T extends FieldValues> = {
   control: Control<T>
   options: SelectOption[]
 } & Omit<FormItemProps<T>, 'register' | 'leftElement'> &
-  Omit<SelectRootProps, 'items'>
+  Omit<SelectRootProps, 'items' | 'collection'>

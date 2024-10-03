@@ -37,7 +37,7 @@ export const AccordionItemContent = forwardRef<
 })
 
 export const AccordionItemIcon = () => (
-  <ChakraAccordion.ItemIndicator>
+  <ChakraAccordion.ItemIndicator ml={'auto'}>
     <LuChevronDown />
   </ChakraAccordion.ItemIndicator>
 )

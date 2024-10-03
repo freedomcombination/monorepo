@@ -9511,6 +9511,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dropzone@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@types/react-dropzone@npm:5.1.0"
+  dependencies:
+    react-dropzone: "npm:*"
+  checksum: 10/2b68fcf0153fb00e17088907490b823b6d81a29a02e615f820e347df2546f9318c5f025eeb33d575c648d01a14e55a19e528c32907608b5a7f727ff0e96b3923
+  languageName: node
+  linkType: hard
+
 "@types/react-headroom@npm:^3.2.3":
   version: 3.2.3
   resolution: "@types/react-headroom@npm:3.2.3"
@@ -17778,6 +17787,7 @@ __metadata:
     "@types/pluralize": "npm:^0.0.33"
     "@types/react": "npm:18.3.11"
     "@types/react-dom": "npm:18.3.0"
+    "@types/react-dropzone": "npm:^5.1.0"
     "@types/react-headroom": "npm:^3.2.3"
     "@types/remove-markdown": "npm:^0.3.4"
     "@types/string-similarity": "npm:^4.0.2"
@@ -26412,6 +26422,19 @@ __metadata:
   peerDependencies:
     react: ^18.3.1
   checksum: 10/3f4b73a3aa083091173b29812b10394dd06f4ac06aff410b74702cfb3aa29d7b0ced208aab92d5272919b612e5cda21aeb1d54191848cf6e46e9e354f3541f81
+  languageName: node
+  linkType: hard
+
+"react-dropzone@npm:*":
+  version: 14.2.9
+  resolution: "react-dropzone@npm:14.2.9"
+  dependencies:
+    attr-accept: "npm:^2.2.2"
+    file-selector: "npm:^0.6.0"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    react: ">= 16.8 || 18.0.0"
+  checksum: 10/a8ff584a9dbf952dbd630f4ddf59b0b7a010eff49c3b97b363e30ab357f9cc7b8a0c7694069badeb4cf32361a00f3bbd1063964bd6438e9a68c6fe49ff879a38
   languageName: node
   linkType: hard
 
