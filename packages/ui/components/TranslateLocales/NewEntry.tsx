@@ -145,7 +145,7 @@ export const NewEntry: FC<NewEntryProps> = ({ onSave, ...props }) => {
   }, [data.key])
 
   return (
-    <Modal variant={'outline'} size={'3xl'} {...props}>
+    <Modal size={'3xl'} {...props}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>{t('translate.new-entry-header')}</ModalHeader>
