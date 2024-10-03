@@ -1,15 +1,14 @@
-'use client'
-
 import { forwardRef } from 'react'
 
+import type { RecipeProps } from '@chakra-ui/react'
 import {
   FileUpload as ChakraFileUpload,
   Icon,
   Stack,
   Text,
-  useRecipe,
   VStack,
-  type RecipeProps,
+  useFileUploadContext,
+  useRecipe,
 } from '@chakra-ui/react'
 import { RiDeleteBinLine, RiFileLine, RiUploadLine } from 'react-icons/ri'
 
@@ -105,32 +104,33 @@ const FileUploadItem = (props: FileUploadItemProps) => {
 
 interface FileUploadListProps
   extends VisibilityProps,
-    ChakraFileUpload.ItemGroupProps {}
-
-export const FileUploadList = (props: FileUploadListProps) => {
-  const { showSize, showDelete, ...rest } = props
-
-  return (
-    <ChakraFileUpload.Context>
-      {({ acceptedFiles }) => {
-        if (acceptedFiles.length === 0) return null
-
-        return (
-          <ChakraFileUpload.ItemGroup {...rest}>
-            {acceptedFiles.map(file => (
-              <FileUploadItem
-                key={file.name}
-                file={file}
-                showSize={showSize}
-                showDelete={showDelete}
-              />
-            ))}
-          </ChakraFileUpload.ItemGroup>
-        )
-      }}
-    </ChakraFileUpload.Context>
-  )
+    ChakraFileUpload.ItemGroupProps {
+  files?: File[]
 }
+
+export const FileUploadList = forwardRef<HTMLUListElement, FileUploadListProps>(
+  function FileUploadList(props, ref) {
+    const { showSize, showDelete, files, ...rest } = props
+
+    const fileUpload = useFileUploadContext()
+    const acceptedFiles = files ?? fileUpload.acceptedFiles
+
+    if (acceptedFiles.length === 0) return null
+
+    return (
+      <ChakraFileUpload.ItemGroup ref={ref} {...rest}>
+        {acceptedFiles.map(file => (
+          <FileUploadItem
+            key={file.name}
+            file={file}
+            showSize={showSize}
+            showDelete={showDelete}
+          />
+        ))}
+      </ChakraFileUpload.ItemGroup>
+    )
+  },
+)
 
 type Assign<T, U> = Omit<T, keyof U> & U
 

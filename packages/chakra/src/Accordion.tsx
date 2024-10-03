@@ -1,7 +1,6 @@
 import { forwardRef } from 'react'
 
-import type { IconProps } from '@chakra-ui/react'
-import { Accordion as ChakraAccordion, HStack, Icon } from '@chakra-ui/react'
+import { Accordion as ChakraAccordion, HStack } from '@chakra-ui/react'
 import { LuChevronDown } from 'react-icons/lu'
 
 type AccordionItemTriggerProps = ChakraAccordion.ItemTriggerProps
@@ -29,7 +28,7 @@ type AccordionItemContentProps = ChakraAccordion.ItemContentProps
 export const AccordionItemContent = forwardRef<
   HTMLDivElement,
   AccordionItemContentProps
->((props, ref) => {
+>(function AccordionItemContent(props, ref) {
   return (
     <ChakraAccordion.ItemContent>
       <ChakraAccordion.ItemBody {...props} ref={ref} />
@@ -37,11 +36,11 @@ export const AccordionItemContent = forwardRef<
   )
 })
 
-AccordionItemContent.displayName = 'AccordionItemContent'
-
-export const AccordionItemIcon = (props: IconProps) => {
-  return <Icon color="fg.muted" fontSize="lg" {...props} asChild />
-}
+export const AccordionItemIcon = () => (
+  <ChakraAccordion.ItemIndicator>
+    <LuChevronDown />
+  </ChakraAccordion.ItemIndicator>
+)
 
 export const AccordionRoot = ChakraAccordion.Root
 export const AccordionItem = ChakraAccordion.Item
