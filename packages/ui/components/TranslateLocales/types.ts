@@ -26,12 +26,17 @@ export type DictContextProps = {
   toggleWillDelete: (name: string) => void
   toggleSuppressWarning: (name: string) => void
   locked: boolean
+  reValidate: (key?: string) => void
+  valueEN: (key: string) => string
+  valueTR: (key: string) => string
+  valueNL: (key: string) => string
 }
 
 export enum PriorityFilter {
   TRANSLATED = 0,
   IDENTICAL = 1,
   MISSING = 2,
+  NEW = 3,
   ALL = -1,
   IGNORED = -2,
 }
