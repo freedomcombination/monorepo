@@ -8,9 +8,10 @@ import {
   Stack,
   useToast,
   chakra,
+  useDisclosure,
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-import { FaSave } from 'react-icons/fa'
+import { FaPlusCircle, FaSave } from 'react-icons/fa'
 import { Virtuoso } from 'react-virtuoso'
 import { useLocalStorage } from 'usehooks-ts'
 
@@ -19,6 +20,7 @@ import type { StrapiLocale } from '@fc/types'
 import { DictContext } from './DictContext'
 import { dicts } from './dicts'
 import { EditEntry } from './EditEntry'
+import { NewEntry } from './NewEntry'
 import {
   Dict,
   PriorityFilter,
@@ -28,14 +30,12 @@ import {
 
 const { en, tr, nl } = dicts
 
-const initialPriorityKeys = Object.keys(dicts.en)
-  .sort()
-  .map(key => ({ key, priority: PriorityFilter.TRANSLATED })) as PriorityKey[]
-
 const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
   const { t } = useTranslation()
   const [saving, setSaving] = useState(false)
+  const [lastKey, setLastKey] = useState<string | undefined>(undefined)
   const [keysToDelete, setKeysToDelete] = useState<string[]>([])
+  const [keysAdded, setKeysAdded] = useState<string[]>([])
   const [priorityFilter, setPriorityFilter] = useState<PriorityFilter>(
     PriorityFilter.ALL,
   )
@@ -44,6 +44,24 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
     [],
   )
   const toast = useToast()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const onAddNewEntry = (
+    key: string,
+    nlStr: string,
+    trStr: string,
+    enStr: string,
+  ) => {
+    en[key] = enStr
+    tr[key] = trStr
+    nl[key] = nlStr
+    setKeysAdded([...keysAdded, key])
+    reValidate(key)
+  }
+
+  const reValidate = (key?: string) => {
+    setLastKey(key ?? (!!lastKey ? undefined : '1'))
+  }
 
   const toggleWillDelete = (name: string) => {
     if (keysToDelete.includes(name)) {
@@ -63,11 +81,19 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
 
   // calculate priority
   const priorityKeys = useMemo(() => {
+    const initialPriorityKeys = Object.keys(dicts.en)
+      .sort()
+      .map(key => ({
+        key,
+        priority: PriorityFilter.TRANSLATED,
+      })) as PriorityKey[]
+
     const updatedPriorityKeys = initialPriorityKeys.map(priorityKey => {
       const { key } = priorityKey
       let { priority } = priorityKey
 
       if (suppressWarning.includes(key)) return priorityKey
+      if (keysAdded.includes(key)) return { key, priority: PriorityFilter.NEW }
 
       if (!en[key] || !tr[key] || !nl[key]) {
         priority = PriorityFilter.MISSING
@@ -84,8 +110,10 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
       return { key, priority }
     })
 
-    return updatedPriorityKeys.sort((a, b) => b.priority - a.priority)
-  }, [suppressWarning])
+    return updatedPriorityKeys.sort((a, b) =>
+      a.key === lastKey ? -1 : b.priority - a.priority,
+    )
+  }, [suppressWarning, keysAdded, lastKey])
 
   const stringifyDicts = () => {
     const getDict = (locale: StrapiLocale) =>
@@ -121,14 +149,14 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
       }
 
       toast({
-        title: 'Çeviriler başarıyla kaydedildi!',
+        title: t('translate.save.failed'),
         status: 'success',
         duration: 5000,
         isClosable: true,
       })
     } catch (error: any) {
       toast({
-        title: 'Çevirileri kaydederken hata oluştu!',
+        title: t('translate.save.success'),
         description: error.message,
         status: 'error',
         duration: 5000,
@@ -138,7 +166,6 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
       setSaving(false)
     }
   }
-
   const filterKeys = (filter: PriorityFilter) =>
     priorityKeys.filter(k => k.priority === filter)
 
@@ -167,49 +194,62 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
 
   return (
     <Stack gap={4} bg={'white'} p={6} flex={1}>
-      <HStack justifyContent={'flex-end'} alignItems={'center'} spacing={6}>
-        <RadioGroup
-          onChange={value => setPriorityFilter(Number(value))}
-          value={`${priorityFilter}`}
-          colorScheme="primary"
-        >
-          <Stack direction="row" spacing={4}>
-            <Radio value={`${PriorityFilter.ALL}`}>
-              All{' '}
-              <chakra.span color="gray.400" fontSize="sm">
-                ({priorityKeys.length})
-              </chakra.span>
-            </Radio>
-            <Radio value={`${PriorityFilter.TRANSLATED}`}>
-              Translated{' '}
-              <chakra.span color="gray.400" fontSize="sm">
-                ({translatedKeys.length})
-              </chakra.span>
-            </Radio>
-            <Radio value={`${PriorityFilter.IDENTICAL}`}>
-              Identical{' '}
-              <chakra.span color="gray.400" fontSize="sm">
-                ({identicalKeys.length})
-              </chakra.span>
-            </Radio>
-            <Radio value={`${PriorityFilter.MISSING}`}>
-              Missing{' '}
-              <chakra.span color="gray.400" fontSize="sm">
-                ({missingKeys.length})
-              </chakra.span>
-            </Radio>
-            <Radio value={`${PriorityFilter.IGNORED}`}>
-              Ignored{' '}
-              <chakra.span color="gray.400" fontSize="sm">
-                ({ignoredKeys.length})
-              </chakra.span>
-            </Radio>
-          </Stack>
-        </RadioGroup>
+      <NewEntry
+        isOpen={isOpen}
+        onSave={data => onAddNewEntry(data.key, data.nl, data.tr, data.en)}
+        onClose={onClose}
+      />
 
-        <Button leftIcon={<FaSave />} isLoading={saving} onClick={onSave}>
-          {t('save')}
-        </Button>
+      <HStack justify={'space-between'}>
+        <HStack>
+          <Button leftIcon={<FaPlusCircle />} onClick={onOpen}>
+            {t('translate.button.add')}
+          </Button>
+        </HStack>
+        <HStack justifyContent={'flex-end'} alignItems={'center'} spacing={6}>
+          <RadioGroup
+            onChange={value => setPriorityFilter(Number(value))}
+            value={`${priorityFilter}`}
+            colorScheme="primary"
+          >
+            <Stack direction="row" spacing={4}>
+              <Radio value={`${PriorityFilter.ALL}`}>
+                {t('translate.radio.all')}{' '}
+                <chakra.span color="gray.400" fontSize="sm">
+                  ({priorityKeys.length})
+                </chakra.span>
+              </Radio>
+              <Radio value={`${PriorityFilter.TRANSLATED}`}>
+                {t('translate.radio.translated')}{' '}
+                <chakra.span color="gray.400" fontSize="sm">
+                  ({translatedKeys.length})
+                </chakra.span>
+              </Radio>
+              <Radio value={`${PriorityFilter.IDENTICAL}`}>
+                {t('translate.radio.identical')}{' '}
+                <chakra.span color="gray.400" fontSize="sm">
+                  ({identicalKeys.length})
+                </chakra.span>
+              </Radio>
+              <Radio value={`${PriorityFilter.MISSING}`}>
+                {t('translate.radio.missing')}{' '}
+                <chakra.span color="gray.400" fontSize="sm">
+                  ({missingKeys.length})
+                </chakra.span>
+              </Radio>
+              <Radio value={`${PriorityFilter.IGNORED}`}>
+                {t('translate.radio.ignored')}{' '}
+                <chakra.span color="gray.400" fontSize="sm">
+                  ({ignoredKeys.length})
+                </chakra.span>
+              </Radio>
+            </Stack>
+          </RadioGroup>
+
+          <Button leftIcon={<FaSave />} isLoading={saving} onClick={onSave}>
+            {t('save')}
+          </Button>
+        </HStack>
       </HStack>
 
       <DictContext.Provider
@@ -219,6 +259,10 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
           toggleWillDelete,
           toggleSuppressWarning,
           locked: saving,
+          reValidate,
+          valueEN: (key: string) => dicts.en[key],
+          valueTR: (key: string) => dicts.tr[key],
+          valueNL: (key: string) => dicts.nl[key],
         }}
       >
         <Virtuoso

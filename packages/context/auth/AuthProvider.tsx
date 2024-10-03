@@ -40,6 +40,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     if (user) {
       authModalDisclosure.onClose()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   function checkActionsPermission(
