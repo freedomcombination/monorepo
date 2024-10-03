@@ -1,3 +1,4 @@
+import { mockify } from './libs/mockify'
 import { subscribeDb } from './libs/subscribeDb'
 import { syncAdmin } from './libs/syncAdmin'
 
@@ -23,6 +24,7 @@ export default {
     try {
       subscribeDb()
       syncAdmin()
+      mockify()
     } catch (error) {
       console.error('Bootstrap error', JSON.stringify(error, null, 2))
       strapi.plugin('sentry').service('sentry').sendError(error)
