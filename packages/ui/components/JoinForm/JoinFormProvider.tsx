@@ -55,6 +55,7 @@ export const JoinFormProvider: FC<JoinFormProviderProps> = ({
       })
     }
     updateErrorFields()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
   const joinFormSchema = useJoinFormSchema(jobs)
