@@ -170,7 +170,7 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
             icon={<MdOutlineTranslate />}
             aria-label="translate"
             variant={canTranslate() ? 'outline' : 'solid'}
-            isDisabled={canTranslate() ? false : true}
+            disabled={canTranslate() ? false : true}
             onClick={translate}
           />
 

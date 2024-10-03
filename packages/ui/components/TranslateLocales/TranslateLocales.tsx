@@ -35,8 +35,7 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
     'suppressWarning',
     [],
   )
-  const toast = useToast()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   const onAddNewEntry = (
     key: string,
@@ -183,9 +182,9 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
   return (
     <Stack gap={4} bg={'white'} p={6} flex={1}>
       <NewEntry
-        isOpen={isOpen}
+        open={open}
         onSave={data => onAddNewEntry(data.key, data.nl, data.tr, data.en)}
-        onClose={onClose}
+        onOpenChange={e => !e.open && onClose()}
       />
       <HStack justifyContent={'flex-end'} alignItems={'center'} gap={6}>
         <RadioGroup
