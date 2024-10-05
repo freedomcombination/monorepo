@@ -14,8 +14,7 @@ export const FetchWithStrapiRequest = () => {
         const response = await axios.get(
           'https://wsvv-api-staging.onrender.com/api/blogs?locale=tr',
         )
-        console.log('response', response)
-        setBlogs(response.data.data) // Adjust this based on the API response structure
+        setBlogs(response.data.data)
       } catch (error) {
         console.error('Error fetching blogs:', error)
       }
