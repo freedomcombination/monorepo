@@ -146,7 +146,7 @@ test.describe('06. Profile Editing Tests', () => {
 
     await page.getByTestId('tab-security').click()
 
-    const nonSymbolPassword = '1234567At'
+    const nonSymbolPassword = 'Test1234'
 
     await profilePage.updatePassword(PASSWORD, nonSymbolPassword)
 
