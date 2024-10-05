@@ -5,15 +5,15 @@ __metadata:
   version: 8
   cacheKey: 10
 
-"@ai-sdk/openai@npm:^0.0.65":
-  version: 0.0.65
-  resolution: "@ai-sdk/openai@npm:0.0.65"
+"@ai-sdk/openai@npm:^0.0.66":
+  version: 0.0.66
+  resolution: "@ai-sdk/openai@npm:0.0.66"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.24"
     "@ai-sdk/provider-utils": "npm:1.0.20"
   peerDependencies:
     zod: ^3.0.0
-  checksum: 10/29279eedc568377d1698c3bb9e1888a1b45e5e546a7a5ee6d8dd5c37175ec001408752c97043dff31e7b9d09696db0eb70f07a643581dbacc3e73d55041c0d28
+  checksum: 10/52eb4a7b742be21423b174067a4f0ff7f536df5d5c41037605d91b3d5f42b648ce9720b04cc95ca635dcdf211f0966fd18b39e589f222cf52b388f98d6125b58
   languageName: node
   linkType: hard
 
@@ -11749,9 +11749,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:^3.4.8":
-  version: 3.4.8
-  resolution: "ai@npm:3.4.8"
+"ai@npm:^3.4.9":
+  version: 3.4.9
+  resolution: "ai@npm:3.4.9"
   dependencies:
     "@ai-sdk/provider": "npm:0.0.24"
     "@ai-sdk/provider-utils": "npm:1.0.20"
@@ -11784,7 +11784,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/ba79c0658458c590d9454d5a167c62fc166a4818ae00b4c9799281782bea2d95e3c6876c991ec9dd6f68a2b576e9d4f81046018cd790ceab849c6ac192bd869d
+  checksum: 10/c7181a2054360d51082d7728ce673e967d811ae7c1759b9f2117d71fc651340efb7d35729fab364da2014eb131cc99f5c492f2558f5f7e8d44dc89a2482c349d
   languageName: node
   linkType: hard
 
@@ -17235,7 +17235,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "fc-turbo@workspace:."
   dependencies:
-    "@ai-sdk/openai": "npm:^0.0.65"
+    "@ai-sdk/openai": "npm:^0.0.66"
     "@chakra-ui/next-js": "npm:^2.2.0"
     "@chakra-ui/react": "npm:^2.8.2"
     "@chakra-ui/storybook-addon": "npm:^5.1.0"
@@ -17288,7 +17288,7 @@ __metadata:
     "@vercel/edge-config": "npm:^1.3.0"
     "@vercel/kv": "npm:^3.0.0"
     "@vercel/og": "npm:^0.6.3"
-    ai: "npm:^3.4.8"
+    ai: "npm:^3.4.9"
     axios: "npm:^1.7.7"
     chakra-react-select: "npm:4.9.2"
     cookies-next: "npm:^4.2.1"
@@ -17303,9 +17303,9 @@ __metadata:
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:^11.3.31"
     i18n-help: "npm:^0.1.4"
-    i18next: "npm:^23.15.1"
+    i18next: "npm:^23.15.2"
     i18next-browser-languagedetector: "npm:^8.0.0"
-    i18next-http-backend: "npm:^2.6.1"
+    i18next-http-backend: "npm:^2.6.2"
     iron-session: "npm:^8.0.3"
     jspdf: "npm:^2.5.2"
     jspdf-autotable: "npm:^3.8.3"
@@ -19224,21 +19224,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-http-backend@npm:^2.6.1":
-  version: 2.6.1
-  resolution: "i18next-http-backend@npm:2.6.1"
+"i18next-http-backend@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "i18next-http-backend@npm:2.6.2"
   dependencies:
     cross-fetch: "npm:4.0.0"
-  checksum: 10/17f716934c9d21e307e85b7f8684662cc3942df1e7f0998dc7733599449fd24e2268803d5a14625d86a593011f308e35471d28b4ef48ebb112a3afed31b82f05
+  checksum: 10/00097ba2e61d386a8b38127d9ba299bfbd6fe1b94f88d731e7387c2627ccec0900b36b24f20f64f5b58dc57dff9239b91ac213583ec66134408d02c5c42f9043
   languageName: node
   linkType: hard
 
-"i18next@npm:^23.15.1":
-  version: 23.15.1
-  resolution: "i18next@npm:23.15.1"
+"i18next@npm:^23.15.2":
+  version: 23.15.2
+  resolution: "i18next@npm:23.15.2"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
-  checksum: 10/bfd4935517ddd68bd12ccc0b7bd454f1a19403b627d79a2fe81c9059380674f085804f8d7475dd248a887f90d9e2da0f9be64179ddf32e9eebac47e4b9f92889
+  checksum: 10/ed14a290ba8e761a06b6a6ce5e608861f367eb0806fa1b4eb77494340502ad20491748ab2b27423ba186f5602b89cbcb87565683a03443d0368cd4b182ae6ef9
   languageName: node
   linkType: hard
 
