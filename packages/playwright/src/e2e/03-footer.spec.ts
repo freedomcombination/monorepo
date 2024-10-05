@@ -36,7 +36,7 @@ test.describe('03. Footer', () => {
         }
       })
     })
-  test('TC-04: Footer Menu links work', async ({ page, layoutPage }) => {
+  test('TC-04: should footer links work', async ({ page, layoutPage }) => {
     const url = getUrl('kunsthalte')
     await page.goto(url)
 
