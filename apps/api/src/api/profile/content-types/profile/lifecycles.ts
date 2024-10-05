@@ -12,6 +12,12 @@ export default {
         },
       )
 
+      if (!Array.isArray(admins)) {
+        console.error('No admins found to send volunteer email')
+
+        return
+      }
+
       const emails = admins.map(admin => admin.email)
 
       try {

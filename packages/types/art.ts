@@ -7,7 +7,6 @@ import { UploadFile } from './file'
 import { Profile } from './profile'
 import { StrapiBase } from './strapi'
 import { Tag } from './tag'
-import { Vote } from './vote'
 
 type ArtBase = StrapiBase & {
   likes: number
@@ -32,8 +31,6 @@ type ArtRelation = {
   image?: UploadFile[]
   likers?: Array<Profile>
   tags?: Array<Tag>
-  votes?: Array<Vote>
-  juryVotes?: Array<Vote>
 }
 
 type ArtRelationInput = {
@@ -45,8 +42,6 @@ type ArtRelationInput = {
   image: File[]
   likers?: Array<number>
   tags?: Array<number>
-  votes?: Array<number>
-  juryVotes?: Array<number>
 }
 
 export type ArtCreateInput = Expand<

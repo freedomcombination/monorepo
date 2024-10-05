@@ -936,147 +936,6 @@ export interface ApiActivityActivity extends Schema.CollectionType {
   }
 }
 
-export interface ApiApplicantApplicant extends Schema.CollectionType {
-  collectionName: 'applicants'
-  info: {
-    singularName: 'applicant'
-    pluralName: 'applicants'
-    displayName: 'Applicant'
-    description: ''
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    name: Attribute.String & Attribute.Required
-    applications: Attribute.Relation<
-      'api::applicant.applicant',
-      'oneToMany',
-      'api::application.application'
-    >
-    profile: Attribute.Relation<
-      'api::applicant.applicant',
-      'oneToOne',
-      'api::profile.profile'
-    >
-    createdAt: Attribute.DateTime
-    updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
-    createdBy: Attribute.Relation<
-      'api::applicant.applicant',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    updatedBy: Attribute.Relation<
-      'api::applicant.applicant',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-  }
-}
-
-export interface ApiApplicationApplication extends Schema.CollectionType {
-  collectionName: 'applications'
-  info: {
-    singularName: 'application'
-    pluralName: 'applications'
-    displayName: 'Application'
-    description: ''
-  }
-  options: {
-    draftAndPublish: false
-  }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    slug: Attribute.UID<'api::application.application', 'title'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    approvalStatus: Attribute.Enumeration<['pending', 'approved', 'rejected']> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false
-        }
-      }> &
-      Attribute.DefaultTo<'pending'>
-    image: Attribute.Media<'images'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false
-        }
-      }>
-    competition: Attribute.Relation<
-      'api::application.application',
-      'manyToOne',
-      'api::competition.competition'
-    >
-    applicant: Attribute.Relation<
-      'api::application.application',
-      'manyToOne',
-      'api::applicant.applicant'
-    >
-    votes: Attribute.Relation<
-      'api::application.application',
-      'oneToMany',
-      'api::vote.vote'
-    >
-    tags: Attribute.Relation<
-      'api::application.application',
-      'manyToMany',
-      'api::tag.tag'
-    >
-    feedbacks: Attribute.Relation<
-      'api::application.application',
-      'oneToMany',
-      'api::feedback.feedback'
-    >
-    createdAt: Attribute.DateTime
-    updatedAt: Attribute.DateTime
-    createdBy: Attribute.Relation<
-      'api::application.application',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    updatedBy: Attribute.Relation<
-      'api::application.application',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    localizations: Attribute.Relation<
-      'api::application.application',
-      'oneToMany',
-      'api::application.application'
-    >
-    locale: Attribute.String
-  }
-}
-
 export interface ApiArchiveContentArchiveContent extends Schema.CollectionType {
   collectionName: 'archive_contents'
   info: {
@@ -1282,7 +1141,6 @@ export interface ApiArtArt extends Schema.CollectionType {
       'manyToMany',
       'api::profile.profile'
     >
-    votes: Attribute.Relation<'api::art.art', 'oneToMany', 'api::vote.vote'>
     artist: Attribute.Relation<
       'api::art.art',
       'manyToOne',
@@ -1586,11 +1444,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToMany',
       'api::mention.mention'
     >
-    competitions: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::competition.competition'
-    >
     activities: Attribute.Relation<
       'api::category.category',
       'manyToMany',
@@ -1748,115 +1601,6 @@ export interface ApiCommentComment extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private
-  }
-}
-
-export interface ApiCompetitionCompetition extends Schema.CollectionType {
-  collectionName: 'competitions'
-  info: {
-    singularName: 'competition'
-    pluralName: 'competitions'
-    displayName: 'Competition'
-    description: ''
-  }
-  options: {
-    draftAndPublish: true
-  }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    slug: Attribute.UID<'api::competition.competition', 'title'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }> &
-      Attribute.DefaultTo<'Description'>
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }> &
-      Attribute.DefaultTo<'Content'>
-    approvalStatus: Attribute.Enumeration<['pending', 'approved', 'rejected']> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }> &
-      Attribute.DefaultTo<'pending'>
-    image: Attribute.Media<'images'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false
-        }
-      }>
-    date: Attribute.DateTime &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false
-        }
-      }>
-    deadline: Attribute.DateTime &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false
-        }
-      }>
-    applications: Attribute.Relation<
-      'api::competition.competition',
-      'oneToMany',
-      'api::application.application'
-    >
-    categories: Attribute.Relation<
-      'api::competition.competition',
-      'manyToMany',
-      'api::category.category'
-    >
-    createdAt: Attribute.DateTime
-    updatedAt: Attribute.DateTime
-    publishedAt: Attribute.DateTime
-    createdBy: Attribute.Relation<
-      'api::competition.competition',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    updatedBy: Attribute.Relation<
-      'api::competition.competition',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    localizations: Attribute.Relation<
-      'api::competition.competition',
-      'oneToMany',
-      'api::competition.competition'
-    >
-    locale: Attribute.String
   }
 }
 
@@ -2044,11 +1788,6 @@ export interface ApiFeedbackFeedback extends Schema.CollectionType {
       'api::feedback.feedback',
       'manyToOne',
       'api::art.art'
-    >
-    application: Attribute.Relation<
-      'api::feedback.feedback',
-      'manyToOne',
-      'api::application.application'
     >
     editor: Attribute.Relation<
       'api::feedback.feedback',
@@ -2859,11 +2598,6 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     >
     avatar: Attribute.Media<'images'>
     isVolunteer: Attribute.Boolean
-    applicant: Attribute.Relation<
-      'api::profile.profile',
-      'oneToOne',
-      'api::applicant.applicant'
-    >
     likedArts: Attribute.Relation<
       'api::profile.profile',
       'manyToMany',
@@ -2893,16 +2627,6 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'api::profile.profile',
       'oneToMany',
       'api::feedback.feedback'
-    >
-    votes: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::vote.vote'
-    >
-    juryVotes: Attribute.Relation<
-      'api::profile.profile',
-      'oneToMany',
-      'api::vote.vote'
     >
     user: Attribute.Relation<
       'api::profile.profile',
@@ -3203,11 +2927,6 @@ export interface ApiTagTag extends Schema.CollectionType {
     name_nl: Attribute.String & Attribute.Required
     name_tr: Attribute.String & Attribute.Required
     blogs: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::blog.blog'>
-    applications: Attribute.Relation<
-      'api::tag.tag',
-      'manyToMany',
-      'api::application.application'
-    >
     posts: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::post.post'>
     activities: Attribute.Relation<
       'api::tag.tag',
@@ -3510,52 +3229,6 @@ export interface ApiUserNotificationUserNotification
   }
 }
 
-export interface ApiVoteVote extends Schema.CollectionType {
-  collectionName: 'votes'
-  info: {
-    singularName: 'vote'
-    pluralName: 'votes'
-    displayName: 'Vote'
-    description: ''
-  }
-  options: {
-    draftAndPublish: false
-  }
-  attributes: {
-    value: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 1
-          max: 10
-        },
-        number
-      >
-    voter: Attribute.Relation<
-      'api::vote.vote',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    application: Attribute.Relation<
-      'api::vote.vote',
-      'manyToOne',
-      'api::application.application'
-    >
-    art: Attribute.Relation<'api::vote.vote', 'manyToOne', 'api::art.art'>
-    jury: Attribute.Relation<
-      'api::vote.vote',
-      'manyToOne',
-      'api::profile.profile'
-    >
-    createdAt: Attribute.DateTime
-    updatedAt: Attribute.DateTime
-    createdBy: Attribute.Relation<'api::vote.vote', 'oneToOne', 'admin::user'> &
-      Attribute.Private
-    updatedBy: Attribute.Relation<'api::vote.vote', 'oneToOne', 'admin::user'> &
-      Attribute.Private
-  }
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -3576,8 +3249,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser
       'api::account-statistic.account-statistic': ApiAccountStatisticAccountStatistic
       'api::activity.activity': ApiActivityActivity
-      'api::applicant.applicant': ApiApplicantApplicant
-      'api::application.application': ApiApplicationApplication
       'api::archive-content.archive-content': ApiArchiveContentArchiveContent
       'api::archive-image.archive-image': ApiArchiveImageArchiveImage
       'api::art.art': ApiArtArt
@@ -3588,7 +3259,6 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory
       'api::collection.collection': ApiCollectionCollection
       'api::comment.comment': ApiCommentComment
-      'api::competition.competition': ApiCompetitionCompetition
       'api::course.course': ApiCourseCourse
       'api::course-application.course-application': ApiCourseApplicationCourseApplication
       'api::donate.donate': ApiDonateDonate
@@ -3616,7 +3286,6 @@ declare module '@strapi/types' {
       'api::trend.trend': ApiTrendTrend
       'api::user-feedback.user-feedback': ApiUserFeedbackUserFeedback
       'api::user-notification.user-notification': ApiUserNotificationUserNotification
-      'api::vote.vote': ApiVoteVote
     }
   }
 }

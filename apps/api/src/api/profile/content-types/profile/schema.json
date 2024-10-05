@@ -82,16 +82,12 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "isVolunteer": {
       "type": "boolean"
-    },
-    "applicant": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::applicant.applicant",
-      "mappedBy": "profile"
     },
     "likedArts": {
       "type": "relation",
@@ -129,18 +125,6 @@
       "target": "api::feedback.feedback",
       "mappedBy": "editor"
     },
-    "votes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::vote.vote",
-      "mappedBy": "voter"
-    },
-    "juryVotes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::vote.vote",
-      "mappedBy": "jury"
-    },
     "user": {
       "type": "relation",
       "relation": "oneToOne",
@@ -174,7 +158,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["files"]
+      "allowedTypes": [
+        "files"
+      ]
     },
     "subscriber": {
       "type": "relation",
@@ -186,7 +172,10 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files"]
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "address": {
       "displayName": "Address",

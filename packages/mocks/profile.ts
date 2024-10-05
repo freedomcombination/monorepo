@@ -28,7 +28,6 @@ export const PROFILE_MOCKS: StrapiCollectionResponse<Profile[]> = {
       isVolunteer: null,
       platforms: [],
       avatar: null,
-      applicant: null,
       likedArts: [],
       ownedArts: [],
       likedBlogs: [],

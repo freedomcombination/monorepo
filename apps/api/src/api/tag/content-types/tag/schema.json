@@ -37,12 +37,6 @@
       "target": "api::blog.blog",
       "inversedBy": "tags"
     },
-    "applications": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::application.application",
-      "mappedBy": "tags"
-    },
     "posts": {
       "type": "relation",
       "relation": "manyToMany",

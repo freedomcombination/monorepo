@@ -22,11 +22,9 @@ export const endpointsWithLocalizedTitle: StrapiEndpoint[] = [
 
 export const endpointsWithLocale: StrapiEndpoint[] = [
   'activities',
-  'applications',
   'archive-contents',
   'blogs',
   'collections',
-  'competitions',
   'hashtags',
   'mentions',
   'posts',
@@ -40,11 +38,9 @@ export const endpointsWithLocale: StrapiEndpoint[] = [
 
 export const endpointsWithApprovalStatus: StrapiEndpoint[] = [
   'activities',
-  'applications',
   'arts',
   'blogs',
   'collections',
-  'competitions',
   'course-applications',
   'courses',
   'hashtags',
@@ -54,16 +50,13 @@ export const endpointsWithApprovalStatus: StrapiEndpoint[] = [
 
 export const endpointsWithPublicationState: StrapiEndpoint[] = [
   'activities',
-  'applicants',
   'archive-images',
   'arts',
   'blogs',
   'comments',
-  'competitions',
   'courses',
   'hashtags',
   'posts',
   'presentations',
   'timelines',
-  'votes',
 ]

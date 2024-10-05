@@ -24,19 +24,16 @@
     },
     "status": {
       "type": "enumeration",
-      "enum": ["approved", "rejected"],
+      "enum": [
+        "approved",
+        "rejected"
+      ],
       "required": true
     },
     "art": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::art.art",
-      "inversedBy": "feedbacks"
-    },
-    "application": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::application.application",
       "inversedBy": "feedbacks"
     },
     "editor": {

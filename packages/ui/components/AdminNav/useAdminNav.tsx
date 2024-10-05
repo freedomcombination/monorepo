@@ -5,7 +5,6 @@ import {
   BsCashCoin,
   BsCashStack,
   BsCollection,
-  BsCommand,
   BsTranslate,
 } from 'react-icons/bs'
 import { CgHashtag, CgProfile } from 'react-icons/cg'
@@ -295,12 +294,6 @@ export const useAdminNav = () => {
         label: t('blogs'),
         icon: <TbWriting />,
         link: '/blogs',
-      },
-      {
-        id: 'competitions',
-        label: t('competitions'),
-        link: '/competitions',
-        icon: <BsCommand />,
       },
       {
         id: 'donation',

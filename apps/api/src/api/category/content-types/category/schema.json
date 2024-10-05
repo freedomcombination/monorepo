@@ -43,12 +43,6 @@
       "target": "api::mention.mention",
       "inversedBy": "categories"
     },
-    "competitions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::competition.competition",
-      "inversedBy": "categories"
-    },
     "activities": {
       "type": "relation",
       "relation": "manyToMany",

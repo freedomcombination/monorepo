@@ -36,6 +36,7 @@ export const generateCommonFields = (locale: StrapiLocale) => {
     createdAt: faker.en.date.recent().toISOString(),
     publishedAt: faker.en.date.recent().toISOString(),
     updatedAt: faker.en.date.recent().toISOString(),
+    date: faker.en.date.soon().toISOString(),
     content: faker[locale].lorem.paragraphs({ min: 3, max: 10 }),
     content_en: faker.en.lorem.paragraphs({ min: 3, max: 10 }),
     content_nl: faker.nl.lorem.paragraphs({ min: 3, max: 10 }),
@@ -66,7 +67,7 @@ export const generateStrapiResponse = <T extends StrapiModel>(
   size = 25,
 ): StrapiCollectionResponse<T[]> => {
   const total = Math.floor(Math.random() * 12)
-  const length = total % size ?? total
+  const length = total % size || total
 
   return {
     data: Array.from({ length }, () => fn(locale) as T),
