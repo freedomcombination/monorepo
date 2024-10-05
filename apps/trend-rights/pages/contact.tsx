@@ -49,7 +49,7 @@ const Contact = () => {
                   leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
                   href="tel:+31687578056"
                 >
-                  +31-6 85221308
+                  +31-6 87578056
                 </ButtonLink>
                 <ButtonLink
                   isExternal
