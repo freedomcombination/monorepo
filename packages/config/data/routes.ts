@@ -2,10 +2,11 @@ import type { MenuType } from '@fc/types'
 
 type PlatformRouteKey =
   | 'lotus'
-  | 'artStop'
+  | 'kunsthalte'
   | 'music'
   | 'trend-rights'
   | 'academy'
+  | 'minimier'
 
 type SiteRouteKey =
   | 'sign-up'
@@ -84,9 +85,9 @@ export const ROUTES: Record<RouteKey, MenuType> = {
     nl: 'Lotus van de Media',
     tr: 'Lotus van de Media',
   },
-  artStop: {
+  kunsthalte: {
     link: '/platforms/kunsthalte',
-    en: 'Art Station',
+    en: 'Kunsthalte',
     nl: 'Kunsthalte',
     tr: 'Sanat Durağı',
   },
@@ -101,6 +102,12 @@ export const ROUTES: Record<RouteKey, MenuType> = {
     en: 'Trend Rights',
     nl: 'Trend Rights',
     tr: 'Trend Rights',
+  },
+  minimier: {
+    link: '/platforms/minimier',
+    en: 'Minimier',
+    nl: 'Minimier',
+    tr: 'Minimier',
   },
   academy: {
     link: '/platforms/academy',

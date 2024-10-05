@@ -3,7 +3,7 @@ import {
   about,
   academy,
   activities,
-  artStop,
+  kunsthalte,
   blogs,
   club,
   contact,
@@ -17,6 +17,7 @@ import {
   trendRights,
   term,
   music,
+  minimier,
 } from './routes'
 import { Menus } from './types'
 
@@ -28,7 +29,7 @@ export const foundation: Menus = {
       en: platforms?.en,
       nl: platforms?.nl,
       tr: platforms?.tr,
-      children: [trendRights, artStop, lotus, academy, music],
+      children: [trendRights, kunsthalte, minimier, lotus, academy, music],
     },
     blogs,
     club,
@@ -42,7 +43,7 @@ export const foundation: Menus = {
   ],
   footerMenu: [
     {
-      children: [trendRights, artStop, lotus, academy, music],
+      children: [trendRights, kunsthalte, minimier, lotus, academy, music],
       en: platforms?.en,
       nl: platforms?.nl,
       tr: platforms?.tr,

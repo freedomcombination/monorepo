@@ -26,6 +26,6 @@ test.describe('04. Kunsthalte Homepage', () => {
     await page.waitForTimeout(1000)
     const titleEN = await page.textContent('h2.chakra-heading')
 
-    expect(titleEN).toBe('Art Station')
+    expect(titleEN).toBe('Kunsthalte')
   })
 })

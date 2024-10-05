@@ -4,7 +4,7 @@ const {
   activities,
   platforms,
   lotus,
-  artStop,
+  kunsthalte,
   'trend-rights': trendRights,
   academy,
   club,
@@ -16,7 +16,7 @@ const {
 
 export const FOOTER_MENU = [
   {
-    children: [lotus, artStop, trendRights, academy],
+    children: [lotus, kunsthalte, trendRights, academy],
     en: platforms.en,
     nl: platforms.nl,
     tr: platforms.tr,

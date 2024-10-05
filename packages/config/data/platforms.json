@@ -43,7 +43,7 @@
       "header": "red.500"
     },
     "title": {
-      "en": "Art Station",
+      "en": "Kunsthalte",
       "nl": "Kunsthalte",
       "tr": "Sanat Durağı"
     },
@@ -52,7 +52,25 @@
       "nl": "Het is een groep waar mensen die naar Nederland zijn gevlucht, geïnteresseerd zijn in kunst, elkaar online en fysiek ontmoeten, hun ervaringen met elkaar delen, informatie delen over moderne en traditionele kunst en tegelijkertijd artistieke activiteiten organiseren.",
       "tr": "Sanata ilgi duyan Hollanda’ya göç etmiş kişilerin hem online hem fiziki olarak buluştuğu, modern ve geleneksel sanatlar üzerine bilgi paylaşımı yaptıkları, aynı zamanda sanatsal aktiviteler organize ettikleri bir gruptur."
     },
-    "link": "/platforms/art-stop"
+    "link": "/platforms/kunsthalte"
+  },
+  {
+    "image": "/image/minimier-logo.svg",
+    "colors": {
+      "bg": "red.100",
+      "header": "red.500"
+    },
+    "title": {
+      "en": "Minimier",
+      "nl": "Minimier",
+      "tr": "Minimier"
+    },
+    "description": {
+      "en": "MiniMier is a YouTube channel that offers interactive and educational content designed to support the well-rounded development of children. These contents, created by volunteer experts in their fields, engage and develop children across a variety of subjects. You're invited to our channel to enjoy fun and educational activities that you can safely follow along with your children.",
+      "nl": "MiniMier is een YouTube-kanaal dat interactieve en educatieve inhoud biedt die is ontworpen om de veelzijdige ontwikkeling van kinderen te ondersteunen. Deze inhoud, gecreëerd door vrijwillige experts in hun vakgebied, betrekt en ontwikkelt kinderen op verschillende gebieden. U bent van harte uitgenodigd om ons kanaal te volgen voor leuke en leerzame activiteiten die u samen met uw kinderen veilig kunt volgen.",
+      "tr": "MiniMier, çocukların çok yönlü gelişimini destekleyen, interaktif ve eğitici içerikler sunan bir YouTube kanalıdır. Alanında uzman gönüllü eğitmenlerle hazırlanan bu içerikler, birçok alanda çocukları eğlendirirken geliştirir. Çocuklarınızla birlikte güvenle takip edebileceğiniz, keyifli ve öğretici aktiviteler için kanalımıza davetlisiniz."
+    },
+    "link": "/platforms/minimier"
   },
   {
     "image": "/images/academy-logo.svg",

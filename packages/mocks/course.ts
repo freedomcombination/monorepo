@@ -459,7 +459,7 @@ export const COURSE_MOCKS: StrapiCollectionResponse<Course[]> = {
       platform: {
         id: 1,
         slug: 'kunsthalte',
-        name_en: 'Art Station',
+        name_en: 'Kunsthalte',
         name_nl: 'Kunsthalte',
         name_tr: 'Sanat Durağı',
         description_en:
