@@ -1,0 +1,41 @@
+[
+  {
+    "image": "/images/who-we-are.svg",
+    "title": {
+      "en": "Who We Are?",
+      "nl": "Wie Zijn Wij?",
+      "tr": "Biz Kimiz?"
+    },
+    "description": {
+      "en": "We are a foundation founded by volunteers from various professions living in the Netherlands, supporting the rule of law, democracy and human rights.",
+      "nl": "Wij zijn een stichting opgericht door vrijwilligers uit verschillende beroepen die in Nederland wonen en ondersteunen de rechtsstaat, democratie en mensenrechten.",
+      "tr": "Hukukun üstünlüğünü, demokrasi ve insan haklarını destekleyen, Hollanda’da yaşayan çeşitli meslek sahibi gönüllüler tarafından kurulmuş bir vakıfız."
+    }
+  },
+  {
+    "image": "/images/mission.svg",
+    "title": {
+      "en": "Our Mission",
+      "nl": "Onze Missie",
+      "tr": "Misyonumuz"
+    },
+    "description": {
+      "en": "To work for the reduction or end human rights violations committed by individuals or states in different geographies of the world.",
+      "nl": "Werken aan het verminderen of beëindigen van mensenrechtenschendingen door individuen of staten in verschillende geografische gebieden van de wereld.",
+      "tr": "Dünyanın farklı coğrafyalarında kişiler veya devletler tarafından işlenen insan hakları ihlallerinin azalması veya son bulması için çalışmalar yapmak."
+    }
+  },
+  {
+    "image": "/images/vision.svg",
+    "title": {
+      "en": "Our Vision",
+      "nl": "Onze Visie",
+      "tr": "Vizyonumuz"
+    },
+    "description": {
+      "en": "As human rights violations are shared with the public, the violations will decrease or come to an end.",
+      "nl": "Naarmate mensenrechtenschendingen met het publiek worden gedeeld, zullen de schendingen afnemen of eindigen.",
+      "tr": "İnsan hakları ihlalleri kamuoyuna paylaşıldıkça ihlaller azalacak veya sona erecektir."
+    }
+  }
+]

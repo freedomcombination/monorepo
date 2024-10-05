@@ -2,16 +2,33 @@
 import { useEffect, useState } from 'react'
 
 import { Box } from '@chakra-ui/react'
-
+import axios from 'axios'
 import { strapiRequest } from '@fc/services/common/strapiRequest'
 
 export const FetchWithStrapiRequest = () => {
   const [blogs, setBlogs] = useState([])
 
   useEffect(() => {
-    // TODO: fetch blogs with strapiRequest by using the API_URL
-    // Remember that fetcher is a wrapper around axios that adds the token and api url to the request
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get(
+          'https://wsvv-api-staging.onrender.com/api/blogs?locale=tr',
+        )
+        console.log('response', response)
+        setBlogs(response.data.data) // Adjust this based on the API response structure
+      } catch (error) {
+        console.error('Error fetching blogs:', error)
+      }
+    }
+
+    fetchBlogs()
   }, [])
 
-  return <Box>{/* TODO: Show only title of the blogs */}</Box>
+  return (
+    <Box>
+      {blogs.map(blog => (
+        <div key={blog.id}>{blog.title}</div>
+      ))}
+    </Box>
+  )
 }

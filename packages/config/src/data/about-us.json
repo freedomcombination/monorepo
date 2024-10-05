@@ -1,0 +1,62 @@
+{
+  "nl": {
+    "title": "Over Ons",
+    "content": [
+      {
+        "title": "Wie zijn wij?",
+        "description": "Het is opgericht door vrijwilligers uit verschillende in Nederland wonende beroepsgroepen die zich inzetten voor de rechtsstaat, democratie en mensenrechten.",
+        "image": "/images/who-we-are.svg"
+      },
+      {
+        "title": "Onze Visie",
+        "description": "Als mensenrechtenschendingen openbaar worden gemaakt, zullen schendingen afnemen of eindigen.",
+        "image": "/images/vision.svg"
+      },
+      {
+        "title": "Onze missie",
+        "description": "Het delen met het publiek van accurate informatie over mensenrechtenschendingen in de wereld en de daaruit voortvloeiende represailles.",
+        "image": "/images/mission.svg"
+      }
+    ]
+  },
+  "en": {
+    "title": "About Us",
+    "content": [
+      {
+        "title": "Who are we?",
+        "description": "It was founded by volunteers from various professions living in the Netherlands who support the rule of law, democracy and human rights.",
+        "image": "/images/who-we-are.svg"
+      },
+      {
+        "title": "Our Vision",
+        "description": "As human rights violations are made public, violations will decrease or end.",
+        "image": "/images/vision.svg"
+      },
+      {
+        "title": "Our Mission",
+        "description": "To share with the public accurate information on human rights violations occurring in the world and the resulting victimisation.",
+        "image": "/images/mission.svg"
+      }
+    ]
+  },
+  "tr": {
+    "title": "Hakkımızda",
+    "content": [
+      {
+        "title": "Biz kimiz?",
+        "description": "Hukukun üstünlüğünü, demokrasi ve insan haklarını destekleyen, Hollanda’da yaşayan değişik meslek sahibi gönüllüler tarafından kurulmuştur.",
+        "image": "/images/who-we-are.svg"
+      },
+      {
+        "title": "Vizyonumuz",
+        "description": "İnsan hakları ihlalleri kamuoyuna paylaşıldıkça ihlaller azalacak veya sona erecektir.",
+        "image": "/images/vision.svg"
+      },
+      {
+        "title": "Misyonumuz",
+        "description": "Dünyada meydana gelen insan hakları ihlallerini, bundan dolayı oluşan mağduriyetler konusundaki doğru bilgiyi kamuoyuyla paylaşmak.",
+        "image": "/images/mission.svg"
+      }
+    ]
+  }
+}

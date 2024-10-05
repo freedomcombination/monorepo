@@ -1,0 +1,75 @@
+[
+  {
+    "image": "/images/trend-rights-logo.svg",
+    "colors": {
+      "bg": "trend-rights.100",
+      "header": "trend-rights.500"
+    },
+    "title": {
+      "en": "Trend Rights",
+      "nl": "Trend Rights",
+      "tr": "Trend Rights"
+    },
+    "description": {
+      "en": "Today, with the developing technology, social media is one of the most important tools for explaining human rights and announcing human rights violations. For this reason, a social media platform has been established within our foundation for the effective use of social media tools.",
+      "nl": "Vandaag de dag, met de zich ontwikkelende technologie, is sociale media een van de belangrijkste instrumenten om mensenrechten uit te leggen en mensenrechtenschendingen aan te kondigen. Om deze reden is er binnen onze stichting een social media platform opgericht voor het effectief inzetten van social media tools.",
+      "tr": "Günümüzde gelişen teknolojiyle birlikte sosyal medya insan haklarının anlatılması ve insan hakları ihlallerinin duyurulması için en önemli araçlardandır. Bu nedenle sosyal medya araçlarının etkin bir biçimde kullanılması için, vakfımız bünyesinde sosyal medya platformu kurulmuştur."
+    },
+    "link": "/platforms/trend-rights"
+  },
+  {
+    "image": "/images/lotus-logo.svg",
+    "colors": {
+      "bg": "black",
+      "header": "white",
+      "text": "white"
+    },
+    "title": {
+      "en": "Lotus van de Media",
+      "nl": "Lotus van de Media",
+      "tr": "Lotus van de Media"
+    },
+    "description": {
+      "en": "With this project, in order to explain universal human rights through media and communication; It is aimed to gain experience in fields such as acting, directing, screenwriting, to develop experiences and to provide references in the mentioned fields with internships. It is planned to develop projects such as short films and theatre.",
+      "nl": "Met dit project, om universele mensenrechten uit te leggen via media en communicatie; Het is bedoeld om ervaring op te doen op gebieden als acteren, regisseren, scenarioschrijven, ervaringen op te doen en referenties op de genoemde gebieden te voorzien van stages. Het is de bedoeling om projecten zoals korte films en theater te ontwikkelen.",
+      "tr": "Bu projeyle evrensel insan haklarının medya ve iletişim yoluyla anlatılabilmesi için; oyunculuk, yönetmenlik, senaristlik gibi alanlarda tecrübe kazanma, tecrübeleri geliştirme  ve sayılan alanlarda stajla birlikte referans sağlama amaçlanmaktadır. Kısa film, tiyatro gibi projelerin geliştirilmesi düşünülmektedir."
+    },
+    "link": "/platforms/lotus"
+  },
+  {
+    "image": "/image/kunsthalte-logo.svg",
+    "colors": {
+      "bg": "red.100",
+      "header": "red.500"
+    },
+    "title": {
+      "en": "Art Station",
+      "nl": "Kunsthalte",
+      "tr": "Sanat Durağı"
+    },
+    "description": {
+      "en": "It is a group where people who took refuge in the Netherlands, who are interested in art, meet both online and physically, share their experiences with each other, share information on modern and traditional arts, and organize artistic activities at the same time.",
+      "nl": "Het is een groep waar mensen die naar Nederland zijn gevlucht, geïnteresseerd zijn in kunst, elkaar online en fysiek ontmoeten, hun ervaringen met elkaar delen, informatie delen over moderne en traditionele kunst en tegelijkertijd artistieke activiteiten organiseren.",
+      "tr": "Sanata ilgi duyan Hollanda’ya göç etmiş kişilerin hem online hem fiziki olarak buluştuğu, modern ve geleneksel sanatlar üzerine bilgi paylaşımı yaptıkları, aynı zamanda sanatsal aktiviteler organize ettikleri bir gruptur."
+    },
+    "link": "/platforms/art-stop"
+  },
+  {
+    "image": "/images/academy-logo.svg",
+    "colors": {
+      "bg": "blue.100",
+      "header": "blue.500"
+    },
+    "title": {
+      "en": "FC Academy",
+      "nl": "FC Academie",
+      "tr": "FC Akademi"
+    },
+    "description": {
+      "en": "First of all, it is aimed to meet the software needs of the foundation, and to provide internship opportunities for those who contribute to the software and to provide references in job applications.",
+      "nl": "Het is in de eerste plaats bedoeld om te voorzien in de softwarebehoeften van de stichting, om stageplaatsen te bieden aan degenen die bijdragen aan de software en om referenties te geven in sollicitaties.",
+      "tr": "Öncelikle vakfın yazılım ihtiyacının karşılanması, yazılıma katkı sağlayanlar açısından ise staj yapma imkanı ve iş başvurularında referans sağlanması amaçlanmaktadır."
+    },
+    "link": "/platforms/academy"
+  }
+]
