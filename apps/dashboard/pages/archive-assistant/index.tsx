@@ -1,5 +1,4 @@
 import { GetServerSidePropsContext } from 'next'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -9,8 +8,6 @@ import { ArchiveContentAssistant } from '@fc/ui/components/ArchiveContentAssista
 
 const ArchiveAssistantPage = () => {
   const { t } = useTranslation()
-  const { query } = useRouter()
-  const id = query.id ? + query.id : 0
 
   return (
     <AdminLayout seo={{ title: t('archive-creation') }}>
