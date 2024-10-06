@@ -23,7 +23,6 @@ test.describe('01. Example API call', () => {
     const response = await api.get<Post>({
       endpoint: 'posts',
       populate: null,
-      token: API_TOKEN,
     })
 
     const posts = response.data
