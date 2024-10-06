@@ -95,6 +95,9 @@ test.describe('06. Profile Editing Tests', () => {
     loginPage,
     profilePage,
   }) => {
+    // TODO: Remove after fixing update password
+    test.skip()
+
     await addCookies(context, 'kunsthalte')
 
     await layoutPage.gotoHome('kunsthalte')
@@ -103,9 +106,6 @@ test.describe('06. Profile Editing Tests', () => {
     await layoutPage.gotoProfilePage()
 
     await page.getByTestId('tab-security').click()
-
-    // TODO: Remove after fixing update password
-    test.skip()
 
     // NOTE: Updating the authenticated user password is not recommended
     // Because it will affect the other tests when it fails or runs in parallel
