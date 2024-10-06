@@ -1,0 +1,18 @@
+{
+  categories: [
+    "Cezaevi ihlalleri",
+    "Hamile tutuklular",
+    "İşkence",
+    "Kaybolan hayatlar",
+    "Khk",
+    "Tutsak bebekler",
+    "Tutuklu hastalar",
+    "Yaşlı tutuklular",
+  ],
+  tags: [
+    "Bakırköy Kadın Kapalı Cezaevi",
+    "Hatice Yıldız",
+    "Sincan Cezaevi", 
+    "Yusuf Bilge Tunç", 
+  ],
+};

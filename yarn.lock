@@ -10364,6 +10364,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^18.11.18":
+  version: 18.19.54
+  resolution: "@types/node@npm:18.19.54"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10/99cbad8b8d7493c8c9b1df77229f5684dc1477383db8bd7692792700df1a059bc66cd49625bde29d8da072da6a553ed08cf914866a6989a66300355571db124e
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^20.16.10":
   version: 20.16.10
   resolution: "@types/node@npm:20.16.10"
@@ -17317,6 +17326,7 @@ __metadata:
     next-recaptcha-v3: "npm:^1.4.1"
     next-seo: "npm:^6.6.0"
     next-share: "npm:^0.27.0"
+    openai: "npm:^4.67.0"
     os-browserify: "npm:^0.3.0"
     path-browserify: "npm:^1.0.1"
     pluralize: "npm:^8.0.0"
@@ -17745,6 +17755,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"form-data-encoder@npm:1.7.2":
+  version: 1.7.2
+  resolution: "form-data-encoder@npm:1.7.2"
+  checksum: 10/227bf2cea083284411fd67472ccc22f5cb354ca92c00690e11ff5ed942d993c13ac99dea365046306200f8bd71e1a7858d2d99e236de694b806b1f374a4ee341
+  languageName: node
+  linkType: hard
+
 "form-data@npm:^3.0.0":
   version: 3.0.1
   resolution: "form-data@npm:3.0.1"
@@ -17764,6 +17781,16 @@ __metadata:
     combined-stream: "npm:^1.0.8"
     mime-types: "npm:^2.1.12"
   checksum: 10/7264aa760a8cf09482816d8300f1b6e2423de1b02bba612a136857413fdc96d7178298ced106817655facc6b89036c6e12ae31c9eb5bdc16aabf502ae8a5d805
+  languageName: node
+  linkType: hard
+
+"formdata-node@npm:^4.3.2":
+  version: 4.4.1
+  resolution: "formdata-node@npm:4.4.1"
+  dependencies:
+    node-domexception: "npm:1.0.0"
+    web-streams-polyfill: "npm:4.0.0-beta.3"
+  checksum: 10/29622f75533107c1bbcbe31fda683e6a55859af7f48ec354a9800591ce7947ed84cd3ef2b2fcb812047a884f17a1bac75ce098ffc17e23402cd373e49c1cd335
   languageName: node
   linkType: hard
 
@@ -23623,6 +23650,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-domexception@npm:1.0.0":
+  version: 1.0.0
+  resolution: "node-domexception@npm:1.0.0"
+  checksum: 10/e332522f242348c511640c25a6fc7da4f30e09e580c70c6b13cb0be83c78c3e71c8d4665af2527e869fc96848924a4316ae7ec9014c091e2156f41739d4fa233
+  languageName: node
+  linkType: hard
+
 "node-fetch-native@npm:^1.6.3":
   version: 1.6.4
   resolution: "node-fetch-native@npm:1.6.4"
@@ -24244,6 +24278,28 @@ __metadata:
     is-inside-container: "npm:^1.0.0"
     is-wsl: "npm:^2.2.0"
   checksum: 10/b45bcc7a6795804a2f560f0ca9f5e5344114bc40754d10c28a811c0c8f7027356979192931a6a7df2ab9e5bab3058988c99ae55f4fb71db2ce9fc77c40f619aa
+  languageName: node
+  linkType: hard
+
+"openai@npm:^4.67.0":
+  version: 4.67.0
+  resolution: "openai@npm:4.67.0"
+  dependencies:
+    "@types/node": "npm:^18.11.18"
+    "@types/node-fetch": "npm:^2.6.4"
+    abort-controller: "npm:^3.0.0"
+    agentkeepalive: "npm:^4.2.1"
+    form-data-encoder: "npm:1.7.2"
+    formdata-node: "npm:^4.3.2"
+    node-fetch: "npm:^2.6.7"
+  peerDependencies:
+    zod: ^3.23.8
+  peerDependenciesMeta:
+    zod:
+      optional: true
+  bin:
+    openai: bin/cli
+  checksum: 10/a4aab82c36f43ad7112d1e7ee87b7fc72b525c10db7f4c165b592852d18ae477de2ae4b19efd4a9c22360ef4a201966e480ede2e72c2f9c9d15208e517a59e52
   languageName: node
   linkType: hard
 
@@ -31141,6 +31197,13 @@ __metadata:
   bin:
     web-push: src/cli.js
   checksum: 10/c25f427a4d75572cb476835e4fc547b2c1b7a306c9c264d4b6aa2345ae2144a5cd49743320f3cc6df8ef3be9c52ba5c88be5a7f6f9bdb3252768f1bb9e7d1037
+  languageName: node
+  linkType: hard
+
+"web-streams-polyfill@npm:4.0.0-beta.3":
+  version: 4.0.0-beta.3
+  resolution: "web-streams-polyfill@npm:4.0.0-beta.3"
+  checksum: 10/dcdef67de57d83008f9dc330662b65ba4497315555dd0e4e7bcacb132ffdf8a830eaab8f74ad40a4a44f542461f51223f406e2a446ece1cc29927859b1405853
   languageName: node
   linkType: hard
 

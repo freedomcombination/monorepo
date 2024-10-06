@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import { useTranslation } from 'next-i18next'
+import { AiOutlineOpenAI } from 'react-icons/ai'
 import {
   BsCashCoin,
   BsCashStack,
@@ -116,14 +117,14 @@ export const useAdminNav = () => {
           },
           ...(process.env.NODE_ENV === 'development'
             ? [
-                {
-                  id: 'translates-locales',
-                  label: 'Locales',
-                  link: '/locales',
-                  icon: <MdTranslate />,
-                  allowed: true,
-                },
-              ]
+              {
+                id: 'translates-locales',
+                label: 'Locales',
+                link: '/locales',
+                icon: <MdTranslate />,
+                allowed: true,
+              },
+            ]
             : []),
         ],
       },
@@ -132,6 +133,15 @@ export const useAdminNav = () => {
         label: t('archive-contents'),
         icon: <LuFileArchive />,
         link: '/archive-contents',
+        submenu: [
+          {
+            id: 'create-with-assistant',
+            label: t('create-with-assistant'),
+            link: '/archive-assistant',
+            icon: <AiOutlineOpenAI />,
+            allowed: canRead('archive-contents'),
+          },
+        ],
       },
       {
         id: 'activities',

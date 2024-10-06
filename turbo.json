@@ -4,6 +4,7 @@
     "ADMIN_USERNAME",
     "ALLOW_COURSE_PAYMENT",
     "API_TOKEN",
+    "ASSISTANT_ID",
     "CI",
     "DEEPL_API_KEY",
     "EDGE_CONFIG",
