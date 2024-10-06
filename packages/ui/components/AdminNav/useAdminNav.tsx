@@ -117,14 +117,14 @@ export const useAdminNav = () => {
           },
           ...(process.env.NODE_ENV === 'development'
             ? [
-              {
-                id: 'translates-locales',
-                label: 'Locales',
-                link: '/locales',
-                icon: <MdTranslate />,
-                allowed: true,
-              },
-            ]
+                {
+                  id: 'translates-locales',
+                  label: 'Locales',
+                  link: '/locales',
+                  icon: <MdTranslate />,
+                  allowed: true,
+                },
+              ]
             : []),
         ],
       },
