@@ -4,7 +4,7 @@ import { socialLinks } from '@fc/config/socialLinks'
 import type { Site } from '@fc/types'
 
 import { test } from '../fixtures'
-import { addCookies, checkExternalLink, getUrl } from '../utils'
+import { addCookies, checkExternalLink, checkLink, getUrl } from '../utils'
 
 test.describe('03. Footer', () => {
   Object.entries(socialLinks)
@@ -28,7 +28,7 @@ test.describe('03. Footer', () => {
           const label = item?.label as string
           const link = item?.link.en as string
 
-          const linkLocator = page.getByLabel(label)
+          const linkLocator = page.getByLabel(label).last()
 
           await expect(linkLocator).toBeVisible()
 
@@ -36,4 +36,22 @@ test.describe('03. Footer', () => {
         }
       })
     })
+  test('TC-04: should footer links work', async ({ page, layoutPage }) => {
+    const url = getUrl('kunsthalte')
+    await page.goto(url)
+
+    await checkLink(page.getByTestId('link-m-logo-home'), '/')
+    await checkLink(layoutPage.menu.footer.contact, '/contact')
+    await checkLink(layoutPage.menu.footer.about, '/about-us')
+    await checkLink(layoutPage.menu.footer.donation, '/donation')
+    await checkLink(layoutPage.menu.footer.arts, '/club/arts')
+    await checkLink(layoutPage.menu.footer.collections, '/club/collections')
+    await checkLink(layoutPage.menu.footer.activities, '/activities')
+    await checkLink(layoutPage.menu.footer.terms, '/terms')
+    await checkLink(layoutPage.menu.footer.privacy, '/privacy')
+    await checkExternalLink(
+      layoutPage.menu.footer.foundation,
+      'https://freedomcombination.com',
+    )
+  })
 })
