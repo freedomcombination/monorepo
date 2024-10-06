@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker'
-import { CourseApplication } from '@fc/types'
 import slugify from '@sindresorhus/slugify'
 
 const getProfiles = async () =>
@@ -100,60 +99,6 @@ export const mockify = async () => {
 
   console.log('-'.repeat(50))
 
-  console.log('Mockifying roles...')
-  const roles = await strapi.entityService.findMany(
-    'plugin::users-permissions.role',
-  )
-
-  if (!Array.isArray(roles)) {
-    console.error('No roles found to mockify')
-
-    return
-  }
-
-  for await (const role of roles) {
-    const userResponse = await strapi.entityService.findMany(
-      'plugin::users-permissions.user',
-      { filters: { username: role.type } },
-    )
-
-    const id = userResponse?.[0]?.id
-
-    if (id) {
-      return
-    }
-
-    const name = role.name
-    const username = role.type
-    const email = `${username}@example.com`
-    const password = 'Test?123'
-
-    const createdUser = await strapi.entityService.create(
-      'plugin::users-permissions.user',
-      {
-        data: {
-          email,
-          username,
-          password,
-          confirmed: true,
-          role: role.id,
-        },
-      },
-    )
-
-    await strapi.entityService.create('api::profile.profile', {
-      data: {
-        name,
-        email,
-        user: createdUser.id,
-      } as any,
-    })
-  }
-
-  console.log(`Created ${roles.length} role users`)
-
-  console.log('-'.repeat(50))
-
   console.log('Mockifying donates...')
 
   const donates = await strapi.entityService.findMany('api::donate.donate')
@@ -191,7 +136,7 @@ export const mockify = async () => {
           country: faker.location.country(),
           profile: null,
           message: faker.lorem.paragraph(),
-        } as CourseApplication,
+        },
       },
     )
   }
@@ -210,7 +155,7 @@ export const mockify = async () => {
     const { name, email } = generateMockUser()
 
     if (comment.profile) {
-      return
+      continue
     }
 
     await strapi.entityService.update('api::comment.comment', comment.id, {
