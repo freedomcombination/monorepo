@@ -15,14 +15,6 @@ const config: StorybookConfig = {
   staticDirs: ['../public'],
   webpackFinal: async config => {
     if (config.resolve) {
-      config.resolve.fallback = {
-        fs: require.resolve('browserify-fs'),
-        path: require.resolve('path-browserify'),
-        os: require.resolve('os-browserify/browser'),
-        stream: require.resolve('stream-browserify'),
-        crypto: require.resolve('crypto-browserify'),
-      }
-
       config.resolve.alias = {
         ...config.resolve.alias,
         '@fc/config': path.resolve(__dirname, '../../config'),
