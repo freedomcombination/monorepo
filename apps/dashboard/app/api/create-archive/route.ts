@@ -3,7 +3,7 @@ import fs from 'fs'
 import OpenAI from 'openai'
 
 import { strapiRequest } from '@fc/services/common/strapiRequest/strapiRequest'
-import type { Category, Tag } from '@fc/types'
+import type { Category } from '@fc/types'
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
@@ -18,25 +18,22 @@ export async function POST(req: Request) {
   // console.log('###### assistant id: ', assistantId)
 
   if (!assistantId) {
-    // TODO: Use a custom endpoint to fetch all categories and tags
+    // TODO: Use a custom endpoint to fetch all categories, prisons and victims
     // Strapi has a limit of 100 items max per request
     const categories = await strapiRequest<Category>({
       endpoint: 'categories',
       fields: ['name_tr'],
     })
-    const tags = await strapiRequest<Tag>({
-      endpoint: 'tags',
-      fields: ['name_tr'],
-    })
 
     const jsonData = {
       categories: categories?.data?.map(c => c.name_tr) ?? [],
-      tags: tags?.data?.map(t => t.name_tr) ?? [],
+      // TODO: Prisons and victims
     }
 
     fs.writeFileSync('data.txt', JSON.stringify(jsonData))
 
     const file = await openai.files.create({
+      // TODO: Does it accept remote URLs?
       file: fs.createReadStream('data.txt'),
       purpose: 'assistants',
     })

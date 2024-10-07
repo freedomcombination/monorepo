@@ -3,13 +3,13 @@ import { useEffect, useReducer } from 'react'
 import type { Message } from 'ai/react'
 
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
-import type { Category, Tag } from '@fc/types'
+import type { Category } from '@fc/types'
 
 type State = {
   usersMessage: Message | null
   assistantsMessage: Message | null
+  // TODO: Use prisons and victims from the assistant message
   categories: string[]
-  tags: string[]
 }
 
 type Action = {
@@ -19,7 +19,7 @@ type Action = {
 
 type Response = {
   categories: Category[]
-  tags: Tag[]
+  // TODO: Prisons and victims should be fetched
   usersMessage: Message | null
   assistantsMessage: Message | null
 }
@@ -42,11 +42,6 @@ const reducer = (state: State, action: Action) => {
         categories: action.payload,
       }
 
-    case 'SET_TAGS':
-      return {
-        ...state,
-        tags: action.payload,
-      }
     default:
       return state
   }
@@ -59,11 +54,9 @@ export const useInitialArchiveContentValues = (
     usersMessage: null,
     assistantsMessage: null,
     categories: [],
-    tags: [],
   })
 
   console.log('state.categories', state.categories)
-  console.log('state.tags', state.tags)
 
   const categoriesQuery = useStrapiRequest<Category>({
     endpoint: 'categories',
@@ -79,20 +72,6 @@ export const useInitialArchiveContentValues = (
     },
     queryOptions: {
       enabled: state.categories.length > 0,
-    },
-  })
-
-  const tagsQuery = useStrapiRequest<Tag>({
-    endpoint: 'tags',
-    filters: {
-      $or: [
-        { name_en: { $in: state.tags } },
-        { name_nl: { $in: state.tags } },
-        { name_tr: { $in: state.tags } },
-      ],
-    },
-    queryOptions: {
-      enabled: state.tags.length > 0,
     },
   })
 
@@ -138,6 +117,6 @@ export const useInitialArchiveContentValues = (
   return {
     ...state,
     categories: categoriesQuery.data?.data || [],
-    tags: tagsQuery.data?.data || [],
+    // TODO: Prisons and victims
   }
 }
