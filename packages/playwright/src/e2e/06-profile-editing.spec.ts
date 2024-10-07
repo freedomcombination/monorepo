@@ -153,10 +153,6 @@ test.describe('06. Profile Editing Tests', () => {
     await expect(page.getByTestId('error-text-password')).toBeVisible()
 
     // should not update password without uppercase
-    await layoutPage.gotoLogin('kunsthalte')
-    await loginPage.login(USERNAME, PASSWORD)
-    await layoutPage.gotoProfilePage()
-
     await page.getByTestId('tab-security').click()
 
     const noUppercasePassword = 'test?123'
@@ -166,10 +162,6 @@ test.describe('06. Profile Editing Tests', () => {
     await expect(page.getByTestId('error-text-password')).toBeVisible()
 
     // should not update password without lowercase
-    await layoutPage.gotoLogin('kunsthalte')
-    await loginPage.login(USERNAME, PASSWORD)
-    await layoutPage.gotoProfilePage()
-
     await page.getByTestId('tab-security').click()
 
     const noLowercasePassword = 'TEST?123'
@@ -179,10 +171,6 @@ test.describe('06. Profile Editing Tests', () => {
     await expect(page.getByTestId('error-text-password')).toBeVisible()
 
     // should not update password without numbers
-    await layoutPage.gotoLogin('kunsthalte')
-    await loginPage.login(USERNAME, PASSWORD)
-    await layoutPage.gotoProfilePage()
-
     await page.getByTestId('tab-security').click()
 
     const noNumbersPassword = 'Test?Test'
