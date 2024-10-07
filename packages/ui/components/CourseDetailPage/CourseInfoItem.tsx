@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Box, HStack, Text } from '@chakra-ui/react'
 
 import { CourseInfoItemProps } from './types'
+
 export const CourseInfoItem: FC<CourseInfoItemProps> = ({
   icon,
   label,

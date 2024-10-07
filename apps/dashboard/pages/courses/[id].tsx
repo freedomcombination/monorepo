@@ -21,6 +21,7 @@ import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Course, CourseApplication, Sort, StrapiLocale } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { CourseApplicationDetails } from '@fc/ui/components/CourseApplicationInstallment'
 import { DataTable } from '@fc/ui/components/DataTable'
 import { ModelEditForm } from '@fc/ui/components/ModelEditForm'
 import { ModelEditModal } from '@fc/ui/components/ModelEditModal'
@@ -119,7 +120,17 @@ const CoursePage = () => {
           onClose={handleClose}
           onSuccess={refetch}
           size={'5xl'}
-        />
+        >
+          <CourseApplicationDetails
+            course={course!}
+            application={
+              applications.find(
+                application => application.id === selectedApplicationId,
+              )!
+            }
+            onSave={applicationsQuery.refetch}
+          />
+        </ModelEditModal>
       )}
       <Stack spacing={8} p={6}>
         <Accordion

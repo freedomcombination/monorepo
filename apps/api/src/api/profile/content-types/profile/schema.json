@@ -172,6 +172,10 @@
       "type": "component",
       "repeatable": false,
       "component": "flow.address"
+    },
+    "locale": {
+      "type": "enumeration",
+      "enum": ["en", "tr", "nl"]
     }
   }
 }
