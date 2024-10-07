@@ -103,9 +103,8 @@
     },
     "categories": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "mappedBy": "competitions"
+      "relation": "oneToMany",
+      "target": "api::category.category"
     }
   }
 }

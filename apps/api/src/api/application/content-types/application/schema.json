@@ -86,9 +86,8 @@
     },
     "tags": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "applications"
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
     },
     "feedbacks": {
       "type": "relation",
