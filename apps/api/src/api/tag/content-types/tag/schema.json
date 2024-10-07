@@ -31,35 +31,17 @@
       "type": "string",
       "required": true
     },
-    "blogs": {
+    "platforms": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::blog.blog",
+      "target": "api::platform.platform",
       "inversedBy": "tags"
     },
-    "applications": {
+    "arts": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::application.application",
-      "mappedBy": "tags"
-    },
-    "posts": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::post.post",
-      "mappedBy": "tags"
-    },
-    "activities": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::activity.activity",
+      "target": "api::art.art",
       "inversedBy": "tags"
-    },
-    "courses": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::course.course",
-      "mappedBy": "tags"
     }
   }
 }

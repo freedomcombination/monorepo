@@ -31,28 +31,10 @@
       "type": "string",
       "required": true
     },
-    "blogs": {
+    "platforms": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::blog.blog",
-      "inversedBy": "categories"
-    },
-    "mentions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::mention.mention",
-      "inversedBy": "categories"
-    },
-    "competitions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::competition.competition",
-      "inversedBy": "categories"
-    },
-    "activities": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::activity.activity",
+      "target": "api::platform.platform",
       "inversedBy": "categories"
     },
     "arts": {
