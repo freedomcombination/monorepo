@@ -179,4 +179,4 @@ test.describe('06. Profile Editing Tests', () => {
 
     await expect(page.getByTestId('error-text-password')).toBeVisible() 
   })
-})
+}) 
