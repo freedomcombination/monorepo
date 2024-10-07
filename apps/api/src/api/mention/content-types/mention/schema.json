@@ -30,9 +30,8 @@
     },
     "categories": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "mappedBy": "mentions"
+      "relation": "oneToMany",
+      "target": "api::category.category"
     },
     "hashtags": {
       "type": "relation",

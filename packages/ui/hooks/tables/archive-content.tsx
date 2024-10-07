@@ -2,7 +2,7 @@ import { Badge, Wrap } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import type { ArchiveContent, Category, Tag } from '@fc/types'
+import type { ArchiveContent, Category, Prison, Victim } from '@fc/types'
 
 import { renderPublicationState } from './utils'
 import { PublicationBadges } from '../../components/PublicationBadges'
@@ -47,18 +47,14 @@ export const useArchiveContentColumns =
             .join(', '),
       },
       {
-        accessorKey: 'tags',
-        transform: value => (
-          <Wrap>
-            {(value as Tag[])?.map(t => (
-              <Badge variant={'outline'} key={t.id}>
-                {t[`name_${locale}`]}
-              </Badge>
-            ))}
-          </Wrap>
-        ),
-        transformPDF: value =>
-          (value as Tag[])?.map(t => `[${t[`name_${locale}`]}]`).join(', '),
+        accessorKey: 'victims',
+        transform: value =>
+          (value as Victim[])?.map(v => `[${v.name}]`).join(', '),
+      },
+      {
+        accessorKey: 'prisons',
+        transform: value =>
+          (value as Prison[])?.map(p => `[${p.slug}]`).join(', '),
       },
       {
         accessorKey: 'publishedAt',

@@ -61,10 +61,17 @@
       "relation": "oneToMany",
       "target": "api::category.category"
     },
-    "tags": {
+    "victims": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
+      "relation": "manyToMany",
+      "target": "api::victim.victim",
+      "inversedBy": "contents"
+    },
+    "prisons": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::prison.prison",
+      "inversedBy": "contents"
     }
   }
 }

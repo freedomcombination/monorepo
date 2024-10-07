@@ -87,12 +87,6 @@
     "isVolunteer": {
       "type": "boolean"
     },
-    "applicant": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::applicant.applicant",
-      "mappedBy": "profile"
-    },
     "likedArts": {
       "type": "relation",
       "relation": "manyToMany",
@@ -128,18 +122,6 @@
       "relation": "oneToMany",
       "target": "api::feedback.feedback",
       "mappedBy": "editor"
-    },
-    "votes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::vote.vote",
-      "mappedBy": "voter"
-    },
-    "juryVotes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::vote.vote",
-      "mappedBy": "jury"
     },
     "user": {
       "type": "relation",

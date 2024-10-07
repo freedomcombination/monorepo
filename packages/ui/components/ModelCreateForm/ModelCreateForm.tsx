@@ -12,7 +12,7 @@ import { InferType } from 'yup'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { endpointsWithLocale } from '@fc/services/common/urls'
 import type {
-  Applicant,
+  Asset,
   Course,
   Post,
   PostCreateInput,
@@ -126,7 +126,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
     const title =
       body.title ||
       (body as unknown as Course).title_en ||
-      (body as unknown as Applicant).name ||
+      (body as unknown as Asset).name ||
       (body as unknown as Tag).name_en
 
     const slug = title && slugify(title)

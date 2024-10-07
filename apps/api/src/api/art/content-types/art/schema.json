@@ -96,8 +96,9 @@
     },
     "tags": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "arts"
     },
     "feedbacks": {
       "type": "relation",
@@ -122,12 +123,6 @@
       "relation": "manyToMany",
       "target": "api::profile.profile",
       "mappedBy": "likedArts"
-    },
-    "votes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::vote.vote",
-      "mappedBy": "art"
     },
     "artist": {
       "type": "relation",
