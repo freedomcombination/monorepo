@@ -1891,6 +1891,20 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     faqs: Attribute.Component<'faq.faq', true>
     curriculum: Attribute.Component<'course.curriculum', true>
     lastRegisterDate: Attribute.DateTime
+    requireApproval: Attribute.Boolean & Attribute.DefaultTo<false>
+    assignmentFiles: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >
+    assignmentSubmissionDeadline: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0
+        },
+        number
+      > &
+      Attribute.DefaultTo<2>
+    assignmentEvaluationTime: Attribute.Integer & Attribute.DefaultTo<2>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -1949,6 +1963,21 @@ export interface ApiCourseApplicationCourseApplication
       'oneToMany',
       'api::payment.payment'
     >
+    installmentStartAfter: Attribute.Date
+    installmentInterval: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      > &
+      Attribute.DefaultTo<1>
+    submittedAssignmentFiles: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >
+    lastUpdateDate: Attribute.DateTime
+    discount: Attribute.Decimal
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2934,6 +2963,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     >
     cv: Attribute.Media<'images' | 'files'>
     address: Attribute.Component<'flow.address'>
+    locale: Attribute.Enumeration<['en', 'tr', 'nl']>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
