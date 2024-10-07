@@ -26,7 +26,7 @@ const FilePicker: FC<FilePickerProps> = ({
   const [images, setImages] = useState<File[]>([])
   const [allFiles, setAllFiles] = useState<File[]>([])
 
-  const id = useId()
+  const id = useId().replace(/:/g, '-')
 
   const uppy = useMemo(
     () =>
@@ -113,7 +113,7 @@ const FilePicker: FC<FilePickerProps> = ({
   const onTrigger = () => {
     // Trigger file input
     const input = document.querySelector(
-      '.uppy-Dashboard-input',
+      `#${id} .uppy-Dashboard-input`,
     ) as HTMLInputElement
 
     if (images?.length === 0) {

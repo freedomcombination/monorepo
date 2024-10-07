@@ -105,6 +105,18 @@
       "relation": "oneToMany",
       "target": "api::asset.asset",
       "mappedBy": "platform"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "platforms"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "platforms"
     }
   }
 }

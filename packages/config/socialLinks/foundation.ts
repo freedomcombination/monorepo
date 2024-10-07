@@ -18,9 +18,9 @@ export const foundation: SocialLink[] = [
     label: 'WhatsApp',
     icon: FaWhatsapp,
     link: {
-      en: 'https://api.whatsapp.com/send?phone=31685221308',
-      tr: 'https://api.whatsapp.com/send?phone=31685221308',
-      nl: 'https://api.whatsapp.com/send?phone=31685221308',
+      en: 'https://api.whatsapp.com/send?phone=31687578056',
+      tr: 'https://api.whatsapp.com/send?phone=31687578056',
+      nl: 'https://api.whatsapp.com/send?phone=31687578056',
     },
   },
   {

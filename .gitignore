@@ -65,3 +65,5 @@ tsconfig.tsbuildinfo
 
 .env
 i18nHelper.config.json
+
+dump.*.sql

@@ -81,9 +81,8 @@
     },
     "tags": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "posts"
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
     },
     "video": {
       "type": "media",

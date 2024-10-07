@@ -80,9 +80,8 @@
     },
     "tags": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "courses"
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
     },
     "applications": {
       "type": "relation",
