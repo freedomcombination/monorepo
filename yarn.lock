@@ -8195,7 +8195,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/core-server@npm:7.6.20, @storybook/core-server@npm:^7.6.20":
+"@storybook/core-server@npm:7.6.20":
   version: 7.6.20
   resolution: "@storybook/core-server@npm:7.6.20"
   dependencies:
@@ -8240,6 +8240,15 @@ __metadata:
     watchpack: "npm:^2.2.0"
     ws: "npm:^8.2.3"
   checksum: 10/994dcdbd475650d396ad5f13113412779b23c910133e2fd45a2f7bd31c24a2bd351db977d6ae05b18dc6807edc7ac756286533145449e4e4f4d2bb99507586bb
+  languageName: node
+  linkType: hard
+
+"@storybook/core-server@npm:^8.3.5":
+  version: 8.3.5
+  resolution: "@storybook/core-server@npm:8.3.5"
+  peerDependencies:
+    storybook: ^8.3.5
+  checksum: 10/0326cd83551781a948833e025c0a74ab7495bb18b3a76fb5858d69eb5228ef6f1531cae33435a5a1a01561b6b50481517f050bff067573383b0b4890ef705eb5
   languageName: node
   linkType: hard
 
@@ -17252,7 +17261,7 @@ __metadata:
     "@storybook/addon-essentials": "npm:^7.6.20"
     "@storybook/builder-webpack5": "npm:^7.6.20"
     "@storybook/core-common": "npm:^7.6.20"
-    "@storybook/core-server": "npm:^7.6.20"
+    "@storybook/core-server": "npm:^8.3.5"
     "@storybook/nextjs": "npm:^7.6.20"
     "@storybook/react": "npm:^7.6.20"
     "@storybook/types": "npm:^7.6.20"
