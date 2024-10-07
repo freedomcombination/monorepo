@@ -2966,9 +2966,9 @@ export interface ApiProfileProfile extends Schema.CollectionType {
       'oneToOne',
       'api::subscriber.subscriber'
     >
-    locale: Attribute.Enumeration<['en', 'tr', 'nl']>
     cv: Attribute.Media<'images' | 'files'>
     address: Attribute.Component<'flow.address'>
+    locale: Attribute.Enumeration<['en', 'tr', 'nl']>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -3587,7 +3587,7 @@ export interface ApiVoteVote extends Schema.CollectionType {
 }
 
 declare module '@strapi/types' {
-  export namespace Shared {
+  export module Shared {
     export interface ContentTypes {
       'admin::permission': AdminPermission
       'admin::user': AdminUser

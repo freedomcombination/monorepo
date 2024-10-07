@@ -58,70 +58,73 @@ export const ProfileCoursePaymentDetails: FC<{
 
   return (
     <>
-      {paidInstallments.length > 0 && (
-        <KeyValue tKey={'course.payment.title.installment-paid'}>
-          <Stack>
-            {paidInstallments.map(
-              ({ date, amount, installmentNumber, payment }) => (
-                <KeyValue
-                  key={installmentNumber}
-                  title={
-                    <Badge
-                      colorScheme={'green'}
-                      fontWeight={payment?.id === id ? 'bold' : 'normal'}
-                    >
-                      {t('course.payment.title.nth-installment', {
-                        number: installmentNumber,
-                      })}
-                    </Badge>
-                  }
-                >
-                  <Text fontWeight={payment?.id === id ? 'bold' : 'normal'}>
-                    {t('course.payment.title.nth-installment-paid', {
-                      date: formatDate(date, 'dd MMMM yyyy', locale),
-                      amount: formatPrice(amount),
-                    })}
-                  </Text>
-                </KeyValue>
-              ),
-            )}
-          </Stack>
-        </KeyValue>
-      )}
-      {dueUnPaidInstallments.length > 0 && (
-        <KeyValue tKey={'course.payment.title.installment-overdue'}>
-          <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
-            {dueUnPaidInstallments.map(
-              ({ date, amount, installmentNumber }) => (
-                <PaymentButton
-                  key={installmentNumber}
-                  course={course}
-                  application={application}
-                  amount={amount}
-                  installmentNumber={installmentNumber}
-                  date={date}
-                />
-              ),
-            )}
-          </SimpleGrid>
-        </KeyValue>
-      )}
-      {unPaidInstallments.length > 0 && (
-        <KeyValue tKey={'course.payment.title.installment-unpaid'}>
-          <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
-            {unPaidInstallments.map(({ date, amount, installmentNumber }) => (
-              <PaymentButton
+      <KeyValue
+        when={paidInstallments.length > 0}
+        tKey={'course.payment.title.installment-paid'}
+      >
+        <Stack>
+          {paidInstallments.map(
+            ({ date, amount, installmentNumber, payment }) => (
+              <KeyValue
                 key={installmentNumber}
-                amount={amount}
-                installmentNumber={installmentNumber}
-                date={date}
-                application={application}
-                course={course}
-              />
-            ))}
-          </SimpleGrid>
-        </KeyValue>
-      )}
+                title={
+                  <Badge
+                    colorScheme={'green'}
+                    fontWeight={payment?.id === id ? 'bold' : 'normal'}
+                  >
+                    {t('course.payment.title.nth-installment', {
+                      number: installmentNumber,
+                    })}
+                  </Badge>
+                }
+              >
+                <Text fontWeight={payment?.id === id ? 'bold' : 'normal'}>
+                  {t('course.payment.title.nth-installment-paid', {
+                    date: formatDate(date, 'dd MMMM yyyy', locale),
+                    amount: formatPrice(amount),
+                  })}
+                </Text>
+              </KeyValue>
+            ),
+          )}
+        </Stack>
+      </KeyValue>
+
+      <KeyValue
+        tKey={'course.payment.title.installment-overdue'}
+        when={dueUnPaidInstallments.length > 0}
+      >
+        <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
+          {dueUnPaidInstallments.map(({ date, amount, installmentNumber }) => (
+            <PaymentButton
+              key={installmentNumber}
+              course={course}
+              application={application}
+              amount={amount}
+              installmentNumber={installmentNumber}
+              date={date}
+            />
+          ))}
+        </SimpleGrid>
+      </KeyValue>
+
+      <KeyValue
+        tKey={'course.payment.title.installment-unpaid'}
+        when={unPaidInstallments.length > 0}
+      >
+        <SimpleGrid gap={2} columns={{ base: 1, md: 2, lg: 3 }}>
+          {unPaidInstallments.map(({ date, amount, installmentNumber }) => (
+            <PaymentButton
+              key={installmentNumber}
+              amount={amount}
+              installmentNumber={installmentNumber}
+              date={date}
+              application={application}
+              course={course}
+            />
+          ))}
+        </SimpleGrid>
+      </KeyValue>
     </>
   )
 }

@@ -7,6 +7,7 @@ import {
   AlertTitle,
   Box,
   Heading,
+  HStack,
   List,
   ListIcon,
   ListItem,
@@ -202,15 +203,17 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
                     )}
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={MdAttachFile} color="blue.500" />
-                    <Wrap spacing={2}>
-                      {course.assignmentFiles?.map(file => (
-                        <CourseAssignmentFileButton
-                          key={file.name}
-                          file={file}
-                        />
-                      ))}
-                    </Wrap>
+                    <HStack>
+                      <ListIcon as={MdAttachFile} color="blue.500" />
+                      <Wrap spacing={2}>
+                        {course.assignmentFiles?.map(file => (
+                          <CourseAssignmentFileButton
+                            key={file.name}
+                            file={file}
+                          />
+                        ))}
+                      </Wrap>
+                    </HStack>
                   </ListItem>
                 </List>
               </AlertDescription>

@@ -13,7 +13,7 @@ export const formatDate: (
 ) => string = (date, formatStr, locale) => {
   const fnsLocal = locales[locale || 'en']
 
-  return format(date, formatStr, { locale: fnsLocal })
+  return format(date ?? 0, formatStr, { locale: fnsLocal })
 }
 
 interface Duration {

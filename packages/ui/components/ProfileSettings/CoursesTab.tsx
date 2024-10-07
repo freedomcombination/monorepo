@@ -44,6 +44,7 @@ export const CoursesTab: FC = () => {
       'course.assignmentFiles',
       'profile',
       'submittedAssignmentFiles',
+      'payments',
     ],
     queryOptions: {
       enabled: !!profile,
