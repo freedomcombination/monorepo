@@ -9,7 +9,6 @@ export const useArchiveContentsSchema = () => {
     title: yup.string().required(),
     date: yup.date().required(),
     categories: yupMultiSelect,
-    tags: yupMultiSelect,
     content: yup.string().required(),
     source: yup.string().required(),
     link: yup.string().required(),

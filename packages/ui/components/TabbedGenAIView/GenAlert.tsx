@@ -114,7 +114,11 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
 
           <Stack>
             <Box>AI generation cannot be used without a content source</Box>
-            <Box>{`Please update either the categories of the hashtag "${hashtag.title}" or the tags of this post in order to find related content sources`}</Box>
+            {showAlert ? (
+              <Box>{`Please update either the categories of the hashtag "${hashtag.title}", the victim or the prison of this post in order to find related content sources`}</Box>
+            ) : (
+              <Box>{`Please update the categories of the hashtag "${hashtag.title}"`}</Box>
+            )}
           </Stack>
           {hasRelations && (
             <ModelCreateModal<ArchiveContent>

@@ -1,3 +1,4 @@
+import { Category } from './category'
 import { ApprovalStatus } from './common'
 import { CourseApplication } from './course-application'
 import { Curriculum } from './curriculum'
@@ -6,7 +7,6 @@ import { UploadFile } from './file'
 import { StrapiLocale } from './locale'
 import { Platform } from './platform'
 import { StrapiBase } from './strapi'
-import { Tag } from './tag'
 
 type CourseBase = StrapiBase & {
   title_en: string
@@ -33,7 +33,7 @@ type CourseBase = StrapiBase & {
 
 type CourseRelation = {
   image?: UploadFile | null
-  tags?: Tag[]
+  categories?: Category[]
   applications?: CourseApplication[]
   faqs?: FaqLocale[]
   curriculum?: Curriculum[]
@@ -43,7 +43,7 @@ type CourseRelation = {
 // Remove approvalStatus from CourseCreateInput since it will be set when an editor approves the course
 export type CourseCreateInput = Omit<CourseBase, 'approvalStatus'> & {
   image: File
-  tags?: number[]
+  categories?: number[]
   faqs?: FaqLocale[] // Component, not a relation
   curriculum?: Curriculum[] // Component, not a relation
   platform?: number
@@ -51,7 +51,7 @@ export type CourseCreateInput = Omit<CourseBase, 'approvalStatus'> & {
 
 export type CourseUpdateInput = CourseBase & {
   image?: File
-  tags?: number[]
+  categories?: number[]
   faqs?: FaqLocale[] // Component, not a relation
   curriculum?: Curriculum[] // Component, not a relation
   platform?: number

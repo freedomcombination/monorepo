@@ -17,16 +17,25 @@
       "relation": "oneToMany",
       "target": "api::category.category"
     },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
     "image": {
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "victim": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::victim.victim",
+      "inversedBy": "images"
+    },
+    "prison": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::prison.prison",
+      "inversedBy": "images"
     }
   }
 }

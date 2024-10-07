@@ -48,7 +48,11 @@
     },
     "language": {
       "type": "enumeration",
-      "enum": ["en", "tr", "nl"]
+      "enum": [
+        "en",
+        "tr",
+        "nl"
+      ]
     },
     "instructor": {
       "type": "string"
@@ -66,22 +70,26 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "approvalStatus": {
       "type": "enumeration",
-      "enum": ["approved", "pending", "rejected"]
+      "enum": [
+        "approved",
+        "pending",
+        "rejected"
+      ]
     },
     "startDate": {
       "type": "date"
     },
     "endDate": {
       "type": "date"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
     },
     "applications": {
       "type": "relation",

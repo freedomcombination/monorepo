@@ -22,7 +22,6 @@ type ArchiveContentRelation = {
 
 type ArchiveContentRelationInput = {
   categories: number[]
-  tags: number[]
   victims: number[]
   prisons: number[]
 }

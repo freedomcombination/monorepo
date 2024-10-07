@@ -13,12 +13,12 @@ import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { endpointsWithLocale } from '@fc/services/common/urls'
 import type {
   Asset,
+  Category,
   Course,
   Post,
   PostCreateInput,
   StrapiModel,
   StrapiTranslatableCreateInput,
-  Tag,
 } from '@fc/types'
 import { generateOgImageParams } from '@fc/utils/generateOgImageProps'
 
@@ -127,7 +127,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
       body.title ||
       (body as unknown as Course).title_en ||
       (body as unknown as Asset).name ||
-      (body as unknown as Tag).name_en
+      (body as unknown as Category).name_en
 
     const slug = title && slugify(title)
 

@@ -1,5 +1,21 @@
 import type { Schema, Attribute } from '@strapi/strapi'
 
+export interface FaqFaq extends Schema.Component {
+  collectionName: 'components_faq_faqs'
+  info: {
+    displayName: 'FaqLocale'
+    description: ''
+  }
+  attributes: {
+    question_en: Attribute.String
+    question_tr: Attribute.String
+    question_nl: Attribute.String
+    answer_en: Attribute.Text
+    answer_tr: Attribute.Text
+    answer_nl: Attribute.Text
+  }
+}
+
 export interface FlowFlow extends Schema.Component {
   collectionName: 'components_flow_flows'
   info: {
@@ -24,22 +40,6 @@ export interface FlowAddress extends Schema.Component {
     street: Attribute.String
     postcode: Attribute.String
     country: Attribute.String
-  }
-}
-
-export interface FaqFaq extends Schema.Component {
-  collectionName: 'components_faq_faqs'
-  info: {
-    displayName: 'FaqLocale'
-    description: ''
-  }
-  attributes: {
-    question_en: Attribute.String
-    question_tr: Attribute.String
-    question_nl: Attribute.String
-    answer_en: Attribute.Text
-    answer_tr: Attribute.Text
-    answer_nl: Attribute.Text
   }
 }
 
@@ -85,9 +85,9 @@ export interface ContactContact extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'faq.faq': FaqFaq
       'flow.flow': FlowFlow
       'flow.address': FlowAddress
-      'faq.faq': FaqFaq
       'course.curriculum': CourseCurriculum
       'contact.contact': ContactContact
     }

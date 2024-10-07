@@ -6,7 +6,6 @@ import { Feedback } from './feedback'
 import { UploadFile } from './file'
 import { Profile } from './profile'
 import { StrapiBase } from './strapi'
-import { Tag } from './tag'
 
 type ArtBase = StrapiBase & {
   likes: number
@@ -30,7 +29,6 @@ type ArtRelation = {
   feedbacks?: Array<Feedback>
   image?: UploadFile[]
   likers?: Array<Profile>
-  tags?: Array<Tag>
 }
 
 type ArtRelationInput = {
@@ -41,7 +39,6 @@ type ArtRelationInput = {
   feedbacks?: Array<number>
   image: File[]
   likers?: Array<number>
-  tags?: Array<number>
 }
 
 export type ArtCreateInput = Expand<
@@ -49,7 +46,7 @@ export type ArtCreateInput = Expand<
     Partial<ArtBase>,
     'approvalStatus' | 'likes' | 'views'
   > &
-    Pick<ArtRelationInput, 'image' | 'categories' | 'collection' | 'tags'>
+    Pick<ArtRelationInput, 'image' | 'categories' | 'collection'>
 >
 
 export type ArtUpdateInput = Expand<

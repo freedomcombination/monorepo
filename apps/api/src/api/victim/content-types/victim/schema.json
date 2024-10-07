@@ -19,7 +19,7 @@
       "type": "uid",
       "targetField": "name"
     },
-    "description": {
+    "description_en": {
       "type": "text"
     },
     "birthDate": {
@@ -46,7 +46,7 @@
     "baby": {
       "type": "boolean"
     },
-    "shareable": {
+    "noshare": {
       "type": "boolean"
     },
     "sick": {
@@ -56,12 +56,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category"
-    },
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": ["images"]
     },
     "prisons": {
       "type": "relation",
@@ -78,6 +72,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::post.post",
+      "mappedBy": "victim"
+    },
+    "images": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::archive-image.archive-image",
       "mappedBy": "victim"
     }
   }

@@ -43,10 +43,14 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
 
   const categories = hashtag?.categories ?? []
   const victims = (
-    post?.victim ? [post.victim] : (hashtag?.posts?.map(p => p.victim) ?? [])
+    post?.victim
+      ? [post.victim]
+      : (hashtag?.posts?.map(p => p.victim).filter(Boolean) ?? [])
   ) as Victim[]
   const prisons = (
-    post?.prison ? [post.prison] : (hashtag?.posts?.map(p => p.prison) ?? [])
+    post?.prison
+      ? [post.prison]
+      : (hashtag?.posts?.map(p => p.prison).filter(Boolean) ?? [])
   ) as Prison[]
 
   const archiveContentQuery = useStrapiRequest<ArchiveContent>({

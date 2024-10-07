@@ -40,7 +40,6 @@ import type {
   Post,
   RecommendedTopic,
   RecommendedTweet,
-  Tag,
 } from '@fc/types'
 
 import { useFields, useSchema } from '../../hooks'
@@ -215,19 +214,6 @@ export const CreateModelButton = () => {
                   }}
                 >
                   {t('create-category')}
-                </ModelCreateModal>
-
-                <ModelCreateModal<Tag>
-                  title={t('tags')}
-                  endpoint="tags"
-                  schema={schemas['tags']!}
-                  fields={fields['tags']!}
-                  buttonProps={{
-                    variant: 'outline',
-                    leftIcon: <IoPricetagsOutline />,
-                  }}
-                >
-                  {t('create-tag')}
                 </ModelCreateModal>
 
                 <ModelCreateModal<Notification>

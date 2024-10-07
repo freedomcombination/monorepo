@@ -28,7 +28,7 @@ const CoursesPage = () => {
 
   const coursesQuery = useStrapiRequest<Course>({
     endpoint: 'courses',
-    populate: ['categories', 'tags', 'platforms', 'image', 'applications'],
+    populate: ['categories', 'platforms', 'image', 'applications'],
     page: currentPage || 1,
     pageSize,
     filters: {

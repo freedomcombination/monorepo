@@ -17,7 +17,6 @@ export const endpointsWithLocalizedTitle: StrapiEndpoint[] = [
   'categories',
   'jobs',
   'platforms',
-  'tags',
 ]
 
 export const endpointsWithLocale: StrapiEndpoint[] = [

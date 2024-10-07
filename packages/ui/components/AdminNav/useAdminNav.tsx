@@ -188,12 +188,6 @@ export const useAdminNav = () => {
         link: '/categories',
       },
       {
-        id: 'tags',
-        label: t('tags'),
-        icon: <IoPricetagsOutline />,
-        link: '/tags',
-      },
-      {
         id: 'news',
         label: t('news'),
         icon: <HiOutlineNewspaper />,

@@ -33,6 +33,12 @@
       "relation": "oneToMany",
       "target": "api::post.post",
       "mappedBy": "prison"
+    },
+    "images": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::archive-image.archive-image",
+      "mappedBy": "prison"
     }
   }
 }
