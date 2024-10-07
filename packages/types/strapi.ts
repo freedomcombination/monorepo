@@ -78,6 +78,7 @@ import {
   PostUpdateInput,
 } from './post'
 import { Presentation } from './presentation'
+import { Prison, PrisonCreateInput, PrisonUpdateInput } from './prison'
 import { Privacy } from './privacy'
 import { Profile, ProfileCreateInput, ProfileUpdateInput } from './profile'
 import {
@@ -109,6 +110,7 @@ import {
   UserNotificationCreateInput,
   UserNotificationUpdateInput,
 } from './user-notification'
+import { Victim, VictimCreateInput, VictimUpdateInput } from './victim'
 
 /**
  * MODEL TYPES
@@ -159,6 +161,7 @@ export type StrapiModel =
   | Platform
   | Post
   | Presentation
+  | Prison
   | Privacy
   | Profile
   | RecommendedTopic
@@ -173,6 +176,7 @@ export type StrapiModel =
   | User
   | UserFeedback
   | UserNotification
+  | Victim
 
 export type StrapiSeoModel =
   | Activity
@@ -280,7 +284,6 @@ export type StrapiCollectionEndpoint =
   | 'collections'
   | 'comments'
   | 'course-applications'
-  | 'payments'
   | 'courses'
   | 'donates'
   | 'donates/email'
@@ -292,9 +295,11 @@ export type StrapiCollectionEndpoint =
   | 'mentions'
   | 'notifications'
   | 'observations'
+  | 'payments'
   | 'platforms'
   | 'posts'
   | 'presentations'
+  | 'prisons'
   | 'profiles'
   | 'recommended-topics'
   | 'recommended-tweets'
@@ -310,6 +315,7 @@ export type StrapiCollectionEndpoint =
   | 'users'
   | 'users-notifications'
   | 'users-permissions/roles'
+  | 'victims'
 
 export type StrapiEndpoint =
   | StrapiSingleEndpoint
@@ -364,6 +370,7 @@ export type StrapiCreateInput =
   | NotificationCreateInput
   | ObservationCreateInput
   | PostCreateInput
+  | PrisonCreateInput
   | ProfileCreateInput
   | RecommendedTopicCreateInput
   | RecommendedTweetCreateInput
@@ -372,6 +379,7 @@ export type StrapiCreateInput =
   | TimelineCreateInput
   | UserFeedbackCreateInput
   | UserNotificationCreateInput
+  | VictimCreateInput
 
 export type StrapiUpdateInput =
   | ActivityUpdateInput
@@ -389,10 +397,12 @@ export type StrapiUpdateInput =
   | HashtagUpdateInput
   | ObservationUpdateInput
   | PostUpdateInput
+  | PrisonUpdateInput
   | ProfileUpdateInput
   | SubscriberUpdateInput
   | UserFeedbackUpdateInput
   | UserNotificationUpdateInput
+  | VictimUpdateInput
 
 type StrapiFilterOperator =
   | '$eq'

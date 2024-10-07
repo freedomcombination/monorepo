@@ -28,10 +28,16 @@ export const archiveContentFields: FormFields<ArchiveContent> = [
   },
   { name: 'source', isRequired: true },
   {
-    name: 'tags',
+    name: 'victims',
     type: 'select',
     isMulti: true,
-    endpoint: 'tags',
+    endpoint: 'victims',
+  },
+  {
+    name: 'prisons',
+    type: 'select',
+    isMulti: true,
+    endpoint: 'prisons',
   },
   { name: 'link', isRequired: true },
   { name: 'content', isRequired: true, type: 'markdown' },

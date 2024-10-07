@@ -988,10 +988,15 @@ export interface ApiArchiveContentArchiveContent extends Schema.CollectionType {
       'oneToMany',
       'api::category.category'
     >
-    tags: Attribute.Relation<
+    victims: Attribute.Relation<
       'api::archive-content.archive-content',
-      'oneToMany',
-      'api::tag.tag'
+      'manyToMany',
+      'api::victim.victim'
+    >
+    prisons: Attribute.Relation<
+      'api::archive-content.archive-content',
+      'manyToMany',
+      'api::prison.prison'
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
@@ -2347,7 +2352,6 @@ export interface ApiPostPost extends Schema.CollectionType {
       'manyToOne',
       'api::hashtag.hashtag'
     >
-    tags: Attribute.Relation<'api::post.post', 'oneToMany', 'api::tag.tag'>
     video: Attribute.Media<'videos'> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2366,6 +2370,16 @@ export interface ApiPostPost extends Schema.CollectionType {
           localized: true
         }
       }>
+    victim: Attribute.Relation<
+      'api::post.post',
+      'manyToOne',
+      'api::victim.victim'
+    >
+    prison: Attribute.Relation<
+      'api::post.post',
+      'manyToOne',
+      'api::prison.prison'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -2486,6 +2500,49 @@ export interface ApiPresentationPresentation extends Schema.CollectionType {
       'api::presentation.presentation'
     >
     locale: Attribute.String
+  }
+}
+
+export interface ApiPrisonPrison extends Schema.CollectionType {
+  collectionName: 'prisons'
+  info: {
+    singularName: 'prison'
+    pluralName: 'prisons'
+    displayName: 'Prison'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    name: Attribute.String
+    slug: Attribute.UID<'api::prison.prison', 'name'>
+    city: Attribute.String
+    contents: Attribute.Relation<
+      'api::prison.prison',
+      'manyToMany',
+      'api::archive-content.archive-content'
+    >
+    posts: Attribute.Relation<
+      'api::prison.prison',
+      'oneToMany',
+      'api::post.post'
+    >
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::prison.prison',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::prison.prison',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
   }
 }
 
@@ -3223,6 +3280,70 @@ export interface ApiUserNotificationUserNotification
   }
 }
 
+export interface ApiVictimVictim extends Schema.CollectionType {
+  collectionName: 'victims'
+  info: {
+    singularName: 'victim'
+    pluralName: 'victims'
+    displayName: 'Victim'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    name: Attribute.String
+    slug: Attribute.UID<'api::victim.victim', 'name'>
+    description: Attribute.Text
+    birthDate: Attribute.Date
+    incidentDate: Attribute.Date
+    resolvedDate: Attribute.Date
+    resolved: Attribute.Boolean
+    deceased: Attribute.Boolean
+    pregnant: Attribute.Boolean
+    elderly: Attribute.Boolean
+    baby: Attribute.Boolean
+    shareable: Attribute.Boolean
+    sick: Attribute.Boolean
+    categories: Attribute.Relation<
+      'api::victim.victim',
+      'oneToMany',
+      'api::category.category'
+    >
+    images: Attribute.Media<'images', true>
+    prisons: Attribute.Relation<
+      'api::victim.victim',
+      'oneToMany',
+      'api::prison.prison'
+    >
+    contents: Attribute.Relation<
+      'api::victim.victim',
+      'manyToMany',
+      'api::archive-content.archive-content'
+    >
+    posts: Attribute.Relation<
+      'api::victim.victim',
+      'oneToMany',
+      'api::post.post'
+    >
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::victim.victim',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::victim.victim',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -3267,6 +3388,7 @@ declare module '@strapi/types' {
       'api::platform.platform': ApiPlatformPlatform
       'api::post.post': ApiPostPost
       'api::presentation.presentation': ApiPresentationPresentation
+      'api::prison.prison': ApiPrisonPrison
       'api::privacy.privacy': ApiPrivacyPrivacy
       'api::profile.profile': ApiProfileProfile
       'api::recommended-topic.recommended-topic': ApiRecommendedTopicRecommendedTopic
@@ -3280,6 +3402,7 @@ declare module '@strapi/types' {
       'api::trend.trend': ApiTrendTrend
       'api::user-feedback.user-feedback': ApiUserFeedbackUserFeedback
       'api::user-notification.user-notification': ApiUserNotificationUserNotification
+      'api::victim.victim': ApiVictimVictim
     }
   }
 }

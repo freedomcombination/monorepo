@@ -18,23 +18,31 @@ import { AiOutlineFileExclamation } from 'react-icons/ai'
 import { FaExclamation } from 'react-icons/fa6'
 import { LuFileArchive } from 'react-icons/lu'
 
-import type { ArchiveContent, Category, Hashtag, Tag } from '@fc/types'
+import type {
+  ArchiveContent,
+  Category,
+  Hashtag,
+  Prison,
+  Victim,
+} from '@fc/types'
 
 import { useFields, useSchema } from '../../hooks'
 import { ModelCreateModal } from '../ModelCreateModal'
 
 type GenAlertProps = {
   categories: Category[]
-  tags: Tag[]
-  showTagAlert: boolean
+  victims: Victim[]
+  prisons: Prison[]
+  showAlert: boolean
   hashtag: Hashtag
   onArchiveCreate: () => void
 }
 
 export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
   categories,
-  tags,
-  showTagAlert,
+  victims,
+  prisons,
+  showAlert,
   hashtag,
   onArchiveCreate,
   children,
@@ -45,7 +53,8 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
   const fields = useFields()
   const { locale } = useRouter()
 
-  const hasCategoriesOrTags = categories.length > 0 || tags.length > 0
+  const hasRelations =
+    categories.length > 0 || victims.length > 0 || prisons.length > 0
 
   return (
     <Alert
@@ -67,7 +76,7 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
           >
             No content sources found!
           </Heading>
-          {hasCategoriesOrTags && (
+          {hasRelations && (
             <Box
               borderWidth={1}
               p={2}
@@ -83,12 +92,20 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
                       : `No categories set for the hashtag ${hashtag.title}`}
                   </Box>
                 </ListItem>
-                {showTagAlert && (
+                {showAlert && (
                   <ListItem display={'flex'} alignItems={'baseline'}>
                     <ListIcon as={FaExclamation} color={'orange.500'} />
-                    {tags.length > 0
-                      ? `No archives found with the post's tags: "${tags.map(t => t[`name_${locale}`]).join(', ')}"`
-                      : `No tags set for the post`}
+                    {victims.length > 0
+                      ? `No archives found with the hashtag's victims: "${victims.map(v => v.name).join(', ')}"`
+                      : `No victims set for the hashtag ${hashtag.title}`}
+                  </ListItem>
+                )}
+                {showAlert && (
+                  <ListItem display={'flex'} alignItems={'baseline'}>
+                    <ListIcon as={FaExclamation} color={'orange.500'} />
+                    {prisons.length > 0
+                      ? `No archives found with the hashtag's prisons: "${prisons.map(p => p.name).join(', ')}"`
+                      : `No victims set for the prison ${hashtag.title}`}
                   </ListItem>
                 )}
               </List>
@@ -99,7 +116,7 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
             <Box>AI generation cannot be used without a content source</Box>
             <Box>{`Please update either the categories of the hashtag "${hashtag.title}" or the tags of this post in order to find related content sources`}</Box>
           </Stack>
-          {hasCategoriesOrTags && (
+          {hasRelations && (
             <ModelCreateModal<ArchiveContent>
               title={t('create-archive-content')}
               endpoint="archive-contents"
@@ -113,7 +130,8 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
               }}
               initialValues={{
                 categories,
-                tags,
+                victims,
+                prisons,
               }}
             >
               {t('create-archive-content')}

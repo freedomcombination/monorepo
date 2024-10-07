@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next'
 
 import type {
   Activity,
+  ArchiveContent,
   Art,
   Asset,
   AssetsTracking,
@@ -29,6 +30,7 @@ export const useDefaultValues = <T extends StrapiModel>(
 ) => {
   const activityModel = model as Activity
   const applicationModel = model as CourseApplication
+  const archiveContentModel = model as ArchiveContent
   const artModel = model as Art
   const assetModel = model as Asset
   const assetTrackingModel = model as AssetsTracking
@@ -203,11 +205,30 @@ export const useDefaultValues = <T extends StrapiModel>(
             })) || []
           break
 
-        case 'tags':
-          defaults.tags =
-            postModel?.tags?.map(c => ({
-              label: c[`name_${locale}`] || '',
-              value: c.id.toString() || '',
+        case 'victim':
+          defaults.victim = {
+            label: postModel.victim?.name || '',
+            value: postModel.victim?.id.toString() || '',
+          }
+          break
+        case 'victims':
+          defaults.victim =
+            archiveContentModel.victims?.map(v => ({
+              label: v.name || '',
+              value: v.id.toString() || '',
+            })) || []
+          break
+        case 'prison':
+          defaults.prison = {
+            label: postModel.prison?.name || '',
+            value: postModel.prison?.id.toString() || '',
+          }
+          break
+        case 'prisons':
+          defaults.victim =
+            archiveContentModel.prisons?.map(p => ({
+              label: p.name || '',
+              value: p.id.toString() || '',
             })) || []
           break
         default:
