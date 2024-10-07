@@ -9251,13 +9251,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/provider-email-nodemailer@npm:^4.25.13":
-  version: 4.25.13
-  resolution: "@strapi/provider-email-nodemailer@npm:4.25.13"
+"@strapi/provider-email-nodemailer@npm:^5.0.2":
+  version: 5.0.2
+  resolution: "@strapi/provider-email-nodemailer@npm:5.0.2"
   dependencies:
     lodash: "npm:4.17.21"
     nodemailer: "npm:6.9.1"
-  checksum: 10/8f2fc01997446ce65d18f39e4f1fc33d0c3ae003e15ec49bbbda365053e4b9024adaa44ba1e4909ad25f4999c1317992335642284e838825f66b17509427dd92
+  checksum: 10/feb4c89db7e66875d7792810f3aad7bcb2a9924a6e8a495f889d2ee2599df4322be9726fea077bc3b4e168a0afb64414de82241b88445f8982461933b403c878
   languageName: node
   linkType: hard
 
@@ -12022,7 +12022,7 @@ __metadata:
     "@strapi/plugin-i18n": "npm:^4.25.12"
     "@strapi/plugin-sentry": "npm:^4.25.13"
     "@strapi/plugin-users-permissions": "npm:^4.25.13"
-    "@strapi/provider-email-nodemailer": "npm:^4.25.13"
+    "@strapi/provider-email-nodemailer": "npm:^5.0.2"
     "@strapi/strapi": "npm:^4.25.13"
     apify-client: "npm:^2.9.6"
     cheerio: "npm:^1.0.0"
