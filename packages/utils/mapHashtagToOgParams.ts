@@ -16,7 +16,7 @@ export const mapHashtagToOgParams = (hashtag: Hashtag): OgImageParams => {
 
   const euDate = newDate ? format(newDate, 'dd MMMM yyyy') : ''
   const euTime = newDate
-    ? format(newDate, 'HH:mm', { in: tz('Europe/Amsterdam') }) 
+    ? format(newDate, 'HH:mm', { in: tz('Europe/Amsterdam') })
     : ''
   const trTime = newDate
     ? format(newDate, 'HH:mm', { in: tz('Europe/Istanbul') })
