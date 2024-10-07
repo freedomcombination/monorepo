@@ -27,24 +27,6 @@ export interface FlowAddress extends Schema.Component {
   }
 }
 
-export interface CourseCurriculum extends Schema.Component {
-  collectionName: 'components_course_curricula'
-  info: {
-    displayName: 'CurriculumItem'
-    description: ''
-  }
-  attributes: {
-    title_en: Attribute.String
-    title_tr: Attribute.String
-    title_nl: Attribute.String
-    description_en: Attribute.Text
-    description_nl: Attribute.Text
-    description_tr: Attribute.Text
-    instructor: Attribute.String
-    date: Attribute.DateTime
-  }
-}
-
 export interface FaqFaq extends Schema.Component {
   collectionName: 'components_faq_faqs'
   info: {
@@ -58,24 +40,6 @@ export interface FaqFaq extends Schema.Component {
     answer_en: Attribute.Text
     answer_tr: Attribute.Text
     answer_nl: Attribute.Text
-  }
-}
-
-export interface CourseCurriculum extends Schema.Component {
-  collectionName: 'components_course_curricula'
-  info: {
-    displayName: 'CurriculumItem'
-    description: ''
-  }
-  attributes: {
-    title_en: Attribute.String
-    title_tr: Attribute.String
-    title_nl: Attribute.String
-    description_en: Attribute.Text
-    description_nl: Attribute.Text
-    description_tr: Attribute.Text
-    instructor: Attribute.String
-    date: Attribute.DateTime
   }
 }
 
@@ -100,14 +64,32 @@ export interface ContactContact extends Schema.Component {
   }
 }
 
+export interface CourseCurriculum extends Schema.Component {
+  collectionName: 'components_course_curricula'
+  info: {
+    displayName: 'CurriculumItem'
+    description: ''
+  }
+  attributes: {
+    title_en: Attribute.String
+    title_tr: Attribute.String
+    title_nl: Attribute.String
+    description_en: Attribute.Text
+    description_nl: Attribute.Text
+    description_tr: Attribute.Text
+    instructor: Attribute.String
+    date: Attribute.DateTime
+  }
+}
+
 declare module '@strapi/types' {
-  export namespace Shared {
+  export module Shared {
     export interface Components {
       'flow.flow': FlowFlow
       'flow.address': FlowAddress
       'faq.faq': FaqFaq
-      'course.curriculum': CourseCurriculum
       'contact.contact': ContactContact
+      'course.curriculum': CourseCurriculum
     }
   }
 }
