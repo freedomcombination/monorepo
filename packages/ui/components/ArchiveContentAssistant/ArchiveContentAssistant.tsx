@@ -106,7 +106,8 @@ export const ArchiveContentAssistant = () => {
                   initialValues={{
                     content: response?.usersMessage?.content ?? '',
                     categories: response?.categories ?? [],
-                    tags: response.tags ?? [],
+                    // TODO: Update response to include victims and prisons
+                    // tags: response.tags ?? [],
                   }}
                 >
                   Accept
