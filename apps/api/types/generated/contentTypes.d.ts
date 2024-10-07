@@ -2643,7 +2643,6 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     approved: Attribute.Boolean & Attribute.DefaultTo<false>
     isPublic: Attribute.Boolean & Attribute.DefaultTo<false>
     birthDate: Attribute.Date
-    age: Attribute.Integer
     city: Attribute.String
     platforms: Attribute.Relation<
       'api::profile.profile',

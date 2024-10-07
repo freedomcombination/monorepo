@@ -66,9 +66,6 @@
     "birthDate": {
       "type": "date"
     },
-    "age": {
-      "type": "integer"
-    },
     "city": {
       "type": "string"
     },
