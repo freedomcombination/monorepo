@@ -899,12 +899,12 @@ export interface ApiActivityActivity extends Schema.CollectionType {
       }>
     tags: Attribute.Relation<
       'api::activity.activity',
-      'manyToMany',
+      'oneToMany',
       'api::tag.tag'
     >
     categories: Attribute.Relation<
       'api::activity.activity',
-      'manyToMany',
+      'oneToMany',
       'api::category.category'
     >
     platforms: Attribute.Relation<
@@ -1120,7 +1120,7 @@ export interface ApiArtArt extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >
-    tags: Attribute.Relation<'api::art.art', 'oneToMany', 'api::tag.tag'>
+    tags: Attribute.Relation<'api::art.art', 'manyToMany', 'api::tag.tag'>
     feedbacks: Attribute.Relation<
       'api::art.art',
       'oneToMany',
@@ -1382,10 +1382,10 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       Attribute.DefaultTo<0>
     categories: Attribute.Relation<
       'api::blog.blog',
-      'manyToMany',
+      'oneToMany',
       'api::category.category'
     >
-    tags: Attribute.Relation<'api::blog.blog', 'manyToMany', 'api::tag.tag'>
+    tags: Attribute.Relation<'api::blog.blog', 'oneToMany', 'api::tag.tag'>
     comments: Attribute.Relation<
       'api::blog.blog',
       'oneToMany',
@@ -1434,20 +1434,10 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     name_en: Attribute.String & Attribute.Required
     name_nl: Attribute.String & Attribute.Required
     name_tr: Attribute.String & Attribute.Required
-    blogs: Attribute.Relation<
+    platforms: Attribute.Relation<
       'api::category.category',
       'manyToMany',
-      'api::blog.blog'
-    >
-    mentions: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::mention.mention'
-    >
-    activities: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::activity.activity'
+      'api::platform.platform'
     >
     arts: Attribute.Relation<
       'api::category.category',
@@ -1636,7 +1626,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     approvalStatus: Attribute.Enumeration<['approved', 'pending', 'rejected']>
     startDate: Attribute.Date
     endDate: Attribute.Date
-    tags: Attribute.Relation<'api::course.course', 'manyToMany', 'api::tag.tag'>
+    tags: Attribute.Relation<'api::course.course', 'oneToMany', 'api::tag.tag'>
     applications: Attribute.Relation<
       'api::course.course',
       'oneToMany',
@@ -2066,7 +2056,7 @@ export interface ApiMentionMention extends Schema.CollectionType {
       }>
     categories: Attribute.Relation<
       'api::mention.mention',
-      'manyToMany',
+      'oneToMany',
       'api::category.category'
     >
     hashtags: Attribute.Relation<
@@ -2269,6 +2259,16 @@ export interface ApiPlatformPlatform extends Schema.CollectionType {
       'oneToMany',
       'api::asset.asset'
     >
+    categories: Attribute.Relation<
+      'api::platform.platform',
+      'manyToMany',
+      'api::category.category'
+    >
+    tags: Attribute.Relation<
+      'api::platform.platform',
+      'manyToMany',
+      'api::tag.tag'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2347,7 +2347,7 @@ export interface ApiPostPost extends Schema.CollectionType {
       'manyToOne',
       'api::hashtag.hashtag'
     >
-    tags: Attribute.Relation<'api::post.post', 'manyToMany', 'api::tag.tag'>
+    tags: Attribute.Relation<'api::post.post', 'oneToMany', 'api::tag.tag'>
     video: Attribute.Media<'videos'> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2926,18 +2926,12 @@ export interface ApiTagTag extends Schema.CollectionType {
     name_en: Attribute.String & Attribute.Required
     name_nl: Attribute.String & Attribute.Required
     name_tr: Attribute.String & Attribute.Required
-    blogs: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::blog.blog'>
-    posts: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::post.post'>
-    activities: Attribute.Relation<
+    platforms: Attribute.Relation<
       'api::tag.tag',
       'manyToMany',
-      'api::activity.activity'
+      'api::platform.platform'
     >
-    courses: Attribute.Relation<
-      'api::tag.tag',
-      'manyToMany',
-      'api::course.course'
-    >
+    arts: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::art.art'>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &

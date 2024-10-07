@@ -24,10 +24,7 @@
     },
     "status": {
       "type": "enumeration",
-      "enum": [
-        "approved",
-        "rejected"
-      ],
+      "enum": ["approved", "rejected"],
       "required": true
     },
     "art": {

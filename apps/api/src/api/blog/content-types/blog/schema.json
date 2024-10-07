@@ -94,15 +94,13 @@
     },
     "categories": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "mappedBy": "blogs"
+      "relation": "oneToMany",
+      "target": "api::category.category"
     },
     "tags": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "mappedBy": "blogs"
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
     },
     "comments": {
       "type": "relation",

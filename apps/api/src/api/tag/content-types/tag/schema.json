@@ -31,28 +31,16 @@
       "type": "string",
       "required": true
     },
-    "blogs": {
+    "platforms": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::blog.blog",
-      "inversedBy": "tags"
-    },
-    "posts": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::post.post",
+      "target": "api::platform.platform",
       "mappedBy": "tags"
     },
-    "activities": {
+    "arts": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::activity.activity",
-      "inversedBy": "tags"
-    },
-    "courses": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::course.course",
+      "target": "api::art.art",
       "mappedBy": "tags"
     }
   }
