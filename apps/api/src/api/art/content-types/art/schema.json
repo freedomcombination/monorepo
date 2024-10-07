@@ -94,12 +94,6 @@
       "target": "api::category.category",
       "inversedBy": "arts"
     },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "arts"
-    },
     "feedbacks": {
       "type": "relation",
       "relation": "oneToMany",

@@ -1,32 +1,34 @@
+import { ArchiveImage } from './archive-image'
 import { Category } from './category'
 import { Expand } from './common'
-import { UploadFile } from './file'
 import { Prison } from './prison'
 import { StrapiBase } from './strapi'
 
 type VictimBase = {
   slug: string
   name: string
-  description: string
-  incidentDate: Date | string
-  resolvedDate: Date | string
+  description_en: string | null
+  description_nl: string | null
+  description_tr: string | null
+  incidentDate: Date | string | null
+  resolvedDate: Date | string | null
   resolved: boolean
   deceased: boolean
   pregnant: boolean
   baby: boolean
-  noshare: boolean
   sick: boolean
+  noshare: boolean
 }
 
 type VictimRelation = {
   categories?: Category[]
-  images?: UploadFile[]
+  images?: ArchiveImage[]
   prisons?: Prison[]
 }
 
 type VictimRelationInput = {
   categories?: number
-  images?: File[]
+  images?: number[]
   prisons?: number
 }
 

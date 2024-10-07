@@ -13,7 +13,6 @@ import { FaTimeline } from 'react-icons/fa6'
 import { FiActivity, FiUsers } from 'react-icons/fi'
 import { GiHumanPyramid } from 'react-icons/gi'
 import { HiOutlineNewspaper } from 'react-icons/hi'
-import { IoPricetagsOutline } from 'react-icons/io5'
 import { LuFileArchive } from 'react-icons/lu'
 import {
   MdFoundation,
@@ -196,12 +195,6 @@ export const useAdminNav = () => {
         label: t('categories'),
         icon: <MdOutlineCategory />,
         link: '/categories',
-      },
-      {
-        id: 'tags',
-        label: t('tags'),
-        icon: <IoPricetagsOutline />,
-        link: '/tags',
       },
       {
         id: 'news',

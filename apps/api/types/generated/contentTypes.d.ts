@@ -897,11 +897,6 @@ export interface ApiActivityActivity extends Schema.CollectionType {
           localized: false
         }
       }>
-    tags: Attribute.Relation<
-      'api::activity.activity',
-      'oneToMany',
-      'api::tag.tag'
-    >
     categories: Attribute.Relation<
       'api::activity.activity',
       'oneToMany',
@@ -1038,12 +1033,17 @@ export interface ApiArchiveImageArchiveImage extends Schema.CollectionType {
       'oneToMany',
       'api::category.category'
     >
-    tags: Attribute.Relation<
-      'api::archive-image.archive-image',
-      'oneToMany',
-      'api::tag.tag'
-    >
     image: Attribute.Media<'images'> & Attribute.Required
+    victim: Attribute.Relation<
+      'api::archive-image.archive-image',
+      'manyToOne',
+      'api::victim.victim'
+    >
+    prison: Attribute.Relation<
+      'api::archive-image.archive-image',
+      'manyToOne',
+      'api::prison.prison'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -1125,7 +1125,6 @@ export interface ApiArtArt extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >
-    tags: Attribute.Relation<'api::art.art', 'manyToMany', 'api::tag.tag'>
     feedbacks: Attribute.Relation<
       'api::art.art',
       'oneToMany',
@@ -1390,7 +1389,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'oneToMany',
       'api::category.category'
     >
-    tags: Attribute.Relation<'api::blog.blog', 'oneToMany', 'api::tag.tag'>
     comments: Attribute.Relation<
       'api::blog.blog',
       'oneToMany',
@@ -1631,7 +1629,6 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     approvalStatus: Attribute.Enumeration<['approved', 'pending', 'rejected']>
     startDate: Attribute.Date
     endDate: Attribute.Date
-    tags: Attribute.Relation<'api::course.course', 'oneToMany', 'api::tag.tag'>
     applications: Attribute.Relation<
       'api::course.course',
       'oneToMany',
@@ -2269,11 +2266,6 @@ export interface ApiPlatformPlatform extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >
-    tags: Attribute.Relation<
-      'api::platform.platform',
-      'manyToMany',
-      'api::tag.tag'
-    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2528,6 +2520,11 @@ export interface ApiPrisonPrison extends Schema.CollectionType {
       'oneToMany',
       'api::post.post'
     >
+    images: Attribute.Relation<
+      'api::prison.prison',
+      'oneToMany',
+      'api::archive-image.archive-image'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -2646,7 +2643,6 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     approved: Attribute.Boolean & Attribute.DefaultTo<false>
     isPublic: Attribute.Boolean & Attribute.DefaultTo<false>
     birthDate: Attribute.Date
-    age: Attribute.Integer
     city: Attribute.String
     platforms: Attribute.Relation<
       'api::profile.profile',
@@ -2967,37 +2963,6 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
   }
 }
 
-export interface ApiTagTag extends Schema.CollectionType {
-  collectionName: 'tags'
-  info: {
-    singularName: 'tag'
-    pluralName: 'tags'
-    displayName: 'Tag'
-    description: ''
-  }
-  options: {
-    draftAndPublish: false
-  }
-  attributes: {
-    slug: Attribute.UID<'api::tag.tag', 'name_en'> & Attribute.Required
-    name_en: Attribute.String & Attribute.Required
-    name_nl: Attribute.String & Attribute.Required
-    name_tr: Attribute.String & Attribute.Required
-    platforms: Attribute.Relation<
-      'api::tag.tag',
-      'manyToMany',
-      'api::platform.platform'
-    >
-    arts: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::art.art'>
-    createdAt: Attribute.DateTime
-    updatedAt: Attribute.DateTime
-    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
-      Attribute.Private
-    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
-      Attribute.Private
-  }
-}
-
 export interface ApiTermTerm extends Schema.SingleType {
   collectionName: 'terms'
   info: {
@@ -3294,7 +3259,7 @@ export interface ApiVictimVictim extends Schema.CollectionType {
   attributes: {
     name: Attribute.String
     slug: Attribute.UID<'api::victim.victim', 'name'>
-    description: Attribute.Text
+    description_en: Attribute.Text
     birthDate: Attribute.Date
     incidentDate: Attribute.Date
     resolvedDate: Attribute.Date
@@ -3303,14 +3268,13 @@ export interface ApiVictimVictim extends Schema.CollectionType {
     pregnant: Attribute.Boolean
     elderly: Attribute.Boolean
     baby: Attribute.Boolean
-    shareable: Attribute.Boolean
+    noshare: Attribute.Boolean
     sick: Attribute.Boolean
     categories: Attribute.Relation<
       'api::victim.victim',
       'oneToMany',
       'api::category.category'
     >
-    images: Attribute.Media<'images', true>
     prisons: Attribute.Relation<
       'api::victim.victim',
       'oneToMany',
@@ -3325,6 +3289,11 @@ export interface ApiVictimVictim extends Schema.CollectionType {
       'api::victim.victim',
       'oneToMany',
       'api::post.post'
+    >
+    images: Attribute.Relation<
+      'api::victim.victim',
+      'oneToMany',
+      'api::archive-image.archive-image'
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
@@ -3394,7 +3363,6 @@ declare module '@strapi/types' {
       'api::recommended-topic.recommended-topic': ApiRecommendedTopicRecommendedTopic
       'api::recommended-tweet.recommended-tweet': ApiRecommendedTweetRecommendedTweet
       'api::subscriber.subscriber': ApiSubscriberSubscriber
-      'api::tag.tag': ApiTagTag
       'api::term.term': ApiTermTerm
       'api::timeline.timeline': ApiTimelineTimeline
       'api::topic.topic': ApiTopicTopic

@@ -94,11 +94,6 @@
       "type": "datetime",
       "required": true
     },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
     "categories": {
       "type": "relation",
       "relation": "oneToMany",

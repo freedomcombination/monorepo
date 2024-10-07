@@ -25,7 +25,6 @@ export type ProfileStatus =
 export type ProfileBase = {
   email: string
   city: string | null
-  age: number | null
   birthDate: Date | string | null
   availableHours: number | null
   approved: boolean | null

@@ -78,11 +78,6 @@
     "endDate": {
       "type": "date"
     },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
     "applications": {
       "type": "relation",
       "relation": "oneToMany",

@@ -32,7 +32,6 @@ export const subscribeDb = async () => {
     'api::profile.profile',
     'api::recommended-topic.recommended-topic',
     'api::recommended-tweet.recommended-tweet',
-    'api::tag.tag',
     'api::trend.trend',
     'api::user-feedback.user-feedback',
   ]
