@@ -20,7 +20,7 @@ import type {
   StrapiModel,
   User,
 } from '@fc/types'
-import { getMinuteDifferenceAmsterdamBetweenLocal } from '@fc/utils/timeDifference'
+import { getMinuteDifferenceAmsterdamBetweenUTC } from '@fc/utils/timeDifference'
 
 import { I18nNamespaces } from '../@types/i18next'
 
@@ -58,9 +58,9 @@ export const useDefaultValues = <T extends StrapiModel>(
       if (!isDateTime) return format(dateTime, 'yyyy-MM-dd')
 
       if (isDateTime === 'amsterdam') {
-        const timeDif = getMinuteDifferenceAmsterdamBetweenLocal()
-        const tzAms = addMinutes(dateTime, -timeDif)
-        dateTime.setTime(tzAms.getTime())
+        const timeDif = getMinuteDifferenceAmsterdamBetweenUTC(date)
+        const amsterdamDateTime = addMinutes(date, timeDif)
+        dateTime.setTime(amsterdamDateTime.getTime())
       }
 
       return dateTime.toISOString().replace('Z', '')
