@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
+import { addMinutes } from 'date-fns'
 
 import type {
   StrapiCreateInput,
@@ -11,6 +12,7 @@ import type {
 
 import { API_URL, endpointsWithoutDataField } from './urls'
 import { generateFormData } from './utils'
+import { getMinuteDifferenceAmsterdamBetweenUTC } from '../../utils/timeDifference'
 
 type Method = 'post' | 'put' | 'delete' | 'localize'
 
@@ -135,10 +137,11 @@ export const mutation = async <
 
     Object.entries(body).forEach(([key, value]) => {
       if (value instanceof Date) {
-        const utcDate = new Date(
-          value.getTime() - value.getTimezoneOffset() * 60000,
-        ).toISOString()
-        ;(body as any)[key] = utcDate
+        // this value comes in UTC converted from local timezone.
+        const timeDif = getMinuteDifferenceAmsterdamBetweenUTC()
+        // we need to modify the date like it entered from amsterdam
+        const tzDate = addMinutes(value, timeDif)
+        body[key as keyof D] = tzDate.toISOString() as D[keyof D]
       }
     })
 
