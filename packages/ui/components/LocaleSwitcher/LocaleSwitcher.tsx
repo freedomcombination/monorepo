@@ -3,7 +3,9 @@ import { FC } from 'react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import type { StrapiLocale } from '@fc/types'
+import { useAuthContext } from '@fc/context/auth'
+import { mutation } from '@fc/services/common/mutation'
+import type { Profile, ProfileUpdateInput, StrapiLocale } from '@fc/types'
 
 import { LocaleSwitcherProps } from './types'
 import { useScroll } from '../../hooks'
@@ -12,12 +14,24 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark, isMobile }) => {
   const { push, pathname, locale, asPath, components, query, locales } =
     useRouter()
   const isScrolled = useScroll()
+  const { profile, token } = useAuthContext()
 
   // We pass localized slugs to pageProps from getStaticProps or getServerSideProps
   const slugs = components?.[pathname].props.pageProps?.slugs
 
   // TODO: Redirect to localized path for static pages
   const handleChangeLanguage = async (locale: StrapiLocale) => {
+    if (profile && token && profile.locale !== locale) {
+      // save locales to profile when user changes it
+      await mutation<Profile, ProfileUpdateInput>({
+        endpoint: 'profiles',
+        method: 'put',
+        id: profile.id,
+        body: { locale },
+        token,
+      })
+    }
+
     const targetSlug = slugs?.[locale] || asPath
     push(targetSlug, undefined, { locale, scroll: false })
   }

@@ -27,7 +27,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({
 
   const { user, permissions, roles, profile, token } = data
   const isAdmin = roles.includes('admin')
-
   const [error, setError] = useState<string | null>(null)
   const [demoPermissions, setDemoPermissions] = useState<Permissions | null>(
     null,
@@ -35,6 +34,20 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   const authModalDisclosure = useDisclosure()
   const { t } = useTranslation()
   const router = useRouter()
+
+  useEffect(() => {
+    if (!profile || !profile.locale || profile.locale === router.locale) return
+
+    // change locale when a new user logs in
+    router.push(
+      router.query.returnUrl
+        ? router.query.returnUrl.toString()
+        : router.asPath,
+      undefined,
+      { locale: profile.locale, scroll: false },
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile?.email, profile?.locale])
 
   useEffect(() => {
     if (user) {
@@ -133,6 +146,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         password,
         username,
         name,
+        locale: router.locale,
       })
 
       if (!response.data?.user) {
