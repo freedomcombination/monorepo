@@ -1,14 +1,33 @@
 import { faker } from '@faker-js/faker'
+import { Profile } from '@fc/types';
 import slugify from '@sindresorhus/slugify'
 
 const getProfiles = async () =>
-  await strapi.entityService.findMany('api::profile.profile')
+  await strapi.entityService.findMany('api::profile.profile', {
+    populate: ['user', 'user.role'],
+  }) as Profile[]
 
-const generateMockUser = () => {
+let adminFound = false;
+const generateMockUser = (isAdmin: boolean) => {
+
+  const getUserNameAndMail = (name: string) => {
+    if (!adminFound && isAdmin) {
+      adminFound = true
+
+      return {
+        username: 'admin',
+        email: 'admin@fc.com',
+      }
+    }
+    const username = slugify(name)
+    const email = `${username}@example.com`
+
+    return { username, email }
+  }
+
   const name = faker.person.fullName()
-  const username = slugify(name)
-  const email = `${username}@example.com`
-  const password = faker.internet.password()
+  const { username, email } = getUserNameAndMail(name)
+  const password = "123"
   const phone = faker.phone.number()
 
   return {
@@ -25,77 +44,94 @@ export const mockify = async () => {
     return
   }
 
+  adminFound = false
   const profiles = await getProfiles()
 
   for await (const profile of profiles) {
-    const { name, email, phone } = generateMockUser()
+    const { name, email, phone, username, password } =
+      // i'm not sure this is the right way to check if this user is admin
+      generateMockUser(profile?.user?.role?.type === 'admin')
 
-    await strapi.entityService.update('api::profile.profile', profile.id, {
-      data: {
-        name,
-        email,
-        phone,
-        comment: faker.lorem.sentence(),
-        address: {
-          city: faker.location.city(),
-          country: faker.location.country(),
+    await strapi.entityService.update(
+      'api::profile.profile',
+      profile.id,
+      {
+        data: {
+          name,
+          email,
+          phone,
+          comment: faker.lorem.sentence(),
+          address: {
+            city: faker.location.city(),
+            country: faker.location.country(),
+          },
         },
-      },
-    })
+      })
+
+    if (!profile.user) {
+      console.debug(`Profile ${profile.email} (id:${profile.id}) has no user, this should not happen...`)
+      continue
+    }
+
+    await strapi.entityService.update(
+      'plugin::users-permissions.user',
+      profile.user.id,
+      {
+        data: {
+          username,
+          email,
+        }
+      })
+
+    await strapi
+      .plugin('users-permissions')
+      .service('user')
+      .edit(profile.user.id, { password })
   }
 
   console.log('-'.repeat(50))
 
   console.log(`Mocked ${profiles.length} profiles`)
 
-  const updatedProfiles = await getProfiles()
-
   const users = await strapi.entityService.findMany(
     'plugin::users-permissions.user',
+    {
+      populate: '*',
+      filters: {
+        email: {
+          $not: {
+            $and: [
+              { $endsWith: '@example.com' },
+              { $endsWith: '@fc.com' },
+            ],
+          },
+        },
+      },
+    },
   )
 
-  let matchedUsers = 0
-
+  console.debug('Users without profiles')
   for await (const user of users) {
-    const { username, email } = generateMockUser()
+    console.debug(`${user.email} (${user.id}) has no profile!!`)
 
-    const matchedProfile = profiles.find(
-      profile => profile.email === user.email,
+    const { username, email, password } = generateMockUser(user.role?.type === 'admin')
+
+    await strapi.entityService.update(
+      'plugin::users-permissions.user',
+      user.id,
+      {
+        data: {
+          email,
+          username,
+        },
+      },
     )
 
-    if (matchedProfile) {
-      const matchedUpdatedProfile = updatedProfiles.find(
-        profile => profile.id === matchedProfile?.id,
-      )
-
-      matchedUsers++
-
-      await strapi.entityService.update(
-        'plugin::users-permissions.user',
-        user.id,
-        {
-          data: {
-            email: matchedUpdatedProfile.email,
-            username: slugify(matchedUpdatedProfile.name),
-          },
-        },
-      )
-    } else {
-      await strapi.entityService.update(
-        'plugin::users-permissions.user',
-        user.id,
-        {
-          data: {
-            email,
-            username,
-          },
-        },
-      )
-    }
+    await strapi
+      .plugin('users-permissions')
+      .service('user')
+      .edit(user.id, { password })
   }
-
-  console.log(`Mocked ${users.length} users`)
-  console.log(`Matched ${matchedUsers} users`)
 
   console.log('-'.repeat(50))
 
@@ -104,7 +140,7 @@ export const mockify = async () => {
   const donates = await strapi.entityService.findMany('api::donate.donate')
 
   for await (const donate of donates) {
-    const { name, email, phone } = generateMockUser()
+    const { name, email, phone } = generateMockUser(false)
 
     await strapi.entityService.update('api::donate.donate', donate.id, {
       data: { name, email, phone },
@@ -122,7 +158,7 @@ export const mockify = async () => {
   )
 
   for await (const application of applications) {
-    const { name, email, phone } = generateMockUser()
+    const { name, email, phone } = generateMockUser(false)
 
     await strapi.entityService.update(
       'api::course-application.course-application',
@@ -134,7 +170,7 @@ export const mockify = async () => {
           phone,
           city: faker.location.city(),
           country: faker.location.country(),
-          profile: null,
+          //  profile: null, lets keep this relation.
           message: faker.lorem.paragraph(),
         },
       },
@@ -152,7 +188,7 @@ export const mockify = async () => {
   })
 
   for await (const comment of comments) {
-    const { name, email } = generateMockUser()
+    const { name, email } = generateMockUser(false)
 
     if (comment.profile) {
       continue
