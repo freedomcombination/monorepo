@@ -15,6 +15,7 @@ import { test } from '@playwright/test'
 // TODO: Check how `pwtest` snippet works
 test('OB-01. Example', { tag: ['@onboarding'] }, async () => {
   //   TODO: Go to the URL `https://playwright.dev/` and verify the page title is `'Playwright'`
+  //   - [ ] Open the URL `https://playwright.dev/`
 })
 
 /**
