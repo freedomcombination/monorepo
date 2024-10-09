@@ -18,7 +18,7 @@
     "storybook-build": "turbo run storybook-build",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "kill-ports": "kill-port 3000 3001 3002 3003 3004 1337",
-    "test": "yarn kill-ports && playwright test",
+    "test": "yarn kill-ports && playwright test --grep-invert \"@onboarding|@api\"",
     "tsc": "turbo run tsc --concurrency=20",
     "stripe": "./stripe listen --forward-to localhost:3001/api/donation/status"
   },

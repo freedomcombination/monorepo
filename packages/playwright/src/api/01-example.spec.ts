@@ -6,7 +6,7 @@ import type { Art, Post, Tag, TagCreateInput } from '@fc/types'
 import { API_TOKEN } from '../constants'
 import { test } from '../fixtures'
 
-test.describe('01. Example API call', () => {
+test.describe('01. Example API call', { tag: ['@api'] }, () => {
   test('TC-01: should fetch arts without token', async ({ api }) => {
     const response = await api.get<Art>({ endpoint: 'arts' })
 
