@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { Profile } from '@fc/types'
+import { Profile, StrapiLocale } from '@fc/types'
 import slugify from '@sindresorhus/slugify'
 
 const getProfiles = async () =>
@@ -60,6 +60,7 @@ export const mockify = async () => {
           city: faker.location.city(),
           country: faker.location.country(),
         },
+        locale: profile.locale ?? ['en', 'tr', 'nl'][faker.number.int({ max: 2 })] as StrapiLocale,
       },
     })
 
