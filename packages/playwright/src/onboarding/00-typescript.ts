@@ -15,6 +15,7 @@
 let x = 'John Doe'
 x = 'Jane Doe' // You can reassign a value to a variable declared with let
 console.log(x)
+const a = 10
 
 // Const
 const y = 30
