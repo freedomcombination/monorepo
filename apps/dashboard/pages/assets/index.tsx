@@ -30,7 +30,7 @@ const AssetsPage = () => {
 
   const assetsQuery = useStrapiRequest<Asset>({
     endpoint: 'assets',
-    page: currentPage || 1,
+    page: currentPage,
     pageSize,
     filters: {
       ...(searchTerm && { [`title_${locale}`]: { $containsi: searchTerm } }),
@@ -41,6 +41,7 @@ const AssetsPage = () => {
 
   const handleSearch = (search?: string) => {
     setSearchTerm(search || undefined)
+    changeSearch(search)
   }
 
   useUpdateEffect(() => {
@@ -51,32 +52,8 @@ const AssetsPage = () => {
   const pageCount = assetsQuery?.data?.meta?.pagination?.pageCount || 0
   const totalCount = assetsQuery?.data?.meta?.pagination?.total || 0
 
-  const changeRoute = (
-    key: 'id' | 'page' | 'sort' | 'status' | 'published' | 'q' | 'pageSize',
-    value?: string | number | Sort,
-  ) => {
-    if (
-      !value ||
-      (key === 'page' && value === 1) ||
-      (key === 'status' && value === 'all') ||
-      (key === 'published' && value === 'all') ||
-      (key === 'pageSize' && value === 20)
-    ) {
-      const _query = { ...query }
-      delete _query[key]
-      push({ query: _query }, undefined, { shallow: true })
-
-      return
-    }
-
-    push({ query: { ...query, [key]: value } }, undefined, { shallow: true })
-  }
-  const setCurrentPage = (page?: number) => changeRoute('page', page)
-  const setPageSize = (size?: number) => changeRoute('pageSize', size)
-  const setSort = (sort?: Sort) => changeRoute('sort', sort)
-
-  const handleRowClick = (index: number, id: number) => {
-    router.push(`/assets/${id}`)
+  const useHandleRowClick = (index: number, id: number) => {
+    useRouter().push(`/assets/${id}`)
   }
 
   return (
@@ -87,19 +64,19 @@ const AssetsPage = () => {
         columns={columns.assets!}
         currentPage={currentPage}
         data={assets as Asset[]}
-        onClickRow={handleRowClick}
-        onSort={setSort}
+        onClickRow={useHandleRowClick}
+        onSort={(sort) => changeParams({ sort })}
         pageCount={pageCount}
         pageSize={pageSize}
-        setCurrentPage={setCurrentPage}
-        setPageSize={setPageSize}
+        setCurrentPage={(page) => changePage(page)}
+        setPageSize={(size) => changeParams({ pageSize: size })}
         totalCount={totalCount}
         allowExportPDF
         badges={[
           {
             badgeText(data) {
               const totalPrice = data.reduce((acc, curr) => acc + curr.price, 0)
-
+              
               return t('items-asset-total', { amount: formatPrice(totalPrice) })
             },
           },
@@ -108,6 +85,7 @@ const AssetsPage = () => {
     </AdminLayout>
   )
 }
+
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const locale = context.locale as StrapiLocale
