@@ -4,7 +4,6 @@ import { Expand } from './common'
 import { UploadFile } from './file'
 import { Profile } from './profile'
 import { StrapiBase, StrapiEntityBase } from './strapi'
-import { Tag } from './tag'
 
 export type BlogBase = StrapiEntityBase & {
   content: string | null
@@ -19,7 +18,6 @@ type BlogRelation = {
   image?: UploadFile | null
   author?: Profile | null
   categories?: Array<Category>
-  tags?: Array<Tag>
   likers?: Array<Profile>
   comments?: Array<Comment>
   localizations?: Array<Blog>
@@ -29,7 +27,6 @@ type BlogRelationInput = {
   image: File
   author?: number
   categories?: Array<number>
-  tags?: Array<number>
   likers?: Array<number>
 }
 

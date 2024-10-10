@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "victims",
+  "info": {
+    "singularName": "victim",
+    "pluralName": "victims",
+    "displayName": "Victim",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "description_en": {
+      "type": "text"
+    },
+    "birthDate": {
+      "type": "date"
+    },
+    "incidentDate": {
+      "type": "date"
+    },
+    "resolvedDate": {
+      "type": "date"
+    },
+    "resolved": {
+      "type": "boolean"
+    },
+    "deceased": {
+      "type": "boolean"
+    },
+    "pregnant": {
+      "type": "boolean"
+    },
+    "elderly": {
+      "type": "boolean"
+    },
+    "baby": {
+      "type": "boolean"
+    },
+    "noshare": {
+      "type": "boolean"
+    },
+    "sick": {
+      "type": "boolean"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "prisons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::prison.prison"
+    },
+    "contents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::archive-content.archive-content",
+      "mappedBy": "victims"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "victim"
+    },
+    "images": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::archive-image.archive-image",
+      "mappedBy": "victim"
+    }
+  }
+}

@@ -42,7 +42,6 @@ export const POST_MOCKS = {
           locale: 'tr',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: {
           id: 28,
@@ -172,7 +171,6 @@ export const POST_MOCKS = {
           locale: 'tr',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: {
           id: 35,
@@ -386,7 +384,6 @@ export const POST_MOCKS = {
           locale: 'tr',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: {
           id: 429,
@@ -560,7 +557,6 @@ export const POST_MOCKS = {
           locale: 'tr',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: null,
         localizations: [
@@ -734,7 +730,6 @@ export const POST_MOCKS = {
           locale: 'tr',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: {
           id: 432,
@@ -973,7 +968,6 @@ export const POST_MOCKS = {
           locale: 'nl',
           hashtagDefault: 'HemenAdalet',
         },
-        tags: [],
         video: null,
         caps: null,
         localizations: [
@@ -1062,7 +1056,6 @@ export const POST_MOCKS = {
           locale: 'nl',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: {
           id: 35,
@@ -1233,7 +1226,6 @@ export const POST_MOCKS = {
           locale: 'nl',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: {
           id: 35,
@@ -1448,7 +1440,6 @@ export const POST_MOCKS = {
           locale: 'nl',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: null,
         localizations: [
@@ -1598,7 +1589,6 @@ export const POST_MOCKS = {
           locale: 'nl',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: null,
         localizations: [
@@ -1931,7 +1921,6 @@ export const POST_MOCKS = {
           locale: 'en',
           hashtagDefault: 'HemenAdalet',
         },
-        tags: [],
         video: null,
         caps: null,
         localizations: [
@@ -2761,7 +2750,6 @@ export const POST_MOCKS = {
           locale: 'en',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: {
           id: 35,
@@ -3591,7 +3579,6 @@ export const POST_MOCKS = {
           locale: 'en',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: {
           id: 35,
@@ -4506,7 +4493,6 @@ export const POST_MOCKS = {
           locale: 'en',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: null,
         localizations: [
@@ -5380,7 +5366,6 @@ export const POST_MOCKS = {
           locale: 'en',
           hashtagDefault: '#StgWeesPresentatie',
         },
-        tags: [],
         video: null,
         caps: null,
         localizations: [

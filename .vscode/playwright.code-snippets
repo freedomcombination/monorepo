@@ -3,7 +3,7 @@
     "prefix": "pwtest",
     "body": [
       "test('TC-01: should $1', async ({ page }) => {",
-      "    const url = getUrl('$3');",
+      "    const url = getUrl('$2');",
       "    await page.goto(url);",
       "",
       "    // Test code here",
@@ -15,12 +15,10 @@
     "prefix": "pwdescribe",
     "body": [
       "import { test } from '../fixtures'",
-      "import { getUrl } from '../utils'",
       "",
       "test.describe('01. $1', () => {",
-      "  test('TC-01: should $2', async ({ page }) => {",
-      "    const url = getUrl('$3');",
-      "    await page.goto(url);",
+      "  test('TC-01: should $2', async ({ layoutPage }) => {",
+      "    await layoutPage.gotoHome('$3');",
       "",
       "    // Test code here",
       "  });",

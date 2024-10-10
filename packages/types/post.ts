@@ -1,9 +1,10 @@
 import { ApprovalStatus, Expand, OgImageParams } from './common'
 import { UploadFile } from './file'
 import { Hashtag } from './hashtag'
+import { Prison } from './prison'
 import { Profile } from './profile'
 import { StrapiBase, StrapiEntityBase } from './strapi'
-import { Tag } from './tag'
+import { Victim } from './victim'
 
 export type PostBase = Omit<StrapiEntityBase, 'title' | 'slug'> & {
   title: string
@@ -18,9 +19,10 @@ export type PostRelation = {
   video?: UploadFile | null
   caps?: UploadFile | null
   hashtag?: Hashtag | null
-  tags?: Array<Tag>
+  prison?: Prison | null
   translator?: Profile | null
   localizations?: Array<Post>
+  victim?: Victim | null
 }
 
 export type PostRelationInput = {
@@ -28,8 +30,9 @@ export type PostRelationInput = {
   video: File
   caps: File
   hashtag: number
-  tags?: Array<number>
+  prison?: Array<number>
   translator?: number
+  victim?: number
 }
 
 export type PostCreateInput = Expand<
@@ -37,7 +40,7 @@ export type PostCreateInput = Expand<
     PostBase,
     'approvalStatus' | 'capsStatus' | 'videoUrl'
   > &
-    Pick<PostRelationInput, 'image' | 'hashtag' | 'tags'>
+    Pick<PostRelationInput, 'image' | 'hashtag' | 'victim' | 'prison'>
 >
 
 export type PostUpdateInput = Expand<

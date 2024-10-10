@@ -1,8 +1,9 @@
 import { Category } from './category'
 import { Expand } from './common'
 import { StrapiLocale } from './locale'
+import { Prison } from './prison'
 import { StrapiBase } from './strapi'
-import { Tag } from './tag'
+import { Victim } from './victim'
 
 export type ArchiveContentBase = {
   title: string
@@ -15,12 +16,14 @@ export type ArchiveContentBase = {
 
 type ArchiveContentRelation = {
   categories?: Category[]
-  tags?: Tag[]
+  victims?: Victim[]
+  prisons?: Prison[]
 }
 
 type ArchiveContentRelationInput = {
   categories: number[]
-  tags: number[]
+  victims: number[]
+  prisons: number[]
 }
 
 export type ArchiveContentCreateInput = Expand<
