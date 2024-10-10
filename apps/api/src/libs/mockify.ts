@@ -1,8 +1,7 @@
 import { faker } from '@faker-js/faker'
+import { Role, StrapiLocale } from '@fc/types'
 import slugify from '@sindresorhus/slugify'
-
-const getProfiles = async () =>
-  await strapi.entityService.findMany('api::profile.profile')
+import { sample } from 'lodash'
 
 const generateMockUser = () => {
   const name = faker.person.fullName()
@@ -25,77 +24,97 @@ export const mockify = async () => {
     return
   }
 
-  const profiles = await getProfiles()
+  const profilesWithUser = await strapi.entityService.findMany(
+    'api::profile.profile',
+    {
+      populate: ['user'],
+      filters: { user: { id: { $gt: 0 } } },
+    },
+  )
 
-  for await (const profile of profiles) {
-    const { name, email, phone } = generateMockUser()
+  const profilesWithoutUser = await strapi.entityService.findMany(
+    'api::profile.profile',
+    { filters: { user: null } },
+  )
 
-    await strapi.entityService.update('api::profile.profile', profile.id, {
-      data: {
-        name,
-        email,
-        phone,
-        comment: faker.lorem.sentence(),
-        address: {
-          city: faker.location.city(),
-          country: faker.location.country(),
-        },
-      },
-    })
-  }
+  const roles = (await strapi.entityService.findMany(
+    'plugin::users-permissions.role',
+  )) as Role[]
 
   console.log('-'.repeat(50))
 
-  console.log(`Mocked ${profiles.length} profiles`)
+  console.log('Mockifying profiles with user...')
 
-  const updatedProfiles = await getProfiles()
+  for await (const [index, profileWithUser] of profilesWithUser.entries()) {
+    const mockUser = generateMockUser()
+    const name = roles[index]?.name || mockUser.name
+    const username = roles[index]?.type || slugify(name)
+    const email = roles[index]?.type
+      ? `${roles[index]?.type}@fc.com`
+      : mockUser.email
+    const phone = mockUser.phone
 
-  const users = await strapi.entityService.findMany(
-    'plugin::users-permissions.user',
-  )
-
-  let matchedUsers = 0
-
-  for await (const user of users) {
-    const { username, email } = generateMockUser()
-
-    const matchedProfile = profiles.find(
-      profile => profile.email === user.email,
+    await strapi.entityService.update(
+      'api::profile.profile',
+      profileWithUser.id,
+      {
+        data: {
+          name,
+          email,
+          phone,
+          comment: faker.lorem.sentence(),
+          address: {
+            city: faker.location.city(),
+            country: faker.location.country(),
+          },
+          locale: sample<StrapiLocale>(['en', 'nl', 'tr']),
+        },
+      },
     )
 
-    if (matchedProfile) {
-      const matchedUpdatedProfile = updatedProfiles.find(
-        profile => profile.id === matchedProfile?.id,
-      )
-
-      matchedUsers++
-
-      await strapi.entityService.update(
-        'plugin::users-permissions.user',
-        user.id,
-        {
-          data: {
-            email: matchedUpdatedProfile.email,
-            username: slugify(matchedUpdatedProfile.name),
-          },
-        },
-      )
-    } else {
-      await strapi.entityService.update(
-        'plugin::users-permissions.user',
-        user.id,
-        {
-          data: {
-            email,
-            username,
-          },
-        },
-      )
-    }
+    await strapi.plugins['users-permissions'].services.user.edit(
+      profileWithUser.user.id,
+      {
+        email,
+        username,
+        password: 'Test?123',
+        ...(roles[index] && {
+          role: roles[index].id,
+          profileStatus: 'accepted',
+        }),
+      },
+    )
   }
 
-  console.log(`Mocked ${users.length} users`)
-  console.log(`Matched ${matchedUsers} users`)
+  console.log(`Mocked ${profilesWithUser.length} profiles with user`)
+
+  console.log('-'.repeat(50))
+
+  console.log('Mockifying profiles without user...')
+
+  for await (const profileWithoutUser of profilesWithoutUser) {
+    const { name, email, phone } = generateMockUser()
+
+    await strapi.entityService.update(
+      'api::profile.profile',
+      profileWithoutUser.id,
+      {
+        data: {
+          name,
+          email,
+          phone,
+          comment: faker.lorem.sentence(),
+          address: {
+            city: faker.location.city(),
+            country: faker.location.country(),
+          },
+          locale: sample<StrapiLocale>(['en', 'nl', 'tr']),
+        },
+      },
+    )
+  }
+
+  console.log(`Mocked ${profilesWithoutUser.length} profiles without user`)
 
   console.log('-'.repeat(50))
 
@@ -134,7 +153,6 @@ export const mockify = async () => {
           phone,
           city: faker.location.city(),
           country: faker.location.country(),
-          profile: null,
           message: faker.lorem.paragraph(),
         },
       },
@@ -163,7 +181,6 @@ export const mockify = async () => {
         name,
         email,
         content: faker.lorem.sentence(),
-        profile: null,
       },
     })
   }

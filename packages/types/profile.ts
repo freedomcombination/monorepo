@@ -6,6 +6,7 @@ import { Expand } from './common'
 import { Feedback } from './feedback'
 import { UploadFile } from './file'
 import { Job } from './job'
+import { StrapiLocale } from './locale'
 import { Observation } from './observation'
 import { Platform } from './platform'
 import { Permissions } from './role'
@@ -42,6 +43,7 @@ export type ProfileBase = {
   phone: string | null
   twitter: string | null
   isVolunteer: boolean | null
+  locale?: StrapiLocale
   profileStatus?: ProfileStatus
 }
 

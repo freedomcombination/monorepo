@@ -45,6 +45,7 @@ export const generateCourse = (): Course => {
         instructor: faker.en.person.fullName(),
       },
     ],
+    requireApproval: faker.en.datatype.boolean(),
     lastRegisterDate: faker.en.date.soon().toISOString(),
     price: faker.en.number.float({ min: 20, max: 100 }),
     startDate: faker.en.date.soon().toISOString(),

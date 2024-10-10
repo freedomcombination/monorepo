@@ -26,7 +26,7 @@ export const EmailProvider: FC<PropsWithChildren> = ({ children }) => {
         }}
       />
       <Body>
-        <Container>{children}</Container>
+        <Container style={{ maxWidth: '80%' }}>{children}</Container>
       </Body>
     </Html>
   )

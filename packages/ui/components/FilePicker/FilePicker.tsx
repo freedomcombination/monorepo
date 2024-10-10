@@ -1,4 +1,4 @@
-import { FC, useEffect, useId, useMemo, useState } from 'react'
+import { FC, useEffect, useId, useMemo, useRef, useState } from 'react'
 
 import { Box, Button, Center, Text, VStack } from '@chakra-ui/react'
 import Compressor from '@uppy/compressor'
@@ -18,11 +18,13 @@ const FilePicker: FC<FilePickerProps> = ({
   height = 250,
   maxNumberOfFiles,
   onLoaded,
+  onFilesChanged,
   allowedFileTypes = ['image/*'],
   autoOpen = 'imageEditor',
   ...props
 }) => {
   const [images, setImages] = useState<File[]>([])
+  const [allFiles, setAllFiles] = useState<File[]>([])
 
   const id = useId().replace(/:/g, '-')
 
@@ -44,6 +46,11 @@ const FilePicker: FC<FilePickerProps> = ({
   )
 
   useEffect(() => {
+    onFilesChanged?.(allFiles)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allFiles])
+
+  useEffect(() => {
     uppy.setOptions({
       restrictions: {
         maxNumberOfFiles,
@@ -58,28 +65,47 @@ const FilePicker: FC<FilePickerProps> = ({
     })
   }, [uppy])
 
+  // workaround with uppy
+  const processedFiles = useRef<Record<string, File>>({})
+
   uppy.on('preprocess-complete', file => {
     if (!file?.data) return
 
-    onLoaded([file.data as File], file.preview ? [file.preview] : [])
+    const fileData = file.data as File
+    processedFiles.current[fileData.name] = fileData
+    setAllFiles(Object.values(processedFiles.current))
+
+    onLoaded?.([file.data as File], file.preview ? [file.preview] : [])
   })
 
   uppy.on('files-added', result => {
     const files = result.map(file => file.data as File)
+    // TODO Check this: this event may not be what we are looking for, for example if image resized in uppy this file ll not be that resized image
     setImages([...images, ...files])
   })
 
   uppy.on('cancel-all', () => {
-    onLoaded([], [])
+    onLoaded?.([], [])
     setImages([])
+    Object.keys(processedFiles).forEach(
+      key => delete processedFiles.current[key],
+    )
+    console.log('cancel-all')
+    setAllFiles([])
   })
 
   uppy.on('file-removed', file => {
-    const files = images.filter(
-      image => (image as File).name !== (file.data as File).name,
-    )
+    const fileName = (file.data as File).name
+    const files = images.filter(image => (image as File).name !== fileName)
+
     setImages(files)
-    onLoaded(files, [])
+    if (!!processedFiles.current[fileName]) {
+      delete processedFiles.current[fileName]
+      const newFiles = Object.values(processedFiles.current)
+      console.log('file-removed', file.name, newFiles)
+      setAllFiles(newFiles)
+    }
+    onLoaded?.(files, [])
   })
 
   const showDashboard = images.length ? true : false

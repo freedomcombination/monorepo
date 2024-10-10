@@ -29,11 +29,15 @@ type CourseBase = StrapiBase & {
   startDate: string
   endDate: string
   lastRegisterDate: string
+  requireApproval: boolean
+  assignmentSubmissionDeadline?: number
+  assignmentEvaluationTime?: number
 }
 
 type CourseRelation = {
   image?: UploadFile | null
   categories?: Category[]
+  assignmentFiles?: UploadFile[]
   applications?: CourseApplication[]
   faqs?: FaqLocale[]
   curriculum?: Curriculum[]
@@ -46,6 +50,7 @@ export type CourseCreateInput = Omit<CourseBase, 'approvalStatus'> & {
   categories?: number[]
   faqs?: FaqLocale[] // Component, not a relation
   curriculum?: Curriculum[] // Component, not a relation
+  assignmentFiles?: File[]
   platform?: number
 }
 
@@ -54,6 +59,7 @@ export type CourseUpdateInput = CourseBase & {
   categories?: number[]
   faqs?: FaqLocale[] // Component, not a relation
   curriculum?: Curriculum[] // Component, not a relation
+  assignmentFiles?: File[]
   platform?: number
 }
 

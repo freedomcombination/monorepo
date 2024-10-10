@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { format } from 'date-fns'
+import { addMinutes, format } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -21,6 +21,7 @@ import type {
   StrapiModel,
   User,
 } from '@fc/types'
+import { getMinuteDifferenceAmsterdamBetweenUTC } from '@fc/utils/timeDifference'
 
 import { I18nNamespaces } from '../@types/i18next'
 
@@ -52,21 +53,29 @@ export const useDefaultValues = <T extends StrapiModel>(
     const defaults = {} as any
     const { date, createdAt, updatedAt, publishedAt } = model as Activity
 
-    const getDate = (date?: string | null, isDateTime?: boolean) =>
-      date
-        ? isDateTime
-          ? new Date(date).toISOString().replace('Z', '')
-          : format(new Date(date), 'yyyy-MM-dd')
-        : ''
+    const getDate = (date?: string | null, isDateTime?: true | 'amsterdam') => {
+      if (!date) return ''
+
+      const dateTime = new Date(date)
+      if (!isDateTime) return format(dateTime, 'yyyy-MM-dd')
+
+      if (isDateTime === 'amsterdam') {
+        const timeDif = getMinuteDifferenceAmsterdamBetweenUTC(date)
+        const amsterdamDateTime = addMinutes(date, timeDif)
+        dateTime.setTime(amsterdamDateTime.getTime())
+      }
+
+      return dateTime.toISOString().replace('Z', '')
+    }
 
     const dateFields: Record<string, [string, string]> = {
-      date: [getDate(date), getDate(date, true)],
+      date: [getDate(date), getDate(date, 'amsterdam')],
       createdAt: [getDate(createdAt), getDate(createdAt, true)],
       updatedAt: [getDate(updatedAt), getDate(updatedAt, true)],
       publishedAt: [getDate(publishedAt), getDate(publishedAt, true)],
       lastRegisterDate: [
         getDate(courseModel.lastRegisterDate),
-        getDate(courseModel.lastRegisterDate, true),
+        getDate(courseModel.lastRegisterDate, 'amsterdam'),
       ],
     }
 
