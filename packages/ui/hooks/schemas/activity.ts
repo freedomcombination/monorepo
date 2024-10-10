@@ -7,13 +7,12 @@ import { yupMultiSelect } from './common'
 export const useActivitySchema = () => {
   return yup.object({
     title: yup.string().required(),
-    date: yup.date().required(),
-    categories: yupMultiSelect,
-    tags: yupMultiSelect,
     description: yup.string().required(),
+    date: yup.date().required(),
     content: yup.string().required(),
     image: yup.mixed().required(),
     platforms: yupMultiSelect,
+    categories: yupMultiSelect,
   })
 }
 
@@ -35,11 +34,5 @@ export const activityFields: FormFields<Activity> = [
     type: 'select',
     isMulti: true,
     endpoint: 'categories',
-  },
-  {
-    name: 'tags',
-    type: 'select',
-    isMulti: true,
-    endpoint: 'tags',
   },
 ]

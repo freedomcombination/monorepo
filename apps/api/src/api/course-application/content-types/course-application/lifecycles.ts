@@ -1,67 +1,42 @@
-import type { Course, Profile } from '@fc/types'
-import { emailTemplates } from '../../../../../emails'
-import { getTranslate } from '../../../../../emails/utils/getTranslate'
+import { approvalStatusHasChanged } from './cases/approvalStatus'
+import { assignmentFilesUploaded } from './cases/assignmentFilesUploaded'
+import { paymentExplanationChanged } from './cases/paymentExplanation'
 
 export default {
-  async afterUpdate(event) {
+  async beforeUpdate(event) {
     const { params } = event
-    if (params.data.paymentExplanation) {
-      const application = await strapi.entityService.findOne(
-        'api::course-application.course-application',
-        params.where.id,
-        {
-          populate: '*',
-        },
-      )
-      console.log({
-        app: JSON.stringify(application, null, 2),
-        id: params.where,
-      })
 
-      const officers = await strapi.entityService.findMany(
-        'plugin::users-permissions.user',
-        {
-          filters: {
-            role: {
-              type: {
-                $in: ['admin', 'academyeditor'],
-              },
-            },
-          },
-        },
-      )
-      const officerEmails = officers.map(editor => editor.email)
+    const application = await strapi.entityService.findOne(
+      'api::course-application.course-application',
+      params.where.id,
+      {
+        populate: '*',
+      },
+    )
 
-      if (officerEmails.length === 0) {
-        strapi.log.error('course-application:afterUpdate : No mail exists')
+    if (!application) return
 
-        return
-      }
+    if (
+      params.data.paymentExplanation && // paymentExplanation must be exist in params
+      !application.paymentExplanation
+    ) {
+      // and model must not have paymentExplanation
+      await paymentExplanationChanged(params, application)
+    }
 
-      if (process.env.NODE_ENV === 'development') {
-        console.log(
-          'Wont send email in development mode. Emails:',
-          officerEmails,
-        )
+    if (
+      params.data.submittedAssignmentFiles &&
+      (!application.submittedAssignmentFiles ||
+        application.submittedAssignmentFiles.length === 0)
+    ) {
+      await assignmentFilesUploaded(params, application)
+    }
 
-        return
-      }
-
-      const { t } = getTranslate('en')
-      await strapi.plugins['email'].services.email.send({
-        to: officerEmails,
-        from: process.env.SMTP_USERNAME,
-        subject: t('course-applicant-unpaid-preview', {
-          name: application?.profile?.name,
-        }),
-        html: await emailTemplates.renderCourseApplicantWithoutPayment(
-          application.profile as unknown as Profile,
-          application.course as unknown as Course,
-          application.updatedAt.toString(),
-          application.paymentExplanation,
-          // TODO wish we have locales in profiles :)
-        ),
-      })
+    if (
+      params.data.approvalStatus &&
+      application.approvalStatus !== params.data.approvalStatus
+    ) {
+      await approvalStatusHasChanged(params, application)
     }
   },
 }

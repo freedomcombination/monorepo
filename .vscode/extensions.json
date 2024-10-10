@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "ms-playwright.playwright",
+    "esbenp.prettier-vscode",
+    "yoavbls.pretty-ts-errors",
+    "wallabyjs.quokka-vscode",
+    "hbenl.vscode-test-explorer"
+  ]
+}

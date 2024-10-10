@@ -69,8 +69,8 @@ export const CourseApplicationForm: FC = () => {
           reset()
 
           toast({
-            title: 'Success',
-            description: 'Your application has been submitted',
+            title: t('success'),
+            description: t('course-application.pre-application-success'),
             status: 'success',
           })
         },

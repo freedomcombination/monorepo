@@ -26,6 +26,34 @@ export const useCourseSchema = () => {
     image: yup.mixed().required(),
     platform: yupSelect,
     language: yup.mixed().oneOf(['tr', 'nl', 'en']),
+    requireApproval: yup.boolean().required(),
+    /*
+    assignmentFiles: yup.string().when('requireApproval', ([requireApproval], schema) => {
+      if (requireApproval) {
+        return schema.required();
+      } else {
+        return schema.notRequired();
+      }
+    }),
+    */
+    assignmentSubmissionDeadline: yup
+      .number()
+      .when('requireApproval', ([requireApproval], schema) => {
+        if (requireApproval) {
+          return schema.min(1).required()
+        } else {
+          return schema.min(0).notRequired()
+        }
+      }),
+    assignmentEvaluationTime: yup
+      .number()
+      .when('requireApproval', ([requireApproval], schema) => {
+        if (requireApproval) {
+          return schema.min(1).required()
+        } else {
+          return schema.min(0).notRequired()
+        }
+      }),
   })
 }
 
@@ -82,14 +110,24 @@ export const courseFields: FormFields<Course> = [
   { name: 'quota', isRequired: true, type: 'number-input' },
   { name: 'price', isRequired: true, type: 'number-input' },
   {
-    name: 'tags',
-    type: 'select',
-    isMulti: true,
-    endpoint: 'tags',
-  },
-  {
     name: 'platform',
     type: 'select',
     endpoint: 'platforms',
+  },
+  {
+    name: 'requireApproval',
+    type: 'boolean',
+  },
+  {
+    name: 'assignmentFiles',
+    type: 'file',
+  },
+  {
+    name: 'assignmentSubmissionDeadline',
+    type: 'number-input',
+  },
+  {
+    name: 'assignmentEvaluationTime',
+    type: 'number-input',
   },
 ]

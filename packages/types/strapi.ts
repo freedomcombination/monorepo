@@ -7,12 +7,6 @@ import {
   ActivityLocalizeInput,
   ActivityUpdateInput,
 } from './activity'
-import { Applicant } from './applicant'
-import {
-  Application,
-  ApplicationCreateInput,
-  ApplicationUpdateInput,
-} from './application'
 import {
   ArchiveContent,
   ArchiveContentCreateInput,
@@ -40,16 +34,11 @@ import {
 } from './collection'
 import { Comment, CommentCreateInput } from './comment'
 import { ApprovalStatus, Expand } from './common'
-import {
-  Competition,
-  CompetitionCreateInput,
-  CompetitionLocalizeInput,
-  CompetitionUpdateInput,
-} from './competition'
 import { Course, CourseCreateInput, CourseUpdateInput } from './course'
 import {
   CourseApplication,
   CourseApplicationCreateInput,
+  CourseApplicationFiles,
   CourseApplicationUnpaid,
 } from './course-application'
 import { CoursePayment } from './course-payment'
@@ -90,6 +79,7 @@ import {
   PostUpdateInput,
 } from './post'
 import { Presentation } from './presentation'
+import { Prison, PrisonCreateInput, PrisonUpdateInput } from './prison'
 import { Privacy } from './privacy'
 import { Profile, ProfileCreateInput, ProfileUpdateInput } from './profile'
 import {
@@ -105,7 +95,6 @@ import {
   SubscriberCreateInput,
   SubscriberUpdateInput,
 } from './subscriber'
-import { Tag, TagCreateInput } from './tag'
 import { Term } from './term'
 import { Timeline, TimelineCreateInput } from './timeline'
 import { Topic } from './topic'
@@ -121,13 +110,7 @@ import {
   UserNotificationCreateInput,
   UserNotificationUpdateInput,
 } from './user-notification'
-import {
-  Vote,
-  VoteCreateApplicationInput,
-  VoteCreateApplicationJuryInput,
-  VoteCreateArtInput,
-  VoteCreateArtJuryInput,
-} from './vote'
+import { Victim, VictimCreateInput, VictimUpdateInput } from './victim'
 
 /**
  * MODEL TYPES
@@ -154,8 +137,6 @@ export type StrapiEntityBase = {
 export type StrapiModel =
   | AccountStats
   | Activity
-  | Applicant
-  | Application
   | ArchiveContent
   | ArchiveImage
   | Art
@@ -165,7 +146,6 @@ export type StrapiModel =
   | Category
   | Collection
   | Comment
-  | Competition
   | Course
   | CourseApplication
   | CoursePayment
@@ -181,12 +161,12 @@ export type StrapiModel =
   | Platform
   | Post
   | Presentation
+  | Prison
   | Privacy
   | Profile
   | RecommendedTopic
   | RecommendedTweet
   | Subscriber
-  | Tag
   | Term
   | Timeline
   | Topic
@@ -195,7 +175,7 @@ export type StrapiModel =
   | User
   | UserFeedback
   | UserNotification
-  | Vote
+  | Victim
 
 export type StrapiSeoModel =
   | Activity
@@ -291,8 +271,6 @@ export type StrapiAuthEndpoint =
 export type StrapiCollectionEndpoint =
   | 'account-statistics'
   | 'activities'
-  | 'applicants'
-  | 'applications'
   | 'archive-contents'
   | 'archive-images'
   | 'arts'
@@ -304,9 +282,7 @@ export type StrapiCollectionEndpoint =
   | 'categories'
   | 'collections'
   | 'comments'
-  | 'competitions'
   | 'course-applications'
-  | 'payments'
   | 'courses'
   | 'donates'
   | 'donates/email'
@@ -318,15 +294,16 @@ export type StrapiCollectionEndpoint =
   | 'mentions'
   | 'notifications'
   | 'observations'
+  | 'payments'
   | 'platforms'
   | 'posts'
   | 'presentations'
+  | 'prisons'
   | 'profiles'
   | 'recommended-topics'
   | 'recommended-tweets'
   | 'saved-tweets'
   | 'subscribers'
-  | 'tags'
   | 'timelines'
   | 'tweet-users'
   | 'tweets'
@@ -336,7 +313,7 @@ export type StrapiCollectionEndpoint =
   | 'users'
   | 'users-notifications'
   | 'users-permissions/roles'
-  | 'votes'
+  | 'victims'
 
 export type StrapiEndpoint =
   | StrapiSingleEndpoint
@@ -351,7 +328,6 @@ export type StrapiLocalizeInput =
   | ActivityLocalizeInput
   | ArtLocalizeInput
   | BlogLocalizeInput
-  | CompetitionLocalizeInput
   | HashtagLocalizeInput
   | PostLocalizeInput
 
@@ -369,7 +345,6 @@ export type StrapiFormValue =
 
 export type StrapiCreateInput =
   | ActivityCreateInput
-  | ApplicationCreateInput
   | ArchiveContentCreateInput
   | ArchiveImageCreateInput
   | ArtCreateInput
@@ -380,7 +355,6 @@ export type StrapiCreateInput =
   | CollectionCreateInput
   | CommentCreateInput<'art'>
   | CommentCreateInput<'blog'>
-  | CompetitionCreateInput
   | CourseApplicationCreateInput
   | CourseCreateInput
   | DonationCreateInput
@@ -394,22 +368,18 @@ export type StrapiCreateInput =
   | NotificationCreateInput
   | ObservationCreateInput
   | PostCreateInput
+  | PrisonCreateInput
   | ProfileCreateInput
   | RecommendedTopicCreateInput
   | RecommendedTweetCreateInput
   | SubscriberCreateInput
-  | TagCreateInput
   | TimelineCreateInput
   | UserFeedbackCreateInput
   | UserNotificationCreateInput
-  | VoteCreateApplicationInput
-  | VoteCreateApplicationJuryInput
-  | VoteCreateArtInput
-  | VoteCreateArtJuryInput
+  | VictimCreateInput
 
 export type StrapiUpdateInput =
   | ActivityUpdateInput
-  | ApplicationUpdateInput
   | ArchiveContentCreateInput
   | ArchiveContentUpdateInput
   | ArtUpdateInput
@@ -417,18 +387,20 @@ export type StrapiUpdateInput =
   | AssetsTrackingUpdateInput
   | BlogUpdateInput
   | CollectionUpdateInput
-  | CompetitionUpdateInput
   | CourseApplicationUnpaid
+  | CourseApplicationFiles
   | CourseUpdateInput
   | DonationUpdateInput
   | FoundationUpdateInput
   | HashtagUpdateInput
   | ObservationUpdateInput
   | PostUpdateInput
+  | PrisonUpdateInput
   | ProfileUpdateInput
   | SubscriberUpdateInput
   | UserFeedbackUpdateInput
   | UserNotificationUpdateInput
+  | VictimUpdateInput
 
 type StrapiFilterOperator =
   | '$eq'
