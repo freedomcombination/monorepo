@@ -8,7 +8,6 @@ export const dashboardRoutes = [
   '/blogs',
   '/categories',
   '/collections',
-  '/competitions',
   '/courses',
   '/donation',
   '/donations',

@@ -1,4 +1,3 @@
-import { Application } from './application'
 import { Art } from './art'
 import { ApprovalStatus, Expand, PickRequired } from './common'
 import { Profile } from './profile'
@@ -12,13 +11,11 @@ type FeedbackBase = {
 
 type FeedbackRelation = {
   art?: Art | null
-  application?: Application | null
   editor?: Profile | null
 }
 
 type FeedbackRelationInput = {
   art?: number
-  application?: number
   editor?: number
 }
 
@@ -29,7 +26,7 @@ export type FeedbackArtCreateInput = Expand<
 
 export type FeedbackApplicationCreateInput = Expand<
   { publishedAt?: Date | string | null } & FeedbackBase &
-    PickRequired<FeedbackRelationInput, 'editor' | 'application'> & {
+    PickRequired<FeedbackRelationInput, 'editor'> & {
       token: string
     }
 >

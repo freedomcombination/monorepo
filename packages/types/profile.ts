@@ -1,6 +1,5 @@
 import { SetRequired } from 'type-fest'
 
-import { Applicant } from './applicant'
 import { Art } from './art'
 import { Blog } from './blog'
 import { Expand } from './common'
@@ -14,7 +13,6 @@ import { Permissions } from './role'
 import { StrapiBase } from './strapi'
 import { Subscriber } from './subscriber'
 import { User } from './user'
-import { Vote } from './vote'
 
 export type ProfileStatus =
   | 'left'
@@ -28,7 +26,6 @@ export type ProfileStatus =
 export type ProfileBase = {
   email: string
   city: string | null
-  age: number | null
   birthDate: Date | string | null
   availableHours: number | null
   approved: boolean | null
@@ -57,13 +54,11 @@ type ProfileRelation = {
     address?: string | null
     postcode?: string | null
   }
-  applicant?: Applicant | null
   avatar?: UploadFile | null
   comments?: Array<Comment>
   cv?: UploadFile | null
   feedbacks?: Array<Feedback>
   jobs?: Array<Job>
-  juryVotes?: Array<Vote>
   likedArts?: Array<Art>
   likedBlogs?: Array<Blog>
   observations?: Array<Observation>
@@ -74,7 +69,6 @@ type ProfileRelation = {
   subscriber?: Subscriber | null
   user?: User | null
   volunteerForm?: UploadFile | null
-  votes?: Array<Vote>
 }
 
 type ProfileRelationInput = {
@@ -84,13 +78,11 @@ type ProfileRelationInput = {
     address?: string
     postcode?: string
   }
-  applicant?: number
   avatar?: File
   comments?: Array<number>
   jobs?: Array<number>
   platforms?: Array<number>
   user?: number
-  votes?: Array<number>
   recaptchaToken?: string
 }
 

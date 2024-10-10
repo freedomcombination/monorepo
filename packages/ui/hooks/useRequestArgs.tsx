@@ -46,7 +46,6 @@ export const useRequestArgs = <
       populate: [
         'hashtag.categories',
         'hashtag.image',
-        'tags',
         'image',
         'video',
         'caps',

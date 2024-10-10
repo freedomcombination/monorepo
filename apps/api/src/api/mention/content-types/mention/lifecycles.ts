@@ -5,6 +5,8 @@ import { getUserByUsername } from '../../../../libs'
 export default {
   async afterCreate({ result }) {
     try {
+      if (process.env.NODE_ENV === 'development') return
+
       const userResult = await getUserByUsername(result.username)
 
       const user = userResult?.data

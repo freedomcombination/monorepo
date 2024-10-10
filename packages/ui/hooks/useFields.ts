@@ -20,7 +20,6 @@ import { notificationFields } from './schemas/notification'
 import { postFields } from './schemas/post'
 import { profileFields } from './schemas/profile'
 import { recommendedTweetFields } from './schemas/recommendedTweet'
-import { tagFields } from './schemas/tags'
 import { topicFields } from './schemas/topic'
 import {
   translateModelFields,
@@ -49,7 +48,6 @@ export const useFields = <T extends StrapiModel>(): PartialStrapiEndpointMap<
     posts: postFields as FormFields<T>,
     profiles: profileFields as FormFields<T>,
     'recommended-tweets': recommendedTweetFields as FormFields<T>,
-    tags: tagFields as FormFields<T>,
     topic: topicFields as FormFields<T>,
     'translate-model': translateModelFields as FormFields<T>,
     'translate-post-model': translatePostModelFields as FormFields<T>,
