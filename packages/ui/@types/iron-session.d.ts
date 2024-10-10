@@ -1,4 +1,4 @@
-import { Auth } from '@fc/types'
+import type { Auth } from '@fc/types'
 import 'iron-session'
 
 declare module 'iron-session' {

@@ -4,14 +4,14 @@ import { Spinner } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { strapiRequest } from '@fc/lib'
-import { getModelStaticPaths } from '@fc/services'
+import { getModelStaticPaths } from '@fc/services/common/getModelStaticPaths'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Activity, StrapiLocale } from '@fc/types'
-import { ActivityDetail } from '@fc/ui'
-import { getLocalizedSlugs } from '@fc/utils'
+import type { Activity, StrapiLocale } from '@fc/types'
+import { ActivityDetail } from '@fc/ui/components/ActivityDetail'
+import { getLocalizedSlugs } from '@fc/utils/getLocalizedSlugs'
 
-import { Layout } from '../../components'
+import { Layout } from '../../components/Layout'
 
 type ActivityDetailPageProps = InferGetStaticPropsType<typeof getStaticProps>
 

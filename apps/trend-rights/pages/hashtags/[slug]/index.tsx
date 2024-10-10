@@ -18,26 +18,31 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { SITE_URL } from '@fc/config'
-import { useAuthContext } from '@fc/context'
-import { strapiRequest } from '@fc/lib'
-import { getHashtagBySlug, getHashtagSentences, useHashtag } from '@fc/services'
+import { SITE_URL } from '@fc/config/constants'
+import { useAuthContext } from '@fc/context/auth'
+import { strapiRequest } from '@fc/services/common/strapiRequest'
+import {
+  getHashtagBySlug,
+  useHashtagBySlug,
+} from '@fc/services/hashtag/getHashtagBySlug'
+import { getHashtagSentences } from '@fc/services/hashtagSentence/getHashtagSentences'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { HashtagReturnType, PlatformSlug, Post, StrapiLocale } from '@fc/types'
-import {
-  Container,
-  HashtagProvider,
-  PostImage,
-  PostMaker,
-  TimeLeft,
-} from '@fc/ui'
-import {
-  getItemLink,
-  getLocalizedSlugs,
-  getMediaUrl,
-  getOgImageSrc,
-  getPageSeo,
-} from '@fc/utils'
+import type {
+  HashtagReturnType,
+  PlatformSlug,
+  Post,
+  StrapiLocale,
+} from '@fc/types'
+import { Container } from '@fc/ui/components/Container'
+import { HashtagProvider } from '@fc/ui/components/HashtagProvider'
+import { PostImage } from '@fc/ui/components/PostImage'
+import { PostMaker } from '@fc/ui/components/PostMaker'
+import { TimeLeft } from '@fc/ui/components/TimeLeft'
+import { getItemLink } from '@fc/utils/getItemLink'
+import { getLocalizedSlugs } from '@fc/utils/getLocalizedSlugs'
+import { getMediaUrl } from '@fc/utils/getMediaUrl'
+import { getOgImageSrc } from '@fc/utils/getOgImageSrc'
+import { getPageSeo } from '@fc/utils/getPageSeo'
 
 import { Layout, PlusButton } from '../../../components'
 
@@ -51,7 +56,7 @@ const HashtagPage: FC<HashtagProps> = ({
   capsSrc,
   isIosSafari,
 }) => {
-  const hashtag = useHashtag()
+  const hashtag = useHashtagBySlug()
 
   const { isOpen, onClose, onOpen } = useDisclosure()
   const { query, push } = useRouter()

@@ -1,3 +1,3 @@
-import { registerHandler } from '@fc/services/src/api/registerHandler'
+import { registerHandler } from '@fc/services/api/registerHandler'
 
 export default registerHandler

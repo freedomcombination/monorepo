@@ -1,4 +1,4 @@
-import { StrapiLocale } from '@fc/types'
+import type { StrapiLocale } from '@fc/types'
 
 const getEdgeConfigKey = (locale: StrapiLocale) =>
   process.env.VERCEL_ENV === 'production'
@@ -51,6 +51,8 @@ const updateEdgeConfig = async (value: string, locale: StrapiLocale) => {
 
 export default {
   async afterCreate({ result }) {
+    if (process.env.NODE_ENV === 'development') return
+
     if (result.publishedAt) {
       const edgeValue = `${result.slug}__${result.date}`
       await updateEdgeConfig(edgeValue, result.locale)
@@ -61,6 +63,8 @@ export default {
   },
 
   async afterUpdate({ result }) {
+    if (process.env.NODE_ENV === 'development') return
+
     if (result.publishedAt) {
       const edgeValue = `${result.slug}__${result.date}`
       await updateEdgeConfig(edgeValue, result.locale)

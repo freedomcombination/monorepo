@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AuditLogAction } from '@fc/types'
+import type { AuditLogAction } from '@fc/types'
 import { getProfile } from '../utils'
 
 export const subscribeDb = async () => {
@@ -8,8 +8,6 @@ export const subscribeDb = async () => {
     'plugin::users-permissions.role',
     'api::account-statistic.account-statistic',
     'api::activity.activity',
-    'api::applicant.applicant',
-    'api::application.application',
     'api::archive-content.archive-content',
     'api::archive-image.archive-image',
     'api::art.art',
@@ -19,7 +17,6 @@ export const subscribeDb = async () => {
     'api::category.category',
     'api::collection.collection',
     'api::comment.comment',
-    'api::competition.competition',
     'api::course.course',
     'api::course-application.course-application',
     'api::donate.donate',
@@ -35,10 +32,8 @@ export const subscribeDb = async () => {
     'api::profile.profile',
     'api::recommended-topic.recommended-topic',
     'api::recommended-tweet.recommended-tweet',
-    'api::tag.tag',
     'api::trend.trend',
     'api::user-feedback.user-feedback',
-    'api::vote.vote',
   ]
 
   type StrapiLifecycleAction =

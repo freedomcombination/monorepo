@@ -4,10 +4,13 @@ import { useTranslation } from 'next-i18next'
 import { FaWhatsapp } from 'react-icons/fa'
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md'
 
-import { socialLinks } from '@fc/config'
+import { socialLinks } from '@fc/config/socialLinks'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { ButtonLink, ContactForm, Container, SocialButtons } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { ContactForm } from '@fc/ui/components/ContactForm'
+import { Container } from '@fc/ui/components/Container'
+import { SocialButtons } from '@fc/ui/components/SocialButtons'
 
 import { Layout } from '../components'
 
@@ -44,9 +47,9 @@ const Contact = () => {
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
                   leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
-                  href="tel:+31685221308"
+                  href="tel:+31687578056"
                 >
-                  +31-6 85221308
+                  +31-6 87578056
                 </ButtonLink>
                 <ButtonLink
                   isExternal
@@ -58,7 +61,7 @@ const Contact = () => {
                   leftIcon={
                     <Box as={FaWhatsapp} color="primary.50" size="20px" />
                   }
-                  href="https://api.whatsapp.com/send?phone=31685221308"
+                  href="https://api.whatsapp.com/send?phone=31687578056"
                 >
                   {t('contact.form.message')}
                 </ButtonLink>

@@ -4,8 +4,11 @@ import { Box, Center, Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { Platform, PlatformSlug } from '@fc/types'
-import { AnimatedBox, ButtonLink, Container, WImage } from '@fc/ui'
+import type { Platform, PlatformSlug } from '@fc/types'
+import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { Container } from '@fc/ui/components/Container'
+import { WImage } from '@fc/ui/components/WImage'
 
 type HomePlatformProps = {
   platforms: Platform[]
@@ -49,6 +52,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                 columns={{ base: 1, lg: 2 }}
                 justifyItems="center"
                 gap={8}
+                overflow={'hidden'}
               >
                 <AnimatedBox
                   order={{ base: 1, lg: index % 2 ? 2 : 1 }}
@@ -88,7 +92,10 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                       size="lg"
                       colorScheme={color.colorScheme}
                       variant="link"
-                      alignSelf={index % 2 ? 'flex-end' : 'flex-start'}
+                      alignSelf={{
+                        base: 'center',
+                        md: index % 2 ? 'end' : 'start',
+                      }}
                       fontWeight={700}
                     >
                       {t('read-more')}

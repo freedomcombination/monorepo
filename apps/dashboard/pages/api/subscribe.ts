@@ -1,3 +1,3 @@
-import { subscribeHandler } from '@fc/services/src/api/subscribeHandler'
+import { subscribeHandler } from '@fc/services/api/subscribeHandler'
 
 export default subscribeHandler

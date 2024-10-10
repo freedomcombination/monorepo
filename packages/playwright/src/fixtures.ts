@@ -1,10 +1,10 @@
 import { test as base } from '@playwright/test'
 
 import {
-  apiDeleteRequest,
+  apiDeleteMutation,
+  apiPostMutation,
+  apiPutMutation,
   apiGetRequest,
-  apiPostRequest,
-  apiPutRequest,
 } from './lib'
 import {
   ArtsPage,
@@ -14,7 +14,7 @@ import {
   LoginPage,
   ProfilePage,
   RegisterPage,
-} from './pages/index'
+} from './pages'
 
 type ExtendProps = {
   artsPage: ArtsPage
@@ -26,9 +26,9 @@ type ExtendProps = {
   registerPage: RegisterPage
   api: {
     get: typeof apiGetRequest
-    post: typeof apiPostRequest
-    put: typeof apiPutRequest
-    delete: typeof apiDeleteRequest
+    post: typeof apiPostMutation
+    put: typeof apiPutMutation
+    delete: typeof apiDeleteMutation
   }
 }
 
@@ -66,11 +66,11 @@ export const test = base.extend<ExtendProps>({
     await use({
       get: apiGetRequest,
       post: (endpoint, body, token) =>
-        apiPostRequest(endpoint, body, token, true),
+        apiPostMutation(endpoint, body, token, true),
       put: (endpoint, id, body, token) =>
-        apiPutRequest(endpoint, id, body, token, true),
+        apiPutMutation(endpoint, id, body, token, true),
       delete: (endpoint, id, token) =>
-        apiDeleteRequest(endpoint, id, token, true),
+        apiDeleteMutation(endpoint, id, token, true),
     })
   },
 })

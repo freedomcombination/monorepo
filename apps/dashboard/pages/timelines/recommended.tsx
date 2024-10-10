@@ -2,10 +2,12 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
-import { useStrapiRequest } from '@fc/services'
+import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { RecommendedTweet, StrapiLocale } from '@fc/types'
-import { AdminLayout, MasonryGrid, RecommendedTweetCard } from '@fc/ui'
+import type { RecommendedTweet, StrapiLocale } from '@fc/types'
+import { AdminLayout } from '@fc/ui/components/AdminLayout'
+import { MasonryGrid } from '@fc/ui/components/MasonryGrid'
+import { RecommendedTweetCard } from '@fc/ui/components/RecommendedTweetCard'
 
 const RecommendedTweetPage = () => {
   const { locale } = useRouter()

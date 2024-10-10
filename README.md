@@ -1,7 +1,7 @@
 # Freedom Combination Turborepo
 
 <div style="display:flex;gap:30px;">
-<img  height="150px" width="150px" src="https://raw.githubusercontent.com/freedomcombination/monorepo/main/apps/foundation/public/images/foundation-logo.svg" />
+<img  height="150px" width="150px" src="https://raw.githubusercontent.com/freedomcombination/monorepo/refs/heads/main/apps/foundation/public/images/foundation-logo.svg?token=GHSAT0AAAAAACOOL5UFWGKUXUZ3HJKB3CSSZX4KOXQ" />
 <img  height="150px" width="150px" src="https://user-images.githubusercontent.com/4060187/196936104-5797972c-ab10-4834-bd61-0d1e5f442c9c.png" />
 </div>
 
@@ -22,7 +22,6 @@ This Turborepo includes the following packages/apps:
 - `config`: `@fc/config` Menus, Seo, Theme, Constants
 - `context`: `@fc/context` AuthContext
 - `eslint-config-fc`: Eslint
-- `lib`: `@fc/lib` Fetchers
 - `mocks`: `@fc/mocks` Strapi Mock Data
 - `stripe`: `@fc/stripe` Stripe
 - `secrets`: `@fc/secrets` Secret Env Variables

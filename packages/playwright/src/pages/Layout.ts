@@ -1,6 +1,6 @@
 import { type Locator, type Page } from '@playwright/test'
 
-import { Site, StrapiLocale } from '@fc/types'
+import type { Site, StrapiLocale } from '@fc/types'
 
 import { getUrl } from '../utils'
 
@@ -18,6 +18,7 @@ const footerLinks = {
   ...headerLinks,
   terms: '/terms',
   privacy: '/privacy',
+  foundation: 'https://freedomcombination.com',
 } as const
 
 export class LayoutPage {
@@ -61,6 +62,7 @@ export class LayoutPage {
         activities: page.getByTestId(`link-footer/activities`),
         about: page.getByTestId(`link-footer/about-us`),
         contact: page.getByTestId(`link-footer/contact`),
+        foundation: page.getByTestId('link-footer-foundation'),
         donation: page.getByTestId(`link-footer/donation`),
         terms: page.getByTestId(`link-footer/terms`),
         privacy: page.getByTestId(`link-footer/privacy`),

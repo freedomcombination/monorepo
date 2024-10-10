@@ -2,8 +2,8 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { ProfilePanel } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { ProfilePanel } from '@fc/ui/components/ProfileSettings/ProfilePanel'
 
 import { Layout } from '../components'
 

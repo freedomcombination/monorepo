@@ -4,8 +4,8 @@ import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { NotFound } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { NotFound } from '@fc/ui/components/NotFound'
 
 import { Layout } from '../components'
 

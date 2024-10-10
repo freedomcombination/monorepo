@@ -1,4 +1,4 @@
-import { imageStreamEdgeHandler } from '@fc/services/src/api/imageStreamEdgeHandler'
+import { imageStreamEdgeHandler } from '@fc/services/api/imageStreamEdgeHandler'
 
 export const config = {
   runtime: 'edge',

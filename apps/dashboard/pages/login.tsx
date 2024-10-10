@@ -4,8 +4,8 @@ import { useTranslation } from 'next-i18next'
 import { NextSeo } from 'next-seo'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { AdminLoginForm } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { AdminLoginForm } from '@fc/ui/components/AdminLoginForm'
 
 const LoginPage = () => {
   const { t } = useTranslation()
