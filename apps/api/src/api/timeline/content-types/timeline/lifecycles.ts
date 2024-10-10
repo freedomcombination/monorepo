@@ -4,6 +4,8 @@ import { getUserByUsername, getUserTweets } from '../../../../libs'
 export default {
   async afterCreate({ result }) {
     try {
+      if (process.env.NODE_ENV === 'development') return
+
       const userResult = await getUserByUsername(result.username as string)
 
       const user = userResult?.data

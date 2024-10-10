@@ -70,7 +70,6 @@ export const getServerSideProps = async (
         publishedTime: art.publishedAt as string,
         modifiedTime: art.updatedAt as string,
         authors: [art.artist?.name || art.artist?.email || ''],
-        // TODO add tags
       },
       images: mapStrapiMediaToOgImages(image, title),
     },

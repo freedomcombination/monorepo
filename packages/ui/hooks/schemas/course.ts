@@ -110,12 +110,6 @@ export const courseFields: FormFields<Course> = [
   { name: 'quota', isRequired: true, type: 'number-input' },
   { name: 'price', isRequired: true, type: 'number-input' },
   {
-    name: 'tags',
-    type: 'select',
-    isMulti: true,
-    endpoint: 'tags',
-  },
-  {
     name: 'platform',
     type: 'select',
     endpoint: 'platforms',

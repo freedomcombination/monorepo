@@ -2,6 +2,8 @@ import { getAccountStats } from '../../../../libs'
 
 export default {
   async beforeCreate(event) {
+    if (process.env.NODE_ENV === 'development') return
+
     const { username, date } = event.params.data
 
     const existing = await strapi.db

@@ -8,11 +8,6 @@ import {
   CollectionUpdateInput,
 } from './collection'
 import { ApprovalStatus, Localize } from './common'
-import {
-  Competition,
-  CompetitionCreateInput,
-  CompetitionUpdateInput,
-} from './competition'
 import { UploadFile } from './file'
 import { Hashtag, HashtagCreateInput, HashtagUpdateInput } from './hashtag'
 import { StrapiLocale } from './locale'
@@ -27,7 +22,6 @@ export type StrapiTranslatableModel =
   | Activity
   | Blog
   | Collection
-  | Competition
   | Hashtag
   | Post
   | Presentation
@@ -36,7 +30,6 @@ export type StrapiTranslatableUpdateInput =
   | ActivityUpdateInput
   | BlogUpdateInput
   | CollectionUpdateInput
-  | CompetitionUpdateInput
   | HashtagUpdateInput
   | PostUpdateInput
 
@@ -44,7 +37,6 @@ export type StrapiTranslatableCreateInput =
   | ActivityCreateInput
   | BlogCreateInput
   | CollectionCreateInput
-  | CompetitionCreateInput
   | HashtagCreateInput
   | PostCreateInput
   | RecommendedTopicCreateInput
