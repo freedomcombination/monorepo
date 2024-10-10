@@ -1,7 +1,7 @@
 # Freedom Combination Turborepo
 
 <div style="display:flex;gap:30px;">
-<img  height="150px" width="150px" src="https://raw.githubusercontent.com/freedomcombination/monorepo/main/apps/foundation/public/images/foundation-logo.svg" />
+<img  height="150px" width="150px" src="https://www.freedomcombination.com/images/foundation-logo.svg" />
 <img  height="150px" width="150px" src="https://user-images.githubusercontent.com/4060187/196936104-5797972c-ab10-4834-bd61-0d1e5f442c9c.png" />
 </div>
 
@@ -22,7 +22,6 @@ This Turborepo includes the following packages/apps:
 - `config`: `@fc/config` Menus, Seo, Theme, Constants
 - `context`: `@fc/context` AuthContext
 - `eslint-config-fc`: Eslint
-- `lib`: `@fc/lib` Fetchers
 - `mocks`: `@fc/mocks` Strapi Mock Data
 - `stripe`: `@fc/stripe` Stripe
 - `secrets`: `@fc/secrets` Secret Env Variables
@@ -42,6 +41,10 @@ You need to have a running [PostgreSQL](https://www.postgresql.org/download/) se
 
 ```bash
 yarn install
+
+# Seed database
+yarn import
+
 # Start all apps
 yarn dev
 
@@ -65,7 +68,7 @@ yarn format # Formats all files
 ### Install Packages
 
 ```bash
-yarn add -W <package-name>
+yarn add <package-name>
 ```
 
 See [i18n-help](https://github.com/myniqx/i18n-help) for command-line translation tool usage details.

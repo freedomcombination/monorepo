@@ -3,9 +3,12 @@ import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 
 import { getSession } from '@fc/secrets'
-import { getCategorizedBlogs, useGetCategorizedBlogs } from '@fc/services'
+import {
+  getCategorizedBlogs,
+  useGetCategorizedBlogs,
+} from '@fc/services/blog/getCategorizedBlogs'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
+import type { StrapiLocale } from '@fc/types'
 
 import { Layout, WhyWeAre } from '../../components'
 

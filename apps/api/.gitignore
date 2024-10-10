@@ -10,13 +10,11 @@ Icon
 .Trashes
 ._*
 
-
 ############################
 # Linux
 ############################
 
 *~
-
 
 ############################
 # Windows
@@ -31,7 +29,6 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-
 ############################
 # Packages
 ############################
@@ -41,6 +38,7 @@ $RECYCLE.BIN/
 *.dat
 *.dmg
 *.gz
+!export.tar.gz
 *.iso
 *.jar
 *.rar
@@ -61,7 +59,6 @@ $RECYCLE.BIN/
 *.pid
 seed.tar.gz.enc
 
-
 ############################
 # Logs and databases
 ############################
@@ -71,7 +68,6 @@ seed.tar.gz.enc
 *dump.sql
 *.sqlite
 *.sqlite3
-
 
 ############################
 # Misc.

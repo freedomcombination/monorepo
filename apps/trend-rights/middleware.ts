@@ -2,7 +2,7 @@ import { get } from '@vercel/edge-config'
 import { addHours, isWithinInterval } from 'date-fns'
 import { NextRequest, NextResponse } from 'next/server'
 
-import { StrapiLocale } from '@fc/types'
+import type { StrapiLocale } from '@fc/types'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',

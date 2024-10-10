@@ -1,4 +1,4 @@
-import { Site } from '@fc/types'
+import type { Site } from '@fc/types'
 import { Column, Img, Row, Section, Text } from '@react-email/components'
 import React, { FC, PropsWithChildren } from 'react'
 import { getSiteColor, getSiteLogo, getSiteName } from '../utils/getSiteData'

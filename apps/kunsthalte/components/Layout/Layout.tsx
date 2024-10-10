@@ -2,9 +2,11 @@ import { FC, PropsWithChildren, useEffect } from 'react'
 
 import { NextSeoProps } from 'next-seo'
 
-import { menus, socialLinks } from '@fc/config'
-import { useAuthContext } from '@fc/context'
-import { Layout as AppLayout, UserFeedback } from '@fc/ui'
+import { menus } from '@fc/config/menu'
+import { socialLinks } from '@fc/config/socialLinks'
+import { useAuthContext } from '@fc/context/auth'
+import { Layout as AppLayout } from '@fc/ui/components/Layout'
+import { UserFeedback } from '@fc/ui/components/UserFeedback'
 
 interface LayoutProps extends PropsWithChildren {
   isDark?: boolean

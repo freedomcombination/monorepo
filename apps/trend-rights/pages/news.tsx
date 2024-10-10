@@ -3,8 +3,9 @@ import { FC } from 'react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 
 import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { StrapiLocale } from '@fc/types'
-import { Container, NewsFeed } from '@fc/ui'
+import type { StrapiLocale } from '@fc/types'
+import { Container } from '@fc/ui/components/Container'
+import { NewsFeed } from '@fc/ui/components/NewsFeed'
 
 import { Layout } from '../components'
 

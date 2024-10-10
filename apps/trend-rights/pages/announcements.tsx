@@ -8,17 +8,19 @@ import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 import { NextSeoProps } from 'next-seo'
 
-import { RequestCollectionArgs, strapiRequest } from '@fc/lib'
-import { ssrTranslations } from '@fc/services/ssrTranslations'
-import { Hashtag, StrapiCollectionResponse, StrapiLocale } from '@fc/types'
 import {
-  ButtonLink,
-  Container,
-  HashtagAnnouncement,
-  HashtagCard,
-  Hero,
-} from '@fc/ui'
-import { getItemLink, getPageSeo } from '@fc/utils'
+  RequestCollectionArgs,
+  strapiRequest,
+} from '@fc/services/common/strapiRequest'
+import { ssrTranslations } from '@fc/services/ssrTranslations'
+import type { Hashtag, StrapiCollectionResponse, StrapiLocale } from '@fc/types'
+import { ButtonLink } from '@fc/ui/components/ButtonLink'
+import { Container } from '@fc/ui/components/Container'
+import { HashtagAnnouncement } from '@fc/ui/components/HashtagAnnouncement'
+import { HashtagCard } from '@fc/ui/components/HashtagCard'
+import { Hero } from '@fc/ui/components/Hero'
+import { getItemLink } from '@fc/utils/getItemLink'
+import { getPageSeo } from '@fc/utils/getPageSeo'
 
 import { Layout } from '../components'
 

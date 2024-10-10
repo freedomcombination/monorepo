@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_flow_addresses",
+  "info": {
+    "displayName": "Address",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "postcode": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    }
+  }
+}

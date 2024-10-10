@@ -1,6 +1,6 @@
 import { type Locator, type Page } from '@playwright/test'
 
-import { Site, StrapiLocale } from '@fc/types'
+import type { Site, StrapiLocale } from '@fc/types'
 
 import { getUrl } from '../utils'
 
@@ -18,6 +18,7 @@ const footerLinks = {
   ...headerLinks,
   terms: '/terms',
   privacy: '/privacy',
+  foundation: 'https://freedomcombination.com',
 } as const
 
 export class LayoutPage {
@@ -43,7 +44,7 @@ export class LayoutPage {
         arts: page.getByTestId(`link-m/club/arts`),
         collections: page.getByTestId(`link-m/club/collections`),
         activities: page.getByTestId(`link-m/activities`),
-        about: page.getByTestId(`link-m/about`),
+        about: page.getByTestId(`link-m/about-us`),
         contact: page.getByTestId(`link-m/contact`),
         donation: page.getByTestId(`link-m/donation`),
       },
@@ -51,7 +52,7 @@ export class LayoutPage {
         arts: page.getByTestId(`link-d/club/arts`),
         collections: page.getByTestId(`link-d/club/collections`),
         activities: page.getByTestId(`link-d/activities`),
-        about: page.getByTestId(`link-d/about`),
+        about: page.getByTestId(`link-d/about-us`),
         contact: page.getByTestId(`link-d/contact`),
         donation: page.getByTestId(`link-d/donation`),
       },
@@ -59,8 +60,9 @@ export class LayoutPage {
         arts: page.getByTestId(`link-footer/club/arts`),
         collections: page.getByTestId(`link-footer/club/collections`),
         activities: page.getByTestId(`link-footer/activities`),
-        about: page.getByTestId(`link-footer/about`),
+        about: page.getByTestId(`link-footer/about-us`),
         contact: page.getByTestId(`link-footer/contact`),
+        foundation: page.getByTestId('link-footer-foundation'),
         donation: page.getByTestId(`link-footer/donation`),
         terms: page.getByTestId(`link-footer/terms`),
         privacy: page.getByTestId(`link-footer/privacy`),
@@ -72,7 +74,7 @@ export class LayoutPage {
       tr: page.getByTestId('button-d-tr'),
     }
     this.profileMenu = page.getByTestId('button-d-profile-menu')
-    this.profileLink = page.getByTestId('link-d-profile')
+    this.profileLink = page.getByTestId('link-d/profile')
     this.logoutButton = page.getByTestId('button-d-logout')
   }
 

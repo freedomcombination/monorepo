@@ -1,3 +1,3 @@
-import { loginHandler } from '@fc/services/src/api/loginHandler'
+import { loginHandler } from '@fc/services/api/loginHandler'
 
 export default loginHandler
