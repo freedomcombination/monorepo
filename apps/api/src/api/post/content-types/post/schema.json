@@ -79,11 +79,6 @@
       "target": "api::hashtag.hashtag",
       "inversedBy": "posts"
     },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
     "video": {
       "type": "media",
       "multiple": false,
@@ -113,6 +108,18 @@
         }
       },
       "type": "string"
+    },
+    "victim": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::victim.victim",
+      "inversedBy": "posts"
+    },
+    "prison": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::prison.prison",
+      "inversedBy": "posts"
     }
   }
 }

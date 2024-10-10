@@ -22,7 +22,6 @@ import { useNotificationsSchema } from './schemas/notification'
 import { usePostSchema } from './schemas/post'
 import { useProfileSchema } from './schemas/profile'
 import { useRecommendedTweetSchema } from './schemas/recommendedTweet'
-import { useTagsSchema } from './schemas/tags'
 import { useTopicSchema } from './schemas/topic'
 import {
   translateModelSchema,
@@ -45,7 +44,6 @@ export const useSchema = (): PartialStrapiEndpointMap<ObjectSchema<any>> => {
     categories: useCategoriesSchema(),
     'course-applications': useCourseApplicationSchema(),
     'recommended-tweets': useRecommendedTweetSchema(),
-    tags: useTagsSchema(),
     'translate-model': translateModelSchema,
     'translate-post-model': translatePostModelSchema,
     'user-feedbacks': useUserFeedbackSchema(),
