@@ -1,4 +1,5 @@
 import { Activity } from './activity'
+import { Category } from './category'
 import { Expand } from './common'
 import { Contact } from './contact'
 import { Course } from './course'
@@ -30,6 +31,7 @@ type PlatformRelation = {
   courses?: Array<Course>
   activities?: Array<Activity>
   foundation?: Foundation | null
+  categories?: Array<Category>
 }
 
 type PlatformRelationInput = {

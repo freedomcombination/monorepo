@@ -1,9 +1,3 @@
-export type translation = {
-  en: string
-  nl: string
-  tr: string
-}
-
 export const translations = {
   // Common
 
@@ -78,4 +72,70 @@ export const translations = {
     en: "If you find the description of the registered person insufficient, you can give the value 'rejected' to the appreveStatus parameter from the link below. Otherwise, the quota is automatically allocated to this user.",
     nl: "Indien u de omschrijving van de geregistreerde onvoldoende vindt, kunt u via onderstaande link de waarde 'rejected' meegeven aan de parameter appreveStatus. Anders wordt het quotum automatisch aan deze gebruiker toegewezen.",
   },
-}
+
+  // CourseApplicantSubmittedAssignmentFiles.tsx
+
+  'course-applicant-submitted-assignment-files-preview': {
+    tr: '{{name}}, ödev için istenen dosyaları sisteme yükledi.',
+    en: '{{name}} has uploaded the requested files.',
+    nl: '{{name}} heeft de aanvraagde bestanden ge-upload.',
+  },
+  'course-applicant-submitted-assignment-files-header': {
+    tr: 'Yeni bir kullanıcı, ödev için istenen dosyaları yükledi.',
+    en: 'A new user has uploaded the requested files.',
+    nl: 'Een nieuwe gebruiker heeft de aanvraagde bestanden ge-upload.',
+  },
+  'course-applicant-submitted-assignment-files-footer': {
+    tr: "Yukarıda bilgileri verilmiş başvuru sahibinin, sisteme eklediği dosyalara buradan ulaşabilirsiniz. Ayrıca 'Dashboard'a gidip değerlendirmenizide yapmalısınız.",
+    en: 'You can download the files that were requested by the user who submitted the application. Also, you can go to the Dashboard and complete the assessment.',
+    nl: 'U kunt de bestanden die aan de gebruiker gestuurd werd downloaden. U kunt ook naar de Dashboard gaan en de assessentie voltooien.',
+  },
+  'course-applicant-submitted-assignment-files-kv-file-list': {
+    tr: 'Dosyalar',
+    en: 'Files',
+    nl: 'Bestanden',
+  },
+  'course-applicant-submitted-assignment-files-kv-evaluation-date': {
+    tr: 'Son değerlendirme tarihi',
+    en: 'Evaluation date',
+    nl: 'Evaluatiedatum',
+  },
+
+  // CourseApplicantApprove.tsx
+  'course-applicant-approved-preview': {
+    tr: 'Kurs başvurunuz onaylandı.',
+    en: 'Your application has been approved.',
+    nl: 'Uw applicatie is geaccepteerd.',
+  },
+  'course-applicant-approved-header-price': {
+    tr: 'Kurs başvurunuz onaylandı, ödemenizi yapabilirsiniz.',
+    en: 'Your course application has been approved, you can make your payment.',
+    nl: 'Uw cursusaanvraag is goedgekeurd, u kunt uw betaling uitvoeren.',
+  },
+  'course-applicant-approved-header-no-price': {
+    tr: 'Kurs başvurunuz onaylandı, tebrikler.',
+    en: 'Your course application has been approved, thank you.',
+    nl: 'Uw cursusaanvraag is goedgekeurd, bedankt.',
+  },
+  'course-applicant-approved-footer': {
+    tr: "Kurs başvurunuz ile ilgili detaylerı 'Profil' sayfasında bulabilirsiniz.",
+    en: 'You can find the details of your course application in your profile page.',
+    nl: 'U kunt de details van uw cursusaanvraag in uw profielpagina vinden.',
+  },
+
+  'course-applicant-rejected-preview': {
+    tr: 'Kurs başvurunuz reddedildi.',
+    en: 'Your application has been rejected.',
+    nl: 'Uw applicatie is afgewezen.',
+  },
+  'course-applicant-rejected-header': {
+    tr: 'Kurs başvurunuz reddedildi.',
+    en: 'Your course application has been rejected.',
+    nl: 'Uw cursusaanvraag is afgewezen.',
+  },
+  'course-applicant-rejected-footer': {
+    tr: "Kurs başvurunuz ile ilgili detayları 'Profil' sayfasında bulabilirsiniz.",
+    en: 'You can find the details of your course application in your profile page.',
+    nl: 'U kunt de details van uw cursusaanvraag in uw profielpagina zien.',
+  },
+} as const
