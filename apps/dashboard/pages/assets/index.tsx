@@ -11,20 +11,22 @@ import type { Asset, Sort, StrapiLocale } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'
 import { DataTable } from '@fc/ui/components/DataTable'
 import { PageHeader } from '@fc/ui/components/PageHeader'
+import { useChangeParams } from '@fc/ui/hooks'
 import { useColumns } from '@fc/ui/hooks/useColumns'
 import { formatPrice } from '@fc/utils/formatPrice'
 
 const AssetsPage = () => {
-  const { locale, query, push } = useRouter()
+  const { locale, query } = useRouter()
   const { t } = useTranslation()
-  const router = useRouter()
-  const sort = query.sort as Sort
+  const columns = useColumns<Asset>()
+
   const currentPage = query.page ? parseInt(query.page as string) : 1
   const pageSize = query.pageSize ? parseInt(query.pageSize as string) : 20
+  const sort = query.sort as Sort
 
   const [searchTerm, setSearchTerm] = useState<string>()
 
-  const columns = useColumns<Asset>()
+  const { changeParams, changePage, changeSearch } = useChangeParams()
 
   const assetsQuery = useStrapiRequest<Asset>({
     endpoint: 'assets',
