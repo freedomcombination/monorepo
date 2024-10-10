@@ -1,5 +1,4 @@
 import { expect } from '@playwright/test'
-import { first } from 'lodash'
 
 import { test } from '../fixtures'
 
@@ -8,8 +7,8 @@ test.beforeEach(async ({ layoutPage }) => {
   await layoutPage.switchLanguage('en')
 })
 
-test.describe('01. dashboard-verification', () => {
-  test('TC-01: should Collection cards must have a picture, title and text visible ', async ({
+test.describe('10. Collections', () => {
+  test('TC-01: should collection cards have a visible picture, title and text', async ({
     page,
     layoutPage,
   }) => {
@@ -37,7 +36,7 @@ test.describe('01. dashboard-verification', () => {
       .first()
       .click()
 
-    await expect(
+    expect(
       await page.locator('p.chakra-text.css-1ijgt0h').nth(0).innerText(),
     ).toBe('1')
 
@@ -46,7 +45,7 @@ test.describe('01. dashboard-verification', () => {
       .first()
       .click()
 
-    await expect(
+    expect(
       await page.locator('p.chakra-text.css-1ijgt0h').nth(1).innerText(),
     ).toBe('2')
 
@@ -55,7 +54,7 @@ test.describe('01. dashboard-verification', () => {
       .first()
       .click()
 
-    await expect(
+    expect(
       await page.locator('p.chakra-text.css-1ijgt0h').nth(2).innerText(),
     ).toBe('3')
   })
