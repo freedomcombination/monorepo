@@ -1,4 +1,5 @@
 export * from './Arts'
+export * from './Contact'
 export * from './DashboardArts'
 export * from './Layout'
 export * from './Login'
