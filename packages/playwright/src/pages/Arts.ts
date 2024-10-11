@@ -8,6 +8,7 @@ export class ArtsPage {
 
   readonly title: string
   readonly description: string
+  readonly comment: string | undefined
 
   readonly uploadArtButton: Locator
   readonly warning: Locator
@@ -22,6 +23,13 @@ export class ArtsPage {
   readonly submitButton: Locator
   readonly confirmationMessage: Locator
   readonly goToMyProfileLink: Locator
+  readonly photos: Locator
+  readonly photosIcon: Locator
+  readonly photoTitle: Locator
+  readonly photoLikeIcon: Locator
+  readonly photoLikeButton: Locator
+  readonly photoCommentTxt: Locator
+  readonly photoSendCommentButton: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -40,6 +48,14 @@ export class ArtsPage {
     this.submitButton = page.getByTestId('button-create-art')
     this.confirmationMessage = page.getByTestId('text-create-art-success')
     this.goToMyProfileLink = page.getByTestId('link-goto-profile')
+    this.photos = page.locator('.chakra-aspect-ratio')
+    this.photosIcon = page.locator('//button[@aria-label="view art"]')
+    this.photoTitle = page.locator('.chakra-heading').first()
+    this.photoLikeIcon = page.locator('//*[@data-testid="button-like"]')
+
+    this.photoLikeButton = page.locator('//button[@data-testid="button-like"]')
+    this.photoCommentTxt = page.locator('//*[@data-testid="input-content"]')
+    this.photoSendCommentButton = page.getByText('Send Comment')
   }
 
   async clickUploadArtButton() {
@@ -69,7 +85,19 @@ export class ArtsPage {
     await this.page.waitForTimeout(1000)
     await this.saveButton.click()
   }
+  async chooseTheFirstPhoto() {
+    await this.page.locator('.art-image').first().hover()
+    await this.photosIcon.first().click()
+  }
 
+  async likeTheFirstPhoto() {
+    await this.photoLikeIcon.click()
+    await this.page.waitForTimeout(2000)
+  }
+  async writeACommentForThePhotoAndSendIt(comment = this.comment) {
+    await this.photoCommentTxt.fill(comment)
+    await this.photoSendCommentButton.click()
+  }
   async createArt(args?: {
     title?: string
     description?: string
