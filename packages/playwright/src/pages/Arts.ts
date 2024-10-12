@@ -48,10 +48,10 @@ export class ArtsPage {
     this.submitButton = page.getByTestId('button-create-art')
     this.confirmationMessage = page.getByTestId('text-create-art-success')
     this.goToMyProfileLink = page.getByTestId('link-goto-profile')
-    this.photos = page.locator('.chakra-aspect-ratio')
+    this.photos = page.locator('.chakra-aspect-ratio').first()
     this.photosIcon = page.locator('//button[@aria-label="view art"]')
     this.photoTitle = page.locator('.chakra-heading').first()
-    this.photoLikeIcon = page.locator('//*[@data-testid="button-like"]')
+    this.photoLikeIcon = page.getByTestId('//*[@data-testid="button-like"]')
 
     this.photoLikeButton = page.locator('//button[@data-testid="button-like"]')
     this.photoCommentTxt = page.locator('//*[@data-testid="input-content"]')
