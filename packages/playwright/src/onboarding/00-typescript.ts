@@ -24,6 +24,8 @@ console.log(y)
 // 01-02. Primitive Types
 // TODO:
 // - [ ] Declare a variable `myName` with a type of `string`
+const myName: string = "Mehmet"
+console.log(myName)
 // - [ ] Declare a variable `age` with a type of `number`
 // - [ ] Declare a variable `isStudent` with a type of `boolean`
 // - [ ] Declare a variable `hobbies` with a type of `string[]`
@@ -48,19 +50,19 @@ console.log(y)
 // TODO:
 // - [ ] Declare a function `add` that takes two parameters `a` and `b` of type `number` and returns a `number`
 // - [ ] Call the function `add` with the arguments `2` and `3` and log the result to the console
-export function add() {}
+export function add() { }
 
 // 02-02. Function Expression
 // TODO:
 // - [ ] Declare a function `subtract` that takes two parameters `a` and `b` of type `number` and returns a `number`
 // - [ ] Call the function `subtract` with the arguments `5` and `3` and log the result to the console
-export const subtract = function () {}
+export const subtract = function () { }
 
 // 02-03. Arrow Function
 // TODO:
 // - [ ] Declare a function `multiply` that takes two parameters `a` and `b` of type `number` and returns a `number`
 // - [ ] Call the function `multiply` with the arguments `2` and `3` and log the result to the console
-export const multiply = () => {}
+export const multiply = () => { }
 
 /**
  * =====================================================================================================================
@@ -83,7 +85,7 @@ export type IPerson = {
   name: string
   age: number
 }
-export function sayHello() {}
+export function sayHello() { }
 
 /**
  * =====================================================================================================================
@@ -99,6 +101,6 @@ export function sayHello() {}
 // - [ ] Declare a function `greet` that returns a `string` with the format `'Hello, my name is ${name} and I am ${age} years old'`
 // - [ ] Create an instance of `Person` with the arguments `'John'` and `30` and log the result of calling the `greet` function to the console
 export class Person {
-  constructor() {}
-  greet() {}
+  constructor() { }
+  greet() { }
 }
