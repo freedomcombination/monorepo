@@ -88,7 +88,7 @@ export const ArchiveContentAssistant = () => {
               <Stack gap={4} key={message.id}>
                 <Stack>
                   <Text fontWeight={600}>Assistant:</Text>
-                  <Code rounded={'md'} p={2} maxWidth='100%'>
+                  <Code rounded={'md'} p={2} maxWidth="100%">
                     {message.content}
                   </Code>
                 </Stack>
