@@ -47,7 +47,7 @@ test.describe('08. Contact required field control', () => {
 
     await checkExternalLink(
       contactPage.socialLinks.whatsapp,
-      'https://api.whatsapp.com/send?phone=31685221308',
+      'https://api.whatsapp.com/send?phone=31687578056',
     ) // 10. When clicking on the WhatsApp icon, the user should be directed to another page.
 
     await checkExternalLink(
