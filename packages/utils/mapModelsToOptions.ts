@@ -23,8 +23,9 @@ const mapModelToOption = (model?: StrapiModel, locale?: StrapiLocale) => {
   const assetsTracking = model as AssetsTracking
 
   const localizedName = locale
-    ? modelWithLocalizedName[`name_${locale}`]
-    : 'name'
+    ? modelWithLocalizedName[`name_${locale}`] || profile.name
+    : profile.name || 'unknown'
+
   const value = model.id.toString()
   let label = (model as StrapiTranslatableModel).title || ''
 
