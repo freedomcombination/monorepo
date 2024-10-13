@@ -8,7 +8,6 @@ import {
   AccordionPanel,
   Badge,
   Box,
-  Button,
   Center,
   Link,
   Stack,
@@ -26,6 +25,7 @@ import { CourseLogic } from '@fc/utils/courseLogic'
 import { ProfileCourseDetails } from './Payment/ProfileCourseDetails'
 import { StripeResult } from './Payment/StripeResult'
 import { I18nNamespaces } from '../../@types/i18next'
+import { ButtonLink } from '../ButtonLink'
 import { KeyValue } from '../KeyValueView'
 
 export const CoursesTab: FC = () => {
@@ -78,19 +78,26 @@ export const CoursesTab: FC = () => {
               />
             ))}
           </Accordion>
-          <Link href="/courses">
-            <Button colorScheme="primary" size="md" variant={'outline'}>
-              {t('course.payment.title.check-other-courses')}
-            </Button>
-          </Link>
+
+          <ButtonLink
+            href={'/courses'}
+            colorScheme="primary"
+            size="md"
+            variant={'outline'}
+          >
+            {t('course.payment.title.check-other-courses')}
+          </ButtonLink>
         </Stack>
       ) : (
         <Center>
-          <Link href="/courses">
-            <Button colorScheme="primary" size="lg" variant={'outline'}>
-              {t('course.payment.title.go-to-courses')}
-            </Button>
-          </Link>
+          <ButtonLink
+            href={'/courses'}
+            colorScheme="primary"
+            size="lg"
+            variant={'outline'}
+          >
+            {t('course.payment.title.go-to-courses')}
+          </ButtonLink>
         </Center>
       )}
     </Box>

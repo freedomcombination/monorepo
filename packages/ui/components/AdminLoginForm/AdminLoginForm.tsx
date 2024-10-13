@@ -1,9 +1,17 @@
 import { useState } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import { Box, Button, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  SimpleGrid,
+  Stack,
+  Text,
+  VStack,
+  Link,
+} from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
+import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -123,6 +131,7 @@ export const AdminLoginForm = () => {
                       components={{
                         a: (
                           <Link
+                            as={NextLink}
                             data-testid="contact-us-error"
                             isExternal
                             href={'https://freedomcombination.com/tr/contact'}

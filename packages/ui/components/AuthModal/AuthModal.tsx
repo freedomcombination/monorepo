@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import {
   Button,
   Modal,
@@ -11,9 +10,11 @@ import {
   Stack,
   Text,
   VStack,
+  Link,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
+import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -128,6 +129,7 @@ export const AuthModal = () => {
                         components={{
                           a: (
                             <Link
+                              as={NextLink}
                               isExternal
                               href={'https://freedomcombination.com/tr/contact'}
                               color="blue.500"

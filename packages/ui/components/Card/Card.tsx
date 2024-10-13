@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import {
   Center,
   Heading,
@@ -10,6 +9,7 @@ import {
   Text,
   Wrap,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 
 import type { UploadFile } from '@fc/types'
 

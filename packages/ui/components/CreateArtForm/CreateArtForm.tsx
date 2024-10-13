@@ -1,6 +1,5 @@
 import { FC, useRef, useState } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import {
   Box,
   Button,
@@ -20,10 +19,12 @@ import {
   Textarea,
   useDisclosure,
   useToast,
+  Link,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useQueryClient } from '@tanstack/react-query'
+import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
@@ -187,6 +188,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
               <Text data-testid="text-require-login">
                 <>{t('you-must-logged-in')} </>
                 <Link
+                  as={NextLink}
                   data-testid="link-login"
                   href={loginHref}
                   color="primary.500"

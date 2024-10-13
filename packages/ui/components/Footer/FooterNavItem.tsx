@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import { Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 import { FooterNavItemProps } from './types'
@@ -11,6 +12,7 @@ export const FooterNavItem: FC<FooterNavItemProps> = ({ item }) => {
 
   return (
     <Link
+      as={NextLink}
       color="primary.100"
       _hover={{
         color: 'primary.50',

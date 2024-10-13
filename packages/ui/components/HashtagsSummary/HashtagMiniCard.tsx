@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import { Card, Heading, Stack, Text } from '@chakra-ui/react'
+import Link from 'next/link'
 
 import type { Hashtag } from '@fc/types'
 import { WImage } from '@fc/ui/components/WImage'

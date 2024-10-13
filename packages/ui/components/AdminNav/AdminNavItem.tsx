@@ -101,7 +101,6 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
                   leftIcon={item.icon}
                   size="sm"
                   variant="ghost"
-                  color={'initial'}
                   w="full"
                   px={2}
                   _hover={{ color: 'primary.500' }}

@@ -1,5 +1,5 @@
-import { LinkProps } from '@chakra-ui/next-js'
 import { ButtonProps } from '@chakra-ui/react'
+import { LinkProps } from 'next/link'
 
 import { DashboardRoute } from '@fc/config/dashboardRoutes'
 

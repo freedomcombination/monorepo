@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import { Box, Center, Heading, Text } from '@chakra-ui/react'
+import { Box, Center, Heading, Text, Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 export const NotFound: FC = () => {
@@ -14,7 +14,12 @@ export const NotFound: FC = () => {
           {t('not-found')}
         </Heading>
         <Text mb={4}>{t('not-found-desc')}</Text>
-        <Link data-testid="link-notfound-home" href="/" color="primary.500">
+        <Link
+          as={NextLink}
+          data-testid="link-notfound-home"
+          href="/"
+          color="primary.500"
+        >
           {t('not-found-button')}
         </Link>
       </Box>

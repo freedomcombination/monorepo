@@ -1,4 +1,3 @@
-import { Link } from '@chakra-ui/next-js'
 import {
   Button,
   Center,
@@ -7,7 +6,9 @@ import {
   Stack,
   StackProps,
   Text,
+  Link,
 } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { Trans, useTranslation } from 'next-i18next'
 import { BiCookie } from 'react-icons/bi'
 
@@ -48,7 +49,7 @@ const CookieBanner = (props: CookieBannerProps) => {
         <Trans
           i18nKey={'cookie.text'}
           components={{
-            a: <Link color={'primary.300'} href="/privacy" />,
+            a: <Link as={NextLink} color={'primary.300'} href="/privacy" />,
           }}
         />
       </Text>

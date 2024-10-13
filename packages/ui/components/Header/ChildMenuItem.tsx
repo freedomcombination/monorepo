@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import { Box } from '@chakra-ui/react'
+import { Box, Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 import { MenuTypeItemProps } from './types'
@@ -21,6 +21,9 @@ export const ChildMenuItem: FC<MenuTypeItemProps> = ({
 
   return (
     <Wrapper
+      {...(item.link && {
+        as: NextLink,
+      })}
       href={item.link as string}
       data-testid={`link-${isMobile ? 'm' : 'd'}${item.link}`}
       fontWeight={600}

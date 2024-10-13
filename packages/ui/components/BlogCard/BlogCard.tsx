@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import {
   Box,
   Flex,
@@ -11,7 +10,9 @@ import {
   Text,
   useBreakpointValue,
   Wrap,
+  Link,
 } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { FaCalendarDay, FaClock, FaEye, FaHeart } from 'react-icons/fa'
 
@@ -30,6 +31,7 @@ export const BlogCard: FC<BlogCardProps> = ({ post, isFeatured, onClick }) => {
 
   return (
     <Link
+      as={NextLink}
       {...(featured && { gridColumn: { lg: 'span 2' } })}
       {...(!featured && { display: 'flex' })}
       onClick={onClick}

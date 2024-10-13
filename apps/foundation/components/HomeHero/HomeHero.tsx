@@ -1,6 +1,7 @@
 import { FC, useCallback, useEffect, useState } from 'react'
 
-import { chakra, Flex, keyframes } from '@chakra-ui/react'
+import { chakra, Flex } from '@chakra-ui/react'
+import { keyframes } from '@emotion/react'
 import { useTransform, useScroll } from 'framer-motion'
 
 const moveHorizontal = keyframes`

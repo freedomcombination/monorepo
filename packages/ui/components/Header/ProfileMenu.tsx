@@ -1,6 +1,5 @@
 import { FC, Fragment } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import {
   Button,
   DarkMode,
@@ -10,6 +9,7 @@ import {
   MenuItem,
   MenuList,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FiLogIn, FiLogOut } from 'react-icons/fi'

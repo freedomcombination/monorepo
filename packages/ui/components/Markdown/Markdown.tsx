@@ -1,8 +1,8 @@
 /* eslint-disable react/display-name */
 import { FC, HtmlHTMLAttributes } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import { chakra } from '@chakra-ui/react'
+import { chakra, Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { MDXRemote } from 'next-mdx-remote'
 
 import { MarkdownProps } from './types'
@@ -54,6 +54,7 @@ const MarkdownComponents = {
   ),
   a: (props: any) => (
     <Link
+      as={NextLink}
       href={props.href as any}
       fontWeight={600}
       color="primary.500"

@@ -91,6 +91,7 @@ export const HomePlatform: FC<HomePlatformProps> = ({ platforms }) => {
                       w="max-content"
                       size="lg"
                       colorScheme={color.colorScheme}
+                      bgClip="text"
                       variant="link"
                       alignSelf={{
                         base: 'center',

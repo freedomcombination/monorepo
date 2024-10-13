@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import { Heading, Stack, Text } from '@chakra-ui/react'
+import { Heading, Stack, Text, Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { SITE_URL } from '@fc/config/constants'
@@ -34,7 +34,12 @@ export const HashtagAnnouncement: FC<HashtagAnnouncementProps> = ({
       <Stack fontSize={'lg'} justify={'center'} spacing={6}>
         <Heading as={'h3'}>{hashtag.title}</Heading>
         <Text>{t('support.hashtag')}</Text>
-        <Link href={link} fontWeight={'bold'} color={'primary.500'}>
+        <Link
+          as={NextLink}
+          href={link}
+          fontWeight={'bold'}
+          color={'primary.500'}
+        >
           {t('join-link')}
         </Link>
         <ShareButtons

@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import {
   Badge,
   Box,
@@ -10,6 +9,7 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaExternalLinkSquareAlt } from 'react-icons/fa'

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import { Heading, HStack, Stack, Text } from '@chakra-ui/react'
+import Link from 'next/link'
 
 import { WAvatar } from '../WAvatar'
 
