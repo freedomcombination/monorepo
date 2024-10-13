@@ -1,1 +1,1 @@
-{"categories":["İşkence","Cezaevi ihlalleri","Khk","Kitaplar","Belgeseller","Hayat Hikayemiz","Global Aktiviteler","Sulu boya","Tanıtım","Diger","Ebru","Dijital Art","Kaligrafi","Resim","Electronics","Fotoğraf"],"tags":["Hasta Tutuklular ","Tutsak Bebekler","Merve Elibol"]}
+{"categories":["Tutsak Bebekler","Nefret Operasyonu","Hasta Tutuklular","Kaybolan Hayatlar","Khk","Cezaevi İhlalleri","İşkence"],"victims":["Yusuf Bilge Tunç","Hatice Yıldız"],"prisons":["Sincan Cezaevi","Bakırköy Kadın Kapalı Cezaevi"]}
