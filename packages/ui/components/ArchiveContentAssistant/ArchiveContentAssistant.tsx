@@ -37,8 +37,6 @@ export const ArchiveContentAssistant = () => {
 
   const response = useInitialArchiveContentValues(messages)
 
-  console.log('response', response)
-
   return (
     <Stack gap={4}>
       <form
@@ -90,7 +88,7 @@ export const ArchiveContentAssistant = () => {
               <Stack gap={4} key={message.id}>
                 <Stack>
                   <Text fontWeight={600}>Assistant:</Text>
-                  <Code rounded={'md'} p={2} w="max">
+                  <Code rounded={'md'} p={2} maxWidth='100%'>
                     {message.content}
                   </Code>
                 </Stack>
@@ -106,8 +104,8 @@ export const ArchiveContentAssistant = () => {
                   initialValues={{
                     content: response?.usersMessage?.content ?? '',
                     categories: response?.categories ?? [],
-                    // TODO: Update response to include victims and prisons
-                    // tags: response.tags ?? [],
+                    prisons: response?.prisons ?? [],
+                    victims: response?.victims ?? [],
                   }}
                 >
                   Accept
