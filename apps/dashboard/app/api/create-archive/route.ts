@@ -28,6 +28,8 @@ export async function POST(req: Request) {
   const parsedFileContent = JSON.parse(fileContent)
 
   // Query Strapi for comparison
+  // TODO: Use a custom endpoint to fetch all categories, prisons and victims
+  // Strapi has a limit of 100 items max per request
   const categories = await strapiRequest<Category>({
     endpoint: 'categories',
     fields: ['name_tr'],
@@ -103,8 +105,6 @@ export async function POST(req: Request) {
   // Create Assistant if there's none
   if (!assistantId) {
     console.info('Creating an assistant...')
-    // TODO: Use a custom endpoint to fetch all categories, prisons and victims
-    // Strapi has a limit of 100 items max per request
     const file = await openai.files.create({
       // TODO: Does it accept remote URLs?
       file: fs.createReadStream('data.txt'),
