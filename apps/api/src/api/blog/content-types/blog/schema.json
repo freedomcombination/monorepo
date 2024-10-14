@@ -97,11 +97,6 @@
       "relation": "oneToMany",
       "target": "api::category.category"
     },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
     "comments": {
       "type": "relation",
       "relation": "oneToMany",

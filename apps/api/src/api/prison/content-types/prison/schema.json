@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prisons",
+  "info": {
+    "singularName": "prison",
+    "pluralName": "prisons",
+    "displayName": "Prison",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "city": {
+      "type": "string"
+    },
+    "contents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::archive-content.archive-content",
+      "mappedBy": "prisons"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "prison"
+    },
+    "images": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::archive-image.archive-image",
+      "mappedBy": "prison"
+    }
+  }
+}
