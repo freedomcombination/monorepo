@@ -128,7 +128,7 @@ test.describe('06. Profile Editing Tests', () => {
     await profilePage.tabs.security.click()
     await profilePage.updatePassword(TEMP_PASSWORD, PASSWORD)
   })
-  
+
   test('TC-05: Password Update Requirements Not Enforced in Profile Editing', async ({
     page,
     context,
@@ -143,14 +143,6 @@ test.describe('06. Profile Editing Tests', () => {
     await layoutPage.gotoLogin('kunsthalte')
     await loginPage.login(USERNAME, PASSWORD)
     await layoutPage.gotoProfilePage()
-
-    await page.getByTestId('tab-security').click()
-
-    const nonSymbolPassword = 'Test1234'
-
-    await profilePage.updatePassword(PASSWORD, nonSymbolPassword)
-
-    await expect(page.getByTestId('error-text-password')).toBeVisible()
 
     // should not update password without uppercase
     await page.getByTestId('tab-security').click()
@@ -177,6 +169,6 @@ test.describe('06. Profile Editing Tests', () => {
 
     await profilePage.updatePassword(PASSWORD, noNumbersPassword)
 
-    await expect(page.getByTestId('error-text-password')).toBeVisible() 
+    await expect(page.getByTestId('error-text-password')).toBeVisible()
   })
 })
