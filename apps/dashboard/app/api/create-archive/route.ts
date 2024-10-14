@@ -21,9 +21,10 @@ export async function POST(req: Request) {
   } = await req.json()
 
   let assistantId = process.env.ASSISTANT_ID!
+  const fileName = 'archive-assistant-data.txt'
 
   // Read file content
-  const filePath = path.join(process.cwd(), 'data.txt')
+  const filePath = path.join(process.cwd(), fileName)
   const fileContent = fs.readFileSync(filePath, 'utf8')
   const parsedFileContent = JSON.parse(fileContent)
 
@@ -76,13 +77,12 @@ export async function POST(req: Request) {
       prisons: prisons?.data?.map(p => p.name) ?? [],
     }
 
-    fs.writeFileSync('data.txt', JSON.stringify(jsonData))
+    fs.writeFileSync(filePath, JSON.stringify(jsonData))
 
     // Update the Assistant if there's one
     if (assistantId) {
       const file = await openai.files.create({
-        // ? is better to use filePath instead of a hardcoded path
-        file: fs.createReadStream('data.txt'),
+        file: fs.createReadStream(filePath),
         purpose: 'assistants',
       })
 
@@ -107,7 +107,7 @@ export async function POST(req: Request) {
     console.info('Creating an assistant...')
     const file = await openai.files.create({
       // TODO: Does it accept remote URLs?
-      file: fs.createReadStream('data.txt'),
+      file: fs.createReadStream(filePath),
       purpose: 'assistants',
     })
 
@@ -119,14 +119,16 @@ export async function POST(req: Request) {
     const assistant = await openai.beta.assistants.create({
       name: 'News Analyst Assistant',
       instructions: `
-        Your task is to read and analyze news articles. Based on their content, return the appropriate categories, prisons, and victims, selecting ONLY from the lists provided in the file. 
+        Your task is to read and analyze news articles. Based on their content, return the appropriate categories, prisons, and victims, 
+        selecting ONLY from the lists provided in the file. Don't make up any values. Only use the values from the provided file.
         Your response must be strictly in JSON format:
         {
           "categories": ["Category1", "Category2", ...],
           "prisons": ["Prison1", "Prison2", ...],
           "victims": ["Victim1", "Victim2", ...]
         }.
-        If no exact match is found, return an empty array for that field. Each message from the user must be analyzed independently.
+        Each message from the user must be analyzed independently.
+        If no exact match is found, return an empty array for that field.
       `
         .replace(/\n/g, '')
         .replace(/\s+/g, ' '),
