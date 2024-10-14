@@ -1,14 +1,14 @@
-import { Profile, Course, StrapiLocale, CourseApplication } from '@fc/types'
-import { getTranslate, TranslateFunc } from '../../utils/getTranslate'
+import { Course, CourseApplication, Profile, StrapiLocale } from '@fc/types'
+import { Link, Section, Text } from '@react-email/components'
 import React, { FC, ReactNode } from 'react'
 import { EmailProvider } from '../../EmailProvider'
-import SiteLayout from '../../components/SiteLayout'
-import { Section, Text, Link } from '@react-email/components'
-import { getSiteLink } from '../../utils/getSiteData'
-import { KeyValue } from '../../components/KeyValue'
-import { translations } from '../../utils/translations'
 import { EmailButton } from '../../components/Button'
+import { KeyValue } from '../../components/KeyValue'
+import SiteLayout from '../../components/SiteLayout'
 import { formatDate } from '../../utils/formatDate'
+import { getSiteLink } from '../../utils/getSiteData'
+import { getTranslate, TranslateFunc } from '../../utils/getTranslate'
+import { translations } from '../../utils/translations'
 
 export type CourseApplicationKV = {
   tKey: keyof typeof translations

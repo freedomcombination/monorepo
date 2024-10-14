@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dev_mails",
+  "info": {
+    "singularName": "dev-mail",
+    "pluralName": "dev-mails",
+    "displayName": "DevMail",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "to": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "html": {
+      "type": "text"
+    },
+    "groupDate": {
+      "type": "datetime"
+    }
+  }
+}

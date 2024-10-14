@@ -42,6 +42,7 @@ import {
   CourseApplicationUnpaid,
 } from './course-application'
 import { CoursePayment } from './course-payment'
+import { DevMail } from './dev-mail'
 import { Donation, DonationCreateInput, DonationUpdateInput } from './donation'
 import { EmailCreateInput } from './email'
 import {
@@ -176,6 +177,7 @@ export type StrapiModel =
   | UserFeedback
   | UserNotification
   | Victim
+  | DevMail
 
 export type StrapiSeoModel =
   | Activity
@@ -314,6 +316,7 @@ export type StrapiCollectionEndpoint =
   | 'users-notifications'
   | 'users-permissions/roles'
   | 'victims'
+  | 'dev-mails'
 
 export type StrapiEndpoint =
   | StrapiSingleEndpoint

@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react'
 
-import { Body, Container, Font, Html } from '@react-email/components'
+import { Body, Font, Html } from '@react-email/components'
 
 export const EmailProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -25,9 +25,7 @@ export const EmailProvider: FC<PropsWithChildren> = ({ children }) => {
           format: 'woff2',
         }}
       />
-      <Body>
-        <Container style={{ maxWidth: '80%' }}>{children}</Container>
-      </Body>
+      <Body>{children}</Body>
     </Html>
   )
 }
