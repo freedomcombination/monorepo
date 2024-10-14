@@ -5,6 +5,7 @@
   "description": "A Strapi application",
   "scripts": {
     "email": "npx email dev",
+    "api": "strapi dev",
     "dev": "strapi dev",
     "dashboard": "strapi dev",
     "foundation": "strapi dev",

@@ -36,20 +36,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   const router = useRouter()
 
   useEffect(() => {
-    if (!profile || !profile.locale || profile.locale === router.locale) return
-
-    // change locale when a new user logs in
-    router.push(
-      router.query.returnUrl
-        ? router.query.returnUrl.toString()
-        : router.asPath,
-      undefined,
-      { locale: profile.locale, scroll: false },
-    )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile?.email, profile?.locale])
-
-  useEffect(() => {
     if (user) {
       authModalDisclosure.onClose()
     }
