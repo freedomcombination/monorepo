@@ -17296,7 +17296,7 @@ __metadata:
     react-headroom: "npm:^3.2.1"
     react-hook-form: "npm:7.53.0"
     react-hook-form-persist: "npm:^3.0.0"
-    react-i18next: "npm:^15.0.2"
+    react-i18next: "npm:^15.0.3"
     react-icons: "npm:^5.3.0"
     react-intersection-observer: "npm:^9.13.1"
     react-markdown: "npm:^9.0.1"
@@ -25998,9 +25998,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^15.0.2":
-  version: 15.0.2
-  resolution: "react-i18next@npm:15.0.2"
+"react-i18next@npm:^15.0.3":
+  version: 15.0.3
+  resolution: "react-i18next@npm:15.0.3"
   dependencies:
     "@babel/runtime": "npm:^7.25.0"
     html-parse-stringify: "npm:^3.0.1"
@@ -26012,7 +26012,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 10/25e6a611e2d1f250103120023ceb5dbf285e796cc0a2ab7685844438c3f698793d68bc454025aa0ca3379708bd468c9acfe6603c7b64f850358f2deb9b37a570
+  checksum: 10/4437785347fffa0a1b92f8ca3303eccb11f0d7e83f671c5e27bfa785f2eb400c6fc444d1f382a8bfb564b426d16229cecbfffdaaf13bc9c2921ea0f4f7553ebe
   languageName: node
   linkType: hard
 
