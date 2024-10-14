@@ -8,6 +8,7 @@ import {
 } from './lib'
 import {
   ArtsPage,
+  ContactPage,
   DashboardArtsPage,
   LayoutPage,
   LoginPage,
@@ -17,6 +18,7 @@ import {
 
 type ExtendProps = {
   artsPage: ArtsPage
+  contactPage: ContactPage
   dashboardArtsPage: DashboardArtsPage
   layoutPage: LayoutPage
   loginPage: LoginPage
@@ -35,6 +37,10 @@ export const test = base.extend<ExtendProps>({
   artsPage: async ({ page }, use) => {
     const artsPage = new ArtsPage(page)
     await use(artsPage)
+  },
+  contactPage: async ({ page }, use) => {
+    const contactPage = new ContactPage(page)
+    await use(contactPage)
   },
   dashboardArtsPage: async ({ page }, use) => {
     const dashboardArtsPage = new DashboardArtsPage(page)

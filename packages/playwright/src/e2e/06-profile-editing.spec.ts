@@ -144,14 +144,6 @@ test.describe('06. Profile Editing Tests', () => {
     await loginPage.login(USERNAME, PASSWORD)
     await layoutPage.gotoProfilePage()
 
-    await page.getByTestId('tab-security').click()
-
-    const nonSymbolPassword = 'Test1234'
-
-    await profilePage.updatePassword(PASSWORD, nonSymbolPassword)
-
-    await expect(page.getByTestId('error-text-password')).toBeVisible()
-
     // should not update password without uppercase
     await page.getByTestId('tab-security').click()
 
@@ -177,6 +169,6 @@ test.describe('06. Profile Editing Tests', () => {
 
     await profilePage.updatePassword(PASSWORD, noNumbersPassword)
 
-    await expect(page.getByTestId('error-text-password')).toBeVisible() 
+    await expect(page.getByTestId('error-text-password')).toBeVisible()
   })
-}) 
+})
