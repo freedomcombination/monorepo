@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 
 import { Button, FormLabel, HStack, Stack, useToast } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
@@ -7,42 +7,23 @@ import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/services/common/mutation'
 import { Profile, ProfileUpdateInput, StrapiLocale } from '@fc/types'
 
-import { I18nNamespaces } from '../../@types/i18next'
-
 export const PreferencesTab: FC = () => {
   const { profile, token, checkAuth } = useAuthContext()
   const { t } = useTranslation()
   const toast = useToast()
-  const [langChanged, setLangChanged] = useState(false)
 
   const langList: {
     locale: StrapiLocale
-    tKey: keyof I18nNamespaces['common']
+    name: string
   }[] = [
-    { locale: 'en', tKey: 'profile.tabs.preferences.lang.english' },
-    { locale: 'nl', tKey: 'profile.tabs.preferences.lang.dutch' },
-    { locale: 'tr', tKey: 'profile.tabs.preferences.lang.turkish' },
+    { locale: 'en', name: 'English' },
+    { locale: 'nl', name: 'Nederlands' },
+    { locale: 'tr', name: 'Türkçe' },
   ]
 
   const currentLang = profile?.locale ?? 'en'
 
-  useEffect(() => {
-    if (!langChanged) return
-
-    toast({
-      title: t('profile.tabs.preferences.lang.success', {
-        lang: t(langList.find(({ locale }) => locale === currentLang)!.tKey),
-      }),
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    })
-
-    setLangChanged(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile?.locale])
-
-  const changeLocale = async (locale: StrapiLocale) => {
+  const changeLocale = async (locale: StrapiLocale, name: string) => {
     if (!profile || !token) return
     if (locale !== currentLang) {
       await mutation<Profile, ProfileUpdateInput>({
@@ -53,7 +34,14 @@ export const PreferencesTab: FC = () => {
         token,
       })
       await checkAuth()
-      setLangChanged(true)
+      toast({
+        title: t('profile.tabs.preferences.lang.success', {
+          lang: name,
+        }),
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      })
     }
   }
 
@@ -69,14 +57,14 @@ export const PreferencesTab: FC = () => {
           {t('profile.tabs.preferences.lang.label')}
         </FormLabel>
         <HStack spacing={4}>
-          {langList.map(({ locale, tKey }) => (
+          {langList.map(({ locale, name }) => (
             <Button
               key={locale}
               variant={locale === currentLang ? 'solid' : 'outline'}
               colorScheme="primary"
-              onClick={() => changeLocale(locale)}
+              onClick={() => changeLocale(locale, name)}
             >
-              {t(tKey)}
+              {name}
             </Button>
           ))}
         </HStack>
