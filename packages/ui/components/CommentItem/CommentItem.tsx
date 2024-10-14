@@ -13,13 +13,13 @@ type CommentItemProps = {
 }
 
 export const CommentItem: FC<CommentItemProps> = ({ comment }) => {
-  const name = comment?.profile?.name || comment.name || 'Anonymous'
+  const name = comment.profile?.name || comment.name || 'Anonymous'
 
   return (
     <HStack align="start">
       <WAvatar
         size="sm"
-        src={getMediaUrl(comment?.profile?.avatar)}
+        src={getMediaUrl(comment.profile?.avatar)}
         name={name}
       />
       <Stack fontSize="sm">

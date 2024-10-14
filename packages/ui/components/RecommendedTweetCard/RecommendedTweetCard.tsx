@@ -23,7 +23,7 @@ export const RecommendedTweetCard: FC<RecommendedTweetCardProps> = ({
     let image: string | undefined
 
     if (recommendedTweet?.image?.url) {
-      image = getMediaUrl(recommendedTweet.image)
+      image = getMediaUrl(recommendedTweet?.image)
     }
 
     if (recommendedTweet?.originalTweet?.image) {

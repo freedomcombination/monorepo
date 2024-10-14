@@ -1,4 +1,4 @@
-export default [
+export default ({ env }) => [
   'strapi::errors',
   {
     name: 'strapi::security',
@@ -9,8 +9,21 @@ export default [
           // Enable the download of the Monaco editor
           // from cdn.jsdelivr.net.
           'script-src': ["'self'", 'cdn.jsdelivr.net', 'blob:'],
+          'connect-src': ["'self'", 'https:'],
           'frame-src': ["'self'", 'dashboard.freedomcombination.com'],
           'frame-ancestors': ["'self'", 'dashboard.freedomcombination.com'],
+          'img-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            env('CF_PUBLIC_ACCESS_URL').replace(/^https?:\/\//, ''),
+          ],
+          'media-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            env('CF_PUBLIC_ACCESS_URL').replace(/^https?:\/\//, ''),
+          ],
           upgradeInsecureRequests: null,
         },
       },

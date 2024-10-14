@@ -1,10 +1,8 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import { AspectRatio, Box, useBoolean } from '@chakra-ui/react'
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
 import ReactPlayer from 'react-player'
-
-import { getMediaUrl } from '@fc/utils/getMediaUrl'
 
 type VideoPlayerProps = {
   ratio?: number
@@ -14,7 +12,6 @@ type VideoPlayerProps = {
 
 const VideoPlayer: FC<VideoPlayerProps> = ({ ratio = 16 / 9, url, light }) => {
   const [isPlaying, setIsPlaying] = useBoolean(false)
-  const [fallbackUrl, setFallbackUrl] = useState<string>()
 
   return (
     <Box pos={'relative'} role={'group'}>
@@ -29,14 +26,11 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ ratio = 16 / 9, url, light }) => {
       >
         <ReactPlayer
           playing={isPlaying}
-          url={fallbackUrl || url}
+          url={url}
           width="100%"
           height="100%"
           light={light}
-          onError={() => {
-            const fallback = getMediaUrl(url, true)
-            setFallbackUrl(fallback)
-          }}
+
           // playIcon={}
         />
       </AspectRatio>

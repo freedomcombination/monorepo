@@ -9,7 +9,6 @@
     "dashboard": "strapi dev",
     "foundation": "strapi dev",
     "kunsthalte": "strapi dev",
-    "transfer": "strapi transfer --from https://api.freedomcombination.com/admin",
     "trend-rights": "strapi dev",
     "lint": "eslint .",
     "export": "strapi export --no-encrypt --exclude files --file export",
@@ -19,8 +18,6 @@
     "build:dev": "strapi build",
     "strapi": "strapi",
     "generate-types": "npm run strapi ts:generate-types --debug",
-    "docker-up": "docker compose up --remove-orphans",
-    "docker-db": "docker exec -i strapiDB bash < ./scripts/docker-db-update.sh",
     "clean": "rm -rf node_modules .cache .turbo dist .strapi",
     "tsc": "npx tsc --noEmit"
   },
@@ -44,6 +41,7 @@
     "sharp": "0.32.6",
     "strapi-plugin-import-export-entries": "^1.23.1",
     "strapi-plugin-transformer": "^3.1.2",
+    "strapi-provider-cloudflare-r2": "^0.3.0",
     "styled-components": "^5.3.11",
     "web-push": "^3.6.7"
   },

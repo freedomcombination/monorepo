@@ -57,6 +57,7 @@ $RECYCLE.BIN/
 *.swm
 *.out
 *.pid
+seed.tar.gz.enc
 
 ############################
 # Logs and databases

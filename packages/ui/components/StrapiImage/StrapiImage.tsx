@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import Image, { ImageProps } from 'next/image'
 
@@ -9,17 +9,13 @@ type StrapiImageProps = Omit<ImageProps, 'src'> & {
   src: UploadFile | string
 }
 
-const mapStrapiImage = (
-  width: number,
-  image: UploadFile,
-  fallback: boolean,
-) => {
+const mapStrapiImage = (width: number, image: UploadFile) => {
   const images = []
 
   if (image.formats) {
     const formats = Object.values(image.formats)
       .filter(f => !!f)
-      .map(({ url, width }) => ({ url: getMediaUrl(url, fallback), width }))
+      .map(({ url, width }) => ({ url: getMediaUrl(url), width }))
       .sort((a, b) => a.width - b.width)
 
     images.unshift(...formats)
@@ -32,7 +28,7 @@ const mapStrapiImage = (
       : prev
   }, images[0])
 
-  return getMediaUrl(imageToUse?.url, fallback) || getMediaUrl(image, fallback)
+  return getMediaUrl(imageToUse?.url) || getMediaUrl(image)
 }
 
 export const StrapiImage: FC<StrapiImageProps> = ({
@@ -41,11 +37,7 @@ export const StrapiImage: FC<StrapiImageProps> = ({
   sizes,
   ...rest
 }) => {
-  const [fallback, setFallback] = useState<boolean>(false)
-
-  const url = fallback
-    ? getMediaUrl(src, true) || getMediaUrl(src)
-    : getMediaUrl(src)
+  const url = getMediaUrl(src)
 
   const isFile = typeof src !== 'string'
 
@@ -56,19 +48,12 @@ export const StrapiImage: FC<StrapiImageProps> = ({
       src={url}
       alt={alt || (src as UploadFile).name}
       fill
-      // We use fallback only in development and staging
-      // Because when we import the database from production
-      // The images are not available in the staging environment or locally
       {...(isFile &&
         !isSvg && {
-          loader: ({ width }) =>
-            mapStrapiImage(width, src as UploadFile, fallback),
+          loader: ({ width }) => mapStrapiImage(width, src as UploadFile),
         })}
       sizes={sizes || '100vw'}
       unoptimized
-      onError={() => {
-        setFallback(true)
-      }}
       {...rest}
     />
   )
