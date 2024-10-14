@@ -121,7 +121,7 @@ export const useInitialArchiveContentValues = (
       }
 
       const rawAssistantsMessage = JSON.parse(
-        assistantsMessage?.content || '{}',
+        assistantsMessage?.content.replace(/^```(?:json)?|```$/gm, '') || '{}',
       )
 
       const rawCategories = rawAssistantsMessage?.categories ?? []
