@@ -95,6 +95,9 @@ test.describe('06. Profile Editing Tests', () => {
     loginPage,
     profilePage,
   }) => {
+    // TODO: Remove after fixing update password
+    test.skip()
+
     await addCookies(context, 'kunsthalte')
 
     await layoutPage.gotoHome('kunsthalte')
@@ -103,9 +106,6 @@ test.describe('06. Profile Editing Tests', () => {
     await layoutPage.gotoProfilePage()
 
     await page.getByTestId('tab-security').click()
-
-    // TODO: Remove after fixing update password
-    test.skip()
 
     // NOTE: Updating the authenticated user password is not recommended
     // Because it will affect the other tests when it fails or runs in parallel
@@ -127,5 +127,48 @@ test.describe('06. Profile Editing Tests', () => {
 
     await profilePage.tabs.security.click()
     await profilePage.updatePassword(TEMP_PASSWORD, PASSWORD)
+  })
+
+  test('TC-05: Password Update Requirements Not Enforced in Profile Editing', async ({
+    page,
+    context,
+    layoutPage,
+    loginPage,
+    profilePage,
+  }) => {
+    await addCookies(context, 'kunsthalte')
+    await layoutPage.gotoHome('kunsthalte')
+
+    // should not update password without symbol
+    await layoutPage.gotoLogin('kunsthalte')
+    await loginPage.login(USERNAME, PASSWORD)
+    await layoutPage.gotoProfilePage()
+
+    // should not update password without uppercase
+    await page.getByTestId('tab-security').click()
+
+    const noUppercasePassword = 'test?123'
+
+    await profilePage.updatePassword(PASSWORD, noUppercasePassword)
+
+    await expect(page.getByTestId('error-text-password')).toBeVisible()
+
+    // should not update password without lowercase
+    await page.getByTestId('tab-security').click()
+
+    const noLowercasePassword = 'TEST?123'
+
+    await profilePage.updatePassword(PASSWORD, noLowercasePassword)
+
+    await expect(page.getByTestId('error-text-password')).toBeVisible()
+
+    // should not update password without numbers
+    await page.getByTestId('tab-security').click()
+
+    const noNumbersPassword = 'Test?Test'
+
+    await profilePage.updatePassword(PASSWORD, noNumbersPassword)
+
+    await expect(page.getByTestId('error-text-password')).toBeVisible()
   })
 })

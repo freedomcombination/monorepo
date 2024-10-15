@@ -78,12 +78,6 @@
     "endDate": {
       "type": "date"
     },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "courses"
-    },
     "applications": {
       "type": "relation",
       "relation": "oneToMany",
@@ -108,6 +102,25 @@
     },
     "lastRegisterDate": {
       "type": "datetime"
+    },
+    "requireApproval": {
+      "type": "boolean",
+      "default": false
+    },
+    "assignmentFiles": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "assignmentSubmissionDeadline": {
+      "type": "integer",
+      "min": 0,
+      "default": 2
+    },
+    "assignmentEvaluationTime": {
+      "type": "integer",
+      "default": 2
     }
   }
 }

@@ -84,6 +84,8 @@ export const ArtClubTemplate: FC = () => {
     },
   })
 
+  const categoryList = (categoryQuery.data?.data || []) as Category[]
+
   return (
     <>
       <Drawer isOpen={isOpen} onClose={onClose}>
@@ -91,7 +93,7 @@ export const ArtClubTemplate: FC = () => {
         <DrawerContent>
           <DrawerBody py={8}>
             <ArtSideBar
-              categoryList={categoryQuery.data?.data || []}
+              categoryList={categoryList}
               isLoading={isLoading}
               setIsLoading={setIsLoading}
             />
@@ -125,7 +127,7 @@ export const ArtClubTemplate: FC = () => {
               </Stack>
             ) : (
               <ArtSideBar
-                categoryList={categoryQuery.data?.data || []}
+                categoryList={categoryList}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
               />

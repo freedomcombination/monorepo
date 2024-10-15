@@ -20,7 +20,7 @@ enum Languages {
 
 export const CourseInfo: FC = () => {
   const { t } = useTranslation()
-  const { course, paidApplications } = useCourseContext()
+  const { course, courseLogic } = useCourseContext()
 
   const totalWeeks = differenceInWeeks(
     new Date(course.endDate),
@@ -55,8 +55,8 @@ export const CourseInfo: FC = () => {
     },
     {
       label: `${t('course.quota')}`,
-      value: paidApplications?.length
-        ? `${course.quota! - paidApplications.length} / ${course.quota}`
+      value: courseLogic.validApplicants?.length
+        ? `${course.quota! - courseLogic.validApplicants.length} / ${course.quota}`
         : `${course.quota}`,
       icon: <IoPeopleOutline />,
     },

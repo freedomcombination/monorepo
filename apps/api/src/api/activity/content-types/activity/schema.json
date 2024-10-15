@@ -94,17 +94,10 @@
       "type": "datetime",
       "required": true
     },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "mappedBy": "activities"
-    },
     "categories": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "mappedBy": "activities"
+      "relation": "oneToMany",
+      "target": "api::category.category"
     },
     "platforms": {
       "type": "relation",

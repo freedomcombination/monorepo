@@ -28,7 +28,7 @@ test.describe('03. Footer', () => {
           const label = item?.label as string
           const link = item?.link.en as string
 
-          const linkLocator = page.getByLabel(label)
+          const linkLocator = page.getByLabel(label).last()
 
           await expect(linkLocator).toBeVisible()
 
