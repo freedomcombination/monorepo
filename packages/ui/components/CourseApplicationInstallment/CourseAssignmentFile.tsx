@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
-import { Button } from '@chakra-ui/react'
 import {
   AiOutlineFilePdf,
-  AiOutlineFileZip,
   AiOutlineFileWord,
+  AiOutlineFileZip,
 } from 'react-icons/ai'
 import { FaFile, FaImage } from 'react-icons/fa6'
 
+import { LinkButton } from '@fc/chakra'
 import { ASSETS_FALLBACK_URL, ASSETS_URL } from '@fc/config/constants'
 import { UploadFile } from '@fc/types'
 
@@ -33,8 +33,7 @@ export const CourseAssignmentFileButton: FC<{ file: UploadFile }> = ({
     )
 
   return (
-    <Button
-      as="a"
+    <LinkButton
       href={
         (process.env.NODE_ENV === 'development'
           ? ASSETS_FALLBACK_URL
@@ -43,10 +42,10 @@ export const CourseAssignmentFileButton: FC<{ file: UploadFile }> = ({
       target="_blank"
       variant="outline"
       rel="noreferrer noopener"
-      leftIcon={icon}
       title={file.name}
     >
+      {icon}
       {fileName}
-    </Button>
+    </LinkButton>
   )
 }

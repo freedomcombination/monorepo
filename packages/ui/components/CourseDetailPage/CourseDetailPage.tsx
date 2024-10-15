@@ -1,19 +1,6 @@
 import { FC, useMemo } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-  Box,
-  Heading,
-  HStack,
-  List,
-  ListIcon,
-  ListItem,
-  Stack,
-  Wrap,
-} from '@chakra-ui/react'
+import { Box, Heading, HStack, List, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import {
@@ -24,6 +11,7 @@ import {
   MdTimer,
 } from 'react-icons/md'
 
+import { Alert } from '@fc/chakra'
 import { SITE_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
@@ -171,52 +159,47 @@ export const CourseDetailPage: FC<CourseDetailPageProps> = ({
               width="full"
               alignSelf={'center'}
               p={8}
+              title={t('course.application.assignment.rules.title')}
             >
-              <AlertIcon boxSize="40px" mr={0} />
-              <AlertTitle mt={4} mb={1} fontSize="lg">
-                {t('course.application.assignment.rules.title')}
-              </AlertTitle>
-              <AlertDescription>
-                <List spacing={3} mt={6} textAlign={'left'}>
-                  <ListItem>
-                    <ListIcon as={MdDone} color="green.500" />
-                    {t('course.application.assignment.rules.line-1')}
-                  </ListItem>
-                  <ListItem>
-                    <ListIcon as={MdTimer} color="blue.500" />
-                    {t('course.application.assignment.rules.line-2', {
-                      days: course.assignmentSubmissionDeadline,
-                    })}
-                  </ListItem>
-                  <ListItem>
-                    <ListIcon as={MdCheck} color="green.500" />
-                    {t('course.application.assignment.rules.line-3', {
-                      days: course.assignmentEvaluationTime,
-                    })}
-                  </ListItem>
-                  <ListItem>
-                    <ListIcon as={MdArrowForward} color="blue.500" />
-                    {t(
-                      !!course.price
-                        ? 'course.application.assignment.rules.line-4-price'
-                        : 'course.application.assignment.rules.line-4',
-                    )}
-                  </ListItem>
-                  <ListItem>
-                    <HStack>
-                      <ListIcon as={MdAttachFile} color="blue.500" />
-                      <Wrap spacing={2}>
-                        {course.assignmentFiles?.map(file => (
-                          <CourseAssignmentFileButton
-                            key={file.name}
-                            file={file}
-                          />
-                        ))}
-                      </Wrap>
-                    </HStack>
-                  </ListItem>
-                </List>
-              </AlertDescription>
+              <List.Root gap={3} mt={6} textAlign={'left'}>
+                <List.Item>
+                  <List.Indicator as={MdDone} color="green.500" />
+                  {t('course.application.assignment.rules.line-1')}
+                </List.Item>
+                <List.Item>
+                  <List.Indicator as={MdTimer} color="blue.500" />
+                  {t('course.application.assignment.rules.line-2', {
+                    days: course.assignmentSubmissionDeadline,
+                  })}
+                </List.Item>
+                <List.Item>
+                  <List.Indicator as={MdCheck} color="green.500" />
+                  {t('course.application.assignment.rules.line-3', {
+                    days: course.assignmentEvaluationTime,
+                  })}
+                </List.Item>
+                <List.Item>
+                  <List.Indicator as={MdArrowForward} color="blue.500" />
+                  {t(
+                    !!course.price
+                      ? 'course.application.assignment.rules.line-4-price'
+                      : 'course.application.assignment.rules.line-4',
+                  )}
+                </List.Item>
+                <List.Item>
+                  <HStack>
+                    <List.Indicator as={MdAttachFile} color="blue.500" />
+                    <Stack wrap={'wrap'} gap={2}>
+                      {course.assignmentFiles?.map(file => (
+                        <CourseAssignmentFileButton
+                          key={file.name}
+                          file={file}
+                        />
+                      ))}
+                    </Stack>
+                  </HStack>
+                </List.Item>
+              </List.Root>
             </Alert>
           )}
 

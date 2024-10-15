@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { Button, Stack, Text, VStack, Wrap } from '@chakra-ui/react'
+import { Button, Stack, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -25,7 +25,7 @@ export const ProfileCourseAssignmentDetails: FC<{
   if (courseLogic.haveSubmittedAssignmentFiles()) {
     return (
       <KeyValue tKey="course.assignment.details.kv.files-submitted-key">
-        <VStack spacing={2} alignItems={'flex-start'}>
+        <VStack gap={2} alignItems={'flex-start'}>
           <Text>
             {t('course.assignment.details.kv.files-submitted-message')}
           </Text>
@@ -45,11 +45,11 @@ export const ProfileCourseAssignmentDetails: FC<{
     <KeyValue tKey="course.assignment.details.kv.course-assignment">
       <Stack>
         <KeyValue tKey="course.assignment.details.kv.assignment-files">
-          <Wrap spacing={2}>
+          <Stack wrap={'wrap'} gap={2}>
             {courseLogic.course.assignmentFiles?.map(file => (
               <CourseAssignmentFileButton key={file.id} file={file} />
             ))}
-          </Wrap>
+          </Stack>
         </KeyValue>
         <SubmitFilesForm courseLogic={courseLogic} onSave={onSave} />
       </Stack>
@@ -108,7 +108,7 @@ const SubmitFilesForm: FC<{
         <Button
           colorScheme="primary"
           size="md"
-          isDisabled={!files || files.length === 0}
+          disabled={!files || files.length === 0}
           onClick={onSaveFiles}
           variant={'outline'}
         >

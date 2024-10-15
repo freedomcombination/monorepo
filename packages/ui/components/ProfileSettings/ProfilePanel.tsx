@@ -125,7 +125,7 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                 <Box as={TbSocial} mr={2} />
                 <Box>{t('profile.tabs.socials')}</Box>
               </CustomTab>
-              <CustomTab data-testid="tab-preferences" title={'preferences'}>
+              <CustomTab data-testid="tab-preferences" value="preferences">
                 <Box as={FaGear} mr={2} />
                 <Box>{t('profile.tabs.preferences')}</Box>
               </CustomTab>

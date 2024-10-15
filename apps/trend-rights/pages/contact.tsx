@@ -46,7 +46,9 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
+                  leftIcon={
+                    <Box as={MdPhone} color="primary.50" boxSize="20px" />
+                  }
                   href="tel:+31687578056"
                 >
                   +31-6 87578056

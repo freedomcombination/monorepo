@@ -1,4 +1,4 @@
-import { Badge, Stack, Text, Wrap } from '@chakra-ui/react'
+import { Badge, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import type { ApprovalStatus, Course, CourseApplication } from '@fc/types'
@@ -55,7 +55,7 @@ export const useCourseApplicationColumns =
             return (
               <Stack>
                 {courseLogic.myInstallments.length > 1 && (
-                  <Wrap gap={1}>
+                  <Stack wrap={'wrap'} gap={1}>
                     {courseLogic.myInstallments.map(installment => (
                       <Badge
                         key={installment.installmentNumber}
@@ -67,7 +67,7 @@ export const useCourseApplicationColumns =
                         {installment.installmentNumber}
                       </Badge>
                     ))}
-                  </Wrap>
+                  </Stack>
                 )}
                 <Text>
                   {formatPrice(courseLogic.getTotalPaid())} /{' '}

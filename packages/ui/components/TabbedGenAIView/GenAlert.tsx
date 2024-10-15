@@ -67,7 +67,7 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
         </Heading>
         {hasRelations && (
           <Box borderWidth={1} p={2} rounded={'md'} borderColor={'orange.500'}>
-            <List>
+            <List.Root>
               <List.Item display={'flex'} alignItems={'baseline'}>
                 <List.Indicator as={FaExclamation} color={'orange.500'} />
                 <Box>
@@ -92,7 +92,7 @@ export const GenAlert: FC<PropsWithChildren<GenAlertProps>> = ({
                     : `No victims set for the prison ${hashtag.title}`}
                 </List.Item>
               )}
-            </List>
+            </List.Root>
           </Box>
         )}
 

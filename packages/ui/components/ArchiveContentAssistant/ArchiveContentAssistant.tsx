@@ -1,17 +1,10 @@
-import {
-  Button,
-  Code,
-  FormControl,
-  Stack,
-  Text,
-  Textarea,
-  Wrap,
-} from '@chakra-ui/react'
+import { Code, Stack, Text, Textarea } from '@chakra-ui/react'
 import { Message, useAssistant } from 'ai/react'
 import { useTranslation } from 'next-i18next'
 import { GiCheckMark } from 'react-icons/gi'
 import { RiAiGenerate } from 'react-icons/ri'
 
+import { Button } from '@fc/chakra'
 import { ArchiveContent } from '@fc/types'
 
 import { useInitialArchiveContentValues } from './useInitialArchiveContentValues'
@@ -47,18 +40,17 @@ export const ArchiveContentAssistant = () => {
         }}
       >
         <Stack gap={4}>
-          <FormControl>
-            <Textarea
-              name="message"
-              disabled={status !== 'awaiting_message'}
-              value={input}
-              onChange={handleInputChange}
-              rows={6}
-              bg={'whiteAlpha.700'}
-              placeholder="Paste the news article..."
-            />
-          </FormControl>
-          <Wrap>
+          <Textarea
+            name="message"
+            disabled={status !== 'awaiting_message'}
+            value={input}
+            onChange={handleInputChange}
+            rows={6}
+            bg={'whiteAlpha.700'}
+            placeholder="Paste the news article..."
+          />
+
+          <Stack wrap={'wrap'}>
             {status === 'in_progress' ? (
               <Button
                 leftIcon={<RiAiGenerate />}
@@ -73,7 +65,7 @@ export const ArchiveContentAssistant = () => {
                 {t('analyze')}
               </Button>
             )}
-          </Wrap>
+          </Stack>
         </Stack>
       </form>
       {/* In case someone wants to check assistant's status */}
@@ -114,7 +106,7 @@ export const ArchiveContentAssistant = () => {
             ) : (
               <Stack key={message.id}>
                 <Text fontWeight={600}>User:</Text>
-                <Text noOfLines={3}>{message.content}</Text>
+                <Text lineClamp={3}>{message.content}</Text>
               </Stack>
             ),
           )}
