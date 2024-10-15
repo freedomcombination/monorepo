@@ -24,7 +24,7 @@ import {
   Text,
   UnorderedList,
   VStack,
-  Wrap
+  Wrap,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { MdMail } from 'react-icons/md'
