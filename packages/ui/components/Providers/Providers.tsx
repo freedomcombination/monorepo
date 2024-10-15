@@ -74,7 +74,6 @@ export const Providers: FC<ProvidersProps> = ({
                 {children}
                 <Analytics />
                 {!cookie && <CookieBanner onAllow={onAllow} />}
-                <DevMailContainer />
                 <ToastContainer />
               </WebPushProvider>
             </ReCaptchaProvider>

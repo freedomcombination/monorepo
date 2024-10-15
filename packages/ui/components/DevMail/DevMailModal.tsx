@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 
 import {
   Badge,
+  Box,
   Center,
   Flex,
   Grid,
@@ -23,7 +24,6 @@ import {
   Stack,
   Text,
   UnorderedList,
-  VStack,
   Wrap,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
@@ -93,39 +93,29 @@ export const DevMailModal: FC = () => {
           </HStack>
         </ModalHeader>
         <ModalCloseButton />
-        <ModalBody bg={'gray.50'}>
+        <ModalBody bg={'gray.50'} p={4}>
           <Grid
-            templateColumns="repeat(5, 1fr)"
+            templateColumns="300px 1fr"
             h={'80vh'}
             w={'100%'}
-            gap={2}
+            gap={4}
             overflow={'hidden'}
           >
-            <GridItem flexGrow={0} h={'100%'} overflowY={'scroll'}>
-              <Stack
-                w={'100%'}
-                h={'100%'}
-                borderRadius={'lg'}
-                p={2}
-                spacing={4}
-                bg={'white'}
-              >
+            <GridItem h={'100%'} overflowY={'auto'}>
+              <Stack gap={4}>
                 {groups.map(group => (
                   <Stack
                     key={group.groupDate}
                     borderWidth={1}
+                    pt={2}
                     borderRadius={'lg'}
                     borderColor={group.isNew ? 'blue.700' : 'gray.200'}
-                    p={2}
                     spacing={3}
-                    shadow={group.isNew ? 'lg' : 'md'}
-                    cursor={'pointer'}
+                    bg={'white'}
+                    overflow={'hidden'}
                   >
-                    <HStack justifyContent={'space-between'}>
-                      <Text
-                        fontSize={'sm'}
-                        fontWeight={group.isNew ? 'bold' : 'normal'}
-                      >
+                    <HStack px={2} justifyContent={'space-between'}>
+                      <Text fontSize={'sm'} fontWeight={600}>
                         {formatDate(
                           group.groupDate,
                           'dd MMMM yyyy HH:mm',
@@ -133,78 +123,86 @@ export const DevMailModal: FC = () => {
                         )}
                       </Text>
                       <Badge
-                        colorScheme={group.isNew ? 'green' : 'gray'}
-                        fontWeight={group.isNew ? 'bold' : 'normal'}
-                        fontSize={'lg'}
+                        colorScheme={group.isNew ? 'green' : 'blackAlpha'}
+                        fontWeight={600}
+                        rounded={'full'}
+                        variant={'solid'}
+                        boxSize={6}
+                        lineHeight={6}
+                        textAlign={'center'}
                       >
                         {group.mails.length}
                       </Badge>
                     </HStack>
-                    <UnorderedList>
-                      {group.mails.map(mail => (
-                        <ListItem
-                          _hover={{
-                            textDecoration: 'underline',
-                            cursor: 'pointer',
-                            color: 'blue.500',
-                            bg: 'blue.50',
-                          }}
-                          key={mail.id}
-                          w={'100%'}
-                          onClick={() => setSelectedMail(mail)}
-                          noOfLines={2}
-                        >
-                          <ListIcon as={MdMail} />
-                          {mail.subject}
-                        </ListItem>
-                      ))}
+                    <UnorderedList fontSize={'sm'} m={0}>
+                      {group.mails.map(mail => {
+                        const selected = selectedMail?.id === mail.id
+
+                        return (
+                          <ListItem
+                            as={HStack}
+                            gap={2}
+                            px={2}
+                            py={1}
+                            key={mail.id}
+                            onClick={() => setSelectedMail(mail)}
+                            cursor={'pointer'}
+                            _hover={{ bg: 'gray.100' }}
+                            {...(selected && {
+                              bg: 'gray.50',
+                              fontWeight: 600,
+                            })}
+                          >
+                            <ListIcon
+                              transform={'translateY(2px)'}
+                              as={MdMail}
+                            />
+                            <Box noOfLines={2}>{mail.subject}</Box>
+                          </ListItem>
+                        )
+                      })}
                     </UnorderedList>
                   </Stack>
                 ))}
               </Stack>
             </GridItem>
-            <GridItem colSpan={4}>
+            <GridItem>
               <Stack
                 w={'100%'}
                 h={'100%'}
                 borderRadius={'lg'}
-                p={2}
+                borderWidth={1}
                 bg={'white'}
               >
                 {selectedMail ? (
                   <Flex w={'100%'} h={'100%'} flexDirection={'column'}>
-                    <KeyValue title="Subject">
-                      <Text fontWeight={'bold'}>{selectedMail.subject}</Text>
+                    <KeyValue title="Subject" py={3}>
+                      <Text fontWeight={600}>{selectedMail.subject}</Text>
                     </KeyValue>
-                    <KeyValue title="To">
+                    <KeyValue title="To" py={3}>
                       <Wrap maxH={80} overflowY={'auto'}>
                         {selectedMail.to.split(',').map(to => (
                           <Badge
+                            variant={'outline'}
+                            color={'initial'}
                             key={to}
-                            colorScheme={'blue'}
                             fontSize={'sm'}
-                            fontWeight={'bold'}
+                            rounded={'full'}
+                            px={3}
                           >
                             {to}
                           </Badge>
                         ))}
                       </Wrap>
                     </KeyValue>
-                    <VStack
-                      borderWidth={3}
-                      borderRadius={'sm'}
-                      flexGrow={1}
-                      width={'100%'}
-                    >
-                      <iframe
-                        style={{
-                          flex: 1,
-                        }}
-                        width="100%"
-                        height="100%"
-                        srcDoc={selectedMail.html}
-                      />
-                    </VStack>
+
+                    <Box
+                      p={4}
+                      boxSize={'full'}
+                      dangerouslySetInnerHTML={{
+                        __html: selectedMail.html,
+                      }}
+                    />
                   </Flex>
                 ) : (
                   <Center h={'100%'}>Select Mail</Center>

@@ -31,6 +31,7 @@ import { useUnsubscribePushNotificationMutation } from '@fc/services/pushNotific
 
 import { AdminSidebar } from '../AdminSidebar'
 import { CreateModelButton } from '../CreateModelButton'
+import { DevMailContainer } from '../DevMail'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import { ProfilePanel } from '../ProfileSettings'
 import { UserFeedback } from '../UserFeedback'
@@ -125,6 +126,7 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             </Modal>
           </>
         )}
+        {user && <DevMailContainer />}
         {user && (
           <IconButton
             aria-label="notifications"

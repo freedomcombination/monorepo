@@ -1,6 +1,6 @@
-import { FC, useEffect } from 'react'
+import { useEffect } from 'react'
 
-import { Stack, useDisclosure, useToast } from '@chakra-ui/react'
+import { useDisclosure, useToast } from '@chakra-ui/react'
 import { useLocalStorage } from 'react-use'
 
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
@@ -12,7 +12,7 @@ import { DevMailModal } from './DevMailModal'
 
 let refetchTimerId: NodeJS.Timeout | string | number | undefined = undefined
 
-export const DevMailProvider: FC = () => {
+export const DevMailProvider = () => {
   const [_checkTimer, setCheckTimer] = useLocalStorage(
     'dev-mail-checkTimer',
     15,
@@ -92,10 +92,8 @@ export const DevMailProvider: FC = () => {
         setCheckTimer,
       }}
     >
-      <Stack>
-        <DevMailButton />
-        <DevMailModal />
-      </Stack>
+      <DevMailButton aria-label="Open Mails" />
+      <DevMailModal />
     </DevMailContext.Provider>
   )
 }
