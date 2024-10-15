@@ -2,10 +2,10 @@ import type { Site, StrapiLocale } from '@fc/types'
 import { Heading, Section, Text } from '@react-email/components'
 import React, { FC } from 'react'
 import { EmailProvider } from './EmailProvider'
+import { EmailButton } from './components/Button'
 import SiteLayout from './components/SiteLayout'
 import { getSiteColor, getSiteLink } from './utils/getSiteData'
 import { getTranslate } from './utils/getTranslate'
-import { EmailButton } from './components/Button'
 
 type ForgotPasswordProps = {
   email: string
