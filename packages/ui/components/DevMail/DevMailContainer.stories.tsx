@@ -40,9 +40,9 @@ const Template: StoryFn<StoryArg> = arg => {
   const newCount = !lastGroupTime
     ? 0 // give some time to read from local storage
     : mails.reduce(
-      (acc, mail) => (mail.groupDate > lastGroupTime ? acc + 1 : acc),
-      0,
-    )
+        (acc, mail) => (mail.groupDate > lastGroupTime ? acc + 1 : acc),
+        0,
+      )
 
   useEffect(() => {
     if ((lastNewCount ?? 0) < newCount) {
@@ -61,7 +61,7 @@ const Template: StoryFn<StoryArg> = arg => {
   }, [newCount, lastNewCount])
 
   const setLastGroupTime = (time: string) => {
-    console.log("setLastGroupTime", time)
+    console.log('setLastGroupTime', time)
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure({
@@ -73,7 +73,7 @@ const Template: StoryFn<StoryArg> = arg => {
     },
   })
 
-  const refetch = () => { }
+  const refetch = () => {}
 
   useEffect(() => {
     clearInterval(refetchTimerId)

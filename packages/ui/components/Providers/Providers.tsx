@@ -21,7 +21,6 @@ import { WebPushProvider } from '@fc/context/webPush'
 import type { Site } from '@fc/types'
 
 import { CookieBanner } from '../CookieBanner'
-import { DevMailContainer } from '../DevMail'
 import { NotificationModal } from '../NotificationModal'
 
 type ProvidersProps = {

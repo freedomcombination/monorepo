@@ -5,12 +5,13 @@ import { FaEnvelope } from 'react-icons/fa6'
 
 import { useDevMail } from './useDevMail'
 
-export const DevMailButton: FC<IconButtonProps> = props => {
+export const DevMailButton: FC<Omit<IconButtonProps, 'aria-label'>> = props => {
   const { onOpen, count } = useDevMail()
 
   return (
     <Box pos={'relative'} w={'max'}>
       <IconButton
+        aria-label="Open DevMail"
         pos={'relative'}
         icon={<FaEnvelope />}
         onClick={onOpen}
