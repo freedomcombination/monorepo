@@ -34,7 +34,7 @@
     "@strapi/plugin-users-permissions": "^4.25.13",
     "@strapi/provider-email-nodemailer": "^4.25.13",
     "@strapi/strapi": "^4.25.13",
-    "apify-client": "^2.9.6",
+    "apify-client": "^2.9.7",
     "cheerio": "^1.0.0",
     "pg": "^8.13.0",
     "react": "^18.3.1",
