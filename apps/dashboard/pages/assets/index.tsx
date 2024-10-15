@@ -33,7 +33,7 @@ const AssetsPage = () => {
     page: currentPage,
     pageSize,
     filters: {
-      ...(searchTerm && { [`title_${locale}`]: { $containsi: searchTerm } }),
+      ...(searchTerm && { name: { $containsi: searchTerm } }),
     },
     sort,
     locale,
