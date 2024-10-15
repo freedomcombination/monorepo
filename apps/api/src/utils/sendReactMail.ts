@@ -29,6 +29,7 @@ export const sendReactMail = async (
   )
 
   const mailContents: { to: string[]; subject: string; html: string }[] = []
+
   for (const [locale, receivers] of Object.entries(groupedReceivers)) {
     const { t } = getTranslate(locale as StrapiLocale)
     const body = await mailBody(t)
@@ -40,7 +41,7 @@ export const sendReactMail = async (
     })
   }
 
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.VERCEL_ENV !== 'production') {
     const groupDate = new Date().toISOString()
     await strapi.db.query('api::dev-mail.dev-mail').createMany({
       data: mailContents.map(({ to, subject, html }) => ({

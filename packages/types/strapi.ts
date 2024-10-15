@@ -150,6 +150,7 @@ export type StrapiModel =
   | Course
   | CourseApplication
   | CoursePayment
+  | DevMail
   | Donation
   | Feedback
   | Foundation
@@ -177,7 +178,6 @@ export type StrapiModel =
   | UserFeedback
   | UserNotification
   | Victim
-  | DevMail
 
 export type StrapiSeoModel =
   | Activity
@@ -286,6 +286,7 @@ export type StrapiCollectionEndpoint =
   | 'comments'
   | 'course-applications'
   | 'courses'
+  | 'dev-mails'
   | 'donates'
   | 'donates/email'
   | 'feedbacks'
@@ -316,7 +317,6 @@ export type StrapiCollectionEndpoint =
   | 'users-notifications'
   | 'users-permissions/roles'
   | 'victims'
-  | 'dev-mails'
 
 export type StrapiEndpoint =
   | StrapiSingleEndpoint
