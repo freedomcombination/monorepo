@@ -67,3 +67,4 @@ tsconfig.tsbuildinfo
 i18nHelper.config.json
 
 dump.*.sql
+apps/api/src/extensions/documentation/documentation/1.0.0/full_documentation.json

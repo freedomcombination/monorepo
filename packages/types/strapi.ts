@@ -42,6 +42,7 @@ import {
   CourseApplicationUnpaid,
 } from './course-application'
 import { CoursePayment } from './course-payment'
+import { DevMail } from './dev-mail'
 import { Donation, DonationCreateInput, DonationUpdateInput } from './donation'
 import { EmailCreateInput } from './email'
 import {
@@ -149,6 +150,7 @@ export type StrapiModel =
   | Course
   | CourseApplication
   | CoursePayment
+  | DevMail
   | Donation
   | Feedback
   | Foundation
@@ -284,6 +286,7 @@ export type StrapiCollectionEndpoint =
   | 'comments'
   | 'course-applications'
   | 'courses'
+  | 'dev-mails'
   | 'donates'
   | 'donates/email'
   | 'feedbacks'

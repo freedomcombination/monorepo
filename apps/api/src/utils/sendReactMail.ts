@@ -28,28 +28,41 @@ export const sendReactMail = async (
     {} as Record<StrapiLocale, string[]>,
   )
 
-  if (process.env.NODE_ENV === 'development') {
-    const { t } = getTranslate('en')
-    const body = await mailBody(t)
-
-    console.log('Email begins: ', body.subject)
-    console.log('Emails are sent with locales: ', groupedReceivers)
-    console.log('Email ends: ', body.subject)
-
-    return
-  }
+  const mailContents: { to: string[]; subject: string; html: string }[] = []
 
   for (const [locale, receivers] of Object.entries(groupedReceivers)) {
     const { t } = getTranslate(locale as StrapiLocale)
     const body = await mailBody(t)
 
-    await strapi.plugins['email'].services.email.send({
+    mailContents.push({
       to: receivers,
-      from: process.env.SMTP_USERNAME,
       subject: body.subject,
       html: body.html,
     })
   }
+
+  if (process.env.VERCEL_ENV !== 'production') {
+    const groupDate = new Date().toISOString()
+    await strapi.db.query('api::dev-mail.dev-mail').createMany({
+      data: mailContents.map(({ to, subject, html }) => ({
+        to: to.join(', '),
+        subject,
+        html,
+        groupDate,
+      })),
+    })
+
+    return
+  }
+
+  mailContents.forEach(({ to, subject, html }) => {
+    strapi.plugins['email'].services.email.send({
+      to,
+      from: process.env.SMTP_USERNAME,
+      subject,
+      html,
+    })
+  })
 }
 
 export const sendReactMailByRoles = async (
