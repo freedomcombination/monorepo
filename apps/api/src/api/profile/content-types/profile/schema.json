@@ -79,7 +79,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "isVolunteer": {
       "type": "boolean"
@@ -153,7 +155,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["files"]
+      "allowedTypes": [
+        "files"
+      ]
     },
     "subscriber": {
       "type": "relation",
@@ -165,7 +169,10 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files"]
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "address": {
       "displayName": "Address",
@@ -175,7 +182,11 @@
     },
     "locale": {
       "type": "enumeration",
-      "enum": ["en", "tr", "nl"]
+      "enum": [
+        "en",
+        "tr",
+        "nl"
+      ]
     },
     "teams": {
       "type": "relation",

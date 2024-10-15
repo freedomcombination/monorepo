@@ -3013,7 +3013,8 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   info: {
     singularName: 'team'
     pluralName: 'teams'
-    displayName: 'team'
+    displayName: 'Team'
+    description: ''
   }
   options: {
     draftAndPublish: true
