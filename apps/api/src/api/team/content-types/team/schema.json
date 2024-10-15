@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teams",
+  "info": {
+    "singularName": "team",
+    "pluralName": "teams",
+    "displayName": "Team",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "platforms": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::platform.platform",
+      "inversedBy": "teams"
+    },
+    "foundation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::foundation.foundation",
+      "inversedBy": "teams"
+    },
+    "description": {
+      "type": "string"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::profile.profile",
+      "inversedBy": "teams"
+    },
+    "lead": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::profile.profile",
+      "inversedBy": "teams"
+    }
+  }
+}

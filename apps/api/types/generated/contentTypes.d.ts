@@ -1877,6 +1877,11 @@ export interface ApiFoundationFoundation extends Schema.CollectionType {
     about_en: Attribute.Blocks
     about_nl: Attribute.Blocks
     about_tr: Attribute.Blocks
+    teams: Attribute.Relation<
+      'api::foundation.foundation',
+      'oneToMany',
+      'api::team.team'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2294,6 +2299,11 @@ export interface ApiPlatformPlatform extends Schema.CollectionType {
       'api::platform.platform',
       'manyToMany',
       'api::category.category'
+    >
+    teams: Attribute.Relation<
+      'api::platform.platform',
+      'manyToMany',
+      'api::team.team'
     >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
@@ -2746,6 +2756,11 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     cv: Attribute.Media<'images' | 'files'>
     address: Attribute.Component<'flow.address'>
     locale: Attribute.Enumeration<['en', 'tr', 'nl']>
+    teams: Attribute.Relation<
+      'api::profile.profile',
+      'oneToMany',
+      'api::team.team'
+    >
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<
@@ -2989,6 +3004,50 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private
+  }
+}
+
+export interface ApiTeamTeam extends Schema.CollectionType {
+  collectionName: 'teams'
+  info: {
+    singularName: 'team'
+    pluralName: 'teams'
+    displayName: 'Team'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    name: Attribute.String
+    platforms: Attribute.Relation<
+      'api::team.team',
+      'manyToMany',
+      'api::platform.platform'
+    >
+    foundation: Attribute.Relation<
+      'api::team.team',
+      'manyToOne',
+      'api::foundation.foundation'
+    >
+    description: Attribute.String
+    members: Attribute.Relation<
+      'api::team.team',
+      'manyToOne',
+      'api::profile.profile'
+    >
+    lead: Attribute.Relation<
+      'api::team.team',
+      'manyToOne',
+      'api::profile.profile'
+    >
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::team.team', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    updatedBy: Attribute.Relation<'api::team.team', 'oneToOne', 'admin::user'> &
       Attribute.Private
   }
 }
@@ -3393,6 +3452,7 @@ declare module '@strapi/types' {
       'api::recommended-topic.recommended-topic': ApiRecommendedTopicRecommendedTopic
       'api::recommended-tweet.recommended-tweet': ApiRecommendedTweetRecommendedTweet
       'api::subscriber.subscriber': ApiSubscriberSubscriber
+      'api::team.team': ApiTeamTeam
       'api::term.term': ApiTermTerm
       'api::timeline.timeline': ApiTimelineTimeline
       'api::topic.topic': ApiTopicTopic

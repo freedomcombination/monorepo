@@ -58,7 +58,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "pluginOptions": {}
     },
     "link": {
@@ -110,6 +112,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
+      "mappedBy": "platforms"
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::team.team",
       "mappedBy": "platforms"
     }
   }
