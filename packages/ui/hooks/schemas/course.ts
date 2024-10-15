@@ -26,7 +26,7 @@ export const useCourseSchema = () => {
     image: yup.mixed().required(),
     platform: yupSelect,
     language: yup.mixed().oneOf(['tr', 'nl', 'en']),
-    requireApproval: yup.boolean().required(),
+    requireApproval: yup.boolean(),
     /*
     assignmentFiles: yup.string().when('requireApproval', ([requireApproval], schema) => {
       if (requireApproval) {
