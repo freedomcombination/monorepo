@@ -90,6 +90,12 @@
     },
     "about_tr": {
       "type": "blocks"
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team.team",
+      "mappedBy": "foundation"
     }
   }
 }

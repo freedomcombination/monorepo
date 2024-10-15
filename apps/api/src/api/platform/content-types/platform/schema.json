@@ -111,6 +111,12 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "mappedBy": "platforms"
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::team.team",
+      "mappedBy": "platforms"
     }
   }
 }

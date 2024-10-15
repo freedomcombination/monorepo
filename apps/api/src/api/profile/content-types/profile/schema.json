@@ -176,6 +176,12 @@
     "locale": {
       "type": "enumeration",
       "enum": ["en", "tr", "nl"]
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team.team",
+      "mappedBy": "lead"
     }
   }
 }
