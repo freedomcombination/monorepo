@@ -221,7 +221,7 @@ export const useDefaultValues = <T extends StrapiModel>(
           }
           break
         case 'victims':
-          defaults.victim =
+          defaults.victims =
             archiveContentModel.victims?.map(v => ({
               label: v.name || '',
               value: v.id.toString() || '',
@@ -234,7 +234,7 @@ export const useDefaultValues = <T extends StrapiModel>(
           }
           break
         case 'prisons':
-          defaults.victim =
+          defaults.prisons =
             archiveContentModel.prisons?.map(p => ({
               label: p.name || '',
               value: p.id.toString() || '',

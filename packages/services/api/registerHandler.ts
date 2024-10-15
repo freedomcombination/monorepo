@@ -10,7 +10,7 @@ import type { Auth, AuthResponse, Profile, ProfileCreateInput } from '@fc/types'
 import { mutation } from '../common/mutation'
 
 export const registerHandler: NextApiHandler = async (req, res) => {
-  const { name, username, email, password } = req.body
+  const { name, username, email, password, locale } = req.body
 
   const trimmedName = name.trim()
   const trimmedUsername = username.trim()
@@ -29,6 +29,7 @@ export const registerHandler: NextApiHandler = async (req, res) => {
       user: userId,
       name: trimmedName,
       email: trimmedEmail,
+      locale: ['en', 'nl', 'tr'].includes(locale) ? locale : 'en',
     }
 
     await mutation<Profile, ProfileCreateInput>({

@@ -27,7 +27,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({
 
   const { user, permissions, roles, profile, token } = data
   const isAdmin = roles.includes('admin')
-
   const [error, setError] = useState<string | null>(null)
   const [demoPermissions, setDemoPermissions] = useState<Permissions | null>(
     null,
@@ -133,6 +132,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         password,
         username,
         name,
+        locale: router.locale,
       })
 
       if (!response.data?.user) {
