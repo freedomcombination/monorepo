@@ -46,12 +46,10 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={
-                    <Box as={MdPhone} color="primary.50" fontSize="20px" />
-                  }
-                  href="tel:+31685221308"
+                  leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
+                  href="tel:+31687578056"
                 >
-                  +31-6 85221308
+                  +31-6 87578056
                 </ButtonLink>
                 <ButtonLink
                   isExternal
@@ -63,7 +61,7 @@ const Contact = () => {
                   leftIcon={
                     <Box as={FaWhatsapp} color="primary.50" fontSize="20px" />
                   }
-                  href="https://api.whatsapp.com/send?phone=31685221308"
+                  href="https://api.whatsapp.com/send?phone=31687578056"
                 >
                   {t('contact.form.message')}
                 </ButtonLink>

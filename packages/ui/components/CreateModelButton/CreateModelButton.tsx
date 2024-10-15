@@ -5,7 +5,6 @@ import { BsCollection } from 'react-icons/bs'
 import { CgHashtag } from 'react-icons/cg'
 import { FaPlus } from 'react-icons/fa'
 import { HiOutlineNewspaper } from 'react-icons/hi'
-import { IoPricetagsOutline } from 'react-icons/io5'
 import { LuFileArchive } from 'react-icons/lu'
 import {
   MdOutlineCastForEducation,
@@ -37,7 +36,6 @@ import type {
   Post,
   RecommendedTopic,
   RecommendedTweet,
-  Tag,
 } from '@fc/types'
 
 import { useFields, useSchema } from '../../hooks'
@@ -215,19 +213,6 @@ export const CreateModelButton = () => {
                   }}
                 >
                   {t('create-category')}
-                </ModelCreateModal>
-
-                <ModelCreateModal<Tag>
-                  title={t('tags')}
-                  endpoint="tags"
-                  schema={schemas['tags']!}
-                  fields={fields['tags']!}
-                  buttonProps={{
-                    variant: 'outline',
-                    leftIcon: <IoPricetagsOutline />,
-                  }}
-                >
-                  {t('create-tag')}
                 </ModelCreateModal>
 
                 <ModelCreateModal<Notification>

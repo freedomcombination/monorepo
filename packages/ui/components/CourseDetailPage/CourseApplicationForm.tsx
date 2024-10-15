@@ -73,8 +73,8 @@ export const CourseApplicationForm: FC = () => {
           reset()
 
           toaster.create({
-            title: 'Success',
-            description: 'Your application has been submitted',
+            title: t('success'),
+            description: t('course-application.pre-application-success'),
             type: 'success',
           })
         },

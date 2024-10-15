@@ -54,7 +54,7 @@ const SocialRightElement = ({
   )
 }
 
-export const Socials = () => {
+export const SocialsTab = () => {
   const { profile, token, checkAuth } = useAuthContext()
   const { t } = useTranslation()
 

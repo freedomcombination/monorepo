@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import { useTranslation } from 'next-i18next'
+import { AiOutlineOpenAI } from 'react-icons/ai'
 import {
   BsCashCoin,
   BsCashStack,
   BsCollection,
-  BsCommand,
   BsTranslate,
 } from 'react-icons/bs'
 import { CgHashtag, CgProfile } from 'react-icons/cg'
@@ -13,7 +13,6 @@ import { FaTimeline } from 'react-icons/fa6'
 import { FiActivity, FiUsers } from 'react-icons/fi'
 import { GiHumanPyramid } from 'react-icons/gi'
 import { HiOutlineNewspaper } from 'react-icons/hi'
-import { IoPricetagsOutline } from 'react-icons/io5'
 import { LuFileArchive } from 'react-icons/lu'
 import {
   MdFoundation,
@@ -132,6 +131,15 @@ export const useAdminNav = () => {
         label: t('archive-contents'),
         icon: <LuFileArchive />,
         link: '/archive-contents',
+        submenu: [
+          {
+            id: 'create-with-assistant',
+            label: t('create-with-assistant'),
+            link: '/archive-assistant',
+            icon: <AiOutlineOpenAI />,
+            allowed: canRead('archive-contents'),
+          },
+        ],
       },
       {
         id: 'activities',
@@ -187,12 +195,6 @@ export const useAdminNav = () => {
         label: t('categories'),
         icon: <MdOutlineCategory />,
         link: '/categories',
-      },
-      {
-        id: 'tags',
-        label: t('tags'),
-        icon: <IoPricetagsOutline />,
-        link: '/tags',
       },
       {
         id: 'news',
@@ -295,12 +297,6 @@ export const useAdminNav = () => {
         label: t('blogs'),
         icon: <TbWriting />,
         link: '/blogs',
-      },
-      {
-        id: 'competitions',
-        label: t('competitions'),
-        link: '/competitions',
-        icon: <BsCommand />,
       },
       {
         id: 'donation',

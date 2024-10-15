@@ -1,11 +1,10 @@
-import { Badge, HStack } from '@chakra-ui/react'
+import { Badge, Stack, Text, Wrap } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
 import type { ApprovalStatus, Course, CourseApplication } from '@fc/types'
+import { CourseLogic } from '@fc/utils/courseLogic'
 import { formatPrice } from '@fc/utils/formatPrice'
 
-import { PaidBadges } from '../../components/PaidBadges'
-import { calculateInstallments } from '../../components/ProfileSettings/Payment/utils/calculateInstallments'
 import type { WTableProps } from '../../components/WTable'
 
 export const useCourseApplicationColumns =
@@ -39,40 +38,45 @@ export const useCourseApplicationColumns =
       },
       { accessorKey: 'country', sortable: true },
       {
-        accessorKey: 'installmentCount',
-      },
-      {
         accessorKey: 'payments',
         transform: (value, application) => {
           const payments = value as CourseApplication['payments']
+          const course = application?.course
 
-          if (
-            application?.installmentCount &&
-            application.installmentCount > 1
-          ) {
-            const installments = calculateInstallments(
-              application.installmentCount,
-              application.createdAt,
-              0,
-              payments?.filter(payment => payment.status === 'paid') ?? [],
+          if (course) {
+            if (!course.price) return t('course.payment.free')
+
+            const courseLogic = new CourseLogic(
+              course,
+              [application!],
+              application!.profile!,
             )
 
             return (
-              <HStack wrap={'wrap'} gap={1}>
-                {installments.map(installment => (
-                  <Badge
-                    key={installment.installmentNumber}
-                    colorPalette={installment.payment ? 'green' : 'red'}
-                    variant={installment.payment ? 'solid' : 'outline'}
-                    w={5}
-                    h={5}
-                  >
-                    {installment.installmentNumber}
-                  </Badge>
-                ))}
-              </HStack>
+              <Stack>
+                {courseLogic.myInstallments.length > 1 && (
+                  <Wrap gap={1}>
+                    {courseLogic.myInstallments.map(installment => (
+                      <Badge
+                        key={installment.installmentNumber}
+                        colorScheme={installment.payment ? 'green' : 'red'}
+                        variant={installment.payment ? 'solid' : 'outline'}
+                        w={5}
+                        h={5}
+                      >
+                        {installment.installmentNumber}
+                      </Badge>
+                    ))}
+                  </Wrap>
+                )}
+                <Text>
+                  {formatPrice(courseLogic.getTotalPaid())} /{' '}
+                  {formatPrice(courseLogic.getTotalPrice())}
+                </Text>
+              </Stack>
             )
           }
+
           const totalAmount =
             payments?.reduce(
               (total, payment) =>
@@ -82,35 +86,6 @@ export const useCourseApplicationColumns =
 
           return `${formatPrice(totalAmount)}`
         },
-      },
-      {
-        accessorKey: 'hasPaid',
-        transform: (value, application) => {
-          const getPaidStatus = () => {
-            if (value) return 'paid'
-
-            if (!application?.course) return value ? 'paid' : 'not yet'
-
-            const course = application.course as Course
-            const price = course.price
-
-            if (price == 0) return 'free'
-
-            const totalAmount =
-              application.payments?.reduce(
-                (total, payment) =>
-                  payment.status === 'paid' ? total + payment.amount : total,
-                0,
-              ) ?? 0
-
-            if (price === totalAmount) return 'paid'
-
-            return 'not yet'
-          }
-
-          return <PaidBadges status={getPaidStatus()} />
-        },
-        transformPDF: value => (value ? t('paid') : t('not-paid')),
       },
       { accessorKey: 'course', transform: value => (value as Course).title_nl },
     ]

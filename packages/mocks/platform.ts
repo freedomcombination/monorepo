@@ -261,7 +261,6 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           isPublic: false,
           createdAt: '2023-09-25T02:41:33.218Z',
           updatedAt: '2023-12-10T11:36:46.590Z',
-          age: null,
           birthDate: null,
           city: null,
           isVolunteer: null,
@@ -376,11 +375,11 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           description_nl:
             'Op 11 oktober start de 8-weekse training van Fatih Gündoğdu.\nDe training wordt zowel online als face-to-face gehouden in Rotterdam.',
           content_en:
-            'The training to be given by **Fatih Gündoğdu** for 8 weeks starts on 11 October. \nThe training will be both online and face to face in Rotterdam. \nCourse content is as follows. \n\n1st week acquaintance, getting to know the art of calligraphy and materials \n\n2nd week pencil grip and basic exercises \n\n3rd week letter study \n\n4th week letter study \n\nWeek 5 word study \n\n6th week word study \n\n7th week sentence study \n\n8th week sentence study \n\n\nClass time every Wednesday 19:00-20:00 \n\n Last registration :10 October 2023\n\n**Payment :**\n\nThe course fee is 150 euros in total, 100 euros for the normal fee and 50 euros for materials. \n\nING Bank\n\nAccount name : Stg. Freedom Combination\n\nAccount no: NL79INGB0103801499\n\naccount or from this [link](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) until 10 October. \nAfter payment, the receipt must be sent to whatsaap number +31 6 85221308 and the final registration must take place. ',
+            'The training to be given by **Fatih Gündoğdu** for 8 weeks starts on 11 October. \nThe training will be both online and face to face in Rotterdam. \nCourse content is as follows. \n\n1st week acquaintance, getting to know the art of calligraphy and materials \n\n2nd week pencil grip and basic exercises \n\n3rd week letter study \n\n4th week letter study \n\nWeek 5 word study \n\n6th week word study \n\n7th week sentence study \n\n8th week sentence study \n\n\nClass time every Wednesday 19:00-20:00 \n\n Last registration :10 October 2023\n\n**Payment :**\n\nThe course fee is 150 euros in total, 100 euros for the normal fee and 50 euros for materials. \n\nING Bank\n\nAccount name : Stg. Freedom Combination\n\nAccount no: NL79INGB0103801499\n\naccount or from this [link](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) until 10 October. \nAfter payment, the receipt must be sent to whatsaap number +31 6 87578056 and the final registration must take place. ',
           content_tr:
-            '**Fatih Gündoğdu** tarafından 8 hafta boyunca verilecek eğitim 11 ekimde başlıyor. \nEğitim hem online hem de Roterdamda yüz yüze  yapılacak. \nDers içeriği şöyledir. \n\n1.hafta tanışma,kaligrafi sanatını ve malzemeleri tanıma \n\n2.hafta kalem tutuşu ve temel egzersizler \n\n3.hafta harf çalışması \n\n4.hafta harf çalışması \n\n5.hafta kelime çalışması \n\n6.hafta kelime çalışması \n\n7.hafta cümle çalışması \n\n8.hafta cümle çalışması \n\n\nDers saati her çarşamba 19:00-20:00 \n\n Son kayıt : 10 Ekim 2023\n\n**Ödeme  :**\nKurs ücreti; 100 euro normal ücret ve 50 euro malzeme masrafı olmak üzere toplam 150 eurodur. \n\nING Bank\n\nHesap adı : Stg. Freedom Combination\n\nHesap no : NL79INGB0103801499\n\nhesabına veya bu [linkten](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) 10 Ekim\'e kadar yatırılması gerekmektedir. \nÖdeme yaptıktan sonra ‪+31 6 85221308‬ numaralı whatsaap a dekontun gönderilip kesin kaydın gerçekleşmesi gerekmektedir. \n\n<iframe width="1081" height="608" src="https://www.youtube.com/embed/JfQcowojVaE" title="Kaligrafi Atölyesi başlıyor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+            '**Fatih Gündoğdu** tarafından 8 hafta boyunca verilecek eğitim 11 ekimde başlıyor. \nEğitim hem online hem de Roterdamda yüz yüze  yapılacak. \nDers içeriği şöyledir. \n\n1.hafta tanışma,kaligrafi sanatını ve malzemeleri tanıma \n\n2.hafta kalem tutuşu ve temel egzersizler \n\n3.hafta harf çalışması \n\n4.hafta harf çalışması \n\n5.hafta kelime çalışması \n\n6.hafta kelime çalışması \n\n7.hafta cümle çalışması \n\n8.hafta cümle çalışması \n\n\nDers saati her çarşamba 19:00-20:00 \n\n Son kayıt : 10 Ekim 2023\n\n**Ödeme  :**\nKurs ücreti; 100 euro normal ücret ve 50 euro malzeme masrafı olmak üzere toplam 150 eurodur. \n\nING Bank\n\nHesap adı : Stg. Freedom Combination\n\nHesap no : NL79INGB0103801499\n\nhesabına veya bu [linkten](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) 10 Ekim\'e kadar yatırılması gerekmektedir. \nÖdeme yaptıktan sonra ‪+31 6 87578056 numaralı whatsaap a dekontun gönderilip kesin kaydın gerçekleşmesi gerekmektedir. \n\n<iframe width="1081" height="608" src="https://www.youtube.com/embed/JfQcowojVaE" title="Kaligrafi Atölyesi başlıyor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
           content_nl:
-            'De training die gedurende 8 weken wordt gegeven door **Fatih Gündoğdu** start op 11 oktober. \nDe training is zowel online als face to face in Rotterdam. \nDe inhoud van de cursus is als volgt. \n\n1e week kennismaking, kennismaking met kalligrafie en materialen \n\n2e week potloodgreep en basisoefeningen \n\n3e week letterstudie \n\n4e week letterstudie \n\nWeek 5 woordstudie \n\n6e week woordstudie \n\n7e week zinsbouw \n\n8e week zinsbouw \n\n\nLestijd elke woensdag 19:00-20:00 \n\n Laatste inschrijving :10 October 2023\n\n**Betaling :**\n\nHet cursusgeld is 150 euro in totaal, 100 euro voor de normale kosten en 50 euro voor materialen. \n\nING Bank\n\nRekeningnaam : Stg. Freedom Combination\n\nRekeningnr: NL79INGB0103801499\n\nrekening of via deze [link](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) tot 10 oktober. \nNa betaling moet de kwitantie gestuurd worden naar whatsaap nummer +31 6 85221308 en dient de definitieve inschrijving plaats te vinden. ',
+            'De training die gedurende 8 weken wordt gegeven door **Fatih Gündoğdu** start op 11 oktober. \nDe training is zowel online als face to face in Rotterdam. \nDe inhoud van de cursus is als volgt. \n\n1e week kennismaking, kennismaking met kalligrafie en materialen \n\n2e week potloodgreep en basisoefeningen \n\n3e week letterstudie \n\n4e week letterstudie \n\nWeek 5 woordstudie \n\n6e week woordstudie \n\n7e week zinsbouw \n\n8e week zinsbouw \n\n\nLestijd elke woensdag 19:00-20:00 \n\n Laatste inschrijving :10 October 2023\n\n**Betaling :**\n\nHet cursusgeld is 150 euro in totaal, 100 euro voor de normale kosten en 50 euro voor materialen. \n\nING Bank\n\nRekeningnaam : Stg. Freedom Combination\n\nRekeningnr: NL79INGB0103801499\n\nrekening of via deze [link](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) tot 10 oktober. \nNa betaling moet de kwitantie gestuurd worden naar whatsaap nummer +31 6 87578056 en dient de definitieve inschrijving plaats te vinden. ',
           location: 'online-fyzk',
           language: 'tr',
           instructor: 'Fatih Gündoğdu',
@@ -390,6 +389,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           approvalStatus: 'approved',
           startDate: '2023-10-10',
           endDate: '2023-12-12',
+          requireApproval: false,
           lastRegisterDate: '2024-01-04',
           createdAt: '2023-09-27T11:56:48.624Z',
           updatedAt: '2023-10-11T11:59:27.477Z',
@@ -531,7 +531,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           description:
             'Fatih Gündoğdu tarafından 8 hafta boyunca verilecek eğitim 11 ekimde başlıyor. Eğitim hem online hem de Roterdamda yüz yüze yapılacak. ',
           content:
-            '**Fatih Gündoğdu** tarafından 8 hafta boyunca verilecek eğitim 11 ekimde başlıyor. \nEğitim hem online hem de Roterdamda yüz yüze  yapılacak. \nDers içeriği şöyledir. \n\n1.hafta tanışma,kaligrafi sanatını ve malzemeleri tanıma \n\n2.hafta kalem tutuşu ve temel egzersizler \n\n3.hafta harf çalışması \n\n4.hafta harf çalışması \n\n5.hafta kelime çalışması \n\n6.hafta kelime çalışması \n\n7.hafta cümle çalışması \n\n8.hafta cümle çalışması \n\n\nDers saati her çarşamba 19:00-20:00 \n\n Son kayıt : 10 Ekim 2024\n\n**Ödeme  :**\nKurs ücreti; 100 euro normal ücret ve 50 euro malzeme masrafı olmak üzere toplam 150 eurodur. \n\nING Bank\n\nHesap adı : Stg. Freedom Combination\n\nHesap no : NL79INGB0103801499\n\nhesabına veya bu [linkten](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) 10 Ekim\'e kadar yatırılması gerekmektedir. \nÖdeme yaptıktan sonra ‪+31 6 85221308‬ numaralı whatsaap a dekontun gönderilip kesin kaydın gerçekleşmesi gerekmektedir. \n\nKayıt için [vakıf sayfamızdaki](https://freedomcombination.com/tr/courses/calligraphy-workshop-begins) formu doldurmanız gerekmektedir. \n<iframe width="1081" height="608" src="https://www.youtube.com/embed/JfQcowojVaE" title="Kaligrafi Atölyesi başlıyor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+            '**Fatih Gündoğdu** tarafından 8 hafta boyunca verilecek eğitim 11 ekimde başlıyor. \nEğitim hem online hem de Roterdamda yüz yüze  yapılacak. \nDers içeriği şöyledir. \n\n1.hafta tanışma,kaligrafi sanatını ve malzemeleri tanıma \n\n2.hafta kalem tutuşu ve temel egzersizler \n\n3.hafta harf çalışması \n\n4.hafta harf çalışması \n\n5.hafta kelime çalışması \n\n6.hafta kelime çalışması \n\n7.hafta cümle çalışması \n\n8.hafta cümle çalışması \n\n\nDers saati her çarşamba 19:00-20:00 \n\n Son kayıt : 10 Ekim 2024\n\n**Ödeme  :**\nKurs ücreti; 100 euro normal ücret ve 50 euro malzeme masrafı olmak üzere toplam 150 eurodur. \n\nING Bank\n\nHesap adı : Stg. Freedom Combination\n\nHesap no : NL79INGB0103801499\n\nhesabına veya bu [linkten](https://www.ing.nl/particulier/betaalverzoek/index.html?trxid=54F5RwQ23eaKsSWXG89K3FBkeVgONw6Y) 10 Ekim\'e kadar yatırılması gerekmektedir. \nÖdeme yaptıktan sonra ‪+31 6 87578056 numaralı whatsaap a dekontun gönderilip kesin kaydın gerçekleşmesi gerekmektedir. \n\nKayıt için [vakıf sayfamızdaki](https://freedomcombination.com/tr/courses/calligraphy-workshop-begins) formu doldurmanız gerekmektedir. \n<iframe width="1081" height="608" src="https://www.youtube.com/embed/JfQcowojVaE" title="Kaligrafi Atölyesi başlıyor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
           approvalStatus: 'approved',
           date: '2023-10-11T13:00:00.000Z',
           createdAt: '2023-09-29T08:01:24.592Z',
@@ -547,7 +547,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           description:
             'The training, which will be given by Fatih Gündoğdu for 8 weeks, starts on October 11th. The training will be held both online and face-to-face in Rotterdam.',
           content:
-            'The training will be given by Fatih Gündoğdu for 8 weeks and starts on October 11. The training will be held both online and face-to-face in Rotterdam.\n\n1st week acquaintance, recognition of calligraphy art and materials\n\nWeek 2 pencil grip and basic exercises\n\nWeek 3 letter work\n\nWeek 4 letter work\n\nWeek 5 word study\n\nWeek 6 word study\n\nWeek 7 sentence study\n\nWeek 8 sentence study\n\nClass time every Wednesday 19:00-20:00\n\n Last registration : October 10, 2024\n\nPayment :Course fee\n\nING Bank\n\nHesap adı : Stg. Be the Voice for Freedom\n\nAccount no: NL79INGB0103801499\n\nAfter making the payment, the receipt must be sent to whatsaap number 31 6 85221308 and the final registration must take place.\n\nFor registration you need to fill in the form on our foundation page.',
+            'The training will be given by Fatih Gündoğdu for 8 weeks and starts on October 11. The training will be held both online and face-to-face in Rotterdam.\n\n1st week acquaintance, recognition of calligraphy art and materials\n\nWeek 2 pencil grip and basic exercises\n\nWeek 3 letter work\n\nWeek 4 letter work\n\nWeek 5 word study\n\nWeek 6 word study\n\nWeek 7 sentence study\n\nWeek 8 sentence study\n\nClass time every Wednesday 19:00-20:00\n\n Last registration : October 10, 2024\n\nPayment :Course fee\n\nING Bank\n\nHesap adı : Stg. Be the Voice for Freedom\n\nAccount no: NL79INGB0103801499\n\nAfter making the payment, the receipt must be sent to whatsaap number 31 6 87578056 and the final registration must take place.\n\nFor registration you need to fill in the form on our foundation page.',
           approvalStatus: 'approved',
           date: '2023-10-11T13:00:00.000Z',
           createdAt: '2023-09-29T08:01:41.008Z',
@@ -563,7 +563,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           description:
             'De training die gedurende 8 weken wordt gegeven door Fatih Gündoğdu begint op 11 oktober. De training wordt zowel online als face-to-face gegeven in Rotterdam.',
           content:
-            'De training die gedurende 8 weken wordt gegeven door Fatih Gündoğdu start op 11 oktober en wordt zowel online als face-to-face gegeven in Rotterdam. De cursusinhoud is als volgt.\n\n1e week kennismaking, herkenning van kalligrafie kunst en materialen\n\n2e week potloodgreep en basisoefeningen\n\n3e week letterstudie\n\n4e week letterstudie\n\nWeek 5 woordstudie\n\n6e week woordstudie\n\n7e week zinnenstudie\n\n8e week zinnenstudie\n\nLestijd elke woensdag 19:00-20:00\n\n Laatste registratie : 10 oktober 2024\n\nBetaling :Cursusgeld\n\nING Bank\n\nHesap adı : Stg. Freedom Combination\n\nRekeningnr: NL79INGB0103801499\n\nHet bedrag moet tot 10 oktober op de rekening of via deze link worden gestort. Na betaling moet de kwitantie naar whatsaap nummer 31 6 85221308 worden gestuurd en moet de definitieve registratie worden gedaan.\n\nVoor registratie moet je het formulier op onze foundationpagina invullen.',
+            'De training die gedurende 8 weken wordt gegeven door Fatih Gündoğdu start op 11 oktober en wordt zowel online als face-to-face gegeven in Rotterdam. De cursusinhoud is als volgt.\n\n1e week kennismaking, herkenning van kalligrafie kunst en materialen\n\n2e week potloodgreep en basisoefeningen\n\n3e week letterstudie\n\n4e week letterstudie\n\nWeek 5 woordstudie\n\n6e week woordstudie\n\n7e week zinnenstudie\n\n8e week zinnenstudie\n\nLestijd elke woensdag 19:00-20:00\n\n Laatste registratie : 10 oktober 2024\n\nBetaling :Cursusgeld\n\nING Bank\n\nHesap adı : Stg. Freedom Combination\n\nRekeningnr: NL79INGB0103801499\n\nHet bedrag moet tot 10 oktober op de rekening of via deze link worden gestort. Na betaling moet de kwitantie naar whatsaap nummer 31 6 87578056 worden gestuurd en moet de definitieve registratie worden gedaan.\n\nVoor registratie moet je het formulier op onze foundationpagina invullen.',
           approvalStatus: 'approved',
           date: '2023-10-11T13:00:00.000Z',
           createdAt: '2023-09-29T08:01:41.350Z',
@@ -659,7 +659,6 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           isPublic: false,
           createdAt: '2023-09-25T02:38:25.756Z',
           updatedAt: '2023-12-10T10:51:51.134Z',
-          age: null,
           birthDate: null,
           city: null,
           isVolunteer: true,
@@ -845,6 +844,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           approvalStatus: null,
           startDate: '2024-02-26',
           endDate: '2024-04-27',
+          requireApproval: false,
           lastRegisterDate: '2024-01-04',
           createdAt: '2023-12-03T19:31:51.292Z',
           updatedAt: '2023-12-04T19:56:55.771Z',
@@ -986,7 +986,6 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           isPublic: false,
           createdAt: '2023-09-26T21:19:10.668Z',
           updatedAt: '2023-09-26T21:19:54.890Z',
-          age: 33,
           birthDate: '1990-09-26',
           city: 'Eindhoven',
           isVolunteer: null,
@@ -1185,6 +1184,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           approvalStatus: 'approved',
           startDate: '2023-05-11',
           endDate: '2023-07-20',
+          requireApproval: false,
           lastRegisterDate: '2024-01-04',
           createdAt: '2023-04-08T09:31:16.213Z',
           updatedAt: '2023-05-09T18:36:13.911Z',
@@ -1217,6 +1217,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           approvalStatus: null,
           startDate: '2023-09-28',
           endDate: '2024-01-04',
+          requireApproval: false,
           lastRegisterDate: '2024-01-04',
           createdAt: '2023-09-23T16:24:40.424Z',
           updatedAt: '2023-09-26T08:54:41.717Z',
@@ -1249,6 +1250,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           approvalStatus: null,
           startDate: '2024-02-05',
           endDate: '2024-04-29',
+          requireApproval: false,
           lastRegisterDate: '2024-01-04',
           createdAt: '2023-12-07T12:05:19.630Z',
           updatedAt: '2023-12-07T12:57:56.210Z',
@@ -1375,7 +1377,6 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
           isPublic: false,
           createdAt: '2023-09-26T21:32:35.851Z',
           updatedAt: '2023-10-09T10:23:05.626Z',
-          age: null,
           birthDate: null,
           city: null,
           isVolunteer: null,

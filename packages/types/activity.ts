@@ -3,7 +3,6 @@ import { Expand } from './common'
 import { UploadFile } from './file'
 import { Platform } from './platform'
 import { StrapiBase, StrapiEntityBase } from './strapi'
-import { Tag } from './tag'
 
 type ActivityBase = StrapiEntityBase & {
   content: string | null
@@ -13,7 +12,6 @@ type ActivityBase = StrapiEntityBase & {
 
 type ActivityRelation = {
   categories?: Array<Category>
-  tags?: Array<Tag>
   image?: UploadFile | null
   localizations?: Array<Activity>
   platforms?: Array<Platform>
@@ -21,7 +19,6 @@ type ActivityRelation = {
 
 type ActivityRelationInput = {
   categories?: number
-  tags?: Array<number>
   image: File
   platforms?: number[]
 }

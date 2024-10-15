@@ -28,8 +28,8 @@ const EXPLANATION_LIMIT = 30
 
 export const CourseApplicationPayForm = () => {
   const { token, profile } = useAuthContext()
-  const { course, refetchApplicants, myApplication } = useCourseContext()
-  const application = myApplication!
+  const { course, refetchApplicants, courseLogic } = useCourseContext()
+  const application = courseLogic.myApplication!
   const [payOnline, setPayOnline] = useState(true)
   const [payExplanation, setPayExplanation] = useState('')
   const { t } = useTranslation()

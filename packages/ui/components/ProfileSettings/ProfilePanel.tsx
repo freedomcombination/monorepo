@@ -4,7 +4,7 @@ import { Box, Tabs, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
-import { FaBlog, FaKey } from 'react-icons/fa6'
+import { FaBlog, FaGear, FaKey } from 'react-icons/fa6'
 import { MdOutlinePayments } from 'react-icons/md'
 import { TbSocial } from 'react-icons/tb'
 
@@ -14,8 +14,9 @@ import { ArtsTab } from './ArtsTab'
 import { BlogsTab } from './BlogsTab'
 import { CoursesTab } from './CoursesTab'
 import { DetailsTab } from './DetailsTab'
+import { PreferencesTab } from './PreferencesTab'
 import { SecurityTab } from './SecurityTab'
-import { Socials } from './SocialsTab'
+import { SocialsTab } from './SocialsTab'
 import { Container } from '../Container'
 import { Hero } from '../Hero'
 import { WAvatar } from '../WAvatar'
@@ -124,6 +125,10 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                 <Box as={TbSocial} mr={2} />
                 <Box>{t('profile.tabs.socials')}</Box>
               </CustomTab>
+              <CustomTab data-testid="tab-preferences" title={'preferences'}>
+                <Box as={FaGear} mr={2} />
+                <Box>{t('profile.tabs.preferences')}</Box>
+              </CustomTab>
               {isCoursePaymentVisible && (
                 <CustomTab
                   title={'courses'}
@@ -155,7 +160,10 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                 <SecurityTab />
               </Tabs.Content>
               <Tabs.Content value="socials" p={0}>
-                <Socials />
+                <SocialsTab />
+              </Tabs.Content>
+              <Tabs.Content value="preferences" p={0}>
+                <PreferencesTab />
               </Tabs.Content>
               {isCoursePaymentVisible && (
                 <Tabs.Content value="courses" p={0}>

@@ -2,11 +2,12 @@ import * as yup from 'yup'
 
 import type { FormFields, Post } from '@fc/types'
 
-import { yupMultiSelect } from './common'
+import { yupSelect } from './common'
 
 export const usePostSchema = () => {
   return yup.object({
-    tags: yupMultiSelect,
+    victim: yupSelect,
+    prison: yupSelect,
     description: yup.string().required(),
     hashtag: yup.object().shape({
       label: yup.string(),
@@ -27,10 +28,14 @@ export const postFields: FormFields<Post> = [
     group: { value: 'image', name: 'media' },
   },
   {
-    name: 'tags',
+    name: 'victim',
     type: 'select',
-    endpoint: 'tags',
-    multiple: true,
+    endpoint: 'victims',
+  },
+  {
+    name: 'prison',
+    type: 'select',
+    endpoint: 'prisons',
   },
   {
     name: 'videoUrl',

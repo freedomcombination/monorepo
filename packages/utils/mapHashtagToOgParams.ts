@@ -1,6 +1,6 @@
 // Ref: https://javascript.info/task/delay-promise
+import { tz } from '@date-fns/tz'
 import { format } from 'date-fns'
-import { formatInTimeZone } from 'date-fns-tz'
 
 import type { Hashtag, OgImageParams } from '@fc/types'
 
@@ -16,10 +16,10 @@ export const mapHashtagToOgParams = (hashtag: Hashtag): OgImageParams => {
 
   const euDate = newDate ? format(newDate, 'dd MMMM yyyy') : ''
   const euTime = newDate
-    ? formatInTimeZone(newDate, 'Europe/Amsterdam', 'HH:mm')
+    ? format(newDate, 'HH:mm', { in: tz('Europe/Amsterdam') })
     : ''
   const trTime = newDate
-    ? formatInTimeZone(newDate, 'Europe/Istanbul', 'HH:mm')
+    ? format(newDate, 'HH:mm', { in: tz('Europe/Istanbul') })
     : ''
 
   const TITLE = capsContent[locale].title

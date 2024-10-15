@@ -10,7 +10,6 @@ export const useBlogSchema = () => {
     description: yup.string().required(),
     content: yup.string().required(),
     categories: yupMultiSelect,
-    tags: yupMultiSelect,
     author: yupSelect,
     image: yup.mixed().required(),
   })
@@ -26,12 +25,6 @@ export const blogFields: FormFields<Blog> = [
     type: 'select',
     multiple: true,
     endpoint: 'categories',
-  },
-  {
-    name: 'tags',
-    type: 'select',
-    multiple: true,
-    endpoint: 'tags',
   },
   {
     name: 'author',

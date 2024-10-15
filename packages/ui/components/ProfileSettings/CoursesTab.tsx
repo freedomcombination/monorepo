@@ -15,11 +15,12 @@ import {
 import { useAuthContext } from '@fc/context/auth'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { CourseApplication } from '@fc/types'
+import { CourseLogic } from '@fc/utils/courseLogic'
 
-import { CoursePaymentDetails } from './Payment/components/CoursePaymentDetails'
-import { PaymentLine } from './Payment/components/PaymentLine'
-import { StripeResult } from './Payment/components/StripeResult'
-import { GetGeneralStatus } from './Payment/utils/getGeneralStatus'
+import { ProfileCourseDetails } from './Payment/ProfileCourseDetails'
+import { StripeResult } from './Payment/StripeResult'
+import { I18nNamespaces } from '../../@types/i18next'
+import { KeyValue } from '../KeyValueView'
 
 export const CoursesTab: FC = () => {
   const { profile } = useAuthContext()
@@ -32,7 +33,13 @@ export const CoursesTab: FC = () => {
     filters: {
       profile: { id: { $eq: profile?.id } },
     },
-    populate: '*',
+    populate: [
+      'course',
+      'course.assignmentFiles',
+      'profile',
+      'submittedAssignmentFiles',
+      'payments',
+    ],
     queryOptions: {
       enabled: !!profile,
     },
@@ -58,7 +65,11 @@ export const CoursesTab: FC = () => {
             {...extProps}
           >
             {applications.map(application => (
-              <ApplicationView key={application.id} application={application} />
+              <ApplicationView
+                key={application.id}
+                application={application}
+                onSave={refetch}
+              />
             ))}
           </Accordion>
           <Link href="/courses">
@@ -82,15 +93,21 @@ export const CoursesTab: FC = () => {
 
 type ApplicationViewProps = {
   application: CourseApplication
+  onSave: () => void
 }
 
-const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
+const ApplicationView: FC<ApplicationViewProps> = ({ application, onSave }) => {
   const { locale } = useRouter()
   const { t } = useTranslation()
   const course = application.course!
+  const { profile } = useAuthContext()
+  const courseLogic = new CourseLogic(course, [application], profile)
 
   const title = course[`title_${locale}` as keyof CourseApplication['course']]
-  const status = GetGeneralStatus(course, application)
+  const status = courseLogic.getMessage(locale)
+  if (status.obj && 'msg' in status.obj) {
+    status.obj.msg = t(status.obj.msg as keyof I18nNamespaces['common'])
+  }
 
   return (
     <AccordionItem
@@ -102,27 +119,28 @@ const ApplicationView: FC<ApplicationViewProps> = ({ application }) => {
         <Box as="span" flex="1" textAlign="left">
           <VStack alignItems={'flex-start'}>
             <Text fontWeight={600}>{title}</Text>
-            <PaymentLine
+            <KeyValue
               title={
                 <Badge colorPalette={status.color} variant={'outline'}>
                   {t('status')}
                 </Badge>
               }
+              divider={false}
             >
-              <Text>{status.message}</Text>
-            </PaymentLine>
+              <Text>{t(status.message, status.obj)}</Text>
+            </KeyValue>
           </VStack>
         </Box>
         <AccordionIcon />
       </AccordionButton>
       <AccordionPanel pr={4} overflow={'auto'}>
         <VStack alignItems={'flex-start'} gap={4}>
-          <PaymentLine title={t('course.payment.title.course-page')}>
+          <KeyValue tKey={'course.payment.title.course-page'}>
             <Link href={`courses/${course.slug}`}>
               {t('course.payment.title.go-to-course')}
             </Link>
-          </PaymentLine>
-          <CoursePaymentDetails application={application} course={course} />
+          </KeyValue>
+          <ProfileCourseDetails courseLogic={courseLogic} onSave={onSave} />
         </VStack>
       </AccordionPanel>
     </AccordionItem>

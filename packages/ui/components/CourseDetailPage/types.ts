@@ -4,14 +4,14 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { InferType } from 'yup'
 
 import type { Course, CourseApplication, FaqLocale } from '@fc/types'
+import { CourseLogic } from '@fc/utils/courseLogic'
 
 import { applicationSchema } from './schema'
 
 export type CourseContextProps = {
   course: Course
   applications: CourseApplication[]
-  myApplication?: CourseApplication
-  paidApplications?: CourseApplication[]
+  courseLogic: CourseLogic
   isLoading: boolean
   refetchApplicants: () => void
 }

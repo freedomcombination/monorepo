@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
-import type { ArchiveContent, Hashtag, Post } from '@fc/types'
+import type { ArchiveContent, Hashtag, Post, Prison, Victim } from '@fc/types'
 
 import { GenAlert } from './GenAlert'
 import { TweetGenAI } from './TweetGenAI'
@@ -33,7 +33,16 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
   const colorPalette = post ? 'blue' : 'green'
 
   const categories = hashtag?.categories ?? []
-  const tags = post?.tags ?? []
+  const victims = (
+    post?.victim
+      ? [post.victim]
+      : (hashtag?.posts?.map(p => p.victim).filter(Boolean) ?? [])
+  ) as Victim[]
+  const prisons = (
+    post?.prison
+      ? [post.prison]
+      : (hashtag?.posts?.map(p => p.prison).filter(Boolean) ?? [])
+  ) as Prison[]
 
   const archiveContentQuery = useStrapiRequest<ArchiveContent>({
     endpoint: 'archive-contents',
@@ -42,14 +51,21 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
         ...categories.map(category => ({
           categories: { id: { $eq: category.id } },
         })),
-        ...tags.map(tag => ({
-          tags: { id: { $eq: tag.id } },
-        })),
+        ...(victims.length > 0
+          ? victims.map(victim => ({
+              victims: { id: { $eq: victim.id } },
+            }))
+          : []),
+        ...(prisons.length > 0
+          ? prisons.map(prison => ({
+              prisons: { id: { $eq: prison.id } },
+            }))
+          : []),
       ],
     },
     locale,
     queryOptions: {
-      enabled: categories.length > 0 || tags.length > 0,
+      enabled: categories.length > 0 || !!post?.victim || !!post?.prison,
     },
   })
 
@@ -62,8 +78,9 @@ export const TabbedGenAIView: React.FC<TabbedGenViewProps> = ({
         <GenAlert
           hashtag={hashtag}
           categories={categories}
-          tags={tags}
-          showTagAlert={!!post}
+          victims={victims}
+          prisons={prisons}
+          showAlert={!!post}
           onArchiveCreate={archiveContentQuery.refetch}
         >
           {alertContent}

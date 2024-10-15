@@ -20,7 +20,7 @@ import { useCourseContext } from './useCourseContext'
 import { ProfileMenu } from '../Header/ProfileMenu'
 
 export const CourseRegister = () => {
-  const { isLoading, myApplication, course } = useCourseContext()
+  const { isLoading, courseLogic, course } = useCourseContext()
   const { user, profile } = useAuthContext()
   const { t } = useTranslation()
 
@@ -52,7 +52,7 @@ export const CourseRegister = () => {
           {...style}
         >
           <Box maxWidth="sm">{t('course.application-closed-description')}</Box>
-          {myApplication && (
+          {courseLogic.myApplication && (
             <Box maxWidth="sm">{t('course.application-registered')}</Box>
           )}
         </Alert>
@@ -80,7 +80,7 @@ export const CourseRegister = () => {
   }
 
   // show application form if user haven't applied yet
-  if (!myApplication) {
+  if (!courseLogic.myApplication) {
     return (
       <Stack bg={'white'} {...style}>
         <Heading as={'h3'} size={'lg'}>
@@ -91,14 +91,25 @@ export const CourseRegister = () => {
     )
   }
 
+  if (
+    course.requireApproval &&
+    courseLogic.myApplication.approvalStatus !== 'approved'
+  ) {
+    return (
+      <Stack bg={'white'} {...style}>
+        <Heading as={'h3'} size={'lg'}>
+          {t('course-application.pre-application-success')}
+        </Heading>
+        <Text w={'100%'} px={20} textAlign={'center'}>
+          {t('course-application.pre-application-message')}
+        </Text>
+      </Stack>
+    )
+  }
+
   if (ALLOW_COURSE_PAYMENT) {
     // show payment form if user has already applied and not paid yet
-    if (
-      course.price &&
-      !myApplication.hasPaid &&
-      !myApplication.paymentExplanation &&
-      !myApplication.payments?.some(payment => payment?.status === 'paid')
-    ) {
+    if (!courseLogic.getMyPaymentCases()) {
       return (
         <Stack bg={'white'} {...style}>
           <Heading as={'h3'} size={'lg'}>
