@@ -5,9 +5,11 @@ import { checkRecaptcha, getProfile } from '../../../utils'
 export default factories.createCoreController('api::comment.comment', () => {
   return {
     async create(ctx) {
-      await checkRecaptcha()
-
       const profile = await getProfile()
+
+      if (!profile) {
+        await checkRecaptcha()
+      }
 
       const result = await strapi.entityService.create('api::comment.comment', {
         data: {

@@ -19,8 +19,8 @@ const tulpen = Tulpen_One({
 })
 
 export const fonts = {
-  body: poppins.style.fontFamily,
-  heading: poppins.style.fontFamily,
-  club: changa.style.fontFamily,
-  lotus: tulpen.style.fontFamily,
+  body: poppins?.style?.fontFamily,
+  heading: poppins?.style?.fontFamily,
+  club: changa?.style?.fontFamily,
+  lotus: tulpen?.style?.fontFamily,
 }

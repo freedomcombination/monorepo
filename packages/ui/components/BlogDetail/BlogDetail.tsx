@@ -16,7 +16,7 @@ import { useTranslation } from 'next-i18next'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaCalendarDay, FaClock, FaEye } from 'react-icons/fa'
 
-import { useGetBlogSlug } from '@fc/services/blog/getBlogBySlug'
+import { useGetBlogBySlug } from '@fc/services/blog/getBlogBySlug'
 import { useLikeBlog } from '@fc/services/blog/likeBlog'
 import { useViewBlog } from '@fc/services/blog/viewBlog'
 import type { UploadFile } from '@fc/types'
@@ -34,7 +34,7 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
   const { t } = useTranslation()
 
   useViewBlog()
-  const { data } = useGetBlogSlug()
+  const { data } = useGetBlogBySlug()
 
   const post = data?.data
 

@@ -1,7 +1,7 @@
 # Freedom Combination Turborepo
 
 <div style="display:flex;gap:30px;">
-<img  height="150px" width="150px" src="https://raw.githubusercontent.com/freedomcombination/monorepo/refs/heads/main/apps/foundation/public/images/foundation-logo.svg?token=GHSAT0AAAAAACOOL5UFWGKUXUZ3HJKB3CSSZX4KOXQ" />
+<img  height="150px" width="150px" src="https://www.freedomcombination.com/images/foundation-logo.svg" />
 <img  height="150px" width="150px" src="https://user-images.githubusercontent.com/4060187/196936104-5797972c-ab10-4834-bd61-0d1e5f442c9c.png" />
 </div>
 
@@ -45,6 +45,10 @@ You need to have a running [PostgreSQL](https://www.postgresql.org/download/) se
 
 ```bash
 yarn install
+
+# Seed database
+yarn import
+
 # Start all apps
 yarn dev
 

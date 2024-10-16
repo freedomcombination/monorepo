@@ -6,9 +6,6 @@ import { IMAGE_PATH } from '../constants'
 export class ArtsPage {
   readonly page: Page
 
-  readonly title: string
-  readonly description: string
-
   readonly uploadArtButton: Locator
   readonly warning: Locator
 
@@ -25,9 +22,6 @@ export class ArtsPage {
 
   constructor(page: Page) {
     this.page = page
-
-    this.title = faker.internet.displayName()
-    this.description = faker.string.sample(100)
 
     this.uploadArtButton = page.getByTestId('upload-art')
     this.warning = page.getByTestId('text-require-login')
@@ -56,11 +50,11 @@ export class ArtsPage {
     await this.page.waitForLoadState('domcontentloaded')
   }
 
-  async fillTitle(title = this.title) {
+  async fillTitle(title = faker.internet.displayName()) {
     await this.titleInput.fill(title)
   }
 
-  async fillDescription(description = this.description) {
+  async fillDescription(description = faker.lorem.sentence()) {
     await this.descriptionInput.fill(description)
   }
 

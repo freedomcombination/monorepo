@@ -41,8 +41,8 @@ function useStrapiRequest<T extends StrapiModel>({
     queryKey: Object.entries(args),
     queryFn: async () => {
       const result = await strapiRequest<T>({
-        ...args,
         ...(token && { token }),
+        ...args,
       } as any)
 
       return result

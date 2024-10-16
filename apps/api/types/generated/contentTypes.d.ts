@@ -1746,6 +1746,39 @@ export interface ApiCourseApplicationCourseApplication
   }
 }
 
+export interface ApiDevMailDevMail extends Schema.CollectionType {
+  collectionName: 'dev_mails'
+  info: {
+    singularName: 'dev-mail'
+    pluralName: 'dev-mails'
+    displayName: 'DevMail'
+    description: ''
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    to: Attribute.String
+    subject: Attribute.String
+    html: Attribute.Text
+    groupDate: Attribute.DateTime
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::dev-mail.dev-mail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::dev-mail.dev-mail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
 export interface ApiDonateDonate extends Schema.CollectionType {
   collectionName: 'donates'
   info: {
@@ -3375,6 +3408,7 @@ declare module '@strapi/types' {
       'api::comment.comment': ApiCommentComment
       'api::course.course': ApiCourseCourse
       'api::course-application.course-application': ApiCourseApplicationCourseApplication
+      'api::dev-mail.dev-mail': ApiDevMailDevMail
       'api::donate.donate': ApiDonateDonate
       'api::feedback.feedback': ApiFeedbackFeedback
       'api::foundation.foundation': ApiFoundationFoundation
