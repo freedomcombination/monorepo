@@ -1,9 +1,11 @@
 /// //////////////////////////////////////////////////////////////////// ///
 ///                                                                      ///
 ///                           00. TYPESCRIPT                             ///
-///              branch: onboarding/<username>/00-typescript             ///
+///              branch: onboarding/ozgur/00-typescript             ///
 ///                                                                      ///
 /// //////////////////////////////////////////////////////////////////// ///
+
+import { log } from 'console'
 
 /**
  * 01. VARIABLES AND TYPES
