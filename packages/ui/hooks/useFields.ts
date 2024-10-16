@@ -16,6 +16,7 @@ import { courseFields } from './schemas/course'
 import { courseApplicationFields } from './schemas/courseApplication'
 import { foundationFields } from './schemas/foundation'
 import { hashtagFields } from './schemas/hashtag'
+import { memberFields } from './schemas/member'
 import { notificationFields } from './schemas/notification'
 import { postFields } from './schemas/post'
 import { profileFields } from './schemas/profile'
@@ -45,6 +46,7 @@ export const useFields = <T extends StrapiModel>(): PartialStrapiEndpointMap<
     'course-applications': courseApplicationFields as FormFields<T>,
     foundations: foundationFields as FormFields<T>,
     hashtags: hashtagFields as FormFields<T>,
+    members: memberFields as FormFields<T>,
     notifications: notificationFields as FormFields<T>,
     posts: postFields as FormFields<T>,
     profiles: profileFields as FormFields<T>,

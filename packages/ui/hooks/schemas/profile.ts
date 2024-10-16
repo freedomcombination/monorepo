@@ -24,6 +24,7 @@ export const useProfileSchema = () => {
     user: yupSelect.required(),
     comment: yup.string(),
     platforms: yupMultiSelect,
+    teams: yupMultiSelect,
   })
 }
 
@@ -52,6 +53,7 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
   { name: 'isVolunteer', type: 'boolean' },
   { name: 'user', type: 'select', endpoint: 'users' },
   { name: 'platforms', type: 'select', isMulti: true, endpoint: 'platforms' },
+  { name: 'teams', type: 'select', isMulti: true, endpoint: 'teams' },
   { name: 'volunteerForm', type: 'file' },
   { name: 'cv', type: 'file' },
   { name: 'avatar', type: 'file' },

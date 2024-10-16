@@ -177,6 +177,12 @@
       "type": "enumeration",
       "enum": ["en", "tr", "nl"]
     },
+    "team": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::team.team",
+      "inversedBy": "members"
+    },
     "teams": {
       "type": "relation",
       "relation": "oneToMany",

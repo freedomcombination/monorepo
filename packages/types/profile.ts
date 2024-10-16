@@ -12,6 +12,7 @@ import { Platform } from './platform'
 import { Permissions } from './role'
 import { StrapiBase } from './strapi'
 import { Subscriber } from './subscriber'
+import { Team } from './team'
 import { User } from './user'
 
 export type ProfileStatus =
@@ -59,6 +60,7 @@ type ProfileRelation = {
   cv?: UploadFile | null
   feedbacks?: Array<Feedback>
   jobs?: Array<Job>
+  lead?: Profile
   likedArts?: Array<Art>
   likedBlogs?: Array<Blog>
   observations?: Array<Observation>
@@ -67,6 +69,7 @@ type ProfileRelation = {
   permissions?: Permissions
   platforms?: Array<Platform>
   subscriber?: Subscriber | null
+  teams?: Array<Team>
   user?: User | null
   volunteerForm?: UploadFile | null
 }
@@ -84,6 +87,8 @@ type ProfileRelationInput = {
   platforms?: Array<number>
   user?: number
   recaptchaToken?: string
+  teams?: Array<number>
+  team?: number
 }
 
 export type ProfileCreateInput = Expand<

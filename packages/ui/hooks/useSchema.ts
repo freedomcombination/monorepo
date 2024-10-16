@@ -6,6 +6,10 @@ import { nl, tr } from 'yup-locales'
 
 import type { PartialStrapiEndpointMap } from '@fc/types'
 
+type ExtendedStrapiEndpointMap = PartialStrapiEndpointMap<ObjectSchema<any>> & {
+  members?: ObjectSchema<any>
+}
+
 import { useActivitySchema } from './schemas/activity'
 import { useArchiveContentsSchema } from './schemas/archive-contents'
 import { useArtSchema } from './schemas/art'
@@ -18,10 +22,12 @@ import { useCourseSchema } from './schemas/course'
 import { useCourseApplicationSchema } from './schemas/courseApplication'
 import { useFoundationsSchema } from './schemas/foundation'
 import { useHashtagSchema } from './schemas/hashtag'
+import { useMemberSchema } from './schemas/member'
 import { useNotificationsSchema } from './schemas/notification'
 import { usePostSchema } from './schemas/post'
 import { useProfileSchema } from './schemas/profile'
 import { useRecommendedTweetSchema } from './schemas/recommendedTweet'
+import { useTeamSchema } from './schemas/team'
 import { useTopicSchema } from './schemas/topic'
 import {
   translateModelSchema,
@@ -30,7 +36,7 @@ import {
 import { useUserSchema } from './schemas/user'
 import { useUserFeedbackSchema } from './schemas/userFeedback'
 
-export const useSchema = (): PartialStrapiEndpointMap<ObjectSchema<any>> => {
+export const useSchema = (): ExtendedStrapiEndpointMap => {
   const { locale } = useRouter()
 
   useEffect(() => {
@@ -55,9 +61,11 @@ export const useSchema = (): PartialStrapiEndpointMap<ObjectSchema<any>> => {
     courses: useCourseSchema(),
     foundations: useFoundationsSchema(),
     hashtags: useHashtagSchema(),
+    members: useMemberSchema(),
     notifications: useNotificationsSchema(),
     posts: usePostSchema(),
     profiles: useProfileSchema(),
+    teams: useTeamSchema(),
     topic: useTopicSchema(),
     users: useUserSchema(),
   }

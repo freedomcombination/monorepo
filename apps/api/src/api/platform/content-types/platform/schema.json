@@ -114,9 +114,9 @@
     },
     "teams": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::team.team",
-      "mappedBy": "platforms"
+      "mappedBy": "platform"
     }
   }
 }

@@ -15,9 +15,9 @@
     "name": {
       "type": "string"
     },
-    "platforms": {
+    "platform": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::platform.platform",
       "inversedBy": "teams"
     },
@@ -30,17 +30,17 @@
     "description": {
       "type": "string"
     },
-    "members": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "teams"
-    },
     "lead": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::profile.profile",
       "inversedBy": "teams"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::profile.profile",
+      "mappedBy": "team"
     }
   }
 }

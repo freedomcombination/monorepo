@@ -9,7 +9,6 @@ export const useTeamSchema = () => {
     name: yup.string().required(),
     description: yup.string(),
     lead: yupSelect,
-    members: yupMultiSelect,
     platforms: yupMultiSelect,
   })
 }
@@ -17,8 +16,7 @@ export const useTeamSchema = () => {
 export const teamFields: FormFields<Team & { team: Team }> = [
   { name: 'name', isRequired: true },
   { name: 'description' },
-  { name: 'lead', type: 'select', endpoint: 'profiles', isRequired: true },
-  { name: 'members', type: 'select', isMulti: true, endpoint: 'profiles' },
-  { name: 'platforms', type: 'select', isMulti: true, endpoint: 'platforms' },
   { name: 'foundation', type: 'select', endpoint: 'foundations' },
+  { name: 'lead', type: 'select', endpoint: 'profiles', isRequired: true },
+  { name: 'platforms', type: 'select', isMulti: true, endpoint: 'platforms' },
 ]

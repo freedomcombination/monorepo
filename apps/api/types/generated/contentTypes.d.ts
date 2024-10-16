@@ -2302,7 +2302,7 @@ export interface ApiPlatformPlatform extends Schema.CollectionType {
     >
     teams: Attribute.Relation<
       'api::platform.platform',
-      'manyToMany',
+      'oneToMany',
       'api::team.team'
     >
     createdAt: Attribute.DateTime
@@ -2756,6 +2756,11 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     cv: Attribute.Media<'images' | 'files'>
     address: Attribute.Component<'flow.address'>
     locale: Attribute.Enumeration<['en', 'tr', 'nl']>
+    team: Attribute.Relation<
+      'api::profile.profile',
+      'manyToOne',
+      'api::team.team'
+    >
     teams: Attribute.Relation<
       'api::profile.profile',
       'oneToMany',
@@ -3021,9 +3026,9 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   }
   attributes: {
     name: Attribute.String
-    platforms: Attribute.Relation<
+    platform: Attribute.Relation<
       'api::team.team',
-      'manyToMany',
+      'manyToOne',
       'api::platform.platform'
     >
     foundation: Attribute.Relation<
@@ -3032,14 +3037,14 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'api::foundation.foundation'
     >
     description: Attribute.String
-    members: Attribute.Relation<
+    lead: Attribute.Relation<
       'api::team.team',
       'manyToOne',
       'api::profile.profile'
     >
-    lead: Attribute.Relation<
+    members: Attribute.Relation<
       'api::team.team',
-      'manyToOne',
+      'oneToMany',
       'api::profile.profile'
     >
     createdAt: Attribute.DateTime
