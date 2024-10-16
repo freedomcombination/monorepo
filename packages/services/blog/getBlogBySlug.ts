@@ -15,7 +15,7 @@ export const getBlogBySlug = async (slug: string, token: string | null) => {
   })
 }
 
-export const useGetBlogSlug = () => {
+export const useGetBlogBySlug = () => {
   const { locale, query } = useRouter()
   const { token } = useAuthContext()
 

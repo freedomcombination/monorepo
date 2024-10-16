@@ -22,8 +22,8 @@ const viewArt = async (
 
 export const useViewArtMutation = (recaptchaToken?: string) => {
   const queryClient = useQueryClient()
+
   const {
-    locale,
     query: { slug },
   } = useRouter()
 
@@ -40,7 +40,7 @@ export const useViewArtMutation = (recaptchaToken?: string) => {
         setArtStorage([...(artStorage || []), art.id])
       }
 
-      queryClient.invalidateQueries({ queryKey: ['art', locale, slug] })
+      queryClient.invalidateQueries({ queryKey: ['art', slug] })
     },
   })
 
@@ -50,5 +50,5 @@ export const useViewArtMutation = (recaptchaToken?: string) => {
     if (art && !isViewed) {
       mutate(art.id)
     }
-  }, 10 * 3000)
+  }, 5000)
 }
