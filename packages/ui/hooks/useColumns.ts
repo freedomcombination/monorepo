@@ -17,6 +17,7 @@ import { useNotificationColumns } from './tables/notification'
 import { usePaymentColumns } from './tables/payment'
 import { usePostColumns } from './tables/post'
 import { useProfileColumns } from './tables/profile'
+import { useTeamColumns } from './tables/team'
 import { useUserColumns } from './tables/user'
 import { useUserFeedbacksColumns } from './tables/userFeedbacks'
 import { WTableProps } from '../components/WTable'
@@ -45,6 +46,7 @@ export const useColumns = <T extends StrapiModel>(): {
     posts: usePostColumns() as WTableProps<T>['columns'],
     profiles: useProfileColumns() as WTableProps<T>['columns'],
     'user-feedbacks': useUserFeedbacksColumns() as WTableProps<T>['columns'],
+    teams: useTeamColumns() as WTableProps<T>['columns'],
     users: useUserColumns() as WTableProps<T>['columns'],
   }
 }

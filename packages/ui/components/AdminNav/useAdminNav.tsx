@@ -22,6 +22,7 @@ import {
   MdOutlineSpaceDashboard,
   MdTranslate,
 } from 'react-icons/md'
+import { PiMicrosoftTeamsLogoThin } from 'react-icons/pi'
 import { SiGeneralelectric, SiMaterialdesignicons } from 'react-icons/si'
 import {
   TbActivity,
@@ -83,6 +84,12 @@ export const useAdminNav = () => {
             icon: <SiMaterialdesignicons />,
           },
         ],
+      },
+      {
+        id: 'teams',
+        label: t('teams'),
+        icon: <PiMicrosoftTeamsLogoThin />,
+        link: '/teams',
       },
       {
         id: 'translates',
