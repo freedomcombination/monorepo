@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { useUpdateEffect, Box, Text, Flex } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
@@ -14,20 +14,19 @@ import { ModelStatusFilters } from '@fc/ui/components/ModelStatusFilters'
 import { MonthPicker } from '@fc/ui/components/MonthPicker'
 import { RangeParams } from '@fc/ui/components/MonthPicker/types'
 import { PageHeader } from '@fc/ui/components/PageHeader'
+import { useChangeParams } from '@fc/ui/hooks'
 import { useColumns } from '@fc/ui/hooks/useColumns'
 
 const DonationsPage = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1)
-  const [pageSize, setPageSize] = useState<number>(50)
+  const { t } = useTranslation()
+  const { locale, query } = useRouter()
+
+  const { changeParams, changePage, changeSearch } = useChangeParams()
+
   const [searchTerm, setSearchTerm] = useState<string>()
   const [defaultValue, setDefaultValue] = useState<string>('paid')
   const [date, setDate] = useState<RangeParams>()
-
-  const { t } = useTranslation()
-
   const [sort, setSort] = useState<Sort | undefined>(['createdAt:desc'])
-
-  const { locale, query, push } = useRouter()
 
   const status = query.status as DonationStatus | 'all'
 
@@ -40,8 +39,8 @@ const DonationsPage = () => {
 
   const donationsQuery = useStrapiRequest<Donation>({
     endpoint: 'donates',
-    page: currentPage || 1,
-    pageSize,
+    page: query.page ? parseInt(query.page as string) : 1,
+    pageSize: query.pageSize ? parseInt(query.pageSize as string) : 50,
     filters: {
       ...(searchTerm && { email: { $containsi: searchTerm } }),
       ...(date && {
@@ -55,25 +54,9 @@ const DonationsPage = () => {
     sort,
   })
 
-  useEffect(() => setCurrentPage(1), [])
-
-  const handleSearch = (search?: string) => {
-    setSearchTerm(search || undefined)
-  }
-
-  const handleSelect = (selectedDate?: RangeParams) => {
-    setDate(selectedDate || undefined)
-  }
-
-  const handleClear = () => {
-    setDate(undefined)
-  }
-
-  useUpdateEffect(() => {
-    donationsQuery.refetch()
-  }, [locale, searchTerm, sort])
-
   const donations = donationsQuery?.data?.data as Donation[]
+  const pageCount = donationsQuery?.data?.meta?.pagination?.pageCount || 0
+  const totalCount = donationsQuery?.data?.meta?.pagination?.total || 0
 
   const totalAmount =
     donations &&
@@ -81,28 +64,42 @@ const DonationsPage = () => {
       return acc + (donation.amount || 0)
     }, 0)
 
-  const pageCount = donationsQuery?.data?.meta?.pagination?.pageCount || 0
-  const totalCount = donationsQuery?.data?.meta?.pagination?.total || 0
+  const handleSearch = (search?: string) => {
+    setSearchTerm(search || undefined)
+    changeSearch(search)
+  }
 
-  const changeRoute = (
-    key: 'id' | 'page' | 'sort' | 'status' | 'published' | 'q' | 'pageSize',
-    value?: string | number | Sort | DonationStatus,
-  ) => {
-    if (!value || (key === 'status' && value === 'all')) {
-      const _query = { ...query }
-      delete _query[key]
-      push({ query: _query }, undefined, { shallow: true })
+  const handleSelect = (selectedDate?: RangeParams) => {
+    setDate(selectedDate || undefined)
 
-      return
+    if (selectedDate) {
+      const startDate = new Date(
+        selectedDate.startYear,
+        selectedDate.startMonth,
+      ).toISOString()
+      const endDate = new Date(
+        selectedDate.endYear,
+        selectedDate.endMonth,
+      ).toISOString()
+      changeParams({ startDate, endDate })
+    } else {
+      changeParams({ startDate: undefined, endDate: undefined })
     }
+  }
 
-    push({ query: { ...query, [key]: value } }, undefined, { shallow: true })
+  const handleClear = () => {
+    setDate(undefined)
+    changeParams({ date: undefined })
   }
 
   const setDonationStatus = (status: string) => {
-    changeRoute('status', status)
     setDefaultValue(status)
+    changeParams({ status })
   }
+
+  useUpdateEffect(() => {
+    donationsQuery.refetch()
+  }, [locale, searchTerm, sort])
 
   return (
     <AdminLayout seo={{ title: t('donations') }}>
@@ -127,13 +124,13 @@ const DonationsPage = () => {
 
       <DataTable<Donation>
         columns={columns.donates!}
-        currentPage={currentPage}
+        currentPage={query.page ? parseInt(query.page as string) : 1}
         data={donations}
         onSort={setSort}
         pageCount={pageCount}
-        pageSize={pageSize}
-        setCurrentPage={setCurrentPage}
-        setPageSize={setPageSize}
+        pageSize={query.pageSize ? parseInt(query.pageSize as string) : 50}
+        setCurrentPage={page => changePage(page)}
+        setPageSize={size => changeParams({ pageSize: size })}
         totalCount={totalCount as number}
       >
         {donations && (

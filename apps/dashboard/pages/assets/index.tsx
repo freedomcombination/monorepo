@@ -65,18 +65,18 @@ const AssetsPage = () => {
         currentPage={currentPage}
         data={assets as Asset[]}
         onClickRow={useHandleRowClick}
-        onSort={(sort) => changeParams({ sort })}
+        onSort={sort => changeParams({ sort })}
         pageCount={pageCount}
         pageSize={pageSize}
-        setCurrentPage={(page) => changePage(page)}
-        setPageSize={(size) => changeParams({ pageSize: size })}
+        setCurrentPage={page => changePage(page)}
+        setPageSize={size => changeParams({ pageSize: size })}
         totalCount={totalCount}
         allowExportPDF
         badges={[
           {
             badgeText(data) {
               const totalPrice = data.reduce((acc, curr) => acc + curr.price, 0)
-              
+
               return t('items-asset-total', { amount: formatPrice(totalPrice) })
             },
           },
@@ -85,7 +85,6 @@ const AssetsPage = () => {
     </AdminLayout>
   )
 }
-
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const locale = context.locale as StrapiLocale
