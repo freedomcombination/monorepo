@@ -6,9 +6,9 @@ import { test } from '../fixtures'
 import { LoginPage } from '../pages'
 import { addCookies, getUrl } from '../utils'
 
-// test.afterEach(async ({ page }) => {
-//   await page.close()
-// })
+test.afterEach(async ({ page }) => {
+  await page.close()
+})
 
 test.describe('07. Photo Arts', () => {
   // Clear browser context before each test

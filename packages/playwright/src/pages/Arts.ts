@@ -44,9 +44,9 @@ export class ArtsPage {
     this.photos = page.locator('.chakra-aspect-ratio').first()
     this.photosIcon = page.locator('//button[@aria-label="view art"]')
     this.photoTitle = page.locator('.chakra-heading').first()
-    this.photoLikeIcon = page.getByTestId('//*[@data-testid="button-like"]')
+    this.photoLikeIcon = page.getByTestId('button-like')
 
-    this.photoLikeButton = page.locator('//button[@data-testid="button-like"]')
+    this.photoLikeButton = page.locator('//*[@data-testid="button-like"]')
     this.photoCommentTxt = page.locator('//*[@data-testid="input-content"]')
     this.photoSendCommentButton = page.getByText('Send Comment')
   }
@@ -82,6 +82,7 @@ export class ArtsPage {
   async chooseTheFirstPhoto() {
     await this.page.locator('.art-image').first().hover()
     await this.photosIcon.first().click()
+    await this.page.waitForLoadState()
   }
 
   async likeTheFirstPhoto() {
