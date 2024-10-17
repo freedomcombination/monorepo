@@ -1,5 +1,12 @@
 import type { Site } from '@fc/types'
-import { Column, Img, Row, Section, Text } from '@react-email/components'
+import {
+  Column,
+  Container,
+  Img,
+  Row,
+  Section,
+  Text,
+} from '@react-email/components'
 import React, { FC, PropsWithChildren } from 'react'
 import { getSiteColor, getSiteLogo, getSiteName } from '../utils/getSiteData'
 
@@ -34,7 +41,7 @@ const SiteLayout: FC<SiteLayoutProps> = ({ site, children, preview }) => {
         </Column>
       </Row>
       <Row style={{ paddingTop: '16px', paddingBottom: '16px' }}>
-        {children}
+        <Container>{children}</Container>
       </Row>
       <Row>
         <Column

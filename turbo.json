@@ -46,6 +46,7 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": { "cache": false },
+    "api": { "cache": false, "persistent": true },
     "dev": { "cache": false, "persistent": true },
     "dev:test": { "cache": false, "persistent": true },
     "dashboard": { "cache": false, "persistent": true },

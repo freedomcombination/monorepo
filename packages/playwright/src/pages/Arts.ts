@@ -6,10 +6,6 @@ import { IMAGE_PATH } from '../constants'
 export class ArtsPage {
   readonly page: Page
 
-  readonly title: string
-  readonly description: string
-  readonly comment: string | undefined
-
   readonly uploadArtButton: Locator
   readonly warning: Locator
 
@@ -33,9 +29,6 @@ export class ArtsPage {
 
   constructor(page: Page) {
     this.page = page
-
-    this.title = faker.internet.displayName()
-    this.description = faker.string.sample(100)
 
     this.uploadArtButton = page.getByTestId('upload-art')
     this.warning = page.getByTestId('text-require-login')
@@ -72,11 +65,11 @@ export class ArtsPage {
     await this.page.waitForLoadState('domcontentloaded')
   }
 
-  async fillTitle(title = this.title) {
+  async fillTitle(title = faker.internet.displayName()) {
     await this.titleInput.fill(title)
   }
 
-  async fillDescription(description = this.description) {
+  async fillDescription(description = faker.lorem.sentence()) {
     await this.descriptionInput.fill(description)
   }
 
@@ -85,6 +78,7 @@ export class ArtsPage {
     await this.page.waitForTimeout(1000)
     await this.saveButton.click()
   }
+
   async chooseTheFirstPhoto() {
     await this.page.locator('.art-image').first().hover()
     await this.photosIcon.first().click()
@@ -94,10 +88,12 @@ export class ArtsPage {
     await this.photoLikeIcon.click()
     await this.page.waitForTimeout(2000)
   }
-  async writeACommentForThePhotoAndSendIt(comment = this.comment) {
+
+  async writeACommentForThePhotoAndSendIt(comment = faker.lorem.sentence()) {
     await this.photoCommentTxt.fill(comment)
     await this.photoSendCommentButton.click()
   }
+
   async createArt(args?: {
     title?: string
     description?: string

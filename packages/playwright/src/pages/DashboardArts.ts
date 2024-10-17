@@ -55,7 +55,8 @@ export class DashboardArtsPage {
   }
 
   async selectUploadedPicture(title: string) {
-    await this.page.getByText(`${title}`).click()
+    await this.page.locator('tr', { hasText: title }).click()
+    // await this.page.getByText(`${title}`).click()
   }
 
   async fillFeedback(comment: string) {

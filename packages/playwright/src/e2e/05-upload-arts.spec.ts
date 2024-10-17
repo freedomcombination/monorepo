@@ -188,7 +188,8 @@ test.describe('05. Upload Arts', () => {
     await dashboardArtsPage.rejectArt()
     await dashboardArtsPage.gotoRejectedArts()
 
-    await page.getByText(`${artTitle}`).click()
+    await page.locator('tr', { hasText: artTitle }).click()
+    // await page.getByText(`${artTitle}`).click()
     await expect(dashboardArtsPage.artStatusTag).toContainText('Rejected')
 
     // Check if the art is displayed in the rejected arts section
