@@ -11,7 +11,10 @@ const CourseApplicantWithoutPayment: FC<CourseApplicantBaseProps> = ({
   t = getTranslate('en').t,
 }) => {
   const data: CourseApplicationKV[] = [
-    { tKey: 'details', value: application.paymentExplanation },
+    {
+      tKey: 'details',
+      value: application?.paymentExplanation ?? 'Some fake paymentExplanation',
+    },
   ]
 
   return (
@@ -19,11 +22,11 @@ const CourseApplicantWithoutPayment: FC<CourseApplicantBaseProps> = ({
       preview={'course-applicant-unpaid-preview'}
       header={'course-applicant-unpaid-header'}
       footer={'course-applicant-unpaid-footer'}
-      applicant={application.profile}
-      course={application.course}
+      applicant={application?.profile}
+      course={application?.course}
       t={t}
       data={data}
-      date={application.updatedAt}
+      date={application?.updatedAt}
     />
   )
 }

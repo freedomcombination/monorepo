@@ -23,14 +23,9 @@ export const approvalStatusHasChanged = async (params, application) => {
     )
   }
 
-  await sendReactMail(receiver, async t => {
-    return {
-      subject: t(
-        approved
-          ? 'course-applicant-approved-preview'
-          : 'course-applicant-rejected-preview',
-      ),
-      html: await emailTemplates.renderCourseApplicantApprove(application, t),
-    }
-  })
+  await sendReactMail(
+    receiver,
+    async t =>
+      await emailTemplates.renderCourseApplicantApprove(application, t),
+  )
 }

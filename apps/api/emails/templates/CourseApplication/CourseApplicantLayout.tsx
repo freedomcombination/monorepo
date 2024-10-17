@@ -4,7 +4,6 @@ import React, { FC, ReactNode } from 'react'
 import { EmailProvider } from '../../EmailProvider'
 import { EmailButton } from '../../components/Button'
 import { KeyValue } from '../../components/KeyValue'
-import SiteLayout from '../../components/SiteLayout'
 import { formatDate } from '../../utils/formatDate'
 import { getSiteLink } from '../../utils/getSiteData'
 import { getTranslate, TranslateFunc } from '../../utils/getTranslate'
@@ -81,46 +80,36 @@ const CourseApplicantLayout: FC<CourseApplicantLayoutProps> = ({
   ]
 
   return (
-    <EmailProvider>
-      <SiteLayout
-        site={'foundation'}
-        preview={t(preview, {
-          name: applicant?.name || 'user name',
-        })}
-      >
-        <Section style={{ padding: '10px' }}>
-          <Text style={{ fontSize: '16px' }}>{t(header)}</Text>
-        </Section>
-        <Section
-          style={{
-            padding: '20px',
-          }}
-        >
-          {baseData.map(({ tKey, value, url }, index) => (
-            <KeyValue key={index} tKey={tKey} locale={locale}>
-              {url ? (
-                <Link href={url}>{value}</Link>
-              ) : typeof value === 'string' ? (
-                <Text style={{ fontWeight: 'bold' }}>{value}</Text>
-              ) : (
-                value
-              )}
-            </KeyValue>
-          ))}
-        </Section>
-        <Section style={{ padding: '10px' }}>
-          <Text style={{ fontSize: '16px' }}>{t(footer)}</Text>
-          {!noButton && (
-            <EmailButton
-              href={
-                getSiteLink('dashboard', locale) + 'profile/' + applicant.id
-              }
-            >
-              Dashboard
-            </EmailButton>
-          )}
-        </Section>
-      </SiteLayout>
+    <EmailProvider
+      site={'foundation'}
+      preview={t(preview, {
+        name: applicant?.name || 'user name',
+      })}
+      heading={t(header)}
+    >
+      <Section>
+        {baseData.map(({ tKey, value, url }, index) => (
+          <KeyValue key={index} title={t(tKey)}>
+            {url ? (
+              <Link href={url}>{value}</Link>
+            ) : typeof value === 'string' ? (
+              <Text style={{ fontWeight: 'bold' }}>{value}</Text>
+            ) : (
+              value
+            )}
+          </KeyValue>
+        ))}
+      </Section>
+      <Section style={{ padding: '10px' }}>
+        <Text style={{ fontSize: '16px' }}>{t(footer)}</Text>
+        {!noButton && (
+          <EmailButton
+            href={getSiteLink('dashboard', locale) + 'profile/' + applicant.id}
+          >
+            Dashboard
+          </EmailButton>
+        )}
+      </Section>
     </EmailProvider>
   )
 }
