@@ -1,52 +1,37 @@
-import crypto from 'crypto'
+import type { Site } from '@fc/types'
 import utils from '@strapi/utils'
-import type { Site, StrapiLocale } from '@fc/types'
+import crypto from 'crypto'
 import { emailTemplates } from '../../../emails'
+import { sendReactMail } from '../../utils/sendReactMail'
 
-const { sanitize } = utils
-const { ApplicationError, ValidationError, NotFoundError, ForbiddenError } =
+const { /*ApplicationError,*/ ValidationError, NotFoundError, ForbiddenError } =
   utils.errors
 
 const emailRegExp =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-const sanitizeUser = (user, ctx) => {
-  const { auth } = ctx.state
-  const userSchema = strapi.getModel('plugin::users-permissions.user')
-
-  return sanitize.contentAPI.output(user, userSchema, { auth })
-}
-
-const getService = name => {
-  return strapi.plugin('users-permissions').service(name)
-}
-
 module.exports = plugin => {
   plugin.controllers.auth.forgotPassword = async ctx => {
     let { email } = ctx.request.body
 
-    const { site = 'foundation' as Site, locale = 'en' as StrapiLocale } =
-      ctx.request.body
+    const { site = 'foundation' as Site, locale = 'en' } = ctx.request.body
 
     const isEmail = emailRegExp.test(email)
 
     if (isEmail) {
       email = email.toLowerCase()
     } else {
-      // TODO check those ValidationError errors etc. if takes second argument, ApplicationError takes second argument
+      // TODO check those ValidationError errors etc, if it takes second argument; we know that ApplicationError takes second argument
       throw new ValidationError('Please provide a valid email address', {
         i18nKey: 'strapi.error.forgot-password.invalid-email',
       })
     }
 
-    const pluginStore = await strapi.store({
-      type: 'plugin',
-      name: 'users-permissions',
-    })
+    const profile = await strapi
+      .query('api::profile.profile')
+      .findOne({ where: { user: { email } }, populate: ['user'] })
 
-    const user = await strapi
-      .query('plugin::users-permissions.user')
-      .findOne({ where: { email } })
+    const user = profile?.user
 
     if (!user) {
       throw new NotFoundError('This email does not exist', {
@@ -62,58 +47,20 @@ module.exports = plugin => {
 
     const resetPasswordToken = crypto.randomBytes(64).toString('hex')
 
-    const settings = await pluginStore
-      .get({ key: 'email' })
-      .then(storeEmail => {
-        try {
-          return storeEmail['reset_password'].options
-        } catch (error) {
-          console.error(error)
-
-          return {}
-        }
-      })
-
-    const userInfo = await sanitizeUser(user, ctx)
-
-    settings.message = await emailTemplates.renderForgotPassword(
-      email,
-      site,
-      resetPasswordToken,
-      locale,
-    )
-
-    settings.object = await getService('users-permissions').template(
-      settings.object,
-      {
-        USER: userInfo,
-      },
-    )
-
     await strapi
       .query('plugin::users-permissions.user')
       .update({ where: { id: user.id }, data: { resetPasswordToken } })
 
-    try {
-      await strapi
-        .plugin('email')
-        .service('email')
-        .send({
-          to: email,
-          from:
-            settings.from.email || settings.from.name
-              ? `${settings.from.name} <${settings.from.email}>`
-              : undefined,
-          replyTo: settings.response_email,
-          subject: settings.object,
-          text: settings.message,
-          html: settings.message,
-        })
-    } catch (err) {
-      throw new ApplicationError(err.message, {
-        i18nKey: 'strapi.error.forgot-password.email-not-sent',
-      })
-    }
+    await sendReactMail(
+      [{ email: user.email, locale: profile.locale ?? locale }],
+      async t =>
+        await emailTemplates.renderForgotPassword(
+          email,
+          site,
+          resetPasswordToken,
+          t,
+        ),
+    )
 
     ctx.send({ ok: true })
   }

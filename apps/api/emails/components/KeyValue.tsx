@@ -1,38 +1,29 @@
 import React, { FC, ReactNode } from 'react'
-import { getTranslate } from '../utils/getTranslate'
-import { translations } from '../utils/translations'
 
-import { Row, Section, Text, RowProps, Column } from '@react-email/components'
-import { StrapiLocale } from '@fc/types'
+import { Column, Row, RowProps, Section, Text } from '@react-email/components'
 
 type KeyValueProps = {
   when?: boolean
-  locale: StrapiLocale
   stripped?: boolean
   divider?: boolean
   title?: ReactNode
-  tKey?: keyof typeof translations
 } & Omit<RowProps, 'title'>
 
 export const KeyValue: FC<KeyValueProps> = ({
   children,
-  locale = 'en',
   stripped = false,
   when = true,
   divider = true,
   title,
-  tKey,
   ...props
 }) => {
-  const { t } = getTranslate(locale)
   if (!when) return null
-
-  const finalTitle = tKey ? t(tKey) : title
 
   return (
     <Row
       style={{
         fontSize: '14px',
+        display: 'flex',
         gap: 4,
         padding: 1,
         ...(stripped ? { background: 'gray' } : {}),
@@ -48,7 +39,8 @@ export const KeyValue: FC<KeyValueProps> = ({
     >
       <Column
         style={{
-          width: '120px',
+          width: '80px',
+          minWidth: '80px',
           flexShrink: 0,
           alignItems: 'flex-end',
           paddingRight: 10,
@@ -59,12 +51,14 @@ export const KeyValue: FC<KeyValueProps> = ({
             textAlign: 'right',
           }}
         >
-          {finalTitle}
+          {title}
         </Text>
       </Column>
       <Column
         style={{
           alignItems: 'flex-start',
+          flexGrow: 1,
+          flexShrink: 1,
         }}
       >
         {typeof children === 'string' ? (
