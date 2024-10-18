@@ -6,9 +6,14 @@ type EmailReceiver = {
   locale?: StrapiLocale
 }
 
+export type EmailDetails = {
+  subject: string
+  html: string
+}
+
 export const sendReactMail = async (
   receivers: EmailReceiver[],
-  mailBody: (t: TranslateFunc) => Promise<{ subject: string; html: string }>,
+  mailBody: (t: TranslateFunc) => Promise<EmailDetails>,
 ) => {
   const fixedReceivers = receivers.map(receiver => {
     return {
@@ -67,7 +72,7 @@ export const sendReactMail = async (
 
 export const sendReactMailByRoles = async (
   roles: string[],
-  mailBody: (t: TranslateFunc) => Promise<{ subject: string; html: string }>,
+  mailBody: (t: TranslateFunc) => Promise<EmailDetails>,
 ) => {
   const profiles = await strapi.entityService.findMany('api::profile.profile', {
     filters: {
