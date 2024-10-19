@@ -6,9 +6,6 @@ import { IMAGE_PATH } from '../constants'
 export class ArtsPage {
   readonly page: Page
 
-  readonly title: string
-  readonly description: string
-
   readonly uploadArtButton: Locator
   readonly warning: Locator
 
@@ -22,12 +19,16 @@ export class ArtsPage {
   readonly submitButton: Locator
   readonly confirmationMessage: Locator
   readonly goToMyProfileLink: Locator
+  readonly photos: Locator
+  readonly photosIcon: Locator
+  readonly photoTitle: Locator
+  readonly photoLikeIcon: Locator
+  readonly photoLikeButton: Locator
+  readonly photoCommentTxt: Locator
+  readonly photoSendCommentButton: Locator
 
   constructor(page: Page) {
     this.page = page
-
-    this.title = faker.internet.displayName()
-    this.description = faker.string.sample(100)
 
     this.uploadArtButton = page.getByTestId('upload-art')
     this.warning = page.getByTestId('text-require-login')
@@ -40,6 +41,14 @@ export class ArtsPage {
     this.submitButton = page.getByTestId('button-create-art')
     this.confirmationMessage = page.getByTestId('text-create-art-success')
     this.goToMyProfileLink = page.getByTestId('link-goto-profile')
+    this.photos = page.locator('.chakra-aspect-ratio').first()
+    this.photosIcon = page.locator('//button[@aria-label="view art"]')
+    this.photoTitle = page.locator('.chakra-heading').first()
+    this.photoLikeIcon = page.getByTestId('button-like')
+
+    this.photoLikeButton = page.locator('//*[@data-testid="button-like"]')
+    this.photoCommentTxt = page.locator('//*[@data-testid="input-content"]')
+    this.photoSendCommentButton = page.getByText('Send Comment')
   }
 
   async clickUploadArtButton() {
@@ -56,11 +65,11 @@ export class ArtsPage {
     await this.page.waitForLoadState('domcontentloaded')
   }
 
-  async fillTitle(title = this.title) {
+  async fillTitle(title = faker.internet.displayName()) {
     await this.titleInput.fill(title)
   }
 
-  async fillDescription(description = this.description) {
+  async fillDescription(description = faker.lorem.sentence()) {
     await this.descriptionInput.fill(description)
   }
 
@@ -68,6 +77,22 @@ export class ArtsPage {
     await this.filePicker.setInputFiles(imagePath)
     await this.page.waitForTimeout(1000)
     await this.saveButton.click()
+  }
+
+  async chooseTheFirstPhoto() {
+    await this.page.locator('.art-image').first().hover()
+    await this.photosIcon.first().click()
+    await this.page.waitForLoadState()
+  }
+
+  async likeTheFirstPhoto() {
+    await this.photoLikeIcon.click()
+    await this.page.waitForTimeout(2000)
+  }
+
+  async writeACommentForThePhotoAndSendIt(comment = faker.lorem.sentence()) {
+    await this.photoCommentTxt.fill(comment)
+    await this.photoSendCommentButton.click()
   }
 
   async createArt(args?: {

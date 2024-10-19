@@ -17,7 +17,7 @@ import { RECAPTCHA_SITE_KEY } from '@fc/config/constants'
 import { defaultSeo } from '@fc/config/seo'
 import { AuthProvider } from '@fc/context/auth'
 import { WebPushProvider } from '@fc/context/webPush'
-import type { Site } from '@fc/types'
+import { CookieKey, type Site } from '@fc/types'
 
 import { CookieBanner } from '../CookieBanner'
 import { NotificationModal } from '../NotificationModal'
@@ -46,10 +46,12 @@ export const Providers: FC<ProvidersProps> = ({
   )
 
   const { locale } = useRouter()
-  const [cookie, updateCookie] = useCookie('__CB-ALLOWED')
+  const [bannerCookie, updateBannerCookie] = useCookie(
+    CookieKey.COOKIE_BANNER_ALLOWED,
+  )
 
   const onAllow = () => {
-    updateCookie('true')
+    updateBannerCookie('true')
   }
 
   const enable =
@@ -68,7 +70,8 @@ export const Providers: FC<ProvidersProps> = ({
               <ChakraProvider site={site}>
                 {enable && <NotificationModal />}
                 {children}
-                {!cookie && <CookieBanner onAllow={onAllow} />}
+                {process.env.VERCEL_ENV === 'production' && <Analytics />}
+                {!bannerCookie && <CookieBanner onAllow={onAllow} />}
                 <Toaster />
               </ChakraProvider>
             </WebPushProvider>

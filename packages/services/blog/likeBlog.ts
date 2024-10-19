@@ -8,7 +8,7 @@ import { API_URL, RecaptchaKeys } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 import type { LikeMutationArgs } from '@fc/types'
 
-import { useGetBlogSlug } from './getBlogBySlug'
+import { useGetBlogBySlug } from './getBlogBySlug'
 import { useRecaptchaToken } from '../common/useRecaptchaToken'
 
 const likeBlog = async ({
@@ -36,7 +36,7 @@ const useLikeBlogMutation = () => {
 
 export const useLikeBlog = () => {
   const [disabled, setDisabled] = useState(false)
-  const { data, refetch } = useGetBlogSlug()
+  const { data, refetch } = useGetBlogBySlug()
 
   const blog = data?.data
 

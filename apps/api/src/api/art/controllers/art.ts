@@ -3,6 +3,7 @@ import { EntityService, Attribute } from '@strapi/types'
 import { errors } from '@strapi/utils'
 import { getProfile } from '../../../utils'
 import { emailTemplates } from '../../../../emails'
+import { sendReactMailByRoles } from '../../../utils/sendReactMail'
 
 const { UnauthorizedError } = errors
 
@@ -12,37 +13,10 @@ type Art = EntityService.GetValues<
 >
 
 const sendArtCreatedEmail = async art => {
-  const editors = await strapi.entityService.findMany(
-    'plugin::users-permissions.user',
-    {
-      filters: {
-        role: {
-          type: {
-            $in: ['admin', 'arteditor', 'arteditor_translator'],
-          },
-        },
-      },
-    },
+  await sendReactMailByRoles(
+    ['admin', 'arteditor', 'arteditor_translator'],
+    async t => await emailTemplates.renderArtCreated(art, t),
   )
-  const editorEmails = editors.map(editor => editor.email)
-
-  if (editorEmails.length === 0) {
-    strapi.log.error('No editor email exists')
-
-    return
-  }
-
-  // populating artist to use in email subject
-  const artist = art.artist
-  const name = artist.name || artist?.email || 'an artist'
-  const title = art.title_tr || art.title_nl || art.title_en
-
-  await strapi.plugins['email'].services.email.send({
-    to: editorEmails,
-    from: process.env.SMTP_USERNAME,
-    subject: `New Art: ${title} - ${name}`,
-    html: await emailTemplates.renderArtCreated(art),
-  })
 }
 
 export default factories.createCoreController('api::art.art', ({ strapi }) => {
@@ -71,9 +45,7 @@ export default factories.createCoreController('api::art.art', ({ strapi }) => {
         },
       )
 
-      if (process.env.VERCEL_ENV === 'production') {
-        await sendArtCreatedEmail(updatedArt)
-      }
+      await sendArtCreatedEmail(updatedArt)
 
       return result
     },

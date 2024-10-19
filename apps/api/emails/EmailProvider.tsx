@@ -1,8 +1,21 @@
 import React, { FC, PropsWithChildren } from 'react'
 
-import { Body, Container, Font, Html } from '@react-email/components'
+import { Site } from '@fc/types'
+import { Body, Font, Html } from '@react-email/components'
+import SiteLayout from './components/SiteLayout'
 
-export const EmailProvider: FC<PropsWithChildren> = ({ children }) => {
+type EmailProviderProps = PropsWithChildren<{
+  site: Site
+  preview: string
+  heading: string
+}>
+
+export const EmailProvider: FC<EmailProviderProps> = ({
+  children,
+  site,
+  preview,
+  heading,
+}) => {
   return (
     <Html>
       <Font
@@ -26,7 +39,9 @@ export const EmailProvider: FC<PropsWithChildren> = ({ children }) => {
         }}
       />
       <Body>
-        <Container style={{ maxWidth: '80%' }}>{children}</Container>
+        <SiteLayout site={site} preview={preview} heading={heading}>
+          {children}
+        </SiteLayout>
       </Body>
     </Html>
   )

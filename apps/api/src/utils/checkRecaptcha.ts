@@ -1,17 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { errors } from '@strapi/utils'
-
-const { ForbiddenError } = errors
 
 export const checkRecaptcha = async () => {
   const ctx = strapi.requestContext.get()
 
-  if (process.env.NODE_ENV === 'development') return
-
   const recaptchaToken = (ctx.request as any).body?.data?.recaptchaToken
 
   if (!recaptchaToken) {
-    throw new ForbiddenError('Recaptcha token required')
+    return ctx.forbidden('Recaptcha token required', {
+      details: { recaptchaToken },
+    })
   }
 
   const secret = process.env.RECAPTCHA_SECRET_KEY
@@ -28,13 +25,10 @@ export const checkRecaptcha = async () => {
 
   const recaptcha = await response.json()
 
-  if (!recaptcha.success || recaptcha.score < 0.7) {
+  if (!recaptcha.success || recaptcha.score < 0.5) {
     // TODO: How to send the error details to the client?
-    throw new ForbiddenError('Recaptcha failed', {
-      details: {
-        errorCode: recaptcha['error-codes'],
-        score: recaptcha.score,
-      },
+    return ctx.forbidden('Recaptcha failed', {
+      details: recaptcha,
     })
   }
 }

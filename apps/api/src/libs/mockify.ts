@@ -41,6 +41,8 @@ export const mockify = async () => {
     'plugin::users-permissions.role',
   )) as Role[]
 
+  const authenticatedRole = roles.find(role => role.type === 'authenticated')
+
   console.log('-'.repeat(50))
 
   console.log('Mockifying profiles with user...')
@@ -78,10 +80,7 @@ export const mockify = async () => {
         email,
         username,
         password: 'Test?123',
-        ...(roles[index] && {
-          role: roles[index].id,
-          profileStatus: 'accepted',
-        }),
+        role: roles[index]?.id || authenticatedRole?.id,
       },
     )
   }

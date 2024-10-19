@@ -1,20 +1,34 @@
 import type { Site } from '@fc/types'
-import { Column, Img, Row, Section, Text } from '@react-email/components'
+import {
+  Column,
+  Container,
+  Heading,
+  Img,
+  Row,
+  Section,
+  Text,
+} from '@react-email/components'
 import React, { FC, PropsWithChildren } from 'react'
 import { getSiteColor, getSiteLogo, getSiteName } from '../utils/getSiteData'
 
 type SiteLayoutProps = PropsWithChildren<{
   site: Site
   preview?: string
+  heading?: string
 }>
 
-const SiteLayout: FC<SiteLayoutProps> = ({ site, children, preview }) => {
+const SiteLayout: FC<SiteLayoutProps> = ({
+  site,
+  children,
+  preview,
+  heading,
+}) => {
   const bgColor = getSiteColor(site)
 
   return (
     <Section>
       <Row style={{ backgroundColor: bgColor }}>
-        <Column style={{ width: 'calc(100% / 3)' }}>
+        <Column style={{ width: '250px' }}>
           <Img
             style={{
               width: '120px',
@@ -25,21 +39,22 @@ const SiteLayout: FC<SiteLayoutProps> = ({ site, children, preview }) => {
             alt={getSiteName(site)}
           />
         </Column>
-        <Column style={{ width: 'calc(100% * 2 / 3)' }}>
+        <Column style={{ width: '100%' }}>
           <Text
-            style={{ fontSize: '18px', fontWeight: 'bold', color: 'white' }}
+            style={{ fontSize: '24px', fontWeight: 'bold', color: 'white' }}
           >
             {preview || getSiteName(site)}
           </Text>
         </Column>
       </Row>
-      <Row style={{ paddingTop: '16px', paddingBottom: '16px' }}>
-        {children}
-      </Row>
+      <Container style={{ marginTop: 24, marginBottom: 24 }}>
+        <Section>
+          <Heading>{heading}</Heading>
+        </Section>
+        <Section style={{ padding: 10 }}>{children}</Section>
+      </Container>
       <Row>
-        <Column
-          style={{ width: '100%', height: '32px', backgroundColor: bgColor }}
-        >
+        <Column style={{ width: '100%', height: 64, backgroundColor: bgColor }}>
           {
             // TODO add footer
             ' '

@@ -31,6 +31,16 @@ export const translations = {
     nl: 'Ga',
     tr: 'Git',
   },
+  art: {
+    tr: 'Eser',
+    en: 'Art',
+    nl: 'Art',
+  },
+  artist: {
+    tr: 'Sanatçı',
+    en: 'Artist',
+    nl: 'Artiest',
+  },
 
   // ForgotPassword.tsx
 
@@ -137,5 +147,35 @@ export const translations = {
     tr: "Kurs başvurunuz ile ilgili detayları 'Profil' sayfasında bulabilirsiniz.",
     en: 'You can find the details of your course application in your profile page.',
     nl: 'U kunt de details van uw cursusaanvraag in uw profielpagina zien.',
+  },
+
+  // VolunterrApplied.tsx
+  'volunteer-applied.preview': {
+    tr: '{{name}}, yeni gönüllü başvurusu yaptı.',
+    en: '{{name}} has applied for a new volunteer.',
+    nl: '{{name}} heeft een nieuwe gidsaanvraag gestuurd.',
+  },
+
+  'volunteer-applied.header': {
+    tr: '{{name}}, aşağıdaki platformlara gönüllü olmak için başvuru yaptı.',
+    en: '{{name}} has applied to volunteer on the following platforms.',
+    nl: '{{name}} heeft zich aangemeld als vrijwilliger op de volgende platforms.',
+  },
+
+  // ArtCreated.tsx
+  'art-name': {
+    tr: 'Eser adı',
+    en: 'Art name',
+    nl: 'Art naam',
+  },
+  'art-created.preview': {
+    tr: '{{name}} yeni bir eser yayınladı.',
+    en: '{{name}} has created a new art.',
+    nl: '{{name}} heeft een nieuw artikel gemaakt.',
+  },
+  'art-created.header': {
+    tr: '{{art}} isimli eser, {{name}} tarafından yayınlandı.',
+    en: '{{art}} has been created by {{name}}.',
+    nl: '{{art}} is gemaakt door {{name}}.',
   },
 } as const

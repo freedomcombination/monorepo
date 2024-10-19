@@ -5,7 +5,7 @@ import { useLocalStorage } from 'usehooks-ts'
 import { useAuthContext } from '@fc/context/auth'
 import type { Blog, BlogUpdateInput } from '@fc/types'
 
-import { useGetBlogSlug } from './getBlogBySlug'
+import { useGetBlogBySlug } from './getBlogBySlug'
 import { mutation } from '../common/mutation'
 
 export const viewBlog = async (blog: Blog, token: string) => {
@@ -24,7 +24,7 @@ export const useViewBlog = () => {
   const { token } = useAuthContext()
   const [isReady] = useTimeout(10 * 3000)
 
-  const { data, refetch } = useGetBlogSlug()
+  const { data, refetch } = useGetBlogBySlug()
 
   const blog = data?.data
 

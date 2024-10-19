@@ -10,13 +10,13 @@ export const useRecaptchaToken = (key: RecaptchaKeys) => {
   const { executeRecaptcha, loaded } = useReCaptcha()
 
   useEffect(() => {
-    if (!loaded || !executeRecaptcha) {
+    if (!loaded || !executeRecaptcha || token) {
       return
     }
 
     executeRecaptcha(key).then(setToken)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key, loaded])
+  }, [key, loaded, token])
 
   return token
 }
