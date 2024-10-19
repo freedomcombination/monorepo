@@ -1,8 +1,8 @@
 import { forwardRef } from 'react'
 
+import type { ButtonProps as ChakraCloseButtonProps } from '@chakra-ui/react'
 import { LuX } from 'react-icons/lu'
 
-import type { ButtonProps as ChakraCloseButtonProps } from './Button'
 import { IconButton as ChakraIconButton } from './IconButton'
 
 export type CloseButtonProps = ChakraCloseButtonProps

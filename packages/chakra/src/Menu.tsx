@@ -1,3 +1,5 @@
+'use client'
+
 import { forwardRef } from 'react'
 
 import { AbsoluteCenter, Menu as ChakraMenu, Portal } from '@chakra-ui/react'

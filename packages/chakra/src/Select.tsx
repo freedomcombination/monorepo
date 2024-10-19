@@ -30,25 +30,20 @@ export const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
 const SelectClearTrigger = forwardRef<
   HTMLButtonElement,
   ChakraSelect.ClearTriggerProps
->(
-  function SelectClearTrigger(
-    props,
-    // ref
-  ) {
-    return (
-      <ChakraSelect.ClearTrigger asChild {...props}>
-        <CloseButton
-          size="xs"
-          variant="plain"
-          focusVisibleRing="inside"
-          focusRingWidth="2px"
-          pointerEvents="auto"
-          color="fg.muted"
-        />
-      </ChakraSelect.ClearTrigger>
-    )
-  },
-)
+>(function SelectClearTrigger(props, ref) {
+  return (
+    <ChakraSelect.ClearTrigger asChild {...props} ref={ref}>
+      <CloseButton
+        size="xs"
+        variant="plain"
+        focusVisibleRing="inside"
+        focusRingWidth="2px"
+        pointerEvents="auto"
+        color="fg.muted"
+      />
+    </ChakraSelect.ClearTrigger>
+  )
+})
 
 interface SelectContentProps extends ChakraSelect.ContentProps {
   portalled?: boolean
@@ -111,14 +106,11 @@ export const SelectValueText = forwardRef<
 })
 
 export const SelectRoot = forwardRef<HTMLDivElement, ChakraSelect.RootProps>(
-  function SelectRoot(
-    props,
-    // ref
-  ) {
+  function SelectRoot(props, ref) {
     return (
       <ChakraSelect.Root
         {...props}
-        // ref={ref}
+        ref={ref}
         positioning={{ sameWidth: true, ...props.positioning }}
       />
     )

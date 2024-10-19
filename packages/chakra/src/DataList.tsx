@@ -12,15 +12,16 @@ interface ItemProps extends ChakraDataList.ItemProps {
   label: React.ReactNode
   value: React.ReactNode
   info?: React.ReactNode
+  grow?: boolean
 }
 
 export const DataListItem = forwardRef<HTMLDivElement, ItemProps>(
   function DataListItem(props, ref) {
-    const { label, info, value, children, ...rest } = props
+    const { label, info, value, children, grow, ...rest } = props
 
     return (
       <ChakraDataList.Item ref={ref} {...rest}>
-        <ChakraDataList.ItemLabel>
+        <ChakraDataList.ItemLabel flex={grow ? '1' : undefined}>
           {label}
           {info && (
             <ToggleTip content={info}>
@@ -33,7 +34,9 @@ export const DataListItem = forwardRef<HTMLDivElement, ItemProps>(
             </ToggleTip>
           )}
         </ChakraDataList.ItemLabel>
-        <ChakraDataList.ItemValue>{value}</ChakraDataList.ItemValue>
+        <ChakraDataList.ItemValue flex={grow ? '1' : undefined}>
+          {value}
+        </ChakraDataList.ItemValue>
         {children}
       </ChakraDataList.Item>
     )

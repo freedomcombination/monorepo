@@ -1,3 +1,5 @@
+'use client'
+
 import { forwardRef } from 'react'
 
 import type { RecipeProps } from '@chakra-ui/react'
@@ -148,6 +150,7 @@ export const FileInput = forwardRef<HTMLButtonElement, FileInputProps>(
       <ChakraFileUpload.Trigger asChild>
         <Button
           unstyled
+          py="0"
           ref={ref}
           {...rest}
           css={[inputRecipe(recipeProps), props.css]}

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 
-import { Stack, useDisclosure, useToast } from '@chakra-ui/react'
+import { Stack, useDisclosure } from '@chakra-ui/react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
+import { toaster } from '@fc/chakra'
 import { DEV_MAIL } from '@fc/mocks/dev-mail'
 
 import { DevMailButton } from './DevMailButton'
@@ -34,7 +35,6 @@ const Template: StoryFn<StoryArg> = arg => {
   const checkTimer = _checkTimer ?? 15
   const lastGroupTime = arg.lastGroupTime
   const [lastNewCount, setLastNewCount] = useState(0)
-  const toast = useToast()
 
   const mails = arg.mails ?? []
   const newCount = !lastGroupTime
@@ -46,14 +46,11 @@ const Template: StoryFn<StoryArg> = arg => {
 
   useEffect(() => {
     if ((lastNewCount ?? 0) < newCount) {
-      toast({
+      toaster.create({
         title: 'New Dev Mail',
         description: `There are ${newCount} new dev mail(s)`,
-        status: 'info',
-        duration: 5000,
-        variant: 'left-accent',
-        position: 'bottom-right',
-        isClosable: true,
+        type: 'info',
+        placement: 'bottom-end',
       })
       setLastNewCount(newCount)
     }
@@ -64,7 +61,7 @@ const Template: StoryFn<StoryArg> = arg => {
     console.log('setLastGroupTime', time)
   }
 
-  const { isOpen, onOpen, onClose } = useDisclosure({
+  const { open, onOpen, onClose } = useDisclosure({
     onClose: () => {
       if (newCount > 0) {
         setLastGroupTime(new Date().toISOString())
@@ -90,7 +87,7 @@ const Template: StoryFn<StoryArg> = arg => {
   return (
     <DevMailContext.Provider
       value={{
-        isOpen,
+        isOpen: open,
         onOpen,
         onClose,
         count: newCount,

@@ -8,8 +8,14 @@ import {
   Grid,
   GridItem,
   HStack,
-  ListIcon,
-  ListItem,
+  List,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { MdMail } from 'react-icons/md'
+
+import {
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -21,14 +27,7 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
-  Stack,
-  Text,
-  UnorderedList,
-  Wrap,
-} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-import { MdMail } from 'react-icons/md'
-
+} from '@fc/chakra'
 import { DevMail } from '@fc/types/dev-mail'
 import { formatDate } from '@fc/utils/formatDate'
 
@@ -65,7 +64,7 @@ export const DevMailModal: FC = () => {
     .sort((a, b) => (a.groupDate < b.groupDate ? 1 : -1))
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size={'7xl'}>
+    <Modal open={isOpen} onOpenChange={e => !e && onClose()} size={'lg'}>
       <ModalOverlay />
       <ModalContent m={8}>
         <ModalHeader>
@@ -76,7 +75,7 @@ export const DevMailModal: FC = () => {
                 Check interval:{' '}
               </Text>
               <NumberInput
-                defaultValue={checkTimer}
+                defaultValue={`${checkTimer}`}
                 min={5}
                 max={60}
                 step={5}
@@ -110,7 +109,7 @@ export const DevMailModal: FC = () => {
                     pt={2}
                     borderRadius={'lg'}
                     borderColor={group.isNew ? 'blue.700' : 'gray.200'}
-                    spacing={3}
+                    gap={3}
                     bg={'white'}
                     overflow={'hidden'}
                   >
@@ -134,12 +133,12 @@ export const DevMailModal: FC = () => {
                         {group.mails.length}
                       </Badge>
                     </HStack>
-                    <UnorderedList fontSize={'sm'} m={0}>
+                    <List.Root fontSize={'sm'} m={0}>
                       {group.mails.map(mail => {
                         const selected = selectedMail?.id === mail.id
 
                         return (
-                          <ListItem
+                          <List.Item
                             as={HStack}
                             gap={2}
                             px={2}
@@ -153,15 +152,17 @@ export const DevMailModal: FC = () => {
                               fontWeight: 600,
                             })}
                           >
-                            <ListIcon
+                            <List.Indicator
                               transform={'translateY(2px)'}
-                              as={MdMail}
-                            />
-                            <Box noOfLines={2}>{mail.subject}</Box>
-                          </ListItem>
+                              asChild
+                            >
+                              <MdMail />
+                            </List.Indicator>
+                            <Box lineClamp={2}>{mail.subject}</Box>
+                          </List.Item>
                         )
                       })}
-                    </UnorderedList>
+                    </List.Root>
                   </Stack>
                 ))}
               </Stack>
@@ -180,7 +181,7 @@ export const DevMailModal: FC = () => {
                       <Text fontWeight={600}>{selectedMail.subject}</Text>
                     </KeyValue>
                     <KeyValue title="To" py={3}>
-                      <Wrap maxH={80} overflowY={'auto'}>
+                      <Stack wrap={'wrap'} maxH={80} overflowY={'auto'}>
                         {selectedMail.to.split(',').map(to => (
                           <Badge
                             variant={'outline'}
@@ -193,7 +194,7 @@ export const DevMailModal: FC = () => {
                             {to}
                           </Badge>
                         ))}
-                      </Wrap>
+                      </Stack>
                     </KeyValue>
 
                     <Box

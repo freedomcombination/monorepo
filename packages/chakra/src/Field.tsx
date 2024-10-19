@@ -10,7 +10,7 @@ export interface FieldProps extends Omit<ChakraField.RootProps, 'label'> {
   label?: React.ReactNode
   helperText?: React.ReactNode
   errorText?: React.ReactNode
-  asterisk?: boolean
+  optionalText?: React.ReactNode
   tooltip?: React.ReactNode
 }
 
@@ -22,18 +22,17 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
       children,
       helperText,
       errorText,
-      asterisk,
+      optionalText,
       tooltip,
-      required,
       ...rest
     } = props
 
     return (
-      <ChakraField.Root ref={ref} required={required} {...rest}>
+      <ChakraField.Root ref={ref} {...rest}>
         {label && (
           <ChakraField.Label>
-            {label}{' '}
-            {(asterisk || required) && <ChakraField.RequiredIndicator />}
+            {label}
+            <ChakraField.RequiredIndicator fallback={optionalText} />
             {tooltip && (
               <Tooltip
                 positioning={{ placement: 'top-start' }}

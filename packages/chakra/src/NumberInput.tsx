@@ -22,6 +22,7 @@ export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputProps>(
 
 export const NumberInputField = ChakraNumberInput.Input
 export const NumberInputScruber = ChakraNumberInput.Scrubber
+export const NumberInputLabel = ChakraNumberInput.Label
 
 export const NumberInput = NumberInputRoot
 export const NumberInputStepper = ChakraNumberInput.Scrubber
