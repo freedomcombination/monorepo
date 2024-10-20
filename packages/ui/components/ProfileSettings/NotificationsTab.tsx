@@ -24,8 +24,10 @@ export const NotificationsTab = () => {
   const isSubscribed = !!subscriberId
   const { t } = useTranslation()
 
-  const subscribePushNotificationsMutation = useSubscribePushNotificationMutation()
-  const unsubscribePushNotificationsMutation = useUnsubscribePushNotificationMutation()
+  const subscribePushNotificationsMutation =
+    useSubscribePushNotificationMutation()
+  const unsubscribePushNotificationsMutation =
+    useUnsubscribePushNotificationMutation()
 
   const handleToggleNotifications = () => {
     setIsLoading(true)
@@ -63,11 +65,9 @@ export const NotificationsTab = () => {
             isClosable: true,
           })
           setIsLoading(false)
-
         },
       })
     } else {
-
       subscribePushNotificationsMutation.mutateAsync(undefined, {
         onSuccess: async () => {
           console.log('Subscribed successfully')
@@ -102,32 +102,29 @@ export const NotificationsTab = () => {
     }
   }
 
-
-
   return (
     <Stack>
       <HStack
         spacing={8}
-        display='flex'
+        display="flex"
         justifyContent={'space-between'}
         bgColor={'whitesmoke'}
         p={2}
-        rounded='8px'
+        rounded="8px"
       >
-        <FormLabel fontSize='larger' mb={0} onClick={() => { }}>
+        <FormLabel fontSize="larger" mb={0} onClick={() => {}}>
           Notifications
         </FormLabel>
         <Switch
-          id='notifications-switch'
-          data-testid='switch-notification-subscription'
+          id="notifications-switch"
+          data-testid="switch-notification-subscription"
           isChecked={isSubscribed}
           onChange={handleToggleNotifications}
           isDisabled={isLoading}
-          colorScheme='primary'
-          size='lg'
+          colorScheme="primary"
+          size="lg"
         />
       </HStack>
-
     </Stack>
   )
 }

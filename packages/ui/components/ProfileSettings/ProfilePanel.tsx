@@ -18,7 +18,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
 import { FaBlog, FaGear, FaKey } from 'react-icons/fa6'
-import { IoNotifications } from "react-icons/io5";
+import { IoNotifications } from 'react-icons/io5'
 import { MdOutlinePayments } from 'react-icons/md'
 import { TbSocial } from 'react-icons/tb'
 
@@ -194,7 +194,10 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                   <Box>{t('profile.tabs.blogs')}</Box>
                 </CustomTab>
               )}
-              <CustomTab data-testid="tab-notifications" title={'notifications'}>
+              <CustomTab
+                data-testid="tab-notifications"
+                title={'notifications'}
+              >
                 <Box as={IoNotifications} mr={2} />
                 <Box>{t('notifications')}</Box>
               </CustomTab>

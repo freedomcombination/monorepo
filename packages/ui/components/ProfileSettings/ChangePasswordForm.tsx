@@ -118,7 +118,7 @@ export const ChangePasswordForm = () => {
         errors={errors}
         label={t('profile.old-password')}
         name="currentPassword"
-        placeholder='Current password'
+        placeholder="Current password"
         register={register}
         type={'password'}
         autoComplete="current-password"
@@ -131,7 +131,7 @@ export const ChangePasswordForm = () => {
           errors={errors}
           register={register}
           name="password"
-          placeholder='New password'
+          placeholder="New password"
           type={'password'}
           autoComplete="new-password"
           hideLabel
@@ -141,7 +141,7 @@ export const ChangePasswordForm = () => {
           errors={errors}
           register={register}
           name="passwordConfirmation"
-          placeholder='Password confirmation'
+          placeholder="Password confirmation"
           type={'password'}
           autoComplete="new-password"
           hideLabel
