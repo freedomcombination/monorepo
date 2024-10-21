@@ -115,7 +115,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@chakra-ui/storybook-addon": "^5.1.0",
+    "@chakra-ui/storybook-addon": "^5.2.5",
     "@playwright/test": "^1.48.1",
     "@storybook/addon-essentials": "^7.6.20",
     "@storybook/builder-webpack5": "^7.6.20",

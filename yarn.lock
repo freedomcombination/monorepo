@@ -2751,9 +2751,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/storybook-addon@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@chakra-ui/storybook-addon@npm:5.1.0"
+"@chakra-ui/storybook-addon@npm:^5.2.5":
+  version: 5.2.5
+  resolution: "@chakra-ui/storybook-addon@npm:5.2.5"
   peerDependencies:
     "@chakra-ui/react": ">=2.0.0"
     "@storybook/components": ">=7.0.12"
@@ -2766,7 +2766,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/9cf27eb92bed1a748be8e137b6282a5457b5efed069ca3d240fd6481c6b2147dd1b6bcc460d4aef1c1d0ed402ca3af1b947869ba05689fb69b23b9ecf5fa6f63
+  checksum: 10/6db40fc89607948dea7673bf7f72d0d2ff448ab2f5fec1b10114f6a3afaf4376a99f65cc4d80ce890985bb3505c43aa4a23af903b6f9d5d397219d05b1090ce4
   languageName: node
   linkType: hard
 
@@ -17223,7 +17223,7 @@ __metadata:
     "@ai-sdk/openai": "npm:^0.0.68"
     "@chakra-ui/next-js": "npm:^2.2.0"
     "@chakra-ui/react": "npm:^2.8.2"
-    "@chakra-ui/storybook-addon": "npm:^5.1.0"
+    "@chakra-ui/storybook-addon": "npm:^5.2.5"
     "@ctrl/tinycolor": "npm:^4.1.0"
     "@date-fns/tz": "npm:^1.1.2"
     "@ducanh2912/next-pwa": "npm:^10.2.9"
