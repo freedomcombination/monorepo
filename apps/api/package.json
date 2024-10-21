@@ -41,7 +41,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-email": "3.0.1",
-    "react-router-dom": "^5.3.4",
+    "react-router-dom": "^6.27.0",
     "sharp": "0.32.6",
     "strapi-plugin-import-export-entries": "^1.23.1",
     "strapi-plugin-transformer": "^3.1.2",
