@@ -34,7 +34,7 @@ export const AccordionItemTrigger = forwardRef<
   )
 })
 
-interface AccordionItemContentProps extends ChakraAccordion.ItemContentProps {}
+type AccordionItemContentProps = ChakraAccordion.ItemContentProps
 
 export const AccordionItemContent = forwardRef<
   HTMLDivElement,
