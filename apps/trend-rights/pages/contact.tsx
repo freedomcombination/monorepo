@@ -29,7 +29,9 @@ const Contact = () => {
             minH="inherit"
           >
             <VStack
-              bgGradient={'linear(to-b, primary.400, primary.500)'}
+              bgGradient={'to-b'}
+              gradientFrom={'primary.400'}
+              gradientTo={'primary.500'}
               borderRadius="lg"
               p={{ base: 8, lg: 16 }}
               w={'full'}

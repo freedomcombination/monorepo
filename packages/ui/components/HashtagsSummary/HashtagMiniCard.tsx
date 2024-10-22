@@ -25,7 +25,9 @@ export const HashtagMiniCard: FC<HashtagMiniCardProps> = ({
         alignItems={{ base: 'center', md: 'stretch' }}
         _hover={{
           lg: {
-            bgGradient: 'linear(to-r, blackAlpha.50, white)',
+            bgGradient: 'to-r',
+            gradientFrom: 'blackAlpha.50',
+            gradientTo: 'white',
             transform: 'translateX(4px)',
           },
         }}

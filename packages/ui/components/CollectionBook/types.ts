@@ -15,5 +15,4 @@ export type PageProps = PropsWithChildren<CenterProps>
 
 export interface CollectionPagesPops {
   collection: Collection
-  pageBgGradient: string
 }

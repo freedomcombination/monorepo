@@ -49,7 +49,9 @@ export const AcademyCard: FC<AcademyCardProps> = ({
               _groupHover={{ transform: 'translateY(0)' }}
               transition="all"
               transitionDuration="0.3s"
-              bgGradient="linear(to-t, rgba(0,0,0,0.5), rgba(0,0,0,0))"
+              bgGradient={'to-t'}
+              gradientFrom={'blackAlpha.500'}
+              gradientTo={'black'}
               gap={4}
             >
               <Text fontWeight={600} fontSize={'xl'} lineClamp={1}>

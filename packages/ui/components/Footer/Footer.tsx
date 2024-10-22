@@ -21,7 +21,9 @@ export const Footer: FC<FooterProps> = ({
 
   return (
     <Box
-      bgGradient={'linear(to-b, primary.400, primary.600)'}
+      bgGradient={'to-b'}
+      gradientFrom={'primary.400'}
+      gradientTo={'primary.600'}
       color="white"
       pos="relative"
     >

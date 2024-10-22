@@ -30,7 +30,9 @@ const Home: FC<HomeProps> = ({ hashtags, instagramPosts }) => {
   return (
     <Layout seo={{ title: t('home') }} isDark>
       <Box
-        bgGradient={'linear(to-b, primary.400, primary.500)'}
+        bgGradient={'to-b'}
+        gradientFrom={'primary.400'}
+        gradientTo={'primary.500'}
         mt={{ base: '-64px', lg: '-100px' }}
         pb={{ base: 16, lg: 32 }}
       >

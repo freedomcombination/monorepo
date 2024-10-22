@@ -38,7 +38,9 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
             minH="inherit"
           >
             <VStack
-              bgGradient={'linear(to-b, primary.400, primary.500)'}
+              bgGradient={'to-b'}
+              gradientFrom={'primary.400'}
+              gradientTo={'primary.500'}
               color="primary.50"
               borderRadius="lg"
               p={{ base: 8, lg: 12 }}

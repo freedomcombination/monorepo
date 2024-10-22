@@ -59,7 +59,9 @@ export const Hero: FC<PropsWithChildren<HeroProps>> = memo(function Hero({
         left={0}
         w="full"
         h="full"
-        bgGradient={'linear(to-b, primary.600, primary.400)'}
+        bgGradient={'to-b'}
+        gradientFrom={'primary.600'}
+        gradientTo={'primary.400'}
         blendMode={'multiply'}
       />
       <Container h="full">

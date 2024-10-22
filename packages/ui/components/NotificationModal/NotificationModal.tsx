@@ -88,8 +88,6 @@ export const NotificationModal = () => {
           <ModalFooter>
             <Button
               data-testid="button-close-notification"
-              colorPalette="gray"
-              mr={3}
               onClick={handleClose}
             >
               {t('close')}

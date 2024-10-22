@@ -15,7 +15,7 @@ export const ModelSelect = <T extends StrapiModel>(props: ModelSelectProps) => {
   const staticProps = props as ModelStaticSelectProps
 
   const collection = createListCollection({
-    items: staticProps.options,
+    items: staticProps.options || [],
   })
 
   if (dynamicProps.endpoint) {

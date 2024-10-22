@@ -141,7 +141,10 @@ export const ArtCard: FC<ArtCardProps> = ({
         {/* Card Overlay */}
         <Box
           _groupHover={{ left: 0 }}
-          bgGradient="linear(to-t, blackAlpha.700, transparent, transparent, blackAlpha.700)"
+          bgGradient={'to-t'}
+          gradientFrom={'blackAlpha.700'}
+          gradientVia={'transparent'}
+          gradientTo={'blackAlpha.700'}
           bottom={0}
           display={{ base: 'none', lg: 'block' }}
           h="full"
@@ -209,7 +212,9 @@ export const ArtCard: FC<ArtCardProps> = ({
         {/* Card info */}
         <HStack
           align="center"
-          bgGradient="linear(to-t, blackAlpha.700, transparent)"
+          bgGradient={'to-t'}
+          gradientFrom={'blackAlpha.700'}
+          gradientTo={'transparent'}
           bottom={0}
           p={{ base: 2, lg: 0 }}
           pos={{ base: 'absolute', lg: 'static' }}

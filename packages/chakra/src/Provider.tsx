@@ -16,7 +16,11 @@ type ProviderProps = {
   site: Site
 }
 
+const theme = defaultConfig.theme as any
+
 const siteColors: Partial<Record<Site | 'gray', any>> = {
+  foundation: theme.tokens?.colors?.blue,
+  dashboard: theme.tokens?.colors?.blue,
   'trend-rights': {
     50: { value: '#FFEDE5' },
     100: { value: '#FFCEB8' },

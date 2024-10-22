@@ -60,7 +60,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
             </Center>
           ) : (
             <>
-              <AdminHeader
+              {/* <AdminHeader
                 hasBackButton={hasBackButton}
                 title={
                   !isPathAllowed
@@ -69,7 +69,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
                       : '***'
                     : seo.title
                 }
-              />
+              /> */}
               {!isPathAllowed && !isAdmin ? (
                 <NotAllowedPage show={!isAuthLoading && navItems.length > 0} />
               ) : (
