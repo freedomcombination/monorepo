@@ -27,7 +27,7 @@ export const ArtCreateSuccessAlert = forwardRef<
   return (
     <Dialog
       closeOnInteractOutside={false}
-      centered
+      placement={'center'}
       open={isOpen}
       onOpenChange={e => (e.open ? null : onClose())}
     >

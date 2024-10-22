@@ -56,7 +56,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
         onOpenChange={e => (e.open ? null : onClose())}
         open={isOpen}
         scrollBehavior="inside"
-        centered
+        placement={'center'}
       >
         <ModalOverlay />
         <ModalContent maxW="95vw" p={0} overflow="hidden">

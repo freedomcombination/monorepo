@@ -94,7 +94,7 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
 
   return (
     <Modal
-      centered
+      placement={'center'}
       open={isOpen}
       onOpenChange={e => (e.open ? null : onClose())}
       size={'xl'}

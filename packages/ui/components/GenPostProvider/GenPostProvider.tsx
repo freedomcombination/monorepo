@@ -234,7 +234,7 @@ export const GenPostProvider = ({
           motionPreset="slide-in-bottom"
           onOpenChange={e => (e.open ? null : onClose())}
           open={open}
-          centered
+          placement={'center'}
         >
           <DialogOverlay />
           <DialogContent>

@@ -174,7 +174,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
 
   return (
     <Modal
-      centered
+      placement={'center'}
       open={isOpen}
       onOpenChange={e => (e.open ? null : handleOnClose())}
       size={'xl'}

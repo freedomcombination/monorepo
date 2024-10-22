@@ -57,7 +57,7 @@ export const ModelCreateModal = <T extends StrapiModel>({
       </Button>
 
       <Modal
-        centered
+        placement={'center'}
         closeOnInteractOutside={true}
         open={formDisclosure.open}
         onOpenChange={formDisclosure.onToggle}

@@ -46,7 +46,7 @@ export const ModelEditModal = <T extends StrapiModel>({
 
   return (
     <Modal
-      centered
+      placement={'center'}
       open={isOpen}
       onOpenChange={e => (e.open ? null : onClose())}
       size={size}

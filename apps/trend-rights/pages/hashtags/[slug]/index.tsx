@@ -89,7 +89,7 @@ const HashtagPage: FC<HashtagProps> = ({
       )}
       {post && (
         <Modal
-          centered
+          placement={'center'}
           open={open}
           onOpenChange={e => (e.open ? onOpen() : handleClose())}
         >

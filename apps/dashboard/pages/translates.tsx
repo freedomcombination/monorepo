@@ -138,7 +138,7 @@ const ActivitiesTranslatePage = () => {
         />
       )}
       <Modal
-        centered
+        placement={'center'}
         open={open}
         onOpenChange={e => (e.open ? onOpen() : handleClose())}
         size={'xl'}

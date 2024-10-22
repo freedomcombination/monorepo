@@ -78,7 +78,7 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
       motionPreset="slide-in-bottom"
       onOpenChange={e => (e.open ? null : onClose())}
       open={isOpen}
-      centered
+      placement={'center'}
     >
       <DialogOverlay />
       <DialogContent>

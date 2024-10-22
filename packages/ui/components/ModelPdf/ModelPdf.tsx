@@ -28,7 +28,7 @@ export const ModelPdf = ({
 
   return (
     <Modal
-      centered
+      placement={'center'}
       open={isOpen}
       onOpenChange={e => (e.open ? null : onClose())}
       size={'xl'}

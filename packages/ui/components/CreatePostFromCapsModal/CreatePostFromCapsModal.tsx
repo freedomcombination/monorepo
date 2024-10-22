@@ -112,7 +112,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
     <Modal
       open={isOpen}
       onOpenChange={e => (e.open ? null : handleClose())}
-      centered
+      placement={'center'}
       size="xl"
       closeOnInteractOutside={false}
     >

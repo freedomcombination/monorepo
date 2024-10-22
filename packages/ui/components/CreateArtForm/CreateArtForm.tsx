@@ -155,7 +155,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
       </Button>
 
       <Modal
-        centered
+        placement={'center'}
         closeOnInteractOutside={false}
         open={formDisclosure.open}
         onOpenChange={e => (e.open ? formDisclosure.onOpen() : closeForm())}

@@ -70,7 +70,7 @@ export const AuthModal = () => {
 
   return (
     <Modal
-      centered
+      placement={'center'}
       open={isAuthModalOpen}
       onOpenChange={e => (e.open ? openAuthModal() : closeAuthModal())}
       closeOnInteractOutside={false}

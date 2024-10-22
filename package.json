@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.68",
-    "@chakra-ui/react": "3.0.0-next.30",
+    "@chakra-ui/react": "^3.0.0",
     "@ctrl/tinycolor": "^4.1.0",
     "@date-fns/tz": "^1.1.2",
     "@ducanh2912/next-pwa": "^10.2.9",

@@ -56,7 +56,7 @@ export const PreviewVolunteerForm = () => {
         {t('preview')}
       </Button>
       <Modal
-        centered
+        placement={'center'}
         open={open}
         onOpenChange={e => !e.open && onClose()}
         size={'xl'}

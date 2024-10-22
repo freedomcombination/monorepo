@@ -25,7 +25,7 @@ export const ArtCardDialog: FC<ArtCardAlertDialogProps> = ({
 
   return (
     <Dialog
-      centered
+      placement={'center'}
       open={isOpen}
       onOpenChange={e => (e.open ? null : onClose())}
     >
