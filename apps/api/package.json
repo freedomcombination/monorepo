@@ -7,11 +7,7 @@
     "email": "npx email dev",
     "api": "strapi dev",
     "dev": "strapi dev",
-    "dashboard": "strapi dev",
-    "foundation": "strapi dev",
-    "kunsthalte": "strapi dev",
     "transfer": "strapi transfer --from https://api.freedomcombination.com/admin",
-    "trend-rights": "strapi dev",
     "lint": "eslint .",
     "export": "strapi export --no-encrypt --exclude files --file export",
     "import": "strapi import --exclude files --file export.tar.gz",
@@ -37,6 +33,7 @@
     "@strapi/strapi": "^4.25.13",
     "apify-client": "^2.9.7",
     "cheerio": "^1.0.0",
+    "date-fns": "^4.1.0",
     "pg": "^8.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -48,6 +45,10 @@
     "styled-components": "^5.3.11",
     "web-push": "^3.6.7"
   },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0"
+  },
   "author": {
     "name": "A Strapi developer"
   },
@@ -58,5 +59,6 @@
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@3.1.0"
 }
