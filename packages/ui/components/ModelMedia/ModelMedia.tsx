@@ -29,6 +29,9 @@ import { ModelPdf } from '../ModelPdf'
 import { VideoPlayer } from '../VideoPlayer'
 import { WImage } from '../WImage'
 
+import '@splidejs/react-splide/css'
+import '@splidejs/splide/dist/css/themes/splide-default.min.css'
+
 export const ModelMedia = <T extends FieldValues = FieldValues>({
   setValue,
   model,
