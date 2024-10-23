@@ -1,10 +1,8 @@
 import { faker } from '@faker-js/faker'
 import { expect } from '@playwright/test'
 
-import { PASSWORD, USERNAME } from '../constants'
 import { test } from '../fixtures'
-import { LoginPage } from '../pages'
-import { addCookies, getUrl } from '../utils'
+import { getUrl } from '../utils'
 
 test.afterEach(async ({ page }) => {
   await page.close()
