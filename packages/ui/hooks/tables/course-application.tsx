@@ -87,6 +87,9 @@ export const useCourseApplicationColumns =
           return `${formatPrice(totalAmount)}`
         },
       },
-      { accessorKey: 'course', transform: value => (value as Course).title_nl },
+      {
+        accessorKey: 'course',
+        transform: value => (value as Course)?.title_nl,
+      },
     ]
   }
