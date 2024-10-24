@@ -92,7 +92,7 @@ const getWithSentryConfig = () =>
   })
 
 const getConfig = () => {
-  if (process.env.VERCEL_ENV === 'production') {
+  if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'production') {
     return getWithSentryConfig()
   }
 

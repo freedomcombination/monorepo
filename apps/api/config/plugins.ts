@@ -49,7 +49,7 @@ export default ({ env }) => ({
     },
   },
   documentation: {
-    enabled: env('VERCEL_ENV') !== 'production',
+    enabled: env('NEXT_PUBLIC_ENVIRONMENT') !== 'production',
     config: {
       info: { version: '1.0.0' },
     },

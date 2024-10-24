@@ -1,7 +1,7 @@
 import type { StrapiLocale } from '@fc/types'
 
 const getEdgeConfigKey = (locale: StrapiLocale) =>
-  process.env.VERCEL_ENV === 'production'
+  process.env.NEXT_PUBLIC_ENVIRONMENT === 'production'
     ? `${locale}-last-hashtag`
     : `${locale}-last-hashtag-dev`
 

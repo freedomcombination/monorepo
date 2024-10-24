@@ -12052,7 +12052,7 @@ __metadata:
     "@strapi/strapi": "npm:^4.25.14"
     apify-client: "npm:^2.9.7"
     cheerio: "npm:^1.0.0"
-    pg: "npm:^8.13.0"
+    pg: "npm:^8.13.1"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-email: "npm:3.0.1"
@@ -17349,7 +17349,7 @@ __metadata:
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:^11.3.31"
     i18n-help: "npm:^0.1.4"
-    i18next: "npm:^23.16.2"
+    i18next: "npm:^23.16.3"
     i18next-browser-languagedetector: "npm:^8.0.0"
     i18next-http-backend: "npm:^2.6.2"
     iron-session: "npm:^8.0.3"
@@ -17366,7 +17366,7 @@ __metadata:
     next-recaptcha-v3: "npm:^1.4.1"
     next-seo: "npm:^6.6.0"
     next-share: "npm:^0.27.0"
-    openai: "npm:^4.68.3"
+    openai: "npm:^4.68.4"
     pluralize: "npm:^8.0.0"
     prettier: "npm:^3.3.3"
     qs: "npm:^6.13.0"
@@ -17396,7 +17396,7 @@ __metadata:
     stripe: "npm:^17.2.1"
     tesseract.js: "npm:^5.1.1"
     turbo: "npm:^2.2.3"
-    twitter-api-v2: "npm:^1.18.0"
+    twitter-api-v2: "npm:^1.18.1"
     twitter-text: "npm:^3.1.0"
     type-fest: "npm:^4.26.1"
     typescript: "npm:5.5.4"
@@ -19296,12 +19296,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^23.16.2":
-  version: 23.16.2
-  resolution: "i18next@npm:23.16.2"
+"i18next@npm:^23.16.3":
+  version: 23.16.3
+  resolution: "i18next@npm:23.16.3"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
-  checksum: 10/38635d5b4530d256055b9b9bc471eddad630060c5fce06a426628487e05ea2ad0ed5dd2cb45e7e7afd16d58ecb8e6d13fad81c2391a07f1313256cf4b58dfb26
+  checksum: 10/648ad77d1564bc7d9a5715bab96ff1d504fef2cba8c3564514e199f5947590d78f0b5296bc3ef7c27b9a61bf8e0b4e44158be1c7cea10d4d822d1ec084023f7d
   languageName: node
   linkType: hard
 
@@ -24153,9 +24153,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openai@npm:^4.68.3":
-  version: 4.68.3
-  resolution: "openai@npm:4.68.3"
+"openai@npm:^4.68.4":
+  version: 4.68.4
+  resolution: "openai@npm:4.68.4"
   dependencies:
     "@types/node": "npm:^18.11.18"
     "@types/node-fetch": "npm:^2.6.4"
@@ -24171,7 +24171,7 @@ __metadata:
       optional: true
   bin:
     openai: bin/cli
-  checksum: 10/8b8380c53ae93f6abf12e7f9b01887778b559045a10c2e9c239de97b3707eb637ba651daf1bc8870150a3ba3b446caa038495036af91c2c8ce7b34c90e1ad5ca
+  checksum: 10/e3e9410d253f68695877491ed11e91cc6d5c64d7f0eac256693a897ec8509e3969867d0cf862d6f2e6a232f15f03f64151445ff1a863e3aac216a447871337c5
   languageName: node
   linkType: hard
 
@@ -25009,9 +25009,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg@npm:^8.13.0":
-  version: 8.13.0
-  resolution: "pg@npm:8.13.0"
+"pg@npm:^8.13.1":
+  version: 8.13.1
+  resolution: "pg@npm:8.13.1"
   dependencies:
     pg-cloudflare: "npm:^1.1.1"
     pg-connection-string: "npm:^2.7.0"
@@ -25027,7 +25027,7 @@ __metadata:
   peerDependenciesMeta:
     pg-native:
       optional: true
-  checksum: 10/6defa3254b121317014c6de0ce4c21a9a1ec9b7ef24651164596b813d951d6545542faab964131f11e81c64c5c166b14051f6808e0247af928e1773a9fd7e0af
+  checksum: 10/542aa49fcb37657cf5f779b4a31fe6eb336e683445ecca38e267eeb0ca85d873ffe51f04794f9f9e184187e9f74bf7895e932a0fa9507132ac0dfc76c7c73451
   languageName: node
   linkType: hard
 
@@ -30006,10 +30006,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"twitter-api-v2@npm:^1.18.0":
-  version: 1.18.0
-  resolution: "twitter-api-v2@npm:1.18.0"
-  checksum: 10/8c2b42b4f16130961d692d7b75a54f0af07255f4b322834145afc7461e271543b19e656347378d13a74adfafa9a70a8e3d30d0eca6885c4725b5d24eb3e400a6
+"twitter-api-v2@npm:^1.18.1":
+  version: 1.18.1
+  resolution: "twitter-api-v2@npm:1.18.1"
+  checksum: 10/ac02b92fea671d9d5a1ee1eaca958d51e266b47beefda3966860559c882cf534452f41ed3900cc6fc23720c01406ffca934d145d95499f1c9e422c25a9153de1
   languageName: node
   linkType: hard
 
