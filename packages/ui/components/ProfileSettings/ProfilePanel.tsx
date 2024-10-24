@@ -18,6 +18,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
 import { FaBlog, FaGear, FaKey } from 'react-icons/fa6'
+import { IoNotifications } from 'react-icons/io5'
 import { MdOutlinePayments } from 'react-icons/md'
 import { TbSocial } from 'react-icons/tb'
 
@@ -27,6 +28,7 @@ import { ArtsTab } from './ArtsTab'
 import { BlogsTab } from './BlogsTab'
 import { CoursesTab } from './CoursesTab'
 import { DetailsTab } from './DetailsTab'
+import { NotificationsTab } from './NotificationsTab'
 import { PreferencesTab } from './PreferencesTab'
 import { SecurityTab } from './SecurityTab'
 import { SocialsTab } from './SocialsTab'
@@ -192,6 +194,13 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                   <Box>{t('profile.tabs.blogs')}</Box>
                 </CustomTab>
               )}
+              <CustomTab
+                data-testid="tab-notifications"
+                title={'notifications'}
+              >
+                <Box as={IoNotifications} mr={2} />
+                <Box>{t('notifications')}</Box>
+              </CustomTab>
             </TabList>
             <TabPanels>
               <TabPanel p={0}>
@@ -221,6 +230,9 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
                   <BlogsTab />
                 </TabPanel>
               )}
+              <TabPanel p={0}>
+                <NotificationsTab />
+              </TabPanel>
             </TabPanels>
             {children}
           </Tabs>
