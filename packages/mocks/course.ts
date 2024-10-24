@@ -1,5 +1,4 @@
 import type { Course } from '@fc/types'
-
 import { generateCommonFields, generateStrapiResponse } from './common'
 import { faker } from './faker'
 

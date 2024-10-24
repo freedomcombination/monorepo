@@ -291,7 +291,7 @@ export const PLATFORM_MOCKS: StrapiCollectionResponse<Platform[]> = {
     {
       id: 1,
       slug: 'kunsthalte',
-      name_en: 'Art Station',
+      name_en: 'Kunsthalte',
       name_nl: 'Kunsthalte',
       name_tr: 'Sanat Durağı',
       description_en:

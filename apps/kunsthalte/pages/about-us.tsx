@@ -47,11 +47,11 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     ## Wat is het doel van de Kunsthalte?
 
     Tegenwoordig heeft de universele taal van de kunst grote kracht en belang. Als mensen die in kunst geïnteresseerd zijn, vinden wij het heel belangrijk om degenen die hun talenten op dit gebied willen ontwikkelen samen te brengen, hen verschillende mogelijkheden te bieden en dat kunst gewaardeerd moet worden. Ons hoofddoel is om de problemen in de wereld door de lens van de kunst te bekijken en om via de taal van de kunst het bewustzijn te vergroten.`,
-    en: `## Who is Art Station?
+    en: `## Who is Kunsthalte?
     
     It is a group where immigrants with an interest in the arts come together both in person and online, exchange knowledge about modern and traditional arts, and plan artistic events at the same time.
     
-    ## What is the purpose of the Art Station?
+    ## What is the purpose of the Kunsthalte?
     
     Today, the universal language of art has great power and importance.  As people who are interested in art, we believe that it is very important to bring together those who want to develop their skills in this field and to offer them various opportunities and that art should be valued.  Our primary goal is to look at the issues of the world through the lens of art and to raise awareness with the language of art.`,
   }

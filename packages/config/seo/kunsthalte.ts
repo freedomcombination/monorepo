@@ -5,7 +5,7 @@ import type { Localize } from '@fc/types'
 export const kunsthalte: Localize<NextSeoProps> = {
   en: {
     title: 'Kunsthalte',
-    titleTemplate: '%s - Art Station',
+    titleTemplate: '%s - Kunsthalte',
   },
   nl: {
     title: 'Kunsthalte',
