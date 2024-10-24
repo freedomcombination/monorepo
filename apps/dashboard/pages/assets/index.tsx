@@ -11,27 +11,29 @@ import type { Asset, Sort, StrapiLocale } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'
 import { DataTable } from '@fc/ui/components/DataTable'
 import { PageHeader } from '@fc/ui/components/PageHeader'
+import { useChangeParams } from '@fc/ui/hooks'
 import { useColumns } from '@fc/ui/hooks/useColumns'
 import { formatPrice } from '@fc/utils/formatPrice'
 
 const AssetsPage = () => {
-  const { locale, query, push } = useRouter()
+  const { locale, query } = useRouter()
   const { t } = useTranslation()
-  const router = useRouter()
-  const sort = query.sort as Sort
+  const columns = useColumns<Asset>()
+
   const currentPage = query.page ? parseInt(query.page as string) : 1
   const pageSize = query.pageSize ? parseInt(query.pageSize as string) : 20
+  const sort = query.sort as Sort
 
   const [searchTerm, setSearchTerm] = useState<string>()
 
-  const columns = useColumns<Asset>()
+  const { changeParams, changePage, changeSearch } = useChangeParams()
 
   const assetsQuery = useStrapiRequest<Asset>({
     endpoint: 'assets',
-    page: currentPage || 1,
+    page: currentPage,
     pageSize,
     filters: {
-      ...(searchTerm && { [`title_${locale}`]: { $containsi: searchTerm } }),
+      ...(searchTerm && { name: { $containsi: searchTerm } }),
     },
     sort,
     locale,
@@ -39,6 +41,7 @@ const AssetsPage = () => {
 
   const handleSearch = (search?: string) => {
     setSearchTerm(search || undefined)
+    changeSearch(search)
   }
 
   useUpdateEffect(() => {
@@ -49,32 +52,8 @@ const AssetsPage = () => {
   const pageCount = assetsQuery?.data?.meta?.pagination?.pageCount || 0
   const totalCount = assetsQuery?.data?.meta?.pagination?.total || 0
 
-  const changeRoute = (
-    key: 'id' | 'page' | 'sort' | 'status' | 'published' | 'q' | 'pageSize',
-    value?: string | number | Sort,
-  ) => {
-    if (
-      !value ||
-      (key === 'page' && value === 1) ||
-      (key === 'status' && value === 'all') ||
-      (key === 'published' && value === 'all') ||
-      (key === 'pageSize' && value === 20)
-    ) {
-      const _query = { ...query }
-      delete _query[key]
-      push({ query: _query }, undefined, { shallow: true })
-
-      return
-    }
-
-    push({ query: { ...query, [key]: value } }, undefined, { shallow: true })
-  }
-  const setCurrentPage = (page?: number) => changeRoute('page', page)
-  const setPageSize = (size?: number) => changeRoute('pageSize', size)
-  const setSort = (sort?: Sort) => changeRoute('sort', sort)
-
-  const handleRowClick = (index: number, id: number) => {
-    router.push(`/assets/${id}`)
+  const useHandleRowClick = (index: number, id: number) => {
+    useRouter().push(`/assets/${id}`)
   }
 
   return (
@@ -85,12 +64,12 @@ const AssetsPage = () => {
         columns={columns.assets!}
         currentPage={currentPage}
         data={assets as Asset[]}
-        onClickRow={handleRowClick}
-        onSort={setSort}
+        onClickRow={useHandleRowClick}
+        onSort={sort => changeParams({ sort })}
         pageCount={pageCount}
         pageSize={pageSize}
-        setCurrentPage={setCurrentPage}
-        setPageSize={setPageSize}
+        setCurrentPage={page => changePage(page)}
+        setPageSize={size => changeParams({ pageSize: size })}
         totalCount={totalCount}
         allowExportPDF
         badges={[

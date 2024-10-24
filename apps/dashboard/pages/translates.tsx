@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import {
   Button,
@@ -29,12 +29,12 @@ import { DataTable } from '@fc/ui/components/DataTable'
 import { ModelEditTranslate } from '@fc/ui/components/ModelEditTranslate'
 import { PageHeader } from '@fc/ui/components/PageHeader'
 import type { WTableProps } from '@fc/ui/components/WTable'
+import { useChangeParams } from '@fc/ui/hooks'
 import { useColumns } from '@fc/ui/hooks/useColumns'
 import { useFields } from '@fc/ui/hooks/useFields'
 import { useSchema } from '@fc/ui/hooks/useSchema'
 
 const ActivitiesTranslatePage = () => {
-  const [searchTerm, setSearchTerm] = useState<string>()
   const { t } = useTranslation()
   const { isOpen, onClose, onOpen } = useDisclosure()
 
@@ -46,33 +46,36 @@ const ActivitiesTranslatePage = () => {
   const modelFields = useFields()
   const modelSchemas = useSchema()
 
-  const handleSearch = (search?: string) => {
-    setSearchTerm(search || undefined)
-  }
+  const { changeParams, changePage, changeSearch } = useChangeParams()
 
-  const [currentPage, setCurrentPage] = useState<number>(1)
-  const [pageSize, setPageSize] = useState<number>(20)
-  const [sort, setSort] = useState<Sort>()
-
+  const currentPage = query.page ? parseInt(query.page as string) : 1
+  const pageSize = query.pageSize ? parseInt(query.pageSize as string) : 20
+  const sort = query.sort as Sort
   const status = query.status as ApprovalStatus
   const slug = query.slug as Partial<StrapiCollectionEndpoint>
   const translateKey = slug as any
 
-  useEffect(() => setCurrentPage(1), [status])
+  const handleSearch = (search?: string) => {
+    changeSearch(search)
+  }
+
+  useEffect(() => {
+    changePage(1)
+  }, [status])
 
   useUpdateEffect(() => {
     dataQuery.refetch()
-  }, [locale, searchTerm, sort, status])
+  }, [locale, query.q, sort, status])
 
   const dataQuery = useStrapiRequest<Activity>({
     endpoint: slug,
     page: currentPage || 1,
     pageSize,
     filters: {
-      ...(searchTerm && {
+      ...(query.q && {
         $or: [
-          { title: { $containsi: searchTerm } },
-          { description: { $containsi: searchTerm } },
+          { title: { $containsi: query.q } },
+          { description: { $containsi: query.q } },
         ],
       }),
       approvalStatus: { $eq: 'pending' },
@@ -129,11 +132,11 @@ const ActivitiesTranslatePage = () => {
           currentPage={currentPage}
           data={mappedModels}
           onClickRow={handleClick}
-          onSort={setSort}
+          onSort={sort => changeParams({ sort })}
           pageCount={pageCount}
           pageSize={pageSize}
-          setCurrentPage={setCurrentPage}
-          setPageSize={setPageSize}
+          setCurrentPage={page => changePage(page)}
+          setPageSize={size => changeParams({ pageSize: size })}
           totalCount={totalCount}
         />
       )}

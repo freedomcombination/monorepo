@@ -39,6 +39,7 @@ import { PageHeader } from '@fc/ui/components/PageHeader'
 import { ProfileForms } from '@fc/ui/components/ProfileForms'
 import { TabbedGenAIView } from '@fc/ui/components/TabbedGenAIView'
 import type { WTableProps } from '@fc/ui/components/WTable'
+import { useChangeParams } from '@fc/ui/hooks'
 import { useColumns } from '@fc/ui/hooks/useColumns'
 import { useRequestArgs } from '@fc/ui/hooks/useRequestArgs'
 
@@ -49,15 +50,15 @@ type ModelPageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const { t } = useTranslation()
   const { roles, profile, token, isLoading } = useAuthContext()
-
+  const { locale, query } = useRouter()
   const [selectedRelationFilters, setSelectedRelationFilters] = useState<
     RelationFilterArgs[]
   >([])
   const [selectedFilters, setSelectedFilters] = useState<FilterOption[]>([])
 
   const { isOpen, onClose, onOpen } = useDisclosure()
+  const { changeParams } = useChangeParams()
 
-  const { locale, query, push } = useRouter()
   const columns = useColumns()
   const requestArgs = useRequestArgs()
 
@@ -160,45 +161,15 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
 
   const post = selectedModel as Post
 
-  const changeRoute = (
-    key:
-      | 'id'
-      | 'page'
-      | 'sort'
-      | 'status'
-      | 'published'
-      | 'q'
-      | 'pageSize'
-      | 'profileStatus',
-    value?: string | number | Sort | ApprovalStatus | ProfileStatus,
-  ) => {
-    if (
-      !value ||
-      (key === 'page' && value === 1) ||
-      (key === 'status' && value === 'all') ||
-      (key === 'profileStatus' && value === 'all') ||
-      (key === 'published' && value === 'all') ||
-      (key === 'pageSize' && value === 20)
-    ) {
-      const _query = { ...query }
-      delete _query[key]
-      push({ query: _query }, undefined, { shallow: true })
-
-      return
-    }
-
-    push({ query: { ...query, [key]: value } }, undefined, { shallow: true })
-  }
-
-  const setSelectedId = (id?: number) => changeRoute('id', id)
-  const setCurrentPage = (page?: number) => changeRoute('page', page)
-  const setPageSize = (size?: number) => changeRoute('pageSize', size)
-  const setSort = (sort?: Sort) => changeRoute('sort', sort)
-  const setStatus = (status: string) => changeRoute('status', status)
+  const setSelectedId = (id?: number) => changeParams({ id })
+  const setCurrentPage = (page?: number) => changeParams({ page })
+  const setPageSize = (size?: number) => changeParams({ pageSize: size })
+  const setSort = (sort?: Sort) => changeParams({ sort })
+  const setStatus = (status: string) => changeParams({ status })
   const setProfileStatus = (profileStatus: string) =>
-    changeRoute('profileStatus', profileStatus)
-  const setPublished = (state: string) => changeRoute('published', state)
-  const setQ = (q?: string) => changeRoute('q', q)
+    changeParams({ profileStatus })
+  const setPublished = (state: string) => changeParams({ published: state })
+  const setQ = (q?: string) => changeParams({ q })
 
   const handleClick = (index: number, id: number) => {
     setSelectedId(id)
@@ -225,14 +196,12 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
     onClose()
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => setCurrentPage(1), [])
 
   useEffect(() => {
     if (selectedId) {
       onOpen()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId])
 
   return (
