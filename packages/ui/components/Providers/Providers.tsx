@@ -73,7 +73,9 @@ export const Providers: FC<ProvidersProps> = ({
                 {enable && <NotificationModal />}
                 <DefaultSeo {...defaultSeo[site][locale]} />
                 {children}
-                {process.env.VERCEL_ENV === 'production' && <Analytics />}
+                {process.env.NEXT_PUBLIC_ENVIRONMENT === 'production' && (
+                  <Analytics />
+                )}
                 {!bannerCookie && <CookieBanner onAllow={onAllow} />}
                 <ToastContainer />
               </WebPushProvider>

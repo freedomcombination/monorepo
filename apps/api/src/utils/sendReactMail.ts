@@ -46,7 +46,7 @@ export const sendReactMail = async (
     })
   }
 
-  if (process.env.VERCEL_ENV !== 'production') {
+  if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'production') {
     const groupDate = new Date().toISOString()
     await strapi.db.query('api::dev-mail.dev-mail').createMany({
       data: mailContents.map(({ to, subject, html }) => ({

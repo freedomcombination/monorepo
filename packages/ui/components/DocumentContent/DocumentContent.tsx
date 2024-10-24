@@ -31,7 +31,7 @@ export const DocumentContent = () => {
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="mobile-web-app-capable" content="yes" />
       {(process.env.NODE_ENV === 'development' ||
-        process.env.VERCEL_ENV === 'preview') &&
+        process.env.NEXT_PUBLIC_ENVIRONMENT === 'preview') &&
         process.env.METICULOUS_PROJECT_ID && (
           // eslint-disable-next-line @next/next/no-sync-scripts
           <script

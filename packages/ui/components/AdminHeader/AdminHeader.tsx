@@ -136,16 +136,17 @@ export const AdminHeader: FC<AdminHeaderProps> = ({ hasBackButton, title }) => {
             colorScheme={'gray'}
           />
         )}
-        {process.env.VERCEL_ENV !== 'production' && isSubscribed && (
-          <IconButton
-            aria-label="notifications-off"
-            icon={<BiNotificationOff />}
-            variant="outline"
-            rounded="full"
-            colorScheme={'gray'}
-            onClick={handleUnsubscribe}
-          />
-        )}
+        {process.env.NEXT_PUBLIC_ENVIRONMENT !== 'production' &&
+          isSubscribed && (
+            <IconButton
+              aria-label="notifications-off"
+              icon={<BiNotificationOff />}
+              variant="outline"
+              rounded="full"
+              colorScheme={'gray'}
+              onClick={handleUnsubscribe}
+            />
+          )}
         <LanguageSwitcher responsive />
         <CreateModelButton />
         {!user && (
