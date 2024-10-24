@@ -1,3 +1,6 @@
+import { useDisclosure } from '@chakra-ui/react'
+import { FaCogs } from 'react-icons/fa'
+
 import {
   IconButton,
   Modal,
@@ -5,10 +8,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
-} from '@chakra-ui/react'
-import { FaCogs } from 'react-icons/fa'
-
+} from '@fc/chakra'
 import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 
 import { ActionStack } from '../ActionStack'
@@ -16,7 +16,7 @@ import { usePostContext } from '../PostProvider'
 import { PostSentenceForm } from '../PostSentenceForm'
 
 export const PostSentencesModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onToggle } = useDisclosure()
   const { post } = usePostContext()
   const hashtag = useHashtagBySlug()
 
@@ -27,7 +27,7 @@ export const PostSentencesModal = () => {
       */
       canUpdate="posts"
     >
-      <Modal isOpen={isOpen} onClose={onClose} size={'6xl'}>
+      <Modal open={open} onOpenChange={onToggle} size={'xl'}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Manage Post Sentences</ModalHeader>

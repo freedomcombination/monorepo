@@ -15,12 +15,12 @@ export const CommentList: FC<CommentListProps> = ({ comments }) => {
   const { t } = useTranslation()
 
   return (
-    <Stack p={4} spacing={4} bg="white" boxShadow="base">
+    <Stack p={4} gap={4} bg="white" boxShadow="base">
       <Text fontSize="lg" fontWeight={600}>
         {t('comments')}
       </Text>
 
-      <Stack spacing={4} maxH={300} overflowY={'auto'}>
+      <Stack gap={4} maxH={300} overflowY={'auto'}>
         {comments?.map(comment => {
           return <CommentItem key={comment.id} comment={comment} />
         })}

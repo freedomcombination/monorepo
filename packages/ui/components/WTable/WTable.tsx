@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Table, Tbody, Thead, Tr } from '@chakra-ui/react'
+import { Table } from '@chakra-ui/react'
 
 import type { StrapiModel } from '@fc/types'
 
@@ -40,9 +40,16 @@ export const WTable = <T extends StrapiModel>({
   }, [sortMode, selectedIndex])
 
   return (
-    <Table size="sm" cursor="default" {...rest}>
-      <Thead pos={'sticky'} top={0} zIndex={0} h={8} bg={'white'} shadow={'sm'}>
-        <Tr>
+    <Table.Root size="sm" cursor="default" {...rest}>
+      <Table.Header
+        pos={'sticky'}
+        top={0}
+        zIndex={0}
+        h={8}
+        bg={'white'}
+        shadow={'sm'}
+      >
+        <Table.Row>
           {columns.map((column, index) => {
             return (
               <TableHeaderCell
@@ -56,9 +63,9 @@ export const WTable = <T extends StrapiModel>({
               />
             )
           })}
-        </Tr>
-      </Thead>
-      <Tbody>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
         {data.map((model, index) => {
           return (
             <WTableRow
@@ -70,7 +77,7 @@ export const WTable = <T extends StrapiModel>({
             />
           )
         })}
-      </Tbody>
-    </Table>
+      </Table.Body>
+    </Table.Root>
   )
 }

@@ -1,13 +1,8 @@
 import { FC } from 'react'
 
-import {
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  Text,
-  Textarea,
-  VStack,
-} from '@chakra-ui/react'
+import { Input, Text, Textarea, VStack } from '@chakra-ui/react'
+
+import { InputGroup } from '@fc/chakra'
 
 const INPUT_AREA_LENGTH_LIMIT = 50
 const KEY_MIN_WIDTH = '50px'
@@ -31,9 +26,9 @@ export const EntryInput: FC<EntryInputProps> = ({
 
   if (length > INPUT_AREA_LENGTH_LIMIT)
     return (
-      <InputGroup size={'sm'}>
-        <InputLeftAddon position={'relative'} minWidth={KEY_MIN_WIDTH}>
-          <VStack>
+      <InputGroup
+        startElement={
+          <VStack position={'relative'} minWidth={KEY_MIN_WIDTH}>
             <Text>{locale}</Text>
             <Text
               position={'absolute'}
@@ -45,10 +40,11 @@ export const EntryInput: FC<EntryInputProps> = ({
               {length}
             </Text>
           </VStack>
-        </InputLeftAddon>
+        }
+      >
         <Textarea
           value={defaultVal}
-          isDisabled={locked}
+          disabled={locked}
           placeholder={placeholder}
           onChange={e => handleChange(e.target.value)}
         />
@@ -56,12 +52,11 @@ export const EntryInput: FC<EntryInputProps> = ({
     )
 
   return (
-    <InputGroup size={'sm'}>
-      <InputLeftAddon minWidth={KEY_MIN_WIDTH}>{locale}</InputLeftAddon>
+    <InputGroup startElement={locale}>
       <Input
-        value={defaultVal}
-        isDisabled={locked}
-        placeholder={placeholder}
+        size={'sm'}
+        defaultValue={defaultVal}
+        disabled={locked}
         onChange={e => handleChange(e.target.value)}
       />
     </InputGroup>

@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Stack, useToast } from '@chakra-ui/react'
+import { Box, Heading, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { FaEdit } from 'react-icons/fa'
 import * as Yup from 'yup'
 
+import { Button, toaster } from '@fc/chakra'
 import { API_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 
@@ -62,7 +63,6 @@ const changePassword = async (
 
 export const ChangePasswordForm = () => {
   const { token, checkAuth } = useAuthContext()
-  const toast = useToast()
   const { t } = useTranslation()
 
   const { mutate, isError, error, isPending } = useMutation({
@@ -86,30 +86,28 @@ export const ChangePasswordForm = () => {
   const onSubmit = async (data: PasswordFormValues) => {
     mutate(data, {
       onError: () => {
-        toast({
+        toaster.create({
           id: 'error-update-password',
           title: 'Error',
           description: t('update-failed'),
-          status: 'error',
-          duration: 10000,
-          isClosable: true,
+          type: 'error',
+          duration: 3000,
         })
       },
       onSuccess: () => {
-        toast({
+        toaster.create({
           id: 'success-update-password',
           title: 'Success',
           description: t('update-success'),
-          status: 'success',
-          duration: 10000,
-          isClosable: true,
+          type: 'success',
+          duration: 3000,
         })
       },
     })
   }
 
   return (
-    <Stack as={'form'} spacing={8} onSubmit={handleSubmit(onSubmit)}>
+    <Stack as={'form'} gap={8} onSubmit={handleSubmit(onSubmit)}>
       <Box>
         <Heading size="lg">{t('profile.security.password')}</Heading>
         {isError && <Box color={'red.500'}>{error?.message}</Box>}
@@ -149,7 +147,7 @@ export const ChangePasswordForm = () => {
       <Button
         data-testid={'button-submit-update-password'}
         leftIcon={<FaEdit />}
-        isLoading={isPending}
+        loading={isPending}
         size={'lg'}
         alignSelf={'start'}
         type={'submit'}

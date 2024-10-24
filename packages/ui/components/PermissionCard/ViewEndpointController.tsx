@@ -2,17 +2,14 @@ import { useMemo } from 'react'
 
 import {
   Box,
-  Checkbox,
+  Group,
   Stack,
-  StackDivider,
-  Tag,
-  TagLabel,
-  TagLeftIcon,
+  StackSeparator,
   Text,
   VStack,
-  Wrap,
 } from '@chakra-ui/react'
 
+import { Checkbox, Tag } from '@fc/chakra'
 import type {
   ControllerGroup,
   EndpointAction,
@@ -71,17 +68,17 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
       borderColor={'gray.100'}
       borderWidth={1}
       borderRadius={12}
-      spacing={4}
+      gap={4}
     >
       <Box
         position={'absolute'}
         top={-3}
         left={6}
-        noOfLines={1}
+        lineClamp={1}
         fontWeight={'bold'}
       >
         {!readonly ? (
-          <Checkbox bg={'white'} isChecked={!backup} onChange={handleChange}>
+          <Checkbox bg={'white'} checked={!backup} onChange={handleChange}>
             {name}
           </Checkbox>
         ) : (
@@ -92,9 +89,9 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
       </Box>
       <VStack
         alignItems={'flex-start'}
-        divider={<StackDivider borderColor="gray.200" />}
+        separator={<StackSeparator borderColor="gray.200" />}
       >
-        <Wrap>
+        <Group wrap={'wrap'}>
           {Object.values(values).flatMap(action => {
             return Object.entries(action).map(([key, obj]) => {
               return (
@@ -112,20 +109,17 @@ export const ViewEndpointControllers: React.FC<ViewEndpointProps> = ({
               )
             })
           })}
-        </Wrap>
+        </Group>
         {menuItems.length > 0 && (
-          <Wrap>
+          <Group wrap={'wrap'}>
             {menuItems.map(item => {
               return (
-                <Tag key={item.label} size={'md'}>
-                  <TagLeftIcon boxSize="28px" pt={2}>
-                    {item.icon}
-                  </TagLeftIcon>
-                  <TagLabel>{item.label}</TagLabel>
+                <Tag key={item.label} size={'md'} startElement={item.icon}>
+                  {item.label}
                 </Tag>
               )
             })}
-          </Wrap>
+          </Group>
         )}
       </VStack>
     </Stack>

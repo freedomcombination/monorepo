@@ -1,22 +1,10 @@
 import { ReactNode, useState } from 'react'
 
-import {
-  Button,
-  Center,
-  Divider,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  Spinner,
-  Stack,
-  useToast,
-} from '@chakra-ui/react'
+import { Center, Input, Separator, Spinner, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaEnvelope, FaUser } from 'react-icons/fa6'
 
+import { Button, Field, InputGroup, toaster } from '@fc/chakra'
 import { API_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 import type { SessionUser } from '@fc/types'
@@ -63,7 +51,6 @@ const Credential: React.FC<CredentialProps> = ({
   const [edit, setEdit] = useState(false)
   const [saving, setSaving] = useState(false)
   const [value, setValue] = useState(initialValue)
-  const toast = useToast()
   const { t } = useTranslation()
 
   const handleClick = () => {
@@ -83,26 +70,24 @@ const Credential: React.FC<CredentialProps> = ({
 
       await checkAuth()
 
-      toast({
+      toaster.create({
         id: `success-update-${name}`,
         title: t('update-success'),
-        status: 'success',
-        duration: 10000,
-        isClosable: true,
+        type: 'success',
+        duration: 5000,
       })
       setEdit(false)
     } catch (e) {
       console.error('Update error', name, value, e)
-      toast({
+      toaster.create({
         id: `error-update-${name}`,
         title: t('update-failed'),
         description: t(
           ((e as unknown as Error).message ??
             e) as keyof I18nNamespaces['common'],
         ),
-        status: 'error',
-        duration: 10000,
-        isClosable: true,
+        type: 'error',
+        duration: 5000,
       })
     } finally {
       setSaving(false)
@@ -110,23 +95,23 @@ const Credential: React.FC<CredentialProps> = ({
   }
 
   return (
-    <InputGroup size="lg">
-      <InputLeftElement>
-        {!saving ? leftIcon : <Spinner size="sm" />}
-      </InputLeftElement>
+    <InputGroup
+      startElement={!saving ? leftIcon : <Spinner size="sm" />}
+      endElement={
+        <Button h="1.75rem" size="sm" onClick={handleClick}>
+          {edit ? (isValid(user, value) ? t('save') : t('cancel')) : t('edit')}
+        </Button>
+      }
+    >
       <Input
         pr="7em"
+        size="lg"
         type={name === 'email' ? 'email' : 'text'}
         placeholder={placeholder}
-        isDisabled={!edit}
+        disabled={!edit}
         value={value}
         onChange={e => setValue(e.target.value)}
       />
-      <InputRightElement width="7rem" justifyContent={'flex-end'} pr={1}>
-        <Button h="1.75rem" size="sm" onClick={handleClick} isLoading={saving}>
-          {edit ? (isValid(user, value) ? t('save') : t('cancel')) : t('edit')}
-        </Button>
-      </InputRightElement>
     </InputGroup>
   )
 }
@@ -146,9 +131,8 @@ export const SecurityTab = () => {
   }
 
   return (
-    <Stack spacing={8}>
-      <FormControl>
-        <FormLabel fontWeight={600}>{t('profile.security.username')}</FormLabel>
+    <Stack gap={8}>
+      <Field label={t('profile.security.username')}>
         <Credential
           name={'username'}
           initialValue={user.username}
@@ -158,9 +142,8 @@ export const SecurityTab = () => {
           placeholder={t('profile.username.ph')}
           leftIcon={<FaUser />}
         />
-      </FormControl>
-      <FormControl>
-        <FormLabel fontWeight={600}>{t('profile.security.email')}</FormLabel>
+      </Field>
+      <Field label={t('profile.security.email')}>
         <Credential
           name={'email'}
           initialValue={user.email}
@@ -173,8 +156,8 @@ export const SecurityTab = () => {
           placeholder={t('profile.email.ph')}
           leftIcon={<FaEnvelope />}
         />
-      </FormControl>
-      <Divider />
+      </Field>
+      <Separator />
       <ChangePasswordForm />
     </Stack>
   )

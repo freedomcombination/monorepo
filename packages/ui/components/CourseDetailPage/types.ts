@@ -24,7 +24,6 @@ export type CourseDetailPageProps = {
 
 export type CourseFaqItemProps = {
   item: FaqLocale
-  isExpanded: boolean
 }
 
 export type CourseInfoItemProps = {

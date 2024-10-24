@@ -1,15 +1,15 @@
 import { FC } from 'react'
 
+import { Box, Stack } from '@chakra-ui/react'
+import { omit } from 'lodash'
+
 import {
-  Box,
   Popover,
   PopoverArrow,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
-  Stack,
-} from '@chakra-ui/react'
-import { omit } from 'lodash'
+} from '@fc/chakra'
 
 import { ChildMenuItem } from './ChildMenuItem'
 import { MenuTypeItemProps } from './types'
@@ -20,7 +20,7 @@ export const ParentMenuItem: FC<MenuTypeItemProps> = ({
   isMobile,
 }) => {
   return (
-    <Popover trigger="hover" arrowSize={16}>
+    <Popover>
       <PopoverTrigger>
         <Box p={2} w="max-content" cursor={'pointer'}>
           <ChildMenuItem
@@ -32,7 +32,7 @@ export const ParentMenuItem: FC<MenuTypeItemProps> = ({
       </PopoverTrigger>
 
       <PopoverContent>
-        <PopoverArrow />
+        <PopoverArrow boxSize={16} />
         <PopoverBody>
           <Stack>
             {item.children?.map(item => (

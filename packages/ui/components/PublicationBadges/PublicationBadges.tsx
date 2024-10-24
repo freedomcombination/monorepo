@@ -19,7 +19,7 @@ export const PublicationBadges: FC<PublicationBadgesProps> = ({
     <Badge
       variant="outline"
       {...rest}
-      colorScheme={publishedAt ? 'purple' : 'gray'}
+      colorPalette={publishedAt ? 'purple' : 'gray'}
     >
       {renderPublicationState(publishedAt, t)}
     </Badge>

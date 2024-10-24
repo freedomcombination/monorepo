@@ -1,4 +1,4 @@
-import { Button, Container, Heading, Stack } from '@chakra-ui/react'
+import { Container, Heading, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ObjectSchema } from 'yup'
 
-import { toastMessage } from '@fc/utils/toastMessage'
+import { Button, toaster } from '@fc/chakra'
 
 import { resetPasswordSchema } from './schema'
 import { ResetPasswordFieldValues } from './types'
@@ -48,14 +48,14 @@ export const ResetPasswordForm = () => {
         passwordConfirmation: data.passwordConfirmation,
       }),
     onSuccess: () => {
-      toastMessage(null, t('reset-pass.text'), 'success')
+      toaster.create({ title: t('reset-pass.text'), type: 'success' })
       reset()
       setTimeout(() => {
         router.push('/auth/login')
       }, 2000)
     },
     onError: () => {
-      toastMessage(t('error'), null, 'error')
+      toaster.create({ title: t('error'), type: 'error' })
       setTimeout(() => {
         reset()
       }, 2000)
@@ -73,19 +73,19 @@ export const ResetPasswordForm = () => {
       px={{ base: '0', sm: '8' }}
     >
       <Stack
-        spacing="8"
+        gap={8}
         shadow="base"
         bg="white"
         p={{ base: 8, lg: 12 }}
         rounded="lg"
       >
-        <Stack spacing="6">
-          <Stack spacing={{ base: '2', md: '3' }} textAlign="center">
+        <Stack gap={6}>
+          <Stack gap={{ base: '2', md: '3' }} textAlign="center">
             <Heading>{t('reset-pass.title')}</Heading>
           </Stack>
         </Stack>
-        <Stack spacing="6" as="form" onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing="5">
+        <Stack gap={6} as="form" onSubmit={handleSubmit(onSubmit)}>
+          <Stack gap={5}>
             <FormItem
               id="password"
               type="password"
@@ -105,8 +105,8 @@ export const ResetPasswordForm = () => {
               name="passwordConfirmation"
             />
           </Stack>
-          <Stack spacing="6">
-            <Button type="submit" isLoading={isPending}>
+          <Stack gap={6}>
+            <Button type="submit" loading={isPending}>
               {t('submit')}
             </Button>
           </Stack>

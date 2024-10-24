@@ -1,6 +1,5 @@
 import { FC, ReactNode, useState } from 'react'
 
-import { ChakraProvider, createStandaloneToast } from '@chakra-ui/react'
 import {
   HydrationBoundary,
   QueryClient,
@@ -13,9 +12,9 @@ import { ReCaptchaProvider } from 'next-recaptcha-v3'
 import { DefaultSeo } from 'next-seo'
 import { useCookie } from 'react-use'
 
+import { ChakraProvider, Toaster } from '@fc/chakra'
 import { RECAPTCHA_SITE_KEY } from '@fc/config/constants'
 import { defaultSeo } from '@fc/config/seo'
-import { themes } from '@fc/config/theme'
 import { AuthProvider } from '@fc/context/auth'
 import { WebPushProvider } from '@fc/context/webPush'
 import { CookieKey, type Site } from '@fc/types'
@@ -29,8 +28,6 @@ type ProvidersProps = {
   dehydratedState: unknown
   enablePush?: boolean
 }
-
-const { ToastContainer } = createStandaloneToast()
 
 export const Providers: FC<ProvidersProps> = ({
   site,
@@ -64,24 +61,25 @@ export const Providers: FC<ProvidersProps> = ({
     <QueryClientProvider client={queryClient}>
       <HydrationBoundary state={dehydratedState}>
         <AuthProvider site={site}>
-          <ChakraProvider theme={themes[site]}>
-            <ReCaptchaProvider
-              reCaptchaKey={RECAPTCHA_SITE_KEY}
-              language={locale}
-            >
-              <WebPushProvider enable={enable}>
+          <ReCaptchaProvider
+            reCaptchaKey={RECAPTCHA_SITE_KEY}
+            language={locale}
+          >
+            <WebPushProvider enable={enable}>
+              <DefaultSeo {...defaultSeo[site][locale]} />
+              <ChakraProvider site={site}>
                 {enable && <NotificationModal />}
-                <DefaultSeo {...defaultSeo[site][locale]} />
                 {children}
                 {process.env.VERCEL_ENV === 'production' && <Analytics />}
                 {!bannerCookie && <CookieBanner onAllow={onAllow} />}
-                <ToastContainer />
-              </WebPushProvider>
-            </ReCaptchaProvider>
-          </ChakraProvider>
+                <Toaster />
+              </ChakraProvider>
+            </WebPushProvider>
+          </ReCaptchaProvider>
         </AuthProvider>
       </HydrationBoundary>
       <ReactQueryDevtools buttonPosition="bottom-left" />
+      <Analytics />
     </QueryClientProvider>
   )
 }

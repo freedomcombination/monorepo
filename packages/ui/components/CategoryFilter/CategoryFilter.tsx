@@ -1,9 +1,8 @@
 import { FC, useEffect, useRef } from 'react'
 
 import {
-  Divider,
+  Separator,
   HStack,
-  IconButton,
   Spinner,
   Stack,
   Text,
@@ -12,6 +11,8 @@ import {
 import { RiFilterOffLine } from 'react-icons/ri'
 import { useDebounce } from 'react-use'
 
+import { IconButton } from '@fc/chakra'
+
 import { CategoryFilterCheckbox } from './CategoryFilterCheckbox'
 import { CategoryFilterProps } from './types'
 
@@ -19,11 +20,11 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
   categoryData = [],
   debounce = 1000,
   initialCategories = [],
-  isLoading,
+  loading,
   locale,
   title,
   selectCategories,
-  setIsLoading,
+  setLoading,
 }) => {
   const initialCategorySelected = useRef(false)
 
@@ -31,7 +32,7 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
     ?.map((category, index) => `${index}=${category}`)
     .join('&')
 
-  const { value, getCheckboxProps, setValue } = useCheckboxGroup({
+  const { value, setValue } = useCheckboxGroup({
     defaultValue: initialCategories,
   })
 
@@ -41,18 +42,18 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
       const categoriesQuery = initialCategoriesQuery
         .split('&')
         .map(c => c.split('=')[1])
-      setIsLoading(true)
+      setLoading(true)
       setValue(categoriesQuery)
     }
-  }, [initialCategoriesQuery, setValue, setIsLoading])
+  }, [initialCategoriesQuery, setValue, setLoading])
 
   useEffect(() => {
-    setIsLoading(true)
-  }, [value, setIsLoading])
+    setLoading(true)
+  }, [value, setLoading])
 
   useDebounce(
     () => {
-      setIsLoading(false)
+      setLoading(false)
       selectCategories(value as string[])
     },
     debounce,
@@ -60,14 +61,14 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
   )
 
   return (
-    <Stack justify="stretch" w="full" spacing={1}>
+    <Stack justify="stretch" w="full" gap={1}>
       <HStack py={1.5} w="full" justify="space-between" align="center">
         <Text fontWeight={600}>{title}</Text>
-        {isLoading ? (
+        {loading ? (
           <Spinner size="lg" color="primary.500" />
         ) : (
           <IconButton
-            isDisabled={!value[0]}
+            disabled={!value[0]}
             aria-label="clear filter"
             rounded="full"
             size="sm"
@@ -76,15 +77,15 @@ export const CategoryFilter: FC<CategoryFilterProps> = ({
           />
         )}
       </HStack>
-      <Divider />
+      <Separator />
       {categoryData?.map(category => (
         <CategoryFilterCheckbox
           key={category.id}
-          {...getCheckboxProps({
-            id: category.id,
-            value: category.slug,
-            name: category[`name_${locale}`],
-          })}
+          id={`${category.id}`}
+          name={category[`name_${locale}`]}
+          label={category[`name_${locale}`]}
+          checked={value.includes(category.slug ?? '')}
+          value={category.slug}
         />
       ))}
     </Stack>

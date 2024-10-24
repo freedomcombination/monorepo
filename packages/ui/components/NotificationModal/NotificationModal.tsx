@@ -1,5 +1,9 @@
 import { useEffect } from 'react'
 
+import { Stack, Text, useDisclosure } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+import { useCookie } from 'react-use'
+
 import {
   Button,
   Modal,
@@ -9,13 +13,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { useCookie } from 'react-use'
-
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { useWebPushContext } from '@fc/context/webPush'
 import { useSubscribePushNotificationMutation } from '@fc/services/pushNotification/subscribePushNotification'
@@ -24,7 +22,7 @@ import { CookieKey } from '@fc/types'
 export const NotificationModal = () => {
   const { t } = useTranslation()
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose, onToggle } = useDisclosure()
   const { user, site } = useAuthContext()
   const { isSubscribed, isSupported } = useWebPushContext()
 
@@ -73,7 +71,7 @@ export const NotificationModal = () => {
     <>
       {/* <Button onClick={onOpen}>Open Modal</Button> */}
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal open={open} onOpenChange={onToggle}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{t('never-miss-events')}</ModalHeader>
@@ -90,16 +88,14 @@ export const NotificationModal = () => {
           <ModalFooter>
             <Button
               data-testid="button-close-notification"
-              colorScheme="gray"
-              mr={3}
               onClick={handleClose}
             >
               {t('close')}
             </Button>
             <Button
               data-testid="button-subscribe-notification"
-              colorScheme="primary"
-              isLoading={subscribePushNotificationMutation.isPending}
+              colorPalette="primary"
+              loading={subscribePushNotificationMutation.isPending}
               onClick={handleSubscribe}
             >
               {t('subscribe')}

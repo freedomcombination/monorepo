@@ -1,23 +1,20 @@
 import { FC, useState } from 'react'
 
+import { Separator, Stack } from '@chakra-ui/react'
+import slugify from '@sindresorhus/slugify'
+import { useRouter } from 'next/router'
+import { useForm } from 'react-hook-form'
+
 import {
   Alert,
-  AlertDescription,
-  AlertIcon,
   Button,
-  Divider,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Stack,
-} from '@chakra-ui/react'
-import slugify from '@sindresorhus/slugify'
-import { useRouter } from 'next/router'
-import { useForm } from 'react-hook-form'
-
+} from '@fc/chakra'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import type {
   Post,
@@ -113,11 +110,11 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
 
   return (
     <Modal
-      isOpen={isOpen}
-      onClose={handleClose}
-      isCentered
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : handleClose())}
+      placement={'center'}
       size="xl"
-      closeOnOverlayClick={false}
+      closeOnInteractOutside={false}
     >
       <ModalOverlay />
       <ModalContent>
@@ -125,7 +122,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
         <Stack m={10} as={'form'} onSubmit={handleSubmit(onCreate)}>
           <ModelSelect
             endpoint={'hashtags'}
-            isRequired={true}
+            required={true}
             name={'hashtags' as string}
             label={'Hashtags'}
             errors={errors}
@@ -141,17 +138,17 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
             setRecognized={setRecognized}
           />
 
-          <Divider />
+          <Separator />
         </ModalBody>
         <ModalFooter justifyContent="space-between">
-          <Button colorScheme="red" onClick={handleClose}>
+          <Button colorPalette="red" onClick={handleClose}>
             Cancel
           </Button>
-          <Button colorScheme="red" onClick={onReset}>
+          <Button colorPalette="red" onClick={onReset}>
             Reset
           </Button>
-          {/* isDisabled={!files} */}
-          <Button isDisabled={!state} colorScheme="blue" onClick={onCreate}>
+          {/* disabled={!files} */}
+          <Button disabled={!state} colorPalette="blue" onClick={onCreate}>
             Create
           </Button>
         </ModalFooter>
@@ -160,8 +157,7 @@ export const CreatePostFromCapsModal: FC<CreatePostFromCapsModalProps> = ({
           if (isError) {
             return (
               <Alert status="error" key={id}>
-                <AlertIcon />
-                <AlertDescription>An error occured </AlertDescription>
+                An error occured
               </Alert>
             )
           }

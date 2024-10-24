@@ -1,8 +1,9 @@
 import { FC, useEffect } from 'react'
 
-import { Box, chakra, Collapse, useBoolean } from '@chakra-ui/react'
+import { Box, chakra, Collapsible } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { GoChevronDown } from 'react-icons/go'
+import { useBoolean } from 'react-use'
 
 import { NavLink } from './NavLink'
 import { AdminNavItemProps } from './types'
@@ -25,7 +26,7 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
 
   useEffect(() => {
     if (isMenuLinkActive && submenu && !open) {
-      setOpen.on()
+      setOpen(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMenuLinkActive, submenu])
@@ -51,12 +52,12 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
           color: 'primary.500',
           _hover: { color: 'primary.400', bg: 'blackAlpha.50' },
         })}
-        isDisabled={!submenu && isMenuLinkActive}
+        disabled={!submenu && isMenuLinkActive}
         _disabled={{
           color: 'primary.500',
         }}
         {...(submenu && {
-          onClick: setOpen.toggle,
+          onClick: () => setOpen(!open),
           rightIcon: (
             <Box
               as={GoChevronDown}
@@ -79,14 +80,14 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
 
       {/* Submenu */}
       {submenu && (
-        <Collapse in={open}>
+        <Collapsible.Root open={open}>
           {submenu?.map((item, index) => {
             const isSubmenuLinkActive = router.asPath === item.link
             const isExternal = item.link?.startsWith('http')
             const isAllowed = item.allowed === true
 
             return (
-              <Box key={index}>
+              <Collapsible.Content key={index}>
                 <ButtonLink
                   data-testid={item.id}
                   href={item.link as string}
@@ -100,12 +101,12 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
                   })}
                   leftIcon={item.icon}
                   size="sm"
-                  variant="ghost"
+                  variant="plain"
                   color={'initial'}
                   w="full"
                   px={2}
                   _hover={{ color: 'primary.500' }}
-                  isDisabled={!isAllowed && !isSubmenuLinkActive}
+                  disabled={!isAllowed && !isSubmenuLinkActive}
                   {...(isSubmenuLinkActive && {
                     _disabled: {
                       color: 'primary.500',
@@ -120,10 +121,10 @@ export const AdminNavItem: FC<AdminNavItemProps> = ({
                 >
                   {item.label}
                 </ButtonLink>
-              </Box>
+              </Collapsible.Content>
             )
           })}
-        </Collapse>
+        </Collapsible.Root>
       )}
     </Box>
   )

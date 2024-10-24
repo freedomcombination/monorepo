@@ -1,22 +1,19 @@
 import { useEffect, useMemo, useState } from 'react'
 
+import { MenuItem, Stack, Text, useDisclosure } from '@chakra-ui/react'
+import { GetServerSidePropsContext } from 'next'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
+import { useUpdateEffect } from 'react-use'
+
 import {
   Accordion,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  MenuItem,
-  Stack,
-  Text,
-  useDisclosure,
-  useUpdateEffect,
-} from '@chakra-ui/react'
-import { GetServerSidePropsContext } from 'next'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
-
+} from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Course, CourseApplication, Sort, StrapiLocale } from '@fc/types'
@@ -29,7 +26,7 @@ import { PageHeader } from '@fc/ui/components/PageHeader'
 import { useColumns } from '@fc/ui/hooks/useColumns'
 
 const CoursePage = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { t } = useTranslation()
 
   const { locale, query } = useRouter()
@@ -106,20 +103,16 @@ const CoursePage = () => {
   }
 
   return (
-    <AdminLayout
-      seo={{ title: t('course') }}
-      isLoading={isLoading}
-      hasBackButton
-    >
+    <AdminLayout seo={{ title: t('course') }} loading={isLoading} hasBackButton>
       {selectedApplicationId && (
         <ModelEditModal<CourseApplication>
           title={'Application'}
           endpoint="course-applications"
           id={selectedApplicationId}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={handleClose}
           onSuccess={refetch}
-          size={'5xl'}
+          size={'xl'}
         >
           <CourseApplicationDetails
             course={course!}
@@ -132,16 +125,15 @@ const CoursePage = () => {
           />
         </ModelEditModal>
       )}
-      <Stack spacing={8} p={6}>
+      <Stack gap={8} p={6}>
         <Accordion
           size={'lg'}
-          allowToggle
-          allowMultiple={false}
-          defaultIndex={0}
+          collapsible
+          multiple={false}
           borderColor="transparent"
-          defaultValue={1}
+          defaultValue={['1']}
         >
-          <AccordionItem _notLast={{ mb: 2 }} overflow={'auto'}>
+          <AccordionItem value="1" _notLast={{ mb: 2 }} overflow={'auto'}>
             <AccordionButton
               justifyContent="space-between"
               cursor="pointer"
@@ -152,7 +144,7 @@ const CoursePage = () => {
               shadow={'sm'}
             >
               <Text>{course?.[`title_${locale}`]}</Text>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
             <AccordionPanel
               mt={4}
@@ -169,10 +161,10 @@ const CoursePage = () => {
               )}
             </AccordionPanel>
           </AccordionItem>
-          <AccordionItem>
+          <AccordionItem value="2">
             <AccordionButton
               justifyContent="space-between"
-              _activeStep={{ bg: 'gray.200' }}
+              _active={{ bg: 'gray.200' }}
               cursor="pointer"
               fontSize="lg"
               bg={'white'}
@@ -181,17 +173,19 @@ const CoursePage = () => {
               shadow={'sm'}
             >
               <Text>Applications</Text>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
             <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
               <PageHeader
                 onSearch={handleSearch}
                 sortMenu={[
-                  <MenuItem key="asc" icon={<FaArrowUp />}>
+                  <MenuItem value="name:asc" key="asc">
                     Name Asc
+                    <FaArrowUp />
                   </MenuItem>,
-                  <MenuItem key="desc" icon={<FaArrowDown />}>
+                  <MenuItem value="name:desc" key="desc">
                     Name Desc
+                    <FaArrowDown />
                   </MenuItem>,
                 ]}
               />

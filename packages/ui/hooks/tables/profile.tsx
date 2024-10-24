@@ -1,4 +1,4 @@
-import { ThemeTypings } from '@chakra-ui/react'
+import { ButtonProps } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -31,7 +31,7 @@ export const useProfileColumns = (): WTableProps<
       type: 'badge',
       transform: value => (value ? t('volunteer') : null),
       componentProps: {
-        colorScheme: 'primary',
+        colorPalette: 'primary',
         variant: 'outline',
       },
     },
@@ -39,20 +39,22 @@ export const useProfileColumns = (): WTableProps<
       accessorKey: 'profileStatus',
       type: 'badge',
       componentProps: value => {
-        const colorScheme: Record<ProfileStatus, ThemeTypings['colorSchemes']> =
-          {
-            pending: 'orange', // 'orange
-            accepted: 'blue',
-            rejected: 'red',
-            'in-progress': 'purple',
-            left: 'gray',
-            awaiting: 'yellow',
-            approved: 'green',
-          }
+        const colorPalettes: Record<
+          ProfileStatus,
+          ButtonProps['colorPalette']
+        > = {
+          pending: 'orange', // 'orange
+          accepted: 'blue',
+          rejected: 'red',
+          'in-progress': 'purple',
+          left: 'gray',
+          awaiting: 'yellow',
+          approved: 'green',
+        }
 
         return {
           variant: 'outline',
-          colorScheme: colorScheme[value as ProfileStatus],
+          colorPalette: colorPalettes[value as ProfileStatus],
         }
       },
     },
@@ -64,7 +66,7 @@ export const useProfileColumns = (): WTableProps<
       sortKey: 'role.name',
       type: 'badge',
       componentProps: value => {
-        const rolesColorMap: Record<string, ThemeTypings['colorSchemes']> = {
+        const rolesColorMap: Record<string, ButtonProps['colorPalette']> = {
           'ArtEditor Translator': 'pink',
           'Author Translator': 'facebook',
           'ContentManager Translator': 'orange',
@@ -84,7 +86,7 @@ export const useProfileColumns = (): WTableProps<
         }
 
         return {
-          colorScheme: rolesColorMap[value as keyof typeof rolesColorMap],
+          colorPalette: rolesColorMap[value as keyof typeof rolesColorMap],
           variant: 'outline',
         }
       },

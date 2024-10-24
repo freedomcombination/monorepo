@@ -1,10 +1,11 @@
 import { FC } from 'react'
 
-import { Box, Button, HStack, Text } from '@chakra-ui/react'
+import { Box, HStack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaEye } from 'react-icons/fa'
 
+import { Button } from '@fc/chakra'
 import { RecaptchaKeys, SITE_URL } from '@fc/config/constants'
 import { useLikeArt } from '@fc/services/art/likeArt'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
@@ -24,7 +25,7 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
 
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
-  const { toggleLike, isLiked, isLoading, isDisabled } = useLikeArt({
+  const { toggleLike, isLiked, loading, disabled } = useLikeArt({
     art: art as Art,
     recaptchaToken,
     onSuccess: refetch,
@@ -56,13 +57,13 @@ export const ArtDetail: FC<ArtDetailProps> = ({ art, refetch }) => {
         <Button
           data-testid="button-like"
           rounded="full"
-          colorScheme={isLiked ? 'red' : 'gray'}
+          colorPalette={isLiked ? 'red' : 'gray'}
           rightIcon={<AiFillHeart />}
           onClick={() => toggleLike()}
-          disabled={isDisabled}
+          disabled={disabled}
           size="sm"
           variant="outline"
-          isLoading={isLoading}
+          loading={loading}
         >
           {(art?.likes || 0) + (art.likers?.length || 0)}
         </Button>

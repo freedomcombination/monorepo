@@ -1,4 +1,4 @@
-import { Stack, ThemeTypings } from '@chakra-ui/react'
+import { ButtonProps, Stack } from '@chakra-ui/react'
 
 import { EditableLine } from './EditableLine'
 import { ArchivePostType, useGenPostContext } from '../GenPostProvider'
@@ -9,7 +9,7 @@ type EditablePostProps = {
   descriptionThreshold?: number
   sentenceThreshold?: number
   onlySentences?: boolean
-  colorScheme?: ThemeTypings['colorSchemes']
+  colorPalette?: ButtonProps['colorPalette']
 }
 
 export const EditablePost: React.FC<EditablePostProps> = ({
@@ -18,7 +18,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
   descriptionThreshold = 250,
   sentenceThreshold = 200,
   onlySentences = false,
-  colorScheme = 'primary',
+  colorPalette = 'primary',
 }) => {
   const {
     removePost,
@@ -57,7 +57,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
       {!onlySentences && (
         <EditableLine
           isDescription={true}
-          isDisabled={archiveId < 0}
+          disabled={archiveId < 0}
           defaultValue={postObject?.description}
           onDelete={() => removePost(archiveId, postObject.id)}
           onUpdate={handleChangeDescription}
@@ -68,7 +68,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
           }}
           fontWeight={500}
           rounded={'md'}
-          colorScheme={colorScheme}
+          colorPalette={colorPalette}
         />
       )}
       {postObject?.sentences?.map((sentence, index) => {
@@ -76,7 +76,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
           <EditableLine
             imageParams={postObject?.postInput?.imageParams ?? {}}
             key={`${postObject.id}-sent-${sentence}-${index}`}
-            isDisabled={archiveId < 0}
+            disabled={archiveId < 0}
             onDelete={() => {
               removeSentences(archiveId, postObject, sentence)
             }}
@@ -87,7 +87,7 @@ export const EditablePost: React.FC<EditablePostProps> = ({
             thresholdStyles={{
               color: 'red.400',
             }}
-            colorScheme={colorScheme}
+            colorPalette={colorPalette}
           />
         )
       })}

@@ -1,20 +1,19 @@
 import { FC } from 'react'
 import React from 'react'
 
-import {
-  AlertDialog,
-  AlertDialogBody,
-  Text,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-  Stack,
-  useToast,
-} from '@chakra-ui/react'
+import { Text, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  Button,
+  toaster,
+} from '@fc/chakra'
 import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import { ApprovalStatus } from '@fc/types'
 
@@ -30,7 +29,6 @@ export const CoursePaymentExplainDetails: FC<
   const [action, setAction] = React.useState('')
   const { t } = useTranslation()
   const updateModelMutation = useUpdateModelMutation('course-applications')
-  const toast = useToast()
   const cancelRef = React.useRef(null)
   const application = courseLogic.myApplication!
 
@@ -59,12 +57,10 @@ export const CoursePaymentExplainDetails: FC<
           onSave()
         },
         onError: () => {
-          toast({
+          toaster.create({
             title: t('update-failed'),
             description: t('course.applicant.details.explain.action.reject'),
-            status: 'error',
-            duration: 5000,
-            isClosable: true,
+            type: 'error',
           })
         },
       },
@@ -83,12 +79,10 @@ export const CoursePaymentExplainDetails: FC<
           onSave()
         },
         onError: () => {
-          toast({
+          toaster.create({
             title: t('update-failed'),
             description: t('course.applicant.details.explain.action.delete'),
-            status: 'error',
-            duration: 5000,
-            isClosable: true,
+            type: 'error',
           })
         },
       },
@@ -97,7 +91,7 @@ export const CoursePaymentExplainDetails: FC<
   }
 
   return (
-    <Stack spacing={2} borderWidth={1} borderRadius={'lg'} p={4}>
+    <Stack gap={2} borderWidth={1} borderRadius={'lg'} p={4}>
       <KeyValue tKey="course.applicant.details.explain.kv.explain">
         <Text fontSize={'lg'}>{application.paymentExplanation}</Text>
       </KeyValue>
@@ -112,22 +106,18 @@ export const CoursePaymentExplainDetails: FC<
         </Button>
       </KeyValue>
 
-      <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={cancelRef}
-        onClose={() => setIsOpen(false)}
-      >
-        <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+      <Dialog open={isOpen} onOpenChange={o => !o.open && setIsOpen(false)}>
+        <DialogOverlay>
+          <DialogContent>
+            <DialogHeader fontSize="lg" fontWeight="bold">
               {dialogTitle}
-            </AlertDialogHeader>
+            </DialogHeader>
 
-            <AlertDialogBody>
+            <DialogBody>
               {t('course.applicant.details.explain.warn')}
-            </AlertDialogBody>
+            </DialogBody>
 
-            <AlertDialogFooter>
+            <DialogFooter>
               <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
                 {t('cancel')}
               </Button>
@@ -140,10 +130,10 @@ export const CoursePaymentExplainDetails: FC<
               >
                 {actionText}
               </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      </AlertDialog>
+            </DialogFooter>
+          </DialogContent>
+        </DialogOverlay>
+      </Dialog>
     </Stack>
   )
 }

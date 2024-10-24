@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import {
   Center,
   Heading,
@@ -8,8 +7,9 @@ import {
   LinkOverlay,
   Stack,
   Text,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 
 import type { UploadFile } from '@fc/types'
 
@@ -68,24 +68,24 @@ export const Card: FC<CardProps> = ({
         </Center>
 
         <Stack flex={1} p={{ base: 4, lg: 6 }}>
-          <Wrap color="gray.500">
+          <Group wrap={'wrap'} color="gray.500">
             {place && <Text>{place}</Text>}
             {date && place && <Text>•</Text>}
             {date && <Text>{date}</Text>}
-          </Wrap>
+          </Group>
           <LinkOverlay as={Link} href={href}>
             <Heading
               as="h3"
               textTransform="uppercase"
               fontSize="lg"
               letterSpacing="wide"
-              noOfLines={3}
+              lineClamp={3}
             >
               {title}
             </Heading>
           </LinkOverlay>
 
-          <Text fontSize="md" lineHeight="base" noOfLines={3}>
+          <Text fontSize="md" lineHeight="base" lineClamp={3}>
             {description}
           </Text>
         </Stack>

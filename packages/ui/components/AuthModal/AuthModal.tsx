@@ -1,6 +1,13 @@
 import { useState } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import { Link as ChakraLink, Stack, Text, VStack } from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useMutation } from '@tanstack/react-query'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { Trans, useTranslation } from 'next-i18next'
+import { SubmitHandler, useForm } from 'react-hook-form'
+
 import {
   Button,
   Modal,
@@ -8,16 +15,7 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useMutation } from '@tanstack/react-query'
-import { useRouter } from 'next/router'
-import { Trans, useTranslation } from 'next-i18next'
-import { SubmitHandler, useForm } from 'react-hook-form'
-
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 
 import { adminLoginSchema } from '../AdminLoginForm/schema'
@@ -41,9 +39,10 @@ export const AuthModal = () => {
   const [isRedirecting, setIsRedirecting] = useState(false)
 
   const {
-    isLoading: isAuthLoading,
+    loading: isAuthLoading,
     login,
     closeAuthModal,
+    openAuthModal,
     isAuthModalOpen,
     checkAuth,
   } = useAuthContext()
@@ -71,17 +70,17 @@ export const AuthModal = () => {
 
   return (
     <Modal
-      isCentered
-      isOpen={isAuthModalOpen}
-      onClose={closeAuthModal}
-      closeOnOverlayClick={false}
-      closeOnEsc={false}
+      placement={'center'}
+      open={isAuthModalOpen}
+      onOpenChange={e => (e.open ? openAuthModal() : closeAuthModal())}
+      closeOnInteractOutside={false}
+      closeOnEscape={false}
     >
       <ModalOverlay />
       <ModalContent p={4}>
         <ModalCloseButton />
         <ModalBody>
-          <Stack textAlign="center" spacing={4} py={4} justify="center">
+          <Stack textAlign="center" gap={4} py={4} justify="center">
             <Link href="/">
               <VStack textAlign="center" w={'full'}>
                 <WAvatar boxSize={100} src={`/images/foundation-logo.svg`} />
@@ -90,9 +89,9 @@ export const AuthModal = () => {
                 </Text>
               </VStack>
             </Link>
-            <Stack spacing={4} flex={1}>
+            <Stack gap={4} flex={1}>
               <Stack
-                spacing={4}
+                gap={4}
                 as="form"
                 onSubmit={handleSubmit(handleSubmitSign)}
               >
@@ -113,7 +112,7 @@ export const AuthModal = () => {
                 />
                 <Button
                   data-testid="button-submit-login"
-                  isLoading={isAuthLoading || isRedirecting}
+                  loading={isAuthLoading || isRedirecting}
                   w="full"
                   type="submit"
                 >
@@ -127,11 +126,15 @@ export const AuthModal = () => {
                         i18nKey="login.error.unauthorized"
                         components={{
                           a: (
-                            <Link
-                              isExternal
-                              href={'https://freedomcombination.com/tr/contact'}
-                              color="blue.500"
-                            />
+                            <ChakraLink asChild color="blue.500">
+                              <Link
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                href={
+                                  'https://freedomcombination.com/tr/contact'
+                                }
+                              />
+                            </ChakraLink>
                           ),
                         }}
                       />
@@ -143,7 +146,7 @@ export const AuthModal = () => {
                   ))}
               </Stack>
               {/* TODO Set session exp time */}
-              <ButtonLink href="/forgot-password" variant="link" size="sm">
+              <ButtonLink href="/forgot-password" variant="plain" size="sm">
                 {t('forgot-pass.link')}
               </ButtonLink>
             </Stack>

@@ -18,7 +18,7 @@ const Timelines = () => {
   })
 
   return (
-    <AdminLayout seo={{ title: t('timelines') }} isLoading={isLoading}>
+    <AdminLayout seo={{ title: t('timelines') }} loading={isLoading}>
       {timelines?.data && <TimelineBoard timelines={timelines?.data} />}
     </AdminLayout>
   )

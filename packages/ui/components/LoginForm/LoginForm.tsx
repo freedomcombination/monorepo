@@ -1,13 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
-  Checkbox,
   Container,
-  Divider,
+  Separator,
   Heading,
   HStack,
   Stack,
@@ -19,6 +14,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { Alert, Button, Checkbox } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 
 import { loginSchema } from './schema'
@@ -52,7 +48,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   })
 
   const router = useRouter()
-  const { login, isLoading, error } = useAuthContext()
+  const { login, loading, error } = useAuthContext()
   const { returnUrl } = router.query
 
   useEffect(() => {
@@ -82,36 +78,33 @@ export const LoginForm: FC<LoginFormProps> = ({
       px={{ base: '0', sm: '8' }}
     >
       <Stack
-        spacing="8"
+        gap={8}
         shadow="base"
         bg="white"
         p={{ base: 8, lg: 12 }}
         rounded="lg"
       >
-        <Stack spacing="6">
-          <Stack spacing={{ base: '2', md: '3' }} textAlign="center">
+        <Stack gap={6}>
+          <Stack gap={{ base: '2', md: '3' }} textAlign="center">
             <Heading>{t('login.title')}</Heading>
             {!isLoginOnly && (
-              <HStack spacing="1" justify="center">
+              <HStack gap={1} justify="center">
                 <Text color="muted">{t('login.no-account')}</Text>
 
-                <ButtonLink href="/auth/register" variant="link">
+                <ButtonLink href="/auth/register" variant="plain">
                   {t('login.signup')}
                 </ButtonLink>
               </HStack>
             )}
           </Stack>
         </Stack>
-        <Stack spacing="6" as="form" onSubmit={handleSubmit(handleSubmitSign)}>
+        <Stack gap={6} as="form" onSubmit={handleSubmit(handleSubmitSign)}>
           {errorMessage && (
-            <Alert status="error">
-              <AlertIcon />
-              <AlertDescription data-testid="error-auth">
-                {errorMessage}
-              </AlertDescription>
+            <Alert status="error" data-testid="error-auth">
+              {errorMessage}
             </Alert>
           )}
-          <Stack spacing="5">
+          <Stack gap={5}>
             <FormItem
               name="identifier"
               autoComplete="email"
@@ -133,27 +126,27 @@ export const LoginForm: FC<LoginFormProps> = ({
             <ButtonLink
               data-testid="button-forgot-password"
               href="/auth/forgot-password"
-              variant="link"
+              variant="plain"
               size="sm"
             >
               {t('forgot-pass.title')}
             </ButtonLink>
           </HStack>
-          <Stack spacing="6">
+          <Stack gap={6}>
             <Button
               type="submit"
               data-testid="button-submit-login"
-              isLoading={isLoading}
+              loading={loading}
             >
               {t('login.signin')}
             </Button>
             {providersToBeShown.length > 0 && (
               <HStack>
-                <Divider />
+                <Separator />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
                   {t('login.with')}
                 </Text>
-                <Divider />
+                <Separator />
               </HStack>
             )}
             <SocialLoginButtons providersToBeShown={providersToBeShown} />

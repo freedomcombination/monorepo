@@ -1,21 +1,16 @@
 import { FC } from 'react'
 
+import { Box, Group, HStack, Separator, Text, VStack } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+import { FaPlus, FaTimes } from 'react-icons/fa'
+
 import {
-  Box,
-  ButtonGroup,
-  Divider,
-  HStack,
   IconButton,
   Popover,
   PopoverContent,
   PopoverTrigger,
-  Text,
   Tooltip,
-  VStack,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { FaPlus, FaTimes } from 'react-icons/fa'
-
+} from '@fc/chakra'
 import type { MentionUserData } from '@fc/types'
 import { formatNumber } from '@fc/utils/formatNumber'
 
@@ -43,7 +38,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
   if (!data) return null
 
   return (
-    <Popover trigger="hover" placement="right">
+    <Popover positioning={{ placement: 'right' }}>
       <PopoverTrigger>
         <HStack
           px={4}
@@ -64,21 +59,21 @@ const MentionListItem: FC<MentionListItemProps> = ({
               pos="static"
             />
             <Box>
-              <Text noOfLines={1} maxW="120px">
+              <Text lineClamp={1} maxW="120px">
                 {data.name}
               </Text>
               <Text>@{data.screen_name}</Text>
             </Box>
           </HStack>
-          <ButtonGroup>
+          <Group>
             {onRemoveItem && (
-              <Tooltip label={t('post.remove')}>
+              <Tooltip content={t('post.remove')}>
                 <IconButton
                   pos="static"
                   aria-label={t('post.remove') + ' mention'}
                   variant="ghost"
                   onClick={() => onRemoveItem(data)}
-                  colorScheme="blackAlpha"
+                  colorPalette="blackAlpha"
                   _hover={{ color: 'red.400' }}
                   rounded="full"
                   size="sm"
@@ -86,22 +81,21 @@ const MentionListItem: FC<MentionListItemProps> = ({
                 />
               </Tooltip>
             )}
-            <Tooltip label={t('post.add')}>
+            <Tooltip content={t('post.add')}>
               <IconButton
                 pos="static"
                 aria-label={t('post.add') + ' mention'}
                 variant="ghost"
                 onClick={() => onAddItem(data)}
-                colorScheme="blackAlpha"
+                colorPalette="blackAlpha"
                 _hover={{ color: 'green.400' }}
                 rounded="full"
                 size="sm"
                 icon={<FaPlus />}
-                isDisabled={isAdded}
                 disabled={isAdded}
               />
             </Tooltip>
-          </ButtonGroup>
+          </Group>
         </HStack>
       </PopoverTrigger>
       <PopoverContent
@@ -127,7 +121,7 @@ const MentionListItem: FC<MentionListItemProps> = ({
 
           <Text px={4}>{data.description}</Text>
 
-          <Divider />
+          <Separator />
 
           <HStack w="full" justify="space-evenly">
             <Box>

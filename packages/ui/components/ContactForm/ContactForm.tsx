@@ -1,9 +1,5 @@
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
-  Divider,
+  Separator,
   Heading,
   Stack,
   Text,
@@ -16,6 +12,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { BsPerson } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
 
+import { Button, Alert } from '@fc/chakra'
 import { EMAIL } from '@fc/config/constants'
 import { useSendEmail } from '@fc/services/email'
 
@@ -55,13 +52,13 @@ export const ContactForm = () => {
   }
 
   return (
-    <Stack rounded="lg" p={{ base: 8, lg: 16 }} shadow="base" spacing={4}>
+    <Stack rounded="lg" p={{ base: 8, lg: 16 }} shadow="base" gap={4}>
       <Stack>
         <Heading size="lg">{t('contact.title')}</Heading>
         <Text fontSize="sm">{t('contact.form.fill')}</Text>
       </Stack>
-      <Divider />
-      <VStack spacing={5} as="form" onSubmit={handleSubmit(onSubmit)}>
+      <Separator />
+      <VStack gap={5} as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormItem
           name="fullname"
           autoComplete="name"
@@ -90,8 +87,8 @@ export const ContactForm = () => {
           data-testid="submit-send-message"
           variant="solid"
           type="submit"
-          isDisabled={!isValid}
-          isLoading={isPending}
+          disabled={!isValid}
+          loading={isPending}
           size={'lg'}
           w="full"
         >
@@ -100,16 +97,12 @@ export const ContactForm = () => {
 
         {isSuccess && (
           <Alert data-testid="success-contact-form" status="success">
-            <AlertIcon />
-            <AlertDescription>{t('contact.form.success')}</AlertDescription>
+            {t('contact.form.success')}
           </Alert>
         )}
         {isError && (
-          <Alert data-tesid="error-contact-form" status="error">
-            <AlertIcon />
-            <AlertDescription>
-              <>{t('contact.form.failed')} </>
-            </AlertDescription>
+          <Alert status="error">
+            <>{t('contact.form.failed')} </>
           </Alert>
         )}
       </VStack>

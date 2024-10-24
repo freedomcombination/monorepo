@@ -84,7 +84,7 @@ export const useChangeParams = () => {
   )
 
   const changePage = useCallback(
-    (page: number) => {
+    ({ page }: { page: number }) => {
       changeParams({ page: page === 1 ? undefined : `${page}` })
     },
     [changeParams],

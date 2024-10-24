@@ -12,16 +12,11 @@ import { useScroll } from '@fc/ui/hooks/useScroll'
 
 interface LayoutProps extends PropsWithChildren {
   isDark?: boolean
-  isLoading?: boolean
+  loading?: boolean
   seo: NextSeoProps
 }
 
-export const Layout: FC<LayoutProps> = ({
-  children,
-  isDark,
-  isLoading,
-  seo,
-}) => {
+export const Layout: FC<LayoutProps> = ({ children, isDark, loading, seo }) => {
   const { checkAuth, token: isLoggedIn } = useAuthContext()
   const isScrolled = useScroll()
 
@@ -52,7 +47,7 @@ export const Layout: FC<LayoutProps> = ({
           logo: '/images/trend-rights-logo-light.svg',
         }}
         isDark={isDark}
-        isLoading={isLoading}
+        loading={loading}
         hasProfile
       >
         {children}

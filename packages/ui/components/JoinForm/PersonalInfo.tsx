@@ -20,14 +20,14 @@ export const PersonalInfo = () => {
 
   return (
     <>
-      <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
         <FormItem
           register={register}
           id="name"
           name="name"
           autoComplete="name"
           errors={errors}
-          isRequired
+          required
         />
         <FormItem
           name="email"
@@ -35,10 +35,10 @@ export const PersonalInfo = () => {
           autoComplete="email"
           register={register}
           errors={errors}
-          isRequired
+          required
         />
       </Stack>
-      <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+      <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
         <PhoneForm />
         <FormItem
           type="number"
@@ -47,7 +47,7 @@ export const PersonalInfo = () => {
           name="availableHours"
           tooltip={avaibleHourExplanation[locale]}
           errors={errors}
-          isRequired
+          required
         />
         <FormItem
           type="date"
@@ -55,7 +55,7 @@ export const PersonalInfo = () => {
           id="birthDate"
           name="birthDate"
           errors={errors}
-          isRequired
+          required
         />
       </Stack>
 

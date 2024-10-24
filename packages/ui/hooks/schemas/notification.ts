@@ -15,13 +15,13 @@ export const notificationFields: FormFields<
     profiles: number[]
   }
 > = [
-  { name: 'title', isRequired: true },
-  { name: 'message', isRequired: true },
+  { name: 'title', required: true },
+  { name: 'message', required: true },
   {
     name: 'roles',
     type: 'select',
     endpoint: 'users-permissions/roles',
-    isMulti: true,
+    multiple: true,
   },
-  { name: 'profiles', type: 'select', endpoint: 'profiles', isMulti: true },
+  { name: 'profiles', type: 'select', endpoint: 'profiles', multiple: true },
 ]

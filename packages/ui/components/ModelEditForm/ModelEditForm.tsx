@@ -3,22 +3,15 @@ import { useState } from 'react'
 import {
   AspectRatio,
   Box,
-  Divider,
   Flex,
-  FormControl,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
+  Group,
   Heading,
+  Separator,
   Stack,
-  Switch,
   Textarea,
-  useBoolean,
   useDisclosure,
-  Wrap,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { upperFirst } from 'lodash'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -33,8 +26,10 @@ import {
   MdOutlinePublishedWithChanges,
   MdOutlineUnpublished,
 } from 'react-icons/md'
+import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
+import { Field, Switch } from '@fc/chakra'
 import { useApproveModelMutation } from '@fc/services/common/approveModel'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
@@ -178,7 +173,7 @@ export const ModelEditForm = <T extends StrapiModel>({
 
   const handleSuccess = () => {
     onSuccess?.()
-    setIsEditing.off()
+    setIsEditing(false)
     setIsChangingImage({
       image: false,
       caps: false,
@@ -233,7 +228,7 @@ export const ModelEditForm = <T extends StrapiModel>({
   const onCancel = () => {
     onCancelProp?.()
     resetForm()
-    setIsEditing.off()
+    setIsEditing(false)
     setIsChangingImage({
       image: false,
       caps: false,
@@ -359,24 +354,17 @@ export const ModelEditForm = <T extends StrapiModel>({
           >
             {Object.values(fields || {})?.map((field, index) => {
               const label = t(field.name as keyof I18nNamespaces['common'])
-              const errorMessage =
-                errors[field.name]?.message &&
-                upperFirst(errors[field.name]?.message as string)
+              const errorMessage = errors[field.name]?.message as string
 
               if (field.type === 'file') {
                 return (
-                  <FormControl
+                  <Field
                     key={index}
-                    isRequired={field.isRequired}
+                    required={field.required}
                     maxW={400}
+                    label={label}
+                    errorText={errorMessage}
                   >
-                    <FormLabel
-                      fontWeight={600}
-                      fontSize={'sm'}
-                      textTransform={'capitalize'}
-                    >
-                      {label}
-                    </FormLabel>
                     <ModelMedia
                       endpoint={endpoint}
                       isEditing={isEditing}
@@ -386,38 +374,32 @@ export const ModelEditForm = <T extends StrapiModel>({
                       isChangingMedia={isChangingImage[field.name as string]}
                       toggleChangingMedia={() => toggleChangingMedia(field)}
                     />
-                    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-                  </FormControl>
+                  </Field>
                 )
               }
 
               if (field.type === 'boolean') {
                 return (
-                  <FormControl
+                  <Field
                     key={index}
-                    isRequired={field.isRequired}
-                    isDisabled={field.blockEdit}
+                    required={field.required}
+                    disabled={field.blockEdit}
+                    label={label}
+                    helperText={
+                      isEditing && field.blockEdit && 'Blocked from editing'
+                    }
+                    errorText={errors[field.name as string]?.message as string}
                   >
-                    <FormLabel fontWeight={600} fontSize={'sm'}>
-                      {label}
-                    </FormLabel>
                     <Switch
                       disabled={field.blockEdit}
-                      colorScheme={'primary'}
+                      colorPalette={'primary'}
                       size={'lg'}
-                      isDisabled={!isEditing}
-                      isChecked={!!watch(field.name as string)}
-                      onChange={e => {
-                        setValue(field.name as string, e.target.checked)
+                      checked={!!watch(field.name as string)}
+                      onCheckedChange={e => {
+                        setValue(field.name as string, e.checked)
                       }}
                     />
-
-                    <FormHelperText color={'orange.400'}>
-                      {isEditing && field.blockEdit && 'Blocked from editing'}
-                    </FormHelperText>
-
-                    <FormErrorMessage>{errorMessage}</FormErrorMessage>
-                  </FormControl>
+                  </Field>
                 )
               }
 
@@ -428,10 +410,10 @@ export const ModelEditForm = <T extends StrapiModel>({
                     endpoint={field.endpoint as StrapiCollectionEndpoint}
                     populate={field.populate}
                     options={field.options}
-                    isMulti={field.isMulti}
-                    isRequired={field.isRequired}
+                    multiple={field.multiple}
+                    required={field.required}
                     name={field.name as string}
-                    isDisabled={field.blockEdit || !isEditing}
+                    disabled={field.blockEdit || !isEditing}
                     errors={errors}
                     control={control}
                     _disabled={disabledStyle}
@@ -472,8 +454,8 @@ export const ModelEditForm = <T extends StrapiModel>({
                   <Box key={index} maxH={550} overflowY={'auto'}>
                     <MdFormItem
                       name={field.name as string}
-                      isDisabled={field.blockEdit || !isEditing}
-                      isRequired={field.isRequired}
+                      disabled={field.blockEdit || !isEditing}
+                      required={field.required}
                       errors={errors}
                       control={control}
                       _disabled={disabledStyle}
@@ -501,10 +483,10 @@ export const ModelEditForm = <T extends StrapiModel>({
                     {...(field.type === 'textarea' && { as: Textarea })}
                     name={field.name as string}
                     type={inputType}
-                    isRequired={field.isRequired}
+                    required={field.required}
                     errors={errors}
                     register={register}
-                    isDisabled={field.blockEdit || !isEditing}
+                    disabled={field.blockEdit || !isEditing}
                     _disabled={disabledStyle}
                     helperText={
                       (isEditing &&
@@ -515,7 +497,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                   />
                   {field.type === 'media-url' && videoUrl && (
                     <AspectRatio ratio={16 / 9}>
-                      <Box as="iframe" src={videoUrl} title={label} />
+                      <iframe src={videoUrl} title={label} />
                     </AspectRatio>
                   )}
                 </Stack>
@@ -531,7 +513,7 @@ export const ModelEditForm = <T extends StrapiModel>({
           bottom={0}
           bg={'white'}
         >
-          <Wrap>
+          <Group wrap={'wrap'}>
             <ActionButton
               data-testid="button-posts"
               isVisible={
@@ -541,8 +523,8 @@ export const ModelEditForm = <T extends StrapiModel>({
               onClick={onPostClick}
               leftIcon={<FaXTwitter />}
               fontSize="sm"
-              colorScheme={'purple'}
-              isLoading={approveModelMutation.isPending}
+              colorPalette={'purple'}
+              loading={approveModelMutation.isPending}
             >
               {t('posts')}
             </ActionButton>
@@ -559,7 +541,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionStack isVisible={endpoint === 'collections'} gap={0}>
               <ArtAddToCollectionModal
                 collection={model as any}
-                isOpen={artModalDisclosure.isOpen}
+                isOpen={artModalDisclosure.open}
                 onClose={artModalDisclosure.onClose}
               />
               <ActionButton
@@ -567,8 +549,8 @@ export const ModelEditForm = <T extends StrapiModel>({
                 onClick={artModalDisclosure.onOpen}
                 leftIcon={<HiPlus />}
                 fontSize="sm"
-                colorScheme={'purple'}
-                isLoading={approveModelMutation.isPending}
+                colorPalette={'purple'}
+                loading={approveModelMutation.isPending}
               >
                 {t('collection.add-art')}
               </ActionButton>
@@ -581,7 +563,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               isVisible={!profile && endpoint === 'users'}
               onClick={onGenerateProfile}
               leftIcon={<BiUserPlus />}
-              colorScheme="primary"
+              colorPalette="primary"
             >
               {t('profile.create')}
             </ActionButton>
@@ -592,8 +574,8 @@ export const ModelEditForm = <T extends StrapiModel>({
               onClick={onApprove}
               leftIcon={<HiOutlineCheck />}
               fontSize="sm"
-              colorScheme={'purple'}
-              isLoading={approveModelMutation.isPending}
+              colorPalette={'purple'}
+              loading={approveModelMutation.isPending}
             >
               {t('approve')}
             </ActionButton>
@@ -601,7 +583,7 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionStack direction={'row'} canUpdate={endpoint}>
               <ActionButton
                 isVisible={!isEditing}
-                onClick={setIsEditing.on}
+                onClick={() => setIsEditing(true)}
                 leftIcon={<AiOutlineEdit />}
                 fontSize="sm"
               >
@@ -612,7 +594,7 @@ export const ModelEditForm = <T extends StrapiModel>({
                 isVisible={isEditing}
                 onClick={onCancel}
                 leftIcon={<MdClose />}
-                colorScheme={'gray'}
+                colorPalette={'gray'}
                 fontSize="sm"
               >
                 {t('cancel')}
@@ -632,7 +614,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               checkActions={{ endpoint, actions: ['update'] }}
               isVisible={endpointsWithPublicationState.includes(endpoint)}
               onClick={isPublished ? onUnPublish : onPublish}
-              colorScheme={isPublished ? 'yellow' : 'green'}
+              colorPalette={isPublished ? 'yellow' : 'green'}
               fontSize="sm"
               leftIcon={
                 isPublished ? (
@@ -649,7 +631,7 @@ export const ModelEditForm = <T extends StrapiModel>({
               canDelete={endpoint}
               onClick={onDelete}
               leftIcon={<BsTrash />}
-              colorScheme="red"
+              colorPalette="red"
             >
               {t('delete')}
             </ActionButton>
@@ -657,14 +639,14 @@ export const ModelEditForm = <T extends StrapiModel>({
             <ActionButton
               isVisible={!!onClose}
               onClick={onClose}
-              colorScheme="gray"
+              colorPalette="gray"
             >
               {t('dismiss')}
             </ActionButton>
-          </Wrap>
+          </Group>
         </Flex>
       </Stack>
-      <Divider />
+      <Separator />
 
       <ActionStack isVisible={!!profile}>
         <Heading p={{ base: 4, lg: 8 }}>{t('profile')}</Heading>

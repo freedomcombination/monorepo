@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Alert, Box, Heading, Stack } from '@chakra-ui/react'
+import { Box, Heading, Stack } from '@chakra-ui/react'
 import {
   FaFacebook,
   FaInstagram,
@@ -9,6 +9,7 @@ import {
   FaXTwitter,
 } from 'react-icons/fa6'
 
+import { Alert } from '@fc/chakra'
 import type { Profile } from '@fc/types'
 
 import { ProfileMailForm } from '../ProfileEmailForm'
@@ -93,7 +94,7 @@ export const ProfileContact: FC<ProfileContactProps> = ({
   ].filter(Boolean) as SocialItem[]
 
   return (
-    <Stack p={{ base: 4, lg: 8 }} spacing={4}>
+    <Stack p={{ base: 4, lg: 8 }} gap={4}>
       <Heading as="h2">User Contact</Heading>
       <SocialButtons
         items={socialItems}

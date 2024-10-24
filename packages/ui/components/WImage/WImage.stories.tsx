@@ -127,13 +127,13 @@ export const Float = () => (
 
 export const GridZoom = () => {
   return (
-    <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} spacing={4} h="full">
+    <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} gap={4} h="full">
       {getFiles()
         .filter(file => file.mime.includes('image'))
         .map(file => (
           <VStack key={file.id} shadow="base">
             <WImage src={file} hasZoom={true} alt={''} />
-            <Text p={2} noOfLines={1}>
+            <Text p={2} lineClamp={1}>
               {file.name}
             </Text>
           </VStack>

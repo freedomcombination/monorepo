@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Box, Stack, Text, Wrap } from '@chakra-ui/react'
+import { Box, Stack, Text, Group } from '@chakra-ui/react'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
@@ -21,14 +21,16 @@ export const Footer: FC<FooterProps> = ({
 
   return (
     <Box
-      bgGradient={'linear(to-b, primary.400, primary.600)'}
+      bgGradient={'to-b'}
+      gradientFrom={'primary.400'}
+      gradientTo={'primary.600'}
       color="white"
       pos="relative"
     >
       <Container as={Stack}>
         <Stack
           direction={{ base: 'column', lg: 'row' }}
-          spacing={8}
+          gap={8}
           py={10}
           justify="space-between"
           align={{ base: 'center', lg: 'start' }}
@@ -43,12 +45,13 @@ export const Footer: FC<FooterProps> = ({
           </Stack>
           <FooterNav menu={menu} />
         </Stack>
-        <Wrap
+        <Group
+          wrap={'wrap'}
           justify={{ base: 'center', sm: 'space-between' }}
           borderTopWidth="0.5px"
           borderTopColor="primary.200"
           py={6}
-          spacing={2}
+          gap={2}
         >
           <Text fontSize={'sm'} mr={1}>
             {/* TODO Fix hydration problem for translation field */}
@@ -56,7 +59,7 @@ export const Footer: FC<FooterProps> = ({
             <>{t('copyright', { name, year: new Date().getFullYear() })}</>
           </Text>
           <SocialButtons items={socialItems} />
-        </Wrap>
+        </Group>
       </Container>
     </Box>
   )

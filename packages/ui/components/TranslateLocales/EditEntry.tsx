@@ -1,13 +1,6 @@
 import { FC, useContext, useEffect, useState } from 'react'
 
-import {
-  ButtonGroup,
-  HStack,
-  IconButton,
-  SimpleGrid,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Group, HStack, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import { IconType } from 'react-icons'
 import { BiHide } from 'react-icons/bi'
@@ -15,6 +8,8 @@ import { FaExclamationTriangle } from 'react-icons/fa'
 import { FaCheck, FaCheckDouble, FaTrash } from 'react-icons/fa6'
 import { IoMdRemoveCircleOutline } from 'react-icons/io'
 import { MdOutlineTranslate } from 'react-icons/md'
+
+import { IconButton } from '@fc/chakra'
 
 import { DictContext } from './DictContext'
 import { dicts } from './dicts'
@@ -161,14 +156,11 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
             handleChange={setTextTR}
           />
         </SimpleGrid>
-        <ButtonGroup
-          size="sm"
-          isAttached
-          isDisabled={locked}
-          colorScheme={isSuppressed ? 'red' : 'gray'}
-        >
+        <Group attached colorPalette={isSuppressed ? 'red' : 'gray'}>
           <IconButton
             icon={<FaTrash />}
+            size="sm"
+            disabled={locked}
             aria-label="delete"
             variant={isPendingDeletion ? 'solid' : 'outline'}
             onClick={toggleDelete}
@@ -178,21 +170,22 @@ export const EditEntry: FC<EditEntryProps> = ({ name, value }) => {
             icon={<MdOutlineTranslate />}
             aria-label="translate"
             variant={canTranslate() ? 'outline' : 'solid'}
-            isDisabled={canTranslate() ? false : true}
+            disabled={canTranslate() ? false : true}
             onClick={translate}
           />
 
           <IconButton
             icon={<BiHide />}
+            size="sm"
             aria-label="hide"
             variant={isSuppressed ? 'solid' : 'outline'}
-            isDisabled={
+            disabled={
               !isSuppressed &&
               (isPendingDeletion || value !== PriorityFilter.IDENTICAL)
             }
             onClick={toggleSuppress}
           />
-        </ButtonGroup>
+        </Group>
       </HStack>
     </Stack>
   )

@@ -35,7 +35,7 @@ const useLikeBlogMutation = () => {
 }
 
 export const useLikeBlog = () => {
-  const [isDisabled, setIsDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false)
   const { data, refetch } = useGetBlogBySlug()
 
   const blog = data?.data
@@ -49,7 +49,7 @@ export const useLikeBlog = () => {
     [],
   )
 
-  if (!blog) return { toggleLike: () => null, isLiked: false, isLoading: false }
+  if (!blog) return { toggleLike: () => null, isLiked: false, loading: false }
 
   const isLikedByUser = profile && blog?.isLiked
 
@@ -58,7 +58,7 @@ export const useLikeBlog = () => {
   const handleError = (error: any) => {
     console.error('LIKE_BLOG_ERROR', error)
     if (error.response.status === 403) {
-      setIsDisabled(true)
+      setDisabled(true)
     }
   }
 
@@ -97,7 +97,7 @@ export const useLikeBlog = () => {
   return {
     toggleLike,
     isLiked,
-    isLoading: likeBlogMutation.isPending,
-    isDisabled,
+    loading: likeBlogMutation.isPending,
+    disabled,
   }
 }

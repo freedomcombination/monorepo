@@ -1,23 +1,19 @@
 import { FC, useRef, useState } from 'react'
 
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Badge,
-  Button,
-  HStack,
-  Stack,
-  Text,
-  useToast,
-  Wrap,
-} from '@chakra-ui/react'
+import { Badge, HStack, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  Button,
+  toaster,
+} from '@fc/chakra'
 import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import type { ApprovalStatus } from '@fc/types'
 import { formatDate, formatDateRelative } from '@fc/utils/formatDate'
@@ -36,7 +32,6 @@ export const CourseAssignmentDetails: FC<CourseApplicationComponentProps> = ({
   const [isActionReject, setIsActionReject] = useState<boolean>(false)
   const [isOpen, setIsOpen] = useState(false)
   const updateModelMutation = useUpdateModelMutation('course-applications')
-  const toast = useToast()
 
   if (!courseLogic.course.requireApproval) return null
   const application = courseLogic.myApplication!
@@ -55,12 +50,10 @@ export const CourseAssignmentDetails: FC<CourseApplicationComponentProps> = ({
           onSave()
         },
         onError: () => {
-          toast({
+          toaster.create({
             title: t('update-failed'),
             description: t('course.applicant.details.explain.action.reject'),
-            status: 'error',
-            duration: 5000,
-            isClosable: true,
+            type: 'error',
           })
         },
       },
@@ -69,14 +62,14 @@ export const CourseAssignmentDetails: FC<CourseApplicationComponentProps> = ({
   }
 
   return (
-    <Stack spacing={2} borderWidth={1} borderRadius={'lg'} p={4}>
+    <Stack columnGap={2} borderWidth={1} borderRadius={'lg'} p={4}>
       <KeyValue tKey="course.applicant.details.assignment-files">
         {filesSent ? (
-          <Wrap spacing={2}>
+          <Stack wrap={'wrap'} columnGap={2}>
             {application?.submittedAssignmentFiles?.map(file => (
               <CourseAssignmentFileButton key={file.name} file={file} />
             ))}
-          </Wrap>
+          </Stack>
         ) : (
           <Text>{t('course.applicant.details.assignment-files.not-yet')}</Text>
         )}
@@ -131,7 +124,7 @@ export const CourseAssignmentDetails: FC<CourseApplicationComponentProps> = ({
             when={filesSent}
             tKey="course.applicant.details.assignment-files.action"
           >
-            <HStack spacing={2}>
+            <HStack columnGap={2}>
               <Button
                 colorScheme="green"
                 onClick={() => {
@@ -161,32 +154,28 @@ export const CourseAssignmentDetails: FC<CourseApplicationComponentProps> = ({
         </KeyValue>
       )}
 
-      <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={cancelRef}
-        onClose={() => setIsOpen(false)}
-      >
-        <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+      <Dialog open={isOpen} onOpenChange={e => !e.open && setIsOpen(false)}>
+        <DialogOverlay>
+          <DialogContent>
+            <DialogHeader fontSize="lg" fontWeight="bold">
               {t(isActionReject ? 'reject' : 'approve')}
-            </AlertDialogHeader>
+            </DialogHeader>
 
-            <AlertDialogBody>
+            <DialogBody>
               {t('course.applicant.details.explain.warn')}
-            </AlertDialogBody>
+            </DialogBody>
 
-            <AlertDialogFooter>
+            <DialogFooter>
               <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
                 {t('cancel')}
               </Button>
               <Button colorScheme="red" onClick={onAction} ml={3}>
                 {t(isActionReject ? 'reject' : 'approve')}
               </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      </AlertDialog>
+            </DialogFooter>
+          </DialogContent>
+        </DialogOverlay>
+      </Dialog>
     </Stack>
   )
 }

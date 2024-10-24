@@ -1,17 +1,18 @@
 import { FC, useEffect, useRef } from 'react'
 
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-  useBoolean,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
+import { useBoolean } from 'react-use'
+
+import {
+  Button,
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogBackdrop,
+} from '@fc/chakra'
 
 import { WConfirmProps } from './types'
 
@@ -30,8 +31,8 @@ export const WConfirm: FC<WConfirmProps> = props => {
   }, [isOpen, disclosure])
 
   useEffect(() => {
-    if (props) setIsOpen.on()
-    if (!props) setIsOpen.off()
+    if (props) setIsOpen(true)
+    if (!props) setIsOpen(false)
   }, [props, setIsOpen])
 
   const handleConfirm = () => {
@@ -41,39 +42,39 @@ export const WConfirm: FC<WConfirmProps> = props => {
 
   const handleCancel = () => {
     onCancel?.()
-    setIsOpen.off()
+    setIsOpen(false)
   }
 
   return (
-    <AlertDialog leastDestructiveRef={cancelRef} {...disclosure}>
-      <AlertDialogOverlay>
-        <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight={700}>
+    <Dialog {...disclosure}>
+      <DialogBackdrop>
+        <DialogContent>
+          <DialogHeader fontSize="lg" fontWeight={700}>
             {title}
-          </AlertDialogHeader>
+          </DialogHeader>
 
-          <AlertDialogBody>{description}</AlertDialogBody>
+          <DialogBody>{description}</DialogBody>
 
-          <AlertDialogFooter>
+          <DialogFooter>
             <Button
               data-testid="button-cancel-confirm"
               ref={cancelRef}
               onClick={handleCancel}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
             >
               {t('cancel')}
             </Button>
             <Button
               data-testid="button-confirm"
-              colorScheme={isWarning ? 'red' : 'primary'}
+              colorPalette={isWarning ? 'red' : 'primary'}
               onClick={handleConfirm}
               ml={3}
             >
               {buttonText}
             </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialogOverlay>
-    </AlertDialog>
+          </DialogFooter>
+        </DialogContent>
+      </DialogBackdrop>
+    </Dialog>
   )
 }

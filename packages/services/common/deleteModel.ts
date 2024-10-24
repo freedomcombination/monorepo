@@ -1,6 +1,6 @@
-import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
+import { toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import type { StrapiEndpoint, StrapiModel } from '@fc/types'
 
@@ -17,7 +17,6 @@ export const deleteModel = <T extends StrapiModel>(
 export const useDeleteModelMutation = <T extends StrapiModel>(
   endpoint: StrapiEndpoint,
 ) => {
-  const toast = useToast()
   const { token } = useAuthContext()
 
   return useMutation({
@@ -26,20 +25,16 @@ export const useDeleteModelMutation = <T extends StrapiModel>(
       deleteModel<T>(id, endpoint, token as string),
     onSuccess: () => {
       // TODO Add translations
-      toast({
+      toaster.create({
         title: `Successfully Deleted`,
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+        type: 'success',
       })
     },
     onError: () => {
-      toast({
+      toaster.create({
         title: 'Error',
         description: 'Something went wrong',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     },
   })

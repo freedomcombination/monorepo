@@ -1,12 +1,15 @@
-import { Button, Center, Spinner, useDisclosure } from '@chakra-ui/react'
+import { Center, Spinner, useDisclosure } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaPencil } from 'react-icons/fa6'
 
-import { strapiRequest } from '@fc/services/common/strapiRequest'
-import { useStrapiRequest } from '@fc/services/common/strapiRequest'
+import { Button } from '@fc/chakra'
+import {
+  strapiRequest,
+  useStrapiRequest,
+} from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Hashtag, StrapiLocale } from '@fc/types'
 import { AdminLayout } from '@fc/ui/components/AdminLayout'
@@ -16,7 +19,7 @@ import { TabbedGenAIView } from '@fc/ui/components/TabbedGenAIView'
 const HashtagPage = () => {
   const { t } = useTranslation()
   const { query } = useRouter()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   const id = query.id ? +query.id : 0
 
@@ -43,7 +46,7 @@ const HashtagPage = () => {
   return (
     <AdminLayout seo={{ title: hashtag.title }}>
       <ModelEditModal
-        isOpen={isOpen}
+        isOpen={open}
         onClose={onClose}
         endpoint="hashtags"
         id={hashtag.id}
@@ -54,7 +57,7 @@ const HashtagPage = () => {
         hashtag={hashtag}
         alertContent={
           <Button
-            colorScheme={'orange'}
+            colorPalette={'orange'}
             variant={'outline'}
             onClick={onOpen}
             leftIcon={<FaPencil />}

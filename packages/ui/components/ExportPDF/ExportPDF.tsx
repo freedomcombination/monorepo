@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-import { Button } from '@chakra-ui/react'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaFilePdf } from 'react-icons/fa6'
 
+import { Button } from '@fc/chakra'
 import type { StrapiModel } from '@fc/types'
 
 import { ExportPDFProps } from './types'
@@ -88,9 +88,9 @@ const ExportPDF = <T extends StrapiModel>({
   return (
     <Button
       leftIcon={<FaFilePdf />}
-      colorScheme="primary"
+      colorPalette="primary"
       variant="outline"
-      isLoading={saving}
+      loading={saving}
       onClick={beginExport}
     >
       {t('export-pdf')}

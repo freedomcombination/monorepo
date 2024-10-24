@@ -1,16 +1,6 @@
 import { FC, useEffect } from 'react'
 
-import {
-  Box,
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
-  Stack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Box, Stack, useDisclosure } from '@chakra-ui/react'
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
@@ -18,6 +8,14 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serialize } from 'next-mdx-remote/serialize'
 
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+} from '@fc/chakra'
 import { SITE_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 import { strapiRequest } from '@fc/services/common/strapiRequest'
@@ -58,7 +56,7 @@ const HashtagPage: FC<HashtagProps> = ({
 }) => {
   const hashtag = useHashtagBySlug()
 
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
   const { query, push } = useRouter()
   const { roles } = useAuthContext()
 
@@ -90,7 +88,11 @@ const HashtagPage: FC<HashtagProps> = ({
         </Head>
       )}
       {post && (
-        <Modal isCentered isOpen={isOpen} onClose={handleClose}>
+        <Modal
+          placement={'center'}
+          open={open}
+          onOpenChange={e => (e.open ? onOpen() : handleClose())}
+        >
           <ModalOverlay />
           <ModalContent>
             <ModalBody p={0}>

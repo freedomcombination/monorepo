@@ -1,15 +1,13 @@
+import { Center, Heading, Spinner } from '@chakra-ui/react'
+
 import {
-  Center,
-  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Spinner,
-} from '@chakra-ui/react'
-
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { StrapiModel } from '@fc/types'
@@ -24,7 +22,7 @@ export const ModelEditModal = <T extends StrapiModel>({
   isFullHeight,
   isOpen,
   onClose,
-  size = '6xl',
+  size = 'xl',
   maxW,
   onSuccess,
   children = null,
@@ -48,13 +46,13 @@ export const ModelEditModal = <T extends StrapiModel>({
 
   return (
     <Modal
-      isCentered
-      isOpen={isOpen}
-      onClose={onClose}
+      placement={'center'}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
       size={size}
       scrollBehavior="inside"
-      closeOnOverlayClick={false}
-      closeOnEsc={false}
+      closeOnInteractOutside={false}
+      closeOnEscape={false}
       {...rest}
     >
       <ModalOverlay />

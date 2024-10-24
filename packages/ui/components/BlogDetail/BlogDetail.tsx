@@ -5,17 +5,17 @@ import {
   Heading,
   HStack,
   Icon,
-  IconButton,
   SimpleGrid,
   Stack,
   Text,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaCalendarDay, FaClock, FaEye } from 'react-icons/fa'
 
+import { IconButton } from '@fc/chakra'
 import { useGetBlogBySlug } from '@fc/services/blog/getBlogBySlug'
 import { useLikeBlog } from '@fc/services/blog/likeBlog'
 import { useViewBlog } from '@fc/services/blog/viewBlog'
@@ -38,23 +38,24 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
 
   const post = data?.data
 
-  const { isLiked, toggleLike, isLoading, isDisabled } = useLikeBlog()
+  const { isLiked, toggleLike, loading, disabled } = useLikeBlog()
 
   const readingTime = getReadingTime(post?.content || '', locale)
 
   return (
-    <Stack py={8} spacing={8}>
+    <Stack py={8} gap={8}>
       <WImage ratio="twitter" rounded="lg" src={post?.image as UploadFile} />
       <Heading as="h1" textAlign="center">
         {post?.title}
       </Heading>
-      <Wrap
+      <Group
+        wrap={'wrap'}
         fontSize="md"
         justify={{ base: 'center', md: 'space-between' }}
         color="gray.500"
-        spacing={4}
+        gap={4}
       >
-        <Wrap spacing={4} justify="center">
+        <Group wrap={'wrap'} gap={4} justify="center">
           <Box>
             <HStack>
               <Icon as={FaCalendarDay} />
@@ -75,7 +76,7 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
               <Text>{post?.likes || 0} likes</Text>
             </HStack>
           </Box>
-        </Wrap>
+        </Group>
 
         <ShareButtons
           title={post?.title}
@@ -88,11 +89,11 @@ const BlogDetail: FC<BlogDetailProps> = ({ link, source, authorBlogs }) => {
             color={isLiked ? 'red.500' : 'blue.600'}
             icon={<AiFillHeart />}
             onClick={toggleLike}
-            isLoading={isLoading}
-            isDisabled={isDisabled}
+            loading={loading}
+            disabled={disabled}
           />
         </ShareButtons>
-      </Wrap>
+      </Group>
       <Box textAlign={{ base: 'left', lg: 'justify' }}>
         <Markdown source={source} />
         <Text>

@@ -32,7 +32,7 @@ export const useArtColumns = (): WTableProps<Art>['columns'] => {
       accessorKey: 'approvalStatus',
       type: 'badge',
       componentProps: value => {
-        const colorScheme = {
+        const colorPalettes = {
           approved: 'green',
           pending: 'yellow',
           rejected: 'red',
@@ -40,7 +40,7 @@ export const useArtColumns = (): WTableProps<Art>['columns'] => {
 
         return {
           variant: 'outline',
-          colorScheme: colorScheme[value as ApprovalStatus],
+          colorPalette: colorPalettes[value as ApprovalStatus],
         }
       },
     },

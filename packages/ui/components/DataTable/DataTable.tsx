@@ -3,7 +3,6 @@ import {
   Box,
   HStack,
   Image,
-  Select,
   Spacer,
   Stack,
   Text,
@@ -11,11 +10,11 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
+import { Select, Pagination } from '@fc/chakra'
 import type { StrapiModel } from '@fc/types'
 
 import { DataTableProps } from './types'
 import { ExportPDF } from '../ExportPDF'
-import { Pagination } from '../Pagination'
 import { WTable } from '../WTable'
 
 export const DataTable = <T extends StrapiModel>({
@@ -33,12 +32,12 @@ export const DataTable = <T extends StrapiModel>({
   const { t } = useTranslation()
 
   return (
-    <Stack spacing={4} overflow={'hidden'}>
+    <Stack gap={4} overflow={'hidden'}>
       <Box bg="white" shadow="base" overflow={'auto'}>
         {tableProps.data?.length > 0 ? (
           <WTable {...tableProps} />
         ) : (
-          <VStack p={8} spacing={8}>
+          <VStack p={8} gap={8}>
             <Image w={'25vw'} src={'/images/no-blog.svg'} alt={t('no-data')} />
             <Text>{t('no-data')}</Text>
           </VStack>
@@ -76,7 +75,7 @@ export const DataTable = <T extends StrapiModel>({
               <option value={50}>50</option>
               <option value={100}>100</option>
             </Select>
-            <Text noOfLines={1}>{t('items.on-page')}</Text>
+            <Text lineClamp={1}>{t('items.on-page')}</Text>
             {badges &&
               badges.length > 0 &&
               Array.isArray(tableProps.data) &&
@@ -84,10 +83,10 @@ export const DataTable = <T extends StrapiModel>({
                 <Badge
                   key={index}
                   variant="outline"
-                  size={'2xl'}
+                  size={'lg'}
                   fontSize={'md'}
                   p={1}
-                  colorScheme={'primary'}
+                  colorPalette={'primary'}
                   {...badge.badgeProp}
                 >
                   {badge.badgeText(tableProps.data)}
@@ -95,14 +94,14 @@ export const DataTable = <T extends StrapiModel>({
               ))}
           </HStack>
           <Pagination
-            totalCount={pageCount}
-            currentPage={currentPage}
-            onPageChange={setCurrentPage}
+            count={pageCount}
+            page={currentPage}
+            onPageChange={e => setCurrentPage(e.page)}
           />
           <Text
             flex={1}
             textAlign={{ base: 'center', md: 'right' }}
-            noOfLines={1}
+            lineClamp={1}
           >
             {totalCount} {t('items.total')}
           </Text>

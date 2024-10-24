@@ -26,12 +26,12 @@ export const TweetContent = <T extends FieldValues>({
   const videoUrl = getMediaUrl(tweet.video)
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <SimpleGrid columns={{ base: 1, lg: horizontal ? 2 : 1 }} gap={2}>
         <Text
           wordBreak={'break-word'}
           whiteSpace={'pre-wrap'}
-          sx={{ '& a': { color: 'twitter.500' } }}
+          css={{ '& a': { color: 'twitter.500' } }}
           dangerouslySetInnerHTML={{
             __html: twitterText?.autoLink(tweet?.text || ''),
           }}

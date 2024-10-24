@@ -1,15 +1,12 @@
 import { useState } from 'react'
 
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  Input,
-} from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import PhoneInput from 'react-phone-number-input'
 
 import 'react-phone-number-input/style.css'
+import { Field } from '@fc/chakra'
+
 import { useJoinFormContext } from './useJoinFormContext'
 
 import 'yup-phone-lite'
@@ -43,10 +40,11 @@ export const PhoneForm = () => {
   }
 
   return (
-    <FormControl isInvalid={!!errors.phone}>
-      <FormLabel fontWeight={600} fontSize={'sm'} htmlFor="phone">
-        {t('phone')}
-      </FormLabel>
+    <Field
+      invalid={!!errors.phone}
+      errorText={errors.phone?.message as string}
+      label={t('phone')}
+    >
       <PhoneInput
         international
         defaultCountry={'NL'}
@@ -54,7 +52,6 @@ export const PhoneForm = () => {
         onChange={handlePhoneChange}
         inputComponent={Input}
       />
-      <FormErrorMessage>{errors.phone?.message}</FormErrorMessage>
-    </FormControl>
+    </Field>
   )
 }

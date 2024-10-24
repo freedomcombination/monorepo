@@ -26,8 +26,7 @@ const CollectionBook: FC<CollectionBookProps> = ({
   logo,
   flipboxProps,
 }) => {
-  const pageBgGdarient = `linear(to-r, gray.100 0%, gray.50 5%, gray.50 95%, gray.100 100%)`
-  const coverBgGdarient = `linear(to-r, gray.100 0%, gray.50 5%, gray.50 95%, gray.100 100%)`
+  const bg = `gray.50`
   const flipboxOverrideProps = {
     ...defaultFlipboxProps,
     ...flipboxProps,
@@ -36,14 +35,8 @@ const CollectionBook: FC<CollectionBookProps> = ({
   return (
     <HTMLFlipBook {...flipboxOverrideProps}>
       {/* Cover */}
-      <Page bgGradient={coverBgGdarient}>
-        <VStack
-          h="full"
-          justify={'center'}
-          p={8}
-          spacing={8}
-          textAlign="center"
-        >
+      <Page bg={bg}>
+        <VStack h="full" justify={'center'} p={8} gap={8} textAlign="center">
           <Heading size="3xl" color="primary.500">
             {collection.title}
           </Heading>
@@ -59,13 +52,10 @@ const CollectionBook: FC<CollectionBookProps> = ({
       </Page>
 
       {/* Pages */}
-      <CollectionPages
-        collection={collection}
-        pageBgGradient={pageBgGdarient}
-      />
+      <CollectionPages collection={collection} />
 
       {/* Back */}
-      <Page bgGradient={coverBgGdarient}>
+      <Page bg={bg}>
         {logo ? (
           <WImage ratio={1} maxH={300} mx="auto" src={logo} alt="logo" />
         ) : null}

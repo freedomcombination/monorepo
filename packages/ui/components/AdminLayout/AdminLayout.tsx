@@ -1,19 +1,11 @@
 import { FC, useEffect, useMemo } from 'react'
 
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  Box,
-  Center,
-  Flex,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Center, Flex, Spinner, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { NextSeo } from 'next-seo'
 
+import { Alert } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 
 import { AdminLayoutProps } from './types'
@@ -24,11 +16,11 @@ import { AuthModal } from '../AuthModal'
 
 export const AdminLayout: FC<AdminLayoutProps> = ({
   children,
-  isLoading,
+  loading,
   hasBackButton,
   seo,
 }) => {
-  const { checkAuth, isLoading: isAuthLoading, isAdmin } = useAuthContext()
+  const { checkAuth, loading: isAuthLoading, isAdmin } = useAuthContext()
 
   useEffect(() => {
     checkAuth()
@@ -54,7 +46,7 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
         </Box>
 
         <Stack
-          spacing={0}
+          gap={0}
           as="main"
           bg="gray.50"
           h="full"
@@ -62,13 +54,13 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
           flex={1}
           //    pb={{ base: 12, lg: 4 }}
         >
-          {isLoading ? (
+          {loading ? (
             <Center h="full">
               <Spinner size="xl" />
             </Center>
           ) : (
             <>
-              <AdminHeader
+              {/* <AdminHeader
                 hasBackButton={hasBackButton}
                 title={
                   !isPathAllowed
@@ -77,17 +69,11 @@ export const AdminLayout: FC<AdminLayoutProps> = ({
                       : '***'
                     : seo.title
                 }
-              />
+              /> */}
               {!isPathAllowed && !isAdmin ? (
                 <NotAllowedPage show={!isAuthLoading && navItems.length > 0} />
               ) : (
-                <Stack
-                  px={4}
-                  h={'full'}
-                  flex={1}
-                  spacing={4}
-                  overflowY={'auto'}
-                >
+                <Stack px={4} h={'full'} flex={1} gap={4} overflowY={'auto'}>
                   {/* Page Content */}
                   {children}
                 </Stack>
@@ -118,10 +104,7 @@ const NotAllowedPage: FC<{ show?: boolean }> = ({ show }) => {
         width="80%"
         borderRadius="lg"
       >
-        <AlertIcon boxSize="80px" mr={0} />
-        <AlertTitle mt={4} mb={1} fontSize="lg">
-          {t('not-allowed')}
-        </AlertTitle>
+        {t('not-allowed')}
       </Alert>
     </Center>
   )

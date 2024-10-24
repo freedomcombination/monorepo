@@ -69,13 +69,13 @@ export const ArtAddToCollectionGrid = ({
         {arts.map(art => {
           const isAdded = art.collection?.id === collection.id
 
-          const isLoading =
+          const loading =
             artToBeMutated?.id === art.id && updateArtMutation.isPending
 
           return (
             <ArtAddToCollectionCard
               isAdded={isAdded}
-              isLoading={isLoading}
+              loading={loading}
               key={art.id}
               art={art}
               onAdd={handleAdd}

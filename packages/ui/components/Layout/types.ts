@@ -11,6 +11,6 @@ export type LayoutProps = {
   hasProfile?: boolean
   headerProps: HeaderProps
   isDark?: boolean
-  isLoading?: boolean
+  loading?: boolean
   seo: NextSeoProps
 }

@@ -20,26 +20,26 @@ export const useFoundationsSchema = () => {
 }
 
 export const foundationFields: FormFields<Foundation> = [
-  { name: 'name', isRequired: true },
+  { name: 'name', required: true },
   { name: 'bank1' },
   { name: 'IBAN1' },
   { name: 'bank2' },
   { name: 'IBAN2' },
-  { name: 'email', isRequired: true },
+  { name: 'email', required: true },
   {
     name: 'about_tr',
-    isRequired: true,
+    required: true,
     type: 'block',
   },
   {
     name: 'about_en',
-    isRequired: true,
+    required: true,
     type: 'block',
   },
 
   {
     name: 'about_nl',
-    isRequired: true,
+    required: true,
     type: 'block',
   },
 ]

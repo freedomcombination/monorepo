@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react'
 
+import { useDisclosure } from '@chakra-ui/react'
+import { GetStaticPropsContext } from 'next'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { useUpdateEffect } from 'react-use'
+
 import {
   Button,
   Modal,
@@ -7,13 +13,7 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-  useDisclosure,
-  useUpdateEffect,
-} from '@chakra-ui/react'
-import { GetStaticPropsContext } from 'next'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-
+} from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type {
@@ -36,7 +36,7 @@ import { useSchema } from '@fc/ui/hooks/useSchema'
 const ActivitiesTranslatePage = () => {
   const [searchTerm, setSearchTerm] = useState<string>()
   const { t } = useTranslation()
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
 
   const { query, locale, push } = useRouter()
 
@@ -138,10 +138,10 @@ const ActivitiesTranslatePage = () => {
         />
       )}
       <Modal
-        isCentered
-        isOpen={isOpen}
-        onClose={handleClose}
-        size={'4xl'}
+        placement={'center'}
+        open={open}
+        onOpenChange={e => (e.open ? onOpen() : handleClose())}
+        size={'xl'}
         scrollBehavior={'inside'}
       >
         <ModalOverlay />
@@ -156,7 +156,7 @@ const ActivitiesTranslatePage = () => {
               fields={fields!}
               onSuccess={dataQuery.refetch}
             >
-              <Button onClick={handleClose} colorScheme={'gray'}>
+              <Button onClick={handleClose} colorPalette={'gray'}>
                 {t('dismiss')}
               </Button>
             </ModelEditTranslate>

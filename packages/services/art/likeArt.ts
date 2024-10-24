@@ -39,13 +39,13 @@ export const useLikeArt = ({
   const { profile } = useAuthContext()
 
   const likeArtMutation = useLikeArtMutation(recaptchaToken)
-  const [isDisabled, setIsDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false)
   const [likersStorage, setLikersStorage] = useLocalStorage<number[]>(
     'like-art',
     [],
   )
 
-  if (!art) return { toggleLike: () => null, isLiked: false, isLoading: false }
+  if (!art) return { toggleLike: () => null, isLiked: false, loading: false }
 
   const isLikedByUser = profile && (art.isLiked ?? false)
 
@@ -54,7 +54,7 @@ export const useLikeArt = ({
   const onError = (error: any) => {
     console.error('ART_BLOG_ERROR', error)
     if (error.response.status === 403) {
-      setIsDisabled(true)
+      setDisabled(true)
     }
   }
 
@@ -87,7 +87,7 @@ export const useLikeArt = ({
   return {
     toggleLike,
     isLiked: profile ? isLikedByUser : isLikedStorage,
-    isLoading: likeArtMutation.isPending,
-    isDisabled,
+    loading: likeArtMutation.isPending,
+    disabled,
   }
 }

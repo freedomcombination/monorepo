@@ -1,4 +1,11 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useState } from 'react'
+
+import { Stack, useDisclosure } from '@chakra-ui/react'
+import { saveAs } from 'file-saver'
+import JSZip from 'jszip'
+import { useRouter } from 'next/router'
+import { FaDownload } from 'react-icons/fa'
+import { useUpdateEffect } from 'react-use'
 
 import {
   Button,
@@ -9,15 +16,7 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  Stack,
-  useDisclosure,
-  useUpdateEffect,
-} from '@chakra-ui/react'
-import { saveAs } from 'file-saver'
-import JSZip from 'jszip'
-import { useRouter } from 'next/router'
-import { FaDownload } from 'react-icons/fa'
-
+} from '@fc/chakra'
 import { SITE_URL } from '@fc/config/constants'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { PlatformSlug, Post } from '@fc/types'
@@ -32,9 +31,8 @@ type DownloadCapsModalType = {
 }
 
 export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const [isLoading, setIsLoading] = useState(false)
-  const btnRef = useRef<HTMLButtonElement>(null)
+  const { open, onOpen, onClose, onToggle } = useDisclosure()
+  const [loading, setLoading] = useState(false)
 
   const { locale } = useRouter()
 
@@ -47,9 +45,6 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
     locale,
     includeDrafts: true,
   })
-  const handleClose = () => {
-    onClose()
-  }
 
   const postMedias =
     postsQuery?.data?.data
@@ -88,7 +83,7 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
   }, [id])
 
   const onDownload = async () => {
-    setIsLoading(true)
+    setLoading(true)
     const zip = new JSZip()
     const imgFolder = zip.folder('hashtag-images')
 
@@ -116,20 +111,13 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
     const allImages = await zip.generateAsync({ type: 'blob' })
 
     saveAs(allImages, `hashtag-images_${locale}.zip`)
-    setIsLoading(false)
+    setLoading(false)
   }
 
   return (
     <>
-      <Button ref={btnRef} onClick={onOpen}>
-        Download Caps
-      </Button>
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={handleClose}
-        finalFocusRef={btnRef}
-      >
+      <Button onClick={onOpen}>Download Caps</Button>
+      <Drawer open={open} placement="end" onOpenChange={onToggle}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
@@ -179,9 +167,9 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
           <DrawerFooter>
             <Button
               variant="outline"
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               mr={3}
-              onClick={handleClose}
+              onClick={onClose}
             >
               Cancel
             </Button>
@@ -189,8 +177,8 @@ export const DownloadCapsModal: FC<DownloadCapsModalType> = ({ id }) => {
               leftIcon={<FaDownload />}
               w={'full'}
               onClick={onDownload}
-              colorScheme={'primary'}
-              isLoading={isLoading}
+              colorPalette={'primary'}
+              loading={loading}
             >
               Download Caps
             </Button>

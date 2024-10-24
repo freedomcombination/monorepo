@@ -2,18 +2,17 @@ import { FC, ReactNode, useEffect } from 'react'
 
 import {
   Box,
-  Button,
   Center,
-  Divider,
-  IconButton,
+  Group,
+  Separator,
   Stack,
   Text,
-  VStack,
-  Wrap,
   useClipboard,
+  VStack,
 } from '@chakra-ui/react'
 import { FaCheck, FaFile, FaFilePdf, FaTrash } from 'react-icons/fa6'
 
+import { Button, IconButton } from '@fc/chakra'
 import { API_URL } from '@fc/config/constants'
 import type { UploadFile } from '@fc/types'
 
@@ -22,7 +21,7 @@ import { WImage } from '../WImage'
 type MenuFileItemProps = {
   file: UploadFile
   onDelete: (file: UploadFile) => void
-  renderDivider?: boolean
+  renderSeparator?: boolean
 }
 
 type MenuFileButtonProps = {
@@ -38,7 +37,7 @@ const MenuFileButton: FC<MenuFileButtonProps> = ({
   isImage,
   children,
 }) => {
-  const { onCopy, setValue, hasCopied } = useClipboard('')
+  const { copy, setValue, copied } = useClipboard({ value: '' })
 
   useEffect(() => {
     setValue(`${isImage ? '!' : ''}[${name}](${API_URL}${url})`)
@@ -49,11 +48,11 @@ const MenuFileButton: FC<MenuFileButtonProps> = ({
     <Button
       aria-label="Select Image Format"
       variant={'outline'}
-      onClick={onCopy}
+      onClick={copy}
       overflow={'hidden'}
     >
       {children}
-      {hasCopied && (
+      {copied && (
         <Center
           pos={'absolute'}
           left={0}
@@ -61,7 +60,7 @@ const MenuFileButton: FC<MenuFileButtonProps> = ({
           boxSize={'full'}
           bg={'white'}
         >
-          <VStack spacing={0} textAlign={'center'}>
+          <VStack gap={0} textAlign={'center'}>
             <FaCheck />
             <Text fontSize={'xs'}>Copied</Text>
           </VStack>
@@ -72,7 +71,7 @@ const MenuFileButton: FC<MenuFileButtonProps> = ({
 }
 
 export const MenuFileItem: FC<MenuFileItemProps> = ({
-  renderDivider = false,
+  renderSeparator: renderSeparator = false,
   file,
   onDelete,
 }) => {
@@ -81,7 +80,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
 
   return (
     <Box pos={'relative'}>
-      {renderDivider && <Divider my={2} />}
+      {renderSeparator && <Separator my={2} />}
       {isImage ? (
         <WImage src={file} w={'full'} h={100} objectFit="cover" />
       ) : (
@@ -94,14 +93,14 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
       )}
       <IconButton
         pos={'absolute'}
-        top={renderDivider ? 4 : 2}
+        top={renderSeparator ? 4 : 2}
         right={2}
         onClick={() => onDelete(file)}
         icon={<FaTrash />}
         isRound
         variant={'outline'}
         bg={'white'}
-        colorScheme={'red'}
+        colorPalette={'red'}
         aria-label={'Delete'}
       />
       <Stack p={2} textAlign={'center'} fontSize={'sm'}>
@@ -115,14 +114,14 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
             <Box>{(file.size / 1024).toFixed(2)} kb</Box>
           )}
         </Box>
-        <Wrap justify={'center'}>
+        <Group wrap={'wrap'} justify={'center'}>
           <MenuFileButton
             url={file.url}
             key={file.url}
             isImage={isImage}
             name={file.name}
           >
-            <VStack fontSize={'xs'} spacing={0}>
+            <VStack fontSize={'xs'} gap={0}>
               <Box>original</Box>
               {isImage ? (
                 <Box>
@@ -147,7 +146,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
                 isImage={isImage}
                 name={file.name}
               >
-                <VStack fontSize={'xs'} spacing={0}>
+                <VStack fontSize={'xs'} gap={0}>
                   <Box>{key}</Box>
                   <Box>
                     {value.width} x {value.height}
@@ -155,7 +154,7 @@ export const MenuFileItem: FC<MenuFileItemProps> = ({
                 </VStack>
               </MenuFileButton>
             ))}
-        </Wrap>
+        </Group>
       </Stack>
     </Box>
   )

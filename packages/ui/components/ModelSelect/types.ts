@@ -1,3 +1,4 @@
+import { SelectRootProps } from '@chakra-ui/react'
 import { Control, FieldErrorsImpl, FieldValues } from 'react-hook-form'
 
 import type { StrapiCollectionEndpoint } from '@fc/types'
@@ -17,12 +18,16 @@ type ModelSelectBaseProps = Omit<WSelectProps<FieldValues>, 'options'> & {
 export type ModelDynamicSelectProps = ModelSelectBaseProps & {
   endpoint: StrapiCollectionEndpoint
   populate?: string | string[]
+  collection: SelectRootProps['collection']
 }
 
 export type ModelStaticSelectProps = ModelSelectBaseProps & {
   options: string[]
+  collection: SelectRootProps['collection']
 }
 
-export type ModelSelectProps = ModelDynamicSelectProps | ModelStaticSelectProps
+export type ModelSelectProps =
+  | Omit<ModelDynamicSelectProps, 'collection'>
+  | Omit<ModelStaticSelectProps, 'collection'>
 
 export type Option = { value: string | number; label: string }

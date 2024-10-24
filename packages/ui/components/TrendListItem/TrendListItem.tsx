@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
-import { Box, HStack, Tag, TagLabel } from '@chakra-ui/react'
+import { Box, HStack } from '@chakra-ui/react'
 
+import { Tag } from '@fc/chakra'
 import { formatNumber } from '@fc/utils/formatNumber'
 
 import { useHashtagContext } from '../HashtagProvider'
@@ -35,7 +36,7 @@ export const TrendListItem: FC<TrendListItemProps> = ({
   const activeTrends = activePostId ? postTrends?.[activePostId] : []
   const isAdded = activeTrends?.includes(trendName)
 
-  const colorScheme = isCurrentHashtag
+  const colorPalette = isCurrentHashtag
     ? 'twitter'
     : isAdded
       ? 'blackAlpha'
@@ -55,12 +56,12 @@ export const TrendListItem: FC<TrendListItemProps> = ({
     <Tag
       rounded="full"
       variant="outline"
-      colorScheme={colorScheme}
+      colorPalette={colorPalette}
       onClick={() => onTrendClick(trendName)}
       cursor={isCurrentHashtag ? 'not-allowed' : 'pointer'}
       py={1}
     >
-      <HStack as={TagLabel}>
+      <HStack>
         <Box>{order}</Box>
         <Box>{trendName}</Box>
         {tweetsCount && <Box fontSize="xs">({formatNumber(tweetsCount)})</Box>}

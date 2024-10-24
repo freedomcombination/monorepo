@@ -1,20 +1,12 @@
 import { FC, useMemo, useState } from 'react'
 
-import {
-  Button,
-  HStack,
-  Radio,
-  RadioGroup,
-  Stack,
-  useToast,
-  chakra,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { HStack, Stack, chakra, useDisclosure } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
-import { FaPlusCircle, FaSave } from 'react-icons/fa'
+import { FaSave } from 'react-icons/fa'
 import { Virtuoso } from 'react-virtuoso'
 import { useLocalStorage } from 'usehooks-ts'
 
+import { Button, Radio, RadioGroup, toaster } from '@fc/chakra'
 import type { StrapiLocale } from '@fc/types'
 
 import { DictContext } from './DictContext'
@@ -43,8 +35,7 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
     'suppressWarning',
     [],
   )
-  const toast = useToast()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   const onAddNewEntry = (
     key: string,
@@ -148,19 +139,15 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
         throw new Error(response.statusText)
       }
 
-      toast({
-        title: t('translate.save.failed'),
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+      toaster.create({
+        title: t('translate.save.success'),
+        type: 'success',
       })
     } catch (error: any) {
-      toast({
-        title: t('translate.save.success'),
+      toaster.create({
+        title: t('translate.save.failed'),
         description: error.message,
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     } finally {
       setSaving(false)
@@ -195,61 +182,53 @@ const TranslateLocales: FC<TranslateLocalesProps> = ({ searchTerm }) => {
   return (
     <Stack gap={4} bg={'white'} p={6} flex={1}>
       <NewEntry
-        isOpen={isOpen}
+        open={open}
         onSave={data => onAddNewEntry(data.key, data.nl, data.tr, data.en)}
-        onClose={onClose}
+        onOpenChange={e => !e.open && onClose()}
       />
+      <HStack justifyContent={'flex-end'} alignItems={'center'} gap={6}>
+        <RadioGroup
+          onChange={value => setPriorityFilter(Number(value))}
+          value={`${priorityFilter}`}
+          colorPalette="primary"
+        >
+          <Stack direction="row" gap={4}>
+            <Radio value={`${PriorityFilter.ALL}`}>
+              All{' '}
+              <chakra.span color="gray.400" fontSize="sm">
+                ({priorityKeys.length})
+              </chakra.span>
+            </Radio>
+            <Radio value={`${PriorityFilter.TRANSLATED}`}>
+              Translated{' '}
+              <chakra.span color="gray.400" fontSize="sm">
+                ({translatedKeys.length})
+              </chakra.span>
+            </Radio>
+            <Radio value={`${PriorityFilter.IDENTICAL}`}>
+              Identical{' '}
+              <chakra.span color="gray.400" fontSize="sm">
+                ({identicalKeys.length})
+              </chakra.span>
+            </Radio>
+            <Radio value={`${PriorityFilter.MISSING}`}>
+              Missing{' '}
+              <chakra.span color="gray.400" fontSize="sm">
+                ({missingKeys.length})
+              </chakra.span>
+            </Radio>
+            <Radio value={`${PriorityFilter.IGNORED}`}>
+              Ignored{' '}
+              <chakra.span color="gray.400" fontSize="sm">
+                ({ignoredKeys.length})
+              </chakra.span>
+            </Radio>
+          </Stack>
+        </RadioGroup>
 
-      <HStack justify={'space-between'}>
-        <HStack>
-          <Button leftIcon={<FaPlusCircle />} onClick={onOpen}>
-            {t('translate.button.add')}
-          </Button>
-        </HStack>
-        <HStack justifyContent={'flex-end'} alignItems={'center'} spacing={6}>
-          <RadioGroup
-            onChange={value => setPriorityFilter(Number(value))}
-            value={`${priorityFilter}`}
-            colorScheme="primary"
-          >
-            <Stack direction="row" spacing={4}>
-              <Radio value={`${PriorityFilter.ALL}`}>
-                {t('translate.radio.all')}{' '}
-                <chakra.span color="gray.400" fontSize="sm">
-                  ({priorityKeys.length})
-                </chakra.span>
-              </Radio>
-              <Radio value={`${PriorityFilter.TRANSLATED}`}>
-                {t('translate.radio.translated')}{' '}
-                <chakra.span color="gray.400" fontSize="sm">
-                  ({translatedKeys.length})
-                </chakra.span>
-              </Radio>
-              <Radio value={`${PriorityFilter.IDENTICAL}`}>
-                {t('translate.radio.identical')}{' '}
-                <chakra.span color="gray.400" fontSize="sm">
-                  ({identicalKeys.length})
-                </chakra.span>
-              </Radio>
-              <Radio value={`${PriorityFilter.MISSING}`}>
-                {t('translate.radio.missing')}{' '}
-                <chakra.span color="gray.400" fontSize="sm">
-                  ({missingKeys.length})
-                </chakra.span>
-              </Radio>
-              <Radio value={`${PriorityFilter.IGNORED}`}>
-                {t('translate.radio.ignored')}{' '}
-                <chakra.span color="gray.400" fontSize="sm">
-                  ({ignoredKeys.length})
-                </chakra.span>
-              </Radio>
-            </Stack>
-          </RadioGroup>
-
-          <Button leftIcon={<FaSave />} isLoading={saving} onClick={onSave}>
-            {t('save')}
-          </Button>
-        </HStack>
+        <Button leftIcon={<FaSave />} loading={saving} onClick={onSave}>
+          {t('save')}
+        </Button>
       </HStack>
 
       <DictContext.Provider

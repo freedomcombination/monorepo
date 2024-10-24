@@ -2,8 +2,19 @@ import { useId, useState } from 'react'
 
 import {
   Box,
-  Button,
   Center,
+  Spinner,
+  Stack,
+  Text,
+  useDisclosure,
+  VStack,
+} from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+import { FaFileUpload, FaSave } from 'react-icons/fa'
+import { FaCity, FaPhone, FaTrash } from 'react-icons/fa6'
+
+import {
+  Button,
   IconButton,
   Modal,
   ModalBody,
@@ -12,17 +23,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Spinner,
-  Stack,
-  Text,
   Tooltip,
-  VStack,
-  useDisclosure,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { FaFileUpload, FaSave } from 'react-icons/fa'
-import { FaCity, FaPhone, FaTrash } from 'react-icons/fa6'
-
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import type { Profile } from '@fc/types'
@@ -34,7 +36,7 @@ import { WAvatar } from '../WAvatar'
 const AvatarForm = () => {
   const { user, profile, checkAuth } = useAuthContext()
   const { t } = useTranslation()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose, onToggle } = useDisclosure()
   const [file, setFile] = useState<File | Blob | null>(null)
 
   const onCancel = () => {
@@ -71,11 +73,11 @@ const AvatarForm = () => {
   return (
     <>
       <Modal
-        isOpen={isOpen}
-        onClose={onClose}
+        open={open}
+        onOpenChange={onToggle}
         size="lg"
-        closeOnOverlayClick={false}
-        closeOnEsc={false}
+        closeOnInteractOutside={false}
+        closeOnEscape={false}
       >
         <ModalOverlay />
         <ModalContent>
@@ -87,17 +89,17 @@ const AvatarForm = () => {
 
           <ModalFooter>
             <Button
-              colorScheme="blue"
+              colorPalette="blue"
               mr={3}
               onClick={onCancel}
-              isDisabled={isPending}
+              disabled={isPending}
             >
               {t('close')}
             </Button>
             <Button
-              colorScheme="primary"
-              isDisabled={!file}
-              isLoading={isPending}
+              colorPalette="primary"
+              disabled={!file}
+              loading={isPending}
               onClick={onUpload}
             >
               {t('save')}
@@ -123,14 +125,14 @@ const AvatarForm = () => {
               name={profile?.name || user?.username}
             />
           )}
-          <Tooltip label={label} placement="top">
+          <Tooltip content={label} positioning={{ placement: 'top' }}>
             <IconButton
               pos={'absolute'}
               right={0}
               top={0}
               borderWidth={4}
               borderColor={'white'}
-              colorScheme={hasAvatar ? 'red' : 'primary'}
+              colorPalette={hasAvatar ? 'red' : 'primary'}
               aria-label={label}
               rounded={'full'}
               onClick={() =>
@@ -172,7 +174,7 @@ export const DetailsTab = () => {
   }
 
   return (
-    <Stack spacing={8}>
+    <Stack gap={8}>
       <AvatarForm />
 
       <FormElement
@@ -200,24 +202,24 @@ export const DetailsTab = () => {
       <FormElement
         title={t('profile.phone')}
         placeholder={t('profile.phone.ph')}
-        left={<FaPhone />}
+        leftAddon={<FaPhone />}
         defaultValue={details.phone}
         onChange={value => setDetails({ ...details, phone: value })}
       />
 
       <FormElement
         title={t('profile.city')}
-        left={<FaCity />}
+        leftAddon={<FaCity />}
         placeholder={t('profile.city.ph')}
         defaultValue={details.city}
         onChange={value => setDetails({ ...details, city: value })}
       />
 
       <Button
-        isDisabled={!hasChanged}
+        disabled={!hasChanged}
         leftIcon={<FaSave />}
         size={'lg'}
-        isLoading={saving}
+        loading={saving}
         onClick={() => setSaving(true)}
         alignSelf={'start'}
       >

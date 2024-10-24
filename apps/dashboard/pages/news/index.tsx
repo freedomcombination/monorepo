@@ -1,17 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Center,
-  IconButton,
-  MenuItemOption,
-  MenuOptionGroup,
-  SimpleGrid,
-  Spinner,
-  Tooltip,
-} from '@chakra-ui/react'
+import { Box, Center, Group, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { addMinutes, formatDistanceToNow, isPast } from 'date-fns'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -19,6 +8,13 @@ import { useTranslation } from 'next-i18next'
 import { AiOutlineClear } from 'react-icons/ai'
 import { FaSyncAlt } from 'react-icons/fa'
 
+import {
+  Button,
+  IconButton,
+  MenuRadioItem,
+  MenuRadioItemGroup,
+  Tooltip,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import { useTopics } from '@fc/services/topics/getTopics'
@@ -71,17 +67,16 @@ const NewsPage = () => {
   }, [data, filter, locale, searchTerm])
 
   const filterMenu = (
-    <MenuOptionGroup
+    <MenuRadioItemGroup
       title="Publishers"
-      type="checkbox"
-      onChange={value => setFilter(value as string[])}
+      onValueChange={e => setFilter([e.value])}
     >
       {publishers?.map(publisher => (
-        <MenuItemOption key={publisher} value={publisher}>
+        <MenuRadioItem key={publisher} value={publisher}>
           {publisher}
-        </MenuItemOption>
+        </MenuRadioItem>
       ))}
-    </MenuOptionGroup>
+    </MenuRadioItemGroup>
   )
 
   const canSync =
@@ -142,36 +137,38 @@ const NewsPage = () => {
         filterMenu={filterMenu}
         filterMenuCloseOnSelect={false}
       >
-        <Tooltip label={syncedStr} hasArrow bg="primary.400">
+        <Tooltip content={syncedStr} showArrow>
           <IconButton
             aria-label="Sync news"
-            isLoading={syncTopic.isPending || isLoading}
+            loading={syncTopic.isPending || isLoading}
             onClick={() => syncTopic.mutate()}
-            isDisabled={!canSync || syncTopic.isPending || isLoading}
+            disabled={!canSync || syncTopic.isPending || isLoading}
             icon={<FaSyncAlt />}
           />
         </Tooltip>
       </PageHeader>
       <Box overflow={'hidden'} flexShrink={0}>
         <Box overflowX={'auto'}>
-          <ButtonGroup size={'sm'} overflowX={'auto'} colorScheme={'gray'}>
+          <Group overflowX={'auto'}>
             <IconButton
               aria-label="Clear filters"
               icon={<AiOutlineClear />}
               size={'sm'}
               variant={'outline'}
               onClick={() => setSearchTerm('')}
+              colorPalette={'gray'}
             />
             {keywords[locale].map(keyword => (
               <Button
                 key={keyword}
+                colorPalette={'gray'}
                 onClick={() => setSearchTerm(keyword)}
                 variant={searchTerm === keyword ? 'solid' : 'outline'}
               >
                 {keyword}
               </Button>
             ))}
-          </ButtonGroup>
+          </Group>
         </Box>
       </Box>
       <SimpleGrid columns={{ base: 1 }} gap={4}>

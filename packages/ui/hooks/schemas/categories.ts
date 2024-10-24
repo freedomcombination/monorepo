@@ -15,15 +15,15 @@ export const useCategoriesSchema = () => {
 }
 
 export const categoryFields: FormFields<Category> = [
-  { name: 'slug', isRequired: true },
-  { name: 'name_en', isRequired: true },
-  { name: 'name_nl', isRequired: true },
-  { name: 'name_tr', isRequired: true },
+  { name: 'slug', required: true },
+  { name: 'name_en', required: true },
+  { name: 'name_nl', required: true },
+  { name: 'name_tr', required: true },
   {
     name: 'platforms',
-    isRequired: false,
+    required: false,
     type: 'select',
-    isMulti: true,
+    multiple: true,
     endpoint: 'platforms',
   },
 ]

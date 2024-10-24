@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import {
   Box,
@@ -7,13 +7,14 @@ import {
   Stack,
   Text,
   Textarea,
-  useToast,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
-import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
+import { Trans, useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 
+import { Checkbox, toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/services/common/mutation'
 import type { CourseApplication, CourseApplicationCreateInput } from '@fc/types'
@@ -25,12 +26,15 @@ import { FormItem } from '../FormItem'
 
 export const CourseApplicationForm: FC = () => {
   const { t } = useTranslation()
-  // const [termsAccepted, setTermsAccepted] = useState(false)
-  // const [privacyAccepted, setPrivacyAccepted] = useState(false)
+  const [termsAccepted, setTermsAccepted] = useState<boolean | 'indeterminate'>(
+    false,
+  )
+  const [privacyAccepted, setPrivacyAccepted] = useState<
+    boolean | 'indeterminate'
+  >(false)
 
   const { course, refetchApplicants } = useCourseContext()
   const { user, profile, token } = useAuthContext()
-  const toast = useToast()
 
   const {
     register,
@@ -68,10 +72,10 @@ export const CourseApplicationForm: FC = () => {
         onSuccess: () => {
           reset()
 
-          toast({
+          toaster.create({
             title: t('success'),
             description: t('course-application.pre-application-success'),
-            status: 'success',
+            type: 'success',
           })
         },
         onSettled: () => {
@@ -85,7 +89,7 @@ export const CourseApplicationForm: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Stack spacing={8}>
+      <Stack gap={8}>
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={4}>
           <FormItem
             name="country"
@@ -120,12 +124,13 @@ export const CourseApplicationForm: FC = () => {
           </Box>
         </SimpleGrid>
 
-        {/* <Stack spacing={2}>
+        <Stack gap={2}>
           <Checkbox
             fontSize={'14px'}
             fontWeight={'400'}
             lineHeight={'20px'}
-            onChange={e => setTermsAccepted(e.target.checked)}
+            checked={termsAccepted}
+            onCheckedChange={e => setTermsAccepted(e.checked)}
           >
             <Trans
               i18nKey="apply-form.terms"
@@ -136,18 +141,20 @@ export const CourseApplicationForm: FC = () => {
             fontSize={'14px'}
             fontWeight={'400'}
             lineHeight={'20px'}
-            onChange={e => setPrivacyAccepted(e.target.checked)}
+            checked={privacyAccepted}
+            onCheckedChange={e => setPrivacyAccepted(e.checked)}
           >
             <Trans
-              i18nKey="apply-form.agreement"
+              // TODO: Update i18n key
+              i18nKey="apply-form.terms"
               components={{ a: <Link href={'/'} color="primary.500" /> }}
             />
           </Checkbox>
-        </Stack> */}
+        </Stack>
         <Text fontSize={'14px'} w={'100%'} textAlign={'center'}>
           {profile.name || user.username} ({profile.email || user.email})
         </Text>
-        <Button w={'100%'} type="submit" isDisabled={!isValid}>
+        <Button w={'100%'} type="submit" disabled={!isValid}>
           {t('apply-now')}
         </Button>
       </Stack>

@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
-import { Button, FormLabel, HStack, Stack, useToast } from '@chakra-ui/react'
+import { Button, FieldLabel, HStack, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
+import { toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/services/common/mutation'
 import { Profile, ProfileUpdateInput, StrapiLocale } from '@fc/types'
@@ -10,7 +11,6 @@ import { Profile, ProfileUpdateInput, StrapiLocale } from '@fc/types'
 export const PreferencesTab: FC = () => {
   const { profile, token, checkAuth } = useAuthContext()
   const { t } = useTranslation()
-  const toast = useToast()
 
   const langList: {
     locale: StrapiLocale
@@ -34,29 +34,27 @@ export const PreferencesTab: FC = () => {
         token,
       })
       await checkAuth()
-      toast({
+      toaster.create({
         title: t('profile.tabs.preferences.lang.success', {
           lang: name,
         }),
-        status: 'success',
-        duration: 3000,
-        isClosable: true,
+        type: 'success',
       })
     }
   }
 
   return (
-    <Stack spacing={8}>
+    <Stack gap={8}>
       <Stack>
-        <FormLabel
+        <FieldLabel
           mb={0}
           fontSize="sm"
           fontWeight={600}
           textTransform={'capitalize'}
         >
           {t('profile.tabs.preferences.lang.label')}
-        </FormLabel>
-        <HStack spacing={4}>
+        </FieldLabel>
+        <HStack gap={4}>
           {langList.map(({ locale, name }) => (
             <Button
               key={locale}

@@ -41,8 +41,8 @@ export const WImage: FC<WImageProps> = ({
       boxSize="full"
       pos="relative"
       // When using the zoom, Next image should be wrapped in a div with position relative
-      sx={{
-        '[data-rmiz-content]': {
+      css={{
+        '& [data-rmiz-content]': {
           position: 'relative',
           boxSize: 'full',
         },

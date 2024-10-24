@@ -19,7 +19,7 @@ export const useRecommendedTweetSchema = () => {
 }
 
 export const recommendedTweetFields: FormFields<RecommendedTweet> = [
-  { name: 'text', isRequired: true, type: 'textarea' },
+  { name: 'text', required: true, type: 'textarea' },
   {
     name: 'image',
     type: 'file',
@@ -48,6 +48,6 @@ export const recommendedTweetFields: FormFields<RecommendedTweet> = [
     name: 'mentions',
     type: 'select',
     endpoint: 'mentions',
-    isMulti: true,
+    multiple: true,
   },
 ]

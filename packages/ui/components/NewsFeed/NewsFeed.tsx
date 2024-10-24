@@ -1,15 +1,6 @@
 import { FC, useState } from 'react'
 
-import {
-  Center,
-  Input,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { Center, Input, Stack, Tabs } from '@chakra-ui/react'
 import { debounce } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { useLocalStorage } from 'usehooks-ts'
@@ -34,7 +25,7 @@ export const NewsFeed = () => {
   const handleSearchKey = debounce(setSearchKey, 500)
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <Input
         size={'lg'}
         onChange={e => handleSearchKey(e.target.value)}
@@ -44,43 +35,47 @@ export const NewsFeed = () => {
           bg: 'white',
         }}
       />
-      <Tabs colorScheme="primary">
-        <TabList>
-          <Tab data-testid="tab-news" fontWeight={600}>
+      <Tabs.Root colorPalette="primary">
+        <Tabs.List>
+          <Tabs.Trigger data-testid="tab-news" value="news" fontWeight={600}>
             {t('recommended-news')}
-          </Tab>
-          <Tab data-testid="tab-blogs" fontWeight={600}>
+          </Tabs.Trigger>
+          <Tabs.Trigger data-testid="tab-blogs" value="blogs" fontWeight={600}>
             {t('blogs')}
-          </Tab>
-          <Tab data-testid="tab-activities" fontWeight={600}>
+          </Tabs.Trigger>
+          <Tabs.Trigger
+            data-testid="tab-activities"
+            value="activities"
+            fontWeight={600}
+          >
             {t('activities')}
-          </Tab>
-        </TabList>
+          </Tabs.Trigger>
+        </Tabs.List>
 
-        <TabPanels>
-          <TabPanel px={0}>
+        <Tabs.ContentGroup>
+          <Tabs.Content value="news" px={0}>
             <PanelRecommended
               searchKey={searchKey}
               hiddenUrls={hiddenUrls}
               setHiddenUrls={setHiddenUrls}
             />
-          </TabPanel>
-          <TabPanel px={0}>
+          </Tabs.Content>
+          <Tabs.Content value="blogs" px={0}>
             <PanelBlog
               searchKey={searchKey}
               hiddenUrls={hiddenUrls}
               setHiddenUrls={setHiddenUrls}
             />
-          </TabPanel>
-          <TabPanel px={0}>
+          </Tabs.Content>
+          <Tabs.Content value="activities" px={0}>
             <PanelActivity
               searchKey={searchKey}
               hiddenUrls={hiddenUrls}
               setHiddenUrls={setHiddenUrls}
             />
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+          </Tabs.Content>
+        </Tabs.ContentGroup>
+      </Tabs.Root>
     </Stack>
   )
 }
@@ -108,7 +103,7 @@ const Feed: FC<UseTopicReturns> = props => {
   const { t } = useTranslation()
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       {topics.length > 0 ? (
         topics.map(topic => (
           <TopicCard key={topic.id} topic={topic} {...rest} />

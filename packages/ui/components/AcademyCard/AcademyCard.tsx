@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
 import {
   AspectRatio,
   Card,
@@ -9,6 +8,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 
 import { AcademyCardProps } from './types'
 import { WImage } from '../WImage'
@@ -23,7 +23,7 @@ export const AcademyCard: FC<AcademyCardProps> = ({
     <LinkBox as="article">
       <LinkOverlay as={Link} href={href}>
         <AspectRatio ratio={1}>
-          <Card
+          <Card.Root
             rounded="xl"
             position="relative"
             role="group"
@@ -49,24 +49,26 @@ export const AcademyCard: FC<AcademyCardProps> = ({
               _groupHover={{ transform: 'translateY(0)' }}
               transition="all"
               transitionDuration="0.3s"
-              bgGradient="linear(to-t, rgba(0,0,0,0.5), rgba(0,0,0,0))"
-              spacing={4}
+              bgGradient={'to-t'}
+              gradientFrom={'blackAlpha.500'}
+              gradientTo={'black'}
+              gap={4}
             >
-              <Text fontWeight={600} fontSize={'xl'} noOfLines={1}>
+              <Text fontWeight={600} fontSize={'xl'} lineClamp={1}>
                 {title}
               </Text>
               {description && (
                 <Text
                   opacity={0}
                   _groupHover={{ opacity: 1 }}
-                  noOfLines={2}
+                  lineClamp={2}
                   transitionDuration="0.8s"
                 >
                   {description}
                 </Text>
               )}
             </Stack>
-          </Card>
+          </Card.Root>
         </AspectRatio>
       </LinkOverlay>
     </LinkBox>

@@ -1,20 +1,19 @@
 import { FC, useEffect, useLayoutEffect, useState } from 'react'
 
-import {
-  Modal,
-  Select,
-  ModalOverlay,
-  Text,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  Input,
-  ModalFooter,
-  Button,
-} from '@chakra-ui/react'
+import { Text, Input } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
+import {
+  Select,
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { strapiRequest } from '@fc/services/common/strapiRequest'
 import type { RoleInput, Role } from '@fc/types'
@@ -33,7 +32,6 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
   isOpen,
   roleId,
   refetchRoles,
-  onCloseComplete,
   onClose,
   roles = [],
 }) => {
@@ -96,13 +94,12 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
 
   return (
     <Modal
-      isCentered
-      isOpen={isOpen}
-      onClose={onClose}
-      onCloseComplete={onCloseComplete}
+      placement={'center'}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
       size={'xl'}
       scrollBehavior={'inside'}
-      closeOnOverlayClick={!startCreate}
+      closeOnInteractOutside={!startCreate}
     >
       <ModalOverlay />
       <ModalContent>
@@ -113,7 +110,7 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
           <Select
             aria-label="Select base role"
             placeholder="Select base role"
-            isDisabled={startCreate}
+            disabled={startCreate}
             variant={'outline'}
             onChange={e => {
               setRoleBaseId(Number(e.target.value))
@@ -132,19 +129,19 @@ export const CreateRoleModal: FC<CreateRoleModalProps> = ({
           <Text>Name: </Text>
           <Input
             variant={'outline'}
-            isDisabled={startCreate}
+            disabled={startCreate}
             onChange={e => setRoleName(e.target.value)}
           />
           <Text>Description: </Text>
           <Input
             variant={'outline'}
-            isDisabled={startCreate}
+            disabled={startCreate}
             onChange={e => setRoleDescription(e.target.value)}
           />
         </ModalBody>
         <ModalFooter gap={6}>
-          <Button isDisabled={startCreate}>{t('cancel')}</Button>
-          <Button isLoading={startCreate} onClick={() => setStartCreate(true)}>
+          <Button disabled={startCreate}>{t('cancel')}</Button>
+          <Button loading={startCreate} onClick={() => setStartCreate(true)}>
             {t('create')}
           </Button>
         </ModalFooter>

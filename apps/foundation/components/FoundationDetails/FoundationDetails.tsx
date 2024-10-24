@@ -18,7 +18,7 @@ export const FoundationDetails: FC<FoundationDetailsProps> = ({
   return (
     <Stack
       justify={'space-between'}
-      flexWrap={'wrap'}
+      wrap={'wrap'}
       direction={{ base: 'column', lg: 'row' }}
       w={'full'}
       gap={8}

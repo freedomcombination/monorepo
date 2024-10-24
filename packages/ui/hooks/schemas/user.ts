@@ -16,8 +16,8 @@ export const useUserSchema = () => {
 }
 
 export const userFields: FormFields<User> = [
-  { name: 'email', isRequired: true, blockEdit: true },
-  { name: 'username', isRequired: true },
+  { name: 'email', required: true, blockEdit: true },
+  { name: 'username', required: true },
   { name: 'confirmed', type: 'boolean', blockEdit: true },
   { name: 'blocked', type: 'boolean' },
   { name: 'provider', blockEdit: true },

@@ -4,7 +4,7 @@ import { NextSeoProps } from 'next-seo'
 
 export type AdminLayoutProps = {
   children: ReactNode
-  isLoading?: boolean
+  loading?: boolean
   hasBackButton?: boolean
   seo: NextSeoProps
 }

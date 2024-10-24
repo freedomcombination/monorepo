@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Group } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
+import { Button, ButtonProps } from '@fc/chakra'
 import type { StrapiLocale } from '@fc/types'
 
 import { LocaleSwitcherProps } from './types'
@@ -23,12 +24,13 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark, isMobile }) => {
   }
 
   return (
-    <ButtonGroup spacing={0} size="sm" alignItems="center">
+    <Group gap={0} alignItems="center">
       {/* TODO: Remove after storybook test */}
       {locales.map(code => {
         if (query['slug'] && !slugs?.[code]) return null
 
-        let variant = 'ghost'
+        let variant: ButtonProps['variant'] = 'ghost'
+
         if (locale === code) {
           if (!isScrolled && isDark) variant = 'solid'
           else variant = 'outline'
@@ -39,12 +41,13 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark, isMobile }) => {
 
         return !isScrolled && isDark ? (
           <Button
+            size="sm"
             key={code}
             aria-label={label}
             data-testid={testid}
             px={2}
             onClick={() => handleChangeLanguage(code)}
-            colorScheme={
+            colorPalette={
               locale === code
                 ? 'primary'
                 : !isScrolled
@@ -59,12 +62,13 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark, isMobile }) => {
           </Button>
         ) : (
           <Button
+            size="sm"
             key={code}
             aria-label={label}
             data-testid={testid}
             px={2}
             onClick={() => handleChangeLanguage(code)}
-            colorScheme={
+            colorPalette={
               locale === code
                 ? 'primary'
                 : !isScrolled && isDark
@@ -77,7 +81,7 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ isDark, isMobile }) => {
           </Button>
         )
       })}
-    </ButtonGroup>
+    </Group>
   )
 }
 

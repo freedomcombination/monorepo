@@ -43,9 +43,9 @@ export const SendNotificationButton: FC<SendNotificationButtonProps> = ({
       onClick={sendNotification}
       leftIcon={<FiSend />}
       fontSize="sm"
-      colorScheme={'blue'}
+      colorPalette={'blue'}
       type="button"
-      isLoading={sendNotificationMutation.isPending}
+      loading={sendNotificationMutation.isPending}
     >
       {t('notification.send')}
     </ActionButton>

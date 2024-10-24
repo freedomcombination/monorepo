@@ -1,15 +1,11 @@
 import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react'
 
-import {
-  IconButton,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-} from '@chakra-ui/react'
+import { HStack, Input } from '@chakra-ui/react'
 import { debounce } from 'lodash'
 import { FaTimes } from 'react-icons/fa'
 import { HiOutlineSearch } from 'react-icons/hi'
+
+import { IconButton, InputGroup } from '@fc/chakra'
 
 import { SearchFormProps } from './types'
 
@@ -38,36 +34,38 @@ export const SearchForm: React.FC<SearchFormProps> = ({
   }
 
   return (
-    <InputGroup size="lg" flex="1">
-      <InputLeftElement pointerEvents="none" color="gray.400">
-        <HiOutlineSearch />
-      </InputLeftElement>
-
+    <InputGroup
+      flex="1"
+      startElement={<HiOutlineSearch />}
+      endElement={
+        <HStack>
+          {searchTerm.length > 1 && (
+            <IconButton
+              loading={isFetching}
+              variant="ghost"
+              icon={<FaTimes color="gray.400" />}
+              onClick={() => setSearchTerm('')}
+              aria-label="Clear search"
+            />
+          )}
+          {mode === 'click' && (
+            <IconButton
+              onClick={() => onSearch(searchTerm)}
+              icon={<HiOutlineSearch />}
+              aria-label="Search"
+            />
+          )}
+        </HStack>
+      }
+    >
       <Input
+        size="lg"
         placeholder={placeholder}
         value={searchTerm}
         onChange={handleChange}
         {...(mode === 'click' && { onKeyDown: handleKeyDown })}
         {...rest}
       />
-      <InputRightElement w="max-content" right={1}>
-        {searchTerm.length > 1 && (
-          <IconButton
-            isLoading={isFetching}
-            variant="ghost"
-            icon={<FaTimes color="gray.400" />}
-            onClick={() => setSearchTerm('')}
-            aria-label="Clear search"
-          />
-        )}
-        {mode === 'click' && (
-          <IconButton
-            onClick={() => onSearch(searchTerm)}
-            icon={<HiOutlineSearch />}
-            aria-label="Search"
-          />
-        )}
-      </InputRightElement>
     </InputGroup>
   )
 }

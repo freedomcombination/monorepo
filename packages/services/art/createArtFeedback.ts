@@ -1,6 +1,6 @@
-import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
+import { toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import type {
   Art,
@@ -40,8 +40,6 @@ export const createArtFeedback = async ({
 }
 
 export const useCreateArtFeedbackMutation = () => {
-  const toast = useToast()
-
   const { token } = useAuthContext()
 
   return useMutation({
@@ -55,22 +53,18 @@ export const useCreateArtFeedbackMutation = () => {
         token: token as string,
       }),
     onSuccess: res => {
-      toast({
+      toaster.create({
         title: `Art ${res?.data?.approvalStatus}`,
         description: `Art has been ${res?.data?.approvalStatus}`,
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+        type: 'success',
       })
     },
     onError: error => {
       console.error(error)
-      toast({
+      toaster.create({
         title: 'Error',
         description: 'Something went wrong',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     },
   })

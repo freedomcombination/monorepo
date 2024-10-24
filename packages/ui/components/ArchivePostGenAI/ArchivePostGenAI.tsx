@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router'
 
+import { toaster } from '@fc/chakra'
 import { API_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 import { createHashtagSentence } from '@fc/services/hashtagSentence/createHashtagSentence'
 import type { PlatformSlug, PostCreateInput, RedisPost } from '@fc/types'
 import { generateOgImageParams } from '@fc/utils/generateOgImageProps'
 import { sleep } from '@fc/utils/sleep'
-import { toastMessage } from '@fc/utils/toastMessage'
 
 import {
   ArchivePostType,
@@ -17,7 +17,7 @@ import { PostGenAI, PostGenAIProps } from '../PostGenAI'
 
 type ArchivePostGenAIProps = Pick<
   PostGenAIProps,
-  'archiveContentId' | 'content' | 'colorScheme'
+  'archiveContentId' | 'content' | 'colorPalette'
 >
 
 export const ArchivePostGenAI = ({
@@ -57,7 +57,11 @@ export const ArchivePostGenAI = ({
       const localPost = posts.find(p => p.description === post.description)
 
       if (!localPost) {
-        toastMessage('Error', 'Post not found : ' + post.description, 'error')
+        toaster.create({
+          title: 'Error',
+          description: 'Post not found : ' + post.description,
+          type: 'error',
+        })
         continue
       }
 
@@ -131,7 +135,7 @@ export const ArchivePostGenAI = ({
 
   return (
     <PostGenAI
-      colorScheme="green"
+      colorPalette="green"
       content={content}
       archiveContentId={archiveContentId}
       apiUrl="/api/gen-archive-content-posts"

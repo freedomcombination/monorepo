@@ -1,5 +1,6 @@
-import { Stack, Tag, TagCloseButton, TagLabel, Wrap } from '@chakra-ui/react'
+import { Group, Stack } from '@chakra-ui/react'
 
+import { Tag } from '@fc/chakra'
 import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 
 import { useHashtagContext } from '../HashtagProvider'
@@ -25,49 +26,48 @@ export const PostMakerTweetTags = () => {
 
   return (
     <Stack>
-      <Wrap>
+      <Group wrap={'wrap'}>
         {mentionUsernames.map(mention => (
           <Tag
             key={mention}
-            colorScheme={'primary'}
+            colorPalette={'primary'}
             variant={'outline'}
             rounded={'full'}
             px={2}
+            onClose={() => removeMentionFromPost(post.id, mention)}
+            closable
           >
-            <TagLabel>@{mention}</TagLabel>
-
-            <TagCloseButton
-              onClick={() => removeMentionFromPost(post.id, mention)}
-            />
+            @{mention}
           </Tag>
         ))}
-      </Wrap>
-      <Wrap>
+      </Group>
+      <Group wrap={'wrap'}>
         {defaultTrendNames.map(trend => (
           <Tag
             key={trend}
             variant={'outline'}
             rounded={'full'}
             px={2}
-            colorScheme={hashtag.hasPassed ? 'gray' : 'twitter'}
+            colorPalette={hashtag.hasPassed ? 'gray' : 'twitter'}
+            closable={hashtag.hasPassed}
+            onClose={() => removeDefaultTrendFromPost(post.id, trend)}
           >
-            <TagLabel>{trend}</TagLabel>
-            {hashtag.hasPassed && (
-              <TagCloseButton
-                onClick={() => removeDefaultTrendFromPost(post.id, trend)}
-              />
-            )}
+            {trend}
           </Tag>
         ))}
         {trendNames.map(trend => (
-          <Tag key={trend} variant={'outline'} rounded={'full'} px={2}>
-            <TagLabel>{trend}</TagLabel>
-            <TagCloseButton
-              onClick={() => removeTrendFromPost(post.id, trend)}
-            />
+          <Tag
+            key={trend}
+            variant={'outline'}
+            rounded={'full'}
+            px={2}
+            closable
+            onClose={() => removeTrendFromPost(post.id, trend)}
+          >
+            {trend}
           </Tag>
         ))}
-      </Wrap>
+      </Group>
     </Stack>
   )
 }

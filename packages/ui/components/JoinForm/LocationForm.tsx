@@ -1,18 +1,12 @@
 import { ComponentProps } from 'react'
 
-import {
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Stack,
-} from '@chakra-ui/react'
-import { Select } from 'chakra-react-select'
+import { Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
+import { Field, Select } from '@fc/chakra'
 import { useCitiesOfCountry } from '@fc/services/city'
 import { useAllCountries } from '@fc/services/country'
 
-import { Option } from './types'
 import { useJoinFormContext } from './useJoinFormContext'
 
 export const LocationForm = () => {
@@ -31,22 +25,18 @@ export const LocationForm = () => {
   const countries = countriesQuery.data || []
   const cities = citiesQuery.data || []
 
-  const handleCountryChange: ComponentProps<
-    typeof Select<Option>
-  >['onChange'] = option => {
-    if (option) {
-      setValue('country', option?.value, {
+  const handleCountryChange: ComponentProps<typeof Select>['onChange'] = e => {
+    if (e) {
+      setValue('country', e.target?.value, {
         shouldValidate: true,
         shouldDirty: true,
       })
     }
   }
 
-  const handleCityChange: ComponentProps<
-    typeof Select<Option>
-  >['onChange'] = option => {
-    if (selectedCountry && option) {
-      setValue('city', option?.value, {
+  const handleCityChange: ComponentProps<typeof Select>['onChange'] = e => {
+    if (selectedCountry && e.target?.value) {
+      setValue('city', e.target?.value, {
         shouldValidate: true,
         shouldDirty: true,
       })
@@ -54,52 +44,46 @@ export const LocationForm = () => {
   }
 
   return (
-    <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-      <FormControl
-        isInvalid={countriesQuery.isError || !!errors?.country?.message}
-        isRequired
+    <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
+      <Field
+        invalid={countriesQuery.isError}
+        label={t('country')}
+        errorText={
+          (countriesQuery.error && 'An error occured') ||
+          errors.country?.message
+        }
       >
-        <FormLabel
-          mb={2}
-          fontSize="sm"
-          fontWeight={600}
-          textTransform={'capitalize'}
-        >
-          {t('country')}
-        </FormLabel>
         <Select
           placeholder={t('select-country')}
-          options={countries}
           onChange={handleCountryChange}
-        />
-        <FormErrorMessage>
-          {errors?.country?.message ||
-            (countriesQuery.error && 'An error occured')}
-        </FormErrorMessage>
-      </FormControl>
-
-      <FormControl
-        isInvalid={citiesQuery.isError || !!errors?.city?.message}
-        isRequired
-      >
-        <FormLabel
-          mb={2}
-          fontSize="sm"
-          fontWeight={600}
-          textTransform={'capitalize'}
         >
-          {t('city')}
-        </FormLabel>
+          {countries.map(country => (
+            <option key={country.value} value={country.value}>
+              {country.label}
+            </option>
+          ))}
+        </Select>
+      </Field>
+
+      <Field
+        invalid={citiesQuery.isError}
+        label={t('city')}
+        errorText={
+          (citiesQuery.error && 'An error occured') || errors.city?.message
+        }
+      >
         <Select
-          isDisabled={!selectedCountry}
+          disabled={!selectedCountry}
           placeholder={t('select-city')}
-          options={cities}
           onChange={handleCityChange}
-        />
-        <FormErrorMessage>
-          {errors?.city?.message || (citiesQuery.error && 'An error occured')}
-        </FormErrorMessage>
-      </FormControl>
+        >
+          {cities.map(city => (
+            <option key={city.value} value={city.value}>
+              {city.label}
+            </option>
+          ))}
+        </Select>
+      </Field>
     </Stack>
   )
 }

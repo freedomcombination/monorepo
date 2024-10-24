@@ -1,15 +1,9 @@
 import { FC } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertProps,
-  AlertTitle,
-  Button,
-  Link,
-} from '@chakra-ui/react'
+import { Box, Button, Link } from '@chakra-ui/react'
 import { FaLink } from 'react-icons/fa6'
+
+import { Alert, AlertProps } from '@fc/chakra'
 
 type DonationResultAlertProps = {
   status: AlertProps['status']
@@ -32,20 +26,19 @@ export const DonationResultAlert: FC<DonationResultAlertProps> = ({
     justifyContent="center"
     textAlign="center"
     height="200px"
+    title={title}
   >
-    <AlertIcon boxSize="40px" mr={0} />
-    <AlertTitle mt={4} mb={1} fontSize="lg">
-      {title}
-    </AlertTitle>
-    <AlertDescription maxWidth="sm">{description}</AlertDescription>
-    {slug && (
-      <AlertDescription maxWidth="sm">
+    {title}
+    <Box maxWidth="sm">
+      <Box>{description}</Box>
+      {slug && (
         <Link href={`/courses/${slug}`}>
-          <Button variant={'outline'} leftIcon={<FaLink />}>
+          <Button variant={'outline'}>
+            <FaLink />
             Go back to Course
           </Button>
         </Link>
-      </AlertDescription>
-    )}
+      )}
+    </Box>
   </Alert>
 )

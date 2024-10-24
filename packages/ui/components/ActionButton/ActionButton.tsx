@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Button } from '@chakra-ui/react'
+import { Button } from '@fc/chakra'
 
 import { ActionButtonProps } from './types'
 import { ActionWrapper } from '../ActionWrapper'

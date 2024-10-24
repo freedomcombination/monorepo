@@ -1,28 +1,24 @@
 import { FC, useEffect, useMemo, useState } from 'react'
 
-import {
-  Button,
-  Center,
-  Flex,
-  HStack,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuItemOption,
-  MenuList,
-  MenuOptionGroup,
-  Select,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
+import { Center, Flex, HStack, Spinner, Stack } from '@chakra-ui/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { FaEdit, FaSave } from 'react-icons/fa'
 import { FaFilter, FaX } from 'react-icons/fa6'
 
+import {
+  Button,
+  IconButton,
+  MenuCheckboxItem,
+  MenuContent,
+  MenuItem,
+  MenuItemGroup,
+  MenuRoot,
+  MenuSeparator,
+  MenuTrigger,
+  Select,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -141,35 +137,36 @@ const RolePage: FC<RolePageProps> = () => {
 
             {inEditMode && (
               <Button
-                isDisabled={!needSave}
+                disabled={!needSave}
                 onClick={() => setStartSave(true)}
-                isLoading={startSave || isLoading}
+                loading={startSave || isLoading}
                 leftIcon={<FaSave />}
               >
                 {t('save')}
               </Button>
             )}
           </HStack>
-          <HStack spacing={4}>
+          <HStack gap={4}>
             {role && (
-              <Menu closeOnSelect={false}>
-                <MenuButton
-                  aria-label="endpoint-filter"
-                  icon={<FaFilter />}
-                  variant={'outline'}
-                  as={IconButton}
-                />
-                <MenuList h={400} overflow={'auto'}>
-                  <MenuItem onClick={() => setFilters([])}>
+              <MenuRoot closeOnSelect={false}>
+                <MenuTrigger value="menu" asChild>
+                  <IconButton
+                    aria-label="endpoint-filter"
+                    icon={<FaFilter />}
+                    variant={'outline'}
+                  />
+                </MenuTrigger>
+                <MenuContent h={400} overflow={'auto'}>
+                  <MenuItem value="clear" onClick={() => setFilters([])}>
                     {t('clear')}
                   </MenuItem>
-                  <MenuDivider />
-                  <MenuOptionGroup type="checkbox" title="Endpoints">
+                  <MenuSeparator />
+                  <MenuItemGroup title="Endpoints">
                     {filterKeys.map(key => (
-                      <MenuItemOption
+                      <MenuCheckboxItem
                         key={key}
                         value={key}
-                        isChecked={filters.includes(key)}
+                        checked={filters.includes(key)}
                         onClick={() =>
                           setFilters(filters =>
                             filters.includes(key)
@@ -179,11 +176,11 @@ const RolePage: FC<RolePageProps> = () => {
                         }
                       >
                         {key.split('::')[1]}
-                      </MenuItemOption>
+                      </MenuCheckboxItem>
                     ))}
-                  </MenuOptionGroup>
-                </MenuList>
-              </Menu>
+                  </MenuItemGroup>
+                </MenuContent>
+              </MenuRoot>
             )}
             {allRoles && (
               <Select

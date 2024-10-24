@@ -1,11 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 
-import {
-  ButtonGroup,
-  ButtonGroupProps,
-  IconButton,
-  Link,
-} from '@chakra-ui/react'
+import { ButtonProps, Group, GroupProps } from '@chakra-ui/react'
+import Link from 'next/link'
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -15,12 +11,14 @@ import {
 import { FaFacebook, FaLinkedin, FaTelegram, FaWhatsapp } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
+import { IconButton } from '@fc/chakra'
 import { makeSocialContent } from '@fc/utils/makeSocialContent'
 
-type ShareButtonsProps = ButtonGroupProps & {
+type ShareButtonsProps = GroupProps & {
   title?: string
   url: string
   quote: string
+  size?: ButtonProps['size']
 }
 
 export const ShareButtons: FC<PropsWithChildren<ShareButtonsProps>> = ({
@@ -44,10 +42,12 @@ export const ShareButtons: FC<PropsWithChildren<ShareButtonsProps>> = ({
   const postUrl = `${baseUrl}?${result.toString()}`
 
   return (
-    <ButtonGroup variant="outline" size={size} alignItems="center" {...rest}>
+    <Group alignItems="center" {...rest}>
       {children}
       <FacebookShareButton quote={content} url={url}>
         <IconButton
+          variant="outline"
+          size={size}
           as="span"
           isRound
           aria-label="share on faceobok"
@@ -59,8 +59,10 @@ export const ShareButtons: FC<PropsWithChildren<ShareButtonsProps>> = ({
           icon={<FaFacebook />}
         />
       </FacebookShareButton>
-      <Link href={postUrl} isExternal>
+      <Link href={postUrl} rel="noreferrer noopener" target="_blank">
         <IconButton
+          variant="outline"
+          size={size}
           as="span"
           isRound
           _hover={{ bg: 'black', borderColor: 'black', color: 'white' }}
@@ -71,6 +73,8 @@ export const ShareButtons: FC<PropsWithChildren<ShareButtonsProps>> = ({
       <WhatsappShareButton title={content} url={url}>
         <IconButton
           as="span"
+          variant="outline"
+          size={size}
           isRound
           _hover={{
             bg: 'whatsapp.500',
@@ -84,6 +88,8 @@ export const ShareButtons: FC<PropsWithChildren<ShareButtonsProps>> = ({
       <TelegramShareButton url={url} title={content}>
         <IconButton
           as="span"
+          variant="outline"
+          size={size}
           isRound
           _hover={{
             bg: 'telegram.500',
@@ -97,6 +103,8 @@ export const ShareButtons: FC<PropsWithChildren<ShareButtonsProps>> = ({
       <LinkedinShareButton url={url} title={content} about={content}>
         <IconButton
           as="span"
+          variant="outline"
+          size={size}
           isRound
           _hover={{
             bg: 'linkedin.500',
@@ -107,6 +115,6 @@ export const ShareButtons: FC<PropsWithChildren<ShareButtonsProps>> = ({
           icon={<FaLinkedin />}
         />
       </LinkedinShareButton>
-    </ButtonGroup>
+    </Group>
   )
 }

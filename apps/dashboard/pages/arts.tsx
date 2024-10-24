@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import { MenuItem, useUpdateEffect } from '@chakra-ui/react'
+import { MenuItem } from '@chakra-ui/react'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
+import { useUpdateEffect } from 'react-use'
 
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
@@ -79,10 +80,12 @@ const ArtsPage = () => {
       <PageHeader
         onSearch={handleSearch}
         sortMenu={[
-          <MenuItem key="asc" icon={<FaArrowUp />}>
+          <MenuItem value="name:asc" key="asc">
             Name Asc
+            <FaArrowUp />
           </MenuItem>,
-          <MenuItem key="desc" icon={<FaArrowDown />}>
+          <MenuItem value="name:desc" key="desc">
+            <FaArrowDown />
             Name Desc
           </MenuItem>,
         ]}

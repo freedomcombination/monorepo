@@ -1,13 +1,10 @@
 import { FC, useEffect } from 'react'
 
 import {
-  Button,
   HStack,
-  IconButton,
   Stack,
   Text,
   Textarea,
-  Tooltip,
   useBreakpointValue,
   VStack,
 } from '@chakra-ui/react'
@@ -16,12 +13,12 @@ import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
+import { Button, IconButton, toaster, Tooltip } from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 import type { Comment, CommentCreateInput } from '@fc/types'
-import { toastMessage } from '@fc/utils/toastMessage'
 
 import { commentFormSchema } from './schema'
 import { CommentFormFieldValues, CommentFormProps } from './types'
@@ -85,18 +82,18 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
     } catch (error) {
       console.error(error)
 
-      toastMessage(
-        'Error',
-        "Couldn't send comment. Please try again later.",
-        'error',
-      )
+      toaster.create({
+        title: 'Error',
+        description: "Couldn't send comment. Please try again later.",
+        type: 'error',
+      })
     }
   }
 
   return (
     <Stack
       display={isSuccess ? 'none' : 'flex'}
-      spacing={4}
+      gap={4}
       p={4}
       boxShadow="base"
       borderRadius="sm"
@@ -160,21 +157,21 @@ export const CommentForm: FC<CommentFormProps> = ({ artId, onSuccess }) => {
               aria-label="Send Comment"
               icon={<FiArrowRight />}
               isRound
-              isLoading={isPending}
-              isDisabled={!isValid}
+              loading={isPending}
+              disabled={!isValid}
               type="submit"
             />
           </HStack>
         </Stack>
         <Tooltip
-          label={recaptchaToken ? null : 'You are not allowed to comment'}
+          content={recaptchaToken ? null : 'You are not allowed to comment'}
         >
           <Button
             display={{ base: 'none', sm: 'flex' }}
             alignSelf="flex-end"
             rightIcon={<FiArrowRight />}
-            isLoading={isPending}
-            isDisabled={!isValid || !recaptchaToken}
+            loading={isPending}
+            disabled={!isValid || !recaptchaToken}
             type="submit"
           >
             {t('comment-form.send')}

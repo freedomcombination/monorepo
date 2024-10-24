@@ -1,14 +1,6 @@
 import { FC, ReactElement } from 'react'
 
-import {
-  Box,
-  Heading,
-  ListItem,
-  OrderedList,
-  Text,
-  UnorderedList,
-  chakra,
-} from '@chakra-ui/react'
+import { Box, Heading, Text, chakra } from '@chakra-ui/react'
 import {
   BlocksContent,
   BlocksRenderer as StrapiBlocksRenderer,
@@ -108,13 +100,10 @@ export const BlocksRenderer: FC<BlocksRendererProps> = ({ content }) => {
             </Link>
           )
         },
-        list: ({ children, format }) =>
-          format === 'ordered' ? (
-            <OrderedList>{children}</OrderedList>
-          ) : (
-            <UnorderedList>{children}</UnorderedList>
-          ),
-        'list-item': ({ children }) => <ListItem>{children}</ListItem>,
+        list: ({ children, format }) => (
+          <Box as={format === 'ordered' ? 'ol' : 'ul'}>{children}</Box>
+        ),
+        'list-item': ({ children }) => <Box as="li">{children}</Box>,
       }}
       modifiers={{
         bold: ({ children }) => (

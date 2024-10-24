@@ -1,13 +1,14 @@
 import { useState } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import { Box, Button, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { Button } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 
 import { adminLoginSchema } from './schema'
@@ -32,7 +33,7 @@ export const AdminLoginForm = () => {
 
   const [isRedirecting, setIsRedirecting] = useState(false)
 
-  const { isLoading: isAuthLoading, login, checkAuth } = useAuthContext()
+  const { loading: isAuthLoading, login, checkAuth } = useAuthContext()
 
   const router = useRouter()
 
@@ -70,7 +71,7 @@ export const AdminLoginForm = () => {
           h="full"
           w="full"
           textAlign="center"
-          spacing={4}
+          gap={4}
           justify="center"
           pb={8}
           pt={{ base: 8, lg: '50%' }}
@@ -85,12 +86,8 @@ export const AdminLoginForm = () => {
             </VStack>
           </Link>
 
-          <Stack spacing={4} flex={1}>
-            <Stack
-              spacing={4}
-              as="form"
-              onSubmit={handleSubmit(handleSubmitSign)}
-            >
+          <Stack gap={4} flex={1}>
+            <Stack gap={4} as="form" onSubmit={handleSubmit(handleSubmitSign)}>
               <FormItem
                 w="full"
                 name="identifier"
@@ -108,7 +105,7 @@ export const AdminLoginForm = () => {
               />
               <Button
                 data-testid="button-form-login"
-                isLoading={isAuthLoading || isRedirecting}
+                loading={isAuthLoading || isRedirecting}
                 w="full"
                 type="submit"
               >
@@ -123,8 +120,9 @@ export const AdminLoginForm = () => {
                       components={{
                         a: (
                           <Link
+                            rel="noreferrer noopener"
+                            target="_blank"
                             data-testid="contact-us-error"
-                            isExternal
                             href={'https://freedomcombination.com/tr/contact'}
                             color="blue.500"
                           />
@@ -141,7 +139,7 @@ export const AdminLoginForm = () => {
             </Stack>
             {/* TODO Set session exp time */}
 
-            <ButtonLink href="/forgot-password" variant="link" size="sm">
+            <ButtonLink href="/forgot-password" variant="plain" size="sm">
               {t('forgot-pass.link')}
             </ButtonLink>
           </Stack>

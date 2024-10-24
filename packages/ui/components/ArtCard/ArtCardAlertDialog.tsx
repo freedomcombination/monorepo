@@ -1,20 +1,20 @@
 import { FC, useRef } from 'react'
 
 import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
   Button,
-} from '@chakra-ui/react'
+} from '@fc/chakra'
 
 import { ArtCardAlertDialogProps } from './types'
 
-export const ArtCardAlertDialog: FC<ArtCardAlertDialogProps> = ({
+export const ArtCardDialog: FC<ArtCardAlertDialogProps> = ({
   buttonText,
-  colorScheme,
+  colorPalette,
   isOpen,
   text,
   title,
@@ -24,30 +24,29 @@ export const ArtCardAlertDialog: FC<ArtCardAlertDialogProps> = ({
   const cancelRef = useRef<HTMLButtonElement>(null)
 
   return (
-    <AlertDialog
-      isCentered
-      isOpen={isOpen}
-      onClose={onClose}
-      leastDestructiveRef={cancelRef}
+    <Dialog
+      placement={'center'}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
     >
-      <AlertDialogOverlay>
-        <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight={600}>
+      <DialogOverlay>
+        <DialogContent>
+          <DialogHeader fontSize="lg" fontWeight={600}>
             {title}
-          </AlertDialogHeader>
+          </DialogHeader>
 
-          <AlertDialogBody>{text}</AlertDialogBody>
+          <DialogBody>{text}</DialogBody>
 
-          <AlertDialogFooter>
+          <DialogFooter>
             <Button onClick={onClose} ref={cancelRef}>
               Cancel
             </Button>
-            <Button colorScheme={colorScheme} onClick={onClick} ml={3}>
+            <Button colorPalette={colorPalette} onClick={onClick} ml={3}>
               {buttonText}
             </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialogOverlay>
-    </AlertDialog>
+          </DialogFooter>
+        </DialogContent>
+      </DialogOverlay>
+    </Dialog>
   )
 }

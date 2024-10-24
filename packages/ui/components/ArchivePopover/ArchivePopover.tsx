@@ -6,17 +6,15 @@ import {
   Center,
   HStack,
   Heading,
-  Link,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   Stack,
   Text,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Markdown from 'react-markdown'
 
+import { Popover, PopoverContent, PopoverTrigger } from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { ArchiveContent } from '@fc/types'
 
@@ -37,10 +35,7 @@ export const ArchivePopover: FC<ArchivePopoverProps> = ({
   const archiveContent = getArchive(archiveId)
 
   return (
-    <Popover
-      placement="top"
-      trigger={archiveContent || !archiveId ? 'hover' : 'click'}
-    >
+    <Popover positioning={{ placement: 'top' }}>
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent>
         {archiveContent ? (
@@ -104,8 +99,8 @@ const DisplayArchive: FC<{
   const { locale } = useRouter()
 
   return (
-    <Link isExternal href={archiveContent.link}>
-      <Stack p={2} spacing={2} textAlign={'left'} color={'gray.500'}>
+    <Link target="_blank" rel="noreferrer noopener" href={archiveContent.link}>
+      <Stack p={2} gap={2} textAlign={'left'} color={'gray.500'}>
         <Heading size="sm" color={'gray.500'}>
           {archiveContent.title}
         </Heading>
@@ -115,16 +110,16 @@ const DisplayArchive: FC<{
             <Text>•</Text>
             <time>{archiveContent.date}</time>
           </HStack>
-          <Wrap fontWeight={300} align={'center'}>
+          <Group wrap={'wrap'} fontWeight={300} align={'center'}>
             {archiveContent.categories &&
               archiveContent.categories.length > 0 &&
               archiveContent.categories.map(c => (
                 <Badge key={c.id}>{c[`name_${locale}`]}</Badge>
               ))}
-          </Wrap>
+          </Group>
         </Box>
         {includeContent && (
-          <Box noOfLines={6} overflow={'auto'}>
+          <Box lineClamp={6} overflow={'auto'}>
             <Markdown>{archiveContent.content}</Markdown>
           </Box>
         )}

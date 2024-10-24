@@ -1,7 +1,9 @@
 import { FC } from 'react'
 
-import { IconButton, Image, SimpleGrid } from '@chakra-ui/react'
+import { Image, SimpleGrid } from '@chakra-ui/react'
 import { FaTimes } from 'react-icons/fa'
+
+import { IconButton } from '@fc/chakra'
 
 import { ImageRecognizeItemProps } from './types'
 import { ContentEditable } from '../ContentEditable'
@@ -33,7 +35,7 @@ export const ImageRecognizeItem: FC<ImageRecognizeItemProps> = ({
         isRound
         top={-4}
         right={-4}
-        colorScheme={'red'}
+        colorPalette={'red'}
         icon={<FaTimes />}
         onClick={onRemove}
       />

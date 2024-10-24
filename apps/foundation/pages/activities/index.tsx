@@ -4,11 +4,12 @@ import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
+import { Pagination } from '@fc/chakra'
 import {
   RequestCollectionArgs,
   strapiRequest,
+  useStrapiRequest,
 } from '@fc/services/common/strapiRequest'
-import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Activity, StrapiLocale, UploadFile } from '@fc/types'
 import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
@@ -16,7 +17,6 @@ import { Card } from '@fc/ui/components/Card'
 import { Container } from '@fc/ui/components/Container'
 import { FormattedDate } from '@fc/ui/components/FormattedDate'
 import { Hero } from '@fc/ui/components/Hero'
-import { Pagination } from '@fc/ui/components/Pagination'
 import { useChangeParams } from '@fc/ui/hooks/useChangeParam'
 
 import { Layout } from '../../components/Layout'
@@ -78,15 +78,15 @@ const Activities = () => {
             </SimpleGrid>
             {pagination && (
               <Pagination
-                totalCount={pagination.pageCount}
-                currentPage={+(query.page || 1)}
+                count={pagination.pageCount}
+                page={+(query.page || 1)}
                 onPageChange={changePage}
               />
             )}
           </Container>
         </>
       ) : (
-        <Stack minH="inherit" justify="center" align="center" spacing={8}>
+        <Stack minH="inherit" justify="center" align="center" gap={8}>
           <Image h={200} src="/images/no-blog.svg" alt="no blog" />
           <Text textAlign="center" fontSize="lg">
             Sorry! No activities published in this language.

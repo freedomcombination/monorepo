@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 
-import { useDisclosure, useToast } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
 import { useLocalStorage } from 'react-use'
 
+import { toaster } from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { DevMail } from '@fc/types/dev-mail'
 
@@ -31,7 +32,6 @@ export const DevMailProvider = () => {
     endpoint: 'dev-mails',
     token: '', // only public permission is needed
   })
-  const toast = useToast()
 
   const mails = data?.data ?? []
   const newCount = !lastGroupTime
@@ -43,21 +43,19 @@ export const DevMailProvider = () => {
 
   useEffect(() => {
     if ((lastNewCount ?? 0) < newCount) {
-      toast({
+      toaster.create({
         title: 'New Dev Mail',
         description: `There are ${newCount} new dev mail(s)`,
-        status: 'info',
+        type: 'info',
         duration: 5000,
-        variant: 'left-accent',
-        position: 'bottom-right',
-        isClosable: true,
+        placement: 'bottom-end',
       })
       setLastNewCount(newCount)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newCount, lastNewCount])
 
-  const { isOpen, onOpen, onClose } = useDisclosure({
+  const { open, onOpen, onClose } = useDisclosure({
     onClose: () => {
       if (newCount > 0) {
         setLastGroupTime(new Date().toISOString())
@@ -81,7 +79,7 @@ export const DevMailProvider = () => {
   return (
     <DevMailContext.Provider
       value={{
-        isOpen,
+        isOpen: open,
         onOpen,
         onClose,
         count: newCount,

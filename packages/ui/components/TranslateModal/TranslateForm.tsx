@@ -1,11 +1,11 @@
 import {
-  Divider,
-  FormLabel,
+  Separator,
   HStack,
   Input,
   Stack,
   Text,
   Textarea,
+  Field,
 } from '@chakra-ui/react'
 
 import type { StrapiTranslatableModel } from '@fc/types'
@@ -25,7 +25,7 @@ export const TranslateForm = <T extends StrapiTranslatableModel>({
     <Stack justify="stretch">
       {currentModel.title && (
         <Stack>
-          <FormLabel htmlFor={`${currentModel.id} title`}>Title</FormLabel>
+          <Field.Label htmlFor={`${currentModel.id} title`}>Title</Field.Label>
           <Stack direction={{ base: 'column', lg: 'row' }}>
             <HStack w={{ base: 'full', lg: 400 }} align="baseline">
               <Flag locale={currentLocale} />
@@ -41,12 +41,12 @@ export const TranslateForm = <T extends StrapiTranslatableModel>({
 
       {currentModel.description && (
         <>
-          <Divider orientation="horizontal" />
+          <Separator orientation="horizontal" />
 
           <Stack>
-            <FormLabel htmlFor={`${currentModel.id} description`}>
+            <Field.Label htmlFor={`${currentModel.id} description`}>
               Description
-            </FormLabel>
+            </Field.Label>
             <Stack direction={{ base: 'column', lg: 'row' }}>
               <HStack w={{ base: 'full', lg: 400 }} align="baseline">
                 <Flag locale={currentLocale} />
@@ -68,11 +68,11 @@ export const TranslateForm = <T extends StrapiTranslatableModel>({
 
       {currentModel.content && (
         <>
-          <Divider orientation="horizontal" />
+          <Separator orientation="horizontal" />
           <Stack>
-            <FormLabel htmlFor={`${currentModel.id} content`}>
+            <Field.Label htmlFor={`${currentModel.id} content`}>
               Content
-            </FormLabel>
+            </Field.Label>
             <Stack direction={{ base: 'column', lg: 'row' }}>
               <HStack w={{ base: 'full', lg: 400 }} align="baseline">
                 <Flag locale={currentLocale} />

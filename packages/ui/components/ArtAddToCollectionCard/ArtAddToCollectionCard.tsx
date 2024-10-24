@@ -1,17 +1,13 @@
 import { FC } from 'react'
 
-import {
-  Button,
-  HStack,
-  Spacer,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
+import { HStack, Spacer, Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AiOutlineEye } from 'react-icons/ai'
 import { HiPlus } from 'react-icons/hi'
 import { IoCloseSharp } from 'react-icons/io5'
+
+import { Button } from '@fc/chakra'
 
 import { ArtAddToCollectionCardProps } from './types'
 import { ActionButton } from '../ActionButton'
@@ -20,12 +16,12 @@ import { ArtModal } from '../ArtModal'
 
 export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
   isAdded,
-  isLoading,
+  loading,
   art,
   onAdd,
   onRemove,
 }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   const router = useRouter()
 
@@ -43,11 +39,11 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
     <Stack boxShadow="md" rounded="md" direction={'column'} overflow="hidden">
       <ArtCardImage art={art} h={300} />
       <Stack w="full" px={4} py={2}>
-        <Text fontSize="md" fontWeight={600} noOfLines={1}>
+        <Text fontSize="md" fontWeight={600} lineClamp={1}>
           {art[titleKey]}
         </Text>
 
-        <Text fontSize="sm" noOfLines={2}>
+        <Text fontSize="sm" lineClamp={2}>
           {art.artist?.name || art.artist?.email}
         </Text>
 
@@ -58,7 +54,7 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
             title="View"
             onClick={onOpen}
             variant={'ghost'}
-            colorScheme={'gray'}
+            colorPalette={'gray'}
             size="xs"
           >
             View
@@ -70,22 +66,17 @@ export const ArtAddToCollectionCard: FC<ArtAddToCollectionCardProps> = ({
             data-testid="button-add-to-collection"
             canCreate="collections"
             variant={'outline'}
-            colorScheme={isAdded ? 'red' : 'green'}
+            colorPalette={isAdded ? 'red' : 'green'}
             leftIcon={isAdded ? <IoCloseSharp /> : <HiPlus />}
             size="xs"
-            isLoading={isLoading}
+            loading={loading}
             onClick={onHandle}
           >
             {isAdded ? 'Remove' : 'Add to Collection'}
           </ActionButton>
         </HStack>
       </Stack>
-      <ArtModal
-        refetch={() => {}}
-        art={art}
-        isOpen={isOpen}
-        onClose={onClose}
-      />
+      <ArtModal refetch={() => {}} art={art} isOpen={open} onClose={onClose} />
     </Stack>
   )
 }

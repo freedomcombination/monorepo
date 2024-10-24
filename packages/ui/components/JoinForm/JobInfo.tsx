@@ -1,18 +1,17 @@
+import { Heading, Box } from '@chakra-ui/react'
+import { BlocksContent } from '@strapi/blocks-react-renderer'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
 import {
+  Checkbox,
+  Field,
   Accordion,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Box,
-  Checkbox,
-  FormControl,
-  FormErrorMessage,
-  Heading,
-} from '@chakra-ui/react'
-import { BlocksContent } from '@strapi/blocks-react-renderer'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+} from '@fc/chakra'
 
 import { useJoinFormContext } from './useJoinFormContext'
 import { BlocksRenderer } from '../BlocksRenderer'
@@ -30,13 +29,14 @@ export const JobInfo = () => {
   const filteredJobs = selectedJobs.filter(job => job[`info_${locale}`])
 
   return (
-    <Accordion defaultIndex={0} allowToggle>
-      {filteredJobs?.map(job => {
+    <Accordion collapsible>
+      {filteredJobs?.map((job, index) => {
         const jobName = job[`name_${locale}`] || ''
         const jobInfo = job[`info_${locale}`] as BlocksContent
 
         return (
           <AccordionItem
+            value={`${index}`}
             _notLast={{ mb: 2 }}
             key={job?.id}
             bg={'gray.50'}
@@ -49,7 +49,7 @@ export const JobInfo = () => {
               <Heading as="h4" size="md" textAlign="start" fontWeight={700}>
                 {jobName}
               </Heading>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
 
             {/* TODO: Allow users to read the content in modal as well */}
@@ -61,15 +61,16 @@ export const JobInfo = () => {
           </AccordionItem>
         )
       })}
-      <FormControl isRequired isInvalid={!!errors?.jobInfoConfirmation}>
+      <Field
+        required
+        invalid={!!errors?.jobInfoConfirmation}
+        errorText={errors?.jobInfoConfirmation?.message}
+      >
         {/* TODO: Trigger job info confirmation error */}
         <Checkbox {...register('jobInfoConfirmation')}>
           {t('read-and-accept')}
         </Checkbox>
-        <FormErrorMessage>
-          {errors?.jobInfoConfirmation?.message}
-        </FormErrorMessage>
-      </FormControl>
+      </Field>
     </Accordion>
   )
 }

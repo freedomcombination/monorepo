@@ -1,6 +1,6 @@
-import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 
+import { toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import type { StrapiEndpoint, StrapiModel } from '@fc/types'
 
@@ -25,7 +25,6 @@ export const unpublishModel = <T extends StrapiModel>(
 export const useUnpublishModelMutation = <T extends StrapiModel>(
   endpoint: StrapiEndpoint,
 ) => {
-  const toast = useToast()
   const { token } = useAuthContext()
 
   return useMutation({
@@ -33,20 +32,16 @@ export const useUnpublishModelMutation = <T extends StrapiModel>(
     mutationFn: ({ id }: { id: number }) =>
       unpublishModel<T>(id, endpoint, token as string),
     onSuccess: () => {
-      toast({
+      toaster.create({
         title: `Successfully Unpublished`,
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+        type: 'success',
       })
     },
     onError: () => {
-      toast({
+      toaster.create({
         title: 'Error',
         description: 'Something went wrong',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     },
   })

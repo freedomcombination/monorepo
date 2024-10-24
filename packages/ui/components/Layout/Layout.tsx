@@ -15,7 +15,7 @@ export const Layout: FC<LayoutProps> = ({
   hasProfile,
   headerProps,
   isDark,
-  isLoading = false,
+  loading = false,
   seo,
 }) => {
   const minH = isDark
@@ -34,9 +34,9 @@ export const Layout: FC<LayoutProps> = ({
           isDark={isDark}
           hasProfile={hasProfile}
         />
-        {isLoading ? (
+        {loading ? (
           <Center minH={minH}>
-            <Spinner colorScheme="red" />
+            <Spinner colorPalette="red" />
           </Center>
         ) : (
           <Box minH={minH}>{children}</Box>

@@ -1,19 +1,19 @@
 import { FC, useState } from 'react'
 
+import { Box, HStack } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+import { AiFillDelete, AiOutlineShareAlt } from 'react-icons/ai'
+
 import {
-  Box,
-  HStack,
   Popover,
   PopoverArrow,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { AiFillDelete, AiOutlineShareAlt } from 'react-icons/ai'
-
+} from '@fc/chakra'
 import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
-import type { Post, RecommendedTweet } from '@fc/types'
+import type { Post } from '@fc/types'
+import type { RecommendedTweet } from '@fc/types'
 import { getMediaUrl } from '@fc/utils/getMediaUrl'
 
 import { RecommendedSocialButtonsProps } from './types'
@@ -102,7 +102,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
           onCancel={() => setConfirmState(undefined)}
         />
       )}
-      <Popover placement="top">
+      <Popover positioning={{ placement: 'top' }}>
         <PopoverTrigger>
           <Box>
             <ActionButton
@@ -110,7 +110,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
               icon={<AiOutlineShareAlt />}
               title="Share"
               variant="ghost"
-              colorScheme="gray"
+              colorPalette="gray"
             />
           </Box>
         </PopoverTrigger>
@@ -133,9 +133,8 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
         fields={fields.posts!}
         model={postContent}
         buttonProps={{
-          iconSpacing: isVertical ? 0 : 2,
           variant: 'ghost',
-          colorScheme: 'gray',
+          colorPalette: 'gray',
         }}
       >
         {t('create-post')}
@@ -146,7 +145,7 @@ export const RecommendedSocialButtons: FC<RecommendedSocialButtonsProps> = ({
         icon={<AiFillDelete />}
         title="Delete"
         variant="ghost"
-        colorScheme="gray"
+        colorPalette="gray"
       />
     </HStack>
   )

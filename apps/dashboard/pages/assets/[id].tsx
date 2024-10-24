@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react'
 
+import { Stack, Text, useDisclosure } from '@chakra-ui/react'
+import { GetServerSidePropsContext } from 'next'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { TbActivity } from 'react-icons/tb'
+
 import {
   Accordion,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
-import { GetServerSidePropsContext } from 'next'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-import { TbActivity } from 'react-icons/tb'
-
+} from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { Asset, AssetsTracking, Sort, StrapiLocale } from '@fc/types'
@@ -33,7 +31,7 @@ const AssetPage = () => {
   const schemas = useSchema()
   const fields = useFields()
   const { t } = useTranslation()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { locale, query } = useRouter()
 
   const columns = useColumns<AssetsTracking>()
@@ -97,7 +95,7 @@ const AssetPage = () => {
   return (
     <AdminLayout
       seo={{ title: t('foundation.assets') }}
-      isLoading={isLoading}
+      loading={isLoading}
       hasBackButton
     >
       {selectedAssetsTrackingId && (
@@ -105,22 +103,21 @@ const AssetPage = () => {
           title={'Assets Trackings'}
           endpoint="assets-trackings"
           id={selectedAssetsTrackingId}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={handleClose}
           onSuccess={assetsTrackingsQuery.refetch}
-          size={'5xl'}
+          size={'xl'}
         />
       )}
-      <Stack spacing={8} p={6}>
+      <Stack gap={8} p={6}>
         <Accordion
           size={'lg'}
-          allowToggle
-          allowMultiple={false}
-          defaultIndex={0}
+          collapsible
+          multiple={false}
           borderColor="transparent"
-          defaultValue={1}
+          defaultValue={['1']}
         >
-          <AccordionItem _notLast={{ mb: 2 }}>
+          <AccordionItem value="1" _notLast={{ mb: 2 }}>
             <AccordionButton
               justifyContent="space-between"
               cursor="pointer"
@@ -131,7 +128,7 @@ const AssetPage = () => {
               shadow={'sm'}
             >
               <Text>{asset?.name}</Text>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
             <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
               {asset && (
@@ -143,10 +140,10 @@ const AssetPage = () => {
               )}
             </AccordionPanel>
           </AccordionItem>
-          <AccordionItem>
+          <AccordionItem value="2">
             <AccordionButton
               justifyContent="space-between"
-              _activeStep={{ bg: 'gray.200' }}
+              _active={{ bg: 'gray.200' }}
               cursor="pointer"
               fontSize="lg"
               bg={'white'}
@@ -155,7 +152,7 @@ const AssetPage = () => {
               shadow={'sm'}
             >
               <Text>Asset Tracking</Text>
-              <AccordionIcon ml={'auto'} />
+              <AccordionIcon />
             </AccordionButton>
             <AccordionPanel mt={4} bg={'white'} rounded={'md'}>
               <PageHeader onSearch={handleSearch} />

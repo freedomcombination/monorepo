@@ -2,10 +2,24 @@ import { useMemo } from 'react'
 
 import {
   Box,
-  Button,
-  ButtonGroup,
-  FormLabel,
+  Field,
+  Group,
   HStack,
+  Stack,
+  Text,
+  Textarea,
+} from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useRouter } from 'next/router'
+import { FieldErrorsImpl, useForm } from 'react-hook-form'
+import { FiArrowUpRight } from 'react-icons/fi'
+import { GrFormClose } from 'react-icons/gr'
+import { useBoolean } from 'react-use'
+import stringSimilarity from 'string-similarity'
+import { ObjectSchema } from 'yup'
+
+import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -13,26 +27,10 @@ import {
   ModalHeader,
   ModalOverlay,
   Progress,
-  Stack,
-  Text,
-  Textarea,
-  useBoolean,
-} from '@chakra-ui/react'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useRouter } from 'next/router'
-import { FieldErrorsImpl, useForm } from 'react-hook-form'
-import { FiArrowUpRight } from 'react-icons/fi'
-import { GrFormClose } from 'react-icons/gr'
-import stringSimilarity from 'string-similarity'
-import { ObjectSchema } from 'yup'
-
+} from '@fc/chakra'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
-import type {
-  Mention,
-  RecommendedTweet,
-  RecommendedTweetCreateInput,
-  Tweet,
-} from '@fc/types'
+import type { Mention, Tweet } from '@fc/types'
+import type { RecommendedTweet, RecommendedTweetCreateInput } from '@fc/types'
 
 import { createTweetSchema } from './schema'
 import { CreateTweetFormFieldValues, CreateTweetFormProps } from './types'
@@ -118,9 +116,9 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
   return (
     <Box>
       <Modal
-        size="4xl"
-        onClose={closeModal}
-        isOpen={isOpen}
+        size="xl"
+        onOpenChange={e => (e.open ? null : closeModal)}
+        open={isOpen}
         scrollBehavior="inside"
       >
         <ModalOverlay />
@@ -132,18 +130,16 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
             </Text>
           </ModalHeader>
           <ModalBody>
-            <Stack
-              spacing={4}
-              as="form"
-              onSubmit={handleSubmit(handleRecommend)}
-            >
+            <Stack gap={4} as="form" onSubmit={handleSubmit(handleRecommend)}>
               <Stack>
-                <FormLabel fontWeight={600}>Original Tweet</FormLabel>
+                <Field.Label fontWeight={600}>Original Tweet</Field.Label>
                 <TweetContent<CreateTweetFormFieldValues>
                   horizontal
                   tweet={originalTweet as Tweet}
                   isChangingMedia={isChangingImage}
-                  toggleChangingMedia={setIsChangingImage.toggle}
+                  toggleChangingMedia={() =>
+                    setIsChangingImage(!isChangingImage)
+                  }
                   setValue={setValue}
                 />
                 <FormItem<CreateTweetFormFieldValues>
@@ -152,11 +148,11 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   label="New Tweet"
                   register={register}
                   errors={errors as FieldErrorsImpl<CreateTweetFormFieldValues>}
-                  isRequired
+                  required
                 />
 
                 <ModelSelect<Mention>
-                  isMulti
+                  multiple
                   endpoint={'mentions'}
                   control={control as any}
                   name="mentions"
@@ -180,7 +176,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   </HStack>
 
                   <Progress
-                    colorScheme={
+                    colorPalette={
                       similarity > SIMILARITY_LIMIT ? 'red' : 'green'
                     }
                     size="lg"
@@ -191,7 +187,7 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                   </Text>
                 </Stack>
               </Stack>
-              <ButtonGroup alignSelf="end">
+              <Group alignSelf="end">
                 <Button
                   bg={'transparent'}
                   mr={3}
@@ -202,13 +198,13 @@ export const CreateTweetForm: React.FC<CreateTweetFormProps> = ({
                 </Button>
                 <Button
                   type={'submit'}
-                  colorScheme="purple"
+                  colorPalette="purple"
                   leftIcon={<FiArrowUpRight />}
                   disabled={similarity > SIMILARITY_LIMIT}
                 >
                   Recommend
                 </Button>
-              </ButtonGroup>
+              </Group>
             </Stack>
           </ModalBody>
         </ModalContent>

@@ -6,7 +6,6 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { ABOUT_US } from '@fc/config/data'
 import { ssrTranslations } from '@fc/services/ssrTranslations'
 import type { StrapiLocale } from '@fc/types'
-import { AnimatedBox } from '@fc/ui/components/AnimatedBox'
 import { Container } from '@fc/ui/components/Container'
 import { Hero } from '@fc/ui/components/Hero'
 
@@ -40,13 +39,12 @@ const AboutUs: FC<AboutUsProps> = ({ title, content }) => {
       <Container>
         <SimpleGrid py={16} gap={8} columns={{ base: 1, lg: 3 }}>
           {content.map(({ title, description, image }, i) => (
-            <AnimatedBox directing="to-down" delay={i * 3} key={i}>
-              <AboutUsBlock
-                title={title}
-                description={description}
-                image={image}
-              />
-            </AnimatedBox>
+            <AboutUsBlock
+              key={i}
+              title={title}
+              description={description}
+              image={image}
+            />
           ))}
         </SimpleGrid>
       </Container>

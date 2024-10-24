@@ -1,4 +1,4 @@
-import { TooltipProps } from '@chakra-ui/react'
+import { TooltipProps } from '@fc/chakra'
 
 import { ActionWrapperProps } from '../ActionWrapper'
 

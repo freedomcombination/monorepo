@@ -2,17 +2,12 @@ import { useState } from 'react'
 
 import {
   Box,
-  Button,
-  FormControl,
-  FormLabel,
+  FieldLabel,
   HStack,
   Image,
-  Radio,
-  RadioGroup,
   Stack,
   Text,
   Textarea,
-  useToast,
   VStack,
 } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
@@ -20,6 +15,7 @@ import axios from 'axios'
 import { useTranslation } from 'next-i18next'
 import { MdOutlinePayment, MdOutlineSend } from 'react-icons/md'
 
+import { Button, Field, Radio, RadioGroup, toaster } from '@fc/chakra'
 import { SITE_URL } from '@fc/config/constants'
 import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/services/common/mutation'
@@ -38,11 +34,7 @@ export const CourseApplicationPayForm = () => {
   const [payExplanation, setPayExplanation] = useState('')
   const { t } = useTranslation()
   const [isFetching, setIsFetching] = useState(false)
-  const toast = useToast()
   const amount = course.price
-  const onRadioChange = (value: string) => {
-    setPayOnline(value === 'pay-online')
-  }
 
   const onCheckOut = async () => {
     if (profile === null || token === null) return
@@ -64,12 +56,11 @@ export const CourseApplicationPayForm = () => {
         window.location = result.data
       } catch (e) {
         console.error('request course payment error', e)
-        toast({
+        toaster.create({
           title: t('payment.dialog.unknown.title'),
           description: t('payment.dialog.unknown.description'),
-          status: 'error',
+          type: 'error',
           duration: 5000,
-          isClosable: true,
         })
       }
     }
@@ -118,10 +109,10 @@ export const CourseApplicationPayForm = () => {
         width={'180px'}
         gap={6}
         value={payOnline ? 'pay-online' : 'pay-declare'}
-        onChange={onRadioChange}
+        onValueChange={v => setPayOnline(v.value === 'pay-online')}
       >
         <Radio value={'pay-online'}>
-          <VStack alignItems={'flex-start'} gap={0} spacing={0}>
+          <VStack alignItems={'flex-start'} gap={0}>
             <Text textAlign={'left'} fontWeight={'bold'}>
               {t('course.application-radio-pay')}
             </Text>
@@ -131,7 +122,7 @@ export const CourseApplicationPayForm = () => {
           </VStack>
         </Radio>
         <Radio value={'pay-declare'}>
-          <VStack alignItems={'flex-start'} gap={0} spacing={0}>
+          <VStack alignItems={'flex-start'} gap={0}>
             <Text textAlign={'left'} fontWeight={'bold'}>
               {t('course.application-radio-inform')}
             </Text>
@@ -153,7 +144,7 @@ export const CourseApplicationPayForm = () => {
             justifyContent={'center'}
           >
             <Stack width={'full'} flex={1}>
-              <HStack spacing={4}>
+              <HStack gap={4}>
                 <Image src={`/images/ideal-logo.svg`} h={50} alt="ideal" />
 
                 <Image
@@ -171,11 +162,11 @@ export const CourseApplicationPayForm = () => {
             </Stack>
 
             <Button
-              isDisabled={!amount || !profile} // wait until profile is loaded
+              disabled={!amount || !profile} // wait until profile is loaded
               leftIcon={<MdOutlinePayment />}
               onClick={onCheckOut}
-              isLoading={isFetching}
-              colorScheme="primary"
+              loading={isFetching}
+              colorPalette="primary"
             >
               {t('course.application-check-out')}
               {amount && `  ${formatPrice(amount)}`}
@@ -188,13 +179,13 @@ export const CourseApplicationPayForm = () => {
             alignItems={'flex-start'}
             justifyContent={'center'}
           >
-            <FormControl position={'relative'} w={'100%'} flex={1}>
+            <Field position={'relative'} w={'100%'} flex={1}>
               <HStack>
-                <FormLabel flex={1} fontSize={'sm'} textAlign={'left'}>
+                <FieldLabel flex={1} fontSize={'sm'} textAlign={'left'}>
                   {t('course.application-pay-info-title', {
                     limit: EXPLANATION_LIMIT,
                   })}
-                </FormLabel>
+                </FieldLabel>
                 <Text
                   mb={2}
                   flexShrink={0}
@@ -213,14 +204,14 @@ export const CourseApplicationPayForm = () => {
                 onChange={e => setPayExplanation(e.target.value)}
                 placeholder={t('course.application-pay-info-placeholder')}
                 size={'sm'}
-                isInvalid={payExplanation.length < EXPLANATION_LIMIT}
+                aria-invalid={payExplanation.length < EXPLANATION_LIMIT}
                 resize={'vertical'}
               />
-            </FormControl>
+            </Field>
             <Button
               leftIcon={<MdOutlineSend />}
-              colorScheme="primary"
-              isDisabled={payExplanation.length < EXPLANATION_LIMIT}
+              colorPalette="primary"
+              disabled={payExplanation.length < EXPLANATION_LIMIT}
               onClick={onSendInfo}
               justifySelf={'end'}
             >

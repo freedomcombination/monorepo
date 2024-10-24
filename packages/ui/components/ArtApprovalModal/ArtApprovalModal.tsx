@@ -3,24 +3,25 @@ import { FC, useState } from 'react'
 import {
   Badge,
   Box,
-  Button,
-  ButtonGroup,
+  Group,
   Heading,
   HStack,
+  SimpleGrid,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
+import {
+  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
-  SimpleGrid,
-  Stack,
   Tag,
-  Text,
-  Wrap,
-} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-
+} from '@fc/chakra'
 import type { Art, StrapiLocale } from '@fc/types'
 
 import { ArtFeedbackForm } from './ArtFeedbackForm'
@@ -52,10 +53,10 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
   return (
     <Box>
       <Modal
-        onClose={onClose}
-        isOpen={isOpen}
+        onOpenChange={e => (e.open ? null : onClose())}
+        open={isOpen}
         scrollBehavior="inside"
-        isCentered
+        placement={'center'}
       >
         <ModalOverlay />
         <ModalContent maxW="95vw" p={0} overflow="hidden">
@@ -65,8 +66,8 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
               <ArtCardImage art={art} />
               {!isEditing && (
                 <Stack overflowY={'auto'}>
-                  <Stack spacing={4} p={{ base: 4, lg: 8 }} flex={1}>
-                    <ButtonGroup isAttached>
+                  <Stack gap={4} p={{ base: 4, lg: 8 }} flex={1}>
+                    <Group attached>
                       {['en', 'nl', 'tr'].map(lang => (
                         <Button
                           key={lang}
@@ -77,8 +78,8 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                           {lang}
                         </Button>
                       ))}
-                    </ButtonGroup>
-                    <HStack spacing={4}>
+                    </Group>
+                    <HStack gap={4}>
                       <Heading flex={1} color={'primary.500'} fontWeight={700}>
                         {title}
                       </Heading>
@@ -87,7 +88,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                         data-status={art.approvalStatus}
                         flexShrink={0}
                         size={'lg'}
-                        colorScheme={
+                        colorPalette={
                           art.approvalStatus === 'approved'
                             ? 'green'
                             : art.approvalStatus === 'rejected'
@@ -103,7 +104,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                       </Tag>
                     </HStack>
 
-                    <HStack spacing={3} w={'full'}>
+                    <HStack gap={3} w={'full'}>
                       <WAvatar
                         size="md"
                         src={artist?.avatar?.url}
@@ -121,7 +122,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                       <Text color={'black'} fontWeight={700}>
                         {t('categories')}
                       </Text>
-                      <Wrap>
+                      <Group wrap={'wrap'}>
                         {art?.categories?.map(category => (
                           <Badge
                             py={1}
@@ -133,7 +134,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                             {category[`name_${language}`]}
                           </Badge>
                         ))}
-                      </Wrap>
+                      </Group>
                     </Stack>
                     <Stack flex={1} h={'full'}>
                       <Text color={'black'} fontWeight={700}>
@@ -162,7 +163,7 @@ export const ArtApprovalModal: FC<ArtApprovalTypes> = ({
                 </Stack>
               )}
               {isEditing && (
-                <Stack spacing={4} p={{ base: 4, lg: 8 }} overflowY={'auto'}>
+                <Stack gap={4} p={{ base: 4, lg: 8 }} overflowY={'auto'}>
                   <HStack justify={'space-between'}>
                     <Heading color={'primary.500'} fontWeight={700}>
                       {t('edit')}

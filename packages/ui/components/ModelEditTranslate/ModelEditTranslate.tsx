@@ -1,20 +1,13 @@
 import { useState } from 'react'
 
-import {
-  FormLabel,
-  HStack,
-  Stack,
-  Text,
-  Textarea,
-  useBoolean,
-  Wrap,
-} from '@chakra-ui/react'
+import { Field, HStack, Stack, Text, Textarea, Group } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { HiOutlineCheck } from 'react-icons/hi'
 import { MdClose, MdOutlineCheck } from 'react-icons/md'
+import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
 import { useApproveModelMutation } from '@fc/services/common/approveModel'
@@ -83,7 +76,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
   const handleSuccess = () => {
     onSuccess?.()
     refetch()
-    setIsEditing.off()
+    setIsEditing(false)
     setConfirmState(undefined)
   }
 
@@ -142,7 +135,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
 
   const onCancel = () => {
     resetForm()
-    setIsEditing.off()
+    setIsEditing(false)
     setConfirmState(undefined)
   }
 
@@ -157,7 +150,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
         />
       )}
       <Stack as="form" onSubmit={handleSubmit(onSaveModel)}>
-        <Stack p={8} spacing={8}>
+        <Stack p={8} gap={8}>
           {(model?.localizations?.length || 0) > 0 && (
             <FormLocaleSwitcher model={model} />
           )}
@@ -165,19 +158,19 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             return (
               <Stack
                 key={index}
-                spacing={4}
+                gap={4}
                 p={4}
                 rounded={'md'}
                 shadow={'md'}
                 bg={'white'}
               >
-                <FormLabel
+                <Field.Label
                   htmlFor={`${model?.id}`}
                   textTransform={'capitalize'}
                   fontWeight={600}
                 >
                   {t(field.name as keyof I18nNamespaces['common'])}
-                </FormLabel>
+                </Field.Label>
                 <Stack direction={{ base: 'column', lg: 'row' }}>
                   {!isReferenceSelf && referenceModel && (
                     <HStack w={{ base: 'full', lg: '33%' }} align="baseline">
@@ -207,8 +200,8 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
                         {...(!isEditing && { p: 0 })}
                         key={index}
                         name={field.name as string}
-                        isDisabled={!isEditing}
-                        isRequired={field.isRequired}
+                        disabled={!isEditing}
+                        required={field.required}
                         errors={errors}
                         control={control}
                         _disabled={disabledStyle}
@@ -233,7 +226,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
                         whiteSpace={'pre-wrap'}
                         errors={errors}
                         register={register}
-                        isDisabled={!isEditing}
+                        disabled={!isEditing}
                         _disabled={disabledStyle}
                         hideLabel
                       />
@@ -245,7 +238,8 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
           })}
         </Stack>
         {/*  Button group  */}
-        <Wrap
+        <Group
+          wrap={'wrap'}
           alignSelf={'end'}
           justify={'end'}
           pos={'sticky'}
@@ -264,8 +258,8 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
             onClick={onApprove}
             leftIcon={<HiOutlineCheck />}
             fontSize="sm"
-            colorScheme={'purple'}
-            isLoading={approveModelMutation.isPending}
+            colorPalette={'purple'}
+            loading={approveModelMutation.isPending}
           >
             {t('approve')}
           </ActionButton>
@@ -273,7 +267,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
           <ActionStack direction={'row'} canUpdate={endpoint}>
             <ActionButton
               isVisible={!isEditing}
-              onClick={setIsEditing.on}
+              onClick={() => setIsEditing(true)}
               leftIcon={<AiOutlineEdit />}
               fontSize="sm"
             >
@@ -293,7 +287,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
               isVisible={isEditing}
               onClick={onCancel}
               leftIcon={<MdClose />}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
               fontSize="sm"
             >
               {t('cancel')}
@@ -301,7 +295,7 @@ export const ModelEditTranslate = <T extends StrapiTranslatableModel>({
 
             {children}
           </ActionStack>
-        </Wrap>
+        </Group>
       </Stack>
     </>
   )

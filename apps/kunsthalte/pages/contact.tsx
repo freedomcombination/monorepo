@@ -1,6 +1,6 @@
 import {
   Box,
-  Divider,
+  Separator,
   Heading,
   SimpleGrid,
   Text,
@@ -35,27 +35,31 @@ const Contact = () => {
             minH="inherit"
           >
             <VStack
-              bgGradient={'linear(to-b, primary.400, primary.500)'}
+              bgGradient={'to-b'}
+              gradientFrom={'primary.400'}
+              gradientTo={'primary.500'}
               color="primary.50"
               borderRadius="lg"
               p={{ base: 8, lg: 12 }}
               textAlign="center"
               justify="space-evenly"
-              spacing={8}
+              gap={8}
             >
               <Heading fontWeight={900} as="h2" size="lg" color="primary.50">
                 {t('art-stop')}
               </Heading>
               <Text>{t('about.content')}</Text>
 
-              <Divider borderColor="whiteAlpha.400" />
+              <Separator borderColor="whiteAlpha.400" />
 
               <ButtonLink
                 isExternal
-                variant="link"
+                variant="plain"
                 color="primary.50"
                 _hover={{ color: 'primary.100' }}
-                leftIcon={<Box as={MdEmail} color="primary.50" size="20px" />}
+                leftIcon={
+                  <Box as={MdEmail} color="primary.50" fontSize="20px" />
+                }
                 href="mailto:kunsthalte@freedomcombination.com"
               >
                 kunsthalte@freedomcombination.com

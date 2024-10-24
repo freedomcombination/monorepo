@@ -26,7 +26,7 @@ export const PlatformTemplate: FC<PlatformTemplateProps> = ({
 
   return (
     <Container maxW="container.md">
-      <Stack py={8} spacing={8} align="center">
+      <Stack py={8} gap={8} align="center">
         <Box boxSize={300}>
           <WImage
             src={image}

@@ -8,10 +8,7 @@ import { CollectionPagesPops } from './types'
 import { WImage } from '../WImage'
 
 export const CollectionPages = forwardRef<HTMLDivElement, CollectionPagesPops>(
-  function CollectionPages(
-    { collection, pageBgGradient: pageBgGdarient },
-    ref,
-  ) {
+  function CollectionPages({ collection }, ref) {
     const router = useRouter()
     const locale = router.locale
 
@@ -27,8 +24,8 @@ export const CollectionPages = forwardRef<HTMLDivElement, CollectionPagesPops>(
 
           return (
             <Fragment key={index}>
-              <Page ref={ref} p={8} bgGradient={pageBgGdarient}>
-                <VStack justify="center" w="full" h="full" spacing={4}>
+              <Page ref={ref} p={8} bg={'primary.50'}>
+                <VStack justify="center" w="full" h="full" gap={4}>
                   {image && (
                     <WImage
                       rounded="sm"
@@ -45,7 +42,7 @@ export const CollectionPages = forwardRef<HTMLDivElement, CollectionPagesPops>(
                   )}
                 </VStack>
               </Page>
-              <Page ref={ref} bgGradient={pageBgGdarient}>
+              <Page ref={ref} bg={'primary.50'}>
                 <Stack w="full" h="full" justify="center" fontFamily="club">
                   <Heading>{art[titleKey]}</Heading>
                   <Text fontFamily="club" fontSize={'xl'}>

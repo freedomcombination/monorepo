@@ -20,8 +20,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({
 }) => {
   const {
     data,
-    isLoading,
-    setIsLoading,
+    loading,
+    setLoading,
     refetch: checkAuth,
   } = useUserQuery(initialState)
 
@@ -72,14 +72,14 @@ export const AuthProvider: FC<AuthProviderProps> = ({
   }
 
   const logout = async (): Promise<void> => {
-    setIsLoading(true)
+    setLoading(true)
 
     try {
       await axios.post<Auth>('/api/auth/logout')
     } catch (error: any) {
       setError(error.message)
     } finally {
-      setIsLoading(false)
+      setLoading(false)
       await checkAuth()
 
       router.push('/')
@@ -90,7 +90,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     identifier: string,
     password: string,
   ): Promise<AuthState | void> => {
-    setIsLoading(true)
+    setLoading(true)
     try {
       const response = await axios.post<Auth>('/api/auth/login', {
         identifier,
@@ -114,7 +114,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         throw error
       }
     } finally {
-      setIsLoading(false)
+      setLoading(false)
     }
   }
 
@@ -124,7 +124,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
     username: string,
     name: string,
   ): Promise<AuthState | void> => {
-    setIsLoading(true)
+    setLoading(true)
 
     try {
       const response = await axios.post<Auth>('/api/auth/register', {
@@ -145,7 +145,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({
 
       throw error?.error?.message || error.message
     } finally {
-      setIsLoading(false)
+      setLoading(false)
     }
   }
 
@@ -155,8 +155,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({
         demoPermissions,
         error,
         isAdmin,
-        isAuthModalOpen: authModalDisclosure.isOpen,
-        isLoading,
+        isAuthModalOpen: authModalDisclosure.open,
+        loading,
         permissions,
         profile,
         roles,

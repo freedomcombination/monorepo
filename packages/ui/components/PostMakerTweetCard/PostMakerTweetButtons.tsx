@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Button, Center, HStack, Text } from '@chakra-ui/react'
+import { Center, HStack, Text } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { track } from '@vercel/analytics'
 import { useRouter } from 'next/router'
@@ -10,6 +10,7 @@ import { FaXTwitter } from 'react-icons/fa6'
 import { GoMention } from 'react-icons/go'
 import { MdTrendingUp } from 'react-icons/md'
 
+import { Button } from '@fc/chakra'
 import { SITE_URL } from '@fc/config/constants'
 import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 import { useUpdateHashtagSentenceMutation } from '@fc/services/hashtagSentence/updateHashtagSentences'
@@ -91,35 +92,33 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
   if (!post) return null
 
   return (
-    <HStack justifyContent={'space-between'} spacing={{ base: 0, lg: 4 }}>
+    <HStack justifyContent={'space-between'} gap={{ base: 0, lg: 4 }}>
       <Button
         variant={'ghost'}
-        colorScheme={'gray'}
+        colorPalette={'gray'}
         onClick={() => {
           track('post_maker', { action: 'add_mentions' })
           setActivePostId(post.id)
           mentionsDisclosure.onOpen()
         }}
-        iconSpacing={{ base: 0, md: 2 }}
         leftIcon={<GoMention />}
       >
-        <Text isTruncated display={{ base: 'none', md: 'block' }}>
+        <Text truncate display={{ base: 'none', md: 'block' }}>
           {t('post.add-mention')}
         </Text>
       </Button>
 
       <Button
         variant={'ghost'}
-        colorScheme={'gray'}
+        colorPalette={'gray'}
         onClick={() => {
           track('post_maker', { action: 'add_trends' })
           setActivePostId(post.id)
           trendsDisclosure.onOpen()
         }}
-        iconSpacing={{ base: 0, md: 2 }}
         leftIcon={<MdTrendingUp />}
       >
-        <Text isTruncated display={{ base: 'none', md: 'block' }}>
+        <Text truncate display={{ base: 'none', md: 'block' }}>
           {t('post.add-trend')}
         </Text>
       </Button>
@@ -129,13 +128,12 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
       {!isIosSafari && (
         <Button
           role={'group'}
-          iconSpacing={{ base: 0, md: 2 }}
           leftIcon={<FaXTwitter />}
           onClick={() => {
             onShare().then(() => onTweet())
           }}
           flexShrink={0}
-          colorScheme={'gray'}
+          colorPalette={'gray'}
           bg={'black'}
           fontWeight={600}
           _hover={{ bg: 'gray.800' }}
@@ -165,10 +163,9 @@ export const PostMakerTweetButtons: FC<PostMakerTweetButtonsProps> = ({
             role={'group'}
             pos={'relative'}
             as={'span'}
-            colorScheme={'gray'}
+            colorPalette={'gray'}
             bg={'black'}
             flexShrink={0}
-            iconSpacing={{ base: 0, md: 2 }}
             leftIcon={<FaXTwitter />}
             onClick={onShare}
             fontWeight={600}

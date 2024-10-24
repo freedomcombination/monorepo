@@ -1,19 +1,14 @@
+import { Box, Flex, Textarea } from '@chakra-ui/react'
+
 import {
-  Box,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
+  Field,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
   Switch,
-  Textarea,
-} from '@chakra-ui/react'
-import { upperFirst } from 'lodash'
-
+} from '@fc/chakra'
 import type { Post, StrapiCollectionEndpoint, StrapiModel } from '@fc/types'
 
 import { ModelCreateFormBodyProps } from './types'
@@ -57,9 +52,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
       !activeOption || !field.group || field?.group?.value === activeOption
     const videoUrl = watch(field.name as string)
 
-    const errorMessage =
-      errors?.[field.name]?.message &&
-      upperFirst(errors?.[field.name]?.message as string)
+    const errorMessage = errors?.[field.name]?.message as string
 
     if (field.type === 'media-url') {
       return (
@@ -80,20 +73,15 @@ export const renderCreateFormBody = <T extends StrapiModel>({
 
     if (field.type === 'file') {
       return (
-        <FormControl
-          isInvalid={Boolean(errors?.[field.name as string])}
+        <Field
+          invalid={Boolean(errors?.[field.name as string])}
           key={index}
-          isRequired={field.isRequired}
+          required={field.required}
           zIndex={0}
+          label={label}
+          errorText={errorMessage}
           {...(!isActive && { display: 'none' })}
         >
-          <FormLabel
-            fontSize={'sm'}
-            fontWeight={600}
-            textTransform={'capitalize'}
-          >
-            {label}
-          </FormLabel>
           <ModelMedia
             isEditing={!!postModel?.video?.url}
             model={model as T}
@@ -102,8 +90,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
             isChangingMedia={isChangingMedia}
             toggleChangingMedia={toggleChangingMedia}
           />
-          <FormErrorMessage>{errorMessage}</FormErrorMessage>
-        </FormControl>
+        </Field>
       )
     }
 
@@ -114,8 +101,8 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           endpoint={field.endpoint as StrapiCollectionEndpoint}
           populate={field.populate}
           options={field.options}
-          isMulti={field.isMulti}
-          isRequired={field.isRequired}
+          multiple={field.multiple}
+          required={field.required}
           name={field.name as string}
           label={label}
           errors={errors}
@@ -132,7 +119,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           key={index}
           name={field.name as string}
           label={label}
-          isRequired={field.isRequired}
+          required={field.required}
           errors={errors}
           control={control}
           _disabled={disabledStyle}
@@ -149,10 +136,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
           mb={1}
           {...(!isActive && { display: 'none' })}
         >
-          <FormControl>
-            <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-              {label}
-            </FormLabel>
+          <Field label={label} errorText={errorMessage}>
             <NumberInput
               maxW={120}
               onChange={value => setValue(field.name as string, value)}
@@ -164,33 +148,28 @@ export const renderCreateFormBody = <T extends StrapiModel>({
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
-
-            <FormErrorMessage>{errorMessage}</FormErrorMessage>
-          </FormControl>
+          </Field>
         </Flex>
       )
     }
 
     if (field.type === 'boolean') {
       return (
-        <FormControl
+        <Field
           key={index}
-          isRequired={field.isRequired}
+          required={field.required}
+          label={label}
+          errorText={errorMessage}
           {...(!isActive && { display: 'none' })}
         >
-          <FormLabel fontWeight={600} fontSize={'sm'}>
-            {label}
-          </FormLabel>
           <Switch
-            colorScheme={'primary'}
+            colorPalette={'primary'}
             size={'lg'}
-            onChange={e => {
-              setValue(field.name as string, e.target.checked)
+            onCheckedChange={e => {
+              setValue(field.name as string, e.checked)
             }}
           />
-
-          <FormErrorMessage>{errorMessage}</FormErrorMessage>
-        </FormControl>
+        </Field>
       )
     }
 
@@ -208,7 +187,7 @@ export const renderCreateFormBody = <T extends StrapiModel>({
         name={field.name as string}
         type={inputType}
         label={label}
-        isRequired={field.isRequired}
+        required={field.required}
         errors={errors}
         register={register}
         _disabled={disabledStyle}

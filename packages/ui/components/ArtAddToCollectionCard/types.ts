@@ -2,7 +2,7 @@ import type { Art, Collection } from '@fc/types'
 
 export type ArtAddToCollectionCardProps = {
   isAdded: boolean
-  isLoading: boolean
+  loading: boolean
   art: Art
   onAdd: (art: Art) => void
   onRemove: (art: Art) => void

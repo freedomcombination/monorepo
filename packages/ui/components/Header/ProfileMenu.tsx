@@ -1,19 +1,17 @@
-import { FC, Fragment } from 'react'
+import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import {
-  Button,
-  DarkMode,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
 
+import {
+  Button,
+  MenuContent,
+  MenuItem,
+  MenuRoot,
+  MenuSeparator,
+  MenuTrigger,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 
 import { ProfileMenuProps } from './types'
@@ -28,64 +26,64 @@ export const ProfileMenu: FC<ProfileMenuProps> = ({
 }) => {
   const isScrolled = useScroll()
   const { t } = useTranslation()
-  const { user, profile, logout, isLoading } = useAuthContext()
+  const { user, profile, logout, loading } = useAuthContext()
   const { asPath } = useRouter()
   const loginHref = `/auth/login?returnUrl=${asPath}`
 
-  const Wrapper = !isScrolled && isDark ? DarkMode : Fragment
-
   if (!isLoggedIn) {
     return (
-      <Wrapper>
-        <ButtonLink
-          href={loginHref}
-          data-testid={`link-${isMobile ? 'm' : 'd'}/login`}
-          size="sm"
-          isLoading={isLoading}
-          variant={!isScrolled && isDark ? 'solid' : 'outline'}
-          rightIcon={<FiLogIn />}
-        >
-          {t('login.signin')}
-        </ButtonLink>
-      </Wrapper>
+      <ButtonLink
+        href={loginHref}
+        data-testid={`link-${isMobile ? 'm' : 'd'}/login`}
+        size="sm"
+        loading={loading}
+        variant={!isScrolled && isDark ? 'solid' : 'outline'}
+        rightIcon={<FiLogIn />}
+      >
+        {t('login.signin')}
+      </ButtonLink>
     )
   }
 
   return (
-    <Menu placement="bottom">
-      <MenuButton
-        data-testid={`button-${isMobile ? 'm' : 'd'}-profile-menu`}
-        as={Button}
-        size={'sm'}
-        leftIcon={
-          <WAvatar
-            size={'xs'}
-            src={profile?.avatar}
-            name={profile?.name || user?.username}
-          />
-        }
-      >
-        {profile?.name || user?.username}
-      </MenuButton>
-      <MenuList>
-        <MenuItem
-          data-testid={`link-${isMobile ? 'm' : 'd'}/profile`}
-          as={Link}
-          href={'/profile'}
+    <MenuRoot positioning={{ placement: 'bottom' }}>
+      <MenuTrigger value="profile-menu" asChild>
+        <Button
+          data-testid={`button-${isMobile ? 'm' : 'd'}-profile-menu`}
+          size={'sm'}
+          leftIcon={
+            <WAvatar
+              size={'xs'}
+              src={profile?.avatar}
+              name={profile?.name || user?.username}
+            />
+          }
         >
-          {t('profile')}
+          {profile?.name || user?.username}
+        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="profile" asChild>
+          <ButtonLink
+            data-testid={`link-${isMobile ? 'm' : 'd'}-profile`}
+            href={'/profile'}
+          >
+            {t('profile')}
+          </ButtonLink>
         </MenuItem>
 
-        <MenuDivider />
-        <MenuItem
-          data-testid={`button-${isMobile ? 'm' : 'd'}-logout`}
-          icon={<FiLogOut />}
-          color="red.400"
-          onClick={logout}
-        >
-          {t('logout')}
+        <MenuSeparator />
+        <MenuItem value="logout">
+          <Button
+            data-testid={`button-${isMobile ? 'm' : 'd'}-logout`}
+            leftIcon={<FiLogOut />}
+            color="red.400"
+            onClick={logout}
+          >
+            {t('logout')}
+          </Button>
         </MenuItem>
-      </MenuList>
-    </Menu>
+      </MenuContent>
+    </MenuRoot>
   )
 }

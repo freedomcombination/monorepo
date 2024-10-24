@@ -14,8 +14,8 @@ import { CollectionList } from '../CollectionList'
 
 export const ArtSideBar: FC<ArtSideBarProps> = ({
   categoryList,
-  isLoading,
-  setIsLoading,
+  loading,
+  setLoading,
 }) => {
   const { t } = useTranslation()
   const { changeCategories } = useChangeParams()
@@ -34,15 +34,15 @@ export const ArtSideBar: FC<ArtSideBarProps> = ({
     .map(category => category.split('=')[1])
 
   return (
-    <Stack spacing={8} alignSelf="start">
+    <Stack gap={8} alignSelf="start">
       {categoryList && (
         <Box maxH="calc((100vh - 150px) / 2)" overflowY="scroll">
           <CategoryFilter
             categoryData={categoryList || []}
             initialCategories={initialCategories}
-            isLoading={isLoading}
+            loading={loading}
             selectCategories={changeCategories}
-            setIsLoading={setIsLoading}
+            setLoading={setLoading}
             title={t('categories')}
             locale={locale}
           />

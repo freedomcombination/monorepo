@@ -1,10 +1,7 @@
 import { FC } from 'react'
 
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
+  Box,
   Center,
   HStack,
   Heading,
@@ -17,6 +14,7 @@ import { useTranslation } from 'next-i18next'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 import Markdown from 'react-markdown'
 
+import { Alert } from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { ArchiveContent } from '@fc/types'
 
@@ -37,7 +35,7 @@ export const PostSentenceRefDrawer = () => {
   if (!sentence) return null
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       {sentence.value && (
         <Stack background={'white'} borderRadius={'lg'} p={4}>
           <Text>{sentence.value}</Text>
@@ -45,14 +43,18 @@ export const PostSentenceRefDrawer = () => {
       )}
 
       {isLoading || !archiveContent ? (
-        <LoadingInfo isLoading={isLoading} />
+        <LoadingInfo loading={isLoading} />
       ) : (
-        <Stack background={'white'} borderRadius={'lg'} p={4} spacing={4}>
+        <Stack background={'white'} borderRadius={'lg'} p={4} gap={4}>
           <Heading size={'md'} fontWeight={'bold'} color="gray.700">
             {archiveContent.title}
           </Heading>
           <HStack>
-            <Link isExternal href={archiveContent.link}>
+            <Link
+              rel="noopener noreferrer"
+              target="_blank"
+              href={archiveContent.link}
+            >
               <HStack color="blue.500">
                 <Text>{archiveContent.source}</Text>
                 <HiOutlineExternalLink />
@@ -67,7 +69,7 @@ export const PostSentenceRefDrawer = () => {
   )
 }
 
-const LoadingInfo: FC<{ isLoading: boolean }> = ({ isLoading }) => {
+const LoadingInfo: FC<{ loading: boolean }> = ({ loading }) => {
   const { t } = useTranslation()
 
   return (
@@ -77,7 +79,7 @@ const LoadingInfo: FC<{ isLoading: boolean }> = ({ isLoading }) => {
       py={16}
       overflow={'hidden'}
     >
-      {isLoading ? (
+      {loading ? (
         <Spinner size="xl" />
       ) : (
         <Alert
@@ -88,14 +90,9 @@ const LoadingInfo: FC<{ isLoading: boolean }> = ({ isLoading }) => {
           justifyContent="center"
           textAlign="center"
           background={'white'}
+          title={t('reference')}
         >
-          <AlertIcon boxSize="40px" mr={0} />
-          <AlertTitle mt={4} mb={1} fontSize="lg">
-            {t('reference')}
-          </AlertTitle>
-          <AlertDescription maxWidth="sm">
-            {t('no-reference-found')}
-          </AlertDescription>
+          <Box maxWidth="sm">{t('no-reference-found')}</Box>
         </Alert>
       )}
     </Center>

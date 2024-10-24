@@ -1,4 +1,3 @@
-import { ColorModeScript } from '@chakra-ui/react'
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document'
 
 import { DocumentContent } from '@fc/ui/components/DocumentContent'
@@ -6,12 +5,11 @@ import { DocumentContent } from '@fc/ui/components/DocumentContent'
 export default class Document extends NextDocument {
   render() {
     return (
-      <Html>
+      <Html suppressHydrationWarning>
         <Head>
           <DocumentContent />
         </Head>
         <body>
-          <ColorModeScript initialColorMode="light" />
           <Main />
           <NextScript />
         </body>

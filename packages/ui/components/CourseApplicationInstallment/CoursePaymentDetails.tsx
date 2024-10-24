@@ -1,22 +1,12 @@
 import React, { FC } from 'react'
 
 import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
   HStack,
   Heading,
-  IconButton,
   SimpleGrid,
   Stack,
   Text,
-  Tooltip,
   VStack,
-  useToast,
 } from '@chakra-ui/react'
 import { isPast } from 'date-fns'
 import { useRouter } from 'next/router'
@@ -24,6 +14,18 @@ import { useTranslation } from 'next-i18next'
 import { FaStripe } from 'react-icons/fa6'
 import { TbCash } from 'react-icons/tb'
 
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  Button,
+  Tooltip,
+  IconButton,
+  toaster,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/services/common/mutation'
 import { CoursePayment, PaymentCreateInputManual } from '@fc/types'
@@ -40,7 +42,6 @@ export const CoursePaymentDetails: FC<CourseApplicationComponentProps> = ({
   onSave = () => {},
 }) => {
   const { profile, token } = useAuthContext()
-  const toast = useToast()
   const [isOpen, setIsOpen] = React.useState(false)
   const cancelRef = React.useRef(null)
   const { t } = useTranslation()
@@ -79,23 +80,19 @@ export const CoursePaymentDetails: FC<CourseApplicationComponentProps> = ({
         token,
       })
 
-      toast({
+      toaster.create({
         title: 'Payment successful',
         description: 'Thank you for your payment',
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+        type: 'success',
       })
 
       onSave()
       setIsOpen(false)
     } catch (error) {
-      toast({
+      toaster.create({
         title: 'Payment failed',
         description: (error as Error).message,
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     }
   }
@@ -106,7 +103,7 @@ export const CoursePaymentDetails: FC<CourseApplicationComponentProps> = ({
   }
 
   return (
-    <Stack spacing={2} borderWidth={1} borderRadius={'lg'} p={4}>
+    <Stack gap={2} borderWidth={1} borderRadius={'lg'} p={4}>
       <KeyValue tKey="course.applicant.details.installment.kv.course-fee">
         {formatPrice(course.price!)}
       </KeyValue>
@@ -126,35 +123,31 @@ export const CoursePaymentDetails: FC<CourseApplicationComponentProps> = ({
         setParams={setParams}
       />
 
-      <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={cancelRef}
-        onClose={() => setIsOpen(false)}
-      >
-        <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+      <Dialog open={isOpen} onOpenChange={e => !e.open && setIsOpen(false)}>
+        <DialogOverlay>
+          <DialogContent>
+            <DialogHeader fontSize="lg" fontWeight="bold">
               {t('course.payment.title.nth-installment', {
                 number: paymentParams?.installmentNumber,
               })}{' '}
               : {formatPrice(paymentParams?.price ?? 0)}
-            </AlertDialogHeader>
+            </DialogHeader>
 
-            <AlertDialogBody>
+            <DialogBody>
               {t('course.applicant.details.explain.warn')}
-            </AlertDialogBody>
+            </DialogBody>
 
-            <AlertDialogFooter>
+            <DialogFooter>
               <Button ref={cancelRef} onClick={() => setIsOpen(false)}>
                 {t('cancel')}
               </Button>
               <Button colorScheme="red" onClick={onPaymentWithCash} ml={3}>
                 {t('course.payment.title.pay')}
               </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      </AlertDialog>
+            </DialogFooter>
+          </DialogContent>
+        </DialogOverlay>
+      </Dialog>
     </Stack>
   )
 }
@@ -192,7 +185,7 @@ const PaymentRow = ({
         <KeyValue title="Total">
           <Text fontWeight={'bold'}>{formatPrice(total)}</Text>
         </KeyValue>
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={3}>
+        <SimpleGrid columns={{ base: 1, md: 3 }} gap={3}>
           {installments.map(installment => (
             <VStack
               key={installment.installmentNumber}
@@ -204,7 +197,7 @@ const PaymentRow = ({
               <HStack gap={6}>
                 <VStack align={'flex-end'}>
                   {installment.payment && (
-                    <Tooltip label={installment.payment?.checkoutSessionId}>
+                    <Tooltip content={installment.payment?.checkoutSessionId}>
                       <IconButton
                         variant={'ghost'}
                         p={0}

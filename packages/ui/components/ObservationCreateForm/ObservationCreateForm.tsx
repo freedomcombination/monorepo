@@ -1,13 +1,13 @@
 import { FC, useEffect } from 'react'
 
-import { Button, Stack, Textarea } from '@chakra-ui/react'
+import { Stack, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 
+import { Button, toaster } from '@fc/chakra'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import type { Observation, ObservationCreateInput } from '@fc/types/observation'
-import { toastMessage } from '@fc/utils/toastMessage'
 
 import { observationFormSchema } from './schema'
 import {
@@ -53,17 +53,17 @@ export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
     } catch (error) {
       console.error(error)
 
-      toastMessage(
-        'Error',
-        "Couldn't send observation. Please try again later.",
-        'error',
-      )
+      toaster.create({
+        title: 'Error',
+        description: "Couldn't send observation. Please try again later.",
+        type: 'error',
+      })
     }
   }
 
   return (
     <form onSubmit={handleSubmit(handleSendForm)}>
-      <Stack spacing={4}>
+      <Stack gap={4}>
         <FormItem
           as={Textarea}
           name="content"
@@ -75,8 +75,8 @@ export const ObservationCreateForm: FC<ObservationCreateFormProps> = ({
         <Button
           alignSelf="flex-end"
           rightIcon={<FiArrowRight />}
-          isLoading={isPending}
-          isDisabled={!isValid}
+          loading={isPending}
+          disabled={!isValid}
           type="submit"
         >
           Send

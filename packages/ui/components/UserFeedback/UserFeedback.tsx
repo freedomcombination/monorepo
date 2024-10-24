@@ -1,11 +1,11 @@
-import React from 'react'
+import { Box, useDisclosure } from '@chakra-ui/react'
 
-import { Box, Button, useDisclosure } from '@chakra-ui/react'
+import { Button } from '@fc/chakra'
 
 import { UserFeedbackForm } from '../UserFeedbackForm'
 
 export const UserFeedback = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   return (
     <Button
@@ -19,11 +19,11 @@ export const UserFeedback = () => {
       fontSize={'sm'}
       right={-2}
       onClick={onOpen}
-      isDisabled={isOpen}
-      colorScheme="primary"
+      disabled={open}
+      colorPalette="primary"
       aria-label="Give feedback"
       transform="rotate(180deg)"
-      sx={{ writingMode: 'vertical-rl' }}
+      css={{ writingMode: 'vertical-rl' }}
       borderBottomLeftRadius={0}
       borderTopLeftRadius={0}
       transition={'all 0.2s'}
@@ -36,7 +36,7 @@ export const UserFeedback = () => {
       }}
     >
       <Box>Feedback</Box>
-      <UserFeedbackForm isOpen={isOpen} onClose={onClose} />
+      <UserFeedbackForm isOpen={open} onClose={onClose} />
     </Button>
   )
 }

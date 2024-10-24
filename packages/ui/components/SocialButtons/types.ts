@@ -1,6 +1,6 @@
-import { IconButtonProps } from '@chakra-ui/react'
 import { IconType } from 'react-icons'
 
+import { IconButtonProps } from '@fc/chakra'
 import type { Localize } from '@fc/types'
 
 export type SocialItem = {
@@ -9,6 +9,9 @@ export type SocialItem = {
   link: Localize<string> | string
 }
 
-export type SocialButtonsProps = Omit<IconButtonProps, 'aria-label'> & {
+export type SocialButtonsProps = Omit<
+  IconButtonProps,
+  'aria-label' | 'icon'
+> & {
   items: SocialItem[]
 }

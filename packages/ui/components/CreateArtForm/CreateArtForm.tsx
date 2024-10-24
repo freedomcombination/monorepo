@@ -1,35 +1,37 @@
 import { FC, useRef, useState } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import { useDisclosure } from '@chakra-ui/react'
 import {
   Box,
-  Button,
-  ButtonGroup,
+  Group,
   ButtonProps,
   Center,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   SimpleGrid,
   Spinner,
   Stack,
   Text,
   Textarea,
-  useDisclosure,
-  useToast,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useQueryClient } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FieldErrorsImpl, useForm } from 'react-hook-form'
 import useFormPersist from 'react-hook-form-persist'
 import { FaPlus, FaUpload } from 'react-icons/fa'
 
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  toaster,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
@@ -56,7 +58,6 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
   const cancelRef = useRef<HTMLButtonElement>(null)
   const formDisclosure = useDisclosure()
   const successDisclosure = useDisclosure()
-  const toast = useToast()
 
   const {
     register,
@@ -109,12 +110,10 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
         queryClient.invalidateQueries({ queryKey: ['user-arts', profile?.id] })
       },
       onError: () => {
-        toast({
+        toaster.create({
           title: 'Error',
           description: 'Something went wrong',
-          status: 'error',
-          duration: 5000,
-          isClosable: true,
+          type: 'error',
         })
       },
     })
@@ -138,7 +137,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
     <>
       {/* SUCCESS ALERT */}
       <ArtCreateSuccessAlert
-        isOpen={successDisclosure.isOpen}
+        isOpen={successDisclosure.open}
         onClose={successDisclosure.onClose}
         ref={cancelRef}
       />
@@ -156,11 +155,11 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
       </Button>
 
       <Modal
-        isCentered
-        closeOnOverlayClick={false}
-        isOpen={formDisclosure.isOpen}
-        onClose={closeForm}
-        size={user ? '4xl' : 'md'}
+        placement={'center'}
+        closeOnInteractOutside={false}
+        open={formDisclosure.open}
+        onOpenChange={e => (e.open ? formDisclosure.onOpen() : closeForm())}
+        size={user ? 'xl' : 'md'}
       >
         <ModalOverlay />
         <ModalContent>
@@ -201,13 +200,13 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
               <SimpleGrid columns={{ base: 1, lg: 2 }} gap={4}>
                 <FilePicker onLoaded={setImages} />
                 <Stack
-                  spacing={4}
+                  gap={4}
                   as="form"
                   onSubmit={handleSubmit(handleCreateArt)}
                 >
                   <FormItem
                     name="title"
-                    isRequired
+                    required
                     errors={errors}
                     register={register}
                   />
@@ -215,7 +214,7 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                     name="categories"
                     errors={errors}
                     control={control}
-                    isMulti
+                    multiple
                     options={
                       categories.data?.data?.map(c => ({
                         value: c.id.toString(),
@@ -227,24 +226,25 @@ export const CreateArtForm: FC<ButtonProps> = ({ size = 'lg', ...rest }) => {
                   <FormItem
                     name="description"
                     as={Textarea}
-                    isRequired
+                    required
                     errors={errors}
                     register={register}
                   />
 
-                  <ButtonGroup alignSelf="end">
+                  <Group alignSelf="end">
                     <Button onClick={closeForm} mr={3} ref={cancelRef}>
                       {t('cancel')}
                     </Button>
                     <Button
                       data-testid="button-create-art"
-                      isDisabled={!images || images?.length === 0 || !isValid}
+                      disabled={!images || images?.length === 0 || !isValid}
                       type="submit"
                       rightIcon={<FaPlus />}
+                      colorPalette={'green'}
                     >
                       {t('create')}
                     </Button>
-                  </ButtonGroup>
+                  </Group>
                 </Stack>
               </SimpleGrid>
             )}

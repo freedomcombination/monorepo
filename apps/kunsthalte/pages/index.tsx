@@ -36,7 +36,7 @@ const Home = () => {
           transform={{ base: 'translateY(-50px)', lg: 'translateY(-120px)' }}
         >
           <AnimatedBox directing="to-down">
-            <VStack flex={1} py={16} spacing={4} textAlign="center">
+            <VStack flex={1} py={16} gap={4} textAlign="center">
               <Heading fontWeight={900}>{t('art-stop')}</Heading>
               <Text fontSize={{ base: 'md', lg: 'xl' }} color="white">
                 &quot;<>{t('footer-about.kunsthalte')}</>&quot;
@@ -47,7 +47,7 @@ const Home = () => {
             <Stack
               justify="center"
               direction={{ base: 'column', lg: 'row' }}
-              spacing={4}
+              gap={4}
             >
               <ButtonLink
                 data-testid="view-arts"

@@ -8,7 +8,7 @@ import { Container } from '../Container'
 
 export const CollectionTemplate: FC<CollectionTemplateProps> = ({
   centerRef,
-  isLoading,
+  loading,
   height,
   width,
   pageShow,
@@ -17,7 +17,7 @@ export const CollectionTemplate: FC<CollectionTemplateProps> = ({
   return (
     <Container minH="inherit">
       <Center ref={centerRef} py={8} minH="inherit">
-        {isLoading || !height ? (
+        {loading || !height ? (
           <Spinner />
         ) : (
           <CollectionBook

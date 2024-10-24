@@ -1,20 +1,13 @@
 import { useState } from 'react'
 
-import {
-  ButtonGroup,
-  HStack,
-  Stack,
-  Text,
-  Textarea,
-  Wrap,
-  useBoolean,
-} from '@chakra-ui/react'
+import { Group, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { format } from 'date-fns'
 import { useForm } from 'react-hook-form'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { BsTrash } from 'react-icons/bs'
 import { MdClose, MdOutlineCheck } from 'react-icons/md'
+import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
 import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
@@ -71,7 +64,7 @@ export const ObservationEditForm = ({
 
   const handleSuccess = () => {
     onSuccess?.()
-    setIsEditing.off()
+    setIsEditing(false)
     setConfirmState(undefined)
   }
 
@@ -102,7 +95,7 @@ export const ObservationEditForm = ({
   }
   const onCancel = () => {
     resetForm()
-    setIsEditing.off()
+    setIsEditing(false)
     setConfirmState(undefined)
   }
 
@@ -122,7 +115,7 @@ export const ObservationEditForm = ({
         borderWidth={1}
         rounded={'md'}
       >
-        <Wrap justify={'space-between'}>
+        <Group wrap={'wrap'} justify={'space-between'}>
           <HStack>
             <Text fontWeight={600} fontSize={'sm'}>
               {creator?.name}
@@ -130,38 +123,42 @@ export const ObservationEditForm = ({
             <Text fontSize={'sm'}>{createdDate}</Text>
           </HStack>
           <ActionStack canUpdate={'observations'} justifyContent={'flex-end'}>
-            <ButtonGroup size={'sm'} variant={'outline'}>
+            <Group>
               <ActionButton
                 isVisible={!isEditing}
-                onClick={setIsEditing.on}
+                onClick={() => setIsEditing(true)}
                 leftIcon={<AiOutlineEdit />}
-                iconSpacing={0}
+                variant={'outline'}
+                size={'sm'}
               />
               <ActionButton
                 isVisible={isEditing}
                 onClick={onCancel}
                 leftIcon={<MdClose />}
-                colorScheme={'gray'}
-                iconSpacing={0}
+                colorPalette={'gray'}
+                variant={'outline'}
+                size={'sm'}
               />
               <ActionButton
                 isVisible={isEditing}
                 type="submit"
                 leftIcon={<MdOutlineCheck />}
-                iconSpacing={0}
+                variant={'outline'}
+                size={'sm'}
               />
               {!isEditing && (
                 <ActionButton
                   canDelete={'observations'}
                   onClick={onDelete}
                   leftIcon={<BsTrash />}
-                  colorScheme="red"
-                  iconSpacing={0}
+                  colorPalette="red"
+                  variant={'outline'}
+                  size={'sm'}
                 />
               )}
-            </ButtonGroup>
+            </Group>
           </ActionStack>
-        </Wrap>
+        </Group>
 
         <Stack h={'full'}>
           {isEditing ? (
@@ -170,10 +167,10 @@ export const ObservationEditForm = ({
               name={'content'}
               type={'textarea'}
               hideLabel
-              isRequired={true}
+              required
               errors={errors}
               register={register}
-              isDisabled={!isEditing}
+              disabled={!isEditing}
               _disabled={disabledStyle}
             />
           ) : (

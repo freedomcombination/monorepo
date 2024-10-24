@@ -1,22 +1,6 @@
 import { useState } from 'react'
 
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  HStack,
-  Heading,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Progress,
-  Stack,
-  Switch,
-  Textarea,
-  Wrap,
-} from '@chakra-ui/react'
+import { HStack, Heading, Stack, Textarea, Group } from '@chakra-ui/react'
 import { useCompletion } from 'ai/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -24,8 +8,19 @@ import { FaSave } from 'react-icons/fa'
 import { FaStop, FaTrash } from 'react-icons/fa6'
 import { RiAiGenerate } from 'react-icons/ri'
 
+import {
+  Button,
+  Field,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  Progress,
+  Switch,
+  toaster,
+} from '@fc/chakra'
 import type { StrapiLocale } from '@fc/types'
-import { toastMessage } from '@fc/utils/toastMessage'
 
 import { EditablePost } from './EditablePost'
 import { PostGenAIProps } from './types'
@@ -46,7 +41,7 @@ export const PostGenAI = ({
   parseCompleted,
   onSave,
   apiUrl,
-  colorScheme = 'blue',
+  colorPalette = 'blue',
   noBorder,
 }: PostGenAIProps) => {
   const { t } = useTranslation()
@@ -109,14 +104,22 @@ export const PostGenAI = ({
     onError(error) {
       if (typeof error?.message === 'string') {
         if (error.message.includes('You exceeded your current quota')) {
-          toastMessage('Error', 'You exceeded your current quota', 'error')
+          toaster.create({
+            title: 'Error',
+            description: 'You exceeded your current quota',
+            type: 'error',
+          })
 
           return
         }
       }
 
-      // toastMessage('Error', t('contact.form.failed'), 'error')
-      toastMessage('Error', error.message, 'error')
+      toaster.create({
+        title: 'Error',
+        // TODO: Update error message
+        description: t('contact.form.failed'),
+        type: 'error',
+      })
     },
   })
 
@@ -127,10 +130,14 @@ export const PostGenAI = ({
     try {
       onSave(posts)
       removePosts(archiveContentId, true)
-      toastMessage('Success', 'Posts saved', 'success')
+      toaster.create({
+        title: 'Success',
+        description: 'Posts saved',
+        type: 'success',
+      })
     } catch (error) {
       const msg = error instanceof Error ? error.message : String(error)
-      toastMessage('Error', msg, 'error')
+      toaster.create({ title: 'Error', description: msg, type: 'error' })
       console.error(msg)
     }
 
@@ -139,20 +146,17 @@ export const PostGenAI = ({
 
   return (
     <Stack
-      spacing={4}
+      gap={4}
       p={{ base: 4, lg: 8 }}
-      bg={`${colorScheme}.100`}
+      bg={`${colorPalette}.100`}
       borderWidth={noBorder ? 0 : 2}
-      borderColor={`${colorScheme}.500`}
+      borderColor={`${colorPalette}.500`}
       rounded={noBorder ? 'none' : 'md'}
     >
-      <Heading colorScheme={colorScheme}>Post Generator</Heading>
+      <Heading colorPalette={colorPalette}>Post Generator</Heading>
       <form onSubmit={handleSubmit}>
-        <Stack spacing={4}>
-          <FormControl>
-            <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-              Content
-            </FormLabel>
+        <Stack gap={4}>
+          <Field label={'Content'}>
             <Textarea
               name="prompt"
               placeholder="Enter a content..."
@@ -162,22 +166,19 @@ export const PostGenAI = ({
               rows={6}
               bg={'whiteAlpha.700'}
             />
-          </FormControl>
+          </Field>
           <HStack
-            spacing={{ base: 4, lg: 8 }}
+            gap={{ base: 4, lg: 8 }}
             flexDirection={{ base: 'column', sm: 'row' }}
           >
             {!onlySentences && (
-              <FormControl>
-                <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                  Number of Caps Content
-                </FormLabel>
+              <Field label={'Number of Caps Content'}>
                 <NumberInput
                   step={1}
                   min={0}
                   max={40}
-                  defaultValue={5}
-                  onChange={(a, b) => setNumberOfDescriptions(b)}
+                  defaultValue={'5'}
+                  onValueChange={v => setNumberOfDescriptions(v.valueAsNumber)}
                 >
                   <NumberInputField bg={'whiteAlpha.700'} />
                   <NumberInputStepper>
@@ -185,18 +186,15 @@ export const PostGenAI = ({
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
-              </FormControl>
+              </Field>
             )}
-            <FormControl>
-              <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                Number of Posts
-              </FormLabel>
+            <Field label={'Number of Posts'}>
               <NumberInput
                 step={1}
                 min={0}
                 max={40}
-                defaultValue={5}
-                onChange={(a, b) => setNumberOfSentences(b)}
+                defaultValue={'5'}
+                onValueChange={b => setNumberOfSentences(b.valueAsNumber)}
               >
                 <NumberInputField bg={'whiteAlpha.700'} />
                 <NumberInputStepper>
@@ -204,19 +202,18 @@ export const PostGenAI = ({
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </FormControl>
+            </Field>
             {!onlySentences && (
-              <FormControl>
-                <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                  Character Limit (Caps)
-                </FormLabel>
+              <Field label={'Character Limit (Caps)'}>
                 <NumberInput
                   step={10}
                   min={80}
                   max={200}
-                  defaultValue={charLimitOfDescriptions}
-                  value={charLimitOfDescriptions}
-                  onChange={(a, b) => setCharLimitOfDescriptions(b)}
+                  defaultValue={`${charLimitOfDescriptions}`}
+                  value={`${charLimitOfDescriptions}`}
+                  onValueChange={v =>
+                    setCharLimitOfDescriptions(v.valueAsNumber)
+                  }
                 >
                   <NumberInputField bg={'whiteAlpha.700'} />
                   <NumberInputStepper>
@@ -224,19 +221,16 @@ export const PostGenAI = ({
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
-              </FormControl>
+              </Field>
             )}
-            <FormControl>
-              <FormLabel mb={0} fontSize="sm" fontWeight={600}>
-                Character Limit (Posts)
-              </FormLabel>
+            <Field label={' Character Limit (Posts)'}>
               <NumberInput
                 step={10}
                 min={100}
                 max={200}
-                defaultValue={charLimitOfSentences}
-                value={charLimitOfSentences}
-                onChange={(a, b) => setCharLimitOfSentences(b)}
+                defaultValue={`${charLimitOfSentences}`}
+                value={`${charLimitOfSentences}`}
+                onValueChange={v => setCharLimitOfSentences(v.valueAsNumber)}
               >
                 <NumberInputField bg={'whiteAlpha.700'} />
                 <NumberInputStepper>
@@ -244,41 +238,45 @@ export const PostGenAI = ({
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </FormControl>
+            </Field>
           </HStack>
-          <Wrap justify={'space-between'}>
-            <Wrap alignContent={'center'}>
-              <FormControl w="auto" display="flex" alignItems="center">
-                <FormLabel htmlFor="askBeforeDelete" mb="0">
-                  Always ask before deleting
-                </FormLabel>
+          <Group wrap={'wrap'} justify={'space-between'}>
+            <Group wrap={'wrap'} alignContent={'center'}>
+              <Field
+                w="auto"
+                display="flex"
+                alignItems="center"
+                label={'Always ask before deleting'}
+              >
                 <Switch
                   id="askBeforeDelete"
-                  isChecked={askBeforeDelete}
-                  onChange={e => setAskBeforeDelete(e.target.checked)}
+                  checked={askBeforeDelete}
+                  onCheckedChange={e => setAskBeforeDelete(e.checked)}
                   mr={5}
                 />
-              </FormControl>
+              </Field>
               {process.env.NODE_ENV !== 'production' && (
-                <FormControl w="auto" display="flex" alignItems="center">
-                  <FormLabel htmlFor="useApiInDev" mb="0">
-                    Use fake API
-                  </FormLabel>
+                <Field
+                  w="auto"
+                  display="flex"
+                  alignItems="center"
+                  label={'Use fake API'}
+                >
                   <Switch
                     id="useApiInDev"
-                    isChecked={useFakeApi}
-                    onChange={e => setUseFakeApi(e.target.checked)}
-                    colorScheme={colorScheme}
+                    checked={useFakeApi}
+                    onCheckedChange={e => setUseFakeApi(e.checked)}
+                    colorPalette={colorPalette}
                   />
-                </FormControl>
+                </Field>
               )}
-            </Wrap>
-            <Wrap>
+            </Group>
+            <Group wrap={'wrap'}>
               <Button
                 leftIcon={<RiAiGenerate />}
-                isDisabled={isLoading}
+                disabled={isLoading}
                 type="submit"
-                colorScheme={colorScheme}
+                colorPalette={colorPalette}
               >
                 {t('generate')}
               </Button>
@@ -287,7 +285,7 @@ export const PostGenAI = ({
                   leftIcon={<FaStop />}
                   type="button"
                   onClick={stop}
-                  colorScheme="gray"
+                  colorPalette="gray"
                 >
                   Stop
                 </Button>
@@ -298,8 +296,8 @@ export const PostGenAI = ({
                     leftIcon={<FaSave />}
                     type="button"
                     onClick={handleSave}
-                    colorScheme={'purple'}
-                    isLoading={isSaving}
+                    colorPalette={'purple'}
+                    loading={isSaving}
                     loadingText="Saving..."
                   >
                     Save All
@@ -307,30 +305,24 @@ export const PostGenAI = ({
                   <Button
                     leftIcon={<FaTrash />}
                     type="button"
-                    isDisabled={isSaving}
+                    disabled={isSaving}
                     onClick={() => removePosts(archiveContentId)}
-                    colorScheme={'red'}
+                    colorPalette={'red'}
                   >
                     Clear Results
                   </Button>
                 </>
               )}
-            </Wrap>
-          </Wrap>
+            </Group>
+          </Group>
         </Stack>
       </form>
 
       {isLoading && completed?.length && posts.length === 0 && (
-        <Stack
-          spacing={4}
-          py={4}
-          transition={'0.5s'}
-          transitionProperty={'all'}
-        >
+        <Stack gap={4} py={4} transition={'0.5s'} transitionProperty={'all'}>
           <Progress
             size="xs"
-            isIndeterminate
-            colorScheme={colorScheme}
+            colorPalette={colorPalette}
             bgColor={'whiteAlpha.700'}
           />
           {completed?.map((postObject, index) => (
@@ -341,7 +333,7 @@ export const PostGenAI = ({
               onlySentences={onlySentences}
               descriptionThreshold={charLimitOfDescriptions}
               sentenceThreshold={charLimitOfSentences}
-              colorScheme={colorScheme}
+              colorPalette={colorPalette}
             />
           ))}
         </Stack>
@@ -355,7 +347,7 @@ export const PostGenAI = ({
           postObject={postObject}
           descriptionThreshold={charLimitOfDescriptions}
           sentenceThreshold={charLimitOfSentences}
-          colorScheme={colorScheme}
+          colorPalette={colorPalette}
         />
       ))}
     </Stack>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button, Center, Stack, Text } from '@chakra-ui/react'
+import { Center, Stack, Text } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fa6'
 import * as yup from 'yup'
 
+import { Button } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/services/common/mutation'
 import type { Profile, ProfileUpdateInput } from '@fc/types'
@@ -40,16 +41,15 @@ const SocialRightElement = ({
   return (
     <ButtonLink
       href={url ?? ''}
+      isExternal
       data-testid={`link-social-${label}`}
-      target="_blank"
-      rel="noopener noreferrer"
       leftIcon={<FaCircleArrowRight />}
       size={'lg'}
-      colorScheme="black"
-      variant={'ghost'}
-      aria-label={label}
+      colorPalette="black"
+      variant={'plain'}
+      aria-label={url}
       rounded={'full'}
-      isDisabled={!url}
+      disabled={!url}
     />
   )
 }
@@ -109,7 +109,7 @@ export const SocialsTab = () => {
   }
 
   return (
-    <Stack spacing={8} as={'form'} onSubmit={handleSubmit(onSubmit)}>
+    <Stack gap={8} as={'form'} onSubmit={handleSubmit(onSubmit)}>
       <FormItem
         errors={errors}
         register={register}
@@ -144,11 +144,11 @@ export const SocialsTab = () => {
       />
 
       <Button
+        disabled={!hasChanged}
         data-testid="button-save-socials"
-        isDisabled={!hasChanged}
         leftIcon={<FaSave />}
         size={'lg'}
-        isLoading={saving}
+        loading={saving}
         alignSelf={'start'}
         type={'submit'}
       >

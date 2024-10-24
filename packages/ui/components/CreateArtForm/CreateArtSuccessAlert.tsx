@@ -1,18 +1,18 @@
-import { forwardRef, RefObject } from 'react'
+import { forwardRef } from 'react'
 
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-  Text,
-  Stack,
-} from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+
+import {
+  Button,
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+} from '@fc/chakra'
 
 import { CreateArtSuccessAlertProps } from './types'
 import { ButtonLink } from '../ButtonLink'
@@ -25,16 +25,15 @@ export const ArtCreateSuccessAlert = forwardRef<
   const { asPath } = useRouter()
 
   return (
-    <AlertDialog
-      closeOnOverlayClick={false}
-      isCentered
-      isOpen={isOpen}
-      onClose={onClose}
-      leastDestructiveRef={ref as RefObject<HTMLButtonElement>}
+    <Dialog
+      closeOnInteractOutside={false}
+      placement={'center'}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
     >
-      <AlertDialogOverlay>
-        <AlertDialogContent>
-          <AlertDialogHeader
+      <DialogOverlay>
+        <DialogContent>
+          <DialogHeader
             data-testid="text-create-art-success"
             bg="primary.500"
             color="white"
@@ -42,10 +41,10 @@ export const ArtCreateSuccessAlert = forwardRef<
             fontWeight={600}
           >
             {t('art.create.success.title')}
-          </AlertDialogHeader>
+          </DialogHeader>
 
-          <AlertDialogBody py={4}>
-            <Stack spacing={4}>
+          <DialogBody py={4}>
+            <Stack gap={4}>
               <Text>{t('art.create.success.description')}</Text>
 
               {!asPath?.includes('profile') && (
@@ -54,14 +53,16 @@ export const ArtCreateSuccessAlert = forwardRef<
                 </ButtonLink>
               )}
             </Stack>
-          </AlertDialogBody>
+          </DialogBody>
 
-          <AlertDialogFooter>
-            <Button onClick={onClose}>{t('dismiss')}</Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialogOverlay>
-    </AlertDialog>
+          <DialogFooter>
+            <Button ref={ref} onClick={onClose}>
+              {t('dismiss')}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </DialogOverlay>
+    </Dialog>
   )
 })
 

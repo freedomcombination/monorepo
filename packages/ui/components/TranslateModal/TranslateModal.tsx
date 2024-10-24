@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react'
 
+import { Box, HStack } from '@chakra-ui/react'
+import { AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
+
 import {
   Accordion,
-  Box,
   Button,
-  HStack,
   IconButton,
   Modal,
   ModalBody,
@@ -13,9 +14,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-} from '@chakra-ui/react'
-import { AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
-
+} from '@fc/chakra'
 import type { StrapiLocale, StrapiTranslatableModel } from '@fc/types'
 import { mapModelLocalization } from '@fc/utils/mapModelLocalization'
 
@@ -74,7 +73,11 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
 
   return (
     <Box>
-      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside">
+      <Modal
+        onOpenChange={e => (e.open ? null : onClose)}
+        open={isOpen}
+        scrollBehavior="inside"
+      >
         <ModalOverlay />
         <ModalContent maxW="95vw" h="full">
           <ModalHeader
@@ -97,7 +100,7 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
           <ModalCloseButton />
           <ModalBody>
             {step === 0 && (
-              <Accordion size={'lg'} allowToggle allowMultiple defaultIndex={0}>
+              <Accordion size={'lg'} collapsible multiple>
                 {modelsWithMissingTranslations.map(model => (
                   <TranslateAccordionItem
                     key={model.id}
@@ -116,10 +119,10 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
           </ModalBody>
           {step === 1 && (
             <ModalFooter borderTopWidth={1}>
-              <HStack spacing={3}>
+              <HStack gap={3}>
                 <Button
                   display={{ base: 'none', lg: 'flex' }}
-                  textColor={'white'}
+                  color={'white'}
                   onClick={handleReturn}
                   bg={'gray.400'}
                   leftIcon={<AiOutlineArrowLeft />}
@@ -128,7 +131,7 @@ export const TranslateModal = <T extends StrapiTranslatableModel>({
                 </Button>
                 <Button
                   onClick={handleSaveDraft}
-                  colorScheme={'purple'}
+                  colorPalette={'purple'}
                   leftIcon={<AiOutlineCheck />}
                 >
                   Save Draft

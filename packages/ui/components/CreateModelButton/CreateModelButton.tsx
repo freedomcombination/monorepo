@@ -1,16 +1,5 @@
-import {
-  Box,
-  Button,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Portal,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
+import { Box, Portal, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { BsCollection } from 'react-icons/bs'
 import { CgHashtag } from 'react-icons/cg'
@@ -25,6 +14,14 @@ import {
 import { SiMaterialdesignicons } from 'react-icons/si'
 import { TbActivity, TbBrandTwitter, TbWriting } from 'react-icons/tb'
 
+import {
+  Button,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import type {
   Activity,
@@ -49,7 +46,7 @@ import { ModelCreateModal } from '../ModelCreateModal'
 export const CreateModelButton = () => {
   const { t } = useTranslation()
   const {
-    isOpen: isOpenPost,
+    open: isOpenPost,
     onOpen: onOpenPost,
     onClose: onClosePost,
   } = useDisclosure()
@@ -62,14 +59,17 @@ export const CreateModelButton = () => {
   if (!user) return null
 
   return (
-    <Popover placement="bottom-start">
+    <Popover
+      positioning={{
+        placement: 'bottom-start',
+      }}
+    >
       <PopoverTrigger>
         <Button
-          colorScheme={'primary'}
+          colorPalette={'primary'}
           rounded={'full'}
           aria-label="create"
           leftIcon={<FaPlus />}
-          iconSpacing={{ base: 0, lg: 2 }}
           px={{ base: 2, lg: 4 }}
         >
           <Text display={{ base: 'none', lg: 'block' }}>{t('create')}</Text>
@@ -194,7 +194,7 @@ export const CreateModelButton = () => {
                     onClose={onClosePost}
                   />
                   <Button
-                    colorScheme="green"
+                    colorPalette="green"
                     variant="outline"
                     onClick={onOpenPost}
                   >

@@ -1,6 +1,8 @@
-import { Box, Button, Heading, HStack, Link, Stack } from '@chakra-ui/react'
+import { Box, Heading, HStack, Link, Stack } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaRegFilePdf } from 'react-icons/fa6'
+
+import { Button } from '@fc/chakra'
 
 import { PaginationButtons } from './PaginationButtons'
 import Steps from './Steps'
@@ -11,7 +13,7 @@ const JoinForm = () => {
   const { t } = useTranslation()
 
   return (
-    <Stack spacing={4} width={'100%'}>
+    <Stack gap={4} width={'100%'}>
       <HStack justify={'space-between'} pos={'sticky'} top={2} zIndex={1}>
         <Link
           lineHeight={1}
@@ -19,9 +21,9 @@ const JoinForm = () => {
           download
           fontWeight={500}
           _hover={{ textDecoration: 'underline', color: 'primary.500' }}
-          isTruncated
+          truncate
         >
-          <Button colorScheme="purple" leftIcon={<FaRegFilePdf />}>
+          <Button colorPalette="purple" leftIcon={<FaRegFilePdf />}>
             {t('download-volunteer-form')}
           </Button>
         </Link>

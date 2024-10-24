@@ -1,12 +1,19 @@
 import { FC, useMemo, useState } from 'react'
 
 import {
-  Alert,
-  AlertIcon,
   Badge,
   Button,
-  Divider,
+  DialogRootProps,
   HStack,
+  Separator,
+  Stack,
+  VStack,
+} from '@chakra-ui/react'
+import axios from 'axios'
+import { useTranslation } from 'next-i18next'
+
+import {
+  Alert,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,13 +21,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  ModalProps,
-  Stack,
-  useToast,
-  VStack,
-} from '@chakra-ui/react'
-import axios from 'axios'
-import { useTranslation } from 'next-i18next'
+  toaster,
+} from '@fc/chakra'
 
 import { dicts } from './dicts'
 import { EntryInput } from './EntryInput'
@@ -34,7 +36,7 @@ type EntryData = {
 
 type NewEntryProps = {
   onSave: (data: EntryData) => void
-} & Omit<ModalProps, 'children'>
+} & Omit<DialogRootProps, 'children'>
 
 export const NewEntry: FC<NewEntryProps> = ({ onSave, ...props }) => {
   const { t } = useTranslation()
@@ -48,7 +50,6 @@ export const NewEntry: FC<NewEntryProps> = ({ onSave, ...props }) => {
   const placeHolder = autoTranslate
     ? t('translate.new-entry.placeholder.auto-translate')
     : t('translate.new-entry.placeholder.no-auto-translate')
-  const toast = useToast()
 
   const translateText = async (text: string, locale: string) => {
     try {
@@ -67,22 +68,18 @@ export const NewEntry: FC<NewEntryProps> = ({ onSave, ...props }) => {
 
   const onPreCheck = () => {
     if (!data.key) {
-      toast({
+      toaster.create({
         title: t('translate.new-entry.toast.error.key-required'),
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
+        type: 'error',
       })
 
       return false
     }
 
     if (!data.en && !data.tr && !data.nl) {
-      toast({
+      toaster.create({
         title: t('translate.new-entry.toast.error.locale-required'),
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
+        type: 'error',
       })
 
       return false
@@ -119,7 +116,7 @@ export const NewEntry: FC<NewEntryProps> = ({ onSave, ...props }) => {
 
     onSave(mData)
     setData({ key: '', en: '', tr: '', nl: '' })
-    props.onClose()
+    props.onOpenChange?.({ open: false })
   }
 
   const list = useMemo(() => {
@@ -145,7 +142,7 @@ export const NewEntry: FC<NewEntryProps> = ({ onSave, ...props }) => {
   }, [data.key])
 
   return (
-    <Modal size={'3xl'} {...props}>
+    <Modal size={'xl'} {...props}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>{t('translate.new-entry-header')}</ModalHeader>
@@ -154,7 +151,6 @@ export const NewEntry: FC<NewEntryProps> = ({ onSave, ...props }) => {
           <Stack gap={5}>
             {!autoTranslate && (
               <Alert status="error">
-                <AlertIcon />
                 {t('translate.new-entry.deepl-api-error')}
               </Alert>
             )}
@@ -185,7 +181,7 @@ export const NewEntry: FC<NewEntryProps> = ({ onSave, ...props }) => {
               ))}
             </VStack>
 
-            <Divider />
+            <Separator />
 
             <EntryInput
               locale={'en'}
@@ -211,16 +207,20 @@ export const NewEntry: FC<NewEntryProps> = ({ onSave, ...props }) => {
           <HStack justify={'space-between'} gap={6} w={'full'}>
             <HStack>
               {autoTranslate && (
-                <Button colorScheme="primary" onClick={onTranslate}>
+                <Button colorPalette="primary" onClick={onTranslate}>
                   {t('translate.button.translate')}
                 </Button>
               )}
             </HStack>
             <HStack>
-              <Button colorScheme="primary" onClick={onSaveEntry}>
+              <Button colorPalette="primary" onClick={onSaveEntry}>
                 {t('add')}
               </Button>
-              <Button onClick={props.onClose} colorScheme="red">
+              <Button
+                // Fix
+                onClick={() => props.onOpenChange?.({ open: false })}
+                colorPalette="red"
+              >
                 {t('cancel')}
               </Button>
             </HStack>

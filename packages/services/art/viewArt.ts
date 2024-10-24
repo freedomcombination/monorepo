@@ -1,7 +1,7 @@
-import { useTimeout } from '@chakra-ui/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { useTimeout } from 'react-use'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { API_URL } from '@fc/config/constants'
@@ -29,6 +29,7 @@ export const useViewArtMutation = (recaptchaToken?: string) => {
 
   const { data: art } = useArtBySlug()
   const { token } = useAuthContext()
+  const [isReady] = useTimeout(10 * 3000)
 
   const [artStorage, setArtStorage] = useLocalStorage<number[]>('view-art', [])
 
@@ -44,11 +45,9 @@ export const useViewArtMutation = (recaptchaToken?: string) => {
     },
   })
 
-  useTimeout(() => {
-    const isViewed = artStorage?.some(id => id === art?.id)
+  const isViewed = artStorage?.some(id => id === art?.id)
 
-    if (art && !isViewed) {
-      mutate(art.id)
-    }
-  }, 5000)
+  if (art && !isViewed && isReady()) {
+    mutate(art.id)
+  }
 }

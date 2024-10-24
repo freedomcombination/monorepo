@@ -1,7 +1,12 @@
 import { FC, useState } from 'react'
 
+import { Box, Portal, Stack, useDisclosure } from '@chakra-ui/react'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { FaInfo, FaPlus } from 'react-icons/fa6'
+import { MdOutlineTrendingUp } from 'react-icons/md'
+import { useBoolean } from 'react-use'
+
 import {
-  Box,
   IconButton,
   Modal,
   ModalBody,
@@ -13,15 +18,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
-  Portal,
-  Stack,
-  useBoolean,
-  useDisclosure,
-} from '@chakra-ui/react'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { FaInfo, FaPlus } from 'react-icons/fa6'
-import { MdOutlineTrendingUp } from 'react-icons/md'
-
+} from '@fc/chakra'
 import { useHashtagBySlug } from '@fc/services/hashtag/getHashtagBySlug'
 import { HashtagStats } from '@fc/ui/components/HashtagStats'
 import { Markdown } from '@fc/ui/components/Markdown'
@@ -33,7 +30,7 @@ type PlusButtonProps = {
 export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
   const infoDisclosure = useDisclosure()
   const statsDisclosure = useDisclosure()
-  const [isEditing, setIsEditing] = useBoolean()
+  const [isEditing, setIsEditing] = useBoolean(false)
   const [activeButton, setActiveButton] = useState<'info' | 'stats'>()
 
   const { title } = useHashtagBySlug()
@@ -56,13 +53,20 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
     }
   }
 
+  const onOpen = () => {
+    if (activeButton === 'info') {
+      infoDisclosure.onOpen()
+    } else {
+      statsDisclosure.onOpen()
+    }
+  }
+
   return (
     <Box>
       <Popover
-        placement="top"
-        onOpen={setIsEditing.on}
-        onClose={setIsEditing.off}
-        closeOnBlur
+        positioning={{ placement: 'top' }}
+        onOpenChange={() => setIsEditing(!isEditing)}
+        closeOnInteractOutside
       >
         <PopoverTrigger>
           <IconButton
@@ -72,7 +76,7 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
             right={4}
             bottom={4}
             borderRadius={'100px'}
-            colorScheme="primary"
+            colorPalette="primary"
             aria-label="Plus"
             size={'lg'}
             boxSize={{ base: 12, lg: 16 }}
@@ -87,18 +91,18 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
               <Stack>
                 <IconButton
                   aria-label={'stats'}
-                  colorScheme={'primary'}
+                  colorPalette={'primary'}
                   icon={<MdOutlineTrendingUp />}
-                  isDisabled={statsDisclosure.isOpen}
+                  disabled={statsDisclosure.open}
                   isRound
                   onClick={onClickStats}
                 />
 
                 <IconButton
                   aria-label={'info'}
-                  colorScheme={'primary'}
+                  colorPalette={'primary'}
                   icon={<FaInfo />}
-                  isDisabled={infoDisclosure.isOpen}
+                  disabled={infoDisclosure.open}
                   isRound
                   onClick={onClickInfo}
                 />
@@ -108,10 +112,10 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
         </Portal>
       </Popover>
       <Modal
-        isOpen={infoDisclosure.isOpen}
-        onClose={onClose}
-        isCentered
-        size={'2xl'}
+        open={infoDisclosure.open}
+        onOpenChange={e => (e.open ? onOpen() : onClose())}
+        placement={'center'}
+        size={'xl'}
       >
         <ModalOverlay />
         <ModalContent>
@@ -121,10 +125,10 @@ export const PlusButton: FC<PlusButtonProps> = ({ source }) => {
         </ModalContent>
       </Modal>
       <Modal
-        isOpen={statsDisclosure.isOpen}
-        onClose={onClose}
-        isCentered
-        size={'2xl'}
+        open={statsDisclosure.open}
+        onOpenChange={e => (e.open ? onOpen() : onClose())}
+        placement={'center'}
+        size={'xl'}
       >
         <ModalOverlay />
         <ModalContent>

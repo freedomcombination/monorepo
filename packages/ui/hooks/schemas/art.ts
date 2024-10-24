@@ -17,22 +17,22 @@ export const useArtSchema = () => {
 }
 
 export const artFields: FormFields<Art> = [
-  { name: 'title_en', isRequired: true },
-  { name: 'title_nl', isRequired: true },
-  { name: 'title_tr', isRequired: true },
+  { name: 'title_en', required: true },
+  { name: 'title_nl', required: true },
+  { name: 'title_tr', required: true },
   {
     name: 'description_en',
-    isRequired: true,
+    required: true,
     type: 'textarea',
   },
   {
     name: 'description_nl',
-    isRequired: true,
+    required: true,
     type: 'textarea',
   },
   {
     name: 'description_tr',
-    isRequired: true,
+    required: true,
     type: 'textarea',
   },
   {
@@ -43,7 +43,7 @@ export const artFields: FormFields<Art> = [
   {
     name: 'categories',
     type: 'select',
-    isMulti: true,
+    multiple: true,
     endpoint: 'categories',
   },
 ]

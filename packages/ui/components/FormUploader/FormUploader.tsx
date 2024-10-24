@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Divider, HStack } from '@chakra-ui/react'
+import { Separator, HStack } from '@chakra-ui/react'
 import { useLocalStorage } from 'react-use'
 
 import { API_URL } from '@fc/config/constants'
@@ -95,9 +95,9 @@ export const FormUploader = () => {
   }
 
   return (
-    <HStack spacing={0} borderWidth={1} borderBottomWidth={0} h={12}>
+    <HStack gap={0} borderWidth={1} borderBottomWidth={0} h={12}>
       <DragZone isUploading={isUploading} onFilesSelected={onFilesSelected} />
-      <Divider orientation="vertical" />
+      <Separator orientation="vertical" />
       <ImageViewer
         files={uploadedFiles}
         oldFiles={!!fileIds && fileIds.length > 0}

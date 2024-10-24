@@ -5,7 +5,7 @@ export type RecognizedImage = {
   file: File
   preview: string
   text: string
-  isLoading: boolean
+  loading: boolean
   isError: boolean
   isProcessed: boolean
 }

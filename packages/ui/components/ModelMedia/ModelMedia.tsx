@@ -1,19 +1,21 @@
 import {
   Box,
-  Button,
   Center,
   Link,
   Stack,
   Text,
-  VStack,
   useDisclosure,
+  VStack,
 } from '@chakra-ui/react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FieldValues, Path, PathValue } from 'react-hook-form'
 import { CiImageOff } from 'react-icons/ci'
 import { FaFile, FaFilePdf } from 'react-icons/fa6'
 import { IoMdCloudUpload } from 'react-icons/io'
 
+import { Button } from '@fc/chakra'
 import type {
   PlatformSlug,
   Post,
@@ -42,7 +44,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
   name,
 }: ModelMediaProps<T>) => {
   const { title, description } = (model || {}) as StrapiTranslatableModel
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
 
   const key = name || 'image'
 
@@ -118,7 +120,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
         <>
           <ModelPdf
             mediaUrl={mediaUrl}
-            isOpen={isOpen}
+            isOpen={open}
             onClose={onClose}
             title={name}
           />
@@ -144,7 +146,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
             <VStack>
               <Box boxSize={50} as={ext === '.pdf' ? FaFilePdf : FaFile}></Box>
 
-              <Text maxW={300} noOfLines={1}>
+              <Text maxW={300} lineClamp={1}>
                 {media.name}
                 {media.ext}
               </Text>
@@ -201,7 +203,7 @@ export const ModelMedia = <T extends FieldValues = FieldValues>({
           <Button
             leftIcon={<IoMdCloudUpload />}
             size="lg"
-            colorScheme={'blackAlpha'}
+            colorPalette={'blackAlpha'}
           >
             {name === 'video' ? 'Change video' : 'Change image'}
           </Button>

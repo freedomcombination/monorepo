@@ -1,11 +1,22 @@
 import { FC, useEffect, useState } from 'react'
 
 import {
-  Button,
   Flex,
+  Highlight,
   Input,
   List,
-  ListItem,
+  SimpleGrid,
+  Stack,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+import { FaInfoCircle, FaSave } from 'react-icons/fa'
+import { FaX } from 'react-icons/fa6'
+
+import {
+  Button,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -13,23 +24,13 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  VStack,
-  Text,
-  IconButton,
-  Stack,
-  Highlight,
   Tooltip,
-  SimpleGrid,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { FaInfoCircle, FaSave } from 'react-icons/fa'
-import { FaX } from 'react-icons/fa6'
-
+  toaster,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { mutation } from '@fc/services/common/mutation'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { Role, UpdateUserInput, User } from '@fc/types'
-import { toastMessage } from '@fc/utils/toastMessage'
 
 type ProfileSelectModalProps = {
   role?: Role
@@ -49,7 +50,7 @@ const CustomListItem = ({
   filter?: string
 }) => {
   return (
-    <ListItem
+    <List.Item
       onClick={onClick}
       p={2}
       cursor={'pointer'}
@@ -60,7 +61,7 @@ const CustomListItem = ({
       justifyContent={'space-between'}
     >
       <Stack flexShrink={1} flexGrow={1} overflow={'hidden'}>
-        <Text noOfLines={1}>
+        <Text lineClamp={1}>
           {filter ? (
             <Highlight
               query={filter}
@@ -72,7 +73,7 @@ const CustomListItem = ({
             user.username
           )}
         </Text>
-        <Text fontSize={'xs'} noOfLines={1}>
+        <Text fontSize={'xs'} lineClamp={1}>
           {filter ? (
             <Highlight
               query={filter}
@@ -86,7 +87,7 @@ const CustomListItem = ({
         </Text>
       </Stack>
       {user.role && (
-        <Tooltip label={user.role.name}>
+        <Tooltip content={user.role.name}>
           <IconButton
             variant={'ghost'}
             rounded={'full'}
@@ -96,7 +97,7 @@ const CustomListItem = ({
           />
         </Tooltip>
       )}
-    </ListItem>
+    </List.Item>
   )
 }
 
@@ -173,13 +174,12 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
 
   return (
     <Modal
-      isCentered
-      isOpen={isOpen}
-      onClose={onClose}
-      onCloseComplete={handleOnClose}
-      size={'4xl'}
+      placement={'center'}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : handleOnClose())}
+      size={'xl'}
       scrollBehavior={'inside'}
-      closeOnOverlayClick={!saveUsers}
+      closeOnInteractOutside={!saveUsers}
     >
       <ModalOverlay />
       <ModalContent>
@@ -203,7 +203,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                 onChange={e => setUserFilter(e.target.value)}
                 placeholder={t('search')}
               />
-              <List overflowX={'hidden'} overflowY={'auto'} spacing={2}>
+              <List.Root overflowX={'hidden'} overflowY={'auto'} gap={2}>
                 {usersFiltered.map((user, index) => (
                   <CustomListItem
                     key={index}
@@ -212,7 +212,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                     onClick={() => setPendingUser(prev => [...prev, user])}
                   />
                 ))}
-              </List>
+              </List.Root>
             </Flex>
 
             {/* pending users */}
@@ -226,7 +226,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
               rounded={'md'}
             >
               <Text>Pending:</Text>
-              <List overflowX={'hidden'} overflowY={'auto'} spacing={2}>
+              <List.Root overflowX={'hidden'} overflowY={'auto'} gap={2}>
                 {pendingUser.map((user, index) => (
                   <CustomListItem
                     key={index}
@@ -236,7 +236,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                     }}
                   />
                 ))}
-              </List>
+              </List.Root>
             </VStack>
 
             {/* assigned users */}
@@ -250,7 +250,7 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
               rounded={'md'}
             >
               <Text>Assigned:</Text>
-              <List overflowX={'hidden'} overflowY={'auto'} spacing={2}>
+              <List.Root overflowX={'hidden'} overflowY={'auto'} gap={2}>
                 {usersWithRole.map((user, index) => (
                   <CustomListItem
                     key={index}
@@ -258,28 +258,29 @@ export const ProfileSelectModal: FC<ProfileSelectModalProps> = ({
                     onClick={() => {
                       // users has to have role...
                       // this list is only for display
-                      toastMessage(
-                        'Info',
-                        'A user without role can cause issues, A role can not be removed',
-                        'info',
-                      )
+                      toaster.create({
+                        title: 'Info',
+                        description:
+                          'A user without role can cause issues, A role can not be removed',
+                        type: 'info',
+                      })
                     }}
                   />
                 ))}
-              </List>
+              </List.Root>
             </VStack>
           </SimpleGrid>
         </ModalBody>
         <ModalFooter gap={6}>
-          <Button leftIcon={<FaX />} onClick={onClose} isDisabled={saveUsers}>
+          <Button leftIcon={<FaX />} onClick={onClose} disabled={saveUsers}>
             {t('cancel')}
           </Button>
           <Button
             leftIcon={<FaSave />}
             onClick={() => setSaveUsers(true)}
-            isLoading={saveUsers}
+            loading={saveUsers}
             loadingText="..."
-            isDisabled={pendingUser.length === 0}
+            disabled={pendingUser.length === 0}
           >
             {t('save')}
           </Button>

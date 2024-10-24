@@ -1,6 +1,8 @@
-import { Box, Button, Container, useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
+import { Box, Container } from '@chakra-ui/react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
+import { Button } from '@fc/chakra'
 import { ART_MOCKS } from '@fc/mocks/art'
 import { PROFILE_MOCKS } from '@fc/mocks/profile'
 import type { UploadFile } from '@fc/types'
@@ -31,7 +33,7 @@ type Story = StoryObj<typeof ArtApprovalModal>
 
 const StoryWithHooks: StoryFn<typeof ArtApprovalModal> = args => {
   const { art, editor, artist } = args
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   return (
     <Box>
@@ -44,7 +46,7 @@ const StoryWithHooks: StoryFn<typeof ArtApprovalModal> = args => {
         editor={editor}
         artist={artist}
         onClose={onClose}
-        isOpen={isOpen}
+        isOpen={open}
       />
     </Box>
   )

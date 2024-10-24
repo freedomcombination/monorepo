@@ -16,7 +16,7 @@ type FormTextFields = {
 
 type FormSelectFields = {
   type: 'select'
-  isMulti?: boolean
+  multiple?: boolean
   endpoint?: StrapiCollectionEndpoint
   populate?: string | string[]
   options?: string[]
@@ -24,7 +24,7 @@ type FormSelectFields = {
 export type FormCommonFields<T extends StrapiModel> = {
   name: keyof T
   label?: string
-  isRequired?: boolean
+  required?: boolean
   group?: { value: string; label?: string; name: string }
   blockEdit?: boolean
 }

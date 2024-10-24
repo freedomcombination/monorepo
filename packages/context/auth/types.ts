@@ -16,7 +16,7 @@ export type AuthState = {
   error: string | null
   isAdmin: boolean
   isAuthModalOpen: boolean
-  isLoading: boolean
+  loading: boolean
   permissions: Permissions
   profile: Profile | null
   roles: string[]

@@ -1,20 +1,13 @@
 import { FC } from 'react'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  Button,
-  Stack,
-  Text,
-  Textarea,
-} from '@chakra-ui/react'
+import { Stack, Text, Textarea } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { FiArrowRight } from 'react-icons/fi'
 import * as yup from 'yup'
 
+import { Alert, Button, toaster } from '@fc/chakra'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { useSendEmail } from '@fc/services/email'
 import type {
@@ -22,7 +15,6 @@ import type {
   Observation,
   ObservationCreateInput,
 } from '@fc/types'
-import { toastMessage } from '@fc/utils/toastMessage'
 
 import { FormItem } from '../FormItem'
 
@@ -85,11 +77,11 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
     } catch (error) {
       console.error(error)
 
-      toastMessage(
-        'Error',
-        "Couldn't send observation. Please try again later.",
-        'error',
-      )
+      toaster.create({
+        title: 'Error',
+        description: "Couldn't send observation. Please try again later.",
+        type: 'error',
+      })
     }
   }
 
@@ -113,7 +105,11 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
           onSuccess?.()
         },
         onError: error => {
-          toastMessage('Error', error.message, 'error')
+          toaster.create({
+            title: 'Error',
+            description: error.message,
+            type: 'error',
+          })
         },
       })
       reset()
@@ -123,29 +119,29 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
   }
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <Stack as="form" onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={4}>
+        <Stack gap={4}>
           <FormItem
             name="subject"
             register={register}
             errors={errors}
-            isRequired
+            required
           />
           <FormItem
             name="content"
             as={Textarea}
             register={register}
             errors={errors}
-            isRequired
+            required
           />
 
           <Button
             alignSelf="flex-end"
             rightIcon={<FiArrowRight />}
             type="submit"
-            isDisabled={!isValid}
-            isLoading={isPending}
+            disabled={!isValid}
+            loading={isPending}
           >
             Send
           </Button>
@@ -154,19 +150,13 @@ export const ProfileMailForm: FC<ProfileMailFormProps> = ({
 
       {isSuccess && (
         <Alert status="success">
-          <AlertIcon />
-          <AlertDescription>
-            <Text>{t('contact.form.success')}</Text>
-          </AlertDescription>
+          <Text>{t('contact.form.success')}</Text>
         </Alert>
       )}
       {error?.message && (
         <Alert status="error">
-          <AlertIcon />
-          <AlertDescription>
-            <>{t('contact.form.failed')} </>
-            {error.message}
-          </AlertDescription>
+          <>{t('contact.form.failed')} </>
+          {error.message}
         </Alert>
       )}
     </Stack>

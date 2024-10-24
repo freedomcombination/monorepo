@@ -1,6 +1,6 @@
-import { LinkProps } from '@chakra-ui/next-js'
-import { ButtonProps } from '@chakra-ui/react'
+import { LinkProps } from 'next/link'
 
+import { ButtonProps } from '@fc/chakra'
 import { DashboardRoute } from '@fc/config/dashboardRoutes'
 
 export type NavItemWithSubmenuProps = {
@@ -33,6 +33,6 @@ export type AdminNavItemProps = {
 } & ButtonProps
 
 export type NavLinkProps = ButtonProps &
-  Omit<LinkProps, 'href'> & {
+  Omit<LinkProps, 'href' | 'onClick'> & {
     href?: DashboardRoute
   }

@@ -1,0 +1,14 @@
+{
+  "name": "@fc/chakra",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "lint": "rm -rf tsconfig.tsbuildinfo && eslint \"**/*.ts*\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules",
+    "storybook": "storybook dev -p 6006",
+    "storybook-build": "storybook build",
+    "tsc": "npx tsc --noEmit"
+  }
+}

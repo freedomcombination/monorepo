@@ -1,5 +1,6 @@
-import { SkeletonText, VStack, Wrap } from '@chakra-ui/react'
+import { VStack, Group } from '@chakra-ui/react'
 
+import { SkeletonText } from '@fc/chakra'
 import type { TwitterTrend } from '@fc/types'
 
 import { useHashtagContext } from '../HashtagProvider'
@@ -7,14 +8,14 @@ import { TrendListItem } from '../TrendListItem'
 
 interface TrendListProps {
   trends?: TwitterTrend[] | null
-  isLoading: boolean
+  loading: boolean
   hashtagInTrends?: TwitterTrend
   hashtagExtraInTrends?: TwitterTrend
 }
 
 export const TrendList = ({
   trends,
-  isLoading,
+  loading,
   hashtagInTrends,
   hashtagExtraInTrends,
 }: TrendListProps): JSX.Element => {
@@ -35,10 +36,10 @@ export const TrendList = ({
 
   return (
     <VStack align="stretch">
-      {isLoading || !trends ? (
-        <SkeletonText skeletonHeight={6} noOfLines={5} />
+      {loading || !trends ? (
+        <SkeletonText h={6} lineClamp={5} />
       ) : (
-        <Wrap>
+        <Group wrap={'wrap'}>
           {trends.map((tag, i) => (
             <TrendListItem
               key={i}
@@ -51,7 +52,7 @@ export const TrendList = ({
               removeTrend={onRemoveTrendName}
             />
           ))}
-        </Wrap>
+        </Group>
       )}
     </VStack>
   )

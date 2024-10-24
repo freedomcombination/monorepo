@@ -1,5 +1,7 @@
-import { Box, Button, useDisclosure } from '@chakra-ui/react'
-import { StoryObj, Meta, StoryFn } from '@storybook/react'
+import { Box, useDisclosure } from '@chakra-ui/react'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
+
+import { Button } from '@fc/chakra'
 
 import { CreateUserFeedbackFormProps } from './types'
 import { UserFeedbackForm } from './UserFeedbackForm'
@@ -13,14 +15,14 @@ export default {
 type Story = StoryObj<CreateUserFeedbackFormProps>
 
 const StoryWithHook: StoryFn<CreateUserFeedbackFormProps> = args => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   return (
     <Box>
       <Button onClick={onOpen} m={4}>
         {`Open UserFeedback Form`}
       </Button>
-      <UserFeedbackForm {...args} isOpen={isOpen} onClose={onClose} />
+      <UserFeedbackForm {...args} isOpen={open} onClose={onClose} />
     </Box>
   )
 }

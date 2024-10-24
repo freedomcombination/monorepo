@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
+import { Link as ChakraLink } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { FooterNavItemProps } from './types'
@@ -10,7 +11,9 @@ export const FooterNavItem: FC<FooterNavItemProps> = ({ item }) => {
   const isExternal = item.link?.startsWith('http')
 
   return (
-    <Link
+    <ChakraLink
+      asChild
+      key={item.link}
       color="primary.100"
       _hover={{
         color: 'primary.50',
@@ -25,10 +28,14 @@ export const FooterNavItem: FC<FooterNavItemProps> = ({ item }) => {
         : {
             'data-testid': `link-footer${item.link}`,
           })}
-      key={item.link}
       href={item.link as string}
     >
-      {item[locale || 'en']}
-    </Link>
+      <Link
+        {...(isExternal && { isExternal, target: '_blank' })}
+        href={item.link as string}
+      >
+        {item[locale || 'en']}
+      </Link>
+    </ChakraLink>
   )
 }

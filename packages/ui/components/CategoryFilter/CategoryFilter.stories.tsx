@@ -36,7 +36,7 @@ type Story = StoryObj<CategoryFilterProps>
 const StoryWithHook: StoryFn<CategoryFilterProps> = args => {
   const { changeCategories } = useChangeParams()
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const { locale } = useRouter()
   const { t } = useTranslation()
 
@@ -58,10 +58,10 @@ const StoryWithHook: StoryFn<CategoryFilterProps> = args => {
         <CategoryFilter
           {...args}
           initialCategories={args.initialCategories || initialCategories}
-          isLoading={args.isLoading || isLoading}
+          loading={args.loading || loading}
           locale={args.locale || locale}
           title={args.title || t('categories')}
-          setIsLoading={setIsLoading}
+          setLoading={setLoading}
           selectCategories={setSelectedCategories}
         />
       </Box>
@@ -69,7 +69,7 @@ const StoryWithHook: StoryFn<CategoryFilterProps> = args => {
         <VStack>
           <Heading size="md">Selected Categories</Heading>
           <HStack>
-            {isLoading && <Spinner />}
+            {loading && <Spinner />}
             <Code>{JSON.stringify(selectedCategories, null, 2)}</Code>
           </HStack>
         </VStack>

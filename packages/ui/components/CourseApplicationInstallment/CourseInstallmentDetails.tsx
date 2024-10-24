@@ -1,24 +1,26 @@
 import { FC, useState } from 'react'
 
 import {
-  useToast,
   Stack,
   HStack,
-  Switch,
-  NumberInput,
-  Text,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Input,
   SimpleGrid,
+  Text,
+  Input,
   Heading,
-  Button,
 } from '@chakra-ui/react'
 import { isPast } from 'date-fns'
 import { useTranslation } from 'next-i18next'
 
+import {
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  Button,
+  Switch,
+  toaster,
+} from '@fc/chakra'
 import { useUpdateModelMutation } from '@fc/services/common/updateModel'
 import { CourseApplication, Profile } from '@fc/types'
 import { CourseLogic } from '@fc/utils/courseLogic'
@@ -49,7 +51,6 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
     discount: application.discount,
   })
   const updateModelMutation = useUpdateModelMutation('course-applications')
-  const toast = useToast()
   const course = courseLogic.course!
   if (!course.price) return null
 
@@ -86,14 +87,14 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
           onSave()
         },
         onError: () => {
-          toast({ status: 'error', title: t('error') })
+          toaster.create({ type: 'error', title: t('error') })
         },
       },
     )
   }
 
   return (
-    <Stack spacing={2} borderWidth={1} borderRadius={'lg'} p={4}>
+    <Stack gap={2} borderWidth={1} borderRadius={'lg'} p={4}>
       <KeyValue tKey="course.applicant.details.installment.kv.course-fee">
         {formatPrice(course.price)}
       </KeyValue>
@@ -103,15 +104,13 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
       {totalPayment !== course.price && (
         <>
           <KeyValue tKey="course.applicant.details.installment.kv.course-discount">
-            <HStack spacing={6} minH={'40px'}>
+            <HStack gap={6} minH={'40px'}>
               <Switch
-                isChecked={typeof data.discount === 'number'}
-                onChange={e =>
+                checked={typeof data.discount === 'number'}
+                onCheckedChange={e =>
                   setData({
                     ...data,
-                    discount: e.target.checked
-                      ? (application.discount ?? 0)
-                      : null,
+                    discount: e.checked ? (application.discount ?? 0) : null,
                   })
                 }
               />
@@ -119,10 +118,12 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
                 <NumberInput
                   width="300px"
                   defaultValue={
-                    typeof data.discount === 'number' ? data.discount : ''
+                    typeof data.discount ? `${data.discount}` : undefined
                   }
-                  onChange={(_, e) => setData({ ...data, discount: e })}
-                  isInvalid={
+                  onValueChange={e =>
+                    setData({ ...data, discount: e.valueAsNumber })
+                  }
+                  invalid={
                     typeof data.discount === 'number' &&
                     (data.discount < 0 || data.discount > course.price)
                   }
@@ -140,14 +141,14 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
           </KeyValue>
 
           <KeyValue tKey="course.applicant.details.installment.kv.payment-start-date">
-            <HStack spacing={6} minH={'40px'}>
+            <HStack gap={6} minH={'40px'}>
               <Switch
-                isDisabled={totalPayment > 0}
-                isChecked={!!data.installmentStartAfter}
-                onChange={e =>
+                disabled={totalPayment > 0}
+                checked={!!data.installmentStartAfter}
+                onCheckedChange={e =>
                   setData({
                     ...data,
-                    installmentStartAfter: e.target.checked
+                    installmentStartAfter: e.checked
                       ? (application.installmentStartAfter ??
                         application.createdAt)
                       : null,
@@ -182,17 +183,17 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
           </KeyValue>
 
           <KeyValue tKey="course.applicant.details.installment.kv.installment">
-            <HStack spacing={6} minH={'40px'}>
+            <HStack gap={6} minH={'40px'}>
               <Switch
-                isDisabled={
+                disabled={
                   lastPaidInstallmentNumber >
                   1 /* if more then 1 paid installment should be unchecked */
                 }
-                isChecked={typeof data.installmentCount === 'number'}
-                onChange={e =>
+                checked={typeof data.installmentCount === 'number'}
+                onCheckedChange={e =>
                   setData({
                     ...data,
-                    installmentCount: e.target.checked
+                    installmentCount: e.checked
                       ? (application.installmentCount ?? 1)
                       : null,
                   })
@@ -203,10 +204,12 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
                   width="300px"
                   defaultValue={
                     typeof data.installmentCount === 'number'
-                      ? data.installmentCount
-                      : 1
+                      ? `${data.installmentCount}`
+                      : '1'
                   }
-                  onChange={(_, e) => setData({ ...data, installmentCount: e })}
+                  onValueChange={e =>
+                    setData({ ...data, installmentCount: e.valueAsNumber })
+                  }
                   min={lastPaidInstallmentNumber}
                   max={36}
                 >
@@ -231,16 +234,14 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
           </KeyValue>
 
           <KeyValue tKey="course.applicant.details.installment.kv.installment-interval">
-            <HStack spacing={6} minH={'40px'}>
+            <HStack gap={6} minH={'40px'}>
               <Switch
-                isDisabled={
-                  !data.installmentCount || data.installmentCount <= 1
-                }
-                isChecked={typeof data.installmentInterval === 'number'}
-                onChange={e =>
+                disabled={!data.installmentCount || data.installmentCount <= 1}
+                checked={typeof data.installmentInterval === 'number'}
+                onCheckedChange={e =>
                   setData({
                     ...data,
-                    installmentInterval: e.target.checked
+                    installmentInterval: e.checked
                       ? (application.installmentInterval ?? 1)
                       : null,
                   })
@@ -259,11 +260,11 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
                   width="300px"
                   defaultValue={
                     typeof data.installmentInterval === 'number'
-                      ? data.installmentInterval
-                      : ''
+                      ? `${data.installmentInterval}`
+                      : undefined
                   }
-                  onChange={(_, e) =>
-                    setData({ ...data, installmentInterval: e })
+                  onValueChange={e =>
+                    setData({ ...data, installmentInterval: e.valueAsNumber })
                   }
                   min={1}
                   max={12}
@@ -282,7 +283,7 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
             when={hasChanged}
             tKey="course.applicant.details.installment.kv.preview"
           >
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={3}>
+            <SimpleGrid columns={{ base: 1, md: 3 }} gap={3}>
               {newCourseLogic.myInstallments.map(installment => (
                 <HStack
                   key={installment.installmentNumber}
@@ -324,7 +325,7 @@ export const CourseInstallmentDetails: FC<CourseApplicationComponentProps> = ({
             <Button
               colorScheme="primary"
               onClick={onSubmit}
-              isDisabled={!hasChanged}
+              disabled={!hasChanged}
             >
               {t('save')}
             </Button>

@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
-import { Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react'
 import { TbCheck, TbX } from 'react-icons/tb'
+
+import { Tag } from '@fc/chakra'
 
 import { ActionApiProps } from './types'
 
@@ -17,16 +18,22 @@ export const ActionApi: FC<ActionApiProps> = ({
       size={'md'}
       onClick={() => !readonly && onChange(!value)}
       variant={'solid'}
-      colorScheme={blocked ? 'gray' : value ? 'green' : 'red'}
+      colorPalette={blocked ? 'gray' : value ? 'green' : 'red'}
       {...(!readonly
         ? {
             cursor: 'pointer',
             _hover: { boxShadow: 'lg' },
           }
         : {})}
+      startElement={
+        value ? (
+          <TbCheck width={'18px'} height={'18px'} />
+        ) : (
+          <TbX width={'18px'} height={'18px'} />
+        )
+      }
     >
-      <TagLeftIcon boxSize="18px" as={value ? TbCheck : TbX} />
-      <TagLabel>{action}</TagLabel>
+      {action}
     </Tag>
   )
 }

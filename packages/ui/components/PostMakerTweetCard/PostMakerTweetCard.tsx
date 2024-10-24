@@ -18,7 +18,7 @@ export const PostMakerTweetCard: FC<PostMakerTweetCardProps> = ({
     <Stack
       p={4}
       bg={'white'}
-      spacing={4}
+      gap={4}
       _hover={{
         bg: 'whiteAlpha.700',
       }}

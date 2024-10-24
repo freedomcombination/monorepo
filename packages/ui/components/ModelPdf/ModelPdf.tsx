@@ -1,17 +1,15 @@
 import { useState } from 'react'
 
+import { Center, Heading, Spinner, chakra } from '@chakra-ui/react'
+
 import {
-  Center,
-  Heading,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Spinner,
-  chakra,
-} from '@chakra-ui/react'
+} from '@fc/chakra'
 
 type ModelPdfProps = {
   title?: string
@@ -26,17 +24,17 @@ export const ModelPdf = ({
   onClose,
   mediaUrl,
 }: ModelPdfProps) => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
 
   return (
     <Modal
-      isCentered
-      isOpen={isOpen}
-      onClose={onClose}
-      size={'3xl'}
+      placement={'center'}
+      open={isOpen}
+      onOpenChange={e => (e.open ? null : onClose())}
+      size={'xl'}
       scrollBehavior="inside"
-      closeOnOverlayClick={false}
-      closeOnEsc={false}
+      closeOnInteractOutside={false}
+      closeOnEscape={false}
     >
       <ModalOverlay />
       <ModalContent h={'90vh'} p={0}>
@@ -48,12 +46,12 @@ export const ModelPdf = ({
         <ModalCloseButton />
         <ModalBody pos={'relative'} p={0} h="100%">
           <chakra.iframe
-            onLoad={() => setIsLoading(false)}
-            onError={() => setIsLoading(false)}
+            onLoad={() => setLoading(false)}
+            onError={() => setLoading(false)}
             src={mediaUrl}
             boxSize={'full'}
           />
-          {isLoading && (
+          {loading && (
             <Center
               bg={'whiteAlpha.900'}
               pos={'absolute'}

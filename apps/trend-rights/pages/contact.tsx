@@ -24,18 +24,20 @@ const Contact = () => {
           <Stack
             justify="center"
             align="center"
-            spacing={8}
+            gap={8}
             direction={{ base: 'column', lg: 'row' }}
             minH="inherit"
           >
             <VStack
-              bgGradient={'linear(to-b, primary.400, primary.500)'}
+              bgGradient={'to-b'}
+              gradientFrom={'primary.400'}
+              gradientTo={'primary.500'}
               borderRadius="lg"
               p={{ base: 8, lg: 16 }}
               w={'full'}
               textAlign="center"
               justify="center"
-              spacing={{ base: 8, lg: 16 }}
+              gap={{ base: 8, lg: 16 }}
             >
               <Heading color={'primary.50'}>{t('trend-rights')}</Heading>
               <VStack alignItems="flex-start" color="primary.50">
@@ -46,7 +48,9 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
+                  leftIcon={
+                    <Box as={MdPhone} color="primary.50" boxSize="20px" />
+                  }
                   href="tel:+31687578056"
                 >
                   +31-6 87578056
@@ -59,7 +63,7 @@ const Contact = () => {
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
                   leftIcon={
-                    <Box as={FaWhatsapp} color="primary.50" size="20px" />
+                    <Box as={FaWhatsapp} color="primary.50" fontSize="20px" />
                   }
                   href="https://api.whatsapp.com/send?phone=31687578056"
                 >
@@ -72,7 +76,9 @@ const Contact = () => {
                   variant="ghost"
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
-                  leftIcon={<Box as={MdEmail} color="primary.50" size="20px" />}
+                  leftIcon={
+                    <Box as={MdEmail} color="primary.50" fontSize="20px" />
+                  }
                   href="mailto:info@trendrights.com"
                 >
                   info@trendrights.com
@@ -85,7 +91,7 @@ const Contact = () => {
                   color={'white'}
                   _hover={{ borderColor: 'primary.50' }}
                   leftIcon={
-                    <Box as={MdLocationOn} color="primary.50" size="20px" />
+                    <Box as={MdLocationOn} color="primary.50" fontSize="20px" />
                   }
                   href="https://goo.gl/maps/E9HaayQnXmphUWtN8"
                 >

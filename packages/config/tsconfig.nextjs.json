@@ -3,16 +3,18 @@
   "display": "Next.js",
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "plugins": [{ "name": "next" }],
     "allowJs": true,
     "declaration": false,
     "declarationMap": false,
     "incremental": true,
     "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noEmit": true,
+    "plugins": [{ "name": "next" }],
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "target": "es5"
   },
   "include": [

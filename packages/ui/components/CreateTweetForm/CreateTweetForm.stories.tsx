@@ -1,6 +1,7 @@
-import { Box, Button, useDisclosure } from '@chakra-ui/react'
+import { Box, useDisclosure } from '@chakra-ui/react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
+import { Button } from '@fc/chakra'
 import { TWEET_MOCKS } from '@fc/mocks/tweet'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import type { RecommendedTweet, RecommendedTweetCreateInput } from '@fc/types'
@@ -19,7 +20,7 @@ export default {
 type Story = StoryObj<CreateTweetFormProps>
 
 const StoryWithHook: StoryFn<CreateTweetFormProps> = args => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   const { mutateAsync } = useCreateModelMutation<
     RecommendedTweet,
@@ -54,7 +55,7 @@ const StoryWithHook: StoryFn<CreateTweetFormProps> = args => {
       <CreateTweetForm
         {...args}
         onSubmit={handleSubmit}
-        isOpen={isOpen}
+        isOpen={open}
         onClose={onClose}
         originalTweet={args.originalTweet}
       />

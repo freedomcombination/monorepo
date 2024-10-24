@@ -1,6 +1,8 @@
 import { ReactElement } from 'react'
 
-import { ButtonGroupProps, ThemeTypings } from '@chakra-ui/react'
+import { GroupProps } from '@chakra-ui/react'
+
+import { ButtonProps } from '@fc/chakra'
 
 export type SocialProviderName = 'google' | 'facebook' | 'twitter' | 'instagram'
 
@@ -8,9 +10,10 @@ export type SocialProvider = {
   name: Capitalize<SocialProviderName>
   icon: ReactElement
   url: `/api/connect/${SocialProviderName}`
-  colorSchema: ThemeTypings['colorSchemes']
+  colorSchema: ButtonProps['colorPalette']
 }
 
-export type SocialLoginButtonsProps = ButtonGroupProps & {
-  providersToBeShown?: SocialProviderName[]
-}
+export type SocialLoginButtonsProps = GroupProps &
+  ButtonProps & {
+    providersToBeShown?: SocialProviderName[]
+  }

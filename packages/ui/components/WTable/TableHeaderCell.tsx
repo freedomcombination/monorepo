@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { Th, chakra } from '@chakra-ui/react'
+import { TableCell, chakra } from '@chakra-ui/react'
 import { camelCase, startCase } from 'lodash'
 import { useTranslation } from 'next-i18next'
 import { FaArrowDown, FaArrowUp, FaSort } from 'react-icons/fa6'
@@ -58,7 +58,7 @@ export const TableHeaderCell = <T extends StrapiModel>({
   const onSort = () => toggleSort(index)
 
   return (
-    <Th
+    <TableCell
       pos="relative"
       key={index}
       whiteSpace="nowrap"
@@ -70,6 +70,6 @@ export const TableHeaderCell = <T extends StrapiModel>({
       {translationLabel}
 
       <chakra.span ml={2} display="inline" as={SortIcon} />
-    </Th>
+    </TableCell>
   )
 }

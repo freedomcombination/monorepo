@@ -6,10 +6,10 @@ import {
   Center,
   HStack,
   Text,
-  ThemeTypings,
-  Tooltip,
-  Wrap,
+  Group,
   chakra,
+  ButtonProps,
+  Flex,
 } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { IconType } from 'react-icons'
@@ -23,6 +23,7 @@ import {
 } from 'react-icons/fa6'
 import { MdModeEditOutline, MdPublish, MdUnpublished } from 'react-icons/md'
 
+import { Tooltip } from '@fc/chakra'
 import type { AuditLog, AuditLogAction } from '@fc/types'
 
 type AuditLogItemProps = {
@@ -31,7 +32,7 @@ type AuditLogItemProps = {
 }
 
 export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
-  const colorMap: Record<AuditLogAction, ThemeTypings['colorSchemes']> = {
+  const colorMap: Record<AuditLogAction, ButtonProps['colorPalette']> = {
     approved: 'blue',
     created: 'green',
     deleted: 'red',
@@ -51,7 +52,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
     rejected: FaTimes,
   }
 
-  const colorScheme = colorMap[log.action] || 'gray'
+  const colorPalette = colorMap[log.action] || 'gray'
   const profile = log.profile
   const profileName = isOwnProfile ? 'You' : profile?.name || 'Strapi'
   const profileEmail = profile?.email || 'Strapi'
@@ -60,13 +61,7 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
 
   const message = (
     <>
-      <Tooltip
-        label={profileEmail}
-        placement="top"
-        bg={'white'}
-        color={'gray.700'}
-        borderWidth={1}
-      >
+      <Tooltip content={profileEmail} positioning={{ placement: 'top' }}>
         <chakra.span
           _hover={{ color: 'primary.500' }}
           textTransform={'capitalize'}
@@ -83,21 +78,21 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
   const Icon = iconMap[log.action] || FaQuestion
 
   return (
-    <Wrap p={{ base: 1, md: 0 }} spacing={0}>
-      <HStack spacing={1}>
+    <Group wrap={'wrap'} p={{ base: 1, md: 0 }} gap={0}>
+      <HStack gap={1}>
         {/* <WAvatar size={'sm'} name={profile?.name || ''} src={profile?.avatar} /> */}
 
         <Center
           boxSize={6}
           borderWidth={1}
-          borderColor={`${colorScheme}.500`}
+          borderColor={`${colorPalette}.500`}
           rounded={'full'}
-          color={`${colorScheme}.500`}
+          color={`${colorPalette}.500`}
         >
           <Icon />
         </Center>
 
-        <Badge colorScheme={colorScheme} variant="outline" fontWeight={600}>
+        <Badge colorPalette={colorPalette} variant="outline" fontWeight={600}>
           {modelName}
         </Badge>
 
@@ -114,16 +109,12 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
         )}
       </HStack>
 
-      <Wrap align={'center'} ml={1}>
+      <Flex wrap={'wrap'} align={'center'} ml={1}>
         <Text display={'inline'}>{message}</Text>
         {log.text?.length > 50 && (
           <Tooltip
-            bg="white"
-            color="initial"
-            borderWidth={1}
-            rounded={'md'}
-            placement="top-start"
-            label={<Box dangerouslySetInnerHTML={{ __html: log.text }} />}
+            positioning={{ placement: 'top-start' }}
+            content={<Box dangerouslySetInnerHTML={{ __html: log.text }} />}
           >
             <Box>
               <FaCircleInfo />
@@ -135,10 +126,10 @@ export const AuditLogItem: FC<AuditLogItemProps> = ({ log, isOwnProfile }) => {
           color={'gray.400'}
           fontSize={'sm'}
           fontStyle={'italic'}
-          noOfLines={1}
+          lineClamp={1}
           dangerouslySetInnerHTML={{ __html: log.text }}
         />
-      </Wrap>
-    </Wrap>
+      </Flex>
+    </Group>
   )
 }

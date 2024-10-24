@@ -1,11 +1,15 @@
 import { FC } from 'react'
 
-import { Badge, Box, IconButton, IconButtonProps } from '@chakra-ui/react'
+import { Badge, Box } from '@chakra-ui/react'
 import { FaEnvelope } from 'react-icons/fa6'
+
+import { IconButton, IconButtonProps } from '@fc/chakra'
 
 import { useDevMail } from './useDevMail'
 
-export const DevMailButton: FC<Omit<IconButtonProps, 'aria-label'>> = props => {
+export const DevMailButton: FC<
+  Omit<Omit<IconButtonProps, 'icon'>, 'aria-label'>
+> = props => {
   const { onOpen, count } = useDevMail()
 
   return (
@@ -13,12 +17,12 @@ export const DevMailButton: FC<Omit<IconButtonProps, 'aria-label'>> = props => {
       <IconButton
         aria-label="Open DevMail"
         pos={'relative'}
-        icon={<FaEnvelope />}
         onClick={onOpen}
         isRound
         colorScheme="gray"
         variant={'outline'}
         {...props}
+        icon={<FaEnvelope />}
       />
       {count > 0 && (
         <div>

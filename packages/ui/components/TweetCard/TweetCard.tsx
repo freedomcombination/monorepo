@@ -1,18 +1,6 @@
 import { FC } from 'react'
 
-import {
-  Box,
-  HStack,
-  IconButton,
-  Link,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Box, HStack, Link, Stack, Text, useDisclosure } from '@chakra-ui/react'
 import { formatDistanceToNow } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -29,6 +17,13 @@ import {
 } from 'react-icons/tb'
 import { useLocalStorage } from 'usehooks-ts'
 
+import {
+  IconButton,
+  MenuContent,
+  MenuItem,
+  MenuRoot,
+  MenuTrigger,
+} from '@fc/chakra'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import type {
   Post,
@@ -60,7 +55,7 @@ export const TweetCard: FC<TweetCardProps> = ({
     'bookmarked-tweets',
     [],
   )
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
   const { t } = useTranslation()
   const { locale } = useRouter()
 
@@ -108,10 +103,10 @@ export const TweetCard: FC<TweetCardProps> = ({
 
   return (
     <>
-      {isOpen && (
+      {open && (
         <CreateTweetForm
           onSubmit={handleSubmit}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={onClose}
           originalTweet={tweet as Tweet}
           isNews={false}
@@ -127,32 +122,34 @@ export const TweetCard: FC<TweetCardProps> = ({
           />
         )}
 
-        <Stack flex={1} spacing={4}>
+        <Stack flex={1} gap={4}>
           {/* Tweet Header */}
           <HStack justify={'space-between'} title={tweet.user?.username}>
             {tweet.user && (
               <Box lineHeight={1.15}>
-                <Text noOfLines={1} wordBreak={'break-all'} fontWeight={700}>
+                <Text lineClamp={1} wordBreak={'break-all'} fontWeight={700}>
                   {tweet.user.name}
                 </Text>
-                <Text noOfLines={1} color={'gray.500'}>
+                <Text lineClamp={1} color={'gray.500'}>
                   @{tweet.user.username}
                 </Text>
               </Box>
             )}
 
             {(bookmarkable || editable) && (
-              <Menu placement="bottom-end">
-                <MenuButton
-                  size="sm"
-                  rounded="full"
-                  as={IconButton}
-                  icon={<BsThreeDots />}
-                  variant="ghost"
-                />
-                <MenuList>
+              <MenuRoot positioning={{ placement: 'bottom-end' }}>
+                <MenuTrigger asChild value="recommend">
+                  <IconButton
+                    size="sm"
+                    rounded="full"
+                    icon={<BsThreeDots />}
+                    variant="ghost"
+                  />
+                </MenuTrigger>
+                <MenuContent>
                   {!isRecommended && (
-                    <MenuItem icon={<TbThumbUp />} onClick={handleEdit}>
+                    <MenuItem value="recommend" onClick={handleEdit}>
+                      <TbThumbUp />
                       Recommend
                     </MenuItem>
                   )}
@@ -166,7 +163,7 @@ export const TweetCard: FC<TweetCardProps> = ({
                       variant: 'ghost',
                       w: 'full',
                       justifyContent: 'start',
-                      colorScheme: 'gray',
+                      colorPalette: 'gray',
                       leftIcon: <Box fontSize={'sm'} as={TbBrandTwitter} />,
                       rounded: 'none',
                       fontWeight: 400,
@@ -175,14 +172,12 @@ export const TweetCard: FC<TweetCardProps> = ({
                   >
                     {t('create-post')}
                   </ModelCreateModal>
-                  <MenuItem
-                    icon={<TbBookmark color={isBookmarked ? 'red' : ''} />}
-                    onClick={handleBookmark}
-                  >
+                  <MenuItem value="bookmark" onClick={handleBookmark}>
+                    <TbBookmark color={isBookmarked ? 'red' : ''} />
                     {isBookmarked ? 'Remove' : 'Save'} (Bookmark)
                   </MenuItem>
-                </MenuList>
-              </Menu>
+                </MenuContent>
+              </MenuRoot>
             )}
           </HStack>
 
@@ -194,37 +189,40 @@ export const TweetCard: FC<TweetCardProps> = ({
           />
           <HStack justify={'space-between'}>
             {tweet.likes != null && (
-              <HStack
-                as={Link}
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={`https://x.com/intent/like?tweet_id=${tweet.id}`}
               >
-                <TbHeart />
-                <Text fontSize={'sm'}>{tweet.likes}</Text>
-              </HStack>
+                <HStack>
+                  <TbHeart />
+                  <Text fontSize={'sm'}>{tweet.likes}</Text>
+                </HStack>
+              </Link>
             )}
             {tweet.retweets != null && (
-              <HStack
-                as={Link}
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={`https://x.com/intent/retweet?tweet_id=${tweet.id}`}
               >
-                <TbRefresh />
-                <Text fontSize={'sm'}>{tweet.retweets}</Text>
-              </HStack>
+                <HStack>
+                  <TbRefresh />
+                  <Text fontSize={'sm'}>{tweet.retweets}</Text>
+                </HStack>
+              </Link>
             )}
             {tweet.replies != null && (
-              <HStack
-                as={Link}
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={`https://x.com/intent/tweet?in_reply_to=${tweet.id}`}
               >
-                <TbMessageCircle />
-                <Text fontSize={'sm'}>{tweet.replies}</Text>
-              </HStack>
+                <HStack>
+                  <TbMessageCircle />
+                  <Text fontSize={'sm'}>{tweet.replies}</Text>
+                </HStack>
+              </Link>
             )}
             {tweet.impressions != null && (
               <HStack>
@@ -236,7 +234,7 @@ export const TweetCard: FC<TweetCardProps> = ({
               <HStack>
                 <TbClock />
                 <Text
-                  noOfLines={1}
+                  lineClamp={1}
                   fontSize={'sm'}
                   color={'gray.500'}
                   textAlign={'right'}

@@ -28,8 +28,8 @@ export const useProfileSchema = () => {
 }
 
 export const profileFields: FormFields<Profile & { role: Role }> = [
-  { name: 'name', isRequired: true },
-  { name: 'email', isRequired: true, blockEdit: true },
+  { name: 'name', required: true },
+  { name: 'email', required: true, blockEdit: true },
   { name: 'phone' },
   { name: 'birthDate', type: 'date' },
   { name: 'availableHours' },
@@ -48,10 +48,10 @@ export const profileFields: FormFields<Profile & { role: Role }> = [
       'rejected',
     ],
   },
-  { name: 'jobs', type: 'select', isMulti: true, endpoint: 'jobs' },
+  { name: 'jobs', type: 'select', multiple: true, endpoint: 'jobs' },
   { name: 'isVolunteer', type: 'boolean' },
   { name: 'user', type: 'select', endpoint: 'users' },
-  { name: 'platforms', type: 'select', isMulti: true, endpoint: 'platforms' },
+  { name: 'platforms', type: 'select', multiple: true, endpoint: 'platforms' },
   { name: 'volunteerForm', type: 'file' },
   { name: 'cv', type: 'file' },
   { name: 'avatar', type: 'file' },

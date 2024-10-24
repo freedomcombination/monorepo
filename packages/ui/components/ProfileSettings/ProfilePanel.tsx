@@ -1,19 +1,6 @@
-'use client'
-import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
+import { FC, PropsWithChildren, useRef } from 'react'
 
-import {
-  Box,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  TabProps,
-  Tabs,
-  TabsProps,
-  Text,
-  useBreakpointValue,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Tabs, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush, FaUserCircle } from 'react-icons/fa'
@@ -38,43 +25,25 @@ type ProfilePanelProps = PropsWithChildren<{
   showArts?: boolean
 }>
 
-const CustomTab: FC<{ title: string } & TabProps> = ({ title, ...props }) => {
-  return (
-    <Tab
-      borderWidth={1}
-      rounded={'md'}
-      title={title}
-      borderColor={'transparent'}
-      _selected={{ borderColor: 'primary.500', color: 'primary.500' }}
-      fontWeight={600}
-      justifyContent={{ base: 'center', lg: 'start' }}
-      w={'full'}
-      {...props}
-    />
-  )
-}
-
-const findTabIndexByTitle = (
-  tabList: HTMLDivElement | null,
-  title: string,
-): number => {
-  // TODO when chakra-ui add support select tab with title or some fixed id, remove this.
-  if (!tabList) return 0
-
-  const tabs = Array.from(tabList.children)
-  const index = tabs.findIndex(
-    child => (child as unknown as { title: string }).title === title,
-  )
-
-  return index === -1 ? 0 : index
-}
+const CustomTab = (props: Tabs.TriggerProps) => (
+  <Tabs.Trigger
+    borderWidth={1}
+    rounded={'md'}
+    borderColor={'transparent'}
+    _selected={{ borderColor: 'primary.500', color: 'primary.500' }}
+    fontWeight={600}
+    justifyContent={{ base: 'center', lg: 'start' }}
+    w={'full'}
+    {...props}
+  />
+)
 
 export const ProfilePanel: FC<ProfilePanelProps> = ({
   children,
   showArts = false,
 }) => {
   const { user, profile, site } = useAuthContext()
-  const orientation = useBreakpointValue<TabsProps['orientation']>({
+  const orientation = useBreakpointValue<Tabs.RootProps['orientation']>({
     base: 'horizontal',
     lg: 'vertical',
   })
@@ -83,34 +52,20 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
   const router = useRouter()
   const activeTab = (router.query.tab as string) ?? 'profile'
   const tabListRef = useRef<HTMLDivElement>(null)
-  const [activeTabIndex, setActiveTabIndex] = useState(0)
+
+  const isModal = site === 'dashboard'
+
+  const setActiveTab = (tab: string) => {
+    if (!isModal) {
+      router.push(`/profile?tab=${tab}`)
+    }
+  }
 
   const isBlogsVisible =
     (site === 'dashboard' || site === 'foundation') &&
     (user?.roles.includes('admin') || user?.roles.includes('author'))
 
-  const isModal = site === 'dashboard'
-
   const isCoursePaymentVisible = site === 'foundation' || site === 'dashboard'
-
-  useEffect(() => {
-    const index = findTabIndexByTitle(
-      tabListRef.current,
-      activeTab.toLowerCase(),
-    )
-    setActiveTabIndex(index)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeTab, tabListRef.current])
-
-  const updateSelectedTab = (index: number) => {
-    setActiveTabIndex(index)
-    const tabList = Array.from(tabListRef.current?.children || [])
-    const title = (tabList[index] as unknown as { title: string }).title
-
-    if (!isModal) {
-      router.push(`/profile?tab=${title}`)
-    }
-  }
 
   if (!user) return <Hero></Hero>
 
@@ -139,18 +94,18 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
 
       <Box bg="white" py={8} px={{ lg: 8 }}>
         <Container>
-          <Tabs
+          <Tabs.Root
             orientation={orientation}
             border={0}
-            colorScheme="primary"
-            index={activeTabIndex}
-            onChange={updateSelectedTab}
+            colorPalette="primary"
+            value={activeTab}
+            onValueChange={v => setActiveTab(v.value)}
             size="lg"
-            variant={'unstyled'}
+            variant={'plain'}
             gap={8}
-            isLazy
+            lazyMount
           >
-            <TabList
+            <Tabs.List
               border={0}
               minW={{ base: 'auto', lg: 300 }}
               mb={{ base: 8, lg: 0 }}
@@ -158,72 +113,76 @@ export const ProfilePanel: FC<ProfilePanelProps> = ({
               ref={tabListRef}
               overflowX={'auto'}
             >
-              <CustomTab data-testid="tab-profile" title={'profile'}>
+              <CustomTab data-testid="tab-profile" value="profile">
                 <Box as={FaUserCircle} mr={2} />
                 <Box>{t('profile.tabs.profile')}</Box>
               </CustomTab>
-              <CustomTab data-testid="tab-security" title={'security'}>
+              <CustomTab data-testid="tab-security" value="security">
                 <Box as={FaKey} mr={2} />
                 <Box>{t('profile.tabs.security')}</Box>
               </CustomTab>
-              <CustomTab data-testid="tab-socials" title={'socials'}>
+              <CustomTab data-testid="tab-socials" value="socials">
                 <Box as={TbSocial} mr={2} />
                 <Box>{t('profile.tabs.socials')}</Box>
               </CustomTab>
-              <CustomTab data-testid="tab-preferences" title={'preferences'}>
+              <CustomTab data-testid="tab-preferences" value="preferences">
                 <Box as={FaGear} mr={2} />
                 <Box>{t('profile.tabs.preferences')}</Box>
               </CustomTab>
               {isCoursePaymentVisible && (
-                <CustomTab title={'courses'} data-testid="tab-courses">
+                <CustomTab
+                  title={'courses'}
+                  data-testid="tab-courses"
+                  value="courses"
+                >
                   <Box as={MdOutlinePayments} mr={2} />
                   <Box>{t('profile.tabs.courses')}</Box>
                 </CustomTab>
               )}
               {showArts && (
-                <CustomTab data-testid="tab-arts" title={'arts'}>
+                <CustomTab data-testid="tab-arts" value="arts">
                   <Box as={FaPaintBrush} mr={2} />
                   <Box>{t('profile.tabs.arts')}</Box>
                 </CustomTab>
               )}
               {isBlogsVisible && (
-                <CustomTab data-testid="tab-blogs" title={'blogs'}>
+                <CustomTab data-testid="tab-blogs" value="blogs">
                   <Box as={FaBlog} mr={2} />
                   <Box>{t('profile.tabs.blogs')}</Box>
                 </CustomTab>
               )}
-            </TabList>
-            <TabPanels>
-              <TabPanel p={0}>
+            </Tabs.List>
+            <Tabs.ContentGroup>
+              <Tabs.Content value="profile" p={0}>
                 <DetailsTab />
-              </TabPanel>
-              <TabPanel p={0}>
+              </Tabs.Content>
+              <Tabs.Content value="security" p={0}>
                 <SecurityTab />
-              </TabPanel>
-              <TabPanel p={0}>
+              </Tabs.Content>
+              <Tabs.Content value="socials" p={0}>
                 <SocialsTab />
-              </TabPanel>
-              <TabPanel p={0}>
+              </Tabs.Content>
+              <Tabs.Content value="preferences" p={0}>
                 <PreferencesTab />
-              </TabPanel>
+              </Tabs.Content>
               {isCoursePaymentVisible && (
-                <TabPanel p={0}>
+                <Tabs.Content value="courses" p={0}>
                   <CoursesTab />
-                </TabPanel>
+                </Tabs.Content>
               )}
               {showArts && (
-                <TabPanel p={0}>
+                <Tabs.Content value="arts" p={0}>
                   <ArtsTab />
-                </TabPanel>
+                </Tabs.Content>
               )}
               {isBlogsVisible && (
-                <TabPanel p={0}>
+                <Tabs.Content value="blogs" p={0}>
                   <BlogsTab />
-                </TabPanel>
+                </Tabs.Content>
               )}
-            </TabPanels>
+            </Tabs.ContentGroup>
             {children}
-          </Tabs>
+          </Tabs.Root>
         </Container>
       </Box>
     </>

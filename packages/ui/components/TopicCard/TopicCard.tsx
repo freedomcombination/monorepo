@@ -3,17 +3,11 @@ import { FC, useState } from 'react'
 import {
   Badge,
   Box,
-  ButtonGroup,
+  Group,
   HStack,
   Highlight,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
   Stack,
   Text,
-  useToast,
 } from '@chakra-ui/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { formatDistanceStrict } from 'date-fns'
@@ -28,6 +22,14 @@ import {
 } from 'react-icons/fa6'
 import { useLocalStorage } from 'usehooks-ts'
 
+import {
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+  toaster,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { useDeleteModelMutation } from '@fc/services/common/deleteModel'
@@ -66,7 +68,7 @@ export const TopicCard: FC<TopicCardProps> = ({
   const deleteModelMutation =
     useDeleteModelMutation<RecommendedTopic>('recommended-topics')
   const queryClient = useQueryClient()
-  const toast = useToast()
+
   const { mutateAsync, isPending } = useCreateModelMutation<
     RecommendedTopic,
     RecommendedTopicCreateInput
@@ -92,12 +94,9 @@ export const TopicCard: FC<TopicCardProps> = ({
         queryClient.invalidateQueries({ queryKey: ['topics'] })
       },
     })
-    toast({
+    toaster.create({
       title: 'Recommended',
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-      position: 'top',
+      type: 'success',
     })
   }
 
@@ -174,7 +173,7 @@ export const TopicCard: FC<TopicCardProps> = ({
       backgroundImage={'url(/images/world-map.svg)'}
       backgroundPosition={{ base: 'bottom', xl: 'right' }}
       backgroundRepeat={'no-repeat'}
-      spacing={0}
+      gap={0}
     >
       {confirmState && (
         <WConfirm
@@ -197,7 +196,7 @@ export const TopicCard: FC<TopicCardProps> = ({
             unoptimized
           />
         </Box>
-        <HStack spacing={1} pos="absolute" top={0} left={0} w={'full'} p={2}>
+        <HStack gap={1} pos="absolute" top={0} left={0} w={'full'} p={2}>
           <Badge
             bg={'black'}
             variant={'solid'}
@@ -206,15 +205,15 @@ export const TopicCard: FC<TopicCardProps> = ({
           >
             {topic.publisher}
           </Badge>
-          <Badge colorScheme={'primary'} variant={'solid'} fontWeight={600}>
+          <Badge colorPalette={'primary'} variant={'solid'} fontWeight={600}>
             {time}
           </Badge>
         </HStack>
       </Box>
 
-      <Stack spacing={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
+      <Stack gap={4} p={{ base: 4, xl: 6 }} overflow={'hidden'}>
         <Stack textAlign={{ base: 'center', xl: 'left' }} flex={1}>
-          <Text fontSize="lg" fontWeight={600} noOfLines={{ xl: 1 }}>
+          <Text fontSize="lg" fontWeight={600} lineClamp={{ xl: 1 }}>
             {searchKey ? (
               <Highlight query={searchKey} styles={highlightStyle}>
                 {topic.title || ''}
@@ -223,7 +222,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               topic.title
             )}
           </Text>
-          <Text maxW={1000} noOfLines={{ base: 5, xl: 3 }}>
+          <Text maxW={1000} lineClamp={{ base: 5, xl: 3 }}>
             {searchKey ? (
               <Highlight query={searchKey} styles={highlightStyle}>
                 {topic.description || ''}
@@ -234,7 +233,7 @@ export const TopicCard: FC<TopicCardProps> = ({
           </Text>
         </Stack>
         <Stack overflowX={'auto'} align={{ base: 'center', xl: 'start' }}>
-          <ButtonGroup overflowX={'auto'} justifyContent={'center'}>
+          <Group overflowX={'auto'} justifyContent={'center'}>
             <ModelCreateModal<Post>
               title={t('create-post')}
               endpoint={'posts'}
@@ -243,8 +242,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               model={postContent}
               buttonProps={{
                 variant: 'ghost',
-                colorScheme: 'gray',
-                iconSpacing: { base: 0, lg: 2 },
+                colorPalette: 'gray',
               }}
             >
               <Box as="span" display={{ base: 'none', xl: 'inline' }}>
@@ -257,10 +255,10 @@ export const TopicCard: FC<TopicCardProps> = ({
               icon={<FaRegEye />}
               title="View"
               variant="ghost"
-              colorScheme="gray"
+              colorPalette="gray"
             />
 
-            <Popover placement="top">
+            <Popover positioning={{ placement: 'top' }}>
               <PopoverTrigger>
                 <Box>
                   <TopicCardButton
@@ -268,7 +266,7 @@ export const TopicCard: FC<TopicCardProps> = ({
                     icon={<FaRegShareFromSquare />}
                     title="Share"
                     variant="ghost"
-                    colorScheme="gray"
+                    colorPalette="gray"
                   />
                 </Box>
               </PopoverTrigger>
@@ -292,7 +290,7 @@ export const TopicCard: FC<TopicCardProps> = ({
               })}
               title={isBookmarked ? 'Remove' : 'Bookmark'}
               variant={'ghost'}
-              colorScheme={isBookmarked ? 'red' : 'gray'}
+              colorPalette={isBookmarked ? 'red' : 'gray'}
             />
 
             <TopicCardButton
@@ -301,16 +299,14 @@ export const TopicCard: FC<TopicCardProps> = ({
               icon={<FaRegThumbsUp />}
               title="Recommend"
               disabled={isPending}
-              isDisabled={isPending}
               variant={'ghost'}
-              colorScheme={'gray'}
+              colorPalette={'gray'}
             />
 
             <ActionTooltip
               isVisible={!!user && topic?.isRecommended && !!id}
-              label={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
-              hasArrow
-              bg="primary.400"
+              content={type === 'Topic' ? 'Delete news' : `Hide ${type}`}
+              showArrow
             >
               <Box>
                 <TopicCardButton
@@ -324,11 +320,11 @@ export const TopicCard: FC<TopicCardProps> = ({
                   }
                   title={type === 'Topic' ? 'Delete' : 'Hide'}
                   variant="ghost"
-                  colorScheme="red"
+                  colorPalette="red"
                 />
               </Box>
             </ActionTooltip>
-          </ButtonGroup>
+          </Group>
         </Stack>
       </Stack>
     </Stack>

@@ -1,6 +1,8 @@
 import { FC, memo } from 'react'
 
 import { Box } from '@chakra-ui/react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { useRouter } from 'next/router'
 
@@ -38,9 +40,9 @@ export const ArtCardImage: FC<ArtCardImageProps> = memo(
     return (
       <Box
         as={Splide}
-        sx={{
-          '.splide__track': { h: 'full', maxH: '80vh' },
-          '.splide__arrow:disabled': {
+        css={{
+          '& .splide__track': { h: 'full', maxH: '80vh' },
+          '& .splide__arrow:disabled': {
             opacity: 0,
             pointerEvents: 'none',
           },

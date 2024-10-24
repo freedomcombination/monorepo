@@ -1,27 +1,23 @@
 import { FC, useEffect, useState } from 'react'
 
+import { Box, Center, HStack, Spinner, Stack } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+
 import {
-  Box,
-  Center,
-  HStack,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Spinner,
-  Stack,
-} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-
+  Pagination,
+} from '@fc/chakra'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { Art } from '@fc/types'
 
 import { ArtAddToCollectionGrid } from './ArtAddToCollectionGrid'
 import { ArtAddToCollectionModalProps } from './types'
 import { PageHeader } from '../PageHeader'
-import { Pagination } from '../Pagination'
 
 export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
   isOpen,
@@ -49,7 +45,11 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
 
   return (
     <Box>
-      <Modal onClose={onClose} isOpen={isOpen} scrollBehavior="inside">
+      <Modal
+        onOpenChange={e => (e.open ? null : onClose())}
+        open={isOpen}
+        scrollBehavior="inside"
+      >
         <ModalOverlay />
         <ModalContent maxW="95vw" h="full" p={{ base: 2, lg: 4 }}>
           <ModalHeader>
@@ -62,7 +62,7 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
             </HStack>
           </ModalHeader>
           <ModalBody>
-            <Stack spacing={8}>
+            <Stack gap={8}>
               {isLoading && (
                 <Center>
                   <Spinner />
@@ -77,9 +77,9 @@ export const ArtAddToCollectionModal: FC<ArtAddToCollectionModalProps> = ({
                   />
                   <Pagination
                     alignSelf="center"
-                    currentPage={page}
-                    onPageChange={setPage}
-                    totalCount={data?.meta.pagination?.pageCount as number}
+                    page={page}
+                    onPageChange={e => setPage(e.page)}
+                    count={data?.meta.pagination?.pageCount as number}
                   />
                 </>
               )}

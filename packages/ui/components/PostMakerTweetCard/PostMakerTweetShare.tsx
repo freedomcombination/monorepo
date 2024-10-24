@@ -1,14 +1,6 @@
 import { FC } from 'react'
 
-import {
-  HStack,
-  IconButton,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-} from '@chakra-ui/react'
+import { HStack } from '@chakra-ui/react'
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -17,6 +9,15 @@ import {
 } from 'next-share'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { FaFacebook, FaLinkedin, FaTelegram, FaWhatsapp } from 'react-icons/fa'
+
+import {
+  IconButton,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
+} from '@fc/chakra'
 
 import { PostSentenceReference } from './PostSentenceReference'
 import { PostSentencesModal } from './PostSentencesModal'
@@ -27,11 +28,11 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
   content,
 }) => {
   return (
-    <Popover placement="top">
+    <Popover positioning={{ placement: 'top' }}>
       <PopoverTrigger>
         <IconButton
           aria-label="Share post"
-          colorScheme={'gray'}
+          colorPalette={'gray'}
           icon={<BsThreeDotsVertical />}
           variant={'ghost'}
         />
@@ -39,7 +40,7 @@ export const PostMakerTweetShare: FC<PostMakerTweetShareProps> = ({
       <PopoverContent w={'max'}>
         <PopoverArrow />
         <PopoverBody>
-          <HStack spacing={2}>
+          <HStack gap={2}>
             <FacebookShareButton quote={content} url={url}>
               <IconButton
                 as="span"

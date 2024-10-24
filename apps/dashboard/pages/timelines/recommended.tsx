@@ -20,7 +20,7 @@ const RecommendedTweetPage = () => {
   })
 
   return (
-    <AdminLayout seo={{ title: t('recommended-tweets') }} isLoading={isLoading}>
+    <AdminLayout seo={{ title: t('recommended-tweets') }} loading={isLoading}>
       <MasonryGrid cols={[1, 1, 1, 2, 3, 4]}>
         {tweets?.data?.map((tweet, key) => (
           <RecommendedTweetCard tweet={tweet} key={key} />

@@ -1,13 +1,7 @@
 import { FC, useState } from 'react'
 
-import {
-  Button,
-  HStack,
-  IconButton,
-  Tooltip,
-  VStack,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
+import { HStack, VStack } from '@chakra-ui/react'
 import { TFunction } from 'i18next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -15,6 +9,7 @@ import { FaEdit } from 'react-icons/fa'
 import { FaCopy, FaTrash, FaUser } from 'react-icons/fa6'
 import { TbPlus } from 'react-icons/tb'
 
+import { Button, IconButton, Tooltip } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import type { Role } from '@fc/types'
@@ -32,7 +27,7 @@ const RoleAction: FC<{
 }> = ({ t, onDelete, onCopy, onUserAssign }) => {
   return (
     <HStack>
-      <Tooltip label={t('edit')} placement="top">
+      <Tooltip content={t('edit')} positioning={{ placement: 'top' }}>
         <IconButton
           aria-label="Edit role"
           icon={<FaEdit />}
@@ -43,7 +38,7 @@ const RoleAction: FC<{
         />
       </Tooltip>
 
-      <Tooltip label={t('create')} placement="top">
+      <Tooltip content={t('create')} positioning={{ placement: 'top' }}>
         <IconButton
           aria-label="Duplicate role"
           icon={<FaCopy />}
@@ -58,7 +53,7 @@ const RoleAction: FC<{
         />
       </Tooltip>
 
-      <Tooltip label={t('profiles')} placement="top">
+      <Tooltip content={t('profiles')} positioning={{ placement: 'top' }}>
         <IconButton
           aria-label="Assign users to role"
           icon={<FaUser />}
@@ -73,11 +68,11 @@ const RoleAction: FC<{
         />
       </Tooltip>
 
-      <Tooltip label={t('delete')} placement="top">
+      <Tooltip content={t('delete')} positioning={{ placement: 'top' }}>
         <IconButton
           aria-label="Delete role"
           icon={<FaTrash />}
-          colorScheme="red"
+          colorPalette="red"
           rounded={'full'}
           variant={'outline'}
           size={'xs'}
@@ -94,17 +89,17 @@ const RoleAction: FC<{
 
 export const UserRoles = () => {
   const {
-    isOpen: isSaveOpen,
+    open: isSaveOpen,
     onOpen: onSaveOpen,
     onClose: onSaveClose,
   } = useDisclosure()
   const {
-    isOpen: isDeleteOpen,
+    open: isDeleteOpen,
     onOpen: onDeleteOpen,
     onClose: onDeleteClose,
   } = useDisclosure()
   const {
-    isOpen: isUserAssignOpen,
+    open: isUserAssignOpen,
     onOpen: onUserAssignOpen,
     onClose: onUserAssignClose,
   } = useDisclosure()

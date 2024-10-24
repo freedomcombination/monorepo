@@ -16,7 +16,7 @@ export const PostSentenceForm: FC<PostSentenceFormProps> = ({
   const sentences = hashtagSentences?.[id] ?? []
 
   return (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <PostSentenceCreator hashtagId={hashtagId} postId={id} />
 
       {sentences.map(s => {

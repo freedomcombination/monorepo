@@ -1,14 +1,4 @@
-import {
-  Box,
-  Center,
-  HStack,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { Box, Center, HStack, Stack, Tabs } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 import { FaPaintBrush } from 'react-icons/fa'
 import { FaSpinner } from 'react-icons/fa6'
@@ -38,44 +28,55 @@ export const ArtsTab = () => {
   )
   const artPanelData = [approved, pending, rejected]
 
-  const defaultIndex = approved?.length ? 0 : pending?.length ? 1 : 2
+  const defaultValue = approved?.length
+    ? 'approved'
+    : pending?.length
+      ? 'pending'
+      : 'rejected'
 
   if (!data?.length) return null
 
   return (
     <Stack>
-      <Tabs isLazy colorScheme="primary" defaultIndex={defaultIndex}>
-        <HStack spacing={4}>
-          <TabList overscrollX={'auto'}>
+      <Tabs.Root lazyMount colorPalette="primary" defaultValue={defaultValue}>
+        <HStack gap={4}>
+          <Tabs.List overscrollX={'auto'}>
             <CreateArtForm size="md" />
 
-            <Tab
+            <Tabs.Trigger
               data-testid="tab-approved"
+              value="approved"
               fontWeight={600}
-              isDisabled={!approved?.length}
+              disabled={!approved?.length}
             >
               <Box as={FaPaintBrush} mr={1} /> <>{t('profile.approved-arts')}</>
-            </Tab>
-            <Tab
+            </Tabs.Trigger>
+            <Tabs.Trigger
               data-testid="tab-pending"
+              value="pending"
               fontWeight={600}
-              isDisabled={!pending?.length}
+              disabled={!pending?.length}
             >
               <Box as={FaSpinner} mr={1} /> <>{t('pending-arts')}</>
-            </Tab>
-            <Tab
+            </Tabs.Trigger>
+            <Tabs.Trigger
               data-testid="tab-rejected"
+              value="rejected"
               fontWeight={600}
-              isDisabled={!rejected?.length}
+              disabled={!rejected?.length}
             >
               <Box as={MdRemoveModerator} mr={1} /> <>{t('rejected-arts')}</>
-            </Tab>
-          </TabList>
+            </Tabs.Trigger>
+          </Tabs.List>
         </HStack>
 
-        <TabPanels>
+        <Tabs.ContentGroup>
           {artPanelData.map((artData, index) => (
-            <TabPanel key={index} px={0}>
+            <Tabs.Content
+              value={artData?.[index].approvalStatus || 'approved'}
+              key={index}
+              px={0}
+            >
               {artData && artData.length > 0 ? (
                 <ArtGrid
                   arts={artData}
@@ -87,10 +88,10 @@ export const ArtsTab = () => {
               ) : (
                 noContent
               )}
-            </TabPanel>
+            </Tabs.Content>
           ))}
-        </TabPanels>
-      </Tabs>
+        </Tabs.ContentGroup>
+      </Tabs.Root>
     </Stack>
   )
 }

@@ -1,9 +1,12 @@
 import React from 'react'
 
+import { Box, Group, HStack, Stack, Text, Textarea } from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { FieldErrorsImpl, useForm } from 'react-hook-form'
+import { IoSend } from 'react-icons/io5'
+import { ObjectSchema } from 'yup'
+
 import {
-  Box,
-  ButtonGroup,
-  HStack,
   IconButton,
   Modal,
   ModalBody,
@@ -11,15 +14,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Stack,
-  Text,
-  Textarea,
-} from '@chakra-ui/react'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { FieldErrorsImpl, useForm } from 'react-hook-form'
-import { IoSend } from 'react-icons/io5'
-import { ObjectSchema } from 'yup'
-
+} from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config/constants'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
 import { useCreateUserFeedbackMutation } from '@fc/services/userFeedback/createUserFeedback'
@@ -78,8 +73,8 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
     <Box>
       <Modal
         size="sm"
-        onClose={closeModal}
-        isOpen={isOpen}
+        onOpenChange={e => (e.open ? null : closeModal())}
+        open={isOpen}
         scrollBehavior="inside"
       >
         <ModalOverlay />
@@ -92,24 +87,24 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
           </ModalHeader>
           <ModalBody>
             <Stack
-              spacing={4}
+              gap={4}
               as="form"
               onSubmit={handleSubmit(handleUserFeedback)}
             >
-              <ButtonGroup>
+              <Group>
                 {[1, 2, 3, 4, 5].map(p => (
                   <IconButton
                     key={p}
-                    colorScheme={point === p ? 'primary' : 'gray'}
+                    colorPalette={point === p ? 'primary' : 'gray'}
                     variant={point === p ? 'solid' : 'outline'}
-                    isRound
+                    rounded={'full'}
                     onClick={() => handlePoint(p)}
                     aria-label={`Give ${p} point`}
                     icon={<Text fontSize={'lg'}>{p}</Text>}
                     size={'lg'}
                   />
                 ))}
-              </ButtonGroup>
+              </Group>
               <HStack>
                 <FormItem<CreateUserFeedbackFormFieldValues>
                   as={Textarea}
@@ -118,7 +113,7 @@ export const UserFeedbackForm: React.FC<CreateUserFeedbackFormProps> = ({
                   errors={
                     errors as FieldErrorsImpl<CreateUserFeedbackFormFieldValues>
                   }
-                  isRequired
+                  required
                 />
 
                 <IconButton

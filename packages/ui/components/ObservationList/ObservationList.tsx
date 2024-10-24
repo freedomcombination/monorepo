@@ -17,7 +17,7 @@ export const ObservationList = ({
   onSuccess,
 }: ObservationListProps) => {
   return (
-    <Stack p={{ base: 4, lg: 8 }} spacing={4}>
+    <Stack p={{ base: 4, lg: 8 }} gap={4}>
       <Heading as="h2">Observations</Heading>
       <ObservationCreateForm profileId={id} onSuccess={onSuccess} />
       <Stack>

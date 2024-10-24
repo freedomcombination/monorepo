@@ -1,7 +1,8 @@
-import { Box, Button, Container, useDisclosure } from '@chakra-ui/react'
+import { Box, Container, useDisclosure } from '@chakra-ui/react'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { sample } from 'lodash'
 
+import { Button } from '@fc/chakra'
 import { ACTIVITY_MOCKS } from '@fc/mocks/activity'
 import { BLOG_MOCKS } from '@fc/mocks/blog'
 import { HASHTAG_MOCKS } from '@fc/mocks/hashtag'
@@ -23,7 +24,7 @@ export default {
 type Story = StoryObj<typeof TranslateModal>
 
 const StoryWithHooks: StoryFn<typeof TranslateModal> = args => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open, onOpen, onClose } = useDisclosure()
 
   const handleSizeClick = () => {
     onOpen()
@@ -35,7 +36,7 @@ const StoryWithHooks: StoryFn<typeof TranslateModal> = args => {
         {`Open Modal`}
       </Button>
 
-      <TranslateModal {...args} isOpen={isOpen} onClose={onClose} />
+      <TranslateModal {...args} isOpen={open} onClose={onClose} />
     </Box>
   )
 }

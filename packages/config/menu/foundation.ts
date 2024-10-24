@@ -23,29 +23,27 @@ import { Menus } from './types'
 export const foundation: Menus = {
   headerMenu: [
     activities,
-    {
-      link: platforms?.link,
-      en: platforms?.en,
-      nl: platforms?.nl,
-      tr: platforms?.tr,
-      children: [trendRights, artStop, lotus, academy, music],
-    },
+    // {
+    //   children: [trendRights, artStop, lotus, academy, music],
+    //   en: platforms.en,
+    //   nl: platforms.nl,
+    //   tr: platforms.tr,
+    // },
     blogs,
     club,
-    {
-      link: '/',
-      en: 'Foundation',
-      nl: 'Stichting',
-      tr: 'Vakıf',
-      children: [anbi, about, contact, join, presentations],
-    },
+    // {
+    //   children: [anbi, about, contact, join, presentations],
+    //   en: 'Foundation',
+    //   nl: 'Stichting',
+    //   tr: 'Vakıf',
+    // },
   ],
   footerMenu: [
     {
       children: [trendRights, artStop, lotus, academy, music],
-      en: platforms?.en,
-      nl: platforms?.nl,
-      tr: platforms?.tr,
+      en: platforms.en,
+      nl: platforms.nl,
+      tr: platforms.tr,
     },
     {
       children: [about, contact, join, anbi, dashboard],

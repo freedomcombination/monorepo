@@ -1,5 +1,5 @@
-import { useTimeout } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
+import { useTimeout } from 'react-use'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { useAuthContext } from '@fc/context/auth'
@@ -22,6 +22,7 @@ export const viewBlog = async (blog: Blog, token: string) => {
 
 export const useViewBlog = () => {
   const { token } = useAuthContext()
+  const [isReady] = useTimeout(10 * 3000)
 
   const { data, refetch } = useGetBlogBySlug()
 
@@ -31,6 +32,8 @@ export const useViewBlog = () => {
     'view-blog',
     [],
   )
+
+  const isViewed = blogStorage?.some(id => id === blog?.id)
 
   const { mutate } = useMutation({
     mutationKey: ['view-blog', blog?.id],
@@ -44,11 +47,7 @@ export const useViewBlog = () => {
     },
   })
 
-  useTimeout(() => {
-    const isViewed = blogStorage?.some(id => id === blog?.id)
-
-    if (blog && !isViewed) {
-      mutate(blog)
-    }
-  }, 5000)
+  if (blog && !isViewed && isReady()) {
+    mutate(blog)
+  }
 }

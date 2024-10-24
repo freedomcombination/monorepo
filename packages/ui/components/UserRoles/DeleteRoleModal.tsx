@@ -1,19 +1,18 @@
 import { FC, useEffect, useRef, useState } from 'react'
 
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogCloseButton,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'next-i18next'
 
+import {
+  Dialog,
+  DialogBody,
+  DialogCloseButton,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  Button,
+} from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import type { Role } from '@fc/types'
 import { deleteRole } from '@fc/utils/permissions'
@@ -75,18 +74,17 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
   }, [isOpen])
 
   return (
-    <AlertDialog
-      motionPreset="slideInBottom"
-      leastDestructiveRef={cancelRef}
-      onClose={onClose}
-      isOpen={isOpen}
-      isCentered
+    <Dialog
+      motionPreset="slide-in-bottom"
+      onOpenChange={e => (e.open ? null : onClose())}
+      open={isOpen}
+      placement={'center'}
     >
-      <AlertDialogOverlay />
-      <AlertDialogContent>
-        <AlertDialogHeader>{t('delete')}</AlertDialogHeader>
-        <AlertDialogCloseButton />
-        <AlertDialogBody gap={2}>
+      <DialogOverlay />
+      <DialogContent>
+        <DialogHeader>{t('delete')}</DialogHeader>
+        <DialogCloseButton />
+        <DialogBody gap={2}>
           <Text color="red.500" fontWeight="bold" mb={6}>
             Are you sure you want to delete this role?
           </Text>
@@ -96,14 +94,14 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
               <Text>{role.description}</Text>
             </Stack>
           )}
-        </AlertDialogBody>
-        <AlertDialogFooter>
+        </DialogBody>
+        <DialogFooter>
           <Button ref={cancelRef} onClick={onCloseHandler}>
             {t('cancel')}
           </Button>
           <Button
-            colorScheme="red"
-            isLoading={countDown > 0}
+            colorPalette="red"
+            loading={countDown > 0}
             loadingText={`${countDown}`}
             ml={3}
             minW={120}
@@ -111,8 +109,8 @@ export const DeleteRoleModal: FC<DeleteRoleModalProps> = ({
           >
             {t('delete')}
           </Button>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }

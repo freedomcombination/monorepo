@@ -1,4 +1,6 @@
 import { Heading, Stack, useBreakpointValue } from '@chakra-ui/react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { useTranslation } from 'next-i18next'
 
@@ -43,7 +45,7 @@ export const ArtTemplate = () => {
 
       {/* Other Arts List */}
       {arts && arts?.length > 0 && (
-        <Stack justify="space-between" w="full" mt={8} spacing={8}>
+        <Stack justify="space-between" w="full" mt={8} gap={8}>
           <Heading as="h3" size="lg">
             {t('art.others')}
           </Heading>

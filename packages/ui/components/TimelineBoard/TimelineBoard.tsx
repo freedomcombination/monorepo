@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
-import { Box, Divider, HStack, Link, Stack, Text } from '@chakra-ui/react'
+import { Box, Separator, HStack, Link, Stack, Text } from '@chakra-ui/react'
 
 import { TimelineBoardProps } from './types'
 import { TweetCard } from '../TweetCard'
 
 export const TimelineBoard: FC<TimelineBoardProps> = ({ timelines }) => {
   return (
-    <HStack gap={4} overflowY="auto" shouldWrapChildren>
+    <HStack gap={4} overflowY="auto">
       {timelines?.map(timeline => (
         <Box
           key={timeline.id}
@@ -33,7 +33,7 @@ export const TimelineBoard: FC<TimelineBoardProps> = ({ timelines }) => {
           <Stack
             overflowY="auto"
             h={'calc(100vh - 148px)'}
-            divider={<Divider />}
+            separator={<Separator />}
           >
             {timeline?.tweets?.map((tweet, key) => {
               // FIXME: Why image is not showing up?

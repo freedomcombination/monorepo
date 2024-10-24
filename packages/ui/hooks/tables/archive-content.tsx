@@ -1,4 +1,4 @@
-import { Badge, Wrap } from '@chakra-ui/react'
+import { Badge, Group } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -26,7 +26,7 @@ export const useArchiveContentColumns =
       {
         accessorKey: 'categories',
         transform: value => (
-          <Wrap>
+          <Group wrap={'wrap'}>
             {(value as Category[])
               ?.sort((a, b) =>
                 a[`name_${locale}`].localeCompare(b[`name_${locale}`]),
@@ -36,7 +36,7 @@ export const useArchiveContentColumns =
                   {c[`name_${locale}`]}
                 </Badge>
               ))}
-          </Wrap>
+          </Group>
         ),
         transformPDF: value =>
           (value as Category[])

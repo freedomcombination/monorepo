@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect } from 'react'
 
-import { Button, Code, Input, Stack } from '@chakra-ui/react'
+import { Code, Input, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
+import { Button } from '@fc/chakra'
 import type { CategoryCreateInput } from '@fc/types'
 
 import { createCategoryWithMutation } from './utils'
@@ -48,7 +49,7 @@ export const CreateCategoryWithValidation = () => {
     <Stack>
       <Code as={'pre'}>{JSON.stringify(data, null, 2)}</Code>
       <Stack as={'form'} onSubmit={handleSubmit(onSubmit)}>
-        <FormItem
+        <FormItem<CategoryCreateInput>
           placeholder="Category name (en)"
           name="name_en"
           register={register}
@@ -56,11 +57,7 @@ export const CreateCategoryWithValidation = () => {
         />
         {/* TODO: Add all inputs */}
 
-        <Button
-          type={'submit'}
-          isLoading={isPending}
-          loadingText={'Creating...'}
-        >
+        <Button type={'submit'} loading={isPending} loadingText={'Creating...'}>
           Submit
         </Button>
       </Stack>

@@ -1,5 +1,8 @@
 import { FC } from 'react'
 
+import { Box, Center } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+
 import {
   Accordion,
   AccordionButton,
@@ -7,14 +10,7 @@ import {
   AccordionItem,
   AccordionPanel,
   Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-  Box,
-  Center,
-} from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-
+} from '@fc/chakra'
 import { Course, CourseApplication } from '@fc/types'
 import { CourseLogic } from '@fc/utils/courseLogic'
 
@@ -81,11 +77,11 @@ export const CourseApplicationDetails: FC<CourseApplicationDetailsProps> = ({
   return (
     <>
       {application.approvalStatus !== 'rejected' ? (
-        <Accordion p={0} allowMultiple borderWidth={1} m={4}>
+        <Accordion p={0} multiple borderWidth={1} m={4}>
           {items.map(
             ({ visible, title, node }) =>
               visible && (
-                <AccordionItem key={title}>
+                <AccordionItem key={title} value={title}>
                   <h2>
                     <AccordionButton>
                       <Box
@@ -117,14 +113,9 @@ export const CourseApplicationDetails: FC<CourseApplicationDetailsProps> = ({
             height="200px"
             borderWidth={1}
             borderRadius={'lg'}
+            title={t('course.applicant.details.rejected')}
           >
-            <AlertIcon boxSize="40px" mr={0} />
-            <AlertTitle mt={4} mb={1} fontSize="lg">
-              {t('course.applicant.details.rejected')}
-            </AlertTitle>
-            <AlertDescription maxWidth="sm">
-              {t('course.applicant.details.rejected.message')}
-            </AlertDescription>
+            {t('course.applicant.details.rejected.message')}
           </Alert>
         </Center>
       )}

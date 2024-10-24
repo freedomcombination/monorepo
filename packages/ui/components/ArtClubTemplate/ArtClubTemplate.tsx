@@ -1,27 +1,21 @@
 import { FC, useState } from 'react'
 
-import {
-  Box,
-  Center,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Grid,
-  HStack,
-  IconButton,
-  Skeleton,
-  Stack,
-  useDisclosure,
-  Alert,
-  AlertIcon,
-  AlertDescription,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
+import { Box, Center, Grid, HStack, Skeleton, Stack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { parse } from 'querystring'
 import { MdMenuOpen } from 'react-icons/md'
 
+import {
+  Alert,
+  Pagination,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  IconButton,
+} from '@fc/chakra'
 import { RecaptchaKeys } from '@fc/config/constants'
 import { useStrapiRequest } from '@fc/services/common/strapiRequest'
 import { useRecaptchaToken } from '@fc/services/common/useRecaptchaToken'
@@ -35,7 +29,6 @@ import { CategoryFilterSkeleton } from '../CategoryFilter'
 import { Container } from '../Container'
 import { CreateArtForm } from '../CreateArtForm'
 import { MasonryGrid } from '../MasonryGrid'
-import { Pagination } from '../Pagination'
 import { SearchForm } from '../SearchForm'
 
 export const ArtClubTemplate: FC = () => {
@@ -47,8 +40,8 @@ export const ArtClubTemplate: FC = () => {
   const recaptchaToken = useRecaptchaToken(RecaptchaKeys.LIKE_ART)
 
   const { changePage, changeSearch } = useChangeParams()
-  const [isLoading, setIsLoading] = useState(false)
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [loading, setLoading] = useState(false)
+  const { open, onOpen, onToggle } = useDisclosure()
   const { t } = useTranslation()
 
   const categoryQuery = useStrapiRequest<Category>({
@@ -88,14 +81,14 @@ export const ArtClubTemplate: FC = () => {
 
   return (
     <>
-      <Drawer isOpen={isOpen} onClose={onClose}>
+      <Drawer open={open} onOpenChange={onToggle}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody py={8}>
             <ArtSideBar
               categoryList={categoryList}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
+              loading={loading}
+              setLoading={setLoading}
             />
           </DrawerBody>
         </DrawerContent>
@@ -116,7 +109,7 @@ export const ArtClubTemplate: FC = () => {
                 align="center"
                 w="full"
                 overflowX={{ base: 'auto', lg: 'hidden' }}
-                spacing={4}
+                gap={4}
               >
                 <Skeleton h={8} w="full" rounded="md" />
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -128,13 +121,13 @@ export const ArtClubTemplate: FC = () => {
             ) : (
               <ArtSideBar
                 categoryList={categoryList}
-                isLoading={isLoading}
-                setIsLoading={setIsLoading}
+                loading={loading}
+                setLoading={setLoading}
               />
             )}
           </Box>
 
-          <Stack w="full" spacing={4}>
+          <Stack w="full" gap={4}>
             <HStack>
               <SearchForm
                 placeholder={t('search') as string}
@@ -163,10 +156,9 @@ export const ArtClubTemplate: FC = () => {
                 gap={4}
                 rounded={'lg'}
               >
-                <AlertIcon boxSize="40px" mr={0} />
-                <AlertDescription fontWeight={600} maxWidth="sm">
+                <Box fontWeight={600} maxWidth="sm">
                   {t('no-results-found')}
-                </AlertDescription>
+                </Box>
               </Alert>
             ) : (
               <MasonryGrid columnGap={2} rowGap={2}>
@@ -199,8 +191,8 @@ export const ArtClubTemplate: FC = () => {
               <Center>
                 {artsQuery.data?.meta?.pagination && (
                   <Pagination
-                    totalCount={artsQuery.data.meta.pagination?.pageCount}
-                    currentPage={artsQuery.data.meta.pagination?.page}
+                    count={artsQuery.data.meta.pagination?.pageCount}
+                    page={artsQuery.data.meta.pagination?.page}
                     onPageChange={changePage}
                   />
                 )}

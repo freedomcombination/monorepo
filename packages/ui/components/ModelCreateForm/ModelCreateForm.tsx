@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 
-import { Box, Button, Divider, Stack, useBoolean } from '@chakra-ui/react'
+import { Box, Separator, Stack } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import slugify from '@sindresorhus/slugify'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { TbPlus } from 'react-icons/tb'
+import { useBoolean } from 'react-use'
 import { InferType } from 'yup'
 
+import { Button } from '@fc/chakra'
 import { useCreateModelMutation } from '@fc/services/common/createModel'
 import { endpointsWithLocale } from '@fc/services/common/urls'
 import type {
@@ -178,13 +180,13 @@ export const ModelCreateForm = <T extends StrapiModel>({
           fields: ungroupedFields,
           formProps,
           isChangingMedia: isChangingImage,
-          toggleChangingMedia: setIsChangingImage.toggle,
+          toggleChangingMedia: () => setIsChangingImage(!isChangingImage),
           t,
         })}
 
         {groupedFields?.length > 0 && (
           <>
-            <Divider my={6} />
+            <Separator my={6} />
             <RadioCards
               defaultValue={groupedFields[0]?.group?.value}
               options={options as Option[]}
@@ -196,7 +198,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
               formProps,
               activeOption,
               isChangingMedia: isChangingImage,
-              toggleChangingMedia: setIsChangingImage.toggle,
+              toggleChangingMedia: () => setIsChangingImage(!isChangingImage),
               t,
             })}
           </>
@@ -206,7 +208,7 @@ export const ModelCreateForm = <T extends StrapiModel>({
         alignSelf={'end'}
         leftIcon={<TbPlus />}
         type={'submit'}
-        isLoading={createModelMutation.isPending}
+        loading={createModelMutation.isPending}
       >
         {t('create')}
       </Button>

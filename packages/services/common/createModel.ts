@@ -1,7 +1,7 @@
-import { useToast } from '@chakra-ui/react'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 
+import { toaster } from '@fc/chakra'
 import { useAuthContext } from '@fc/context/auth'
 import type { StrapiCreateInput, StrapiEndpoint, StrapiModel } from '@fc/types'
 
@@ -26,7 +26,6 @@ export const useCreateModelMutation = <
 >(
   endpoint: StrapiEndpoint,
 ) => {
-  const toast = useToast()
   const { token } = useAuthContext()
   const { locale } = useRouter()
 
@@ -41,23 +40,18 @@ export const useCreateModelMutation = <
         data?.name ||
         data?.[`title_${locale}`] ||
         data?.[`name_${locale}`]
-
-      toast({
+      toaster.create({
         title: `Model created`,
         description: `Model ${title} has been created`,
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
+        type: 'success',
       })
     },
     onError: (error: any) => {
       console.error('Create model error', error)
-      toast({
+      toaster.create({
         title: 'Error',
         description: `Something went wrong`,
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
+        type: 'error',
       })
     },
   })

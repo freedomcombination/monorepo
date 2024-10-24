@@ -3,7 +3,7 @@ import { LegacyRef } from 'react'
 import type { Collection } from '@fc/types'
 
 export type CollectionTemplateProps = {
-  isLoading: boolean
+  loading: boolean
   height: number
   width: number
   pageShow: number

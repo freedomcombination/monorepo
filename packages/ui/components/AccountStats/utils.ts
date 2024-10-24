@@ -1,9 +1,41 @@
-import { theme } from '@chakra-ui/react'
+// import { theme } from '@chakra-ui/react'
 import { format } from 'date-fns'
 
 import type { AccountStats, AccountStatsBase } from '@fc/types'
 
 import { ChartJSData } from './types'
+
+const theme = {
+  colors: {
+    blue: {
+      500: '#3182ce',
+    },
+    green: {
+      500: '#38a169',
+    },
+    purple: {
+      500: '#805ad5',
+    },
+    red: {
+      500: '#e53e3e',
+    },
+    pink: {
+      500: '#d53f8c',
+    },
+    orange: {
+      500: '#dd6b20',
+    },
+    yellow: {
+      500: '#faf089',
+    },
+    cyan: {
+      500: '#63b3ed',
+    },
+    teal: {
+      500: '#2c7a7b',
+    },
+  },
+}
 
 export const getChartData = (
   stats: AccountStats[],

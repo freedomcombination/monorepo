@@ -2,13 +2,13 @@
 import { ReactNode } from 'react'
 
 import {
-  AvatarProps,
   BadgeProps,
   TableCellProps,
-  TableProps,
+  TableRootProps,
   TextProps,
 } from '@chakra-ui/react'
 
+import { AvatarProps } from '@fc/chakra'
 import type { Sort, StrapiModel, UploadFile } from '@fc/types'
 
 import { FormattedDateProps } from '../FormattedDate'
@@ -63,7 +63,7 @@ export type WTableProps<T extends StrapiModel> = {
   columns: WTableRowProps<T>['columns']
   onClickRow?: WTableRowProps<T>['onClick']
   onSort?: (key?: Sort) => void
-} & TableProps
+} & TableRootProps
 
 export type TableCellImagesProps = {
   value: UploadFile | UploadFile[]

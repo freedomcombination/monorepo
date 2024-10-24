@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Link } from '@chakra-ui/next-js'
-import { Box, Divider, HStack, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Separator, HStack, Stack, Text, VStack } from '@chakra-ui/react'
+import Link from 'next/link'
 
 import { useAuthContext } from '@fc/context/auth'
 
@@ -18,17 +18,17 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
       display={{ base: mobile ? 'flex' : 'none', md: 'flex' }}
       bg={'white'}
       py={4}
-      // spacing={0}
+      // gap={0}
       h={'full'}
       {...(!mobile && {
         w: 300,
       })}
       align={'stretch'}
-      divider={<Divider />}
+      separator={<Separator />}
     >
       {/* Logo */}
       <Link href="/">
-        <HStack align="center" spacing={4} alignItems="center" justify="center">
+        <HStack align="center" gap={4} alignItems="center" justify="center">
           <WAvatar
             size={'lg'}
             src={`/images/foundation-logo.svg`}
@@ -66,7 +66,7 @@ export const AdminSidebar: FC<AdminSidebarProps> = ({ mobile }) => {
 
       {/* Footer */}
 
-      <VStack spacing={0} fontSize={'sm'}>
+      <VStack gap={0} fontSize={'sm'}>
         <Text>Freedom Combination</Text>
         <Text>&copy; All rights reserved</Text>
       </VStack>

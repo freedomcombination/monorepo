@@ -30,14 +30,16 @@ const Home: FC<HomeProps> = ({ hashtags, instagramPosts }) => {
   return (
     <Layout seo={{ title: t('home') }} isDark>
       <Box
-        bgGradient={'linear(to-b, primary.400, primary.500)'}
+        bgGradient={'to-b'}
+        gradientFrom={'primary.400'}
+        gradientTo={'primary.500'}
         mt={{ base: '-64px', lg: '-100px' }}
         pb={{ base: 16, lg: 32 }}
       >
         <Container>
           <Stack
             color="white"
-            spacing={6}
+            gap={6}
             alignItems={{ base: 'center', lg: 'center' }}
             justifyContent={'center'}
             textAlign={{ base: 'center', lg: 'center' }}

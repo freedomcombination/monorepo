@@ -1,10 +1,10 @@
 import {
   Box,
-  Divider,
+  Separator,
   Heading,
   SimpleGrid,
   VStack,
-  Wrap,
+  Group,
 } from '@chakra-ui/react'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -38,26 +38,35 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
             minH="inherit"
           >
             <VStack
-              bgGradient={'linear(to-b, primary.400, primary.500)'}
+              bgGradient={'to-b'}
+              gradientFrom={'primary.400'}
+              gradientTo={'primary.500'}
               color="primary.50"
               borderRadius="lg"
               p={{ base: 8, lg: 12 }}
               textAlign="center"
               justify="space-evenly"
-              spacing={8}
+              gap={8}
             >
               <Heading fontWeight={900} as="h2" size="lg" color="primary.50">
                 Freedom Combination <br /> Foundation
               </Heading>
-              <Divider borderColor="whiteAlpha.400" />
+              <Separator borderColor="whiteAlpha.400" />
 
-              <Wrap spacing={4} justify="center" key={foundation?.id}>
+              <Group
+                wrap={'wrap'}
+                gap={4}
+                justify="center"
+                key={foundation?.id}
+              >
                 <ButtonLink
                   isExternal
-                  variant="link"
+                  variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.100' }}
-                  leftIcon={<Box as={MdPhone} color="primary.50" size="20px" />}
+                  leftIcon={
+                    <Box as={MdPhone} color="primary.50" fontSize="20px" />
+                  }
                   href={`tel:${foundation?.contact?.phone}`}
                 >
                   {foundation?.contact?.phone}
@@ -65,11 +74,11 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
 
                 <ButtonLink
                   isExternal
-                  variant="link"
+                  variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.50' }}
                   leftIcon={
-                    <Box as={MdEmail} color="primary.100" size="20px" />
+                    <Box as={MdEmail} color="primary.100" boxSize="20px" />
                   }
                   href={`mailto:${foundation?.contact?.email}`}
                 >
@@ -77,18 +86,18 @@ const Contact = ({ foundation }: ContactProps): JSX.Element => {
                 </ButtonLink>
                 <ButtonLink
                   isExternal
-                  variant="link"
+                  variant="plain"
                   color="primary.50"
                   _hover={{ color: 'primary.100' }}
                   leftIcon={
-                    <Box as={MdLocationOn} color="primary.50" size="20px" />
+                    <Box as={MdLocationOn} color="primary.50" boxSize="20px" />
                   }
                   href="https://goo.gl/maps/E9HaayQnXmphUWtN8"
                   textAlign="left"
                 >
                   {foundation?.contact?.address}
                 </ButtonLink>
-              </Wrap>
+              </Group>
 
               <SocialButtons items={socialLinks.foundation} />
             </VStack>

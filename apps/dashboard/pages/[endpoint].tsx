@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 
 import {
   Center,
-  MenuDivider,
+  MenuSeparator,
   Spinner,
   Stack,
   useDisclosure,
@@ -48,14 +48,14 @@ type ModelPageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
   const { t } = useTranslation()
-  const { roles, profile, token, isLoading } = useAuthContext()
+  const { roles, profile, token, loading } = useAuthContext()
 
   const [selectedRelationFilters, setSelectedRelationFilters] = useState<
     RelationFilterArgs[]
   >([])
   const [selectedFilters, setSelectedFilters] = useState<FilterOption[]>([])
 
-  const { isOpen, onClose, onOpen } = useDisclosure()
+  const { open, onClose, onOpen } = useDisclosure()
 
   const { locale, query, push } = useRouter()
   const columns = useColumns()
@@ -242,7 +242,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
           ...(args.searchFields && { onSearch: setQ }),
           filterMenuCloseOnSelect: false,
           filterMenu: (
-            <Stack divider={<MenuDivider />}>
+            <Stack separator={<MenuSeparator />}>
               <ModelStatusFilters
                 args={[
                   {
@@ -294,7 +294,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         <ModelEditModal<StrapiModel>
           endpoint={endpoint}
           id={selectedId}
-          isOpen={isOpen}
+          isOpen={open}
           onClose={handleClose}
           title={`Edit ${endpoint}`}
           onSuccess={endpointQuery.refetch}
@@ -308,7 +308,7 @@ const ModelPage: FC<ModelPageProps> = ({ endpoint }) => {
         </ModelEditModal>
       )}
 
-      {isLoading || endpointQuery.isPending || endpointQuery.isLoading ? (
+      {loading || endpointQuery.isPending || endpointQuery.isLoading ? (
         <Center h={'full'}>
           <Spinner size={'xl'} color={'primary.500'} />
         </Center>
